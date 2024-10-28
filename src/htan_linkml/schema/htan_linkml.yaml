@@ -22,90 +22,296 @@ imports:
   - linkml:types
 
 classes:
-
-  NamedThing:
-    description: >-
-      A generic grouping for any identifiable entity
+  program:
+    is_a: study
+    description: "Program in the Cancer Data Service refer to a broad framework of goals under which related projects or other research activities are grouped. Example - Clinical Proteomic Tumor Analysis Consortium (CPTAC)"
     slots:
-      - id
-      - name
-      - description
-    class_uri: schema:Thing
+      - program_name
+      - program_acronym
+      - program_short_description
+      - program_full_description
+      - program_external_url
+      - program_sort_order
+      - program_short_name
+      - institution
+      #- crdc_id
 
-  Study:
-    is_a: NamedThing
-    description: >-
-      Represents a Study
+  study:
+    description: "The narrative title used as a textual label for a research data collection. Example – University of Texas PDX Development and Trial Center Grant"
     slots:
-      - primary_email
-      - birth_date
-      - age_in_years
+      - study_name
+      - study_acronym
+      - study_description
+      - short_description
+      - study_external_url
+      - primary_investigator_name
+      - primary_investigator_email
+      - co_investigator_name
+      - co_investigator_email
+      - phs_accession
+      - bioproject_accession
+      - index_date # what are relative dates relative to? dx date, collection date, etc.
+      - cds_requestor
+      - funding_agency
+      - funding_source_program_name
+      - grant_id
+      - clinical_trial_system
+      - clinical_trial_identifier
+      - clinical_trial_arm
+      - organism_species
+      - adult_or_childhood_study # adult, pediatric
+      - data_types # list from enumerated values
+      - file_types # list from enumerated values
+      - data_access_level
+      - cds_primary_bucket
+      - cds_secondary_bucket
+      - cds_tertiary_bucket
+      - number_of_participants
+      - number_of_samples
+      - study_data_types
+      - file_types_and_format
+      - size_of_data_being_uploaded
+      - acl
+      - study_access
+      - authz
+      - study_version
+      - role_or_affiliation
+      - title
+      - first_name
+      - middle_name
+      - last_name
+      - suffix
+      - email
+      - clinical_trial_repository
+      #- crdc_id
+
+
+  participant:
+    description: "Individual who takes part in the study"
+    slots:
+      - study_participant_id
+      - participant_id
+      - race
+      - gender
+      - ethnicity
+      #  - vital_status
+      - dbGaP_subject_id
+      - sex
+      - crdc_id
+
+  diagnosis: # may have multiple dxs for multiple timepoints?
+    description: "Text term used to describe the patient's histologic diagnosis, as described by the World Health Organization's (WHO) International Classification of Diseases for Oncology (ICD-O)."
+    slots:
+      - study_diagnosis_id
+      - diagnosis_id
+      - disease_type
       - vital_status
-      - diagnosis
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
+      - primary_diagnosis
+      - primary_site
+      - age_at_diagnosis
+      - tumor_grade
+      - tumor_stage_clinical_m
+      - tumor_stage_clinical_n
+      - tumor_stage_clinical_t
+      - morphology
+      - incidence_type # primary, metastatic, recurrence, progression
+      - progression_or_recurrence
+      - days_to_recurrence
+      - days_to_last_followup
+      - last_known_disease_status
+      - days_to_last_known_status
+      - tissue_or_organ_of_origin
+      - site_of_resection_or_biopsy
+      - days_to_last_known_disease_status
+      #- crdc_id
 
-  StudyCollection:
-    tree_root: true
-    description: >-
-      A holder for Study objects
-    attributes:
-      entries:
-        range: Study
-        multivalued: true
-        inlined: true
+  treatment:
+    description: "An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process."
+    is_a: case
+    slots:
+      - treatment_id
+      - treatment_type
+      - treatment_outcome
+      - days_to_treatment
+      - therapeutic_agents
+      - response
+      #- crdc_id
+
+  sample: # aka subspecimen (CMB)
+    description: "Specimen tissue type collected from the participant."
+    slots:
+      - sample_id
+      - sample_type
+      - sample_description
+      - sample_type_category
+      - sample_tumor_status # tumor or normal
+      - sample_anatomic_site
+      - sample_age_at_collection
+      - derived_from_specimen
+      - biosample_accession
+      #- crdc_id
+
+  file:
+    description: "A set of related records kept together provided by a submitter."
+    slots:
+      - file_id
+      - file_name
+      - file_type
+      - file_description
+      - file_size
+      - md5sum
+      - file_url_in_cds
+      - experimental_strategy_and_data_subtypes
+      - submission_version
+      - checksum_value
+      - checksum_algorithm
+      - crdc_id
+      - file_mapping_level
+      #- file_access
+
+  genomic_info:
+    description: "In CDS genomic info refers to the sequencing methodsm techniques and equipment."
+    is_a: file
+    slots:
+      - genomic_info_id
+      - library_id
+      - bases
+      - number_of_reads
+      - avg_read_length
+      - coverage
+      - reference_genome_assembly
+      - custom_assembly_fasta_file_for_alignment
+      - design_description
+      - library_strategy
+      - library_layout
+      - library_source
+      - library_selection
+      - platform
+      - instrument_model
+      - sequence_alignment_software
+      - reporter_label
+      - methylation_platform
+      - library_source_material
+      - library_source_molecule
+      #- crdc_id
+
+  image:
+    is_a: file
+    description: "The imaging data from DICOM and non-DICOM standards into CDS."
+    slots:
+      - study_link_id
+      - de_identification_method_type
+      - de_identification_method_description
+      - de_identification_software
+      - license
+      - citation_or_DOI
+      - species
+      - image_modality
+      - imaging_equipment_manufacturer
+      - imaging_equipment_model
+      - imaging_sofware
+      - imaging_protocol
+      - organ_or_tissue
+      - performed_imaging_study_description
+      - performed_imaging_study_admittingDiagnosisCode
+      - performed_imaging_study_nonAcquisitionModalitiesInStudyCode
+      - performed_imaging_study_lossyImageCompressionIndicator
+      - performed_imaging_study_summary
+      - performed_imaging_study_primaryAnatomicSiteCode
+      - performed_imaging_study_acquisitionTypeCode
+      - performed_imaging_study_cardiacSynchronizationTechniqueCode
+      - performed_imaging_study_dataCollectionDiameter
+      - performed_imaging_study_respiratoryMotionTechniqueCode
+      - performed_imaging_study_bodyPositionCode
+      - performed_imaging_study_typeCode
+      - performed_imaging_study_algorithmCode
+      - performed_imaging_study_reconstructionFieldOfViewHeight
+      - performed_imaging_study_reconstructionFieldOfViewWidth
+      - performed_imaging_study_reconstructionDiameter
+      - performed_imaging_study_sliceThickness
+      - performed_imaging_study_reconstructionInterval
+      - longitudinal_temporal_event_type
+      - longitudinal_temporal_event_offset
+      - CTAquisitionProtocolElement_singleCollimationWidth
+      - CTAquisitionProtocolElement_totalCollimationWidth
+      - CTAquisitionProtocolElement_gantryDetectorTilt
+      - CTAquisitionProtocolElement_spiralPitchFactor
+      - CTAquisitionProtocolElement_ctdiVol
+      - CTAquisitionProtocolElement_ctdiPhantomTypeCode
+      - CTAquisitionProtocolElement_kVp
+      - CTAquisitionProtocolElement_exposureModulationType_Code
+      - CTImageReconstructionProtocolElement_convolutionKernel
+      - CTImageReconstructionProtocolElement_convolutionKernelGroupCode
+      - MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode
+      - MRImageAcquisitionProtocolElement_diffusionBValue
+      - MRImageAcquisitionProtocolElement_diffusionDirectionalityCode
+      - MRImageAcquisitionProtocolElement_magneticFieldStrength
+      - MRImageAcquisitionProtocolElement_resonantNucleusCode
+      - MRImageAcquisitionProtocolElement_acquisitionContrastCode
+      - MRImageAcquisitionProtocolElement_inversionRecoveryIndicator
+      - MRImageAcquisitionProtocolElement_pulseSequenceName
+      - MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator
+      - MRImageAcquisitionProtocolElement_phaseContrastIndicator
+      - MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator
+      - MRImageAcquisitionProtocolElement_arterialSpinLabelingContrastCode
+      - MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode
+      - MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator
+      - MRImageAcquisitionProtocolElement_saturationRecoveryIndicator
+      - MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode
+      - MRImageReconstructionProtocolElement_complexImageComponentCode
+      - PETImagingAcquisitionProtocolElement_gantryDetectorTilt
+      - Radiopharmaceutical_radionuclideCode
+      - acquisition_method_type
+      - tumor_tissue_type
+      - tissue_fixative
+      - embedding_medium
+      - staining_method
+      - objective
+      - nominal_magnification
+      - immersion
+      - lens_numerical_aperture
+      - working_distance
+      - imaging_assay_type
+      - pyramid
+      - physical_size_x
+      - physical_size_y
+      - physical_size_z
+      - size_c
+      - size_t
+      - size_x
+      - size_y
+      - size_z
+      - channel_metadata_filename
+      - channel_metadata_file_url_in_cds
+      - channel_id
+      - channel_name
+      - cycle_number
+      - sub_cycle_number
+      - target_name
+      - antibody_name
+      - rrid_identifier
+      - fluorophore
+      - clone
+      - lot
+      - catalog_number
+      - excitation_wavelength
+      - emission_wavelength
+      - excitation_bandwidth
+      - emission_bandwidth
+      - metal_isotope_element_abbreviation
+      - metal_isotope_element_mass
+      - oligo_barcode_upper_strand
+      - oligo_barcode_lower_strand
+      - dilution
+      - concentration
+      - crdc_id
+
 
 slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
-  diagnosis:
-    range: Diagnosis
+  
+
+
+
 
 enums:
-  PersonStatus:
-    permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
-  Diagnosis:
-    permissible_values:
-      CANCER:
-        description: the person has cancer
-        meaning: PATO:0001421
-      HEALTHY:
-        description: the person is healthy
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the diagnosis is not known
-        todos:
-          - map this to an ontology
+  
