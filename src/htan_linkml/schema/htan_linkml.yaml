@@ -97,7 +97,7 @@ enums:
         description: the vital status is not known
         todos:
           - map this to an ontology
-  diagnosis:
+  Diagnosis:
     permissible_values:
       CANCER:
         description: the person has cancer
