@@ -1,6 +1,14 @@
 # htan-linkml
 
-A LinkML data model for HTAN Phase 2
+Exploring a LinkML data model for HTAN Phase 2
+
+
+> [!CAUTION]
+> This repo is a very early test-bed to explore a possible shift to LinkML in the future
+
+
+> [!TIP]
+> The active HTAN data model can be found at [ncihtan/data-models](https://github.com/ncihtan/data-models)
 
 ## Website
 
