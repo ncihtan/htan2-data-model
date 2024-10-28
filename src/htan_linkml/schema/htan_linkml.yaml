@@ -41,6 +41,7 @@ classes:
       - birth_date
       - age_in_years
       - vital_status
+      - diagnosis
     slot_usage:
       primary_email:
         pattern: "^\\S+@[\\S+\\.]+\\S+"
@@ -80,6 +81,8 @@ slots:
   vital_status:
     range: PersonStatus
     description: living or dead status
+  diagnosis:
+    range: Diagnosis
 
 enums:
   PersonStatus:
@@ -92,5 +95,17 @@ enums:
         meaning: PATO:0001422
       UNKNOWN:
         description: the vital status is not known
+        todos:
+          - map this to an ontology
+  diagnosis:
+    permissible_values:
+      CANCER:
+        description: the person has cancer
+        meaning: PATO:0001421
+      HEALTHY:
+        description: the person is healthy
+        meaning: PATO:0001422
+      UNKNOWN:
+        description: the diagnosis is not known
         todos:
           - map this to an ontology
