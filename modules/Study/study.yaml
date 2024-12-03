@@ -1,0 +1,74 @@
+enums:
+  
+  DeIdentificationMethodTypeEnum:
+    title: de-identification_method_type
+    permissible_values: 
+      Manual:
+      Semiautomatic:
+      Automatic:
+      Not applicable:
+
+  LicenseEnum:
+    title: license
+    permissible_values:
+      CC BY 3.0    http://creativecommons.org/licenses/by/3.0/:
+      CC BY 4.0    https://creativecommons.org/licenses/by/4.0/:
+      CC BY-NC 4.0 https://creativecommons.org/licenses/by-nc/4.0/:
+      CC BY-NC 3.0 https://creativecommons.org/licenses/by-nc/3.0/:
+
+  FileMappingLevelEnum:
+    title: file_mapping_level
+    permissible_values:
+      Participiant:
+      Sample:
+      Study:
+  
+  DiseaseTypeEnum:
+    title: disease_type
+    permissible_values:
+      Acinar Cell Neoplasms:
+      Adenomas and Adenocarcinomas:
+      Adnexal and Skin Appendage Neoplasms:
+      Basal Cell Neoplasms:
+      Blood Vessel Tumors:
+      Complex Mixed and Stromal Neoplasms:
+      Cystic, Mucinous and Serous Neoplasms:
+      Ductal and Lobular Neoplasms:
+      Epithelial Neoplasms, NOS:
+      Fibroepithelial Neoplasms:
+      Fibromatous Neoplasms:
+      Germ Cell Neoplasms:
+      Giant Cell Tumors:
+      Gliomas:
+      Granular Cell Tumors and Alveolar Soft Part Sarcomas:
+      Immunoproliferative Diseases:
+      Leukemias:
+      Lipomatous Neoplasms:
+      Lymphatic Vessel Tumors:
+      Mast Cell Neoplasm:
+      Meningiomas:
+      Mesothelial Neoplasms:
+      Miscellaneous Bone Tumors:
+      Miscellaneous Tumors:
+      Mucoepidermoid Neoplasms:
+      Myelodysplastic Syndromes:
+      Myomatous Neoplasms:
+      Myxomatous Neoplasms:
+      Neoplasms, NOS:
+      Nerve Sheath Tumors:
+      Neuroepitheliomatous Neoplasms:
+      Nevi and Melanomas:
+      Not Applicable:
+      Not Otherwise Specified:
+      Not Reported:
+      Odontogenic Tumors:
+      Osseous and Chondromatous Neoplasms:
+      Paragangliomas and Glomus Tumors:
+      Plasma Cell Neoplasm:
+      Soft Tissue Tumors and Sarcomas, NOS:
+      Squamous Cell Neoplasms:
+      Synovial-like Neoplasms:
+      Thymic Epithelial Neoplasms:
+      Transitional Cell Papillomas and Carcinomas:
+      Trophoblastic neoplasms:
+      Unknown:

@@ -1,0 +1,19 @@
+imports:
+  - Additional Worksheets/MultiplexMicroscopyChannelMetadata.yaml
+
+classes:
+  MultiplexMicroscopyChannelMetadataTemplate:
+    description: Template for the channel metadata of multiplex microscopy.
+    attributes:
+      # Multiplex Microscopy Channel Metadata (Worksheet #10)
+      multiplex_microscopy_channel_metadata:
+        type: MultiplexMicroscopyChannelMetadata  # Imported from MultiplexMicroscopyChannelMetadata.yaml
+        description: Metadata for each channel in multiplex microscopy.
+        channel_metadata_file_url_in_cds:
+          type: string
+          description: The URL of the channel metadata file in the CDS.
+        
+      # The CSV file location for the metadata
+      channel_metadata_filename:
+        type: string
+        description: The CSV file location containing the multiplex microscopy channel metadata.

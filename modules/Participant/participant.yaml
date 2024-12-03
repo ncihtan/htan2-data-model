@@ -1,0 +1,62 @@
+enums:
+
+  RaceEnum:
+    title: race
+    permissible_values:
+      White:
+      American Indian or Alaska Native:
+      Black or African American:
+      Asian:
+      Native Hawaiian or Other Pacific Islander:
+      Unknown:
+      Not Reported:
+      Not Allowed to Collect:
+  
+  GenderEnum:
+    title: gender
+    permissible_values:
+      Female:
+      Male:
+      Unknown:
+      Non-Binary:
+      Not Reported:
+      Prefer Not to Answer:
+      Unknown:
+  
+  SexEnum:
+    title: sex
+    permissible_values:
+      Decline to answer:
+      Don't know:
+      Female:
+      Intersex:
+      Male:
+      None of these describe me:
+      Prefer not to answer:
+      Unknown:
+      X:
+
+  ethnicityEnum:
+    title: ethnicity
+    permissible_values:
+      Hispanic or Latino:
+      Not Hispanic or Latino:
+      Unknown:
+      Not Reported:
+      Not Allowed to Collect:
+
+  vitalStatusEnum:
+    title: vital_status
+    permissible_values:
+      Alive:
+      Dead:
+      Unknown:
+      Not Reported:
+
+  adultOrChildhoodEnum:
+    title: adult_or_childhood_study
+    permissible_values:
+      Adult:
+      Pediatric:
+
+

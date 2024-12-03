@@ -1,0 +1,90 @@
+imports:
+  - participant.yaml
+  - sample.yaml
+  - imaging.yaml
+  - treatment.yaml
+  - study.yaml
+
+classes:
+  NonDICOMRadiologyMR:
+    description: Information related to non-DICOM radiology MR imaging, including acquisition and reconstruction protocols.
+    attributes:
+      participant_id:
+        type: string
+        description: A unique identifier for the participant associated with the MR file.
+        
+      file_name:
+        type: string
+        description: The name of the MR imaging file.
+        
+      file_url_in_cds:
+        type: string
+        description: The URL of the MR file in the CDS.
+        
+      MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode:
+        type: string
+        description: The echo pulse sequence category code for the MR acquisition.
+        
+      MRImageAcquisitionProtocolElement_diffusionBValue:
+        type: string
+        description: The diffusion b-value used in the MR acquisition protocol.
+        
+      MRImageAcquisitionProtocolElement_diffusionDirectionalityCode:
+        type: string
+        description: The diffusion directionality code used in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_magneticFieldStrength:
+        type: string
+        description: The magnetic field strength used during MR acquisition.
+        
+      MRImageAcquisitionProtocolElement_resonantNucleusCode:
+        type: string
+        description: The resonant nucleus code used in MR acquisition.
+        
+      MRImageAcquisitionProtocolElement_acquisitionContrastCode:
+        type: string
+        description: The acquisition contrast code used in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_inversionRecoveryIndicator:
+        type: string
+        description: Whether inversion recovery is used in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_pulseSequenceName:
+        type: string
+        description: The name of the pulse sequence used in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator:
+        type: string
+        description: Indicator for multiple spin echo sequences in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_phaseContrastIndicator:
+        type: string
+        description: Indicator for phase contrast used in MR acquisition.
+        
+      MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator:
+        type: string
+        description: Indicator for time-of-flight contrast in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_arterialSpinLabelingContrastCode:
+        type: string
+        description: Arterial spin labeling contrast code used in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode:
+        type: string
+        description: The steady-state pulse sequence code used in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator:
+        type: string
+        description: Indicator for echo planar pulse sequence in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_saturationRecoveryIndicator:
+        type: string
+        description: Indicator for saturation recovery used in MR imaging.
+        
+      MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode:
+        type: string
+        description: Spectrally selected suppression code used in MR imaging.
+        
+      MRImageReconstructionProtocolElement_complexImageComponentCode:
+        type: string
+        description: Complex image component code used in MR image reconstruction.

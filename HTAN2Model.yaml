@@ -1,0 +1,22 @@
+imports:
+  - Modules/Participant.yaml
+  - Modules/Tumor.yaml
+  - Modules/Imaging.yaml
+  - Modules/Study.yaml
+  - Modules/Treatment.yaml
+  - Worksheets/CollectionInformation.yaml
+  - Worksheets/ParticipantInformation.yaml
+  - Worksheets/FileSpecificGeneralInformation.yaml
+  - Templates/NonDICOMCTImagesTemplate.yaml
+  - Templates/NonDICOMMRImagesTemplate.yaml
+  - Templates/NonDICOMPETImagesTemplate.yaml
+  - Templates/NonDICOMPathologyImagesTemplate.yaml
+  - Templates/MultiplexMicroscopyTemplate.yaml
+  - Templates/MultiplexMicroscopyChannelMetadataTemplate.yaml
+
+classes:
+  # Define any top-level classes or links if needed
+  MyDataModel:
+    description: "Main data model that imports all modules, worksheets, and templates"
+    attributes:
+      # Any global attributes or references that may be shared

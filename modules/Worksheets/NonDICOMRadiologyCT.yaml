@@ -1,0 +1,62 @@
+imports:
+  - participant.yaml
+  - sample.yaml
+  - imaging.yaml
+  - treatment.yaml
+  - study.yaml
+
+classes:
+  NonDICOMRadiologyCT:
+    description: Information related to non-DICOM radiology CT imaging, including file details and acquisition protocols.
+    attributes:
+      participant_id:
+        type: string
+        description: A unique identifier for the participant associated with the file.
+        
+      file_name:
+        type: string
+        description: The name of the CT file.
+        
+      file_url_in_cds:
+        type: string
+        description: The URL of the CT file in the CDS.
+        
+      CTAquisitionProtocolElement_singleCollimationWidth:
+        type: string
+        description: The single collimation width for the CT acquisition protocol.
+        
+      CTAquisitionProtocolElement_totalCollimationWidth:
+        type: string
+        description: The total collimation width for the CT acquisition protocol.
+        
+      CTAquisitionProtocolElement_gantryDetectorTilt:
+        type: string
+        description: The gantry detector tilt used in the CT acquisition protocol.
+        
+      CTAquisitionProtocolElement_spiralPitchFactor:
+        type: string
+        description: The spiral pitch factor used in the CT acquisition protocol.
+        
+      CTAquisitionProtocolElement_ctdiVol:
+        type: string
+        description: The CTDI volume in the CT acquisition protocol.
+        
+      CTAquisitionProtocolElement_ctdiPhantomTypeCode:
+        type: string
+        description: The CTDI phantom type code used during the acquisition.
+        
+      CTAquisitionProtocolElement_kVp:
+        type: string
+        description: The kVp used during the CT acquisition.
+        
+      CTAquisitionProtocolElement_exposureModulationTypeCode:
+        type: string
+        description: The exposure modulation type code for the CT acquisition protocol.
+        
+      CTImageReconstructionProtocolElement_convolutionKernel:
+        type: string
+        description: The convolution kernel used in the CT image reconstruction.
+        
+      CTImageReconstructionProtocolElement_convolutionKernelGroupCode:
+        type: string
+        description: The group code for the convolution kernel used in CT image reconstruction.

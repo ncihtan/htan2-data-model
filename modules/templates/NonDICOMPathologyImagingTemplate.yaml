@@ -1,0 +1,29 @@
+imports:
+  - Required Worksheets/CollectionInformation.yaml
+  - Required Worksheets/ParticipantInformation.yaml
+  - Required Worksheets/FileSpecificGeneralInformation.yaml
+  - Additional Worksheets/NonDICOMPathology.yaml
+
+classes:
+  NonDICOMPathologyImagesTemplate:
+    description: Template for Non-DICOM pathology images, importing required and additional worksheet classes.
+    attributes:
+      # Collection Information (Worksheet #1)
+      collection_information:
+        type: CollectionInformation  # Imported from CollectionInformation.yaml
+        description: Information related to the study collection.
+        
+      # Participant Information (Worksheet #2)
+      participant_information:
+        type: ParticipantInformation  # Imported from ParticipantInformation.yaml
+        description: Information related to the study participant.
+        
+      # File-Specific General Information (Worksheet #3)
+      file_specific_general_information:
+        type: FileSpecificGeneralInformation  # Imported from FileSpecificGeneralInformation.yaml
+        description: File-specific general information.
+        
+      # Non-DICOM Pathology (Worksheet #8)
+      non_dicom_pathology:
+        type: NonDICOMPathology  # Imported from NonDICOMPathology.yaml
+        description: Pathology-related information for Non-DICOM samples.

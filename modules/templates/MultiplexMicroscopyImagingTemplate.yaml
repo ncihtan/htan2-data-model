@@ -1,0 +1,38 @@
+imports:
+  - Required Worksheets/CollectionInformation.yaml
+  - Required Worksheets/ParticipantInformation.yaml
+  - Required Worksheets/FileSpecificGeneralInformation.yaml
+  - Additional Worksheets/MultiplexMicroscopy.yaml
+  - Additional Worksheets/MultiplexMicroscopyChannelMetadata.yaml
+
+classes:
+  MultiplexMicroscopyTemplate:
+    description: Template for multiplex microscopy images, including channel metadata.
+    attributes:
+      # Collection Information (Worksheet #1)
+      collection_information:
+        type: CollectionInformation  # Imported from CollectionInformation.yaml
+        description: Information related to the study collection.
+        
+      # Participant Information (Worksheet #2)
+      participant_information:
+        type: ParticipantInformation  # Imported from ParticipantInformation.yaml
+        description: Information related to the study participant.
+        
+      # File-Specific General Information (Worksheet #3)
+      file_specific_general_information:
+        type: FileSpecificGeneralInformation  # Imported from FileSpecificGeneralInformation.yaml
+        description: File-specific general information.
+        
+      # Multiplex Microscopy (Worksheet #9)
+      multiplex_microscopy:
+        type: MultiplexMicroscopy  # Imported from MultiplexMicroscopy.yaml
+        description: Information for multiplex microscopy images.
+        
+      # Multiplex Microscopy Channel Metadata (Worksheet #10)
+      multiplex_microscopy_channel_metadata:
+        type: MultiplexMicroscopyChannelMetadata  # Imported from MultiplexMicroscopyChannelMetadata.yaml
+        description: Channel metadata for multiplex microscopy images.
+        channel_metadata_filename:
+          type: string
+          description: The location of the CSV file with channel metadata.

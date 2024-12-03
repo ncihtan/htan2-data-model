@@ -1,0 +1,94 @@
+imports:
+  - participant.yaml
+  - sample.yaml
+  - imaging.yaml
+  - treatment.yaml
+  - study.yaml
+
+classes:
+  NonDICOMRadiologyAllModalities:
+    description: Information related to non-DICOM radiology imaging across all modalities, including file and imaging protocol details.
+    attributes:
+      participant_id:
+        type: string
+        description: A unique identifier for the participant associated with the file.
+        
+      file_name:
+        type: string
+        description: The name of the file.
+        
+      file_url_in_cds:
+        type: string
+        description: The URL of the file in the CDS (Common Data Storage).
+        
+      performed_imaging_study_description:
+        type: string
+        description: A description of the performed imaging study.
+        
+      performed_imaging_study_admittingDiagnosisCode:
+        type: string
+        description: The admitting diagnosis code for the performed imaging study.
+        
+      performed_imaging_study_nonAcquisitionModalitiesInStudyCode:
+        type: string
+        description: Codes for non-acquisition modalities used in the study.
+        
+      performed_imaging_study_lossyImageCompressionIndicator:
+        type: string
+        description: Indicates whether lossy image compression was used in the study.
+        
+      performed_imaging_study_summary:
+        type: string
+        description: A summary of the performed imaging study.
+        
+      performed_imaging_study_primaryAnatomicSiteCode:
+        type: string
+        description: The primary anatomic site code for the imaging study.
+        
+      performed_imaging_study_acquisitionTypeCode:
+        type: string
+        description: The acquisition type code for the imaging study.
+        
+      performed_imaging_study_cardiacSynchronizationTechniqueCode:
+        type: string
+        description: Cardiac synchronization technique code used during the imaging study.
+        
+      performed_imaging_study_respiratoryMotionTechniqueCode:
+        type: string
+        description: Respiratory motion technique code used in the study.
+        
+      performed_imaging_study_dataCollectionDiameter:
+        type: string
+        description: The data collection diameter used during the imaging study.
+        
+      performed_imaging_study_bodyPositionCode:
+        type: string
+        description: The body position code used during the imaging study.
+        
+      performed_imaging_study_typeCode:
+        type: string
+        description: Type code for the imaging study.
+        
+      performed_imaging_study_algorithmCode:
+        type: string
+        description: Algorithm code used in the imaging study.
+        
+      performed_imaging_study_reconstructionFieldOfViewHeight:
+        type: string
+        description: The reconstruction field of view height used in the imaging study.
+        
+      performed_imaging_study_reconstructionFieldOfViewWidth:
+        type: string
+        description: The reconstruction field of view width.
+        
+      performed_imaging_study_reconstructionDiameter:
+        type: string
+        description: The reconstruction diameter used in the imaging study.
+        
+      performed_imaging_study_sliceThickness:
+        type: string
+        description: The slice thickness used during the imaging study.
+        
+      performed_imaging_study_reconstructionInterval:
+        type: string
+        description: The reconstruction interval used in the study.

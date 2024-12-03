@@ -1,0 +1,58 @@
+imports:
+  - participant.yaml
+  - sample.yaml
+  - imaging.yaml
+  - treatment.yaml
+  - study.yaml
+
+classes:
+  MultiplexMicroscopyChannelMetadata:
+    description: Information related to the metadata for each channel in multiplex microscopy imaging.
+    attributes:
+      channel_metadata_file_url_in_cds:
+        type: string
+        description: The URL of the channel metadata file in the CDS.
+        
+      channel_id:
+        type: string
+        description: The unique identifier for the channel in multiplex microscopy.
+        
+      channel_name:
+        type: string
+        description: The name of the channel in multiplex microscopy (e.g., Cy5, GFP).
+        
+      cycle_number:
+        type: string
+        description: The cycle number for the multiplex microscopy imaging.
+        
+      sub_cycle_number:
+        type: string
+        description: The sub-cycle number for the multiplex microscopy imaging.
+        
+      target_name:
+        type: string
+        description: The name of the target (e.g., protein, gene) in the multiplex microscopy.
+        
+      antibody_name:
+        type: string
+        description: The name of the antibody used in multiplex microscopy.
+        
+      RRID_identifier:
+        type: string
+        description: The RRID identifier for the antibody used.
+        
+      fluorophore:
+        type: string
+        description: The fluorophore used in the multiplex microscopy (e.g., FITC, Alexa Fluor).
+        
+      clone:
+        type: string
+        description: The clone of the antibody used in the multiplex microscopy.
+        
+      lot:
+        type: string
+        description: The lot number of the antibody used in multiplex microscopy.
+        
+      catalog_number:
+        type: string
+        description

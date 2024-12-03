@@ -1,0 +1,35 @@
+imports:
+  - Required Worksheets/CollectionInformation.yaml
+  - Required Worksheets/ParticipantInformation.yaml
+  - Required Worksheets/FileSpecificGeneralInformation.yaml
+  - Additional Worksheets/NonDICOMRadiologyAllModalities.yaml
+  - Additional Worksheets/NonDICOMRadiologyMR.yaml
+
+classes:
+  NonDICOMMRImagesTemplate:
+    description: Template for Non-DICOM MR images, importing required and additional worksheet classes.
+    attributes:
+      # Collection Information (Worksheet #1)
+      collection_information:
+        type: CollectionInformation  # Imported from CollectionInformation.yaml
+        description: Information related to the study collection.
+        
+      # Participant Information (Worksheet #2)
+      participant_information:
+        type: ParticipantInformation  # Imported from ParticipantInformation.yaml
+        description: Information related to the study participant.
+        
+      # File-Specific General Information (Worksheet #3)
+      file_specific_general_information:
+        type: FileSpecificGeneralInformation  # Imported from FileSpecificGeneralInformation.yaml
+        description: File-specific general information.
+        
+      # Non-DICOM Radiology All Modalities (Worksheet #4)
+      non_dicom_radiology_all_modalities:
+        type: NonDICOMRadiologyAllModalities  # Imported from NonDICOMRadiologyAllModalities.yaml
+        description: Details of non-DICOM radiology across all modalities.
+        
+      # Non-DICOM Radiology MR (Worksheet #6)
+      non_dicom_radiology_mr:
+        type: NonDICOMRadiologyMR  # Imported from NonDICOMRadiologyMR.yaml
+        description: Details for Non-DICOM MR radiology study.

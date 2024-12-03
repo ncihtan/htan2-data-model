@@ -1,0 +1,205 @@
+enums:
+  
+  ImageModalityEnum:
+    title: image_modality
+    permissible_values: 
+      Autorefraction:
+        description: AR
+      Biomagnetic Imaging:
+        description: BI
+      Bone Mineral Densitometry:
+        description: BMD
+      Cardiac Electrophysiology:
+        description: EPS
+      Computed Radiography:
+        description: CR
+      Computed Tomography:
+        description: CT
+      Confocal Microscopy:
+        description: CFM
+      Dermoscopy:
+        description: DMS
+      Diaphanography:
+        description: DG
+      Digital Radiography:
+        description: DX
+      Electrocardiography:
+        description: ECG
+      Electroencephalography:
+        description: EEG
+      Electromyography:
+        description: EMG
+      Electrooculography:
+        description: EOG
+      Endoscopy:
+        description: ES
+      External-camera Photography:
+        description: XC
+      General Microscopy:
+        description: GM
+      Hemodynamic Waveform:
+        description: HD
+      Intra-oral Radiography:
+        description: IO
+      Intravascular Optical Coherence Tomography:
+        description: IVOCT
+      Intravascular Ultrasound:
+        description: IVUS
+      Keratometry:
+        description: KER
+      Laser Scan:
+        description: LS
+      Lensometry:
+        description: LEN
+      Magnetic Resonance:
+        description: MR
+      Mammography:
+        description: MG
+      Nuclear Medicine:
+        description: NM
+      Ophthalmic Axial Measurements:
+        description: OAM
+      Ophthalmic Mapping:
+        description: OPM
+      Ophthalmic Photography:
+        description: OP
+      Ophthalmic Tomography:
+        description: OPT
+      Ophthalmic Tomography B-scan Volume Analysis:
+        description: OPTBSV
+      Ophthalmic Tomography En Face:
+        description: OPTENF
+      Ophthalmic Visual Field:
+        description: OPV
+      Optical Coherence Tomography:
+        description: OCT
+      Optical Surface Scanner:
+        description: OSS
+      Panoramic X-Ray:
+        description: PX
+      Photoacoustic:
+        description: PA
+      Position Sensor:
+        description: POS
+      Positron emission tomography:
+        description: PT
+      Radiofluoroscopy:
+        description: RF
+      Radiographic imaging:
+        description: RG
+      Respiratory Waveform:
+        description: RESP
+      RT Image:
+        description: RTIMAGE
+      Slide Microscopy:
+        description: SM
+      Subjective Refraction:
+        description: SRF
+      Thermography:
+        description: TG
+      Ultrasound:
+        description: US
+      Ultrasound Bone Densitometry:
+        description: BDUS
+      Visual Acuity:
+        description: VA
+      X-Ray Angiography:
+        description: XA
+
+
+  PerformedImagingStudyImageTypeCodeEnum:
+    title: performed_imaging_study_imageTypeCode
+    permissible_values:
+      DYNAMIC:
+      STRESS:
+      RCBV:
+      
+  PerformedImagingStudyBodyPositionCodeEnum:
+    title: performed_imaging_study_bodyPositionCode
+    permissible_values:
+        Supine:
+        Trendelenburg:
+        Standing:
+  
+  CTAquisitionProtocolEnum:
+    title: CTAquisitionProtocolElement_exposureModulationType Code
+    permissible_values:
+      NONE:
+      ANGULAR:
+      LONGITUDINAL:
+      ECG_BASED:
+      ORGAN_BASED:
+  
+  MRIImageAcquisitionPuleSequenceCategoryCodeEnum:
+    title: MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode
+    permissible_values:
+      SPIN:
+      GRADIENT:
+      BOTH:
+
+  MRIImageAcquisitionDiffusionDirectionalityCodeEnum:
+    title: MRImageAcquisitionProtocolElement_diffusionDirectionalityCode
+    permissible_values:
+      DIRECTIONAL:
+      BMATRIX:
+      ISOTROPIC:
+      NONE:
+
+  MRIImageAcquisitionResonantNucleusCodeEnum:
+    title: MRImageAcquisitionProtocolElement_resonantNucleusCode
+    permissible_values:
+      1H:
+      3HE:
+      7LI:
+      13C:
+      19F:
+      23NA:
+      31P:
+      129XE:
+
+  MRIImageAcquisitionContrastCodeEnum:
+    title: MRImageAcquisitionProtocolElement_acquisitionContrastCode
+    permissible_values:
+      DIFFUSION:
+      FLOW_ENCODED_Flow Encoded contrast:
+      FLUID_ATTENUATED_Fluid Attenuated T2 weighted contrast:
+      PERFUSION_Perfusion weighted contrast:
+      PROTON_DENSITY_Proton Density weighted contrast:
+      STIR_Short Tau Inversion Recovery:
+      TAGGING_Superposition of thin saturation bands onto image:
+      T1_T1 weighted contrast:
+      T2_T2 weighted contrast:
+      T2_STAR_T2* weighted contrast:
+      TOF_Time Of Flight weighted contrast:
+
+  MRIImageAcquisitionSteadyStatePulseSequenceCodeEnum:
+    title: MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode
+    permissible_values:
+      FREE PRECESSION:
+      TRANSVERSE:
+      TIME REVERSED:
+      LONGITUDINAL:
+      NONE:
+
+  MRIImageAcquisitionSpectrallySelectedSuppressionCodeEnum:
+    title: MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode
+    permissible_values:
+      FAT:
+      WATER:
+      FAT AND WATER:
+      SILICON GEL:
+      NONE:
+
+  MRIImageReconstructionComplexImageComponentCodeEnum:
+    title: MRImageReconstructionProtocolElement_complexImageComponentCode
+    permissible_values:
+      REAL:
+      IMAGINARY:
+      PHASE:
+      MAGNITUDE:
+        
+
+      
+
+
+      
