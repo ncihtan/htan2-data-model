@@ -1,0 +1,11 @@
+name: MinimalTestSchema
+id: "urn:uuid:d625038a-3375-47ad-b910-cf0f23e2301f"
+
+classes:
+  ExampleClass:
+    description: "An example class used for testing purposes"
+    attributes:
+      example_attr:
+        description: "An example attribute"
+        slot_uri: ex:example_attr
+        range: string  # Corrected to use 'range' instead of 'type'

@@ -1,3 +1,6 @@
+name: Participant
+id: urn:uuid:277993eb-71d1-4748-8ce8-7016b57d29e2
+
 enums:
 
   RaceEnum:

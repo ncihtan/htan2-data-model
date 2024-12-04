@@ -1,65 +1,68 @@
+name: FileSpecificGeneralInformation
+id: urn:uuid: aafe1c0b-1794-46f6-86be-da5b590ca332
+
 imports:
-  - participant.yaml
-  - tumor.yaml
-  - sample.yaml
-  - imaging.yaml
-  - treatment.yaml
-  - study.yaml
+  - Modules/Participant/participant
+  - Modules/Tumor/tumor
+  - Modules/Sample/sample
+  - Modules/Imaging/imaging
+  - Modules/Treatment/treatment
+  - Modules/Study/study
   
 FileSpecificGeneralInformation:
     description: Information about specific files related to a participant, including file metadata, imaging data, and mapping.
     attributes:
       participant_id:
-        type: string
+        range: string
         description: A unique identifier for the participant associated with the file.
         
       file_name:
-        type: string
+        range: string
         description: The name of the file.
         
       file_format:
-        type: string
+        range: string
         description: The format of the file (e.g., PDF, CSV, DICOM).
         
       file_description:
-        type: string
+        range: string
         description: A description of the file's content.
         
       file_mapping_level:
-        type: string
+        range: string
         description: The level of mapping used for the file (e.g., study, participant).
         
       file_size:
-        type: string
+        range: string
         description: The size of the file.
         
       md5sum:
-        type: string
+        range: string
         description: The MD5 checksum for the file to ensure integrity.
         
       file_url_in_cds:
-        type: string
+        range: string
         description: The URL of the file in the CDS (Common Data Storage).
         
       image_modality:
-        type: ImageModalityEnum  # Referencing from imaging.yaml
+        range: ImageModalityEnum  # Referencing from imaging.yaml
         description: The imaging modality used for the image (e.g., CT, MRI).
         
       imaging_equipment_manufacturer:
-        type: string
+        range: string
         description: The manufacturer of the imaging equipment used.
         
       imaging_equipment_model:
-        type: string
+        range: string
         description: The model of the imaging equipment used.
         
       imaging_software:
-        type: string
+        range: string
         description: The software used for imaging data processing.
         
       imaging_protocol:
-        type: string
+        range: string
         description: The protocol used during the imaging process.
         
       tissue_or_organ_of_origin:
-        type: TissueOrOrganOfOriginEnum # Referencing from sample.yaml
+        range: TissueOrOrganOfOriginEnum # Referencing from sample.yaml

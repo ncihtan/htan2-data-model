@@ -1,22 +1,28 @@
-imports:
-  - Modules/Participant.yaml
-  - Modules/Tumor.yaml
-  - Modules/Imaging.yaml
-  - Modules/Study.yaml
-  - Modules/Treatment.yaml
-  - Worksheets/CollectionInformation.yaml
-  - Worksheets/ParticipantInformation.yaml
-  - Worksheets/FileSpecificGeneralInformation.yaml
-  - Templates/NonDICOMCTImagesTemplate.yaml
-  - Templates/NonDICOMMRImagesTemplate.yaml
-  - Templates/NonDICOMPETImagesTemplate.yaml
-  - Templates/NonDICOMPathologyImagesTemplate.yaml
-  - Templates/MultiplexMicroscopyTemplate.yaml
-  - Templates/MultiplexMicroscopyChannelMetadataTemplate.yaml
+name: HTAN2Model
+id: urn:uuid:d625038a-3375-47ad-b910-cf0f23e2301f
 
-classes:
-  # Define any top-level classes or links if needed
-  MyDataModel:
-    description: "Main data model that imports all modules, worksheets, and templates"
-    attributes:
-      # Any global attributes or references that may be shared
+imports:
+  - Modules/Participant
+  - Modules/Tumor
+  - Modules/Imaging
+  - Modules/Study
+  - Modules/Treatment
+  - Modules/Sample
+  - Modules/Worksheets/CollectionInformation
+  - Modules/Worksheets/ParticipantInformation
+  - Modules/Worksheets/FileSpecificGeneralInformation
+  - Modules/Worksheets/MultiplexMicroscopy
+  - Modules/Worksheets/MultiplexMicroscopyChannelMetadata
+  - Modules/Worksheets/NonDICOMPathology
+  - Modules/Worksheets/NonDICOMRadiologyAllModalities
+  - Modules/Worksheets/NonDICOMRadiologyCT
+  - Modules/Worksheets/NonDICOMRadiologyMR
+  - Modules/Worksheets/NonDICOMRadiologyPET
+  - Modules/Templates/MultiplexMicroscopyChannelMetadataImagingTemplate
+  - Modules/Templates/MultiplexMicroscopyImagingTemplate
+  - Modules/Templates/NonDICOMCTImagingTemplate
+  - Modules/Templates/NonDICOMMRImagingTemplate
+  - Modules/Templates/NonDICOMPathologyImagingTemplate
+  - Modules/Templates/NonDICOMPETImagingTemplate
+
+

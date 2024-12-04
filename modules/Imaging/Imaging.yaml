@@ -1,3 +1,6 @@
+name: Imaging
+id: urn:uuid:ace8f38d-31b3-4cd5-aaf7-319427a38bfa
+
 enums:
   
   ImageModalityEnum:

@@ -1,142 +1,146 @@
+name: MultiplexMicroscopy
+id: urn:uuid: 8fdda0d7-22cd-472b-85c2-6560b68d1821
+
 imports:
-  - participant.yaml
-  - sample.yaml
-  - imaging.yaml
-  - treatment.yaml
-  - study.yaml
+  - Modules/Participant/participant
+  - Modules/Tumor/tumor
+  - Modules/Sample/sample
+  - Modules/Imaging/imaging
+  - Modules/Treatment/treatment
+  - Modules/Study/study
 
 classes:
   MultiplexMicroscopy:
     description: Information related to multiplex microscopy imaging, including sample details and image characteristics.
     attributes:
       participant_id:
-        type: string
+        range: string
         description: A unique identifier for the participant associated with the multiplex microscopy file.
         
       file_name:
-        type: string
+        range: string
         description: The name of the multiplex microscopy file.
         
       file_url_in_cds:
-        type: string
+        range: string
         description: The URL of the multiplex microscopy file in the CDS.
         
       sample_id:
-        type: string
+        range: string
         description: The unique identifier for the sample used in multiplex microscopy.
         
       sample_description:
-        type: string
+        range: string
         description: A description of the multiplex microscopy sample.
         
       biosample_accession:
-        type: string
+        range: string
         description: The biosample accession number for the multiplex microscopy sample.
         
       sample_type:
-        type: string
+        range: string
         description: The type of the sample (e.g., tumor tissue, normal tissue).
         
       sample_type_category:
-        type: string
+        range: string
         description: The category of the sample type (e.g., tumor, control).
         
       sample_tumor_status:
-        type: string
+        range: string
         description: The tumor status of the sample (e.g., tumor, non-tumor).
         
       sample_anatomic_site:
-        type: string
+        range: string
         description: The anatomical site of the sample (e.g., lung, liver).
         
       sample_age_at_collection:
-        type: integer
+        range: integer
         description: The age of the sample at the time of collection.
         
       derived_from_specimen:
-        type: string
+        range: string
         description: The specimen from which the sample was derived.
         
       acquisition_method_type:
-        type: string
+        range: string
         description: The method used to acquire the sample (e.g., biopsy, surgical resection).
         
       tumor_tissue_type:
-        type: string
+        range: string
         description: The type of tissue from which the tumor is derived.
         
       tissue_fixative:
-        type: string
+        range: string
         description: The fixative used for the tissue sample (e.g., formalin, alcohol).
         
       embedding_medium:
-        type: string
+        range: string
         description: The embedding medium used for the tissue sample (e.g., paraffin, OCT).
         
       imaging_assay_type:
-        type: string
+        range: string
         description: The type of imaging assay used in multiplex microscopy (e.g., fluorescence, brightfield).
         
       objective:
-        type: string
+        range: string
         description: The objective used for microscopy (e.g., 10x, 20x).
         
       nominal_magnification:
-        type: string
+        range: string
         description: The nominal magnification of the microscope used for imaging.
         
       lens_numerical_aperture:
-        type: string
+        range: string
         description: The numerical aperture of the objective lens used in the microscopy.
         
       working_distance:
-        type: string
+        range: string
         description: The working distance of the objective lens.
         
       immersion:
-        type: string
+        range: string
         description: The type of immersion medium used for microscopy (e.g., oil, water).
         
       pyramid:
-        type: string
+        range: string
         description: The type of pyramid used in the multiplex microscopy (e.g., optical, fluorescence).
         
       physical_size_x:
-        type: string
+        range: string
         description: The physical size of the sample along the x-axis.
         
       physical_size_y:
-        type: string
+        range: string
         description: The physical size of the sample along the y-axis.
         
       physical_size_z:
-        type: string
+        range: string
         description: The physical size of the sample along the z-axis.
         
       size_c:
-        type: string
+        range: string
         description: The number of channels in the multiplex microscopy.
         
       size_t:
-        type: string
+        range: string
         description: The time points used in the multiplex microscopy.
         
       size_x:
-        type: string
+        range: string
         description: The number of pixels along the x-axis in the image.
         
       size_y:
-        type: string
+        range: string
         description: The number of pixels along the y-axis in the image.
         
       size_z:
-        type: string
+        range: string
         description: The number of pixels along the z-axis in the image.
         
       channel_metadata_filename:
-        type: string
+        range: string
         description: The filename for the channel metadata.
         
       channel_metadata_file_url_in_cds:
-        type: string
+        range: string
         description: The URL for the channel metadata file in the CDS.

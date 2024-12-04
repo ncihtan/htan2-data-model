@@ -1,8 +1,11 @@
+name: NonDICOMPathologyImagesTemplate
+id: urn:uuid:f977dd7e-17ec-40cd-bd15-b799356438f5
+
 imports:
-  - Required Worksheets/CollectionInformation.yaml
-  - Required Worksheets/ParticipantInformation.yaml
-  - Required Worksheets/FileSpecificGeneralInformation.yaml
-  - Additional Worksheets/NonDICOMPathology.yaml
+  - Modules/Worksheets/CollectionInformation
+  - Modules/Worksheets/ParticipantInformation
+  - Modules/Worksheets/FileSpecificGeneralInformation
+  - Modules/Worksheets/NonDICOMPathology
 
 classes:
   NonDICOMPathologyImagesTemplate:
@@ -10,20 +13,20 @@ classes:
     attributes:
       # Collection Information (Worksheet #1)
       collection_information:
-        type: CollectionInformation  # Imported from CollectionInformation.yaml
+        range: CollectionInformation  # Imported from CollectionInformation.yaml
         description: Information related to the study collection.
         
       # Participant Information (Worksheet #2)
       participant_information:
-        type: ParticipantInformation  # Imported from ParticipantInformation.yaml
+        range: ParticipantInformation  # Imported from ParticipantInformation.yaml
         description: Information related to the study participant.
         
       # File-Specific General Information (Worksheet #3)
       file_specific_general_information:
-        type: FileSpecificGeneralInformation  # Imported from FileSpecificGeneralInformation.yaml
+        range: FileSpecificGeneralInformation  # Imported from FileSpecificGeneralInformation.yaml
         description: File-specific general information.
         
       # Non-DICOM Pathology (Worksheet #8)
       non_dicom_pathology:
-        type: NonDICOMPathology  # Imported from NonDICOMPathology.yaml
+        range: NonDICOMPathology  # Imported from NonDICOMPathology.yaml
         description: Pathology-related information for Non-DICOM samples.

@@ -1,3 +1,6 @@
+name: Treatment
+id: urn:uuid:8b8cff7d-b4b5-4648-9f21-18644905d755
+
 enums:
   
   TreatmentTypeEnum:

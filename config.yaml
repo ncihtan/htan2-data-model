@@ -1,41 +1,23 @@
-# Configuration of generators (defaults illustrated)
----
-generator_args:
-  excel:
-    mergeimports: true
-  owl:
-    mergeimports: true
-    metaclasses: true
-    type_objects: true
-    # throws 'Cannot handle metadata profile: rdfs'
-    # metadata_profile: rdfs
-  markdown:
-    mergeimports: true
-  graphql:
-    mergeimports: true
-  java:
-    mergeimports: true
-    metadata: true
-  jsonld:
-    mergeimports: true
-  jsonschema:
-    mergeimports: true
-  jsonldcontext:
-    mergeimports: true
-  python:
-    mergeimports: true
-  prefixmap:
-    mergeimports: true
-  proto:
-    mergeimports: true
-  shacl:
-    mergeimports: true
-  shex:
-    mergeimports: true
-  sqlddl:
-    mergeimports: true
-  typescript:
-    mergeimports: true
-    metadata: true
+defaults:
+  # Set default paths for input data and templates
+  data_directory: "./data"
+  template_directory: "./Templates"
+  modules_directory: "./Modules"
+  
+validation:
+  # Set options for validation (can be expanded based on your needs)
+  check_required_fields: true
+  check_unique_ids: true
 
-...
+metadata:
+  # Global metadata that might apply across multiple templates or modules
+  creator: "Aditi Gopalan"
+  version: "1.0"
+  license: "CC BY 4.0"
+  description: "LinkML schema for HTAN2 Imaging Template"
+  
+paths:
+  # Example of paths for specific file locations
+  collection_information_path: "./Worksheets/CollectionInformation.yaml"
+  participant_information_path: "./Worksheets/ParticipantInformation.yaml"
+  file_specific_general_information_path: "./Worksheets/FileSpecificGeneralInformation.yaml"

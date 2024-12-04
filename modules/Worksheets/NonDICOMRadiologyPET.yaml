@@ -1,26 +1,30 @@
+name: NonDICOMRadiologyPET
+id: urn:uuid:c00970db-b9cb-45f0-98be-bf844731e79c
+
 imports:
-  - participant.yaml
-  - sample.yaml
-  - imaging.yaml
-  - treatment.yaml
-  - study.yaml
+  - Modules/Participant/participant
+  - Modules/Tumor/tumor
+  - Modules/Sample/sample
+  - Modules/Imaging/imaging
+  - Modules/Treatment/treatment
+  - Modules/Study/study
 
 classes:
   NonDICOMRadiologyPET:
     description: Information related to non-DICOM radiology PET imaging, including acquisition and radionuclide details.
     attributes:
       participant_id:
-        type: string
+        range: string
         description: A unique identifier for the participant associated with the PET file.
         
       file_name:
-        type: string
+        range: string
         description: The name of the PET file.
         
       file_url_in_cds:
-        type: string
+        range: string
         description: The URL of the PET file in the CDS.
         
       PETImagingAcquisitionProtocolElement_gantryDetectorTilt:
-        type: string
+        range: string
         description: The gan

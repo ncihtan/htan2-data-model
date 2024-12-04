@@ -1,0 +1,322 @@
+name: Tumor
+id: urn:uuid:bca75647-4ab1-4dc5-9e69-93297405683c
+
+enums:
+  PrimaryDiagnosisEnum:
+    title: primary_diagnosis
+    permissible_values:
+      Abdominal desmoid:
+      Abdominal fibromatosis:
+      Achromic nevus:
+      Acidophil adenocarcinoma:
+      Acidophil adenoma:
+      Acidophil carcinoma:
+      Acinar adenocarcinoma:
+      Acinar adenoma:
+      Acinar carcinoma:
+      Acinar cell adenoma:
+      Acinar cell carcinoma:
+      Acinar cell cystadenocarcinoma:
+      Acinar cell tumor:
+      Acinic cell adenocarcinoma:
+      Acinic cell adenoma:
+      Acinic cell tumor:
+      Acoustic neuroma:
+      Acquired cystic disease-associated renal cell carcinoma (RCC):
+      Acquired tufted hemangioma:
+      Acral lentiginous melanoma, malignant:
+      ACTH-producing tumor:
+      Acute basophilic leukaemia:
+      Acute bilineal leukemia:
+      Acute biphenotypic leukemia:
+      Acute erythremia:
+      Acute erythremic myelosis:
+      Acute erythroid leukaemia:
+      Acute granulocytic leukemia:
+      Acute leukemia, Burkitt range: 
+      Acute leukemia, NOS:
+      Acute lymphatic leukemia:
+      Acute lymphoblastic leukemia-lymphoma, NOS:
+      Acute lymphoblastic leukemia, L2 type, NOS:
+      Acute lymphoblastic leukemia, mature B-cell range: 
+      Acute lymphoblastic leukemia, NOS:
+      Acute lymphoblastic leukemia, precursor cell range: 
+      Acute lymphocytic leukemia:
+      Acute lymphoid leukemia:
+      Acute megakaryoblastic leukaemia:
+      Acute mixed lineage leukemia:
+      Acute monoblastic and monocytic leukemia:
+      Acute monoblastic leukemia:
+      Acute monocytic leukemia:
+      Acute myeloblastic leukemia:
+      Acute myelocytic leukemia:
+      Acute myelofibrosis:
+      Acute myelogenous leukemia:
+      Acute myeloid leukaemia, t(8;21)(q22;q22):
+      Acute myeloid leukemia (megakaryoblastic) with t(1;22)(p13;q13); RBM15-MKL1:
+      Acute myeloid leukemia with abnormal marrow eosinophils (includes all variants):
+      Acute myeloid leukemia with inv(3)(q21q26.2) or t(3;3)(q21;q26.2); RPN1-EVI1:
+      Acute myeloid leukemia with maturation:
+      Acute myeloid leukemia with multilineage dysplasia:
+      Acute myeloid leukemia with mutated CEBPA:
+      Acute myeloid leukemia with mutated NPM1:
+      Acute myeloid leukemia with myelodysplasia-related changes:
+      Acute myeloid leukemia with prior myelodysplastic syndrome:
+      Acute myeloid leukemia with t(6;9)(p23;q34); DEK-NUP214:
+      Acute myeloid leukemia with t(8;21)(q22;q22); RUNX1-RUNX1T1:
+      Acute myeloid leukemia with t(9;11)(p22;q23); MLLT3-MLL:
+      Acute myeloid leukemia without maturation:
+      Acute myeloid leukemia without prior myelodysplastic syndrome:
+      Acute myeloid leukemia, AML1(CBF-alpha)/ETO:
+      Acute myeloid leukemia, CBF-beta/MYH11:
+      Acute myeloid leukemia, inv(16)(p13;q22):
+      Acute myeloid leukemia, M6 range: 
+      Acute myeloid leukemia, minimal differentiation:
+      Acute myeloid leukemia, MLL:
+      Acute myeloid leukemia, NOS:
+      Acute myeloid leukemia, PML/RAR-alpha:
+      Acute myeloid leukemia, t(15:17)(g22;q11-12):
+      Acute myeloid leukemia, t(16;16)(p 13;q 11):
+      Acute myelomonocytic leukemia:
+      Acute myelomonocytic leukemia with abnormal eosinophils:
+      Acute myelosclerosis, NOS:
+      Acute myloid leukemia, 11q23 abnormalities:
+      Acute non-lymphocytic leukemia:
+      Acute panmyelosis with myelofibrosis:
+      Acute panmyelosis, NOS:
+      Acute progressive histiocytosis X:
+      Acute promyelocytic leukaemia, PML-RAR-alpha:
+      Acute promyelocytic leukaemia, t(15;17)(q22;q11-12):
+      Acute promyelocytic leukemia, NOS:
+      Adamantinoma of long bones:
+      Adamantinoma, malignant:
+      Adamantinoma, NOS:
+      Adenoacanthoma:
+      Adenoameloblastoma:
+      Adenocarcinoid tumor:
+      Adenocarcinoma admixed with neuroendocrine carcinoma:
+      Adenocarcinoma combined with other types of carcinoma:
+      Adenocarcinoma in a polyp, NOS:
+      Adenocarcinoma in adenomatous polyp:
+      Adenocarcinoma in adenomatous polyposis coli:
+      Adenocarcinoma in multiple adenomatous polyps:
+      Adenocarcinoma in polypoid adenoma:
+      Adenocarcinoma in situ in a polyp, NOS:
+      Adenocarcinoma in situ in adenomatous polyp:
+      Adenocarcinoma in situ in polypoid adenoma:
+      Adenocarcinoma in situ in tubular adenoma:
+      Adenocarcinoma in situ in tubulovillous adenoma:
+      Adenocarcinoma in situ in villous adenoma:
+      Adenocarcinoma in situ, mucinous:
+      Adenocarcinoma in situ, non-mucinous:
+      Adenocarcinoma in situ, NOS:
+      Adenocarcinoma in tubolovillous adenoma:
+      Adenocarcinoma in tubular adenoma:
+      Adenocarcinoma in villous adenoma:
+      Adenocarcinoma of anal ducts:
+      Adenocarcinoma of anal glands:
+      Adenocarcinoma of rete ovarii:
+      Adenocarcinoma with apocrine metaplasia:
+      Adenocarcinoma with cartilaginous and osseous metaplasia:
+      Adenocarcinoma with cartilaginous metaplasia:
+      Adenocarcinoma with mixed subtypes:
+      Adenocarcinoma with neuroendocrine differentiation:
+      Adenocarcinoma with osseous metaplasia:
+      Adenocarcinoma with spindle cell metaplasia:
+      Adenocarcinoma with squamous metaplasia:
+      Adenocarcinoma, cribriform comedo-range: 
+      Adenocarcinoma, cylindroid:
+      Adenocarcinoma, diffuse range: 
+      Adenocarcinoma, endocervical range: 
+      Adenocarcinoma, intestinal range: 
+      Adenocarcinoma, metastatic, NOS:
+      Adenocarcinoma, NOS:
+      Adenocarcinoma, pancreatobiliary range: 
+      Adenocystic carcinoma:
+      Adenofibroma, NOS:
+      Adenoid basal carcinoma:
+      Adenoid cystic carcinoma:
+      Adenolipoma:
+      Adenolymphoma:
+      Adenoma of nipple:
+      Adenoma, NOS:
+      Adenomatoid odontogenic tumor:
+      Adenomatoid tumor, NOS:
+      Adenomatosis, NOS:
+  
+  TumorGradeEnum:
+    title: tumor_grade
+    permissible_values:
+      G1:
+      G2:
+      G3:
+      G4:
+      GX:
+      GB:
+      High Grade:
+      Intermediate Grade:
+      Low Grade:
+      Unknown:
+      Not Reported:
+
+  TumorStageClinicalTEnum:
+    title: tumor_stage_clinical_t
+    permissible_values:
+      T0:
+        description: No evidence of primary tumor
+      T1:
+      T1a:
+      T1a1:
+      T1a2:
+      T1b:
+      T1b1:
+      T1b2:
+      T1c:
+      T1mi:
+      T2:
+      T2a:
+      T2a1:
+      T2a2:
+      T2b:
+      T2c:
+      T2d:
+      T3:
+      T3a:
+      T3b:
+      T3c:
+      T3d:
+      T4:
+      T4a:
+      T4b:
+      T4c:
+      T4d:
+      T4e:
+      TX:
+        description: Primary tumor cannot be evaluated
+      Ta:
+      Tis:
+      Tis (DCIS):
+        description: Carcinoma in situ (early cancer that has not spread to neighboring tissue)
+      Tis (LCIS):
+      Tis (Paget's):
+      Unknown:
+      Not Reported:
+
+  TumorStageClinicalNEnum:
+    title: tumor_stage_clinical_n
+    permissible_values:
+      N0:
+        description: No regional lymph node involvement (no cancer found in the lymph nodes)
+      N0 (i+):
+      N0 (i-):
+      N0 (mol+):
+      N0 (mol-):
+      N1:
+      N1a:
+      N1b:
+      N1bI:
+      N1bII:
+      N1bIII:
+      N1bIV:
+      N1c:
+      N1mi:
+      N2:
+      N2a:
+      N2b:
+      N2c:
+      N3:
+      N3a:
+      N3b:
+      N3c:
+      N4:
+      NX:
+        description: Regional lymph nodes cannot be evaluated
+      Unknown:
+      Not Reported:
+
+  TumorStageClinicalMEnum:
+    title: tumor_stage_clinical_m
+    permissible_values:
+      M0:
+      M1:
+      M1a:
+      M1b:
+      M1c:
+      MX:
+      cM0 (i+):
+      Unknown:
+      Not Reported:
+
+  ProgressionOrRecurrenceEnum:
+    title: progression_or_recurrence
+    permissible_values:
+      yes:
+      no:
+      unknown:
+      not reported:
+      Not Allowed To Collect:
+
+  LastKnownDiseaseStatusEnum:
+    title: last_known_disease_status
+    permissible_values:
+      Distant met recurrence/progression:
+      Loco-regional recurrence/progression:
+      Biochemical evidence of disease without structural correlate:
+      Tumor free:
+
+  TumorTissueTypeEnum:
+    title: tumor_tissue_type
+    permissible_values:
+      Additional Primary:
+      Atypia or hyperplasia:
+      Local recurrence:
+      Metastatic:
+      Normal:
+      Normal adjacent:
+      Normal distant:
+      NOS:
+      Not applicable:
+      Not reported:
+      Premalignant:
+      Premalignant - in situ:
+      Primary:
+      Recurrent:
+      Tissue:
+      Tumor post-adjuvant therapy:
+      Tumor post-neoadjuvant therapy:
+      Tumor post-therapy:
+      Tumor specimen from de novo untreated malignancy of the bladder:
+      Unknown:
+      Xenograft:
+
+  SampleTumorStatusEnum:
+    title: sample_tumor_status
+    permissible_values:
+      Tumor:
+      Normal:
+      Abnormal:
+      Peritumoral:
+      Unknown:
+
+  NormalOrTumorSamplePathologyEnum:
+    title: normal_or_tumor_sample_pathology
+    permissible_values:
+      Metastatic Neoplasm:
+      Not Applicable:
+      Not Otherwise Specified:
+      Not Reported:
+      Premalignant Neoplasm:
+      Primary Neoplasm:
+      Recurrent Neoplasm:
+      Unknown:
+      Xenograft:
+
+# MorphologyEnum:
+#   title: morphology
+#   permissible_values: 
+
+
+
+
+
+

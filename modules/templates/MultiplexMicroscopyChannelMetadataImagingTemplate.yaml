@@ -1,5 +1,8 @@
+name: MultiplexMicroscopyChannelMetadataTemplate
+id: urn:uuid:d44e82b6-a19c-42ba-b54a-44f15a7c6132
+
 imports:
-  - Additional Worksheets/MultiplexMicroscopyChannelMetadata.yaml
+  - Modules/Worksheets/MultiplexMicroscopyChannelMetadata
 
 classes:
   MultiplexMicroscopyChannelMetadataTemplate:
@@ -7,13 +10,13 @@ classes:
     attributes:
       # Multiplex Microscopy Channel Metadata (Worksheet #10)
       multiplex_microscopy_channel_metadata:
-        type: MultiplexMicroscopyChannelMetadata  # Imported from MultiplexMicroscopyChannelMetadata.yaml
+        range: MultiplexMicroscopyChannelMetadata  # Imported from MultiplexMicroscopyChannelMetadata.yaml
         description: Metadata for each channel in multiplex microscopy.
         channel_metadata_file_url_in_cds:
-          type: string
+          range: string
           description: The URL of the channel metadata file in the CDS.
         
       # The CSV file location for the metadata
       channel_metadata_filename:
-        type: string
+        range: string
         description: The CSV file location containing the multiplex microscopy channel metadata.

@@ -1,62 +1,66 @@
+name: NonDICOMRadiologyCT
+id: urn:uuid:21e645ee-50dc-4c51-aa18-99ee17b66bfd
+
 imports:
-  - participant.yaml
-  - sample.yaml
-  - imaging.yaml
-  - treatment.yaml
-  - study.yaml
+  - Modules/Participant/participant
+  - Modules/Tumor/tumor
+  - Modules/Sample/sample
+  - Modules/Imaging/imaging
+  - Modules/Treatment/treatment
+  - Modules/Study/study
 
 classes:
   NonDICOMRadiologyCT:
     description: Information related to non-DICOM radiology CT imaging, including file details and acquisition protocols.
     attributes:
       participant_id:
-        type: string
+        range: string
         description: A unique identifier for the participant associated with the file.
         
       file_name:
-        type: string
+        range: string
         description: The name of the CT file.
         
       file_url_in_cds:
-        type: string
+        range: string
         description: The URL of the CT file in the CDS.
         
       CTAquisitionProtocolElement_singleCollimationWidth:
-        type: string
+        range: string
         description: The single collimation width for the CT acquisition protocol.
         
       CTAquisitionProtocolElement_totalCollimationWidth:
-        type: string
+        range: string
         description: The total collimation width for the CT acquisition protocol.
         
       CTAquisitionProtocolElement_gantryDetectorTilt:
-        type: string
+        range: string
         description: The gantry detector tilt used in the CT acquisition protocol.
         
       CTAquisitionProtocolElement_spiralPitchFactor:
-        type: string
+        range: string
         description: The spiral pitch factor used in the CT acquisition protocol.
         
       CTAquisitionProtocolElement_ctdiVol:
-        type: string
+        range: string
         description: The CTDI volume in the CT acquisition protocol.
         
       CTAquisitionProtocolElement_ctdiPhantomTypeCode:
-        type: string
+        range: string
         description: The CTDI phantom type code used during the acquisition.
         
       CTAquisitionProtocolElement_kVp:
-        type: string
+        range: string
         description: The kVp used during the CT acquisition.
         
       CTAquisitionProtocolElement_exposureModulationTypeCode:
-        type: string
+        range: string
         description: The exposure modulation type code for the CT acquisition protocol.
         
       CTImageReconstructionProtocolElement_convolutionKernel:
-        type: string
+        range: string
         description: The convolution kernel used in the CT image reconstruction.
         
       CTImageReconstructionProtocolElement_convolutionKernelGroupCode:
-        type: string
+        range: string
         description: The group code for the convolution kernel used in CT image reconstruction.
