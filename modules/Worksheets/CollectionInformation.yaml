@@ -9,85 +9,86 @@ imports:
   - Modules/Treatment/treatment
   - Modules/Study/study
 
-CollectionInformation:
-  description: Information related to a study collection, including identifiers, participant details, and study characteristics.
-  attributes:
-    study_link_id:
-      range: string
-      description: A unique identifier for the study listed on the collection information sheet.
-      
-    program_name:
-      range: string
-      description: The narrative title used to refer to a broad framework of goals under which related projects or research activities are grouped. Example: Clinical Proteomic Tumor Analysis Consortium.
-      
-    program_short_name:
-      range: string
-      description: An acronym or abbreviated form of the program title. Example: CPTAC.
-      
-    study_name:
-      range: string
-      description: The narrative title used as a textual label for the research data collection. Example: Comparative Molecular Life History of Spontaneous Canine and Human Gliomas.
-      
-    study_acronym:
-      range: string
-      description: The acronym or abbreviated form of the study title. Example: GLIOMA01.
-      
-    number_of_participants:
-      range: string
-      description: The number of participant instances associated with the study.
-      
-    de-identification_method_type:
-      range: DeIdentificationMethodTypeEnum  # Referencing from study.yaml
-      description: Type of de-identification method used in the study.
-      
-    de-identification_method_description:
-      range: string
-      description: Description of the process of removing personally identifiable information.
-      
-    de-identification_software:
-      range: string
-      description: The software used for de-identification of the study data.
-      
-    license:
-      range: LicenseEnum  # Referencing from study.yaml
-      description: The type of license associated with the study data (e.g., open access, controlled access).
-      
-    citation_or_DOI:
-      range: string
-      description: The citation or DOI for the study publication.
-      
-    phs_accession:
-      range: string
-      description: A stable unique alphanumeric identifier assigned to a study and any objects by dbGaP (Database of Genotypes and Phenotypes).
-      
-    acl:
-      range: string
-      description: Access control level for the data, indicating whether it's open or restricted.
-      
-    role_or_affiliation:
-      range: string
-      description: The role or affiliation of individuals involved in the study (e.g., principal investigator).
-      
-    title:
-      range: string
-      description: The title or prefix (e.g., Dr., Prof.) associated with a person's name in the study.
-      
-    first_name:
-      range: string
-      description: The first name of the person involved in the study.
-      
-    middle_name:
-      range: string
-      description: The middle name of the person involved in the study.
-      
-    last_name:
-      range: string
-      description: The last name (surname) of the person involved in the study.
-      
-    suffix:
-      range: string
-      description: A suffix to the person's name, indicating position or lineage (e.g., Jr., Sr.).
-      
-    email:
-      range: string
-      description: The email address associated with the person involved in the study.
+classes:
+  CollectionInformation:
+    description: Information related to a study collection, including identifiers, participant details, and study characteristics.
+    attributes:
+      study_link_id:
+        range: string
+        description: A unique identifier for the study listed on the collection information sheet.
+        
+      program_name:
+        range: string
+        description: The narrative title used to refer to a broad framework of goals under which related projects or research activities are grouped. Example: Clinical Proteomic Tumor Analysis Consortium.
+        
+      program_short_name:
+        range: string
+        description: An acronym or abbreviated form of the program title. Example: CPTAC.
+        
+      study_name:
+        range: string
+        description: The narrative title used as a textual label for the research data collection. Example: Comparative Molecular Life History of Spontaneous Canine and Human Gliomas.
+        
+      study_acronym:
+        range: string
+        description: The acronym or abbreviated form of the study title. Example: GLIOMA01.
+        
+      number_of_participants:
+        range: string
+        description: The number of participant instances associated with the study.
+        
+      de-identification_method_type:
+        range: DeIdentificationMethodTypeEnum  # Referencing from study.yaml
+        description: Type of de-identification method used in the study.
+        
+      de-identification_method_description:
+        range: string
+        description: Description of the process of removing personally identifiable information.
+        
+      de-identification_software:
+        range: string
+        description: The software used for de-identification of the study data.
+        
+      license:
+        range: LicenseEnum  # Referencing from study.yaml
+        description: The type of license associated with the study data (e.g., open access, controlled access).
+        
+      citation_or_DOI:
+        range: string
+        description: The citation or DOI for the study publication.
+        
+      phs_accession:
+        range: string
+        description: A stable unique alphanumeric identifier assigned to a study and any objects by dbGaP (Database of Genotypes and Phenotypes).
+        
+      acl:
+        range: string
+        description: Access control level for the data, indicating whether it's open or restricted.
+        
+      role_or_affiliation:
+        range: string
+        description: The role or affiliation of individuals involved in the study (e.g., principal investigator).
+        
+      title:
+        range: string
+        description: The title or prefix (e.g., Dr., Prof.) associated with a person's name in the study.
+        
+      first_name:
+        range: string
+        description: The first name of the person involved in the study.
+        
+      middle_name:
+        range: string
+        description: The middle name of the person involved in the study.
+        
+      last_name:
+        range: string
+        description: The last name (surname) of the person involved in the study.
+        
+      suffix:
+        range: string
+        description: A suffix to the person's name, indicating position or lineage (e.g., Jr., Sr.).
+        
+      email:
+        range: string
+        description: The email address associated with the person involved in the study.
