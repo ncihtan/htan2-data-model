@@ -250,8 +250,8 @@ enums:
   ProgressionOrRecurrenceEnum:
     title: progression_or_recurrence
     permissible_values:
-      yes:
-      no:
+      'yes':
+      'no':
       unknown:
       not reported:
       Not Allowed To Collect:

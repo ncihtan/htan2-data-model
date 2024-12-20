@@ -1,5 +1,5 @@
 name: MultiplexMicroscopy
-id: urn:uuid: 8fdda0d7-22cd-472b-85c2-6560b68d1821
+id: urn:uuid:8fdda0d7-22cd-472b-85c2-6560b68d1821
 
 imports:
   - Modules/Participant/participant

@@ -59,4 +59,4 @@ classes:
         
       catalog_number:
         range: string
-        description
+        description: TBD

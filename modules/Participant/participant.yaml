@@ -23,9 +23,8 @@ enums:
       Unknown:
       Non-Binary:
       Not Reported:
-      Prefer Not to Answer:
-      Unknown:
-  
+      Prefer Not to Answer:  
+      
   SexEnum:
     title: sex
     permissible_values:
