@@ -19,6 +19,7 @@ classes:
         
       program_name:
         range: string
+
         description: "The narrative title used to refer to a broad framework of goals under which related projects or research activities are grouped. Example: Clinical Proteomic Tumor Analysis Consortium."
         
       program_short_name:
@@ -32,6 +33,7 @@ classes:
       study_acronym:
         range: string
         description: "The acronym or abbreviated form of the study title. Example: GLIOMA01."
+
         
       number_of_participants:
         range: string

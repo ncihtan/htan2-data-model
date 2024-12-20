@@ -9,121 +9,122 @@ imports:
   - Modules/Treatment/treatment
   - Modules/Study/study
 
-ParticipantInformation:
-    description: Information related to a study participant, including demographic, clinical, and tumor characteristics.
-    attributes:
-      study_link_id:
-        range: string
-        description: A unique identifier for the study listed on the collection information sheet.
-        
-      participant_id:
-        range: string
-        description: A unique identifier for the participant in the study.
-        
-      species:
-        range: string
-        description: The species of the participant (e.g., human, animal).
-        
-      gender:
-        range: GenderEnum # Referencing from participant.yaml
-        description: The biological gender of the participant (e.g., Male, Female, Other).
-        
-      sex:
-        range: SexEnum  # Referencing from participant.yaml
-        description: The biological sex of the participant (e.g., Male, Female).
-        
-      race:
-        range: RaceEnum  # Referencing from participant.yaml
-        description: The racial background of the participant (e.g., White, Black, Asian).
-        
-      ethnicity:
-        range: ethnicityEnum  # Referencing from participant.yaml
-        description: The ethnic background of the participant (e.g., Hispanic, Non-Hispanic).
-        
-      dbGaP_subject_id:
-        range: string
-        description: The unique subject identifier assigned by dbGaP (Database of Genotypes and Phenotypes).
-        
-      disease_type:
-        range: string
-        description: The type of disease the participant is diagnosed with (e.g., Cancer, Diabetes).
-        
-      primary_diagnosis:
-        range: string
-        description: The primary diagnosis given to the participant.
-        
-      primary_site:
-        range: string
-        description: The primary site where the disease (e.g., tumor) is located.
-        
-      vital_status:
-        range: vitalStatusEnum  # Referencing from participant.yaml
-        description: The vital status of the participant (e.g., alive, deceased).
-        
-      age_at_diagnosis:
-        range: integer
-        description: The age of the participant at the time of diagnosis.
-        
-      days_to_last_followup:
-        range: integer
-        description: The number of days from diagnosis to the last follow-up.
-        
-      morphology:
-        range: string
-        description: The morphology of the tumor or disease as identified during diagnosis.
-        
-      tissue_or_organ_of_origin:
-        range: TissueOrOrganOfOriginEnum  # Referencing from sample.yaml
-        description: The tissue or organ where the tumor or disease originated.
-        
-      site_of_resection_or_biopsy:
-        range: string
-        description: The site where the tumor was resected or the biopsy was performed.
-        
-      tumor_grade:
-        range: TumorGradeEnum  # Referencing from tumor.yaml
-        description: The grade of the tumor (e.g., Low, High).
-        
-      tumor_stage_clinical_t:
-        range: string
-        description: Clinical stage of the tumor (T category).
-        
-      tumor_stage_clinical_n:
-        range: string
-        description: Clinical stage of the tumor (N category).
-        
-      tumor_stage_clinical_m:
-        range: string
-        description: Clinical stage of the tumor (M category).
-        
-      progression_or_recurrence:
-        range: string
-        description: Whether the disease has progressed or recurred.
-        
-      days_to_recurrence:
-        range: integer
-        description: The number of days from treatment to recurrence (if applicable).
-        
-      days_to_last_known_disease_status:
-        range: integer
-        description: The number of days from diagnosis to the last known disease status.
-        
-      last_known_disease_status:
-        range: string
-        description: The last known status of the disease (e.g., stable, progressed, in remission).
-        
-      treatment_type:
-        range: TreatmentTypeEnum # Referencing from treatment.yaml
-        description: The type of treatment the participant received (e.g., chemotherapy, surgery).
-        
-      days_to_treatment:
-        range: integer
-        description: The number of days from diagnosis to the start of treatment.
-        
-      treatment_outcome:
-        range: string
-        description: The outcome of the treatment (e.g., successful, failed, ongoing).
-        
-      therapeutic_agents:
-        range: string
-        description: The therapeutic agents used in the treatment (e.g., specific drugs or therapies).
+classes:
+  ParticipantInformation:
+      description: Information related to a study participant, including demographic, clinical, and tumor characteristics.
+      attributes:
+        study_link_id:
+          range: string
+          description: A unique identifier for the study listed on the collection information sheet.
+          
+        participant_id:
+          range: string
+          description: A unique identifier for the participant in the study.
+          
+        species:
+          range: string
+          description: The species of the participant (e.g., human, animal).
+          
+        gender:
+          range: GenderEnum # Referencing from participant.yaml
+          description: The biological gender of the participant (e.g., Male, Female, Other).
+          
+        sex:
+          range: SexEnum  # Referencing from participant.yaml
+          description: The biological sex of the participant (e.g., Male, Female).
+          
+        race:
+          range: RaceEnum  # Referencing from participant.yaml
+          description: The racial background of the participant (e.g., White, Black, Asian).
+          
+        ethnicity:
+          range: ethnicityEnum  # Referencing from participant.yaml
+          description: The ethnic background of the participant (e.g., Hispanic, Non-Hispanic).
+          
+        dbGaP_subject_id:
+          range: string
+          description: The unique subject identifier assigned by dbGaP (Database of Genotypes and Phenotypes).
+          
+        disease_type:
+          range: string
+          description: The type of disease the participant is diagnosed with (e.g., Cancer, Diabetes).
+          
+        primary_diagnosis:
+          range: string
+          description: The primary diagnosis given to the participant.
+          
+        primary_site:
+          range: string
+          description: The primary site where the disease (e.g., tumor) is located.
+          
+        vital_status:
+          range: vitalStatusEnum  # Referencing from participant.yaml
+          description: The vital status of the participant (e.g., alive, deceased).
+          
+        age_at_diagnosis:
+          range: integer
+          description: The age of the participant at the time of diagnosis.
+          
+        days_to_last_followup:
+          range: integer
+          description: The number of days from diagnosis to the last follow-up.
+          
+        morphology:
+          range: string
+          description: The morphology of the tumor or disease as identified during diagnosis.
+          
+        tissue_or_organ_of_origin:
+          range: TissueOrOrganOfOriginEnum  # Referencing from sample.yaml
+          description: The tissue or organ where the tumor or disease originated.
+          
+        site_of_resection_or_biopsy:
+          range: string
+          description: The site where the tumor was resected or the biopsy was performed.
+          
+        tumor_grade:
+          range: TumorGradeEnum  # Referencing from tumor.yaml
+          description: The grade of the tumor (e.g., Low, High).
+          
+        tumor_stage_clinical_t:
+          range: string
+          description: Clinical stage of the tumor (T category).
+          
+        tumor_stage_clinical_n:
+          range: string
+          description: Clinical stage of the tumor (N category).
+          
+        tumor_stage_clinical_m:
+          range: string
+          description: Clinical stage of the tumor (M category).
+          
+        progression_or_recurrence:
+          range: string
+          description: Whether the disease has progressed or recurred.
+          
+        days_to_recurrence:
+          range: integer
+          description: The number of days from treatment to recurrence (if applicable).
+          
+        days_to_last_known_disease_status:
+          range: integer
+          description: The number of days from diagnosis to the last known disease status.
+          
+        last_known_disease_status:
+          range: string
+          description: The last known status of the disease (e.g., stable, progressed, in remission).
+          
+        treatment_type:
+          range: TreatmentTypeEnum # Referencing from treatment.yaml
+          description: The type of treatment the participant received (e.g., chemotherapy, surgery).
+          
+        days_to_treatment:
+          range: integer
+          description: The number of days from diagnosis to the start of treatment.
+          
+        treatment_outcome:
+          range: string
+          description: The outcome of the treatment (e.g., successful, failed, ongoing).
+          
+        therapeutic_agents:
+          range: string
+          description: The therapeutic agents used in the treatment (e.g., specific drugs or therapies).
