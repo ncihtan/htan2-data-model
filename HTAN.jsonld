@@ -784,6 +784,77 @@
     "sms:displayName" : "FileSpecificGeneralInformation"
   }, {
     "rdfs:subClassOf" : [ ],
+    "@id" : "bts:ParticipantInformation",
+    "schema:isPartOf" : {
+      "@id" : "http://schema.biothings.io/"
+    },
+    "sms:required" : "sms:false",
+    "sms:requiresComponent" : null,
+    "rdfs:label" : "ParticipantInformation",
+    "rdfs:comment" : "Information related to a study participant, including demographic, clinical, and tumor characteristics.",
+    "@type" : "rdfs:Class",
+    "sms:requiresDependency" : [ {
+      "@id" : "bts:study_link_id"
+    }, {
+      "@id" : "bts:participant_id"
+    }, {
+      "@id" : "bts:species"
+    }, {
+      "@id" : "bts:gender"
+    }, {
+      "@id" : "bts:sex"
+    }, {
+      "@id" : "bts:race"
+    }, {
+      "@id" : "bts:ethnicity"
+    }, {
+      "@id" : "bts:dbGaP_subject_id"
+    }, {
+      "@id" : "bts:disease_type"
+    }, {
+      "@id" : "bts:primary_diagnosis"
+    }, {
+      "@id" : "bts:primary_site"
+    }, {
+      "@id" : "bts:vital_status"
+    }, {
+      "@id" : "bts:age_at_diagnosis"
+    }, {
+      "@id" : "bts:days_to_last_followup"
+    }, {
+      "@id" : "bts:morphology"
+    }, {
+      "@id" : "bts:tissue_or_organ_of_origin"
+    }, {
+      "@id" : "bts:site_of_resection_or_biopsy"
+    }, {
+      "@id" : "bts:tumor_grade"
+    }, {
+      "@id" : "bts:tumor_stage_clinical_t"
+    }, {
+      "@id" : "bts:tumor_stage_clinical_n"
+    }, {
+      "@id" : "bts:tumor_stage_clinical_m"
+    }, {
+      "@id" : "bts:progression_or_recurrence"
+    }, {
+      "@id" : "bts:days_to_recurrence"
+    }, {
+      "@id" : "bts:days_to_last_known_disease_status"
+    }, {
+      "@id" : "bts:last_known_disease_status"
+    }, {
+      "@id" : "bts:treatment_type"
+    }, {
+      "@id" : "bts:days_to_treatment"
+    }, {
+      "@id" : "bts:treatment_outcome"
+    }, {
+      "@id" : "bts:therapeutic_agents"
+    } ],
+    "sms:displayName" : "ParticipantInformation"
+  }, {
+    "rdfs:subClassOf" : [ ],
     "@id" : "bts:MultiplexMicroscopyChannelMetadata",
     "schema:isPartOf" : {
       "@id" : "http://schema.biothings.io/"
