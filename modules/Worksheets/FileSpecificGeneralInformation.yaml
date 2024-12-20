@@ -8,61 +8,62 @@ imports:
   - Modules/Imaging/imaging
   - Modules/Treatment/treatment
   - Modules/Study/study
-  
-FileSpecificGeneralInformation:
-    description: Information about specific files related to a participant, including file metadata, imaging data, and mapping.
-    attributes:
-      participant_id:
-        range: string
-        description: A unique identifier for the participant associated with the file.
-        
-      file_name:
-        range: string
-        description: The name of the file.
-        
-      file_format:
-        range: string
-        description: The format of the file (e.g., PDF, CSV, DICOM).
-        
-      file_description:
-        range: string
-        description: A description of the file's content.
-        
-      file_mapping_level:
-        range: string
-        description: The level of mapping used for the file (e.g., study, participant).
-        
-      file_size:
-        range: string
-        description: The size of the file.
-        
-      md5sum:
-        range: string
-        description: The MD5 checksum for the file to ensure integrity.
-        
-      file_url_in_cds:
-        range: string
-        description: The URL of the file in the CDS (Common Data Storage).
-        
-      image_modality:
-        range: ImageModalityEnum  # Referencing from imaging.yaml
-        description: The imaging modality used for the image (e.g., CT, MRI).
-        
-      imaging_equipment_manufacturer:
-        range: string
-        description: The manufacturer of the imaging equipment used.
-        
-      imaging_equipment_model:
-        range: string
-        description: The model of the imaging equipment used.
-        
-      imaging_software:
-        range: string
-        description: The software used for imaging data processing.
-        
-      imaging_protocol:
-        range: string
-        description: The protocol used during the imaging process.
-        
-      tissue_or_organ_of_origin:
-        range: TissueOrOrganOfOriginEnum # Referencing from sample.yaml
+
+classes:
+  FileSpecificGeneralInformation:
+      description: Information about specific files related to a participant, including file metadata, imaging data, and mapping.
+      attributes:
+        participant_id:
+          range: string
+          description: A unique identifier for the participant associated with the file.
+          
+        file_name:
+          range: string
+          description: The name of the file.
+          
+        file_format:
+          range: string
+          description: The format of the file (e.g., PDF, CSV, DICOM).
+          
+        file_description:
+          range: string
+          description: A description of the file's content.
+          
+        file_mapping_level:
+          range: string
+          description: The level of mapping used for the file (e.g., study, participant).
+          
+        file_size:
+          range: string
+          description: The size of the file.
+          
+        md5sum:
+          range: string
+          description: The MD5 checksum for the file to ensure integrity.
+          
+        file_url_in_cds:
+          range: string
+          description: The URL of the file in the CDS (Common Data Storage).
+          
+        image_modality:
+          range: ImageModalityEnum  # Referencing from imaging.yaml
+          description: The imaging modality used for the image (e.g., CT, MRI).
+          
+        imaging_equipment_manufacturer:
+          range: string
+          description: The manufacturer of the imaging equipment used.
+          
+        imaging_equipment_model:
+          range: string
+          description: The model of the imaging equipment used.
+          
+        imaging_software:
+          range: string
+          description: The software used for imaging data processing.
+          
+        imaging_protocol:
+          range: string
+          description: The protocol used during the imaging process.
+          
+        tissue_or_organ_of_origin:
+          range: TissueOrOrganOfOriginEnum # Referencing from sample.yaml
