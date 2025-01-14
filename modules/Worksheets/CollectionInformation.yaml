@@ -19,19 +19,21 @@ classes:
         
       program_name:
         range: string
-        description: The narrative title used to refer to a broad framework of goals under which related projects or research activities are grouped. Example: Clinical Proteomic Tumor Analysis Consortium.
+
+        description: "The narrative title used to refer to a broad framework of goals under which related projects or research activities are grouped. Example: Clinical Proteomic Tumor Analysis Consortium."
         
       program_short_name:
         range: string
-        description: An acronym or abbreviated form of the program title. Example: CPTAC.
+        description: "An acronym or abbreviated form of the program title. Example: CPTAC."
         
       study_name:
         range: string
-        description: The narrative title used as a textual label for the research data collection. Example: Comparative Molecular Life History of Spontaneous Canine and Human Gliomas.
+        description: "The narrative title used as a textual label for the research data collection. Example: Comparative Molecular Life History of Spontaneous Canine and Human Gliomas."
         
       study_acronym:
         range: string
-        description: The acronym or abbreviated form of the study title. Example: GLIOMA01.
+        description: "The acronym or abbreviated form of the study title. Example: GLIOMA01."
+
         
       number_of_participants:
         range: string

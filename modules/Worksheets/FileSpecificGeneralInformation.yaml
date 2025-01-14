@@ -1,5 +1,5 @@
 name: FileSpecificGeneralInformation
-id: urn:uuid: aafe1c0b-1794-46f6-86be-da5b590ca332
+id: urn:uuid:aafe1c0b-1794-46f6-86be-da5b590ca332
 
 imports:
   - Modules/Participant/participant

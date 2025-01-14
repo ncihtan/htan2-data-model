@@ -1,0 +1,5 @@
+slots:
+  de-identification_method_type:
+    range: DeIdentificationMethodTypeEnum 
+  license:
+    range: LicenseEnum 
