@@ -2,12 +2,12 @@ name: HTAN2Model
 id: urn:uuid:d625038a-3375-47ad-b910-cf0f23e2301f
 
 imports:
-  - Modules/Participant
-  - Modules/Tumor
-  - Modules/Imaging
-  - Modules/Study
-  - Modules/Treatment
-  - Modules/Sample
+  - Modules/Participant/participant
+  - Modules/Tumor/tumor
+  - Modules/Imaging/imaging
+  - Modules/Study/study
+  - Modules/Treatment/treatment
+  - Modules/Sample/sample
   - Modules/Worksheets/CollectionInformation
   - Modules/Worksheets/ParticipantInformation
   - Modules/Worksheets/FileSpecificGeneralInformation

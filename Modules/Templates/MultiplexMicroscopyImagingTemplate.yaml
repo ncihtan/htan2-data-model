@@ -36,6 +36,6 @@ classes:
       multiplex_microscopy_channel_metadata:
         range: MultiplexMicroscopyChannelMetadata  # Imported from MultiplexMicroscopyChannelMetadata.yaml
         description: Channel metadata for multiplex microscopy images.
-        channel_metadata_filename:
-          range: string
-          description: The location of the CSV file with channel metadata.
+        #channel_metadata_filename:
+        #  range: string
+        #  description: The location of the CSV file with channel metadata.
