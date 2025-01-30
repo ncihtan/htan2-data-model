@@ -1,41 +1,16 @@
-# htan-linkml
+# HTAN Phase 2 Data Model (HTAN2)
 
-Exploring a LinkML data model for HTAN Phase 2
+---
 
+## ⚠️ **DO NOT USE – UNDER DEVELOPMENT** ⚠️  
 
-> [!CAUTION]
-> This repo is a very early test-bed to explore a possible shift to LinkML in the future
+This data model is in **active development**. It builds on **HTAN Phase 1** and incorporates input from the **Cancer Data Standards (CDS)** initiative. Expect frequent changes until a stable version is released.
 
+---
 
-> [!TIP]
-> The active HTAN data model can be found at [ncihtan/data-models](https://github.com/ncihtan/data-models)
+## Overview  
+The **HTAN Phase 2 (HTAN2)** data model aims to enhance data interoperability within cancer research. It uses **LinkML** to define structured data representation, integrating new requirements from the evolving cancer research community.
 
-## Website
+This repository is part of ongoing efforts to refine and standardize the HTAN2 data model. For the current Phase 1 model, refer to the [HTAN data-models repository](https://github.com/ncihtan/data-models).
 
-[https://ncihtan.github.io/htan-linkml](https://ncihtan.github.io/htan-linkml)
-
-## Repository Structure
-
-* [examples/](examples/) - example data
-* [project/](project/) - project files (do not edit these)
-* [src/](src/) - source files (edit these)
-  * [htan_linkml](src/htan_linkml)
-    * [schema](src/htan_linkml/schema) -- LinkML schema
-      (edit this)
-    * [datamodel](src/htan_linkml/datamodel) -- generated
-      Python datamodel
-* [tests/](tests/) - Python tests
-
-## Developer Documentation
-
-<details>
-Use the `make` command to generate project artefacts:
-
-* `make all`: make everything
-* `make deploy`: deploys site
-</details>
-
-## Credits
-
-This project was made with
-[linkml-project-cookiecutter](https://github.com/linkml/linkml-project-cookiecutter).
+---
