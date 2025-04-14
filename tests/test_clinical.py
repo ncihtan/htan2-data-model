@@ -1,10 +1,10 @@
 import os
 import unittest
 from pathlib import Path
+import glob
 
 from linkml_runtime.loaders import yaml_loader
-from linkml.validators.validator import Validator
-from linkml.validators.jsonschemavalidator import JsonSchemaValidator
+from linkml_runtime.utils.schemaview import SchemaView
 
 class TestClinical(unittest.TestCase):
     """Test cases for Clinical module."""
@@ -13,20 +13,40 @@ class TestClinical(unittest.TestCase):
         """Set up test fixtures."""
         self.base_dir = Path(__file__).parent.parent
         self.schema_path = self.base_dir / "modules" / "Clinical" / "clinical_schema.yaml"
-        self.valid_data_path = self.base_dir / "modules" / "Clinical" / "test_data.yaml"
-        self.validator = Validator(self.schema_path)
+        self.schema_view = SchemaView(str(self.schema_path))
+        
+        # Get all test files
+        self.valid_files = glob.glob(str(self.base_dir / "tests" / "test_data" / "Clinical" / "valid" / "*.yaml"))
+        self.invalid_files = glob.glob(str(self.base_dir / "tests" / "test_data" / "Clinical" / "invalid" / "*.yaml"))
 
     def test_schema_loads(self):
         """Test that the schema can be loaded."""
-        validator = JsonSchemaValidator(self.schema_path)
-        self.assertIsNotNone(validator.schema)
+        self.assertIsNotNone(self.schema_view)
+        self.assertIn("ClinicalData", self.schema_view.all_classes())
 
     def test_valid_data(self):
-        """Test that valid data validates."""
-        with open(self.valid_data_path) as f:
-            data = yaml_loader.load(f, target_class="ClinicalData")
-        validation_results = self.validator.validate(data)
-        self.assertEqual(len(validation_results), 0)
+        """Test that all valid data files validate."""
+        for file_path in self.valid_files:
+            with self.subTest(file=file_path):
+                with open(file_path) as f:
+                    data = yaml_loader.load(f, target_class="ClinicalData")
+                try:
+                    self.schema_view.validate_object(data, "ClinicalData")
+                    validation_failed = False
+                except Exception as e:
+                    validation_failed = True
+                    validation_error = str(e)
+                self.assertFalse(validation_failed, 
+                               f"Validation failed for {file_path}: {validation_error if validation_failed else ''}")
+
+    def test_invalid_data(self):
+        """Test that all invalid data files fail validation."""
+        for file_path in self.invalid_files:
+            with self.subTest(file=file_path):
+                with open(file_path) as f:
+                    data = yaml_loader.load(f, target_class="ClinicalData")
+                with self.assertRaises(Exception):
+                    self.schema_view.validate_object(data, "ClinicalData")
 
     def test_required_fields(self):
         """Test that missing required fields are caught."""
@@ -34,8 +54,8 @@ class TestClinical(unittest.TestCase):
             "participant_id": "TEST-001"
             # Missing required fields
         }
-        validation_results = self.validator.validate(test_data)
-        self.assertGreater(len(validation_results), 0)
+        with self.assertRaises(Exception):
+            self.schema_view.validate_object(test_data, "ClinicalData")
 
     def test_enum_values(self):
         """Test that invalid enum values are caught."""
@@ -45,8 +65,8 @@ class TestClinical(unittest.TestCase):
                 "tumor_grade": "INVALID_GRADE"  # Invalid enum value
             }
         }
-        validation_results = self.validator.validate(test_data)
-        self.assertGreater(len(validation_results), 0)
+        with self.assertRaises(Exception):
+            self.schema_view.validate_object(test_data, "ClinicalData")
 
     def test_data_types(self):
         """Test that invalid data types are caught."""
@@ -56,8 +76,8 @@ class TestClinical(unittest.TestCase):
                 "age_at_diagnosis_days": "not_a_number"  # Should be integer
             }
         }
-        validation_results = self.validator.validate(test_data)
-        self.assertGreater(len(validation_results), 0)
+        with self.assertRaises(Exception):
+            self.schema_view.validate_object(test_data, "ClinicalData")
 
 if __name__ == '__main__':
     unittest.main() 
