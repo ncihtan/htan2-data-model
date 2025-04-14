@@ -1,0 +1,508 @@
+name: Clinical
+id: urn:uuid:277993eb-71d1-4748-8ce8-7016b57d29e3
+description: HTAN Clinical Data Model Schema
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../Participant/participant
+
+prefixes:
+  htan: https://htan.org/schemas/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  TumorGradeEnum:
+    title: tumor_grade
+    permissible_values:
+      G1:
+      G2:
+      G3:
+      G4:
+      GX:
+      Not Reported:
+      Unknown:
+
+  TumorStageEnum:
+    title: tumor_stage
+    permissible_values:
+      Stage 0:
+      Stage I:
+      Stage II:
+      Stage III:
+      Stage IV:
+      Not Reported:
+      Unknown:
+
+  MetastaticStageEnum:
+    title: metastatic_stage
+    permissible_values:
+      M0:
+      M1:
+      MX:
+      Not Reported:
+      Unknown:
+
+  RegionalLymphNodeStageEnum:
+    title: regional_lymph_node_stage
+    permissible_values:
+      N0:
+      N1:
+      N2:
+      N3:
+      NX:
+      Not Reported:
+      Unknown:
+
+  AJCCStagingSystemEditionEnum:
+    title: ajcc_staging_system_edition
+    permissible_values:
+      "7th Edition":
+      "8th Edition":
+      Not Reported:
+      Unknown:
+
+  DiseaseResponseEnum:
+    title: disease_response
+    permissible_values:
+      Complete Response:
+      Partial Response:
+      Stable Disease:
+      Progressive Disease:
+      Not Reported:
+      Unknown:
+
+  ECOGPerformanceStatusEnum:
+    title: ecog_performance_status
+    permissible_values:
+      "0":
+      "1":
+      "2":
+      "3":
+      "4":
+      "5":
+      Not Reported:
+      Unknown:
+
+  MenopauseStatusEnum:
+    title: menopause_status
+    permissible_values:
+      Pre-Menopausal:
+      Post-Menopausal:
+      Peri-Menopausal:
+      Not Reported:
+      Unknown:
+
+  TreatmentIntentTypeEnum:
+    title: treatment_intent_type
+    permissible_values:
+      Curative:
+      Palliative:
+      Prophylactic:
+      Not Reported:
+      Unknown:
+
+  TreatmentTypeEnum:
+    title: treatment_type
+    permissible_values:
+      Surgery:
+      Radiation:
+      Chemotherapy:
+      Immunotherapy:
+      Targeted Therapy:
+      Hormone Therapy:
+      Not Reported:
+      Unknown:
+
+  PharmacotherapyTypeEnum:
+    title: pharmacotherapy_type
+    permissible_values:
+      Chemotherapy:
+      Immunotherapy:
+      Targeted Therapy:
+      Hormone Therapy:
+      Not Reported:
+      Unknown:
+
+  MethodOfDiagnosisEnum:
+    title: method_of_diagnosis
+    permissible_values:
+      Biopsy:
+      Imaging:
+      Laboratory Test:
+      Physical Examination:
+      Not Reported:
+      Unknown:
+
+  EnvironmentalExposureTypeEnum:
+    title: environmental_exposure_type
+    permissible_values:
+      Asbestos:
+      Radiation:
+      Chemical:
+      Occupational:
+      Not Reported:
+      Unknown:
+
+  ProgressionTypeEnum:
+    title: progression_type
+    permissible_values:
+      Local:
+      Regional:
+      Distant:
+      Not Reported:
+      Unknown:
+
+  EvidenceOfRecurrenceTypeEnum:
+    title: evidence_of_recurrence_type
+    permissible_values:
+      Imaging:
+      Biopsy:
+      Laboratory Test:
+      Clinical Examination:
+      Not Reported:
+      Unknown:
+
+  MolecularAnalysisMethodEnum:
+    title: molecular_analysis_method
+    permissible_values:
+      DNA Sequencing:
+      RNA Sequencing:
+      Protein Analysis:
+      Cytogenetics:
+      Not Reported:
+      Unknown:
+
+  ClinicalBiospecimenTypeEnum:
+    title: clinical_biospecimen_type
+    permissible_values:
+      Blood:
+      Tissue:
+      Urine:
+      Saliva:
+      Not Reported:
+      Unknown:
+
+  TestAnalyteTypeEnum:
+    title: test_analyte_type
+    permissible_values:
+      DNA:
+      RNA:
+      Protein:
+      Metabolite:
+      Not Reported:
+      Unknown:
+
+  VariantOriginEnum:
+    title: variant_origin
+    permissible_values:
+      Germline:
+      Somatic:
+      Not Reported:
+      Unknown:
+
+  VariantTypeEnum:
+    title: variant_type
+    permissible_values:
+      SNV:
+      Indel:
+      CNV:
+      Fusion:
+      Not Reported:
+      Unknown:
+
+  OffTreatmentReasonEnum:
+    title: off_treatment_reason
+    permissible_values:
+      Completed:
+      Disease Progression:
+      Toxicity:
+      Patient Decision:
+      Not Reported:
+      Unknown:
+
+classes:
+  ClinicalData:
+    description: Container for all clinical data
+    attributes:
+      participant_id:
+        identifier: true
+        range: string
+        required: true
+        description: Unique identifier for the participant
+      diagnosis:
+        range: Diagnosis
+        required: true
+        description: Primary diagnosis information
+      exposures:
+        range: Exposure
+        required: true
+        description: Exposure history
+      family_history:
+        range: FamilyHistory
+        required: true
+        description: Family history of cancer
+      follow_ups:
+        range: FollowUp
+        multivalued: true
+        description: Follow-up observations
+      molecular_tests:
+        range: MolecularTest
+        multivalued: true
+        description: Molecular test results
+      therapies:
+        range: Therapy
+        multivalued: true
+        description: Treatment information
+
+  Diagnosis:
+    description: Primary diagnosis information
+    attributes:
+      primary_diagnosis_ncit_id:
+        range: string
+        required: true
+        description: NCI Thesaurus ID for the primary diagnosis
+      age_at_diagnosis_days:
+        range: integer
+        required: true
+        description: Age in days at diagnosis
+      tissue_or_organ_uberon_code:
+        range: string
+        required: true
+        description: UBERON code for the tissue or organ of origin
+      tumor_grade:
+        range: TumorGradeEnum
+        required: true
+        description: Tumor grade
+      tumor_stage:
+        range: TumorStageEnum
+        required: true
+        description: Tumor stage
+      metastatic_stage:
+        range: MetastaticStageEnum
+        required: true
+        description: Metastatic stage
+      regional_lymph_node_stage:
+        range: RegionalLymphNodeStageEnum
+        required: true
+        description: Regional lymph node stage
+      ajcc_staging_system_edition:
+        range: AJCCStagingSystemEditionEnum
+        required: true
+        description: AJCC staging system edition
+      metastasis_at_diagnosis:
+        range: boolean
+        required: true
+        description: Whether metastasis was present at diagnosis
+      method_of_diagnosis:
+        range: MethodOfDiagnosisEnum
+        required: true
+        description: Method used for diagnosis
+
+  Exposure:
+    description: Exposure history
+    attributes:
+      smoking_history:
+        range: boolean
+        required: true
+        description: Whether participant has smoking history
+      years_smoked:
+        range: integer
+        required: false
+        description: Number of years smoked
+      pack_years_smoked:
+        range: float
+        required: false
+        description: Number of pack years smoked
+      alcohol_history:
+        range: boolean
+        required: true
+        description: Whether participant has alcohol history
+      environmental_exposure:
+        range: boolean
+        required: true
+        description: Whether participant has environmental exposure
+      environmental_exposure_type:
+        range: EnvironmentalExposureTypeEnum
+        required: false
+        description: Type of environmental exposure
+
+  FamilyHistory:
+    description: Family history of cancer
+    attributes:
+      family_member_cancer_history:
+        range: boolean
+        required: true
+        description: Whether there is family history of cancer
+      relatives_with_cancer_count:
+        range: integer
+        required: false
+        description: Number of relatives with cancer history
+
+  FollowUp:
+    description: Follow-up observations
+    attributes:
+      age_at_followup_days:
+        range: integer
+        required: true
+        description: Age in days at follow-up
+      progression_or_recurrence:
+        range: boolean
+        required: true
+        description: Whether there was progression or recurrence
+      progression_site_uberon_code:
+        range: string
+        required: false
+        description: UBERON code for progression or recurrence site
+      progression_type:
+        range: ProgressionTypeEnum
+        required: false
+        description: Type of progression or recurrence
+      evidence_of_recurrence_type:
+        range: EvidenceOfRecurrenceTypeEnum
+        required: false
+        description: Type of evidence for recurrence
+      age_at_progression_days:
+        range: integer
+        required: false
+        description: Age in days at progression or recurrence
+      disease_response:
+        range: DiseaseResponseEnum
+        required: true
+        description: Disease response
+      ecog_performance_status:
+        range: ECOGPerformanceStatusEnum
+        required: true
+        description: ECOG performance status
+      menopause_status:
+        range: MenopauseStatusEnum
+        required: true
+        description: Menopause status
+
+  MolecularTest:
+    description: Molecular test results
+    attributes:
+      timepoint_label:
+        range: string
+        required: false
+        description: Label for the timepoint
+      age_at_test_start_days:
+        range: integer
+        required: true
+        description: Age in days at molecular test start
+      age_at_test_stop_days:
+        range: integer
+        required: false
+        description: Age in days at molecular test stop
+      gene_symbol:
+        range: string
+        required: true
+        description: Gene symbol
+      molecular_analysis_method:
+        range: MolecularAnalysisMethodEnum
+        required: true
+        description: Method used for molecular analysis
+      molecular_analysis_result:
+        range: string
+        required: true
+        description: Result of molecular analysis
+      amino_acid_change:
+        range: string
+        required: false
+        description: Amino acid change
+      clinical_biospecimen_type:
+        range: ClinicalBiospecimenTypeEnum
+        required: true
+        description: Type of clinical biospecimen
+      copy_number:
+        range: integer
+        required: false
+        description: Copy number
+      exon:
+        range: string
+        required: false
+        description: Exon information
+      molecular_consequence:
+        range: string
+        required: false
+        description: Molecular consequence
+      pathogenicity:
+        range: string
+        required: false
+        description: Pathogenicity
+      test_analyte_type:
+        range: TestAnalyteTypeEnum
+        required: false
+        description: Type of test analyte
+      test_units:
+        range: string
+        required: false
+        description: Units for test result
+      test_result:
+        range: string
+        required: false
+        description: Test result
+      variant_origin:
+        range: VariantOriginEnum
+        required: false
+        description: Origin of variant
+      variant_type:
+        range: VariantTypeEnum
+        required: false
+        description: Type of variant
+
+  Therapy:
+    description: Treatment information
+    attributes:
+      initial_disease_status:
+        range: string
+        required: true
+        description: Initial disease status
+      treatment_intent_type:
+        range: TreatmentIntentTypeEnum
+        required: true
+        description: Type of treatment intent
+      treatment_type:
+        range: TreatmentTypeEnum
+        required: true
+        description: Type of treatment
+      pharmacotherapy_type:
+        range: PharmacotherapyTypeEnum
+        required: true
+        description: Type of pharmacotherapy
+      therapeutic_agents:
+        range: string
+        required: true
+        description: Therapeutic agents used
+      therapy_site_uberon_code:
+        range: string
+        required: false
+        description: UBERON code for therapy site
+      age_at_treatment_start_days:
+        range: integer
+        required: true
+        description: Age in days at treatment start
+      age_at_treatment_end_days:
+        range: integer
+        required: true
+        description: Age in days at treatment end
+      off_treatment_reason:
+        range: OffTreatmentReasonEnum
+        required: true
+        description: Reason for stopping treatment
+      regimen_or_line_of_therapy:
+        range: string
+        required: true
+        description: Regimen or line of therapy
+      number_of_cycles:
+        range: integer
+        required: true
+        description: Number of treatment cycles
+      response:
+        range: DiseaseResponseEnum
+        required: true
+        description: Treatment response 
