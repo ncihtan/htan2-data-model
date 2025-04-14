@@ -1,4 +1,4 @@
-participant_id: "HTAN-004"
+participant_id: "HTAN-001"
 diagnosis:
   primary_diagnosis_ncit_id: "NCIT:C2926"
   age_at_diagnosis_days: 18250
@@ -9,12 +9,17 @@ diagnosis:
   regional_lymph_node_stage: "N1"
   ajcc_staging_system_edition: "8th Edition"
   metastasis_at_diagnosis: false
-  method_of_diagnosis: "Biopsy"
+  method_of_diagnosis: "Invalid Method"  # Invalid method
 
 exposures:
-  smoking_history: false
-  alcohol_history: false
-  environmental_exposure: false
+  smoking_history: true
+  alcohol_history: true
+  environmental_exposure_type: "Invalid Type"  # Invalid type
 
 family_history:
-  family_member_cancer_history: false 
+  family_member_cancer_history: false
+
+follow_ups:
+  - days_from_diagnosis: 90
+    disease_response: "Invalid Response"  # Invalid response
+    ecog_performance_status: "10"  # Invalid status 
