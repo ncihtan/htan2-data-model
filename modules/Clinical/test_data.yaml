@@ -1,0 +1,51 @@
+participant_id: "HTAN-001"
+diagnosis:
+  primary_diagnosis_ncit_id: "NCIT:C2926"  # Breast Carcinoma
+  age_at_diagnosis_days: 18250  # ~50 years
+  tissue_or_organ_uberon_code: "UBERON:0000310"  # Breast
+  tumor_grade: "G2"
+  tumor_stage: "Stage II"
+  metastatic_stage: "M0"
+  regional_lymph_node_stage: "N1"
+  ajcc_staging_system_edition: "8th Edition"
+  metastasis_at_diagnosis: false
+  method_of_diagnosis: "Biopsy"
+
+exposures:
+  smoking_history: false
+  alcohol_history: true
+  environmental_exposure: true
+  environmental_exposure_type: "Occupational"
+
+family_history:
+  family_member_cancer_history: true
+  relatives_with_cancer_count: 2
+
+follow_ups:
+  - age_at_followup_days: 19000
+    progression_or_recurrence: false
+    disease_response: "Stable Disease"
+    ecog_performance_status: "1"
+    menopause_status: "Post-Menopausal"
+
+molecular_tests:
+  - age_at_test_start_days: 18300
+    gene_symbol: "BRCA1"
+    molecular_analysis_method: "DNA Sequencing"
+    molecular_analysis_result: "Pathogenic variant detected"
+    clinical_biospecimen_type: "Blood"
+    variant_origin: "Germline"
+    variant_type: "SNV"
+
+therapies:
+  - initial_disease_status: "Newly diagnosed"
+    treatment_intent_type: "Curative"
+    treatment_type: "Surgery"
+    pharmacotherapy_type: "Chemotherapy"
+    therapeutic_agents: "Doxorubicin, Cyclophosphamide"
+    age_at_treatment_start_days: 18350
+    age_at_treatment_end_days: 18600
+    off_treatment_reason: "Completed"
+    regimen_or_line_of_therapy: "First line"
+    number_of_cycles: 4
+    response: "Complete Response" 
