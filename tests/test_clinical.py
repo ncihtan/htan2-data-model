@@ -31,24 +31,18 @@ class TestClinical(unittest.TestCase):
         for file_path in self.valid_files:
             with self.subTest(file=file_path):
                 with open(file_path) as f:
+                    # This will validate during loading
                     data = yaml_loader.load(f, target_class=ClinicalData)
-                try:
-                    self.schema_view.get_class("ClinicalData").validate(data)
-                    validation_failed = False
-                except Exception as e:
-                    validation_failed = True
-                    validation_error = str(e)
-                self.assertFalse(validation_failed, 
-                               f"Validation failed for {file_path}: {validation_error if validation_failed else ''}")
+                self.assertIsInstance(data, ClinicalData)
 
     def test_invalid_data(self):
         """Test that all invalid data files fail validation."""
         for file_path in self.invalid_files:
             with self.subTest(file=file_path):
-                with open(file_path) as f:
-                    data = yaml_loader.load(f, target_class=ClinicalData)
-                with self.assertRaises(Exception):
-                    self.schema_view.get_class("ClinicalData").validate(data)
+                with self.assertRaises(ValueError):
+                    with open(file_path) as f:
+                        # This should raise a ValueError during loading
+                        yaml_loader.load(f, target_class=ClinicalData)
 
     def test_required_fields(self):
         """Test that missing required fields are caught."""
@@ -56,19 +50,19 @@ class TestClinical(unittest.TestCase):
             "participant_id": "TEST-001"
             # Missing required fields
         }
-        with self.assertRaises(Exception):
-            self.schema_view.get_class("ClinicalData").validate(test_data)
+        with self.assertRaises(ValueError):
+            ClinicalData(**test_data)
 
     def test_enum_values(self):
         """Test that invalid enum values are caught."""
         test_data = {
             "participant_id": "TEST-001",
             "diagnosis": {
-                "tumor_grade": "INVALID_GRADE"  # Invalid enum value
+                "tumor_grade": "G5"  # Invalid enum value
             }
         }
-        with self.assertRaises(Exception):
-            self.schema_view.get_class("ClinicalData").validate(test_data)
+        with self.assertRaises(ValueError):
+            ClinicalData(**test_data)
 
     def test_data_types(self):
         """Test that invalid data types are caught."""
@@ -78,8 +72,8 @@ class TestClinical(unittest.TestCase):
                 "age_at_diagnosis_days": "not_a_number"  # Should be integer
             }
         }
-        with self.assertRaises(Exception):
-            self.schema_view.get_class("ClinicalData").validate(test_data)
+        with self.assertRaises(ValueError):
+            ClinicalData(**test_data)
 
 if __name__ == '__main__':
     unittest.main() 
