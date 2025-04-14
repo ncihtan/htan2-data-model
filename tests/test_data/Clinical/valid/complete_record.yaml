@@ -12,7 +12,7 @@ diagnosis:
   method_of_diagnosis: "Biopsy"
 
 exposures:
-  smoking_history: false
+  smoking_history: true
   years_smoked: 0
   pack_years_smoked: 0.0
   alcohol_history: true
@@ -22,6 +22,12 @@ exposures:
 family_history:
   family_member_cancer_history: true
   relatives_with_cancer_count: 2
+  - relative_with_cancer_history: true
+    relationship_type: "Parent"
+    cancer_type: "NCIT:C2926"
+  - relative_with_cancer_history: true
+    relationship_type: "Sibling"
+    cancer_type: "NCIT:C2926"
 
 follow_ups:
   - age_at_followup_days: 19000
@@ -33,6 +39,9 @@ follow_ups:
     disease_response: "Stable Disease"
     ecog_performance_status: "1"
     menopause_status: "Post-Menopausal"
+  - days_from_diagnosis: 90
+    disease_response: "Stable Disease"
+    ecog_performance_status: "1"
 
 molecular_tests:
   - timepoint_label: "Baseline"
@@ -52,6 +61,12 @@ molecular_tests:
     test_result: "Positive"
     variant_origin: "Germline"
     variant_type: "SNV"
+  - test_name: "BRCA1 Mutation Analysis"
+    gene_studied: "BRCA1"
+    variant_type: "SNV"
+    variant_origin: "Germline"
+    molecular_analysis_method: "DNA Sequencing"
+    test_result: "Pathogenic Variant Detected"
 
 therapies:
   - initial_disease_status: "Newly diagnosed"
@@ -65,4 +80,8 @@ therapies:
     off_treatment_reason: "Completed"
     regimen_or_line_of_therapy: "First line"
     number_of_cycles: 4
-    response: "Complete Response" 
+    response: "Complete Response"
+  - treatment_intent_type: "Curative"
+    treatment_type: "Chemotherapy"
+    days_from_diagnosis_to_treatment: 30
+    treatment_outcome: "Complete Response" 
