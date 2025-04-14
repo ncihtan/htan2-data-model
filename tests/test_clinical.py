@@ -1,3 +1,4 @@
+"""Clinical test."""
 import os
 import unittest
 from pathlib import Path
@@ -5,6 +6,7 @@ import glob
 
 from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.utils.schemaview import SchemaView
+from htan_linkml.schema_classes.clinical import ClinicalData
 
 class TestClinical(unittest.TestCase):
     """Test cases for Clinical module."""
@@ -29,9 +31,9 @@ class TestClinical(unittest.TestCase):
         for file_path in self.valid_files:
             with self.subTest(file=file_path):
                 with open(file_path) as f:
-                    data = yaml_loader.load(f, target_class="ClinicalData")
+                    data = yaml_loader.load(f, target_class=ClinicalData)
                 try:
-                    self.schema_view.validate_object(data, "ClinicalData")
+                    self.schema_view.get_class("ClinicalData").validate(data)
                     validation_failed = False
                 except Exception as e:
                     validation_failed = True
@@ -44,9 +46,9 @@ class TestClinical(unittest.TestCase):
         for file_path in self.invalid_files:
             with self.subTest(file=file_path):
                 with open(file_path) as f:
-                    data = yaml_loader.load(f, target_class="ClinicalData")
+                    data = yaml_loader.load(f, target_class=ClinicalData)
                 with self.assertRaises(Exception):
-                    self.schema_view.validate_object(data, "ClinicalData")
+                    self.schema_view.get_class("ClinicalData").validate(data)
 
     def test_required_fields(self):
         """Test that missing required fields are caught."""
@@ -55,7 +57,7 @@ class TestClinical(unittest.TestCase):
             # Missing required fields
         }
         with self.assertRaises(Exception):
-            self.schema_view.validate_object(test_data, "ClinicalData")
+            self.schema_view.get_class("ClinicalData").validate(test_data)
 
     def test_enum_values(self):
         """Test that invalid enum values are caught."""
@@ -66,7 +68,7 @@ class TestClinical(unittest.TestCase):
             }
         }
         with self.assertRaises(Exception):
-            self.schema_view.validate_object(test_data, "ClinicalData")
+            self.schema_view.get_class("ClinicalData").validate(test_data)
 
     def test_data_types(self):
         """Test that invalid data types are caught."""
@@ -77,7 +79,7 @@ class TestClinical(unittest.TestCase):
             }
         }
         with self.assertRaises(Exception):
-            self.schema_view.validate_object(test_data, "ClinicalData")
+            self.schema_view.get_class("ClinicalData").validate(test_data)
 
 if __name__ == '__main__':
     unittest.main() 
