@@ -1,0 +1,20 @@
+participant_id: "HTAN-004"
+diagnosis:
+  primary_diagnosis_ncit_id: "NCIT:C2926"
+  age_at_diagnosis_days: 18250
+  tissue_or_organ_uberon_code: "UBERON:0000310"
+  tumor_grade: "G5"  # Invalid grade
+  tumor_stage: "Stage V"  # Invalid stage
+  metastatic_stage: "M0"
+  regional_lymph_node_stage: "N1"
+  ajcc_staging_system_edition: "8th Edition"
+  metastasis_at_diagnosis: false
+  method_of_diagnosis: "Biopsy"
+
+exposures:
+  smoking_history: false
+  alcohol_history: false
+  environmental_exposure: false
+
+family_history:
+  family_member_cancer_history: false 
