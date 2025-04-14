@@ -1,21 +1,34 @@
 ---
-site_name: "htan-linkml"
+site_name: HTAN LinkML
+site_description: HTAN LinkML Data Model
+site_author: HTAN Consortium
+
 theme:
   name: material
   # palette:
   #  scheme: slate
   #  primary: cyan
   features:
-    - content.tabs.link
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+
 plugins:
   - search
   - mermaid2
   - mermaid2:
       version: 10.9.0
+
 nav:
-  # - Home: home.md
-  - Index: index.md
-  - About: about.md
+  - Home: index.md
+  - Clinical Module:
+    - Overview: modules/Clinical/README.md
+    - Schema: modules/Clinical/clinical_schema.yaml
+  - Participant Module:
+    - Overview: modules/Participant/README.md
+    - Schema: modules/Participant/participant.yaml
+
 site_url: https://ncihtan.github.io/htan-linkml
 repo_url: https://github.com/ncihtan/htan-linkml
 
