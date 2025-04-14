@@ -1,5 +1,5 @@
 name: Clinical
-id: urn:uuid:277993eb-71d1-4748-8ce8-7016b57d29e3
+id: https://w3id.org/htan/clinical
 description: HTAN Clinical Data Model Schema
 imports:
   - linkml:types
@@ -7,7 +7,7 @@ imports:
   - ../Participant/participant
 
 prefixes:
-  htan: https://htan.org/schemas/
+  htan: https://w3id.org/htan/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
   UBERON: http://purl.obolibrary.org/obo/UBERON_
