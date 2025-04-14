@@ -1,0 +1,15 @@
+participant_id: "HTAN-001"
+age_at_enrollment_days: 18250
+race: "White"
+ethnicity: "Not Hispanic or Latino"
+gender: "Female"
+vital_status: "Alive"
+year_of_birth: 1970
+year_of_death: null
+cause_of_death: null
+height_cm: 165
+weight_kg: 60
+bmi: 22.0
+country_of_residence: "United States"
+state_of_residence: "California"
+zip_code: "94143" 

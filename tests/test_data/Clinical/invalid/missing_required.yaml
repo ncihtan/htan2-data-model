@@ -1,0 +1,9 @@
+participant_id: "HTAN-003"
+# Missing diagnosis
+exposures:
+  smoking_history: false
+  alcohol_history: false
+  environmental_exposure: false
+
+family_history:
+  family_member_cancer_history: false 

@@ -1,0 +1,6 @@
+participant_id: "HTAN-004"
+age_at_enrollment_days: 18250
+race: "Invalid Race"  # Invalid enum value
+ethnicity: "Not Hispanic or Latino"
+gender: "Invalid Gender"  # Invalid enum value
+vital_status: "Alive" 
