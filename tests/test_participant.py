@@ -1,3 +1,4 @@
+"""Participant test."""
 import os
 import unittest
 from pathlib import Path
@@ -5,6 +6,7 @@ import glob
 
 from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.utils.schemaview import SchemaView
+from htan_linkml.schema_classes.participant import Participant
 
 class TestParticipant(unittest.TestCase):
     """Test cases for Participant module."""
@@ -29,9 +31,9 @@ class TestParticipant(unittest.TestCase):
         for file_path in self.valid_files:
             with self.subTest(file=file_path):
                 with open(file_path) as f:
-                    data = yaml_loader.load(f, target_class="Participant")
+                    data = yaml_loader.load(f, target_class=Participant)
                 try:
-                    self.schema_view.validate_object(data, "Participant")
+                    self.schema_view.get_class("Participant").validate(data)
                     validation_failed = False
                 except Exception as e:
                     validation_failed = True
@@ -44,9 +46,9 @@ class TestParticipant(unittest.TestCase):
         for file_path in self.invalid_files:
             with self.subTest(file=file_path):
                 with open(file_path) as f:
-                    data = yaml_loader.load(f, target_class="Participant")
+                    data = yaml_loader.load(f, target_class=Participant)
                 with self.assertRaises(Exception):
-                    self.schema_view.validate_object(data, "Participant")
+                    self.schema_view.get_class("Participant").validate(data)
 
     def test_required_fields(self):
         """Test that missing required fields are caught."""
@@ -55,26 +57,25 @@ class TestParticipant(unittest.TestCase):
             # Missing required fields
         }
         with self.assertRaises(Exception):
-            self.schema_view.validate_object(test_data, "Participant")
+            self.schema_view.get_class("Participant").validate(test_data)
 
     def test_enum_values(self):
         """Test that invalid enum values are caught."""
         test_data = {
             "participant_id": "TEST-001",
-            "race": "Invalid Race",  # Invalid enum value
-            "gender": "Invalid Gender"  # Invalid enum value
+            "race": "INVALID_RACE"  # Invalid enum value
         }
         with self.assertRaises(Exception):
-            self.schema_view.validate_object(test_data, "Participant")
+            self.schema_view.get_class("Participant").validate(test_data)
 
     def test_data_types(self):
         """Test that invalid data types are caught."""
         test_data = {
             "participant_id": "TEST-001",
-            "age_at_enrollment_days": "not_a_number"  # Should be integer
+            "age_at_enrollment": "not_a_number"  # Should be integer
         }
         with self.assertRaises(Exception):
-            self.schema_view.validate_object(test_data, "Participant")
+            self.schema_view.get_class("Participant").validate(test_data)
 
 if __name__ == '__main__':
     unittest.main() 
