@@ -14,7 +14,7 @@ class TestClinical(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures."""
         self.base_dir = Path(__file__).parent.parent
-        self.schema_path = self.base_dir / "modules" / "Clinical" / "clinical_schema.yaml"
+        self.schema_path = self.base_dir / "modules" / "Clinical" / "clinical_core.yaml"
         self.schema_view = SchemaView(str(self.schema_path))
         
         # Get all test files
@@ -47,7 +47,7 @@ class TestClinical(unittest.TestCase):
     def test_required_fields(self):
         """Test that missing required fields are caught."""
         test_data = {
-            "participant_id": "TEST-001"
+            "PARTICIPANT_ID": "TEST-001"
             # Missing required fields
         }
         with self.assertRaises(ValueError):
@@ -56,9 +56,9 @@ class TestClinical(unittest.TestCase):
     def test_enum_values(self):
         """Test that invalid enum values are caught."""
         test_data = {
-            "participant_id": "TEST-001",
-            "diagnosis": {
-                "tumor_grade": "G5"  # Invalid enum value
+            "PARTICIPANT_ID": "TEST-001",
+            "DIAGNOSIS": {
+                "TUMOR_GRADE": "G5"  # Invalid enum value
             }
         }
         with self.assertRaises(ValueError):
@@ -67,9 +67,9 @@ class TestClinical(unittest.TestCase):
     def test_data_types(self):
         """Test that invalid data types are caught."""
         test_data = {
-            "participant_id": "TEST-001",
-            "diagnosis": {
-                "age_at_diagnosis_days": "not_a_number"  # Should be integer
+            "PARTICIPANT_ID": "TEST-001",
+            "DIAGNOSIS": {
+                "AGE_AT_DIAGNOSIS_DAYS": "not_a_number"  # Should be integer
             }
         }
         with self.assertRaises(ValueError):

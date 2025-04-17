@@ -1,0 +1,78 @@
+name: ClinicalVitalStatus
+id: https://w3id.org/htan/clinical/vital_status
+description: HTAN Clinical Data Model - Vital Status Domain
+
+enums:
+  VitalStatusEnum:
+    title: vital_status
+    permissible_values:
+      "Alive":
+        description: Individual is alive
+      "Deceased":
+        description: Individual is deceased
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  CauseOfDeathEnum:
+    title: cause_of_death
+    permissible_values:
+      "Cancer":
+        description: Death caused by cancer
+      "Other":
+        description: Death caused by other conditions
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  CauseOfDeathSourceEnum:
+    title: cause_of_death_source
+    permissible_values:
+      "Death Certificate":
+        description: Information from death certificate
+      "Medical Record":
+        description: Information from medical record
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+classes:
+  VitalStatus:
+    description: Information about the survival status of an individual
+    attributes:
+      VITAL_STATUS:
+        range: VitalStatusEnum
+        required: true
+        description: Survival status for individual (caDSR:2847330) (Aligns to CDRC Standard CDE)
+      AGE_IN_DAYS_AT_LAST_KNOWN_SURVIVAL_STATUS:
+        range: integer
+        required: true
+        description: Age in days when the last known survival status of the subject was captured. Use -1 if this data point is not available (caDSR:12305768) (No CRDC Standard Available)
+      AGE_IN_DAYS_AT_DEATH:
+        range: integer
+        required: false
+        description: Age in days of the subject at which death occurred. Use -1 if this data point is not available (caDSR:15748633) (No CRDC Standard Available)
+      CAUSE_OF_DEATH:
+        range: CauseOfDeathEnum
+        required: false
+        description: Circumstance or condition of greatest importance that resulted in the death (caDSR:4783274) (Aligns to CDRC Standard CDE)
+      CAUSE_OF_DEATH_SOURCE:
+        range: CauseOfDeathSourceEnum
+        required: false
+        description: Source of information used in describing the death of an individual (caDSR:2390921) (No CRDC Standard Available)
+    slot_usage:
+      AGE_IN_DAYS_AT_DEATH:
+        required: true
+        if:
+          VITAL_STATUS: "Deceased"
+      CAUSE_OF_DEATH:
+        required: true
+        if:
+          VITAL_STATUS: "Deceased"
+      CAUSE_OF_DEATH_SOURCE:
+        required: true
+        if:
+          VITAL_STATUS: "Deceased" 

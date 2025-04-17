@@ -1,0 +1,78 @@
+name: Clinical
+id: https://w3id.org/htan/clinical
+description: HTAN Clinical Data Model Schema
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../Participant/participant
+  - domains/demographics
+  - domains/diagnosis
+  - domains/exposure
+  - domains/family_history
+  - domains/followup
+  - domains/molecular
+  - domains/therapy
+  - domains/vital_status
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  caDSR: https://cadsr.cancer.gov/onedata/
+
+default_prefix: htan
+
+slots:
+  caDSR_id:
+    description: The caDSR identifier for this element
+    range: string
+    multivalued: false
+    required: false
+
+classes:
+  ClinicalData:
+    description: Container for all clinical data
+    attributes:
+      COMPONENT:
+        range: ComponentEnum
+        required: true
+        description: Category of metadata (e.g. Diagnosis, Biospecimen, scRNA-seq Level 1, etc.); provide the same one for all items/rows. (No CRDC Standard Available)
+      HTAN_PARTICIPANT_ID:
+        range: string
+        required: true
+        pattern: "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$"
+        description: HTAN Identifier of the research participant (caDSR:HTAN-Specific) (No CRDC Standard Available)
+      DEMOGRAPHICS:
+        range: Demographics
+        required: true
+        description: Demographic information
+      VITAL_STATUS:
+        range: VitalStatus
+        required: true
+        description: Vital status information
+      DIAGNOSIS:
+        range: Diagnosis
+        required: true
+        description: Primary diagnosis information
+      EXPOSURES:
+        range: Exposure
+        required: true
+        description: Exposure history
+      FAMILY_HISTORY:
+        range: FamilyHistory
+        required: true
+        description: Family history of cancer
+      FOLLOW_UPS:
+        range: FollowUp
+        multivalued: true
+        description: Follow-up observations
+      MOLECULAR_TESTS:
+        range: MolecularTest
+        multivalued: true
+        description: Molecular test results
+      THERAPIES:
+        range: Therapy
+        multivalued: true
+        description: Treatment information 

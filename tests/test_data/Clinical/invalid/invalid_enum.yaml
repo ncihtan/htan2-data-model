@@ -1,25 +1,30 @@
-participant_id: "HTAN-001"
+HTAN_PARTICIPANT_ID: "HTA200_3_D36667"
+demographics:
+  sex: "Invalid Sex"  # Invalid sex value
+  gender_identity: "Invalid Gender"  # Invalid gender value
+  race: "Invalid Race"  # Invalid race value
+  ethnicity: "Invalid Ethnicity"  # Invalid ethnicity value
+  age_at_enrollment_days: 18200
+  vital_status: "Invalid Status"  # Invalid vital status
 diagnosis:
   primary_diagnosis_ncit_id: "NCIT:C2926"
   age_at_diagnosis_days: 18250
   tissue_or_organ_uberon_code: "UBERON:0000310"
   tumor_grade: "G5"  # Invalid grade
   tumor_stage: "Stage V"  # Invalid stage
-  metastatic_stage: "M0"
-  regional_lymph_node_stage: "N1"
-  ajcc_staging_system_edition: "8th Edition"
-  metastasis_at_diagnosis: false
+  metastatic_stage: "M5"  # Invalid M stage
+  regional_lymph_node_stage: "N5"  # Invalid N stage
   method_of_diagnosis: "Invalid Method"  # Invalid method
 
 exposures:
-  smoking_history: true
-  alcohol_history: true
-  environmental_exposure_type: "Invalid Type"  # Invalid type
+  smoking_history: "Invalid History"  # Invalid smoking history enum
+  environmental_exposure: "Invalid Value"  # Invalid environmental exposure enum
+  environmental_exposure_type: "Invalid Type"  # Invalid type when environmental_exposure is Yes
 
 family_history:
-  family_member_cancer_history: false
+  family_member_cancer_history: "Invalid History"  # Invalid family history enum
 
 follow_ups:
-  - days_from_diagnosis: 90
-    disease_response: "Invalid Response"  # Invalid response
-    ecog_performance_status: "10"  # Invalid status 
+  - disease_response: "Invalid Response"  # Invalid response
+    ecog_performance_status: "10"  # Invalid ECOG status
+    molecular_consequence: "Invalid Consequence"  # Invalid molecular consequence 

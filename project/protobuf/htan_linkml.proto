@@ -1,26 +1,343 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// A generic grouping for any identifiable entity
-message NamedThing
+// Text term used to describe the patient's histologic diagnosis, as described by the World Health Organization's (WHO) International Classification of Diseases for Oncology (ICD-O).
+message Diagnosis
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
+  string studyDiagnosisId = 0
+  string diagnosisId = 0
+  diseaseTypeEnum diseaseType = 0
+  vitalStatusEnum vitalStatus = 0
+  primaryDiagnosisEnum primaryDiagnosis = 0
+  primarySiteEnum primarySite = 0
+  integer ageAtDiagnosis = 0
+  tumorGradeEnum tumorGrade = 0
+  tumorStageClinicalMEnum tumorStageClinicalM = 0
+  tumorStageClinicalNEnum tumorStageClinicalN = 0
+  tumorStageClinicalTEnum tumorStageClinicalT = 0
+  morphologyEnum morphology = 0
+  incidenceTypeEnum incidenceType = 0
+  progressionOrRecurrenceEnum progressionOrRecurrence = 0
+  integer daysToRecurrence = 0
+  integer daysToLastFollowup = 0
+  lastKnownDiseaseStatusEnum lastKnownDiseaseStatus = 0
+  integer daysToLastKnownStatus = 0
+  tissueOrOrganOfOriginEnum tissueOrOrganOfOrigin = 0
+  siteOfResectionOrBiopsyEnum siteOfResectionOrBiopsy = 0
+  float daysToLastKnownDiseaseStatus = 0
  }
-// Represents a Study
+// A set of related records kept together provided by a submitter.
+message File
+ {
+  string fileId = 0
+  string fileName = 0
+  fileTypeEnum fileType = 0
+  string fileDescription = 0
+  integer fileSize = 0
+  string md5sum = 0
+  string fileUrlInCds = 0
+  string experimentalStrategyAndDataSubtypes = 0
+  string submissionVersion = 0
+  string checksumValue = 0
+  string checksumAlgorithm = 0
+  string crdcId = 0
+  fileMappingLevelEnum fileMappingLevel = 0
+ }
+// In CDS genomic info refers to the sequencing methodsm techniques and equipment.
+message GenomicInfo
+ {
+  string fileId = 0
+  string fileName = 0
+  fileTypeEnum fileType = 0
+  string fileDescription = 0
+  integer fileSize = 0
+  string md5sum = 0
+  string fileUrlInCds = 0
+  string experimentalStrategyAndDataSubtypes = 0
+  string submissionVersion = 0
+  string checksumValue = 0
+  string checksumAlgorithm = 0
+  string crdcId = 0
+  fileMappingLevelEnum fileMappingLevel = 0
+  string genomicInfoId = 0
+  string libraryId = 0
+  integer bases = 0
+  integer numberOfReads = 0
+  float avgReadLength = 0
+  float coverage = 0
+  referenceGenomeAssemblyEnum referenceGenomeAssembly = 0
+  string customAssemblyFastaFileForAlignment = 0
+  string designDescription = 0
+  libraryStrategyEnum libraryStrategy = 0
+  libraryLayoutEnum libraryLayout = 0
+  librarySourceEnum librarySource = 0
+  librarySelectionEnum librarySelection = 0
+  platformEnum platform = 0
+  instrumentModelEnum instrumentModel = 0
+  string sequenceAlignmentSoftware = 0
+  string reporterLabel = 0
+  string methylationPlatform = 0
+  librarySourceMaterialEnum librarySourceMaterial = 0
+  librarySourceMoleculeEnum librarySourceMolecule = 0
+ }
+// The imaging data from DICOM and non-DICOM standards into CDS.
+message Image
+ {
+  string fileId = 0
+  string fileName = 0
+  fileTypeEnum fileType = 0
+  string fileDescription = 0
+  integer fileSize = 0
+  string md5sum = 0
+  string fileUrlInCds = 0
+  string experimentalStrategyAndDataSubtypes = 0
+  string submissionVersion = 0
+  string checksumValue = 0
+  string checksumAlgorithm = 0
+  fileMappingLevelEnum fileMappingLevel = 0
+  string studyLinkId = 0
+  deIdentificationMethodTypeEnum deIdentificationMethodType = 0
+  string deIdentificationMethodDescription = 0
+  string deIdentificationSoftware = 0
+  licenseEnum license = 0
+  string citationOrDOI = 0
+  string species = 0
+  imageModalityEnum imageModality = 0
+  string imagingEquipmentManufacturer = 0
+  string imagingEquipmentModel = 0
+  string imagingSofware = 0
+  string imagingProtocol = 0
+  string organOrTissue = 0
+  string performedImagingStudyDescription = 0
+  string performedImagingStudyAdmittingDiagnosisCode = 0
+  string performedImagingStudyNonAcquisitionModalitiesInStudyCode = 0
+  performedImagingStudyLossyImageCompressionIndicatorEnum performedImagingStudyLossyImageCompressionIndicator = 0
+  string performedImagingStudySummary = 0
+  string performedImagingStudyPrimaryAnatomicSiteCode = 0
+  string performedImagingStudyAcquisitionTypeCode = 0
+  performedImagingStudyCardiacSynchronizationTechniqueCodeEnum performedImagingStudyCardiacSynchronizationTechniqueCode = 0
+  string performedImagingStudyDataCollectionDiameter = 0
+  performedImagingStudyRespiratoryMotionTechniqueCodeEnum performedImagingStudyRespiratoryMotionTechniqueCode = 0
+  performedImagingStudyBodyPositionCodeEnum performedImagingStudyBodyPositionCode = 0
+  string performedImagingStudyTypeCode = 0
+  string performedImagingStudyAlgorithmCode = 0
+  string performedImagingStudyReconstructionFieldOfViewHeight = 0
+  string performedImagingStudyReconstructionFieldOfViewWidth = 0
+  string performedImagingStudyReconstructionDiameter = 0
+  string performedImagingStudySliceThickness = 0
+  string performedImagingStudyReconstructionInterval = 0
+  float longitudinalTemporalEventType = 0
+  float longitudinalTemporalEventOffset = 0
+  string cTAquisitionProtocolElementSingleCollimationWidth = 0
+  string cTAquisitionProtocolElementTotalCollimationWidth = 0
+  string cTAquisitionProtocolElementGantryDetectorTilt = 0
+  string cTAquisitionProtocolElementSpiralPitchFactor = 0
+  string cTAquisitionProtocolElementCtdiVol = 0
+  string cTAquisitionProtocolElementCtdiPhantomTypeCode = 0
+  string cTAquisitionProtocolElementKVp = 0
+  cTAquisitionProtocolElementExposureModulationTypeCodeEnum cTAquisitionProtocolElementExposureModulationTypeCode = 0
+  string cTImageReconstructionProtocolElementConvolutionKernel = 0
+  string cTImageReconstructionProtocolElementConvolutionKernelGroupCode = 0
+  mRImageAcquisitionProtocolElementEchoPulseSequenceCategoryCodeEnum mRImageAcquisitionProtocolElementEchoPulseSequenceCategoryCode = 0
+  string mRImageAcquisitionProtocolElementDiffusionBValue = 0
+  mRImageAcquisitionProtocolElementDiffusionDirectionalityCodeEnum mRImageAcquisitionProtocolElementDiffusionDirectionalityCode = 0
+  string mRImageAcquisitionProtocolElementMagneticFieldStrength = 0
+  mRImageAcquisitionProtocolElementResonantNucleusCodeEnum mRImageAcquisitionProtocolElementResonantNucleusCode = 0
+  mRImageAcquisitionProtocolElementAcquisitionContrastCodeEnum mRImageAcquisitionProtocolElementAcquisitionContrastCode = 0
+  string mRImageAcquisitionProtocolElementInversionRecoveryIndicator = 0
+  string mRImageAcquisitionProtocolElementPulseSequenceName = 0
+  string mRImageAcquisitionProtocolElementMultipleSpinEchoIndicator = 0
+  string mRImageAcquisitionProtocolElementPhaseContrastIndicator = 0
+  string mRImageAcquisitionProtocolElementTimeOfFlightContrastIndicator = 0
+  string mRImageAcquisitionProtocolElementArterialSpinLabelingContrastCode = 0
+  mRImageAcquisitionProtocolElementSteadyStatePulseSequenceCodeEnum mRImageAcquisitionProtocolElementSteadyStatePulseSequenceCode = 0
+  string mRImageAcquisitionProtocolElementEchoPlanarPulseSequenceIndicator = 0
+  string mRImageAcquisitionProtocolElementSaturationRecoveryIndicator = 0
+  mRImageAcquisitionProtocolElementSpectrallySelectedSuppressionCodeEnum mRImageAcquisitionProtocolElementSpectrallySelectedSuppressionCode = 0
+  mRImageReconstructionProtocolElementComplexImageComponentCodeEnum mRImageReconstructionProtocolElementComplexImageComponentCode = 0
+  string pETImagingAcquisitionProtocolElementGantryDetectorTilt = 0
+  string radiopharmaceuticalRadionuclideCode = 0
+  string acquisitionMethodType = 0
+  string tumorTissueType = 0
+  tissueFixativeEnum tissueFixative = 0
+  embeddingMediumEnum embeddingMedium = 0
+  stainingMethodEnum stainingMethod = 0
+  string objective = 0
+  string nominalMagnification = 0
+  string immersion = 0
+  string lensNumericalAperture = 0
+  string workingDistance = 0
+  string imagingAssayType = 0
+  string pyramid = 0
+  string physicalSizeX = 0
+  string physicalSizeY = 0
+  string physicalSizeZ = 0
+  string sizeC = 0
+  string sizeT = 0
+  string sizeX = 0
+  string sizeY = 0
+  string sizeZ = 0
+  string channelMetadataFilename = 0
+  string channelMetadataFileUrlInCds = 0
+  string channelId = 0
+  string channelName = 0
+  string cycleNumber = 0
+  string subCycleNumber = 0
+  string targetName = 0
+  string antibodyName = 0
+  string rridIdentifier = 0
+  string fluorophore = 0
+  string clone = 0
+  string lot = 0
+  string catalogNumber = 0
+  string excitationWavelength = 0
+  string emissionWavelength = 0
+  string excitationBandwidth = 0
+  string emissionBandwidth = 0
+  string metalIsotopeElementAbbreviation = 0
+  string metalIsotopeElementMass = 0
+  string oligoBarcodeUpperStrand = 0
+  string oligoBarcodeLowerStrand = 0
+  string dilution = 0
+  string concentration = 0
+  string crdcId = 0
+ }
+// Individual who takes part in the study
+message Participant
+ {
+  string studyParticipantId = 0
+  string participantId = 0
+  raceEnum race = 0
+  genderEnum gender = 0
+  ethnicityEnum ethnicity = 0
+  string dbGaPSubjectId = 0
+  sexEnum sex = 0
+  string crdcId = 0
+ }
+// Program in the Cancer Data Service refer to a broad framework of goals under which related projects or other research activities are grouped. Example - Clinical Proteomic Tumor Analysis Consortium (CPTAC)
+message Program
+ {
+  string studyName = 0
+  string studyAcronym = 0
+  string studyDescription = 0
+  string shortDescription = 0
+  string studyExternalUrl = 0
+  string primaryInvestigatorName = 0
+  string primaryInvestigatorEmail = 0
+  string coInvestigatorName = 0
+  string coInvestigatorEmail = 0
+  string phsAccession = 0
+  string bioprojectAccession = 0
+  indexDateEnum indexDate = 0
+  string cdsRequestor = 0
+  string fundingAgency = 0
+  string fundingSourceProgramName = 0
+  string grantId = 0
+  string clinicalTrialSystem = 0
+  string clinicalTrialIdentifier = 0
+  string clinicalTrialArm = 0
+  string organismSpecies = 0
+  adultOrChildhoodStudyEnum adultOrChildhoodStudy = 0
+  string dataTypes = 0
+  string fileTypes = 0
+  dataAccessLevelEnum dataAccessLevel = 0
+  string cdsPrimaryBucket = 0
+  string cdsSecondaryBucket = 0
+  string cdsTertiaryBucket = 0
+  float numberOfParticipants = 0
+  float numberOfSamples = 0
+  studyDataTypesEnum studyDataTypes = 0
+  string fileTypesAndFormat = 0
+  string sizeOfDataBeingUploaded = 0
+  string acl = 0
+  studyAccessEnum studyAccess = 0
+  string authz = 0
+  string studyVersion = 0
+  string roleOrAffiliation = 0
+  string title = 0
+  string firstName = 0
+  string middleName = 0
+  string lastName = 0
+  string suffix = 0
+  string email = 0
+  string clinicalTrialRepository = 0
+  string programName = 0
+  string programAcronym = 0
+  string programShortDescription = 0
+  string programFullDescription = 0
+  string programExternalUrl = 0
+  integer programSortOrder = 0
+  string programShortName = 0
+  string institution = 0
+ }
+// Specimen tissue type collected from the participant.
+message Sample
+ {
+  string sampleId = 0
+  sampleTypeEnum sampleType = 0
+  string sampleDescription = 0
+  string sampleTypeCategory = 0
+  sampleTumorStatusEnum sampleTumorStatus = 0
+  sampleAnatomicSiteEnum sampleAnatomicSite = 0
+  integer sampleAgeAtCollection = 0
+  string derivedFromSpecimen = 0
+  string biosampleAccession = 0
+ }
+// The narrative title used as a textual label for a research data collection. Example – University of Texas PDX Development and Trial Center Grant
 message Study
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  string primaryEmail = 0
-  date birthDate = 0
-  integer ageInYears = 0
-  personStatus vitalStatus = 0
+  string studyName = 0
+  string studyAcronym = 0
+  string studyDescription = 0
+  string shortDescription = 0
+  string studyExternalUrl = 0
+  string primaryInvestigatorName = 0
+  string primaryInvestigatorEmail = 0
+  string coInvestigatorName = 0
+  string coInvestigatorEmail = 0
+  string phsAccession = 0
+  string bioprojectAccession = 0
+  indexDateEnum indexDate = 0
+  string cdsRequestor = 0
+  string fundingAgency = 0
+  string fundingSourceProgramName = 0
+  string grantId = 0
+  string clinicalTrialSystem = 0
+  string clinicalTrialIdentifier = 0
+  string clinicalTrialArm = 0
+  string organismSpecies = 0
+  adultOrChildhoodStudyEnum adultOrChildhoodStudy = 0
+  string dataTypes = 0
+  string fileTypes = 0
+  dataAccessLevelEnum dataAccessLevel = 0
+  string cdsPrimaryBucket = 0
+  string cdsSecondaryBucket = 0
+  string cdsTertiaryBucket = 0
+  float numberOfParticipants = 0
+  float numberOfSamples = 0
+  studyDataTypesEnum studyDataTypes = 0
+  string fileTypesAndFormat = 0
+  string sizeOfDataBeingUploaded = 0
+  string acl = 0
+  studyAccessEnum studyAccess = 0
+  string authz = 0
+  string studyVersion = 0
+  string roleOrAffiliation = 0
+  string title = 0
+  string firstName = 0
+  string middleName = 0
+  string lastName = 0
+  string suffix = 0
+  string email = 0
+  string clinicalTrialRepository = 0
  }
-// A holder for Study objects
-message StudyCollection
+// An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process.
+message Treatment
  {
- repeated  study entries = 0
+  string treatmentId = 0
+  treatmentTypeEnum treatmentType = 0
+  treatmentOutcomeEnum treatmentOutcome = 0
+  integer daysToTreatment = 0
+  therapeuticAgentsEnum therapeuticAgents = 0
+  string response = 0
  }

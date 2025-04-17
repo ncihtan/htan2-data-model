@@ -4,8 +4,5 @@
    "example": "https://example.org/",
    "htan_linkml": "https://w3id.org/ncihtan/htan-linkml/",
    "linkml": "https://w3id.org/linkml/",
-   "schema": "http://schema.org/",
-   "NamedThing": {
-      "@id": "schema:Thing"
-   }
+   "schema": "http://schema.org/"
 }

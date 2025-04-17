@@ -1,0 +1,267 @@
+name: ClinicalDiagnosis
+id: https://w3id.org/htan/clinical/diagnosis
+description: HTAN Clinical Data Model - Diagnosis Domain
+
+enums:
+  TumorGradeEnum:
+    title: tumor_grade
+    permissible_values:
+      "G1":
+        description: Well differentiated
+      "G2":
+        description: Moderately differentiated
+      "G3":
+        description: Poorly differentiated
+      "G4":
+        description: Undifferentiated
+      "GX":
+        description: Grade cannot be assessed
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  TumorStageEnum:
+    title: tumor_stage
+    permissible_values:
+      "Stage I":
+        description: Stage I
+      "Stage IA":
+        description: Stage IA
+      "Stage IB":
+        description: Stage IB
+      "Stage II":
+        description: Stage II
+      "Stage IIA":
+        description: Stage IIA
+      "Stage IIB":
+        description: Stage IIB
+      "Stage III":
+        description: Stage III
+      "Stage IIIA":
+        description: Stage IIIA
+      "Stage IIIB":
+        description: Stage IIIB
+      "Stage IIIC":
+        description: Stage IIIC
+      "Stage IV":
+        description: Stage IV
+      "Stage IVA":
+        description: Stage IVA
+      "Stage IVB":
+        description: Stage IVB
+      "Stage IVC":
+        description: Stage IVC
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  ClinicalTStageEnum:
+    title: clinical_t_stage
+    permissible_values:
+      "T0":
+        description: No evidence of primary tumor
+      "T1":
+        description: Tumor ≤ 2 cm in greatest dimension
+      "T2":
+        description: Tumor > 2 cm but ≤ 4 cm in greatest dimension
+      "T3":
+        description: Tumor > 4 cm in greatest dimension
+      "T4":
+        description: Tumor of any size with direct extension to adjacent structures
+      "TX":
+        description: Primary tumor cannot be assessed
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  ClinicalNStageEnum:
+    title: clinical_n_stage
+    permissible_values:
+      "N0":
+        description: No regional lymph node metastasis
+      "N1":
+        description: Metastasis in 1-3 axillary lymph nodes
+      "N2":
+        description: Metastasis in 4-9 axillary lymph nodes
+      "N3":
+        description: Metastasis in 10 or more axillary lymph nodes
+      "NX":
+        description: Regional lymph nodes cannot be assessed
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  ClinicalMStageEnum:
+    title: clinical_m_stage
+    permissible_values:
+      "M0":
+        description: No distant metastasis
+      "M1":
+        description: Distant metastasis present
+      "MX":
+        description: Distant metastasis cannot be assessed
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  AJCCStagingSystemEditionEnum:
+    title: ajcc_staging_system_edition
+    permissible_values:
+      "7th Edition":
+        description: 7th Edition of AJCC Staging System
+      "8th Edition":
+        description: 8th Edition of AJCC Staging System
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  LastKnownDiseaseStatusEnum:
+    title: last_known_disease_status
+    permissible_values:
+      "Complete Response":
+        description: Complete disappearance of all target lesions
+      "Partial Response":
+        description: At least a 30% decrease in the sum of the diameters of target lesions
+      "Progressive Disease":
+        description: At least a 20% increase in the sum of the diameters of target lesions
+      "Stable Disease":
+        description: Neither sufficient shrinkage to qualify for partial response nor sufficient increase to qualify for progressive disease
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  TumorClassificationCategoryEnum:
+    title: tumor_classification_category
+    permissible_values:
+      "Benign":
+        description: Non-cancerous tumor
+      "Borderline":
+        description: Tumor with uncertain malignant potential
+      "Malignant":
+        description: Cancerous tumor
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  MetastasisAtDiagnosisEnum:
+    title: metastasis_at_diagnosis
+    permissible_values:
+      "No":
+        description: No metastasis at diagnosis
+      "Yes":
+        description: Metastasis present at diagnosis
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  MethodOfDiagnosisEnum:
+    title: method_of_diagnosis
+    permissible_values:
+      "Biopsy":
+        description: Diagnosis made by biopsy
+      "Clinical":
+        description: Diagnosis made by clinical examination
+      "Cytology":
+        description: Diagnosis made by cytology
+      "Imaging":
+        description: Diagnosis made by imaging
+      "Laboratory":
+        description: Diagnosis made by laboratory test
+      "Not Reported":
+        description: Not provided or available
+      "Pathology":
+        description: Diagnosis made by pathology
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+classes:
+  Diagnosis:
+    description: Information about the diagnosis
+    attributes:
+      PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID:
+        range: string
+        required: true
+        description: NCI Thesaurus ID for the primary diagnosis (caDSR:2192201) (Aligns to CDRC Standard CDE)
+      AGE_IN_DAYS_AT_DIAGNOSIS:
+        range: integer
+        required: true
+        description: Age in days at which the diagnosis was made (caDSR:2192202) (Aligns to CDRC Standard CDE)
+      TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE:
+        range: string
+        required: true
+        description: UBERON code for the tissue or organ of origin (caDSR:2192205) (Aligns to CDRC Standard CDE)
+      TUMOR_GRADE:
+        range: TumorGradeEnum
+        required: true
+        description: The grade of the tumor (caDSR:2192203) (Aligns to CDRC Standard CDE)
+      CLINICAL_T_STAGE:
+        range: ClinicalTStageEnum
+        required: true
+        description: Clinical T stage of the tumor (caDSR:2192206) (Aligns to CDRC Standard CDE)
+      CLINICAL_N_STAGE:
+        range: ClinicalNStageEnum
+        required: true
+        description: Clinical N stage of the tumor (caDSR:2192207) (Aligns to CDRC Standard CDE)
+      CLINICAL_M_STAGE:
+        range: ClinicalMStageEnum
+        required: true
+        description: Clinical M stage of the tumor (caDSR:2192208) (Aligns to CDRC Standard CDE)
+      AJCC_STAGING_SYSTEM_EDITION:
+        range: AJCCStagingSystemEditionEnum
+        required: true
+        description: Edition of AJCC staging system used (caDSR:2192209) (Aligns to CDRC Standard CDE)
+      AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS:
+        range: integer
+        required: true
+        description: Age in days at which the last known disease status was recorded (caDSR:2192203) (Aligns to CDRC Standard CDE)
+      LAST_KNOWN_DISEASE_STATUS:
+        range: LastKnownDiseaseStatusEnum
+        required: true
+        description: Last known disease status (caDSR:2192210) (Aligns to CDRC Standard CDE)
+      TUMOR_CLASSIFICATION_CATEGORY:
+        range: TumorClassificationCategoryEnum
+        required: true
+        description: Classification category of the tumor (caDSR:2192211) (Aligns to CDRC Standard CDE)
+      METASTASIS_AT_DIAGNOSIS:
+        range: MetastasisAtDiagnosisEnum
+        required: true
+        description: Presence of metastasis at diagnosis (caDSR:2192212) (Aligns to CDRC Standard CDE)
+      METHOD_OF_DIAGNOSIS:
+        range: MethodOfDiagnosisEnum
+        required: true
+        description: Method used to make the diagnosis (caDSR:2192213) (Aligns to CDRC Standard CDE)
+    slot_usage:
+      CLINICAL_T_STAGE:
+        if:
+          TUMOR_STAGE: ["Stage I", "Stage IA", "Stage IB", "Stage II", "Stage IIA", "Stage IIB", "Stage III", "Stage IIIA", "Stage IIIB", "Stage IIIC", "Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
+        then:
+          required: true
+      CLINICAL_N_STAGE:
+        if:
+          TUMOR_STAGE: ["Stage I", "Stage IA", "Stage IB", "Stage II", "Stage IIA", "Stage IIB", "Stage III", "Stage IIIA", "Stage IIIB", "Stage IIIC", "Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
+        then:
+          required: true
+      CLINICAL_M_STAGE:
+        if:
+          TUMOR_STAGE: ["Stage I", "Stage IA", "Stage IB", "Stage II", "Stage IIA", "Stage IIB", "Stage III", "Stage IIIA", "Stage IIIB", "Stage IIIC", "Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
+        then:
+          required: true
+      AJCC_STAGING_SYSTEM_EDITION:
+        if:
+          TUMOR_STAGE: ["Stage I", "Stage IA", "Stage IB", "Stage II", "Stage IIA", "Stage IIB", "Stage III", "Stage IIIA", "Stage IIIB", "Stage IIIC", "Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
+        then:
+          required: true
+      METASTASIS_AT_DIAGNOSIS:
+        if:
+          TUMOR_STAGE: ["Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
+        then:
+          required: true 

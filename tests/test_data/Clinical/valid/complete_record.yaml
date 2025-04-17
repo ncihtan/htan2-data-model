@@ -1,98 +1,102 @@
-participant_id: "HTAN-001"
-demographics:
-  sex: "Female"
-  gender: "Female"
-  race: "White"
-  ethnicity: "Not Hispanic or Latino"
-  age_at_enrollment_days: 18200  # ~50 years
-  vital_status: "Alive"
-diagnosis:
-  primary_diagnosis_ncit_id: "NCIT:C4908"  # Ovarian Carcinoma (more granular than just C3996)
-  age_at_diagnosis_days: 18250  # ~50 years
-  tissue_or_organ_uberon_code: "UBERON:0000310"  # Breast
-  tumor_grade: "G2"
-  tumor_stage: "Stage II"
-  metastatic_stage: "M0"
-  regional_lymph_node_stage: "N1"
-  ajcc_staging_system_edition: "8th Edition"
-  metastasis_at_diagnosis: false
-  method_of_diagnosis: "Biopsy"
+PARTICIPANT_ID: "HTAN-001"
+DEMOGRAPHICS:
+  SEX: "Female"
+  GENDER_IDENTITY: "Female"
+  RACE: "White"
+  ETHNICITY: "Not Hispanic or Latino"
+  AGE_AT_ENROLLMENT_DAYS: 18200  # ~50 years
+  YEARS_SMOKED: 0
+  PACK_YEARS_SMOKED: 0
+  RELATIVES_WITH_CANCER_HISTORY: 2
+VITAL_STATUS:
+  VITAL_STATUS: "Alive"
+  AGE_IN_DAYS_AT_LAST_KNOWN_SURVIVAL_STATUS: 18200
+DIAGNOSIS:
+  PRIMARY_DIAGNOSIS_NCIT_ID: "NCIT:C4908"  # Ovarian Carcinoma
+  AGE_AT_DIAGNOSIS_DAYS: 18250  # ~50 years
+  TISSUE_OR_ORGAN_UBERON_CODE: "UBERON:0000310"  # Breast
+  TUMOR_GRADE: "G2"
+  TUMOR_STAGE: "Stage II"
+  METASTATIC_STAGE: "M0"
+  REGIONAL_LYMPH_NODE_STAGE: "N1"
+  AJCC_STAGING_SYSTEM_EDITION: "8th Edition"
+  METASTASIS_AT_DIAGNOSIS: false
+  METHOD_OF_DIAGNOSIS: "Biopsy"
 
-exposures:
-  smoking_history: true
-  years_smoked: 0
-  pack_years_smoked: 0.0
-  alcohol_history: true
-  environmental_exposure: true
-  environmental_exposure_type: "Occupational"
+EXPOSURES:
+  SMOKING_HISTORY: "Yes"
+  ENVIRONMENTAL_EXPOSURE: "Yes"
+  ENVIRONMENTAL_EXPOSURE_TYPE: "Occupational"
 
-family_history:
-  family_member_cancer_history: true
-  relatives_with_cancer_count: 2
+FAMILY_HISTORY:
+  FAMILY_MEMBER_CANCER_HISTORY: "Yes"
+  RELATIVES_WITH_CANCER_COUNT: 2
 
-follow_ups:
-  - age_at_followup_days: 19000
-    progression_or_recurrence: false
-    progression_site_uberon_code: "UBERON:0000310"
-    progression_type: "Local"
-    evidence_of_recurrence_type: "Imaging"
-    age_at_progression_days: 19000
-    disease_response: "Stable Disease"
-    ecog_performance_status: "1"
-    menopause_status: "Post-Menopausal"
-  - age_at_followup_days: 18340  # 90 days after diagnosis
-    progression_or_recurrence: false
-    disease_response: "Stable Disease"
-    ecog_performance_status: "1"
-    menopause_status: "Post-Menopausal"
+FOLLOW_UPS:
+  - AGE_AT_FOLLOWUP_DAYS: 19000
+    PROGRESSION_OR_RECURRENCE: false
+    PROGRESSION_SITE_UBERON_CODE: "UBERON:0000310"
+    PROGRESSION_TYPE: "Local"
+    EVIDENCE_OF_RECURRENCE_TYPE: "Imaging"
+    AGE_AT_PROGRESSION_DAYS: 19000
+    DISEASE_RESPONSE: "Stable Disease"
+    ECOG_PERFORMANCE_STATUS: "1"
+    MENOPAUSE_STATUS: "Post-Menopausal"
+    MOLECULAR_CONSEQUENCE: "Frameshift"
+  - AGE_AT_FOLLOWUP_DAYS: 18340  # 90 days after diagnosis
+    PROGRESSION_OR_RECURRENCE: false
+    DISEASE_RESPONSE: "Stable Disease"
+    ECOG_PERFORMANCE_STATUS: "1"
+    MENOPAUSE_STATUS: "Post-Menopausal"
+    MOLECULAR_CONSEQUENCE: "Missense"
 
-molecular_tests:
-  - timepoint_label: "Baseline"
-    age_at_test_start_days: 18300
-    age_at_test_stop_days: 18301
-    gene_symbol: "BRCA1"
-    molecular_analysis_method: "DNA Sequencing"
-    molecular_analysis_result: "Pathogenic variant detected"
-    amino_acid_change: "p.Arg1234Ter"
-    clinical_biospecimen_type: "Blood"
-    copy_number: 2
-    exon: "Exon 11"
-    molecular_consequence: "Stop gained"
-    pathogenicity: "Pathogenic"
-    test_analyte_type: "DNA"
-    test_units: "copies"
-    test_result: "Positive"
-    variant_origin: "Germline"
-    variant_type: "SNV"
-  - age_at_test_start_days: 18300
-    gene_symbol: "BRCA1"
-    molecular_analysis_method: "DNA Sequencing"
-    molecular_analysis_result: "Pathogenic Variant Detected"
-    clinical_biospecimen_type: "Blood"
-    variant_origin: "Germline"
-    variant_type: "SNV"
+MOLECULAR_TESTS:
+  - TIMEPOINT_LABEL: "Baseline"
+    AGE_AT_TEST_START_DAYS: 18300
+    AGE_AT_TEST_STOP_DAYS: 18301
+    GENE_SYMBOL: "BRCA1"
+    MOLECULAR_ANALYSIS_METHOD: "DNA Sequencing"
+    MOLECULAR_ANALYSIS_RESULT: "Pathogenic variant detected"
+    AMINO_ACID_CHANGE: "p.Arg1234Ter"
+    CLINICAL_BIOSPECIMEN_TYPE: "Blood"
+    COPY_NUMBER: 2
+    EXON: "Exon 11"
+    MOLECULAR_CONSEQUENCE: "Stop gained"
+    PATHOGENICITY: "Pathogenic"
+    TEST_ANALYTE_TYPE: "DNA"
+    TEST_UNITS: "copies"
+    TEST_RESULT: "Positive"
+    VARIANT_ORIGIN: "Germline"
+    VARIANT_TYPE: "SNV"
+  - AGE_AT_TEST_START_DAYS: 18300
+    GENE_SYMBOL: "BRCA1"
+    MOLECULAR_ANALYSIS_METHOD: "DNA Sequencing"
+    MOLECULAR_ANALYSIS_RESULT: "Pathogenic Variant Detected"
+    CLINICAL_BIOSPECIMEN_TYPE: "Blood"
+    VARIANT_ORIGIN: "Germline"
+    VARIANT_TYPE: "SNV"
 
-therapies:
-  - initial_disease_status: "Newly diagnosed"
-    treatment_intent_type: "Curative"
-    treatment_type: "Surgery"
-    pharmacotherapy_type: "Chemotherapy"
-    therapeutic_agents: "Doxorubicin, Cyclophosphamide"
-    therapy_site_uberon_code: "UBERON:0000310"
-    age_at_treatment_start_days: 18350
-    age_at_treatment_end_days: 18600
-    off_treatment_reason: "Completed"
-    regimen_or_line_of_therapy: "First line"
-    number_of_cycles: 4
-    response: "Complete Response"
-  - initial_disease_status: "Newly diagnosed"
-    treatment_intent_type: "Curative"
-    treatment_type: "Chemotherapy"
-    pharmacotherapy_type: "Chemotherapy"
-    therapeutic_agents: "Doxorubicin, Cyclophosphamide"
-    age_at_treatment_start_days: 18280
-    age_at_treatment_end_days: 18310
-    off_treatment_reason: "Completed"
-    regimen_or_line_of_therapy: "First line"
-    number_of_cycles: 4
-    response: "Complete Response" 
+THERAPIES:
+  - INITIAL_DISEASE_STATUS: "Newly diagnosed"
+    TREATMENT_INTENT_TYPE: "Curative"
+    TREATMENT_TYPE: "Surgery"
+    PHARMACOTHERAPY_TYPE: "Chemotherapy"
+    THERAPEUTIC_AGENTS: "Doxorubicin, Cyclophosphamide"
+    THERAPY_SITE_UBERON_CODE: "UBERON:0000310"
+    AGE_AT_TREATMENT_START_DAYS: 18350
+    AGE_AT_TREATMENT_END_DAYS: 18600
+    OFF_TREATMENT_REASON: "Completed"
+    REGIMEN_OR_LINE_OF_THERAPY: "First line"
+    NUMBER_OF_CYCLES: 4
+    RESPONSE: "Complete Response"
+  - INITIAL_DISEASE_STATUS: "Newly diagnosed"
+    TREATMENT_INTENT_TYPE: "Curative"
+    TREATMENT_TYPE: "Chemotherapy"
+    PHARMACOTHERAPY_TYPE: "Chemotherapy"
+    THERAPEUTIC_AGENTS: "Doxorubicin, Cyclophosphamide"
+    AGE_AT_TREATMENT_START_DAYS: 18280
+    AGE_AT_TREATMENT_END_DAYS: 18310
+    OFF_TREATMENT_REASON: "Completed"
+    REGIMEN_OR_LINE_OF_THERAPY: "First line"
+    NUMBER_OF_CYCLES: 4
+    RESPONSE: "Complete Response" 

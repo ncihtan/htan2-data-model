@@ -1,27 +1,29 @@
-participant_id: "HTAN-002"
-demographics:
-  sex: "Female"
-  gender: "Female"
-  race: "White"
-  ethnicity: "Not Hispanic or Latino"
-  age_at_enrollment_days: 18200
-  vital_status: "Alive"
-diagnosis:
-  primary_diagnosis_ncit_id: "NCIT:C2926"
-  age_at_diagnosis_days: 18250
-  tissue_or_organ_uberon_code: "UBERON:0000310"
-  tumor_grade: "G2"
-  tumor_stage: "Stage II"
-  metastatic_stage: "M0"
-  regional_lymph_node_stage: "N1"
-  ajcc_staging_system_edition: "8th Edition"
-  metastasis_at_diagnosis: false
-  method_of_diagnosis: "Biopsy"
+PARTICIPANT_ID: "HTAN-002"
+DEMOGRAPHICS:
+  SEX: "Female"
+  GENDER_IDENTITY: "Female"
+  RACE: "White"
+  ETHNICITY: "Not Hispanic or Latino"
+  AGE_AT_ENROLLMENT_DAYS: 18200
+  YEARS_SMOKED: 0
+  PACK_YEARS_SMOKED: 0
+  RELATIVES_WITH_CANCER_HISTORY: 0
+VITAL_STATUS: "Alive"
+DIAGNOSIS:
+  PRIMARY_DIAGNOSIS_NCIT_ID: "NCIT:C2926"
+  AGE_AT_DIAGNOSIS_DAYS: 18250
+  TISSUE_OR_ORGAN_UBERON_CODE: "UBERON:0000310"
+  TUMOR_GRADE: "G2"
+  TUMOR_STAGE: "Stage II"
+  METASTATIC_STAGE: "M0"
+  REGIONAL_LYMPH_NODE_STAGE: "N1"
+  AJCC_STAGING_SYSTEM_EDITION: "8th Edition"
+  METASTASIS_AT_DIAGNOSIS: false
+  METHOD_OF_DIAGNOSIS: "Biopsy"
 
-exposures:
-  smoking_history: false
-  alcohol_history: false
-  environmental_exposure: false
+EXPOSURES:
+  SMOKING_HISTORY: "No"
+  ENVIRONMENTAL_EXPOSURE: "No"
 
-family_history:
-  family_member_cancer_history: false 
+FAMILY_HISTORY:
+  FAMILY_MEMBER_CANCER_HISTORY: "No" 

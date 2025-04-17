@@ -1,4 +1,4 @@
-participant_id: "HTAN-001"
+HTAN_PARTICIPANT_ID: "HTA200_2_D36667"
 diagnosis:
   primary_diagnosis_ncit_id: "NCIT:C2926"  # Breast Carcinoma
   age_at_diagnosis_days: 18250  # ~50 years
