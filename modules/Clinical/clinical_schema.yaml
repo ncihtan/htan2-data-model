@@ -297,11 +297,6 @@ classes:
         range: Therapy
         multivalued: true
         description: Treatment information
-      publication_specific_data:
-        range: PublicationSpecificData
-        multivalued: true
-        required: false
-        description: Publication-specific clinical data observations
 
   Diagnosis:
     description: Information about the participant's diagnosis
@@ -346,6 +341,10 @@ classes:
         range: string
         required: true
         description: Method used to establish the diagnosis
+      disease_response:
+        range: DiseaseResponseEnum
+        required: true
+        description: Treatment response
 
   Exposure:
     description: Exposure history
@@ -549,28 +548,4 @@ classes:
       response:
         range: DiseaseResponseEnum
         required: true
-        description: Treatment response
-
-  PublicationSpecificData:
-    description: Publication-specific clinical data observations (Tier 2)
-    attributes:
-      observation_key:
-        range: string
-        required: true
-        description: Key for the clinical observation
-      observation_value:
-        range: string
-        required: true
-        description: Value for the clinical observation
-      observation_type:
-        range: string
-        required: false
-        description: Data type of the observation value
-      observation_source:
-        range: string
-        required: false
-        description: Source of the observation (e.g., publication reference)
-      observation_date:
-        range: string
-        required: false
-        description: Date when the observation was recorded 
+        description: Treatment response 
