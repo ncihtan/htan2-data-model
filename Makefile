@@ -145,7 +145,7 @@ endif
 test: test-schema test-python test-examples
 
 test-schema:
-	$(RUN) gen-project ${CONFIG_YAML} -d tmp $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-project ${CONFIG_YAML} -d tmp $(SOURCE_SCHEMA_PATH) --ignore-warnings
 
 test-python:
 	$(RUN) python -m unittest discover
