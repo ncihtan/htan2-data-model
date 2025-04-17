@@ -240,35 +240,55 @@ classes:
       sex:
         range: SexEnum
         required: true
-        description: A textual description of a person's sex at birth (caDSR:HTAN-Specific)
+        description: A textual description of a person's sex at birth (caDSR:HTAN-Specific) (Does not Align with CRDC Standard)
       gender:
         range: GenderEnum
         required: true
-        description: A text term which describes a person's gender identity (caDSR:HTAN-Specific)
+        description: A text term which describes a person's internally held sense of their gender, which may or may not correspond to the individual's genotypic or phenotypic sex (caDSR:HTAN-Specific) (Does not Align with CRDC Standard)
       race:
         range: RaceEnum
         required: true
-        description: An individual's race as categorized by Office of Management and Budget (OMB) (caDSR:2192199)
+        description: An individual's race as categorized by Office of Management and Budget (OMB) (caDSR:2192199) (Aligns to CDRC Standard CDE)
       ethnicity:
         range: EthnicityEnum
         required: true
-        description: The text for reporting information about ethnicity based on the Office of Management and Budget (OMB) categories (caDSR:2192217)
+        description: The text for reporting information about ethnicity based on the Office of Management and Budget (OMB) categories (caDSR:2192217) (Aligns to CDRC Standard CDE)
       age_at_enrollment_days:
         range: integer
         required: true
-        description: Age at enrollment expressed in number of days since birth
+        description: Age at enrollment expressed in number of days since birth (No CRDC Standard Available)
       vital_status:
         range: VitalStatusEnum
         required: true
-        description: Whether the participant is alive or deceased
+        description: Survival status for individual (caDSR:2847330) (Aligns to CDRC Standard CDE)
+      age_in_days_at_last_known_survival_status:
+        range: integer
+        required: false
+        description: Age in days when the last known survival status of the subject was captured. Use -1 if this data point is not available (caDSR:12305768) (No CRDC Standard Available)
+      age_in_days_at_death:
+        range: integer
+        required: false
+        description: Age in days of the subject at which death occurred. Use -1 if this data point is not available (caDSR:15748633) (No CRDC Standard Available)
+      cause_of_death:
+        range: string
+        required: false
+        description: Circumstance or condition of greatest importance that resulted in the death (caDSR:4783274) (Aligns to CDRC Standard CDE)
+      cause_of_death_source:
+        range: string
+        required: false
+        description: Source of information used in describing the death of an individual (caDSR:2390921) (No CRDC Standard Available)
 
   ClinicalData:
     description: Container for all clinical data
     attributes:
+      component:
+        range: string
+        required: true
+        description: Category of metadata (e.g. Diagnosis, Biospecimen, scRNA-seq Level 1, etc.); provide the same one for all items/rows. (No CRDC Standard Available)
       participant_id:
         range: string
         required: true
-        description: Unique identifier for the participant (caDSR:2847330)
+        description: HTAN Identifier of the research participant (caDSR:HTAN-Specific) (No CRDC Standard Available)
       demographics:
         range: Demographics
         required: true
@@ -304,47 +324,59 @@ classes:
       primary_diagnosis_ncit_id:
         range: string
         required: true
-        description: NCI Thesaurus concept identifier for the most granular disease term relevant to the research atlas (caDSR:14905532)
+        description: NCI Thesaurus concept identifier, e.g. C3996 (caDSR:14905532) (Aligns to CDRC Standard CDE)
       age_at_diagnosis_days:
         range: integer
         required: true
-        description: Age at the time of diagnosis expressed in number of days since birth. Use -1 if this data point is not available (caDSR:15019300)
+        description: Age at the time of diagnosis expressed in number of days since birth. Use -1 if this data point is not available (caDSR:15019300) (No CRDC Standard Available)
       tissue_or_organ_uberon_code:
         range: string
         required: true
-        description: UBERON code for the tissue or organ of origin (caDSR:HTAN-Specific)
+        description: UBERON idenifier indicating the tissue or organ where the disease of interest originated, e.g. UBERON:0000002 (caDSR:14883047) (Aligns to CDRC Standard CDE)
       tumor_grade:
         range: TumorGradeEnum
         required: true
-        description: Grade of the tumor
+        description: Degree of abnormality of cancer cells as a measure of differentiation and aggressiveness (caDSR:11325685) (Aligns to CDRC Standard CDE)
       tumor_stage:
         range: TumorStageEnum
         required: true
-        description: Stage of the tumor
+        description: Extent of spread of the primary cancer based on evidence obtained from clinical assessment parameters determined prior to treatment (caDSR:3440328) (Aligns to CRDC Node)
       metastatic_stage:
         range: MetastaticStageEnum
         required: true
-        description: Metastatic stage of the tumor
+        description: Extent of the distant metastasis for the cancer based on evidence obtained from clinical assessment parameters determined prior to treatment (caDSR:3440331) (Aligns to CRDC Node)
       regional_lymph_node_stage:
         range: RegionalLymphNodeStageEnum
         required: true
-        description: Regional lymph node stage of the tumor
+        description: Extent of the regional lymph node involvement for the cancer based on evidence obtained from clinical assessment parameters determined prior to treatment (caDSR:3440330) (Aligns to CRDC Node)
       ajcc_staging_system_edition:
         range: string
         required: true
-        description: Edition of the AJCC staging system used
+        description: Version or edition of the American Joint Committee on Cancer Cancer Staging Handbooks used to guide TMN clinical staging in CLINICAL_T_STAGE, CLINICAL_M_STAGE and CLINICAL_N_STAGE fields (caDSR:2722309) (No CRDC Standard Available)
       metastasis_at_diagnosis:
         range: boolean
         required: true
-        description: Whether metastasis was present at diagnosis
+        description: State of metastatic disease at the time of primary tumor diagnosis (caDSR:3438571) (Aligns to CDRC Standard CDE)
       method_of_diagnosis:
         range: string
         required: true
-        description: Method used to establish the diagnosis
+        description: Type of clinical or laboratory procedure(s) used in the determination of a disease diagnosis (caDSR:14857681) (Aligns to CRDC Node)
       disease_response:
         range: DiseaseResponseEnum
         required: true
-        description: Treatment response
+        description: Result of an evaluation to determine whether pathologic and/or clinical changes resulted from treatment (caDSR:13383448) (Aligns to CDRC Standard CDE)
+      tumor_classification_category:
+        range: string
+        required: false
+        description: Classification of a tumor at a particular time based primarily on histopathological characteristics (caDSR:12922545) (Aligns to CDRC Standard CDE)
+      last_known_disease_status:
+        range: string
+        required: false
+        description: Most recently documented condition or state of an individual's disease (caDSR:12447172) (Aligns to CDRC Standard CDE)
+      age_in_days_at_last_known_disease_status:
+        range: integer
+        required: false
+        description: Age in days of subject at the time of their last known disease status. Use -1 if this data point is not available (caDSR:14589579) (No CRDC Standard Available)
 
   Exposure:
     description: Exposure history
@@ -352,27 +384,29 @@ classes:
       smoking_history:
         range: boolean
         required: true
-        description: Whether participant has smoking history
+        description: Current or past smoking status (caDSR:3626148) (Aligns to CRDC Node)
       years_smoked:
         range: integer
         required: false
-        description: Number of years smoked
+        description: Number of years a person has been smoking. Use -1 if this data point is not available (caDSR:3137957) (No CRDC Standard Available)
       pack_years_smoked:
         range: float
         required: false
-        description: Number of pack years smoked
+        description: Numeric computed value to represent lifetime tobacco exposure defined as number of cigarettes smoked per day x number of years smoked divided by 20. Use -1 if this data point is not available (caDSR:2955385) (No CRDC Standard Available)
       alcohol_history:
         range: boolean
         required: true
-        description: Whether participant has alcohol history
+        description: Response indicating whether or not an individual has ever consumed alcohol (caDSR:7537144) (No CRDC Standard Available)
       environmental_exposure:
         range: boolean
         required: true
-        description: Whether participant has environmental exposure
+        description: Response indicating whether or not an individual was exposed to potentially harmful environmental agents (caDSR:15753166) (Aligns to CRDC Node)
       environmental_exposure_type:
         range: EnvironmentalExposureTypeEnum
         required: false
-        description: Type of environmental exposure
+        multivalued: true
+        pattern: "^[^|]+(\\|[^|]+)*$"
+        description: Type of potentially harmful environmental agents to which an individual was exposed (caDSR:15753203) (Aligns to CDRC Standard CDE)
     slot_usage:
       years_smoked:
         if:
@@ -396,11 +430,11 @@ classes:
       family_member_cancer_history:
         range: boolean
         required: true
-        description: Whether there is family history of cancer
+        description: Response to indicate if any relative has a medical history that includes cancer (caDSR:13309936) (No CRDC Standard Available)
       relatives_with_cancer_count:
         range: integer
         required: false
-        description: Number of relatives with cancer history
+        description: Number of relatives the individual has with a known history of cancer. Use -1 if this data point is not available (caDSR:15907364) (No CRDC Standard Available)
     slot_usage:
       relatives_with_cancer_count:
         if:
@@ -414,46 +448,48 @@ classes:
       age_at_followup_days:
         range: integer
         required: true
-        description: Age in days at follow-up
+        description: Age in days of the subject at the the time of follow-up. Use -1 if this data point is not available (caDSR:15748634) (No CRDC Standard Available)
       progression_or_recurrence:
         range: boolean
         required: true
-        description: Whether there was progression or recurrence
-      progression_site_uberon_code:
+        description: Response indicating whether or not a subject has a progressive disease or a recurrent disease (caDSR:13529783) (Aligns to CDRC Standard CDE)
+      progression_or_recurrence_anatomic_site_uberon_code:
         range: string
         required: false
-        description: UBERON code for progression or recurrence site
-      progression_type:
+        multivalued: true
+        pattern: "^[^|]+(\\|[^|]+)*$"
+        description: UBERON identifier indicating where in the body a disease has progressed or recurred, e.g. UBERON:0000002 (caDSR:14883061) (Aligns to CDRC Standard CDE)
+      progression_or_recurrence_type:
         range: ProgressionTypeEnum
         required: false
-        description: Type of progression or recurrence
+        description: Type of worsening or reemergence of disease over time (caDSR:14742451) (Aligns to CDRC Standard CDE)
       evidence_of_recurrence_type:
         range: EvidenceOfRecurrenceTypeEnum
         required: false
-        description: Type of evidence for recurrence
-      age_at_progression_days:
+        description: Type of evidence used to determine whether the individual's disease has recurred (caDSR:7668166) (No CRDC Standard Available)
+      age_in_days_at_progression_or_recurrence:
         range: integer
         required: false
-        description: Age in days at progression or recurrence
+        description: Age of an individual, in days, when a diagnosis of disease progression or recurrence was made. Use -1 if this data point is not available (caDSR:15748659) (No CRDC Standard Available)
       disease_response:
         range: DiseaseResponseEnum
         required: true
-        description: Disease response
+        description: Result of an evaluation to determine whether pathologic and/or clinical changes resulted from treatment (caDSR:13383448) (Aligns to CDRC Standard CDE)
       ecog_performance_status:
         range: ECOGPerformanceStatusEnum
         required: true
-        description: ECOG performance status
+        description: ECOG functional performance status of the individual (caDSR:88) (Aligns to CDRC Standard CDE)
       menopause_status:
         range: MenopauseStatusEnum
         required: true
-        description: Menopause status
+        description: Menopausal status of the individual (caDSR:2434914) (No CRDC Standard Available)
     slot_usage:
-      progression_site_uberon_code:
+      progression_or_recurrence_anatomic_site_uberon_code:
         if:
           progression_or_recurrence: true
         then:
           required: true
-      progression_type:
+      progression_or_recurrence_type:
         if:
           progression_or_recurrence: true
         then:
@@ -463,7 +499,7 @@ classes:
           progression_or_recurrence: true
         then:
           required: true
-      age_at_progression_days:
+      age_in_days_at_progression_or_recurrence:
         if:
           progression_or_recurrence: true
         then:
@@ -475,71 +511,71 @@ classes:
       timepoint_label:
         range: string
         required: false
-        description: Label for the timepoint
+        description: Label to identify the time point at which the clinical data or biospecimen was obtained (e.g. Baseline, End of Treatment, Overall survival, Final). NO PHI/PII INFORMATION IS ALLOWED (caDSR:8031077) (No CRDC Standard Available)
       age_at_test_start_days:
         range: integer
         required: true
-        description: Age in days at molecular test start
+        description: Age in days of the subject at the start of a molecular analysis. Use -1 if this data point is not available (caDSR:15879017) (No CRDC Standard Available)
       age_at_test_stop_days:
         range: integer
         required: false
-        description: Age in days at molecular test stop
+        description: Age in days of the subject at the end of a molecular analysis (caDSR:15879662) (No CRDC Standard Available)
       gene_symbol:
         range: string
         required: true
-        description: Gene symbol
+        description: Gene symbol of the gene targeted or included in molecular analysis (caDSR:11280318) (No CRDC Standard Available)
       molecular_analysis_method:
         range: MolecularAnalysisMethodEnum
         required: true
-        description: Method used for molecular analysis
+        description: Description of the method used for clinical molecular analysis (caDSR:6142401) (No CRDC Standard Available)
       molecular_analysis_result:
         range: string
         required: true
-        description: Result of molecular analysis
+        description: Description of the result of clinical molecular analysis (caDSR:6142397) (No CRDC Standard Available)
       amino_acid_change:
         range: string
         required: false
-        description: Amino acid change
+        description: Alphanumeric value used to describe the amino acid change for a specific genetic variant, e.g., R116Q, as determined by clinical testing (caDSR:6142508) (No CRDC Standard Available)
       clinical_biospecimen_type:
         range: ClinicalBiospecimenTypeEnum
         required: true
-        description: Type of clinical biospecimen
+        description: Kind of material taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes (caDSR:7069877) (Aligns to CRDC Node)
       copy_number:
         range: integer
         required: false
-        description: Copy number
+        description: The quantity of gene copies resulting from a mutation (caDSR:13367966) (Aligns to CDRC Standard CDE)
       exon:
         range: string
         required: false
-        description: Exon information
+        description: Exon number targeted or included in a clinical molecular analysis (caDSR:6142411) (No CRDC Standard Available)
       molecular_consequence:
         range: string
         required: false
-        description: Molecular consequence
+        description: Description of the molecular consequence of genetic variation identified by a clinical test (caDSR:13367935) (No CRDC Standard Available)
       pathogenicity:
         range: string
         required: false
-        description: Pathogenicity
+        description: Description of a variant's level of involvement in the cause of the individual's disease according to the standards outlined by the American College of Medical Genetics and Genomics (ACMG) (caDSR:14532361) (No CRDC Standard Available)
       test_analyte_type:
         range: TestAnalyteTypeEnum
         required: false
-        description: Type of test analyte
+        description: Sample type or material being subjected to analysis (caDSR:15063661) (Aligns to CDRC Standard CDE)
       test_units:
         range: string
         required: false
-        description: Units for test result
+        description: Preferred unit of measure (UOM) for a laboratory test result, per NCI standards or per protocol specification (caDSR:2195977) (No CRDC Standard Available)
       test_result:
         range: string
         required: false
-        description: Test result
+        description: Specific result of a clinical molecular test. Use this field only if one of the permissible values in MOLECULAR_ANALYSIS_RESULT isn't relevant. Please provide TEST_UNITS if applicable (caDSR:2230153) (No CRDC Standard Available)
       variant_origin:
         range: VariantOriginEnum
         required: false
-        description: Origin of variant
+        description: Biological origin of a specific genetic variant identified by a clinical test (caDSR:14473382) (No CRDC Standard Available)
       variant_type:
         range: VariantTypeEnum
         required: false
-        description: Type of variant
+        description: Description of the type of genetic variation (caDSR:6142402) (No CRDC Standard Available)
 
   Therapy:
     description: Treatment information
@@ -547,48 +583,98 @@ classes:
       initial_disease_status:
         range: string
         required: true
-        description: Initial disease status
+        description: Status of the individual's malignancy when the treatment began (caDSR:15907348) (CRCD MAKING)
       treatment_intent_type:
         range: TreatmentIntentTypeEnum
         required: true
-        description: Type of treatment intent
+        description: Anticipated outcome for therapy (caDSR:15157467) (Aligns to CDRC Standard CDE)
       treatment_type:
         range: TreatmentTypeEnum
         required: true
-        description: Type of treatment
+        multivalued: true
+        pattern: "^[^|]+(\\|[^|]+)*$"
+        description: Type of treatment administered (caDSR:14737565) (Aligns to CDRC Standard CDE)
       pharmacotherapy_type:
         range: PharmacotherapyTypeEnum
         required: true
-        description: Type of pharmacotherapy
+        description: Whether single or combination pharmacotherapy was used (caDSR:15743233) (No CRDC Standard Available)
       therapeutic_agents:
         range: string
         required: true
-        description: Therapeutic agents used
-      therapy_site_uberon_code:
+        multivalued: true
+        pattern: "^[^|]+(\\|[^|]+)*$"
+        description: The NCit Preferred Name(s) of the Therapeutic agent(s), as dervied from https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Drug_or_Substance/Antineoplastic_Agent.xls (caDSR:14913015) (Aligns to CDRC Standard CDE)
+      therapy_anatomic_site_uberon_code:
         range: string
         required: false
-        description: UBERON code for therapy site
-      age_at_treatment_start_days:
+        description: UBERON identifier for the location within the body targeted by a therapeutic procedure, e.g. UBERON:0000002 (caDSR:14461856) (Aligns to CDRC Standard CDE)
+      age_in_days_at_treatment_start:
         range: integer
         required: true
-        description: Age in days at treatment start
-      age_at_treatment_end_days:
+        description: The age in days of the subject at the time that this treatment was started. Use -1 if this data point is not available (caDSR:12304720) (No CRDC Standard Available)
+      age_in_days_at_treatment_end:
         range: integer
         required: true
-        description: Age in days at treatment end
+        description: The age in days of the subject at the time that this treatment was completed. Use -1 if this data point is not available (caDSR:12304723) (No CRDC Standard Available)
       off_treatment_reason:
         range: OffTreatmentReasonEnum
         required: true
-        description: Reason for stopping treatment
+        description: Reason that an individual did not receive treatment (caDSR:15743249) (Aligns to CDRC Standard CDE)
       regimen_or_line_of_therapy:
         range: string
         required: true
-        description: Regimen or line of therapy
+        description: Description of the treatment regimen or line of therapy (caDSR:15915841) (No CRDC Standard Available)
       number_of_cycles:
         range: integer
         required: true
-        description: Number of treatment cycles
+        description: Number of cycles of the administered therapeutic procedure. Use -1 if this data point is not available (caDSR:3060718) (Aligns to CRDC Node)
       response:
         range: DiseaseResponseEnum
         required: true
-        description: Treatment response 
+        description: The result of an evaluation to determine whether pathologic and/or clinical changes resulted from treatment (caDSR:13383448) (Aligns to CDRC Standard CDE)
+    slot_usage:
+      therapy_anatomic_site_uberon_code:
+        if:
+          therapeutic_agents: true
+        then:
+          required: true
+
+  Demographics:
+    description: Demographic information about the participant
+    attributes:
+      vital_status:
+        range: VitalStatusEnum
+        required: true
+        description: Whether the participant is alive or deceased
+      age_in_days_at_last_known_survival_status:
+        range: integer
+        required: false
+        description: Age in days at last known survival status
+      age_in_days_at_death:
+        range: integer
+        required: false
+        description: Age in days at death
+      cause_of_death:
+        range: string
+        required: false
+        description: Cause of death
+      cause_of_death_source:
+        range: string
+        required: false
+        description: Source of cause of death information
+    slot_usage:
+      age_in_days_at_death:
+        if:
+          age_in_days_at_last_known_survival_status: true
+        then:
+          required: true
+      cause_of_death:
+        if:
+          age_in_days_at_last_known_survival_status: true
+        then:
+          required: true
+      cause_of_death_source:
+        if:
+          age_in_days_at_last_known_survival_status: true
+        then:
+          required: true 
