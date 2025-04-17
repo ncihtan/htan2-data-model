@@ -1,5 +1,5 @@
 # Auto generated from clinical_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-14T10:05:53
+# Generation date: 2025-04-17T10:58:03
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -69,6 +69,7 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 # Namespaces
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
+CADSR = CurieNamespace('caDSR', 'https://cadsr.cancer.gov/onedata/')
 HTAN = CurieNamespace('htan', 'https://w3id.org/htan/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
@@ -78,12 +79,61 @@ DEFAULT_ = HTAN
 # Types
 
 # Class references
-class ClinicalDataParticipantId(extended_str):
-    pass
-
-
 class ParticipantParticipantId(extended_str):
     pass
+
+
+@dataclass(repr=False)
+class Demographics(YAMLRoot):
+    """
+    Demographic information about the participant
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["Demographics"]
+    class_class_curie: ClassVar[str] = "htan:Demographics"
+    class_name: ClassVar[str] = "Demographics"
+    class_model_uri: ClassVar[URIRef] = HTAN.Demographics
+
+    sex: Union[str, "SexEnum"] = None
+    gender: Union[str, "GenderEnum"] = None
+    race: Union[str, "RaceEnum"] = None
+    ethnicity: Union[str, "EthnicityEnum"] = None
+    age_at_enrollment_days: int = None
+    vital_status: Union[str, "VitalStatusEnum"] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.sex):
+            self.MissingRequiredField("sex")
+        if not isinstance(self.sex, SexEnum):
+            self.sex = SexEnum(self.sex)
+
+        if self._is_empty(self.gender):
+            self.MissingRequiredField("gender")
+        if not isinstance(self.gender, GenderEnum):
+            self.gender = GenderEnum(self.gender)
+
+        if self._is_empty(self.race):
+            self.MissingRequiredField("race")
+        if not isinstance(self.race, RaceEnum):
+            self.race = RaceEnum(self.race)
+
+        if self._is_empty(self.ethnicity):
+            self.MissingRequiredField("ethnicity")
+        if not isinstance(self.ethnicity, EthnicityEnum):
+            self.ethnicity = EthnicityEnum(self.ethnicity)
+
+        if self._is_empty(self.age_at_enrollment_days):
+            self.MissingRequiredField("age_at_enrollment_days")
+        if not isinstance(self.age_at_enrollment_days, int):
+            self.age_at_enrollment_days = int(self.age_at_enrollment_days)
+
+        if self._is_empty(self.vital_status):
+            self.MissingRequiredField("vital_status")
+        if not isinstance(self.vital_status, VitalStatusEnum):
+            self.vital_status = VitalStatusEnum(self.vital_status)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -98,19 +148,26 @@ class ClinicalData(YAMLRoot):
     class_name: ClassVar[str] = "ClinicalData"
     class_model_uri: ClassVar[URIRef] = HTAN.ClinicalData
 
-    participant_id: Union[str, ClinicalDataParticipantId] = None
+    participant_id: str = None
+    demographics: Union[dict, Demographics] = None
     diagnosis: Union[dict, "Diagnosis"] = None
     exposures: Union[dict, "Exposure"] = None
     family_history: Union[dict, "FamilyHistory"] = None
     follow_ups: Optional[Union[Union[dict, "FollowUp"], List[Union[dict, "FollowUp"]]]] = empty_list()
     molecular_tests: Optional[Union[Union[dict, "MolecularTest"], List[Union[dict, "MolecularTest"]]]] = empty_list()
     therapies: Optional[Union[Union[dict, "Therapy"], List[Union[dict, "Therapy"]]]] = empty_list()
+    publication_specific_data: Optional[Union[Union[dict, "PublicationSpecificData"], List[Union[dict, "PublicationSpecificData"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.participant_id):
             self.MissingRequiredField("participant_id")
-        if not isinstance(self.participant_id, ClinicalDataParticipantId):
-            self.participant_id = ClinicalDataParticipantId(self.participant_id)
+        if not isinstance(self.participant_id, str):
+            self.participant_id = str(self.participant_id)
+
+        if self._is_empty(self.demographics):
+            self.MissingRequiredField("demographics")
+        if not isinstance(self.demographics, Demographics):
+            self.demographics = Demographics(**as_dict(self.demographics))
 
         if self._is_empty(self.diagnosis):
             self.MissingRequiredField("diagnosis")
@@ -133,13 +190,15 @@ class ClinicalData(YAMLRoot):
 
         self._normalize_inlined_as_dict(slot_name="therapies", slot_type=Therapy, key_name="initial_disease_status", keyed=False)
 
+        self._normalize_inlined_as_dict(slot_name="publication_specific_data", slot_type=PublicationSpecificData, key_name="observation_key", keyed=False)
+
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
 class Diagnosis(YAMLRoot):
     """
-    Primary diagnosis information
+    Information about the participant's diagnosis
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -155,9 +214,9 @@ class Diagnosis(YAMLRoot):
     tumor_stage: Union[str, "TumorStageEnum"] = None
     metastatic_stage: Union[str, "MetastaticStageEnum"] = None
     regional_lymph_node_stage: Union[str, "RegionalLymphNodeStageEnum"] = None
-    ajcc_staging_system_edition: Union[str, "AJCCStagingSystemEditionEnum"] = None
+    ajcc_staging_system_edition: str = None
     metastasis_at_diagnosis: Union[bool, Bool] = None
-    method_of_diagnosis: Union[str, "MethodOfDiagnosisEnum"] = None
+    method_of_diagnosis: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.primary_diagnosis_ncit_id):
@@ -197,8 +256,8 @@ class Diagnosis(YAMLRoot):
 
         if self._is_empty(self.ajcc_staging_system_edition):
             self.MissingRequiredField("ajcc_staging_system_edition")
-        if not isinstance(self.ajcc_staging_system_edition, AJCCStagingSystemEditionEnum):
-            self.ajcc_staging_system_edition = AJCCStagingSystemEditionEnum(self.ajcc_staging_system_edition)
+        if not isinstance(self.ajcc_staging_system_edition, str):
+            self.ajcc_staging_system_edition = str(self.ajcc_staging_system_edition)
 
         if self._is_empty(self.metastasis_at_diagnosis):
             self.MissingRequiredField("metastasis_at_diagnosis")
@@ -207,8 +266,8 @@ class Diagnosis(YAMLRoot):
 
         if self._is_empty(self.method_of_diagnosis):
             self.MissingRequiredField("method_of_diagnosis")
-        if not isinstance(self.method_of_diagnosis, MethodOfDiagnosisEnum):
-            self.method_of_diagnosis = MethodOfDiagnosisEnum(self.method_of_diagnosis)
+        if not isinstance(self.method_of_diagnosis, str):
+            self.method_of_diagnosis = str(self.method_of_diagnosis)
 
         super().__post_init__(**kwargs)
 
@@ -528,6 +587,47 @@ class Therapy(YAMLRoot):
 
         if self.therapy_site_uberon_code is not None and not isinstance(self.therapy_site_uberon_code, str):
             self.therapy_site_uberon_code = str(self.therapy_site_uberon_code)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PublicationSpecificData(YAMLRoot):
+    """
+    Publication-specific clinical data observations (Tier 2)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["PublicationSpecificData"]
+    class_class_curie: ClassVar[str] = "htan:PublicationSpecificData"
+    class_name: ClassVar[str] = "PublicationSpecificData"
+    class_model_uri: ClassVar[URIRef] = HTAN.PublicationSpecificData
+
+    observation_key: str = None
+    observation_value: str = None
+    observation_type: Optional[str] = None
+    observation_source: Optional[str] = None
+    observation_date: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.observation_key):
+            self.MissingRequiredField("observation_key")
+        if not isinstance(self.observation_key, str):
+            self.observation_key = str(self.observation_key)
+
+        if self._is_empty(self.observation_value):
+            self.MissingRequiredField("observation_value")
+        if not isinstance(self.observation_value, str):
+            self.observation_value = str(self.observation_value)
+
+        if self.observation_type is not None and not isinstance(self.observation_type, str):
+            self.observation_type = str(self.observation_type)
+
+        if self.observation_source is not None and not isinstance(self.observation_source, str):
+            self.observation_source = str(self.observation_source)
+
+        if self.observation_date is not None and not isinstance(self.observation_date, str):
+            self.observation_date = str(self.observation_date)
 
         super().__post_init__(**kwargs)
 
@@ -1127,8 +1227,32 @@ class AdultOrChildhoodEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.caDSR_id = Slot(uri=HTAN.caDSR_id, name="caDSR_id", curie=HTAN.curie('caDSR_id'),
+                   model_uri=HTAN.caDSR_id, domain=None, range=Optional[str])
+
+slots.demographics__sex = Slot(uri=HTAN.sex, name="demographics__sex", curie=HTAN.curie('sex'),
+                   model_uri=HTAN.demographics__sex, domain=None, range=Union[str, "SexEnum"])
+
+slots.demographics__gender = Slot(uri=HTAN.gender, name="demographics__gender", curie=HTAN.curie('gender'),
+                   model_uri=HTAN.demographics__gender, domain=None, range=Union[str, "GenderEnum"])
+
+slots.demographics__race = Slot(uri=HTAN.race, name="demographics__race", curie=HTAN.curie('race'),
+                   model_uri=HTAN.demographics__race, domain=None, range=Union[str, "RaceEnum"])
+
+slots.demographics__ethnicity = Slot(uri=HTAN.ethnicity, name="demographics__ethnicity", curie=HTAN.curie('ethnicity'),
+                   model_uri=HTAN.demographics__ethnicity, domain=None, range=Union[str, "EthnicityEnum"])
+
+slots.demographics__age_at_enrollment_days = Slot(uri=HTAN.age_at_enrollment_days, name="demographics__age_at_enrollment_days", curie=HTAN.curie('age_at_enrollment_days'),
+                   model_uri=HTAN.demographics__age_at_enrollment_days, domain=None, range=int)
+
+slots.demographics__vital_status = Slot(uri=HTAN.vital_status, name="demographics__vital_status", curie=HTAN.curie('vital_status'),
+                   model_uri=HTAN.demographics__vital_status, domain=None, range=Union[str, "VitalStatusEnum"])
+
 slots.clinicalData__participant_id = Slot(uri=HTAN.participant_id, name="clinicalData__participant_id", curie=HTAN.curie('participant_id'),
-                   model_uri=HTAN.clinicalData__participant_id, domain=None, range=URIRef)
+                   model_uri=HTAN.clinicalData__participant_id, domain=None, range=str)
+
+slots.clinicalData__demographics = Slot(uri=HTAN.demographics, name="clinicalData__demographics", curie=HTAN.curie('demographics'),
+                   model_uri=HTAN.clinicalData__demographics, domain=None, range=Union[dict, Demographics])
 
 slots.clinicalData__diagnosis = Slot(uri=HTAN.diagnosis, name="clinicalData__diagnosis", curie=HTAN.curie('diagnosis'),
                    model_uri=HTAN.clinicalData__diagnosis, domain=None, range=Union[dict, Diagnosis])
@@ -1147,6 +1271,9 @@ slots.clinicalData__molecular_tests = Slot(uri=HTAN.molecular_tests, name="clini
 
 slots.clinicalData__therapies = Slot(uri=HTAN.therapies, name="clinicalData__therapies", curie=HTAN.curie('therapies'),
                    model_uri=HTAN.clinicalData__therapies, domain=None, range=Optional[Union[Union[dict, Therapy], List[Union[dict, Therapy]]]])
+
+slots.clinicalData__publication_specific_data = Slot(uri=HTAN.publication_specific_data, name="clinicalData__publication_specific_data", curie=HTAN.curie('publication_specific_data'),
+                   model_uri=HTAN.clinicalData__publication_specific_data, domain=None, range=Optional[Union[Union[dict, PublicationSpecificData], List[Union[dict, PublicationSpecificData]]]])
 
 slots.diagnosis__primary_diagnosis_ncit_id = Slot(uri=HTAN.primary_diagnosis_ncit_id, name="diagnosis__primary_diagnosis_ncit_id", curie=HTAN.curie('primary_diagnosis_ncit_id'),
                    model_uri=HTAN.diagnosis__primary_diagnosis_ncit_id, domain=None, range=str)
@@ -1170,13 +1297,13 @@ slots.diagnosis__regional_lymph_node_stage = Slot(uri=HTAN.regional_lymph_node_s
                    model_uri=HTAN.diagnosis__regional_lymph_node_stage, domain=None, range=Union[str, "RegionalLymphNodeStageEnum"])
 
 slots.diagnosis__ajcc_staging_system_edition = Slot(uri=HTAN.ajcc_staging_system_edition, name="diagnosis__ajcc_staging_system_edition", curie=HTAN.curie('ajcc_staging_system_edition'),
-                   model_uri=HTAN.diagnosis__ajcc_staging_system_edition, domain=None, range=Union[str, "AJCCStagingSystemEditionEnum"])
+                   model_uri=HTAN.diagnosis__ajcc_staging_system_edition, domain=None, range=str)
 
 slots.diagnosis__metastasis_at_diagnosis = Slot(uri=HTAN.metastasis_at_diagnosis, name="diagnosis__metastasis_at_diagnosis", curie=HTAN.curie('metastasis_at_diagnosis'),
                    model_uri=HTAN.diagnosis__metastasis_at_diagnosis, domain=None, range=Union[bool, Bool])
 
 slots.diagnosis__method_of_diagnosis = Slot(uri=HTAN.method_of_diagnosis, name="diagnosis__method_of_diagnosis", curie=HTAN.curie('method_of_diagnosis'),
-                   model_uri=HTAN.diagnosis__method_of_diagnosis, domain=None, range=Union[str, "MethodOfDiagnosisEnum"])
+                   model_uri=HTAN.diagnosis__method_of_diagnosis, domain=None, range=str)
 
 slots.exposure__smoking_history = Slot(uri=HTAN.smoking_history, name="exposure__smoking_history", curie=HTAN.curie('smoking_history'),
                    model_uri=HTAN.exposure__smoking_history, domain=None, range=Union[bool, Bool])
@@ -1315,6 +1442,21 @@ slots.therapy__number_of_cycles = Slot(uri=HTAN.number_of_cycles, name="therapy_
 
 slots.therapy__response = Slot(uri=HTAN.response, name="therapy__response", curie=HTAN.curie('response'),
                    model_uri=HTAN.therapy__response, domain=None, range=Union[str, "DiseaseResponseEnum"])
+
+slots.publicationSpecificData__observation_key = Slot(uri=HTAN.observation_key, name="publicationSpecificData__observation_key", curie=HTAN.curie('observation_key'),
+                   model_uri=HTAN.publicationSpecificData__observation_key, domain=None, range=str)
+
+slots.publicationSpecificData__observation_value = Slot(uri=HTAN.observation_value, name="publicationSpecificData__observation_value", curie=HTAN.curie('observation_value'),
+                   model_uri=HTAN.publicationSpecificData__observation_value, domain=None, range=str)
+
+slots.publicationSpecificData__observation_type = Slot(uri=HTAN.observation_type, name="publicationSpecificData__observation_type", curie=HTAN.curie('observation_type'),
+                   model_uri=HTAN.publicationSpecificData__observation_type, domain=None, range=Optional[str])
+
+slots.publicationSpecificData__observation_source = Slot(uri=HTAN.observation_source, name="publicationSpecificData__observation_source", curie=HTAN.curie('observation_source'),
+                   model_uri=HTAN.publicationSpecificData__observation_source, domain=None, range=Optional[str])
+
+slots.publicationSpecificData__observation_date = Slot(uri=HTAN.observation_date, name="publicationSpecificData__observation_date", curie=HTAN.curie('observation_date'),
+                   model_uri=HTAN.publicationSpecificData__observation_date, domain=None, range=Optional[str])
 
 slots.participant__participant_id = Slot(uri=HTAN.participant_id, name="participant__participant_id", curie=HTAN.curie('participant_id'),
                    model_uri=HTAN.participant__participant_id, domain=None, range=URIRef)

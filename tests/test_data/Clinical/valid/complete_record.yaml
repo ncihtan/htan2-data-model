@@ -1,6 +1,13 @@
 participant_id: "HTAN-001"
+demographics:
+  sex: "Woman"
+  gender_identity: "Woman"
+  race: "White"
+  ethnicity: "Not Hispanic or Latino"
+  age_at_enrollment_days: 18200  # ~50 years
+  vital_status: true
 diagnosis:
-  primary_diagnosis_ncit_id: "NCIT:C2926"  # Breast Carcinoma
+  primary_diagnosis_ncit_id: "NCIT:C4908"  # Ovarian Carcinoma (more granular than just C3996)
   age_at_diagnosis_days: 18250  # ~50 years
   tissue_or_organ_uberon_code: "UBERON:0000310"  # Breast
   tumor_grade: "G2"

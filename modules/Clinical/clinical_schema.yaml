@@ -12,8 +12,16 @@ prefixes:
   schema: http://schema.org/
   UBERON: http://purl.obolibrary.org/obo/UBERON_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
+  caDSR: https://cadsr.cancer.gov/onedata/
 
 default_prefix: htan
+
+slots:
+  caDSR_id:
+    description: The caDSR identifier for this element
+    range: string
+    multivalued: false
+    required: false
 
 enums:
   TumorGradeEnum:
@@ -226,14 +234,45 @@ enums:
       Unknown:
 
 classes:
+  Demographics:
+    description: Demographic information about the participant
+    attributes:
+      sex:
+        range: SexEnum
+        required: true
+        description: A textual description of a person's sex at birth (caDSR:HTAN-Specific)
+      gender:
+        range: GenderEnum
+        required: true
+        description: A text term which describes a person's gender identity (caDSR:HTAN-Specific)
+      race:
+        range: RaceEnum
+        required: true
+        description: An individual's race as categorized by Office of Management and Budget (OMB) (caDSR:2192199)
+      ethnicity:
+        range: EthnicityEnum
+        required: true
+        description: The text for reporting information about ethnicity based on the Office of Management and Budget (OMB) categories (caDSR:2192217)
+      age_at_enrollment_days:
+        range: integer
+        required: true
+        description: Age at enrollment expressed in number of days since birth
+      vital_status:
+        range: VitalStatusEnum
+        required: true
+        description: Whether the participant is alive or deceased
+
   ClinicalData:
     description: Container for all clinical data
     attributes:
       participant_id:
-        identifier: true
         range: string
         required: true
-        description: Unique identifier for the participant
+        description: Unique identifier for the participant (caDSR:2847330)
+      demographics:
+        range: Demographics
+        required: true
+        description: Demographic information
       diagnosis:
         range: Diagnosis
         required: true
@@ -265,48 +304,48 @@ classes:
         description: Publication-specific clinical data observations
 
   Diagnosis:
-    description: Primary diagnosis information
+    description: Information about the participant's diagnosis
     attributes:
       primary_diagnosis_ncit_id:
         range: string
         required: true
-        description: NCI Thesaurus ID for the primary diagnosis
+        description: NCI Thesaurus concept identifier for the most granular disease term relevant to the research atlas (caDSR:14905532)
       age_at_diagnosis_days:
         range: integer
         required: true
-        description: Age in days at diagnosis
+        description: Age at the time of diagnosis expressed in number of days since birth. Use -1 if this data point is not available (caDSR:15019300)
       tissue_or_organ_uberon_code:
         range: string
         required: true
-        description: UBERON code for the tissue or organ of origin
+        description: UBERON code for the tissue or organ of origin (caDSR:HTAN-Specific)
       tumor_grade:
         range: TumorGradeEnum
         required: true
-        description: Tumor grade
+        description: Grade of the tumor
       tumor_stage:
         range: TumorStageEnum
         required: true
-        description: Tumor stage
+        description: Stage of the tumor
       metastatic_stage:
         range: MetastaticStageEnum
         required: true
-        description: Metastatic stage
+        description: Metastatic stage of the tumor
       regional_lymph_node_stage:
         range: RegionalLymphNodeStageEnum
         required: true
-        description: Regional lymph node stage
+        description: Regional lymph node stage of the tumor
       ajcc_staging_system_edition:
-        range: AJCCStagingSystemEditionEnum
+        range: string
         required: true
-        description: AJCC staging system edition
+        description: Edition of the AJCC staging system used
       metastasis_at_diagnosis:
         range: boolean
         required: true
         description: Whether metastasis was present at diagnosis
       method_of_diagnosis:
-        range: MethodOfDiagnosisEnum
+        range: string
         required: true
-        description: Method used for diagnosis
+        description: Method used to establish the diagnosis
 
   Exposure:
     description: Exposure history
