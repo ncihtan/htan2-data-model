@@ -1,0 +1,79 @@
+name: ClinicalDemographics
+id: https://w3id.org/htan/clinical/demographics
+description: HTAN Clinical Data Model - Demographics Domain
+
+enums:
+  EthnicGroupEnum:
+    title: ethnic_group
+    permissible_values:
+      "Hispanic or Latino":
+        description: Hispanic or Latino
+      "Not Hispanic or Latino":
+        description: Not Hispanic or Latino
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  GenderIdentityEnum:
+    title: gender_identity
+    permissible_values:
+      "Female":
+        description: Female
+      "Male":
+        description: Male
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  SexEnum:
+    title: sex
+    permissible_values:
+      "Female":
+        description: Female
+      "Male":
+        description: Male
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  RaceEnum:
+    title: race
+    permissible_values:
+      "American Indian or Alaska Native":
+        description: American Indian or Alaska Native
+      "Asian":
+        description: Asian
+      "Black or African American":
+        description: Black or African American
+      "Native Hawaiian or Other Pacific Islander":
+        description: Native Hawaiian or Other Pacific Islander
+      "White":
+        description: White
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+classes:
+  Demographics:
+    description: Information about the demographics
+    attributes:
+      ETHNIC_GROUP:
+        range: EthnicGroupEnum
+        required: true
+        description: Ethnic group of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)
+      GENDER_IDENTITY:
+        range: GenderIdentityEnum
+        required: true
+        description: Gender identity of the participant (caDSR:2192202) (Aligns to CDRC Standard CDE)
+      SEX:
+        range: SexEnum
+        required: true
+        description: Sex of the participant (caDSR:2192203) (Aligns to CDRC Standard CDE)
+      RACE:
+        range: RaceEnum
+        required: true
+        description: Race of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE) 

@@ -1,0 +1,35 @@
+name: ClinicalFamilyHistory
+id: https://w3id.org/htan/clinical/family_history
+description: HTAN Clinical Data Model - Family History Domain
+
+enums:
+  FamilyMemberCancerHistoryEnum:
+    title: family_member_cancer_history
+    permissible_values:
+      "No":
+        description: No family member with cancer history
+      "Yes":
+        description: Family member with cancer history
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+classes:
+  FamilyHistory:
+    description: Information about the family history
+    attributes:
+      FAMILY_MEMBER_CANCER_HISTORY:
+        range: FamilyMemberCancerHistoryEnum
+        required: true
+        description: Family member cancer history indicator (caDSR:2192201) (Aligns to CDRC Standard CDE)
+      RELATIVES_WITH_CANCER_HISTORY:
+        range: integer
+        required: false
+        description: Number of relatives with cancer history (caDSR:2192202) (Aligns to CDRC Standard CDE)
+    slot_usage:
+      RELATIVES_WITH_CANCER_HISTORY:
+        if:
+          FAMILY_MEMBER_CANCER_HISTORY: "Yes"
+        then:
+          required: true 
