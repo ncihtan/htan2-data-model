@@ -373,6 +373,22 @@ classes:
         range: EnvironmentalExposureTypeEnum
         required: false
         description: Type of environmental exposure
+    slot_usage:
+      years_smoked:
+        if:
+          smoking_history: true
+        then:
+          required: true
+      pack_years_smoked:
+        if:
+          smoking_history: true
+        then:
+          required: true
+      environmental_exposure_type:
+        if:
+          environmental_exposure: true
+        then:
+          required: true
 
   FamilyHistory:
     description: Family history of cancer
@@ -385,6 +401,12 @@ classes:
         range: integer
         required: false
         description: Number of relatives with cancer history
+    slot_usage:
+      relatives_with_cancer_count:
+        if:
+          family_member_cancer_history: true
+        then:
+          required: true
 
   FollowUp:
     description: Follow-up observations
@@ -425,6 +447,27 @@ classes:
         range: MenopauseStatusEnum
         required: true
         description: Menopause status
+    slot_usage:
+      progression_site_uberon_code:
+        if:
+          progression_or_recurrence: true
+        then:
+          required: true
+      progression_type:
+        if:
+          progression_or_recurrence: true
+        then:
+          required: true
+      evidence_of_recurrence_type:
+        if:
+          progression_or_recurrence: true
+        then:
+          required: true
+      age_at_progression_days:
+        if:
+          progression_or_recurrence: true
+        then:
+          required: true
 
   MolecularTest:
     description: Molecular test results
