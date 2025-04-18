@@ -3,6 +3,7 @@ from pathlib import Path
 import sys
 import os
 import yaml
+from copy import deepcopy
 from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.dumpers import yaml_dumper
 from modules.Clinical.src.htan_clinical.datamodel.clinical import ClinicalData
@@ -20,7 +21,8 @@ class TestConditionalRequirements(unittest.TestCase):
 
     def test_valid_clinical_data(self):
         """Test that valid clinical data can be loaded and validated"""
-        clinical_data = yaml_loader.loads(yaml.dump(self.test_data), target_class=ClinicalData)
+        test_data = deepcopy(self.test_data)
+        clinical_data = yaml_loader.loads(yaml.dump(test_data), target_class=ClinicalData)
         self.assertIsNotNone(clinical_data)
         
         # Verify required fields in Demographics
@@ -31,11 +33,12 @@ class TestConditionalRequirements(unittest.TestCase):
 
     def test_followup_conditional_requirements(self):
         """Test conditional requirements in follow-up data"""
-        clinical_data = yaml_loader.loads(yaml.dump(self.test_data), target_class=ClinicalData)
+        test_data = deepcopy(self.test_data)
+        clinical_data = yaml_loader.loads(yaml.dump(test_data), target_class=ClinicalData)
         
         # When PROGRESSION_OR_RECURRENCE is "Yes", certain fields should be required
         for followup in clinical_data.FOLLOW_UPS:
-            if followup.PROGRESSION_OR_RECURRENCE == "Yes":
+            if hasattr(followup, 'PROGRESSION_OR_RECURRENCE') and followup.PROGRESSION_OR_RECURRENCE == "Yes":
                 self.assertIsNotNone(followup.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE)
                 self.assertIsNotNone(followup.PROGRESSION_OR_RECURRENCE_TYPE)
                 self.assertIsNotNone(followup.EVIDENCE_OF_RECURRENCE_TYPE)
@@ -43,7 +46,8 @@ class TestConditionalRequirements(unittest.TestCase):
 
     def test_family_history_conditional_requirements(self):
         """Test conditional requirements in family history data"""
-        clinical_data = yaml_loader.loads(yaml.dump(self.test_data), target_class=ClinicalData)
+        test_data = deepcopy(self.test_data)
+        clinical_data = yaml_loader.loads(yaml.dump(test_data), target_class=ClinicalData)
         
         # When FAMILY_MEMBER_CANCER_HISTORY is "Yes", RELATIVES_WITH_CANCER_HISTORY should be required
         if clinical_data.FAMILY_HISTORY.FAMILY_MEMBER_CANCER_HISTORY == "Yes":
@@ -51,7 +55,7 @@ class TestConditionalRequirements(unittest.TestCase):
 
     def test_invalid_data_missing_required_field(self):
         """Test that missing required fields raise appropriate errors"""
-        invalid_data = self.test_data.copy()
+        invalid_data = deepcopy(self.test_data)
         del invalid_data['DEMOGRAPHICS']['ETHNIC_GROUP']
         
         with self.assertRaises(ValueError) as context:
@@ -61,7 +65,7 @@ class TestConditionalRequirements(unittest.TestCase):
 
     def test_invalid_enum_values(self):
         """Test that invalid enum values raise appropriate errors"""
-        invalid_data = self.test_data.copy()
+        invalid_data = deepcopy(self.test_data)
         invalid_data['DEMOGRAPHICS']['ETHNIC_GROUP'] = "Invalid Value"
         
         with self.assertRaises(ValueError) as context:

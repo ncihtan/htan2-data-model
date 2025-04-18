@@ -6,7 +6,7 @@ import glob
 
 from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.utils.schemaview import SchemaView
-from htan_linkml.datamodel.htan_linkml import ClinicalData
+from modules.Clinical.src.htan_clinical.datamodel.clinical import ClinicalData
 
 class TestClinical(unittest.TestCase):
     """Test cases for Clinical module."""
@@ -14,12 +14,13 @@ class TestClinical(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures."""
         self.base_dir = Path(__file__).parent.parent
-        self.schema_path = self.base_dir / "modules" / "Clinical" / "clinical_core.yaml"
+        self.schema_path = self.base_dir / "domains" / "clinical.yaml"
         self.schema_view = SchemaView(str(self.schema_path))
         
         # Get all test files
-        self.valid_files = glob.glob(str(self.base_dir / "tests" / "test_data" / "Clinical" / "valid" / "*.yaml"))
-        self.invalid_files = glob.glob(str(self.base_dir / "tests" / "test_data" / "Clinical" / "invalid" / "*.yaml"))
+        self.test_data_dir = self.base_dir / "tests" / "test_data"
+        self.valid_files = glob.glob(str(self.test_data_dir / "valid" / "*.yaml"))
+        self.invalid_files = glob.glob(str(self.test_data_dir / "invalid" / "*.yaml"))
 
     def test_schema_loads(self):
         """Test that the schema can be loaded."""
