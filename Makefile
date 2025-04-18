@@ -152,7 +152,10 @@ $(DOCDIR):
 	mkdir -p $@
 
 gendoc: $(DOCDIR)
-	cp -rf $(SRC)/docs/files/* $(DOCDIR) ; \
+	mkdir -p $(DOCDIR)
+	if [ -d "$(SRC)/docs/files" ]; then \
+		cp -rf "$(SRC)/docs/files/"* "$(DOCDIR)/" || true; \
+	fi
 	$(RUN) gen-doc ${GEN_DOC_ARGS} -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
 
 testdoc: gendoc serve
