@@ -6,7 +6,7 @@ import glob
 
 from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.utils.schemaview import SchemaView
-from modules.Clinical.src.htan_clinical.datamodel.clinical import ClinicalData
+from htan_clinical.datamodel.clinical import ClinicalData
 
 class TestClinical(unittest.TestCase):
     """Test cases for Clinical module."""

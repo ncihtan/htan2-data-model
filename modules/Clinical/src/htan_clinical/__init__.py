@@ -1,5 +1,5 @@
 """
-HTAN Clinical LinkML model package
+HTAN Clinical Domain LinkML Data Model
 """
 
 from .datamodel.clinical import *
