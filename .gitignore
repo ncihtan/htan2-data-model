@@ -15,6 +15,7 @@ modules/*/build/
 venv/
 env/
 .env/
+.venv/
 
 # IDE files
 .idea/
@@ -34,6 +35,11 @@ htmlcov/
 # Documentation
 docs/_build/
 site/
+*.md
+!README.md
+!CONTRIBUTING.md
+!CODE_OF_CONDUCT.md
+!LICENSE
 
 # Project-specific
 tmp/
