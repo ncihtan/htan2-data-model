@@ -16,6 +16,7 @@ venv/
 env/
 .env/
 .venv/
+ci-venv/
 
 # IDE files
 .idea/
@@ -33,13 +34,14 @@ Thumbs.db
 htmlcov/
 
 # Documentation
+# First ignore everything in docs
+docs/*
+# Then explicitly allow our markdown guides
+!docs/development.md
+!docs/quickstart.md
+# Also ignore these specific doc directories
 docs/_build/
-site/
-*.md
-!README.md
-!CONTRIBUTING.md
-!CODE_OF_CONDUCT.md
-!LICENSE
+docs/site/
 
 # Project-specific
 tmp/
@@ -66,3 +68,12 @@ project/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+
+# Build artifacts
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Poetry
+poetry.lock
