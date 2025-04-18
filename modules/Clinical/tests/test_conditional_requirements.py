@@ -5,7 +5,7 @@ import os
 import yaml
 from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.dumpers import yaml_dumper
-from src.htan_linkml.schema_classes.clinical import ClinicalData
+from modules.Clinical.src.htan_clinical.datamodel.clinical import ClinicalData
 
 # Add the project root to the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
