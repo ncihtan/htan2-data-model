@@ -17,6 +17,10 @@ endif
 RUN = poetry run
 BUILD_DIR = build
 MODULES_DIR = modules
+DOCDIR = docs
+SRC = src
+SOURCE_SCHEMA_PATH = modules/Clinical/domains/clinical.yaml
+GEN_DOC_ARGS = --no-mergeimports
 
 # List of modules (add new modules here)
 MODULES = Clinical
@@ -156,7 +160,7 @@ gendoc: $(DOCDIR)
 	if [ -d "$(SRC)/docs/files" ]; then \
 		cp -rf "$(SRC)/docs/files/"* "$(DOCDIR)/" || true; \
 	fi
-	$(RUN) gen-doc ${GEN_DOC_ARGS} -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-doc $(GEN_DOC_ARGS) -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
 
 testdoc: gendoc serve
 
