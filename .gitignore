@@ -1,25 +1,52 @@
-# Byte-compiled files
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*.pyo
+*$py.class
 
-# Virtual environment
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Module-specific build directories
+modules/*/build/
+
+# Virtual environments
 venv/
 env/
+.env/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation
+docs/_build/
+site/
+
+# Project-specific
+tmp/
+project/
+*.log
 
 # Logs and database files
 *.log
 *.sqlite3
 
 # Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.cache
-coverage.xml
 *.cover
 *.py,cover
-*.pytest_cache/
 
 # Temporary or backup files
 *.bak
@@ -28,19 +55,8 @@ coverage.xml
 *~
 
 # IDE and editor-specific files
-.vscode/
-.idea/
 *.sublime-project
 *.sublime-workspace
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
-
-# Build artifacts
-build/
-dist/
-*.egg-info/
-
-# OS-specific files
-.DS_Store
-Thumbs.db
