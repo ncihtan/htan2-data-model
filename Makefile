@@ -134,7 +134,7 @@ endif
 
 test-examples: examples/output
 
-examples/output: src/htan_linkml/schema/htan_linkml.yaml
+examples/output: modules/Clinical/domains/clinical.yaml
 	mkdir -p $@
 	$(RUN) linkml-run-examples \
 		--output-formats json \
