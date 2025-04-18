@@ -5,6 +5,9 @@ description = "A LinkML data model for HTAN Clinical Domain"
 authors = ["Adam Taylor <adam.taylor@sagebase.org>"]
 license = "MIT"
 readme = "README.md"
+packages = [
+    { include = "htan_clinical", from = "modules/Clinical/src" }
+]
 include = ["README.md", "modules/Clinical/src/htan_clinical/schema", "project"]
 
 [tool.poetry.dependencies]
