@@ -11,98 +11,14 @@ htan_linkml:Diagnosis a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "diagnosis" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:site_of_resection_or_biopsy ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:primary_diagnosis ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:days_to_recurrence ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:site_of_resection_or_biopsy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:last_known_disease_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:SiteOfResectionOrBiopsyEnum ;
-            owl:onProperty htan_linkml:site_of_resection_or_biopsy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:study_diagnosis_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:age_at_diagnosis ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:tumor_stage_clinical_n ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:disease_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty htan_linkml:days_to_recurrence ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:disease_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:diagnosis_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:incidence_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom htan_linkml:TumorStageClinicalTEnum ;
             owl:onProperty htan_linkml:tumor_stage_clinical_t ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:progression_or_recurrence ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:study_diagnosis_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:ProgressionOrRecurrenceEnum ;
-            owl:onProperty htan_linkml:progression_or_recurrence ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:primary_site ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty htan_linkml:days_to_last_followup ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:tissue_or_organ_of_origin ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty htan_linkml:days_to_last_known_status ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:days_to_last_followup ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:TumorStageClinicalMEnum ;
-            owl:onProperty htan_linkml:tumor_stage_clinical_m ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:LastKnownDiseaseStatusEnum ;
-            owl:onProperty htan_linkml:last_known_disease_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:PrimaryDiagnosisEnum ;
-            owl:onProperty htan_linkml:primary_diagnosis ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:days_to_last_followup ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:tissue_or_organ_of_origin ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:age_at_diagnosis ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:tumor_grade ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty htan_linkml:age_at_diagnosis ],
+            owl:allValuesFrom htan_linkml:TissueOrOrganOfOriginEnum ;
+            owl:onProperty htan_linkml:tissue_or_organ_of_origin ],
         [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:VitalStatusEnum ;
             owl:onProperty htan_linkml:vital_status ],
@@ -110,95 +26,179 @@ htan_linkml:Diagnosis a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:vital_status ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:days_to_last_known_disease_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:LastKnownDiseaseStatusEnum ;
+            owl:onProperty htan_linkml:last_known_disease_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:age_at_diagnosis ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:days_to_recurrence ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty htan_linkml:age_at_diagnosis ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:TumorStageClinicalMEnum ;
+            owl:onProperty htan_linkml:tumor_stage_clinical_m ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:diagnosis_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:morphology ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:disease_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:primary_site ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:study_diagnosis_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:tumor_grade ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:tumor_stage_clinical_n ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:last_known_disease_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:tissue_or_organ_of_origin ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:days_to_last_known_disease_status ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:days_to_last_known_status ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:disease_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:vital_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:study_diagnosis_id ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty htan_linkml:days_to_last_known_disease_status ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:days_to_last_known_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:PrimarySiteEnum ;
-            owl:onProperty htan_linkml:primary_site ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:TumorGradeEnum ;
-            owl:onProperty htan_linkml:tumor_grade ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:primary_site ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:tumor_stage_clinical_t ],
+            owl:onProperty htan_linkml:study_diagnosis_id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:days_to_last_known_status ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:incidence_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:diagnosis_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:days_to_last_known_disease_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:TumorStageClinicalTEnum ;
-            owl:onProperty htan_linkml:tumor_stage_clinical_t ],
+            owl:onProperty htan_linkml:primary_site ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:tumor_stage_clinical_m ],
         [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:TumorStageClinicalNEnum ;
-            owl:onProperty htan_linkml:tumor_stage_clinical_n ],
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:tumor_stage_clinical_m ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:SiteOfResectionOrBiopsyEnum ;
+            owl:onProperty htan_linkml:site_of_resection_or_biopsy ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:days_to_last_known_disease_status ],
+            owl:onProperty htan_linkml:incidence_type ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:days_to_recurrence ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:morphology ],
         [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:IncidenceTypeEnum ;
             owl:onProperty htan_linkml:incidence_type ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_diagnosis_id ],
+            owl:onProperty htan_linkml:site_of_resection_or_biopsy ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:last_known_disease_status ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom htan_linkml:TumorGradeEnum ;
             owl:onProperty htan_linkml:tumor_grade ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:primary_diagnosis ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:tumor_stage_clinical_t ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:ProgressionOrRecurrenceEnum ;
+            owl:onProperty htan_linkml:progression_or_recurrence ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:DiseaseTypeEnum ;
+            owl:onProperty htan_linkml:disease_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:PrimaryDiagnosisEnum ;
+            owl:onProperty htan_linkml:primary_diagnosis ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:incidence_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:primary_diagnosis ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:MorphologyEnum ;
+            owl:onProperty htan_linkml:morphology ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:site_of_resection_or_biopsy ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:diagnosis_id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:morphology ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:vital_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:TissueOrOrganOfOriginEnum ;
-            owl:onProperty htan_linkml:tissue_or_organ_of_origin ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:progression_or_recurrence ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:tumor_stage_clinical_n ],
+            owl:onProperty htan_linkml:tumor_stage_clinical_t ],
         [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:MorphologyEnum ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:morphology ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:primary_diagnosis ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:DiseaseTypeEnum ;
-            owl:onProperty htan_linkml:disease_type ],
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty htan_linkml:days_to_last_followup ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:tumor_stage_clinical_m ] ;
+            owl:onProperty htan_linkml:tissue_or_organ_of_origin ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty htan_linkml:days_to_recurrence ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:tumor_grade ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:days_to_last_followup ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:TumorStageClinicalNEnum ;
+            owl:onProperty htan_linkml:tumor_stage_clinical_n ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:PrimarySiteEnum ;
+            owl:onProperty htan_linkml:primary_site ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:diagnosis_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:progression_or_recurrence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:days_to_last_followup ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty htan_linkml:days_to_last_known_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:days_to_last_known_status ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:tumor_stage_clinical_n ] ;
     skos:definition "Text term used to describe the patient's histologic diagnosis, as described by the World Health Organization's (WHO) International Classification of Diseases for Oncology (ICD-O)." ;
     skos:inScheme <https://w3id.org/ncihtan/htan-linkml> .
 
@@ -206,185 +206,185 @@ htan_linkml:GenomicInfo a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "genomic_info" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty htan_linkml:bases ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:sequence_alignment_software ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:sequence_alignment_software ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:coverage ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:library_layout ],
+            owl:onProperty htan_linkml:genomic_info_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:library_source_molecule ],
         [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:LibraryStrategyEnum ;
-            owl:onProperty htan_linkml:library_strategy ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:library_id ],
+            owl:onProperty htan_linkml:reference_genome_assembly ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:library_strategy ],
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:coverage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:design_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:library_layout ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:custom_assembly_fasta_file_for_alignment ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty htan_linkml:number_of_reads ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:custom_assembly_fasta_file_for_alignment ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:LibrarySourceMaterialEnum ;
-            owl:onProperty htan_linkml:library_source_material ],
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:platform ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:library_strategy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
             owl:onProperty htan_linkml:avg_read_length ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:custom_assembly_fasta_file_for_alignment ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:instrument_model ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:reporter_label ],
         [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:InstrumentModelEnum ;
             owl:onProperty htan_linkml:instrument_model ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:reporter_label ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:sequence_alignment_software ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:methylation_platform ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:library_source ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:bases ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:library_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:methylation_platform ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:reporter_label ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:instrument_model ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:PlatformEnum ;
-            owl:onProperty htan_linkml:platform ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:LibrarySourceMoleculeEnum ;
-            owl:onProperty htan_linkml:library_source_molecule ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:library_layout ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:genomic_info_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:library_selection ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:library_source_material ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:LibrarySelectionEnum ;
-            owl:onProperty htan_linkml:library_selection ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:platform ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:reference_genome_assembly ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:library_source_molecule ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:LibrarySourceEnum ;
-            owl:onProperty htan_linkml:library_source ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:library_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty htan_linkml:coverage ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:library_selection ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:genomic_info_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:genomic_info_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:design_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:avg_read_length ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:reference_genome_assembly ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:design_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:library_source ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:bases ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:ReferenceGenomeAssemblyEnum ;
-            owl:onProperty htan_linkml:reference_genome_assembly ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty htan_linkml:avg_read_length ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:platform ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:design_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:coverage ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:number_of_reads ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:number_of_reads ],
+            owl:allValuesFrom htan_linkml:LibraryStrategyEnum ;
+            owl:onProperty htan_linkml:library_strategy ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:library_strategy ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:custom_assembly_fasta_file_for_alignment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:library_source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:sequence_alignment_software ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:ReferenceGenomeAssemblyEnum ;
+            owl:onProperty htan_linkml:reference_genome_assembly ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:number_of_reads ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:platform ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:methylation_platform ],
+            owl:onProperty htan_linkml:library_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:LibrarySelectionEnum ;
+            owl:onProperty htan_linkml:library_selection ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:genomic_info_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:avg_read_length ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:library_source_material ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:design_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:library_selection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:LibrarySourceMoleculeEnum ;
+            owl:onProperty htan_linkml:library_source_molecule ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty htan_linkml:number_of_reads ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:reference_genome_assembly ],
+        [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:LibraryLayoutEnum ;
             owl:onProperty htan_linkml:library_layout ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:sequence_alignment_software ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:methylation_platform ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:reporter_label ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:library_source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:library_selection ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:bases ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:library_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:library_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:methylation_platform ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:reporter_label ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty htan_linkml:bases ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:genomic_info_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:sequence_alignment_software ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty htan_linkml:coverage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:methylation_platform ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:library_source_material ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:coverage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:instrument_model ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:bases ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:LibrarySourceEnum ;
+            owl:onProperty htan_linkml:library_source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:library_layout ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:design_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:avg_read_length ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:custom_assembly_fasta_file_for_alignment ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:library_source_molecule ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:LibrarySourceMaterialEnum ;
+            owl:onProperty htan_linkml:library_source_material ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:PlatformEnum ;
+            owl:onProperty htan_linkml:platform ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:instrument_model ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:reporter_label ],
         htan_linkml:File ;
     skos:definition "In CDS genomic info refers to the sequencing methodsm techniques and equipment." ;
     skos:inScheme <https://w3id.org/ncihtan/htan-linkml> .
@@ -394,958 +394,958 @@ htan_linkml:Image a owl:Class,
     rdfs:label "image" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:oligo_barcode_upper_strand ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:tissue_fixative ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_saturationRecoveryIndicator ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_resonantNucleusCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:sub_cycle_number ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:physical_size_x ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewWidth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiVol ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:PETImagingAcquisitionProtocolElement_gantryDetectorTilt ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:acquisition_method_type ],
+            owl:onProperty htan_linkml:performed_imaging_study_acquisitionTypeCode ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:image_modality ],
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_totalCollimationWidth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementEchoPulseSequenceCategoryCodeEnum ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:Radiopharmaceutical_radionuclideCode ],
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_arterialSpinLabelingContrastCode ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:excitation_wavelength ],
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:size_c ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:pyramid ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:oligo_barcode_lower_strand ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionInterval ],
+            owl:onProperty htan_linkml:longitudinal_temporal_event_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:citation_or_DOI ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_typeCode ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageReconstructionProtocolElement_complexImageComponentCode ],
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewHeight ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:objective ],
+            owl:onProperty htan_linkml:immersion ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:clone ],
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:crdc_id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_dataCollectionDiameter ],
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:embedding_medium ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_acquisitionTypeCode ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionBValue ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:de_identification_method_type ],
+            owl:onProperty htan_linkml:channel_name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_kVp ],
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_resonantNucleusCode ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_inversionRecoveryIndicator ],
+            owl:onProperty htan_linkml:channel_id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_acquisitionContrastCode ],
+            owl:onProperty htan_linkml:rrid_identifier ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_algorithmCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:emission_bandwidth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_admittingDiagnosisCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:antibody_name ],
+            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementSpectrallySelectedSuppressionCodeEnum ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiPhantomTypeCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiVol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:TissueFixativeEnum ;
+            owl:onProperty htan_linkml:tissue_fixative ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:sub_cycle_number ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:PETImagingAcquisitionProtocolElement_gantryDetectorTilt ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:tumor_tissue_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:imaging_assay_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:species ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_magneticFieldStrength ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernelGroupCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:metal_isotope_element_abbreviation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:PerformedImagingStudyBodyPositionCodeEnum ;
+            owl:onProperty htan_linkml:performed_imaging_study_bodyPositionCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewHeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:target_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:imaging_protocol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:physical_size_y ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:pyramid ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:rrid_identifier ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode ],
+            owl:onProperty htan_linkml:citation_or_DOI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:EmbeddingMediumEnum ;
+            owl:onProperty htan_linkml:embedding_medium ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionDiameter ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:channel_name ],
+            owl:onProperty htan_linkml:size_y ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:metal_isotope_element_mass ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:physical_size_x ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:study_link_id ],
+            owl:onProperty htan_linkml:rrid_identifier ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:size_t ],
+            owl:onProperty htan_linkml:Radiopharmaceutical_radionuclideCode ],
         [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:TissueFixativeEnum ;
-            owl:onProperty htan_linkml:tissue_fixative ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:size_y ],
         [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:PerformedImagingStudyBodyPositionCodeEnum ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:performed_imaging_study_bodyPositionCode ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_nonAcquisitionModalitiesInStudyCode ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:de_identification_method_description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:performed_imaging_study_algorithmCode ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:objective ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:antibody_name ],
+            owl:onProperty htan_linkml:lot ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:channel_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:metal_isotope_element_abbreviation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:oligo_barcode_lower_strand ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:size_x ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:emission_bandwidth ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:tissue_fixative ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_link_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_arterialSpinLabelingContrastCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:oligo_barcode_upper_strand ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_summary ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:citation_or_DOI ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:target_name ],
+            owl:onProperty htan_linkml:working_distance ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:physical_size_z ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_kVp ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernel ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageReconstructionProtocolElement_complexImageComponentCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:imaging_assay_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:size_c ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:embedding_medium ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:metal_isotope_element_abbreviation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:excitation_bandwidth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_arterialSpinLabelingContrastCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:StainingMethodEnum ;
-            owl:onProperty htan_linkml:staining_method ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:cycle_number ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:sub_cycle_number ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty htan_linkml:longitudinal_temporal_event_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:size_c ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_respiratoryMotionTechniqueCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_magneticFieldStrength ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:emission_bandwidth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiVol ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:license ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:LicenseEnum ;
-            owl:onProperty htan_linkml:license ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:clone ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_gantryDetectorTilt ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:DeIdentificationMethodTypeEnum ;
-            owl:onProperty htan_linkml:de_identification_method_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionDiameter ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:lot ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_spiralPitchFactor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementAcquisitionContrastCodeEnum ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_acquisitionContrastCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_pulseSequenceName ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:embedding_medium ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_totalCollimationWidth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernelGroupCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_phaseContrastIndicator ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:physical_size_x ],
+            owl:onProperty htan_linkml:excitation_wavelength ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_pulseSequenceName ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:physical_size_x ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:metal_isotope_element_abbreviation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:channel_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:oligo_barcode_lower_strand ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:lot ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:lens_numerical_aperture ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:channel_metadata_file_url_in_cds ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:emission_wavelength ],
+            owl:onProperty htan_linkml:working_distance ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_inversionRecoveryIndicator ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:size_x ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_summary ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:target_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:size_t ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:physical_size_y ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:de_identification_method_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_cardiacSynchronizationTechniqueCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionBValue ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_resonantNucleusCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:PETImagingAcquisitionProtocolElement_gantryDetectorTilt ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_acquisitionTypeCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:species ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:channel_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:channel_metadata_filename ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_bodyPositionCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:concentration ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:organ_or_tissue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementResonantNucleusCodeEnum ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_resonantNucleusCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_gantryDetectorTilt ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_arterialSpinLabelingContrastCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:immersion ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:physical_size_z ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:imaging_equipment_model ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:fluorophore ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:emission_wavelength ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementEchoPulseSequenceCategoryCodeEnum ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_saturationRecoveryIndicator ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:imaging_protocol ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:channel_metadata_filename ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:fluorophore ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:Radiopharmaceutical_radionuclideCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:excitation_bandwidth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_spiralPitchFactor ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_magneticFieldStrength ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewWidth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_singleCollimationWidth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementSpectrallySelectedSuppressionCodeEnum ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:cycle_number ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:concentration ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:imaging_equipment_manufacturer ],
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionInterval ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:dilution ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:channel_name ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:channel_metadata_filename ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:imaging_assay_type ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:physical_size_x ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:cycle_number ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:tumor_tissue_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiPhantomTypeCode ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:longitudinal_temporal_event_offset ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:physical_size_y ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:oligo_barcode_upper_strand ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_summary ],
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewWidth ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:performed_imaging_study_sliceThickness ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:working_distance ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:license ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:excitation_wavelength ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:PerformedImagingStudyCardiacSynchronizationTechniqueCodeEnum ;
-            owl:onProperty htan_linkml:performed_imaging_study_cardiacSynchronizationTechniqueCode ],
+            owl:onProperty htan_linkml:concentration ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_typeCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:tumor_tissue_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:immersion ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_algorithmCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_pulseSequenceName ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:objective ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_admittingDiagnosisCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_acquisitionTypeCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionDirectionalityCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:excitation_bandwidth ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:size_z ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:working_distance ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_totalCollimationWidth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:CTAquisitionProtocolElementExposureModulationTypeCodeEnum ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_exposureModulationType_Code ],
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionBValue ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:sub_cycle_number ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:de_identification_method_description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:channel_metadata_file_url_in_cds ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:catalog_number ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:imaging_protocol ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:organ_or_tissue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:PerformedImagingStudyRespiratoryMotionTechniqueCodeEnum ;
-            owl:onProperty htan_linkml:performed_imaging_study_respiratoryMotionTechniqueCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:longitudinal_temporal_event_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:catalog_number ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementDiffusionDirectionalityCodeEnum ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionDirectionalityCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:size_y ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:imaging_equipment_model ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:organ_or_tissue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiPhantomTypeCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:lens_numerical_aperture ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernel ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:metal_isotope_element_mass ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:fluorophore ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:antibody_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionInterval ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:channel_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_respiratoryMotionTechniqueCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_spiralPitchFactor ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:size_x ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:pyramid ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:imaging_equipment_model ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:metal_isotope_element_mass ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionDirectionalityCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_singleCollimationWidth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewWidth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:rrid_identifier ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:image_modality ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_primaryAnatomicSiteCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:de_identification_software ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:performed_imaging_study_admittingDiagnosisCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_acquisitionTypeCode ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:performed_imaging_study_bodyPositionCode ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_kVp ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewHeight ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:acquisition_method_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:de_identification_method_description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:nominal_magnification ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:channel_metadata_file_url_in_cds ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:working_distance ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_lossyImageCompressionIndicator ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_typeCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:imaging_sofware ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:species ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:crdc_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:imaging_sofware ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_exposureModulationType_Code ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:size_c ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_acquisitionContrastCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionInterval ],
+            owl:onProperty htan_linkml:performed_imaging_study_primaryAnatomicSiteCode ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:citation_or_DOI ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:immersion ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:physical_size_y ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:staining_method ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernelGroupCode ],
+            owl:onProperty htan_linkml:staining_method ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_pulseSequenceName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:target_name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:performed_imaging_study_dataCollectionDiameter ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_saturationRecoveryIndicator ],
+            owl:onProperty htan_linkml:performed_imaging_study_acquisitionTypeCode ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:concentration ],
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_gantryDetectorTilt ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:CTAquisitionProtocolElement_exposureModulationType_Code ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:target_name ],
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_phaseContrastIndicator ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_saturationRecoveryIndicator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:performed_imaging_study_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:species ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:excitation_wavelength ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:physical_size_z ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:channel_id ],
+            owl:onProperty htan_linkml:performed_imaging_study_algorithmCode ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:imaging_assay_type ],
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_nonAcquisitionModalitiesInStudyCode ],
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernel ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_summary ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:de_identification_software ],
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_inversionRecoveryIndicator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:nominal_magnification ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_acquisitionContrastCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_kVp ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:cycle_number ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:staining_method ],
+            owl:onProperty htan_linkml:catalog_number ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:species ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:oligo_barcode_upper_strand ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:antibody_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementResonantNucleusCodeEnum ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_resonantNucleusCode ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:citation_or_DOI ],
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_arterialSpinLabelingContrastCode ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:physical_size_y ],
+            owl:onProperty htan_linkml:performed_imaging_study_sliceThickness ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_kVp ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_phaseContrastIndicator ],
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_totalCollimationWidth ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:lens_numerical_aperture ],
+            owl:onProperty htan_linkml:organ_or_tissue ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:acquisition_method_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:size_t ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:physical_size_x ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:size_c ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_lossyImageCompressionIndicator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_summary ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:image_modality ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_inversionRecoveryIndicator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionInterval ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:fluorophore ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:size_x ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernelGroupCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:acquisition_method_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:nominal_magnification ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_cardiacSynchronizationTechniqueCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:ImageModalityEnum ;
-            owl:onProperty htan_linkml:image_modality ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_totalCollimationWidth ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:dilution ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:rrid_identifier ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_typeCode ],
+            owl:onProperty htan_linkml:de_identification_software ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode ],
+            owl:onProperty htan_linkml:sub_cycle_number ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty htan_linkml:longitudinal_temporal_event_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:size_z ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:PerformedImagingStudyRespiratoryMotionTechniqueCodeEnum ;
+            owl:onProperty htan_linkml:performed_imaging_study_respiratoryMotionTechniqueCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_singleCollimationWidth ],
         [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:PerformedImagingStudyLossyImageCompressionIndicatorEnum ;
             owl:onProperty htan_linkml:performed_imaging_study_lossyImageCompressionIndicator ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionBValue ],
+            owl:onProperty htan_linkml:performed_imaging_study_description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_singleCollimationWidth ],
+            owl:onProperty htan_linkml:physical_size_y ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:size_z ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:size_y ],
+            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementSteadyStatePulseSequenceCodeEnum ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:immersion ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:MRImageReconstructionProtocolElementComplexImageComponentCodeEnum ;
-            owl:onProperty htan_linkml:MRImageReconstructionProtocolElement_complexImageComponentCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:cycle_number ],
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_spiralPitchFactor ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionDiameter ],
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiVol ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:staining_method ],
+            owl:onProperty htan_linkml:lens_numerical_aperture ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:crdc_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_arterialSpinLabelingContrastCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:working_distance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:longitudinal_temporal_event_offset ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:dilution ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:size_y ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:pyramid ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:clone ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:channel_metadata_filename ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:lot ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:tumor_tissue_type ],
+            owl:onProperty htan_linkml:longitudinal_temporal_event_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:size_z ],
+            owl:onProperty htan_linkml:channel_metadata_file_url_in_cds ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiVol ],
+            owl:onProperty htan_linkml:imaging_sofware ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:excitation_bandwidth ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:catalog_number ],
+            owl:onProperty htan_linkml:lot ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_respiratoryMotionTechniqueCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionBValue ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:CTAquisitionProtocolElement_gantryDetectorTilt ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:tumor_tissue_type ],
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionInterval ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_magneticFieldStrength ],
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:sub_cycle_number ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:clone ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:image_modality ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:PETImagingAcquisitionProtocolElement_gantryDetectorTilt ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:size_y ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:emission_wavelength ],
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:species ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_phaseContrastIndicator ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_primaryAnatomicSiteCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:longitudinal_temporal_event_offset ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:acquisition_method_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewHeight ],
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_resonantNucleusCode ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:imaging_equipment_manufacturer ],
+            owl:onProperty htan_linkml:dilution ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:size_t ],
+            owl:allValuesFrom htan_linkml:MRImageReconstructionProtocolElementComplexImageComponentCodeEnum ;
+            owl:onProperty htan_linkml:MRImageReconstructionProtocolElement_complexImageComponentCode ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernelGroupCode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:EmbeddingMediumEnum ;
-            owl:onProperty htan_linkml:embedding_medium ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiPhantomTypeCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_inversionRecoveryIndicator ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:performed_imaging_study_sliceThickness ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:imaging_sofware ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:de_identification_method_description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_primaryAnatomicSiteCode ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:crdc_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:metal_isotope_element_mass ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:CTAquisitionProtocolElement_totalCollimationWidth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:de_identification_software ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementSteadyStatePulseSequenceCodeEnum ;
-            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:crdc_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:longitudinal_temporal_event_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:imaging_equipment_manufacturer ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:excitation_wavelength ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:nominal_magnification ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernel ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:performed_imaging_study_sliceThickness ],
+            owl:allValuesFrom htan_linkml:ImageModalityEnum ;
+            owl:onProperty htan_linkml:image_modality ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:performed_imaging_study_nonAcquisitionModalitiesInStudyCode ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:PETImagingAcquisitionProtocolElement_gantryDetectorTilt ],
+            owl:onProperty htan_linkml:imaging_equipment_manufacturer ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_saturationRecoveryIndicator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementAcquisitionContrastCodeEnum ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_acquisitionContrastCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:imaging_sofware ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:de_identification_method_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:metal_isotope_element_mass ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_kVp ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_cardiacSynchronizationTechniqueCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:StainingMethodEnum ;
+            owl:onProperty htan_linkml:staining_method ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:performed_imaging_study_reconstructionDiameter ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:imaging_protocol ],
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:target_name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:performed_imaging_study_dataCollectionDiameter ],
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:size_z ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:imaging_assay_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:emission_wavelength ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_respiratoryMotionTechniqueCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:oligo_barcode_lower_strand ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_sliceThickness ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:tumor_tissue_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:antibody_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:emission_bandwidth ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:de_identification_method_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:CTAquisitionProtocolElementExposureModulationTypeCodeEnum ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_exposureModulationType_Code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_cardiacSynchronizationTechniqueCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:channel_metadata_filename ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:immersion ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:acquisition_method_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:de_identification_method_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:longitudinal_temporal_event_offset ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:LicenseEnum ;
+            owl:onProperty htan_linkml:license ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:excitation_wavelength ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty htan_linkml:longitudinal_temporal_event_offset ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionDiameter ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:cycle_number ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:catalog_number ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:physical_size_z ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:objective ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:Radiopharmaceutical_radionuclideCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:pyramid ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:de_identification_software ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernelGroupCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiPhantomTypeCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:embedding_medium ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_saturationRecoveryIndicator ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:crdc_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:objective ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionDirectionalityCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_typeCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageReconstructionProtocolElement_complexImageComponentCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:performed_imaging_study_summary ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:oligo_barcode_upper_strand ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:fluorophore ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:tissue_fixative ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:emission_wavelength ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_admittingDiagnosisCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_inversionRecoveryIndicator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:channel_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_nonAcquisitionModalitiesInStudyCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:oligo_barcode_upper_strand ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:performed_imaging_study_primaryAnatomicSiteCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:concentration ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:emission_wavelength ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:imaging_equipment_model ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_magneticFieldStrength ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:lens_numerical_aperture ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:license ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:study_link_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_algorithmCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:catalog_number ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:organ_or_tissue ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:dilution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:size_x ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_singleCollimationWidth ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:tissue_fixative ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:Radiopharmaceutical_radionuclideCode ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:emission_bandwidth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewWidth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:imaging_protocol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:channel_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_singleCollimationWidth ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_ctdiVol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_nonAcquisitionModalitiesInStudyCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:size_t ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:metal_isotope_element_mass ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_acquisitionContrastCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:license ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:metal_isotope_element_abbreviation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:antibody_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:channel_metadata_file_url_in_cds ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:study_link_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:performed_imaging_study_typeCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:imaging_sofware ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:size_z ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_exposureModulationType_Code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:size_x ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:size_c ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:channel_metadata_filename ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernel ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:de_identification_software ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:DeIdentificationMethodTypeEnum ;
+            owl:onProperty htan_linkml:de_identification_method_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:performed_imaging_study_dataCollectionDiameter ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionBValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:MRImageAcquisitionProtocolElementDiffusionDirectionalityCodeEnum ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionDirectionalityCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:emission_bandwidth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:CTImageReconstructionProtocolElement_convolutionKernel ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:clone ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:concentration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_primaryAnatomicSiteCode ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_spiralPitchFactor ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:size_t ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:imaging_equipment_model ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:imaging_equipment_model ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:oligo_barcode_lower_strand ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewHeight ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:channel_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:de_identification_method_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:performed_imaging_study_lossyImageCompressionIndicator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:imaging_protocol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:PETImagingAcquisitionProtocolElement_gantryDetectorTilt ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_dataCollectionDiameter ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:lens_numerical_aperture ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_magneticFieldStrength ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:excitation_bandwidth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:fluorophore ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:metal_isotope_element_abbreviation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:study_link_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageReconstructionProtocolElement_complexImageComponentCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_gantryDetectorTilt ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:performed_imaging_study_reconstructionFieldOfViewWidth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_phaseContrastIndicator ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:imaging_equipment_manufacturer ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_phaseContrastIndicator ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:CTAquisitionProtocolElement_spiralPitchFactor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:objective ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_pulseSequenceName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:channel_metadata_file_url_in_cds ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:MRImageAcquisitionProtocolElement_diffusionDirectionalityCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:performed_imaging_study_admittingDiagnosisCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:imaging_equipment_manufacturer ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:nominal_magnification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:organ_or_tissue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:PerformedImagingStudyCardiacSynchronizationTechniqueCodeEnum ;
+            owl:onProperty htan_linkml:performed_imaging_study_cardiacSynchronizationTechniqueCode ],
         htan_linkml:File ;
     skos:definition "The imaging data from DICOM and non-DICOM standards into CDS." ;
     skos:inScheme <https://w3id.org/ncihtan/htan-linkml> .
@@ -1355,76 +1355,76 @@ htan_linkml:Participant a owl:Class,
     rdfs:label "participant" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:sex ],
+            owl:onProperty htan_linkml:dbGaP_subject_id ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:crdc_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:study_participant_id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:gender ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:dbGaP_subject_id ],
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:participant_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:study_participant_id ],
+            owl:onProperty htan_linkml:crdc_id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:EthnicityEnum ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:race ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:dbGaP_subject_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:ethnicity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:race ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:sex ],
         [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:RaceEnum ;
             owl:onProperty htan_linkml:race ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:ethnicity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_participant_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:ethnicity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:SexEnum ;
-            owl:onProperty htan_linkml:sex ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:participant_id ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:sex ],
+            owl:allValuesFrom htan_linkml:EthnicityEnum ;
+            owl:onProperty htan_linkml:ethnicity ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:race ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:dbGaP_subject_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:participant_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:study_participant_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:gender ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:race ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:participant_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:dbGaP_subject_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:study_participant_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:crdc_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:GenderEnum ;
             owl:onProperty htan_linkml:gender ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:crdc_id ],
+            owl:onProperty htan_linkml:sex ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:study_participant_id ],
+            owl:onProperty htan_linkml:ethnicity ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:crdc_id ] ;
+            owl:allValuesFrom htan_linkml:SexEnum ;
+            owl:onProperty htan_linkml:sex ] ;
     skos:definition "Individual who takes part in the study" ;
     skos:inScheme <https://w3id.org/ncihtan/htan-linkml> .
 
@@ -1433,76 +1433,76 @@ htan_linkml:Program a owl:Class,
     rdfs:label "program" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:program_short_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:institution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:program_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:program_external_url ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:program_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:institution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:program_full_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:program_acronym ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:program_short_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:program_full_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:program_full_description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:program_acronym ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:program_external_url ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:program_short_description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:program_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:institution ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:institution ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:program_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:program_short_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:program_acronym ],
+            owl:onProperty htan_linkml:program_sort_order ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty htan_linkml:program_sort_order ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:program_short_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:program_short_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:program_name ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:program_external_url ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:program_short_description ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:program_sort_order ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:program_full_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:institution ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:program_full_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:program_short_name ],
+            owl:onProperty htan_linkml:program_short_description ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:program_external_url ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:program_short_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:institution ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:program_sort_order ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:program_acronym ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:program_sort_order ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:program_short_description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:program_external_url ],
+            owl:onProperty htan_linkml:program_short_name ],
         htan_linkml:Study ;
     skos:definition "Program in the Cancer Data Service refer to a broad framework of goals under which related projects or other research activities are grouped. Example - Clinical Proteomic Tumor Analysis Consortium (CPTAC)" ;
     skos:inScheme <https://w3id.org/ncihtan/htan-linkml> .
@@ -1514,59 +1514,11 @@ htan_linkml:Sample a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:sample_type ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:derived_from_specimen ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:sample_type_category ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:sample_age_at_collection ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:biosample_accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:sample_type_category ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:SampleAnatomicSiteEnum ;
-            owl:onProperty htan_linkml:sample_anatomic_site ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:sample_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty htan_linkml:sample_age_at_collection ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:sample_tumor_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:SampleTypeEnum ;
-            owl:onProperty htan_linkml:sample_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:derived_from_specimen ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:sample_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:sample_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:biosample_accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:SampleTumorStatusEnum ;
-            owl:onProperty htan_linkml:sample_tumor_status ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:sample_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:sample_type_category ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:sample_description ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -1575,25 +1527,73 @@ htan_linkml:Sample a owl:Class,
             owl:onProperty htan_linkml:biosample_accession ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:sample_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:derived_from_specimen ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:sample_type_category ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:sample_tumor_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty htan_linkml:sample_age_at_collection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:SampleTypeEnum ;
+            owl:onProperty htan_linkml:sample_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:SampleAnatomicSiteEnum ;
             owl:onProperty htan_linkml:sample_anatomic_site ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:derived_from_specimen ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:sample_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:sample_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:SampleTumorStatusEnum ;
+            owl:onProperty htan_linkml:sample_tumor_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:sample_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:biosample_accession ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:sample_age_at_collection ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:sample_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:sample_type_category ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:sample_anatomic_site ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:sample_age_at_collection ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:biosample_accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:sample_type_category ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:sample_anatomic_site ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:sample_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:sample_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:sample_tumor_status ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:sample_age_at_collection ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:sample_anatomic_site ] ;
+            owl:onProperty htan_linkml:sample_tumor_status ] ;
     skos:definition "Specimen tissue type collected from the participant." ;
     skos:inScheme <https://w3id.org/ncihtan/htan-linkml> .
 
@@ -1601,58 +1601,58 @@ htan_linkml:Treatment a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "treatment" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty htan_linkml:days_to_treatment ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:therapeutic_agents ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:days_to_treatment ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:treatment_outcome ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:treatment_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:response ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:response ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:treatment_type ],
-        [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:TherapeuticAgentsEnum ;
             owl:onProperty htan_linkml:therapeutic_agents ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:therapeutic_agents ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:treatment_type ],
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty htan_linkml:days_to_treatment ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:treatment_id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:treatment_outcome ],
+            owl:onProperty htan_linkml:treatment_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:response ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:treatment_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:therapeutic_agents ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:TreatmentTypeEnum ;
+            owl:onProperty htan_linkml:treatment_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:days_to_treatment ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:days_to_treatment ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:treatment_outcome ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:response ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:treatment_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:response ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:treatment_outcome ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:therapeutic_agents ],
         [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:TreatmentOutcomeEnum ;
             owl:onProperty htan_linkml:treatment_outcome ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:treatment_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:TreatmentTypeEnum ;
+            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:treatment_type ] ;
     skos:definition "An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." ;
     skos:inScheme <https://w3id.org/ncihtan/htan-linkml> .
@@ -1678,182 +1678,101 @@ htan_linkml:Study a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:co_investigator_name ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_acronym ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:study_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:role_or_affiliation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:funding_agency ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:funding_source_program_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty htan_linkml:number_of_samples ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:clinical_trial_identifier ],
+            owl:onProperty htan_linkml:primary_investigator_email ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:clinical_trial_system ],
+            owl:onProperty htan_linkml:study_description ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:cds_primary_bucket ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:study_data_types ],
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:cds_requestor ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:authz ],
+            owl:onProperty htan_linkml:file_types_and_format ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:clinical_trial_arm ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:first_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:cds_secondary_bucket ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:phs_accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:role_or_affiliation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_version ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:funding_agency ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_external_url ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:co_investigator_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:co_investigator_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:study_acronym ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:short_description ],
+            owl:onProperty htan_linkml:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:DataAccessLevelEnum ;
             owl:onProperty htan_linkml:data_access_level ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:data_access_level ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:file_types ],
+            owl:onProperty htan_linkml:middle_name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:suffix ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:cds_requestor ],
+            owl:onProperty htan_linkml:funding_source_program_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty htan_linkml:number_of_participants ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:study_acronym ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:authz ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:cds_requestor ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:clinical_trial_identifier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:organism_species ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:file_types_and_format ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:index_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:short_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:cds_secondary_bucket ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:file_types_and_format ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
             owl:onProperty htan_linkml:number_of_samples ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:role_or_affiliation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:acl ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:cds_secondary_bucket ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:primary_investigator_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:bioproject_accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:first_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:last_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:grant_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:index_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:size_of_data_being_uploaded ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:co_investigator_email ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:clinical_trial_repository ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:IndexDateEnum ;
-            owl:onProperty htan_linkml:index_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:cds_secondary_bucket ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:middle_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:cds_requestor ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:organism_species ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:primary_investigator_email ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:cds_tertiary_bucket ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:clinical_trial_arm ],
+            owl:onProperty htan_linkml:phs_accession ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:first_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:last_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:co_investigator_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:study_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:file_types ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:primary_investigator_name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:StudyDataTypesEnum ;
-            owl:onProperty htan_linkml:study_data_types ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:primary_investigator_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:file_types_and_format ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:index_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:grant_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:clinical_trial_arm ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:file_types_and_format ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_access ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:co_investigator_email ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:middle_name ],
+            owl:onProperty htan_linkml:adult_or_childhood_study ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:adult_or_childhood_study ],
@@ -1861,53 +1780,74 @@ htan_linkml:Study a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:cds_primary_bucket ],
         [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:AdultOrChildhoodStudyEnum ;
-            owl:onProperty htan_linkml:adult_or_childhood_study ],
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:primary_investigator_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:last_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:study_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:last_name ],
+            owl:onProperty htan_linkml:study_external_url ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:clinical_trial_repository ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_data_types ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:cds_tertiary_bucket ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:suffix ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:number_of_participants ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:number_of_samples ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:bioproject_accession ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:clinical_trial_arm ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:study_external_url ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:first_name ],
+            owl:onProperty htan_linkml:cds_tertiary_bucket ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:data_access_level ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:primary_investigator_email ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:study_data_types ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:data_types ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:acl ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:cds_tertiary_bucket ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:index_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:suffix ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:role_or_affiliation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:IndexDateEnum ;
+            owl:onProperty htan_linkml:index_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:StudyAccessEnum ;
+            owl:onProperty htan_linkml:study_access ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:study_access ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:acl ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:grant_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:data_types ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:size_of_data_being_uploaded ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:short_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:last_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:co_investigator_email ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -1916,124 +1856,133 @@ htan_linkml:Study a owl:Class,
             owl:onProperty htan_linkml:bioproject_accession ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:file_types ],
+            owl:onProperty htan_linkml:first_name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:size_of_data_being_uploaded ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:adult_or_childhood_study ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:short_description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:study_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:clinical_trial_system ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:file_types ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:grant_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:phs_accession ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:StudyAccessEnum ;
-            owl:onProperty htan_linkml:study_access ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:study_description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:study_external_url ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:data_types ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:authz ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:study_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:organism_species ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:file_types_and_format ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:co_investigator_email ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:email ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:data_types ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:email ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:authz ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:primary_investigator_email ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:funding_source_program_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:number_of_participants ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:primary_investigator_email ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:study_acronym ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:cds_requestor ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:study_access ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:organism_species ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:cds_tertiary_bucket ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:cds_primary_bucket ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:funding_source_program_name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:funding_agency ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:study_name ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:cds_tertiary_bucket ],
+            owl:onProperty htan_linkml:clinical_trial_identifier ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:clinical_trial_system ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:funding_source_program_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:clinical_trial_repository ],
+            owl:onProperty htan_linkml:authz ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:email ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:middle_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:data_types ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:size_of_data_being_uploaded ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:role_or_affiliation ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:study_version ],
+            owl:onProperty htan_linkml:cds_requestor ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:study_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:file_types ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:number_of_participants ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:suffix ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:clinical_trial_identifier ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:grant_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:primary_investigator_email ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:study_acronym ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:co_investigator_email ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:co_investigator_email ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:bioproject_accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:cds_secondary_bucket ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:clinical_trial_repository ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:first_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:AdultOrChildhoodStudyEnum ;
+            owl:onProperty htan_linkml:adult_or_childhood_study ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:middle_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:study_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:phs_accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:clinical_trial_system ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:size_of_data_being_uploaded ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:grant_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:cds_secondary_bucket ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:study_external_url ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:bioproject_accession ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:clinical_trial_repository ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:study_data_types ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:co_investigator_name ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -2041,41 +1990,92 @@ htan_linkml:Study a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^phs[0-9]+([.]v[0-9]+)*$" ] ) ] ) ] ;
             owl:onProperty htan_linkml:phs_accession ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:email ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:title ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:clinical_trial_arm ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:number_of_samples ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:StudyDataTypesEnum ;
+            owl:onProperty htan_linkml:study_data_types ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:primary_investigator_name ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:middle_name ],
+            owl:onProperty htan_linkml:data_access_level ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:role_or_affiliation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:funding_agency ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:number_of_participants ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:study_version ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:short_description ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:study_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:authz ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:funding_source_program_name ],
+            owl:onProperty htan_linkml:clinical_trial_arm ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:clinical_trial_identifier ],
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:clinical_trial_repository ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:study_access ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty htan_linkml:acl ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:suffix ],
+            owl:onProperty htan_linkml:file_types ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty htan_linkml:number_of_participants ],
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:organism_species ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:email ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:clinical_trial_system ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:data_types ] ;
+            owl:onProperty htan_linkml:cds_primary_bucket ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:study_acronym ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:number_of_samples ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:last_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:funding_agency ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:study_version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:study_version ] ;
     skos:definition "The narrative title used as a textual label for a research data collection. Example – University of Texas PDX Development and Trial Center Grant" ;
     skos:inScheme <https://w3id.org/ncihtan/htan-linkml> .
 
@@ -2458,71 +2458,86 @@ htan_linkml:File a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "file" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:file_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:crdc_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:file_url_in_cds ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:file_type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:file_mapping_level ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:checksum_algorithm ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:file_size ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:experimental_strategy_and_data_subtypes ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:file_mapping_level ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:checksum_algorithm ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:crdc_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:file_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:file_url_in_cds ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:submission_version ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:submission_version ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:file_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:experimental_strategy_and_data_subtypes ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:file_description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:checksum_value ],
+            owl:onProperty htan_linkml:file_url_in_cds ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty htan_linkml:file_url_in_cds ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:file_size ],
+            owl:onProperty htan_linkml:file_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:md5sum ],
         [ a owl:Restriction ;
             owl:allValuesFrom htan_linkml:FileMappingLevelEnum ;
             owl:onProperty htan_linkml:file_mapping_level ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:crdc_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:file_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:file_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:experimental_strategy_and_data_subtypes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:file_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:file_size ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:file_url_in_cds ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:file_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:submission_version ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:crdc_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:experimental_strategy_and_data_subtypes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:crdc_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:checksum_value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:file_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:file_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:file_mapping_level ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:md5sum ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:checksum_algorithm ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:file_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:file_description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty htan_linkml:file_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:String [ a rdfs:Datatype ;
@@ -2530,53 +2545,38 @@ htan_linkml:File a owl:Class,
                                 owl:withRestrictions ( [ xsd:pattern "^[0-9a-fA-F]{32}$" ] ) ] ) ] ;
             owl:onProperty htan_linkml:md5sum ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:crdc_id ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:experimental_strategy_and_data_subtypes ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty htan_linkml:submission_version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom htan_linkml:FileTypeEnum ;
+            owl:onProperty htan_linkml:file_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:checksum_algorithm ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty htan_linkml:file_id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty htan_linkml:file_size ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:file_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:checksum_value ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:md5sum ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:file_description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty htan_linkml:file_name ],
+            owl:onProperty htan_linkml:checksum_algorithm ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty htan_linkml:checksum_value ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty htan_linkml:submission_version ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:checksum_algorithm ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:experimental_strategy_and_data_subtypes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom htan_linkml:FileTypeEnum ;
-            owl:onProperty htan_linkml:file_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:checksum_value ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty htan_linkml:md5sum ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:file_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty htan_linkml:file_description ] ;
+            owl:onProperty htan_linkml:file_mapping_level ] ;
     skos:definition "A set of related records kept together provided by a submitter." ;
     skos:inScheme <https://w3id.org/ncihtan/htan-linkml> .
 

@@ -2,57 +2,10 @@ name: ClinicalMolecular
 id: https://w3id.org/htan/clinical/molecular
 description: HTAN Clinical Data Model - Molecular Domain
 
+imports:
+  - followup
+
 enums:
-  DiseaseResponseEnum:
-    title: disease_response
-    permissible_values:
-      "Complete Response":
-        description: Complete response
-      "Partial Response":
-        description: Partial response
-      "Progressive Disease":
-        description: Progressive disease
-      "Stable Disease":
-        description: Stable disease
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
-
-  ECOGPerformanceStatusEnum:
-    title: ecog_performance_status
-    permissible_values:
-      "0":
-        description: Fully active, able to carry on all pre-disease performance without restriction
-      "1":
-        description: Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g., light house work, office work
-      "2":
-        description: Ambulatory and capable of all selfcare but unable to carry out any work activities. Up and about more than 50% of waking hours
-      "3":
-        description: Capable of only limited selfcare, confined to bed or chair more than 50% of waking hours
-      "4":
-        description: Completely disabled. Cannot carry on any selfcare. Totally confined to bed or chair
-      "5":
-        description: Dead
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
-
-  MenopauseStatusEnum:
-    title: menopause_status
-    permissible_values:
-      "Postmenopausal":
-        description: Postmenopausal
-      "Premenopausal":
-        description: Premenopausal
-      "Perimenopausal":
-        description: Perimenopausal
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
-
   MolecularAnalysisMethodEnum:
     title: molecular_analysis_method
     permissible_values:
@@ -221,42 +174,68 @@ classes:
         description: Variant type (caDSR:2192217) (Aligns to CDRC Standard CDE)
     slot_usage:
       AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP:
-        if:
-          MOLECULAR_ANALYSIS_METHOD: ["DNA Sequencing", "RNA Sequencing"]
-        then:
-          required: true
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_METHOD is DNA Sequencing or RNA Sequencing
       AA_CHANGE:
-        if:
-          MOLECULAR_ANALYSIS_RESULT: ["Pathogenic variant detected", "Variant of uncertain significance detected"]
-        then:
-          required: true
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected
       COPY_NUMBER:
-        if:
-          MOLECULAR_ANALYSIS_RESULT: ["Copy number variant detected"]
-        then:
-          required: true
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Copy number variant detected
       EXON:
-        if:
-          MOLECULAR_ANALYSIS_RESULT: ["Pathogenic variant detected", "Variant of uncertain significance detected"]
-        then:
-          required: true
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected
       MOLECULAR_CONSEQUENCE:
-        if:
-          MOLECULAR_ANALYSIS_RESULT: ["Pathogenic variant detected", "Variant of uncertain significance detected"]
-        then:
-          required: true
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected
       PATHOGENICITY:
-        if:
-          MOLECULAR_ANALYSIS_RESULT: ["Pathogenic variant detected", "Variant of uncertain significance detected"]
-        then:
-          required: true
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected
       TEST_ANALYTE_TYPE:
-        if:
-          MOLECULAR_ANALYSIS_METHOD: ["DNA Sequencing", "RNA Sequencing"]
-        then:
-          required: true
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_METHOD is DNA Sequencing or RNA Sequencing
       TEST_UNITS:
-        if:
-          MOLECULAR_ANALYSIS_RESULT: ["Copy number variant detected"]
-        then:
-          required: true 
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Copy number variant detected
+    rules:
+      - description: "When molecular analysis method is DNA or RNA sequencing, test stop age and analyte type become required"
+        preconditions:
+          slot_conditions:
+            MOLECULAR_ANALYSIS_METHOD:
+              any_of:
+                - equals_string: "DNA Sequencing"
+                - equals_string: "RNA Sequencing"
+        postconditions:
+          slot_conditions:
+            AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP:
+              required: true
+            TEST_ANALYTE_TYPE:
+              required: true
+      - description: "When molecular analysis result indicates a variant, variant details become required"
+        preconditions:
+          slot_conditions:
+            MOLECULAR_ANALYSIS_RESULT:
+              any_of:
+                - equals_string: "Pathogenic variant detected"
+                - equals_string: "Variant of uncertain significance detected"
+        postconditions:
+          slot_conditions:
+            AA_CHANGE:
+              required: true
+            EXON:
+              required: true
+            MOLECULAR_CONSEQUENCE:
+              required: true
+            PATHOGENICITY:
+              required: true
+      - description: "When molecular analysis result indicates a copy number variant, copy number and units become required"
+        preconditions:
+          slot_conditions:
+            MOLECULAR_ANALYSIS_RESULT:
+              equals_string: "Copy number variant detected"
+        postconditions:
+          slot_conditions:
+            COPY_NUMBER:
+              required: true
+            TEST_UNITS:
+              required: true

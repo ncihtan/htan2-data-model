@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "htan_linkml"
+name = "htan_clinical"
 version = "0.1.0"
-description = "A LinkML data model for HTAN Phase 2"
+description = "A LinkML data model for HTAN Clinical Domain"
 authors = ["Adam Taylor <adam.taylor@sagebase.org>"]
 license = "MIT"
 readme = "README.md"
-include = ["README.md", "src/htan_linkml/schema", "project"]
+include = ["README.md", "modules/Clinical/src/htan_clinical/schema", "project"]
 
 [tool.poetry.dependencies]
 python = "^3.9"

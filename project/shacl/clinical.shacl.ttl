@@ -1,0 +1,564 @@
+@prefix htan: <https://w3id.org/htan/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+htan:ClinicalData a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Container for all clinical data" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <https://w3id.org/htan/clinical/family_history/:FamilyHistory> ;
+            sh:description "Family history of cancer" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path htan:FAMILY_HISTORY ],
+        [ sh:class <https://w3id.org/htan/clinical/exposure/:Exposure> ;
+            sh:description "Exposure history" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path htan:EXPOSURES ],
+        [ sh:class <https://w3id.org/htan/clinical/followup/:FollowUp> ;
+            sh:description "Follow-up observations" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path htan:FOLLOW_UPS ],
+        [ sh:class <https://w3id.org/htan/clinical/diagnosis/:Diagnosis> ;
+            sh:description "Primary diagnosis information" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path htan:DIAGNOSIS ],
+        [ sh:description "Category of metadata (e.g. Diagnosis, Biospecimen, scRNA-seq Level 1, etc.); provide the same one for all items/rows. (No CRDC Standard Available)" ;
+            sh:in ( "Clinical" "Demographics" "Diagnosis" "Exposure" "Family History" "Follow-up" "Molecular" "Therapy" "Vital Status" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path htan:COMPONENT ],
+        [ sh:class <https://w3id.org/htan/clinical/vital_status/:VitalStatus> ;
+            sh:description "Vital status information" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path htan:VITAL_STATUS ],
+        [ sh:class <https://w3id.org/htan/clinical/molecular/:MolecularTest> ;
+            sh:description "Molecular test results" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path htan:MOLECULAR_TESTS ],
+        [ sh:class <https://w3id.org/htan/clinical/demographics/:Demographics> ;
+            sh:description "Demographic information" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path htan:DEMOGRAPHICS ],
+        [ sh:class <https://w3id.org/htan/clinical/therapy/:Therapy> ;
+            sh:description "Treatment information" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 9 ;
+            sh:path htan:THERAPIES ],
+        [ sh:datatype xsd:string ;
+            sh:description "HTAN Identifier of the research participant (caDSR:HTAN-Specific) (No CRDC Standard Available)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path htan:HTAN_PARTICIPANT_ID ;
+            sh:pattern "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$" ] ;
+    sh:targetClass htan:ClinicalData .
+
+linkml:Extensible a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "mixin for classes that support extension" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class linkml:Extension ;
+            sh:description "a tag/text tuple attached to an arbitrary element" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path linkml:extensions ] ;
+    sh:targetClass linkml:Extensible .
+
+<https://w3id.org/htan/clinical/demographics/:Demographics> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Information about the demographics" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Race of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "American Indian or Alaska Native" "Asian" "Black or African American" "Native Hawaiian or Other Pacific Islander" "White" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/htan/clinical/demographics/:RACE> ],
+        [ sh:description "Ethnic group of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Hispanic or Latino" "Not Hispanic or Latino" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/htan/clinical/demographics/:ETHNIC_GROUP> ],
+        [ sh:description "Sex of the participant (caDSR:2192203) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Female" "Male" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/htan/clinical/demographics/:SEX> ],
+        [ sh:description "Gender identity of the participant (caDSR:2192202) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Female" "Male" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/htan/clinical/demographics/:GENDER_IDENTITY> ] ;
+    sh:targetClass <https://w3id.org/htan/clinical/demographics/:Demographics> .
+
+<https://w3id.org/htan/clinical/diagnosis/:Diagnosis> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Information about the diagnosis" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Classification category of the tumor (caDSR:2192211) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Benign" "Borderline" "Malignant" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:TUMOR_CLASSIFICATION_CATEGORY> ],
+        [ sh:description "The grade of the tumor (caDSR:2192203) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "G1" "G2" "G3" "G4" "GX" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:TUMOR_GRADE> ],
+        [ sh:datatype xsd:string ;
+            sh:description "NCI Thesaurus ID for the primary diagnosis (caDSR:2192201) (Aligns to CDRC Standard CDE)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID> ],
+        [ sh:description "Required when TUMOR_STAGE is any stage value" ;
+            sh:in ( "T0" "T1" "T2" "T3" "T4" "TX" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:CLINICAL_T_STAGE> ],
+        [ sh:description "Last known disease status (caDSR:2192210) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Complete Response" "Partial Response" "Progressive Disease" "Stable Disease" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:LAST_KNOWN_DISEASE_STATUS> ],
+        [ sh:datatype xsd:string ;
+            sh:description "UBERON code for the tissue or organ of origin (caDSR:2192205) (Aligns to CDRC Standard CDE)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Age in days at which the last known disease status was recorded (caDSR:2192203) (Aligns to CDRC Standard CDE)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Age in days at which the diagnosis was made (caDSR:2192202) (Aligns to CDRC Standard CDE)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:AGE_IN_DAYS_AT_DIAGNOSIS> ],
+        [ sh:description "Required when TUMOR_STAGE is any stage value" ;
+            sh:in ( "7th Edition" "8th Edition" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:AJCC_STAGING_SYSTEM_EDITION> ],
+        [ sh:description "Required when TUMOR_STAGE is any stage value" ;
+            sh:in ( "M0" "M1" "MX" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:CLINICAL_M_STAGE> ],
+        [ sh:description "Method used to make the diagnosis (caDSR:2192213) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Biopsy" "Clinical" "Cytology" "Imaging" "Laboratory" "Not Reported" "Pathology" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:METHOD_OF_DIAGNOSIS> ],
+        [ sh:description "Required when TUMOR_STAGE is Stage IV or any of its substages" ;
+            sh:in ( "No" "Yes" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:METASTASIS_AT_DIAGNOSIS> ],
+        [ sh:description "Required when TUMOR_STAGE is any stage value" ;
+            sh:in ( "N0" "N1" "N2" "N3" "NX" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/htan/clinical/diagnosis/:CLINICAL_N_STAGE> ] ;
+    sh:targetClass <https://w3id.org/htan/clinical/diagnosis/:Diagnosis> .
+
+<https://w3id.org/htan/clinical/exposure/:Exposure> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Information about the exposure" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Required when ENVIRONMENTAL_EXPOSURE is Yes" ;
+            sh:in ( "Asbestos" "Radiation" "Chemical" "Not Reported" "Other" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/htan/clinical/exposure/:ENVIRONMENTAL_EXPOSURE_TYPE> ],
+        [ sh:datatype xsd:decimal ;
+            sh:description "Required when SMOKING_HISTORY is Current smoker or Former smoker" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/htan/clinical/exposure/:PACK_YEARS_SMOKED> ],
+        [ sh:description "Smoking history of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Current smoker" "Former smoker" "Never smoker" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/htan/clinical/exposure/:SMOKING_HISTORY> ],
+        [ sh:description "Alcohol history indicator of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "No" "Yes" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/htan/clinical/exposure/:ALCOHOL_HISTORY_INDICATOR> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Required when SMOKING_HISTORY is Current smoker or Former smoker" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/htan/clinical/exposure/:YEARS_SMOKED> ],
+        [ sh:description "Environmental exposure of the participant (caDSR:2192205) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "No" "Yes" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/htan/clinical/exposure/:ENVIRONMENTAL_EXPOSURE> ] ;
+    sh:targetClass <https://w3id.org/htan/clinical/exposure/:Exposure> .
+
+<https://w3id.org/htan/clinical/family_history/:FamilyHistory> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A class to capture information about the cancer history of family members." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "Number of first degree relatives with cancer history" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/htan/clinical/family_history/:RELATIVES_WITH_CANCER_HISTORY> ],
+        [ sh:description "Has a family member been diagnosed with cancer?" ;
+            sh:in ( "No" "Yes" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/htan/clinical/family_history/:FAMILY_MEMBER_CANCER_HISTORY> ] ;
+    sh:targetClass <https://w3id.org/htan/clinical/family_history/:FamilyHistory> .
+
+<https://w3id.org/htan/clinical/followup/:FollowUp> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Clinical follow-up information" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Response to treatment" ;
+            sh:in ( "Complete Response" "No Evidence of Disease" "No Response" "Not Applicable" "Not Evaluable" "Not Reported" "Partial Response" "Persistent Disease" "Progressive Disease" "Stable Disease" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/htan/clinical/followup/:DISEASE_RESPONSE> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Required when PROGRESSION_OR_RECURRENCE is Yes" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/htan/clinical/followup/:AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Age in days at follow-up" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/htan/clinical/followup/:AGE_IN_DAYS_AT_FOLLOWUP> ],
+        [ sh:description "Required when PROGRESSION_OR_RECURRENCE is Yes" ;
+            sh:in ( "Clinical" "Imaging" "Laboratory" "Not Reported" "Pathology" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/htan/clinical/followup/:EVIDENCE_OF_RECURRENCE_TYPE> ],
+        [ sh:description "Required when PROGRESSION_OR_RECURRENCE is Yes" ;
+            sh:in ( "Biochemical" "Distant" "Local" "Locoregional" "Not Reported" "Regional" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/htan/clinical/followup/:PROGRESSION_OR_RECURRENCE_TYPE> ],
+        [ sh:description "ECOG performance status" ;
+            sh:in ( "0" "1" "2" "3" "4" "5" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/htan/clinical/followup/:ECOG_PERFORMANCE_STATUS> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Required when PROGRESSION_OR_RECURRENCE is Yes" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/htan/clinical/followup/:PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE> ],
+        [ sh:description "Indicates whether the disease has progressed or recurred" ;
+            sh:in ( "Censored" "No" "Not Allowed to Collect" "Not Applicable" "Not Reported" "Unknown" "Yes" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/htan/clinical/followup/:PROGRESSION_OR_RECURRENCE> ],
+        [ sh:description "Menopause status" ;
+            sh:in ( "Menopausal" "Not_Applicable" "Not_Reported" "Perimenopausal" "Postmenopausal" "Postmenopausal_Natural" "Postmenopausal_Surgical" "Premenopausal" "Premenopausal_Perimenopausal" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/htan/clinical/followup/:MENOPAUSE_STATUS> ] ;
+    sh:targetClass <https://w3id.org/htan/clinical/followup/:FollowUp> .
+
+<https://w3id.org/htan/clinical/molecular/:MolecularTest> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Information about the molecular test" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "Age in days at molecular test start (caDSR:2192202) (Aligns to CDRC Standard CDE)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:AGE_IN_DAYS_AT_MOLECULAR_TEST_START> ],
+        [ sh:description "Variant type (caDSR:2192217) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Deletion" "Insertion" "Substitution" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 16 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:VARIANT_TYPE> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Required when MOLECULAR_ANALYSIS_RESULT is Copy number variant detected" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:COPY_NUMBER> ],
+        [ sh:description "Required when MOLECULAR_ANALYSIS_METHOD is DNA Sequencing or RNA Sequencing" ;
+            sh:in ( "DNA" "RNA" "Protein" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 12 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:TEST_ANALYTE_TYPE> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Label for the timepoint (caDSR:2192201) (Aligns to CDRC Standard CDE)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:TIMEPOINT_LABEL> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:EXON> ],
+        [ sh:description "Molecular analysis method (caDSR:2192205) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "DNA Sequencing" "RNA Sequencing" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:MOLECULAR_ANALYSIS_METHOD> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:AA_CHANGE> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Test result (caDSR:2192215) (Aligns to CDRC Standard CDE)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:TEST_RESULT> ],
+        [ sh:description "Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected" ;
+            sh:in ( "Frameshift" "Missense" "Nonsense" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:MOLECULAR_CONSEQUENCE> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Molecular analysis result (caDSR:2192206) (Aligns to CDRC Standard CDE)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:MOLECULAR_ANALYSIS_RESULT> ],
+        [ sh:description "Clinical biospecimen type (caDSR:2192208) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Blood" "Tissue" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:CLINICAL_BIOSPECIMEN_TYPE> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Required when MOLECULAR_ANALYSIS_RESULT is Copy number variant detected" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:TEST_UNITS> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Gene symbol (caDSR:2192204) (Aligns to CDRC Standard CDE)" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:GENE_SYMBOL> ],
+        [ sh:description "Variant origin (caDSR:2192216) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Germline" "Somatic" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 15 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:VARIANT_ORIGIN> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Required when MOLECULAR_ANALYSIS_METHOD is DNA Sequencing or RNA Sequencing" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP> ],
+        [ sh:description "Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected" ;
+            sh:in ( "Benign" "Likely Benign" "Likely Pathogenic" "Pathogenic" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/htan/clinical/molecular/:PATHOGENICITY> ] ;
+    sh:targetClass <https://w3id.org/htan/clinical/molecular/:MolecularTest> .
+
+<https://w3id.org/htan/clinical/therapy/:Therapy> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Information about therapeutic interventions" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Required when AGE_IN_DAYS_AT_TREATMENT_END is present" ;
+            sh:in ( "Adverse Event" "Completed Planned Treatment" "Death" "Disease Progression" "Not Reported" "Other" "Patient Decision" "Physician Decision" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:OFF_TREATMENT_REASON> ],
+        [ sh:datatype xsd:string ;
+            sh:description "The NCit Preferred Name(s) of the Therapeutic agent(s)" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:THERAPEUTIC_AGENTS> ;
+            sh:pattern "^[^|]+(\\|[^|]+)*$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Required when TREATMENT_TYPE is a surgical or radiation therapy" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:THERAPY_ANATOMIC_SITE_UBERON_CODE> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Required when TREATMENT_TYPE is pharmacotherapy" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:NUMBER_OF_CYCLES> ],
+        [ sh:description "Whether single or combination pharmacotherapy was used" ;
+            sh:in ( "Chemotherapy" "Hormone Therapy" "Immunotherapy" "Targeted Therapy" "Not Reported" "Other" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:PHARMACOTHERAPY_TYPE> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Status of the individual's malignancy when the treatment began" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:INITIAL_DISEASE_STATUS> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The age in days of the subject at the time that this treatment was started" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:AGE_IN_DAYS_AT_TREATMENT_START> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Required when AGE_IN_DAYS_AT_TREATMENT_END is present" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:RESPONSE> ],
+        [ sh:description "Anticipated outcome for therapy" ;
+            sh:in ( "Adjuvant" "Curative" "Maintenance" "Neoadjuvant" "Palliative" "Prevention" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:TREATMENT_INTENT_TYPE> ],
+        [ sh:datatype xsd:integer ;
+            sh:description "The age in days of the subject at the time that this treatment was completed" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:AGE_IN_DAYS_AT_TREATMENT_END> ],
+        [ sh:description "Type of treatment administered" ;
+            sh:in ( "3-Dimensional Conformal Radiation Therapy" "Allogeneic Hematopoietic Stem Cell Transplantation" "Autologous Stem Cell Transplantation" "Brachytherapy" "Cellular Therapy" "Chemotherapy" "Concurrent Chemoradiation" "Conventional Radiotherapy" "Electron Beam Radiation Therapy" "External Beam Radiation Therapy" "High-Dose Rate Brachytherapy" "Hormone Therapy" "Immunotherapy" "Intensity-Modulated Radiation Therapy" "Low-Dose Rate Brachytherapy" "Not Reported" "Organ Transplantation" "Palliative Care" "Pharmacotherapy" "Photon Beam Radiation Therapy" "Proton Beam Radiation Therapy" "Radiation Therapy" "Radiofrequency Ablation" "Radiopharmaceutical" "Stem Cell Transplant" "Stereotactic Body Radiation Therapy" "Stereotactic Radiosurgery" "Surgical Procedure" "Targeted Molecular Therapy" "Unknown" ) ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:TREATMENT_TYPE> ;
+            sh:pattern "^[^|]+(\\|[^|]+)*$" ],
+        [ sh:description "Required when TREATMENT_TYPE is pharmacotherapy" ;
+            sh:in ( "First Line" "Second Line" "Third Line" "Fourth Line" "Fifth Line" "Not Reported" "Other" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path <https://w3id.org/htan/clinical/therapy/:REGIMEN_OR_LINE_OF_THERAPY> ] ;
+    sh:targetClass <https://w3id.org/htan/clinical/therapy/:Therapy> .
+
+<https://w3id.org/htan/clinical/vital_status/:VitalStatus> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Information about the vital status" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "Required when VITAL_STATUS is Deceased" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path <https://w3id.org/htan/clinical/vital_status/:AGE_IN_DAYS_AT_DEATH> ],
+        [ sh:description "Required when VITAL_STATUS is Deceased" ;
+            sh:in ( "Autopsy" "Death Certificate" "Not Reported" "Other" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <https://w3id.org/htan/clinical/vital_status/:CAUSE_OF_DEATH_SOURCE> ],
+        [ sh:description "Vital status of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)" ;
+            sh:in ( "Alive" "Deceased" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path <https://w3id.org/htan/clinical/vital_status/:VITAL_STATUS> ],
+        [ sh:description "Required when VITAL_STATUS is Deceased" ;
+            sh:in ( "Disease" "Other" "Not Reported" "Unknown" ) ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <https://w3id.org/htan/clinical/vital_status/:CAUSE_OF_DEATH> ] ;
+    sh:targetClass <https://w3id.org/htan/clinical/vital_status/:VitalStatus> .
+
+linkml:Any a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass linkml:Any .
+
+linkml:Extension a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "a tag/value pair used to add non-model information to an entry" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class linkml:Extension ;
+            sh:description "a tag/text tuple attached to an arbitrary element" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path linkml:extensions ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "a tag associated with an extension" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path linkml:extension_tag ],
+        [ sh:class linkml:Any ;
+            sh:description "the actual annotation" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path linkml:extension_value ] ;
+    sh:targetClass linkml:Extension .
+

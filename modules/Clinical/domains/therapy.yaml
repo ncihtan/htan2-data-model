@@ -1,4 +1,4 @@
-name: HTAN Clinical Data Model - Therapy Domain
+name: ClinicalTherapy
 id: https://w3id.org/htan/clinical/therapy
 description: HTAN Clinical Data Model - Therapy Domain
 
@@ -200,17 +200,51 @@ classes:
         description: Response to treatment
     slot_usage:
       THERAPY_ANATOMIC_SITE_UBERON_CODE:
-        if:
-          TREATMENT_TYPE: ["Radiation Therapy", "Surgery"]
-        then:
-          required: true
-      PHARMACOTHERAPY_TYPE:
-        if:
-          TREATMENT_TYPE: ["Chemotherapy", "Immunotherapy", "Targeted Therapy"]
-        then:
-          required: true
-      THERAPEUTIC_AGENTS:
-        if:
-          TREATMENT_TYPE: ["Chemotherapy", "Immunotherapy", "Targeted Therapy"]
-        then:
-          required: true 
+        required: false
+        description: Required when TREATMENT_TYPE is a surgical or radiation therapy
+      OFF_TREATMENT_REASON:
+        required: false
+        description: Required when AGE_IN_DAYS_AT_TREATMENT_END is present
+      REGIMEN_OR_LINE_OF_THERAPY:
+        required: false
+        description: Required when TREATMENT_TYPE is pharmacotherapy
+      NUMBER_OF_CYCLES:
+        required: false
+        description: Required when TREATMENT_TYPE is pharmacotherapy
+      RESPONSE:
+        required: false
+        description: Required when AGE_IN_DAYS_AT_TREATMENT_END is present
+    rules:
+      - description: "When treatment type is surgical or radiation therapy, anatomic site becomes required"
+        preconditions:
+          slot_conditions:
+            TREATMENT_TYPE:
+              any_of:
+                - pattern: ".*Surgical.*"
+                - pattern: ".*Radiation.*"
+        postconditions:
+          slot_conditions:
+            THERAPY_ANATOMIC_SITE_UBERON_CODE:
+              required: true
+      - description: "When treatment end date is present, off-treatment reason and response become required"
+        preconditions:
+          slot_conditions:
+            AGE_IN_DAYS_AT_TREATMENT_END:
+              required: true
+        postconditions:
+          slot_conditions:
+            OFF_TREATMENT_REASON:
+              required: true
+            RESPONSE:
+              required: true
+      - description: "When treatment type is pharmacotherapy, regimen and cycles become required"
+        preconditions:
+          slot_conditions:
+            TREATMENT_TYPE:
+              equals_string: "Pharmacotherapy"
+        postconditions:
+          slot_conditions:
+            REGIMEN_OR_LINE_OF_THERAPY:
+              required: true
+            NUMBER_OF_CYCLES:
+              required: true 

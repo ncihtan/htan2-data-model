@@ -87,17 +87,11 @@ classes:
         description: Type of environmental exposure (caDSR:2192206) (Aligns to CDRC Standard CDE)
     slot_usage:
       YEARS_SMOKED:
-        if:
-          SMOKING_HISTORY: ["Current smoker", "Former smoker"]
-        then:
-          required: true
+        required: false
+        description: Required when SMOKING_HISTORY is Current smoker or Former smoker
       PACK_YEARS_SMOKED:
-        if:
-          SMOKING_HISTORY: ["Current smoker", "Former smoker"]
-        then:
-          required: true
+        required: false
+        description: Required when SMOKING_HISTORY is Current smoker or Former smoker
       ENVIRONMENTAL_EXPOSURE_TYPE:
-        if:
-          ENVIRONMENTAL_EXPOSURE: "Yes"
-        then:
-          required: true 
+        required: false
+        description: Required when ENVIRONMENTAL_EXPOSURE is Yes 

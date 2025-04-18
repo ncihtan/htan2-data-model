@@ -241,27 +241,42 @@ classes:
         description: Method used to make the diagnosis (caDSR:2192213) (Aligns to CDRC Standard CDE)
     slot_usage:
       CLINICAL_T_STAGE:
-        if:
-          TUMOR_STAGE: ["Stage I", "Stage IA", "Stage IB", "Stage II", "Stage IIA", "Stage IIB", "Stage III", "Stage IIIA", "Stage IIIB", "Stage IIIC", "Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
-        then:
-          required: true
+        required: false
+        description: Required when TUMOR_STAGE is any stage value
       CLINICAL_N_STAGE:
-        if:
-          TUMOR_STAGE: ["Stage I", "Stage IA", "Stage IB", "Stage II", "Stage IIA", "Stage IIB", "Stage III", "Stage IIIA", "Stage IIIB", "Stage IIIC", "Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
-        then:
-          required: true
+        required: false
+        description: Required when TUMOR_STAGE is any stage value
       CLINICAL_M_STAGE:
-        if:
-          TUMOR_STAGE: ["Stage I", "Stage IA", "Stage IB", "Stage II", "Stage IIA", "Stage IIB", "Stage III", "Stage IIIA", "Stage IIIB", "Stage IIIC", "Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
-        then:
-          required: true
+        required: false
+        description: Required when TUMOR_STAGE is any stage value
       AJCC_STAGING_SYSTEM_EDITION:
-        if:
-          TUMOR_STAGE: ["Stage I", "Stage IA", "Stage IB", "Stage II", "Stage IIA", "Stage IIB", "Stage III", "Stage IIIA", "Stage IIIB", "Stage IIIC", "Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
-        then:
-          required: true
+        required: false
+        description: Required when TUMOR_STAGE is any stage value
       METASTASIS_AT_DIAGNOSIS:
-        if:
-          TUMOR_STAGE: ["Stage IV", "Stage IVA", "Stage IVB", "Stage IVC"]
-        then:
-          required: true 
+        required: false
+        description: Required when TUMOR_STAGE is Stage IV or any of its substages
+    rules:
+      - description: "When TUMOR_STAGE has a value, staging fields become required"
+        preconditions:
+          slot_conditions:
+            TUMOR_STAGE:
+              pattern: "^Stage.*"
+        postconditions:
+          slot_conditions:
+            CLINICAL_T_STAGE:
+              required: true
+            CLINICAL_N_STAGE:
+              required: true
+            CLINICAL_M_STAGE:
+              required: true
+            AJCC_STAGING_SYSTEM_EDITION:
+              required: true
+      - description: "When TUMOR_STAGE is Stage IV, metastasis field becomes required"
+        preconditions:
+          slot_conditions:
+            TUMOR_STAGE:
+              pattern: "^Stage IV.*"
+        postconditions:
+          slot_conditions:
+            METASTASIS_AT_DIAGNOSIS:
+              required: true 

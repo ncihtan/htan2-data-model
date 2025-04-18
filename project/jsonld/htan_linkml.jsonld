@@ -30993,7 +30993,7 @@
   "source_file": "htan_linkml.yaml",
   "source_file_date": "2025-04-17T11:12:00",
   "source_file_size": 343368,
-  "generation_date": "2025-04-17T15:09:43",
+  "generation_date": "2025-04-17T17:16:20",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/htan_linkml.context.jsonld",

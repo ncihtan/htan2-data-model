@@ -102,22 +102,22 @@ enums:
     permissible_values:
       Menopausal:
         description: The permanent cessation of menses, usually defined by 6 to 12 months of amenorrhea in a woman over 45 years of age.
-      "Not Applicable":
+      "Not_Applicable":
         description: Determination of a value is not relevant in the current context.
-      "Not Reported":
+      "Not_Reported":
         description: Not provided or available.
       Perimenopausal:
         description: The time of a woman's life when menstrual periods become irregular.
       Postmenopausal:
         description: Having to do with the time after menopause.
-      "Postmenopausal (>12 mo since LMP with no prior ovariectomy)":
-        description: Having to do with the time after menopause.
-      "Postmenopausal (prior bilateral ovariectomy)":
-        description: Having to do with the time after menopause.
+      "Postmenopausal_Natural":
+        description: Having to do with the time after menopause (>12 months since last menstrual period with no prior ovariectomy).
+      "Postmenopausal_Surgical":
+        description: Having to do with the time after menopause (prior bilateral ovariectomy).
       Premenopausal:
         description: Refers to the time before menopause.
-      "Premenopausal/Perimenopausal":
-        description: Prior to menopause.
+      "Premenopausal_Perimenopausal":
+        description: Prior to menopause or in the perimenopausal phase.
       Unknown:
         description: Not known, not observed, not recorded, or refused.
 
@@ -163,22 +163,30 @@ classes:
         description: Menopause status
     slot_usage:
       PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
-        if:
-          PROGRESSION_OR_RECURRENCE: "Yes"
-        then:
-          required: true
+        required: false
+        description: Required when PROGRESSION_OR_RECURRENCE is Yes
       PROGRESSION_OR_RECURRENCE_TYPE:
-        if:
-          PROGRESSION_OR_RECURRENCE: "Yes"
-        then:
-          required: true
+        required: false
+        description: Required when PROGRESSION_OR_RECURRENCE is Yes
       EVIDENCE_OF_RECURRENCE_TYPE:
-        if:
-          PROGRESSION_OR_RECURRENCE: "Yes"
-        then:
-          required: true
+        required: false
+        description: Required when PROGRESSION_OR_RECURRENCE is Yes
       AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
-        if:
-          PROGRESSION_OR_RECURRENCE: "Yes"
-        then:
-          required: true 
+        required: false
+        description: Required when PROGRESSION_OR_RECURRENCE is Yes
+    rules:
+      - description: "When progression or recurrence is present, related fields become required"
+        preconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
+              required: true
+            PROGRESSION_OR_RECURRENCE_TYPE:
+              required: true
+            EVIDENCE_OF_RECURRENCE_TYPE:
+              required: true
+            AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
+              required: true 

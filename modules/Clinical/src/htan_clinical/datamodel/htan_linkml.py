@@ -1,5 +1,5 @@
 # Auto generated from htan_linkml.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-17T15:09:52
+# Generation date: 2025-04-17T17:16:30
 # Schema: htan-linkml
 #
 # id: https://w3id.org/ncihtan/htan-linkml

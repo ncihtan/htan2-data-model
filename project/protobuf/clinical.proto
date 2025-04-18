@@ -1,0 +1,123 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// Container for all clinical data
+message ClinicalData
+ {
+  componentEnum cOMPONENT = 0
+  string hTANPARTICIPANTID = 0
+  demographics dEMOGRAPHICS = 0
+  vitalStatus vITALSTATUS = 0
+  diagnosis dIAGNOSIS = 0
+  exposure eXPOSURES = 0
+  familyHistory fAMILYHISTORY = 0
+ repeated  followUp fOLLOWUPS = 0
+ repeated  molecularTest mOLECULARTESTS = 0
+ repeated  therapy tHERAPIES = 0
+ }
+// Information about the demographics
+message Demographics
+ {
+  ethnicGroupEnum eTHNICGROUP = 0
+  genderIdentityEnum gENDERIDENTITY = 0
+  sexEnum sEX = 0
+  raceEnum rACE = 0
+ }
+// Information about the diagnosis
+message Diagnosis
+ {
+  string pRIMARYDIAGNOSISNCITHESAURUSID = 0
+  integer aGEINDAYSATDIAGNOSIS = 0
+  string tISSUEORORGANOFORIGINUBERONCODE = 0
+  tumorGradeEnum tUMORGRADE = 0
+  clinicalTStageEnum cLINICALTSTAGE = 0
+  clinicalNStageEnum cLINICALNSTAGE = 0
+  clinicalMStageEnum cLINICALMSTAGE = 0
+  aJCCStagingSystemEditionEnum aJCCSTAGINGSYSTEMEDITION = 0
+  integer aGEINDAYSATLASTKNOWNDISEASESTATUS = 0
+  lastKnownDiseaseStatusEnum lASTKNOWNDISEASESTATUS = 0
+  tumorClassificationCategoryEnum tUMORCLASSIFICATIONCATEGORY = 0
+  metastasisAtDiagnosisEnum mETASTASISATDIAGNOSIS = 0
+  methodOfDiagnosisEnum mETHODOFDIAGNOSIS = 0
+ }
+// Information about the exposure
+message Exposure
+ {
+  smokingHistoryEnum sMOKINGHISTORY = 0
+  integer yEARSSMOKED = 0
+  decimal pACKYEARSSMOKED = 0
+  alcoholHistoryIndicatorEnum aLCOHOLHISTORYINDICATOR = 0
+  environmentalExposureEnum eNVIRONMENTALEXPOSURE = 0
+  environmentalExposureTypeEnum eNVIRONMENTALEXPOSURETYPE = 0
+ }
+// a tag/value pair used to add non-model information to an entry
+message Extension
+ {
+  uriorcurie tag = 0
+  anyValue value = 0
+ repeated  extension extensions = 0
+ }
+// A class to capture information about the cancer history of family members.
+message FamilyHistory
+ {
+  yesNoUnknownNotReportedEnum fAMILYMEMBERCANCERHISTORY = 0
+  integer rELATIVESWITHCANCERHISTORY = 0
+ }
+// Clinical follow-up information
+message FollowUp
+ {
+  integer aGEINDAYSATFOLLOWUP = 0
+  progressionOrRecurrenceEnum pROGRESSIONORRECURRENCE = 0
+  string pROGRESSIONORRECURRENCEANATOMICSITEUBERONCODE = 0
+  progressionTypeEnum pROGRESSIONORRECURRENCETYPE = 0
+  evidenceOfRecurrenceTypeEnum eVIDENCEOFRECURRENCETYPE = 0
+  integer aGEINDAYSATPROGRESSIONORRECURRENCE = 0
+  diseaseResponseEnum dISEASERESPONSE = 0
+  eCOGPerformanceStatusEnum eCOGPERFORMANCESTATUS = 0
+  menopauseStatusEnum mENOPAUSESTATUS = 0
+ }
+// Information about the molecular test
+message MolecularTest
+ {
+  string tIMEPOINTLABEL = 0
+  integer aGEINDAYSATMOLECULARTESTSTART = 0
+  integer aGEINDAYSATMOLECULARTESTSTOP = 0
+  string gENESYMBOL = 0
+  molecularAnalysisMethodEnum mOLECULARANALYSISMETHOD = 0
+  string mOLECULARANALYSISRESULT = 0
+  string aACHANGE = 0
+  clinicalBiospecimenTypeEnum cLINICALBIOSPECIMENTYPE = 0
+  integer cOPYNUMBER = 0
+  integer eXON = 0
+  molecularConsequenceEnum mOLECULARCONSEQUENCE = 0
+  pathogenicityEnum pATHOGENICITY = 0
+  testAnalyteTypeEnum tESTANALYTETYPE = 0
+  string tESTUNITS = 0
+  string tESTRESULT = 0
+  variantOriginEnum vARIANTORIGIN = 0
+  variantTypeEnum vARIANTTYPE = 0
+ }
+// Information about therapeutic interventions
+message Therapy
+ {
+  string iNITIALDISEASESTATUS = 0
+  treatmentIntentTypeEnum tREATMENTINTENTTYPE = 0
+ repeated  treatmentTypeEnum tREATMENTTYPE = 0
+  pharmacotherapyTypeEnum pHARMACOTHERAPYTYPE = 0
+ repeated  string tHERAPEUTICAGENTS = 0
+  string tHERAPYANATOMICSITEUBERONCODE = 0
+  integer aGEINDAYSATTREATMENTSTART = 0
+  integer aGEINDAYSATTREATMENTEND = 0
+  offTreatmentReasonEnum oFFTREATMENTREASON = 0
+  regimenOrLineOfTherapyEnum rEGIMENORLINEOFTHERAPY = 0
+  integer nUMBEROFCYCLES = 0
+  string rESPONSE = 0
+ }
+// Information about the vital status
+message VitalStatus
+ {
+  vitalStatusEnum vITALSTATUS = 0
+  integer aGEINDAYSATDEATH = 0
+  causeOfDeathEnum cAUSEOFDEATH = 0
+  causeOfDeathSourceEnum cAUSEOFDEATHSOURCE = 0
+ }

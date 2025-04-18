@@ -4,15 +4,14 @@ description: HTAN Clinical Data Model Schema
 imports:
   - linkml:types
   - linkml:extensions
-  - ../Participant/participant
-  - domains/demographics
-  - domains/diagnosis
-  - domains/exposure
-  - domains/family_history
-  - domains/followup
-  - domains/molecular
-  - domains/therapy
-  - domains/vital_status
+  - demographics
+  - diagnosis
+  - exposure
+  - family_history
+  - followup
+  - molecular
+  - therapy
+  - vital_status
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -23,6 +22,28 @@ prefixes:
   caDSR: https://cadsr.cancer.gov/onedata/
 
 default_prefix: htan
+
+enums:
+  ComponentEnum:
+    permissible_values:
+      "Clinical":
+        description: Clinical data component
+      "Demographics":
+        description: Demographics data component
+      "Diagnosis":
+        description: Diagnosis data component
+      "Exposure":
+        description: Exposure data component
+      "Family History":
+        description: Family history data component
+      "Follow-up":
+        description: Follow-up data component
+      "Molecular":
+        description: Molecular data component
+      "Therapy":
+        description: Therapy data component
+      "Vital Status":
+        description: Vital status data component
 
 slots:
   caDSR_id:
