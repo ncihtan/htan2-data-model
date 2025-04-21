@@ -134,7 +134,7 @@ classes:
         required: true
         description: Indicates whether the disease has progressed or recurred
       PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
-        range: string
+        range: tissue_or_organ_of_origin_uberon_enum
         required: false
         description: UBERON code for the anatomic site of progression or recurrence
       PROGRESSION_OR_RECURRENCE_TYPE:
