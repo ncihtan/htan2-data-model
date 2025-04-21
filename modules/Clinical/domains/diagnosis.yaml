@@ -2,6 +2,9 @@ name: ClinicalDiagnosis
 id: https://w3id.org/htan/clinical/diagnosis
 description: HTAN Clinical Data Model - Diagnosis Domain
 
+imports:
+  - uberon_tissues
+
 enums:
   TumorGradeEnum:
     title: tumor_grade
@@ -196,7 +199,7 @@ classes:
         required: true
         description: Age in days at which the diagnosis was made (caDSR:2192202) (Aligns to CDRC Standard CDE)
       TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE:
-        range: string
+        range: tissue_or_organ_of_origin_uberon_enum
         required: true
         description: UBERON code for the tissue or organ of origin (caDSR:2192205) (Aligns to CDRC Standard CDE)
       TUMOR_GRADE:

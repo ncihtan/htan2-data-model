@@ -12,6 +12,7 @@ imports:
   - molecular
   - therapy
   - vital_status
+  - uberon_tissues
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -51,6 +52,10 @@ slots:
     range: string
     multivalued: false
     required: false
+  TISSUE_OR_ORGAN_OF_ORIGIN:
+    range: tissue_or_organ_of_origin_uberon_enum
+    required: true
+    description: The tissue or organ of origin for the primary diagnosis, using UBERON codes
 
 classes:
   ClinicalData:

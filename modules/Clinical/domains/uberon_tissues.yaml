@@ -1,0 +1,509 @@
+id: https://w3id.org/htan/uberon_tissues
+name: uberon_tissues
+description: UBERON codes for tissues and organs
+title: UBERON Tissue and Organ Codes
+version: 1.0.0
+
+enums:
+  tissue_or_organ_of_origin_uberon_enum:
+    name: tissue_or_organ_of_origin_uberon_enum
+    description: UBERON codes for tissues and organs of origin
+    permissible_values:
+      UBERON:0000000:
+        description: processual entity
+      UBERON:0000002:
+        description: uterine cervix
+      UBERON:0000003:
+        description: naris
+      UBERON:0000004:
+        description: nose
+      UBERON:0000005:
+        description: chemosensory organ
+      UBERON:0000006:
+        description: islet of Langerhans
+      UBERON:0000007:
+        description: pituitary gland
+      UBERON:0000009:
+        description: submucosa
+      UBERON:0000010:
+        description: peripheral nervous system
+      UBERON:0000011:
+        description: parasympathetic nervous system
+      UBERON:0000012:
+        description: somatic nervous system
+      UBERON:0000013:
+        description: sympathetic nervous system
+      UBERON:0000014:
+        description: zone of skin
+      UBERON:0000015:
+        description: non-material anatomical boundary
+      UBERON:0000016:
+        description: endocrine pancreas
+      UBERON:0000017:
+        description: exocrine pancreas
+      UBERON:0000018:
+        description: compound eye
+      UBERON:0000019:
+        description: camera-type eye
+      UBERON:0000020:
+        description: sense organ
+      UBERON:0000021:
+        description: cutaneous appendage
+      UBERON:0000022:
+        description: feather
+      UBERON:0000023:
+        description: wing
+      UBERON:0000026:
+        description: appendage
+      UBERON:0000029:
+        description: lymph node
+      UBERON:0000030:
+        description: lamina propria
+      UBERON:0000031:
+        description: lamina propria of trachea
+      UBERON:0000033:
+        description: head
+      UBERON:0000035:
+        description: primary ovarian follicle
+      UBERON:0000036:
+        description: secondary ovarian follicle
+      UBERON:0000037:
+        description: tertiary ovarian follicle
+      UBERON:0000038:
+        description: follicular fluid
+      UBERON:0000039:
+        description: follicular antrum
+      UBERON:0000041:
+        description: odontode scale
+      UBERON:0000042:
+        description: serous membrane
+      UBERON:0000043:
+        description: tendon
+      UBERON:0000044:
+        description: dorsal root ganglion
+      UBERON:0000045:
+        description: ganglion
+      UBERON:0000046:
+        description: stemma
+      UBERON:0000047:
+        description: simple eye
+      UBERON:0000048:
+        description: pinhole eye
+      UBERON:0000051:
+        description: fornix of vagina
+      UBERON:0000052:
+        description: fornix of brain
+      UBERON:0000053:
+        description: macula lutea
+      UBERON:0000054:
+        description: macula
+      UBERON:0000056:
+        description: ureter
+      UBERON:0000057:
+        description: urethra
+      UBERON:0000058:
+        description: duct
+      UBERON:0000059:
+        description: large intestine
+      UBERON:0000060:
+        description: anatomical wall
+      UBERON:0000061:
+        description: anatomical structure
+      UBERON:0000062:
+        description: organ
+      UBERON:0000063:
+        description: organ subunit
+      UBERON:0000064:
+        description: organ part
+      UBERON:0000065:
+        description: respiratory tract
+      UBERON:0000066:
+        description: fully formed stage
+      UBERON:0000068:
+        description: embryo stage
+      UBERON:0000069:
+        description: larval stage
+      UBERON:0000070:
+        description: pupal stage
+      UBERON:0000071:
+        description: death stage
+      UBERON:0000072:
+        description: proximo-distal subdivision of respiratory tract
+      UBERON:0000073:
+        description: regional part of nervous system
+      UBERON:0000074:
+        description: renal glomerulus
+      UBERON:0000075:
+        description: subdivision of skeletal system
+      UBERON:0000076:
+        description: external ectoderm
+      UBERON:0000079:
+        description: male reproductive system
+      UBERON:0000080:
+        description: mesonephros
+      UBERON:0000081:
+        description: metanephros
+      UBERON:0000082:
+        description: adult mammalian kidney
+      UBERON:0000083:
+        description: mesonephric tubule
+      UBERON:0000084:
+        description: ureteric bud
+      UBERON:0000085:
+        description: morula
+      UBERON:0000086:
+        description: zona pellucida
+      UBERON:0000087:
+        description: inner cell mass
+      UBERON:0000088:
+        description: trophoblast
+      UBERON:0000089:
+        description: hypoblast (generic)
+      UBERON:0000090:
+        description: blastocele
+      UBERON:0000091:
+        description: bilaminar disc
+      UBERON:0000092:
+        description: post-embryonic stage
+      UBERON:0000094:
+        description: membrane organ
+      UBERON:0000095:
+        description: cardiac neural crest
+      UBERON:0000100:
+        description: blastopore
+      UBERON:0000101:
+        description: lobe of lung
+      UBERON:0000102:
+        description: lung vasculature
+      UBERON:0000104:
+        description: life cycle
+      UBERON:0000105:
+        description: life cycle stage
+      UBERON:0000106:
+        description: zygote stage
+      UBERON:0000107:
+        description: cleavage stage
+      UBERON:0000108:
+        description: blastula stage
+      UBERON:0000109:
+        description: gastrula stage
+      UBERON:0000110:
+        description: neurula stage
+      UBERON:0000111:
+        description: organogenesis stage
+      UBERON:0000112:
+        description: sexually immature stage
+      UBERON:0000113:
+        description: post-juvenile adult stage
+      UBERON:0000114:
+        description: lung connective tissue
+      UBERON:0000115:
+        description: lung epithelium
+      UBERON:0000117:
+        description: respiratory tube
+      UBERON:0000118:
+        description: lung bud
+      UBERON:0000119:
+        description: cell layer
+      UBERON:0000120:
+        description: blood brain barrier
+      UBERON:0000121:
+        description: perineurium
+      UBERON:0000122:
+        description: neuron projection bundle
+      UBERON:0000123:
+        description: endoneurium
+      UBERON:0000124:
+        description: epineurium
+      UBERON:0000125:
+        description: neural nucleus
+      UBERON:0000126:
+        description: cranial nerve nucleus
+      UBERON:0000127:
+        description: facial nucleus
+      UBERON:0000128:
+        description: olivary body
+      UBERON:0000130:
+        description: transverse foramen
+      UBERON:0000144:
+        description: trochlea of humerus
+      UBERON:0000151:
+        description: pectoral fin
+      UBERON:0000152:
+        description: pelvic fin
+      UBERON:0000155:
+        description: theca cell layer
+      UBERON:0000156:
+        description: theca externa
+      UBERON:0000157:
+        description: theca interna
+      UBERON:0000158:
+        description: membranous layer
+      UBERON:0000159:
+        description: anal canal
+      UBERON:0000160:
+        description: intestine
+      UBERON:0000161:
+        description: orifice
+      UBERON:0000162:
+        description: cloaca
+      UBERON:0000163:
+        description: embryonic cloaca
+      UBERON:0000164:
+        description: primitive urogenital sinus
+      UBERON:0000165:
+        description: mouth
+      UBERON:0000166:
+        description: oral opening
+      UBERON:0000167:
+        description: oral cavity
+      UBERON:0000168:
+        description: proximal-distal subdivision of colon
+      UBERON:0000170:
+        description: pair of lungs
+      UBERON:0000171:
+        description: respiration organ
+      UBERON:0000172:
+        description: vomit
+      UBERON:0000173:
+        description: amniotic fluid
+      UBERON:0000174:
+        description: excreta
+      UBERON:0000175:
+        description: pleural effusion
+      UBERON:0000176:
+        description: oronasal secretion
+      UBERON:0000177:
+        description: pus
+      UBERON:0000178:
+        description: blood
+      UBERON:0000179:
+        description: haemolymphatic fluid
+      UBERON:0000180:
+        description: lateral lumbar region of abdomen
+      UBERON:0000199:
+        description: neck of radius
+      UBERON:0000200:
+        description: gyrus
+      UBERON:0000201:
+        description: endothelial blood brain barrier
+      UBERON:0000202:
+        description: glial blood brain barrier
+      UBERON:0000203:
+        description: pallium
+      UBERON:0000204:
+        description: ventral part of telencephalon
+      UBERON:0000205:
+        description: papula
+      UBERON:0000207:
+        description: compound eye corneal lens
+      UBERON:0000209:
+        description: tetrapod frontal bone
+      UBERON:0000210:
+        description: tetrapod parietal bone
+      UBERON:0000211:
+        description: ligament
+      UBERON:0000218:
+        description: vertebral arch of axis
+      UBERON:0000219:
+        description: vertebral foramen of atlas
+      UBERON:0000220:
+        description: atlanto-occipital joint
+      UBERON:0000221:
+        description: supraauricular point
+      UBERON:0000301:
+        description: amniotic cavity
+      UBERON:0000303:
+        description: adductor longus
+      UBERON:0000304:
+        description: tendon sheath
+      UBERON:0000305:
+        description: amnion
+      UBERON:0000307:
+        description: blastula
+      UBERON:0000309:
+        description: body wall
+      UBERON:0000310:
+        description: breast
+      UBERON:0000311:
+        description: extensor muscle
+      UBERON:0000312:
+        description: inner cambium layer of periosteum
+      UBERON:0000313:
+        description: portion of cartilage tissue in tibia
+      UBERON:0000314:
+        description: cecum mucosa
+      UBERON:0000315:
+        description: subarachnoid space
+      UBERON:0000316:
+        description: cervical mucus
+      UBERON:0000317:
+        description: colonic mucosa
+      UBERON:0000319:
+        description: cytotrophoblast
+      UBERON:0000320:
+        description: duodenal mucosa
+      UBERON:0000323:
+        description: late embryo
+      UBERON:0000325:
+        description: gastric gland
+      UBERON:0000326:
+        description: pancreatic juice
+      UBERON:0000328:
+        description: gut wall
+      UBERON:0000329:
+        description: hair root
+      UBERON:0000331:
+        description: ileal mucosa
+      UBERON:0000332:
+        description: yellow bone marrow
+      UBERON:0000333:
+        description: intestinal gland
+      UBERON:0000341:
+        description: throat
+      UBERON:0000344:
+        description: mucosa
+      UBERON:0000345:
+        description: myelin
+      UBERON:0000347:
+        description: entire myelin sheath
+      UBERON:0000348:
+        description: ophthalmic nerve
+      UBERON:0000349:
+        description: limbic system
+      UBERON:0000351:
+        description: nuchal ligament
+      UBERON:0000353:
+        description: parenchyma
+      UBERON:0000355:
+        description: pharyngeal mucosa
+      UBERON:0000358:
+        description: blastocyst
+      UBERON:0000359:
+        description: preputial gland
+      UBERON:0000361:
+        description: red bone marrow
+      UBERON:0000362:
+        description: renal medulla
+      UBERON:0000363:
+        description: reticuloendothelial system
+      UBERON:0000364:
+        description: obsolete rootlet
+      UBERON:0000365:
+        description: urothelium
+      UBERON:0000366:
+        description: flexor muscle
+      UBERON:0000368:
+        description: adductor brevis
+      UBERON:0000369:
+        description: corpus striatum
+      UBERON:0000370:
+        description: adductor magnus
+      UBERON:0000371:
+        description: syncytiotrophoblast
+      UBERON:0000372:
+        description: extensor digitorum brevis pes
+      UBERON:0000373:
+        description: tapetum of corpus callosum
+      UBERON:0000375:
+        description: mandibular nerve
+      UBERON:0000376:
+        description: hindlimb stylopod
+      UBERON:0000377:
+        description: maxillary nerve
+      UBERON:0000378:
+        description: tongue muscle
+      UBERON:0000379:
+        description: tracheal mucosa
+      UBERON:0000380:
+        description: obsolete tuber
+      UBERON:0000381:
+        description: urinary bladder detrusor smooth muscle
+      UBERON:0000382:
+        description: apocrine sweat gland
+      UBERON:0000383:
+        description: musculature of body
+      UBERON:0000385:
+        description: obsolete labial gland
+      UBERON:0000387:
+        description: meniscus
+      UBERON:0000388:
+        description: epiglottis
+      UBERON:0000389:
+        description: lens cortex
+      UBERON:0000390:
+        description: lens nucleus
+      UBERON:0000391:
+        description: leptomeninx
+      UBERON:0000392:
+        description: longissimus muscle
+      UBERON:0000395:
+        description: cochlear ganglion
+      UBERON:0000396:
+        description: vallate papilla
+      UBERON:0000397:
+        description: colonic epithelium
+      UBERON:0000398:
+        description: cartilage tissue of sternum
+      UBERON:0000399:
+        description: jejunal mucosa
+      UBERON:0000400:
+        description: jejunal epithelium
+      UBERON:0000401:
+        description: mandibular ramus
+      UBERON:0000402:
+        description: nasal vestibule
+      UBERON:0000403:
+        description: scalp
+      UBERON:0000407:
+        description: sympathetic trunk
+      UBERON:0000408:
+        description: vertebral ganglion
+      UBERON:0000409:
+        description: serous gland
+      UBERON:0000410:
+        description: bronchial mucosa
+      UBERON:0000411:
+        description: visual cortex
+      UBERON:0000412:
+        description: dermal papilla
+      UBERON:0000414:
+        description: mucous gland
+      UBERON:0000415:
+        description: artery wall
+      UBERON:0000416:
+        description: subdural space
+      UBERON:0000420:
+        description: myoepithelium
+      UBERON:0000423:
+        description: eccrine sweat gland
+      UBERON:0000424:
+        description: gastric pit
+      UBERON:0000426:
+        description: extravillous trophoblast
+      UBERON:0000428:
+        description: prostate epithelium
+      UBERON:0000429:
+        description: enteric plexus
+      UBERON:0000430:
+        description: ventral intermediate nucleus of thalamus
+      UBERON:0000431:
+        description: ventral medial complex of thalamus
+      UBERON:0000432:
+        description: endopeduncular nucleus
+      UBERON:0000433:
+        description: posterior paraventricular nucleus of thalamus
+      UBERON:0000434:
+        description: anterior paraventricular nucleus of thalamus
+      UBERON:0000435:
+        description: lateral tuberal nucleus
+      UBERON:0000437:
+        description: arachnoid barrier layer
+      UBERON:0000439:
+        description: arachnoid trabecula
+      UBERON:0000440:
+        description: trabecula
+      UBERON:0000442:
+        description: right testicular vein
+      UBERON:0000443:
+        description: left testicular vein 
