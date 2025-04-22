@@ -39,6 +39,7 @@ docs/*
 # Then explicitly allow our markdown guides
 !docs/development.md
 !docs/quickstart.md
+!docs/index.md
 # Also ignore these specific doc directories
 docs/_build/
 docs/site/
