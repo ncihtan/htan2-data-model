@@ -36,18 +36,29 @@ jobs:
       - name: Install dependencies.
         run: poetry install -E docs
 
+      - name: Clean docs directory
+        run: |
+          # Backup static files
+          mkdir -p docs_backup
+          cp docs/index.md docs_backup/ || true
+          cp docs/quickstart.md docs_backup/ || true
+          cp docs/development.md docs_backup/ || true
+          cp docs/about.md docs_backup/ || true
+          
+          # Clean generated content
+          rm -rf docs/*
+          rm -rf site/
+          
+          # Restore static files
+          cp docs_backup/* docs/ || true
+          rm -rf docs_backup
+
       - name: Generate documentation.
         run: |
           mkdir -p docs
           touch docs/.nojekyll
-          # Copy static documentation files
-          cp src/docs/index.md docs/
-          cp src/docs/quickstart.md docs/
-          cp src/docs/development.md docs/
           # Run the Python script to generate documentation
           poetry run python generate_docs.py
-          # Copy about.md if it doesn't exist
-          ([ ! -f docs/about.md ] && cp src/docs/about.md docs/) || true
           
           # Commit the generated files
           git config --local user.email "action@github.com"
@@ -109,18 +120,29 @@ jobs:
       - name: Install dependencies.
         run: poetry install -E docs
 
+      - name: Clean docs directory
+        run: |
+          # Backup static files
+          mkdir -p docs_backup
+          cp docs/index.md docs_backup/ || true
+          cp docs/quickstart.md docs_backup/ || true
+          cp docs/development.md docs_backup/ || true
+          cp docs/about.md docs_backup/ || true
+          
+          # Clean generated content
+          rm -rf docs/*
+          rm -rf site/
+          
+          # Restore static files
+          cp docs_backup/* docs/ || true
+          rm -rf docs_backup
+
       - name: Generate documentation.
         run: |
           mkdir -p docs
           touch docs/.nojekyll
-          # Copy static documentation files
-          cp src/docs/index.md docs/
-          cp src/docs/quickstart.md docs/
-          cp src/docs/development.md docs/
           # Run the Python script to generate documentation
           poetry run python generate_docs.py
-          # Copy about.md if it doesn't exist
-          ([ ! -f docs/about.md ] && cp src/docs/about.md docs/) || true
           
           # Commit the generated files
           git config --local user.email "action@github.com"
