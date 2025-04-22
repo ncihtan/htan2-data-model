@@ -13,6 +13,7 @@ include = ["README.md", "modules/Clinical/src/htan_clinical/schema", "project"]
 [tool.poetry.dependencies]
 python = "^3.9"
 linkml-runtime = "^1.1.24"
+pyyaml = "^6.0.1"
 
 [tool.poetry-dynamic-versioning]
 enable = true
