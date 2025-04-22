@@ -2,9 +2,6 @@ name: ClinicalMolecular
 id: https://w3id.org/htan/clinical/molecular
 description: HTAN Clinical Data Model - Molecular Domain
 
-imports:
-  - followup
-
 enums:
   MolecularAnalysisMethodEnum:
     title: molecular_analysis_method
