@@ -194,54 +194,67 @@ classes:
         range: string
         required: true
         description: NCI Thesaurus ID for the primary diagnosis (caDSR:2192201) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192201
       AGE_IN_DAYS_AT_DIAGNOSIS:
         range: integer
         required: true
         description: Age in days at which the diagnosis was made (caDSR:2192202) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192202
       TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE:
         range: tissue_or_organ_of_origin_uberon_enum
         required: true
         description: UBERON code for the tissue or organ of origin (caDSR:2192205) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192205
       TUMOR_GRADE:
         range: TumorGradeEnum
         required: true
         description: The grade of the tumor (caDSR:2192203) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192203
       CLINICAL_T_STAGE:
         range: ClinicalTStageEnum
         required: true
         description: Clinical T stage of the tumor (caDSR:2192206) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192206
       CLINICAL_N_STAGE:
         range: ClinicalNStageEnum
         required: true
         description: Clinical N stage of the tumor (caDSR:2192207) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192207
       CLINICAL_M_STAGE:
         range: ClinicalMStageEnum
         required: true
         description: Clinical M stage of the tumor (caDSR:2192208) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192208
       AJCC_STAGING_SYSTEM_EDITION:
         range: AJCCStagingSystemEditionEnum
         required: true
         description: Edition of AJCC staging system used (caDSR:2192209) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192209
       AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS:
         range: integer
         required: true
         description: Age in days at which the last known disease status was recorded (caDSR:2192203) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192203
       LAST_KNOWN_DISEASE_STATUS:
         range: LastKnownDiseaseStatusEnum
         required: true
         description: Last known disease status (caDSR:2192210) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192210
       TUMOR_CLASSIFICATION_CATEGORY:
         range: TumorClassificationCategoryEnum
         required: true
         description: Classification category of the tumor (caDSR:2192211) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192211
       METASTASIS_AT_DIAGNOSIS:
         range: MetastasisAtDiagnosisEnum
         required: true
         description: Presence of metastasis at diagnosis (caDSR:2192212) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192212
       METHOD_OF_DIAGNOSIS:
         range: MethodOfDiagnosisEnum
         required: true
         description: Method used to make the diagnosis (caDSR:2192213) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192213
     slot_usage:
       CLINICAL_T_STAGE:
         required: false

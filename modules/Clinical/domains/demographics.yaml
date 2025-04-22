@@ -65,15 +65,19 @@ classes:
         range: EthnicGroupEnum
         required: true
         description: Ethnic group of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192201
       GENDER_IDENTITY:
         range: GenderIdentityEnum
         required: true
         description: Gender identity of the participant (caDSR:2192202) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192202
       SEX:
         range: SexEnum
         required: true
         description: Sex of the participant (caDSR:2192203) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192203
       RACE:
         range: RaceEnum
         required: true
-        description: Race of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE) 
+        description: Race of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192204 
