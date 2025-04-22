@@ -39,5 +39,13 @@ jobs:
           python generate_docs.py
           # Copy about.md if it doesn't exist
           ([ ! -f docs/about.md ] && cp src/docs/about.md docs/) || true
+          
+          # Commit the generated files
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git commit -m "docs: update generated documentation" || true
+          
           # Build and deploy the documentation
+          mkdocs build
           mkdocs gh-deploy --force
