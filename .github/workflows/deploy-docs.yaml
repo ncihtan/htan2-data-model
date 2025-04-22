@@ -40,6 +40,10 @@ jobs:
         run: |
           mkdir -p docs
           touch docs/.nojekyll
+          # Copy static documentation files
+          cp src/docs/index.md docs/
+          cp src/docs/quickstart.md docs/
+          cp src/docs/development.md docs/
           # Run the Python script to generate documentation
           poetry run python generate_docs.py
           # Copy about.md if it doesn't exist
@@ -109,6 +113,10 @@ jobs:
         run: |
           mkdir -p docs
           touch docs/.nojekyll
+          # Copy static documentation files
+          cp src/docs/index.md docs/
+          cp src/docs/quickstart.md docs/
+          cp src/docs/development.md docs/
           # Run the Python script to generate documentation
           poetry run python generate_docs.py
           # Copy about.md if it doesn't exist
