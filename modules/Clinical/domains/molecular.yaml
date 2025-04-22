@@ -1,6 +1,8 @@
 name: ClinicalMolecular
 id: https://w3id.org/htan/clinical/molecular
 description: HTAN Clinical Data Model - Molecular Domain
+imports:
+  - gene_symbols
 
 enums:
   MolecularAnalysisMethodEnum:
@@ -114,7 +116,7 @@ classes:
         required: true
         description: Age in days at molecular test stop (caDSR:2192203) (Aligns to CDRC Standard CDE)
       GENE_SYMBOL:
-        range: string
+        range: gene_symbol_enum
         required: true
         description: Gene symbol (caDSR:2192204) (Aligns to CDRC Standard CDE)
       MOLECULAR_ANALYSIS_METHOD:

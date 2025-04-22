@@ -13,6 +13,7 @@ imports:
   - therapy
   - vital_status
   - uberon_tissues
+  - gene_symbols
 
 prefixes:
   htan: https://w3id.org/htan/

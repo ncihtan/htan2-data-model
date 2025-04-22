@@ -175,7 +175,7 @@ classes:
         required: false
         description: Required when PROGRESSION_OR_RECURRENCE is Yes
     rules:
-      - description: "When progression or recurrence is present, related fields become required"
+      - description: "PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE is required when PROGRESSION_OR_RECURRENCE is Yes"
         preconditions:
           slot_conditions:
             PROGRESSION_OR_RECURRENCE:
@@ -184,9 +184,30 @@ classes:
           slot_conditions:
             PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
               required: true
+      - description: "PROGRESSION_OR_RECURRENCE_TYPE is required when PROGRESSION_OR_RECURRENCE is Yes"
+        preconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
             PROGRESSION_OR_RECURRENCE_TYPE:
               required: true
+      - description: "EVIDENCE_OF_RECURRENCE_TYPE is required when PROGRESSION_OR_RECURRENCE is Yes"
+        preconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
             EVIDENCE_OF_RECURRENCE_TYPE:
               required: true
+      - description: "AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE is required when PROGRESSION_OR_RECURRENCE is Yes"
+        preconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
             AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
               required: true 
