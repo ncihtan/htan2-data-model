@@ -1,8 +1,109 @@
 name: ClinicalTherapy
 id: https://w3id.org/htan/clinical/therapy
 description: HTAN Clinical Data Model - Therapy Domain
+imports:
+  - uberon_tissues
 
 enums:
+  antineoplastic_agent_enum:
+    permissible_values:
+      "NCIT:C287":
+        description: Cisplatin
+      "NCIT:C1647":
+        description: Carboplatin
+      "NCIT:C1522":
+        description: Paclitaxel
+      "NCIT:C1858":
+        description: Docetaxel
+      "NCIT:C1634":
+        description: Doxorubicin
+      "NCIT:C1582":
+        description: Cyclophosphamide
+      "NCIT:C1704":
+        description: Fluorouracil
+      "NCIT:C1831":
+        description: Gemcitabine
+      "NCIT:C1717":
+        description: Irinotecan
+      "NCIT:C1874":
+        description: Methotrexate
+      "NCIT:C1906":
+        description: Oxaliplatin
+      "NCIT:C1935":
+        description: Pemetrexed
+      "NCIT:C1960":
+        description: Rituximab
+      "NCIT:C2039":
+        description: Trastuzumab
+      "NCIT:C2057":
+        description: Vinblastine
+      "NCIT:C2065":
+        description: Vincristine
+      "NCIT:C2191":
+        description: Bevacizumab
+      "NCIT:C2645":
+        description: Cetuximab
+      "NCIT:C2720":
+        description: Erlotinib
+      "NCIT:C2721":
+        description: Gefitinib
+      "NCIT:C2722":
+        description: Imatinib
+      "NCIT:C2723":
+        description: Lapatinib
+      "NCIT:C2724":
+        description: Sorafenib
+      "NCIT:C2725":
+        description: Sunitinib
+      "NCIT:C2726":
+        description: Temsirolimus
+      "NCIT:C2727":
+        description: Everolimus
+      "NCIT:C2728":
+        description: Pazopanib
+      "NCIT:C2729":
+        description: Nilotinib
+      "NCIT:C2730":
+        description: Dasatinib
+      "NCIT:C2731":
+        description: Bosutinib
+      "NCIT:C2732":
+        description: Ponatinib
+      "NCIT:C2733":
+        description: Regorafenib
+      "NCIT:C2734":
+        description: Cabozantinib
+      "NCIT:C2735":
+        description: Vandetanib
+      "NCIT:C2736":
+        description: Axitinib
+      "NCIT:C2737":
+        description: Crizotinib
+      "NCIT:C2738":
+        description: Vemurafenib
+      "NCIT:C2739":
+        description: Dabrafenib
+      "NCIT:C2740":
+        description: Trametinib
+      "NCIT:C2741":
+        description: Cobimetinib
+      "NCIT:C2742":
+        description: Pembrolizumab
+      "NCIT:C2743":
+        description: Nivolumab
+      "NCIT:C2744":
+        description: Ipilimumab
+      "NCIT:C2745":
+        description: Atezolizumab
+      "NCIT:C2746":
+        description: Durvalumab
+      "NCIT:C2747":
+        description: Avelumab
+      "Not Reported":
+        description: Not reported
+      "Unknown":
+        description: Unknown antineoplastic agent
+
   PharmacotherapyTypeEnum:
     permissible_values:
       "Chemotherapy":
@@ -171,7 +272,7 @@ classes:
         pattern: "^[^|]+(\\|[^|]+)*$"
         description: The NCit Preferred Name(s) of the Therapeutic agent(s)
       THERAPY_ANATOMIC_SITE_UBERON_CODE:
-        range: string
+        range: tissue_or_organ_of_origin_uberon_enum
         required: false
         description: UBERON identifier for the location within the body targeted by a therapeutic procedure
       AGE_IN_DAYS_AT_TREATMENT_START:
