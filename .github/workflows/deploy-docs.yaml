@@ -3,6 +3,11 @@ name: Build and Deploy Documentation
 on:
   push:
     branches: [main]
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   build-docs:
@@ -46,9 +51,8 @@ jobs:
           git add docs/
           git commit -m "docs: update generated documentation" || true
           
-          # Build and deploy the documentation
+          # Build the documentation
           mkdocs build
-          mkdocs gh-deploy --force
 
   deploy-docs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -57,7 +61,7 @@ jobs:
 
     steps:
       - name: Deploy to GitHub Pages
-        run: make mkd-gh-deploy
+        run: mkdocs gh-deploy --force
 
   preview-docs:
     if: github.event_name == 'pull_request'
@@ -68,5 +72,5 @@ jobs:
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: site/
+          source-dir: docs/
           preview-branch: gh-pages
