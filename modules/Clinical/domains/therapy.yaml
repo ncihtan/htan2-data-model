@@ -165,7 +165,7 @@ classes:
         required: true
         description: Whether single or combination pharmacotherapy was used
       THERAPEUTIC_AGENTS:
-        range: string
+        range: antineoplastic_agent_enum
         required: true
         multivalued: true
         pattern: "^[^|]+(\\|[^|]+)*$"
