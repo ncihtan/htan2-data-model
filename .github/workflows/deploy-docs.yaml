@@ -51,8 +51,8 @@ jobs:
           git add docs/
           git commit -m "docs: update generated documentation" || true
           
-          # Build the documentation
-          mkdocs build
+          # Build the documentation using Poetry
+          poetry run mkdocs build
 
   deploy-docs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -60,8 +60,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python.
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install Poetry.
+        run: pipx install poetry
+
+      - name: Install dependencies.
+        run: poetry install -E docs
+
       - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+        run: poetry run mkdocs gh-deploy --force
 
   preview-docs:
     if: github.event_name == 'pull_request'
