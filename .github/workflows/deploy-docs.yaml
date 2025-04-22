@@ -1,51 +1,65 @@
----
-name: Auto-deployment of htan_linkml Documentation
+name: Build and Deploy Documentation
+
 on:
   push:
     branches: [main]
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   build-docs:
     runs-on: ubuntu-latest
 
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
-      contents: write  # to let mkdocs write the new docs
-      pages: write     # to deploy to Pages
-      id-token: write  # to verify the deployment originates from an appropriate source
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
+          fetch-depth: 0
 
-      - name: Set up Python.
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
 
-      - name: Install Poetry.
+      - name: Install Poetry
         run: pipx install poetry
 
-      - name: Install dependencies.
+      - name: Install dependencies
         run: poetry install -E docs
 
-      - name: Build documentation.
+      - name: Build documentation
         run: |
-          mkdir -p docs
-          touch docs/.nojekyll
-          # Run the Python script to generate documentation
-          python generate_docs.py
-          # Copy about.md if it doesn't exist
+          mkdir -p site
+          touch site/.nojekyll
+          make gendoc
           ([ ! -f docs/about.md ] && cp src/docs/about.md docs/) || true
-          
-          # Commit the generated files
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add docs/
-          git commit -m "docs: update generated documentation" || true
-          
-          # Build and deploy the documentation
-          mkdocs build
-          mkdocs gh-deploy --force
+          poetry run mkdocs build -d site
+
+  deploy-docs:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build-docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages
+        run: make mkd-gh-deploy
+
+  preview-docs:
+    if: github.event_name == 'pull_request'
+    needs: build-docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: site/
+          preview-branch: gh-pages
