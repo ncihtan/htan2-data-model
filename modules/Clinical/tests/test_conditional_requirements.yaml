@@ -84,7 +84,9 @@ THERAPIES:
     TREATMENT_TYPE: "Surgical Procedure"  # Valid enum value
     THERAPY_ANATOMIC_SITE_UBERON_CODE: "UBERON:0000002"
     PHARMACOTHERAPY_TYPE: "Chemotherapy"  # Valid enum value
-    THERAPEUTIC_AGENTS: "Doxorubicin, Cyclophosphamide"
+    THERAPEUTIC_AGENTS:
+      - "NCIT:C1634"  # Doxorubicin
+      - "NCIT:C1582"  # Cyclophosphamide
     AGE_IN_DAYS_AT_TREATMENT_START: 18350
     AGE_IN_DAYS_AT_TREATMENT_END: 18600
     OFF_TREATMENT_REASON: "Completed Planned Treatment"  # Valid enum value
