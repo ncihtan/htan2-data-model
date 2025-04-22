@@ -5,36 +5,31 @@ site_author: HTAN Consortium
 
 theme:
   name: material
-  # palette:
-  #  scheme: slate
-  #  primary: cyan
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.expand
-    - navigation.top
 
 plugins:
   - search
-  - mermaid2
   - mermaid2:
-      version: 10.9.0
+      arguments:
+        theme: default
+        themeVariables:
+          primaryColor: '#ff0000'
+          primaryTextColor: '#fff'
+          primaryBorderColor: '#7C0000'
+          lineColor: '#F8B229'
+          secondaryColor: '#006100'
+          tertiaryColor: '#fff'
 
 nav:
   - Home: index.md
-  - Clinical Module:
-    - Overview: modules/Clinical/README.md
-    - Schema: modules/Clinical/clinical_schema.yaml
-  - Participant Module:
-    - Overview: modules/Participant/README.md
-    - Schema: modules/Participant/participant.yaml
-
-site_url: https://ncihtan.github.io/htan-linkml
-repo_url: https://github.com/ncihtan/htan-linkml
-
-# Uncomment this block to enable use of Google Analytics.
-# Replace the property value with your own ID.
-# extra:
-#   analytics:
-#     provider: google
-#     property: G-XXXXXXXXXX
+  - Modules:
+    - Clinical:
+      - Demographics: Demographics.md
+      - Diagnosis: Diagnosis.md
+      - Exposure: Exposure.md
+      - Family History: FamilyHistory.md
+      - Followup: FollowUp.md
+      - Molecular Test: MolecularTest.md
+      - Therapy: Therapy.md
+      - Vital Status: VitalStatus.md
+  - Quick Start: quickstart.md
+  - Development: development.md
