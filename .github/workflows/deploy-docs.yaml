@@ -36,7 +36,7 @@ jobs:
       - name: Install dependencies.
         run: poetry install -E docs
 
-      - name: Build documentation.
+      - name: Generate documentation.
         run: |
           mkdir -p docs
           touch docs/.nojekyll
@@ -50,9 +50,15 @@ jobs:
           git config --local user.name "GitHub Action"
           git add docs/
           git commit -m "docs: update generated documentation" || true
-          
+          git push || true
+
+      - name: Build documentation.
+        run: |
           # Build the documentation using Poetry
           poetry run mkdocs build
+          # Verify the build
+          ls -la site/
+          cat site/index.html
 
   deploy-docs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -99,7 +105,7 @@ jobs:
       - name: Install dependencies.
         run: poetry install -E docs
 
-      - name: Build documentation.
+      - name: Generate documentation.
         run: |
           mkdir -p docs
           touch docs/.nojekyll
@@ -113,12 +119,18 @@ jobs:
           git config --local user.name "GitHub Action"
           git add docs/
           git commit -m "docs: update generated documentation" || true
-          
+          git push || true
+
+      - name: Build documentation.
+        run: |
           # Build the documentation using Poetry
           poetry run mkdocs build
+          # Verify the build
+          ls -la site/
+          cat site/index.html
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: docs/
+          source-dir: site/
           preview-branch: gh-pages
