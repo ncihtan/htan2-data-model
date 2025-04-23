@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "htan_clinical"
+name = "htan-clinical"
 version = "0.1.0"
-description = "A LinkML data model for HTAN Clinical Domain"
-authors = ["Adam Taylor <adam.taylor@sagebase.org>"]
+description = "HTAN Clinical Data Model"
+authors = ["HTAN Consortium <htan@humantumoratlas.org>"]
 license = "MIT"
 readme = "README.md"
 packages = [
@@ -14,6 +14,8 @@ include = ["README.md", "modules/Clinical/src/htan_clinical/schema", "project"]
 python = "^3.9"
 linkml-runtime = "^1.1.24"
 pyyaml = "^6.0.1"
+pandas = "^2.0.0"
+openpyxl = "^3.1.0"
 
 [tool.poetry-dynamic-versioning]
 enable = true
