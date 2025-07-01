@@ -1,0 +1,68 @@
+{
+  "$id": "https://w3id.org/htan/clinical/exposure",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "additionalProperties": {},
+  "description": "Information about the exposure",
+  "properties": {
+    "ALCOHOL_HISTORY_INDICATOR": {
+      "description": "Alcohol history indicator of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE)",
+      "enum": [
+        "No",
+        "Yes",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "AlcoholHistoryIndicatorEnum",
+      "type": "string"
+    },
+    "ENVIRONMENTAL_EXPOSURE": {
+      "description": "Environmental exposure of the participant (caDSR:2192205) (Aligns to CDRC Standard CDE)",
+      "enum": [
+        "No",
+        "Yes",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "EnvironmentalExposureEnum",
+      "type": "string"
+    },
+    "ENVIRONMENTAL_EXPOSURE_TYPE": {
+      "description": "Required when ENVIRONMENTAL_EXPOSURE is Yes",
+      "enum": [
+        "Asbestos",
+        "Radiation",
+        "Chemical",
+        "Not Reported",
+        "Other",
+        "Unknown"
+      ],
+      "title": "EnvironmentalExposureTypeEnum",
+      "type": "string"
+    },
+    "PACK_YEARS_SMOKED": {
+      "description": "Required when SMOKING_HISTORY is Current smoker or Former smoker"
+    },
+    "SMOKING_HISTORY": {
+      "description": "Smoking history of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)",
+      "enum": [
+        "Current smoker",
+        "Former smoker",
+        "Never smoker",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "SmokingHistoryEnum",
+      "type": "string"
+    },
+    "YEARS_SMOKED": {
+      "description": "Required when SMOKING_HISTORY is Current smoker or Former smoker"
+    }
+  },
+  "required": [
+    "SMOKING_HISTORY",
+    "ALCOHOL_HISTORY_INDICATOR",
+    "ENVIRONMENTAL_EXPOSURE"
+  ],
+  "title": "ClinicalExposure",
+  "type": "object"
+}
