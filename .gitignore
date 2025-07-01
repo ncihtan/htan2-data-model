@@ -78,3 +78,39 @@ project/
 
 # Poetry
 poetry.lock
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+*.log
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build and temp files
+*.tmp
+*.temp
+*.bak
+*.swp
+.DS_Store
+
+# Output directories
+JSON_Schemas/
+build/
+tmp/
+.project/
+.idea/
+.vscode/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS files
+Thumbs.db
