@@ -178,22 +178,34 @@ def get_register_bind_schema(syn, target: str, schema_org_name: str, org, servic
 
 def main():
 
-    syn = synapseclient.login()
-
     args = get_args()
-
     target, url, path, org_name, includes_ar, no_bind = args.t, args.l, args.p, args.n, args.ar, args.no_bind
+
+    # Configure Synapse client for production stack
+    syn = synapseclient.Synapse()
+    syn.repoEndpoint = 'https://repo-prod.prod.sagebase.org/repo/v1'
+    syn.authEndpoint = 'https://repo-prod.prod.sagebase.org/auth/v1'
+    syn.fileHandleEndpoint = 'https://repo-prod.prod.sagebase.org/file/v1'
+    syn.portalEndpoint = 'https://repo-prod.prod.sagebase.org/portal/v1'
+    
+    print(f"Configured for production stack: {syn.repoEndpoint}")
 
     if no_bind is not None:
         print(f"Warning ❗❗❗ Schema will not be bound to the entity if one was provided.")
+        print(f"✅ Skipping login since --no_bind flag is set")
+    else:
+        # Only login if we're actually going to bind
+        print(f"Logging in to production stack...")
+        syn.login()
+        print(f"Connected to production stack: {syn.repoEndpoint}")
+        syn.get_available_services()
+        schema_service = syn.service("json_schema")
+        service, org, schema_org_name = get_schema_organization(schema_service, org_name)
     
-    syn.get_available_services()
-
-    schema_service = syn.service("json_schema")
-
-    service, org, schema_org_name = get_schema_organization(schema_service, org_name)
-    
-    get_register_bind_schema(syn, target, schema_org_name, org, service, path, url, includes_ar, no_bind)
+    if no_bind is None:
+        get_register_bind_schema(syn, target, schema_org_name, org, service, path, url, includes_ar, no_bind)
+    else:
+        print(f"✅ Schema processing completed (no binding due to --no_bind flag)")
     
     if target is None and no_bind is None:
         print(f"\n❗❗❗ No dataset information provided.❗❗❗\nPlease check your command line inputs and try again.")
