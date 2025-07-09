@@ -2,6 +2,7 @@ import subprocess
 import sys
 import json
 from pathlib import Path
+import jsonref
 
 def run_gen_json_schema(linkml_yaml, class_name, tmp_json):
     cmd = f"gen-json-schema {linkml_yaml}"
@@ -11,10 +12,45 @@ def run_gen_json_schema(linkml_yaml, class_name, tmp_json):
     print(f"Running: {cmd}")
     subprocess.run(cmd, shell=True, check=True)
 
-def run_flatten_jschema(input_json, flat_json):
-    cmd = ["node", "scripts/flatten.js", str(input_json), str(flat_json)]
-    print(f"Running: {' '.join(cmd)}")
-    subprocess.run(cmd, check=True)
+def flatten_json_schema(input_path, output_path):
+    """Flatten/dereference $ref in a JSON Schema file using Python (jsonref)."""
+    with open(input_path, 'r') as f:
+        schema = json.load(f)
+    # Dereference $ref
+    deref_schema = jsonref.JsonRef.replace_refs(schema)
+    # Convert to plain dict to ensure JSON serializable
+    def convert_to_plain_dict(obj):
+        if isinstance(obj, dict):
+            return {k: convert_to_plain_dict(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [convert_to_plain_dict(item) for item in obj]
+        else:
+            return obj
+    
+    deref_schema = convert_to_plain_dict(deref_schema)
+    with open(output_path, 'w') as f:
+        json.dump(deref_schema, f, indent=2)
+    print(f"Flattened schema written to {output_path}")
+
+def fix_schema_version(filepath):
+    """Update the $schema field to use Draft-07 for Synapse compatibility."""
+    with open(filepath, "r") as f:
+        data = json.load(f)
+    # Update $schema to Draft-07
+    if "$schema" in data:
+        current_schema = data["$schema"]
+        if "draft-07" not in current_schema:
+            data["$schema"] = "https://json-schema.org/draft-07/schema"
+            print(f"Updated $schema from '{current_schema}' to 'https://json-schema.org/draft-07/schema'")
+        else:
+            print(f"$schema already uses Draft-07: {current_schema}")
+    else:
+        # Add $schema if it doesn't exist
+        data["$schema"] = "https://json-schema.org/draft-07/schema"
+        print("Added $schema field with Draft-07")
+    with open(filepath, "w") as f:
+        json.dump(data, f, indent=2)
+    print(f"Fixed schema version in {filepath}")
 
 def remove_unsupported_fields(filepath):
     with open(filepath, "r") as f:
@@ -69,13 +105,15 @@ def main():
     tmp_json = output_file.with_suffix(output_file.suffix + ".tmp.json")
     # 1. Generate JSON Schema
     run_gen_json_schema(linkml_yaml, class_name, tmp_json)
-    # 2. Flatten JSON Schema
-    run_flatten_jschema(tmp_json, output_file)
-    # 2.5. Fix additionalProperties
+    # 2. Flatten JSON Schema using Python
+    flatten_json_schema(tmp_json, output_file)
+    # 3. Fix schema version to Draft-07
+    fix_schema_version(output_file)
+    # 4. Fix additionalProperties
     fix_additional_properties(output_file)
-    # 3. Remove unsupported fields
+    # 5. Remove unsupported fields
     remove_unsupported_fields(output_file)
-    # 4. Cleanup
+    # 6. Cleanup
     Path(tmp_json).unlink(missing_ok=True)
     print(f"✅ Synapse-compatible flat schema written to {output_file}")
 
