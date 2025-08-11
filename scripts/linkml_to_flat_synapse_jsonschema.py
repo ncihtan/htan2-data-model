@@ -7,6 +7,7 @@ and Synapse-specific formatting requirements.
 """
 from pathlib import Path
 from typing import Any, Union
+import argparse
 import json
 import subprocess
 import sys
@@ -176,19 +177,40 @@ def fix_additional_properties(filepath: str) -> None:
     print(f"Fixed additionalProperties in {filepath}")
 
 
-def main():
-    if len(sys.argv) < 2 or len(sys.argv) > 4:
-        print(
-            "Usage: python linkml_to_flat_synapse_jsonschema.py <linkml_yaml> [class_name] [output_filename]"
-        )
-        sys.exit(1)
+def get_args():
+    """Set up command-line interface and get arguments."""
+    parser = argparse.ArgumentParser(
+        description="Convert LinkML YAML to Synapse-compatible flat JSON Schema"
+    )
+    parser.add_argument(
+        "linkml_yaml",
+        type=str,
+        help="Path to the input LinkML YAML file",
+    )
+    parser.add_argument(
+        "--class-name",
+        "-c",
+        type=str,
+        default="",
+        help="Name of the top-level class to generate schema for (optional)",
+    )
+    parser.add_argument(
+        "--output",
+        "-o",
+        type=str,
+        help="Output filename (optional, defaults to <input>.flat.schema.json)",
+    )
+    return parser.parse_args()
 
-    linkml_yaml = sys.argv[1]
-    class_name = sys.argv[2] if len(sys.argv) > 2 else ""
-    if len(sys.argv) == 4:
-        output_filename = sys.argv[3]
+
+def main():
+    args = get_args()
+
+    # Determine output filename
+    if args.output:
+        output_filename = args.output
     else:
-        base = Path(linkml_yaml).stem
+        base = Path(args.linkml_yaml).stem
         output_filename = f"{base}.flat.schema.json"
 
     output_dir = Path("JSON_Schemas")
@@ -197,7 +219,7 @@ def main():
     tmp_json = output_file.with_suffix(output_file.suffix + ".tmp.json")
 
     # 1. Generate JSON Schema using Python library
-    run_gen_json_schema(linkml_yaml, class_name, tmp_json)
+    run_gen_json_schema(args.linkml_yaml, args.class_name, tmp_json)
 
     # 2. Flatten JSON Schema using Python
     flatten_json_schema(tmp_json, output_file)
