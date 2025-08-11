@@ -5,11 +5,12 @@ This script converts LinkML YAML files to JSON Schema format that is compatible
 with Synapse's JSON Schema service. It handles flattening, version conversion,
 and Synapse-specific formatting requirements.
 """
-import subprocess
-import sys
-import json
 from pathlib import Path
 from typing import Union
+import json
+import subprocess
+import sys
+
 import jsonref
 from linkml.generators.jsonschemagen import JsonSchemaGenerator
 
