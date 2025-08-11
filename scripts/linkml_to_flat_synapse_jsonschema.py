@@ -90,25 +90,41 @@ def flatten_json_schema(input_path: str, output_path: str) -> Union[dict, list]:
     return deref_schema
 
 
+def _fix_schema_version_logic(data: dict) -> tuple[dict, str]:
+    """Update the $schema field to use Draft-07 for Synapse compatibility.
+    
+    Core logic for updating JSON Schema version. Separated from file I/O
+    to make it testable.
+    
+    Args:
+        data: JSON Schema data as dictionary
+    
+    Returns:
+        tuple[dict, str]: Updated data and status message
+    """
+    if "$schema" in data:
+        current_schema = data["$schema"]
+        if "draft-07" not in current_schema:
+            data["$schema"] = "https://json-schema.org/draft-07/schema"
+            message = f"Updated $schema from '{current_schema}' to 'https://json-schema.org/draft-07/schema'"
+        else:
+            message = f"$schema already uses Draft-07: {current_schema}"
+    else:
+        # Add $schema if it doesn't exist
+        data["$schema"] = "https://json-schema.org/draft-07/schema"
+        message = "Added $schema field with Draft-07"
+    
+    return data, message
+
+
 def fix_schema_version(filepath: str) -> None:
     """Update the $schema field to use Draft-07 for Synapse compatibility."""
     with open(filepath, "r") as f:
         data = json.load(f)
 
     # Update $schema to Draft-07
-    if "$schema" in data:
-        current_schema = data["$schema"]
-        if "draft-07" not in current_schema:
-            data["$schema"] = "https://json-schema.org/draft-07/schema"
-            print(
-                f"Updated $schema from '{current_schema}' to 'https://json-schema.org/draft-07/schema'"
-            )
-        else:
-            print(f"$schema already uses Draft-07: {current_schema}")
-    else:
-        # Add $schema if it doesn't exist
-        data["$schema"] = "https://json-schema.org/draft-07/schema"
-        print("Added $schema field with Draft-07")
+    data, message = _fix_schema_version_logic(data)
+    print(message)
 
     with open(filepath, "w") as f:
         json.dump(data, f, indent=2)
