@@ -108,12 +108,22 @@ class TestSchemaVersionFunctions:
             temp_file = f.name
 
         try:
-            fix_schema_version(temp_file)
-            
+            # Read the file
             with open(temp_file, 'r') as f:
-                result = json.load(f)
+                data = json.load(f)
             
-            assert result["$schema"] == "https://json-schema.org/draft-07/schema"
+            # Process in memory
+            result = fix_schema_version(data)
+            
+            # Write back to file
+            with open(temp_file, 'w') as f:
+                json.dump(result, f)
+            
+            # Read and verify
+            with open(temp_file, 'r') as f:
+                final_result = json.load(f)
+            
+            assert final_result["$schema"] == "https://json-schema.org/draft-07/schema"
         finally:
             Path(temp_file).unlink()
 
@@ -136,19 +146,29 @@ class TestRemoveUnsupportedFields:
             temp_file = f.name
 
         try:
-            remove_unsupported_fields(temp_file)
-            
+            # Read the file
             with open(temp_file, 'r') as f:
-                result = json.load(f)
+                file_data = json.load(f)
+            
+            # Process in memory
+            result = remove_unsupported_fields(file_data)
+            
+            # Write back to file
+            with open(temp_file, 'w') as f:
+                json.dump(result, f)
+            
+            # Read and verify
+            with open(temp_file, 'r') as f:
+                final_result = json.load(f)
             
             # Check that unsupported fields are removed
-            assert "$defs" not in result
-            assert "metamodel_version" not in result
-            assert "version" not in result
+            assert "$defs" not in final_result
+            assert "metamodel_version" not in final_result
+            assert "version" not in final_result
             
             # Check that valid fields are preserved
-            assert result["type"] == "object"
-            assert result["properties"] == {"valid": {"type": "string"}}
+            assert final_result["type"] == "object"
+            assert final_result["properties"] == {"valid": {"type": "string"}}
         finally:
             Path(temp_file).unlink()
 
@@ -170,17 +190,27 @@ class TestRemoveUnsupportedFields:
             temp_file = f.name
 
         try:
-            remove_unsupported_fields(temp_file)
-            
+            # Read the file
             with open(temp_file, 'r') as f:
-                result = json.load(f)
+                file_data = json.load(f)
+            
+            # Process in memory
+            result = remove_unsupported_fields(file_data)
+            
+            # Write back to file
+            with open(temp_file, 'w') as f:
+                json.dump(result, f)
+            
+            # Read and verify
+            with open(temp_file, 'r') as f:
+                final_result = json.load(f)
             
             # Check that nested unsupported fields are removed
-            assert "$defs" not in result["properties"]["nested"]
-            assert "metamodel_version" not in result["properties"]["nested"]
+            assert "$defs" not in final_result["properties"]["nested"]
+            assert "metamodel_version" not in final_result["properties"]["nested"]
             
             # Check that valid fields are preserved
-            assert result["properties"]["nested"]["type"] == "string"
+            assert final_result["properties"]["nested"]["type"] == "string"
         finally:
             Path(temp_file).unlink()
 
@@ -206,14 +236,24 @@ class TestFixAdditionalProperties:
             temp_file = f.name
 
         try:
-            fix_additional_properties(temp_file)
-            
+            # Read the file
             with open(temp_file, 'r') as f:
-                result = json.load(f)
+                file_data = json.load(f)
+            
+            # Process in memory
+            result = fix_additional_properties(file_data)
+            
+            # Write back to file
+            with open(temp_file, 'w') as f:
+                json.dump(result, f)
+            
+            # Read and verify
+            with open(temp_file, 'r') as f:
+                final_result = json.load(f)
             
             # Check that boolean additionalProperties are converted to objects
-            assert result["additionalProperties"] == {}
-            assert result["properties"]["nested"]["additionalProperties"] == {}
+            assert final_result["additionalProperties"] == {}
+            assert final_result["properties"]["nested"]["additionalProperties"] == {}
         finally:
             Path(temp_file).unlink()
 
@@ -259,14 +299,13 @@ class TestFlattenJsonSchema:
             json.dump(test_data, input_file)
             input_path = input_file.name
 
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as output_file:
-            output_path = output_file.name
-
         try:
-            flatten_json_schema(input_path, output_path)
+            # Read the file
+            with open(input_path, 'r') as f:
+                file_data = json.load(f)
             
-            with open(output_path, 'r') as f:
-                result = json.load(f)
+            # Process in memory
+            result = flatten_json_schema(file_data)
             
             # Check that the schema was processed (jsonref behavior may vary)
             assert "properties" in result
@@ -274,7 +313,6 @@ class TestFlattenJsonSchema:
             assert result["properties"]["ref_field"]["type"] == "string"
         finally:
             Path(input_path).unlink()
-            Path(output_path).unlink()
 
 
 class TestRunGenJsonSchema:
