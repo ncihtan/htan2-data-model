@@ -1,6 +1,6 @@
 """Clinical test."""
 import os
-import unittest
+import pytest
 from pathlib import Path
 import glob
 
@@ -8,73 +8,84 @@ from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.utils.schemaview import SchemaView
 from htan_clinical.datamodel.clinical import ClinicalData
 
-class TestClinical(unittest.TestCase):
-    """Test cases for Clinical module."""
+@pytest.fixture
+def base_dir():
+    """Base directory for tests."""
+    return Path(__file__).parent.parent
 
-    def setUp(self):
-        """Set up test fixtures."""
-        self.base_dir = Path(__file__).parent.parent
-        self.schema_path = self.base_dir / "domains" / "clinical.yaml"
-        self.schema_view = SchemaView(str(self.schema_path))
-        
-        # Get all test files
-        self.test_data_dir = self.base_dir / "tests" / "test_data"
-        self.valid_files = glob.glob(str(self.test_data_dir / "valid" / "*.yaml"))
-        self.invalid_files = glob.glob(str(self.test_data_dir / "invalid" / "*.yaml"))
+@pytest.fixture
+def schema_path(base_dir):
+    """Schema path."""
+    return base_dir / "domains" / "clinical.yaml"
 
-    def test_schema_loads(self):
-        """Test that the schema can be loaded."""
-        self.assertIsNotNone(self.schema_view)
-        self.assertIn("ClinicalData", self.schema_view.all_classes())
+@pytest.fixture
+def schema_view(schema_path):
+    """Schema view."""
+    return SchemaView(str(schema_path))
 
-    def test_valid_data(self):
-        """Test that all valid data files validate."""
-        for file_path in self.valid_files:
-            with self.subTest(file=file_path):
-                with open(file_path) as f:
-                    # This will validate during loading
-                    data = yaml_loader.load(f, target_class=ClinicalData)
-                self.assertIsInstance(data, ClinicalData)
+@pytest.fixture
+def test_data_dir(base_dir):
+    """Test data directory."""
+    return base_dir / "tests" / "test_data"
 
-    def test_invalid_data(self):
-        """Test that all invalid data files fail validation."""
-        for file_path in self.invalid_files:
-            with self.subTest(file=file_path):
-                with self.assertRaises(ValueError):
-                    with open(file_path) as f:
-                        # This should raise a ValueError during loading
-                        yaml_loader.load(f, target_class=ClinicalData)
+@pytest.fixture
+def valid_files(test_data_dir):
+    """Valid test files."""
+    return glob.glob(str(test_data_dir / "valid" / "*.yaml"))
 
-    def test_required_fields(self):
-        """Test that missing required fields are caught."""
-        test_data = {
-            "PARTICIPANT_ID": "TEST-001"
-            # Missing required fields
+@pytest.fixture
+def invalid_files(test_data_dir):
+    """Invalid test files."""
+    return glob.glob(str(test_data_dir / "invalid" / "*.yaml"))
+
+def test_schema_loads(schema_view):
+    """Test that the schema can be loaded."""
+    assert schema_view is not None
+    assert "ClinicalData" in schema_view.all_classes()
+
+def test_valid_data(valid_files):
+    """Test that all valid data files validate."""
+    for file_path in valid_files:
+        with open(file_path) as f:
+            # This will validate during loading
+            data = yaml_loader.load(f, target_class=ClinicalData)
+        assert isinstance(data, ClinicalData)
+
+def test_invalid_data(invalid_files):
+    """Test that all invalid data files fail validation."""
+    for file_path in invalid_files:
+        with pytest.raises(ValueError):
+            with open(file_path) as f:
+                # This should raise a ValueError during loading
+                yaml_loader.load(f, target_class=ClinicalData)
+
+def test_required_fields():
+    """Test that missing required fields are caught."""
+    test_data = {
+        "PARTICIPANT_ID": "TEST-001"
+        # Missing required fields
+    }
+    with pytest.raises(ValueError):
+        ClinicalData(**test_data)
+
+def test_enum_values():
+    """Test that invalid enum values are caught."""
+    test_data = {
+        "PARTICIPANT_ID": "TEST-001",
+        "DIAGNOSIS": {
+            "TUMOR_GRADE": "G5"  # Invalid enum value
         }
-        with self.assertRaises(ValueError):
-            ClinicalData(**test_data)
+    }
+    with pytest.raises(ValueError):
+        ClinicalData(**test_data)
 
-    def test_enum_values(self):
-        """Test that invalid enum values are caught."""
-        test_data = {
-            "PARTICIPANT_ID": "TEST-001",
-            "DIAGNOSIS": {
-                "TUMOR_GRADE": "G5"  # Invalid enum value
-            }
+def test_data_types():
+    """Test that invalid data types are caught."""
+    test_data = {
+        "PARTICIPANT_ID": "TEST-001",
+        "DIAGNOSIS": {
+            "AGE_AT_DIAGNOSIS_DAYS": "not_a_number"  # Should be integer
         }
-        with self.assertRaises(ValueError):
-            ClinicalData(**test_data)
-
-    def test_data_types(self):
-        """Test that invalid data types are caught."""
-        test_data = {
-            "PARTICIPANT_ID": "TEST-001",
-            "DIAGNOSIS": {
-                "AGE_AT_DIAGNOSIS_DAYS": "not_a_number"  # Should be integer
-            }
-        }
-        with self.assertRaises(ValueError):
-            ClinicalData(**test_data)
-
-if __name__ == '__main__':
-    unittest.main() 
+    }
+    with pytest.raises(ValueError):
+        ClinicalData(**test_data) 

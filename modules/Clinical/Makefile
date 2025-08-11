@@ -26,7 +26,7 @@ docs:
 
 # Run module-specific tests
 test:
-	cd ../../ && PYTHONPATH=. poetry run python -m unittest modules/Clinical/tests/test_*.py -v
+	cd ../../ && PYTHONPATH=. poetry run pytest modules/Clinical/tests/ -v
 
 # Clean build artifacts
 clean:
