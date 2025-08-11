@@ -25,7 +25,7 @@ GEN_DOC_ARGS = --no-mergeimports
 # List of modules (add new modules here)
 MODULES = Clinical
 
-.PHONY: all clean setup gen-project gen-examples gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test
+.PHONY: all clean setup gen-project gen-examples gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format
 
 help: status
 	@echo ""
@@ -35,6 +35,7 @@ help: status
 	@echo "make test -- runs all tests"
 	@echo "make modules-gen -- generate schema classes for all modules"
 	@echo "make modules-test -- run tests for all modules"
+	@echo "make format -- format code with Black"
 	@echo "make lint -- perform linting"
 	@echo "make clean -- clean all build artifacts"
 	@echo "make help -- show this help"
@@ -75,6 +76,10 @@ clean:
 	done
 
 test: modules-test test-examples
+
+# Format code with Black
+format:
+	$(RUN) black scripts/ tests/ modules/Clinical/tests/
 
 # ---
 # Project Synchronization
