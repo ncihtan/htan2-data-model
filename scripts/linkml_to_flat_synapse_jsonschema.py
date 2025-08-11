@@ -93,9 +93,6 @@ def flatten_json_schema(input_path: str, output_path: str) -> Union[dict, list]:
 def _fix_schema_version_logic(data: dict) -> tuple[dict, str]:
     """Update the $schema field to use Draft-07 for Synapse compatibility.
 
-    Core logic for updating JSON Schema version. Separated from file I/O
-    to make it testable.
-
     Args:
         data: JSON Schema data as dictionary
 
@@ -138,9 +135,12 @@ def remove_unsupported_fields(filepath: str) -> None:
 
     def recursive_clean(obj):
         if isinstance(obj, dict):
-            for field in ["$defs", "metamodel_version", "version"]:
-                if field in obj:
-                    del obj[field]
+            # Remove unsupported fields (don't process them recursively)
+            unsupported_fields = ["$defs", "metamodel_version", "version"]
+            for field in unsupported_fields:
+                obj.pop(field, None)  # Safely remove if exists
+
+            # Recursively process remaining values
             for value in obj.values():
                 recursive_clean(value)
         elif isinstance(obj, list):
