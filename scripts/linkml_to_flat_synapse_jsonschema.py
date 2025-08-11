@@ -6,7 +6,7 @@ with Synapse's JSON Schema service. It handles flattening, version conversion,
 and Synapse-specific formatting requirements.
 """
 from pathlib import Path
-from typing import Union
+from typing import Any, Union
 import json
 import subprocess
 import sys
@@ -54,6 +54,27 @@ def run_gen_json_schema(linkml_yaml: str, class_name: str, tmp_json: str) -> Non
     print(f"Generated JSON Schema written to {tmp_json}")
 
 
+def _convert_to_plain_dict(obj) -> Union[dict, list, Any]:
+    """Convert jsonref objects to plain Python dictionaries and lists.
+
+    Recursively converts jsonref.JsonRef objects to plain Python data structures
+    that can be serialized to JSON. This is needed because jsonref sometimes
+    leaves special objects that aren't directly JSON serializable.
+
+    Args:
+        obj: The object to convert (dict, list, or other)
+
+    Returns:
+        Union[dict, list, Any]: Plain Python data structure
+    """
+    if isinstance(obj, dict):
+        return {k: _convert_to_plain_dict(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [_convert_to_plain_dict(item) for item in obj]
+    else:
+        return obj
+
+
 def flatten_json_schema(input_path: str, output_path: str) -> Union[dict, list]:
     """Flatten/dereference $ref in a JSON Schema file using Python (jsonref)."""
     with open(input_path, "r") as f:
@@ -62,15 +83,7 @@ def flatten_json_schema(input_path: str, output_path: str) -> Union[dict, list]:
     deref_schema = jsonref.JsonRef.replace_refs(schema)
 
     # Convert to plain dict to ensure JSON serializable
-    def convert_to_plain_dict(obj):
-        if isinstance(obj, dict):
-            return {k: convert_to_plain_dict(v) for k, v in obj.items()}
-        elif isinstance(obj, list):
-            return [convert_to_plain_dict(item) for item in obj]
-        else:
-            return obj
-
-    deref_schema = convert_to_plain_dict(deref_schema)
+    deref_schema = _convert_to_plain_dict(deref_schema)
     with open(output_path, "w") as f:
         json.dump(deref_schema, f, indent=2)
     print(f"Flattened schema written to {output_path}")
