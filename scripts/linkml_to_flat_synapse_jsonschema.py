@@ -12,8 +12,28 @@ from pathlib import Path
 import jsonref
 from linkml.generators.jsonschemagen import JsonSchemaGenerator
 
-def run_gen_json_schema(linkml_yaml, class_name, tmp_json):
-    """Generate JSON Schema from LinkML YAML using Python library."""
+def run_gen_json_schema(linkml_yaml: str, class_name: str, tmp_json: str) -> None:
+    """Generate JSON Schema from LinkML YAML using Python library.
+    
+    Converts a LinkML YAML file to JSON Schema format using the LinkML
+    JsonSchemaGenerator. The generated schema is written to a temporary file
+    for further processing (flattening, version conversion, etc.).
+    
+    Args:
+        linkml_yaml (str): Path to the input LinkML YAML file
+        class_name (str): Name of the top-level class to generate schema for.
+                         If empty string, uses the default class from the schema.
+        tmp_json (str): Path to the temporary JSON file where the generated
+                       schema will be written
+    
+    Raises:
+        FileNotFoundError: If the LinkML YAML file cannot be found
+        ValueError: If there's an error in the LinkML schema or generation process
+        OSError: If there's an error writing the output file
+    
+    Returns:
+        None: The function writes the generated schema to the specified file
+    """
     print(f"Generating JSON Schema from {linkml_yaml}")
     
     # Use the Python library instead of shell command
@@ -30,7 +50,7 @@ def run_gen_json_schema(linkml_yaml, class_name, tmp_json):
     
     print(f"Generated JSON Schema written to {tmp_json}")
 
-def flatten_json_schema(input_path, output_path):
+def flatten_json_schema(input_path: str, output_path: str) -> None:
     """Flatten/dereference $ref in a JSON Schema file using Python (jsonref)."""
     with open(input_path, 'r') as f:
         schema = json.load(f)
@@ -50,7 +70,7 @@ def flatten_json_schema(input_path, output_path):
         json.dump(deref_schema, f, indent=2)
     print(f"Flattened schema written to {output_path}")
 
-def fix_schema_version(filepath):
+def fix_schema_version(filepath: str) -> None:
     """Update the $schema field to use Draft-07 for Synapse compatibility."""
     with open(filepath, "r") as f:
         data = json.load(f)
@@ -72,7 +92,7 @@ def fix_schema_version(filepath):
         json.dump(data, f, indent=2)
     print(f"Fixed schema version in {filepath}")
 
-def remove_unsupported_fields(filepath):
+def remove_unsupported_fields(filepath: str) -> None:
     """Remove fields that are not supported by Synapse JSON Schema service."""
     with open(filepath, "r") as f:
         data = json.load(f)
@@ -93,7 +113,7 @@ def remove_unsupported_fields(filepath):
         json.dump(data, f, indent=2)
     print(f"Cleaned unsupported fields from {filepath}")
 
-def fix_additional_properties(filepath):
+def fix_additional_properties(filepath: str) -> None:
     """Recursively replace boolean additionalProperties with {} in a JSON Schema file."""
     with open(filepath, "r") as f:
         data = json.load(f)
