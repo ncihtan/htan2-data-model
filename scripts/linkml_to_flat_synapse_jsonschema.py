@@ -9,6 +9,7 @@ import subprocess
 import sys
 import json
 from pathlib import Path
+from typing import Union
 import jsonref
 from linkml.generators.jsonschemagen import JsonSchemaGenerator
 
@@ -50,7 +51,7 @@ def run_gen_json_schema(linkml_yaml: str, class_name: str, tmp_json: str) -> Non
     
     print(f"Generated JSON Schema written to {tmp_json}")
 
-def flatten_json_schema(input_path: str, output_path: str) -> None:
+def flatten_json_schema(input_path: str, output_path: str) -> Union[dict, list]:
     """Flatten/dereference $ref in a JSON Schema file using Python (jsonref)."""
     with open(input_path, 'r') as f:
         schema = json.load(f)
@@ -69,6 +70,7 @@ def flatten_json_schema(input_path: str, output_path: str) -> None:
     with open(output_path, 'w') as f:
         json.dump(deref_schema, f, indent=2)
     print(f"Flattened schema written to {output_path}")
+    return deref_schema
 
 def fix_schema_version(filepath: str) -> None:
     """Update the $schema field to use Draft-07 for Synapse compatibility."""
