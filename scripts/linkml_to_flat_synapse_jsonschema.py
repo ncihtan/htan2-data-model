@@ -76,18 +76,14 @@ def _convert_to_plain_dict(obj) -> Union[dict, list, Any]:
         return obj
 
 
-def flatten_json_schema(input_path: str, output_path: str) -> Union[dict, list]:
-    """Flatten/dereference $ref in a JSON Schema file using Python (jsonref)."""
-    with open(input_path, "r") as f:
-        schema = json.load(f)
+def flatten_json_schema(schema_data: dict) -> dict:
+    """Flatten/dereference $ref in a JSON Schema data using Python (jsonref)."""
     # Dereference $ref
-    deref_schema = jsonref.JsonRef.replace_refs(schema)
+    deref_schema = jsonref.JsonRef.replace_refs(schema_data)
 
     # Convert to plain dict to ensure JSON serializable
     deref_schema = _convert_to_plain_dict(deref_schema)
-    with open(output_path, "w") as f:
-        json.dump(deref_schema, f, indent=2)
-    print(f"Flattened schema written to {output_path}")
+    print("Flattened schema in memory")
     return deref_schema
 
 
@@ -115,24 +111,16 @@ def _fix_schema_version_logic(data: dict) -> tuple[dict, str]:
     return data, message
 
 
-def fix_schema_version(filepath: str) -> None:
+def fix_schema_version(schema_data: dict) -> dict:
     """Update the $schema field to use Draft-07 for Synapse compatibility."""
-    with open(filepath, "r") as f:
-        data = json.load(f)
-
     # Update $schema to Draft-07
-    data, message = _fix_schema_version_logic(data)
+    schema_data, message = _fix_schema_version_logic(schema_data)
     print(message)
-
-    with open(filepath, "w") as f:
-        json.dump(data, f, indent=2)
-    print(f"Fixed schema version in {filepath}")
+    return schema_data
 
 
-def remove_unsupported_fields(filepath: str) -> None:
+def remove_unsupported_fields(schema_data: dict) -> dict:
     """Remove fields that are not supported by Synapse JSON Schema service."""
-    with open(filepath, "r") as f:
-        data = json.load(f)
 
     def recursive_clean(obj):
         if isinstance(obj, dict):
@@ -148,16 +136,13 @@ def remove_unsupported_fields(filepath: str) -> None:
             for item in obj:
                 recursive_clean(item)
 
-    recursive_clean(data)
-    with open(filepath, "w") as f:
-        json.dump(data, f, indent=2)
-    print(f"Cleaned unsupported fields from {filepath}")
+    recursive_clean(schema_data)
+    print("Cleaned unsupported fields from schema")
+    return schema_data
 
 
-def fix_additional_properties(filepath: str) -> None:
-    """Recursively replace boolean additionalProperties with {} in a JSON Schema file."""
-    with open(filepath, "r") as f:
-        data = json.load(f)
+def fix_additional_properties(schema_data: dict) -> dict:
+    """Recursively replace boolean additionalProperties with {} in a JSON Schema data."""
 
     def recursive_fix(obj):
         if isinstance(obj, dict):
@@ -171,10 +156,9 @@ def fix_additional_properties(filepath: str) -> None:
             for item in obj:
                 recursive_fix(item)
 
-    recursive_fix(data)
-    with open(filepath, "w") as f:
-        json.dump(data, f, indent=2)
-    print(f"Fixed additionalProperties in {filepath}")
+    recursive_fix(schema_data)
+    print("Fixed additionalProperties in schema")
+    return schema_data
 
 
 def get_args():
@@ -228,19 +212,21 @@ def main():
     # 1. Generate JSON Schema using Python library
     run_gen_json_schema(args.linkml_yaml, args.class_name, tmp_json)
 
-    # 2. Flatten JSON Schema using Python
-    flatten_json_schema(tmp_json, output_file)
+    # 2. Read the generated schema into memory
+    with open(tmp_json, "r") as f:
+        schema_data = json.load(f)
 
-    # 3. Fix schema version to Draft-07
-    fix_schema_version(output_file)
+    # 3. Process schema in memory (no file I/O between steps)
+    schema_data = flatten_json_schema(schema_data)
+    schema_data = fix_schema_version(schema_data)
+    schema_data = fix_additional_properties(schema_data)
+    schema_data = remove_unsupported_fields(schema_data)
 
-    # 4. Fix additionalProperties
-    fix_additional_properties(output_file)
+    # 4. Write final result to output file
+    with open(output_file, "w") as f:
+        json.dump(schema_data, f, indent=2)
 
-    # 5. Remove unsupported fields
-    remove_unsupported_fields(output_file)
-
-    # 6. Cleanup
+    # 5. Cleanup
     Path(tmp_json).unlink(missing_ok=True)
     print(f"✅ Synapse-compatible flat schema written to {output_file}")
 
