@@ -200,6 +200,13 @@ def get_args():
         type=str,
         help="Output filename (optional, defaults to <input>.flat.schema.json)",
     )
+    parser.add_argument(
+        "--output-dir",
+        "-d",
+        type=str,
+        default="JSON_Schemas",
+        help="Output directory (default: JSON_Schemas)",
+    )
     return parser.parse_args()
 
 
@@ -213,7 +220,7 @@ def main():
         base = Path(args.linkml_yaml).stem
         output_filename = f"{base}.flat.schema.json"
 
-    output_dir = Path("JSON_Schemas")
+    output_dir = Path(args.output_dir)
     output_dir.mkdir(exist_ok=True)
     output_file = output_dir / output_filename
     tmp_json = output_file.with_suffix(output_file.suffix + ".tmp.json")
