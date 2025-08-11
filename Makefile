@@ -75,7 +75,11 @@ clean:
 		$(MAKE) -C $(MODULES_DIR)/$$module clean; \
 	done
 
-test: modules-test test-examples
+test: modules-test test-examples test-scripts
+
+# Test script functions
+test-scripts:
+	$(RUN) pytest tests/test_linkml_schema_conversion.py -v
 
 # Format code with Black
 format:
