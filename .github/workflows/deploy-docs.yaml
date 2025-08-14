@@ -58,7 +58,7 @@ jobs:
           mkdir -p docs
           touch docs/.nojekyll
           # Run the Python script to generate documentation
-          poetry run python generate_docs.py
+          poetry run python scripts/generate_docs.py
           
           # Commit the generated files
           git config --local user.email "action@github.com"
@@ -142,7 +142,7 @@ jobs:
           mkdir -p docs
           touch docs/.nojekyll
           # Run the Python script to generate documentation
-          poetry run python generate_docs.py
+          poetry run python scripts/generate_docs.py
           
           # Commit the generated files
           git config --local user.email "action@github.com"
