@@ -25,7 +25,7 @@ GEN_DOC_ARGS = --no-mergeimports
 # List of modules (add new modules here)
 MODULES = Clinical
 
-.PHONY: all clean setup gen-project gen-examples gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format
+.PHONY: all clean setup gen-project gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format
 
 help: status
 	@echo ""
@@ -46,7 +46,7 @@ status: check-config
 	@echo "Modules: $(MODULES)"
 
 # generate products and add everything to github
-setup: check-config git-init install gen-project gen-examples gendoc git-add git-commit
+setup: check-config git-init install gen-project gendoc git-add git-commit
 
 # install any dependencies required for building
 install:
@@ -75,7 +75,7 @@ clean:
 		$(MAKE) -C $(MODULES_DIR)/$$module clean; \
 	done
 
-test: modules-test test-examples test-scripts
+test: modules-test test-scripts
 
 # Test script functions
 test-scripts:
@@ -116,9 +116,7 @@ deploy: all mkd-gh-deploy
 compile-sheets:
 	$(RUN) sheets2linkml --gsheet-id $(SHEET_ID) $(SHEET_TABS) > $(SHEET_MODULE_PATH).tmp && mv $(SHEET_MODULE_PATH).tmp $(SHEET_MODULE_PATH)
 
-# In future this will be done by conversion
-gen-examples:
-	cp src/data/examples/* $(EXAMPLEDIR)
+
 
 # generates all project files
 gen-project: $(PYMODEL)
@@ -139,17 +137,7 @@ ifneq ($(strip ${GEN_TS_ARGS}),)
 	$(RUN) gen-typescript ${GEN_TS_ARGS} $(SOURCE_SCHEMA_PATH) >${DEST}/typescript/${SCHEMA_NAME}.ts
 endif
 
-test-examples: examples/output
 
-examples/output: modules/Clinical/domains/clinical.yaml
-	mkdir -p $@
-	$(RUN) linkml-run-examples \
-		--output-formats json \
-		--output-formats yaml \
-		--counter-example-input-directory src/data/examples/invalid \
-		--input-directory src/data/examples/valid \
-		--output-directory $@ \
-		--schema $< > $@/README.md
 
 # Test documentation locally
 serve: mkd-serve
@@ -197,14 +185,6 @@ else
 	$(info Ok)
 endif
 
-convert-examples-to-%:
-	$(patsubst %, $(RUN) linkml-convert  % -s $(SOURCE_SCHEMA_PATH) -C Person, $(shell ${SHELL} find src/data/examples -name "*.yaml"))
 
-examples/%.yaml: src/data/examples/%.yaml
-	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
-examples/%.json: src/data/examples/%.yaml
-	$(RUN) linkml-convert -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
-examples/%.ttl: src/data/examples/%.yaml
-	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(SOURCE_SCHEMA_PATH) -C Person $< -o $@
 
 include project.Makefile
