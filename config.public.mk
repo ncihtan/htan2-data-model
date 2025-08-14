@@ -8,7 +8,7 @@
 
 # Note: makefile variables should not be quoted, as makefile handles quoting differently than bash
 LINKML_SCHEMA_NAME=htan_linkml
-LINKML_SCHEMA_AUTHOR=Adam Taylor <adam.taylor@sagebase.org>
+LINKML_SCHEMA_AUTHOR=Aditi Gopalan <aditi.gopalan@sagebase.org>
 LINKML_SCHEMA_DESCRIPTION=A LinkML data model for HTAN Phase 2
 LINKML_SCHEMA_SOURCE_PATH=src/htan_linkml/schema/htan_linkml.yaml
 LINKML_SCHEMA_GOOGLE_SHEET_ID=1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ
