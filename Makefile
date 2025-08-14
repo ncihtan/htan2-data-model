@@ -187,4 +187,4 @@ endif
 
 
 
-include project.Makefile
+include config/project.Makefile
