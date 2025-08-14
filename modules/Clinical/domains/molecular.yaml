@@ -1,0 +1,257 @@
+name: ClinicalMolecular
+id: https://w3id.org/htan/clinical/molecular
+description: HTAN Clinical Data Model - Molecular Domain
+imports:
+  - gene_symbols
+
+enums:
+  MolecularAnalysisMethodEnum:
+    title: molecular_analysis_method
+    permissible_values:
+      "DNA Sequencing":
+        description: DNA sequencing
+      "RNA Sequencing":
+        description: RNA sequencing
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  ClinicalBiospecimenTypeEnum:
+    title: clinical_biospecimen_type
+    permissible_values:
+      "Blood":
+        description: Blood
+      "Tissue":
+        description: Tissue
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  MolecularConsequenceEnum:
+    title: molecular_consequence
+    permissible_values:
+      "Frameshift":
+        description: Frameshift mutation
+      "Missense":
+        description: Missense mutation
+      "Nonsense":
+        description: Nonsense mutation
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  PathogenicityEnum:
+    title: pathogenicity
+    permissible_values:
+      "Benign":
+        description: Benign
+      "Likely Benign":
+        description: Likely benign
+      "Likely Pathogenic":
+        description: Likely pathogenic
+      "Pathogenic":
+        description: Pathogenic
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  TestAnalyteTypeEnum:
+    title: test_analyte_type
+    permissible_values:
+      "DNA":
+        description: DNA
+      "RNA":
+        description: RNA
+      "Protein":
+        description: Protein
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  VariantOriginEnum:
+    title: variant_origin
+    permissible_values:
+      "Germline":
+        description: Germline variant
+      "Somatic":
+        description: Somatic variant
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  VariantTypeEnum:
+    title: variant_type
+    permissible_values:
+      "Deletion":
+        description: Deletion
+      "Insertion":
+        description: Insertion
+      "Substitution":
+        description: Substitution
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+classes:
+  MolecularTest:
+    description: Information about the molecular test
+    attributes:
+      TIMEPOINT_LABEL:
+        range: string
+        required: true
+        description: Label for the timepoint (caDSR:2192201) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192201
+      AGE_IN_DAYS_AT_MOLECULAR_TEST_START:
+        range: integer
+        required: true
+        description: Age in days at molecular test start (caDSR:2192202) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192202
+      AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP:
+        range: integer
+        required: true
+        description: Age in days at molecular test stop (caDSR:2192203) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192203
+      GENE_SYMBOL:
+        range: gene_symbol_enum
+        required: true
+        description: Gene symbol (caDSR:2192204) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192204
+      MOLECULAR_ANALYSIS_METHOD:
+        range: MolecularAnalysisMethodEnum
+        required: true
+        description: Molecular analysis method (caDSR:2192205) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192205
+      MOLECULAR_ANALYSIS_RESULT:
+        range: string
+        required: true
+        description: Molecular analysis result (caDSR:2192206) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192206
+      AA_CHANGE:
+        range: string
+        required: true
+        description: Amino acid change (caDSR:2192207) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192207
+      CLINICAL_BIOSPECIMEN_TYPE:
+        range: ClinicalBiospecimenTypeEnum
+        required: true
+        description: Clinical biospecimen type (caDSR:2192208) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192208
+      COPY_NUMBER:
+        range: integer
+        required: true
+        description: Copy number (caDSR:2192209) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192209
+      EXON:
+        range: integer
+        required: true
+        description: Exon number (caDSR:2192210) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192210
+      MOLECULAR_CONSEQUENCE:
+        range: MolecularConsequenceEnum
+        required: true
+        description: Molecular consequence (caDSR:2192211) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192211
+      PATHOGENICITY:
+        range: PathogenicityEnum
+        required: true
+        description: Pathogenicity (caDSR:2192212) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192212
+      TEST_ANALYTE_TYPE:
+        range: TestAnalyteTypeEnum
+        required: true
+        description: Test analyte type (caDSR:2192213) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192213
+      TEST_UNITS:
+        range: string
+        required: true
+        description: Test units (caDSR:2192214) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192214
+      TEST_RESULT:
+        range: string
+        required: true
+        description: Test result (caDSR:2192215) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192215
+      VARIANT_ORIGIN:
+        range: VariantOriginEnum
+        required: true
+        description: Variant origin (caDSR:2192216) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192216
+      VARIANT_TYPE:
+        range: VariantTypeEnum
+        required: true
+        description: Variant type (caDSR:2192217) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192217
+    slot_usage:
+      AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP:
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_METHOD is DNA Sequencing or RNA Sequencing
+      AA_CHANGE:
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected
+      COPY_NUMBER:
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Copy number variant detected
+      EXON:
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected
+      MOLECULAR_CONSEQUENCE:
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected
+      PATHOGENICITY:
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected
+      TEST_ANALYTE_TYPE:
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_METHOD is DNA Sequencing or RNA Sequencing
+      TEST_UNITS:
+        required: false
+        description: Required when MOLECULAR_ANALYSIS_RESULT is Copy number variant detected
+    rules:
+      - description: "When molecular analysis method is DNA or RNA sequencing, test stop age and analyte type become required"
+        preconditions:
+          slot_conditions:
+            MOLECULAR_ANALYSIS_METHOD:
+              any_of:
+                - equals_string: "DNA Sequencing"
+                - equals_string: "RNA Sequencing"
+        postconditions:
+          slot_conditions:
+            AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP:
+              required: true
+            TEST_ANALYTE_TYPE:
+              required: true
+      - description: "When molecular analysis result indicates a variant, variant details become required"
+        preconditions:
+          slot_conditions:
+            MOLECULAR_ANALYSIS_RESULT:
+              any_of:
+                - equals_string: "Pathogenic variant detected"
+                - equals_string: "Variant of uncertain significance detected"
+        postconditions:
+          slot_conditions:
+            AA_CHANGE:
+              required: true
+            EXON:
+              required: true
+            MOLECULAR_CONSEQUENCE:
+              required: true
+            PATHOGENICITY:
+              required: true
+      - description: "When molecular analysis result indicates a copy number variant, copy number and units become required"
+        preconditions:
+          slot_conditions:
+            MOLECULAR_ANALYSIS_RESULT:
+              equals_string: "Copy number variant detected"
+        postconditions:
+          slot_conditions:
+            COPY_NUMBER:
+              required: true
+            TEST_UNITS:
+              required: true

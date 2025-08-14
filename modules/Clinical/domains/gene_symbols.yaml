@@ -1,0 +1,42 @@
+name: ClinicalGeneSymbols
+id: https://w3id.org/htan/clinical/gene_symbols
+description: HTAN Clinical Data Model - Gene Symbols from HGNC
+
+enums:
+  gene_symbol_enum:
+    description: Valid gene symbols from HGNC database
+    permissible_values:
+      "A1BG":
+        description: alpha-1-B glycoprotein
+      "A1CF":
+        description: APOBEC1 complementation factor
+      "A2M":
+        description: alpha-2-macroglobulin
+      "AARS1":
+        description: alanyl-tRNA synthetase 1
+      "ABCA1":
+        description: ATP binding cassette subfamily A member 1
+      "ABCB1":
+        description: ATP binding cassette subfamily B member 1
+      "BRCA1":
+        description: BRCA1 DNA repair associated
+      "BRCA2":
+        description: BRCA2 DNA repair associated
+      "TP53":
+        description: tumor protein p53
+      "EGFR":
+        description: epidermal growth factor receptor
+      "KRAS":
+        description: KRAS proto-oncogene, GTPase
+      "BRAF":
+        description: B-Raf proto-oncogene, serine/threonine kinase
+      "PIK3CA":
+        description: phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit alpha
+      "AKT1":
+        description: AKT serine/threonine kinase 1
+      "PTEN":
+        description: phosphatase and tensin homolog
+      "Not Reported":
+        description: Gene symbol not reported
+      "Unknown":
+        description: Gene symbol unknown 

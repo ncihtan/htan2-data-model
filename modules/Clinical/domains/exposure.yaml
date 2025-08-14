@@ -1,0 +1,103 @@
+name: ClinicalExposure
+id: https://w3id.org/htan/clinical/exposure
+description: HTAN Clinical Data Model - Exposure Domain
+
+enums:
+  SmokingHistoryEnum:
+    title: smoking_history
+    permissible_values:
+      "Current smoker":
+        description: Current smoker
+      "Former smoker":
+        description: Former smoker
+      "Never smoker":
+        description: Never smoker
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  AlcoholHistoryIndicatorEnum:
+    title: alcohol_history_indicator
+    permissible_values:
+      "No":
+        description: No alcohol history
+      "Yes":
+        description: Alcohol history present
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  EnvironmentalExposureEnum:
+    title: environmental_exposure
+    permissible_values:
+      "No":
+        description: No environmental exposure
+      "Yes":
+        description: Environmental exposure present
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  EnvironmentalExposureTypeEnum:
+    title: environmental_exposure_type
+    permissible_values:
+      "Asbestos":
+        description: Asbestos exposure
+      "Radiation":
+        description: Radiation exposure
+      "Chemical":
+        description: Chemical exposure
+      "Not Reported":
+        description: Not provided or available
+      "Other":
+        description: Other type of exposure
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+classes:
+  Exposure:
+    description: Information about the exposure
+    attributes:
+      SMOKING_HISTORY:
+        range: SmokingHistoryEnum
+        required: true
+        description: Smoking history of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192201
+      YEARS_SMOKED:
+        range: integer
+        required: false
+        description: Number of years the participant has smoked (caDSR:2192202) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192202
+      PACK_YEARS_SMOKED:
+        range: decimal
+        required: false
+        description: Number of pack years the participant has smoked (caDSR:2192203) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192203
+      ALCOHOL_HISTORY_INDICATOR:
+        range: AlcoholHistoryIndicatorEnum
+        required: true
+        description: Alcohol history indicator of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192204
+      ENVIRONMENTAL_EXPOSURE:
+        range: EnvironmentalExposureEnum
+        required: true
+        description: Environmental exposure of the participant (caDSR:2192205) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192205
+      ENVIRONMENTAL_EXPOSURE_TYPE:
+        range: EnvironmentalExposureTypeEnum
+        required: false
+        description: Type of environmental exposure (caDSR:2192206) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2192206
+    slot_usage:
+      YEARS_SMOKED:
+        required: false
+        description: Required when SMOKING_HISTORY is Current smoker or Former smoker
+      PACK_YEARS_SMOKED:
+        required: false
+        description: Required when SMOKING_HISTORY is Current smoker or Former smoker
+      ENVIRONMENTAL_EXPOSURE_TYPE:
+        required: false
+        description: Required when ENVIRONMENTAL_EXPOSURE is Yes 

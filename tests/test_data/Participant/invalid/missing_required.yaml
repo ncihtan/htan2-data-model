@@ -1,0 +1,5 @@
+participant_id: "HTAN-003"
+# Missing required fields
+height_cm: 165
+weight_kg: 60
+bmi: 22.0 

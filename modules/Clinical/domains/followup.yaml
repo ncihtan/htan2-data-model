@@ -1,0 +1,213 @@
+name: ClinicalFollowUp
+id: https://w3id.org/htan/clinical/followup
+description: HTAN Clinical Data Model - FollowUp Domain
+
+enums:
+  ProgressionOrRecurrenceEnum:
+    title: progression_or_recurrence
+    permissible_values:
+      "Censored":
+        description: Points of data for which only partial information is known.
+      "No":
+        description: The non-affirmative response to a question.
+      "Not Allowed to Collect":
+        description: An indicator that specifies that a collection event was not permitted.
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Reported":
+        description: Not provided or available.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+      "Yes":
+        description: The affirmative response to a question.
+
+  ProgressionTypeEnum:
+    title: progression_type
+    permissible_values:
+      "Biochemical":
+        description: An indication that biochemical markers of a disease are present.
+      "Distant":
+        description: A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor.
+      "Local":
+        description: A disease that is confined to a specific organ or tissue and has not spread to other anatomic sites.
+      "Locoregional":
+        description: A disease that occurs within a specific organ or tissue and extends into adjacent areas including lymph nodes.
+      "Not Reported":
+        description: Not provided or available.
+      "Regional":
+        description: A disease or condition that extends beyond the site and spreads into adjacent tissues and regional lymph nodes.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+
+  EvidenceOfRecurrenceTypeEnum:
+    title: evidence_of_recurrence_type
+    permissible_values:
+      "Clinical":
+        description: Recurrence was determined by clinical examination.
+      "Imaging":
+        description: Recurrence was determined by imaging.
+      "Laboratory":
+        description: Recurrence was determined by laboratory test.
+      "Not Reported":
+        description: Not provided or available.
+      "Pathology":
+        description: Recurrence was determined by pathology.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+
+  DiseaseResponseEnum:
+    title: disease_response
+    permissible_values:
+      "Complete Response":
+        description: Complete disappearance of all target lesions.
+      "No Evidence of Disease":
+        description: Diagnostic tests fail to detect presence of disease.
+      "No Response":
+        description: No apparent change or worsening in tumor staging classification.
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Evaluable":
+        description: Unable to be evaluated.
+      "Not Reported":
+        description: Not provided or available.
+      "Partial Response":
+        description: At least a 30% decrease in the sum of the diameters of target lesions.
+      "Persistent Disease":
+        description: A disease that does not go to remission despite treatment.
+      "Progressive Disease":
+        description: At least a 20% increase in the sum of the diameters of target lesions.
+      "Stable Disease":
+        description: Neither sufficient shrinkage to qualify for partial response nor sufficient increase to qualify for progressive disease.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+
+  ECOGPerformanceStatusEnum:
+    title: ecog_performance_status
+    permissible_values:
+      "0":
+        description: Fully active, able to carry on all pre-disease performance without restriction.
+      "1":
+        description: Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature.
+      "2":
+        description: Ambulatory and capable of all selfcare but unable to carry out any work activities. Up and about more than 50% of waking hours.
+      "3":
+        description: Capable of only limited selfcare, confined to bed or chair more than 50% of waking hours.
+      "4":
+        description: Completely disabled. Cannot carry on any selfcare. Totally confined to bed or chair.
+      "5":
+        description: Dead
+
+  MenopauseStatusEnum:
+    title: menopause_status
+    permissible_values:
+      Menopausal:
+        description: The permanent cessation of menses, usually defined by 6 to 12 months of amenorrhea in a woman over 45 years of age.
+      "Not_Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not_Reported":
+        description: Not provided or available.
+      Perimenopausal:
+        description: The time of a woman's life when menstrual periods become irregular.
+      Postmenopausal:
+        description: Having to do with the time after menopause.
+      "Postmenopausal_Natural":
+        description: Having to do with the time after menopause (>12 months since last menstrual period with no prior ovariectomy).
+      "Postmenopausal_Surgical":
+        description: Having to do with the time after menopause (prior bilateral ovariectomy).
+      Premenopausal:
+        description: Refers to the time before menopause.
+      "Premenopausal_Perimenopausal":
+        description: Prior to menopause or in the perimenopausal phase.
+      Unknown:
+        description: Not known, not observed, not recorded, or refused.
+
+classes:
+  FollowUp:
+    description: Clinical follow-up information
+    attributes:
+      AGE_IN_DAYS_AT_FOLLOWUP:
+        range: integer
+        required: true
+        description: Age in days at follow-up
+      PROGRESSION_OR_RECURRENCE:
+        range: ProgressionOrRecurrenceEnum
+        required: true
+        description: Indicates whether the disease has progressed or recurred
+      PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
+        range: tissue_or_organ_of_origin_uberon_enum
+        required: false
+        description: UBERON code for the anatomic site of progression or recurrence
+      PROGRESSION_OR_RECURRENCE_TYPE:
+        range: ProgressionTypeEnum
+        required: false
+        description: Type of progression or recurrence
+      EVIDENCE_OF_RECURRENCE_TYPE:
+        range: EvidenceOfRecurrenceTypeEnum
+        required: false
+        description: Type of evidence for recurrence
+      AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
+        range: integer
+        required: false
+        description: Age in days at progression or recurrence
+      DISEASE_RESPONSE:
+        range: DiseaseResponseEnum
+        required: true
+        description: Response to treatment
+      ECOG_PERFORMANCE_STATUS:
+        range: ECOGPerformanceStatusEnum
+        required: true
+        description: ECOG performance status
+      MENOPAUSE_STATUS:
+        range: MenopauseStatusEnum
+        required: false
+        description: Menopause status
+    slot_usage:
+      PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
+        required: false
+        description: Required when PROGRESSION_OR_RECURRENCE is Yes
+      PROGRESSION_OR_RECURRENCE_TYPE:
+        required: false
+        description: Required when PROGRESSION_OR_RECURRENCE is Yes
+      EVIDENCE_OF_RECURRENCE_TYPE:
+        required: false
+        description: Required when PROGRESSION_OR_RECURRENCE is Yes
+      AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
+        required: false
+        description: Required when PROGRESSION_OR_RECURRENCE is Yes
+    rules:
+      - description: "PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE is required when PROGRESSION_OR_RECURRENCE is Yes"
+        preconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
+              required: true
+      - description: "PROGRESSION_OR_RECURRENCE_TYPE is required when PROGRESSION_OR_RECURRENCE is Yes"
+        preconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE_TYPE:
+              required: true
+      - description: "EVIDENCE_OF_RECURRENCE_TYPE is required when PROGRESSION_OR_RECURRENCE is Yes"
+        preconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            EVIDENCE_OF_RECURRENCE_TYPE:
+              required: true
+      - description: "AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE is required when PROGRESSION_OR_RECURRENCE is Yes"
+        preconditions:
+          slot_conditions:
+            PROGRESSION_OR_RECURRENCE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
+              required: true 

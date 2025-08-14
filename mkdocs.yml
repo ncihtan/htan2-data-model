@@ -1,27 +1,35 @@
 ---
-site_name: "htan-linkml"
+site_name: HTAN LinkML
+site_description: HTAN LinkML Data Model
+site_author: HTAN Consortium
+
 theme:
   name: material
-  # palette:
-  #  scheme: slate
-  #  primary: cyan
-  features:
-    - content.tabs.link
+
 plugins:
   - search
-  - mermaid2
   - mermaid2:
-      version: 10.9.0
-nav:
-  # - Home: home.md
-  - Index: index.md
-  - About: about.md
-site_url: https://ncihtan.github.io/htan-linkml
-repo_url: https://github.com/ncihtan/htan-linkml
+      arguments:
+        theme: default
+        themeVariables:
+          primaryColor: '#ff0000'
+          primaryTextColor: '#fff'
+          primaryBorderColor: '#7C0000'
+          lineColor: '#F8B229'
+          secondaryColor: '#006100'
+          tertiaryColor: '#fff'
 
-# Uncomment this block to enable use of Google Analytics.
-# Replace the property value with your own ID.
-# extra:
-#   analytics:
-#     provider: google
-#     property: G-XXXXXXXXXX
+nav:
+  - Home: index.md
+  - Modules:
+    - Clinical:
+      - Demographics: Demographics.md
+      - Diagnosis: Diagnosis.md
+      - Exposure: Exposure.md
+      - Family History: FamilyHistory.md
+      - Followup: FollowUp.md
+      - Molecular Test: MolecularTest.md
+      - Therapy: Therapy.md
+      - Vital Status: VitalStatus.md
+  - Quick Start: quickstart.md
+  - Development: development.md

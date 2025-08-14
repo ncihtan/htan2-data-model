@@ -1,0 +1,53 @@
+name: ClinicalFamilyHistory
+id: https://w3id.org/htan/clinical/family_history
+description: HTAN Clinical Data Model - Family History Domain
+
+enums:
+  YesNoUnknownNotReportedEnum:
+    title: yes_no_unknown_not_reported
+    permissible_values:
+      "No":
+        description: No
+      "Yes":
+        description: Yes
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  FamilyMemberCancerHistoryEnum:
+    title: family_member_cancer_history
+    permissible_values:
+      "No":
+        description: No family member with cancer history
+      "Yes":
+        description: Family member with cancer history
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+classes:
+  FamilyHistory:
+    description: >-
+      A class to capture information about the cancer history of family members.
+    attributes:
+      FAMILY_MEMBER_CANCER_HISTORY:
+        description: >-
+          Has a family member been diagnosed with cancer?
+        range: YesNoUnknownNotReportedEnum
+      RELATIVES_WITH_CANCER_HISTORY:
+        description: >-
+          Number of first degree relatives with cancer history
+        range: integer
+    rules:
+      - preconditions:
+          slot_conditions:
+            FAMILY_MEMBER_CANCER_HISTORY:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            RELATIVES_WITH_CANCER_HISTORY:
+              required: true
+        description: >-
+          If FAMILY_MEMBER_CANCER_HISTORY is "Yes", then RELATIVES_WITH_CANCER_HISTORY becomes required 

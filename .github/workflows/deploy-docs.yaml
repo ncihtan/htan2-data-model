@@ -1,8 +1,13 @@
----
-name: Auto-deployment of htan_linkml Documentation
+name: Build and Deploy Documentation
+
 on:
   push:
     branches: [main]
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   build-docs:
@@ -31,10 +36,131 @@ jobs:
       - name: Install dependencies.
         run: poetry install -E docs
 
-      - name: Build documentation.
+      - name: Clean docs directory
+        run: |
+          # Backup static files
+          mkdir -p docs_backup
+          cp docs/index.md docs_backup/ || true
+          cp docs/quickstart.md docs_backup/ || true
+          cp docs/development.md docs_backup/ || true
+          cp docs/about.md docs_backup/ || true
+          
+          # Clean generated content
+          rm -rf docs/*
+          rm -rf site/
+          
+          # Restore static files
+          cp docs_backup/* docs/ || true
+          rm -rf docs_backup
+
+      - name: Generate documentation.
         run: |
           mkdir -p docs
           touch docs/.nojekyll
-          make gendoc
-          ([ ! -f docs/about.md ] && cp src/docs/about.md docs/) || true
-          make mkd-gh-deploy
+          # Run the Python script to generate documentation
+          poetry run python generate_docs.py
+          
+          # Commit the generated files
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git commit -m "docs: update generated documentation" || true
+          git push || true
+
+      - name: Build documentation.
+        run: |
+          # Build the documentation using Poetry
+          poetry run mkdocs build
+          # Verify the build
+          ls -la site/
+          cat site/index.html
+
+  deploy-docs:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build-docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python.
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install Poetry.
+        run: pipx install poetry
+
+      - name: Install dependencies.
+        run: poetry install -E docs
+
+      - name: Deploy to GitHub Pages
+        run: poetry run mkdocs gh-deploy --force
+
+  preview-docs:
+    if: github.event_name == 'pull_request'
+    needs: build-docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python.
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install Poetry.
+        run: pipx install poetry
+
+      - name: Install dependencies.
+        run: poetry install -E docs
+
+      - name: Clean docs directory
+        run: |
+          # Backup static files
+          mkdir -p docs_backup
+          cp docs/index.md docs_backup/ || true
+          cp docs/quickstart.md docs_backup/ || true
+          cp docs/development.md docs_backup/ || true
+          cp docs/about.md docs_backup/ || true
+          
+          # Clean generated content
+          rm -rf docs/*
+          rm -rf site/
+          
+          # Restore static files
+          cp docs_backup/* docs/ || true
+          rm -rf docs_backup
+
+      - name: Generate documentation.
+        run: |
+          mkdir -p docs
+          touch docs/.nojekyll
+          # Run the Python script to generate documentation
+          poetry run python generate_docs.py
+          
+          # Commit the generated files
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git commit -m "docs: update generated documentation" || true
+          git push || true
+
+      - name: Build documentation.
+        run: |
+          # Build the documentation using Poetry
+          poetry run mkdocs build
+          # Verify the build
+          ls -la site/
+          cat site/index.html
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: site/
+          preview-branch: gh-pages

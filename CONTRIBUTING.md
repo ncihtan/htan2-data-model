@@ -87,6 +87,95 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
 - [Schemas](https://linkml.io/linkml/schemas/index.html)
 - [FAQ](https://linkml.io/linkml/faq/index.html)
 
+### LinkML to JSON Schema Conversion Workflow
+
+For Synapse integration, LinkML schemas need to be converted to JSON Schema format. The project includes a comprehensive workflow for this:
+
+#### 1. LinkML to JSON Schema Conversion
+
+**Script**: `scripts/linkml_to_flat_synapse_jsonschema.py`
+
+**Usage**:
+```bash
+# Basic conversion
+python scripts/linkml_to_flat_synapse_jsonschema.py modules/Clinical/domains/diagnosis.yaml
+
+# With specific class
+python scripts/linkml_to_flat_synapse_jsonschema.py modules/Clinical/domains/diagnosis.yaml --class-name Diagnosis
+
+# With custom output
+python scripts/linkml_to_flat_synapse_jsonschema.py modules/Clinical/domains/diagnosis.yaml -c Diagnosis -o custom_schema.json
+
+# With custom output directory
+python scripts/linkml_to_flat_synapse_jsonschema.py modules/Clinical/domains/diagnosis.yaml -d my_schemas/
+```
+
+**What it does**:
+- Converts LinkML YAML to JSON Schema using Python library (no shell commands)
+- Flattens/dereferences `$ref` references using `jsonref`
+- Updates schema version to Draft-07 for Synapse compatibility
+- Converts boolean `additionalProperties` to objects
+- Removes unsupported fields (`$defs`, `metamodel_version`, `version`)
+- Processes everything in memory for efficiency and safety
+
+#### 2. Schema Registration and Binding
+
+**Script**: `scripts/synapse_json_schema_bind.py`
+
+**Usage**:
+```bash
+python scripts/synapse_json_schema_bind.py -t <entity_id> -p <schema_file> -n "htanorg"
+```
+
+**What it does**:
+- Registers JSON schema with Synapse organization
+- Binds schema to specified entity
+- Enables `enableDerivedAnnotations` for flexible annotation support
+
+#### 3. Annotation Management
+
+**Script**: `scripts/push_annotations_from_files.py`
+
+**Usage**:
+```bash
+python scripts/push_annotations_from_files.py
+```
+
+**What it does**:
+- Pushes annotations from local JSON files to Synapse entities
+- Supports both valid and invalid annotation testing
+
+#### 4. Testing
+
+**Run all tests**:
+```bash
+make test
+```
+
+**Run script-specific tests**:
+```bash
+make test-scripts
+```
+
+**Format code**:
+```bash
+make format
+```
+
+#### Key Features
+
+- **Synapse Compatibility**: Generates Draft-07 JSON Schema with proper formatting
+- **Flexible Annotations**: `enableDerivedAnnotations` allows extra fields not in schema
+- **Comprehensive Testing**: Unit tests for all conversion functions
+- **Professional CLI**: Uses argparse with help and validation
+- **Memory Efficient**: In-memory processing with single read/write cycle
+
+#### Annotation Indicators
+
+- **Green**: Correctly annotated fields
+- **Yellow**: Invalid annotations (missing required values)
+- **Grey**: Non-schema fields with valid values (allowed with `enableDerivedAnnotations`)
+
 ### Modeling Best Practice
 
 - Follow Naming conventions

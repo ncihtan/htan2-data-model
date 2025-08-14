@@ -1,5 +1,16 @@
 name: Participant
-id: urn:uuid:277993eb-71d1-4748-8ce8-7016b57d29e2
+id: https://w3id.org/htan/participant
+description: HTAN Participant Data Model Schema
+
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
 
 enums:
 
@@ -38,7 +49,7 @@ enums:
       Unknown:
       X:
 
-  ethnicityEnum:
+  EthnicityEnum:
     title: ethnicity
     permissible_values:
       Hispanic or Latino:
@@ -47,7 +58,7 @@ enums:
       Not Reported:
       Not Allowed to Collect:
 
-  vitalStatusEnum:
+  VitalStatusEnum:
     title: vital_status
     permissible_values:
       Alive:
@@ -55,10 +66,80 @@ enums:
       Unknown:
       Not Reported:
 
-  adultOrChildhoodEnum:
+  AdultOrChildhoodEnum:
     title: adult_or_childhood_study
     permissible_values:
       Adult:
       Pediatric:
+
+classes:
+  Participant:
+    description: Information about a participant in the study
+    attributes:
+      participant_id:
+        identifier: true
+        range: string
+        required: true
+        description: Unique identifier for the participant
+      age_at_enrollment_days:
+        range: integer
+        required: true
+        description: Age in days at enrollment
+      race:
+        range: RaceEnum
+        required: true
+        description: Race of the participant
+      ethnicity:
+        range: EthnicityEnum
+        required: true
+        description: Ethnicity of the participant
+      gender:
+        range: GenderEnum
+        required: true
+        description: Gender identity of the participant
+      sex:
+        range: SexEnum
+        required: false
+        description: Sex of the participant
+      vital_status:
+        range: VitalStatusEnum
+        required: true
+        description: Vital status of the participant
+      year_of_birth:
+        range: integer
+        required: false
+        description: Year of birth
+      year_of_death:
+        range: integer
+        required: false
+        description: Year of death
+      cause_of_death:
+        range: string
+        required: false
+        description: Cause of death
+      height_cm:
+        range: float
+        required: false
+        description: Height in centimeters
+      weight_kg:
+        range: float
+        required: false
+        description: Weight in kilograms
+      bmi:
+        range: float
+        required: false
+        description: Body Mass Index
+      country_of_residence:
+        range: string
+        required: false
+        description: Country of residence
+      state_of_residence:
+        range: string
+        required: false
+        description: State of residence
+      zip_code:
+        range: string
+        required: false
+        description: ZIP code of residence
 
 

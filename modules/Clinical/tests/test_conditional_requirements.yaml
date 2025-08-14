@@ -1,0 +1,95 @@
+COMPONENT: "Clinical"
+HTAN_PARTICIPANT_ID: "TEST-001"
+
+# Valid demographics data
+DEMOGRAPHICS:
+  ETHNIC_GROUP: "Not Hispanic or Latino"  # Valid enum value
+  GENDER_IDENTITY: "Male"  # Valid enum value
+  SEX: "Male"  # Valid enum value
+  RACE: "White"  # Valid enum value
+
+# Valid exposure data
+EXPOSURES:
+  SMOKING_HISTORY: "Former smoker"  # Valid enum value
+  YEARS_SMOKED: 20
+  PACK_YEARS_SMOKED: 10.5
+  ALCOHOL_HISTORY_INDICATOR: "Yes"  # Valid enum value
+  ENVIRONMENTAL_EXPOSURE: "Yes"  # Valid enum value
+  ENVIRONMENTAL_EXPOSURE_TYPE: "Chemical"  # Valid enum value
+
+# Valid family history data with conditional requirements
+FAMILY_HISTORY:
+  FAMILY_MEMBER_CANCER_HISTORY: "Yes"  # Valid enum value
+  RELATIVES_WITH_CANCER_HISTORY: 2  # Required when FAMILY_MEMBER_CANCER_HISTORY is "Yes"
+
+# Valid follow-up data with conditional requirements
+FOLLOW_UPS:
+  - AGE_IN_DAYS_AT_FOLLOWUP: 20000
+    PROGRESSION_OR_RECURRENCE: "Yes"  # Valid enum value
+    PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE: "UBERON:0000002"  # Required when PROGRESSION_OR_RECURRENCE is "Yes"
+    PROGRESSION_OR_RECURRENCE_TYPE: "Local"  # Required when PROGRESSION_OR_RECURRENCE is "Yes"
+    EVIDENCE_OF_RECURRENCE_TYPE: "Imaging"  # Required when PROGRESSION_OR_RECURRENCE is "Yes"
+    AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE: 18000  # Required when PROGRESSION_OR_RECURRENCE is "Yes"
+    DISEASE_RESPONSE: "Stable Disease"  # Valid enum value
+    ECOG_PERFORMANCE_STATUS: "0"  # Valid enum value
+    MENOPAUSE_STATUS: "Premenopausal"  # Valid enum value
+
+# Valid molecular test data
+MOLECULAR_TESTS:
+  - TIMEPOINT_LABEL: "Baseline"  # Valid enum value
+    AGE_IN_DAYS_AT_MOLECULAR_TEST_START: 0
+    AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP: 1
+    GENE_SYMBOL: "BRCA1"
+    MOLECULAR_ANALYSIS_METHOD: "DNA Sequencing"  # Valid enum value
+    MOLECULAR_ANALYSIS_RESULT: "Pathogenic variant detected"  # Valid enum value
+    AA_CHANGE: "R1443X"
+    CLINICAL_BIOSPECIMEN_TYPE: "Blood"  # Valid enum value
+    COPY_NUMBER: 2
+    EXON: 11
+    MOLECULAR_CONSEQUENCE: "Nonsense"  # Valid enum value
+    PATHOGENICITY: "Pathogenic"  # Valid enum value
+    TEST_ANALYTE_TYPE: "DNA"  # Valid enum value
+    TEST_UNITS: "copies"  # Valid enum value
+    TEST_RESULT: "Positive"  # Valid enum value
+    VARIANT_ORIGIN: "Germline"  # Valid enum value
+    VARIANT_TYPE: "Substitution"  # Valid enum value
+
+# Valid vital status data
+VITAL_STATUS:
+  VITAL_STATUS: "Deceased"  # Valid enum value
+  AGE_IN_DAYS_AT_DEATH: 15000
+  CAUSE_OF_DEATH: "Disease"  # Valid enum value
+  CAUSE_OF_DEATH_SOURCE: "Death Certificate"  # Valid enum value
+
+# Valid diagnosis data
+DIAGNOSIS:
+  PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID: "NCIT:C4908"
+  AGE_IN_DAYS_AT_DIAGNOSIS: 18250
+  TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE: "UBERON:0000310"
+  TUMOR_GRADE: "G2"  # Valid enum value
+  CLINICAL_T_STAGE: "T2"  # Valid enum value
+  CLINICAL_N_STAGE: "N1"  # Valid enum value
+  CLINICAL_M_STAGE: "M0"  # Valid enum value
+  AJCC_STAGING_SYSTEM_EDITION: "8th Edition"  # Valid enum value
+  AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS: 19000
+  LAST_KNOWN_DISEASE_STATUS: "Progressive Disease"  # Valid enum value
+  TUMOR_CLASSIFICATION_CATEGORY: "Malignant"  # Valid enum value
+  METASTASIS_AT_DIAGNOSIS: "No"  # Valid enum value
+  METHOD_OF_DIAGNOSIS: "Biopsy"  # Valid enum value
+
+# Valid therapy data
+THERAPIES:
+  - INITIAL_DISEASE_STATUS: "Active"  # Valid enum value
+    TREATMENT_INTENT_TYPE: "Curative"  # Valid enum value
+    TREATMENT_TYPE: "Surgical Procedure"  # Valid enum value
+    THERAPY_ANATOMIC_SITE_UBERON_CODE: "UBERON:0000002"
+    PHARMACOTHERAPY_TYPE: "Chemotherapy"  # Valid enum value
+    THERAPEUTIC_AGENTS:
+      - "NCIT:C1634"  # Doxorubicin
+      - "NCIT:C1582"  # Cyclophosphamide
+    AGE_IN_DAYS_AT_TREATMENT_START: 18350
+    AGE_IN_DAYS_AT_TREATMENT_END: 18600
+    OFF_TREATMENT_REASON: "Completed Planned Treatment"  # Valid enum value
+    REGIMEN_OR_LINE_OF_THERAPY: "First Line"  # Valid enum value
+    NUMBER_OF_CYCLES: 4
+    RESPONSE: "Complete Response"  # Valid enum value 

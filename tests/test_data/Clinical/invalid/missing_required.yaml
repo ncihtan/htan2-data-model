@@ -1,0 +1,11 @@
+participant_id: "HTAN-003"
+# Missing demographics section (required)
+# Missing diagnosis section (required)
+exposures:
+  # Missing required smoking_history enum
+  environmental_exposure: "No"
+
+family_history:
+  # Missing required family_member_cancer_history enum 
+
+HTAN_PARTICIPANT_ID: "HTA200_3_D36667" 

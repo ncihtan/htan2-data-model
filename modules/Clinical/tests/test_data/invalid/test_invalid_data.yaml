@@ -1,0 +1,35 @@
+COMPONENT: "Clinical"
+HTAN_PARTICIPANT_ID: "TEST-002"
+
+# Invalid demographics data - missing required fields
+DEMOGRAPHICS:
+  ETHNIC_GROUP: "Not Hispanic or Latino"
+  # Missing GENDER_IDENTITY
+  SEX: "Male"
+  # Missing RACE
+
+# Invalid vital status data - invalid enum value
+VITAL_STATUS:
+  VITAL_STATUS: "Invalid Status"
+  AGE_IN_DAYS_AT_DEATH: "not a number"
+  CAUSE_OF_DEATH: "Unknown Cause"
+
+# Invalid diagnosis data - invalid enum values and missing required fields
+DIAGNOSIS:
+  PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID: "INVALID:CODE"
+  AGE_IN_DAYS_AT_DIAGNOSIS: "not a number"
+  TUMOR_GRADE: "G5"  # Invalid grade
+  CLINICAL_T_STAGE: "TX2"  # Invalid stage
+  # Missing required fields
+
+# Invalid exposure data - invalid values
+EXPOSURES:
+  SMOKING_HISTORY: "Invalid History"
+  YEARS_SMOKED: "not a number"
+  PACK_YEARS_SMOKED: "not a number"
+  ALCOHOL_HISTORY_INDICATOR: "Maybe"  # Invalid value
+
+# Invalid family history data - missing required field when FAMILY_MEMBER_CANCER_HISTORY is "Yes"
+FAMILY_HISTORY:
+  FAMILY_MEMBER_CANCER_HISTORY: "Yes"
+  # Missing RELATIVES_WITH_CANCER_HISTORY 

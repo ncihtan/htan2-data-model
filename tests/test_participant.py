@@ -1,15 +1,4 @@
-"""Test data validation for HTAN LinkML schemas.
-
-This module contains test cases for validating YAML data files against their
-corresponding LinkML schemas. It uses the LinkML runtime's built-in validation
-capabilities to ensure data conformance.
-
-The tests expect data files to be organized in the following structure:
-    tests/test_data/
-        Participant/
-            valid/      # Contains valid Participant YAML files
-            invalid/    # Contains intentionally invalid YAML files
-"""
+"""Participant test."""
 
 import os
 import pytest
@@ -41,13 +30,13 @@ def base_dir():
 
 @pytest.fixture
 def schema_path(base_dir):
-    """Schema path for Participant module."""
+    """Schema path."""
     return base_dir / "modules" / "Participant" / "participant.yaml"
 
 
 @pytest.fixture
 def schema_view(schema_path):
-    """SchemaView instance for validation."""
+    """Schema view."""
     return SchemaView(str(schema_path))
 
 
@@ -68,18 +57,17 @@ def invalid_files(base_dir):
 
 
 @pytest.mark.skipif(Participant is None, reason="Participant module not available")
+def test_schema_loads(schema_view):
+    """Test that the schema can be loaded."""
+    assert schema_view is not None
+    assert "Participant" in schema_view.all_classes()
+
+
+@pytest.mark.skipif(Participant is None, reason="Participant module not available")
 def test_valid_data(valid_files):
-    """Test that all valid data files validate successfully.
-
-    For each valid test file:
-    1. Loads and validates the YAML data using the Participant schema
-    2. Verifies that the loaded data is an instance of Participant class
-
-    The validation happens automatically during YAML loading when using
-    the target_class parameter.
-    """
-    for test_file in valid_files:
-        with open(test_file) as f:
+    """Test that all valid data files validate."""
+    for file_path in valid_files:
+        with open(file_path) as f:
             # This will validate during loading
             data = yaml_loader.load(f, target_class=Participant)
         assert isinstance(data, Participant)
@@ -87,19 +75,42 @@ def test_valid_data(valid_files):
 
 @pytest.mark.skipif(Participant is None, reason="Participant module not available")
 def test_invalid_data(invalid_files):
-    """Test that all invalid data files fail validation appropriately.
-
-    For each invalid test file:
-    1. Attempts to load and validate the YAML data
-    2. Verifies that a ValueError is raised during loading
-
-    Invalid files may contain:
-    - Invalid enum values
-    - Missing required fields
-    - Incorrect data types
-    """
-    for test_file in invalid_files:
+    """Test that all invalid data files fail validation."""
+    for file_path in invalid_files:
         with pytest.raises(ValueError):
-            with open(test_file) as f:
+            with open(file_path) as f:
                 # This should raise a ValueError during loading
                 yaml_loader.load(f, target_class=Participant)
+
+
+@pytest.mark.skipif(Participant is None, reason="Participant module not available")
+def test_required_fields():
+    """Test that missing required fields are caught."""
+    test_data = {
+        "participant_id": "TEST-001"
+        # Missing required fields
+    }
+    with pytest.raises(ValueError):
+        Participant(**test_data)
+
+
+@pytest.mark.skipif(Participant is None, reason="Participant module not available")
+def test_enum_values():
+    """Test that invalid enum values are caught."""
+    test_data = {
+        "participant_id": "TEST-001",
+        "race": "INVALID_RACE",  # Invalid enum value
+    }
+    with pytest.raises(ValueError):
+        Participant(**test_data)
+
+
+@pytest.mark.skipif(Participant is None, reason="Participant module not available")
+def test_data_types():
+    """Test that invalid data types are caught."""
+    test_data = {
+        "participant_id": "TEST-001",
+        "age_at_enrollment_days": "not_a_number",  # Should be integer
+    }
+    with pytest.raises(ValueError):
+        Participant(**test_data)
