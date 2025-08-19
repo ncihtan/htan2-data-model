@@ -1,0 +1,250 @@
+{
+    "$defs": {
+        "BulkWESLevel1": {
+            "additionalProperties": false,
+            "description": "Bulk Whole Exome Sequencing Level 1 - Raw files",
+            "properties": {
+                "ADAPTER_NAME": {
+                    "description": "Name of the adapter used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ADAPTER_SEQUENCE": {
+                    "description": "Adapter sequence",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BASE_CALLER_NAME": {
+                    "description": "Name of the base caller",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BASE_CALLER_VERSION": {
+                    "description": "Version of the base caller",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "COMPONENT": {
+                    "description": "Category of metadata (should be \"Bulk WES Level 1\")",
+                    "type": "string"
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (e.g., fastq, bam)",
+                    "type": "string"
+                },
+                "FLOW_CELL_BARCODE": {
+                    "description": "Flow cell barcode",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FRAGMENT_MAXIMUM_LENGTH": {
+                    "description": "Maximum fragment length",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "FRAGMENT_MEAN_LENGTH": {
+                    "description": "Mean fragment length",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "FRAGMENT_MINIMUM_LENGTH": {
+                    "description": "Minimum fragment length",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "FRAGMENT_STANDARD_DEVIATION_LENGTH": {
+                    "description": "Standard deviation of fragment length",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID",
+                    "type": "string"
+                },
+                "HTAN_PARENT_BIOSPECIMEN_ID": {
+                    "description": "HTAN Biospecimen ID of the parent biospecimen",
+                    "type": "string"
+                },
+                "LANE_NUMBER": {
+                    "description": "Lane number",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "LIBRARY_LAYOUT": {
+                    "$ref": "#/$defs/LibraryLayoutEnum",
+                    "description": "Library layout (paired-end or single-end)"
+                },
+                "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+                    "description": "Days from index for library preparation",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "LIBRARY_PREPARATION_KIT_NAME": {
+                    "description": "Name of the library preparation kit",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LIBRARY_PREPARATION_KIT_VENDOR": {
+                    "description": "Vendor of the library preparation kit",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LIBRARY_PREPARATION_KIT_VERSION": {
+                    "description": "Version of the library preparation kit",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LIBRARY_SELECTION_METHOD": {
+                    "$ref": "#/$defs/LibrarySelectionMethodEnum",
+                    "description": "Method used for library selection"
+                },
+                "MULTIPLEX_BARCODE": {
+                    "description": "Multiplex barcode",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "READ_INDICATOR": {
+                    "description": "Read indicator",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "READ_LENGTH": {
+                    "description": "Read length in base pairs",
+                    "type": "integer"
+                },
+                "SEQUENCING_BATCH_ID": {
+                    "description": "Sequencing batch identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SEQUENCING_PLATFORM": {
+                    "$ref": "#/$defs/SequencingPlatformEnum",
+                    "description": "Sequencing platform used"
+                },
+                "SIZE_SELECTION_RANGE": {
+                    "description": "Size selection range",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "TARGET_CAPTURE_KIT": {
+                    "description": "Target capture kit used",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "TARGET_DEPTH": {
+                    "description": "Target sequencing depth",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "TO_TRIM_ADAPTER_SEQUENCE": {
+                    "description": "Whether to trim adapter sequence",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "COMPONENT",
+                "FILENAME",
+                "FILE_FORMAT",
+                "HTAN_PARENT_BIOSPECIMEN_ID",
+                "HTAN_DATA_FILE_ID",
+                "LIBRARY_LAYOUT",
+                "LIBRARY_SELECTION_METHOD",
+                "READ_LENGTH",
+                "SEQUENCING_PLATFORM"
+            ],
+            "title": "BulkWESLevel1",
+            "type": "object"
+        },
+        "LibraryLayoutEnum": {
+            "description": "",
+            "enum": [
+                "Paired-end",
+                "Single-end"
+            ],
+            "title": "LibraryLayoutEnum",
+            "type": "string"
+        },
+        "LibrarySelectionMethodEnum": {
+            "description": "",
+            "enum": [
+                "Hybrid Selection",
+                "PCR",
+                "RANDOM",
+                "other"
+            ],
+            "title": "LibrarySelectionMethodEnum",
+            "type": "string"
+        },
+        "SequencingPlatformEnum": {
+            "description": "",
+            "enum": [
+                "ILLUMINA",
+                "PACBIO_SMRT",
+                "OXFORD_NANOPORE",
+                "ION_TORRENT",
+                "COMPLETE_GENOMICS",
+                "CAPILLARY",
+                "LS454",
+                "ABI_SOLID",
+                "HELICOS",
+                "BGISEQ"
+            ],
+            "title": "SequencingPlatformEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://w3id.org/htan/wes/level_1",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "Level1",
+    "type": "object",
+    "version": null
+}
