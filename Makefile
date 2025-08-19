@@ -23,7 +23,7 @@ SOURCE_SCHEMA_PATH = modules/Clinical/domains/clinical.yaml
 GEN_DOC_ARGS = --no-mergeimports
 
 # List of modules (add new modules here)
-MODULES = Clinical
+MODULES = Clinical WES
 
 .PHONY: all clean setup gen-project gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format
 
@@ -83,7 +83,7 @@ test-scripts:
 
 # Format code with Black
 format:
-	$(RUN) black scripts/ tests/ modules/Clinical/tests/
+	$(RUN) black scripts/ tests/ modules/Clinical/tests/ modules/WES/tests/
 
 # ---
 # Project Synchronization
