@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-22T12:45:32
+# Generation date: 2025-08-19T10:25:08
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -470,7 +470,7 @@ class MolecularTest(YAMLRoot):
     TIMEPOINT_LABEL: str = None
     AGE_IN_DAYS_AT_MOLECULAR_TEST_START: int = None
     AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP: int = None
-    GENE_SYMBOL: str = None
+    GENE_SYMBOL: Union[str, "GeneSymbolEnum"] = None
     MOLECULAR_ANALYSIS_METHOD: Union[str, "MolecularAnalysisMethodEnum"] = None
     MOLECULAR_ANALYSIS_RESULT: str = None
     AA_CHANGE: str = None
@@ -503,8 +503,8 @@ class MolecularTest(YAMLRoot):
 
         if self._is_empty(self.GENE_SYMBOL):
             self.MissingRequiredField("GENE_SYMBOL")
-        if not isinstance(self.GENE_SYMBOL, str):
-            self.GENE_SYMBOL = str(self.GENE_SYMBOL)
+        if not isinstance(self.GENE_SYMBOL, GeneSymbolEnum):
+            self.GENE_SYMBOL = GeneSymbolEnum(self.GENE_SYMBOL)
 
         if self._is_empty(self.MOLECULAR_ANALYSIS_METHOD):
             self.MissingRequiredField("MOLECULAR_ANALYSIS_METHOD")
@@ -47439,6 +47439,71 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
                 text="UBERON:8900000",
                 description="sensory corpuscle"))
 
+class GeneSymbolEnum(EnumDefinitionImpl):
+    """
+    Valid gene symbols from HGNC database
+    """
+    A1BG = PermissibleValue(
+        text="A1BG",
+        description="alpha-1-B glycoprotein")
+    A1CF = PermissibleValue(
+        text="A1CF",
+        description="APOBEC1 complementation factor")
+    A2M = PermissibleValue(
+        text="A2M",
+        description="alpha-2-macroglobulin")
+    AARS1 = PermissibleValue(
+        text="AARS1",
+        description="alanyl-tRNA synthetase 1")
+    ABCA1 = PermissibleValue(
+        text="ABCA1",
+        description="ATP binding cassette subfamily A member 1")
+    ABCB1 = PermissibleValue(
+        text="ABCB1",
+        description="ATP binding cassette subfamily B member 1")
+    BRCA1 = PermissibleValue(
+        text="BRCA1",
+        description="BRCA1 DNA repair associated")
+    BRCA2 = PermissibleValue(
+        text="BRCA2",
+        description="BRCA2 DNA repair associated")
+    TP53 = PermissibleValue(
+        text="TP53",
+        description="tumor protein p53")
+    EGFR = PermissibleValue(
+        text="EGFR",
+        description="epidermal growth factor receptor")
+    KRAS = PermissibleValue(
+        text="KRAS",
+        description="KRAS proto-oncogene, GTPase")
+    BRAF = PermissibleValue(
+        text="BRAF",
+        description="B-Raf proto-oncogene, serine/threonine kinase")
+    PIK3CA = PermissibleValue(
+        text="PIK3CA",
+        description="phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit alpha")
+    AKT1 = PermissibleValue(
+        text="AKT1",
+        description="AKT serine/threonine kinase 1")
+    PTEN = PermissibleValue(
+        text="PTEN",
+        description="phosphatase and tensin homolog")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Gene symbol unknown")
+
+    _defn = EnumDefinition(
+        name="GeneSymbolEnum",
+        description="Valid gene symbols from HGNC database",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Gene symbol not reported"))
+
 # Slots
 class slots:
     pass
@@ -47480,73 +47545,73 @@ slots.clinicalData__MOLECULAR_TESTS = Slot(uri=HTAN.MOLECULAR_TESTS, name="clini
 slots.clinicalData__THERAPIES = Slot(uri=HTAN.THERAPIES, name="clinicalData__THERAPIES", curie=HTAN.curie('THERAPIES'),
                    model_uri=HTAN.clinicalData__THERAPIES, domain=None, range=Optional[Union[Union[dict, Therapy], List[Union[dict, Therapy]]]])
 
-slots.demographics__ETHNIC_GROUP = Slot(uri=HTAN['clinical/demographics/ETHNIC_GROUP'], name="demographics__ETHNIC_GROUP", curie=HTAN.curie('clinical/demographics/ETHNIC_GROUP'),
+slots.demographics__ETHNIC_GROUP = Slot(uri=CADSR['2192201'], name="demographics__ETHNIC_GROUP", curie=CADSR.curie('2192201'),
                    model_uri=HTAN.demographics__ETHNIC_GROUP, domain=None, range=Union[str, "EthnicGroupEnum"])
 
-slots.demographics__GENDER_IDENTITY = Slot(uri=HTAN['clinical/demographics/GENDER_IDENTITY'], name="demographics__GENDER_IDENTITY", curie=HTAN.curie('clinical/demographics/GENDER_IDENTITY'),
+slots.demographics__GENDER_IDENTITY = Slot(uri=CADSR['2192202'], name="demographics__GENDER_IDENTITY", curie=CADSR.curie('2192202'),
                    model_uri=HTAN.demographics__GENDER_IDENTITY, domain=None, range=Union[str, "GenderIdentityEnum"])
 
-slots.demographics__SEX = Slot(uri=HTAN['clinical/demographics/SEX'], name="demographics__SEX", curie=HTAN.curie('clinical/demographics/SEX'),
+slots.demographics__SEX = Slot(uri=CADSR['2192203'], name="demographics__SEX", curie=CADSR.curie('2192203'),
                    model_uri=HTAN.demographics__SEX, domain=None, range=Union[str, "SexEnum"])
 
-slots.demographics__RACE = Slot(uri=HTAN['clinical/demographics/RACE'], name="demographics__RACE", curie=HTAN.curie('clinical/demographics/RACE'),
+slots.demographics__RACE = Slot(uri=CADSR['2192204'], name="demographics__RACE", curie=CADSR.curie('2192204'),
                    model_uri=HTAN.demographics__RACE, domain=None, range=Union[str, "RaceEnum"])
 
-slots.diagnosis__PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID = Slot(uri=HTAN['clinical/diagnosis/PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID'], name="diagnosis__PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID", curie=HTAN.curie('clinical/diagnosis/PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID'),
+slots.diagnosis__PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID = Slot(uri=CADSR['2192201'], name="diagnosis__PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID", curie=CADSR.curie('2192201'),
                    model_uri=HTAN.diagnosis__PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID, domain=None, range=str)
 
-slots.diagnosis__AGE_IN_DAYS_AT_DIAGNOSIS = Slot(uri=HTAN['clinical/diagnosis/AGE_IN_DAYS_AT_DIAGNOSIS'], name="diagnosis__AGE_IN_DAYS_AT_DIAGNOSIS", curie=HTAN.curie('clinical/diagnosis/AGE_IN_DAYS_AT_DIAGNOSIS'),
+slots.diagnosis__AGE_IN_DAYS_AT_DIAGNOSIS = Slot(uri=CADSR['2192202'], name="diagnosis__AGE_IN_DAYS_AT_DIAGNOSIS", curie=CADSR.curie('2192202'),
                    model_uri=HTAN.diagnosis__AGE_IN_DAYS_AT_DIAGNOSIS, domain=None, range=int)
 
-slots.diagnosis__TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE = Slot(uri=HTAN['clinical/diagnosis/TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE'], name="diagnosis__TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE", curie=HTAN.curie('clinical/diagnosis/TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE'),
+slots.diagnosis__TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE = Slot(uri=CADSR['2192205'], name="diagnosis__TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE", curie=CADSR.curie('2192205'),
                    model_uri=HTAN.diagnosis__TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE, domain=None, range=Union[str, "TissueOrOrganOfOriginUberonEnum"])
 
-slots.diagnosis__TUMOR_GRADE = Slot(uri=HTAN['clinical/diagnosis/TUMOR_GRADE'], name="diagnosis__TUMOR_GRADE", curie=HTAN.curie('clinical/diagnosis/TUMOR_GRADE'),
+slots.diagnosis__TUMOR_GRADE = Slot(uri=CADSR['2192203'], name="diagnosis__TUMOR_GRADE", curie=CADSR.curie('2192203'),
                    model_uri=HTAN.diagnosis__TUMOR_GRADE, domain=None, range=Union[str, "TumorGradeEnum"])
 
-slots.diagnosis__CLINICAL_T_STAGE = Slot(uri=HTAN['clinical/diagnosis/CLINICAL_T_STAGE'], name="diagnosis__CLINICAL_T_STAGE", curie=HTAN.curie('clinical/diagnosis/CLINICAL_T_STAGE'),
+slots.diagnosis__CLINICAL_T_STAGE = Slot(uri=CADSR['2192206'], name="diagnosis__CLINICAL_T_STAGE", curie=CADSR.curie('2192206'),
                    model_uri=HTAN.diagnosis__CLINICAL_T_STAGE, domain=None, range=Union[str, "ClinicalTStageEnum"])
 
-slots.diagnosis__CLINICAL_N_STAGE = Slot(uri=HTAN['clinical/diagnosis/CLINICAL_N_STAGE'], name="diagnosis__CLINICAL_N_STAGE", curie=HTAN.curie('clinical/diagnosis/CLINICAL_N_STAGE'),
+slots.diagnosis__CLINICAL_N_STAGE = Slot(uri=CADSR['2192207'], name="diagnosis__CLINICAL_N_STAGE", curie=CADSR.curie('2192207'),
                    model_uri=HTAN.diagnosis__CLINICAL_N_STAGE, domain=None, range=Union[str, "ClinicalNStageEnum"])
 
-slots.diagnosis__CLINICAL_M_STAGE = Slot(uri=HTAN['clinical/diagnosis/CLINICAL_M_STAGE'], name="diagnosis__CLINICAL_M_STAGE", curie=HTAN.curie('clinical/diagnosis/CLINICAL_M_STAGE'),
+slots.diagnosis__CLINICAL_M_STAGE = Slot(uri=CADSR['2192208'], name="diagnosis__CLINICAL_M_STAGE", curie=CADSR.curie('2192208'),
                    model_uri=HTAN.diagnosis__CLINICAL_M_STAGE, domain=None, range=Union[str, "ClinicalMStageEnum"])
 
-slots.diagnosis__AJCC_STAGING_SYSTEM_EDITION = Slot(uri=HTAN['clinical/diagnosis/AJCC_STAGING_SYSTEM_EDITION'], name="diagnosis__AJCC_STAGING_SYSTEM_EDITION", curie=HTAN.curie('clinical/diagnosis/AJCC_STAGING_SYSTEM_EDITION'),
+slots.diagnosis__AJCC_STAGING_SYSTEM_EDITION = Slot(uri=CADSR['2192209'], name="diagnosis__AJCC_STAGING_SYSTEM_EDITION", curie=CADSR.curie('2192209'),
                    model_uri=HTAN.diagnosis__AJCC_STAGING_SYSTEM_EDITION, domain=None, range=Union[str, "AJCCStagingSystemEditionEnum"])
 
-slots.diagnosis__AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS = Slot(uri=HTAN['clinical/diagnosis/AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS'], name="diagnosis__AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS", curie=HTAN.curie('clinical/diagnosis/AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS'),
+slots.diagnosis__AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS = Slot(uri=CADSR['2192203'], name="diagnosis__AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS", curie=CADSR.curie('2192203'),
                    model_uri=HTAN.diagnosis__AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS, domain=None, range=int)
 
-slots.diagnosis__LAST_KNOWN_DISEASE_STATUS = Slot(uri=HTAN['clinical/diagnosis/LAST_KNOWN_DISEASE_STATUS'], name="diagnosis__LAST_KNOWN_DISEASE_STATUS", curie=HTAN.curie('clinical/diagnosis/LAST_KNOWN_DISEASE_STATUS'),
+slots.diagnosis__LAST_KNOWN_DISEASE_STATUS = Slot(uri=CADSR['2192210'], name="diagnosis__LAST_KNOWN_DISEASE_STATUS", curie=CADSR.curie('2192210'),
                    model_uri=HTAN.diagnosis__LAST_KNOWN_DISEASE_STATUS, domain=None, range=Union[str, "LastKnownDiseaseStatusEnum"])
 
-slots.diagnosis__TUMOR_CLASSIFICATION_CATEGORY = Slot(uri=HTAN['clinical/diagnosis/TUMOR_CLASSIFICATION_CATEGORY'], name="diagnosis__TUMOR_CLASSIFICATION_CATEGORY", curie=HTAN.curie('clinical/diagnosis/TUMOR_CLASSIFICATION_CATEGORY'),
+slots.diagnosis__TUMOR_CLASSIFICATION_CATEGORY = Slot(uri=CADSR['2192211'], name="diagnosis__TUMOR_CLASSIFICATION_CATEGORY", curie=CADSR.curie('2192211'),
                    model_uri=HTAN.diagnosis__TUMOR_CLASSIFICATION_CATEGORY, domain=None, range=Union[str, "TumorClassificationCategoryEnum"])
 
-slots.diagnosis__METASTASIS_AT_DIAGNOSIS = Slot(uri=HTAN['clinical/diagnosis/METASTASIS_AT_DIAGNOSIS'], name="diagnosis__METASTASIS_AT_DIAGNOSIS", curie=HTAN.curie('clinical/diagnosis/METASTASIS_AT_DIAGNOSIS'),
+slots.diagnosis__METASTASIS_AT_DIAGNOSIS = Slot(uri=CADSR['2192212'], name="diagnosis__METASTASIS_AT_DIAGNOSIS", curie=CADSR.curie('2192212'),
                    model_uri=HTAN.diagnosis__METASTASIS_AT_DIAGNOSIS, domain=None, range=Union[str, "MetastasisAtDiagnosisEnum"])
 
-slots.diagnosis__METHOD_OF_DIAGNOSIS = Slot(uri=HTAN['clinical/diagnosis/METHOD_OF_DIAGNOSIS'], name="diagnosis__METHOD_OF_DIAGNOSIS", curie=HTAN.curie('clinical/diagnosis/METHOD_OF_DIAGNOSIS'),
+slots.diagnosis__METHOD_OF_DIAGNOSIS = Slot(uri=CADSR['2192213'], name="diagnosis__METHOD_OF_DIAGNOSIS", curie=CADSR.curie('2192213'),
                    model_uri=HTAN.diagnosis__METHOD_OF_DIAGNOSIS, domain=None, range=Union[str, "MethodOfDiagnosisEnum"])
 
-slots.exposure__SMOKING_HISTORY = Slot(uri=HTAN['clinical/exposure/SMOKING_HISTORY'], name="exposure__SMOKING_HISTORY", curie=HTAN.curie('clinical/exposure/SMOKING_HISTORY'),
+slots.exposure__SMOKING_HISTORY = Slot(uri=CADSR['2192201'], name="exposure__SMOKING_HISTORY", curie=CADSR.curie('2192201'),
                    model_uri=HTAN.exposure__SMOKING_HISTORY, domain=None, range=Union[str, "SmokingHistoryEnum"])
 
-slots.exposure__YEARS_SMOKED = Slot(uri=HTAN['clinical/exposure/YEARS_SMOKED'], name="exposure__YEARS_SMOKED", curie=HTAN.curie('clinical/exposure/YEARS_SMOKED'),
+slots.exposure__YEARS_SMOKED = Slot(uri=CADSR['2192202'], name="exposure__YEARS_SMOKED", curie=CADSR.curie('2192202'),
                    model_uri=HTAN.exposure__YEARS_SMOKED, domain=None, range=Optional[int])
 
-slots.exposure__PACK_YEARS_SMOKED = Slot(uri=HTAN['clinical/exposure/PACK_YEARS_SMOKED'], name="exposure__PACK_YEARS_SMOKED", curie=HTAN.curie('clinical/exposure/PACK_YEARS_SMOKED'),
+slots.exposure__PACK_YEARS_SMOKED = Slot(uri=CADSR['2192203'], name="exposure__PACK_YEARS_SMOKED", curie=CADSR.curie('2192203'),
                    model_uri=HTAN.exposure__PACK_YEARS_SMOKED, domain=None, range=Optional[Decimal])
 
-slots.exposure__ALCOHOL_HISTORY_INDICATOR = Slot(uri=HTAN['clinical/exposure/ALCOHOL_HISTORY_INDICATOR'], name="exposure__ALCOHOL_HISTORY_INDICATOR", curie=HTAN.curie('clinical/exposure/ALCOHOL_HISTORY_INDICATOR'),
+slots.exposure__ALCOHOL_HISTORY_INDICATOR = Slot(uri=CADSR['2192204'], name="exposure__ALCOHOL_HISTORY_INDICATOR", curie=CADSR.curie('2192204'),
                    model_uri=HTAN.exposure__ALCOHOL_HISTORY_INDICATOR, domain=None, range=Union[str, "AlcoholHistoryIndicatorEnum"])
 
-slots.exposure__ENVIRONMENTAL_EXPOSURE = Slot(uri=HTAN['clinical/exposure/ENVIRONMENTAL_EXPOSURE'], name="exposure__ENVIRONMENTAL_EXPOSURE", curie=HTAN.curie('clinical/exposure/ENVIRONMENTAL_EXPOSURE'),
+slots.exposure__ENVIRONMENTAL_EXPOSURE = Slot(uri=CADSR['2192205'], name="exposure__ENVIRONMENTAL_EXPOSURE", curie=CADSR.curie('2192205'),
                    model_uri=HTAN.exposure__ENVIRONMENTAL_EXPOSURE, domain=None, range=Union[str, "EnvironmentalExposureEnum"])
 
-slots.exposure__ENVIRONMENTAL_EXPOSURE_TYPE = Slot(uri=HTAN['clinical/exposure/ENVIRONMENTAL_EXPOSURE_TYPE'], name="exposure__ENVIRONMENTAL_EXPOSURE_TYPE", curie=HTAN.curie('clinical/exposure/ENVIRONMENTAL_EXPOSURE_TYPE'),
+slots.exposure__ENVIRONMENTAL_EXPOSURE_TYPE = Slot(uri=CADSR['2192206'], name="exposure__ENVIRONMENTAL_EXPOSURE_TYPE", curie=CADSR.curie('2192206'),
                    model_uri=HTAN.exposure__ENVIRONMENTAL_EXPOSURE_TYPE, domain=None, range=Optional[Union[str, "EnvironmentalExposureTypeEnum"]])
 
 slots.familyHistory__FAMILY_MEMBER_CANCER_HISTORY = Slot(uri=HTAN['clinical/family_history/FAMILY_MEMBER_CANCER_HISTORY'], name="familyHistory__FAMILY_MEMBER_CANCER_HISTORY", curie=HTAN.curie('clinical/family_history/FAMILY_MEMBER_CANCER_HISTORY'),
@@ -47582,55 +47647,55 @@ slots.followUp__ECOG_PERFORMANCE_STATUS = Slot(uri=HTAN['clinical/followup/ECOG_
 slots.followUp__MENOPAUSE_STATUS = Slot(uri=HTAN['clinical/followup/MENOPAUSE_STATUS'], name="followUp__MENOPAUSE_STATUS", curie=HTAN.curie('clinical/followup/MENOPAUSE_STATUS'),
                    model_uri=HTAN.followUp__MENOPAUSE_STATUS, domain=None, range=Optional[Union[str, "MenopauseStatusEnum"]])
 
-slots.molecularTest__TIMEPOINT_LABEL = Slot(uri=HTAN['clinical/molecular/TIMEPOINT_LABEL'], name="molecularTest__TIMEPOINT_LABEL", curie=HTAN.curie('clinical/molecular/TIMEPOINT_LABEL'),
+slots.molecularTest__TIMEPOINT_LABEL = Slot(uri=CADSR['2192201'], name="molecularTest__TIMEPOINT_LABEL", curie=CADSR.curie('2192201'),
                    model_uri=HTAN.molecularTest__TIMEPOINT_LABEL, domain=None, range=str)
 
-slots.molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_START = Slot(uri=HTAN['clinical/molecular/AGE_IN_DAYS_AT_MOLECULAR_TEST_START'], name="molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_START", curie=HTAN.curie('clinical/molecular/AGE_IN_DAYS_AT_MOLECULAR_TEST_START'),
+slots.molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_START = Slot(uri=CADSR['2192202'], name="molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_START", curie=CADSR.curie('2192202'),
                    model_uri=HTAN.molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_START, domain=None, range=int)
 
-slots.molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP = Slot(uri=HTAN['clinical/molecular/AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP'], name="molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP", curie=HTAN.curie('clinical/molecular/AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP'),
+slots.molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP = Slot(uri=CADSR['2192203'], name="molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP", curie=CADSR.curie('2192203'),
                    model_uri=HTAN.molecularTest__AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP, domain=None, range=int)
 
-slots.molecularTest__GENE_SYMBOL = Slot(uri=HTAN['clinical/molecular/GENE_SYMBOL'], name="molecularTest__GENE_SYMBOL", curie=HTAN.curie('clinical/molecular/GENE_SYMBOL'),
-                   model_uri=HTAN.molecularTest__GENE_SYMBOL, domain=None, range=str)
+slots.molecularTest__GENE_SYMBOL = Slot(uri=CADSR['2192204'], name="molecularTest__GENE_SYMBOL", curie=CADSR.curie('2192204'),
+                   model_uri=HTAN.molecularTest__GENE_SYMBOL, domain=None, range=Union[str, "GeneSymbolEnum"])
 
-slots.molecularTest__MOLECULAR_ANALYSIS_METHOD = Slot(uri=HTAN['clinical/molecular/MOLECULAR_ANALYSIS_METHOD'], name="molecularTest__MOLECULAR_ANALYSIS_METHOD", curie=HTAN.curie('clinical/molecular/MOLECULAR_ANALYSIS_METHOD'),
+slots.molecularTest__MOLECULAR_ANALYSIS_METHOD = Slot(uri=CADSR['2192205'], name="molecularTest__MOLECULAR_ANALYSIS_METHOD", curie=CADSR.curie('2192205'),
                    model_uri=HTAN.molecularTest__MOLECULAR_ANALYSIS_METHOD, domain=None, range=Union[str, "MolecularAnalysisMethodEnum"])
 
-slots.molecularTest__MOLECULAR_ANALYSIS_RESULT = Slot(uri=HTAN['clinical/molecular/MOLECULAR_ANALYSIS_RESULT'], name="molecularTest__MOLECULAR_ANALYSIS_RESULT", curie=HTAN.curie('clinical/molecular/MOLECULAR_ANALYSIS_RESULT'),
+slots.molecularTest__MOLECULAR_ANALYSIS_RESULT = Slot(uri=CADSR['2192206'], name="molecularTest__MOLECULAR_ANALYSIS_RESULT", curie=CADSR.curie('2192206'),
                    model_uri=HTAN.molecularTest__MOLECULAR_ANALYSIS_RESULT, domain=None, range=str)
 
-slots.molecularTest__AA_CHANGE = Slot(uri=HTAN['clinical/molecular/AA_CHANGE'], name="molecularTest__AA_CHANGE", curie=HTAN.curie('clinical/molecular/AA_CHANGE'),
+slots.molecularTest__AA_CHANGE = Slot(uri=CADSR['2192207'], name="molecularTest__AA_CHANGE", curie=CADSR.curie('2192207'),
                    model_uri=HTAN.molecularTest__AA_CHANGE, domain=None, range=str)
 
-slots.molecularTest__CLINICAL_BIOSPECIMEN_TYPE = Slot(uri=HTAN['clinical/molecular/CLINICAL_BIOSPECIMEN_TYPE'], name="molecularTest__CLINICAL_BIOSPECIMEN_TYPE", curie=HTAN.curie('clinical/molecular/CLINICAL_BIOSPECIMEN_TYPE'),
+slots.molecularTest__CLINICAL_BIOSPECIMEN_TYPE = Slot(uri=CADSR['2192208'], name="molecularTest__CLINICAL_BIOSPECIMEN_TYPE", curie=CADSR.curie('2192208'),
                    model_uri=HTAN.molecularTest__CLINICAL_BIOSPECIMEN_TYPE, domain=None, range=Union[str, "ClinicalBiospecimenTypeEnum"])
 
-slots.molecularTest__COPY_NUMBER = Slot(uri=HTAN['clinical/molecular/COPY_NUMBER'], name="molecularTest__COPY_NUMBER", curie=HTAN.curie('clinical/molecular/COPY_NUMBER'),
+slots.molecularTest__COPY_NUMBER = Slot(uri=CADSR['2192209'], name="molecularTest__COPY_NUMBER", curie=CADSR.curie('2192209'),
                    model_uri=HTAN.molecularTest__COPY_NUMBER, domain=None, range=int)
 
-slots.molecularTest__EXON = Slot(uri=HTAN['clinical/molecular/EXON'], name="molecularTest__EXON", curie=HTAN.curie('clinical/molecular/EXON'),
+slots.molecularTest__EXON = Slot(uri=CADSR['2192210'], name="molecularTest__EXON", curie=CADSR.curie('2192210'),
                    model_uri=HTAN.molecularTest__EXON, domain=None, range=int)
 
-slots.molecularTest__MOLECULAR_CONSEQUENCE = Slot(uri=HTAN['clinical/molecular/MOLECULAR_CONSEQUENCE'], name="molecularTest__MOLECULAR_CONSEQUENCE", curie=HTAN.curie('clinical/molecular/MOLECULAR_CONSEQUENCE'),
+slots.molecularTest__MOLECULAR_CONSEQUENCE = Slot(uri=CADSR['2192211'], name="molecularTest__MOLECULAR_CONSEQUENCE", curie=CADSR.curie('2192211'),
                    model_uri=HTAN.molecularTest__MOLECULAR_CONSEQUENCE, domain=None, range=Union[str, "MolecularConsequenceEnum"])
 
-slots.molecularTest__PATHOGENICITY = Slot(uri=HTAN['clinical/molecular/PATHOGENICITY'], name="molecularTest__PATHOGENICITY", curie=HTAN.curie('clinical/molecular/PATHOGENICITY'),
+slots.molecularTest__PATHOGENICITY = Slot(uri=CADSR['2192212'], name="molecularTest__PATHOGENICITY", curie=CADSR.curie('2192212'),
                    model_uri=HTAN.molecularTest__PATHOGENICITY, domain=None, range=Union[str, "PathogenicityEnum"])
 
-slots.molecularTest__TEST_ANALYTE_TYPE = Slot(uri=HTAN['clinical/molecular/TEST_ANALYTE_TYPE'], name="molecularTest__TEST_ANALYTE_TYPE", curie=HTAN.curie('clinical/molecular/TEST_ANALYTE_TYPE'),
+slots.molecularTest__TEST_ANALYTE_TYPE = Slot(uri=CADSR['2192213'], name="molecularTest__TEST_ANALYTE_TYPE", curie=CADSR.curie('2192213'),
                    model_uri=HTAN.molecularTest__TEST_ANALYTE_TYPE, domain=None, range=Union[str, "TestAnalyteTypeEnum"])
 
-slots.molecularTest__TEST_UNITS = Slot(uri=HTAN['clinical/molecular/TEST_UNITS'], name="molecularTest__TEST_UNITS", curie=HTAN.curie('clinical/molecular/TEST_UNITS'),
+slots.molecularTest__TEST_UNITS = Slot(uri=CADSR['2192214'], name="molecularTest__TEST_UNITS", curie=CADSR.curie('2192214'),
                    model_uri=HTAN.molecularTest__TEST_UNITS, domain=None, range=str)
 
-slots.molecularTest__TEST_RESULT = Slot(uri=HTAN['clinical/molecular/TEST_RESULT'], name="molecularTest__TEST_RESULT", curie=HTAN.curie('clinical/molecular/TEST_RESULT'),
+slots.molecularTest__TEST_RESULT = Slot(uri=CADSR['2192215'], name="molecularTest__TEST_RESULT", curie=CADSR.curie('2192215'),
                    model_uri=HTAN.molecularTest__TEST_RESULT, domain=None, range=str)
 
-slots.molecularTest__VARIANT_ORIGIN = Slot(uri=HTAN['clinical/molecular/VARIANT_ORIGIN'], name="molecularTest__VARIANT_ORIGIN", curie=HTAN.curie('clinical/molecular/VARIANT_ORIGIN'),
+slots.molecularTest__VARIANT_ORIGIN = Slot(uri=CADSR['2192216'], name="molecularTest__VARIANT_ORIGIN", curie=CADSR.curie('2192216'),
                    model_uri=HTAN.molecularTest__VARIANT_ORIGIN, domain=None, range=Union[str, "VariantOriginEnum"])
 
-slots.molecularTest__VARIANT_TYPE = Slot(uri=HTAN['clinical/molecular/VARIANT_TYPE'], name="molecularTest__VARIANT_TYPE", curie=HTAN.curie('clinical/molecular/VARIANT_TYPE'),
+slots.molecularTest__VARIANT_TYPE = Slot(uri=CADSR['2192217'], name="molecularTest__VARIANT_TYPE", curie=CADSR.curie('2192217'),
                    model_uri=HTAN.molecularTest__VARIANT_TYPE, domain=None, range=Union[str, "VariantTypeEnum"])
 
 slots.therapy__INITIAL_DISEASE_STATUS = Slot(uri=HTAN['clinical/therapy/INITIAL_DISEASE_STATUS'], name="therapy__INITIAL_DISEASE_STATUS", curie=HTAN.curie('clinical/therapy/INITIAL_DISEASE_STATUS'),
@@ -47671,16 +47736,16 @@ slots.therapy__NUMBER_OF_CYCLES = Slot(uri=HTAN['clinical/therapy/NUMBER_OF_CYCL
 slots.therapy__RESPONSE = Slot(uri=HTAN['clinical/therapy/RESPONSE'], name="therapy__RESPONSE", curie=HTAN.curie('clinical/therapy/RESPONSE'),
                    model_uri=HTAN.therapy__RESPONSE, domain=None, range=Optional[str])
 
-slots.vitalStatus__VITAL_STATUS = Slot(uri=HTAN['clinical/vital_status/VITAL_STATUS'], name="vitalStatus__VITAL_STATUS", curie=HTAN.curie('clinical/vital_status/VITAL_STATUS'),
+slots.vitalStatus__VITAL_STATUS = Slot(uri=CADSR['2192201'], name="vitalStatus__VITAL_STATUS", curie=CADSR.curie('2192201'),
                    model_uri=HTAN.vitalStatus__VITAL_STATUS, domain=None, range=Union[str, "VitalStatusEnum"])
 
-slots.vitalStatus__AGE_IN_DAYS_AT_DEATH = Slot(uri=HTAN['clinical/vital_status/AGE_IN_DAYS_AT_DEATH'], name="vitalStatus__AGE_IN_DAYS_AT_DEATH", curie=HTAN.curie('clinical/vital_status/AGE_IN_DAYS_AT_DEATH'),
+slots.vitalStatus__AGE_IN_DAYS_AT_DEATH = Slot(uri=CADSR['2192202'], name="vitalStatus__AGE_IN_DAYS_AT_DEATH", curie=CADSR.curie('2192202'),
                    model_uri=HTAN.vitalStatus__AGE_IN_DAYS_AT_DEATH, domain=None, range=Optional[int])
 
-slots.vitalStatus__CAUSE_OF_DEATH = Slot(uri=HTAN['clinical/vital_status/CAUSE_OF_DEATH'], name="vitalStatus__CAUSE_OF_DEATH", curie=HTAN.curie('clinical/vital_status/CAUSE_OF_DEATH'),
+slots.vitalStatus__CAUSE_OF_DEATH = Slot(uri=CADSR['2192203'], name="vitalStatus__CAUSE_OF_DEATH", curie=CADSR.curie('2192203'),
                    model_uri=HTAN.vitalStatus__CAUSE_OF_DEATH, domain=None, range=Optional[Union[str, "CauseOfDeathEnum"]])
 
-slots.vitalStatus__CAUSE_OF_DEATH_SOURCE = Slot(uri=HTAN['clinical/vital_status/CAUSE_OF_DEATH_SOURCE'], name="vitalStatus__CAUSE_OF_DEATH_SOURCE", curie=HTAN.curie('clinical/vital_status/CAUSE_OF_DEATH_SOURCE'),
+slots.vitalStatus__CAUSE_OF_DEATH_SOURCE = Slot(uri=CADSR['2192204'], name="vitalStatus__CAUSE_OF_DEATH_SOURCE", curie=CADSR.curie('2192204'),
                    model_uri=HTAN.vitalStatus__CAUSE_OF_DEATH_SOURCE, domain=None, range=Optional[Union[str, "CauseOfDeathSourceEnum"]])
 
 slots.CLINICAL_T_STAGE = Slot(uri=HTAN.CLINICAL_T_STAGE, name="CLINICAL_T_STAGE", curie=HTAN.curie('CLINICAL_T_STAGE'),
