@@ -1,0 +1,179 @@
+name: Level1
+id: https://w3id.org/htan/wes/level_1
+description: Bulk Whole Exome Sequencing Level 1 - Raw files
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  LibraryLayoutEnum:
+    permissible_values:
+      "Paired-end":
+        description: Paired-end sequencing
+      "Single-end":
+        description: Single-end sequencing
+
+  LibrarySelectionMethodEnum:
+    permissible_values:
+      "Hybrid Selection":
+        description: Hybrid selection method
+      "PCR":
+        description: PCR-based selection
+      "RANDOM":
+        description: Random selection
+      "other":
+        description: Other selection method
+
+  SequencingPlatformEnum:
+    permissible_values:
+      "ILLUMINA":
+        description: Illumina sequencing platform
+      "PACBIO_SMRT":
+        description: PacBio SMRT sequencing platform
+      "OXFORD_NANOPORE":
+        description: Oxford Nanopore sequencing platform
+      "ION_TORRENT":
+        description: Ion Torrent sequencing platform
+      "COMPLETE_GENOMICS":
+        description: Complete Genomics sequencing platform
+      "CAPILLARY":
+        description: Capillary sequencing platform
+      "LS454":
+        description: 454 sequencing platform
+      "ABI_SOLID":
+        description: ABI SOLID sequencing platform
+      "HELICOS":
+        description: Helicos sequencing platform
+      "BGISEQ":
+        description: BGI sequencing platform
+
+classes:
+  BulkWESLevel1:
+    description: Bulk Whole Exome Sequencing Level 1 - Raw files
+    attributes:
+      COMPONENT:
+        range: string
+        required: true
+        description: Category of metadata (should be "Bulk WES Level 1")
+      FILENAME:
+        range: string
+        required: true
+        description: Name of the file
+      FILE_FORMAT:
+        range: string
+        required: true
+        description: Format of the file (e.g., fastq, bam)
+      HTAN_PARENT_BIOSPECIMEN_ID:
+        range: string
+        required: true
+        description: HTAN Biospecimen ID of the parent biospecimen
+      HTAN_DATA_FILE_ID:
+        range: string
+        required: true
+        description: HTAN Data File ID
+      SEQUENCING_BATCH_ID:
+        range: string
+        required: false
+        description: Sequencing batch identifier
+      LIBRARY_LAYOUT:
+        range: LibraryLayoutEnum
+        required: true
+        description: Library layout (paired-end or single-end)
+      READ_INDICATOR:
+        range: string
+        required: false
+        description: Read indicator
+      LIBRARY_SELECTION_METHOD:
+        range: LibrarySelectionMethodEnum
+        required: true
+        description: Method used for library selection
+      READ_LENGTH:
+        range: integer
+        required: true
+        description: Read length in base pairs
+      TARGET_CAPTURE_KIT:
+        range: string
+        required: false
+        description: Target capture kit used
+      LIBRARY_PREPARATION_KIT_NAME:
+        range: string
+        required: false
+        description: Name of the library preparation kit
+      LIBRARY_PREPARATION_KIT_VENDOR:
+        range: string
+        required: false
+        description: Vendor of the library preparation kit
+      LIBRARY_PREPARATION_KIT_VERSION:
+        range: string
+        required: false
+        description: Version of the library preparation kit
+      SEQUENCING_PLATFORM:
+        range: SequencingPlatformEnum
+        required: true
+        description: Sequencing platform used
+      ADAPTER_NAME:
+        range: string
+        required: false
+        description: Name of the adapter used
+      ADAPTER_SEQUENCE:
+        range: string
+        required: false
+        description: Adapter sequence
+      BASE_CALLER_NAME:
+        range: string
+        required: false
+        description: Name of the base caller
+      BASE_CALLER_VERSION:
+        range: string
+        required: false
+        description: Version of the base caller
+      FLOW_CELL_BARCODE:
+        range: string
+        required: false
+        description: Flow cell barcode
+      FRAGMENT_MAXIMUM_LENGTH:
+        range: integer
+        required: false
+        description: Maximum fragment length
+      FRAGMENT_MEAN_LENGTH:
+        range: integer
+        required: false
+        description: Mean fragment length
+      FRAGMENT_MINIMUM_LENGTH:
+        range: integer
+        required: false
+        description: Minimum fragment length
+      FRAGMENT_STANDARD_DEVIATION_LENGTH:
+        range: integer
+        required: false
+        description: Standard deviation of fragment length
+      LANE_NUMBER:
+        range: integer
+        required: false
+        description: Lane number
+      MULTIPLEX_BARCODE:
+        range: string
+        required: false
+        description: Multiplex barcode
+      LIBRARY_PREPARATION_DAYS_FROM_INDEX:
+        range: integer
+        required: false
+        description: Days from index for library preparation
+      SIZE_SELECTION_RANGE:
+        range: string
+        required: false
+        description: Size selection range
+      TARGET_DEPTH:
+        range: integer
+        required: false
+        description: Target sequencing depth
+      TO_TRIM_ADAPTER_SEQUENCE:
+        range: boolean
+        required: false
+        description: Whether to trim adapter sequence

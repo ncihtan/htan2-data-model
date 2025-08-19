@@ -1,0 +1,87 @@
+name: Level3
+id: https://w3id.org/htan/wes/level_3
+description: Bulk Whole Exome Sequencing Level 3 - Called variants
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  SomaticVariantsSampleTypeEnum:
+    permissible_values:
+      "Primary":
+        description: Primary tumor sample
+      "Metastatic":
+        description: Metastatic tumor sample
+      "Recurrent":
+        description: Recurrent tumor sample
+      "Normal":
+        description: Normal tissue sample
+      "Other":
+        description: Other sample type
+
+classes:
+  BulkWESLevel3:
+    description: Bulk Whole Exome Sequencing Level 3 - Called variants
+    attributes:
+      COMPONENT:
+        range: string
+        required: true
+        description: Category of metadata (should be "Bulk WES Level 3")
+      FILENAME:
+        range: string
+        required: true
+        description: Name of the file
+      FILE_FORMAT:
+        range: string
+        required: true
+        description: Format of the file (e.g., vcf, bcf, maf)
+      HTAN_PARENT_DATA_FILE_ID:
+        range: string
+        required: true
+        description: HTAN Data File ID of the parent data file
+      HTAN_DATA_FILE_ID:
+        range: string
+        required: true
+        description: HTAN Data File ID
+      GENOMIC_REFERENCE:
+        range: string
+        required: true
+        description: Genomic reference used for variant calling
+      GENOMIC_REFERENCE_URL:
+        range: string
+        required: false
+        description: URL to the genomic reference
+      GERMLINE_VARIANTS_WORKFLOW_URL:
+        range: string
+        required: false
+        description: URL to the germline variants workflow
+      GERMLINE_VARIANTS_WORKFLOW_TYPE:
+        range: string
+        required: false
+        description: Type of germline variants workflow
+      SOMATIC_VARIANTS_WORKFLOW_URL:
+        range: string
+        required: false
+        description: URL to the somatic variants workflow
+      SOMATIC_VARIANTS_WORKFLOW_TYPE:
+        range: string
+        required: false
+        description: Type of somatic variants workflow
+      SOMATIC_VARIANTS_SAMPLE_TYPE:
+        range: SomaticVariantsSampleTypeEnum
+        required: false
+        description: Type of sample for somatic variants
+      STRUCTURAL_VARIANT_WORKFLOW_URL:
+        range: string
+        required: false
+        description: URL to the structural variant workflow
+      STRUCTURAL_VARIANT_WORKFLOW_TYPE:
+        range: string
+        required: false
+        description: Type of structural variant workflow

@@ -1,0 +1,213 @@
+name: Level2
+id: https://w3id.org/htan/wes/level_2
+description: Bulk Whole Exome Sequencing Level 2 - Aligned files and QC
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  MSIStatusEnum:
+    permissible_values:
+      "MSI-H":
+        description: High microsatellite instability
+      "MSI-L":
+        description: Low microsatellite instability
+      "MSS":
+        description: Microsatellite stable
+      "Unknown":
+        description: Unknown MSI status
+
+classes:
+  BulkWESLevel2:
+    description: Bulk Whole Exome Sequencing Level 2 - Aligned files and QC
+    attributes:
+      COMPONENT:
+        range: string
+        required: true
+        description: Category of metadata (should be "Bulk WES Level 2")
+      FILENAME:
+        range: string
+        required: true
+        description: Name of the file
+      FILE_FORMAT:
+        range: string
+        required: true
+        description: Format of the file (e.g., bam, bai)
+      HTAN_PARENT_DATA_FILE_ID:
+        range: string
+        required: true
+        description: HTAN Data File ID of the parent data file
+      HTAN_DATA_FILE_ID:
+        range: string
+        required: true
+        description: HTAN Data File ID
+      ALIGNMENT_WORKFLOW_TYPE:
+        range: string
+        required: true
+        description: Type of alignment workflow used
+      GENOMIC_REFERENCE:
+        range: string
+        required: true
+        description: Genomic reference used for alignment
+      GENOMIC_REFERENCE_URL:
+        range: string
+        required: false
+        description: URL to the genomic reference
+      INDEX_FILE_NAME:
+        range: string
+        required: false
+        description: Name of the index file
+      AVERAGE_BASE_QUALITY:
+        range: float
+        required: false
+        description: Average base quality
+      AVERAGE_INSERT_SIZE:
+        range: integer
+        required: false
+        description: Average insert size
+      AVERAGE_READ_LENGTH:
+        range: integer
+        required: false
+        description: Average read length
+      CONTAMINATION:
+        range: float
+        required: false
+        description: Contamination estimate
+      CONTAMINATION_ERROR:
+        range: float
+        required: false
+        description: Contamination error estimate
+      MEAN_COVERAGE:
+        range: float
+        required: true
+        description: Mean coverage depth
+      ADAPTER_CONTENT:
+        range: string
+        required: false
+        description: Adapter content information
+      BASIC_STATISTICS:
+        range: string
+        required: false
+        description: Basic statistics from QC
+      ENCODING:
+        range: string
+        required: false
+        description: Encoding information
+      OVERREPRESENTED_SEQUENCES:
+        range: string
+        required: false
+        description: Overrepresented sequences
+      PER_BASE_N_CONTENT:
+        range: string
+        required: false
+        description: Per base N content
+      PER_BASE_SEQUENCE_CONTENT:
+        range: string
+        required: false
+        description: Per base sequence content
+      PER_BASE_SEQUENCE_QUALITY:
+        range: string
+        required: false
+        description: Per base sequence quality
+      PER_SEQUENCE_GC_CONTENT:
+        range: string
+        required: false
+        description: Per sequence GC content
+      PER_SEQUENCE_QUALITY_SCORE:
+        range: string
+        required: false
+        description: Per sequence quality score
+      PER_TILE_SEQUENCE_QUALITY:
+        range: string
+        required: false
+        description: Per tile sequence quality
+      PERCENT_GC_CONTENT:
+        range: float
+        required: false
+        description: Percent GC content
+      SEQUENCE_DUPLICATION_LEVELS:
+        range: string
+        required: false
+        description: Sequence duplication levels
+      SEQUENCE_LENGTH_DISTRIBUTION:
+        range: string
+        required: false
+        description: Sequence length distribution
+      QC_WORKFLOW_TYPE:
+        range: string
+        required: false
+        description: QC workflow type
+      QC_WORKFLOW_VERSION:
+        range: string
+        required: false
+        description: QC workflow version
+      QC_WORKFLOW_LINK:
+        range: string
+        required: false
+        description: Link to QC workflow
+      MSI_WORKFLOW_LINK:
+        range: string
+        required: false
+        description: Link to MSI workflow
+      MSI_SCORE:
+        range: float
+        required: false
+        description: MSI score
+      MSI_STATUS:
+        range: MSIStatusEnum
+        required: false
+        description: MSI status
+      PAIRS_ON_DIFF_CHR:
+        range: integer
+        required: false
+        description: Number of read pairs on different chromosomes
+      TOTAL_READS:
+        range: integer
+        required: true
+        description: Total number of reads
+      TOTAL_UNIQUELY_MAPPED:
+        range: integer
+        required: true
+        description: Total number of uniquely mapped reads
+      TOTAL_UNMAPPED_READS:
+        range: integer
+        required: true
+        description: Total number of unmapped reads
+      PROPORTION_READS_DUPLICATED:
+        range: float
+        required: false
+        description: Proportion of duplicated reads
+      PROPORTION_READS_MAPPED:
+        range: float
+        required: true
+        description: Proportion of mapped reads
+      PROPORTION_TARGETS_NO_COVERAGE:
+        range: float
+        required: false
+        description: Proportion of targets with no coverage
+      PROPORTION_BASE_MISMATCH:
+        range: float
+        required: false
+        description: Proportion of base mismatches
+      SHORT_READS:
+        range: integer
+        required: false
+        description: Number of short reads
+      PROPORTION_COVERAGE_10X:
+        range: float
+        required: false
+        description: Proportion of coverage at 10x
+      PROPORTION_COVERAGE_30X:
+        range: float
+        required: false
+        description: Proportion of coverage at 30x
+      IS_LOWEST_LEVEL:
+        range: boolean
+        required: false
+        description: Whether this is the lowest level
