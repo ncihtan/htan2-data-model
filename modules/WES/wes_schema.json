@@ -612,16 +612,6 @@
             "title": "BulkWESLevel3",
             "type": "object"
         },
-        "ComponentEnum": {
-            "description": "",
-            "enum": [
-                "Bulk WES Level 1",
-                "Bulk WES Level 2",
-                "Bulk WES Level 3"
-            ],
-            "title": "ComponentEnum",
-            "type": "string"
-        },
         "Extension": {
             "additionalProperties": false,
             "description": "a tag/value pair used to add non-model information to an entry",
@@ -762,8 +752,8 @@
             "description": "Container for all WES data",
             "properties": {
                 "COMPONENT": {
-                    "$ref": "#/$defs/ComponentEnum",
-                    "description": "Category of metadata (e.g. Bulk WES Level 1, Bulk WES Level 2, Bulk WES Level 3)"
+                    "description": "Category of metadata (e.g. Bulk WES Level 1, Bulk WES Level 2, Bulk WES Level 3)",
+                    "type": "string"
                 },
                 "HTAN_PARTICIPANT_ID": {
                     "description": "HTAN Identifier of the research participant",
