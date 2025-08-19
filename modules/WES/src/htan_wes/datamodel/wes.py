@@ -1,5 +1,5 @@
 # Auto generated from wes.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-19T10:25:25
+# Generation date: 2025-08-19T14:49:52
 # Schema: WES
 #
 # id: https://w3id.org/htan/wes
@@ -93,7 +93,7 @@ class WESData(YAMLRoot):
     class_name: ClassVar[str] = "WESData"
     class_model_uri: ClassVar[URIRef] = HTAN.WESData
 
-    COMPONENT: Union[str, "ComponentEnum"] = None
+    COMPONENT: str = None
     HTAN_PARTICIPANT_ID: str = None
     LEVEL_1_DATA: Optional[Union[dict, "BulkWESLevel1"]] = None
     LEVEL_2_DATA: Optional[Union[dict, "BulkWESLevel2"]] = None
@@ -102,8 +102,8 @@ class WESData(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.COMPONENT):
             self.MissingRequiredField("COMPONENT")
-        if not isinstance(self.COMPONENT, ComponentEnum):
-            self.COMPONENT = ComponentEnum(self.COMPONENT)
+        if not isinstance(self.COMPONENT, str):
+            self.COMPONENT = str(self.COMPONENT)
 
         if self._is_empty(self.HTAN_PARTICIPANT_ID):
             self.MissingRequiredField("HTAN_PARTICIPANT_ID")
@@ -588,27 +588,6 @@ class BulkWESLevel3(YAMLRoot):
 
 
 # Enumerations
-class ComponentEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="ComponentEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Bulk WES Level 1",
-            PermissibleValue(
-                text="Bulk WES Level 1",
-                description="Bulk Whole Exome Sequencing raw files"))
-        setattr(cls, "Bulk WES Level 2",
-            PermissibleValue(
-                text="Bulk WES Level 2",
-                description="Bulk Whole Exome Sequencing aligned files and QC"))
-        setattr(cls, "Bulk WES Level 3",
-            PermissibleValue(
-                text="Bulk WES Level 3",
-                description="Bulk Whole Exome Sequencing called variants"))
-
 class LibraryLayoutEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
@@ -740,7 +719,7 @@ slots.caDSR_id = Slot(uri=HTAN.caDSR_id, name="caDSR_id", curie=HTAN.curie('caDS
                    model_uri=HTAN.caDSR_id, domain=None, range=Optional[str])
 
 slots.wESData__COMPONENT = Slot(uri=HTAN.COMPONENT, name="wESData__COMPONENT", curie=HTAN.curie('COMPONENT'),
-                   model_uri=HTAN.wESData__COMPONENT, domain=None, range=Union[str, "ComponentEnum"])
+                   model_uri=HTAN.wESData__COMPONENT, domain=None, range=str)
 
 slots.wESData__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="wESData__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
                    model_uri=HTAN.wESData__HTAN_PARTICIPANT_ID, domain=None, range=str,
