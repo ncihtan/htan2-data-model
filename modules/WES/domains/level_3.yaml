@@ -30,11 +30,6 @@ classes:
     is_a: CoreFileAttributes
     description: Bulk Whole Exome Sequencing Level 3 - Called variants
     attributes:
-      HTAN_PARENT_DATA_FILE_ID:
-        range: string
-        required: true
-        title: "HTAN Parent Data File ID"
-        description: HTAN Data File ID of the parent data file
       GENOMIC_REFERENCE:
         range: string
         required: true
