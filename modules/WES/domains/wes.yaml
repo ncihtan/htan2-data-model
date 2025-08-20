@@ -4,6 +4,7 @@ description: HTAN Whole Exome Sequencing Data Model Schema
 imports:
   - linkml:types
   - linkml:extensions
+  - ../../Core/domains/core
   - level_1
   - level_2
   - level_3
@@ -32,11 +33,6 @@ classes:
         range: string
         required: true
         description: Category of metadata (e.g. Bulk WES Level 1, Bulk WES Level 2, Bulk WES Level 3)
-      HTAN_PARTICIPANT_ID:
-        range: string
-        required: true
-        pattern: "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$"
-        description: HTAN Identifier of the research participant
       LEVEL_1_DATA:
         range: BulkWESLevel1
         required: false
