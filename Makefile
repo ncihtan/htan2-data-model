@@ -87,7 +87,7 @@ test-scripts:
 
 # Format code with Black
 format:
-	$(RUN) black scripts/ tests/ modules/Clinical/tests/ modules/WES/tests/
+	$(RUN) black scripts/ tests/ modules/Clinical/tests/ modules/WES/tests/ modules/*/src/
 
 # ---
 # Project Synchronization
