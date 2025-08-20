@@ -14,16 +14,16 @@ default_prefix: htan
 enums:
   SomaticVariantsSampleTypeEnum:
     permissible_values:
-      "Primary":
-        description: Primary tumor sample
       "Metastatic":
         description: Metastatic tumor sample
-      "Recurrent":
-        description: Recurrent tumor sample
       "Normal":
         description: Normal tissue sample
       "Other":
         description: Other sample type
+      "Primary":
+        description: Primary tumor sample
+      "Recurrent":
+        description: Recurrent tumor sample
 
 classes:
   BulkWESLevel3:

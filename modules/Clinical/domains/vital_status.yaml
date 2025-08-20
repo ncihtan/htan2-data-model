@@ -3,27 +3,15 @@ id: https://w3id.org/htan/clinical/vital_status
 description: HTAN Clinical Data Model - Vital Status Domain
 
 enums:
-  VitalStatusEnum:
-    title: vital_status
-    permissible_values:
-      "Alive":
-        description: Alive
-      "Deceased":
-        description: Deceased
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
-
   CauseOfDeathEnum:
     title: cause_of_death
     permissible_values:
       "Disease":
         description: Death due to disease
-      "Other":
-        description: Death due to other causes
       "Not Reported":
         description: Not provided or available
+      "Other":
+        description: Death due to other causes
       "Unknown":
         description: Not known, not observed, not recorded, or refused
 
@@ -38,6 +26,18 @@ enums:
         description: Not provided or available
       "Other":
         description: Other source
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  VitalStatusEnum:
+    title: vital_status
+    permissible_values:
+      "Alive":
+        description: Alive
+      "Deceased":
+        description: Deceased
+      "Not Reported":
+        description: Not provided or available
       "Unknown":
         description: Not known, not observed, not recorded, or refused
 

@@ -32,26 +32,26 @@ enums:
 
   SequencingPlatformEnum:
     permissible_values:
-      "ILLUMINA":
-        description: Illumina sequencing platform
-      "PACBIO_SMRT":
-        description: PacBio SMRT sequencing platform
-      "OXFORD_NANOPORE":
-        description: Oxford Nanopore sequencing platform
-      "ION_TORRENT":
-        description: Ion Torrent sequencing platform
-      "COMPLETE_GENOMICS":
-        description: Complete Genomics sequencing platform
-      "CAPILLARY":
-        description: Capillary sequencing platform
-      "LS454":
-        description: 454 sequencing platform
       "ABI_SOLID":
         description: ABI SOLID sequencing platform
-      "HELICOS":
-        description: Helicos sequencing platform
       "BGISEQ":
         description: BGI sequencing platform
+      "CAPILLARY":
+        description: Capillary sequencing platform
+      "COMPLETE_GENOMICS":
+        description: Complete Genomics sequencing platform
+      "HELICOS":
+        description: Helicos sequencing platform
+      "ILLUMINA":
+        description: Illumina sequencing platform
+      "ION_TORRENT":
+        description: Ion Torrent sequencing platform
+      "LS454":
+        description: 454 sequencing platform
+      "OXFORD_NANOPORE":
+        description: Oxford Nanopore sequencing platform
+      "PACBIO_SMRT":
+        description: PacBio SMRT sequencing platform
 
 classes:
   BulkWESLevel1:

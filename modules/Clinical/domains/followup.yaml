@@ -3,58 +3,6 @@ id: https://w3id.org/htan/clinical/followup
 description: HTAN Clinical Data Model - FollowUp Domain
 
 enums:
-  ProgressionOrRecurrenceEnum:
-    title: progression_or_recurrence
-    permissible_values:
-      "Censored":
-        description: Points of data for which only partial information is known.
-      "No":
-        description: The non-affirmative response to a question.
-      "Not Allowed to Collect":
-        description: An indicator that specifies that a collection event was not permitted.
-      "Not Applicable":
-        description: Determination of a value is not relevant in the current context.
-      "Not Reported":
-        description: Not provided or available.
-      "Unknown":
-        description: Not known, observed, recorded; or reported as unknown by the data contributor.
-      "Yes":
-        description: The affirmative response to a question.
-
-  ProgressionTypeEnum:
-    title: progression_type
-    permissible_values:
-      "Biochemical":
-        description: An indication that biochemical markers of a disease are present.
-      "Distant":
-        description: A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor.
-      "Local":
-        description: A disease that is confined to a specific organ or tissue and has not spread to other anatomic sites.
-      "Locoregional":
-        description: A disease that occurs within a specific organ or tissue and extends into adjacent areas including lymph nodes.
-      "Not Reported":
-        description: Not provided or available.
-      "Regional":
-        description: A disease or condition that extends beyond the site and spreads into adjacent tissues and regional lymph nodes.
-      "Unknown":
-        description: Not known, observed, recorded; or reported as unknown by the data contributor.
-
-  EvidenceOfRecurrenceTypeEnum:
-    title: evidence_of_recurrence_type
-    permissible_values:
-      "Clinical":
-        description: Recurrence was determined by clinical examination.
-      "Imaging":
-        description: Recurrence was determined by imaging.
-      "Laboratory":
-        description: Recurrence was determined by laboratory test.
-      "Not Reported":
-        description: Not provided or available.
-      "Pathology":
-        description: Recurrence was determined by pathology.
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused.
-
   DiseaseResponseEnum:
     title: disease_response
     permissible_values:
@@ -96,6 +44,58 @@ enums:
         description: Completely disabled. Cannot carry on any selfcare. Totally confined to bed or chair.
       "5":
         description: Dead
+
+  EvidenceOfRecurrenceTypeEnum:
+    title: evidence_of_recurrence_type
+    permissible_values:
+      "Clinical":
+        description: Recurrence was determined by clinical examination.
+      "Imaging":
+        description: Recurrence was determined by imaging.
+      "Laboratory":
+        description: Recurrence was determined by laboratory test.
+      "Not Reported":
+        description: Not provided or available.
+      "Pathology":
+        description: Recurrence was determined by pathology.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+
+  ProgressionOrRecurrenceEnum:
+    title: progression_or_recurrence
+    permissible_values:
+      "Censored":
+        description: Points of data for which only partial information is known.
+      "No":
+        description: The non-affirmative response to a question.
+      "Not Allowed to Collect":
+        description: An indicator that specifies that a collection event was not permitted.
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Reported":
+        description: Not provided or available.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+      "Yes":
+        description: The affirmative response to a question.
+
+  ProgressionTypeEnum:
+    title: progression_type
+    permissible_values:
+      "Biochemical":
+        description: An indication that biochemical markers of a disease are present.
+      "Distant":
+        description: A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor.
+      "Local":
+        description: A disease that is confined to a specific organ or tissue and has not spread to other anatomic sites.
+      "Locoregional":
+        description: A disease that occurs within a specific organ or tissue and extends into adjacent areas including lymph nodes.
+      "Not Reported":
+        description: Not provided or available.
+      "Regional":
+        description: A disease or condition that extends beyond the site and spreads into adjacent tissues and regional lymph nodes.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
 
   MenopauseStatusEnum:
     title: menopause_status

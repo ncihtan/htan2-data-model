@@ -27,18 +27,6 @@ enums:
       "Unknown":
         description: Not known, not observed, not recorded, or refused
 
-  SexEnum:
-    title: sex
-    permissible_values:
-      "Female":
-        description: Female
-      "Male":
-        description: Male
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
-
   RaceEnum:
     title: race
     permissible_values:
@@ -52,6 +40,18 @@ enums:
         description: Native Hawaiian or Other Pacific Islander
       "White":
         description: White
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  SexEnum:
+    title: sex
+    permissible_values:
+      "Female":
+        description: Female
+      "Male":
+        description: Male
       "Not Reported":
         description: Not provided or available
       "Unknown":

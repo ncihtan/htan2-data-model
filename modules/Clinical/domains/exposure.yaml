@@ -3,20 +3,6 @@ id: https://w3id.org/htan/clinical/exposure
 description: HTAN Clinical Data Model - Exposure Domain
 
 enums:
-  SmokingHistoryEnum:
-    title: smoking_history
-    permissible_values:
-      "Current smoker":
-        description: Current smoker
-      "Former smoker":
-        description: Former smoker
-      "Never smoker":
-        description: Never smoker
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
-
   AlcoholHistoryIndicatorEnum:
     title: alcohol_history_indicator
     permissible_values:
@@ -46,14 +32,28 @@ enums:
     permissible_values:
       "Asbestos":
         description: Asbestos exposure
-      "Radiation":
-        description: Radiation exposure
       "Chemical":
         description: Chemical exposure
       "Not Reported":
         description: Not provided or available
       "Other":
         description: Other type of exposure
+      "Radiation":
+        description: Radiation exposure
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  SmokingHistoryEnum:
+    title: smoking_history
+    permissible_values:
+      "Current smoker":
+        description: Current smoker
+      "Former smoker":
+        description: Former smoker
+      "Never smoker":
+        description: Never smoker
+      "Not Reported":
+        description: Not provided or available
       "Unknown":
         description: Not known, not observed, not recorded, or refused
 

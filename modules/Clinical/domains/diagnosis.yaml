@@ -6,6 +6,44 @@ imports:
   - uberon_tissues
 
 enums:
+  ClinicalNStageEnum:
+    title: clinical_n_stage
+    permissible_values:
+      "N0":
+        description: No regional lymph node metastasis
+      "N1":
+        description: Metastasis in 1-3 axillary lymph nodes
+      "N2":
+        description: Metastasis in 4-9 axillary lymph nodes
+      "N3":
+        description: Metastasis in 10 or more axillary lymph nodes
+      "NX":
+        description: Regional lymph nodes cannot be assessed
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
+  ClinicalTStageEnum:
+    title: clinical_t_stage
+    permissible_values:
+      "T0":
+        description: No evidence of primary tumor
+      "T1":
+        description: Tumor ≤ 2 cm in greatest dimension
+      "T2":
+        description: Tumor > 2 cm but ≤ 4 cm in greatest dimension
+      "T3":
+        description: Tumor > 4 cm in greatest dimension
+      "T4":
+        description: Tumor of any size with direct extension to adjacent structures
+      "TX":
+        description: Primary tumor cannot be assessed
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
   TumorGradeEnum:
     title: tumor_grade
     permissible_values:
@@ -55,44 +93,6 @@ enums:
         description: Stage IVB
       "Stage IVC":
         description: Stage IVC
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
-
-  ClinicalTStageEnum:
-    title: clinical_t_stage
-    permissible_values:
-      "T0":
-        description: No evidence of primary tumor
-      "T1":
-        description: Tumor ≤ 2 cm in greatest dimension
-      "T2":
-        description: Tumor > 2 cm but ≤ 4 cm in greatest dimension
-      "T3":
-        description: Tumor > 4 cm in greatest dimension
-      "T4":
-        description: Tumor of any size with direct extension to adjacent structures
-      "TX":
-        description: Primary tumor cannot be assessed
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
-
-  ClinicalNStageEnum:
-    title: clinical_n_stage
-    permissible_values:
-      "N0":
-        description: No regional lymph node metastasis
-      "N1":
-        description: Metastasis in 1-3 axillary lymph nodes
-      "N2":
-        description: Metastasis in 4-9 axillary lymph nodes
-      "N3":
-        description: Metastasis in 10 or more axillary lymph nodes
-      "NX":
-        description: Regional lymph nodes cannot be assessed
       "Not Reported":
         description: Not provided or available
       "Unknown":
