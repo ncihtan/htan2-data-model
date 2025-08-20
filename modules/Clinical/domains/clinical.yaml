@@ -4,6 +4,7 @@ description: HTAN Clinical Data Model Schema
 imports:
   - linkml:types
   - linkml:extensions
+  - ../../Core/domains/core
   - demographics
   - diagnosis
   - exposure
@@ -60,17 +61,9 @@ slots:
 
 classes:
   ClinicalData:
+    is_a: CoreFileAttributes
     description: Container for all clinical data
     attributes:
-      COMPONENT:
-        range: ComponentEnum
-        required: true
-        description: Category of metadata (e.g. Diagnosis, Biospecimen, scRNA-seq Level 1, etc.); provide the same one for all items/rows. (No CRDC Standard Available)
-      HTAN_PARTICIPANT_ID:
-        range: string
-        required: true
-        pattern: "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$"
-        description: HTAN Identifier of the research participant (caDSR:HTAN-Specific) (No CRDC Standard Available)
       DEMOGRAPHICS:
         range: Demographics
         required: true
@@ -102,4 +95,4 @@ classes:
       THERAPIES:
         range: Therapy
         multivalued: true
-        description: Treatment information 
+        description: Therapy information 
