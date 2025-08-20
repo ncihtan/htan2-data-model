@@ -35,24 +35,27 @@ classes:
       HTAN_PARTICIPANT_ID:
         range: string
         required: true
+        identifier: true
         title: "HTAN Participant ID"
-        description: HTAN ID associated with a patient based on HTAN ID SOP
+        description: HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)
         pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$"
       HTAN_DATA_FILE_ID:
         range: string
         required: true
+        identifier: true
         title: "HTAN Data File ID"
-        description: HTAN Data File ID
+        description: HTAN Data File ID (Primary Key)
         pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"
       HTAN_PARENT_ID:
         range: string
         required: true
         title: "HTAN Parent ID"
-        description: HTAN Parent ID (Underscore B for Biospecimen and D for data file)
+        description: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
         pattern: "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$"
       HTAN_BIOSPECIMEN_ID:
         range: string
         required: false
+        identifier: true
         title: "HTAN Biospecimen ID"
-        description: HTAN Biospecimen ID of the parent biospecimen
+        description: HTAN Biospecimen ID of the parent biospecimen (Primary Key)
         pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"
