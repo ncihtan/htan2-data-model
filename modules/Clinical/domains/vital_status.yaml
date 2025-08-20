@@ -48,21 +48,25 @@ classes:
       VITAL_STATUS:
         range: VitalStatusEnum
         required: true
+        title: "Vital Status"
         description: Vital status of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192201
       AGE_IN_DAYS_AT_DEATH:
         range: integer
         required: false
+        title: "Age in Days at Death"
         description: Age in days at death (caDSR:2192202) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192202
       CAUSE_OF_DEATH:
         range: CauseOfDeathEnum
         required: false
+        title: "Cause of Death"
         description: Cause of death (caDSR:2192203) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192203
       CAUSE_OF_DEATH_SOURCE:
         range: CauseOfDeathSourceEnum
         required: false
+        title: "Cause of Death Source"
         description: Source of cause of death (caDSR:2192204) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192204
     slot_usage:

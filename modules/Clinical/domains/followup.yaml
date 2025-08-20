@@ -128,38 +128,47 @@ classes:
       AGE_IN_DAYS_AT_FOLLOWUP:
         range: integer
         required: true
+        title: "Age in Days at Follow-up"
         description: Age in days at follow-up
       PROGRESSION_OR_RECURRENCE:
         range: ProgressionOrRecurrenceEnum
         required: true
+        title: "Progression or Recurrence"
         description: Indicates whether the disease has progressed or recurred
       PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
         range: tissue_or_organ_of_origin_uberon_enum
         required: false
+        title: "Progression or Recurrence Anatomic Site UBERON Code"
         description: UBERON code for the anatomic site of progression or recurrence
       PROGRESSION_OR_RECURRENCE_TYPE:
         range: ProgressionTypeEnum
         required: false
+        title: "Progression or Recurrence Type"
         description: Type of progression or recurrence
       EVIDENCE_OF_RECURRENCE_TYPE:
         range: EvidenceOfRecurrenceTypeEnum
         required: false
+        title: "Evidence of Recurrence Type"
         description: Type of evidence for recurrence
       AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
         range: integer
         required: false
+        title: "Age in Days at Progression or Recurrence"
         description: Age in days at progression or recurrence
       DISEASE_RESPONSE:
         range: DiseaseResponseEnum
         required: true
+        title: "Disease Response"
         description: Response to treatment
       ECOG_PERFORMANCE_STATUS:
         range: ECOGPerformanceStatusEnum
         required: true
+        title: "ECOG Performance Status"
         description: ECOG performance status
       MENOPAUSE_STATUS:
         range: MenopauseStatusEnum
         required: false
+        title: "Menopause Status"
         description: Menopause status
     slot_usage:
       PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
