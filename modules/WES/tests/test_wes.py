@@ -21,13 +21,14 @@ class TestWESModule:
         # Check that the main class exists
         assert "BulkWESLevel1" in sv.all_classes()
         
-        # Check required attributes
+        # Check that it inherits from Core
         level1_class = sv.get_class("BulkWESLevel1")
-        required_attrs = ["COMPONENT", "FILENAME", "FILE_FORMAT", "HTAN_PARENT_BIOSPECIMEN_ID", 
-                         "HTAN_DATA_FILE_ID", "LIBRARY_LAYOUT", "LIBRARY_SELECTION_METHOD", 
-                         "READ_LENGTH", "SEQUENCING_PLATFORM"]
+        assert level1_class.is_a == "CoreFileAttributes"
         
-        for attr in required_attrs:
+        # Check WES Level 1 specific required attributes
+        wes_specific_attrs = ["LIBRARY_LAYOUT", "LIBRARY_SELECTION_METHOD", "READ_LENGTH", "SEQUENCING_PLATFORM"]
+        
+        for attr in wes_specific_attrs:
             assert attr in level1_class.attributes
 
     def test_level_2_schema(self):
@@ -38,14 +39,16 @@ class TestWESModule:
         # Check that the main class exists
         assert "BulkWESLevel2" in sv.all_classes()
         
-        # Check required attributes
+        # Check that it inherits from Core
         level2_class = sv.get_class("BulkWESLevel2")
-        required_attrs = ["COMPONENT", "FILENAME", "FILE_FORMAT", "HTAN_PARENT_DATA_FILE_ID", 
-                         "HTAN_DATA_FILE_ID", "ALIGNMENT_WORKFLOW_TYPE", "GENOMIC_REFERENCE", 
-                         "MEAN_COVERAGE", "TOTAL_READS", "TOTAL_UNIQUELY_MAPPED", 
-                         "TOTAL_UNMAPPED_READS", "PROPORTION_READS_MAPPED"]
+        assert level2_class.is_a == "CoreFileAttributes"
         
-        for attr in required_attrs:
+        # Check WES Level 2 specific required attributes
+        wes_specific_attrs = ["ALIGNMENT_WORKFLOW_TYPE", "GENOMIC_REFERENCE", "MEAN_COVERAGE", 
+                             "TOTAL_READS", "TOTAL_UNIQUELY_MAPPED", "TOTAL_UNMAPPED_READS", 
+                             "PROPORTION_READS_MAPPED"]
+        
+        for attr in wes_specific_attrs:
             assert attr in level2_class.attributes
 
     def test_level_3_schema(self):
@@ -56,12 +59,14 @@ class TestWESModule:
         # Check that the main class exists
         assert "BulkWESLevel3" in sv.all_classes()
         
-        # Check required attributes
+        # Check that it inherits from Core
         level3_class = sv.get_class("BulkWESLevel3")
-        required_attrs = ["COMPONENT", "FILENAME", "FILE_FORMAT", "HTAN_PARENT_DATA_FILE_ID", 
-                         "HTAN_DATA_FILE_ID", "GENOMIC_REFERENCE"]
+        assert level3_class.is_a == "CoreFileAttributes"
         
-        for attr in required_attrs:
+        # Check WES Level 3 specific required attributes
+        wes_specific_attrs = ["GENOMIC_REFERENCE"]
+        
+        for attr in wes_specific_attrs:
             assert attr in level3_class.attributes
 
     def test_enums(self):

@@ -64,7 +64,11 @@ modules-gen:
 modules-test:
 	@for module in $(MODULES); do \
 		echo "Running tests for $$module module..."; \
-		$(MAKE) -C $(MODULES_DIR)/$$module test; \
+		if [ -f $(MODULES_DIR)/$$module/Makefile ] && grep -q "^test:" $(MODULES_DIR)/$$module/Makefile; then \
+			$(MAKE) -C $(MODULES_DIR)/$$module test; \
+		else \
+			echo "No test target found for $$module module, skipping..."; \
+		fi; \
 	done
 
 # Clean all build artifacts
