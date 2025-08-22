@@ -50,35 +50,26 @@ htan-linkml/
 └── docs/                      # Documentation
 ```
 
-## 🔧 Development Conventions
+## 🔗 Key Relationships
 
-### **Enum Organization**
-- All enums are **alphabetically ordered** for consistency
-- Enum values within each enum are also alphabetically ordered
-- This applies to both enum names and their permissible values
+### **Data Hierarchy**
+```
+Participant (HTAN_PARTICIPANT_ID)
+├── Biospecimen (HTAN_BIOSPECIMEN_ID)
+│   └── Level 1 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _B####
+│       └── Level 2 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
+│           └── Level 3 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
+```
 
-### **Schema Structure**
-- **Inheritance**: Modules inherit from `CoreFileAttributes` for universal attributes
-- **Validation**: Regex patterns for HTAN identifiers
-- **Documentation**: Each attribute includes `title` and `description` fields
+### **Primary Keys**
+- `HTAN_PARTICIPANT_ID`: Unique identifier for research participants
+- `HTAN_DATA_FILE_ID`: Unique identifier for data files across all levels
+- `HTAN_BIOSPECIMEN_ID`: Unique identifier for biospecimens
 
-### **File Naming**
-- **Domain files**: `domains/[domain_name].yaml`
-- **Test files**: `tests/test_[module_name].py`
-- **Generated code**: `src/htan_[module]/datamodel/`
-
-## 🧪 Testing Strategy
-
-### **Module Testing**
-- **Schema loading**: Verify YAML files can be parsed
-- **Inheritance**: Confirm Core module inheritance works correctly
-- **Enums**: Validate enum definitions and values
-- **Validation**: Test regex patterns and required fields
-
-### **Test Data**
-- **Valid cases**: Sample data that should pass validation
-- **Invalid cases**: Sample data that should fail validation
-- **Edge cases**: Boundary conditions and special scenarios
+### **Foreign Keys**
+- `HTAN_PARENT_ID`: References parent entity using suffix convention
+  - `_B####` - References a biospecimen
+  - `_D####` - References a data file
 
 ## 🚀 Getting Started
 
@@ -103,12 +94,6 @@ make modules-gen
 make test
 ```
 
-### **Module Development**
-1. **Create module structure**: Follow existing module patterns
-2. **Define schemas**: Use LinkML YAML syntax
-3. **Add tests**: Include comprehensive test coverage
-4. **Update documentation**: Maintain README files
-
 ## 📚 Module-Specific Documentation
 
 Each module contains detailed documentation:
@@ -117,41 +102,16 @@ Each module contains detailed documentation:
 - **Clinical Module**: See `modules/Clinical/README.md` for domain descriptions
 - **WES Module**: See `modules/WES/README.md` for sequencing levels
 
-## 🔗 Key Relationships
-
-### **Data Hierarchy**
-```
-Participant (HTAN_PARTICIPANT_ID)
-├── Biospecimen (HTAN_BIOSPECIMEN_ID)
-│   └── Level 1 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _B####
-│       └── Level 2 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
-│           └── Level 3 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
-```
-
-### **Primary Keys**
-- `HTAN_PARTICIPANT_ID`: Unique identifier for research participants
-- `HTAN_DATA_FILE_ID`: Unique identifier for data files across all levels
-- `HTAN_BIOSPECIMEN_ID`: Unique identifier for biospecimens
-
-### **Foreign Keys**
-- `HTAN_PARENT_ID`: References parent entity using suffix convention
-  - `_B####` - References a biospecimen
-  - `_D####` - References a data file
-
 ## 🤝 Contributing
 
-### **Development Workflow**
-1. Create feature branch: `git checkout -b feat-[module-name]`
-2. Make changes following conventions
-3. Add/update tests
-4. Run test suite: `make test`
-5. Update documentation
-6. Submit pull request
+For detailed contribution guidelines, development conventions, and step-by-step instructions for adding new modules, see **[CONTRIBUTING.md](CONTRIBUTING.md)**.
 
-### **Code Quality**
-- **Formatting**: Use `make format` for consistent code style
-- **Testing**: Ensure all tests pass before submitting
-- **Documentation**: Update README files for any new modules
+### **Quick Start for Contributors**
+1. Fork the repository
+2. Create feature branch: `git checkout -b feat/[module-name]`
+3. Follow conventions in CONTRIBUTING.md
+4. Run tests: `make test`
+5. Submit pull request
 
 ## 📖 Additional Resources
 

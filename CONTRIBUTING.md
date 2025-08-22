@@ -1,210 +1,368 @@
-# Contributing to htan-linkml
+# Contributing to HTAN LinkML
 
-:+1: First of all: Thank you for taking the time to contribute!
+Thank you for your interest in contributing to the HTAN LinkML project! This document provides guidelines and step-by-step instructions for contributors.
 
-The following is a set of guidelines for contributing to
-htan-linkml. These guidelines are not strict rules.
-Use your best judgment, and feel free to propose changes to this document
-in a pull request.
+## 🚀 Quick Start
 
-## Table Of Contents
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feat/your-module-name`
+3. **Follow the development guidelines** below
+4. **Run tests**: `make test`
+5. **Submit a pull request**
 
-* [Code of Conduct](#code-of-conduct)
-* [Guidelines for Contributions and Requests](#contributions)
-  * [Reporting issues and making requests](#reporting-issues)
-  * [Questions and Discussion](#questions-and-discussion)
-  * [Adding new elements yourself](#adding-elements)
-* [Best Practices](#best-practices)
-  * [How to write a great issue](#great-issues)
-  * [How to create a great pull/merge request](#great-pulls)
+## 📋 Development Guidelines
 
-<a id="code-of-conduct"></a>
+### Code Style
+- **Python**: Use Black for formatting (`make format`)
+- **YAML**: Follow existing indentation patterns (2 spaces)
+- **Enums**: Organize alphabetically for consistency
+- **Documentation**: Update README files for new modules
 
-## Code of Conduct
+### Testing
+- **All tests must pass** before submitting PR
+- **Add tests** for new modules following existing patterns
+- **Test schema loading** and validation
+- **Verify inheritance** works correctly
 
-The htan-linkml team strives to create a
-welcoming environment for editors, users and other contributors.
-Please carefully read our [Code of Conduct](CODE_OF_CONDUCT.md).
+## 🔧 Development Conventions
 
-<a id="contributions"></a>
+### **Enum Organization**
+- All enums are **alphabetically ordered** for consistency
+- Enum values within each enum are also alphabetically ordered
+- This applies to both enum names and their permissible values
 
-## Guidelines for Contributions and Requests
+### **ENUM STYLE GUIDE**
+- **Attribute slots**: `ALL_CAPS_WITH_UNDERSCORES`
+- **Enums**: `CamelCase`
+- **Titles**: `Title Case`
+- **Descriptions**: `First word capital letter`
 
-<a id="reporting-issues"></a>
+### **Schema Structure**
+- **Inheritance**: Modules inherit from `CoreFileAttributes` for universal attributes
+- **Validation**: Regex patterns for HTAN identifiers
+- **Documentation**: Each attribute includes `title` and `description` fields
 
-### Reporting problems and suggesting changes to with the data model
+### **File Naming**
+- **Domain files**: `domains/[domain_name].yaml`
+- **Test files**: `tests/test_[module_name].py`
+- **Generated code**: `src/htan_[module]/datamodel/`
 
-Please use our [Issue Tracker][issues] for any of the following:
+### **Testing Strategy**
+- **Schema loading**: Verify YAML files can be parsed
+- **Inheritance**: Confirm Core module inheritance works correctly
+- **Enums**: Validate enum definitions and values
+- **Validation**: Test regex patterns and required fields
 
-- Reporting problems
-- Requesting new schema elements
+## 🏗️ Adding a New Module: Step-by-Step Guide
 
-<a id="questions-and-discussions"></a>
+### Step 1: Create Module Directory Structure
 
-### Questions and Discussions
-
-Please use our [Discussions forum][discussions] to ask general questions or contribute to discussions.
-
-<a id="adding-elements"></a>
-
-### Adding new elements yourself
-
-Please submit a [Pull Request][pulls] to submit a new term for consideration.
-
-<a id="best-practices"></a>
-
-## Best Practices
-
-<a id="great-issues"></a>
-
-### GitHub Best Practice
-
-- Creating and curating issues
-    - Read ["About Issues"][[about-issues]]
-    - Issues should be focused and actionable
-    - Complex issues should be broken down into simpler issues where possible
-- Pull Requests
-    - Read ["About Pull Requests"][about-pulls]
-    - Read [GitHub Pull Requests: 10 Tips to Know](https://blog.mergify.com/github-pull-requests-10-tips-to-know/)
-    - Pull Requests (PRs) should be atomic and aim to close a single issue
-    - Long running PRs should be avoided where possible
-    - PRs should reference issues following standard conventions (e.g. “fixes #123”)
-    - Schema developers should always be working on a single issue at any one time
-    - Never work on the main branch, always work on an issue/feature branch
-    - Core developers can work on branches off origin rather than forks
-    - Always create a PR on a branch to maximize transparency of what you are doing
-    - PRs should be reviewed and merged in a timely fashion by the htan-linkml technical leads
-    - PRs that do not pass GitHub actions should never be merged
-    - In the case of git conflicts, the contributor should try and resolve the conflict
-    - If a PR fails a GitHub action check, the contributor should try and resolve the issue in a timely fashion
-
-### Understanding LinkML
-
-Core developers should read the material on the [LinkML site](https://linkml.io/linkml), in particular:
-
-- [Overview](https://linkml.io/linkml/intro/overview.html)
-- [Tutorial](https://linkml.io/linkml/intro/tutorial.html)
-- [Schemas](https://linkml.io/linkml/schemas/index.html)
-- [FAQ](https://linkml.io/linkml/faq/index.html)
-
-### LinkML to JSON Schema Conversion Workflow
-
-For Synapse integration, LinkML schemas need to be converted to JSON Schema format. The project includes a comprehensive workflow for this:
-
-#### 1. LinkML to JSON Schema Conversion
-
-**Script**: `scripts/linkml_to_flat_synapse_jsonschema.py`
-
-**Usage**:
 ```bash
-# Basic conversion
-python scripts/linkml_to_flat_synapse_jsonschema.py modules/Clinical/domains/diagnosis.yaml
-
-# With specific class
-python scripts/linkml_to_flat_synapse_jsonschema.py modules/Clinical/domains/diagnosis.yaml --class-name Diagnosis
-
-# With custom output
-python scripts/linkml_to_flat_synapse_jsonschema.py modules/Clinical/domains/diagnosis.yaml -c Diagnosis -o custom_schema.json
-
-# With custom output directory
-python scripts/linkml_to_flat_synapse_jsonschema.py modules/Clinical/domains/diagnosis.yaml -d my_schemas/
+mkdir -p modules/YourModule/{domains,src/htan_yourmodule/datamodel,tests}
 ```
 
-**What it does**:
-- Converts LinkML YAML to JSON Schema using Python library (no shell commands)
-- Flattens/dereferences `$ref` references using `jsonref`
-- Updates schema version to Draft-07 for Synapse compatibility
-- Converts boolean `additionalProperties` to objects
-- Removes unsupported fields (`$defs`, `metamodel_version`, `version`)
-- Processes everything in memory for efficiency and safety
-
-#### 2. Schema Registration and Binding
-
-**Script**: `scripts/synapse_json_schema_bind.py`
-
-**Usage**:
-```bash
-python scripts/synapse_json_schema_bind.py -t <entity_id> -p <schema_file> -n "htanorg"
+**Required files to create:**
+```
+modules/YourModule/
+├── README.md                    # Module documentation
+├── Makefile                     # Build configuration
+├── domains/
+│   └── your_module.yaml        # Main schema file
+├── src/htan_yourmodule/
+│   ├── __init__.py             # Python package init
+│   └── datamodel/
+│       └── __init__.py         # Data model init
+└── tests/
+    └── test_your_module.py     # Test suite
 ```
 
-**What it does**:
-- Registers JSON schema with Synapse organization
-- Binds schema to specified entity
-- Enables `enableDerivedAnnotations` for flexible annotation support
+### Step 2: Create Module Makefile
 
-#### 3. Annotation Management
+**File**: `modules/YourModule/Makefile`
 
-**Script**: `scripts/push_annotations_from_files.py`
+```makefile
+# YourModule Makefile
 
-**Usage**:
-```bash
-python scripts/push_annotations_from_files.py
+.PHONY: all clean test gen-schema docs
+
+# Environment variables
+SCHEMA_NAME = htan_yourmodule
+SOURCE_SCHEMA_PATH = domains/your_module.yaml
+BUILD_DIR = build
+DATAMODEL_DIR = src/htan_yourmodule/datamodel
+DOCS_DIR = docs
+
+all: gen-schema test docs
+
+# Generate schema classes
+gen-schema:
+	mkdir -p $(BUILD_DIR)
+	mkdir -p $(DATAMODEL_DIR)
+	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/your_module.py
+	cp $(BUILD_DIR)/your_module.py $(DATAMODEL_DIR)/
+	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/your_module_schema.json
+	touch $(DATAMODEL_DIR)/schema_classes.py
+
+
+# Run module-specific tests
+test:
+	cd ../../ && PYTHONPATH=. poetry run pytest modules/YourModule/tests/ -v
+
+# Clean build artifacts
+clean:
+	rm -rf $(BUILD_DIR)/*
+	find . -type d -name "__pycache__" -exec rm -rf {} +
 ```
 
-**What it does**:
-- Pushes annotations from local JSON files to Synapse entities
-- Supports both valid and invalid annotation testing
+### Step 3: Create Main Schema File
 
-#### 4. Testing
+**File**: `modules/YourModule/domains/your_module.yaml`
 
-**Run all tests**:
+```yaml
+name: YourModule
+id: https://w3id.org/htan/your_module
+description: HTAN YourModule Data Model Schema
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../Core/domains/core  # ← Import Core module
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  YourEnum:
+    permissible_values:
+      "Value1":
+        description: First value
+      "Value2":
+        description: Second value
+
+classes:
+  YourModuleData:
+    is_a: CoreFileAttributes  # ← Inherit from Core
+    description: Container for your module data
+    attributes:
+      YOUR_ATTRIBUTE:
+        range: string
+        required: true
+        title: "Your Attribute"  # ← Add human-readable title
+        description: Description of your attribute
+```
+
+### Step 4: Create Python Package Files
+
+**File**: `modules/YourModule/src/htan_yourmodule/__init__.py`
+```python
+"""HTAN YourModule package."""
+```
+
+**File**: `modules/YourModule/src/htan_yourmodule/datamodel/__init__.py`
+```python
+"""HTAN YourModule data model."""
+```
+
+### Step 5: Create Test Suite
+
+**File**: `modules/YourModule/tests/test_your_module.py`
+
+```python
+"""Tests for the HTAN YourModule."""
+
+import pytest
+from linkml_runtime.utils.schemaview import SchemaView
+
+
+class TestYourModule:
+    """Test cases for the YourModule."""
+
+    def test_schema_loading(self):
+        """Test that the YourModule schema can be loaded."""
+        schema_path = "modules/YourModule/domains/your_module.yaml"
+        sv = SchemaView(schema_path)
+        assert sv is not None
+
+    def test_core_inheritance(self):
+        """Test that YourModule inherits from Core."""
+        schema_path = "modules/YourModule/domains/your_module.yaml"
+        sv = SchemaView(schema_path)
+        
+        # Check that the main class exists
+        assert "YourModuleData" in sv.all_classes()
+        
+        # Check that it inherits from Core
+        your_module_class = sv.get_class("YourModuleData")
+        assert your_module_class.is_a == "CoreFileAttributes"
+
+    def test_enums(self):
+        """Test that enums are properly defined."""
+        sv = SchemaView("modules/YourModule/domains/your_module.yaml")
+        assert "YourEnum" in sv.all_enums()
+```
+
+### Step 6: Create Module README
+
+**File**: `modules/YourModule/README.md`
+
+```markdown
+# HTAN YourModule
+
+Description of your module and its purpose.
+
+## Purpose
+
+Brief description of what this module handles.
+
+## Structure
+
+- **Domain files**: Description of your domain structure
+- **Attributes**: Key attributes and their purposes
+- **Validation**: Any special validation rules
+
+## Usage
+
+```yaml
+# Example usage
+YourModuleData:
+  COMPONENT: "Your Module"
+  FILENAME: "example.txt"
+  FILE_FORMAT: "txt"
+  HTAN_PARTICIPANT_ID: "HTA200_2"
+  HTAN_DATA_FILE_ID: "HTA200_2_12345"
+  HTAN_PARENT_ID: "HTA200_2_B7001"
+  YOUR_ATTRIBUTE: "example value"
+```
+
+## Testing
+
+Run module tests:
+```bash
+cd modules/YourModule
+make test
+```
+
+## Schema Generation
+
+Generate Python classes and JSON schema:
+```bash
+cd modules/YourModule
+make gen-schema
+```
+
+```
+
+### Step 7: Update Root Makefile
+
+**File**: `Makefile` (root level)
+
+**Add your module to the MODULES list:**
+```makefile
+# List of modules (add new modules here)
+MODULES = Clinical WES Core YourModule
+```
+
+**Update the format target:**
+```makefile
+format:
+	$(RUN) black scripts/ tests/ modules/Clinical/tests/ modules/WES/tests/ modules/YourModule/tests/
+```
+
+### Step 8: Update Main README
+
+**File**: `README.md` (root level)
+
+**Add your module to the project structure:**
+```markdown
+### **YourModule**
+- **Purpose**: Brief description
+- **Location**: `modules/YourModule/`
+- **Structure**: Description of structure
+- **Features**: Key features
+```
+
+## 🔧 Key Requirements for New Modules
+
+### 1. **Core Inheritance**
+- **All modules must inherit** from `CoreFileAttributes`
+- **Use `is_a: CoreFileAttributes`** in your main class
+- **Import Core module**: `- ../../Core/domains/core`
+
+### 2. **Title Fields**
+- **Add `title` field** to all attributes
+- **Use human-readable names**: `title: "Your Attribute"`
+- **Follow existing patterns** for consistency
+
+### 3. **Enum Organization**
+- **Organize enums alphabetically**
+- **Organize enum values alphabetically**
+- **Include descriptions** for all values
+
+### 4. **Testing**
+- **Test schema loading**
+- **Test Core inheritance**
+- **Test enum definitions**
+- **All tests must pass**
+
+### 5. **Documentation**
+- **Create comprehensive README**
+- **Include usage examples**
+- **Document any special requirements**
+
+## 🧪 Testing Your Module
+
+### Run Module Tests
+```bash
+cd modules/YourModule
+make test
+```
+
+### Run All Tests
 ```bash
 make test
 ```
 
-**Run script-specific tests**:
+### Generate Schema
 ```bash
-make test-scripts
+cd modules/YourModule
+make gen-schema
 ```
 
-**Format code**:
+### Format Code
 ```bash
 make format
 ```
 
-#### Key Features
+## 📝 Pull Request Checklist
 
-- **Synapse Compatibility**: Generates Draft-07 JSON Schema with proper formatting
-- **Flexible Annotations**: `enableDerivedAnnotations` allows extra fields not in schema
-- **Comprehensive Testing**: Unit tests for all conversion functions
-- **Professional CLI**: Uses argparse with help and validation
-- **Memory Efficient**: In-memory processing with single read/write cycle
+Before submitting a PR, ensure:
 
-#### Annotation Indicators
+- [ ] **All tests pass**: `make test`
+- [ ] **Code is formatted**: `make format`
+- [ ] **Documentation is updated**: README files
+- [ ] **Core inheritance is implemented**: `is_a: CoreFileAttributes`
+- [ ] **Title fields are added**: All attributes have human-readable titles
+- [ ] **Enums are organized**: Alphabetical order
+- [ ] **Module is added to root Makefile**: MODULES list updated
+- [ ] **Main README is updated**: Project structure documented
 
-- **Green**: Correctly annotated fields
-- **Yellow**: Invalid annotations (missing required values)
-- **Grey**: Non-schema fields with valid values (allowed with `enableDerivedAnnotations`)
+## 🤝 Getting Help
 
-### Modeling Best Practice
+- **Check existing modules** for examples
+- **Review the Core module** for inheritance patterns
+- **Look at test files** for testing patterns
+- **Ask questions** in GitHub issues or discussions
 
-- Follow Naming conventions
-    - Standard LinkML naming conventions should be followed (UpperCamelCase for classes and enums, snake_case for slots)
-    - Know how to use the LinkML linter to check style and conventions
-    - The names for classes should be nouns or noun-phrases: Person, GenomeAnnotation, Address, Sample
-    - Spell out abbreviations and short forms, except where this goes against convention (e.g. do not spell out DNA)
-    - Elements that are imported from outside (e.g. schema.org) need not follow the same naming conventions
-    - Multivalued slots should be named as plurals
-- Document model elements
-    - All model elements should have documentation (descriptions) and other textual annotations (e.g. comments, notes)
-    - Textual annotations on classes, slots and enumerations should be written with minimal jargon, clear grammar and no misspellings
-- Include examples and counter-examples (intentionally invalid examples)
-    - Rationale: these serve as documentation and unit tests
-    - These will be used by the automated test suite
-    - All elements of the nmdc-schema must be illustrated with valid and invalid data examples in src/data. New schema elements will not be merged into the main branch until examples are provided
-    - Invalid example data files should be invalid for one single reason, which should be reflected in the filename. It should be possible to render the invalid example files valid by addressing that single fault.
-- Use enums for categorical values
-    - Rationale: Open-ended string ranges encourage multiple values to represent the same entity, like “water”, “H2O” and “HOH”
-    - Any slot whose values could be constrained to a finite set should use an Enum
-    - Non-categorical values, e.g. descriptive fields like `name` or `description` fall outside of this.
-- Reuse
-    - Existing scheme elements should be reused where appropriate, rather than making duplicative elements
-    - More specific classes can be created by refinining classes using inheritance (`is_a`)
+## 📚 Additional Resources
 
-[about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
-[about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
-[about-pulls]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
-[issues]: https://github.com/ncihtan/htan-linkml/issues/
-[pulls]: https://github.com/ncihtan/htan-linkml/pulls/
+- **LinkML Documentation**: [https://linkml.io/](https://linkml.io/)
+- **HTAN Phase 1**: [https://github.com/ncihtan/data-models](https://github.com/ncihtan/data-models)
+- **Project README**: See main README.md for project overview
 
-We recommend also reading [GitHub Pull Requests: 10 Tips to Know](https://blog.mergify.com/github-pull-requests-10-tips-to-know/)
+---
+
+Thank you for contributing to the HTAN LinkML project! 🎉
