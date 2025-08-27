@@ -79,8 +79,10 @@ class TestWESModule:
         
         # Test Level 2 enums
         sv2 = SchemaView("modules/WES/domains/level_2.yaml")
-        assert "MSIStatusEnum" in sv2.all_enums()
+        # Note: MSIStatusEnum was moved to Level 3
+        # assert "MSIStatusEnum" in sv2.all_enums()
         
         # Test Level 3 enums
         sv3 = SchemaView("modules/WES/domains/level_3.yaml")
         assert "SomaticVariantsSampleTypeEnum" in sv3.all_enums()
+        assert "MSIStatusEnum" in sv3.all_enums()
