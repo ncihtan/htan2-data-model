@@ -54,14 +54,20 @@ The main class that defines common attributes shared across all sequencing types
 
 ## Architecture
 
-The `BaseSequencingAttributes` class inherits from `CoreFileAttributes` and provides:
-- All core file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.)
-- Common sequencing-specific attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.)
-- Shared enums for sequencing platforms and library layouts
-- Complete foundation for all sequencing types
+The `BaseSequencingAttributes` class uses a clean inheritance chain:
+
+```
+BaseSequencingAttributes → BiospecimenAttributes → CoreFileAttributes
+```
+
+**Inheritance Benefits:**
+- **Core File Attributes**: Gets universal file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.) from `CoreFileAttributes`
+- **Biospecimen Attributes**: Gets required `HTAN_BIOSPECIMEN_ID` from `BiospecimenAttributes`
+- **Base Sequencing Attributes**: All sequencing modules get common sequencing attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.)
+- **No Duplication**: Common attributes are defined once in the base modules
 
 Specific sequencing modules (WES, scRNA-seq) will:
-- Inherit from `BaseSequencingAttributes` to get both core file and sequencing attributes
+- Inherit from `BaseSequencingAttributes` to get core file, biospecimen, and sequencing attributes
 - Add their own specific attributes
 - Maintain consistent structure across all sequencing types
 
@@ -126,12 +132,6 @@ The module includes comprehensive tests for:
 - Optional vs required attribute marking
 - Data validation examples
 
-Run tests with:
-```bash
-cd modules/Sequencing
-make test
-```
-
 ## Dependencies
 
 - **Core Module**: Inherits from `CoreFileAttributes`
@@ -149,15 +149,3 @@ make test
 - All sequencing modules share the same common attributes
 - Consistent enum values across all sequencing types
 - Unified validation patterns
-
-### Maintainability
-- Changes to common attributes only need to be made in one place
-- Reduced risk of inconsistencies between modules
-- Easier testing and validation
-
-## Future Considerations
-
-- Support for additional sequencing platforms
-- Enhanced validation rules for specific workflows
-- Integration with additional workflow repositories
-- Support for newer genomic references
