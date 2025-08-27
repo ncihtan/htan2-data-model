@@ -8,6 +8,20 @@ The HTAN scRNA-seq module provides a comprehensive data model for single-cell RN
 - **Level 2**: Workflow and processing metadata  
 - **Level 3/4**: Combined analysis results with h5ad file format validation
 
+## Architecture
+
+The scRNA-seq module uses a clean inheritance chain:
+
+```
+scRNA-seq classes → BaseSequencingAttributes → CoreFileAttributes
+```
+
+**Inheritance Benefits:**
+- **Core File Attributes**: All scRNA-seq classes get universal file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.) from `CoreFileAttributes`
+- **Base Sequencing Attributes**: All scRNA-seq classes get common sequencing attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.) from `BaseSequencingAttributes`
+- **scRNA-seq-Specific Attributes**: Each level adds its own scRNA-seq-specific attributes
+- **No Duplication**: Common attributes are defined once in the base modules
+
 ## Schema Structure
 
 ### Level 1 (Raw Data)
@@ -21,8 +35,7 @@ Defines attributes for raw sequencing files and sample preparation metadata:
 - `REVERSE_TRANSCRIPTION_PRIMER`: Primer used for reverse transcription
 - `SPIKE_IN`: Type of spike-in used
 - `READ_INDICATOR`: Type of read (forward/reverse/index)
-- `LIBRARY_LAYOUT`: Library layout (paired-end/single-end)
-- `SEQUENCING_PLATFORM`: Sequencing platform used
+- Base attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.) come from inheritance
 
 **Enums (Alphabetically Ordered):**
 - `DissociationMethodEnum`: Enzymatic, Mechanical, Other, Unknown
@@ -38,8 +51,7 @@ Defines workflow and processing metadata:
 
 **Required Attributes:**
 - `SCRNASEQ_WORKFLOW_TYPE`: Generic name for the workflow
-- `WORKFLOW_VERSION`: Major version of the workflow
-- `GENOMIC_REFERENCE`: Genomic reference used for alignment
+- Base attributes (WORKFLOW_VERSION, GENOMIC_REFERENCE, etc.) come from inheritance
 
 **Enums (Alphabetically Ordered):**
 - `scRNAseqWorkflowTypeEnum`: CellRanger, dropEST, HCA Optimus, Other, SEQC, STARsolo, Unknown
@@ -54,14 +66,13 @@ Combined schema for analysis results with specific file format requirements:
 
 **Required Attributes:**
 - `SCRNASEQ_WORKFLOW_TYPE`: Workflow type
-- `WORKFLOW_VERSION`: Workflow version
 - `SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION`: Detailed workflow parameters
-- `WORKFLOW_LINK`: Link to workflow (DockStore.org recommended)
 - `DATA_CATEGORY`: Specific content type
 - `MATRIX_TYPE`: Type of data stored in matrix
 - `CELL_MEDIAN_NUMBER_READS`: Median reads per cell
 - `CELL_MEDIAN_NUMBER_GENES`: Median genes per cell
 - `CELL_TOTAL`: Total number of sequenced cells
+- Base attributes (WORKFLOW_VERSION, WORKFLOW_LINK, etc.) come from inheritance
 
 
 ## Usage
