@@ -28,22 +28,26 @@ The WES module includes comprehensive tests to ensure schema integrity and data 
 
 ### Level-Specific Schema Tests
 - **`test_level_1_schema`**: Validates Level 1 schema structure
-  - Confirms `BulkWESLevel1` class exists
-  - Verifies all required attributes are present: `COMPONENT`, `FILENAME`, `FILE_FORMAT`, `HTAN_PARENT_BIOSPECIMEN_ID`, `HTAN_DATA_FILE_ID`, `LIBRARY_LAYOUT`, `LIBRARY_SELECTION_METHOD`, `READ_LENGTH`, `SEQUENCING_PLATFORM`
+  - Confirms `BulkWESLevel1` class exists and inherits from `BaseSequencingAttributes`
+  - Verifies WES-specific required attributes: `LIBRARY_SELECTION_METHOD`, `READ_LENGTH`
+  - Gets core file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.) from `CoreFileAttributes` via inheritance
+  - Gets base sequencing attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.) from `BaseSequencingAttributes`
 
 - **`test_level_2_schema`**: Validates Level 2 schema structure
-  - Confirms `BulkWESLevel2` class exists
-  - Verifies all required attributes are present: `COMPONENT`, `FILENAME`, `FILE_FORMAT`, `HTAN_PARENT_DATA_FILE_ID`, `HTAN_DATA_FILE_ID`, `ALIGNMENT_WORKFLOW_TYPE`, `GENOMIC_REFERENCE`, `MEAN_COVERAGE`, `TOTAL_READS`, `TOTAL_UNIQUELY_MAPPED`, `TOTAL_UNMAPPED_READS`, `PROPORTION_READS_MAPPED`
+  - Confirms `BulkWESLevel2` class exists and inherits from `BaseSequencingAttributes`
+  - Verifies WES-specific required attributes: `ALIGNMENT_WORKFLOW_TYPE`, `MEAN_COVERAGE`
+  - Gets core file attributes and base sequencing attributes from inheritance chain
 
 - **`test_level_3_schema`**: Validates Level 3 schema structure
-  - Confirms `BulkWESLevel3` class exists
-  - Verifies all required attributes are present: `COMPONENT`, `FILENAME`, `FILE_FORMAT`, `HTAN_PARENT_DATA_FILE_ID`, `HTAN_DATA_FILE_ID`, `GENOMIC_REFERENCE`
+  - Confirms `BulkWESLevel3` class exists and inherits from `BaseSequencingAttributes`
+  - Verifies WES-specific required attributes: `SOMATIC_VARIANTS_WORKFLOW_TYPE`
+  - Gets core file attributes and base sequencing attributes from inheritance chain
 
 ### Enum Validation Tests
 - **`test_enums`**: Validates that all enums are properly defined in their respective level files
-  - **Level 1 enums**: `LibraryLayoutEnum`, `LibrarySelectionMethodEnum`, `SequencingPlatformEnum`
-  - **Level 2 enums**: `MSIStatusEnum`
-  - **Level 3 enums**: `SomaticVariantsSampleTypeEnum`
+  - **Level 1 enums**: `LibrarySelectionMethodEnum` (base enums come from BaseSequencingAttributes)
+  - **Level 2 enums**: None (base enums come from BaseSequencingAttributes)
+  - **Level 3 enums**: `SomaticVariantsSampleTypeEnum`, `MSIStatusEnum`
 
 ### Test Coverage
 These tests ensure:
@@ -52,6 +56,20 @@ These tests ensure:
 - Enums are correctly defined and accessible
 - Import relationships work correctly
 - Generated Python classes will have the expected structure
+
+## Architecture
+
+The WES module uses a clean inheritance chain:
+
+```
+WES classes → BaseSequencingAttributes → CoreFileAttributes
+```
+
+**Inheritance Benefits:**
+- **Core File Attributes**: All WES classes get universal file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.) from `CoreFileAttributes`
+- **Base Sequencing Attributes**: All WES classes get common sequencing attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.) from `BaseSequencingAttributes`
+- **WES-Specific Attributes**: Each level adds its own WES-specific attributes
+- **No Duplication**: Common attributes are defined once in the base modules
 
 ## Schema Organization
 
