@@ -54,15 +54,14 @@ class TestBaseSequencingSchema:
         values = list(platform_enum.permissible_values.keys())
         assert values == sorted(values), f"SequencingPlatformEnum values not alphabetical: {values}"
 
-    def test_no_inheritance_from_core(self):
-        """Test that BaseSequencingAttributes does not inherit from CoreFileAttributes."""
+    def test_inheritance_from_core(self):
+        """Test that BaseSequencingAttributes inherits from CoreFileAttributes."""
         schema_path = "modules/Sequencing/domains/sequencing.yaml"
         sv = SchemaView(schema_path)
         
         base_class = sv.get_class("BaseSequencingAttributes")
-        # BaseSequencingAttributes should not inherit from CoreFileAttributes
-        # It's a mixin/composition class for sequencing-specific attributes
-        assert base_class.is_a is None
+        # BaseSequencingAttributes should inherit from CoreFileAttributes
+        assert base_class.is_a == "CoreFileAttributes"
 
     def test_common_attributes_present(self):
         """Test that all common sequencing attributes are present."""
