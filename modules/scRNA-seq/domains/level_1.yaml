@@ -3,7 +3,7 @@ id: https://w3id.org/htan/scrna_seq_level1
 description: HTAN scRNA-seq Level 1 Data Model - Raw sequencing files and metadata
 imports:
   - linkml:types
-  - ../../Core/domains/core
+  - ../../Sequencing/domains/sequencing
 prefixes:
   htan: https://w3id.org/htan/
   linkml: https://w3id.org/linkml/
@@ -96,9 +96,10 @@ enums:
 
 classes:
   scRNALevel1:
-    is_a: CoreFileAttributes
+    is_a: BaseSequencingAttributes
     description: scRNA-seq Level 1 data - Raw sequencing files and metadata
     attributes:
+      # scRNA-seq-specific attributes
       SINGLE_CELL_ISOLATION_METHOD:
         range: SingleCellIsolationMethodEnum
         required: true
@@ -146,39 +147,3 @@ classes:
         required: true
         title: "Read Indicator"
         description: Type of read (forward, reverse, index)
-      
-      SEQUENCING_BATCH_ID:
-        range: string
-        required: false
-        title: "Sequencing Batch ID"
-        description: Identifier for the sequencing batch
-      
-      LIBRARY_LAYOUT:
-        range: string
-        required: true
-        title: "Library Layout"
-        description: Library layout (paired-end or single-end)
-      
-      SEQUENCING_PLATFORM:
-        range: string
-        required: true
-        title: "Sequencing Platform"
-        description: Sequencing platform used
-      
-      LIBRARY_PREPARATION_DAYS_FROM_INDEX:
-        range: integer
-        required: false
-        title: "Library Preparation Days From Index"
-        description: Days from index for library preparation
-      
-      TECHNICAL_REPLICATE_GROUP:
-        range: string
-        required: false
-        title: "Technical Replicate Group"
-        description: Technical replicate group identifier
-      
-      PROTOCOL_LINK:
-        range: string
-        required: false
-        title: "Protocol Link"
-        description: Link to sequencing protocol
