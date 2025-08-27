@@ -43,6 +43,7 @@ enums:
 
 classes:
   BaseSequencingAttributes:
+    is_a: CoreFileAttributes
     description: Base attributes shared across all sequencing types
     attributes:
       SEQUENCING_BATCH_ID:
