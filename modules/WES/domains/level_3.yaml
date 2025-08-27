@@ -1,6 +1,6 @@
 name: Level3
 id: https://w3id.org/htan/wes/level_3
-description: Bulk Whole Exome Sequencing Level 3 - Called variants
+description: Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis
 imports:
   - linkml:types
 
@@ -12,6 +12,16 @@ prefixes:
 default_prefix: htan
 
 enums:
+  MSIStatusEnum:
+    permissible_values:
+      "MSI-H":
+        description: High microsatellite instability
+      "MSI-L":
+        description: Low microsatellite instability
+      "MSS":
+        description: Microsatellite stable
+      "Unknown":
+        description: Unknown MSI status
   SomaticVariantsSampleTypeEnum:
     permissible_values:
       "Metastatic":
@@ -28,7 +38,7 @@ enums:
 classes:
   BulkWESLevel3:
     is_a: CoreFileAttributes
-    description: Bulk Whole Exome Sequencing Level 3 - Called variants
+    description: Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis
     attributes:
       GENOMIC_REFERENCE:
         range: string
@@ -75,3 +85,18 @@ classes:
         required: false
         title: "Structural Variant Workflow Type"
         description: Type of structural variant workflow
+      MSI_WORKFLOW_LINK:
+        range: string
+        required: false
+        title: "MSI Workflow Link"
+        description: Link to MSI workflow
+      MSI_SCORE:
+        range: float
+        required: false
+        title: "MSI Score"
+        description: MSI score
+      MSI_STATUS:
+        range: MSIStatusEnum
+        required: false
+        title: "MSI Status"
+        description: MSI status

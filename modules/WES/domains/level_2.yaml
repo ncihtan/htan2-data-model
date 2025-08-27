@@ -1,6 +1,6 @@
 name: Level2
 id: https://w3id.org/htan/wes/level_2
-description: Bulk Whole Exome Sequencing Level 2 - Aligned files and QC
+description: Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC
 imports:
   - linkml:types
 
@@ -12,21 +12,11 @@ prefixes:
 default_prefix: htan
 
 enums:
-  MSIStatusEnum:
-    permissible_values:
-      "MSI-H":
-        description: High microsatellite instability
-      "MSI-L":
-        description: Low microsatellite instability
-      "MSS":
-        description: Microsatellite stable
-      "Unknown":
-        description: Unknown MSI status
 
 classes:
   BulkWESLevel2:
     is_a: CoreFileAttributes
-    description: Bulk Whole Exome Sequencing Level 2 - Aligned files and QC
+    description: Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC
     attributes:
       ALIGNMENT_WORKFLOW_TYPE:
         range: string
@@ -158,21 +148,6 @@ classes:
         required: false
         title: "QC Workflow Link"
         description: Link to QC workflow
-      MSI_WORKFLOW_LINK:
-        range: string
-        required: false
-        title: "MSI Workflow Link"
-        description: Link to MSI workflow
-      MSI_SCORE:
-        range: float
-        required: false
-        title: "MSI Score"
-        description: MSI score
-      MSI_STATUS:
-        range: MSIStatusEnum
-        required: false
-        title: "MSI Status"
-        description: MSI status
       PAIRS_ON_DIFF_CHR:
         range: integer
         required: false
