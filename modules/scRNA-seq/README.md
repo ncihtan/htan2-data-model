@@ -81,27 +81,6 @@ make gen-json-schema
 make test
 ```
 
-### Python Usage
-```python
-from htan_scrna_seq.datamodel import scRNALevel1, scRNALevel2, scRNALevel3_4
-
-# Create Level 1 data
-level1_data = scRNALevel1(
-    SINGLE_CELL_ISOLATION_METHOD="Droplet-based",
-    DISSOCIATION_METHOD="Enzymatic",
-    NUCLEIC_ACID_SOURCE="RNA",
-    # ... other required fields
-)
-
-# Create Level 3/4 data with h5ad validation
-level3_4_data = scRNALevel3_4(
-    FILE_FORMAT="h5ad",
-    ANNDATA_SCHEMA_VERSION="0.1",
-    ANNDATA_STRUCTURE_VALIDATED=True,
-    # ... other required fields
-)
-```
-
 ## CellxGene Integration
 
 The Level 3/4 schema is designed for integration with CellxGene:
