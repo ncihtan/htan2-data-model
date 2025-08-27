@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-19T10:25:08
+# Generation date: 2025-08-27T09:49:14
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -79,11 +79,75 @@ DEFAULT_ = HTAN
 # Types
 
 # Class references
+class CoreFileAttributesHTANDATAFILEID(extended_str):
+    pass
 
+
+class ClinicalDataHTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
+    pass
 
 
 @dataclass(repr=False)
-class ClinicalData(YAMLRoot):
+class CoreFileAttributes(YAMLRoot):
+    """
+    Universal attributes that apply to all file-based data in HTAN
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["CoreFileAttributes"]
+    class_class_curie: ClassVar[str] = "htan:CoreFileAttributes"
+    class_name: ClassVar[str] = "CoreFileAttributes"
+    class_model_uri: ClassVar[URIRef] = HTAN.CoreFileAttributes
+
+    HTAN_DATA_FILE_ID: Union[str, CoreFileAttributesHTANDATAFILEID] = None
+    COMPONENT: str = None
+    FILENAME: str = None
+    FILE_FORMAT: str = None
+    HTAN_PARTICIPANT_ID: str = None
+    HTAN_PARENT_ID: str = None
+    HTAN_BIOSPECIMEN_ID: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_DATA_FILE_ID):
+            self.MissingRequiredField("HTAN_DATA_FILE_ID")
+        if not isinstance(self.HTAN_DATA_FILE_ID, CoreFileAttributesHTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = CoreFileAttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.COMPONENT):
+            self.MissingRequiredField("COMPONENT")
+        if not isinstance(self.COMPONENT, str):
+            self.COMPONENT = str(self.COMPONENT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, str):
+            self.HTAN_PARTICIPANT_ID = str(self.HTAN_PARTICIPANT_ID)
+
+        if self._is_empty(self.HTAN_PARENT_ID):
+            self.MissingRequiredField("HTAN_PARENT_ID")
+        if not isinstance(self.HTAN_PARENT_ID, str):
+            self.HTAN_PARENT_ID = str(self.HTAN_PARENT_ID)
+
+        if self._is_empty(self.HTAN_BIOSPECIMEN_ID):
+            self.MissingRequiredField("HTAN_BIOSPECIMEN_ID")
+        if not isinstance(self.HTAN_BIOSPECIMEN_ID, str):
+            self.HTAN_BIOSPECIMEN_ID = str(self.HTAN_BIOSPECIMEN_ID)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ClinicalData(CoreFileAttributes):
     """
     Container for all clinical data
     """
@@ -94,8 +158,13 @@ class ClinicalData(YAMLRoot):
     class_name: ClassVar[str] = "ClinicalData"
     class_model_uri: ClassVar[URIRef] = HTAN.ClinicalData
 
-    COMPONENT: Union[str, "ComponentEnum"] = None
+    HTAN_DATA_FILE_ID: Union[str, ClinicalDataHTANDATAFILEID] = None
+    COMPONENT: str = None
+    FILENAME: str = None
+    FILE_FORMAT: str = None
     HTAN_PARTICIPANT_ID: str = None
+    HTAN_PARENT_ID: str = None
+    HTAN_BIOSPECIMEN_ID: str = None
     DEMOGRAPHICS: Union[dict, "Demographics"] = None
     VITAL_STATUS: Union[dict, "VitalStatus"] = None
     DIAGNOSIS: Union[dict, "Diagnosis"] = None
@@ -106,15 +175,10 @@ class ClinicalData(YAMLRoot):
     THERAPIES: Optional[Union[Union[dict, "Therapy"], List[Union[dict, "Therapy"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.COMPONENT):
-            self.MissingRequiredField("COMPONENT")
-        if not isinstance(self.COMPONENT, ComponentEnum):
-            self.COMPONENT = ComponentEnum(self.COMPONENT)
-
-        if self._is_empty(self.HTAN_PARTICIPANT_ID):
-            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
-        if not isinstance(self.HTAN_PARTICIPANT_ID, str):
-            self.HTAN_PARTICIPANT_ID = str(self.HTAN_PARTICIPANT_ID)
+        if self._is_empty(self.HTAN_DATA_FILE_ID):
+            self.MissingRequiredField("HTAN_DATA_FILE_ID")
+        if not isinstance(self.HTAN_DATA_FILE_ID, ClinicalDataHTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = ClinicalDataHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
 
         if self._is_empty(self.DEMOGRAPHICS):
             self.MissingRequiredField("DEMOGRAPHICS")
@@ -827,29 +891,6 @@ class GenderIdentityEnum(EnumDefinitionImpl):
                 text="Not Reported",
                 description="Not provided or available"))
 
-class SexEnum(EnumDefinitionImpl):
-
-    Female = PermissibleValue(
-        text="Female",
-        description="Female")
-    Male = PermissibleValue(
-        text="Male",
-        description="Male")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, not observed, not recorded, or refused")
-
-    _defn = EnumDefinition(
-        name="SexEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not provided or available"))
-
 class RaceEnum(EnumDefinitionImpl):
 
     Asian = PermissibleValue(
@@ -880,6 +921,96 @@ class RaceEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Native Hawaiian or Other Pacific Islander",
                 description="Native Hawaiian or Other Pacific Islander"))
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available"))
+
+class SexEnum(EnumDefinitionImpl):
+
+    Female = PermissibleValue(
+        text="Female",
+        description="Female")
+    Male = PermissibleValue(
+        text="Male",
+        description="Male")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded, or refused")
+
+    _defn = EnumDefinition(
+        name="SexEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available"))
+
+class ClinicalNStageEnum(EnumDefinitionImpl):
+
+    N0 = PermissibleValue(
+        text="N0",
+        description="No regional lymph node metastasis")
+    N1 = PermissibleValue(
+        text="N1",
+        description="Metastasis in 1-3 axillary lymph nodes")
+    N2 = PermissibleValue(
+        text="N2",
+        description="Metastasis in 4-9 axillary lymph nodes")
+    N3 = PermissibleValue(
+        text="N3",
+        description="Metastasis in 10 or more axillary lymph nodes")
+    NX = PermissibleValue(
+        text="NX",
+        description="Regional lymph nodes cannot be assessed")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded, or refused")
+
+    _defn = EnumDefinition(
+        name="ClinicalNStageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available"))
+
+class ClinicalTStageEnum(EnumDefinitionImpl):
+
+    T0 = PermissibleValue(
+        text="T0",
+        description="No evidence of primary tumor")
+    T1 = PermissibleValue(
+        text="T1",
+        description="Tumor ≤ 2 cm in greatest dimension")
+    T2 = PermissibleValue(
+        text="T2",
+        description="Tumor > 2 cm but ≤ 4 cm in greatest dimension")
+    T3 = PermissibleValue(
+        text="T3",
+        description="Tumor > 4 cm in greatest dimension")
+    T4 = PermissibleValue(
+        text="T4",
+        description="Tumor of any size with direct extension to adjacent structures")
+    TX = PermissibleValue(
+        text="TX",
+        description="Primary tumor cannot be assessed")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded, or refused")
+
+    _defn = EnumDefinition(
+        name="ClinicalTStageEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
         setattr(cls, "Not Reported",
             PermissibleValue(
                 text="Not Reported",
@@ -985,73 +1116,6 @@ class TumorStageEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Stage IVC",
                 description="Stage IVC"))
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not provided or available"))
-
-class ClinicalTStageEnum(EnumDefinitionImpl):
-
-    T0 = PermissibleValue(
-        text="T0",
-        description="No evidence of primary tumor")
-    T1 = PermissibleValue(
-        text="T1",
-        description="Tumor ≤ 2 cm in greatest dimension")
-    T2 = PermissibleValue(
-        text="T2",
-        description="Tumor > 2 cm but ≤ 4 cm in greatest dimension")
-    T3 = PermissibleValue(
-        text="T3",
-        description="Tumor > 4 cm in greatest dimension")
-    T4 = PermissibleValue(
-        text="T4",
-        description="Tumor of any size with direct extension to adjacent structures")
-    TX = PermissibleValue(
-        text="TX",
-        description="Primary tumor cannot be assessed")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, not observed, not recorded, or refused")
-
-    _defn = EnumDefinition(
-        name="ClinicalTStageEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not provided or available"))
-
-class ClinicalNStageEnum(EnumDefinitionImpl):
-
-    N0 = PermissibleValue(
-        text="N0",
-        description="No regional lymph node metastasis")
-    N1 = PermissibleValue(
-        text="N1",
-        description="Metastasis in 1-3 axillary lymph nodes")
-    N2 = PermissibleValue(
-        text="N2",
-        description="Metastasis in 4-9 axillary lymph nodes")
-    N3 = PermissibleValue(
-        text="N3",
-        description="Metastasis in 10 or more axillary lymph nodes")
-    NX = PermissibleValue(
-        text="NX",
-        description="Regional lymph nodes cannot be assessed")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, not observed, not recorded, or refused")
-
-    _defn = EnumDefinition(
-        name="ClinicalNStageEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
         setattr(cls, "Not Reported",
             PermissibleValue(
                 text="Not Reported",
@@ -1225,35 +1289,6 @@ class MethodOfDiagnosisEnum(EnumDefinitionImpl):
                 text="Not Reported",
                 description="Not provided or available"))
 
-class SmokingHistoryEnum(EnumDefinitionImpl):
-
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, not observed, not recorded, or refused")
-
-    _defn = EnumDefinition(
-        name="SmokingHistoryEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Current smoker",
-            PermissibleValue(
-                text="Current smoker",
-                description="Current smoker"))
-        setattr(cls, "Former smoker",
-            PermissibleValue(
-                text="Former smoker",
-                description="Former smoker"))
-        setattr(cls, "Never smoker",
-            PermissibleValue(
-                text="Never smoker",
-                description="Never smoker"))
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not provided or available"))
-
 class AlcoholHistoryIndicatorEnum(EnumDefinitionImpl):
 
     No = PermissibleValue(
@@ -1305,15 +1340,15 @@ class EnvironmentalExposureTypeEnum(EnumDefinitionImpl):
     Asbestos = PermissibleValue(
         text="Asbestos",
         description="Asbestos exposure")
-    Radiation = PermissibleValue(
-        text="Radiation",
-        description="Radiation exposure")
     Chemical = PermissibleValue(
         text="Chemical",
         description="Chemical exposure")
     Other = PermissibleValue(
         text="Other",
         description="Other type of exposure")
+    Radiation = PermissibleValue(
+        text="Radiation",
+        description="Radiation exposure")
     Unknown = PermissibleValue(
         text="Unknown",
         description="Not known, not observed, not recorded, or refused")
@@ -1324,6 +1359,35 @@ class EnvironmentalExposureTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available"))
+
+class SmokingHistoryEnum(EnumDefinitionImpl):
+
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded, or refused")
+
+    _defn = EnumDefinition(
+        name="SmokingHistoryEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Current smoker",
+            PermissibleValue(
+                text="Current smoker",
+                description="Current smoker"))
+        setattr(cls, "Former smoker",
+            PermissibleValue(
+                text="Former smoker",
+                description="Former smoker"))
+        setattr(cls, "Never smoker",
+            PermissibleValue(
+                text="Never smoker",
+                description="Never smoker"))
         setattr(cls, "Not Reported",
             PermissibleValue(
                 text="Not Reported",
@@ -1374,101 +1438,6 @@ class FamilyMemberCancerHistoryEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Not Reported",
                 description="Not provided or available"))
-
-class ProgressionOrRecurrenceEnum(EnumDefinitionImpl):
-
-    Censored = PermissibleValue(
-        text="Censored",
-        description="Points of data for which only partial information is known.")
-    No = PermissibleValue(
-        text="No",
-        description="The non-affirmative response to a question.")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, observed, recorded; or reported as unknown by the data contributor.")
-    Yes = PermissibleValue(
-        text="Yes",
-        description="The affirmative response to a question.")
-
-    _defn = EnumDefinition(
-        name="ProgressionOrRecurrenceEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Not Allowed to Collect",
-            PermissibleValue(
-                text="Not Allowed to Collect",
-                description="An indicator that specifies that a collection event was not permitted."))
-        setattr(cls, "Not Applicable",
-            PermissibleValue(
-                text="Not Applicable",
-                description="Determination of a value is not relevant in the current context."))
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not provided or available."))
-
-class ProgressionTypeEnum(EnumDefinitionImpl):
-
-    Biochemical = PermissibleValue(
-        text="Biochemical",
-        description="An indication that biochemical markers of a disease are present.")
-    Distant = PermissibleValue(
-        text="Distant",
-        description="""A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor.""")
-    Local = PermissibleValue(
-        text="Local",
-        description="""A disease that is confined to a specific organ or tissue and has not spread to other anatomic sites.""")
-    Locoregional = PermissibleValue(
-        text="Locoregional",
-        description="""A disease that occurs within a specific organ or tissue and extends into adjacent areas including lymph nodes.""")
-    Regional = PermissibleValue(
-        text="Regional",
-        description="""A disease or condition that extends beyond the site and spreads into adjacent tissues and regional lymph nodes.""")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, observed, recorded; or reported as unknown by the data contributor.")
-
-    _defn = EnumDefinition(
-        name="ProgressionTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not provided or available."))
-
-class EvidenceOfRecurrenceTypeEnum(EnumDefinitionImpl):
-
-    Clinical = PermissibleValue(
-        text="Clinical",
-        description="Recurrence was determined by clinical examination.")
-    Imaging = PermissibleValue(
-        text="Imaging",
-        description="Recurrence was determined by imaging.")
-    Laboratory = PermissibleValue(
-        text="Laboratory",
-        description="Recurrence was determined by laboratory test.")
-    Pathology = PermissibleValue(
-        text="Pathology",
-        description="Recurrence was determined by pathology.")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, not observed, not recorded, or refused.")
-
-    _defn = EnumDefinition(
-        name="EvidenceOfRecurrenceTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not provided or available."))
 
 class DiseaseResponseEnum(EnumDefinitionImpl):
 
@@ -1555,6 +1524,101 @@ class ECOGPerformanceStatusEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="5",
                 description="Dead"))
+
+class EvidenceOfRecurrenceTypeEnum(EnumDefinitionImpl):
+
+    Clinical = PermissibleValue(
+        text="Clinical",
+        description="Recurrence was determined by clinical examination.")
+    Imaging = PermissibleValue(
+        text="Imaging",
+        description="Recurrence was determined by imaging.")
+    Laboratory = PermissibleValue(
+        text="Laboratory",
+        description="Recurrence was determined by laboratory test.")
+    Pathology = PermissibleValue(
+        text="Pathology",
+        description="Recurrence was determined by pathology.")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded, or refused.")
+
+    _defn = EnumDefinition(
+        name="EvidenceOfRecurrenceTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available."))
+
+class ProgressionOrRecurrenceEnum(EnumDefinitionImpl):
+
+    Censored = PermissibleValue(
+        text="Censored",
+        description="Points of data for which only partial information is known.")
+    No = PermissibleValue(
+        text="No",
+        description="The non-affirmative response to a question.")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, observed, recorded; or reported as unknown by the data contributor.")
+    Yes = PermissibleValue(
+        text="Yes",
+        description="The affirmative response to a question.")
+
+    _defn = EnumDefinition(
+        name="ProgressionOrRecurrenceEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Not Allowed to Collect",
+            PermissibleValue(
+                text="Not Allowed to Collect",
+                description="An indicator that specifies that a collection event was not permitted."))
+        setattr(cls, "Not Applicable",
+            PermissibleValue(
+                text="Not Applicable",
+                description="Determination of a value is not relevant in the current context."))
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available."))
+
+class ProgressionTypeEnum(EnumDefinitionImpl):
+
+    Biochemical = PermissibleValue(
+        text="Biochemical",
+        description="An indication that biochemical markers of a disease are present.")
+    Distant = PermissibleValue(
+        text="Distant",
+        description="""A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor.""")
+    Local = PermissibleValue(
+        text="Local",
+        description="""A disease that is confined to a specific organ or tissue and has not spread to other anatomic sites.""")
+    Locoregional = PermissibleValue(
+        text="Locoregional",
+        description="""A disease that occurs within a specific organ or tissue and extends into adjacent areas including lymph nodes.""")
+    Regional = PermissibleValue(
+        text="Regional",
+        description="""A disease or condition that extends beyond the site and spreads into adjacent tissues and regional lymph nodes.""")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, observed, recorded; or reported as unknown by the data contributor.")
+
+    _defn = EnumDefinition(
+        name="ProgressionTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available."))
 
 class MenopauseStatusEnum(EnumDefinitionImpl):
 
@@ -2250,29 +2314,6 @@ class TreatmentTypeEnum(EnumDefinitionImpl):
                 text="Targeted Molecular Therapy",
                 description="""Cancer therapies designed to act upon specific molecules in metabolic pathways or processes involved in carcinogenesis"""))
 
-class VitalStatusEnum(EnumDefinitionImpl):
-
-    Alive = PermissibleValue(
-        text="Alive",
-        description="Alive")
-    Deceased = PermissibleValue(
-        text="Deceased",
-        description="Deceased")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, not observed, not recorded, or refused")
-
-    _defn = EnumDefinition(
-        name="VitalStatusEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not provided or available"))
-
 class CauseOfDeathEnum(EnumDefinitionImpl):
 
     Disease = PermissibleValue(
@@ -2318,6 +2359,29 @@ class CauseOfDeathSourceEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Death Certificate",
                 description="Death certificate"))
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available"))
+
+class VitalStatusEnum(EnumDefinitionImpl):
+
+    Alive = PermissibleValue(
+        text="Alive",
+        description="Alive")
+    Deceased = PermissibleValue(
+        text="Deceased",
+        description="Deceased")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded, or refused")
+
+    _defn = EnumDefinition(
+        name="VitalStatusEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
         setattr(cls, "Not Reported",
             PermissibleValue(
                 text="Not Reported",
@@ -47514,13 +47578,6 @@ slots.caDSR_id = Slot(uri=HTAN.caDSR_id, name="caDSR_id", curie=HTAN.curie('caDS
 slots.TISSUE_OR_ORGAN_OF_ORIGIN = Slot(uri=HTAN.TISSUE_OR_ORGAN_OF_ORIGIN, name="TISSUE_OR_ORGAN_OF_ORIGIN", curie=HTAN.curie('TISSUE_OR_ORGAN_OF_ORIGIN'),
                    model_uri=HTAN.TISSUE_OR_ORGAN_OF_ORIGIN, domain=None, range=Union[str, "TissueOrOrganOfOriginUberonEnum"])
 
-slots.clinicalData__COMPONENT = Slot(uri=HTAN.COMPONENT, name="clinicalData__COMPONENT", curie=HTAN.curie('COMPONENT'),
-                   model_uri=HTAN.clinicalData__COMPONENT, domain=None, range=Union[str, "ComponentEnum"])
-
-slots.clinicalData__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="clinicalData__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
-                   model_uri=HTAN.clinicalData__HTAN_PARTICIPANT_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$'))
-
 slots.clinicalData__DEMOGRAPHICS = Slot(uri=HTAN.DEMOGRAPHICS, name="clinicalData__DEMOGRAPHICS", curie=HTAN.curie('DEMOGRAPHICS'),
                    model_uri=HTAN.clinicalData__DEMOGRAPHICS, domain=None, range=Union[dict, Demographics])
 
@@ -47544,6 +47601,32 @@ slots.clinicalData__MOLECULAR_TESTS = Slot(uri=HTAN.MOLECULAR_TESTS, name="clini
 
 slots.clinicalData__THERAPIES = Slot(uri=HTAN.THERAPIES, name="clinicalData__THERAPIES", curie=HTAN.curie('THERAPIES'),
                    model_uri=HTAN.clinicalData__THERAPIES, domain=None, range=Optional[Union[Union[dict, Therapy], List[Union[dict, Therapy]]]])
+
+slots.coreFileAttributes__COMPONENT = Slot(uri=HTAN.COMPONENT, name="coreFileAttributes__COMPONENT", curie=HTAN.curie('COMPONENT'),
+                   model_uri=HTAN.coreFileAttributes__COMPONENT, domain=None, range=str)
+
+slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+[\\/]\S*$'))
+
+slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
+
+slots.coreFileAttributes__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="coreFileAttributes__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
+                   model_uri=HTAN.coreFileAttributes__HTAN_PARTICIPANT_ID, domain=None, range=str,
+                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$'))
+
+slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="coreFileAttributes__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
+                   model_uri=HTAN.coreFileAttributes__HTAN_DATA_FILE_ID, domain=None, range=URIRef,
+                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
+
+slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
+                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
+                   pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$'))
+
+slots.coreFileAttributes__HTAN_BIOSPECIMEN_ID = Slot(uri=HTAN.HTAN_BIOSPECIMEN_ID, name="coreFileAttributes__HTAN_BIOSPECIMEN_ID", curie=HTAN.curie('HTAN_BIOSPECIMEN_ID'),
+                   model_uri=HTAN.coreFileAttributes__HTAN_BIOSPECIMEN_ID, domain=None, range=str,
+                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
 
 slots.demographics__ETHNIC_GROUP = Slot(uri=CADSR['2192201'], name="demographics__ETHNIC_GROUP", curie=CADSR.curie('2192201'),
                    model_uri=HTAN.demographics__ETHNIC_GROUP, domain=None, range=Union[str, "EthnicGroupEnum"])
