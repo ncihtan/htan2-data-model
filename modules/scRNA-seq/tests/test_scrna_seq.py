@@ -26,7 +26,7 @@ class TestScRNAseqSchema:
         # Check class exists
         assert "scRNALevel1" in sv.all_classes()
         
-        # Check required attributes
+        # Check required attributes (base attributes come from inheritance)
         level1_class = sv.get_class("scRNALevel1")
         required_attrs = [
             "SINGLE_CELL_ISOLATION_METHOD",
@@ -35,9 +35,7 @@ class TestScRNAseqSchema:
             "LIBRARY_CONSTRUCTION_METHOD",
             "REVERSE_TRANSCRIPTION_PRIMER",
             "SPIKE_IN",
-            "READ_INDICATOR",
-            "LIBRARY_LAYOUT",
-            "SEQUENCING_PLATFORM"
+            "READ_INDICATOR"
         ]
         
         for attr in required_attrs:
@@ -52,12 +50,10 @@ class TestScRNAseqSchema:
         # Check class exists
         assert "scRNALevel2" in sv.all_classes()
         
-        # Check required attributes
+        # Check required attributes (base attributes come from inheritance)
         level2_class = sv.get_class("scRNALevel2")
         required_attrs = [
-            "SCRNASEQ_WORKFLOW_TYPE",
-            "WORKFLOW_VERSION",
-            "GENOMIC_REFERENCE"
+            "SCRNASEQ_WORKFLOW_TYPE"
         ]
         
         for attr in required_attrs:
@@ -72,17 +68,12 @@ class TestScRNAseqSchema:
         # Check class exists
         assert "scRNALevel3_4" in sv.all_classes()
         
-        # Check required attributes
+        # Check required attributes (base attributes come from inheritance)
         level3_4_class = sv.get_class("scRNALevel3_4")
         required_attrs = [
-            "FILENAME",
             "FILE_FORMAT",
-            "HTAN_DATA_FILE_ID",
-            "HTAN_PARENT_DATA_FILE_ID",
             "SCRNASEQ_WORKFLOW_TYPE",
-            "WORKFLOW_VERSION",
             "SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION",
-            "WORKFLOW_LINK",
             "DATA_CATEGORY",
             "MATRIX_TYPE",
             "CELL_MEDIAN_NUMBER_READS",
@@ -166,15 +157,15 @@ class TestScRNAseqSchema:
             values = list(enum.permissible_values.keys())
             assert values == sorted(values), f"{enum_name} values not alphabetical: {values}"
 
-    def test_inheritance_from_core(self):
-        """Test that scRNA-seq classes inherit from CoreFileAttributes."""
+    def test_inheritance_from_base_sequencing(self):
+        """Test that scRNA-seq classes inherit from BaseSequencingAttributes."""
         schema_path = "modules/scRNA-seq/domains/scrna_seq.yaml"
         sv = SchemaView(schema_path)
         
         # Check inheritance for all levels
         for level_class in ["scRNALevel1", "scRNALevel2", "scRNALevel3_4"]:
             class_def = sv.get_class(level_class)
-            assert class_def.is_a == "CoreFileAttributes"
+            assert class_def.is_a == "BaseSequencingAttributes"
 
 
 class TestScRNAseqDataValidation:
