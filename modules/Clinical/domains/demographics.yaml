@@ -27,18 +27,6 @@ enums:
       "Unknown":
         description: Not known, not observed, not recorded, or refused
 
-  SexEnum:
-    title: sex
-    permissible_values:
-      "Female":
-        description: Female
-      "Male":
-        description: Male
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
-
   RaceEnum:
     title: race
     permissible_values:
@@ -57,6 +45,18 @@ enums:
       "Unknown":
         description: Not known, not observed, not recorded, or refused
 
+  SexEnum:
+    title: sex
+    permissible_values:
+      "Female":
+        description: Female
+      "Male":
+        description: Male
+      "Not Reported":
+        description: Not provided or available
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused
+
 classes:
   Demographics:
     description: Information about the demographics
@@ -64,20 +64,24 @@ classes:
       ETHNIC_GROUP:
         range: EthnicGroupEnum
         required: true
+        title: "Ethnic Group"
         description: Ethnic group of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192201
       GENDER_IDENTITY:
         range: GenderIdentityEnum
         required: true
+        title: "Gender Identity"
         description: Gender identity of the participant (caDSR:2192202) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192202
       SEX:
         range: SexEnum
         required: true
+        title: "Sex"
         description: Sex of the participant (caDSR:2192203) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192203
       RACE:
         range: RaceEnum
         required: true
+        title: "Race"
         description: Race of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192204 

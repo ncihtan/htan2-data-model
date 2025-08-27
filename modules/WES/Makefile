@@ -1,12 +1,12 @@
-# Clinical Module Makefile
+# WES Module Makefile
 
 .PHONY: all clean test gen-schema docs
 
 # Environment variables
-SCHEMA_NAME = htan_clinical
-SOURCE_SCHEMA_PATH = domains/clinical.yaml
+SCHEMA_NAME = htan_wes
+SOURCE_SCHEMA_PATH = domains/wes.yaml
 BUILD_DIR = build
-DATAMODEL_DIR = src/htan_clinical/datamodel
+DATAMODEL_DIR = src/htan_wes/datamodel
 DOCS_DIR = docs
 
 all: gen-schema test docs
@@ -15,8 +15,9 @@ all: gen-schema test docs
 gen-schema:
 	mkdir -p $(BUILD_DIR)
 	mkdir -p $(DATAMODEL_DIR)
-	poetry run gen-project --config-file ../../config/config.yaml -d $(BUILD_DIR) $(SOURCE_SCHEMA_PATH)
-	mv $(BUILD_DIR)/*.py $(DATAMODEL_DIR)/
+	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/wes.py
+	cp $(BUILD_DIR)/wes.py $(DATAMODEL_DIR)/
+	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/wes_schema.json
 	touch $(DATAMODEL_DIR)/schema_classes.py
 
 # Generate documentation
@@ -26,7 +27,7 @@ docs:
 
 # Run module-specific tests
 test:
-	cd ../../ && PYTHONPATH=. poetry run pytest modules/Clinical/tests/ -v
+	cd ../../ && PYTHONPATH=. poetry run pytest modules/WES/tests/ -v
 
 # Clean build artifacts
 clean:

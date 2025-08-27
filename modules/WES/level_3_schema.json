@@ -1,0 +1,116 @@
+{
+    "$defs": {
+        "BulkWESLevel3": {
+            "additionalProperties": false,
+            "description": "Bulk Whole Exome Sequencing Level 3 - Called variants",
+            "properties": {
+                "COMPONENT": {
+                    "description": "Category of metadata (should be \"Bulk WES Level 3\")",
+                    "type": "string"
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (e.g., vcf, bcf, maf)",
+                    "type": "string"
+                },
+                "GENOMIC_REFERENCE": {
+                    "description": "Genomic reference used for variant calling",
+                    "type": "string"
+                },
+                "GENOMIC_REFERENCE_URL": {
+                    "description": "URL to the genomic reference",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GERMLINE_VARIANTS_WORKFLOW_TYPE": {
+                    "description": "Type of germline variants workflow",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GERMLINE_VARIANTS_WORKFLOW_URL": {
+                    "description": "URL to the germline variants workflow",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID",
+                    "type": "string"
+                },
+                "HTAN_PARENT_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID of the parent data file",
+                    "type": "string"
+                },
+                "SOMATIC_VARIANTS_SAMPLE_TYPE": {
+                    "$ref": "#/$defs/SomaticVariantsSampleTypeEnum",
+                    "description": "Type of sample for somatic variants"
+                },
+                "SOMATIC_VARIANTS_WORKFLOW_TYPE": {
+                    "description": "Type of somatic variants workflow",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SOMATIC_VARIANTS_WORKFLOW_URL": {
+                    "description": "URL to the somatic variants workflow",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "STRUCTURAL_VARIANT_WORKFLOW_TYPE": {
+                    "description": "Type of structural variant workflow",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "STRUCTURAL_VARIANT_WORKFLOW_URL": {
+                    "description": "URL to the structural variant workflow",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "COMPONENT",
+                "FILENAME",
+                "FILE_FORMAT",
+                "HTAN_PARENT_DATA_FILE_ID",
+                "HTAN_DATA_FILE_ID",
+                "GENOMIC_REFERENCE"
+            ],
+            "title": "BulkWESLevel3",
+            "type": "object"
+        },
+        "SomaticVariantsSampleTypeEnum": {
+            "description": "",
+            "enum": [
+                "Primary",
+                "Metastatic",
+                "Recurrent",
+                "Normal",
+                "Other"
+            ],
+            "title": "SomaticVariantsSampleTypeEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://w3id.org/htan/wes/level_3",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "Level3",
+    "type": "object",
+    "version": null
+}

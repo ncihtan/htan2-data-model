@@ -1,0 +1,59 @@
+name: Core
+id: https://w3id.org/htan/core
+description: HTAN Core Data Model - Universal attributes shared across all file-based modules
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+classes:
+  CoreFileAttributes:
+    description: Universal attributes that apply to all file-based data in HTAN
+    attributes:
+      COMPONENT:
+        range: string
+        required: true
+        title: "Component"
+        description: Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file
+        pattern: "^.+[\\\\/]\\S*$"
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the file (e.g., fastq, bam, vcf, h5ad)
+      HTAN_PARTICIPANT_ID:
+        range: string
+        required: true
+        title: "HTAN Participant ID"
+        description: HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)
+        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$"
+      HTAN_DATA_FILE_ID:
+        range: string
+        required: true
+        identifier: true
+        title: "HTAN Data File ID"
+        description: HTAN Data File ID (Primary Key)
+        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"
+      HTAN_PARENT_ID:
+        range: string
+        required: true
+        title: "HTAN Parent ID"
+        description: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
+        pattern: "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$"
+      HTAN_BIOSPECIMEN_ID:
+        range: string
+        required: true
+        title: "HTAN Biospecimen ID"
+        description: HTAN Biospecimen ID of the parent biospecimen (Primary Key)
+        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"

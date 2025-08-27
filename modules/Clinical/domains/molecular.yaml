@@ -106,86 +106,103 @@ classes:
       TIMEPOINT_LABEL:
         range: string
         required: true
+        title: "Timepoint Label"
         description: Label for the timepoint (caDSR:2192201) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192201
       AGE_IN_DAYS_AT_MOLECULAR_TEST_START:
         range: integer
         required: true
+        title: "Age in Days at Molecular Test Start"
         description: Age in days at molecular test start (caDSR:2192202) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192202
       AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP:
         range: integer
         required: true
+        title: "Age in Days at Molecular Test Stop"
         description: Age in days at molecular test stop (caDSR:2192203) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192203
       GENE_SYMBOL:
         range: gene_symbol_enum
         required: true
+        title: "Gene Symbol"
         description: Gene symbol (caDSR:2192204) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192204
       MOLECULAR_ANALYSIS_METHOD:
         range: MolecularAnalysisMethodEnum
         required: true
+        title: "Molecular Analysis Method"
         description: Molecular analysis method (caDSR:2192205) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192205
       MOLECULAR_ANALYSIS_RESULT:
         range: string
         required: true
+        title: "Molecular Analysis Result"
         description: Molecular analysis result (caDSR:2192206) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192206
       AA_CHANGE:
         range: string
         required: true
+        title: "Amino Acid Change"
         description: Amino acid change (caDSR:2192207) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192207
       CLINICAL_BIOSPECIMEN_TYPE:
         range: ClinicalBiospecimenTypeEnum
         required: true
+        title: "Clinical Biospecimen Type"
         description: Clinical biospecimen type (caDSR:2192208) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192208
       COPY_NUMBER:
         range: integer
         required: true
+        title: "Copy Number"
         description: Copy number (caDSR:2192209) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192209
       EXON:
         range: integer
         required: true
+        title: "Exon"
         description: Exon number (caDSR:2192210) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192210
       MOLECULAR_CONSEQUENCE:
         range: MolecularConsequenceEnum
         required: true
+        title: "Molecular Consequence"
         description: Molecular consequence (caDSR:2192211) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192211
       PATHOGENICITY:
         range: PathogenicityEnum
         required: true
+        title: "Pathogenicity"
         description: Pathogenicity (caDSR:2192212) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192212
       TEST_ANALYTE_TYPE:
         range: TestAnalyteTypeEnum
         required: true
+        title: "Test Analyte Type"
         description: Test analyte type (caDSR:2192213) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192213
       TEST_UNITS:
         range: string
         required: true
+        title: "Test Units"
         description: Test units (caDSR:2192214) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192214
       TEST_RESULT:
         range: string
         required: true
+        title: "Test Result"
         description: Test result (caDSR:2192215) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192215
       VARIANT_ORIGIN:
         range: VariantOriginEnum
         required: true
+        title: "Variant Origin"
         description: Variant origin (caDSR:2192216) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192216
       VARIANT_TYPE:
         range: VariantTypeEnum
         required: true
+        title: "Variant Type"
         description: Variant type (caDSR:2192217) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:2192217
     slot_usage:

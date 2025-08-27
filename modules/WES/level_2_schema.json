@@ -1,0 +1,327 @@
+{
+    "$defs": {
+        "BulkWESLevel2": {
+            "additionalProperties": false,
+            "description": "Bulk Whole Exome Sequencing Level 2 - Aligned files and QC",
+            "properties": {
+                "ADAPTER_CONTENT": {
+                    "description": "Adapter content information",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ALIGNMENT_WORKFLOW_TYPE": {
+                    "description": "Type of alignment workflow used",
+                    "type": "string"
+                },
+                "AVERAGE_BASE_QUALITY": {
+                    "description": "Average base quality",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "AVERAGE_INSERT_SIZE": {
+                    "description": "Average insert size",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "AVERAGE_READ_LENGTH": {
+                    "description": "Average read length",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "BASIC_STATISTICS": {
+                    "description": "Basic statistics from QC",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "COMPONENT": {
+                    "description": "Category of metadata (should be \"Bulk WES Level 2\")",
+                    "type": "string"
+                },
+                "CONTAMINATION": {
+                    "description": "Contamination estimate",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "CONTAMINATION_ERROR": {
+                    "description": "Contamination error estimate",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ENCODING": {
+                    "description": "Encoding information",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (e.g., bam, bai)",
+                    "type": "string"
+                },
+                "GENOMIC_REFERENCE": {
+                    "description": "Genomic reference used for alignment",
+                    "type": "string"
+                },
+                "GENOMIC_REFERENCE_URL": {
+                    "description": "URL to the genomic reference",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID",
+                    "type": "string"
+                },
+                "HTAN_PARENT_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID of the parent data file",
+                    "type": "string"
+                },
+                "INDEX_FILE_NAME": {
+                    "description": "Name of the index file",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "IS_LOWEST_LEVEL": {
+                    "description": "Whether this is the lowest level",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "MEAN_COVERAGE": {
+                    "description": "Mean coverage depth",
+                    "type": "number"
+                },
+                "MSI_SCORE": {
+                    "description": "MSI score",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MSI_STATUS": {
+                    "$ref": "#/$defs/MSIStatusEnum",
+                    "description": "MSI status"
+                },
+                "MSI_WORKFLOW_LINK": {
+                    "description": "Link to MSI workflow",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "OVERREPRESENTED_SEQUENCES": {
+                    "description": "Overrepresented sequences",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PAIRS_ON_DIFF_CHR": {
+                    "description": "Number of read pairs on different chromosomes",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PERCENT_GC_CONTENT": {
+                    "description": "Percent GC content",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PER_BASE_N_CONTENT": {
+                    "description": "Per base N content",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PER_BASE_SEQUENCE_CONTENT": {
+                    "description": "Per base sequence content",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PER_BASE_SEQUENCE_QUALITY": {
+                    "description": "Per base sequence quality",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PER_SEQUENCE_GC_CONTENT": {
+                    "description": "Per sequence GC content",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PER_SEQUENCE_QUALITY_SCORE": {
+                    "description": "Per sequence quality score",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PER_TILE_SEQUENCE_QUALITY": {
+                    "description": "Per tile sequence quality",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PROPORTION_BASE_MISMATCH": {
+                    "description": "Proportion of base mismatches",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PROPORTION_COVERAGE_10X": {
+                    "description": "Proportion of coverage at 10x",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PROPORTION_COVERAGE_30X": {
+                    "description": "Proportion of coverage at 30x",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PROPORTION_READS_DUPLICATED": {
+                    "description": "Proportion of duplicated reads",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PROPORTION_READS_MAPPED": {
+                    "description": "Proportion of mapped reads",
+                    "type": "number"
+                },
+                "PROPORTION_TARGETS_NO_COVERAGE": {
+                    "description": "Proportion of targets with no coverage",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "QC_WORKFLOW_LINK": {
+                    "description": "Link to QC workflow",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "QC_WORKFLOW_TYPE": {
+                    "description": "QC workflow type",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "QC_WORKFLOW_VERSION": {
+                    "description": "QC workflow version",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SEQUENCE_DUPLICATION_LEVELS": {
+                    "description": "Sequence duplication levels",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SEQUENCE_LENGTH_DISTRIBUTION": {
+                    "description": "Sequence length distribution",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SHORT_READS": {
+                    "description": "Number of short reads",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "TOTAL_READS": {
+                    "description": "Total number of reads",
+                    "type": "integer"
+                },
+                "TOTAL_UNIQUELY_MAPPED": {
+                    "description": "Total number of uniquely mapped reads",
+                    "type": "integer"
+                },
+                "TOTAL_UNMAPPED_READS": {
+                    "description": "Total number of unmapped reads",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "COMPONENT",
+                "FILENAME",
+                "FILE_FORMAT",
+                "HTAN_PARENT_DATA_FILE_ID",
+                "HTAN_DATA_FILE_ID",
+                "ALIGNMENT_WORKFLOW_TYPE",
+                "GENOMIC_REFERENCE",
+                "MEAN_COVERAGE",
+                "TOTAL_READS",
+                "TOTAL_UNIQUELY_MAPPED",
+                "TOTAL_UNMAPPED_READS",
+                "PROPORTION_READS_MAPPED"
+            ],
+            "title": "BulkWESLevel2",
+            "type": "object"
+        },
+        "MSIStatusEnum": {
+            "description": "",
+            "enum": [
+                "MSI-H",
+                "MSI-L",
+                "MSS",
+                "Unknown"
+            ],
+            "title": "MSIStatusEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://w3id.org/htan/wes/level_2",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "Level2",
+    "type": "object",
+    "version": null
+}

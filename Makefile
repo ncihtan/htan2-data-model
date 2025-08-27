@@ -23,7 +23,7 @@ SOURCE_SCHEMA_PATH = modules/Clinical/domains/clinical.yaml
 GEN_DOC_ARGS = --no-mergeimports
 
 # List of modules (add new modules here)
-MODULES = Clinical
+MODULES = Clinical WES Core
 
 .PHONY: all clean setup gen-project gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format
 
@@ -64,7 +64,11 @@ modules-gen:
 modules-test:
 	@for module in $(MODULES); do \
 		echo "Running tests for $$module module..."; \
-		$(MAKE) -C $(MODULES_DIR)/$$module test; \
+		if [ -f $(MODULES_DIR)/$$module/Makefile ] && grep -q "^test:" $(MODULES_DIR)/$$module/Makefile; then \
+			$(MAKE) -C $(MODULES_DIR)/$$module test; \
+		else \
+			echo "No test target found for $$module module, skipping..."; \
+		fi; \
 	done
 
 # Clean all build artifacts
@@ -83,7 +87,11 @@ test-scripts:
 
 # Format code with Black
 format:
-	$(RUN) black scripts/ tests/ modules/Clinical/tests/
+	$(RUN) black scripts/ \
+		tests/ \
+		modules/Clinical/tests/ \
+		modules/WES/tests/ \
+		modules/*/src/
 
 # ---
 # Project Synchronization

@@ -3,58 +3,6 @@ id: https://w3id.org/htan/clinical/followup
 description: HTAN Clinical Data Model - FollowUp Domain
 
 enums:
-  ProgressionOrRecurrenceEnum:
-    title: progression_or_recurrence
-    permissible_values:
-      "Censored":
-        description: Points of data for which only partial information is known.
-      "No":
-        description: The non-affirmative response to a question.
-      "Not Allowed to Collect":
-        description: An indicator that specifies that a collection event was not permitted.
-      "Not Applicable":
-        description: Determination of a value is not relevant in the current context.
-      "Not Reported":
-        description: Not provided or available.
-      "Unknown":
-        description: Not known, observed, recorded; or reported as unknown by the data contributor.
-      "Yes":
-        description: The affirmative response to a question.
-
-  ProgressionTypeEnum:
-    title: progression_type
-    permissible_values:
-      "Biochemical":
-        description: An indication that biochemical markers of a disease are present.
-      "Distant":
-        description: A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor.
-      "Local":
-        description: A disease that is confined to a specific organ or tissue and has not spread to other anatomic sites.
-      "Locoregional":
-        description: A disease that occurs within a specific organ or tissue and extends into adjacent areas including lymph nodes.
-      "Not Reported":
-        description: Not provided or available.
-      "Regional":
-        description: A disease or condition that extends beyond the site and spreads into adjacent tissues and regional lymph nodes.
-      "Unknown":
-        description: Not known, observed, recorded; or reported as unknown by the data contributor.
-
-  EvidenceOfRecurrenceTypeEnum:
-    title: evidence_of_recurrence_type
-    permissible_values:
-      "Clinical":
-        description: Recurrence was determined by clinical examination.
-      "Imaging":
-        description: Recurrence was determined by imaging.
-      "Laboratory":
-        description: Recurrence was determined by laboratory test.
-      "Not Reported":
-        description: Not provided or available.
-      "Pathology":
-        description: Recurrence was determined by pathology.
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused.
-
   DiseaseResponseEnum:
     title: disease_response
     permissible_values:
@@ -97,6 +45,58 @@ enums:
       "5":
         description: Dead
 
+  EvidenceOfRecurrenceTypeEnum:
+    title: evidence_of_recurrence_type
+    permissible_values:
+      "Clinical":
+        description: Recurrence was determined by clinical examination.
+      "Imaging":
+        description: Recurrence was determined by imaging.
+      "Laboratory":
+        description: Recurrence was determined by laboratory test.
+      "Not Reported":
+        description: Not provided or available.
+      "Pathology":
+        description: Recurrence was determined by pathology.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+
+  ProgressionOrRecurrenceEnum:
+    title: progression_or_recurrence
+    permissible_values:
+      "Censored":
+        description: Points of data for which only partial information is known.
+      "No":
+        description: The non-affirmative response to a question.
+      "Not Allowed to Collect":
+        description: An indicator that specifies that a collection event was not permitted.
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Reported":
+        description: Not provided or available.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+      "Yes":
+        description: The affirmative response to a question.
+
+  ProgressionTypeEnum:
+    title: progression_type
+    permissible_values:
+      "Biochemical":
+        description: An indication that biochemical markers of a disease are present.
+      "Distant":
+        description: A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor.
+      "Local":
+        description: A disease that is confined to a specific organ or tissue and has not spread to other anatomic sites.
+      "Locoregional":
+        description: A disease that occurs within a specific organ or tissue and extends into adjacent areas including lymph nodes.
+      "Not Reported":
+        description: Not provided or available.
+      "Regional":
+        description: A disease or condition that extends beyond the site and spreads into adjacent tissues and regional lymph nodes.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+
   MenopauseStatusEnum:
     title: menopause_status
     permissible_values:
@@ -128,38 +128,47 @@ classes:
       AGE_IN_DAYS_AT_FOLLOWUP:
         range: integer
         required: true
+        title: "Age in Days at Follow-up"
         description: Age in days at follow-up
       PROGRESSION_OR_RECURRENCE:
         range: ProgressionOrRecurrenceEnum
         required: true
+        title: "Progression or Recurrence"
         description: Indicates whether the disease has progressed or recurred
       PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
         range: tissue_or_organ_of_origin_uberon_enum
         required: false
+        title: "Progression or Recurrence Anatomic Site UBERON Code"
         description: UBERON code for the anatomic site of progression or recurrence
       PROGRESSION_OR_RECURRENCE_TYPE:
         range: ProgressionTypeEnum
         required: false
+        title: "Progression or Recurrence Type"
         description: Type of progression or recurrence
       EVIDENCE_OF_RECURRENCE_TYPE:
         range: EvidenceOfRecurrenceTypeEnum
         required: false
+        title: "Evidence of Recurrence Type"
         description: Type of evidence for recurrence
       AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
         range: integer
         required: false
+        title: "Age in Days at Progression or Recurrence"
         description: Age in days at progression or recurrence
       DISEASE_RESPONSE:
         range: DiseaseResponseEnum
         required: true
+        title: "Disease Response"
         description: Response to treatment
       ECOG_PERFORMANCE_STATUS:
         range: ECOGPerformanceStatusEnum
         required: true
+        title: "ECOG Performance Status"
         description: ECOG performance status
       MENOPAUSE_STATUS:
         range: MenopauseStatusEnum
         required: false
+        title: "Menopause Status"
         description: Menopause status
     slot_usage:
       PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:

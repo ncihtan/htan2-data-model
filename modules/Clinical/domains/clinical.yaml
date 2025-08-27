@@ -4,6 +4,7 @@ description: HTAN Clinical Data Model Schema
 imports:
   - linkml:types
   - linkml:extensions
+  - ../../Core/domains/core
   - demographics
   - diagnosis
   - exposure
@@ -60,46 +61,46 @@ slots:
 
 classes:
   ClinicalData:
+    is_a: CoreFileAttributes
     description: Container for all clinical data
     attributes:
-      COMPONENT:
-        range: ComponentEnum
-        required: true
-        description: Category of metadata (e.g. Diagnosis, Biospecimen, scRNA-seq Level 1, etc.); provide the same one for all items/rows. (No CRDC Standard Available)
-      HTAN_PARTICIPANT_ID:
-        range: string
-        required: true
-        pattern: "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$"
-        description: HTAN Identifier of the research participant (caDSR:HTAN-Specific) (No CRDC Standard Available)
       DEMOGRAPHICS:
         range: Demographics
         required: true
+        title: "Demographics"
         description: Demographic information
       VITAL_STATUS:
         range: VitalStatus
         required: true
+        title: "Vital Status"
         description: Vital status information
       DIAGNOSIS:
         range: Diagnosis
         required: true
+        title: "Diagnosis"
         description: Primary diagnosis information
       EXPOSURES:
         range: Exposure
         required: true
+        title: "Exposures"
         description: Exposure history
       FAMILY_HISTORY:
         range: FamilyHistory
         required: true
+        title: "Family History"
         description: Family history of cancer
       FOLLOW_UPS:
         range: FollowUp
         multivalued: true
+        title: "Follow-ups"
         description: Follow-up observations
       MOLECULAR_TESTS:
         range: MolecularTest
         multivalued: true
+        title: "Molecular Tests"
         description: Molecular test results
       THERAPIES:
         range: Therapy
         multivalued: true
-        description: Treatment information 
+        title: "Therapies"
+        description: Therapy information 

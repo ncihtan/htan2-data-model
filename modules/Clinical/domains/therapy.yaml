@@ -250,54 +250,66 @@ classes:
       INITIAL_DISEASE_STATUS:
         range: string
         required: true
+        title: "Initial Disease Status"
         description: Status of the individual's malignancy when the treatment began
       TREATMENT_INTENT_TYPE:
         range: TreatmentIntentTypeEnum
         required: true
+        title: "Treatment Intent Type"
         description: Anticipated outcome for therapy
       TREATMENT_TYPE:
         range: TreatmentTypeEnum
         required: true
         multivalued: true
         pattern: "^[^|]+(\\|[^|]+)*$"
+        title: "Treatment Type"
         description: Type of treatment administered
       PHARMACOTHERAPY_TYPE:
         range: PharmacotherapyTypeEnum
         required: true
+        title: "Pharmacotherapy Type"
         description: Whether single or combination pharmacotherapy was used
       THERAPEUTIC_AGENTS:
         range: antineoplastic_agent_enum
         required: true
         multivalued: true
         pattern: "^[^|]+(\\|[^|]+)*$"
+        title: "Therapeutic Agents"
         description: The NCit Preferred Name(s) of the Therapeutic agent(s)
       THERAPY_ANATOMIC_SITE_UBERON_CODE:
         range: tissue_or_organ_of_origin_uberon_enum
         required: false
+        title: "Therapy Anatomic Site UBERON Code"
         description: UBERON identifier for the location within the body targeted by a therapeutic procedure
       AGE_IN_DAYS_AT_TREATMENT_START:
         range: integer
         required: true
+        title: "Age in Days at Treatment Start"
         description: The age in days of the subject at the time that this treatment was started
       AGE_IN_DAYS_AT_TREATMENT_END:
         range: integer
         required: true
+        title: "Age in Days at Treatment End"
         description: The age in days of the subject at the time that this treatment was completed
       OFF_TREATMENT_REASON:
         range: OffTreatmentReasonEnum
         required: false
+        title: "Off Treatment Reason"
         description: Reason for stopping treatment
       REGIMEN_OR_LINE_OF_THERAPY:
         range: RegimenOrLineOfTherapyEnum
         required: false
+        title: "Regimen or Line of Therapy"
         description: Line of therapy
       NUMBER_OF_CYCLES:
         range: integer
         required: false
+        title: "Number of Cycles"
         description: Number of treatment cycles administered
       RESPONSE:
         range: string
         required: false
+        title: "Response"
         description: Response to treatment
     slot_usage:
       THERAPY_ANATOMIC_SITE_UBERON_CODE:

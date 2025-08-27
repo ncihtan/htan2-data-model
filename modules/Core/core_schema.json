@@ -1,0 +1,63 @@
+{
+    "$defs": {
+        "CoreFileAttributes": {
+            "additionalProperties": false,
+            "description": "Universal attributes that apply to all file-based data in HTAN",
+            "properties": {
+                "COMPONENT": {
+                    "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+                    "type": "string"
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "pattern": "^.+\\/\\S*$",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+                    "type": "string"
+                },
+                "HTAN_BIOSPECIMEN_ID": {
+                    "description": "HTAN Biospecimen ID of the parent biospecimen",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_PARENT_ID": {
+                    "description": "HTAN Parent ID (Underscore B for Biospecimen and D for data file)",
+                    "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+                    "type": "string"
+                },
+                "HTAN_PARTICIPANT_ID": {
+                    "description": "HTAN ID associated with a patient based on HTAN ID SOP",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "COMPONENT",
+                "FILENAME",
+                "FILE_FORMAT",
+                "HTAN_PARTICIPANT_ID",
+                "HTAN_DATA_FILE_ID",
+                "HTAN_PARENT_ID"
+            ],
+            "title": "CoreFileAttributes",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/htan/core",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "Core",
+    "type": "object",
+    "version": null
+}

@@ -36,10 +36,12 @@ classes:
         description: >-
           Has a family member been diagnosed with cancer?
         range: YesNoUnknownNotReportedEnum
+        title: "Family Member Cancer History"
       RELATIVES_WITH_CANCER_HISTORY:
         description: >-
           Number of first degree relatives with cancer history
         range: integer
+        title: "Relatives with Cancer History"
     rules:
       - preconditions:
           slot_conditions:

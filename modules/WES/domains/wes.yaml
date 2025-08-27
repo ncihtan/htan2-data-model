@@ -1,0 +1,47 @@
+name: WES
+id: https://w3id.org/htan/wes
+description: HTAN Whole Exome Sequencing Data Model Schema
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../Core/domains/core
+  - level_1
+  - level_2
+  - level_3
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  caDSR: https://cadsr.cancer.gov/onedata/
+
+default_prefix: htan
+
+slots:
+  caDSR_id:
+    description: The caDSR identifier for this element
+    range: string
+    multivalued: false
+    required: false
+
+classes:
+  WESData:
+    description: Container for all WES data
+    attributes:
+      COMPONENT:
+        range: string
+        required: true
+        description: Category of metadata (e.g. Bulk WES Level 1, Bulk WES Level 2, Bulk WES Level 3)
+      LEVEL_1_DATA:
+        range: BulkWESLevel1
+        required: false
+        description: Level 1 WES data (raw files)
+      LEVEL_2_DATA:
+        range: BulkWESLevel2
+        required: false
+        description: Level 2 WES data (aligned files and QC)
+      LEVEL_3_DATA:
+        range: BulkWESLevel3
+        required: false
+        description: Level 3 WES data (called variants)
