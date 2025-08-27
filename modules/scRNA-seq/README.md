@@ -13,11 +13,12 @@ The HTAN scRNA-seq module provides a comprehensive data model for single-cell RN
 The scRNA-seq module uses a clean inheritance chain:
 
 ```
-scRNA-seq classes → BaseSequencingAttributes → CoreFileAttributes
+scRNA-seq classes → BaseSequencingAttributes → BiospecimenAttributes → CoreFileAttributes
 ```
 
 **Inheritance Benefits:**
 - **Core File Attributes**: All scRNA-seq classes get universal file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.) from `CoreFileAttributes`
+- **Biospecimen Attributes**: All scRNA-seq classes get required `HTAN_BIOSPECIMEN_ID` from `BiospecimenAttributes`
 - **Base Sequencing Attributes**: All scRNA-seq classes get common sequencing attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.) from `BaseSequencingAttributes`
 - **scRNA-seq-Specific Attributes**: Each level adds its own scRNA-seq-specific attributes
 - **No Duplication**: Common attributes are defined once in the base modules

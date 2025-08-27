@@ -62,11 +62,12 @@ These tests ensure:
 The WES module uses a clean inheritance chain:
 
 ```
-WES classes → BaseSequencingAttributes → CoreFileAttributes
+WES classes → BaseSequencingAttributes → BiospecimenAttributes → CoreFileAttributes
 ```
 
 **Inheritance Benefits:**
 - **Core File Attributes**: All WES classes get universal file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.) from `CoreFileAttributes`
+- **Biospecimen Attributes**: All WES classes get required `HTAN_BIOSPECIMEN_ID` from `BiospecimenAttributes`
 - **Base Sequencing Attributes**: All WES classes get common sequencing attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.) from `BaseSequencingAttributes`
 - **WES-Specific Attributes**: Each level adds its own WES-specific attributes
 - **No Duplication**: Common attributes are defined once in the base modules
