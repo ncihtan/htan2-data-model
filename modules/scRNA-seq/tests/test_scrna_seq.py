@@ -121,18 +121,50 @@ class TestScRNAseqSchema:
 
     def test_enum_alphabetical_ordering(self):
         """Test that enum values are in alphabetical order."""
+        # Test Level 1 enums
         schema_path = "modules/scRNA-seq/domains/level_1.yaml"
         sv = SchemaView(schema_path)
         
-        # Test SingleCellIsolationMethodEnum
-        isolation_enum = sv.get_enum("SingleCellIsolationMethodEnum")
-        values = list(isolation_enum.permissible_values.keys())
-        assert values == sorted(values), f"SingleCellIsolationMethodEnum values not alphabetical: {values}"
+        level1_enums = [
+            "DissociationMethodEnum",
+            "LibraryConstructionMethodEnum", 
+            "NucleicAcidSourceEnum",
+            "ReadIndicatorEnum",
+            "ReverseTranscriptionPrimerEnum",
+            "SingleCellIsolationMethodEnum",
+            "SpikeInEnum"
+        ]
         
-        # Test DissociationMethodEnum
-        dissociation_enum = sv.get_enum("DissociationMethodEnum")
-        values = list(dissociation_enum.permissible_values.keys())
-        assert values == sorted(values), f"DissociationMethodEnum values not alphabetical: {values}"
+        for enum_name in level1_enums:
+            enum = sv.get_enum(enum_name)
+            values = list(enum.permissible_values.keys())
+            assert values == sorted(values), f"{enum_name} values not alphabetical: {values}"
+        
+        # Test Level 2 enums
+        schema_path = "modules/scRNA-seq/domains/level_2.yaml"
+        sv = SchemaView(schema_path)
+        
+        level2_enums = ["scRNAseqWorkflowTypeEnum"]
+        
+        for enum_name in level2_enums:
+            enum = sv.get_enum(enum_name)
+            values = list(enum.permissible_values.keys())
+            assert values == sorted(values), f"{enum_name} values not alphabetical: {values}"
+        
+        # Test Level 3/4 enums
+        schema_path = "modules/scRNA-seq/domains/level_3_4.yaml"
+        sv = SchemaView(schema_path)
+        
+        level3_4_enums = [
+            "scRNAseqWorkflowTypeEnum",
+            "DataCategoryEnum", 
+            "MatrixTypeEnum"
+        ]
+        
+        for enum_name in level3_4_enums:
+            enum = sv.get_enum(enum_name)
+            values = list(enum.permissible_values.keys())
+            assert values == sorted(values), f"{enum_name} values not alphabetical: {values}"
 
     def test_inheritance_from_core(self):
         """Test that scRNA-seq classes inherit from CoreFileAttributes."""
