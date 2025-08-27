@@ -69,7 +69,7 @@ modules-test:
 	@for module in $(MODULES); do \
 		echo "Running tests for $$module module..."; \
 		if [ -f $(MODULES_DIR)/$$module/Makefile ] && grep -q "^test:" $(MODULES_DIR)/$$module/Makefile; then \
-			$(MAKE) -C $(MODULES_DIR)/$$module test; \
+			cd $(MODULES_DIR)/$$module && python -m pytest tests/ -v; \
 		else \
 			echo "No test target found for $$module module, skipping..."; \
 		fi; \
@@ -87,7 +87,7 @@ test: modules-test test-scripts
 
 # Test script functions
 test-scripts:
-	$(RUN) pytest tests/test_linkml_schema_conversion.py -v
+	python -m pytest tests/test_linkml_schema_conversion.py -v
 
 # Format code with Black
 format:

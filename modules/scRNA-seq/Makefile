@@ -6,11 +6,11 @@ all: gen-python gen-json-schema test
 
 # Generate Python classes from LinkML schema
 gen-python:
-	gen-python domains/scrna_seq.yaml -o src/htan_scrna_seq/datamodel
+	gen-python domains/scrna_seq.yaml > src/htan_scrna_seq/datamodel/scrna_seq.py
 
 # Generate JSON schema
 gen-json-schema:
-	gen-json-schema domains/scrna_seq.yaml -o scrna_seq_schema.json
+	gen-json-schema domains/scrna_seq.yaml > scrna_seq_schema.json
 
 # Validate schema
 validate:

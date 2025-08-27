@@ -11,12 +11,10 @@ prefixes:
 default_prefix: htan
 
 enums:
-  scRNAseqWorkflowTypeEnum:
+  scRNAseqWorkflowTypeEnumLevel2:
     permissible_values:
       "CellRanger":
         description: CellRanger workflow
-      "dropEST":
-        description: dropEST workflow
       "HCA Optimus":
         description: HCA Optimus workflow
       "Other":
@@ -27,6 +25,8 @@ enums:
         description: STARsolo workflow
       "Unknown":
         description: Unknown workflow
+      "dropEST":
+        description: dropEST workflow
 
 classes:
   scRNALevel2:
@@ -35,7 +35,7 @@ classes:
     attributes:
       # scRNA-seq-specific attributes
       SCRNASEQ_WORKFLOW_TYPE:
-        range: scRNAseqWorkflowTypeEnum
+        range: scRNAseqWorkflowTypeEnumLevel2
         required: true
         title: "scRNA-seq Workflow Type"
         description: Generic name for the workflow used to analyze the dataset

@@ -15,14 +15,10 @@ Defines common attributes that every file-based data type in HTAN must have, eli
 - **HTAN_DATA_FILE_ID**: HTAN Data File ID (Primary Key)
 - **HTAN_PARENT_ID**: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
 
-
-
 ## Primary and Foreign Keys
 
 ### Primary Keys (marked with `identifier: true`)
 - **HTAN_DATA_FILE_ID**: Unique identifier for data files across all levels
-
-
 
 ### Foreign Key
 - **HTAN_PARENT_ID**: References parent entity using suffix convention:
@@ -38,10 +34,6 @@ Participant (HTAN_PARTICIPANT_ID)
 │           └── Level 3 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
 ```
 
-## Validation Patterns
-
-
-
 ### HTAN_DATA_FILE_ID
 - **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
 - **Examples**: `HTA200_2_36667`, `HTA200_EXT001_36667`
@@ -49,8 +41,6 @@ Participant (HTAN_PARTICIPANT_ID)
 ### HTAN_PARENT_ID
 - **Pattern**: `^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$`
 - **Examples**: `HTA200_2_B7001` (biospecimen), `HTA200_2_D36667` (data file)
-
-
 
 ## Usage
 

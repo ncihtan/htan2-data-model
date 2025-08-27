@@ -5,10 +5,10 @@
 all: gen-python gen-json-schema test
 
 gen-python:
-	gen-python domains/biospecimen.yaml -o src/htan_biospecimen/datamodel
+	gen-python domains/biospecimen.yaml > src/htan_biospecimen/datamodel/biospecimen.py
 
 gen-json-schema:
-	gen-json-schema domains/biospecimen.yaml -o biospecimen_schema.json
+	gen-json-schema domains/biospecimen.yaml > biospecimen_schema.json
 
 test:
 	python -m pytest tests/ -v

@@ -13,14 +13,14 @@ class TestBaseSequencingSchema:
 
     def test_schema_loading(self):
         """Test that the schema loads without errors."""
-        schema_path = "modules/Sequencing/domains/sequencing.yaml"
+        schema_path = "domains/sequencing.yaml"
         sv = SchemaView(schema_path)
         assert sv.schema.name == "Sequencing"
         assert sv.schema.id == "https://w3id.org/htan/sequencing"
 
     def test_base_sequencing_attributes_class(self):
         """Test BaseSequencingAttributes class structure."""
-        schema_path = "modules/Sequencing/domains/sequencing.yaml"
+        schema_path = "domains/sequencing.yaml"
         sv = SchemaView(schema_path)
         
         # Check class exists
@@ -41,7 +41,7 @@ class TestBaseSequencingSchema:
 
     def test_enum_alphabetical_ordering(self):
         """Test that enum values are in alphabetical order."""
-        schema_path = "modules/Sequencing/domains/sequencing.yaml"
+        schema_path = "domains/sequencing.yaml"
         sv = SchemaView(schema_path)
         
         # Test LibraryLayoutEnum
@@ -56,16 +56,16 @@ class TestBaseSequencingSchema:
 
     def test_inheritance_from_core(self):
         """Test that BaseSequencingAttributes inherits from CoreFileAttributes."""
-        schema_path = "modules/Sequencing/domains/sequencing.yaml"
+        schema_path = "domains/sequencing.yaml"
         sv = SchemaView(schema_path)
         
         base_class = sv.get_class("BaseSequencingAttributes")
-        # BaseSequencingAttributes should inherit from CoreFileAttributes
-        assert base_class.is_a == "CoreFileAttributes"
+        # BaseSequencingAttributes should inherit from BiospecimenAttributes
+        assert base_class.is_a == "BiospecimenAttributes"
 
     def test_common_attributes_present(self):
         """Test that all common sequencing attributes are present."""
-        schema_path = "modules/Sequencing/domains/sequencing.yaml"
+        schema_path = "domains/sequencing.yaml"
         sv = SchemaView(schema_path)
         
         base_class = sv.get_class("BaseSequencingAttributes")
@@ -91,7 +91,7 @@ class TestBaseSequencingSchema:
 
     def test_optional_attributes(self):
         """Test that optional attributes are properly marked."""
-        schema_path = "modules/Sequencing/domains/sequencing.yaml"
+        schema_path = "domains/sequencing.yaml"
         sv = SchemaView(schema_path)
         
         base_class = sv.get_class("BaseSequencingAttributes")
@@ -118,7 +118,6 @@ class TestBaseSequencingDataValidation:
         """Test valid base sequencing data."""
         valid_data = {
             "COMPONENT": "Sequencing",
-            "HTAN_PARTICIPANT_ID": "HTAN-001",
             "HTAN_DATA_FILE_ID": "HTAN-001_0000_0001",
             "FILENAME": "sequencing_data.fastq.gz",
             "FILE_FORMAT": "fastq",

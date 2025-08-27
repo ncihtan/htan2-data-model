@@ -3,7 +3,7 @@ id: https://w3id.org/htan/biospecimen
 description: HTAN Biospecimen Data Model - Attributes for biospecimen-based modules
 imports:
   - linkml:types
-  - ../../Core/domains/core.yaml
+  - ../../Core/domains/core
 
 prefixes:
   htan: https://w3id.org/htan/

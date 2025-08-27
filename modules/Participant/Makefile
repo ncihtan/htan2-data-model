@@ -5,10 +5,10 @@
 all: gen-python gen-json-schema test
 
 gen-python:
-	gen-python domains/participant.yaml -o src/htan_participant/datamodel
+	gen-python domains/participant.yaml > src/htan_participant/datamodel/participant.py
 
 gen-json-schema:
-	gen-json-schema domains/participant.yaml -o participant_schema.json
+	gen-json-schema domains/participant.yaml > participant_schema.json
 
 test:
 	python -m pytest tests/ -v

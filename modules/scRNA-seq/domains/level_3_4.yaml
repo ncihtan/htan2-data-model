@@ -13,7 +13,7 @@ prefixes:
 default_prefix: htan
 
 enums:
-  scRNAseqWorkflowTypeEnum:
+  scRNAseqWorkflowTypeEnumLevel3_4:
     permissible_values:
       "Cell annotation":
         description: Cell annotation workflow
@@ -25,8 +25,6 @@ enums:
         description: DEXSeq workflow
       "Differentiation trajectory analysis":
         description: Differentiation trajectory analysis workflow
-      "dropEST":
-        description: dropEST workflow
       "HCA Optimus":
         description: Human Cell Atlas Optimus workflow
       "HTSeq - FPKM":
@@ -37,6 +35,8 @@ enums:
         description: SEQC workflow
       "STARsolo":
         description: STARsolo alignment workflow
+      "dropEST":
+        description: dropEST workflow
 
   DataCategoryEnum:
     permissible_values:
@@ -81,7 +81,7 @@ classes:
       
       # scRNA-seq-specific attributes
       SCRNASEQ_WORKFLOW_TYPE:
-        range: scRNAseqWorkflowTypeEnum
+        range: scRNAseqWorkflowTypeEnumLevel3_4
         required: true
         title: "scRNAseq Workflow Type"
         description: Generic name for the workflow used to analyze a data set

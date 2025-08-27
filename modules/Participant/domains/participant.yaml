@@ -3,7 +3,7 @@ id: https://w3id.org/htan/participant
 description: HTAN Participant Data Model - Attributes for participant-based modules
 imports:
   - linkml:types
-  - ../../Core/domains/core.yaml
+  - ../../Core/domains/core
 
 prefixes:
   htan: https://w3id.org/htan/

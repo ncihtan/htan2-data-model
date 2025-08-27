@@ -6,11 +6,11 @@ all: gen-python gen-json-schema test
 
 # Generate Python classes from LinkML schema
 gen-python:
-	gen-python domains/sequencing.yaml -o src/htan_sequencing/datamodel
+	gen-python domains/sequencing.yaml > src/htan_sequencing/datamodel/sequencing.py
 
 # Generate JSON schema
 gen-json-schema:
-	gen-json-schema domains/sequencing.yaml -o sequencing_schema.json
+	gen-json-schema domains/sequencing.yaml > sequencing_schema.json
 
 # Validate schema
 validate:
