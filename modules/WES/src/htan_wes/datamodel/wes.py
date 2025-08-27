@@ -1,5 +1,5 @@
 # Auto generated from wes.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-19T14:49:52
+# Generation date: 2025-08-27T09:49:25
 # Schema: WES
 #
 # id: https://w3id.org/htan/wes
@@ -78,7 +78,20 @@ DEFAULT_ = HTAN
 # Types
 
 # Class references
+class CoreFileAttributesHTANDATAFILEID(extended_str):
+    pass
 
+
+class BulkWESLevel1HTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
+    pass
+
+
+class BulkWESLevel2HTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
+    pass
+
+
+class BulkWESLevel3HTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
+    pass
 
 
 @dataclass(repr=False)
@@ -94,10 +107,9 @@ class WESData(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = HTAN.WESData
 
     COMPONENT: str = None
-    HTAN_PARTICIPANT_ID: str = None
-    LEVEL_1_DATA: Optional[Union[dict, "BulkWESLevel1"]] = None
-    LEVEL_2_DATA: Optional[Union[dict, "BulkWESLevel2"]] = None
-    LEVEL_3_DATA: Optional[Union[dict, "BulkWESLevel3"]] = None
+    LEVEL_1_DATA: Optional[Union[str, BulkWESLevel1HTANDATAFILEID]] = None
+    LEVEL_2_DATA: Optional[Union[str, BulkWESLevel2HTANDATAFILEID]] = None
+    LEVEL_3_DATA: Optional[Union[str, BulkWESLevel3HTANDATAFILEID]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.COMPONENT):
@@ -105,25 +117,79 @@ class WESData(YAMLRoot):
         if not isinstance(self.COMPONENT, str):
             self.COMPONENT = str(self.COMPONENT)
 
-        if self._is_empty(self.HTAN_PARTICIPANT_ID):
-            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
-        if not isinstance(self.HTAN_PARTICIPANT_ID, str):
-            self.HTAN_PARTICIPANT_ID = str(self.HTAN_PARTICIPANT_ID)
+        if self.LEVEL_1_DATA is not None and not isinstance(self.LEVEL_1_DATA, BulkWESLevel1HTANDATAFILEID):
+            self.LEVEL_1_DATA = BulkWESLevel1HTANDATAFILEID(self.LEVEL_1_DATA)
 
-        if self.LEVEL_1_DATA is not None and not isinstance(self.LEVEL_1_DATA, BulkWESLevel1):
-            self.LEVEL_1_DATA = BulkWESLevel1(**as_dict(self.LEVEL_1_DATA))
+        if self.LEVEL_2_DATA is not None and not isinstance(self.LEVEL_2_DATA, BulkWESLevel2HTANDATAFILEID):
+            self.LEVEL_2_DATA = BulkWESLevel2HTANDATAFILEID(self.LEVEL_2_DATA)
 
-        if self.LEVEL_2_DATA is not None and not isinstance(self.LEVEL_2_DATA, BulkWESLevel2):
-            self.LEVEL_2_DATA = BulkWESLevel2(**as_dict(self.LEVEL_2_DATA))
-
-        if self.LEVEL_3_DATA is not None and not isinstance(self.LEVEL_3_DATA, BulkWESLevel3):
-            self.LEVEL_3_DATA = BulkWESLevel3(**as_dict(self.LEVEL_3_DATA))
+        if self.LEVEL_3_DATA is not None and not isinstance(self.LEVEL_3_DATA, BulkWESLevel3HTANDATAFILEID):
+            self.LEVEL_3_DATA = BulkWESLevel3HTANDATAFILEID(self.LEVEL_3_DATA)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class BulkWESLevel1(YAMLRoot):
+class CoreFileAttributes(YAMLRoot):
+    """
+    Universal attributes that apply to all file-based data in HTAN
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["CoreFileAttributes"]
+    class_class_curie: ClassVar[str] = "htan:CoreFileAttributes"
+    class_name: ClassVar[str] = "CoreFileAttributes"
+    class_model_uri: ClassVar[URIRef] = HTAN.CoreFileAttributes
+
+    HTAN_DATA_FILE_ID: Union[str, CoreFileAttributesHTANDATAFILEID] = None
+    COMPONENT: str = None
+    FILENAME: str = None
+    FILE_FORMAT: str = None
+    HTAN_PARTICIPANT_ID: str = None
+    HTAN_PARENT_ID: str = None
+    HTAN_BIOSPECIMEN_ID: str = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_DATA_FILE_ID):
+            self.MissingRequiredField("HTAN_DATA_FILE_ID")
+        if not isinstance(self.HTAN_DATA_FILE_ID, CoreFileAttributesHTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = CoreFileAttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.COMPONENT):
+            self.MissingRequiredField("COMPONENT")
+        if not isinstance(self.COMPONENT, str):
+            self.COMPONENT = str(self.COMPONENT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, str):
+            self.HTAN_PARTICIPANT_ID = str(self.HTAN_PARTICIPANT_ID)
+
+        if self._is_empty(self.HTAN_PARENT_ID):
+            self.MissingRequiredField("HTAN_PARENT_ID")
+        if not isinstance(self.HTAN_PARENT_ID, str):
+            self.HTAN_PARENT_ID = str(self.HTAN_PARENT_ID)
+
+        if self._is_empty(self.HTAN_BIOSPECIMEN_ID):
+            self.MissingRequiredField("HTAN_BIOSPECIMEN_ID")
+        if not isinstance(self.HTAN_BIOSPECIMEN_ID, str):
+            self.HTAN_BIOSPECIMEN_ID = str(self.HTAN_BIOSPECIMEN_ID)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BulkWESLevel1(CoreFileAttributes):
     """
     Bulk Whole Exome Sequencing Level 1 - Raw files
     """
@@ -134,11 +200,13 @@ class BulkWESLevel1(YAMLRoot):
     class_name: ClassVar[str] = "BulkWESLevel1"
     class_model_uri: ClassVar[URIRef] = HTAN.BulkWESLevel1
 
+    HTAN_DATA_FILE_ID: Union[str, BulkWESLevel1HTANDATAFILEID] = None
     COMPONENT: str = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARENT_BIOSPECIMEN_ID: str = None
-    HTAN_DATA_FILE_ID: str = None
+    HTAN_PARTICIPANT_ID: str = None
+    HTAN_PARENT_ID: str = None
+    HTAN_BIOSPECIMEN_ID: str = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     LIBRARY_SELECTION_METHOD: Union[str, "LibrarySelectionMethodEnum"] = None
     READ_LENGTH: int = None
@@ -166,30 +234,10 @@ class BulkWESLevel1(YAMLRoot):
     TO_TRIM_ADAPTER_SEQUENCE: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.COMPONENT):
-            self.MissingRequiredField("COMPONENT")
-        if not isinstance(self.COMPONENT, str):
-            self.COMPONENT = str(self.COMPONENT)
-
-        if self._is_empty(self.FILENAME):
-            self.MissingRequiredField("FILENAME")
-        if not isinstance(self.FILENAME, str):
-            self.FILENAME = str(self.FILENAME)
-
-        if self._is_empty(self.FILE_FORMAT):
-            self.MissingRequiredField("FILE_FORMAT")
-        if not isinstance(self.FILE_FORMAT, str):
-            self.FILE_FORMAT = str(self.FILE_FORMAT)
-
-        if self._is_empty(self.HTAN_PARENT_BIOSPECIMEN_ID):
-            self.MissingRequiredField("HTAN_PARENT_BIOSPECIMEN_ID")
-        if not isinstance(self.HTAN_PARENT_BIOSPECIMEN_ID, str):
-            self.HTAN_PARENT_BIOSPECIMEN_ID = str(self.HTAN_PARENT_BIOSPECIMEN_ID)
-
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, str):
-            self.HTAN_DATA_FILE_ID = str(self.HTAN_DATA_FILE_ID)
+        if not isinstance(self.HTAN_DATA_FILE_ID, BulkWESLevel1HTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = BulkWESLevel1HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
 
         if self._is_empty(self.LIBRARY_LAYOUT):
             self.MissingRequiredField("LIBRARY_LAYOUT")
@@ -278,9 +326,9 @@ class BulkWESLevel1(YAMLRoot):
 
 
 @dataclass(repr=False)
-class BulkWESLevel2(YAMLRoot):
+class BulkWESLevel2(CoreFileAttributes):
     """
-    Bulk Whole Exome Sequencing Level 2 - Aligned files and QC
+    Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -289,11 +337,13 @@ class BulkWESLevel2(YAMLRoot):
     class_name: ClassVar[str] = "BulkWESLevel2"
     class_model_uri: ClassVar[URIRef] = HTAN.BulkWESLevel2
 
+    HTAN_DATA_FILE_ID: Union[str, BulkWESLevel2HTANDATAFILEID] = None
     COMPONENT: str = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARENT_DATA_FILE_ID: str = None
-    HTAN_DATA_FILE_ID: str = None
+    HTAN_PARTICIPANT_ID: str = None
+    HTAN_PARENT_ID: str = None
+    HTAN_BIOSPECIMEN_ID: str = None
     ALIGNMENT_WORKFLOW_TYPE: str = None
     GENOMIC_REFERENCE: str = None
     MEAN_COVERAGE: float = None
@@ -324,9 +374,6 @@ class BulkWESLevel2(YAMLRoot):
     QC_WORKFLOW_TYPE: Optional[str] = None
     QC_WORKFLOW_VERSION: Optional[str] = None
     QC_WORKFLOW_LINK: Optional[str] = None
-    MSI_WORKFLOW_LINK: Optional[str] = None
-    MSI_SCORE: Optional[float] = None
-    MSI_STATUS: Optional[Union[str, "MSIStatusEnum"]] = None
     PAIRS_ON_DIFF_CHR: Optional[int] = None
     PROPORTION_READS_DUPLICATED: Optional[float] = None
     PROPORTION_TARGETS_NO_COVERAGE: Optional[float] = None
@@ -337,30 +384,10 @@ class BulkWESLevel2(YAMLRoot):
     IS_LOWEST_LEVEL: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.COMPONENT):
-            self.MissingRequiredField("COMPONENT")
-        if not isinstance(self.COMPONENT, str):
-            self.COMPONENT = str(self.COMPONENT)
-
-        if self._is_empty(self.FILENAME):
-            self.MissingRequiredField("FILENAME")
-        if not isinstance(self.FILENAME, str):
-            self.FILENAME = str(self.FILENAME)
-
-        if self._is_empty(self.FILE_FORMAT):
-            self.MissingRequiredField("FILE_FORMAT")
-        if not isinstance(self.FILE_FORMAT, str):
-            self.FILE_FORMAT = str(self.FILE_FORMAT)
-
-        if self._is_empty(self.HTAN_PARENT_DATA_FILE_ID):
-            self.MissingRequiredField("HTAN_PARENT_DATA_FILE_ID")
-        if not isinstance(self.HTAN_PARENT_DATA_FILE_ID, str):
-            self.HTAN_PARENT_DATA_FILE_ID = str(self.HTAN_PARENT_DATA_FILE_ID)
-
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, str):
-            self.HTAN_DATA_FILE_ID = str(self.HTAN_DATA_FILE_ID)
+        if not isinstance(self.HTAN_DATA_FILE_ID, BulkWESLevel2HTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = BulkWESLevel2HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
 
         if self._is_empty(self.ALIGNMENT_WORKFLOW_TYPE):
             self.MissingRequiredField("ALIGNMENT_WORKFLOW_TYPE")
@@ -466,15 +493,6 @@ class BulkWESLevel2(YAMLRoot):
         if self.QC_WORKFLOW_LINK is not None and not isinstance(self.QC_WORKFLOW_LINK, str):
             self.QC_WORKFLOW_LINK = str(self.QC_WORKFLOW_LINK)
 
-        if self.MSI_WORKFLOW_LINK is not None and not isinstance(self.MSI_WORKFLOW_LINK, str):
-            self.MSI_WORKFLOW_LINK = str(self.MSI_WORKFLOW_LINK)
-
-        if self.MSI_SCORE is not None and not isinstance(self.MSI_SCORE, float):
-            self.MSI_SCORE = float(self.MSI_SCORE)
-
-        if self.MSI_STATUS is not None and not isinstance(self.MSI_STATUS, MSIStatusEnum):
-            self.MSI_STATUS = MSIStatusEnum(self.MSI_STATUS)
-
         if self.PAIRS_ON_DIFF_CHR is not None and not isinstance(self.PAIRS_ON_DIFF_CHR, int):
             self.PAIRS_ON_DIFF_CHR = int(self.PAIRS_ON_DIFF_CHR)
 
@@ -503,9 +521,9 @@ class BulkWESLevel2(YAMLRoot):
 
 
 @dataclass(repr=False)
-class BulkWESLevel3(YAMLRoot):
+class BulkWESLevel3(CoreFileAttributes):
     """
-    Bulk Whole Exome Sequencing Level 3 - Called variants
+    Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -514,11 +532,13 @@ class BulkWESLevel3(YAMLRoot):
     class_name: ClassVar[str] = "BulkWESLevel3"
     class_model_uri: ClassVar[URIRef] = HTAN.BulkWESLevel3
 
+    HTAN_DATA_FILE_ID: Union[str, BulkWESLevel3HTANDATAFILEID] = None
     COMPONENT: str = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARENT_DATA_FILE_ID: str = None
-    HTAN_DATA_FILE_ID: str = None
+    HTAN_PARTICIPANT_ID: str = None
+    HTAN_PARENT_ID: str = None
+    HTAN_BIOSPECIMEN_ID: str = None
     GENOMIC_REFERENCE: str = None
     GENOMIC_REFERENCE_URL: Optional[str] = None
     GERMLINE_VARIANTS_WORKFLOW_URL: Optional[str] = None
@@ -528,32 +548,15 @@ class BulkWESLevel3(YAMLRoot):
     SOMATIC_VARIANTS_SAMPLE_TYPE: Optional[Union[str, "SomaticVariantsSampleTypeEnum"]] = None
     STRUCTURAL_VARIANT_WORKFLOW_URL: Optional[str] = None
     STRUCTURAL_VARIANT_WORKFLOW_TYPE: Optional[str] = None
+    MSI_WORKFLOW_LINK: Optional[str] = None
+    MSI_SCORE: Optional[float] = None
+    MSI_STATUS: Optional[Union[str, "MSIStatusEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.COMPONENT):
-            self.MissingRequiredField("COMPONENT")
-        if not isinstance(self.COMPONENT, str):
-            self.COMPONENT = str(self.COMPONENT)
-
-        if self._is_empty(self.FILENAME):
-            self.MissingRequiredField("FILENAME")
-        if not isinstance(self.FILENAME, str):
-            self.FILENAME = str(self.FILENAME)
-
-        if self._is_empty(self.FILE_FORMAT):
-            self.MissingRequiredField("FILE_FORMAT")
-        if not isinstance(self.FILE_FORMAT, str):
-            self.FILE_FORMAT = str(self.FILE_FORMAT)
-
-        if self._is_empty(self.HTAN_PARENT_DATA_FILE_ID):
-            self.MissingRequiredField("HTAN_PARENT_DATA_FILE_ID")
-        if not isinstance(self.HTAN_PARENT_DATA_FILE_ID, str):
-            self.HTAN_PARENT_DATA_FILE_ID = str(self.HTAN_PARENT_DATA_FILE_ID)
-
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, str):
-            self.HTAN_DATA_FILE_ID = str(self.HTAN_DATA_FILE_ID)
+        if not isinstance(self.HTAN_DATA_FILE_ID, BulkWESLevel3HTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = BulkWESLevel3HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
 
         if self._is_empty(self.GENOMIC_REFERENCE):
             self.MissingRequiredField("GENOMIC_REFERENCE")
@@ -583,6 +586,15 @@ class BulkWESLevel3(YAMLRoot):
 
         if self.STRUCTURAL_VARIANT_WORKFLOW_TYPE is not None and not isinstance(self.STRUCTURAL_VARIANT_WORKFLOW_TYPE, str):
             self.STRUCTURAL_VARIANT_WORKFLOW_TYPE = str(self.STRUCTURAL_VARIANT_WORKFLOW_TYPE)
+
+        if self.MSI_WORKFLOW_LINK is not None and not isinstance(self.MSI_WORKFLOW_LINK, str):
+            self.MSI_WORKFLOW_LINK = str(self.MSI_WORKFLOW_LINK)
+
+        if self.MSI_SCORE is not None and not isinstance(self.MSI_SCORE, float):
+            self.MSI_SCORE = float(self.MSI_SCORE)
+
+        if self.MSI_STATUS is not None and not isinstance(self.MSI_STATUS, MSIStatusEnum):
+            self.MSI_STATUS = MSIStatusEnum(self.MSI_STATUS)
 
         super().__post_init__(**kwargs)
 
@@ -630,36 +642,36 @@ class LibrarySelectionMethodEnum(EnumDefinitionImpl):
 
 class SequencingPlatformEnum(EnumDefinitionImpl):
 
-    ILLUMINA = PermissibleValue(
-        text="ILLUMINA",
-        description="Illumina sequencing platform")
-    PACBIO_SMRT = PermissibleValue(
-        text="PACBIO_SMRT",
-        description="PacBio SMRT sequencing platform")
-    OXFORD_NANOPORE = PermissibleValue(
-        text="OXFORD_NANOPORE",
-        description="Oxford Nanopore sequencing platform")
-    ION_TORRENT = PermissibleValue(
-        text="ION_TORRENT",
-        description="Ion Torrent sequencing platform")
-    COMPLETE_GENOMICS = PermissibleValue(
-        text="COMPLETE_GENOMICS",
-        description="Complete Genomics sequencing platform")
-    CAPILLARY = PermissibleValue(
-        text="CAPILLARY",
-        description="Capillary sequencing platform")
-    LS454 = PermissibleValue(
-        text="LS454",
-        description="454 sequencing platform")
     ABI_SOLID = PermissibleValue(
         text="ABI_SOLID",
         description="ABI SOLID sequencing platform")
-    HELICOS = PermissibleValue(
-        text="HELICOS",
-        description="Helicos sequencing platform")
     BGISEQ = PermissibleValue(
         text="BGISEQ",
         description="BGI sequencing platform")
+    CAPILLARY = PermissibleValue(
+        text="CAPILLARY",
+        description="Capillary sequencing platform")
+    COMPLETE_GENOMICS = PermissibleValue(
+        text="COMPLETE_GENOMICS",
+        description="Complete Genomics sequencing platform")
+    HELICOS = PermissibleValue(
+        text="HELICOS",
+        description="Helicos sequencing platform")
+    ILLUMINA = PermissibleValue(
+        text="ILLUMINA",
+        description="Illumina sequencing platform")
+    ION_TORRENT = PermissibleValue(
+        text="ION_TORRENT",
+        description="Ion Torrent sequencing platform")
+    LS454 = PermissibleValue(
+        text="LS454",
+        description="454 sequencing platform")
+    OXFORD_NANOPORE = PermissibleValue(
+        text="OXFORD_NANOPORE",
+        description="Oxford Nanopore sequencing platform")
+    PACBIO_SMRT = PermissibleValue(
+        text="PACBIO_SMRT",
+        description="PacBio SMRT sequencing platform")
 
     _defn = EnumDefinition(
         name="SequencingPlatformEnum",
@@ -691,21 +703,21 @@ class MSIStatusEnum(EnumDefinitionImpl):
 
 class SomaticVariantsSampleTypeEnum(EnumDefinitionImpl):
 
-    Primary = PermissibleValue(
-        text="Primary",
-        description="Primary tumor sample")
     Metastatic = PermissibleValue(
         text="Metastatic",
         description="Metastatic tumor sample")
-    Recurrent = PermissibleValue(
-        text="Recurrent",
-        description="Recurrent tumor sample")
     Normal = PermissibleValue(
         text="Normal",
         description="Normal tissue sample")
     Other = PermissibleValue(
         text="Other",
         description="Other sample type")
+    Primary = PermissibleValue(
+        text="Primary",
+        description="Primary tumor sample")
+    Recurrent = PermissibleValue(
+        text="Recurrent",
+        description="Recurrent tumor sample")
 
     _defn = EnumDefinition(
         name="SomaticVariantsSampleTypeEnum",
@@ -721,33 +733,40 @@ slots.caDSR_id = Slot(uri=HTAN.caDSR_id, name="caDSR_id", curie=HTAN.curie('caDS
 slots.wESData__COMPONENT = Slot(uri=HTAN.COMPONENT, name="wESData__COMPONENT", curie=HTAN.curie('COMPONENT'),
                    model_uri=HTAN.wESData__COMPONENT, domain=None, range=str)
 
-slots.wESData__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="wESData__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
-                   model_uri=HTAN.wESData__HTAN_PARTICIPANT_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$'))
-
 slots.wESData__LEVEL_1_DATA = Slot(uri=HTAN.LEVEL_1_DATA, name="wESData__LEVEL_1_DATA", curie=HTAN.curie('LEVEL_1_DATA'),
-                   model_uri=HTAN.wESData__LEVEL_1_DATA, domain=None, range=Optional[Union[dict, BulkWESLevel1]])
+                   model_uri=HTAN.wESData__LEVEL_1_DATA, domain=None, range=Optional[Union[str, BulkWESLevel1HTANDATAFILEID]])
 
 slots.wESData__LEVEL_2_DATA = Slot(uri=HTAN.LEVEL_2_DATA, name="wESData__LEVEL_2_DATA", curie=HTAN.curie('LEVEL_2_DATA'),
-                   model_uri=HTAN.wESData__LEVEL_2_DATA, domain=None, range=Optional[Union[dict, BulkWESLevel2]])
+                   model_uri=HTAN.wESData__LEVEL_2_DATA, domain=None, range=Optional[Union[str, BulkWESLevel2HTANDATAFILEID]])
 
 slots.wESData__LEVEL_3_DATA = Slot(uri=HTAN.LEVEL_3_DATA, name="wESData__LEVEL_3_DATA", curie=HTAN.curie('LEVEL_3_DATA'),
-                   model_uri=HTAN.wESData__LEVEL_3_DATA, domain=None, range=Optional[Union[dict, BulkWESLevel3]])
+                   model_uri=HTAN.wESData__LEVEL_3_DATA, domain=None, range=Optional[Union[str, BulkWESLevel3HTANDATAFILEID]])
 
-slots.bulkWESLevel1__COMPONENT = Slot(uri=HTAN.COMPONENT, name="bulkWESLevel1__COMPONENT", curie=HTAN.curie('COMPONENT'),
-                   model_uri=HTAN.bulkWESLevel1__COMPONENT, domain=None, range=str)
+slots.coreFileAttributes__COMPONENT = Slot(uri=HTAN.COMPONENT, name="coreFileAttributes__COMPONENT", curie=HTAN.curie('COMPONENT'),
+                   model_uri=HTAN.coreFileAttributes__COMPONENT, domain=None, range=str)
 
-slots.bulkWESLevel1__FILENAME = Slot(uri=HTAN.FILENAME, name="bulkWESLevel1__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.bulkWESLevel1__FILENAME, domain=None, range=str)
+slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+[\\/]\S*$'))
 
-slots.bulkWESLevel1__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="bulkWESLevel1__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.bulkWESLevel1__FILE_FORMAT, domain=None, range=str)
+slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
 
-slots.bulkWESLevel1__HTAN_PARENT_BIOSPECIMEN_ID = Slot(uri=HTAN.HTAN_PARENT_BIOSPECIMEN_ID, name="bulkWESLevel1__HTAN_PARENT_BIOSPECIMEN_ID", curie=HTAN.curie('HTAN_PARENT_BIOSPECIMEN_ID'),
-                   model_uri=HTAN.bulkWESLevel1__HTAN_PARENT_BIOSPECIMEN_ID, domain=None, range=str)
+slots.coreFileAttributes__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="coreFileAttributes__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
+                   model_uri=HTAN.coreFileAttributes__HTAN_PARTICIPANT_ID, domain=None, range=str,
+                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$'))
 
-slots.bulkWESLevel1__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="bulkWESLevel1__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
-                   model_uri=HTAN.bulkWESLevel1__HTAN_DATA_FILE_ID, domain=None, range=str)
+slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="coreFileAttributes__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
+                   model_uri=HTAN.coreFileAttributes__HTAN_DATA_FILE_ID, domain=None, range=URIRef,
+                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
+
+slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
+                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
+                   pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$'))
+
+slots.coreFileAttributes__HTAN_BIOSPECIMEN_ID = Slot(uri=HTAN.HTAN_BIOSPECIMEN_ID, name="coreFileAttributes__HTAN_BIOSPECIMEN_ID", curie=HTAN.curie('HTAN_BIOSPECIMEN_ID'),
+                   model_uri=HTAN.coreFileAttributes__HTAN_BIOSPECIMEN_ID, domain=None, range=str,
+                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
 
 slots.bulkWESLevel1__SEQUENCING_BATCH_ID = Slot(uri=HTAN.SEQUENCING_BATCH_ID, name="bulkWESLevel1__SEQUENCING_BATCH_ID", curie=HTAN.curie('SEQUENCING_BATCH_ID'),
                    model_uri=HTAN.bulkWESLevel1__SEQUENCING_BATCH_ID, domain=None, range=Optional[str])
@@ -823,21 +842,6 @@ slots.bulkWESLevel1__TARGET_DEPTH = Slot(uri=HTAN.TARGET_DEPTH, name="bulkWESLev
 
 slots.bulkWESLevel1__TO_TRIM_ADAPTER_SEQUENCE = Slot(uri=HTAN.TO_TRIM_ADAPTER_SEQUENCE, name="bulkWESLevel1__TO_TRIM_ADAPTER_SEQUENCE", curie=HTAN.curie('TO_TRIM_ADAPTER_SEQUENCE'),
                    model_uri=HTAN.bulkWESLevel1__TO_TRIM_ADAPTER_SEQUENCE, domain=None, range=Optional[Union[bool, Bool]])
-
-slots.bulkWESLevel2__COMPONENT = Slot(uri=HTAN.COMPONENT, name="bulkWESLevel2__COMPONENT", curie=HTAN.curie('COMPONENT'),
-                   model_uri=HTAN.bulkWESLevel2__COMPONENT, domain=None, range=str)
-
-slots.bulkWESLevel2__FILENAME = Slot(uri=HTAN.FILENAME, name="bulkWESLevel2__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.bulkWESLevel2__FILENAME, domain=None, range=str)
-
-slots.bulkWESLevel2__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="bulkWESLevel2__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.bulkWESLevel2__FILE_FORMAT, domain=None, range=str)
-
-slots.bulkWESLevel2__HTAN_PARENT_DATA_FILE_ID = Slot(uri=HTAN.HTAN_PARENT_DATA_FILE_ID, name="bulkWESLevel2__HTAN_PARENT_DATA_FILE_ID", curie=HTAN.curie('HTAN_PARENT_DATA_FILE_ID'),
-                   model_uri=HTAN.bulkWESLevel2__HTAN_PARENT_DATA_FILE_ID, domain=None, range=str)
-
-slots.bulkWESLevel2__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="bulkWESLevel2__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
-                   model_uri=HTAN.bulkWESLevel2__HTAN_DATA_FILE_ID, domain=None, range=str)
 
 slots.bulkWESLevel2__ALIGNMENT_WORKFLOW_TYPE = Slot(uri=HTAN.ALIGNMENT_WORKFLOW_TYPE, name="bulkWESLevel2__ALIGNMENT_WORKFLOW_TYPE", curie=HTAN.curie('ALIGNMENT_WORKFLOW_TYPE'),
                    model_uri=HTAN.bulkWESLevel2__ALIGNMENT_WORKFLOW_TYPE, domain=None, range=str)
@@ -917,15 +921,6 @@ slots.bulkWESLevel2__QC_WORKFLOW_VERSION = Slot(uri=HTAN.QC_WORKFLOW_VERSION, na
 slots.bulkWESLevel2__QC_WORKFLOW_LINK = Slot(uri=HTAN.QC_WORKFLOW_LINK, name="bulkWESLevel2__QC_WORKFLOW_LINK", curie=HTAN.curie('QC_WORKFLOW_LINK'),
                    model_uri=HTAN.bulkWESLevel2__QC_WORKFLOW_LINK, domain=None, range=Optional[str])
 
-slots.bulkWESLevel2__MSI_WORKFLOW_LINK = Slot(uri=HTAN.MSI_WORKFLOW_LINK, name="bulkWESLevel2__MSI_WORKFLOW_LINK", curie=HTAN.curie('MSI_WORKFLOW_LINK'),
-                   model_uri=HTAN.bulkWESLevel2__MSI_WORKFLOW_LINK, domain=None, range=Optional[str])
-
-slots.bulkWESLevel2__MSI_SCORE = Slot(uri=HTAN.MSI_SCORE, name="bulkWESLevel2__MSI_SCORE", curie=HTAN.curie('MSI_SCORE'),
-                   model_uri=HTAN.bulkWESLevel2__MSI_SCORE, domain=None, range=Optional[float])
-
-slots.bulkWESLevel2__MSI_STATUS = Slot(uri=HTAN.MSI_STATUS, name="bulkWESLevel2__MSI_STATUS", curie=HTAN.curie('MSI_STATUS'),
-                   model_uri=HTAN.bulkWESLevel2__MSI_STATUS, domain=None, range=Optional[Union[str, "MSIStatusEnum"]])
-
 slots.bulkWESLevel2__PAIRS_ON_DIFF_CHR = Slot(uri=HTAN.PAIRS_ON_DIFF_CHR, name="bulkWESLevel2__PAIRS_ON_DIFF_CHR", curie=HTAN.curie('PAIRS_ON_DIFF_CHR'),
                    model_uri=HTAN.bulkWESLevel2__PAIRS_ON_DIFF_CHR, domain=None, range=Optional[int])
 
@@ -962,21 +957,6 @@ slots.bulkWESLevel2__PROPORTION_COVERAGE_30X = Slot(uri=HTAN.PROPORTION_COVERAGE
 slots.bulkWESLevel2__IS_LOWEST_LEVEL = Slot(uri=HTAN.IS_LOWEST_LEVEL, name="bulkWESLevel2__IS_LOWEST_LEVEL", curie=HTAN.curie('IS_LOWEST_LEVEL'),
                    model_uri=HTAN.bulkWESLevel2__IS_LOWEST_LEVEL, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.bulkWESLevel3__COMPONENT = Slot(uri=HTAN.COMPONENT, name="bulkWESLevel3__COMPONENT", curie=HTAN.curie('COMPONENT'),
-                   model_uri=HTAN.bulkWESLevel3__COMPONENT, domain=None, range=str)
-
-slots.bulkWESLevel3__FILENAME = Slot(uri=HTAN.FILENAME, name="bulkWESLevel3__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.bulkWESLevel3__FILENAME, domain=None, range=str)
-
-slots.bulkWESLevel3__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="bulkWESLevel3__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.bulkWESLevel3__FILE_FORMAT, domain=None, range=str)
-
-slots.bulkWESLevel3__HTAN_PARENT_DATA_FILE_ID = Slot(uri=HTAN.HTAN_PARENT_DATA_FILE_ID, name="bulkWESLevel3__HTAN_PARENT_DATA_FILE_ID", curie=HTAN.curie('HTAN_PARENT_DATA_FILE_ID'),
-                   model_uri=HTAN.bulkWESLevel3__HTAN_PARENT_DATA_FILE_ID, domain=None, range=str)
-
-slots.bulkWESLevel3__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="bulkWESLevel3__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
-                   model_uri=HTAN.bulkWESLevel3__HTAN_DATA_FILE_ID, domain=None, range=str)
-
 slots.bulkWESLevel3__GENOMIC_REFERENCE = Slot(uri=HTAN.GENOMIC_REFERENCE, name="bulkWESLevel3__GENOMIC_REFERENCE", curie=HTAN.curie('GENOMIC_REFERENCE'),
                    model_uri=HTAN.bulkWESLevel3__GENOMIC_REFERENCE, domain=None, range=str)
 
@@ -1003,3 +983,12 @@ slots.bulkWESLevel3__STRUCTURAL_VARIANT_WORKFLOW_URL = Slot(uri=HTAN.STRUCTURAL_
 
 slots.bulkWESLevel3__STRUCTURAL_VARIANT_WORKFLOW_TYPE = Slot(uri=HTAN.STRUCTURAL_VARIANT_WORKFLOW_TYPE, name="bulkWESLevel3__STRUCTURAL_VARIANT_WORKFLOW_TYPE", curie=HTAN.curie('STRUCTURAL_VARIANT_WORKFLOW_TYPE'),
                    model_uri=HTAN.bulkWESLevel3__STRUCTURAL_VARIANT_WORKFLOW_TYPE, domain=None, range=Optional[str])
+
+slots.bulkWESLevel3__MSI_WORKFLOW_LINK = Slot(uri=HTAN.MSI_WORKFLOW_LINK, name="bulkWESLevel3__MSI_WORKFLOW_LINK", curie=HTAN.curie('MSI_WORKFLOW_LINK'),
+                   model_uri=HTAN.bulkWESLevel3__MSI_WORKFLOW_LINK, domain=None, range=Optional[str])
+
+slots.bulkWESLevel3__MSI_SCORE = Slot(uri=HTAN.MSI_SCORE, name="bulkWESLevel3__MSI_SCORE", curie=HTAN.curie('MSI_SCORE'),
+                   model_uri=HTAN.bulkWESLevel3__MSI_SCORE, domain=None, range=Optional[float])
+
+slots.bulkWESLevel3__MSI_STATUS = Slot(uri=HTAN.MSI_STATUS, name="bulkWESLevel3__MSI_STATUS", curie=HTAN.curie('MSI_STATUS'),
+                   model_uri=HTAN.bulkWESLevel3__MSI_STATUS, domain=None, range=Optional[Union[str, "MSIStatusEnum"]])
