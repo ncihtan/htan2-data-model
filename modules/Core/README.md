@@ -10,21 +10,24 @@ Defines common attributes that every file-based data type in HTAN must have, eli
 
 ### Required Attributes
 - **COMPONENT**: Category of metadata (e.g., "Bulk WES Level 1", "scRNA-seq Level 2")
-- **FILENAME**: Name of the file (pattern: `^.+\\/\\S*$`)
+- **FILENAME**: Name of the file (pattern: `^.+[\\\\/]\\S*$`)
 - **FILE_FORMAT**: Format of the file (e.g., fastq, bam, vcf, h5ad)
-- **HTAN_PARTICIPANT_ID**: HTAN ID associated with a patient (Primary Key)
+- **HTAN_PARTICIPANT_ID**: HTAN ID associated with a patient
 - **HTAN_DATA_FILE_ID**: HTAN Data File ID (Primary Key)
 - **HTAN_PARENT_ID**: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
+- **HTAN_BIOSPECIMEN_ID**: HTAN Biospecimen ID of the parent biospecimen
 
 ### Optional Attributes
-- **HTAN_BIOSPECIMEN_ID**: HTAN Biospecimen ID of the parent biospecimen (Primary Key)
+- None currently defined
 
 ## Primary and Foreign Keys
 
 ### Primary Keys (marked with `identifier: true`)
-- **HTAN_PARTICIPANT_ID**: Unique identifier for research participants
 - **HTAN_DATA_FILE_ID**: Unique identifier for data files across all levels
-- **HTAN_BIOSPECIMEN_ID**: Unique identifier for biospecimens
+
+### Required Fields (not primary keys in this context)
+- **HTAN_PARTICIPANT_ID**: HTAN ID associated with a patient
+- **HTAN_BIOSPECIMEN_ID**: HTAN Biospecimen ID of the parent biospecimen
 
 ### Foreign Key
 - **HTAN_PARENT_ID**: References parent entity using suffix convention:
