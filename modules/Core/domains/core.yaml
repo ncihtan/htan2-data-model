@@ -32,12 +32,6 @@ classes:
         required: true
         title: "File Format"
         description: Format of the file (e.g., fastq, bam, vcf, h5ad)
-      HTAN_PARTICIPANT_ID:
-        range: string
-        required: true
-        title: "HTAN Participant ID"
-        description: HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)
-        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$"
       HTAN_DATA_FILE_ID:
         range: string
         required: true
@@ -51,9 +45,3 @@ classes:
         title: "HTAN Parent ID"
         description: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
         pattern: "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$"
-      HTAN_BIOSPECIMEN_ID:
-        range: string
-        required: true
-        title: "HTAN Biospecimen ID"
-        description: HTAN Biospecimen ID of the parent biospecimen (Primary Key)
-        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"
