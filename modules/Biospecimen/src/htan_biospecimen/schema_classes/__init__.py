@@ -1,0 +1,1 @@
+"""HTAN Biospecimen Schema Classes."""
