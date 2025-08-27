@@ -20,7 +20,8 @@ The HTAN2 data model is built using **LinkML**, a modeling language for schemas 
 - **Purpose**: Universal attributes shared across all file-based modules
 - **Location**: `modules/Core/domains/core.yaml`
 - **Key Features**: 
-  - Primary and foreign key definitions
+  - Single primary key definition (`HTAN_DATA_FILE_ID`)
+  - Required field definitions for relationships
   - HTAN identifier validation patterns
   - Base class for inheritance (`CoreFileAttributes`)
 
@@ -62,9 +63,11 @@ Participant (HTAN_PARTICIPANT_ID)
 ```
 
 ### **Primary Keys**
-- `HTAN_PARTICIPANT_ID`: Unique identifier for research participants
 - `HTAN_DATA_FILE_ID`: Unique identifier for data files across all levels
-- `HTAN_BIOSPECIMEN_ID`: Unique identifier for biospecimens
+
+### **Required Fields (not primary keys in this context)**
+- `HTAN_PARTICIPANT_ID`: HTAN ID associated with a patient
+- `HTAN_BIOSPECIMEN_ID`: HTAN Biospecimen ID of the parent biospecimen
 
 ### **Foreign Keys**
 - `HTAN_PARENT_ID`: References parent entity using suffix convention
