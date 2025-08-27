@@ -54,15 +54,16 @@ The main class that defines common attributes shared across all sequencing types
 
 ## Architecture
 
-The `BaseSequencingAttributes` class is designed as a mixin/composition class that provides:
+The `BaseSequencingAttributes` class inherits from `CoreFileAttributes` and provides:
+- All core file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.)
 - Common sequencing-specific attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.)
 - Shared enums for sequencing platforms and library layouts
-- Reusable attributes across different sequencing types
+- Complete foundation for all sequencing types
 
 Specific sequencing modules (WES, scRNA-seq) will:
-- Inherit from `CoreFileAttributes` for file metadata
-- Include `BaseSequencingAttributes` for sequencing-specific attributes
+- Inherit from `BaseSequencingAttributes` to get both core file and sequencing attributes
 - Add their own specific attributes
+- Maintain consistent structure across all sequencing types
 
 ## Usage
 
@@ -96,20 +97,6 @@ classes:
       SINGLE_CELL_ISOLATION_METHOD:
         range: SingleCellIsolationMethodEnum
         required: true
-```
-
-### Python Usage
-
-```python
-from htan_sequencing.datamodel import BaseSequencingAttributes
-
-# Create base sequencing data
-base_data = BaseSequencingAttributes(
-    LIBRARY_LAYOUT="Paired-end",
-    SEQUENCING_PLATFORM="ILLUMINA",
-    WORKFLOW_VERSION="1.0.0",
-    GENOMIC_REFERENCE="GRCh38"
-)
 ```
 
 ## Build and Testing
