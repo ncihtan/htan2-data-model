@@ -1,0 +1,176 @@
+# HTAN Base Sequencing Module
+
+## Overview
+
+The HTAN Base Sequencing module provides a shared foundation for all sequencing data types in the HTAN project. This module defines common attributes, enums, and base classes that are shared across different sequencing modalities (WES, scRNA-seq, etc.).
+
+## Purpose
+
+The base sequencing module serves as a foundation to:
+- **Reduce duplication** across sequencing modules
+- **Ensure consistency** in common attributes
+- **Simplify maintenance** of shared sequencing metadata
+- **Enable modular architecture** for different sequencing types
+
+## Schema Structure
+
+### BaseSequencingAttributes Class
+
+The main class that defines common attributes shared across all sequencing types:
+
+**Required Attributes:**
+- `LIBRARY_LAYOUT`: Library layout (paired-end or single-end)
+- `SEQUENCING_PLATFORM`: Sequencing platform used
+- `WORKFLOW_VERSION`: Major version of the workflow
+- `GENOMIC_REFERENCE`: Genomic reference used for alignment
+
+**Optional Attributes:**
+- `SEQUENCING_BATCH_ID`: Sequencing batch identifier
+- `LIBRARY_PREPARATION_DAYS_FROM_INDEX`: Days from index for library preparation
+- `TECHNICAL_REPLICATE_GROUP`: Technical replicate group identifier
+- `PROTOCOL_LINK`: Link to sequencing protocol
+- `WORKFLOW_LINK`: Link to workflow (DockStore.org recommended)
+- `GENOMIC_REFERENCE_URL`: URL to genomic reference
+- `GENOME_ANNOTATION_URL`: URL to genome annotation
+- `CHECKSUM`: Checksum for data integrity verification
+
+### Enums (Alphabetically Ordered)
+
+**LibraryLayoutEnum:**
+- `Paired-end`: Paired-end sequencing
+- `Single-end`: Single-end sequencing
+
+**SequencingPlatformEnum:**
+- `ABI_SOLID`: ABI SOLID sequencing platform
+- `BGISEQ`: BGI sequencing platform
+- `CAPILLARY`: Capillary sequencing platform
+- `COMPLETE_GENOMICS`: Complete Genomics sequencing platform
+- `HELICOS`: Helicos sequencing platform
+- `ILLUMINA`: Illumina sequencing platform
+- `ION_TORRENT`: Ion Torrent sequencing platform
+- `LS454`: 454 sequencing platform
+- `OXFORD_NANOPORE`: Oxford Nanopore sequencing platform
+- `PACBIO_SMRT`: PacBio SMRT sequencing platform
+
+## Architecture
+
+The `BaseSequencingAttributes` class is designed as a mixin/composition class that provides:
+- Common sequencing-specific attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.)
+- Shared enums for sequencing platforms and library layouts
+- Reusable attributes across different sequencing types
+
+Specific sequencing modules (WES, scRNA-seq) will:
+- Inherit from `CoreFileAttributes` for file metadata
+- Include `BaseSequencingAttributes` for sequencing-specific attributes
+- Add their own specific attributes
+
+## Usage
+
+### Import in Other Modules
+
+```yaml
+# In WES module
+imports:
+  - ../../Sequencing/domains/sequencing
+
+classes:
+  BulkWESLevel1:
+    is_a: BaseSequencingAttributes
+    attributes:
+      # WES-specific attributes
+      TARGET_CAPTURE_KIT:
+        range: string
+        required: false
+```
+
+```yaml
+# In scRNA-seq module
+imports:
+  - ../../Sequencing/domains/sequencing
+
+classes:
+  scRNALevel1:
+    is_a: BaseSequencingAttributes
+    attributes:
+      # scRNA-seq-specific attributes
+      SINGLE_CELL_ISOLATION_METHOD:
+        range: SingleCellIsolationMethodEnum
+        required: true
+```
+
+### Python Usage
+
+```python
+from htan_sequencing.datamodel import BaseSequencingAttributes
+
+# Create base sequencing data
+base_data = BaseSequencingAttributes(
+    LIBRARY_LAYOUT="Paired-end",
+    SEQUENCING_PLATFORM="ILLUMINA",
+    WORKFLOW_VERSION="1.0.0",
+    GENOMIC_REFERENCE="GRCh38"
+)
+```
+
+## Build and Testing
+
+### Schema Validation
+```bash
+# Validate schema
+make validate
+
+# Generate Python classes
+make gen-python
+
+# Generate JSON schema
+make gen-json-schema
+
+# Run tests
+make test
+```
+
+## Testing
+
+The module includes comprehensive tests for:
+- Schema loading and validation
+- Enum alphabetical ordering
+- Inheritance from CoreFileAttributes
+- Common attribute presence and validation
+- Optional vs required attribute marking
+- Data validation examples
+
+Run tests with:
+```bash
+cd modules/Sequencing
+make test
+```
+
+## Dependencies
+
+- **Core Module**: Inherits from `CoreFileAttributes`
+- **LinkML**: Uses LinkML for schema definition
+- **pytest**: For testing framework
+
+## Architecture Benefits
+
+### Modular Design
+- **WES Module**: Extends base with WES-specific attributes
+- **scRNA-seq Module**: Extends base with scRNA-seq-specific attributes
+- **Future Modules**: Can easily extend base for new sequencing types
+
+### Consistency
+- All sequencing modules share the same common attributes
+- Consistent enum values across all sequencing types
+- Unified validation patterns
+
+### Maintainability
+- Changes to common attributes only need to be made in one place
+- Reduced risk of inconsistencies between modules
+- Easier testing and validation
+
+## Future Considerations
+
+- Support for additional sequencing platforms
+- Enhanced validation rules for specific workflows
+- Integration with additional workflow repositories
+- Support for newer genomic references
