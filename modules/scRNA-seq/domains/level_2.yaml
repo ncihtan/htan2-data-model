@@ -1,0 +1,94 @@
+name: scRNALevel2
+id: https://w3id.org/htan/scrna_seq_level2
+description: HTAN scRNA-seq Level 2 Data Model - Workflow and processing metadata
+imports:
+  - linkml:types
+  - ../../Core/domains/core
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: htan
+
+enums:
+  scRNAseqWorkflowTypeEnum:
+    permissible_values:
+      "CellRanger":
+        description: CellRanger workflow
+      "dropEST":
+        description: dropEST workflow
+      "HCA Optimus":
+        description: HCA Optimus workflow
+      "Other":
+        description: Other workflow
+      "SEQC":
+        description: SEQC workflow
+      "STARsolo":
+        description: STARsolo workflow
+      "Unknown":
+        description: Unknown workflow
+
+classes:
+  scRNALevel2:
+    is_a: CoreFileAttributes
+    description: scRNA-seq Level 2 data - Workflow and processing metadata
+    attributes:
+      SCRNASEQ_WORKFLOW_TYPE:
+        range: scRNAseqWorkflowTypeEnum
+        required: true
+        title: "scRNA-seq Workflow Type"
+        description: Generic name for the workflow used to analyze the dataset
+      
+      WORKFLOW_VERSION:
+        range: string
+        required: true
+        title: "Workflow Version"
+        description: Major version of the workflow (e.g. Cell Ranger v3.1)
+      
+      WORKFLOW_LINK:
+        range: string
+        required: false
+        title: "Workflow Link"
+        description: Link to workflow or command. DockStore.org recommended
+      
+      WHITELIST_CELL_BARCODE_FILE_LINK:
+        range: string
+        required: false
+        title: "Whitelist Cell Barcode File Link"
+        description: Link to whitelist cell barcode file
+      
+      CELL_BARCODE_TAG:
+        range: string
+        required: false
+        title: "Cell Barcode Tag"
+        description: Tag used for cell barcodes
+      
+      UMI_TAG:
+        range: string
+        required: false
+        title: "UMI Tag"
+        description: Tag used for UMIs
+      
+      GENOMIC_REFERENCE:
+        range: string
+        required: true
+        title: "Genomic Reference"
+        description: Genomic reference used for alignment
+      
+      GENOMIC_REFERENCE_URL:
+        range: string
+        required: false
+        title: "Genomic Reference URL"
+        description: URL to genomic reference
+      
+      GENOME_ANNOTATION_URL:
+        range: string
+        required: false
+        title: "Genome Annotation URL"
+        description: URL to genome annotation
+      
+      CHECKSUM:
+        range: string
+        required: false
+        title: "Checksum"
+        description: Checksum for data integrity verification
