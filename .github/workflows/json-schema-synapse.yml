@@ -166,3 +166,16 @@ jobs:
         - VitalStatus Schema
         
         All schemas have been registered in Synapse under the ${{ env.ORGANIZATION_NAME }} organization."
+    
+    - name: Upload schemas as release assets
+      if: startsWith(github.ref, 'refs/tags/')
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        # Upload each schema file as a release asset
+        for schema_file in JSON_Schemas/*.json; do
+          if [ -f "$schema_file" ]; then
+            echo "Uploading $schema_file as release asset..."
+            gh release upload ${{ github.ref_name }} "$schema_file"
+          fi
+        done
