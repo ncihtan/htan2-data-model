@@ -21,12 +21,9 @@ def setup_synapse_organization(org_name: str = "HTAN2", create_folders: bool = T
     
     # Configure Synapse client for production stack
     syn = synapseclient.Synapse()
-    syn.repoEndpoint = 'https://repo-prod.prod.sagebase.org/repo/v1'
-    syn.authEndpoint = 'https://repo-prod.prod.sagebase.org/auth/v1'
-    syn.fileHandleEndpoint = 'https://repo-prod.prod.sagebase.org/file/v1'
-    syn.portalEndpoint = 'https://repo-prod.prod.sagebase.org/portal/v1'
+    syn.setEndpoints(**synapseclient.client.PRODUCTION_ENDPOINTS)
     
-    print(f"Configuring for production stack: {syn.repoEndpoint}")
+    print(f"Configuring for production stack")
     
     # Login to Synapse
     print("Logging in to Synapse...")
