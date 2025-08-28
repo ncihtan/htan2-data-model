@@ -65,7 +65,7 @@ jobs:
         # Create output directory
         mkdir -p generated-schemas
         
-        # Generate schemas for each module
+        # Generate schemas for each module using the LinkML to Synapse script
         for module in Core Biospecimen Participant Sequencing WES scRNA-seq Clinical; do
           if [ -f "modules/$module/domains/$module.yaml" ]; then
             echo "Generating schema for $module module..."
@@ -89,7 +89,7 @@ jobs:
           echo "Generating main clinical schema..."
           poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
             "modules/Clinical/domains/clinical.yaml" \
-            --class-name "ClinicalData" \
+            --class-name "Clinical" \
             --output-dir "generated-schemas"
         fi
     
