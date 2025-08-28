@@ -1,0 +1,14 @@
+{
+  "htan_data_file_id": "HTAN_WES_001",
+  "htan_parent_id": "HTAN_BIOSPECIMEN_001",
+  "filename": "wes_data_001.json",
+  "file_format": "JSON",
+  "wes_id": "WES_001",
+  "sequencing_platform": "Illumina",
+  "sequencing_instrument": "NovaSeq 6000",
+  "read_length": 150,
+  "sequencing_depth": 100,
+  "library_preparation_method": "TruSeq DNA PCR-Free",
+  "capture_kit": "SureSelect Human All Exon V6",
+  "target_coverage": 95.5
+}

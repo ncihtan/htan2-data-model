@@ -1,0 +1,31 @@
+{
+  "htan_data_file_id": "HTAN_CLINICAL_002",
+  "htan_parent_id": "HTAN_PARTICIPANT_001",
+  "filename": "clinical_data_002.json",
+  "file_format": "JSON",
+  "clinical_data": {
+    "demographics": {
+      "sex": "Female",
+      "race": "White",
+      "ethnic_group": "Not Hispanic or Latino",
+      "age_in_days_at_diagnosis": 14176,
+      "gender_identity": "Woman"
+    },
+    "diagnosis": {
+      "primary_diagnosis_nci_thesaurus_id": "C0007114",
+      "tissue_or_organ_of_origin": "Lung",
+      "tissue_or_organ_of_origin_uberon_code": "UBERON:0002048",
+      "metastasis_at_diagnosis": "No",
+      "method_of_diagnosis": "Biopsy",
+      "tumor_stage": "Stage II",
+      "tumor_grade": "Grade 2",
+      "tumor_classification_category": "Primary"
+    },
+    "vital_status": {
+      "vital_status": "Alive",
+      "age_in_days_at_death": null,
+      "cause_of_death": null,
+      "cause_of_death_source": null
+    }
+  }
+}

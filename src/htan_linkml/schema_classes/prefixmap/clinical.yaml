@@ -1,0 +1,17 @@
+{
+   "NCIT": "http://purl.obolibrary.org/obo/NCIT_",
+   "UBERON": "http://purl.obolibrary.org/obo/UBERON_",
+   "caDSR": "https://cadsr.cancer.gov/onedata/",
+   "htan": "https://w3id.org/htan/",
+   "linkml": "https://w3id.org/linkml/",
+   "schema": "http://schema.org/",
+   "AnyValue": {
+      "@id": "linkml:Any"
+   },
+   "Extensible": {
+      "@id": "linkml:Extensible"
+   },
+   "Extension": {
+      "@id": "linkml:Extension"
+   }
+}
