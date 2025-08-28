@@ -121,9 +121,6 @@ jobs:
         SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}
         SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
       run: |
-        # Install synapseclient
-        pip install synapseclient
-        
         # Register each generated schema
         for schema_file in JSON_Schemas/*.json; do
           if [ -f "$schema_file" ]; then
