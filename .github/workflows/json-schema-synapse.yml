@@ -134,6 +134,27 @@ jobs:
           fi
         done
     
+    - name: Bind schemas to Synapse folders
+      env:
+        SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}
+        SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
+      run: |
+        # Bind each schema to its appropriate folder
+        # Clinical data folder (all clinical schemas go here)
+        CLINICAL_FOLDER_ID="syn69060693"  # Update with actual folder ID
+        
+        for schema_file in JSON_Schemas/*.json; do
+          if [ -f "$schema_file" ]; then
+            schema_name=$(basename "$schema_file" .json)
+            echo "Binding schema: $schema_name to Clinical folder"
+            
+            poetry run python scripts/synapse_json_schema_bind.py \
+              -p "$schema_file" \
+              -t "$CLINICAL_FOLDER_ID" \
+              -n "${{ env.ORGANIZATION_NAME }}"
+          fi
+        done
+    
     - name: Upload generated schemas as artifacts
       uses: actions/upload-artifact@v4
       with:
