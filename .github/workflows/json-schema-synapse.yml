@@ -65,33 +65,56 @@ jobs:
         # Create output directory
         mkdir -p generated-schemas
         
-        # Generate schemas for each module using the LinkML to Synapse script
-        for module in Core Biospecimen Participant Sequencing WES scRNA-seq Clinical; do
-          if [ -f "modules/$module/domains/$module.yaml" ]; then
-            echo "Generating schema for $module module..."
-            poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
-              "modules/$module/domains/$module.yaml" \
-              --class-name "$module" \
-              --output-dir "generated-schemas"
-          elif [ -f "modules/$module/domains/${module,,}.yaml" ]; then
-            echo "Generating schema for $module module..."
-            poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
-              "modules/$module/domains/${module,,}.yaml" \
-              --class-name "$module" \
-              --output-dir "generated-schemas"
-          else
-            echo "No schema file found for $module module, skipping..."
-          fi
-        done
+        # Generate schemas for individual Clinical domains
+        echo "Generating Clinical domain schemas..."
         
-        # Also generate the main clinical schema
-        if [ -f "modules/Clinical/domains/clinical.yaml" ]; then
-          echo "Generating main clinical schema..."
-          poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
-            "modules/Clinical/domains/clinical.yaml" \
-            --class-name "Clinical" \
-            --output-dir "generated-schemas"
-        fi
+        # Demographics
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/Clinical/domains/demographics.yaml" \
+          "Demographics" \
+          "HTAN.Demographics-v${{ steps.version.outputs.version }}-schema.json"
+        
+        # Diagnosis
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/Clinical/domains/diagnosis.yaml" \
+          "Diagnosis" \
+          "HTAN.Diagnosis-v${{ steps.version.outputs.version }}-schema.json"
+        
+        # Therapy
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/Clinical/domains/therapy.yaml" \
+          "Therapy" \
+          "HTAN.Therapy-v${{ steps.version.outputs.version }}-schema.json"
+        
+        # FollowUp
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/Clinical/domains/followup.yaml" \
+          "FollowUp" \
+          "HTAN.FollowUp-v${{ steps.version.outputs.version }}-schema.json"
+        
+        # MolecularTest
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/Clinical/domains/molecular.yaml" \
+          "MolecularTest" \
+          "HTAN.MolecularTest-v${{ steps.version.outputs.version }}-schema.json"
+        
+        # Exposure
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/Clinical/domains/exposure.yaml" \
+          "Exposure" \
+          "HTAN.Exposure-v${{ steps.version.outputs.version }}-schema.json"
+        
+        # FamilyHistory
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/Clinical/domains/family_history.yaml" \
+          "FamilyHistory" \
+          "HTAN.FamilyHistory-v${{ steps.version.outputs.version }}-schema.json"
+        
+        # VitalStatus
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/Clinical/domains/vital_status.yaml" \
+          "VitalStatus" \
+          "HTAN.VitalStatus-v${{ steps.version.outputs.version }}-schema.json"
     
     - name: Register schemas in Synapse
       env:
@@ -102,7 +125,7 @@ jobs:
         pip install synapseclient
         
         # Register each generated schema
-        for schema_file in generated-schemas/*.json; do
+        for schema_file in JSON_Schemas/*.json; do
           if [ -f "$schema_file" ]; then
             schema_name=$(basename "$schema_file" .json)
             echo "Processing schema: $schema_name"
@@ -118,7 +141,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: json-schemas-${{ steps.version.outputs.version }}
-        path: generated-schemas/
+        path: JSON_Schemas/
         retention-days: 30
     
     - name: Create Release
@@ -133,11 +156,13 @@ jobs:
         This release includes updated JSON schemas for the HTAN2 data model.
         
         ### Generated Schemas:
-        - Clinical Data Schema
-        - Biospecimen Schema  
-        - Participant Schema
-        - Sequencing Schema
-        - WES Schema
-        - scRNA-seq Schema
+        - Demographics Schema
+        - Diagnosis Schema
+        - Therapy Schema
+        - FollowUp Schema
+        - MolecularTest Schema
+        - Exposure Schema
+        - FamilyHistory Schema
+        - VitalStatus Schema
         
         All schemas have been registered in Synapse under the ${{ env.ORGANIZATION_NAME }} organization."
