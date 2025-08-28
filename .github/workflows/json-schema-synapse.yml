@@ -72,49 +72,49 @@ jobs:
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/demographics.yaml" \
           --class-name "Demographics" \
-          --output "HTAN.Demographics-v${{ steps.version.outputs.version }}-schema.json"
+          --output "HTAN.Demographics-${{ steps.version.outputs.version }}-schema.json"
         
         # Diagnosis
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/diagnosis.yaml" \
           --class-name "Diagnosis" \
-          --output "HTAN.Diagnosis-v${{ steps.version.outputs.version }}-schema.json"
+          --output "HTAN.Diagnosis-${{ steps.version.outputs.version }}-schema.json"
         
         # Therapy
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/therapy.yaml" \
           --class-name "Therapy" \
-          --output "HTAN.Therapy-v${{ steps.version.outputs.version }}-schema.json"
+          --output "HTAN.Therapy-${{ steps.version.outputs.version }}-schema.json"
         
         # FollowUp
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/followup.yaml" \
           --class-name "FollowUp" \
-          --output "HTAN.FollowUp-v${{ steps.version.outputs.version }}-schema.json"
+          --output "HTAN.FollowUp-${{ steps.version.outputs.version }}-schema.json"
         
         # MolecularTest
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/molecular.yaml" \
           --class-name "MolecularTest" \
-          --output "HTAN.MolecularTest-v${{ steps.version.outputs.version }}-schema.json"
+          --output "HTAN.MolecularTest-${{ steps.version.outputs.version }}-schema.json"
         
         # Exposure
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/exposure.yaml" \
           --class-name "Exposure" \
-          --output "HTAN.Exposure-v${{ steps.version.outputs.version }}-schema.json"
+          --output "HTAN.Exposure-${{ steps.version.outputs.version }}-schema.json"
         
         # FamilyHistory
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/family_history.yaml" \
           --class-name "FamilyHistory" \
-          --output "HTAN.FamilyHistory-v${{ steps.version.outputs.version }}-schema.json"
+          --output "HTAN.FamilyHistory-${{ steps.version.outputs.version }}-schema.json"
         
         # VitalStatus
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/vital_status.yaml" \
           --class-name "VitalStatus" \
-          --output "HTAN.VitalStatus-v${{ steps.version.outputs.version }}-schema.json"
+          --output "HTAN.VitalStatus-${{ steps.version.outputs.version }}-schema.json"
     
     - name: Register schemas in Synapse
       env:
