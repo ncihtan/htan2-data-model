@@ -93,14 +93,10 @@ jobs:
             --output-dir "generated-schemas"
         fi
     
-    - name: Setup Synapse credentials
-      run: |
-        echo "${{ secrets.SYNAPSE_AUTH_TOKEN }}" > ~/.synapseConfig
-        echo "[authentication]" >> ~/.synapseConfig
-        echo "username = ${{ secrets.SYNAPSE_USERNAME }}" >> ~/.synapseConfig
-        echo "authtoken = ${{ secrets.SYNAPSE_AUTH_TOKEN }}" >> ~/.synapseConfig
-    
     - name: Register schemas in Synapse
+      env:
+        SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}
+        SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
       run: |
         # Install synapseclient
         pip install synapseclient
@@ -109,7 +105,7 @@ jobs:
         for schema_file in generated-schemas/*.json; do
           if [ -f "$schema_file" ]; then
             schema_name=$(basename "$schema_file" .json)
-            echo "Registering schema: $schema_name"
+            echo "Processing schema: $schema_name"
             
             poetry run python scripts/synapse_json_schema_bind.py \
               -p "$schema_file" \
