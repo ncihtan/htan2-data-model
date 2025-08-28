@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Test output directories
+test_output/
+test_data/
+
 # Distribution / packaging
 dist/
 build/
