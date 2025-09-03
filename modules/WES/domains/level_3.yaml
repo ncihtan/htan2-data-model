@@ -3,7 +3,6 @@ id: https://w3id.org/htan/wes/level_3
 description: Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis
 imports:
   - linkml:types
-  - ../../Sequencing/domains/sequencing
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -38,9 +37,19 @@ enums:
 
 classes:
   BulkWESLevel3:
-    is_a: BaseSequencingAttributes
+    is_a: CoreFileAttributes
     description: Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis
     attributes:
+      GENOMIC_REFERENCE:
+        range: string
+        required: true
+        title: "Genomic Reference"
+        description: Genomic reference used for variant calling
+      GENOMIC_REFERENCE_URL:
+        range: string
+        required: false
+        title: "Genomic Reference URL"
+        description: URL to the genomic reference
       GERMLINE_VARIANTS_WORKFLOW_URL:
         range: string
         required: false

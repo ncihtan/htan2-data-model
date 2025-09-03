@@ -1,1 +1,0 @@
-"""HTAN Participant Schema Classes."""
