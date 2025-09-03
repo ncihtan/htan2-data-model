@@ -126,7 +126,7 @@ def bind_schema_to_entity(syn, service, schema_uri: str, entity_id: str, compone
     
     else:
         print(f"Binding non-AR schema {schema_uri}")
-        service.bind_json_schema(schema_uri, entity_id)
+        service.bind_json_schema_to_entity(entity_id, schema_uri)
    
 def get_schema_from_url(url: str, path: str) -> tuple[any, str, str, str]:
     """Access a JSON schema via a provided path or URL.

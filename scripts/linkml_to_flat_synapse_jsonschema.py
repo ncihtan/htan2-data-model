@@ -203,6 +203,46 @@ def fix_additional_properties(schema_data: dict) -> dict:
     return schema_data
 
 
+def clean_union_types(schema_data: dict) -> dict:
+    """Recursively clean union types like ["string", "null"] to just "string"."""
+    
+    def recursive_clean_union(obj, visited=None):
+        if visited is None:
+            visited = set()
+        
+        # Prevent infinite recursion by tracking visited objects
+        obj_id = id(obj)
+        if obj_id in visited:
+            return
+        visited.add(obj_id)
+        
+        try:
+            if isinstance(obj, dict):
+                # Clean union types in type fields
+                if "type" in obj and isinstance(obj["type"], list):
+                    # Keep only the first non-null type
+                    types = [t for t in obj["type"] if t != "null"]
+                    if types:
+                        obj["type"] = types[0]  # Use first non-null type
+                    else:
+                        obj["type"] = "string"  # Default to string if only null
+                
+                # Recursively process remaining values
+                for value in obj.values():
+                    recursive_clean_union(value, visited)
+            elif isinstance(obj, list):
+                for item in obj:
+                    recursive_clean_union(item, visited)
+        except (RecursionError, TypeError, AttributeError) as e:
+            # Skip problematic objects
+            print(f"Warning: Skipping object due to error: {e}")
+            pass
+
+    recursive_clean_union(schema_data)
+    print("Cleaned union types from schema")
+    return schema_data
+
+
 def get_args():
     """Set up command-line interface and get arguments."""
     parser = argparse.ArgumentParser(
@@ -262,6 +302,7 @@ def main():
     schema_data = flatten_json_schema(schema_data)
     schema_data = fix_schema_version(schema_data)
     schema_data = fix_additional_properties(schema_data)
+    schema_data = clean_union_types(schema_data)
     schema_data = remove_unsupported_fields(schema_data)
 
     # 4. Write final result to output file
