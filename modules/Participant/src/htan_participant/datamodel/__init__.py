@@ -1,1 +1,0 @@
-"""HTAN Participant Data Model."""

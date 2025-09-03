@@ -3,7 +3,7 @@ id: https://w3id.org/htan/wes/level_1
 description: Bulk Whole Exome Sequencing Level 1 - Raw files
 imports:
   - linkml:types
-  - ../../Sequencing/domains/sequencing
+  - ../../Core/domains/core
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -13,6 +13,13 @@ prefixes:
 default_prefix: htan
 
 enums:
+  LibraryLayoutEnum:
+    permissible_values:
+      "Paired-end":
+        description: Paired-end sequencing
+      "Single-end":
+        description: Single-end sequencing
+
   LibrarySelectionMethodEnum:
     permissible_values:
       "Hybrid Selection":
@@ -24,12 +31,44 @@ enums:
       "other":
         description: Other selection method
 
+  SequencingPlatformEnum:
+    permissible_values:
+      "ABI_SOLID":
+        description: ABI SOLID sequencing platform
+      "BGISEQ":
+        description: BGI sequencing platform
+      "CAPILLARY":
+        description: Capillary sequencing platform
+      "COMPLETE_GENOMICS":
+        description: Complete Genomics sequencing platform
+      "HELICOS":
+        description: Helicos sequencing platform
+      "ILLUMINA":
+        description: Illumina sequencing platform
+      "ION_TORRENT":
+        description: Ion Torrent sequencing platform
+      "LS454":
+        description: 454 sequencing platform
+      "OXFORD_NANOPORE":
+        description: Oxford Nanopore sequencing platform
+      "PACBIO_SMRT":
+        description: PacBio SMRT sequencing platform
+
 classes:
   BulkWESLevel1:
-    is_a: BaseSequencingAttributes
+    is_a: CoreFileAttributes
     description: Bulk Whole Exome Sequencing Level 1 - Raw files
     attributes:
-      # WES-specific attributes
+      SEQUENCING_BATCH_ID:
+        range: string
+        required: false
+        title: "Sequencing Batch ID"
+        description: Sequencing batch identifier
+      LIBRARY_LAYOUT:
+        range: LibraryLayoutEnum
+        required: true
+        title: "Library Layout"
+        description: Library layout (paired-end or single-end)
       READ_INDICATOR:
         range: string
         required: false
@@ -65,6 +104,11 @@ classes:
         required: false
         title: "Library Preparation Kit Version"
         description: Version of the library preparation kit
+      SEQUENCING_PLATFORM:
+        range: SequencingPlatformEnum
+        required: true
+        title: "Sequencing Platform"
+        description: Sequencing platform used
       ADAPTER_NAME:
         range: string
         required: false

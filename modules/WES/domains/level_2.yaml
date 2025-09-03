@@ -3,7 +3,6 @@ id: https://w3id.org/htan/wes/level_2
 description: Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC
 imports:
   - linkml:types
-  - ../../Sequencing/domains/sequencing
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -16,15 +15,24 @@ enums:
 
 classes:
   BulkWESLevel2:
-    is_a: BaseSequencingAttributes
+    is_a: CoreFileAttributes
     description: Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC
     attributes:
-      # WES-specific attributes
       ALIGNMENT_WORKFLOW_TYPE:
         range: string
         required: true
         title: "Alignment Workflow Type"
         description: Type of alignment workflow used
+      GENOMIC_REFERENCE:
+        range: string
+        required: true
+        title: "Genomic Reference"
+        description: Genomic reference used for alignment
+      GENOMIC_REFERENCE_URL:
+        range: string
+        required: false
+        title: "Genomic Reference URL"
+        description: URL to the genomic reference
       INDEX_FILE_NAME:
         range: string
         required: false
