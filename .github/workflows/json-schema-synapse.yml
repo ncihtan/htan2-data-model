@@ -134,20 +134,20 @@ jobs:
           fi
         done
     
-    - name: Bind file-based schemas to project folders
+    - name: Bind file-based schemas to existing project subfolders
       env:
         SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}
         SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
       run: |
-        # For now, test with just one project (HTAN2_Ovarian) and WES Level 1 schema
-        # This will create a WES_Level_1 subfolder and bind the schema with a fileview
+        # Test with HTAN2_Ovarian and existing WES_Level_1 subfolder (syn69630475)
+        # This will bind the schema to the existing subfolder and create a fileview
         
         # Find WES Level 1 schema
         WES_SCHEMA=$(find JSON_Schemas -name "*WES*Level*1*" -o -name "*level_1*" | head -1)
         
         if [ -n "$WES_SCHEMA" ]; then
           echo "Found WES Level 1 schema: $WES_SCHEMA"
-          echo "Binding to HTAN2_Ovarian project..."
+          echo "Binding to existing WES_Level_1 subfolder in HTAN2_Ovarian project..."
           
           poetry run python scripts/bind_file_based_schemas.py \
             --schema-file "$WES_SCHEMA" \
@@ -157,7 +157,7 @@ jobs:
           echo "No WES Level 1 schema found, skipping file-based binding"
         fi
         
-        # TODO: Later expand to bind all file-based schemas to all projects
+        # TODO: Later expand to bind all file-based schemas to all projects with existing subfolders
         # for project in HTAN2_Ovarian HTAN2_Glioma HTAN2_Gastric; do
         #   poetry run python scripts/bind_file_based_schemas.py \
         #     --schema-file "$WES_SCHEMA" \

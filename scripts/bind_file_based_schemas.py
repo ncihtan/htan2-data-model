@@ -119,30 +119,7 @@ def _create_columns_from_json_schema(json_schema: Dict[str, Any]) -> List[Column
     return columns
 
 
-def create_or_get_folder(syn: Synapse, parent_id: str, folder_name: str) -> str:
-    """Create a folder if it doesn't exist, or get the existing folder ID."""
-    try:
-        # Try to get existing folder
-        folder = syn.get(parent_id)
-        children = syn.getChildren(folder)
-        
-        for child in children:
-            if child['name'] == folder_name and child['type'] == 'org.sagebionetworks.repo.model.Folder':
-                print(f"Found existing folder: {folder_name} (ID: {child['id']})")
-                return child['id']
-        
-        # Create new folder if not found
-        print(f"Creating new folder: {folder_name}")
-        folder = syn.store({
-            'name': folder_name,
-            'parentId': parent_id,
-            'concreteType': 'org.sagebionetworks.repo.model.Folder'
-        })
-        return folder['id']
-        
-    except Exception as e:
-        print(f"Error creating/getting folder {folder_name}: {e}")
-        raise
+
 
 
 def create_fileview_from_schema(syn: Synapse, schema_file: str, folder_id: str, view_name: str) -> str:
@@ -189,7 +166,7 @@ def main():
     parser = argparse.ArgumentParser(description='Bind file-based schemas to Synapse project folders')
     parser.add_argument('--schema-file', required=True, help='Path to the JSON schema file')
     parser.add_argument('--project-name', required=True, help='Name of the project (e.g., HTAN2_Ovarian)')
-    parser.add_argument('--subfolder-name', default='WES_Level_1', help='Name of the subfolder to create (default: WES_Level_1)')
+    parser.add_argument('--subfolder-name', default='WES_Level_1', help='Name of the subfolder to use (default: WES_Level_1)')
     
     args = parser.parse_args()
     
@@ -202,14 +179,23 @@ def main():
         print(f"Error: Config file not found at {config_path}")
         sys.exit(1)
     
-    # Get project ID
-    project_id = config['projects'].get(args.project_name)
-    if not project_id:
+    # Get project info
+    project_info = config['projects'].get(args.project_name)
+    if not project_info:
         print(f"Error: Project '{args.project_name}' not found in config")
         print(f"Available projects: {list(config['projects'].keys())}")
         sys.exit(1)
     
+    project_id = project_info['project_id']
+    subfolder_id = project_info['subfolders'].get(args.subfolder_name)
+    
+    if not subfolder_id:
+        print(f"Error: Subfolder '{args.subfolder_name}' not found for project '{args.project_name}'")
+        print(f"Available subfolders: {list(project_info['subfolders'].keys())}")
+        sys.exit(1)
+    
     print(f"Binding schema to project: {args.project_name} (ID: {project_id})")
+    print(f"Using existing subfolder: {args.subfolder_name} (ID: {subfolder_id})")
     
     # Initialize Synapse client
     try:
@@ -220,15 +206,12 @@ def main():
         sys.exit(1)
     
     try:
-        # Create or get the subfolder
-        subfolder_id = create_or_get_folder(syn, project_id, args.subfolder_name)
-        
-        # Create fileview from the schema
+        # Create fileview from the schema in the existing subfolder
         schema_name = os.path.splitext(os.path.basename(args.schema_file))[0]
         view_name = f"{args.subfolder_name}_FileView"
         fileview_id = create_fileview_from_schema(syn, args.schema_file, subfolder_id, view_name)
         
-        print(f"Successfully bound schema to folder: {subfolder_id}")
+        print(f"Successfully bound schema to existing folder: {subfolder_id}")
         print(f"Created fileview: {fileview_id}")
         
     except Exception as e:

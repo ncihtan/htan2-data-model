@@ -1,16 +1,37 @@
-# HTAN2 Project Synapse IDs
+# HTAN2 Project Synapse IDs and subfolder mappings
 # Used for binding JSON schemas to the correct project folders
 projects:
-  HTAN2_Ovarian: syn63298044
-  HTAN2_Glioma: syn63298048
-  HTAN2_Gastric: syn63298051
-  HTAN2_Skin: syn63298054
-  HTAN2_Pediatric: syn63298059
-  HTAN2_Myeloma: syn63298063
-  HTAN2_Pancreatic: syn63298065
-  HTAN2_Prostate: syn63298068
-  HTAN2_CRC: syn63298073
-  HTAN2_Lymphoma: syn63298076
+  HTAN2_Ovarian:
+    project_id: syn63298044
+    subfolders:
+      WES_Level_1: syn69630475
+  HTAN2_Glioma:
+    project_id: syn63298048
+    subfolders: {}
+  HTAN2_Gastric:
+    project_id: syn63298051
+    subfolders: {}
+  HTAN2_Skin:
+    project_id: syn63298054
+    subfolders: {}
+  HTAN2_Pediatric:
+    project_id: syn63298059
+    subfolders: {}
+  HTAN2_Myeloma:
+    project_id: syn63298063
+    subfolders: {}
+  HTAN2_Pancreatic:
+    project_id: syn63298065
+    subfolders: {}
+  HTAN2_Prostate:
+    project_id: syn63298068
+    subfolders: {}
+  HTAN2_CRC:
+    project_id: syn63298073
+    subfolders: {}
+  HTAN2_Lymphoma:
+    project_id: syn63298076
+    subfolders: {}
 
 # Schema type classification
 schema_types:
