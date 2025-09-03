@@ -1,0 +1,1213 @@
+{
+  "name": "Level1",
+  "description": "Bulk Whole Exome Sequencing Level 1 - Raw files",
+  "id": "https://w3id.org/htan/wes/level_1",
+  "imports": [
+    "linkml:types",
+    "../../Core/domains/core"
+  ],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "prefixes": [
+    {
+      "prefix_prefix": "htan",
+      "prefix_reference": "https://w3id.org/htan/"
+    },
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "NCIT",
+      "prefix_reference": "http://purl.obolibrary.org/obo/NCIT_"
+    }
+  ],
+  "default_prefix": "htan",
+  "default_range": "string",
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpointer",
+      "definition_uri": "https://w3id.org/linkml/Jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpath",
+      "definition_uri": "https://w3id.org/linkml/Jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "sparqlpath",
+      "definition_uri": "https://w3id.org/linkml/Sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "LibraryLayoutEnum",
+      "definition_uri": "https://w3id.org/htan/LibraryLayoutEnum",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "permissible_values": [
+        {
+          "text": "Paired-end",
+          "description": "Paired-end sequencing"
+        },
+        {
+          "text": "Single-end",
+          "description": "Single-end sequencing"
+        }
+      ]
+    },
+    {
+      "name": "LibrarySelectionMethodEnum",
+      "definition_uri": "https://w3id.org/htan/LibrarySelectionMethodEnum",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "permissible_values": [
+        {
+          "text": "Hybrid Selection",
+          "description": "Hybrid selection method"
+        },
+        {
+          "text": "PCR",
+          "description": "PCR-based selection"
+        },
+        {
+          "text": "RANDOM",
+          "description": "Random selection"
+        },
+        {
+          "text": "other",
+          "description": "Other selection method"
+        }
+      ]
+    },
+    {
+      "name": "SequencingPlatformEnum",
+      "definition_uri": "https://w3id.org/htan/SequencingPlatformEnum",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "permissible_values": [
+        {
+          "text": "ABI_SOLID",
+          "description": "ABI SOLID sequencing platform"
+        },
+        {
+          "text": "BGISEQ",
+          "description": "BGI sequencing platform"
+        },
+        {
+          "text": "CAPILLARY",
+          "description": "Capillary sequencing platform"
+        },
+        {
+          "text": "COMPLETE_GENOMICS",
+          "description": "Complete Genomics sequencing platform"
+        },
+        {
+          "text": "HELICOS",
+          "description": "Helicos sequencing platform"
+        },
+        {
+          "text": "ILLUMINA",
+          "description": "Illumina sequencing platform"
+        },
+        {
+          "text": "ION_TORRENT",
+          "description": "Ion Torrent sequencing platform"
+        },
+        {
+          "text": "LS454",
+          "description": "454 sequencing platform"
+        },
+        {
+          "text": "OXFORD_NANOPORE",
+          "description": "Oxford Nanopore sequencing platform"
+        },
+        {
+          "text": "PACBIO_SMRT",
+          "description": "PacBio SMRT sequencing platform"
+        }
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "name": "bulkWESLevel1__SEQUENCING_BATCH_ID",
+      "description": "Sequencing batch identifier",
+      "title": "Sequencing Batch ID",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/SEQUENCING_BATCH_ID",
+      "alias": "SEQUENCING_BATCH_ID",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__LIBRARY_LAYOUT",
+      "description": "Library layout (paired-end or single-end)",
+      "title": "Library Layout",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/LIBRARY_LAYOUT",
+      "alias": "LIBRARY_LAYOUT",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "LibraryLayoutEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__READ_INDICATOR",
+      "description": "Read indicator",
+      "title": "Read Indicator",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/READ_INDICATOR",
+      "alias": "READ_INDICATOR",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__LIBRARY_SELECTION_METHOD",
+      "description": "Method used for library selection",
+      "title": "Library Selection Method",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/LIBRARY_SELECTION_METHOD",
+      "alias": "LIBRARY_SELECTION_METHOD",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "LibrarySelectionMethodEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__READ_LENGTH",
+      "description": "Read length in base pairs",
+      "title": "Read Length",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/READ_LENGTH",
+      "alias": "READ_LENGTH",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "integer",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__TARGET_CAPTURE_KIT",
+      "description": "Target capture kit used",
+      "title": "Target Capture Kit",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/TARGET_CAPTURE_KIT",
+      "alias": "TARGET_CAPTURE_KIT",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__LIBRARY_PREPARATION_KIT_NAME",
+      "description": "Name of the library preparation kit",
+      "title": "Library Preparation Kit Name",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/LIBRARY_PREPARATION_KIT_NAME",
+      "alias": "LIBRARY_PREPARATION_KIT_NAME",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__LIBRARY_PREPARATION_KIT_VENDOR",
+      "description": "Vendor of the library preparation kit",
+      "title": "Library Preparation Kit Vendor",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/LIBRARY_PREPARATION_KIT_VENDOR",
+      "alias": "LIBRARY_PREPARATION_KIT_VENDOR",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__LIBRARY_PREPARATION_KIT_VERSION",
+      "description": "Version of the library preparation kit",
+      "title": "Library Preparation Kit Version",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/LIBRARY_PREPARATION_KIT_VERSION",
+      "alias": "LIBRARY_PREPARATION_KIT_VERSION",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__SEQUENCING_PLATFORM",
+      "description": "Sequencing platform used",
+      "title": "Sequencing Platform",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/SEQUENCING_PLATFORM",
+      "alias": "SEQUENCING_PLATFORM",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "SequencingPlatformEnum",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__ADAPTER_NAME",
+      "description": "Name of the adapter used",
+      "title": "Adapter Name",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/ADAPTER_NAME",
+      "alias": "ADAPTER_NAME",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__ADAPTER_SEQUENCE",
+      "description": "Adapter sequence",
+      "title": "Adapter Sequence",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/ADAPTER_SEQUENCE",
+      "alias": "ADAPTER_SEQUENCE",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__BASE_CALLER_NAME",
+      "description": "Name of the base caller",
+      "title": "Base Caller Name",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/BASE_CALLER_NAME",
+      "alias": "BASE_CALLER_NAME",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__BASE_CALLER_VERSION",
+      "description": "Version of the base caller",
+      "title": "Base Caller Version",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/BASE_CALLER_VERSION",
+      "alias": "BASE_CALLER_VERSION",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__FLOW_CELL_BARCODE",
+      "description": "Flow cell barcode",
+      "title": "Flow Cell Barcode",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/FLOW_CELL_BARCODE",
+      "alias": "FLOW_CELL_BARCODE",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__FRAGMENT_MAXIMUM_LENGTH",
+      "description": "Maximum fragment length",
+      "title": "Fragment Maximum Length",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/FRAGMENT_MAXIMUM_LENGTH",
+      "alias": "FRAGMENT_MAXIMUM_LENGTH",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__FRAGMENT_MEAN_LENGTH",
+      "description": "Mean fragment length",
+      "title": "Fragment Mean Length",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/FRAGMENT_MEAN_LENGTH",
+      "alias": "FRAGMENT_MEAN_LENGTH",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__FRAGMENT_MINIMUM_LENGTH",
+      "description": "Minimum fragment length",
+      "title": "Fragment Minimum Length",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/FRAGMENT_MINIMUM_LENGTH",
+      "alias": "FRAGMENT_MINIMUM_LENGTH",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__FRAGMENT_STANDARD_DEVIATION_LENGTH",
+      "description": "Standard deviation of fragment length",
+      "title": "Fragment Standard Deviation Length",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/FRAGMENT_STANDARD_DEVIATION_LENGTH",
+      "alias": "FRAGMENT_STANDARD_DEVIATION_LENGTH",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__LANE_NUMBER",
+      "description": "Lane number",
+      "title": "Lane Number",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/LANE_NUMBER",
+      "alias": "LANE_NUMBER",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__MULTIPLEX_BARCODE",
+      "description": "Multiplex barcode",
+      "title": "Multiplex Barcode",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/MULTIPLEX_BARCODE",
+      "alias": "MULTIPLEX_BARCODE",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__LIBRARY_PREPARATION_DAYS_FROM_INDEX",
+      "description": "Days from index for library preparation",
+      "title": "Library Preparation Days From Index",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/LIBRARY_PREPARATION_DAYS_FROM_INDEX",
+      "alias": "LIBRARY_PREPARATION_DAYS_FROM_INDEX",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__SIZE_SELECTION_RANGE",
+      "description": "Size selection range",
+      "title": "Size Selection Range",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/SIZE_SELECTION_RANGE",
+      "alias": "SIZE_SELECTION_RANGE",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__TARGET_DEPTH",
+      "description": "Target sequencing depth",
+      "title": "Target Depth",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/TARGET_DEPTH",
+      "alias": "TARGET_DEPTH",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "bulkWESLevel1__TO_TRIM_ADAPTER_SEQUENCE",
+      "description": "Whether to trim adapter sequence",
+      "title": "To Trim Adapter Sequence",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "slot_uri": "https://w3id.org/htan/TO_TRIM_ADAPTER_SEQUENCE",
+      "alias": "TO_TRIM_ADAPTER_SEQUENCE",
+      "owner": "BulkWESLevel1",
+      "domain_of": [
+        "BulkWESLevel1"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coreFileAttributes__COMPONENT",
+      "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+      "title": "Component",
+      "from_schema": "https://w3id.org/htan/core",
+      "slot_uri": "https://w3id.org/htan/COMPONENT",
+      "alias": "COMPONENT",
+      "owner": "CoreFileAttributes",
+      "domain_of": [
+        "CoreFileAttributes"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coreFileAttributes__FILENAME",
+      "description": "Name of the file",
+      "title": "File Name",
+      "from_schema": "https://w3id.org/htan/core",
+      "slot_uri": "https://w3id.org/htan/FILENAME",
+      "alias": "FILENAME",
+      "owner": "CoreFileAttributes",
+      "domain_of": [
+        "CoreFileAttributes"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^.+[\\\\/]\\S*$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coreFileAttributes__FILE_FORMAT",
+      "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+      "title": "File Format",
+      "from_schema": "https://w3id.org/htan/core",
+      "slot_uri": "https://w3id.org/htan/FILE_FORMAT",
+      "alias": "FILE_FORMAT",
+      "owner": "CoreFileAttributes",
+      "domain_of": [
+        "CoreFileAttributes"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coreFileAttributes__HTAN_PARTICIPANT_ID",
+      "description": "HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)",
+      "title": "HTAN Participant ID",
+      "from_schema": "https://w3id.org/htan/core",
+      "slot_uri": "https://w3id.org/htan/HTAN_PARTICIPANT_ID",
+      "alias": "HTAN_PARTICIPANT_ID",
+      "owner": "CoreFileAttributes",
+      "domain_of": [
+        "CoreFileAttributes"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coreFileAttributes__HTAN_DATA_FILE_ID",
+      "description": "HTAN Data File ID (Primary Key)",
+      "title": "HTAN Data File ID",
+      "from_schema": "https://w3id.org/htan/core",
+      "slot_uri": "https://w3id.org/htan/HTAN_DATA_FILE_ID",
+      "identifier": true,
+      "alias": "HTAN_DATA_FILE_ID",
+      "owner": "CoreFileAttributes",
+      "domain_of": [
+        "CoreFileAttributes"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coreFileAttributes__HTAN_PARENT_ID",
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)",
+      "title": "HTAN Parent ID",
+      "from_schema": "https://w3id.org/htan/core",
+      "slot_uri": "https://w3id.org/htan/HTAN_PARENT_ID",
+      "alias": "HTAN_PARENT_ID",
+      "owner": "CoreFileAttributes",
+      "domain_of": [
+        "CoreFileAttributes"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "coreFileAttributes__HTAN_BIOSPECIMEN_ID",
+      "description": "HTAN Biospecimen ID of the parent biospecimen (Primary Key)",
+      "title": "HTAN Biospecimen ID",
+      "from_schema": "https://w3id.org/htan/core",
+      "slot_uri": "https://w3id.org/htan/HTAN_BIOSPECIMEN_ID",
+      "alias": "HTAN_BIOSPECIMEN_ID",
+      "owner": "CoreFileAttributes",
+      "domain_of": [
+        "CoreFileAttributes"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "BulkWESLevel1",
+      "definition_uri": "https://w3id.org/htan/BulkWESLevel1",
+      "description": "Bulk Whole Exome Sequencing Level 1 - Raw files",
+      "from_schema": "https://w3id.org/htan/wes/level_1",
+      "is_a": "CoreFileAttributes",
+      "slots": [
+        "coreFileAttributes__COMPONENT",
+        "coreFileAttributes__FILENAME",
+        "coreFileAttributes__FILE_FORMAT",
+        "coreFileAttributes__HTAN_PARTICIPANT_ID",
+        "coreFileAttributes__HTAN_DATA_FILE_ID",
+        "coreFileAttributes__HTAN_PARENT_ID",
+        "coreFileAttributes__HTAN_BIOSPECIMEN_ID",
+        "bulkWESLevel1__SEQUENCING_BATCH_ID",
+        "bulkWESLevel1__LIBRARY_LAYOUT",
+        "bulkWESLevel1__READ_INDICATOR",
+        "bulkWESLevel1__LIBRARY_SELECTION_METHOD",
+        "bulkWESLevel1__READ_LENGTH",
+        "bulkWESLevel1__TARGET_CAPTURE_KIT",
+        "bulkWESLevel1__LIBRARY_PREPARATION_KIT_NAME",
+        "bulkWESLevel1__LIBRARY_PREPARATION_KIT_VENDOR",
+        "bulkWESLevel1__LIBRARY_PREPARATION_KIT_VERSION",
+        "bulkWESLevel1__SEQUENCING_PLATFORM",
+        "bulkWESLevel1__ADAPTER_NAME",
+        "bulkWESLevel1__ADAPTER_SEQUENCE",
+        "bulkWESLevel1__BASE_CALLER_NAME",
+        "bulkWESLevel1__BASE_CALLER_VERSION",
+        "bulkWESLevel1__FLOW_CELL_BARCODE",
+        "bulkWESLevel1__FRAGMENT_MAXIMUM_LENGTH",
+        "bulkWESLevel1__FRAGMENT_MEAN_LENGTH",
+        "bulkWESLevel1__FRAGMENT_MINIMUM_LENGTH",
+        "bulkWESLevel1__FRAGMENT_STANDARD_DEVIATION_LENGTH",
+        "bulkWESLevel1__LANE_NUMBER",
+        "bulkWESLevel1__MULTIPLEX_BARCODE",
+        "bulkWESLevel1__LIBRARY_PREPARATION_DAYS_FROM_INDEX",
+        "bulkWESLevel1__SIZE_SELECTION_RANGE",
+        "bulkWESLevel1__TARGET_DEPTH",
+        "bulkWESLevel1__TO_TRIM_ADAPTER_SEQUENCE"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "SEQUENCING_BATCH_ID",
+          "description": "Sequencing batch identifier",
+          "title": "Sequencing Batch ID",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "LIBRARY_LAYOUT",
+          "description": "Library layout (paired-end or single-end)",
+          "title": "Library Layout",
+          "range": "LibraryLayoutEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "READ_INDICATOR",
+          "description": "Read indicator",
+          "title": "Read Indicator",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "LIBRARY_SELECTION_METHOD",
+          "description": "Method used for library selection",
+          "title": "Library Selection Method",
+          "range": "LibrarySelectionMethodEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "READ_LENGTH",
+          "description": "Read length in base pairs",
+          "title": "Read Length",
+          "range": "integer",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "TARGET_CAPTURE_KIT",
+          "description": "Target capture kit used",
+          "title": "Target Capture Kit",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "LIBRARY_PREPARATION_KIT_NAME",
+          "description": "Name of the library preparation kit",
+          "title": "Library Preparation Kit Name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "LIBRARY_PREPARATION_KIT_VENDOR",
+          "description": "Vendor of the library preparation kit",
+          "title": "Library Preparation Kit Vendor",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "LIBRARY_PREPARATION_KIT_VERSION",
+          "description": "Version of the library preparation kit",
+          "title": "Library Preparation Kit Version",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "SEQUENCING_PLATFORM",
+          "description": "Sequencing platform used",
+          "title": "Sequencing Platform",
+          "range": "SequencingPlatformEnum",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ADAPTER_NAME",
+          "description": "Name of the adapter used",
+          "title": "Adapter Name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ADAPTER_SEQUENCE",
+          "description": "Adapter sequence",
+          "title": "Adapter Sequence",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "BASE_CALLER_NAME",
+          "description": "Name of the base caller",
+          "title": "Base Caller Name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "BASE_CALLER_VERSION",
+          "description": "Version of the base caller",
+          "title": "Base Caller Version",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "FLOW_CELL_BARCODE",
+          "description": "Flow cell barcode",
+          "title": "Flow Cell Barcode",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "FRAGMENT_MAXIMUM_LENGTH",
+          "description": "Maximum fragment length",
+          "title": "Fragment Maximum Length",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "FRAGMENT_MEAN_LENGTH",
+          "description": "Mean fragment length",
+          "title": "Fragment Mean Length",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "FRAGMENT_MINIMUM_LENGTH",
+          "description": "Minimum fragment length",
+          "title": "Fragment Minimum Length",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "FRAGMENT_STANDARD_DEVIATION_LENGTH",
+          "description": "Standard deviation of fragment length",
+          "title": "Fragment Standard Deviation Length",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "LANE_NUMBER",
+          "description": "Lane number",
+          "title": "Lane Number",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "MULTIPLEX_BARCODE",
+          "description": "Multiplex barcode",
+          "title": "Multiplex Barcode",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "LIBRARY_PREPARATION_DAYS_FROM_INDEX",
+          "description": "Days from index for library preparation",
+          "title": "Library Preparation Days From Index",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "SIZE_SELECTION_RANGE",
+          "description": "Size selection range",
+          "title": "Size Selection Range",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "TARGET_DEPTH",
+          "description": "Target sequencing depth",
+          "title": "Target Depth",
+          "range": "integer",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "TO_TRIM_ADAPTER_SEQUENCE",
+          "description": "Whether to trim adapter sequence",
+          "title": "To Trim Adapter Sequence",
+          "range": "boolean",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/htan/BulkWESLevel1",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CoreFileAttributes",
+      "definition_uri": "https://w3id.org/htan/CoreFileAttributes",
+      "description": "Universal attributes that apply to all file-based data in HTAN",
+      "from_schema": "https://w3id.org/htan/core",
+      "slots": [
+        "coreFileAttributes__COMPONENT",
+        "coreFileAttributes__FILENAME",
+        "coreFileAttributes__FILE_FORMAT",
+        "coreFileAttributes__HTAN_PARTICIPANT_ID",
+        "coreFileAttributes__HTAN_DATA_FILE_ID",
+        "coreFileAttributes__HTAN_PARENT_ID",
+        "coreFileAttributes__HTAN_BIOSPECIMEN_ID"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "COMPONENT",
+          "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+          "title": "Component",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "FILENAME",
+          "description": "Name of the file",
+          "title": "File Name",
+          "range": "string",
+          "required": true,
+          "pattern": "^.+[\\\\/]\\S*$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "FILE_FORMAT",
+          "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+          "title": "File Format",
+          "range": "string",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "HTAN_PARTICIPANT_ID",
+          "description": "HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)",
+          "title": "HTAN Participant ID",
+          "range": "string",
+          "required": true,
+          "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "HTAN_DATA_FILE_ID",
+          "description": "HTAN Data File ID (Primary Key)",
+          "title": "HTAN Data File ID",
+          "identifier": true,
+          "range": "string",
+          "required": true,
+          "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "HTAN_PARENT_ID",
+          "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)",
+          "title": "HTAN Parent ID",
+          "range": "string",
+          "required": true,
+          "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "HTAN_BIOSPECIMEN_ID",
+          "description": "HTAN Biospecimen ID of the parent biospecimen (Primary Key)",
+          "title": "HTAN Biospecimen ID",
+          "range": "string",
+          "required": true,
+          "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/htan/CoreFileAttributes",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "level_1.yaml",
+  "source_file_date": "2025-08-28T13:01:03",
+  "source_file_size": 5745,
+  "generation_date": "2025-08-28T13:04:06",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "./jsonld/level_1.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    "../../Core/domains/core.context.jsonld",
+    {
+      "@base": "https://w3id.org/htan/"
+    }
+  ]
+}

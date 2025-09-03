@@ -1,0 +1,76 @@
+# metamodel_version: 1.7.0
+enum LibraryLayoutEnum
+  {
+    Paired__HYPHEN_MINUS__end
+    Single__HYPHEN_MINUS__end
+  }
+
+enum LibrarySelectionMethodEnum
+  {
+    Hybrid_Selection
+    PCR
+    RANDOM
+    other
+  }
+
+enum SequencingPlatformEnum
+  {
+    ABI_SOLID
+    BGISEQ
+    CAPILLARY
+    COMPLETE_GENOMICS
+    HELICOS
+    ILLUMINA
+    ION_TORRENT
+    LS454
+    OXFORD_NANOPORE
+    PACBIO_SMRT
+  }
+
+type BulkWESLevel1
+  {
+    cOMPONENT: String!
+    fILENAME: String!
+    fILEFORMAT: String!
+    hTANPARTICIPANTID: String!
+    hTANDATAFILEID: String!
+    hTANPARENTID: String!
+    hTANBIOSPECIMENID: String!
+    sEQUENCINGBATCHID: String
+    lIBRARYLAYOUT: LibraryLayoutEnum!
+    rEADINDICATOR: String
+    lIBRARYSELECTIONMETHOD: LibrarySelectionMethodEnum!
+    rEADLENGTH: Integer!
+    tARGETCAPTUREKIT: String
+    lIBRARYPREPARATIONKITNAME: String
+    lIBRARYPREPARATIONKITVENDOR: String
+    lIBRARYPREPARATIONKITVERSION: String
+    sEQUENCINGPLATFORM: SequencingPlatformEnum!
+    aDAPTERNAME: String
+    aDAPTERSEQUENCE: String
+    bASECALLERNAME: String
+    bASECALLERVERSION: String
+    fLOWCELLBARCODE: String
+    fRAGMENTMAXIMUMLENGTH: Integer
+    fRAGMENTMEANLENGTH: Integer
+    fRAGMENTMINIMUMLENGTH: Integer
+    fRAGMENTSTANDARDDEVIATIONLENGTH: Integer
+    lANENUMBER: Integer
+    mULTIPLEXBARCODE: String
+    lIBRARYPREPARATIONDAYSFROMINDEX: Integer
+    sIZESELECTIONRANGE: String
+    tARGETDEPTH: Integer
+    tOTRIMADAPTERSEQUENCE: Boolean
+  }
+
+type CoreFileAttributes
+  {
+    cOMPONENT: String!
+    fILENAME: String!
+    fILEFORMAT: String!
+    hTANPARTICIPANTID: String!
+    hTANDATAFILEID: String!
+    hTANPARENTID: String!
+    hTANBIOSPECIMENID: String!
+  }
+

@@ -1,0 +1,50 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// Bulk Whole Exome Sequencing Level 1 - Raw files
+message BulkWESLevel1
+ {
+  string cOMPONENT = 0
+  string fILENAME = 0
+  string fILEFORMAT = 0
+  string hTANPARTICIPANTID = 0
+  string hTANDATAFILEID = 0
+  string hTANPARENTID = 0
+  string hTANBIOSPECIMENID = 0
+  string sEQUENCINGBATCHID = 0
+  libraryLayoutEnum lIBRARYLAYOUT = 0
+  string rEADINDICATOR = 0
+  librarySelectionMethodEnum lIBRARYSELECTIONMETHOD = 0
+  integer rEADLENGTH = 0
+  string tARGETCAPTUREKIT = 0
+  string lIBRARYPREPARATIONKITNAME = 0
+  string lIBRARYPREPARATIONKITVENDOR = 0
+  string lIBRARYPREPARATIONKITVERSION = 0
+  sequencingPlatformEnum sEQUENCINGPLATFORM = 0
+  string aDAPTERNAME = 0
+  string aDAPTERSEQUENCE = 0
+  string bASECALLERNAME = 0
+  string bASECALLERVERSION = 0
+  string fLOWCELLBARCODE = 0
+  integer fRAGMENTMAXIMUMLENGTH = 0
+  integer fRAGMENTMEANLENGTH = 0
+  integer fRAGMENTMINIMUMLENGTH = 0
+  integer fRAGMENTSTANDARDDEVIATIONLENGTH = 0
+  integer lANENUMBER = 0
+  string mULTIPLEXBARCODE = 0
+  integer lIBRARYPREPARATIONDAYSFROMINDEX = 0
+  string sIZESELECTIONRANGE = 0
+  integer tARGETDEPTH = 0
+  boolean tOTRIMADAPTERSEQUENCE = 0
+ }
+// Universal attributes that apply to all file-based data in HTAN
+message CoreFileAttributes
+ {
+  string cOMPONENT = 0
+  string fILENAME = 0
+  string fILEFORMAT = 0
+  string hTANPARTICIPANTID = 0
+  string hTANDATAFILEID = 0
+  string hTANPARENTID = 0
+  string hTANBIOSPECIMENID = 0
+ }

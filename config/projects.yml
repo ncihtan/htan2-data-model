@@ -1,0 +1,22 @@
+# HTAN2 Project Synapse IDs
+# Used for binding JSON schemas to the correct project folders
+projects:
+  HTAN2_Ovarian: syn63298044
+  HTAN2_Glioma: syn63298048
+  HTAN2_Gastric: syn63298051
+  HTAN2_Skin: syn63298054
+  HTAN2_Pediatric: syn63298059
+  HTAN2_Myeloma: syn63298063
+  HTAN2_Pancreatic: syn63298065
+  HTAN2_Prostate: syn63298068
+  HTAN2_CRC: syn63298073
+  HTAN2_Lymphoma: syn63298076
+
+# Schema type classification
+schema_types:
+  file_based:
+    - WES
+    - scRNA-seq
+  record_based:
+    - Biospecimen
+    - Clinical

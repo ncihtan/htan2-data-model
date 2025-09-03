@@ -134,26 +134,36 @@ jobs:
           fi
         done
     
-    - name: Bind schemas to Synapse folders
+    - name: Bind file-based schemas to project folders
       env:
         SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}
         SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
       run: |
-        # Bind each schema to its appropriate folder
-        # Clinical data folder (all clinical schemas go here)
-        CLINICAL_FOLDER_ID="syn69060693"  # Update with actual folder ID
+        # For now, test with just one project (HTAN2_Ovarian) and WES Level 1 schema
+        # This will create a WES_Level_1 subfolder and bind the schema with a fileview
         
-        for schema_file in JSON_Schemas/*.json; do
-          if [ -f "$schema_file" ]; then
-            schema_name=$(basename "$schema_file" .json)
-            echo "Binding schema: $schema_name to Clinical folder"
-            
-            poetry run python scripts/synapse_json_schema_bind.py \
-              -p "$schema_file" \
-              -t "$CLINICAL_FOLDER_ID" \
-              -n "${{ env.ORGANIZATION_NAME }}"
-          fi
-        done
+        # Find WES Level 1 schema
+        WES_SCHEMA=$(find JSON_Schemas -name "*WES*Level*1*" -o -name "*level_1*" | head -1)
+        
+        if [ -n "$WES_SCHEMA" ]; then
+          echo "Found WES Level 1 schema: $WES_SCHEMA"
+          echo "Binding to HTAN2_Ovarian project..."
+          
+          poetry run python scripts/bind_file_based_schemas.py \
+            --schema-file "$WES_SCHEMA" \
+            --project-name "HTAN2_Ovarian" \
+            --subfolder-name "WES_Level_1"
+        else
+          echo "No WES Level 1 schema found, skipping file-based binding"
+        fi
+        
+        # TODO: Later expand to bind all file-based schemas to all projects
+        # for project in HTAN2_Ovarian HTAN2_Glioma HTAN2_Gastric; do
+        #   poetry run python scripts/bind_file_based_schemas.py \
+        #     --schema-file "$WES_SCHEMA" \
+        #     --project-name "$project" \
+        #     --subfolder-name "WES_Level_1"
+        # done
     
     - name: Upload generated schemas as artifacts
       uses: actions/upload-artifact@v4
