@@ -14,26 +14,27 @@ import sys
 from typing import Any, Dict, List
 
 import yaml
-from synapseclient import Synapse, Column, ColumnType, ViewTypeMask, EntityView
+from synapseclient import Synapse
+from synapseclient.table import Column, EntityViewSchema
 from synapseclient.core.exceptions import SynapseHTTPError
 
 
-# Constants copied from schematic's json_schema_functions.py
+# Constants for column types (using string values as required by newer synapseclient)
 TYPE_DICT = {
-    "string": ColumnType.STRING,
-    "number": ColumnType.DOUBLE,
-    "integer": ColumnType.INTEGER,
-    "boolean": ColumnType.BOOLEAN,
+    "string": "STRING",
+    "number": "DOUBLE",
+    "integer": "INTEGER",
+    "boolean": "BOOLEAN",
 }
 
 LIST_TYPE_DICT = {
-    "string": ColumnType.STRING_LIST,
-    "integer": ColumnType.INTEGER_LIST,
-    "boolean": ColumnType.BOOLEAN_LIST,
+    "string": "STRING_LIST",
+    "integer": "INTEGER_LIST",
+    "boolean": "BOOLEAN_LIST",
 }
 
 
-def _get_column_type_from_js_property(js_property: Dict[str, Any]) -> ColumnType:
+def _get_column_type_from_js_property(js_property: Dict[str, Any]) -> str:
     """
     Gets the Synapse column type from a JSON Schema property.
     Copied from schematic's json_schema_functions.py
@@ -51,7 +52,7 @@ def _get_column_type_from_js_property(js_property: Dict[str, Any]) -> ColumnType
     return ColumnType.STRING
 
 
-def _get_column_type_from_js_one_of_list(js_one_of_list: List[Any]) -> ColumnType:
+def _get_column_type_from_js_one_of_list(js_one_of_list: List[Any]) -> str:
     """
     Gets the Synapse column type from a JSON Schema oneOf list.
     Copied from schematic's json_schema_functions.py
@@ -60,18 +61,18 @@ def _get_column_type_from_js_one_of_list(js_one_of_list: List[Any]) -> ColumnTyp
     items = [item for item in js_one_of_list if isinstance(item, dict)]
     # Enums are always strings in Synapse tables
     if [item for item in items if "enum" in item]:
-        return ColumnType.STRING
+        return "STRING"
     # For Synapse ColumnType we can ignore null types in JSON Schemas
     type_items = [item for item in items if "type" in item if item["type"] != "null"]
     if len(type_items) == 1:
         type_item = type_items[0]
         if type_item["type"] == "array":
             return _get_list_column_type_from_js_property(type_item)
-        return TYPE_DICT.get(type_item["type"], ColumnType.STRING)
-    return ColumnType.STRING
+        return TYPE_DICT.get(type_item["type"], "STRING")
+    return "STRING"
 
 
-def _get_list_column_type_from_js_property(js_property: Dict[str, Any]) -> ColumnType:
+def _get_list_column_type_from_js_property(js_property: Dict[str, Any]) -> str:
     """
     Gets the Synapse column type from a JSON Schema array property.
     Copied from schematic's json_schema_functions.py
@@ -79,12 +80,12 @@ def _get_list_column_type_from_js_property(js_property: Dict[str, Any]) -> Colum
     if "items" in js_property and isinstance(js_property["items"], dict):
         # Enums are always strings in Synapse tables
         if "enum" in js_property["items"]:
-            return ColumnType.STRING_LIST
+            return "STRING_LIST"
         if "type" in js_property["items"]:
             return LIST_TYPE_DICT.get(
-                js_property["items"]["type"], ColumnType.STRING_LIST
+                js_property["items"]["type"], "STRING_LIST"
             )
-    return ColumnType.STRING_LIST
+    return "STRING_LIST"
 
 
 def _create_columns_from_json_schema(json_schema: Dict[str, Any]) -> List[Column]:
@@ -133,12 +134,12 @@ def create_fileview_from_schema(syn: Synapse, schema_file: str, folder_id: str, 
         columns = _create_columns_from_json_schema(schema)
         print(f"Created {len(columns)} columns from schema")
         
-        # Create the fileview
-        view = EntityView(
+        # Create the fileview using EntityViewSchema
+        view = EntityViewSchema(
             name=view_name,
-            parent_id=folder_id,
-            scope_ids=[folder_id],
-            view_type_mask=ViewTypeMask.FILE,
+            parent=folder_id,
+            scopes=[folder_id],
+            includeEntityTypes=["file"],
             columns=columns,
         )
         
@@ -146,14 +147,8 @@ def create_fileview_from_schema(syn: Synapse, schema_file: str, folder_id: str, 
         view = syn.store(view)
         print(f"Created fileview: {view_name} (ID: {view['id']})")
         
-        # Reorder columns to show important ones first
-        try:
-            view.reorder_column(name="createdBy", index=0)
-            view.reorder_column(name="name", index=0)
-            view.reorder_column(name="id", index=0)
-            view.store(synapse_client=syn)
-        except Exception as e:
-            print(f"Warning: Could not reorder columns: {e}")
+        # Note: Column reordering is not available in newer synapseclient versions
+        # The columns will appear in the order they were created
         
         return view['id']
         
