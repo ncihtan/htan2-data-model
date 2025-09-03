@@ -41,15 +41,15 @@ def _get_column_type_from_js_property(js_property: Dict[str, Any]) -> str:
     """
     # Enums are always strings in Synapse tables
     if "enum" in js_property:
-        return ColumnType.STRING
+        return "STRING"
     if "type" in js_property:
         if js_property["type"] == "array":
             return _get_list_column_type_from_js_property(js_property)
-        return TYPE_DICT.get(js_property["type"], ColumnType.STRING)
+        return TYPE_DICT.get(js_property["type"], "STRING")
     # A oneOf list usually indicates that the type could be one or more different things
     if "oneOf" in js_property and isinstance(js_property["oneOf"], list):
         return _get_column_type_from_js_one_of_list(js_property["oneOf"])
-    return ColumnType.STRING
+    return "STRING"
 
 
 def _get_column_type_from_js_one_of_list(js_one_of_list: List[Any]) -> str:
