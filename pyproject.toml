@@ -11,12 +11,13 @@ packages = [
 include = ["README.md", "modules/Clinical/src/htan_clinical/schema", "project"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9,<3.14"
 jsonref = "^0.2"
 linkml-runtime = "^1.1.24"
 pyyaml = "^6.0.1"
 pandas = "^2.0.0"
 openpyxl = "^3.1.0"
+synapseclient = "^4.9.0"
 
 [tool.poetry-dynamic-versioning]
 enable = true
