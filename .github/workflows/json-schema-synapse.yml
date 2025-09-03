@@ -115,6 +115,12 @@ jobs:
           "modules/Clinical/domains/vital_status.yaml" \
           --class-name "VitalStatus" \
           --output "HTAN.VitalStatus-${{ steps.version.outputs.version }}-schema.json"
+        
+        # WES Level 1 (file-based schema)
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/WES/domains/level_1.yaml" \
+          --class-name "BulkWESLevel1" \
+          --output "HTAN.BulkWESLevel1-${{ steps.version.outputs.version }}-schema.json"
     
     - name: Register schemas in Synapse
       env:
@@ -192,6 +198,7 @@ jobs:
         - Exposure Schema
         - FamilyHistory Schema
         - VitalStatus Schema
+        - BulkWESLevel1 Schema (file-based)
         
         All schemas have been registered in Synapse under the ${{ env.ORGANIZATION_NAME }} organization."
     
