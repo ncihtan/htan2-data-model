@@ -54,7 +54,7 @@ def push_annotations_from_file(file_path, entity_id):
 def main():
     # Example mapping: update with your actual files and Synapse IDs
     file_mappings = {
-        "example_annotations.json": "syn12345678"
+        "test_vital_status_deceased.json": "syn69060694"
     }
     
     print("Pushing annotations from JSON files to Synapse entities")

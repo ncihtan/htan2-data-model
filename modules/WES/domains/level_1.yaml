@@ -3,6 +3,7 @@ id: https://w3id.org/htan/wes/level_1
 description: Bulk Whole Exome Sequencing Level 1 - Raw files
 imports:
   - linkml:types
+  - ../../Core/domains/core
 
 prefixes:
   htan: https://w3id.org/htan/

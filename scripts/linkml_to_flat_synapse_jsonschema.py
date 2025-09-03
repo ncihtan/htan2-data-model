@@ -55,7 +55,7 @@ def run_gen_json_schema(linkml_yaml: str, class_name: str, tmp_json: str) -> Non
     print(f"Generated JSON Schema written to {tmp_json}")
 
 
-def _convert_to_plain_dict(obj) -> Union[dict, list, Any]:
+def _convert_to_plain_dict(obj, visited=None) -> Union[dict, list, Any]:
     """Convert jsonref objects to plain Python dictionaries and lists.
 
     Recursively converts jsonref.JsonRef objects to plain Python data structures
@@ -64,16 +64,30 @@ def _convert_to_plain_dict(obj) -> Union[dict, list, Any]:
 
     Args:
         obj: The object to convert (dict, list, or other)
+        visited: Set of already visited objects to prevent infinite recursion
 
     Returns:
         Union[dict, list, Any]: Plain Python data structure
     """
-    if isinstance(obj, dict):
-        return {k: _convert_to_plain_dict(v) for k, v in obj.items()}
-    elif isinstance(obj, list):
-        return [_convert_to_plain_dict(item) for item in obj]
-    else:
-        return obj
+    if visited is None:
+        visited = set()
+    
+    # Prevent infinite recursion by tracking visited objects
+    obj_id = id(obj)
+    if obj_id in visited:
+        return obj  # Return the object as-is to break recursion
+    
+    visited.add(obj_id)
+    
+    try:
+        if isinstance(obj, dict):
+            return {k: _convert_to_plain_dict(v, visited) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [_convert_to_plain_dict(item, visited) for item in obj]
+        else:
+            return obj
+    finally:
+        visited.discard(obj_id)  # Clean up visited set
 
 
 def flatten_json_schema(schema_data: dict) -> dict:
@@ -122,19 +136,33 @@ def fix_schema_version(schema_data: dict) -> dict:
 def remove_unsupported_fields(schema_data: dict) -> dict:
     """Remove fields that are not supported by Synapse JSON Schema service."""
 
-    def recursive_clean(obj):
-        if isinstance(obj, dict):
-            # Remove unsupported fields (don't process them recursively)
-            unsupported_fields = ["$defs", "metamodel_version", "version"]
-            for field in unsupported_fields:
-                obj.pop(field, None)  # Safely remove if exists
+    def recursive_clean(obj, visited=None):
+        if visited is None:
+            visited = set()
+        
+        # Prevent infinite recursion by tracking visited objects
+        obj_id = id(obj)
+        if obj_id in visited:
+            return
+        visited.add(obj_id)
+        
+        try:
+            if isinstance(obj, dict):
+                # Remove unsupported fields (don't process them recursively)
+                unsupported_fields = ["$defs", "metamodel_version", "version"]
+                for field in unsupported_fields:
+                    obj.pop(field, None)  # Safely remove if exists
 
-            # Recursively process remaining values
-            for value in obj.values():
-                recursive_clean(value)
-        elif isinstance(obj, list):
-            for item in obj:
-                recursive_clean(item)
+                # Recursively process remaining values
+                for value in obj.values():
+                    recursive_clean(value, visited)
+            elif isinstance(obj, list):
+                for item in obj:
+                    recursive_clean(item, visited)
+        except (RecursionError, TypeError, AttributeError) as e:
+            # Skip problematic objects
+            print(f"Warning: Skipping object due to error: {e}")
+            pass
 
     recursive_clean(schema_data)
     print("Cleaned unsupported fields from schema")
@@ -144,20 +172,74 @@ def remove_unsupported_fields(schema_data: dict) -> dict:
 def fix_additional_properties(schema_data: dict) -> dict:
     """Recursively replace boolean additionalProperties with {} in a JSON Schema data."""
 
-    def recursive_fix(obj):
-        if isinstance(obj, dict):
-            if "additionalProperties" in obj and isinstance(
-                obj["additionalProperties"], bool
-            ):
-                obj["additionalProperties"] = {}
-            for value in obj.values():
-                recursive_fix(value)
-        elif isinstance(obj, list):
-            for item in obj:
-                recursive_fix(item)
+    def recursive_fix(obj, visited=None):
+        if visited is None:
+            visited = set()
+        
+        # Prevent infinite recursion by tracking visited objects
+        obj_id = id(obj)
+        if obj_id in visited:
+            return
+        visited.add(obj_id)
+        
+        try:
+            if isinstance(obj, dict):
+                if "additionalProperties" in obj and isinstance(
+                    obj["additionalProperties"], bool
+                ):
+                    obj["additionalProperties"] = {}
+                for value in obj.values():
+                    recursive_fix(value, visited)
+            elif isinstance(obj, list):
+                for item in obj:
+                    recursive_fix(item, visited)
+        except (RecursionError, TypeError, AttributeError) as e:
+            # Skip problematic objects
+            print(f"Warning: Skipping object due to error: {e}")
+            pass
 
     recursive_fix(schema_data)
     print("Fixed additionalProperties in schema")
+    return schema_data
+
+
+def clean_union_types(schema_data: dict) -> dict:
+    """Recursively clean union types like ["string", "null"] to just "string"."""
+    
+    def recursive_clean_union(obj, visited=None):
+        if visited is None:
+            visited = set()
+        
+        # Prevent infinite recursion by tracking visited objects
+        obj_id = id(obj)
+        if obj_id in visited:
+            return
+        visited.add(obj_id)
+        
+        try:
+            if isinstance(obj, dict):
+                # Clean union types in type fields
+                if "type" in obj and isinstance(obj["type"], list):
+                    # Keep only the first non-null type
+                    types = [t for t in obj["type"] if t != "null"]
+                    if types:
+                        obj["type"] = types[0]  # Use first non-null type
+                    else:
+                        obj["type"] = "string"  # Default to string if only null
+                
+                # Recursively process remaining values
+                for value in obj.values():
+                    recursive_clean_union(value, visited)
+            elif isinstance(obj, list):
+                for item in obj:
+                    recursive_clean_union(item, visited)
+        except (RecursionError, TypeError, AttributeError) as e:
+            # Skip problematic objects
+            print(f"Warning: Skipping object due to error: {e}")
+            pass
+
+    recursive_clean_union(schema_data)
+    print("Cleaned union types from schema")
     return schema_data
 
 
@@ -220,6 +302,7 @@ def main():
     schema_data = flatten_json_schema(schema_data)
     schema_data = fix_schema_version(schema_data)
     schema_data = fix_additional_properties(schema_data)
+    schema_data = clean_union_types(schema_data)
     schema_data = remove_unsupported_fields(schema_data)
 
     # 4. Write final result to output file
