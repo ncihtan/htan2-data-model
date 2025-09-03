@@ -1,0 +1,26 @@
+name: Biospecimen
+id: https://w3id.org/htan/biospecimen
+description: HTAN Biospecimen Data Model - Attributes for biospecimen-based modules
+imports:
+  - linkml:types
+  - ../../Core/domains/core
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+classes:
+  BiospecimenAttributes:
+    description: Attributes for modules that require biospecimen identification
+    is_a: CoreFileAttributes
+    attributes:
+      HTAN_BIOSPECIMEN_ID:
+        range: string
+        required: true
+        title: "HTAN Biospecimen ID"
+        description: HTAN Biospecimen ID of the parent biospecimen (Primary Key)
+        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"

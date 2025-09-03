@@ -23,7 +23,7 @@ SOURCE_SCHEMA_PATH = modules/Clinical/domains/clinical.yaml
 GEN_DOC_ARGS = --no-mergeimports
 
 # List of modules (add new modules here)
-MODULES = Clinical WES Core
+MODULES = Core Biospecimen Participant Sequencing WES scRNA-seq Clinical
 
 .PHONY: all clean setup gen-project gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format
 
@@ -57,7 +57,11 @@ install:
 modules-gen:
 	@for module in $(MODULES); do \
 		echo "Generating schema classes for $$module module..."; \
-		$(MAKE) -C $(MODULES_DIR)/$$module gen-schema; \
+		if [ -f $(MODULES_DIR)/$$module/Makefile ]; then \
+			$(MAKE) -C $(MODULES_DIR)/$$module gen-python; \
+		else \
+			echo "No Makefile found for $$module module, skipping..."; \
+		fi; \
 	done
 
 # Run tests for all modules
@@ -65,7 +69,7 @@ modules-test:
 	@for module in $(MODULES); do \
 		echo "Running tests for $$module module..."; \
 		if [ -f $(MODULES_DIR)/$$module/Makefile ] && grep -q "^test:" $(MODULES_DIR)/$$module/Makefile; then \
-			$(MAKE) -C $(MODULES_DIR)/$$module test; \
+			cd $(MODULES_DIR)/$$module && python -m pytest tests/ -v; \
 		else \
 			echo "No test target found for $$module module, skipping..."; \
 		fi; \
@@ -83,14 +87,13 @@ test: modules-test test-scripts
 
 # Test script functions
 test-scripts:
-	$(RUN) pytest tests/test_linkml_schema_conversion.py -v
+	python -m pytest tests/test_linkml_schema_conversion.py -v
 
 # Format code with Black
 format:
 	$(RUN) black scripts/ \
 		tests/ \
-		modules/Clinical/tests/ \
-		modules/WES/tests/ \
+		modules/*/tests/ \
 		modules/*/src/
 
 # ---

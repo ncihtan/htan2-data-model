@@ -25,17 +25,48 @@ The HTAN2 data model is built using **LinkML**, a modeling language for schemas 
   - HTAN identifier validation patterns
   - Base class for inheritance (`CoreFileAttributes`)
 
-### **Clinical Module**
-- **Purpose**: Clinical and demographic data
-- **Location**: `modules/Clinical/`
-- **Structure**: Multiple domain files (demographics, diagnosis, therapy, etc.)
-- **Features**: Comprehensive validation rules and conditional requirements
+### **Biospecimen Module**
+- **Purpose**: Base class for modules requiring biospecimen identification
+- **Location**: `modules/Biospecimen/`
+- **Key Features**: 
+  - Required `HTAN_BIOSPECIMEN_ID` for biospecimen-based modules
+  - Inherits from `CoreFileAttributes`
+
+### **Participant Module**
+- **Purpose**: Base class for modules requiring participant identification
+- **Location**: `modules/Participant/`
+- **Key Features**: 
+  - Required `HTAN_PARTICIPANT_ID` for participant-based modules
+  - Inherits from `CoreFileAttributes`
+
+### **Sequencing Module**
+- **Purpose**: Base class for all sequencing data types
+- **Location**: `modules/Sequencing/`
+- **Key Features**: 
+  - Common sequencing attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.)
+  - Inherits from `BiospecimenAttributes`
+  - Shared enums for sequencing platforms and library layouts
 
 ### **WES Module**
 - **Purpose**: Bulk Whole Exome Sequencing data
 - **Location**: `modules/WES/`
 - **Structure**: Three processing levels (Level 1, 2, 3)
 - **Features**: Sequencing platform enums, quality metrics, variant calling
+- **Inheritance**: `WES → BaseSequencingAttributes → BiospecimenAttributes → CoreFileAttributes`
+
+### **scRNA-seq Module**
+- **Purpose**: Single-cell RNA Sequencing data
+- **Location**: `modules/scRNA-seq/`
+- **Structure**: Three processing levels (Level 1, 2, 3_4 combined)
+- **Features**: h5ad file format validation, AnnData 0.1 schema compliance
+- **Inheritance**: `scRNA-seq → BaseSequencingAttributes → BiospecimenAttributes → CoreFileAttributes`
+
+### **Clinical Module**
+- **Purpose**: Clinical and demographic data
+- **Location**: `modules/Clinical/`
+- **Structure**: Multiple domain files (demographics, diagnosis, therapy, etc.)
+- **Features**: Comprehensive validation rules and conditional requirements
+- **Inheritance**: `Clinical → ParticipantAttributes → CoreFileAttributes`
 
 ## 📁 Project Structure
 
@@ -43,8 +74,12 @@ The HTAN2 data model is built using **LinkML**, a modeling language for schemas 
 htan-linkml/
 ├── modules/                    # All data model modules
 │   ├── Core/                  # Universal attributes
-│   ├── Clinical/              # Clinical data domains
-│   └── WES/                   # Whole Exome Sequencing
+│   ├── Biospecimen/           # Biospecimen base class
+│   ├── Participant/           # Participant base class
+│   ├── Sequencing/            # Base sequencing attributes
+│   ├── WES/                   # Whole Exome Sequencing
+│   ├── scRNA-seq/             # Single-cell RNA Sequencing
+│   └── Clinical/              # Clinical data domains
 ├── config/                    # LinkML configuration
 ├── scripts/                   # Utility scripts
 ├── tests/                     # Root-level tests
@@ -65,9 +100,9 @@ Participant (HTAN_PARTICIPANT_ID)
 ### **Primary Keys**
 - `HTAN_DATA_FILE_ID`: Unique identifier for data files across all levels
 
-### **Required Fields (not primary keys in this context)**
-- `HTAN_PARTICIPANT_ID`: HTAN ID associated with a patient
-- `HTAN_BIOSPECIMEN_ID`: HTAN Biospecimen ID of the parent biospecimen
+### **Module-Specific Required Fields**
+- `HTAN_PARTICIPANT_ID`: Required in participant-based modules (Clinical)
+- `HTAN_BIOSPECIMEN_ID`: Required in biospecimen-based modules (WES, scRNA-seq)
 
 ### **Foreign Keys**
 - `HTAN_PARENT_ID`: References parent entity using suffix convention

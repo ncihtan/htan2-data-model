@@ -1,0 +1,139 @@
+name: scRNALevel3_4
+id: https://w3id.org/htan/scrna_seq/level_3_4
+description: Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
+imports:
+  - linkml:types
+  - ../../Sequencing/domains/sequencing
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  scRNAseqWorkflowTypeEnumLevel3_4:
+    permissible_values:
+      "Cell annotation":
+        description: Cell annotation workflow
+      "CellRanger":
+        description: 10x Genomics CellRanger workflow
+      "Cufflinks":
+        description: Cufflinks workflow
+      "DEXSeq":
+        description: DEXSeq workflow
+      "Differentiation trajectory analysis":
+        description: Differentiation trajectory analysis workflow
+      "HCA Optimus":
+        description: Human Cell Atlas Optimus workflow
+      "HTSeq - FPKM":
+        description: HTSeq FPKM workflow
+      "Other":
+        description: Other workflow type
+      "SEQC":
+        description: SEQC workflow
+      "STARsolo":
+        description: STARsolo alignment workflow
+      "dropEST":
+        description: dropEST workflow
+
+  DataCategoryEnum:
+    permissible_values:
+      "Exon Expression Quantification":
+        description: Exon expression quantification
+      "Gene Expression":
+        description: Gene expression data
+      "Gene Expression Quantification":
+        description: Gene expression quantification
+      "Isoform Expression Quantification":
+        description: Isoform expression quantification
+      "Other":
+        description: Other data category
+      "Splice Junction Quantification":
+        description: Splice junction quantification
+      "Transcript Expression":
+        description: Transcript expression data
+
+  MatrixTypeEnum:
+    permissible_values:
+      "Batch Corrected Counts":
+        description: Batch corrected count matrix
+      "Normalized Counts":
+        description: Normalized count matrix
+      "Raw Counts":
+        description: Raw count matrix
+      "Scaled Counts":
+        description: Scaled count matrix
+
+classes:
+  scRNALevel3_4:
+    is_a: BaseSequencingAttributes
+    description: Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
+    attributes:
+      # File format validation - only h5ad files accepted
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the file (only h5ad files accepted for Level 3/4)
+        pattern: "^h5ad$"
+      
+      # scRNA-seq-specific attributes
+      SCRNASEQ_WORKFLOW_TYPE:
+        range: scRNAseqWorkflowTypeEnumLevel3_4
+        required: true
+        title: "scRNAseq Workflow Type"
+        description: Generic name for the workflow used to analyze a data set
+      SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION:
+        range: string
+        required: true
+        title: "scRNAseq Workflow Parameters Description"
+        description: "Parameters used to run the workflow. scRNA-seq level 3: e.g. Normalization and log transformation, ran empty drops or doublet detection, used filter on # genes/cell, etc. scRNA-seq Level 4: dimensionality reduction with PCA and 50 components, nearest-neighbor graph with k = 20 and Leiden clustering with resolution = 1, UMAP visualization using 50 PCA components, marker genes used to annotate cell types, information about droplet matrix (all barcodes) to cell matrix (only informative barcodes representing real cells) conversion"
+      
+      # Level 3 specific attributes
+      DATA_CATEGORY:
+        range: DataCategoryEnum
+        required: true
+        title: "Data Category"
+        description: Specific content type of the data file
+      MATRIX_TYPE:
+        range: MatrixTypeEnum
+        required: true
+        title: "Matrix Type"
+        description: Type of data stored in matrix
+      LINKED_MATRICES:
+        range: string
+        required: false
+        title: "Linked Matrices"
+        description: All matrices associated with every part of a SingleCellExperiment object. Comma-delimited list of filenames
+      
+      # Cell metrics
+      CELL_MEDIAN_NUMBER_READS:
+        range: integer
+        required: true
+        title: "Cell Median Number Reads"
+        description: Median number of reads per cell
+      CELL_MEDIAN_NUMBER_GENES:
+        range: integer
+        required: true
+        title: "Cell Median Number Genes"
+        description: Median number of genes detected per cell
+      CELL_TOTAL:
+        range: integer
+        required: true
+        title: "Cell Total"
+        description: Number of sequenced cells. Applies to raw counts matrix only
+      
+      # AnnData 0.1 schema compliance
+      ANNDATA_SCHEMA_VERSION:
+        range: string
+        required: true
+        title: "AnnData Schema Version"
+        description: Version of AnnData schema (must be 0.1 for CellxGene compliance)
+        pattern: "^0\\.1$"
+      ANNDATA_STRUCTURE_VALIDATED:
+        range: boolean
+        required: true
+        title: "AnnData Structure Validated"
+        description: Whether the h5ad file structure has been validated against AnnData 0.1 schema

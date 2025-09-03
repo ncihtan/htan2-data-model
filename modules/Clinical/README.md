@@ -2,6 +2,20 @@
 
 This module contains the clinical data model and related components for the HTAN project.
 
+## Architecture
+
+The Clinical module uses a clean inheritance chain:
+
+```
+ClinicalData → ParticipantAttributes → CoreFileAttributes
+```
+
+**Inheritance Benefits:**
+- **Core File Attributes**: Gets universal file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.) from `CoreFileAttributes`
+- **Participant Attributes**: Gets required `HTAN_PARTICIPANT_ID` from `ParticipantAttributes`
+- **Clinical-Specific Attributes**: Adds clinical domain-specific attributes
+- **No Duplication**: Common attributes are defined once in the base modules
+
 ## Directory Structure
 
 - `domains/` - Contains domain-specific YAML schema definitions for clinical data

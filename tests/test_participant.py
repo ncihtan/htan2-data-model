@@ -31,7 +31,7 @@ def base_dir():
 @pytest.fixture
 def schema_path(base_dir):
     """Schema path."""
-    return base_dir / "modules" / "Participant" / "participant.yaml"
+    return base_dir / "modules" / "Participant" / "domains" / "participant.yaml"
 
 
 @pytest.fixture

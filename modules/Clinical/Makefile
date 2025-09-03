@@ -1,6 +1,6 @@
 # Clinical Module Makefile
 
-.PHONY: all clean test gen-schema docs
+.PHONY: all clean test gen-schema gen-python gen-json-schema docs
 
 # Environment variables
 SCHEMA_NAME = htan_clinical
@@ -9,7 +9,7 @@ BUILD_DIR = build
 DATAMODEL_DIR = src/htan_clinical/datamodel
 DOCS_DIR = docs
 
-all: gen-schema test docs
+all: gen-schema gen-python gen-json-schema test docs
 
 # Generate schema classes
 gen-schema:
@@ -18,6 +18,14 @@ gen-schema:
 	poetry run gen-project --config-file ../../config/config.yaml -d $(BUILD_DIR) $(SOURCE_SCHEMA_PATH)
 	mv $(BUILD_DIR)/*.py $(DATAMODEL_DIR)/
 	touch $(DATAMODEL_DIR)/schema_classes.py
+
+# Generate Python classes
+gen-python:
+	gen-python $(SOURCE_SCHEMA_PATH) > src/htan_clinical/datamodel/clinical.py
+
+# Generate JSON schema
+gen-json-schema:
+	gen-json-schema $(SOURCE_SCHEMA_PATH) > clinical_schema.json
 
 # Generate documentation
 docs:

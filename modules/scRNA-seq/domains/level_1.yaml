@@ -1,0 +1,149 @@
+name: scRNALevel1
+id: https://w3id.org/htan/scrna_seq_level1
+description: HTAN scRNA-seq Level 1 Data Model - Raw sequencing files and metadata
+imports:
+  - linkml:types
+  - ../../Sequencing/domains/sequencing
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: htan
+
+enums:
+  DissociationMethodEnum:
+    permissible_values:
+      "Enzymatic":
+        description: Enzymatic dissociation method
+      "Mechanical":
+        description: Mechanical dissociation method
+      "Other":
+        description: Other dissociation method
+      "Unknown":
+        description: Unknown dissociation method
+
+  LibraryConstructionMethodEnum:
+    permissible_values:
+      "10X Genomics":
+        description: 10X Genomics library construction method
+      "Drop-seq":
+        description: Drop-seq library construction method
+      "Fluidigm C1":
+        description: Fluidigm C1 library construction method
+      "InDrop":
+        description: InDrop library construction method
+      "Other":
+        description: Other library construction method
+      "Smart-seq":
+        description: Smart-seq library construction method
+      "Unknown":
+        description: Unknown library construction method
+
+  NucleicAcidSourceEnum:
+    permissible_values:
+      "DNA":
+        description: DNA nucleic acid source
+      "RNA":
+        description: RNA nucleic acid source
+      "Unknown":
+        description: Unknown nucleic acid source
+
+  ReadIndicatorEnum:
+    permissible_values:
+      "Forward":
+        description: Forward read indicator
+      "Index":
+        description: Index read indicator
+      "Reverse":
+        description: Reverse read indicator
+      "Unknown":
+        description: Unknown read indicator
+
+  ReverseTranscriptionPrimerEnum:
+    permissible_values:
+      "Oligo-dT":
+        description: Oligo-dT reverse transcription primer
+      "Random Hexamer":
+        description: Random hexamer reverse transcription primer
+      "Unknown":
+        description: Unknown reverse transcription primer
+
+  SingleCellIsolationMethodEnum:
+    permissible_values:
+      "Cell Sorting":
+        description: Cell sorting isolation method
+      "Droplet-based":
+        description: Droplet-based isolation method
+      "Manual Picking":
+        description: Manual picking isolation method
+      "Microfluidics":
+        description: Microfluidics isolation method
+      "Other":
+        description: Other isolation method
+      "Unknown":
+        description: Unknown isolation method
+
+  SpikeInEnum:
+    permissible_values:
+      "ERCC":
+        description: ERCC spike-in
+      "None":
+        description: No spike-in
+      "Other":
+        description: Other spike-in
+      "Unknown":
+        description: Unknown spike-in
+
+classes:
+  scRNALevel1:
+    is_a: BaseSequencingAttributes
+    description: scRNA-seq Level 1 data - Raw sequencing files and metadata
+    attributes:
+      # scRNA-seq-specific attributes
+      SINGLE_CELL_ISOLATION_METHOD:
+        range: SingleCellIsolationMethodEnum
+        required: true
+        title: "Single Cell Isolation Method"
+        description: Method used to isolate single cells
+      
+      DISSOCIATION_METHOD:
+        range: DissociationMethodEnum
+        required: true
+        title: "Dissociation Method"
+        description: Method used to dissociate tissue into single cells
+      
+      CRYOPRESERVED_CELLS_IN_SAMPLE:
+        range: boolean
+        required: false
+        title: "Cryopreserved Cells in Sample"
+        description: Whether cells were cryopreserved in the sample
+      
+      NUCLEIC_ACID_SOURCE:
+        range: NucleicAcidSourceEnum
+        required: true
+        title: "Nucleic Acid Source"
+        description: Type of nucleic acid used for sequencing
+      
+      LIBRARY_CONSTRUCTION_METHOD:
+        range: LibraryConstructionMethodEnum
+        required: true
+        title: "Library Construction Method"
+        description: Method used to construct the sequencing library
+      
+      REVERSE_TRANSCRIPTION_PRIMER:
+        range: ReverseTranscriptionPrimerEnum
+        required: true
+        title: "Reverse Transcription Primer"
+        description: Primer used for reverse transcription
+      
+      SPIKE_IN:
+        range: SpikeInEnum
+        required: true
+        title: "Spike-in"
+        description: Type of spike-in used, if any
+      
+      READ_INDICATOR:
+        range: ReadIndicatorEnum
+        required: true
+        title: "Read Indicator"
+        description: Type of read (forward, reverse, index)

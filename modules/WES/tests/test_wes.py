@@ -21,12 +21,12 @@ class TestWESModule:
         # Check that the main class exists
         assert "BulkWESLevel1" in sv.all_classes()
         
-        # Check that it inherits from Core
+        # Check that it inherits from BaseSequencingAttributes
         level1_class = sv.get_class("BulkWESLevel1")
-        assert level1_class.is_a == "CoreFileAttributes"
+        assert level1_class.is_a == "BaseSequencingAttributes"
         
-        # Check WES Level 1 specific required attributes
-        wes_specific_attrs = ["LIBRARY_LAYOUT", "LIBRARY_SELECTION_METHOD", "READ_LENGTH", "SEQUENCING_PLATFORM"]
+        # Check WES Level 1 specific required attributes (base attributes come from inheritance)
+        wes_specific_attrs = ["LIBRARY_SELECTION_METHOD", "READ_LENGTH"]
         
         for attr in wes_specific_attrs:
             assert attr in level1_class.attributes
@@ -39,14 +39,12 @@ class TestWESModule:
         # Check that the main class exists
         assert "BulkWESLevel2" in sv.all_classes()
         
-        # Check that it inherits from Core
+        # Check that it inherits from BaseSequencingAttributes
         level2_class = sv.get_class("BulkWESLevel2")
-        assert level2_class.is_a == "CoreFileAttributes"
+        assert level2_class.is_a == "BaseSequencingAttributes"
         
-        # Check WES Level 2 specific required attributes
-        wes_specific_attrs = ["ALIGNMENT_WORKFLOW_TYPE", "GENOMIC_REFERENCE", "MEAN_COVERAGE", 
-                             "TOTAL_READS", "TOTAL_UNIQUELY_MAPPED", "TOTAL_UNMAPPED_READS", 
-                             "PROPORTION_READS_MAPPED"]
+        # Check WES Level 2 specific required attributes (base attributes come from inheritance)
+        wes_specific_attrs = ["ALIGNMENT_WORKFLOW_TYPE", "MEAN_COVERAGE"]
         
         for attr in wes_specific_attrs:
             assert attr in level2_class.attributes
@@ -59,23 +57,22 @@ class TestWESModule:
         # Check that the main class exists
         assert "BulkWESLevel3" in sv.all_classes()
         
-        # Check that it inherits from Core
+        # Check that it inherits from BaseSequencingAttributes
         level3_class = sv.get_class("BulkWESLevel3")
-        assert level3_class.is_a == "CoreFileAttributes"
+        assert level3_class.is_a == "BaseSequencingAttributes"
         
-        # Check WES Level 3 specific required attributes
-        wes_specific_attrs = ["GENOMIC_REFERENCE"]
+        # Check WES Level 3 specific required attributes (base attributes come from inheritance)
+        wes_specific_attrs = ["SOMATIC_VARIANTS_WORKFLOW_TYPE"]
         
         for attr in wes_specific_attrs:
             assert attr in level3_class.attributes
 
     def test_enums(self):
         """Test that enums are properly defined."""
-        # Test Level 1 enums
+        # Test Level 1 enums (base enums come from BaseSequencingAttributes)
         sv1 = SchemaView("modules/WES/domains/level_1.yaml")
-        assert "LibraryLayoutEnum" in sv1.all_enums()
         assert "LibrarySelectionMethodEnum" in sv1.all_enums()
-        assert "SequencingPlatformEnum" in sv1.all_enums()
+        # LibraryLayoutEnum and SequencingPlatformEnum come from base sequencing module
         
         # Test Level 2 enums
         sv2 = SchemaView("modules/WES/domains/level_2.yaml")

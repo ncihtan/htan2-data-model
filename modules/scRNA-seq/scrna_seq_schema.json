@@ -1,0 +1,887 @@
+{
+    "$defs": {
+        "BaseSequencingAttributes": {
+            "additionalProperties": false,
+            "description": "Base attributes shared across all sequencing types",
+            "properties": {
+                "CHECKSUM": {
+                    "description": "Checksum for data integrity verification",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "COMPONENT": {
+                    "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+                    "type": "string"
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "pattern": "^.+[\\\\/]\\S*$",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+                    "type": "string"
+                },
+                "GENOME_ANNOTATION_URL": {
+                    "description": "URL to genome annotation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GENOMIC_REFERENCE": {
+                    "description": "Genomic reference used for alignment",
+                    "type": "string"
+                },
+                "GENOMIC_REFERENCE_URL": {
+                    "description": "URL to genomic reference",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HTAN_BIOSPECIMEN_ID": {
+                    "description": "HTAN Biospecimen ID of the parent biospecimen (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_PARENT_ID": {
+                    "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)",
+                    "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+                    "type": "string"
+                },
+                "LIBRARY_LAYOUT": {
+                    "$ref": "#/$defs/LibraryLayoutEnum",
+                    "description": "Library layout (paired-end or single-end)"
+                },
+                "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+                    "description": "Days from index for library preparation",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PROTOCOL_LINK": {
+                    "description": "Link to sequencing protocol",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SEQUENCING_BATCH_ID": {
+                    "description": "Sequencing batch identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SEQUENCING_PLATFORM": {
+                    "$ref": "#/$defs/SequencingPlatformEnum",
+                    "description": "Sequencing platform used"
+                },
+                "TECHNICAL_REPLICATE_GROUP": {
+                    "description": "Technical replicate group identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "WORKFLOW_LINK": {
+                    "description": "Link to workflow or command. DockStore.org recommended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "WORKFLOW_VERSION": {
+                    "description": "Major version of the workflow",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "LIBRARY_LAYOUT",
+                "SEQUENCING_PLATFORM",
+                "WORKFLOW_VERSION",
+                "GENOMIC_REFERENCE",
+                "HTAN_BIOSPECIMEN_ID",
+                "COMPONENT",
+                "FILENAME",
+                "FILE_FORMAT",
+                "HTAN_DATA_FILE_ID",
+                "HTAN_PARENT_ID"
+            ],
+            "title": "BaseSequencingAttributes",
+            "type": "object"
+        },
+        "BiospecimenAttributes": {
+            "additionalProperties": false,
+            "description": "Attributes for modules that require biospecimen identification",
+            "properties": {
+                "COMPONENT": {
+                    "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+                    "type": "string"
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "pattern": "^.+[\\\\/]\\S*$",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+                    "type": "string"
+                },
+                "HTAN_BIOSPECIMEN_ID": {
+                    "description": "HTAN Biospecimen ID of the parent biospecimen (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_PARENT_ID": {
+                    "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)",
+                    "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "HTAN_BIOSPECIMEN_ID",
+                "COMPONENT",
+                "FILENAME",
+                "FILE_FORMAT",
+                "HTAN_DATA_FILE_ID",
+                "HTAN_PARENT_ID"
+            ],
+            "title": "BiospecimenAttributes",
+            "type": "object"
+        },
+        "CoreFileAttributes": {
+            "additionalProperties": false,
+            "description": "Universal attributes that apply to all file-based data in HTAN",
+            "properties": {
+                "COMPONENT": {
+                    "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+                    "type": "string"
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "pattern": "^.+[\\\\/]\\S*$",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+                    "type": "string"
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_PARENT_ID": {
+                    "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)",
+                    "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "COMPONENT",
+                "FILENAME",
+                "FILE_FORMAT",
+                "HTAN_DATA_FILE_ID",
+                "HTAN_PARENT_ID"
+            ],
+            "title": "CoreFileAttributes",
+            "type": "object"
+        },
+        "DataCategoryEnum": {
+            "description": "",
+            "enum": [
+                "Exon Expression Quantification",
+                "Gene Expression",
+                "Gene Expression Quantification",
+                "Isoform Expression Quantification",
+                "Other",
+                "Splice Junction Quantification",
+                "Transcript Expression"
+            ],
+            "title": "DataCategoryEnum",
+            "type": "string"
+        },
+        "DissociationMethodEnum": {
+            "description": "",
+            "enum": [
+                "Enzymatic",
+                "Mechanical",
+                "Other",
+                "Unknown"
+            ],
+            "title": "DissociationMethodEnum",
+            "type": "string"
+        },
+        "LibraryConstructionMethodEnum": {
+            "description": "",
+            "enum": [
+                "10X Genomics",
+                "Drop-seq",
+                "Fluidigm C1",
+                "InDrop",
+                "Other",
+                "Smart-seq",
+                "Unknown"
+            ],
+            "title": "LibraryConstructionMethodEnum",
+            "type": "string"
+        },
+        "LibraryLayoutEnum": {
+            "description": "",
+            "enum": [
+                "Paired-end",
+                "Single-end"
+            ],
+            "title": "LibraryLayoutEnum",
+            "type": "string"
+        },
+        "MatrixTypeEnum": {
+            "description": "",
+            "enum": [
+                "Batch Corrected Counts",
+                "Normalized Counts",
+                "Raw Counts",
+                "Scaled Counts"
+            ],
+            "title": "MatrixTypeEnum",
+            "type": "string"
+        },
+        "NucleicAcidSourceEnum": {
+            "description": "",
+            "enum": [
+                "DNA",
+                "RNA",
+                "Unknown"
+            ],
+            "title": "NucleicAcidSourceEnum",
+            "type": "string"
+        },
+        "ReadIndicatorEnum": {
+            "description": "",
+            "enum": [
+                "Forward",
+                "Index",
+                "Reverse",
+                "Unknown"
+            ],
+            "title": "ReadIndicatorEnum",
+            "type": "string"
+        },
+        "ReverseTranscriptionPrimerEnum": {
+            "description": "",
+            "enum": [
+                "Oligo-dT",
+                "Random Hexamer",
+                "Unknown"
+            ],
+            "title": "ReverseTranscriptionPrimerEnum",
+            "type": "string"
+        },
+        "ScRNALevel1": {
+            "additionalProperties": false,
+            "description": "scRNA-seq Level 1 data - Raw sequencing files and metadata",
+            "properties": {
+                "CHECKSUM": {
+                    "description": "Checksum for data integrity verification",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "COMPONENT": {
+                    "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+                    "type": "string"
+                },
+                "CRYOPRESERVED_CELLS_IN_SAMPLE": {
+                    "description": "Whether cells were cryopreserved in the sample",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "DISSOCIATION_METHOD": {
+                    "$ref": "#/$defs/DissociationMethodEnum",
+                    "description": "Method used to dissociate tissue into single cells"
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "pattern": "^.+[\\\\/]\\S*$",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+                    "type": "string"
+                },
+                "GENOME_ANNOTATION_URL": {
+                    "description": "URL to genome annotation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GENOMIC_REFERENCE": {
+                    "description": "Genomic reference used for alignment",
+                    "type": "string"
+                },
+                "GENOMIC_REFERENCE_URL": {
+                    "description": "URL to genomic reference",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HTAN_BIOSPECIMEN_ID": {
+                    "description": "HTAN Biospecimen ID of the parent biospecimen (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_PARENT_ID": {
+                    "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)",
+                    "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+                    "type": "string"
+                },
+                "LIBRARY_CONSTRUCTION_METHOD": {
+                    "$ref": "#/$defs/LibraryConstructionMethodEnum",
+                    "description": "Method used to construct the sequencing library"
+                },
+                "LIBRARY_LAYOUT": {
+                    "$ref": "#/$defs/LibraryLayoutEnum",
+                    "description": "Library layout (paired-end or single-end)"
+                },
+                "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+                    "description": "Days from index for library preparation",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "NUCLEIC_ACID_SOURCE": {
+                    "$ref": "#/$defs/NucleicAcidSourceEnum",
+                    "description": "Type of nucleic acid used for sequencing"
+                },
+                "PROTOCOL_LINK": {
+                    "description": "Link to sequencing protocol",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "READ_INDICATOR": {
+                    "$ref": "#/$defs/ReadIndicatorEnum",
+                    "description": "Type of read (forward, reverse, index)"
+                },
+                "REVERSE_TRANSCRIPTION_PRIMER": {
+                    "$ref": "#/$defs/ReverseTranscriptionPrimerEnum",
+                    "description": "Primer used for reverse transcription"
+                },
+                "SEQUENCING_BATCH_ID": {
+                    "description": "Sequencing batch identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SEQUENCING_PLATFORM": {
+                    "$ref": "#/$defs/SequencingPlatformEnum",
+                    "description": "Sequencing platform used"
+                },
+                "SINGLE_CELL_ISOLATION_METHOD": {
+                    "$ref": "#/$defs/SingleCellIsolationMethodEnum",
+                    "description": "Method used to isolate single cells"
+                },
+                "SPIKE_IN": {
+                    "$ref": "#/$defs/SpikeInEnum",
+                    "description": "Type of spike-in used, if any"
+                },
+                "TECHNICAL_REPLICATE_GROUP": {
+                    "description": "Technical replicate group identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "WORKFLOW_LINK": {
+                    "description": "Link to workflow or command. DockStore.org recommended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "WORKFLOW_VERSION": {
+                    "description": "Major version of the workflow",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "SINGLE_CELL_ISOLATION_METHOD",
+                "DISSOCIATION_METHOD",
+                "NUCLEIC_ACID_SOURCE",
+                "LIBRARY_CONSTRUCTION_METHOD",
+                "REVERSE_TRANSCRIPTION_PRIMER",
+                "SPIKE_IN",
+                "READ_INDICATOR",
+                "LIBRARY_LAYOUT",
+                "SEQUENCING_PLATFORM",
+                "WORKFLOW_VERSION",
+                "GENOMIC_REFERENCE",
+                "HTAN_BIOSPECIMEN_ID",
+                "COMPONENT",
+                "FILENAME",
+                "FILE_FORMAT",
+                "HTAN_DATA_FILE_ID",
+                "HTAN_PARENT_ID"
+            ],
+            "title": "ScRNALevel1",
+            "type": "object"
+        },
+        "ScRNALevel2": {
+            "additionalProperties": false,
+            "description": "scRNA-seq Level 2 data - Workflow and processing metadata",
+            "properties": {
+                "CELL_BARCODE_TAG": {
+                    "description": "Tag used for cell barcodes",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "CHECKSUM": {
+                    "description": "Checksum for data integrity verification",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "COMPONENT": {
+                    "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+                    "type": "string"
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "pattern": "^.+[\\\\/]\\S*$",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+                    "type": "string"
+                },
+                "GENOME_ANNOTATION_URL": {
+                    "description": "URL to genome annotation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GENOMIC_REFERENCE": {
+                    "description": "Genomic reference used for alignment",
+                    "type": "string"
+                },
+                "GENOMIC_REFERENCE_URL": {
+                    "description": "URL to genomic reference",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HTAN_BIOSPECIMEN_ID": {
+                    "description": "HTAN Biospecimen ID of the parent biospecimen (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_PARENT_ID": {
+                    "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)",
+                    "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+                    "type": "string"
+                },
+                "LIBRARY_LAYOUT": {
+                    "$ref": "#/$defs/LibraryLayoutEnum",
+                    "description": "Library layout (paired-end or single-end)"
+                },
+                "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+                    "description": "Days from index for library preparation",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PROTOCOL_LINK": {
+                    "description": "Link to sequencing protocol",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SCRNASEQ_WORKFLOW_TYPE": {
+                    "$ref": "#/$defs/ScRNAseqWorkflowTypeEnumLevel2",
+                    "description": "Generic name for the workflow used to analyze the dataset"
+                },
+                "SEQUENCING_BATCH_ID": {
+                    "description": "Sequencing batch identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SEQUENCING_PLATFORM": {
+                    "$ref": "#/$defs/SequencingPlatformEnum",
+                    "description": "Sequencing platform used"
+                },
+                "TECHNICAL_REPLICATE_GROUP": {
+                    "description": "Technical replicate group identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "UMI_TAG": {
+                    "description": "Tag used for UMIs",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "WHITELIST_CELL_BARCODE_FILE_LINK": {
+                    "description": "Link to whitelist cell barcode file",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "WORKFLOW_LINK": {
+                    "description": "Link to workflow or command. DockStore.org recommended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "WORKFLOW_VERSION": {
+                    "description": "Major version of the workflow",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "SCRNASEQ_WORKFLOW_TYPE",
+                "LIBRARY_LAYOUT",
+                "SEQUENCING_PLATFORM",
+                "WORKFLOW_VERSION",
+                "GENOMIC_REFERENCE",
+                "HTAN_BIOSPECIMEN_ID",
+                "COMPONENT",
+                "FILENAME",
+                "FILE_FORMAT",
+                "HTAN_DATA_FILE_ID",
+                "HTAN_PARENT_ID"
+            ],
+            "title": "ScRNALevel2",
+            "type": "object"
+        },
+        "ScRNALevel34": {
+            "additionalProperties": false,
+            "description": "Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships",
+            "properties": {
+                "ANNDATA_SCHEMA_VERSION": {
+                    "description": "Version of AnnData schema (must be 0.1 for CellxGene compliance)",
+                    "pattern": "^0\\.1$",
+                    "type": "string"
+                },
+                "ANNDATA_STRUCTURE_VALIDATED": {
+                    "description": "Whether the h5ad file structure has been validated against AnnData 0.1 schema",
+                    "type": "boolean"
+                },
+                "CELL_MEDIAN_NUMBER_GENES": {
+                    "description": "Median number of genes detected per cell",
+                    "type": "integer"
+                },
+                "CELL_MEDIAN_NUMBER_READS": {
+                    "description": "Median number of reads per cell",
+                    "type": "integer"
+                },
+                "CELL_TOTAL": {
+                    "description": "Number of sequenced cells. Applies to raw counts matrix only",
+                    "type": "integer"
+                },
+                "CHECKSUM": {
+                    "description": "Checksum for data integrity verification",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "COMPONENT": {
+                    "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+                    "type": "string"
+                },
+                "DATA_CATEGORY": {
+                    "$ref": "#/$defs/DataCategoryEnum",
+                    "description": "Specific content type of the data file"
+                },
+                "FILENAME": {
+                    "description": "Name of the file",
+                    "pattern": "^.+[\\\\/]\\S*$",
+                    "type": "string"
+                },
+                "FILE_FORMAT": {
+                    "description": "Format of the file (only h5ad files accepted for Level 3/4)",
+                    "pattern": "^h5ad$",
+                    "type": "string"
+                },
+                "GENOME_ANNOTATION_URL": {
+                    "description": "URL to genome annotation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GENOMIC_REFERENCE": {
+                    "description": "Genomic reference used for alignment",
+                    "type": "string"
+                },
+                "GENOMIC_REFERENCE_URL": {
+                    "description": "URL to genomic reference",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HTAN_BIOSPECIMEN_ID": {
+                    "description": "HTAN Biospecimen ID of the parent biospecimen (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_DATA_FILE_ID": {
+                    "description": "HTAN Data File ID (Primary Key)",
+                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+                    "type": "string"
+                },
+                "HTAN_PARENT_ID": {
+                    "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)",
+                    "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+                    "type": "string"
+                },
+                "LIBRARY_LAYOUT": {
+                    "$ref": "#/$defs/LibraryLayoutEnum",
+                    "description": "Library layout (paired-end or single-end)"
+                },
+                "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+                    "description": "Days from index for library preparation",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "LINKED_MATRICES": {
+                    "description": "All matrices associated with every part of a SingleCellExperiment object. Comma-delimited list of filenames",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MATRIX_TYPE": {
+                    "$ref": "#/$defs/MatrixTypeEnum",
+                    "description": "Type of data stored in matrix"
+                },
+                "PROTOCOL_LINK": {
+                    "description": "Link to sequencing protocol",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION": {
+                    "description": "Parameters used to run the workflow. scRNA-seq level 3: e.g. Normalization and log transformation, ran empty drops or doublet detection, used filter on # genes/cell, etc. scRNA-seq Level 4: dimensionality reduction with PCA and 50 components, nearest-neighbor graph with k = 20 and Leiden clustering with resolution = 1, UMAP visualization using 50 PCA components, marker genes used to annotate cell types, information about droplet matrix (all barcodes) to cell matrix (only informative barcodes representing real cells) conversion",
+                    "type": "string"
+                },
+                "SCRNASEQ_WORKFLOW_TYPE": {
+                    "$ref": "#/$defs/ScRNAseqWorkflowTypeEnumLevel34",
+                    "description": "Generic name for the workflow used to analyze a data set"
+                },
+                "SEQUENCING_BATCH_ID": {
+                    "description": "Sequencing batch identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SEQUENCING_PLATFORM": {
+                    "$ref": "#/$defs/SequencingPlatformEnum",
+                    "description": "Sequencing platform used"
+                },
+                "TECHNICAL_REPLICATE_GROUP": {
+                    "description": "Technical replicate group identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "WORKFLOW_LINK": {
+                    "description": "Link to workflow or command. DockStore.org recommended",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "WORKFLOW_VERSION": {
+                    "description": "Major version of the workflow",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "FILE_FORMAT",
+                "SCRNASEQ_WORKFLOW_TYPE",
+                "SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION",
+                "DATA_CATEGORY",
+                "MATRIX_TYPE",
+                "CELL_MEDIAN_NUMBER_READS",
+                "CELL_MEDIAN_NUMBER_GENES",
+                "CELL_TOTAL",
+                "ANNDATA_SCHEMA_VERSION",
+                "ANNDATA_STRUCTURE_VALIDATED",
+                "LIBRARY_LAYOUT",
+                "SEQUENCING_PLATFORM",
+                "WORKFLOW_VERSION",
+                "GENOMIC_REFERENCE",
+                "HTAN_BIOSPECIMEN_ID",
+                "COMPONENT",
+                "FILENAME",
+                "HTAN_DATA_FILE_ID",
+                "HTAN_PARENT_ID"
+            ],
+            "title": "ScRNALevel34",
+            "type": "object"
+        },
+        "ScRNAseqData": {
+            "additionalProperties": false,
+            "description": "Root class for scRNA-seq data",
+            "properties": {
+                "level1_data": {
+                    "description": "Level 1 scRNA-seq data",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "level2_data": {
+                    "description": "Level 2 scRNA-seq data",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "level3_4_data": {
+                    "description": "Level 3/4 scRNA-seq data",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ScRNAseqData",
+            "type": "object"
+        },
+        "ScRNAseqWorkflowTypeEnumLevel2": {
+            "description": "",
+            "enum": [
+                "CellRanger",
+                "HCA Optimus",
+                "Other",
+                "SEQC",
+                "STARsolo",
+                "Unknown",
+                "dropEST"
+            ],
+            "title": "ScRNAseqWorkflowTypeEnumLevel2",
+            "type": "string"
+        },
+        "ScRNAseqWorkflowTypeEnumLevel34": {
+            "description": "",
+            "enum": [
+                "Cell annotation",
+                "CellRanger",
+                "Cufflinks",
+                "DEXSeq",
+                "Differentiation trajectory analysis",
+                "HCA Optimus",
+                "HTSeq - FPKM",
+                "Other",
+                "SEQC",
+                "STARsolo",
+                "dropEST"
+            ],
+            "title": "ScRNAseqWorkflowTypeEnumLevel34",
+            "type": "string"
+        },
+        "SequencingPlatformEnum": {
+            "description": "",
+            "enum": [
+                "ABI_SOLID",
+                "BGISEQ",
+                "CAPILLARY",
+                "COMPLETE_GENOMICS",
+                "HELICOS",
+                "ILLUMINA",
+                "ION_TORRENT",
+                "LS454",
+                "OXFORD_NANOPORE",
+                "PACBIO_SMRT"
+            ],
+            "title": "SequencingPlatformEnum",
+            "type": "string"
+        },
+        "SingleCellIsolationMethodEnum": {
+            "description": "",
+            "enum": [
+                "Cell Sorting",
+                "Droplet-based",
+                "Manual Picking",
+                "Microfluidics",
+                "Other",
+                "Unknown"
+            ],
+            "title": "SingleCellIsolationMethodEnum",
+            "type": "string"
+        },
+        "SpikeInEnum": {
+            "description": "",
+            "enum": [
+                "ERCC",
+                "None",
+                "Other",
+                "Unknown"
+            ],
+            "title": "SpikeInEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://w3id.org/htan/scrna_seq",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "scRNA-seq",
+    "type": "object",
+    "version": null
+}

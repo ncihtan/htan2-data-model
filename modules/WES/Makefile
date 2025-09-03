@@ -1,6 +1,6 @@
 # WES Module Makefile
 
-.PHONY: all clean test gen-schema docs
+.PHONY: all clean test gen-schema gen-python gen-json-schema docs
 
 # Environment variables
 SCHEMA_NAME = htan_wes
@@ -9,7 +9,7 @@ BUILD_DIR = build
 DATAMODEL_DIR = src/htan_wes/datamodel
 DOCS_DIR = docs
 
-all: gen-schema test docs
+all: gen-schema gen-python gen-json-schema test docs
 
 # Generate schema classes
 gen-schema:
@@ -19,6 +19,14 @@ gen-schema:
 	cp $(BUILD_DIR)/wes.py $(DATAMODEL_DIR)/
 	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/wes_schema.json
 	touch $(DATAMODEL_DIR)/schema_classes.py
+
+# Generate Python classes
+gen-python:
+	gen-python $(SOURCE_SCHEMA_PATH) > src/htan_wes/datamodel/wes.py
+
+# Generate JSON schema
+gen-json-schema:
+	gen-json-schema $(SOURCE_SCHEMA_PATH) > wes_schema.json
 
 # Generate documentation
 docs:

@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-27T09:49:14
+# Generation date: 2025-08-27T14:51:49
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -103,9 +103,7 @@ class CoreFileAttributes(YAMLRoot):
     COMPONENT: str = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARTICIPANT_ID: str = None
     HTAN_PARENT_ID: str = None
-    HTAN_BIOSPECIMEN_ID: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
@@ -128,20 +126,10 @@ class CoreFileAttributes(YAMLRoot):
         if not isinstance(self.FILE_FORMAT, str):
             self.FILE_FORMAT = str(self.FILE_FORMAT)
 
-        if self._is_empty(self.HTAN_PARTICIPANT_ID):
-            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
-        if not isinstance(self.HTAN_PARTICIPANT_ID, str):
-            self.HTAN_PARTICIPANT_ID = str(self.HTAN_PARTICIPANT_ID)
-
         if self._is_empty(self.HTAN_PARENT_ID):
             self.MissingRequiredField("HTAN_PARENT_ID")
         if not isinstance(self.HTAN_PARENT_ID, str):
             self.HTAN_PARENT_ID = str(self.HTAN_PARENT_ID)
-
-        if self._is_empty(self.HTAN_BIOSPECIMEN_ID):
-            self.MissingRequiredField("HTAN_BIOSPECIMEN_ID")
-        if not isinstance(self.HTAN_BIOSPECIMEN_ID, str):
-            self.HTAN_BIOSPECIMEN_ID = str(self.HTAN_BIOSPECIMEN_ID)
 
         super().__post_init__(**kwargs)
 
@@ -162,9 +150,7 @@ class ClinicalData(CoreFileAttributes):
     COMPONENT: str = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARTICIPANT_ID: str = None
     HTAN_PARENT_ID: str = None
-    HTAN_BIOSPECIMEN_ID: str = None
     DEMOGRAPHICS: Union[dict, "Demographics"] = None
     VITAL_STATUS: Union[dict, "VitalStatus"] = None
     DIAGNOSIS: Union[dict, "Diagnosis"] = None
@@ -47612,10 +47598,6 @@ slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttri
 slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
 
-slots.coreFileAttributes__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="coreFileAttributes__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_PARTICIPANT_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$'))
-
 slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="coreFileAttributes__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
                    model_uri=HTAN.coreFileAttributes__HTAN_DATA_FILE_ID, domain=None, range=URIRef,
                    pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
@@ -47623,10 +47605,6 @@ slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, n
 slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
                    model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
                    pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$'))
-
-slots.coreFileAttributes__HTAN_BIOSPECIMEN_ID = Slot(uri=HTAN.HTAN_BIOSPECIMEN_ID, name="coreFileAttributes__HTAN_BIOSPECIMEN_ID", curie=HTAN.curie('HTAN_BIOSPECIMEN_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_BIOSPECIMEN_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
 
 slots.demographics__ETHNIC_GROUP = Slot(uri=CADSR['2192201'], name="demographics__ETHNIC_GROUP", curie=CADSR.curie('2192201'),
                    model_uri=HTAN.demographics__ETHNIC_GROUP, domain=None, range=Union[str, "EthnicGroupEnum"])

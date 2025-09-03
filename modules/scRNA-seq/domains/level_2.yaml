@@ -1,0 +1,59 @@
+name: scRNALevel2
+id: https://w3id.org/htan/scrna_seq_level2
+description: HTAN scRNA-seq Level 2 Data Model - Workflow and processing metadata
+imports:
+  - linkml:types
+  - ../../Sequencing/domains/sequencing
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: htan
+
+enums:
+  scRNAseqWorkflowTypeEnumLevel2:
+    permissible_values:
+      "CellRanger":
+        description: CellRanger workflow
+      "HCA Optimus":
+        description: HCA Optimus workflow
+      "Other":
+        description: Other workflow
+      "SEQC":
+        description: SEQC workflow
+      "STARsolo":
+        description: STARsolo workflow
+      "Unknown":
+        description: Unknown workflow
+      "dropEST":
+        description: dropEST workflow
+
+classes:
+  scRNALevel2:
+    is_a: BaseSequencingAttributes
+    description: scRNA-seq Level 2 data - Workflow and processing metadata
+    attributes:
+      # scRNA-seq-specific attributes
+      SCRNASEQ_WORKFLOW_TYPE:
+        range: scRNAseqWorkflowTypeEnumLevel2
+        required: true
+        title: "scRNA-seq Workflow Type"
+        description: Generic name for the workflow used to analyze the dataset
+      
+      WHITELIST_CELL_BARCODE_FILE_LINK:
+        range: string
+        required: false
+        title: "Whitelist Cell Barcode File Link"
+        description: Link to whitelist cell barcode file
+      
+      CELL_BARCODE_TAG:
+        range: string
+        required: false
+        title: "Cell Barcode Tag"
+        description: Tag used for cell barcodes
+      
+      UMI_TAG:
+        range: string
+        required: false
+        title: "UMI Tag"
+        description: Tag used for UMIs

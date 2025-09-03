@@ -1,0 +1,119 @@
+name: Sequencing
+id: https://w3id.org/htan/sequencing
+description: HTAN Base Sequencing Data Model - Common attributes shared across all sequencing modules
+imports:
+  - linkml:types
+  - ../../Biospecimen/domains/biospecimen
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: htan
+
+enums:
+  LibraryLayoutEnum:
+    permissible_values:
+      "Paired-end":
+        description: Paired-end sequencing
+      "Single-end":
+        description: Single-end sequencing
+
+  SequencingPlatformEnum:
+    permissible_values:
+      "ABI_SOLID":
+        description: ABI SOLID sequencing platform
+      "BGISEQ":
+        description: BGI sequencing platform
+      "CAPILLARY":
+        description: Capillary sequencing platform
+      "COMPLETE_GENOMICS":
+        description: Complete Genomics sequencing platform
+      "HELICOS":
+        description: Helicos sequencing platform
+      "ILLUMINA":
+        description: Illumina sequencing platform
+      "ION_TORRENT":
+        description: Ion Torrent sequencing platform
+      "LS454":
+        description: 454 sequencing platform
+      "OXFORD_NANOPORE":
+        description: Oxford Nanopore sequencing platform
+      "PACBIO_SMRT":
+        description: PacBio SMRT sequencing platform
+
+classes:
+  BaseSequencingAttributes:
+    is_a: BiospecimenAttributes
+    description: Base attributes shared across all sequencing types
+    attributes:
+      SEQUENCING_BATCH_ID:
+        range: string
+        required: false
+        title: "Sequencing Batch ID"
+        description: Sequencing batch identifier
+      
+      LIBRARY_LAYOUT:
+        range: LibraryLayoutEnum
+        required: true
+        title: "Library Layout"
+        description: Library layout (paired-end or single-end)
+      
+      SEQUENCING_PLATFORM:
+        range: SequencingPlatformEnum
+        required: true
+        title: "Sequencing Platform"
+        description: Sequencing platform used
+      
+      LIBRARY_PREPARATION_DAYS_FROM_INDEX:
+        range: integer
+        required: false
+        title: "Library Preparation Days From Index"
+        description: Days from index for library preparation
+      
+      TECHNICAL_REPLICATE_GROUP:
+        range: string
+        required: false
+        title: "Technical Replicate Group"
+        description: Technical replicate group identifier
+      
+      PROTOCOL_LINK:
+        range: string
+        required: false
+        title: "Protocol Link"
+        description: Link to sequencing protocol
+      
+      WORKFLOW_VERSION:
+        range: string
+        required: true
+        title: "Workflow Version"
+        description: Major version of the workflow
+      
+      WORKFLOW_LINK:
+        range: string
+        required: false
+        title: "Workflow Link"
+        description: Link to workflow or command. DockStore.org recommended
+      
+      GENOMIC_REFERENCE:
+        range: string
+        required: true
+        title: "Genomic Reference"
+        description: Genomic reference used for alignment
+      
+      GENOMIC_REFERENCE_URL:
+        range: string
+        required: false
+        title: "Genomic Reference URL"
+        description: URL to genomic reference
+      
+      GENOME_ANNOTATION_URL:
+        range: string
+        required: false
+        title: "Genome Annotation URL"
+        description: URL to genome annotation
+      
+      CHECKSUM:
+        range: string
+        required: false
+        title: "Checksum"
+        description: Checksum for data integrity verification
