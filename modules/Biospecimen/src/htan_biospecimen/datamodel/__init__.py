@@ -1,1 +1,0 @@
-"""HTAN Biospecimen Data Model."""
