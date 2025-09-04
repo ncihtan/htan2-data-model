@@ -65,6 +65,13 @@ def get_args():
         required=False,
         default=None
     )
+    parser.add_argument(
+        "--create_fileview",
+        action="store_true",
+        help="Create a fileview with columns extracted from the JSON schema.",
+        required=False,
+        default=None
+    )
     return parser.parse_args()
 
 
@@ -91,7 +98,11 @@ def register_json_schema(org, schema_type: str, schema_json: json, version: str,
     Example uri: ExampleOrganization-CA987654AccessRequirement-2.0.0
     """
     
-    num_version = version.split("v")[1]
+    # Handle version format - remove 'v' prefix if present
+    if version.startswith("v"):
+        num_version = version[1:]
+    else:
+        num_version = version
 
     uri = "-".join([schema_org_name.replace(" ", ""), schema_type,num_version])
 
@@ -127,6 +138,172 @@ def bind_schema_to_entity(syn, service, schema_uri: str, entity_id: str, compone
     else:
         print(f"Binding non-AR schema {schema_uri}")
         service.bind_json_schema_to_entity(entity_id, schema_uri)
+
+
+def create_fileview_from_schema(syn, schema_json: dict, parent_id: str, schema_name: str) -> str:
+    """Create a Synapse fileview with columns extracted from JSON schema properties."""
+    
+    print(f"Creating fileview for schema: {schema_name}")
+    
+    # Extract properties from the schema
+    properties = {}
+    if "$defs" in schema_json:
+        # Find the main class definition
+        for def_name, def_content in schema_json["$defs"].items():
+            if "properties" in def_content:
+                properties = def_content["properties"]
+                break
+    elif "properties" in schema_json:
+        properties = schema_json["properties"]
+    
+    if not properties:
+        print("❌ No properties found in schema")
+        return None
+    
+    # Create columns from schema properties (limit to most important ones)
+    columns = []
+    important_fields = [
+        "COMPONENT", "FILENAME", "FILE_FORMAT", "HTAN_DATA_FILE_ID", "HTAN_PARENT_BIOSPECIMEN_ID",
+        "SEQUENCING_PLATFORM", "LIBRARY_LAYOUT", "READ_LENGTH", "LIBRARY_SELECTION_METHOD",
+        "SEQUENCING_BATCH_ID", "TARGET_CAPTURE_KIT", "LIBRARY_PREPARATION_KIT_NAME"
+    ]
+    
+    for prop_name, prop_def in properties.items():
+        # Only include important fields to stay within size limits
+        if prop_name not in important_fields:
+            continue
+        # Determine column type based on JSON schema type
+        column_type = "STRING"  # Default
+        
+        if "type" in prop_def:
+            if isinstance(prop_def["type"], list):
+                # Handle union types like ["string", "null"]
+                types = [t for t in prop_def["type"] if t != "null"]
+                if types:
+                    column_type = map_json_type_to_synapse_type(types[0])
+            else:
+                column_type = map_json_type_to_synapse_type(prop_def["type"])
+        
+        # Create column using synapseclient.table.Column
+        from synapseclient.table import Column
+        
+        column = Column(
+            name=prop_name,
+            columnType=column_type,
+            maximumSize=100 if column_type == "STRING" else None
+        )
+        
+        columns.append(column)
+    
+    print(f"Created {len(columns)} columns from schema properties")
+    
+    # Create the fileview
+    fileview_name = f"{schema_name} Fileview"
+    fileview_description = f"Fileview for {schema_name} schema with columns extracted from JSON schema properties"
+    
+    try:
+        # Create EntityViewSchema using the correct API
+        from synapseclient.table import EntityViewSchema, EntityViewType
+        
+        # Create the fileview schema
+        fileview_schema = EntityViewSchema(
+            name=fileview_name,
+            description=fileview_description,
+            parent=parent_id,
+            scopes=[parent_id],
+            viewType=EntityViewType.FILE,
+            columns=columns
+        )
+        
+        # Store the fileview
+        fileview = syn.store(fileview_schema)
+        fileview_id = fileview.id
+        
+        print(f"✅ Created fileview: {fileview_name} (ID: {fileview_id})")
+        print(f"✅ Added {len(columns)} columns to fileview")
+        
+        return fileview_id
+        
+    except Exception as e:
+        print(f"❌ Error creating fileview: {e}")
+        return None
+
+
+def map_json_type_to_synapse_type(json_type: str) -> str:
+    """Map JSON schema type to Synapse column type."""
+    type_mapping = {
+        "string": "STRING",
+        "integer": "INTEGER", 
+        "number": "DOUBLE",
+        "boolean": "BOOLEAN",
+        "array": "STRING_LIST",
+        "object": "STRING"
+    }
+    return type_mapping.get(json_type, "STRING")
+
+
+def create_wiki_with_fileview_id(syn, entity_id: str, fileview_id: str, schema_name: str):
+    """Create a wiki page on the entity with the fileview ID."""
+    
+    print(f"Creating wiki page for fileview: {fileview_id}")
+    
+    # Create wiki content with hyperlink
+    fileview_url = f"https://www.synapse.org/#!Synapse:{fileview_id}"
+    wiki_content = f"""# {schema_name} Data View
+
+This page displays the {schema_name} data files with schema-validated metadata.
+
+## Fileview
+
+The data is displayed in a fileview with columns extracted from the JSON schema:
+
+**Fileview ID**: `{fileview_id}`
+
+**[View Fileview →]({fileview_url})**
+
+## Schema Validation
+
+All files in this folder are validated against the {schema_name} JSON schema. Files with invalid or missing required annotations will show validation errors.
+
+## Columns
+
+The fileview includes the following key columns:
+- COMPONENT
+- FILENAME  
+- FILE_FORMAT
+- HTAN_DATA_FILE_ID
+- HTAN_PARENT_BIOSPECIMEN_ID
+- SEQUENCING_PLATFORM
+- LIBRARY_LAYOUT
+- READ_LENGTH
+- LIBRARY_SELECTION_METHOD
+- SEQUENCING_BATCH_ID
+- TARGET_CAPTURE_KIT
+- LIBRARY_PREPARATION_KIT_NAME
+
+## Usage
+
+Files uploaded to this folder will automatically appear in the fileview with their metadata validated against the schema.
+
+## Quick Links
+
+- [Open Fileview]({fileview_url})
+- [Schema Documentation](https://repo-prod.prod.sagebase.org/repo/v1/schema/type/registered/HTAN2Organization-{schema_name}-1.0.0)
+"""
+    
+    try:
+        # Create or update the wiki
+        syn.store(synapseclient.Wiki(
+            owner=entity_id,
+            title=f"{schema_name} Data View",
+            markdown=wiki_content
+        ))
+        
+        print(f"✅ Wiki page created on entity {entity_id}")
+        print(f"✅ Fileview ID {fileview_id} stored in wiki")
+        
+    except Exception as e:
+        print(f"❌ Error creating wiki: {e}")
    
 def get_schema_from_url(url: str, path: str) -> tuple[any, str, str, str]:
     """Access a JSON schema via a provided path or URL.
@@ -148,21 +325,30 @@ def get_schema_from_url(url: str, path: str) -> tuple[any, str, str, str]:
             schema_json = json.load(source_schema)
             
         schema_info = schema.split("/")[-1]
-        base_component = schema_info.split(".")[1].split("-")[0]
         
-        if base_component == "AccessRequirement":
-            component = "".join(schema_info.split("-")[0:-2]).split(".")[1]
-            version = schema_info.split("-")[-2]
+        # Handle different naming conventions
+        if "-" in schema_info and len(schema_info.split("-")) >= 2:
+            # Standard convention: HTAN.Component-v1.0.0-schema.json
+            base_component = schema_info.split(".")[1].split("-")[0]
+            
+            if base_component == "AccessRequirement":
+                component = "".join(schema_info.split("-")[0:-2]).split(".")[1]
+                version = schema_info.split("-")[-2]
+            else:
+                component = base_component
+                version = schema_info.split("-")[1]
         else:
+            # Fallback for files like level_1_schema.json
+            base_component = schema_info.split(".")[0].replace("_", "")
             component = base_component
-            version = schema_info.split("-")[1]
+            version = "1.0.0"  # Default version
 
     print(f"JSON schema {component} {version} successfully acquired from repository")
 
     return schema_json, component, base_component, version
 
 
-def get_register_bind_schema(syn, target: str, schema_org_name: str, org, service, path, url, includes_ar: bool, no_bind: bool):
+def get_register_bind_schema(syn, target: str, schema_org_name: str, org, service, path, url, includes_ar: bool, no_bind: bool, create_fileview: bool):
     """Access JSON from URL, register the JSON schema, and bind the schema to the target entity."""
 
     schema_json, component_adjusted, base_component, version = get_schema_from_url(url, path)
@@ -174,12 +360,22 @@ def get_register_bind_schema(syn, target: str, schema_org_name: str, org, servic
         bind_schema_to_entity(syn, service, uri, target, base_component, includes_ar)
         print(f"\nSchema {component_adjusted} {version} successfully bound to entity {target}")
         
+        # Create fileview if requested
+        if create_fileview:
+            fileview_id = create_fileview_from_schema(syn, schema_json, target, component_adjusted)
+            if fileview_id:
+                print(f"✅ Fileview created with ID: {fileview_id}")
+                # Create wiki page with fileview ID
+                create_wiki_with_fileview_id(syn, target, fileview_id, component_adjusted)
+            else:
+                print("❌ Failed to create fileview")
+        
 
 
 def main():
 
     args = get_args()
-    target, url, path, org_name, includes_ar, no_bind = args.t, args.l, args.p, args.n, args.ar, args.no_bind
+    target, url, path, org_name, includes_ar, no_bind, create_fileview = args.t, args.l, args.p, args.n, args.ar, args.no_bind, args.create_fileview
 
     # Configure Synapse client for production stack
     syn = synapseclient.Synapse()
@@ -203,7 +399,7 @@ def main():
         service, org, schema_org_name = get_schema_organization(schema_service, org_name)
     
     if no_bind is None:
-        get_register_bind_schema(syn, target, schema_org_name, org, service, path, url, includes_ar, no_bind)
+        get_register_bind_schema(syn, target, schema_org_name, org, service, path, url, includes_ar, no_bind, create_fileview)
     else:
         print(f"✅ Schema processing completed (no binding due to --no_bind flag)")
     
