@@ -162,7 +162,8 @@ jobs:
           poetry run python scripts/synapse_json_schema_bind.py \
             -p "$WES_SCHEMA" \
             -t "syn69630475" \
-            -n "${{ env.ORGANIZATION_NAME }}"
+            -n "${{ env.ORGANIZATION_NAME }}" \
+            --create_fileview
         else
           echo "No WES Level 1 schema found, skipping file-based binding"
         fi
