@@ -1,32 +1,41 @@
 name: PreservationMediumEnum
-id: https://w3id.org/htan/preservation_medium_enum
-description: Enumeration for preservation media
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for preservation mediums based on HTAN Phase 2 specification
 
 enums:
   PreservationMediumEnum:
-    description: Substances used to maintain specimens in viable state
+    title: preservation_medium
     permissible_values:
-      "Formalin":
-        description: Formalin preservation medium
-        meaning: NCIT:C15204
-      "Paraffin":
-        description: Paraffin preservation medium
-        meaning: NCIT:C15205
-      "Alcohol":
-        description: Alcohol preservation medium
-        meaning: NCIT:C15206
-      "Cryoprotectant":
-        description: Cryoprotectant preservation medium
-        meaning: NCIT:C15207
-      "Other":
-        description: Other preservation medium
-        meaning: NCIT:C17649
+      "Desiccant":
+        description: A material that absorbs moisture from its surrounding environment.
+      "EDTA":
+        description: The acid form of edetate, a chelating agent with anti-hypercalcemic and anticoagulant properties. Edetic acid binds calcium and heavy metal ions, forming soluble stable complexes which are readily excreted by the kidneys. This results in a decrease in serum calcium levels. This agent is also used as an anticoagulant for blood specimens and is applied as a treatment of lead poisoning.
+      "FFPE":
+        description: Refers to samples that have been preserved with formalin and then embedded into a paraffin block for sectioning.
+      "Formalin Fixed - Buffered":
+        description: The use of buffered formalin for preservation of tissue samples.
+      "Formalin Fixed - Unbuffered":
+        description: The use of unbuffered formalin for preservation of tissue samples.
+      "Formalin Fixed Tissue":
+        description: A tissue sample that has been fixed with formalin.
+      "Glutaraldehyde":
+        description: A water-soluble oily liquid, C5H8O2, containing two aldehyde groups, used as a disinfectant and as a fixative for biological tissues.
+      "Isopentane":
+        description: An organic, branched-chain alkane with five carbon atoms.
+      "Liquid Nitrogen":
+        description: Nitrogen in a liquid state, having been super-cooled to about -200 degrees Celsius.
+      "Liquid Nitrogen Vapor":
+        description: The gaseous state of liquid nitrogen with a temperature of -167 degrees Celsius.
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Reported":
+        description: Not provided or available.
+      "OCT":
+        description: Optimal Cutting Temperature Compound - A solution of water soluble glycols and resins that provide a specimen support matrix for cryostat sectioning at temperatures of -10 degrees C and below.
+      "Paraffin Block":
+        description: Tissue that is preserved and embedded in paraffin.
+      "RNALater":
+        description: Trade name for an aqueous, non-toxic tissue storage reagent that rapidly permeates tissues to stabilize and protect cellular RNA.
+      "TRIzol":
+        description: A ready-to-use reagent for the isolation of high-quality total RNA or the simultaneous isolation of RNA, DNA, and protein from biological samples. It is a monophasic solution of phenol and guanidine isothiocyanate.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
