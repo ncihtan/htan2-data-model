@@ -1,32 +1,27 @@
 name: PreservationTemperatureEnum
-id: https://w3id.org/htan/preservation_temperature_enum
-description: Enumeration for preservation temperatures
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for preservation temperatures based on HTAN Phase 2 specification
 
 enums:
   PreservationTemperatureEnum:
-    description: Temperatures used to maintain specimens in viable state
+    title: preservation_temperature
     permissible_values:
-      "Room Temperature":
-        description: Room temperature preservation
-        meaning: NCIT:C15208
-      "Refrigerated":
-        description: Refrigerated preservation
-        meaning: NCIT:C15209
-      "Frozen":
-        description: Frozen preservation
-        meaning: NCIT:C15210
-      "Ultra-low Temperature":
-        description: Ultra-low temperature preservation
-        meaning: NCIT:C15211
-      "Other":
-        description: Other preservation temperature
-        meaning: NCIT:C17649
+      "-150 degrees C":
+        description: A temperature of minus 150 celsius.
+      "-20 Degrees C":
+        description: A temperature of minus 20 celsius.
+      "-70 degrees C":
+        description: A temperature of minus 70 celsius.
+      "-80 Degrees C":
+        description: A temperature of minus 80 celsius.
+      "25 Degrees C":
+        description: A temperature of 25 celsius.
+      "4 Degrees C":
+        description: A temperature of 4 celsius.
+      "Ambient Temperature":
+        description: A specimen that has been subjected to and adjusted to the average ambient temperature of a room, usually considered to be around 20 degrees C (68 degrees F).
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Reported":
+        description: Not provided or available.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
