@@ -1,35 +1,35 @@
 name: PreservationMethodEnum
-id: https://w3id.org/htan/preservation_method_enum
-description: Enumeration for preservation methods
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for preservation methods based on HTAN Phase 2 specification
 
 enums:
   PreservationMethodEnum:
-    description: Methods used to preserve biospecimens
+    title: preservation_method
     permissible_values:
+      "Cryopreserved":
+        description: Preservation of cells, tissues, organs, or embryos by storage at low temperatures.
+      "Cytospin Slide":
+        description: A microscope slide prepared by depositing cells directly onto a slide by centrifugation. The cytocentrifuge spins at an angle, at low speeds, allowing the cells to adhere to the slide in a monolayer format.
+      "Fixation":
+        description: The chemical preservation of a substance to maintain structural and/or molecular features of that substance as they exist in the living entity.
       "Fresh":
-        description: Fresh preservation
-        meaning: NCIT:C15194
+        description: Tissue which has not been exposed to a fixative solution.
+      "Fresh Dissociated":
+        description: A tissue preparation process that takes fresh tissue and dissociates it into single cell suspensions.
+      "Fresh Dissociated and Single Cell Sorted":
+        description: A tissue preparation process that separates fresh dissociated tissue cells into cell populations by single cell sorting.
+      "Fresh Dissociated and Single Cell Sorted into Plates":
+        description: A tissue preparation process that takes dissociated, sorted cells and distributes them into cell propagation plates.
       "Frozen":
-        description: Frozen preservation
-        meaning: NCIT:C15195
-      "Formalin Fixed":
-        description: Formalin fixed preservation
-        meaning: NCIT:C15196
-      "Paraffin Embedded":
-        description: Paraffin embedded preservation
-        meaning: NCIT:C15197
-      "Alcohol Fixed":
-        description: Alcohol fixed preservation
-        meaning: NCIT:C15198
-      "Other":
-        description: Other preservation method
-        meaning: NCIT:C17649
+        description: A specimen that has been subjected to and immobilized by severe cold.
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Reported":
+        description: Not provided or available.
+      "Refrigerated":
+        description: A specimen that has been kept or preserved at a low temperature in a refrigerator.
+      "Refrigerated Vacuum Chamber":
+        description: A device designed to maintain a vacuum at a below-ambient temperature.
+      "Snap Frozen":
+        description: To freeze rapidly so as to preserve structure and prevent ice crystal formation.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
