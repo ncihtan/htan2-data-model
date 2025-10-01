@@ -1,32 +1,11 @@
 name: TissueSampleTypeEnum
-id: https://w3id.org/htan/tissue_sample_type_enum
-description: Enumeration for tissue sample types
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for tissue sample types based on HTAN Phase 2 specification
 
 enums:
   TissueSampleTypeEnum:
-    description: Types of preserved sample material
+    title: tissue_sample_type
     permissible_values:
       "Tissue Block":
-        description: Tissue block sample
-        meaning: NCIT:C15212
+        description: Refers to preserved specimens embedded in support material. These are typically cut into thin slices for microscopic examination, with or without an enhancement such as staining.
       "Tissue Section":
-        description: Tissue section sample
-        meaning: NCIT:C15213
-      "Cell Pellet":
-        description: Cell pellet sample
-        meaning: NCIT:C15214
-      "Fluid":
-        description: Fluid sample
-        meaning: NCIT:C15215
-      "Other":
-        description: Other tissue sample type
-        meaning: NCIT:C17649
+        description: A thin slice of tissue, usually for examination by microscopy.
