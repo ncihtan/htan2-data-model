@@ -1,32 +1,29 @@
 name: AnalyteTypeEnum
-id: https://w3id.org/htan/analyte_type_enum
-description: Enumeration for analyte types
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for analyte types based on HTAN Phase 2 specification
 
 enums:
   AnalyteTypeEnum:
-    description: Types of samples or materials being subjected to analysis
+    title: analyte_type
     permissible_values:
       "DNA":
-        description: DNA analyte
-        meaning: NCIT:C449
-      "RNA":
-        description: RNA analyte
-        meaning: NCIT:C812
+        description: A long linear double-stranded polymer formed from nucleotides attached to a deoxyribose backbone and found in the nucleus of a cell; associated with the transmission of genetic information.
+      "Not Reported":
+        description: Not provided or available.
+      "Nucleic RNA":
+        description: A biological specimen comprised of the RNA isolated from the nuclei of cells.
       "Protein":
-        description: Protein analyte
-        meaning: NCIT:C17021
-      "Metabolite":
-        description: Metabolite analyte
-        meaning: NCIT:C15216
-      "Other":
-        description: Other analyte type
-        meaning: NCIT:C17649
+        description: Any of a group of complex organic macromolecules that contain carbon, hydrogen, oxygen, nitrogen, and usually sulfur and are composed of one or more chains of amino acids. Proteins are fundamental components of all living cells and include many substances, such as enzymes, hormones, and antibodies, that are necessary for the proper functioning of an organism.
+      "RNA":
+        description: A biospecimen created to contain an isolated or enriched RNA sample.
+      "Total RNA":
+        description: A biological sample comprised of all of the RNA collected from an experimental subject.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+      "cfDNA":
+        description: DNA found in blood plasma and other bodily fluids that is not associated with cells.
+      "ctDNA":
+        description: Neoplasm-derived DNA found in blood plasma and other bodily fluids that is not associated with cells.
+      "mRNA":
+        description: A class of RNA molecule containing protein-coding information in its nucleotide sequence that can be translated into the amino acid sequence of a protein.
+      "miRNA":
+        description: A sequence of single-stranded RNA, that is 20-25 nucleotides in length, which is transcribed from DNA but is not translated into a protein. This nucleic acid may regulate the transcription or translation of other genes.
