@@ -1,38 +1,15 @@
 name: DegreeOfDysplasiaEnum
-id: https://w3id.org/htan/degree_of_dysplasia_enum
-description: Enumeration for degree of dysplasia
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for degree of dysplasia based on HTAN Phase 2 specification
 
 enums:
   DegreeOfDysplasiaEnum:
-    description: Degrees of dysplasia in precancerous lesions
+    title: degree_of_dysplasia
     permissible_values:
-      "Mild":
-        description: Mild dysplasia
-        meaning: NCIT:C15220
-      "Moderate":
-        description: Moderate dysplasia
-        meaning: NCIT:C15221
-      "Severe":
-        description: Severe dysplasia
-        meaning: NCIT:C15222
-      "High Grade":
-        description: High grade dysplasia
-        meaning: NCIT:C15223
-      "Low Grade":
-        description: Low grade dysplasia
-        meaning: NCIT:C15224
-      "Unknown":
-        description: Unknown degree of dysplasia
-        meaning: NCIT:C17998
-      "Not Reported":
-        description: Not reported
-        meaning: NCIT:C48660
+      "1":
+        description: Used to describe tumor samples that exhibit well to moderately well differentiated cells. They are generally expected to be slow growing and less aggressive.
+      "2":
+        description: A term referring to the degree of differentiation of a malignant neoplasm and indicating that it is moderately differentiated.
+      "3":
+        description: Used to describe tumor samples that exhibit poorly differentiated or undifferentiated cells. They are generally expected to be fast growing and aggressive.
+      "99":
+        description: Not known, not observed, not recorded, or refused.
