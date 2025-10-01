@@ -1,38 +1,47 @@
 name: AcquisitionMethodTypeEnum
-id: https://w3id.org/htan/acquisition_method_type_enum
-description: Enumeration for acquisition method types
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for acquisition method types based on HTAN Phase 2 specification
 
 enums:
   AcquisitionMethodTypeEnum:
-    description: Methods of acquisition for biospecimens
+    title: acquisition_method_type
     permissible_values:
-      "Surgical Resection":
-        description: Surgical resection acquisition method
-        meaning: NCIT:C15206
-      "Biopsy":
-        description: Biopsy acquisition method
-        meaning: NCIT:C15189
       "Autopsy":
-        description: Autopsy acquisition method
-        meaning: NCIT:C15190
-      "Blood Draw":
-        description: Blood draw acquisition method
-        meaning: NCIT:C15191
-      "Bone Marrow Aspiration":
-        description: Bone marrow aspiration acquisition method
-        meaning: NCIT:C15192
-      "Lumbar Puncture":
-        description: Lumbar puncture acquisition method
-        meaning: NCIT:C15193
+        description: Autopsy; an examination and dissection of a dead body to determine cause of death or the changes produced by disease.
+      "Biopsy":
+        description: The removal of tissue specimens or fluid from the living body for microscopic examination, performed to establish a diagnosis.
+      "Blood draw":
+        description: A small volume of blood removed for testing or storage.
+      "Core needle biopsy":
+        description: The removal of a tissue sample using a needle with a relatively large diameter, for microscopic examination.
+      "Excisional Biopsy":
+        description: A surgical procedure in which an entire lesion is removed for microscopic examination.
+      "Fine needle aspirate":
+        description: The removal of tissue or fluid with a thin needle for examination under a microscope.
+      "Forceps Biopsy":
+        description: The removal of a tissue sample using a specially-designed endoscope consisting of a slender flexible forceps with movable cup-shaped jaws. The jaws are closed around the tissue to be collected and while closed the forceps are withdrawn to capture the biopsy tissue.
+      "Incisional Biopsy":
+        description: A surgical procedure in which part of a lesion is removed for microscopic examination.
+      "Lymphadenectomy (regional nodes)":
+        description: Surgical removal of lymph nodes, usually done to assess the spread of cancer.: A lymph node that drains lymph from a region of interest.
+      "Not applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not reported":
+        description: Not provided or available.
+      "Not specified":
+        description: Not stated explicitly or in detail.
       "Other":
-        description: Other acquisition method
-        meaning: NCIT:C17649
+        description: Different than the one(s) previously specified or mentioned.
+      "Pancreaticoduodenectomy":
+        description: Surgical excision of all or part of the pancreas and duodenum.
+      "Punch biopsy":
+        description: Removal of a disk of skin tissue, for microscopic examination, using a punch.
+      "Re-excision":
+        description: A surgical procedure to remove the remaining abnormal tissues from the body, not completely removed in an earlier attempt.
+      "Sentinel node biopsy":
+        description: Surgical removal and examination of the sentinel node, the lymph node which is first in receiving the lymphatic drainage of a specified anatomic location and is most likely to be affected by the lymphatic spread of cancer.
+      "Shave biopsy":
+        description: Removal skin tissue, for microscopic examination, using a blade oriented in the horizontal plane of the skin surface.
+      "Surgical Resection":
+        description: The surgical removal of a lesion, often as part of a biopsy and with healthy margins.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
