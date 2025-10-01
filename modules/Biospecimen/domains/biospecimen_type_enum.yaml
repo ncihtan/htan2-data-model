@@ -1,38 +1,64 @@
 name: BiospecimenTypeEnum
-id: https://w3id.org/htan/biospecimen_type_enum
-description: Enumeration for biospecimen types
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for biospecimen types based on HTAN Phase 2 specification
 
 enums:
   BiospecimenTypeEnum:
-    description: Types of biospecimens
+    title: biospecimen_type
     permissible_values:
-      "Tissue":
-        description: Tissue biospecimen
-        meaning: NCIT:C12433
-      "DNA":
-        description: DNA biospecimen
-        meaning: NCIT:C449
-      "RNA":
-        description: RNA biospecimen
-        meaning: NCIT:C812
-      "Protein":
-        description: Protein biospecimen
-        meaning: NCIT:C17021
-      "Cell":
-        description: Cell biospecimen
-        meaning: NCIT:C12508
-      "Fluid":
-        description: Fluid biospecimen
+      "Ascites":
+        description: The accumulation of fluid in the peritoneal cavity, which may be serous, hemorrhagic, or the result of tumor metastasis to the peritoneum.
+        meaning: NCIT:C12440
+      "Blood":
+        description: Blood circulating throughout the body.
+        meaning: NCIT:C12434
+      "Body Fluid or Substance":
+        description: Liquid and semi liquid substances produced by living organisms to fulfill specific functions or excreted as waste; does not include hormones or enzymes.
         meaning: NCIT:C13238
-      "Other":
-        description: Other biospecimen type
-        meaning: NCIT:C17649
+      "Bone Marrow":
+        description: The soft, sponge-like tissue in the center of bones that produces white blood cells, red blood cells, and platelets.
+        meaning: NCIT:C12435
+      "Cell Line":
+        description: A permanently established cell culture that will proliferate indefinitely given appropriate fresh medium and space.
+        meaning: NCIT:C12508
+      "Cells":
+        description: The smallest units of living structure capable of independent existence, composed of a membrane-enclosed mass of protoplasm and containing a nucleus or nucleoid.
+        meaning: NCIT:C12508
+      "Central Nervous System":
+        description: The main information-processing organs of the nervous system, consisting of the brain, spinal cord, and meninges.
+        meaning: NCIT:C12441
+      "DNA":
+        description: A long linear double-stranded polymer formed from nucleotides attached to a deoxyribose backbone and found in the nucleus of a cell; associated with the transmission of genetic information.
+        meaning: NCIT:C449
+      "Mouth Rinse":
+        description: A sample consisting of biological material from the buccal cavity. A collection solution is introduced into the mouth, swished around, and then collected.
+        meaning: NCIT:C12442
+      "Not Reported":
+        description: Not provided or available.
+        meaning: NCIT:C48660
+      "RNA":
+        description: Single-stranded long chain of nucleotides containing ribose. It is the end product of DNA transcription by the enzyme RNA polymerase. It is essential in protein synthesis.
+        meaning: NCIT:C812
+      "Saliva":
+        description: The watery fluid in the mouth made by the salivary glands. Saliva moistens food to help digestion and it helps protect the mouth against infections.
+        meaning: NCIT:C12439
+      "Skin":
+        description: An organ that constitutes the external surface of the body. It consists of the epidermis, dermis, and skin appendages.
+        meaning: NCIT:C12443
+      "Sputum":
+        description: Material containing mucus, cellular debris, microorganisms and sometimes blood or pus. It is ejected through the mouth from the lungs, bronchi, and trachea.
+        meaning: NCIT:C12444
+      "Stool":
+        description: The material discharged from the bowel during defecation. It consists of undigested food, intestinal mucus, epithelial cells, and bacteria.
+        meaning: NCIT:C12437
+      "Tissue":
+        description: An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function.
+        meaning: NCIT:C12433
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+        meaning: NCIT:C17998
+      "Urine":
+        description: The fluid that is excreted by the kidneys. It is stored in the bladder and discharged through the urethra.
+        meaning: NCIT:C12437
+      "Xenograft":
+        description: The transfer of cells, tissues, or organs from a donor into a recipient of another species.
+        meaning: NCIT:C12445
