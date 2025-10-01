@@ -1,57 +1,2628 @@
 name: TimepointEnum
 description: Enumeration for timepoint values based on HTAN Phase 2 specification
-# Note: This enum contains a subset of the most common timepoint values.
-# Full list available at: https://github.com/ncihtan/phase2_biospecimen_data_model/blob/main/permissible_values/5899851.tsv
-
+  - Complete list of all 895 official values
 enums:
   TimepointEnum:
     title: timepoint
     permissible_values:
-      "Baseline":
+      0-6 hr:
+        description: 'The difference between the lowest and highest numerical values;
+          the limits or scale of variation.: A number with no fractional part, including
+          the negative and positive numbers as well as zero.::0-6: A unit measure
+          of time equal to 3,600 seconds or 60 minutes. It is approximately 1/24 of
+          a median day.'
+      0.5 hour (during infusion):
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::0.5: A unit measure of time equal to
+          3,600 seconds or 60 minutes. It is approximately 1/24 of a median day.'
+      0.5 hr post dose:
+        description: 0.5 hr post dose
+      '1':
+        description: 'The smallest natural number and quantity it denotes: a single
+          entity, unit, or object.'
+      1 Month After Starting Study Agent:
+        description: 'The smallest natural number and quantity it denotes: a single
+          entity, unit, or object._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon''s phases, about 30 days or 4 weeks._Happening at a time
+          subsequent to a reference time; later in time or order._A medical product,
+          practice, or application that is tested in a clinical trial._Have a beginning,
+          in a temporal, spatial, or evaluative sense; the point in space or time
+          where something begins.'
+      1 Month After Visit 1:
+        description: 'The smallest natural number and quantity it denotes: a single
+          entity, unit, or object._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon''s phases, about 30 days or 4 weeks._Happening at a time
+          subsequent to a reference time; later in time or order._The act of going
+          to see some person or place or thing; it can cover a short or long period
+          but refers to a non-permanent arrangement._The smallest natural number and
+          quantity it denotes: a single entity, unit, or object.'
+      1 Month After Visit 2:
+        description: 'The smallest natural number and quantity it denotes: a single
+          entity, unit, or object._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon''s phases, about 30 days or 4 weeks._Happening at a time
+          subsequent to a reference time; later in time or order._The act of going
+          to see some person or place or thing; it can cover a short or long period
+          but refers to a non-permanent arrangement._A natural number greater than
+          1 and less than 3 and the quantity that it denotes: the sum of one and one.'
+      1 Week After Starting Study Agent:
+        description: 'The smallest natural number and quantity it denotes: a single
+          entity, unit, or object._Any period of seven consecutive days._Happening
+          at a time subsequent to a reference time; later in time or order._A medical
+          product, practice, or application that is tested in a clinical trial._Have
+          a beginning, in a temporal, spatial, or evaluative sense; the point in space
+          or time where something begins.'
+      1 hour (during infusion):
+        description: 'The smallest natural number and quantity it denotes: a single
+          entity, unit, or object.: A unit measure of time equal to 3,600 seconds
+          or 60 minutes. It is approximately 1/24 of a median day.'
+      1 hour after infusion start:
+        description: 1 hour after infusion start
+      1 hour post start of Triapine (3AP) infusion (IV):
+        description: 1 hour post start of Triapine (3AP) infusion (IV)
+      1 month post RT Completion:
+        description: 1 month post RT Completion
+      1 year:
+        description: 'The smallest natural number and quantity it denotes: a single
+          entity, unit, or object.: A period of time that it takes for Earth to make
+          a complete revolution around the sun, approximately 365 days; a specific
+          one year period.'
+      1 year from start of treatment:
+        description: 1 year from start of treatment
+      1 year post RT Completion:
+        description: 1 year post RT Completion
+      1.5 h (during infusion):
+        description: 1.5 h (during infusion)
+      1.5 hr post dose:
+        description: 1.5 hr post dose
+      10 hours post dose:
+        description: 10 hours post dose
+      10 months:
+        description: 'A natural number greater than 9 and less than 11 and the quantity
+          that it denotes: the sum of nine and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks.'
+      10 weeks:
+        description: 'A natural number greater than 9 and less than 11 and the quantity
+          that it denotes: the sum of nine and one.: Any period of seven consecutive
+          days.'
+      10 years:
+        description: 'A natural number greater than 9 and less than 11 and the quantity
+          that it denotes: the sum of nine and one.: A period of time that it takes
+          for Earth to make a complete revolution around the sun, approximately 365
+          days; a specific one year period.'
+      10-Week Post-Treatment FU:
+        description: 10-Week Post-Treatment FU
+      104 weeks:
+        description: 104 weeks
+      108 weeks:
+        description: A natural number greater than 107 and less than 109 and the quantity
+          that it denotes._Any period of seven consecutive days.
+      11 weeks:
+        description: 'A natural number greater than 10 and less than 12 and the quantity
+          that it denotes.: Any period of seven consecutive days.'
+      116 weeks:
+        description: 116 weeks
+      '12':
+        description: 'A natural number greater than 11 and less than 13 and the quantity
+          that it denotes.: A specific point in the time continuum, including those
+          established relative to an event.'
+      12 hours post dose:
+        description: 12 hours post dose
+      12 months:
+        description: 'A natural number greater than 11 and less than 13 and the quantity
+          that it denotes.: One of the 12 divisions of a year as determined by a calendar.
+          It corresponds to the unit of time of approximately to one cycle of the
+          moon''s phases, about 30 days or 4 weeks.'
+      12 months after RT:
+        description: 12 months after radiation therapy
+      12 months after randomization:
+        description: 12 months after randomization
+      12 months after study entry:
+        description: 12 months after study entry
+      12 months after surgery:
+        description: 12 months after surgery
+      12 months from end of treatment:
+        description: 12 months from end of treatment
+      12 months from start of ARM 1 or ARM 2 therapy:
+        description: 12 months from start of ARM 1 or ARM 2 therapy
+      12 months from start of treatment:
+        description: 12 months from start of treatment
+      12 months post randomization:
+        description: 12 Months Post Randomization
+      12 months post-LITT:
+        description: 12 months post Laser Interstitial Thermal Therapy
+      12 weeks:
+        description: 'A natural number greater than 11 and less than 13 and the quantity
+          that it denotes.: Any period of seven consecutive days.'
+      12 weeks after your first study visit:
+        description: 12 weeks after your first study visit
+      12-20 hr:
+        description: 12-20 hr
+      12-Month Follow-up:
+        description: 12-Month Follow-up
+      12-month visit:
+        description: 'A natural number greater than 11 and less than 13 and the quantity
+          that it denotes.: One of the 12 divisions of a year as determined by a calendar.
+          It corresponds to the unit of time of approximately to one cycle of the
+          moon''s phases, about 30 days or 4 weeks.: The act of going to see some
+          person or place or thing; it can cover a short or long period but refers
+          to a non-permanent arrangement.'
+      120 weeks:
+        description: A natural number greater than 119 and less than 121 and the quantity
+          that it denotes._Any period of seven consecutive days.
+      128 weeks:
+        description: 128 weeks
+      13 Week:
+        description: A natural number greater than 12 and less than 14 and the quantity
+          that it denotes._Any period of seven consecutive days.
+      13 months:
+        description: A natural number greater than 12 and less than 14 and the quantity
+          that it denotes._One of the 12 divisions of a year as determined by a calendar.
+          It corresponds to the unit of time of approximately to one cycle of the
+          moon's phases, about 30 days or 4 weeks.
+      13 weeks following randomization:
+        description: 13 weeks following randomization
+      13 weeks post randomization:
+        description: 13 weeks post randomization
+      13-20 hr:
+        description: 13-20 hr
+      132 weeks:
+        description: 132 weeks
+      14 hours post dose:
+        description: 14 hours post dose
+      140 weeks:
+        description: 140 weeks
+      144 weeks:
+        description: 144 weeks
+      15 minutes:
+        description: 'A natural number greater than 14 and less than 16 and the quantity
+          that it denotes.: A unit measure of time equal to 60 seconds.'
+      15 months:
+        description: 15 months post therapeutic procedure
+      152 weeks:
+        description: 152 weeks
+      156 weeks:
+        description: 156 weeks
+      16 +/- 2 weeks following initiation of treatment:
+        description: 16 +/- 2 weeks following initiation of treatment
+      16 hours post dose:
+        description: 16 hours post dose
+      16 months:
+        description: 'A natural number greater than 15 and less than 17 and the quantity
+          that it denotes.: One of the 12 divisions of a year as determined by a calendar.
+          It corresponds to the unit of time of approximately to one cycle of the
+          moon''s phases, about 30 days or 4 weeks.'
+      164 weeks:
+        description: 164 weeks
+      176 weeks:
+        description: 176 weeks
+      178 weeks:
+        description: 178 weeks
+      18 Months Post Randomization:
+        description: 18 Months Post Randomization
+      18 hours post dose:
+        description: 18 hours post dose
+      18 months:
+        description: A natural number greater than seventeen and less than nineteen
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      18 months after randomization:
+        description: 18 months after randomization
+      18 months after study entry:
+        description: 18 months after study entry
+      18 months after surgery:
+        description: 18 months after surgery
+      18 months following randomization:
+        description: 18 months following randomization
+      18 months from start of treatment:
+        description: 18 months from start of treatment
+      18 months post-LITT:
+        description: 18 months post Laser Interstitial Thermal Therapy
+      18 weeks:
+        description: A natural number greater than seventeen and less than nineteen
+          and the quantity that it denotes._Any period of seven consecutive days.
+      18-Month Follow-up:
+        description: 18-Month Follow-up
+      188 weeks:
+        description: 188 weeks
+      19 months:
+        description: A natural number greater than eighteen and less than twenty and
+          the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      190 weeks:
+        description: 190 weeks
+      1st Followup:
+        description: 1st Followup
+      2 8 weeks post RT:
+        description: 'A natural number greater than 1 and less than 3 and the quantity
+          that it denotes: the sum of one and one.: Used as a function word to indicate
+          direction, purpose, or movement.: A natural number greater than 7 and less
+          than 9 and the quantity that it denotes: the sum of seven and one.: Any
+          period of seven consecutive days.: Happening at a time subsequent to a reference
+          time; later in time or order.: Treatment of a disease by means of exposure
+          of the target or the whole body to radiation. Radiation therapy is often
+          used as part of curative therapy and occasionally as a component of palliative
+          treatment for cancer. Other uses include total body irradiation prior to
+          transplantation.'
+      2 Months After Starting Study Agent:
+        description: 'A natural number greater than 1 and less than 3 and the quantity
+          that it denotes: the sum of one and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._A medical
+          product, practice, or application that is tested in a clinical trial._Have
+          a beginning, in a temporal, spatial, or evaluative sense; the point in space
+          or time where something begins.'
+      2 Months After Visit 1:
+        description: 'A natural number greater than 1 and less than 3 and the quantity
+          that it denotes: the sum of one and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._The smallest natural number
+          and quantity it denotes: a single entity, unit, or object.'
+      2 Months After Visit 2:
+        description: 'A natural number greater than 1 and less than 3 and the quantity
+          that it denotes: the sum of one and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._A natural number greater
+          than 1 and less than 3 and the quantity that it denotes: the sum of one
+          and one.'
+      2 days prior to registration:
+        description: 2 days prior to registration
+      2 h (during infusion):
+        description: 2 h (during infusion)
+      2 hours after infusion start:
+        description: 2 hours after infusion start
+      2 hours post dose:
+        description: 2 hours post dose
+      2 months post-LITT:
+        description: 4 months post Laser Interstitial Thermal Therapy
+      2 weeks:
+        description: 'A natural number greater than 1 and less than 3 and the quantity
+          that it denotes: the sum of one and one.: Any period of seven consecutive
+          days.'
+      2 year:
+        description: 'A natural number greater than 1 and less than 3 and the quantity
+          that it denotes: the sum of one and one._A period of time that it takes
+          for Earth to make a complete revolution around the sun, approximately 365
+          days; a specific one year period.'
+      2 years from start of treatment:
+        description: 2 years from start of treatment
+      2 years post RT Completion:
+        description: 2 years post RT Completion
+      2.5 h (during infusion):
+        description: 2.5 h (during infusion)
+      20 hours post dose:
+        description: 20 hours post dose
+      20 months:
+        description: A natural number greater than nineteen and less than twenty-one
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      20 weeks:
+        description: 20 weeks
+      20-24 hr:
+        description: 20-24 hr
+      200 weeks:
+        description: 200 weeks
+      202 weeks:
+        description: 202 weeks
+      21 months:
+        description: 21 months post therapeutic procedure
+      21-24 hr:
+        description: 21-24 hr
+      212 weeks:
+        description: 212 weeks
+      214 weeks:
+        description: 214 weeks
+      22 hours post dose:
+        description: 22 hours post dose
+      22 months:
+        description: A natural number greater than twenty-one and less than twenty-three
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      224 weeks:
+        description: 224 weeks
+      226 weeks:
+        description: 226 weeks
+      236 weeks:
+        description: 236 weeks
+      238 weeks:
+        description: 238 weeks
+      '24':
+        description: A natural number greater than twenty-three and less than twenty-five
+          and the quantity that it denotes.
+      24 hours post dose:
+        description: 24 hours post dose
+      24 hours post start of T infusion:
+        description: 24 hours post start of T infusion
+      24 hours post start of Triapine (3AP) infusion (IV):
+        description: 24 hours post start of Triapine (3AP) infusion (IV)
+      24 months:
+        description: A natural number greater than twenty-three and less than twenty-five
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      24 months after randomization:
+        description: 24 months after randomization
+      24 months after surgery:
+        description: 24 months after surgery
+      24 months following randomization:
+        description: 24 months following randomization
+      24 months from end of treatment:
+        description: 24 months from end of treatment
+      24 months from start of ARM 1 or ARM 2 therapy:
+        description: 24 months from start of ARM 1 or ARM 2 therapy
+      24 months post randomization:
+        description: A period of time of twenty-four months._Happening at a time subsequent
+          to a reference time; later in time or order._The allocation of individuals
+          to groups by chance, especially in order to control the variables in an
+          experiment.
+      24 months post-LITT:
+        description: 24 months post Laser Interstitial Thermal Therapy
+      24 months post-treatment initiation (+/- 2 weeks):
+        description: 24 months post-treatment initiation (+/- 2 weeks)
+      24 weeks:
+        description: A natural number greater than twenty-three and less than twenty-five
+          and the quantity that it denotes._Any period of seven consecutive days.
+      24 weeks after your first study visit:
+        description: 24 weeks after your first study visit
+      24-Month Follow-up:
+        description: 24-Month Follow-up
+      24-month visit:
+        description: 'A natural number greater than twenty-three and less than twenty-five
+          and the quantity that it denotes.: One of the 12 divisions of a year as
+          determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks.: The act of
+          going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement.'
+      240 minutes (4 hours):
+        description: 'A natural number greater than 3 and less than 5 and the quantity
+          that it denotes: the sum of three and one.: A unit measure of time equal
+          to 3,600 seconds or 60 minutes. It is approximately 1/24 of a median day.'
+      25 months:
+        description: A natural number greater than twenty-four and less than twenty-six
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      25 weeks post randomization:
+        description: 25 weeks post randomization
+      250 weeks:
+        description: 250 weeks
+      26 Week:
+        description: A natural number greater than twenty-five and less than twenty-seven
+          and the quantity that it denotes._Any period of seven consecutive days.
+      262 weeks:
+        description: 262 weeks
+      27 months:
+        description: 27 months post therapeutic procedure
+      274 weeks:
+        description: 274 weeks
+      28 months:
+        description: A natural number greater than twenty-seven and less than twenty-nine
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      286 weeks:
+        description: 286 weeks
+      298 weeks:
+        description: 298 weeks
+      2nd Follow Up:
+        description: 'Coming next after the first in position in space or time or
+          degree or magnitude.: The process by which information about the health
+          status of an individual is obtained after a study has officially closed;
+          an activity that continues something that has already begun or that repeats
+          something that has already been done.'
+      '3':
+        description: 'A natural number greater than 2 and less than 4 and the quantity
+          that it denotes: the sum of two and one.'
+      3 Months After Starting Study Agent:
+        description: 'A natural number greater than 2 and less than 4 and the quantity
+          that it denotes: the sum of two and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._A medical
+          product, practice, or application that is tested in a clinical trial._Have
+          a beginning, in a temporal, spatial, or evaluative sense; the point in space
+          or time where something begins.'
+      3 Months After Visit 1:
+        description: 'A natural number greater than 2 and less than 4 and the quantity
+          that it denotes: the sum of two and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._The smallest natural number
+          and quantity it denotes: a single entity, unit, or object.'
+      3 Months After Visit 2:
+        description: 'A natural number greater than 2 and less than 4 and the quantity
+          that it denotes: the sum of two and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._A natural number greater
+          than 1 and less than 3 and the quantity that it denotes: the sum of one
+          and one.'
+      3 Months Post Randomization:
+        description: 3 Months Post Randomization
+      3 h (during infusion):
+        description: 3 h (during infusion)
+      3 hours post start of Triapine (3AP) infusion (IV):
+        description: 3 hours post start of Triapine (3AP) infusion (IV)
+      3 hr post dose:
+        description: 3 hr post dose
+      3 months:
+        description: 3 MONTHS
+      3 months after RT:
+        description: 3 months after RT
+      3 months after cross-over:
+        description: 3 months after cross-over
+      3 months after randomization:
+        description: 3 months after randomization
+      3 months after surgery:
+        description: 'A natural number greater than 2 and less than 4 and the quantity
+          that it denotes: the sum of two and one.: One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks.: Happening
+          at a time subsequent to a reference time; later in time or order.: A diagnostic
+          or treatment procedure performed by manual and/or instrumental means, often
+          involving an incision and the removal or replacement of a diseased organ
+          or tissue; of or relating to or involving or used in surgery or requiring
+          or amenable to treatment by surgery.'
+      3 months from end of treatment:
+        description: 3 months from end of treatment
+      3 months from start of treatment:
+        description: 3 months from start of treatment
+      3 months post chemoradiation:
+        description: 'A natural number greater than 2 and less than 4 and the quantity
+          that it denotes: the sum of two and one.: One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks.: Happening
+          at a time subsequent to a reference time; later in time or order.: Treatment
+          that combines chemotherapy with radiation therapy.'
+      3 weeks after the start of RT:
+        description: 3 weeks after the start of RT
+      3 year:
+        description: 3 year
+      3 years:
+        description: 3 Years
+      3 years post RT Completion:
+        description: 3 years post RT Completion
+      3-4 weeks after last chemotherapy cycle:
+        description: 3-4 weeks after last chemotherapy cycle
+      3-5 weeks after surgery:
+        description: 3-5 weeks after surgery
+      3-Month Follow-up:
+        description: 3-Month Follow-up
+      3.5 h (during infusion):
+        description: 3.5 h (during infusion)
+      30 minutes:
+        description: 'A natural number greater than twenty-nine and less than thirty-one
+          and the quantity that it denotes.: A unit measure of time equal to 60 seconds.'
+      30 minutes post dose:
+        description: 30 minutes post dose
+      30 months:
+        description: 30 MONTHS
+      30 months after surgery:
+        description: 30 months after surgery
+      30 months from start of treatment:
+        description: 30 months from start of treatment
+      30 months post-treatment initiation (+ 6 months):
+        description: 30 months post-treatment initiation (+ 6 months)
+      30 months post-treatment initiation (+/- 6 months):
+        description: 30 months post-treatment initiation (+/- 6 months)
+      30-Month Follow-up:
+        description: 30-Month Follow-up
+      31 months:
+        description: A natural number greater than thirty and less than thirty-two
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      310 weeks:
+        description: 310 weeks
+      32 months:
+        description: The natural number greater than thirty-one and less than thirty-three
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      32 weeks:
+        description: 32 weeks
+      33 months:
+        description: 33 months post therapeutic procedure
+      34 months:
+        description: The natural number greater than thirty-three and less than thirty-five
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      '36':
+        description: The natural number greater than thirty-five and less than thirty-seven
+          and the quantity that it denotes.
+      36 months:
+        description: 36 MONTHS
+      36 months after surgery:
+        description: 36 months after surgery
+      36 months following randomization:
+        description: 36 months following randomization
+      36 months post randomization:
+        description: 36 Months Post Randomization
+      36 weeks:
+        description: The natural number greater than thirty-five and less than thirty-seven
+          and the quantity that it denotes._Any period of seven consecutive days.
+      36-Month Follow-up:
+        description: 36-Month Follow-up
+      36-month visit (Clinical Follow-Up):
+        description: 36-month visit (Clinical Follow-Up)
+      37 months:
+        description: The natural number greater than thirty-six and less than thirty-eight
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      39 Week:
+        description: 39 Week
+      39 months:
+        description: 39 months post therapeutic procedure
+      4 Months After Starting Study Agent:
+        description: 'A natural number greater than 3 and less than 5 and the quantity
+          that it denotes: the sum of three and one._One of the 12 divisions of a
+          year as determined by a calendar. It corresponds to the unit of time of
+          approximately to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._A medical
+          product, practice, or application that is tested in a clinical trial._Have
+          a beginning, in a temporal, spatial, or evaluative sense; the point in space
+          or time where something begins.'
+      4 Months After Visit 1:
+        description: 'A natural number greater than 3 and less than 5 and the quantity
+          that it denotes: the sum of three and one._One of the 12 divisions of a
+          year as determined by a calendar. It corresponds to the unit of time of
+          approximately to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._The smallest natural number
+          and quantity it denotes: a single entity, unit, or object.'
+      4 Months After Visit 2:
+        description: 'A natural number greater than 3 and less than 5 and the quantity
+          that it denotes: the sum of three and one._One of the 12 divisions of a
+          year as determined by a calendar. It corresponds to the unit of time of
+          approximately to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._A natural number greater
+          than 1 and less than 3 and the quantity that it denotes: the sum of one
+          and one.'
+      4 h (during infusion):
+        description: 4 h (during infusion)
+      4 hours post dose:
+        description: 4 hours post dose
+      4 months:
+        description: 'A natural number greater than 3 and less than 5 and the quantity
+          that it denotes: the sum of three and one.: One of the 12 divisions of a
+          year as determined by a calendar. It corresponds to the unit of time of
+          approximately to one cycle of the moon''s phases, about 30 days or 4 weeks.'
+      4 months post-LITT:
+        description: 4 months post Laser Interstitial Thermal Therapy
+      4 weeks:
+        description: 'A natural number greater than 3 and less than 5 and the quantity
+          that it denotes: the sum of three and one.: Any period of seven consecutive
+          days.'
+      4 weeks post-surgery:
+        description: 4 weeks post-surgery
+      4 years after surgery:
+        description: 'A natural number greater than 3 and less than 5 and the quantity
+          that it denotes: the sum of three and one.: A period of time that it takes
+          for Earth to make a complete revolution around the sun, approximately 365
+          days; a specific one year period.: Happening at a time subsequent to a reference
+          time; later in time or order.: A diagnostic or treatment procedure performed
+          by manual and/or instrumental means, often involving an incision and the
+          removal or replacement of a diseased organ or tissue; of or relating to
+          or involving or used in surgery or requiring or amenable to treatment by
+          surgery.'
+      4-5 Years:
+        description: 4-5 years
+      4-6 weeks after surgery:
+        description: 4-6 weeks after surgery
+      4-6 weeks post RT:
+        description: 4-6 weeks post RT
+      4-6 weeks post chemoradiation:
+        description: 4-6 weeks post chemoradiation
+      40 months:
+        description: A natural number greater than thirty-nine and less than forty-one
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      42 months:
+        description: The natural number greater than forrty-one and less than forty-three
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      43 months:
+        description: A natural number greater than forty-two and less than forty-four
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      44 weeks:
+        description: 44 weeks
+      45 months:
+        description: 45 months post therapeutic procedure
+      46 months:
+        description: A natural number greater than forty five and less than forty
+          seven and the quantity that it denotes._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon's phases, about 30 days or 4 weeks.
+      48 months:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::48: One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks.'
+      48 months following randomization:
+        description: 48 months following randomization
+      48 months post randomization:
+        description: 48 Months Post Randomization
+      48 weeks:
+        description: The natural number greater than forty-seven and less than forty-nine
+          and the quantity that it denotes._Any period of seven consecutive days.
+      48 weeks (+/- 4 weeks) following initiation of protocol therapy:
+        description: 48 weeks (+/- 4 weeks) following initiation of protocol therapy
+      48-month visit (Clinical Follow-up):
+        description: 48-month visit (Clinical Follow-up)
+      49 months:
+        description: A natural number greater than forty-eight and less than fifty
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      49 weeks post randomization:
+        description: 49 weeks post randomization
+      5 Months After Starting Study Agent:
+        description: 'A natural number greater than 4 and less than 6 and the quantity
+          that it denotes: the sum of four and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._A medical
+          product, practice, or application that is tested in a clinical trial._Have
+          a beginning, in a temporal, spatial, or evaluative sense; the point in space
+          or time where something begins.'
+      5 Months After Visit 1:
+        description: 'A natural number greater than 4 and less than 6 and the quantity
+          that it denotes: the sum of four and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._The smallest natural number
+          and quantity it denotes: a single entity, unit, or object.'
+      5 Months After Visit 2:
+        description: 'A natural number greater than 4 and less than 6 and the quantity
+          that it denotes: the sum of four and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._A natural number greater
+          than 1 and less than 3 and the quantity that it denotes: the sum of one
+          and one.'
+      5 hours post start of Triapine (3AP) infusion (IV):
+        description: 5 hours post start of Triapine (3AP) infusion (IV)
+      5 hr post dose:
+        description: 5 hr post dose
+      5 minutes:
+        description: 'A natural number greater than 4 and less than 6 and the quantity
+          that it denotes: the sum of four and one.: A unit measure of time equal
+          to 60 seconds.'
+      5 weeks:
+        description: 'A natural number greater than 4 and less than 6 and the quantity
+          that it denotes: the sum of four and one.: Any period of seven consecutive
+          days.'
+      5 weeks after the start of RT:
+        description: 5 weeks after the start of RT
+      5 years:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::5: A period of time that it takes for
+          Earth to make a complete revolution around the sun, approximately 365 days;
+          a specific one year period.'
+      5 years after surgery:
+        description: 'A natural number greater than 4 and less than 6 and the quantity
+          that it denotes: the sum of four and one.: A period of time that it takes
+          for Earth to make a complete revolution around the sun, approximately 365
+          days; a specific one year period.: Happening at a time subsequent to a reference
+          time; later in time or order.: A diagnostic or treatment procedure performed
+          by manual and/or instrumental means, often involving an incision and the
+          removal or replacement of a diseased organ or tissue; of or relating to
+          or involving or used in surgery or requiring or amenable to treatment by
+          surgery.'
+      51 months:
+        description: 51 months post therapeutic procedure
+      52 Week:
+        description: 52 Week
+      54 months:
+        description: The natural number greater than fifty-three and less than fifty-five
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      55 weeks following randomization:
+        description: 55 weeks following randomization
+      56 weeks:
+        description: 56 weeks
+      57 months:
+        description: 57 months post therapeutic procedure
+      '6':
+        description: 'A natural number greater than 5 and less than 7 and the quantity
+          that it denotes: the sum of five and one.'
+      6 Months After Starting Study Agent:
+        description: 'A natural number greater than 5 and less than 7 and the quantity
+          that it denotes: the sum of five and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._A medical
+          product, practice, or application that is tested in a clinical trial._Have
+          a beginning, in a temporal, spatial, or evaluative sense; the point in space
+          or time where something begins.'
+      6 Months After Visit 1:
+        description: 'A natural number greater than 5 and less than 7 and the quantity
+          that it denotes: the sum of five and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._The smallest natural number
+          and quantity it denotes: a single entity, unit, or object.'
+      6 Months After Visit 2:
+        description: 'A natural number greater than 5 and less than 7 and the quantity
+          that it denotes: the sum of five and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks._Happening
+          at a time subsequent to a reference time; later in time or order._The act
+          of going to see some person or place or thing; it can cover a short or long
+          period but refers to a non-permanent arrangement._A natural number greater
+          than 1 and less than 3 and the quantity that it denotes: the sum of one
+          and one.'
+      6 Months Post Randomization:
+        description: 6 Months Post Randomization
+      6 hours post dose:
+        description: 6 hours post dose
+      6 hours post start of Triapine (3AP) infusion (IV):
+        description: 6 hours post start of Triapine (3AP) infusion (IV)
+      6 months:
+        description: 6 MONTHS
+      6 months after RT:
+        description: 6 months of radiation therapy
+      6 months after cross-over:
+        description: 6 months after cross-over
+      6 months after randomization:
+        description: 6 months after randomization
+      6 months after surgery:
+        description: 6 months after surgery
+      6 months from end of treatment:
+        description: 6 months from end of treatment
+      6 months post RT Completion:
+        description: 6 months post RT Completion
+      6 months post-LITT:
+        description: 6 months post Laser Interstitial Thermal Therapy
+      6 weeks after start of study therapy:
+        description: 6 weeks after start of study therapy
+      6 weeks after surgery:
+        description: 'A natural number greater than 5 and less than 7 and the quantity
+          that it denotes: the sum of five and one.: Any period of seven consecutive
+          days.: Happening at a time subsequent to a reference time; later in time
+          or order.: A diagnostic or treatment procedure performed by manual and/or
+          instrumental means, often involving an incision and the removal or replacement
+          of a diseased organ or tissue; of or relating to or involving or used in
+          surgery or requiring or amenable to treatment by surgery.'
+      6 weeks after your first study visit:
+        description: 6 weeks after your first study visit
+      6-12 hr:
+        description: 6-12 hr
+      6-8 weeks post chemo/RT:
+        description: 6-8 weeks post chemo/RT
+      6-Month Follow-up:
+        description: 6-Month Follow-up
+      60 minutes (1 hour):
+        description: 'A natural number greater than fifty-nine and less than sixty-one
+          and the quantity that it denotes.: A unit measure of time equal to 60 seconds.'
+      60 months:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::60: One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks.'
+      60 months after RT:
+        description: 60 months after radiation therapy
+      60 months following randomization:
+        description: 60 months following randomization
+      60 months post randomization:
+        description: 60 Months Post Randomization
+      60 months post-treatment initiation (+/- 12 months):
+        description: 60 months post-treatment initiation (+/- 12 months)
+      60 weeks:
+        description: A natural number greater than fifty-nine and less than sixty-one
+          and the quantity that it denotes._Any period of seven consecutive days.
+      68 weeks:
+        description: 68 weeks
+      69 months:
+        description: 69 months post therapeutic procedure
+      7 hours post start of Triapine (3AP) infusion (IV):
+        description: 7 hours post start of Triapine (3AP) infusion (IV)
+      7 months:
+        description: 'A natural number greater than 6 and less than 8 and the quantity
+          that it denotes: the sum of six and one._One of the 12 divisions of a year
+          as determined by a calendar. It corresponds to the unit of time of approximately
+          to one cycle of the moon''s phases, about 30 days or 4 weeks.'
+      7 weeks:
+        description: 'A natural number greater than 6 and less than 8 and the quantity
+          that it denotes: the sum of six and one.: Any period of seven consecutive
+          days.'
+      7-12 hr:
+        description: 7-12 hr
+      72 months:
+        description: The natural number greater than seventy-one and less than seventy-three
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      72 weeks:
+        description: The natural number greater than seventy-one and less than seventy-three
+          and the quantity that it denotes._Any period of seven consecutive days.
+      8 +/- 1 weeks following initiation of treatment:
+        description: 8 +/- 1 weeks following initiation of treatment
+      8 hours post dose:
+        description: 8 hours post dose
+      8 months:
+        description: 'A natural number greater than 7 and less than 9 and the quantity
+          that it denotes: the sum of seven and one._One of the 12 divisions of a
+          year as determined by a calendar. It corresponds to the unit of time of
+          approximately to one cycle of the moon''s phases, about 30 days or 4 weeks.'
+      8 weeks:
+        description: 'A natural number greater than 7 and less than 9 and the quantity
+          that it denotes: the sum of seven and one.: Any period of seven consecutive
+          days.'
+      80 weeks:
+        description: 80 weeks
+      84 months:
+        description: The natural number greater than eighty-three and less than eighty-five
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      84 weeks:
+        description: The natural number greater than eighty-three and less than eighty-five
+          and the quantity that it denotes._Any period of seven consecutive days.
+      9 - 12 months post-treatment initiation:
+        description: 9 - 12 months post-treatment initiation
+      9 months:
+        description: 9 MONTHS
+      9 months after cross-over:
+        description: 9 months after cross-over
+      9 months after randomization:
+        description: 9 months after randomization
+      9 months from baseline:
+        description: 9 MONTHS FROM BASELINE
+      9 months from start of ARM 1 or ARM 2 therapy:
+        description: 9 months from start of ARM 1 or ARM 2 therapy
+      9 months post-treatment initiation (+/- 3 months):
+        description: 9 months post-treatment initiation (+/- 3 months)
+      9 weeks:
+        description: 'A natural number greater than 8 and less than 10 and the quantity
+          that it denotes: the sum of nine and one.: Any period of seven consecutive
+          days.'
+      92 weeks:
+        description: 92 weeks
+      96 months:
+        description: A natural number greater than ninety-five and less than ninety-seven
+          and the quantity that it denotes._One of the 12 divisions of a year as determined
+          by a calendar. It corresponds to the unit of time of approximately to one
+          cycle of the moon's phases, about 30 days or 4 weeks.
+      96 weeks:
+        description: A natural number greater than ninety-five and less than ninety-seven
+          and the quantity that it denotes._Any period of seven consecutive days.
+      A:
+        description: 10 - 21 days after the last dose of AC
+      A-R:
+        description: Repeat LVEF assessment 6 weeks after Time Point A
+      Active Treatment, Current Cycle:
+        description: Active Treatment, Current Cycle
+      Active Treatment, Every 3 Months:
+        description: Active Treatment, Every 3 Months
+      Adjuvant:
+        description: An agent that enhances the activity or therapeutic effect of
+          another pharmacologic substance without having much, if any, therapeutic
+          impact by itself.
+      Adjuvant Chemotherapy:
+        description: Chemotherapy that is administered subsequent to the main treatment
+          plan to minimize or prevent disease recurrence.
+      Adjuvant Radiation Therapy:
+        description: Radiation therapy that is administered subsequent to the main
+          treatment plan to minimize or prevent disease recurrence.
+      After 1st dose escalation:
+        description: Happening at a time subsequent to a reference time; later in
+          time or order._Preceding all others in time or space or degree._A stepwise
+          increase in the amount of a therapeutic or investigational agent given to
+          an individual.
+      After 2nd dose escalation:
+        description: Happening at a time subsequent to a reference time; later in
+          time or order._Coming next after the first in position in space or time
+          or degree or magnitude._A stepwise increase in the amount of a therapeutic
+          or investigational agent given to an individual.
+      After 4 post-operative doses of bevacizumab:
+        description: After 4 post-operative doses of bevacizumab
+      After 6 weeks of treatment:
+        description: After 6 weeks of treatment
+      After AC therapy:
+        description: After AC therapy
+      After Cycle 3 Crizotinib Continuation:
+        description: After Cycle 3 Crizotinib Continuation therapy (Arm E)
+      After Cycle 3 Crizotinib Continuation therapy (Arm E):
+        description: After Cycle 3 Crizotinib Continuation therapy (Arm E)
+      After Cycle 3 Lorlatinib Continuation Therapy (Arm E):
+        description: After Cycle 3 Lorlatinib Continuation Therapy (Arm E)
+      After Cycle 3 Post-Consolidation Therapy:
+        description: After Cycle 3 Post-Consolidation Therapy
+      After Cycle 6 Crizotinib Continuation:
+        description: After Cycle 6 Crizotinib Continuation therapy (Arm E)
+      After Cycle 6 Crizotinib Continuation Therapy (Arm E):
+        description: After Cycle 6 Crizotinib Continuation Therapy (Arm E)
+      After Cycle 6 Lorlatinib Continuation Therapy (Arm E):
+        description: After Cycle 6 Lorlatinib Continuation Therapy (Arm E)
+      After cycle 6:
+        description: After cycle 6
+      After randomization but before study therapy begins:
+        description: After randomization but before study therapy begins
+      After the completion of all chemotherapy:
+        description: After the completion of all chemotherapy
+      As needed:
+        description: As needed
+      At completion of chemoradiation:
+        description: At completion of chemoradiation
+      At completion of planned preoperative systemic therapy:
+        description: At completion of planned preoperative systemic therapy
+      At end of RT:
+        description: At end of RT
+      At the time progressive disease is determined:
+        description: Used to indicate position, location, or state._The establishment
+          of a state or result._A clinical, pathologic, and/or molecular finding indicating
+          that the course of a disease is worsening in terms of extent or severity.
+      At time of first image:
+        description: 'Preceding all others in time or space or degree.: Any record
+          of an imaging event whether physical or electronic.'
+      At time patient discontinues treatment:
+        description: At time patient discontinues treatment
+      B:
+        description: 3 months following randomization
+      B-R:
+        description: Repeat LVEF assessment 3 weeks after Time Point B
+      Baseline (within 30 days prior to surgery):
+        description: Baseline (within 30 days prior to surgery)
+      Baseline/PreRT:
+        description: Baseline/PreRT
+      'Baseline: post-surgery and pre-radiation':
+        description: 'Baseline: post-surgery and pre-radiation'
+      Before 1st dose escalation:
+        description: Earlier in time or order._Preceding all others in time or space
+          or degree._A stepwise increase in the amount of a therapeutic or investigational
+          agent given to an individual.
+      Before 2nd dose escalation:
+        description: Earlier in time or order._Coming next after the first in position
+          in space or time or degree or magnitude._A stepwise increase in the amount
+          of a therapeutic or investigational agent given to an individual.
+      Before Surgery:
+        description: Earlier in time or order._A diagnostic or treatment procedure
+          performed by manual and/or instrumental means, often involving an incision
+          and the removal or replacement of a diseased organ or tissue; of or relating
+          to or involving or used in surgery or requiring or amenable to treatment
+          by surgery.
+      Before preoperative systemic therapy:
+        description: Before preoperative systemic therapy
+      Best response:
+        description: 'Having the most positive qualities.: The pathologic and/or clinical
+          changes that result from treatment. The changes may include eradication
+          of detectable disease, stabilization of disease, or disease progression.'
+      Breast cancer recurrence:
+        description: Breast cancer recurrence
+      C:
+        description: 6 months following randomization
+      C-R:
+        description: Repeat LVEF assessment 3 weeks after Time Point C
+      C1D1 2hr:
+        description: Cycle 1, Day, 1 (for Arm A patients)  OR  First dose of axitinib
+          given (For Arm C cross-over patients), 2hr after AM dose of axitinib
+      C1D1 4 hr:
+        description: Cycle 1, Day, 1 (for Arm A patients)  OR  First dose of axitinib
+          given (For Arm C cross-over patients), 4hr after AM dose of axitinib
+      C1D1 6hr:
+        description: Cycle 1, Day, 1 (for Arm A patients)  OR  First dose of axitinib
+          given (For Arm C cross-over patients), 6hr after AM dose of axitinib
+      C2D1:
+        description: Cycle 2, Day 1 (pre-dose) (for crossover patients, this refers
+          to Cycle 2, Day 1 of combination therapy)
+      C3D1:
+        description: Cycle 3, Day 1 (pre-dose) (for crossover patients, this refers
+          to Cycle 3, Day 1 of combination therapy)
+      Chemotherapy:
+        description: The use of synthetic or naturally-occurring chemicals for the
+          treatment of diseases.  Although this term may be used to describe any therapy
+          involving the use of chemical-based agents, it is most commonly used to
+          refer to the variety of chemical-based agents employed to treat cancer.  Cancer
+          chemotherapy works by arresting or killing the growth and spread of cancer
+          cells.  Because cancer cells usually divide much faster than normal cells,
+          they are often very sensitive to the inhibitory actions of chemotherapeutic
+          agents.  Chemotherapy may also include agents that enhance immune function
+          or alter hormonal activity. (NCI04)
+      Complication:
+        description: Any disease or disorder that occurs during the course of, or
+          because of, another disease, treatment, or procedure.
+      Confirmation of Response:
+        description: 'Any act or phenomena, or behavior, constituting a reply or reaction
+          of a living organism or its part to some foregoing stimulus or agent.: Having
+          been established or verified.'
+      Cycle 1:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: The smallest natural number and
+          quantity it denotes: a single entity, unit, or object.'
+      Cycle 1 Day 16:
+        description: Cycle 1 Day 16
+      Cycle 1 Day 2:
+        description: Cycle 1 Day 2
+      Cycle 1 Day 21:
+        description: Cycle 1 Day 21
+      Cycle 1 Day 22:
+        description: Cycle 1 Day 22
+      Cycle 1 Day 28:
+        description: Cycle 1 day 28
+      Cycle 1 Day 29:
+        description: Cycle 1 Day 29
+      Cycle 1 Day 8:
+        description: Day 8 of the first cycle
+      Cycle 1 Day 9:
+        description: Cycle 1 Day 9
+      Cycle 1 day 1:
+        description: Cycle 1 day 1
+      Cycle 1 day 15:
+        description: Cycle 1 day 15
+      Cycle 1, Day -6:
+        description: Cycle One Day Negative 6
+      Cycle 1, Day 1, (2 hr after AM dose of axitinib):
+        description: Cycle 1, Day 1, 2 hr after AM dose of axitinib)
+      Cycle 1, Day 1, (4 hr after AM dose of axitinib:
+        description: Cycle 1, Day 1, 4 hr after AM dose of axitinib
+      Cycle 1, Day 1, (6 hr after AM dose of axitinib):
+        description: Cycle 1, Day 1, 6 hr after AM dose of axitinib)
+      Cycle 1, Day 6:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: The smallest natural number and
+          quantity it denotes: a single entity, unit, or object.: The time for Earth
+          to make a complete rotation on its axis; ordinarily divided into twenty-four
+          hours, equal to 86 400 seconds. This also refers to a specific day.: A natural
+          number greater than 5 and less than 7 and the quantity that it denotes:
+          the sum of five and one.'
+      Cycle 10:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          9 and less than 11 and the quantity that it denotes: the sum of nine and
+          one.'
+      Cycle 11:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          10 and less than 12 and the quantity that it denotes.'
+      Cycle 12:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          11 and less than 13 and the quantity that it denotes.'
+      Cycle 12 or 12 months:
+        description: Cycle 12 or 12 months
+      Cycle 13:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          12 and less than 14 and the quantity that it denotes.'
+      Cycle 14:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          13 and less than 15 and the quantity that it denotes.'
+      Cycle 15:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          14 and less than 16 and the quantity that it denotes.'
+      Cycle 16:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          15 and less than 17 and the quantity that it denotes.'
+      Cycle 17:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          16 and less than 18 and the quantity that it denotes.'
+      Cycle 18:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          seventeen and less than nineteen and the quantity that it denotes.'
+      Cycle 18 Day 1 (+/- 2 weeks):
+        description: Cycle 18 Day 1 (+/- 2 weeks)
+      Cycle 19:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          eighteen and less than twenty and the quantity that it denotes.'
+      Cycle 2:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          1 and less than 3 and the quantity that it denotes: the sum of one and one.'
+      Cycle 2 Day 1:
+        description: Cycle 2 Day 1
+      Cycle 2 Day 15:
+        description: Cycle 2 Day 15
+      Cycle 2 Day 16:
+        description: Cycle 2 Day 16
+      Cycle 2 Day 2:
+        description: Cycle 2 Day 2
+      Cycle 2 Day 8:
+        description: Cycle 2 Day 8
+      Cycle 2 Day 9:
+        description: Cycle 2 Day 9
+      Cycle 2, Day 1 (pre-dose) (for crossover patients, this refers to the second axitinib-containing cycle):
+        description: Cycle 2, Day 1 (pre-dose) (for crossover patients, this refers
+          to the second axitinib-containing cycle)
+      Cycle 20:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          nineteen and less than twenty-one and the quantity that it denotes.'
+      Cycle 21:
+        description: Cycle 21
+      Cycle 22:
+        description: Cycle 22
+      Cycle 23:
+        description: Cycle 23
+      Cycle 24:
+        description: Cycle 24
+      Cycle 25:
+        description: Cycle 25
+      Cycle 26:
+        description: Cycle 26
+      Cycle 27:
+        description: Cycle 27
+      Cycle 28:
+        description: Cycle 28
+      Cycle 29:
+        description: Cycle 29
+      Cycle 3:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          2 and less than 4 and the quantity that it denotes: the sum of two and one.'
+      Cycle 3 Day 1:
+        description: Cycle 3 Day 1
+      Cycle 3 Day 15:
+        description: Cycle 3 Day 15
+      Cycle 3 Day 16:
+        description: Cycle 3 Day 16
+      Cycle 3 Day 2:
+        description: Cycle 3 Day 2
+      Cycle 3 Day 8:
+        description: Cycle 3 Day 8
+      Cycle 3 Day 9:
+        description: Cycle 3 Day 9
+      Cycle 3 or 3 months:
+        description: Cycle 3 or 3 months
+      Cycle 3, Day 1 (pre-dose) (for crossover patients, this refers to the third axitinib-containing cycle):
+        description: Cycle 3, Day 1 (pre-dose) (for crossover patients, this refers
+          to the third axitinib-containing cycle)
+      Cycle 30:
+        description: Cycle 30
+      Cycle 31:
+        description: Cycle 31
+      Cycle 32:
+        description: Cycle 32
+      Cycle 33:
+        description: Cycle 33
+      Cycle 34:
+        description: Cycle 34
+      Cycle 35:
+        description: Cycle 35
+      Cycle 4:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          3 and less than 5 and the quantity that it denotes: the sum of three and
+          one.'
+      Cycle 4 Day 1:
+        description: Cycle 4 Day 1
+      Cycle 4 Day 15:
+        description: Cycle 4 Day 15
+      Cycle 4 Day 16:
+        description: Cycle 4 Day 16
+      Cycle 4 Day 2:
+        description: Cycle 4 Day 2
+      Cycle 4 Day 8:
+        description: Cycle 4 Day 8
+      Cycle 4 Day 9:
+        description: Cycle 4 Day 9
+      Cycle 5:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          4 and less than 6 and the quantity that it denotes: the sum of four and
+          one.'
+      Cycle 5 Day 1:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          4 and less than 6 and the quantity that it denotes: the sum of four and
+          one.: The time for Earth to make a complete rotation on its axis; ordinarily
+          divided into twenty-four hours, equal to 86 400 seconds. This also refers
+          to a specific day.: The smallest natural number and quantity it denotes:
+          a single entity, unit, or object.'
+      Cycle 5 Day 15:
+        description: Cycle 5 Day 15
+      Cycle 5 Day 16:
+        description: Cycle 5 Day 16
+      Cycle 5 Day 2:
+        description: Cycle 5 Day 2
+      Cycle 5 Day 8:
+        description: Cycle 5 Day 8
+      Cycle 5 Day 9:
+        description: Cycle 5 Day 9
+      Cycle 6:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          5 and less than 7 and the quantity that it denotes: the sum of five and
+          one.'
+      Cycle 6 Day 1:
+        description: Cycle 6 Day 1
+      Cycle 6 Day 15:
+        description: Cycle 6 Day 15
+      Cycle 6 Day 16:
+        description: Cycle 6 Day 16
+      Cycle 6 Day 2:
+        description: Cycle 6 Day 2
+      Cycle 6 Day 8:
+        description: Cycle 6 Day 8
+      Cycle 6 Day 9:
+        description: Cycle 6 Day 9
+      Cycle 6 or 6 months:
+        description: Cycle 6 or 6 months
+      Cycle 7:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          6 and less than 8 and the quantity that it denotes: the sum of six and one.'
+      Cycle 7 Day 1 (+/- 2 weeks):
+        description: Cycle 7 Day 1 (+/- 2 weeks)
+      Cycle 8:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          7 and less than 9 and the quantity that it denotes: the sum of seven and
+          one.'
+      Cycle 9:
+        description: 'An event or sequence of events that constitute a round or succession
+          of observable phenomena, recurring usually at regular or approximately regular
+          time intervals and in the same sequence.: A natural number greater than
+          8 and less than 10 and the quantity that it denotes: the sum of nine and
+          one.'
+      D:
+        description: 9 months following randomization
+      D-R:
+        description: Repeat LVEF assessment 3 weeks after Time Point D
+      Day +100 +/-20:
+        description: Day +100 +/-20
+      Day +30 +/-7:
+        description: Day +30 +/-7
+      Day +365 +/-30:
+        description: Day +365 +/-30
+      Day +60 +/-14:
+        description: Day +60 +/-14
+      Day 0:
+        description: Day 0
+      Day 0 - Day 20:
+        description: Day 0 - Day 20
+      Day 1:
+        description: 'The time for Earth to make a complete rotation on its axis;
+          ordinarily divided into twenty-four hours, equal to 86 400 seconds. This
+          also refers to a specific day._The smallest natural number and quantity
+          it denotes: a single entity, unit, or object.'
+      Day 1 +12 hrs:
+        description: Day 1 +12 hrs
+      Day 1 +2 hrs:
+        description: Day 1 +2 hrs
+      Day 1 +20 hrs:
+        description: Day 1 +20 hrs
+      Day 1 +24 hrs:
+        description: Day 1 +24 hrs
+      Day 1 +30 min:
+        description: Day 1 +30 min
+      Day 1 +4 hrs:
+        description: Day 1 +4 hrs
+      Day 1 +45 min:
+        description: Day 1 +45 min
+      Day 1 +60 min:
+        description: Day 1 +60 min
+      Day 1 +8 hrs:
+        description: Day 1 +8 hrs
+      Day 1 +90 min:
+        description: Day 1 +90 min
+      Day 1 - 1 hr after infusion start:
+        description: Day 1 - 1 hr after infusion start
+      Day 1 - 2 hr after completing infusion:
+        description: Day 1 - 2 hr after completing infusion
+      Day 1 - 2 hr after infusion start:
+        description: Day 1 - 2 hr after infusion start
+      Day 1 - 3 hr after completing infusion:
+        description: Day 1 - 3 hr after completing infusion
+      Day 1 - 30 min after starting dose:
+        description: Day 1 - 30 min after starting dose
+      Day 1 - End of infusion:
+        description: Day 1 - End of infusion
+      Day 1 - Predose:
+        description: Day 1 - Predose
+      Day 1 Pre-dose:
+        description: Day 1 Pre-dose
+      Day 1 of Cycle 4:
+        description: Day 1 of Cycle 4
+      Day 1 of Midostaurin/placebo:
+        description: Day 1 of Midostaurin/placebo
+      Day 1 of each course:
+        description: Day 1 of each course
+      Day 1, Dose 1:
+        description: Day 1, Dose 1
+      Day 1, Dose 2:
+        description: Day 1, Dose 2
+      Day 10:
+        description: 'A natural number greater than 9 and less than 11 and the quantity
+          that it denotes: the sum of nine and one.: The time for Earth to make a
+          complete rotation on its axis; ordinarily divided into twenty-four hours,
+          equal to 86 400 seconds. This also refers to a specific day.'
+      Day 100 - 180 Post-HCT:
+        description: 'The time for Earth to make a complete rotation on its axis;
+          ordinarily divided into twenty-four hours, equal to 86 400 seconds. This
+          also refers to a specific day.: A natural number greater than ninety-nine
+          and less than one hundred-one and the quantity that it denotes.: Used as
+          a function word to indicate direction, purpose, or movement.: A number with
+          no fractional part, including the negative and positive numbers as well
+          as zero.::180: Happening at a time subsequent to a reference time; later
+          in time or order.: A therapeutic procedure that involves the transplantation
+          of hematopoietic stem cells, either with the patient as their own donor
+          or from a donor to a patient. This can be used for treatment of malignant
+          and non-malignant diseases.'
+      Day 105:
+        description: Day 105
+      Day 11:
+        description: 'The time for Earth to make a complete rotation on its axis;
+          ordinarily divided into twenty-four hours, equal to 86 400 seconds. This
+          also refers to a specific day.: A number with no fractional part, including
+          the negative and positive numbers as well as zero.'
+      Day 113:
+        description: Day 113
+      Day 12:
+        description: The time for Earth to make a complete rotation on its axis; ordinarily
+          divided into twenty-four hours, equal to 86 400 seconds. This also refers
+          to a specific day._A natural number greater than 11 and less than 13 and
+          the quantity that it denotes.
+      Day 126:
+        description: Day 126
+      Day 13:
+        description: The time for Earth to make a complete rotation on its axis; ordinarily
+          divided into twenty-four hours, equal to 86 400 seconds. This also refers
+          to a specific day._A natural number greater than 12 and less than 14 and
+          the quantity that it denotes.
+      Day 14:
+        description: Day 14
+      Day 14 of Midostaurin/placebo:
+        description: Day 14 of Midostaurin/placebo
+      Day 15:
+        description: Day 15
+      Day 15 - 1 hr after infusion start:
+        description: Day 15 - 1 hr after infusion start
+      Day 15 - 30 min after starting dose:
+        description: Day 15 - 30 min after starting dose
+      Day 15 - End of infusion:
+        description: Day 15 - End of infusion
+      Day 15 - Predose:
+        description: Day 15 - Predose
+      Day 18:
+        description: 'The time for Earth to make a complete rotation on its axis;
+          ordinarily divided into twenty-four hours, equal to 86 400 seconds. This
+          also refers to a specific day.: A number with no fractional part, including
+          the negative and positive numbers as well as zero.'
+      Day 180 - 270 Post-HCT:
+        description: Day 180 - 270 Post-HCT
+      Day 2:
+        description: Day 2
+      Day 21:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::21: The time for Earth to make a complete
+          rotation on its axis; ordinarily divided into twenty-four hours, equal to
+          86 400 seconds. This also refers to a specific day.'
+      Day 21 - Day 41:
+        description: Day 21 - Day 41
+      Day 22:
+        description: Day 22
+      Day 23:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::23: The time for Earth to make a complete
+          rotation on its axis; ordinarily divided into twenty-four hours, equal to
+          86 400 seconds. This also refers to a specific day.'
+      Day 25:
+        description: 'The time for Earth to make a complete rotation on its axis;
+          ordinarily divided into twenty-four hours, equal to 86 400 seconds. This
+          also refers to a specific day.: A number with no fractional part, including
+          the negative and positive numbers as well as zero.'
+      Day 270 - 365 Post-HCT:
+        description: Day 270 - 365 Post-HCT
+      Day 29:
+        description: Day 29
+      Day 3:
+        description: Day 3
+      Day 3 of Midostaurin/placebo:
+        description: Day 3 of Midostaurin/placebo
+      Day 3, Dose 1:
+        description: Day 3, Dose 1
+      Day 3, Dose 2:
+        description: Day 3, Dose 2
+      Day 30:
+        description: Day 30 Timepoint
+      Day 31:
+        description: Day 31
+      Day 32:
+        description: 'The time for Earth to make a complete rotation on its axis;
+          ordinarily divided into twenty-four hours, equal to 86 400 seconds. This
+          also refers to a specific day.: A number with no fractional part, including
+          the negative and positive numbers as well as zero.'
+      Day 36 +12 hrs:
+        description: Day 36 +12 hrs
+      Day 36 +2 hrs:
+        description: Day 36 +2 hrs
+      Day 36 +20 hrs:
+        description: Day 36 +20 hrs
+      Day 36 +24 hrs:
+        description: Day 36 +24 hrs
+      Day 36 +30 min:
+        description: Day 36 +30 min
+      Day 36 +4 hrs:
+        description: Day 36 +4 hrs
+      Day 36 +45 min:
+        description: Day 36 +45 min
+      Day 36 +60 min:
+        description: Day 36 +60 min
+      Day 36 +8 hrs:
+        description: Day 36 +8 hrs
+      Day 36 +90 min:
+        description: Day 36 +90 min
+      Day 36 Pre-dose:
+        description: Day 36 Pre-dose
+      Day 4:
+        description: Day 4
+      Day 42:
+        description: Day 42
+      Day 42 - Day 126:
+        description: Day 42 - Day 126
+      Day 43:
+        description: Day 43
+      Day 44:
+        description: Day 44
+      Day 5:
+        description: Day 5
+      Day 5, Dose 1:
+        description: Day 5, Dose 1
+      Day 5, Dose 2:
+        description: Day 5, Dose 2
+      Day 52:
+        description: Day 52
+      Day 57:
+        description: Day 57
+      Day 6:
+        description: Day 6
+      Day 6, Cycle 1:
+        description: 'The time for Earth to make a complete rotation on its axis;
+          ordinarily divided into twenty-four hours, equal to 86 400 seconds. This
+          also refers to a specific day.: A natural number greater than 5 and less
+          than 7 and the quantity that it denotes: the sum of five and one.: An event
+          or sequence of events that constitute a round or succession of observable
+          phenomena, recurring usually at regular or approximately regular time intervals
+          and in the same sequence.: The smallest natural number and quantity it denotes:
+          a single entity, unit, or object.'
+      Day 63:
+        description: Day 63
+      Day 7:
+        description: Day 7 Timepoint
+      Day 8:
+        description: Day 8
+      Day 8 - 1 hr after infusion start:
+        description: Day 8 - 1 hr after infusion start
+      Day 8 - 30 min after starting dose:
+        description: Day 8 - 30 min after starting dose
+      Day 8 - End of infusion:
+        description: Day 8 - End of infusion
+      Day 8 - Predose:
+        description: Day 8 - Predose
+      Day 84:
+        description: Day 84
+      Day 9:
+        description: 'The time for Earth to make a complete rotation on its axis;
+          ordinarily divided into twenty-four hours, equal to 86 400 seconds. This
+          also refers to a specific day._A natural number greater than 8 and less
+          than 10 and the quantity that it denotes: the sum of nine and one.'
+      Day before surgery:
+        description: 'A diagnostic or treatment procedure performed by manual and/or
+          instrumental means, often involving an incision and the removal or replacement
+          of a diseased organ or tissue; of or relating to or involving or used in
+          surgery or requiring or amenable to treatment by surgery.: Earlier in time
+          or order.: The time for Earth to make a complete rotation on its axis; ordinarily
+          divided into twenty-four hours, equal to 86 400 seconds. This also refers
+          to a specific day.'
+      Days 8-36:
+        description: Days 8-36
+      Death:
+        description: At the time of death
+      Diagnosis:
+        description: The investigation, analysis and recognition of the presence and
+          nature of disease, condition, or injury from expressed signs and symptoms;
+          also, the scientific determination of any kind; the concise results of such
+          an investigation.
+      During preoperative systemic therapy:
+        description: During preoperative systemic therapy
+      E:
+        description: 12 months following randomization
+      Early Termination:
+        description: Early Termination
+      End Induction:
+        description: End Induction
+      End of Chemoradiation:
+        description: 'The point or place at which something terminates in time, space,
+          or extent.: Treatment that combines chemotherapy with radiation therapy.'
+      End of Consolidation:
+        description: End of Consolidation (prior to start of Post-Consolidation therapy)
+      End of Consolidation (prior to start of Post-Consolidation therapy):
+        description: End of Consolidation (prior to start of Post-Consolidation therapy)
+      End of Consolidation I:
+        description: End of Consolidation I
+      End of Consolidation II:
+        description: End of Consolidation II
+      End of Continuation:
+        description: End of Continuation
+      End of Crizotinib Continuation:
+        description: End of Crizotinib Continuation therapy (Arm E)
+      End of Crizotinib Continuation Therapy (Arm E):
+        description: End of Crizotinib Continuation Therapy (Arm E)
+      End of Induction (pre-Consolidation therapy):
+        description: End of Induction (pre-Consolidation therapy)
+      End of Induction, Cycle 5:
+        description: End of Induction, Cycle 5
+      End of Lorlatinib Continuation Therapy (Arm E):
+        description: End of Lorlatinib Continuation Therapy (Arm E)
+      End of Post-Consolidation (Arms A and D):
+        description: End of Post-Consolidation (Arms A and D)
+      End of Post-Consolidation Therapy:
+        description: End of Post-Consolidation Therapy
+      End of Treatment:
+        description: the end of treatment.
+      End of cycle 6:
+        description: End of Cycle 6
+      End of infusion:
+        description: End of Infusion
+      End of randomized treatment:
+        description: End of randomized treatment
+      Every 12 weeks after the previous exam:
+        description: Every 12 weeks after the previous exam
+      Every 8 weeks:
+        description: Every eight weeks.
+      Every 8 weeks after the previous exam:
+        description: Every 8 weeks after the previous exam
+      Extra Prescribed Dose:
+        description: 'Exceeding the normal or usual number.: A doctor''s order for
+          medicine or another intervention.: A quantity of an agent (such as substance
+          or energy) administered, taken, or absorbed at one time.'
+      F:
+        description: Any time through 10 years following randomization when a non-protocol
+          specified LVEF assessment has been performed because the patient has signs
+          or symptoms of CHF
+      Final:
+        description: Conclusive in a process or progression.
+      Final Visit:
+        description: 'Conclusive in a process or progression.: The act of going to
+          see some person or place or thing; it can cover a short or long period but
+          refers to a non-permanent arrangement.'
+      First dose of axitinib given, 2 hr after AM dose of axitinib (Arm C cross-over pt only):
+        description: First dose of axitinib given, 2 hr after AM dose of axitinib
+          (Arm C cross-over pt only)
+      First dose of axitinib given, 4 hr after AM dose of axitinib (Arm C cross-over pt only):
+        description: First dose of axitinib given, 4 hr after AM dose of axitinib
+          (Arm C cross-over pt only)
+      First dose of axitinib given, 6 hr after AM dose of axitinib (Arm C cross-over pt only):
+        description: First dose of axitinib given, 6 hr after AM dose of axitinib
+          (Arm C cross-over pt only)
+      First intravitreal injection:
+        description: Preceding all others in time or space or degree._The administration
+          of a drug within the vitreous body of the eye.
+      Five year follow-up:
+        description: Five year follow-up
+      Follow up:
+        description: Follow up
+      Follow up safety:
+        description: 'The state of being certain that adverse effects will not be
+          caused by some agent under defined conditions.: The process by which information
+          about the health status of an individual is obtained after a study has officially
+          closed; an activity that continues something that has already begun or that
+          repeats something that has already been done.'
+      'Follow up safety #1':
+        description: 'Follow up safety #1'
+      'Follow up safety #2':
+        description: 'Follow up safety #2'
+      Follow-up:
+        description: The process by which information about the health status of an
+          individual is obtained after a study has officially closed; an activity
+          that continues something that has already begun or that repeats something
+          that has already been done.
+      Follow-up 1:
+        description: 'The process by which information about the health status of
+          an individual is obtained after a study has officially closed.: The smallest
+          natural number and quantity it denotes: a single entity, unit, or object.'
+      Follow-up 2:
+        description: 'The process by which information about the health status of
+          an individual is obtained after a study has officially closed; an activity
+          that continues something that has already begun or that repeats something
+          that has already been done.: A natural number greater than 1 and less than
+          3 and the quantity that it denotes: the sum of one and one.'
+      Follow-up 3:
+        description: 'The process by which information about the health status of
+          an individual is obtained after a study has officially closed; an activity
+          that continues something that has already begun or that repeats something
+          that has already been done.: A natural number greater than 2 and less than
+          4 and the quantity that it denotes: the sum of two and one.'
+      G:
+        description: During Cardiac Report Follow-up if Time Points A, B, C, D, or
+          E do not apply
+      Hour 1:
+        description: Hour 1
+      Hour 3:
+        description: Hour 3
+      Hour 5:
+        description: Hour 5
+      Hour 6:
+        description: Hour 6
+      Hour 7:
+        description: Hour 7
+      Induction:
+        description: The first choice of treatment for a particular type of cancer.
+      Induction Cycle 2:
+        description: Induction Cycle 2
+      Induction Cycle 3:
+        description: Induction Cycle 3
+      Last week of RT:
+        description: Last week of radiation therapy
+      Lead In - Day 7:
+        description: Lead In - Day 7
+      Less than or equal to 3 weeks prior to registration:
+        description: Less than or equal to 3 weeks prior to registration
+      MRI Scan 1:
+        description: 'Preceding all others in time or space or degree.: Imaging that
+          uses radiofrequency waves and a strong magnetic field rather than x-rays
+          to provide amazingly clear and detailed pictures of internal organs and
+          tissues. The technique is valuable for the diagnosis of many pathologic
+          conditions, including cancer, heart and vascular disease, stroke, and joint
+          and musculoskeletal disorders. : The data or image obtained by gathering
+          information with a sensing device.'
+      MRI Scan 2:
+        description: 'Coming next after the first in position in space or time or
+          degree or magnitude.: Imaging that uses radiofrequency waves and a strong
+          magnetic field rather than x-rays to provide amazingly clear and detailed
+          pictures of internal organs and tissues. The technique is valuable for the
+          diagnosis of many pathologic conditions, including cancer, heart and vascular
+          disease, stroke, and joint and musculoskeletal disorders. : The data or
+          image obtained by gathering information with a sensing device.'
+      'Maintenance #1':
+        description: 'Maintenance #1'
+      'Maintenance #10':
+        description: 'Maintenance #10'
+      'Maintenance #11':
+        description: 'Maintenance #11'
+      'Maintenance #12':
+        description: 'Maintenance #12'
+      'Maintenance #13':
+        description: 'Maintenance #13'
+      'Maintenance #14':
+        description: 'Maintenance #14'
+      'Maintenance #15':
+        description: 'Maintenance #15'
+      'Maintenance #16':
+        description: 'Maintenance #16'
+      'Maintenance #17':
+        description: 'Maintenance #17'
+      'Maintenance #18':
+        description: 'Maintenance #18'
+      'Maintenance #19':
+        description: 'Maintenance #19'
+      'Maintenance #2':
+        description: 'Maintenance #2'
+      'Maintenance #20':
+        description: 'Maintenance #20'
+      'Maintenance #3':
+        description: 'Maintenance #3'
+      'Maintenance #4':
+        description: 'Maintenance #4'
+      'Maintenance #5':
+        description: 'Maintenance #5'
+      'Maintenance #6':
+        description: 'Maintenance #6'
+      'Maintenance #7':
+        description: 'Maintenance #7'
+      'Maintenance #8':
+        description: 'Maintenance #8'
+      'Maintenance #9':
+        description: 'Maintenance #9'
+      Mastectomy:
+        description: Surgical removal of the breast.
+      Metastatic site resection:
+        description: A term referring to the clinical or pathologic observation of
+          a tumor extension from its original site of growth to another anatomic site._A
+          position in relation to its surroundings._The surgical removal of an organ
+          or a part of an organ.
+      Month 12:
+        description: Month 12
+      Month 18:
+        description: Month 18
+      Month 24:
+        description: Month 24
+      Month 3:
+        description: Month 3
+      Month 6:
+        description: Month 6
+      Month 9:
+        description: Month 9
+      Morning of surgery:
+        description: 'A diagnostic or treatment procedure performed by manual and/or
+          instrumental means, often involving an incision and the removal or replacement
+          of a diseased organ or tissue; of or relating to or involving or used in
+          surgery or requiring or amenable to treatment by surgery.: The time period
+          between dawn and noon.'
+      Nadir:
+        description: Nadir
+      Neoadjuvant:
+        description: Treatment given as a first step to shrink a tumor before the
+          main treatment, which is usually surgery, is given. Examples of neoadjuvant
+          therapy include chemotherapy, radiation therapy, and hormone therapy. It
+          is a type of induction therapy.
+      Observation:
+        description: Observation; watching something and taking note of what happens.
+      Off Study:
+        description: Off Study
+      One year follow-up:
+        description: One year follow-up
+      Other:
+        description: Different than the one(s) previously specified or mentioned.
+      Other follow-ups:
+        description: other followup
+      Other time point during first two years following study entry:
+        description: Other time point during first two years following study entry
+      POST-TEXT 1:
+        description: POST-TEXT 1
+      POST-TEXT 2:
+        description: POST-TEXT 2
+      POST-TEXT 3:
+        description: POST-TEXT 3
+      POST-TEXT 4:
+        description: POST-TEXT 4
+      POST-TEXT 5:
+        description: POST-TEXT 5
+      PRETEXT:
+        description: PRETEXT
+      Post 6 hours:
+        description: 'Happening at a time subsequent to a reference time; later in
+          time or order._A natural number greater than 5 and less than 7 and the quantity
+          that it denotes: the sum of five and one._A unit measure of time equal to
+          3,600 seconds or 60 minutes. It is approximately 1/24 of a median day.'
+      Post ARM 1 or ARM 2 systemic therapy:
+        description: Post ARM 1 or ARM 2 systemic therapy
+      Post Nadir 1:
+        description: Post Nadir 1
+      Post Nadir 2:
+        description: Post Nadir 2
+      Post chemotherapy:
+        description: No Value Exists
+      Post dose:
+        description: Post dose
+      Post infusion 2 hours:
+        description: Post infusion 2 hours
+      Post infusion 30 mins:
+        description: Post infusion 30 mins
+      Post infusion 60 mins:
+        description: Post infusion 60 mins
+      Post neoadjuvant chemotherapy:
+        description: 'Post; occuring after.: Treatment designed to be used as a first
+          step toward shrinking the cancer and in evaluating response to drugs and
+          other agents. Induction therapy is followed by additional therapy to eliminate
+          whatever cancer remains.'
+      Post operative (week 4-6):
+        description: Post operative (week 4-6)
+      Post scan:
+        description: 'Happening at a time subsequent to a reference time; later in
+          time or order.: The data or image obtained by gathering information with
+          a sensing device.'
+      Post treatment:
+        description: 'Happening at a time subsequent to a reference time; later in
+          time or order.: An action or administration of therapeutic agents to produce
+          an effect that is intended to alter the course of a pathologic process.'
+      Post-IO Scan at progression (1):
+        description: 'Happening at a time subsequent to a reference time; later in
+          time or order.: Immunotherapy that focuses on mobilizing the patient''s
+          own immune cells to recognize and eliminate cancer cells.: Any technology
+          or method that aids in the visualization of any biological process, cell,
+          tissue or organ for use in screening, diagnosis, surgical procedures or
+          therapy.: The data or image obtained by gathering information with a sensing
+          device.: Used to indicate position, location, or state.: The worsening of
+          a disease over time.'
+      Post-Intervention:
+        description: Post-Intervention
+      Post-MIBG Therapy (Arm B or C):
+        description: Post-MIBG Therapy (Arm B or C)
+      Post-adjuvant cycle 6:
+        description: Post-adjuvant cycle 6
+      Post-consolidation:
+        description: Post-consolidation
+      Post-surgery:
+        description: POST-SURGERY
+      Post-transplant:
+        description: Post-transplant (Patients with > 5 MIBG positive metastatic sites)
+      Post-transplant (Patients with > 5 MIBG positive metastatic sites):
+        description: Post-transplant (Patients with > 5 MIBG positive metastatic sites)
+      Post-transplant (Patients with > 5 PET sites):
+        description: Post-transplant (Patients with > 5 PET positive metastatic sites)
+      Post-transplant/pre-radiation (Patients with > 5 MIBG positive metastatic sites):
+        description: Post-transplant/pre-radiation (Patients with > 5 MIBG positive
+          metastatic sites)
+      Post-treatment (immediately after LITT):
+        description: Occurring after a therapeutic procedure._Happening at a time
+          subsequent to a reference time; later in time or order._A thermal ablation
+          therapy in which neoplasms are heated with prolonged and moderate temperature
+          elevations.  It results in coagulative necrosis in the heated tissue.
+      Post-treatment follow-up:
+        description: Post-treatment follow-up
+      Post-week 9:
+        description: After week 9
+      Postoperative Bevacizumab:
+        description: Postoperative Bevacizumab
+      Pre scan:
+        description: 'Earlier in time or order.: The data or image obtained by gathering
+          information with a sensing device.'
+      Pre-IO most recent Scan (-1):
+        description: 'Earlier in time or order.: Immunotherapy that focuses on mobilizing
+          the patient''s own immune cells to recognize and eliminate cancer cells.:
+          Greatest in amount, extent, or degree; constituting a majority.: Near to
+          or not long before the present.: Any technology or method that aids in the
+          visualization of any biological process, cell, tissue or organ for use in
+          screening, diagnosis, surgical procedures or therapy.: The data or image
+          obtained by gathering information with a sensing device.'
+      Pre-IO second most recent Scan (-2):
+        description: 'Earlier in time or order.: Immunotherapy that focuses on mobilizing
+          the patient''s own immune cells to recognize and eliminate cancer cells.:
+          A suffix denoting the second person having the same complete name (first,
+          middle, and family names).: Greatest in amount, extent, or degree; constituting
+          a majority.: Near to or not long before the present.: Any technology or
+          method that aids in the visualization of any biological process, cell, tissue
+          or organ for use in screening, diagnosis, surgical procedures or therapy.:
+          The data or image obtained by gathering information with a sensing device.'
+      Pre-Infusion:
+        description: 'Earlier in time or order.: A method of putting fluids, including
+          drugs, into the bloodstream.'
+      Pre-Intervention:
+        description: Pre-intervention
+      Pre-Treatment (within 4 weeks prior to starting therapy):
+        description: Pre-Treatment (within 4 weeks prior to starting therapy)
+      Pre-adjuvant cycle 1:
+        description: Pre-adjuvant cycle 1
+      Pre-adjuvant cycle 4:
+        description: Pre-adjuvant cycle 4
+      Pre-consolidation:
+        description: Pre-consolidation
+      Pre-dose:
+        description: No Value Exists
+      Pre-maintenance cycle 1:
+        description: Pre-maintenance cycle 1
+      Pre-maintenance cycle 2:
+        description: Pre-maintenance cycle 2
+      Pre-maintenance cycle 3:
+        description: Pre-maintenance cycle 3
+      Pre-maintenance cycle 4:
+        description: Pre-maintenance cycle 4
+      Pre-maintenance cycle 5:
+        description: Pre-maintenance cycle 5
+      Pre-maintenance cycle 6:
+        description: Pre-maintenance cycle 6
+      Pre-radiation:
+        description: 'Earlier in time or order.: Treatment of a disease by means of
+          exposure of the target or the whole body to radiation. Radiation therapy
+          is often used as part of curative therapy and occasionally as a component
+          of palliative treatment for cancer. Other uses include total body irradiation
+          prior to transplantation.'
+      Pre-surgery:
+        description: PRE-SURGERY
+      Pre-treatment:
+        description: Occurring before a therapeutic procedure.
+      Preliminary progression:
+        description: Preliminary progression
+      Preoperative Bevacizumab:
+        description: Preoperative Bevacizumab
+      Pretreatment:
+        description: Predating the onset of protocol treatment or intervention.
+      Pretreatment-Baseline:
+        description: 'The time prior to the treatment of interest.: Baseline; an imaginary
+          standard by which things are measured or compared.'
+      Prior to Cycle 1 Continuation:
+        description: Prior to Cycle 1 Continuation
+      Prior to Cycle 12:
+        description: Earlier in time or order._Used as a function word to indicate
+          direction, purpose, or movement._An event or sequence of events that constitute
+          a round or succession of observable phenomena, recurring usually at regular
+          or approximately regular time intervals and in the same sequence._A natural
+          number greater than 11 and less than 13 and the quantity that it denotes.
+      Prior to Cycle 3:
+        description: 'Earlier in time or order._Used as a function word to indicate
+          direction, purpose, or movement._An event or sequence of events that constitute
+          a round or succession of observable phenomena, recurring usually at regular
+          or approximately regular time intervals and in the same sequence._A natural
+          number greater than 2 and less than 4 and the quantity that it denotes:
+          the sum of two and one.'
+      Prior to Cycle 5:
+        description: 'Earlier in time or order._Used as a function word to indicate
+          direction, purpose, or movement._An event or sequence of events that constitute
+          a round or succession of observable phenomena, recurring usually at regular
+          or approximately regular time intervals and in the same sequence._A natural
+          number greater than 4 and less than 6 and the quantity that it denotes:
+          the sum of four and one.'
+      Prior to Cycle 7 Continuation:
+        description: Prior to Cycle 7 Continuation
+      Prior to Cycle 8:
+        description: 'Earlier in time or order._Used as a function word to indicate
+          direction, purpose, or movement._An event or sequence of events that constitute
+          a round or succession of observable phenomena, recurring usually at regular
+          or approximately regular time intervals and in the same sequence._A natural
+          number greater than 7 and less than 9 and the quantity that it denotes:
+          the sum of seven and one.'
+      Prior to best response:
+        description: Earlier in time or order._Used as a function word to indicate
+          direction, purpose, or movement._Having the most positive qualities._The
+          pathologic and/or clinical changes that result from treatment. The changes
+          may include eradication of detectable disease, stabilization of disease,
+          or disease progression.
+      Prior to cycle 4:
+        description: Prior to cycle 4
+      Prior to neoadjuvant chemotherapy:
+        description: 'Earlier in time or order.: Used as a function word to indicate
+          direction, purpose, or movement.: Treatment given as a first step to shrink
+          a tumor before the main treatment, which is usually surgery, is given. Examples
+          of neoadjuvant therapy include chemotherapy, radiation therapy, and hormone
+          therapy. It is a type of induction therapy. : The use of synthetic or naturally-occurring
+          chemicals for the treatment of diseases.  Although this term may be used
+          to describe any therapy involving the use of chemical-based agents, it is
+          most commonly used to refer to the variety of chemical-based agents employed
+          to treat cancer.  Cancer chemotherapy works by arresting or killing the
+          growth and spread of cancer cells.  Because cancer cells usually divide
+          much faster than normal cells, they are often very sensitive to the inhibitory
+          actions of chemotherapeutic agents.  Chemotherapy may also include agents
+          that enhance immune function or alter hormonal activity. (NCI04)'
+      Prior to post-Consolidation, Cycle 1:
+        description: Prior to post-Consolidation, Cycle 1
+      Prior to radiation:
+        description: Earlier in time or order._Used as a function word to indicate
+          direction, purpose, or movement._Treatment of a disease by means of exposure
+          of the target or the whole body to radiation. Radiation therapy is often
+          used as part of curative therapy and occasionally as a component of palliative
+          treatment for cancer. Other uses include total body irradiation prior to
+          transplantation.
+      Prior to randomization:
+        description: Protocol timepoint before patient information is submitted for
+          random assignment to a treatment arm
+      Prior to randomization (Baseline):
+        description: Prior to randomization (Baseline)
+      Prior to start of Triapine (3AP) infusion (IV):
+        description: Prior to start of Triapine (3AP) infusion (IV)
+      Prior to start of study therapy:
+        description: Prior to start of study therapy
+      Prior to start of triapine (T) infusion:
+        description: Prior to start of triapine (T) infusion
+      Prior to surgery:
+        description: Earlier in time or order._A diagnostic or treatment procedure
+          performed by manual and/or instrumental means, often involving an incision
+          and the removal or replacement of a diseased organ or tissue; of or relating
+          to or involving or used in surgery or requiring or amenable to treatment
+          by surgery.
+      Prior to the start of protocol therapy:
+        description: Prior to the start of protocol therapy
+      Prior to treatment (between pre-registration and start of cycle 1):
+        description: Prior to treatment (between pre-registration and start of cycle
+          1)
+      Prior to when progressive disease is determined:
+        description: Earlier in time or order._Used as a function word to indicate
+          direction, purpose, or movement._The establishment of a state or result._A
+          clinical, pathologic, and/or molecular finding indicating that the course
+          of a disease is worsening in terms of extent or severity.
+      Progression:
+        description: Progression
+      Progression or 2 years:
+        description: Progression or 2 years
+      Progression prior to cross-over:
+        description: Progression prior to cross-over
+      Progression/End of active treatment:
+        description: Progression/End of active treatment
+      Radiation Therapy:
+        description: Treatment of a disease by means of exposure of the target or
+          the whole body to radiation. Radiation therapy is often used as part of
+          curative therapy and occasionally as a component of palliative treatment
+          for cancer. Other uses include total body irradiation prior to transplantation.
+      Reconstruction:
+        description: Surgical restoration of function or form of a part.
+      Recurrence/Progression:
+        description: 'To come back or to return.: advancement in extent or severity.'
+      Registration:
+        description: Registration; the act of enrolling.
+      'Registration: post-radiation':
+        description: 'Registration: post-radiation'
+      Relapse:
+        description: The return of a disease after a period of remission.
+      Relapse in Follow-up:
+        description: 'The process by which information about the health status of
+          an individual is obtained after a study has officially closed; an activity
+          that continues something that has already begun or that repeats something
+          that has already been done.: The return of a disease after a period of remission.'
+      Relapse/Progression:
+        description: Relapse/Progression
+      Repeat MRI Scan 1:
+        description: 'Make or do or perform again.: Preceding all others in time or
+          space or degree.: Imaging that uses radiofrequency waves and a strong magnetic
+          field rather than x-rays to provide amazingly clear and detailed pictures
+          of internal organs and tissues. The technique is valuable for the diagnosis
+          of many pathologic conditions, including cancer, heart and vascular disease,
+          stroke, and joint and musculoskeletal disorders. : The data or image obtained
+          by gathering information with a sensing device.'
+      Repeat MRI Scan 2:
+        description: 'Make or do or perform again.: Coming next after the first in
+          position in space or time or degree or magnitude.: Imaging that uses radiofrequency
+          waves and a strong magnetic field rather than x-rays to provide amazingly
+          clear and detailed pictures of internal organs and tissues. The technique
+          is valuable for the diagnosis of many pathologic conditions, including cancer,
+          heart and vascular disease, stroke, and joint and musculoskeletal disorders.
+          : The data or image obtained by gathering information with a sensing device.'
+      Retreat Cycle 1:
+        description: Retreat Cycle 1
+      Retreat Cycle 10:
+        description: Retreat Cycle 10
+      Retreat Cycle 11:
+        description: Retreat Cycle 11
+      Retreat Cycle 12:
+        description: Retreat Cycle 12
+      Retreat Cycle 13:
+        description: Retreat Cycle 13
+      Retreat Cycle 14:
+        description: Retreat Cycle 14
+      Retreat Cycle 15:
+        description: Retreat Cycle 15
+      Retreat Cycle 16:
+        description: Retreat Cycle 16
+      Retreat Cycle 17:
+        description: Retreat Cycle 17
+      Retreat Cycle 18:
+        description: Retreat Cycle 18
+      Retreat Cycle 19:
+        description: Retreat Cycle 19
+      Retreat Cycle 2:
+        description: Retreat Cycle 2
+      Retreat Cycle 20:
+        description: Retreat Cycle 20
+      Retreat Cycle 3:
+        description: Retreat Cycle 3
+      Retreat Cycle 4:
+        description: Retreat Cycle 4
+      Retreat Cycle 5:
+        description: Retreat Cycle 5
+      Retreat Cycle 6:
+        description: Retreat Cycle 6
+      Retreat Cycle 7:
+        description: Retreat Cycle 7
+      Retreat Cycle 8:
+        description: Retreat Cycle 8
+      Retreat Cycle 9:
+        description: Retreat Cycle 9
+      Rinse completed:
+        description: 'A liquid used to cleanse by flushing.: To possess every necessary
+          or normal part or component or step; having come or been brought to a conclusion.'
+      Safety follow up:
+        description: 'The state of being certain that adverse effects will not be
+          caused by some agent under defined conditions.: The process by which information
+          about the health status of an individual is obtained after a study has officially
+          closed; an activity that continues something that has already begun or that
+          repeats something that has already been done.'
+      Screening:
+        description: A systematic examination or assessment.
+      Start of Post-Consolidation:
+        description: Start of Post-Consolidation
+      Steroid Prephase:
+        description: Steroid Prephase
+      Study entry (+/- 2 weeks):
+        description: Study entry (+/- 2 weeks)
+      Study entry (+/- 4 weeks):
+        description: Study entry (+/- 4 weeks)
+      Surgery:
+        description: A diagnostic or treatment procedure performed by manual and/or
+          instrumental means, often involving an incision and the removal or replacement
+          of a diseased organ or tissue; of or relating to or involving or used in
+          surgery or requiring or amenable to treatment by surgery.
+      Telephone Contact:
+        description: 'A channel for communication between groups.: Electronic equipment
+          that converts sound into electrical signals that can be transmitted over
+          distances and then converts received signals back into sounds.'
+      Third week of RT:
+        description: Third week of radiation therapy
+      Three months from baseline:
+        description: Three months from baseline
+      Time 0 prior to infusion:
+        description: Time 0 prior to infusion
+      Time of evidence of metastatic disease:
+        description: Used to indicate position, location, or state._Knowledge on which
+          to base belief._A tumor arising at a location distant to the primary lesion.
+      Time of randomization:
+        description: The allocation of individuals to groups by chance, especially
+          in order to control the variables in an experiment.
+      Time of surgery:
+        description: A specialty in which manual or operative procedures are used
+          in the treatment of disease, injuries, or deformities.
+      Trastuzumab:
+        description: A humanized recombinant monoclonal antibody directed against
+          the HER2- receptor protein.  Trastuzumab binds to the extracellular domain
+          of the growth factor protein HER2, thereby inhibiting proliferation of HER2
+          overexpressing tumor cells.  Binding with HER2 protein also initiates an
+          antibody-dependent cell cytotoxicity.(NCI)
+      Treatment:
+        description: Treatment
+      Treatment beyond progression:
+        description: 'An action or administration of therapeutic agents to produce
+          an effect that is intended to alter or stop a pathologic process.: Happening
+          at a time subsequent to a reference time; later in time or order.: The worsening
+          of a disease over time.'
+      Treatment monitoring:
+        description: 'Subject to a process with the aim of readying for some purpose,
+          improving, or remedying a condition.: The act of observing something (and
+          sometimes keeping a record of it).'
+      Twelve months from baseline:
+        description: Twelve months from baseline
+      Twenty-four months from baseline:
+        description: Twenty-four months from baseline
+      Unequivocal progression:
+        description: Unequivocal progression
+      Unscheduled:
+        description: Unscheduled
+      Visit 1:
+        description: 'A number with no fractional part.::1: A visit by a patient or
+          study participant to a medical professional.'
+      Visit 1 During dose infusion:
+        description: 'A visit by a patient or study participant to a medical professional.:
+          A number with no fractional part, including the negative and positive numbers
+          as well as zero.::1: At some point in a given period of time.: A quantity
+          of an agent (such as substance or energy) administered, taken, or absorbed
+          at one time.: Any form of treatment that is introduced into the body via
+          a blood vessel, a muscle, or the spinal cord.'
+      Visit 1 Post-dose:
+        description: 'Happening at a time subsequent to a reference time; later in
+          time or order.: A period in a clinical study during which subjects receive
+          therapeutic treatment.: A quantity of an agent (such as substance or energy)
+          administered, taken, or absorbed at one time.: A number with no fractional
+          part, including the negative and positive numbers as well as zero.::1: A
+          visit by a patient or study participant to a medical professional.'
+      Visit 1 Pre-dose:
+        description: 'Earlier in time or order.: A period in a clinical study during
+          which subjects receive therapeutic treatment.: A quantity of an agent (such
+          as substance or energy) administered, taken, or absorbed at one time.: A
+          number with no fractional part, including the negative and positive numbers
+          as well as zero.::1: A visit by a patient or study participant to a medical
+          professional.'
+      Visit 10:
+        description: 'A number with no fractional part.::10: A visit by a patient
+          or study participant to a medical professional.'
+      Visit 11:
+        description: 'A number with no fractional part.::11: A visit by a patient
+          or study participant to a medical professional.'
+      Visit 2:
+        description: 'A number with no fractional part.::2: A visit by a patient or
+          study participant to a medical professional.'
+      Visit 2 During dose infusion:
+        description: 'A visit by a patient or study participant to a medical professional.:
+          A number with no fractional part, including the negative and positive numbers
+          as well as zero.::2: At some point in a given period of time.: A quantity
+          of an agent (such as substance or energy) administered, taken, or absorbed
+          at one time.: Any form of treatment that is introduced into the body via
+          a blood vessel, a muscle, or the spinal cord.'
+      Visit 2 Post-dose:
+        description: 'Happening at a time subsequent to a reference time; later in
+          time or order.: A period in a clinical study during which subjects receive
+          therapeutic treatment.: A quantity of an agent (such as substance or energy)
+          administered, taken, or absorbed at one time.: A number with no fractional
+          part, including the negative and positive numbers as well as zero.::2: A
+          visit by a patient or study participant to a medical professional.'
+      Visit 2 Pre-dose:
+        description: 'Earlier in time or order.: A period in a clinical study during
+          which subjects receive therapeutic treatment.: A quantity of an agent (such
+          as substance or energy) administered, taken, or absorbed at one time.: A
+          number with no fractional part, including the negative and positive numbers
+          as well as zero.::2: A visit by a patient or study participant to a medical
+          professional.'
+      Visit 3:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::3: A visit by a patient or study participant
+          to a medical professional.'
+      Visit 3 During dose infusion:
+        description: 'A visit by a patient or study participant to a medical professional.:
+          A number with no fractional part, including the negative and positive numbers
+          as well as zero.::3: At some point in a given period of time.: A quantity
+          of an agent (such as substance or energy) administered, taken, or absorbed
+          at one time.: Any form of treatment that is introduced into the body via
+          a blood vessel, a muscle, or the spinal cord.'
+      Visit 3 Post-dose:
+        description: 'Happening at a time subsequent to a reference time; later in
+          time or order.: A period in a clinical study during which subjects receive
+          therapeutic treatment.: A quantity of an agent (such as substance or energy)
+          administered, taken, or absorbed at one time.: A number with no fractional
+          part, including the negative and positive numbers as well as zero.::3: A
+          visit by a patient or study participant to a medical professional.'
+      Visit 3 Pre-dose:
+        description: 'Earlier in time or order.: A period in a clinical study during
+          which subjects receive therapeutic treatment.: A quantity of an agent (such
+          as substance or energy) administered, taken, or absorbed at one time.: A
+          number with no fractional part, including the negative and positive numbers
+          as well as zero.::3: A visit by a patient or study participant to a medical
+          professional.'
+      Visit 4:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::4: A visit by a patient or study participant
+          to a medical professional.'
+      Visit 5:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::5: A visit by a patient or study participant
+          to a medical professional.'
+      Visit 6:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::6: A visit by a patient or study participant
+          to a medical professional.'
+      Visit 6 During dose infusion:
+        description: 'A visit by a patient or study participant to a medical professional.:
+          A number with no fractional part, including the negative and positive numbers
+          as well as zero.::6: At some point in a given period of time.: A quantity
+          of an agent (such as substance or energy) administered, taken, or absorbed
+          at one time.: Any form of treatment that is introduced into the body via
+          a blood vessel, a muscle, or the spinal cord.'
+      Visit 6 Post-dose:
+        description: 'Happening at a time subsequent to a reference time; later in
+          time or order.: A period in a clinical study during which subjects receive
+          therapeutic treatment.: A quantity of an agent (such as substance or energy)
+          administered, taken, or absorbed at one time.: A number with no fractional
+          part, including the negative and positive numbers as well as zero.::6: A
+          visit by a patient or study participant to a medical professional.'
+      Visit 6 Pre-dose:
+        description: 'Earlier in time or order.: A period in a clinical study during
+          which subjects receive therapeutic treatment.: A quantity of an agent (such
+          as substance or energy) administered, taken, or absorbed at one time.: A
+          number with no fractional part, including the negative and positive numbers
+          as well as zero.::6: A visit by a patient or study participant to a medical
+          professional.'
+      Visit 7:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::7: A visit by a patient or study participant
+          to a medical professional.'
+      Visit 8:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::8: A visit by a patient or study participant
+          to a medical professional.'
+      Visit 9:
+        description: 'A number with no fractional part, including the negative and
+          positive numbers as well as zero.::9: A visit by a patient or study participant
+          to a medical professional.'
+      Visit 9 During dose infusion:
+        description: 'A visit by a patient or study participant to a medical professional.:
+          A number with no fractional part, including the negative and positive numbers
+          as well as zero.::9: At some point in a given period of time.: A quantity
+          of an agent (such as substance or energy) administered, taken, or absorbed
+          at one time.: Any form of treatment that is introduced into the body via
+          a blood vessel, a muscle, or the spinal cord.'
+      Visit 9 Post-dose:
+        description: 'Happening at a time subsequent to a reference time; later in
+          time or order.: A period in a clinical study during which subjects receive
+          therapeutic treatment.: A quantity of an agent (such as substance or energy)
+          administered, taken, or absorbed at one time.: A number with no fractional
+          part, including the negative and positive numbers as well as zero.::9: A
+          visit by a patient or study participant to a medical professional.'
+      Visit 9 Pre-dose:
+        description: 'Earlier in time or order.: A period in a clinical study during
+          which subjects receive therapeutic treatment.: A quantity of an agent (such
+          as substance or energy) administered, taken, or absorbed at one time.: A
+          number with no fractional part, including the negative and positive numbers
+          as well as zero.::9: A visit by a patient or study participant to a medical
+          professional.'
+      Week 0:
+        description: 'A mathematical element that when added to another number yields
+          the same number; the cardinal number meaning one less than one.: Any period
+          of seven consecutive days.'
+      Week 10:
+        description: 'A natural number greater than 9 and less than 11 and the quantity
+          that it denotes: the sum of nine and one.: Any period of seven consecutive
+          days.'
+      Week 102:
+        description: Week 102
+      Week 103:
+        description: Week 103
+      Week 11:
+        description: 'A natural number greater than 10 and less than 12 and the quantity
+          that it denotes.: Any period of seven consecutive days.'
+      Week 114:
+        description: Week 114
+      Week 12:
+        description: 'A natural number greater than 11 and less than 13 and the quantity
+          that it denotes.: Any period of seven consecutive days.'
+      Week 12 (Cycle 3):
+        description: Week 12 (Cycle 3)
+      Week 126:
+        description: Week 126
+      Week 13:
+        description: 'A natural number greater than 12 and less than 14 and the quantity
+          that it denotes.: Any period of seven consecutive days.'
+      Week 14:
+        description: 'A natural number greater than 13 and less than 15 and the quantity
+          that it denotes.: Any period of seven consecutive days.'
+      Week 15:
+        description: 'A natural number greater than 14 and less than 16 and the quantity
+          that it denotes.: Any period of seven consecutive days.'
+      Week 156 or early termination:
+        description: Week 156 or early termination
+      Week 16:
+        description: Any period of seven consecutive days._A natural number greater
+          than 15 and less than 17 and the quantity that it denotes.
+      Week 16 (Cycle 4):
+        description: Week 16 (Cycle 4)
+      Week 17:
+        description: 'A natural number greater than 16 and less than 18 and the quantity
+          that it denotes.: Any period of seven consecutive days.'
+      Week 18:
+        description: 'A natural number greater than seventeen and less than nineteen
+          and the quantity that it denotes.: Any period of seven consecutive days.'
+      Week 19:
+        description: 'A natural number greater than eighteen and less than twenty
+          and the quantity that it denotes.: Any period of seven consecutive days.'
+      Week 2:
+        description: 'A natural number greater than 1 and less than 3 and the quantity
+          that it denotes: the sum of one and one.: Any period of seven consecutive
+          days.'
+      Week 20:
+        description: Any period of seven consecutive days._A natural number greater
+          than nineteen and less than twenty-one and the quantity that it denotes.
+      Week 20 (Cycle 5):
+        description: 'A natural number greater than nineteen and less than twenty-one
+          and the quantity that it denotes.: Any period of seven consecutive days.'
+      Week 21:
+        description: 'A natural number greater than twenty and less than twenty-two
+          and the quantity that it denotes.: Any period of seven consecutive days.'
+      Week 22:
+        description: Twenty-second week
+      Week 23:
+        description: Week 23
+      Week 24:
+        description: Any period of seven consecutive days._A natural number greater
+          than twenty-three and less than twenty-five and the quantity that it denotes.
+      Week 24 (Cycle 6):
+        description: Week 24 (Cycle 6)
+      Week 25:
+        description: 'A natural number greater than twenty-four and less than twenty-six
+          and the quantity that it denotes.: Any period of seven consecutive days.'
+      Week 26:
+        description: Week 26
+      Week 27:
+        description: Week 27
+      Week 28:
+        description: Week 28
+      Week 28 (Cycle 7):
+        description: Week 28 (Cycle 7)
+      Week 29:
+        description: 'A natural number greater than twenty-eight and less than thirty
+          and the quantity that it denotes.: Any period of seven consecutive days.'
+      Week 3:
+        description: 'Any period of seven consecutive days._A natural number greater
+          than 2 and less than 4 and the quantity that it denotes: the sum of two
+          and one.'
+      Week 30:
+        description: 'A natural number greater than twenty-nine and less than thirty-one
+          and the quantity that it denotes.: Any period of seven consecutive days.'
+      Week 31:
+        description: Week 31
+      Week 32:
+        description: Any period of seven consecutive days._The natural number greater
+          than thirty-one and less than thirty-three and the quantity that it denotes.
+      Week 32 (Cycle 8):
+        description: Week 32 (Cycle 8)
+      Week 33:
+        description: Week 33
+      Week 34:
+        description: Thirty-fourth week
+      Week 35:
+        description: Week 35
+      Week 36:
+        description: Week 36
+      Week 37:
+        description: Week 37
+      Week 38:
+        description: Week 38
+      Week 39:
+        description: 'A natural number greater than thirty-eight and less than forty
+          and the quantity that it denotes.: Any period of seven consecutive days.'
+      Week 4:
+        description: Week 4
+      Week 4 (Cycle 1):
+        description: Week 4 (Cycle 1)
+      Week 40:
+        description: 'A natural number greater than thirty-nine and less than forty-one
+          and the quantity that it denotes.: Any period of seven consecutive days.'
+      Week 41:
+        description: Week 41
+      Week 42:
+        description: Week 42
+      Week 44:
+        description: Any period of seven consecutive days._A natural number greater
+          than forty three and less than forty five and the quantity that it denotes.
+      Week 46:
+        description: Fourty-sixth week
+      Week 48:
+        description: Week 48
+      Week 49:
+        description: Week 49
+      Week 5:
+        description: 'A natural number greater than 4 and less than 6 and the quantity
+          that it denotes: the sum of four and one.: Any period of seven consecutive
+          days.'
+      Week 52:
+        description: Fifty-second week
+      Week 53 (booster):
+        description: Week 53 (booster)
+      Week 54:
+        description: Week 54
+      Week 55:
+        description: Week 55
+      Week 55 or early termination:
+        description: Week 55 or early termination
+      Week 6 of RT:
+        description: Week 6 of Radiotherapy
+      Week 61:
+        description: Week 61
+      Week 62:
+        description: Fourty-sixth week
+      Week 66:
+        description: Week 66
+      Week 7:
+        description: 'A natural number greater than 6 and less than 8 and the quantity
+          that it denotes: the sum of six and one.: Any period of seven consecutive
+          days.'
+      Week 73:
+        description: Week 73
+      Week 78:
+        description: Week 78
+      Week 8:
+        description: 'A natural number greater than 7 and less than 9 and the quantity
+          that it denotes: the sum of seven and one.: Any period of seven consecutive
+          days.'
+      Week 8 (Cycle 2):
+        description: Week 8 (Cycle 2)
+      Week 85:
+        description: Week 85
+      Week 9:
+        description: 'A natural number greater than 8 and less than 10 and the quantity
+          that it denotes: the sum of nine and one.: Any period of seven consecutive
+          days.'
+      Week 90:
+        description: Week 90
+      Week 97:
+        description: Week 97
+      Weeks 1-4:
+        description: Weeks 1-4
+      Weeks 5-8:
+        description: Weeks 5-8
+      Weeks 9-12:
+        description: Weeks 9-12
+      Within 2 weeks prior to randomization:
+        description: Within 2 weeks prior to randomization
+      Within 3 days of starting agent:
+        description: 'On the inside; contained in._A natural number greater than 2
+          and less than 4 and the quantity that it denotes: the sum of two and one._The
+          time for Earth to make a complete rotation on its axis; ordinarily divided
+          into twenty-four hours, equal to 86 400 seconds. This also refers to a specific
+          day._Have a beginning, in a temporal, spatial, or evaluative sense; the
+          point in space or time where something begins._An active power or cause
+          (as principle, substance, physical or biological factor, etc.) that produces
+          a specific effect.'
+      Within 5 days prior to Visit 1 Baseline:
+        description: Within 5 days prior to Visit 1 Baseline
+      Within 5 days prior to Visit 2:
+        description: Within 5 days prior to Visit 2
+      Within 5 days prior to Visit 3:
+        description: Within 5 days prior to Visit 3
+      Within 5 days prior to Visit 4:
+        description: Within 5 days prior to Visit 4
+      Within 5 days prior to Visit 5:
+        description: Within 5 days prior to Visit 5
+      Within 5 days prior to Visit 6:
+        description: Within 5 days prior to Visit 6
+      Within 72-hours post-LITT:
+        description: Within 72-hours post Laser Interstitial Thermal Therapy
+      Wk1:
+        description: 'Any period of seven consecutive days._The smallest natural number
+          and quantity it denotes: a single entity, unit, or object.'
+      Wk2:
+        description: 'A natural number greater than 1 and less than 3 and the quantity
+          that it denotes: the sum of one and one.: Any period of seven consecutive
+          days.'
+      Wk3:
+        description: 'Any period of seven consecutive days._A natural number greater
+          than 2 and less than 4 and the quantity that it denotes: the sum of two
+          and one.'
+      Year 1:
+        description: Year 1
+      Year 1-Month 12:
+        description: Year 1-Month 12
+      Year 1-Month 6:
+        description: Year 1 - Month 6
+      Year 10-Year 19:
+        description: Year 10-Year 19
+      Year 2:
+        description: Year 2
+      Year 2-Month 12:
+        description: Year 2-Month 12
+      Year 2-Month 6:
+        description: Year 2-Month 6
+      Year 3:
+        description: Year 3
+      Year 3-Month 12:
+        description: Year 3-Month 12
+      Year 3-Month 6:
+        description: Year 3-Month 6
+      Year 4:
+        description: Year 4
+      Year 4-Month 12:
+        description: Year 4-Month 12
+      Year 4-Month 6:
+        description: Year 4-Month 6
+      Year 5:
+        description: Year 5
+      Year 5-Year 9:
+        description: Year 5-Year 9
+      Year 6:
+        description: Year 6
+      Yr 1:
+        description: 'The smallest natural number and quantity it denotes: a single
+          entity, unit, or object.: A period of time that it takes for Earth to make
+          a complete revolution around the sun, approximately 365 days; a specific
+          one year period.'
+      Yr 10:
+        description: 10 YEARS
+      Yr 15:
+        description: 180 Months (15 Years) Post Registration
+      Yr 4:
+        description: 4 YEARS
+      Yr 7:
+        description: 7 YEARS
+      baseline:
         description: A starting point to which things may be compared.
-      "Diagnosis":
-        description: The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms.
-      "Surgery":
-        description: A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue.
-      "Pre-surgery":
-        description: Before surgical procedure.
-      "Post-surgery":
-        description: After surgical procedure.
-      "Pre-treatment":
-        description: Before treatment begins.
-      "Post-treatment":
-        description: After treatment completion.
-      "End of treatment":
-        description: The end of treatment.
-      "Follow-up":
-        description: The process by which information about the health status of an individual is obtained after a study has officially closed.
-      "1 month":
-        description: One month after baseline or treatment.
-      "3 months":
-        description: Three months after baseline or treatment.
-      "6 months":
-        description: Six months after baseline or treatment.
-      "12 months":
-        description: Twelve months after baseline or treatment.
-      "24 months":
-        description: Twenty-four months after baseline or treatment.
-      "1 year":
-        description: One year after baseline or treatment.
-      "2 years":
-        description: Two years after baseline or treatment.
-      "3 years":
-        description: Three years after baseline or treatment.
-      "5 years":
-        description: Five years after baseline or treatment.
-      "Progression":
-        description: When disease progression is detected.
-      "Recurrence":
-        description: When disease recurrence is detected.
-      "Death":
-        description: At the time of death.
-      "Not Reported":
-        description: Not provided or available.
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused.
-      "Other":
-        description: Other timepoint not specified above.
+      week 16 (arm A), week 15 (arm B):
+        description: WEEK 16 (ARM A), WEEK 15 (ARM B)
+      week 6:
+        description: 'A natural number greater than 5 and less than 7 and the quantity
+          that it denotes: the sum of five and one.: Any period of seven consecutive
+          days.'
