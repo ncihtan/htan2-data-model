@@ -1,41 +1,23 @@
 name: SlicingMethodEnum
-id: https://w3id.org/htan/slicing_method_enum
-description: Enumeration for slicing methods
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for slicing methods based on HTAN Phase 2 specification
 
 enums:
   SlicingMethodEnum:
-    description: Methods by which tissue was sliced
+    title: slicing_method
     permissible_values:
       "Vibratome":
-        description: Vibratome slicing method
-        meaning: NCIT:C15199
+        description: A device that uses a vibrating blade to cut tissue into thin sections.
       "Cryosectioning":
-        description: Cryosectioning slicing method
-        meaning: NCIT:C15200
-      "Tissue Molds":
-        description: Tissue molds slicing method
-        meaning: NCIT:C15201
-      "Sliding Microtome":
-        description: Sliding microtome slicing method
-        meaning: NCIT:C15202
+        description: The process of cutting frozen tissue into thin sections using a cryostat.
+      "Tissue molds":
+        description: The use of molds to shape tissue specimens for sectioning.
+      "Sliding microtome":
+        description: A microtome that uses a sliding mechanism to cut tissue sections.
       "Sectioning":
-        description: General sectioning method
-        meaning: NCIT:C15203
+        description: The general process of cutting tissue into thin sections for microscopic examination.
       "Other":
-        description: Other slicing method
-        meaning: NCIT:C17649
+        description: Different than the one(s) previously specified or mentioned.
       "Unknown":
-        description: Unknown slicing method
-        meaning: NCIT:C17998
+        description: Not known, not observed, not recorded, or refused.
       "Not Reported":
-        description: Not reported
-        meaning: NCIT:C48660
+        description: Not provided or available.
