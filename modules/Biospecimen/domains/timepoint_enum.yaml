@@ -1,32 +1,57 @@
 name: TimepointEnum
-id: https://w3id.org/htan/timepoint_enum
-description: Enumeration for timepoints
-imports:
-  - linkml:types
-
-prefixes:
-  htan: https://w3id.org/htan/
-  linkml: https://w3id.org/linkml/
-  NCIT: http://purl.obolibrary.org/obo/NCIT_
-
-default_prefix: htan
+description: Enumeration for timepoint values based on HTAN Phase 2 specification
+# Note: This enum contains a subset of the most common timepoint values.
+# Full list available at: https://github.com/ncihtan/phase2_biospecimen_data_model/blob/main/permissible_values/5899851.tsv
 
 enums:
   TimepointEnum:
-    description: Specific points in the time continuum
+    title: timepoint
     permissible_values:
       "Baseline":
-        description: Baseline timepoint
-        meaning: NCIT:C49687
+        description: A starting point to which things may be compared.
+      "Diagnosis":
+        description: The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms.
+      "Surgery":
+        description: A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue.
+      "Pre-surgery":
+        description: Before surgical procedure.
+      "Post-surgery":
+        description: After surgical procedure.
       "Pre-treatment":
-        description: Pre-treatment timepoint
-        meaning: NCIT:C49688
+        description: Before treatment begins.
       "Post-treatment":
-        description: Post-treatment timepoint
-        meaning: NCIT:C49689
+        description: After treatment completion.
+      "End of treatment":
+        description: The end of treatment.
       "Follow-up":
-        description: Follow-up timepoint
-        meaning: NCIT:C49690
+        description: The process by which information about the health status of an individual is obtained after a study has officially closed.
+      "1 month":
+        description: One month after baseline or treatment.
+      "3 months":
+        description: Three months after baseline or treatment.
+      "6 months":
+        description: Six months after baseline or treatment.
+      "12 months":
+        description: Twelve months after baseline or treatment.
+      "24 months":
+        description: Twenty-four months after baseline or treatment.
+      "1 year":
+        description: One year after baseline or treatment.
+      "2 years":
+        description: Two years after baseline or treatment.
+      "3 years":
+        description: Three years after baseline or treatment.
+      "5 years":
+        description: Five years after baseline or treatment.
+      "Progression":
+        description: When disease progression is detected.
+      "Recurrence":
+        description: When disease recurrence is detected.
+      "Death":
+        description: At the time of death.
+      "Not Reported":
+        description: Not provided or available.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
       "Other":
-        description: Other timepoint
-        meaning: NCIT:C17649
+        description: Other timepoint not specified above.
