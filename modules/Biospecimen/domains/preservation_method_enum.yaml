@@ -1,0 +1,35 @@
+name: PreservationMethodEnum
+id: https://w3id.org/htan/preservation_method_enum
+description: Enumeration for preservation methods
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  PreservationMethodEnum:
+    description: Methods used to preserve biospecimens
+    permissible_values:
+      "Fresh":
+        description: Fresh preservation
+        meaning: NCIT:C15194
+      "Frozen":
+        description: Frozen preservation
+        meaning: NCIT:C15195
+      "Formalin Fixed":
+        description: Formalin fixed preservation
+        meaning: NCIT:C15196
+      "Paraffin Embedded":
+        description: Paraffin embedded preservation
+        meaning: NCIT:C15197
+      "Alcohol Fixed":
+        description: Alcohol fixed preservation
+        meaning: NCIT:C15198
+      "Other":
+        description: Other preservation method
+        meaning: NCIT:C17649

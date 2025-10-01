@@ -1,0 +1,35 @@
+name: CellularArchitectureEnum
+id: https://w3id.org/htan/cellular_architecture_enum
+description: Enumeration for specimen cellular architecture
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  CellularArchitectureEnum:
+    description: Architectural patterns of cellular populations in tissue specimens
+    permissible_values:
+      "Normal":
+        description: Normal cellular architecture
+        meaning: NCIT:C12433
+      "Tumor":
+        description: Tumor cellular architecture
+        meaning: NCIT:C7062
+      "Precancerous":
+        description: Precancerous cellular architecture
+        meaning: NCIT:C7063
+      "Mixed":
+        description: Mixed cellular architecture
+        meaning: NCIT:C17649
+      "Unknown":
+        description: Unknown cellular architecture
+        meaning: NCIT:C17998
+      "Not Reported":
+        description: Not reported
+        meaning: NCIT:C48660

@@ -1,0 +1,32 @@
+name: Icd10DiseaseEnum
+id: https://w3id.org/htan/icd_10_disease_enum
+description: Enumeration for ICD-10 disease codes
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  Icd10DiseaseEnum:
+    description: ICD-10-CM disease codes for precancerous lesions
+    permissible_values:
+      "C80.1":
+        description: Malignant neoplasm of other and unspecified sites
+        meaning: NCIT:C4878
+      "C44.510":
+        description: Squamous cell carcinoma of skin of other part of face
+        meaning: NCIT:C4879
+      "D14.3":
+        description: Benign neoplasm of bronchus and lung
+        meaning: NCIT:C4880
+      "D49.89":
+        description: Neoplasm of unspecified behavior of other specified sites
+        meaning: NCIT:C4881
+      "Other":
+        description: Other ICD-10 disease code
+        meaning: NCIT:C17649

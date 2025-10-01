@@ -1,0 +1,41 @@
+name: SlicingMethodEnum
+id: https://w3id.org/htan/slicing_method_enum
+description: Enumeration for slicing methods
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  SlicingMethodEnum:
+    description: Methods by which tissue was sliced
+    permissible_values:
+      "Vibratome":
+        description: Vibratome slicing method
+        meaning: NCIT:C15199
+      "Cryosectioning":
+        description: Cryosectioning slicing method
+        meaning: NCIT:C15200
+      "Tissue Molds":
+        description: Tissue molds slicing method
+        meaning: NCIT:C15201
+      "Sliding Microtome":
+        description: Sliding microtome slicing method
+        meaning: NCIT:C15202
+      "Sectioning":
+        description: General sectioning method
+        meaning: NCIT:C15203
+      "Other":
+        description: Other slicing method
+        meaning: NCIT:C17649
+      "Unknown":
+        description: Unknown slicing method
+        meaning: NCIT:C17998
+      "Not Reported":
+        description: Not reported
+        meaning: NCIT:C48660

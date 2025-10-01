@@ -1,0 +1,38 @@
+name: AcquisitionMethodTypeEnum
+id: https://w3id.org/htan/acquisition_method_type_enum
+description: Enumeration for acquisition method types
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  AcquisitionMethodTypeEnum:
+    description: Methods of acquisition for biospecimens
+    permissible_values:
+      "Surgical Resection":
+        description: Surgical resection acquisition method
+        meaning: NCIT:C15206
+      "Biopsy":
+        description: Biopsy acquisition method
+        meaning: NCIT:C15189
+      "Autopsy":
+        description: Autopsy acquisition method
+        meaning: NCIT:C15190
+      "Blood Draw":
+        description: Blood draw acquisition method
+        meaning: NCIT:C15191
+      "Bone Marrow Aspiration":
+        description: Bone marrow aspiration acquisition method
+        meaning: NCIT:C15192
+      "Lumbar Puncture":
+        description: Lumbar puncture acquisition method
+        meaning: NCIT:C15193
+      "Other":
+        description: Other acquisition method
+        meaning: NCIT:C17649

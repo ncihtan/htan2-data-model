@@ -1,0 +1,32 @@
+name: PreservationMediumEnum
+id: https://w3id.org/htan/preservation_medium_enum
+description: Enumeration for preservation media
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  PreservationMediumEnum:
+    description: Substances used to maintain specimens in viable state
+    permissible_values:
+      "Formalin":
+        description: Formalin preservation medium
+        meaning: NCIT:C15204
+      "Paraffin":
+        description: Paraffin preservation medium
+        meaning: NCIT:C15205
+      "Alcohol":
+        description: Alcohol preservation medium
+        meaning: NCIT:C15206
+      "Cryoprotectant":
+        description: Cryoprotectant preservation medium
+        meaning: NCIT:C15207
+      "Other":
+        description: Other preservation medium
+        meaning: NCIT:C17649

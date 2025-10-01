@@ -1,0 +1,32 @@
+name: PreservationTemperatureEnum
+id: https://w3id.org/htan/preservation_temperature_enum
+description: Enumeration for preservation temperatures
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  PreservationTemperatureEnum:
+    description: Temperatures used to maintain specimens in viable state
+    permissible_values:
+      "Room Temperature":
+        description: Room temperature preservation
+        meaning: NCIT:C15208
+      "Refrigerated":
+        description: Refrigerated preservation
+        meaning: NCIT:C15209
+      "Frozen":
+        description: Frozen preservation
+        meaning: NCIT:C15210
+      "Ultra-low Temperature":
+        description: Ultra-low temperature preservation
+        meaning: NCIT:C15211
+      "Other":
+        description: Other preservation temperature
+        meaning: NCIT:C17649

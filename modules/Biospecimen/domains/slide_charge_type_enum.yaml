@@ -1,0 +1,29 @@
+name: SlideChargeTypeEnum
+id: https://w3id.org/htan/slide_charge_type_enum
+description: Enumeration for slide charge types
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  SlideChargeTypeEnum:
+    description: Types of charges on glass slides
+    permissible_values:
+      "Positive":
+        description: Positively charged slide
+        meaning: NCIT:C15217
+      "Negative":
+        description: Negatively charged slide
+        meaning: NCIT:C15218
+      "Neutral":
+        description: Neutral charge slide
+        meaning: NCIT:C15219
+      "Other":
+        description: Other slide charge type
+        meaning: NCIT:C17649

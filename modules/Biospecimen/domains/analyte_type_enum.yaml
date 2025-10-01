@@ -1,0 +1,32 @@
+name: AnalyteTypeEnum
+id: https://w3id.org/htan/analyte_type_enum
+description: Enumeration for analyte types
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  AnalyteTypeEnum:
+    description: Types of samples or materials being subjected to analysis
+    permissible_values:
+      "DNA":
+        description: DNA analyte
+        meaning: NCIT:C449
+      "RNA":
+        description: RNA analyte
+        meaning: NCIT:C812
+      "Protein":
+        description: Protein analyte
+        meaning: NCIT:C17021
+      "Metabolite":
+        description: Metabolite analyte
+        meaning: NCIT:C15216
+      "Other":
+        description: Other analyte type
+        meaning: NCIT:C17649

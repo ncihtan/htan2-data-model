@@ -1,0 +1,32 @@
+name: TumorClassificationEnum
+id: https://w3id.org/htan/tumor_classification_enum
+description: Enumeration for tumor classifications
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  TumorClassificationEnum:
+    description: Classifications of tumors based on histopathological characteristics
+    permissible_values:
+      "Benign":
+        description: Benign tumor classification
+        meaning: NCIT:C4870
+      "Malignant":
+        description: Malignant tumor classification
+        meaning: NCIT:C4871
+      "Borderline":
+        description: Borderline tumor classification
+        meaning: NCIT:C4872
+      "Unknown":
+        description: Unknown tumor classification
+        meaning: NCIT:C17998
+      "Not Reported":
+        description: Not reported
+        meaning: NCIT:C48660

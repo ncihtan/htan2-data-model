@@ -1,0 +1,35 @@
+name: ShippingConditionEnum
+id: https://w3id.org/htan/shipping_condition_enum
+description: Enumeration for shipping conditions
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  ShippingConditionEnum:
+    description: Text descriptors of shipping environments for biospecimens
+    permissible_values:
+      "Ambient Temperature":
+        description: Ambient temperature shipping
+        meaning: NCIT:C15225
+      "Refrigerated":
+        description: Refrigerated shipping
+        meaning: NCIT:C15226
+      "Frozen":
+        description: Frozen shipping
+        meaning: NCIT:C15227
+      "Dry Ice":
+        description: Dry ice shipping
+        meaning: NCIT:C15228
+      "Liquid Nitrogen":
+        description: Liquid nitrogen shipping
+        meaning: NCIT:C15229
+      "Other":
+        description: Other shipping condition
+        meaning: NCIT:C17649

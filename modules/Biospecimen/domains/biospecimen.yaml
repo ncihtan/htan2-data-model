@@ -1,0 +1,320 @@
+name: Biospecimen
+id: https://w3id.org/htan/biospecimen
+description: HTAN Biospecimen Data Model Schema
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../Core/domains/core
+  - biospecimen_type_enum
+  - timepoint_enum
+  - acquisition_method_type_enum
+  - site_of_resection_enum
+  - specimen_laterality_enum
+  - preservation_method_enum
+  - preservation_medium_enum
+  - preservation_temperature_enum
+  - tissue_sample_type_enum
+  - analyte_type_enum
+  - slicing_method_enum
+  - slide_charge_type_enum
+  - cellular_architecture_enum
+  - tumor_classification_enum
+  - icd_o_3_morphology_enum
+  - icd_10_disease_enum
+  - degree_of_dysplasia_enum
+  - shipping_condition_enum
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  caDSR: https://cadsr.cancer.gov/onedata/
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+
+default_prefix: htan
+
+slots:
+  caDSR_id:
+    description: The caDSR identifier for this element
+    range: string
+    multivalued: false
+    required: false
+
+classes:
+  BiospecimenData:
+    description: Container for all Biospecimen data
+    is_a: CoreFileAttributes
+    attributes:
+      # Biospecimen-specific attributes only
+      # Core attributes (COMPONENT, HTAN_PARTICIPANT_ID, HTAN_BIOSPECIMEN_ID, HTAN_PARENT_ID) 
+      # are inherited from CoreFileAttributes
+      
+      ADJACENT_BIOSPECIMEN_IDS:
+        range: string
+        required: false
+        title: "Adjacent Biospecimen IDs"
+        description: List of HTAN Identifiers (separated by commas) of adjacent biospecimens cut from the same sample
+        multivalued: true
+      
+      SITE_DATA_SOURCE:
+        range: string
+        required: false
+        title: "Site Data Source"
+        description: Text to identify the data source for the specimen/sample from within the HTAN center
+      
+      BIOSPECIMEN_TYPE:
+        range: BiospecimenTypeEnum
+        required: true
+        title: "Biospecimen Type"
+        description: Biospecimen Type
+        caDSR_id: "12445832"
+      
+      TIMEPOINT:
+        range: TimepointEnum
+        required: false
+        title: "Timepoint"
+        description: A specific point in the time continuum, including those established relative to an event
+        caDSR_id: "5899851"
+      
+      AGE_IN_DAYS_AT_SPECIMEN_COLLECTION:
+        range: integer
+        required: true
+        title: "Age in Days at Specimen Collection"
+        description: The age in days of the subject at the time of specimen collection
+        caDSR_id: "14473376"
+        minimum_value: 0
+      
+      ACQUISITION_METHOD_TYPE:
+        range: AcquisitionMethodTypeEnum
+        required: true
+        title: "Acquisition Method Type"
+        description: Records the method of acquisition or source for the specimen under consideration
+        caDSR_id: "6626651"
+      
+      ACQUISITION_METHOD_OTHER_SPECIFY:
+        range: string
+        required: false
+        title: "Acquisition Method Other Specify"
+        description: A custom acquisition method
+        maximum_length: 100
+        # Conditionally required when ACQUISITION_METHOD_TYPE=Other
+      
+      SITE_OF_RESECTION_OR_BIOPSY:
+        range: SiteOfResectionEnum
+        required: true
+        title: "Site of Resection or Biopsy"
+        description: The location within the body from where the disease of interest originated as captured in the Uberon identifier
+        caDSR_id: "14883054"
+      
+      SPECIMEN_LATERALITY:
+        range: SpecimenLateralityEnum
+        required: true
+        title: "Specimen Laterality"
+        description: For tumors in paired organs, designates the side on which the specimen was obtained
+        caDSR_id: "8028966"
+      
+      AGE_IN_DAYS_AT_SPECIMEN_PROCESSING:
+        range: integer
+        required: true
+        title: "Age in Days at Specimen Processing"
+        description: The age in days of a subject when a specimen was processed
+        caDSR_id: "16323601"
+        minimum_value: 0
+      
+      PROCESSING_LOCATION:
+        range: string
+        required: false
+        title: "Processing Location"
+        description: Site with an HTAN center where specimen processing occurs
+      
+      PRESERVATION_METHOD:
+        range: PreservationMethodEnum
+        required: true
+        title: "Preservation Method"
+        description: Method used to preserve the sample
+        caDSR_id: "8028962"
+      
+      PRESERVATION_MEDIUM:
+        range: PreservationMediumEnum
+        required: true
+        title: "Preservation Medium"
+        description: The kind of substance holding another substance in solution or suspension to maintain a specimen in a viable state
+        caDSR_id: "16323957"
+      
+      PRESERVATION_METHOD_TEMPERATURE:
+        range: PreservationTemperatureEnum
+        required: true
+        title: "Preservation Method Temperature"
+        description: The term which describes the temperature used to maintain the specimen in a viable state
+        caDSR_id: "16306751"
+      
+      FIXATION_DURATION_IN_MINUTES:
+        range: integer
+        required: false
+        title: "Fixation Duration in Minutes"
+        description: The length of time, from beginning to end, required to process or preserve biospecimens in fixative
+        caDSR_id: "5230144"
+        minimum_value: 0
+        # Conditionally required when PRESERVATION_METHOD=Fixation
+      
+      LONGEST_DIMENSION:
+        range: decimal
+        required: false
+        title: "Longest Dimension"
+        description: Numeric value that represents the longest dimension of the sample, measured in millimeters
+        caDSR_id: "5432602"
+        minimum_value: 0
+      
+      SHORTEST_DIMENSION:
+        range: decimal
+        required: false
+        title: "Shortest Dimension"
+        description: Numeric value that represents the shortest dimension of the sample, measured in millimeters
+        caDSR_id: "5432603"
+        minimum_value: 0
+      
+      TISSUE_SAMPLE_TYPE:
+        range: TissueSampleTypeEnum
+        required: false
+        title: "Tissue Sample Type"
+        description: The type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes
+        caDSR_id: "16391068"
+        # Conditionally required when BIOSPECIMEN_TYPE=Tissue
+      
+      ANALYTE_TYPE:
+        range: AnalyteTypeEnum
+        required: false
+        title: "Analyte Type"
+        description: The sample or material being subjected to analysis
+        caDSR_id: "15063661"
+        # Conditionally required when BIOSPECIMEN_TYPE=DNA|RNA
+      
+      METHOD_OF_NUCLEIC_ACID_ISOLATION:
+        range: string
+        required: false
+        title: "Method of Nucleic Acid Isolation"
+        description: Bulk RNA & DNA-seq specific: method used for nucleic acid isolation
+        maximum_length: 100
+      
+      AGE_IN_DAYS_AT_SECTIONING:
+        range: integer
+        required: false
+        title: "Age in Days at Sectioning"
+        description: The age in days of a subject when a specimen tissue block was sectioned
+        caDSR_id: "16323604"
+        minimum_value: 0
+        # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
+      
+      SLICING_METHOD:
+        range: SlicingMethodEnum
+        required: false
+        title: "Slicing Method"
+        description: Imaging specific: the method by which the tissue was sliced
+        # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
+      
+      SECTION_THICKNESS_VALUE:
+        range: decimal
+        required: false
+        title: "Section Thickness Value"
+        description: Numeric value to describe the thickness of a slice to tissue taken from a biospecimen, measured in microns
+        caDSR_id: "3024951"
+        minimum_value: 0
+        # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
+      
+      SECTION_NUMBER_IN_SEQUENCE:
+        range: integer
+        required: false
+        title: "Section Number in Sequence"
+        description: Numeric value (integer, including ranges) provided to a sample in a series of sections
+        minimum_value: 1
+      
+      SLIDE_CHARGE_TYPE:
+        range: SlideChargeTypeEnum
+        required: false
+        title: "Slide Charge Type"
+        description: A description of the charge on the glass slide
+        caDSR_id: "5227611"
+        # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
+      
+      SPECIMEN_CELLULAR_ARCHITECTURE:
+        range: CellularArchitectureEnum
+        required: true
+        title: "Specimen Cellular Architecture"
+        description: The architectural pattern of an abnormal, normal, or mixed cellular population in a tissue specimen
+        caDSR_id: "16303322"
+      
+      TUMOR_CLASSIFICATION:
+        range: TumorClassificationEnum
+        required: false
+        title: "Tumor Classification"
+        description: The classification of a tumor at a particular time based primarily on histopathological characteristics
+        caDSR_id: "12922545"
+        # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Tumor
+      
+      ICD_O_3_TISSUE_MORPHOLOGY:
+        range: IcdO3MorphologyEnum
+        required: false
+        title: "ICD-O-3 Tissue Morphology"
+        description: The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3
+        caDSR_id: "11326261"
+        # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Tumor
+      
+      ICD_10_DISEASE_CODE:
+        range: Icd10DiseaseEnum
+        required: false
+        title: "ICD-10 Disease Code"
+        description: For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM
+        caDSR_id: "11479873"
+        # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Precancerous
+      
+      DEGREE_OF_DYSPLASIA:
+        range: DegreeOfDysplasiaEnum
+        required: false
+        title: "Degree of Dysplasia"
+        description: Information related to the presence of cells that look abnormal under a microscope but are not cancer
+        caDSR_id: "5543188"
+        # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Precancerous
+      
+      PERCENT_NECROSIS:
+        range: decimal
+        required: false
+        title: "Percent Necrosis"
+        description: Numeric value to represent the percentage of cell death in a malignant tumor sample or specimen
+        caDSR_id: "2841237"
+        minimum_value: 0
+        maximum_value: 100
+      
+      PERCENT_NORMAL_CELLS:
+        range: decimal
+        required: false
+        title: "Percent Normal Cells"
+        description: Numeric value to represent the percentage of normal cell content in a malignant tumor sample or specimen
+        caDSR_id: "2841233"
+        minimum_value: 0
+        maximum_value: 100
+      
+      PERCENT_TUMOR_CELLS:
+        range: decimal
+        required: false
+        title: "Percent Tumor Cells"
+        description: Numeric value that represents the percentage of infiltration by tumor cells in a sample
+        caDSR_id: "5432686"
+        minimum_value: 0
+        maximum_value: 100
+      
+      PERCENT_TUMOR_NUCLEI:
+        range: decimal
+        required: false
+        title: "Percent Tumor Nuclei"
+        description: Numeric value to represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen
+        caDSR_id: "2841225"
+        minimum_value: 0
+        maximum_value: 100
+      
+      SHIPPING_CONDITION_TYPE:
+        range: ShippingConditionEnum
+        required: true
+        title: "Shipping Condition Type"
+        description: Text descriptor of the shipping environment of a biospecimen
+        caDSR_id: "5495533"

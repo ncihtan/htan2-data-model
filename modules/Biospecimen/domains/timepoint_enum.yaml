@@ -1,0 +1,32 @@
+name: TimepointEnum
+id: https://w3id.org/htan/timepoint_enum
+description: Enumeration for timepoints
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  TimepointEnum:
+    description: Specific points in the time continuum
+    permissible_values:
+      "Baseline":
+        description: Baseline timepoint
+        meaning: NCIT:C49687
+      "Pre-treatment":
+        description: Pre-treatment timepoint
+        meaning: NCIT:C49688
+      "Post-treatment":
+        description: Post-treatment timepoint
+        meaning: NCIT:C49689
+      "Follow-up":
+        description: Follow-up timepoint
+        meaning: NCIT:C49690
+      "Other":
+        description: Other timepoint
+        meaning: NCIT:C17649

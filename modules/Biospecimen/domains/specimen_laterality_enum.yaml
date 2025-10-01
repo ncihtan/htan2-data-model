@@ -1,0 +1,35 @@
+name: SpecimenLateralityEnum
+id: https://w3id.org/htan/specimen_laterality_enum
+description: Enumeration for specimen laterality
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  SpecimenLateralityEnum:
+    description: Laterality of specimens from paired organs
+    permissible_values:
+      "Left":
+        description: Left side
+        meaning: NCIT:C25271
+      "Right":
+        description: Right side
+        meaning: NCIT:C25272
+      "Bilateral":
+        description: Both sides
+        meaning: NCIT:C25273
+      "Not Applicable":
+        description: Not applicable for unpaired organs
+        meaning: NCIT:C48660
+      "Unknown":
+        description: Unknown laterality
+        meaning: NCIT:C17998
+      "Not Reported":
+        description: Not reported
+        meaning: NCIT:C48660

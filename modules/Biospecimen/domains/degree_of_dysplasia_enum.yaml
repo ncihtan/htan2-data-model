@@ -1,0 +1,38 @@
+name: DegreeOfDysplasiaEnum
+id: https://w3id.org/htan/degree_of_dysplasia_enum
+description: Enumeration for degree of dysplasia
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  DegreeOfDysplasiaEnum:
+    description: Degrees of dysplasia in precancerous lesions
+    permissible_values:
+      "Mild":
+        description: Mild dysplasia
+        meaning: NCIT:C15220
+      "Moderate":
+        description: Moderate dysplasia
+        meaning: NCIT:C15221
+      "Severe":
+        description: Severe dysplasia
+        meaning: NCIT:C15222
+      "High Grade":
+        description: High grade dysplasia
+        meaning: NCIT:C15223
+      "Low Grade":
+        description: Low grade dysplasia
+        meaning: NCIT:C15224
+      "Unknown":
+        description: Unknown degree of dysplasia
+        meaning: NCIT:C17998
+      "Not Reported":
+        description: Not reported
+        meaning: NCIT:C48660

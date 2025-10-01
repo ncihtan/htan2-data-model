@@ -1,0 +1,38 @@
+name: BiospecimenTypeEnum
+id: https://w3id.org/htan/biospecimen_type_enum
+description: Enumeration for biospecimen types
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  BiospecimenTypeEnum:
+    description: Types of biospecimens
+    permissible_values:
+      "Tissue":
+        description: Tissue biospecimen
+        meaning: NCIT:C12433
+      "DNA":
+        description: DNA biospecimen
+        meaning: NCIT:C449
+      "RNA":
+        description: RNA biospecimen
+        meaning: NCIT:C812
+      "Protein":
+        description: Protein biospecimen
+        meaning: NCIT:C17021
+      "Cell":
+        description: Cell biospecimen
+        meaning: NCIT:C12508
+      "Fluid":
+        description: Fluid biospecimen
+        meaning: NCIT:C13238
+      "Other":
+        description: Other biospecimen type
+        meaning: NCIT:C17649
