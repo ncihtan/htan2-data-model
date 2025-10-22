@@ -74,7 +74,7 @@ make test
 
 ## Project Structure
 ```
-htan-linkml/
+htan2-data-model/
 ├── modules/          # Module definitions
 ├── docs/            # Documentation
 ├── examples/        # Example data
