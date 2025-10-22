@@ -1,4 +1,4 @@
-name: Generate and Register JSON Schemas in Synapse
+name: Generate and Register JSON Schemas
 
 on:
   push:
@@ -140,41 +140,8 @@ jobs:
           fi
         done
     
-    - name: Bind file-based schemas to existing project subfolders
-      env:
-        SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}
-        SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
-      run: |
-        # Load project configuration
-        echo "Loading project configuration..."
-        
-        # For now, test with just one project (HTAN2_Ovarian) and WES Level 1 schema
-        # This will bind the WES schema to the existing WES_Level_1 subfolder
-        
-        # Find WES Level 1 schema (file-based)
-        WES_SCHEMA=$(find JSON_Schemas -name "*WES*Level*1*" -o -name "*level_1*" | head -1)
-        
-        if [ -n "$WES_SCHEMA" ]; then
-          echo "Found WES Level 1 schema: $WES_SCHEMA"
-          echo "Binding to existing WES_Level_1 subfolder in HTAN2_Ovarian project (syn69630475)..."
-          
-          # Use the existing working synapse_json_schema_bind.py script
-          poetry run python scripts/synapse_json_schema_bind.py \
-            -p "$WES_SCHEMA" \
-            -t "syn69630475" \
-            -n "${{ env.ORGANIZATION_NAME }}" \
-            --create_fileview
-        else
-          echo "No WES Level 1 schema found, skipping file-based binding"
-        fi
-        
-        # TODO: Later expand to bind all file-based schemas to all projects with existing subfolders
-        # for project in HTAN2_Ovarian HTAN2_Glioma HTAN2_Gastric; do
-        #   poetry run python scripts/synapse_json_schema_bind.py \
-        #     --schema-file "$WES_SCHEMA" \
-        #     --project-name "$project" \
-        #     --subfolder-name "WES_Level_1"
-        # done
+    # Schema binding has been moved to htan2-project-setup repository
+    # This workflow now only handles schema generation and registration
     
     - name: Upload generated schemas as artifacts
       uses: actions/upload-artifact@v4
@@ -205,7 +172,9 @@ jobs:
         - VitalStatus Schema
         - BulkWESLevel1 Schema (file-based)
         
-        All schemas have been registered in Synapse under the ${{ env.ORGANIZATION_NAME }} organization."
+        All schemas have been registered in Synapse under the ${{ env.ORGANIZATION_NAME }} organization.
+        
+        **Note**: Schema binding to project folders is now handled by the htan2-project-setup repository."
     
     - name: Upload schemas as release assets
       if: startsWith(github.ref, 'refs/tags/')
