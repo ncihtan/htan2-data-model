@@ -5,6 +5,7 @@ imports:
   - linkml:types
   - linkml:extensions
   - ../../Core/domains/core
+  - ../../Clinical/domains/uberon_tissues
   - biospecimen_type_enum
   - timepoint_enum
   - acquisition_method_type_enum
@@ -98,7 +99,7 @@ classes:
         # Conditionally required when ACQUISITION_METHOD_TYPE=Other
       
       SITE_OF_RESECTION_OR_BIOPSY:
-        range: string
+        range: tissue_or_organ_of_origin_uberon_enum
         required: true
         title: "Site of Resection or Biopsy"
         description: The location within the body from where the disease of interest originated as captured in the Uberon identifier
