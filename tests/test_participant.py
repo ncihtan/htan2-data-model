@@ -11,7 +11,7 @@ from linkml_runtime.utils.schemaview import SchemaView
 # Try different import paths for Participant
 Participant = None
 try:
-    from htan_linkml.schema_classes.participant import Participant
+    from htan2_data_model.schema_classes.participant import Participant
 except ImportError:
     try:
         from modules.Participant.src.htan_participant.datamodel.participant import (

@@ -128,7 +128,7 @@ compile-sheets:
 
 # generates all project files
 gen-project: $(PYMODEL)
-	$(RUN) gen-project $(LINKML_GENERATORS_CONFIG_YAML) -d src/htan_linkml/schema_classes $(SOURCE_SCHEMA_PATH) && mv src/htan_linkml/schema_classes/*.py src/htan_linkml/schema_classes/
+	$(RUN) gen-project $(LINKML_GENERATORS_CONFIG_YAML) -d src/htan2_data_model/schema_classes $(SOURCE_SCHEMA_PATH) && mv src/htan2_data_model/schema_classes/*.py src/htan2_data_model/schema_classes/
 
 # non-empty arg triggers owl (workaround https://github.com/linkml/linkml/issues/1453)
 ifneq ($(strip ${GEN_OWL_ARGS}),)

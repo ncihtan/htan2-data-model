@@ -40,7 +40,7 @@ The HTAN2 data model is built using **LinkML**, a modeling language for schemas 
 ## 📁 Project Structure
 
 ```
-htan-linkml/
+htan2-data-model/
 ├── modules/                    # All data model modules
 │   ├── Core/                  # Universal attributes
 │   ├── Clinical/              # Clinical data domains
@@ -85,7 +85,7 @@ Participant (HTAN_PARTICIPANT_ID)
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd htan-linkml
+cd htan2-data-model
 
 # Install dependencies
 poetry install

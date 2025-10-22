@@ -57,4 +57,4 @@ The HTAN LinkML model is organized into the following modules:
 
 - [HTAN Website](https://humantumoratlas.org)
 - [LinkML Documentation](https://linkml.io)
-- [GitHub Repository](https://github.com/ncihtan/htan-linkml)
+- [GitHub Repository](https://github.com/ncihtan/htan2-data-model)
