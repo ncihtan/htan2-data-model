@@ -21,6 +21,7 @@ imports:
   - tumor_classification_enum
   - degree_of_dysplasia_enum
   - shipping_condition_enum
+  - icdo3_morphology_enum
 
 prefixes:
   htan: https://w3id.org/htan/

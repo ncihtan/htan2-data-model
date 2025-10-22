@@ -1,0 +1,559 @@
+name: IcdO3MorphologyEnum
+description: ICD-O-3 morphology codes for tissue classification based on HTAN Phase 2 specification
+
+enums:
+  IcdO3MorphologyEnum:
+    title: icdo3_morphology
+    permissible_values:
+      "9715/3":
+        description: "ALK-negative anaplastic large cell lymphoma (ALK-ALCL)"
+        meaning: "for cases diagnosed 2021 and later"
+      "9737/3":
+        description: "ALK-positive large B-cell lymphoma (ALK+ LBCL)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9870/3":
+        description: "Acute basophilic leukemia"
+        meaning: "for cases diagnosed 1978 and later"
+      "9805/3":
+        description: "Acute biphenotypic leukemia"
+        meaning: "for cases diagnosed 2001 - 2009"
+      "9910/3":
+        description: "Acute megakaryoblastic leukemia (AMKL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9911/3":
+        description: "Acute megakaryoblastic leukemia with RBMI5::MRTFA"
+        meaning: "for cases diagnosed 2010 and later"
+      "9891/3":
+        description: "Acute monoblastic and monocytic leukemia"
+        meaning: "for cases diagnosed 1978 and later"
+      "9861/3":
+        description: "Acute myeloid leukemia (AML), NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9912/3":
+        description: "Acute myeloid leukemia with BCR::ABL1 fusion"
+        meaning: "for cases diagnosed 2021 and later"
+      "9871/3":
+        description: "Acute myeloid leukemia with CBFB::MYH11 fusion"
+        meaning: "for cases diagnosed 2001 and later"
+      "9878/3":
+        description: "Acute myeloid leukemia with CEBPA mutation"
+        meaning: "for cases diagnosed 2021 and later"
+      "9865/3":
+        description: "Acute myeloid leukemia with DEK::NUP214 fusion"
+        meaning: "for cases diagnosed 2010 and later"
+      "9897/3":
+        description: "Acute myeloid leukemia with KMT2a rearrangement"
+        meaning: "for cases diagnosed 1978 and later"
+      "9869/3":
+        description: "Acute myeloid leukemia with MECOM rearrangement"
+        meaning: "for cases diagnosed 2010 and later"
+      "9896/3":
+        description: "Acute myeloid leukemia with RUNX1::RUNX1T1"
+        meaning: "for cases diagnosed 2001 and later"
+      "9874/3":
+        description: "Acute myeloid leukemia with maturation"
+        meaning: "for cases diagnosed 1978 - 1991, 1995 and later"
+      "9872/3":
+        description: "Acute myeloid leukemia with minimal differentiation"
+        meaning: "for cases diagnosed 1978 - 1991, 1995 and later"
+      "9877/3":
+        description: "Acute myeloid leukemia with mutated NPM1"
+        meaning: "for cases diagnosed 2021 and later"
+      "9879/3":
+        description: "Acute myeloid leukemia with mutated RUNX1"
+        meaning: "for cases diagnosed 2021 and later"
+      "9895/3":
+        description: "Acute myeloid leukemia with myelodysplasia-related changes (AML-MRC)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9873/3":
+        description: "Acute myeloid leukemia without maturation"
+        meaning: "for cases diagnosed 2001 and later"
+      "9867/3":
+        description: "Acute myelomonocytic leukemia (AMML)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9931/3":
+        description: "Acute panmyelosis with myelofibrosis (APMF)"
+        meaning: "for cases diagnosed 1992 and later"
+      "9866/3":
+        description: "Acute promyelocytic leukemia with PML::RARA fusion (APL with PML-RARA)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9801/3":
+        description: "Acute undifferentiated leukemia"
+        meaning: "for cases diagnosed 1978 and later"
+      "9827/3":
+        description: "Adult T-cell leukemia/lymphoma (AITL)"
+        meaning: "for cases diagnosed 1992 and later"
+      "9948/3":
+        description: "Aggressive NK-cell leukemia (ANKL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9714/3":
+        description: "Anaplastic large cell lymphoma, NOS"
+        meaning: "for cases diagnosed 1992 and later"
+      "9705/3":
+        description: "Angioimmunoblastic T-cell lymphoma (AITL)"
+        meaning: "for cases diagnosed 1992 and later"
+      "9767/1":
+        description: "Angioimmunoblastic lymphadenopathy (AIL)"
+        meaning: "This neoplasm is not reportable"
+      "9876/3":
+        description: "Atypical chronic myeloid (aCML) leukemia, BCR/ABL1-negative"
+        meaning: "for cases diagnosed 1978 and later"
+      "9813/3":
+        description: "B lymphoblastic leukemia/lymphoma with KMT2A rearrangement"
+        meaning: "for cases diagnosed 2010 and later"
+      "9596/3":
+        description: "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and classic Hodgkin lymphoma"
+        meaning: "for cases diagnosed 2001 and later"
+      "9833/3":
+        description: "B-cell prolymphocytic leukemia (B-PLL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9812/3":
+        description: "B-lymphoblastic leukemia/lymphoma with BCR::ABL1 fusion"
+        meaning: "for cases diagnosed 2010 and later"
+      "9819/3":
+        description: "B-lymphoblastic leukemia/lymphoma with BCR::ABL1 like (Ph-like) features"
+        meaning: "for cases diagnosed 2021 and later"
+      "9814/3":
+        description: "B-lymphoblastic leukemia/lymphoma with ETV6::RUNX1 fusion"
+        meaning: "for cases diagnosed 2010 and later"
+      "9815/3":
+        description: "B-lymphoblastic leukemia/lymphoma with High-hyperdiploidy"
+        meaning: "for cases diagnosed 2010 and later"
+      "9817/3":
+        description: "B-lymphoblastic leukemia/lymphoma with IGH::IL3 fusion"
+        meaning: "for cases diagnosed 2010 and later"
+      "9818/3":
+        description: "B-lymphoblastic leukemia/lymphoma with TCF3::PBX1"
+        meaning: "for cases diagnosed 2010 and later"
+      "9816/3":
+        description: "B-lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9811/3":
+        description: "B-lymphoblastic leukemia/lymphoma, NOS"
+        meaning: "for cases diagnosed 2010 and later"
+      "9727/3":
+        description: "Blastic plasmacytoid dendritic cell neoplasm (BPDC)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9826/3":
+        description: "Burkitt cell leukemia"
+        meaning: "for cases diagnosed 1992 - 2020"
+      "9687/3":
+        description: "Burkitt lymphoma (BL), (NOS)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9964/3":
+        description: "Chronic eosinophilic leukemia (CEL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9823/3":
+        description: "Chronic lymphocytic leukemia/small lymphocytic lymphoma (CLL/SLL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9875/3":
+        description: "Chronic myeloid leukemia (CML), BCR::ABL1"
+        meaning: "for cases diagnosed 1978 and later"
+      "9863/3":
+        description: "Chronic myeloid leukemia (CML), NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9945/3":
+        description: "Chronic myelomonocytic leukemia (CMML), NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9963/3":
+        description: "Chronic neutrophilic leukemia (CNL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9650/3":
+        description: "Classic Hodgkin lymphoma (CHL), NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9653/3":
+        description: "Classic Hodgkin lymphoma, lymphocyte depletion (LD-cHL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9651/3":
+        description: "Classic Hodgkin lymphoma, lymphocyte-rich (LR-cHL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9652/3":
+        description: "Classic Hodgkin lymphoma, mixed cellularity (MC-cHL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9663/3":
+        description: "Classic Hodgkin lymphoma, nodular sclerosis, NOS (NS-cHL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9680/3":
+        description: "Diffuse large B-cell lymphoma, NOS (DLBCL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9680/1":
+        description: "EBV-positive mucocutaneous ulcer (EBVMCU)"
+        meaning: "This neoplasm is not reportable"
+      "9717/3":
+        description: "Enteropathy-associated (type) T-cell lymphoma (EATL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9749/3":
+        description: "Erdheim-Chester disease (ECD)"
+        meaning: "for cases diagnosed 2021 and later"
+      "9962/3":
+        description: "Essential thrombocythemia (ET)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9719/3":
+        description: "Extranodal NK-/T-cell lymphoma (ENKTL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9699/3":
+        description: "Extranodal marginal zone lymphoma of mucosa-associated lymphoid tissue (MALT lymphoma)"
+        meaning: "for cases diagnosed 1992 and later"
+      "9759/3":
+        description: "Fibroblastic reticular cell tumor"
+        meaning: "for cases diagnosed 2010 and later"
+      "9758/3":
+        description: "Follicular dendritic cell sarcoma (FDCS)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9690/3":
+        description: "Follicular lymphoma (FL), NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9695/3":
+        description: "Follicular lymphoma, grade 1"
+        meaning: "for cases diagnosed 1978 and later"
+      "9691/3":
+        description: "Follicular lymphoma, grade 2"
+        meaning: "for cases diagnosed 1992 and later"
+      "9698/3":
+        description: "Follicular lymphoma, grade 3"
+        meaning: "for cases diagnosed 1978 and later"
+      "9738/3":
+        description: "HHV8-positive diffuse large B-cell lymphoma"
+        meaning: "for cases diagnosed 2010 and later"
+      "9738/1":
+        description: "HHV8-positive germinotropic lymphoproliferative disorder (GLPD)"
+        meaning: "This neoplasm is not reportable"
+      "9940/3":
+        description: "Hairy cell leukemia (HCL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9762/3":
+        description: "Heavy chain desposition disease"
+        meaning: "for cases diagnosed 1992 and later"
+      "9716/3":
+        description: "Hepatosplenic T-cell lymphoma (HSTCL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9755/3":
+        description: "Histiocytic sarcoma"
+        meaning: "for cases diagnosed 1992 and later"
+      "9661/3":
+        description: "Hodgkin granuloma"
+        meaning: "for cases diagnosed 2001 - 2009"
+      "9654/3":
+        description: "Hodgkin lymphoma, lymphocyte depletion, diffuse fibrosis [OBS]"
+        meaning: "for cases diagnosed 1978 - 2009"
+      "9655/3":
+        description: "Hodgkin lymphoma, lymphocyte depletion, reticular"
+        meaning: "for cases diagnosed 1978 and later"
+      "9664/3":
+        description: "Hodgkin lymphoma, nodular sclerosis, cellular phase"
+        meaning: "for cases diagnosed 1978 - 2009"
+      "9665/3":
+        description: "Hodgkin lymphoma, nodular sclerosis, grade 1"
+        meaning: "for cases diagnosed 1992 - 2009"
+      "9667/3":
+        description: "Hodgkin lymphoma, nodular sclerosis, grade 2"
+        meaning: "for cases diagnosed 1978 - 2009"
+      "9662/3":
+        description: "Hodgkin sarcoma"
+        meaning: "for cases diagnosed 2001 - 2009"
+      "9725/1":
+        description: "Hydroa vacciniforme like lymphoproliferative disorder"
+        meaning: "This neoplasm is not reportable"
+      "9725/3":
+        description: "Hydroa vaccinoforme-like lymphoproliferative disorder (HV-LPD)"
+        meaning: "for cases diagnosed 2010 - 2020"
+      "9761/1":
+        description: "IgM monoclonal gammopathy of undetermined significance (MGUS)"
+        meaning: "This neoplasm is not reportable"
+      "9760/3":
+        description: "Immunoproliferative disease, NOS"
+        meaning: "for cases diagnosed 1992 - 2009"
+      "9764/3":
+        description: "Immunoproliferative small intestinal disease"
+        meaning: "for cases diagnosed 1992 - 2009"
+      "9695/1":
+        description: "In situ follicular neoplasia (ISFN)"
+        meaning: "This neoplasm is not reportable"
+      "9673/1":
+        description: "In situ mantle cell neoplasia (ISMCN)"
+        meaning: "This neoplasm is not reportable"
+      "9702/1":
+        description: "Indolent T-cell lymphoproliferative disorder of the gastrointestinal tract (iTCL-GI)"
+        meaning: "This neoplasm is not reportable"
+      "9741/1":
+        description: "Indolent systemic mastocytosis (ISM)"
+        meaning: "This neoplasm is not reportable"
+      "9757/3":
+        description: "Interdigitating dendritic cell sarcoma (IDCS)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9712/3":
+        description: "Intravascular large B-cell lymphoma (IVLBCL)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9946/3":
+        description: "Juvenile myelomonocytic leukemia (JMML)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9749/1":
+        description: "Juvenile xanthogranuloma (JXG)"
+        meaning: "This neoplasm is not reportable"
+      "9751/1":
+        description: "LCH, NOS"
+        meaning: "This neoplasm is not reportable"
+      "9751/3":
+        description: "LCH, disseminated"
+        meaning: "for cases diagnosed 1978 - 2000, 2010 and later"
+      "9754/3":
+        description: "Langerhans cell histiocytosis, disseminated"
+        meaning: "for cases diagnosed 1978 - 2009"
+      "9753/1":
+        description: "Langerhans cell histiocytosis, multifocal"
+        meaning: "This neoplasm is not reportable"
+      "9752/1":
+        description: "Langerhans cell histiocytosis, unifocal"
+        meaning: "This neoplasm is not reportable"
+      "9756/3":
+        description: "Langerhans cell sarcoma (LCS)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9800/3":
+        description: "Leukemia, NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9820/3":
+        description: "Lymphoid leukemia, NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9766/3":
+        description: "Lymphomatoid granulomatosis grade (LYG) 3"
+        meaning: "for cases diagnosed 2021 and later"
+      "9766/1":
+        description: "Lymphomatoid granulomatosis, NOS (LYG)"
+        meaning: "This neoplasm is not reportable"
+      "9718/1":
+        description: "Lymphomatoid papulosis (LyP)"
+        meaning: "This neoplasm is not reportable"
+      "9671/3":
+        description: "Lymphoplasmacytic lymphoma (LPL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9970/1":
+        description: "Lymphoproliferative disorder, NOS"
+        meaning: "This neoplasm is not reportable"
+      "9750/3":
+        description: "Malignant histiocytosis"
+        meaning: "for cases diagnosed 1978 - 2009"
+      "9590/3":
+        description: "Malignant lymphoma, NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9684/3":
+        description: "Malignant lymphoma, large B-cell, diffuse, immunoblastic, NOS"
+        meaning: "for cases diagnosed 1992 - 2009"
+      "9675/3":
+        description: "Malignant lymphoma, mixed small and large cell, diffuse"
+        meaning: "for cases diagnosed 1992 - 2009"
+      "9670/3":
+        description: "Malignant lymphoma, small B lymphocytic, NOS"
+        meaning: "for cases diagnosed 1978 - 2009"
+      "9673/3":
+        description: "Mantle cell lymphoma (MCL)"
+        meaning: "for cases diagnosed 1992 and later"
+      "9742/3":
+        description: "Mast cell leukemia (MCL)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9740/3":
+        description: "Mast cell sarcoma (MSC)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9740/1":
+        description: "Mastocytoma (NOS)"
+        meaning: "This neoplasm is not reportable"
+      "9679/3":
+        description: "Mediastinal large B-cell lymphoma (PMBCL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9806/3":
+        description: "Mixed-phenotype acute leukemia (MPAL) with t(9;22)(q34.1;q11.2); BCR-ABL1"
+        meaning: "for cases diagnosed 2010 and later"
+      "9807/3":
+        description: "Mixed-phenotype acute leukemia (MPAL) with t(v;11q23.3); KMT2A-rearranged"
+        meaning: "for cases diagnosed 2010 and later"
+      "9808/3":
+        description: "Mixed-phenotype acute leukemia (MPAL), B/myeloid, not otherwise specified"
+        meaning: "for cases diagnosed 2010 and later"
+      "9809/3":
+        description: "Mixed-phenotype acute leukemia, T/myeloid, not otherwise specified"
+        meaning: "for cases diagnosed 2010 and later"
+      "9823/1":
+        description: "Monoclonal B-cell lymphocytosis, CLL-type (MBL, CLL-type)"
+        meaning: "This neoplasm is not reportable"
+      "9591/1":
+        description: "Monoclonal B-cell lymphocytosis, non-chronic lymphocytic leukemia (CLL)-type"
+        meaning: "This neoplasm is not reportable"
+      "9765/1":
+        description: "Monoclonal gammopathy of undetermined significance (NOS) (MGUS)"
+        meaning: "This neoplasm is not reportable"
+      "9769/1":
+        description: "Monoclonal immunoglobulin deposition disease (MIDD)"
+        meaning: "This neoplasm is not reportable"
+      "9700/3":
+        description: "Mycosis fungoides (MF)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9986/3":
+        description: "Myelodysplastic syndrome associated with isolated del(5q)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9983/3":
+        description: "Myelodysplastic syndrome with increased blasts (MDS-IB)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9985/3":
+        description: "Myelodysplastic syndrome with multilineage dysplasia (MDS-MLD)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9993/3":
+        description: "Myelodysplastic syndrome with ring sideroblasts and multilineage dysplasia (MDS-RD-MLD)"
+        meaning: "for cases diagnosed 2021 and later"
+      "9982/3":
+        description: "Myelodysplastic syndrome with ring sideroblasts and single lineage dysplasia (MDS-RS-SLD)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9980/3":
+        description: "Myelodysplastic syndrome with single lineage dysplasia (MDS-SLD)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9989/3":
+        description: "Myelodysplastic syndrome, unclassifiable (MDS-U)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9975/3":
+        description: "Myelodysplastic/myeloproliferative neoplasm, unclassifiable"
+        meaning: "for cases diagnosed 2010 and later"
+      "9898/3":
+        description: "Myeloid leukemia associated with Down Syndrome"
+        meaning: "for cases diagnosed 2010 and later"
+      "9860/3":
+        description: "Myeloid leukemia, NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9930/3":
+        description: "Myeloid sarcoma"
+        meaning: "for cases diagnosed 1978 and later"
+      "9967/3":
+        description: "Myeloid/lymphoid neoplasms with FGFR1 rearrangement"
+        meaning: "for cases diagnosed 2010 and later"
+      "9968/3":
+        description: "Myeloid/lymphoid neoplasms with PCM1-JAK2"
+        meaning: "for cases diagnosed 2021 and later"
+      "9965/3":
+        description: "Myeloid/lymphoid neoplasms with PDGFRA rearrangement"
+        meaning: "for cases diagnosed 2010 and later"
+      "9966/3":
+        description: "Myeloid/lymphoid neoplasms with PDGFRB rearrangement"
+        meaning: "for cases diagnosed 2010 and later"
+      "9960/3":
+        description: "Myeloproliferative neoplasm, NOS"
+        meaning: "for cases diagnosed 2001 - 2009"
+      "9659/3":
+        description: "Nodular lymphocyte predominant Hodgkin lymphoma (NLPHL)"
+        meaning: "for cases diagnosed 1992 and later"
+      "9591/3":
+        description: "Non-Hodgkin lymphoma (NHL), NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9702/3":
+        description: "Peripheral T-cell lymphoma (PTCL), NOS"
+        meaning: "for cases diagnosed 1992 and later"
+      "9733/3":
+        description: "Plasma cell leukemia (PCL)"
+        meaning: "for cases diagnosed 1978 - 2009"
+      "9732/3":
+        description: "Plasma cell myeloma (PCM)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9735/3":
+        description: "Plasmablastic lymphoma (PBL)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9734/3":
+        description: "Plasmacytoma, extramedullary"
+        meaning: "for cases diagnosed 1978 and later"
+      "9950/3":
+        description: "Polycythemia vera (PV)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9971/1":
+        description: "Polymorphic transplant lymphoproliferative disorder (PTLD)"
+        meaning: "This neoplasm is not reportable"
+      "9971/3":
+        description: "Polymorphic transplant lymphoproliferative disorder, NOS (PTLD, NOS)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9836/3":
+        description: "Precursor B-cell lymphoblastic leukemia"
+        meaning: "for cases diagnosed 2001 - 2009"
+      "9728/3":
+        description: "Precursor B-cell lymphoblastic lymphoma"
+        meaning: "for cases diagnosed 2001 - 2009"
+      "9729/3":
+        description: "Precursor T-cell lymphoblastic lymphoma, NOS (T-LBL)"
+        meaning: "for cases diagnosed 1992 - 2009"
+      "9835/3":
+        description: "Precursor cell lymphoblastic leukemia, NOS"
+        meaning: "for cases diagnosed 1978 - 2009"
+      "9709/1":
+        description: "Primary cutaneous CD4+ small or medium T-cell lymphoproliferative disorder (PCSM-LPD)"
+        meaning: "This neoplasm is not reportable"
+      "9718/3":
+        description: "Primary cutaneous anaplastic large cell lymphoma (C-ALCL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9597/3":
+        description: "Primary cutaneous follicle centre lymphoma (PCFCL)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9726/3":
+        description: "Primary cutaneous gamma-delta T-cell lymphoma (PCGD-TCL)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9709/3":
+        description: "Primary cutaneous peripheral T-cell lymphoma (pcPTCL), NOS"
+        meaning: "for cases diagnosed 1992 and later"
+      "9678/3":
+        description: "Primary effusion lymphoma (PEL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9961/3":
+        description: "Primary myelofibrosis (PMF)"
+        meaning: "for cases diagnosed 1978 - 1991, 2001 and later"
+      "9832/3":
+        description: "Prolymphocytic leukemia (PLL), NOS"
+        meaning: "for cases diagnosed 1978 and later"
+      "9840/3":
+        description: "Pure erythroid leukemia"
+        meaning: "for cases diagnosed 1978 and later"
+      "9984/3":
+        description: "Refractory anemia with excess blasts in transformation (RAEB-T) [OBS]"
+        meaning: "for cases diagnosed 2001 - 2009"
+      "9991/3":
+        description: "Refractory neutropenia"
+        meaning: "for cases diagnosed 2010 - 2020"
+      "9992/3":
+        description: "Refractory thrombocytopenia"
+        meaning: "for cases diagnosed 2010 - 2020"
+      "9701/3":
+        description: "Sezary syndrome (SS)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9731/3":
+        description: "Solitary (osseous, medullary) plasmacytoma of bone"
+        meaning: "for cases diagnosed 1978 and later"
+      "9689/3":
+        description: "Splenic marginal zone lymphoma (SMZL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9708/3":
+        description: "Subcutaneous panniculitis-like T-cell lymphoma (SPTCL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9724/3":
+        description: "Systemic EBV-positive T-cell lymphoma of childhood (SEBVTCL)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9741/3":
+        description: "Systemic mastocytosis with an associated hematological neoplasm (SM-AHN)"
+        meaning: "for cases diagnosed 1978 and later"
+      "9831/3":
+        description: "T-cell large granular lymphocytic leukemia (T-LGL)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9834/3":
+        description: "T-cell prolymphocytic leukemia (T-PLL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9688/3":
+        description: "T-cell/histiocyte-rich large B-cell lymphoma (THRLBCL)"
+        meaning: "for cases diagnosed 2010 and later"
+      "9768/1":
+        description: "T-gamma lymphoproliferative disorder"
+        meaning: "This neoplasm is not reportable"
+      "9837/3":
+        description: "T-lymphoblastic leukemia/lymphoma, NOS (T-ALL)"
+        meaning: "for cases diagnosed 2001 and later"
+      "9987/3":
+        description: "Therapy-related myelodysplastic syndrome (t-MDS), NOS"
+        meaning: "for cases diagnosed 2001 - 2009"
+      "9920/3":
+        description: "Therapy-related myeloid neoplasms"
+        meaning: "for cases diagnosed 2001 and later"
+      "9898/1":
+        description: "Transient abnormal myelopoiesis (TAM)"
+        meaning: "This neoplasm is not reportable"
+      "9761/3":
+        description: "Waldenstrom macroglobulinemia (WM)"
+        meaning: "for cases diagnosed 1992 and later"
