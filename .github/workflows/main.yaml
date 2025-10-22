@@ -1,7 +1,7 @@
 # Built from:
 # https://docs.github.com/en/actions/guides/building-and-testing-python
 ---
-name: Build and test htan_linkml
+name: Build and test htan2-data-model
 
 on: [pull_request]
 

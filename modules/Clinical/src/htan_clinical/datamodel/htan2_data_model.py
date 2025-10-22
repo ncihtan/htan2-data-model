@@ -1,8 +1,8 @@
-# Auto generated from htan_linkml.yaml by pythongen.py version: 0.0.1
+# Auto generated from htan2_data_model.yaml by pythongen.py version: 0.0.1
 # Generation date: 2025-04-17T17:16:30
-# Schema: htan-linkml
+# Schema: htan2-data-model
 #
-# id: https://w3id.org/ncihtan/htan-linkml
+# id: https://w3id.org/ncihtan/htan2-data-model
 # description: A LinkML data model for HTAN Phase 2
 # license: MIT
 
@@ -69,7 +69,7 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/')
 EXAMPLE = CurieNamespace('example', 'https://example.org/')
-HTAN_LINKML = CurieNamespace('htan_linkml', 'https://w3id.org/ncihtan/htan-linkml/')
+HTAN_LINKML = CurieNamespace('htan_linkml', 'https://w3id.org/ncihtan/htan2-data-model/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 DEFAULT_ = HTAN_LINKML

@@ -1,1 +1,1 @@
-"""Tests for htan-linkml."""
+"""Tests for htan2-data-model."""
