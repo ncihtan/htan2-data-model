@@ -91,6 +91,7 @@ format:
 		tests/ \
 		modules/Clinical/tests/ \
 		modules/WES/tests/ \
+		modules/Biospecimen/tests/ \
 		modules/*/src/
 
 # ---
