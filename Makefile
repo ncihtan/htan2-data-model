@@ -83,7 +83,7 @@ test: modules-test test-scripts
 
 # Test script functions
 test-scripts:
-	$(RUN) pytest tests/test_linkml_schema_conversion.py -v
+	$(RUN) pytest tests/ -v
 
 # Format code with Black
 format:
