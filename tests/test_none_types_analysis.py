@@ -20,7 +20,7 @@ class NoneTypesAnalyzer:
     # Define patterns that represent "none types" - missing/unknown/not applicable data
     NONE_TYPE_PATTERNS = [
         "not applicable", "not recorded", "unknown", "not available", 
-        "not specified", "not provided", "missing", "n/a", "na",
+        "not specified", "not provided", "missing", "n/a",
         "not known", "not observed", "not reported", "refused", 
         "unavailable", "not assessed", "cannot be assessed", "not determined",
         "not available", "not captured", "not stored", "not relevant"
