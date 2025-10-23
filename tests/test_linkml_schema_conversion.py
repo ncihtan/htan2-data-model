@@ -62,7 +62,7 @@ class TestFixSchemaVersionLogic:
         """Test updating old schema version to Draft-07."""
         data = {"$schema": "https://json-schema.org/draft/2019-09/schema"}
         result, message = _fix_schema_version_logic(data)
-        
+
         assert result["$schema"] == "https://json-schema.org/draft-07/schema"
         assert "Updated $schema from" in message
 
@@ -70,7 +70,7 @@ class TestFixSchemaVersionLogic:
         """Test keeping existing Draft-07 schema."""
         data = {"$schema": "https://json-schema.org/draft-07/schema"}
         result, message = _fix_schema_version_logic(data)
-        
+
         assert result["$schema"] == "https://json-schema.org/draft-07/schema"
         assert "already uses Draft-07" in message
 
@@ -78,7 +78,7 @@ class TestFixSchemaVersionLogic:
         """Test adding missing $schema field."""
         data = {"type": "object", "properties": {}}
         result, message = _fix_schema_version_logic(data)
-        
+
         assert result["$schema"] == "https://json-schema.org/draft-07/schema"
         assert "Added $schema field" in message
 
@@ -90,7 +90,7 @@ class TestFixSchemaVersionLogic:
             "$schema": "https://json-schema.org/draft/2019-09/schema",
         }
         result, message = _fix_schema_version_logic(data)
-        
+
         assert result["type"] == "object"
         assert result["properties"] == {"test": {"type": "string"}}
         assert result["$schema"] == "https://json-schema.org/draft-07/schema"
@@ -102,27 +102,27 @@ class TestSchemaVersionFunctions:
     def test_fix_schema_version_file_operations(self):
         """Test fix_schema_version with file operations."""
         test_data = {"$schema": "https://json-schema.org/draft/2019-09/schema"}
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             json.dump(test_data, f)
             temp_file = f.name
 
         try:
             # Read the file
-            with open(temp_file, 'r') as f:
+            with open(temp_file, "r") as f:
                 data = json.load(f)
-            
+
             # Process in memory
             result = fix_schema_version(data)
-            
+
             # Write back to file
-            with open(temp_file, 'w') as f:
+            with open(temp_file, "w") as f:
                 json.dump(result, f)
-            
+
             # Read and verify
-            with open(temp_file, 'r') as f:
+            with open(temp_file, "r") as f:
                 final_result = json.load(f)
-            
+
             assert final_result["$schema"] == "https://json-schema.org/draft-07/schema"
         finally:
             Path(temp_file).unlink()
@@ -140,32 +140,32 @@ class TestRemoveUnsupportedFields:
             "type": "object",
             "properties": {"valid": {"type": "string"}},
         }
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             json.dump(data, f)
             temp_file = f.name
 
         try:
             # Read the file
-            with open(temp_file, 'r') as f:
+            with open(temp_file, "r") as f:
                 file_data = json.load(f)
-            
+
             # Process in memory
             result = remove_unsupported_fields(file_data)
-            
+
             # Write back to file
-            with open(temp_file, 'w') as f:
+            with open(temp_file, "w") as f:
                 json.dump(result, f)
-            
+
             # Read and verify
-            with open(temp_file, 'r') as f:
+            with open(temp_file, "r") as f:
                 final_result = json.load(f)
-            
+
             # Check that unsupported fields are removed
             assert "$defs" not in final_result
             assert "metamodel_version" not in final_result
             assert "version" not in final_result
-            
+
             # Check that valid fields are preserved
             assert final_result["type"] == "object"
             assert final_result["properties"] == {"valid": {"type": "string"}}
@@ -184,31 +184,31 @@ class TestRemoveUnsupportedFields:
                 }
             },
         }
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             json.dump(data, f)
             temp_file = f.name
 
         try:
             # Read the file
-            with open(temp_file, 'r') as f:
+            with open(temp_file, "r") as f:
                 file_data = json.load(f)
-            
+
             # Process in memory
             result = remove_unsupported_fields(file_data)
-            
+
             # Write back to file
-            with open(temp_file, 'w') as f:
+            with open(temp_file, "w") as f:
                 json.dump(result, f)
-            
+
             # Read and verify
-            with open(temp_file, 'r') as f:
+            with open(temp_file, "r") as f:
                 final_result = json.load(f)
-            
+
             # Check that nested unsupported fields are removed
             assert "$defs" not in final_result["properties"]["nested"]
             assert "metamodel_version" not in final_result["properties"]["nested"]
-            
+
             # Check that valid fields are preserved
             assert final_result["properties"]["nested"]["type"] == "string"
         finally:
@@ -230,27 +230,27 @@ class TestFixAdditionalProperties:
                 }
             },
         }
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             json.dump(data, f)
             temp_file = f.name
 
         try:
             # Read the file
-            with open(temp_file, 'r') as f:
+            with open(temp_file, "r") as f:
                 file_data = json.load(f)
-            
+
             # Process in memory
             result = fix_additional_properties(file_data)
-            
+
             # Write back to file
-            with open(temp_file, 'w') as f:
+            with open(temp_file, "w") as f:
                 json.dump(result, f)
-            
+
             # Read and verify
-            with open(temp_file, 'r') as f:
+            with open(temp_file, "r") as f:
                 final_result = json.load(f)
-            
+
             # Check that boolean additionalProperties are converted to objects
             assert final_result["additionalProperties"] == {}
             assert final_result["properties"]["nested"]["additionalProperties"] == {}
@@ -263,17 +263,17 @@ class TestFixAdditionalProperties:
             "type": "object",
             "additionalProperties": {"type": "string"},
         }
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             json.dump(data, f)
             temp_file = f.name
 
         try:
             fix_additional_properties(temp_file)
-            
-            with open(temp_file, 'r') as f:
+
+            with open(temp_file, "r") as f:
                 result = json.load(f)
-            
+
             # Check that object additionalProperties are preserved
             assert result["additionalProperties"] == {"type": "string"}
         finally:
@@ -294,19 +294,21 @@ class TestFlattenJsonSchema:
                 "test": {"type": "string"},
             },
         }
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as input_file:
+
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".json", delete=False
+        ) as input_file:
             json.dump(test_data, input_file)
             input_path = input_file.name
 
         try:
             # Read the file
-            with open(input_path, 'r') as f:
+            with open(input_path, "r") as f:
                 file_data = json.load(f)
-            
+
             # Process in memory
             result = flatten_json_schema(file_data)
-            
+
             # Check that the schema was processed (jsonref behavior may vary)
             assert "properties" in result
             # The ref should be resolved to the actual type
@@ -318,42 +320,42 @@ class TestFlattenJsonSchema:
 class TestRunGenJsonSchema:
     """Test JSON Schema generation."""
 
-    @patch('scripts.linkml_to_flat_synapse_jsonschema.JsonSchemaGenerator')
+    @patch("scripts.linkml_to_flat_synapse_jsonschema.JsonSchemaGenerator")
     def test_run_gen_json_schema(self, mock_generator):
         """Test run_gen_json_schema function."""
         # Mock the generator
         mock_instance = mock_generator.return_value
         mock_instance.serialize.return_value = '{"type": "object"}'
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             temp_file = f.name
 
         try:
             run_gen_json_schema("test.yaml", "TestClass", temp_file)
-            
+
             # Check that generator was called correctly
             mock_generator.assert_called_once_with("test.yaml")
             mock_instance.serialize.assert_called_once()
-            
+
             # Check that output was written
-            with open(temp_file, 'r') as f:
+            with open(temp_file, "r") as f:
                 content = f.read()
             assert content == '{"type": "object"}'
         finally:
             Path(temp_file).unlink()
 
-    @patch('scripts.linkml_to_flat_synapse_jsonschema.JsonSchemaGenerator')
+    @patch("scripts.linkml_to_flat_synapse_jsonschema.JsonSchemaGenerator")
     def test_run_gen_json_schema_with_class_name(self, mock_generator):
         """Test run_gen_json_schema with class name."""
         mock_instance = mock_generator.return_value
         mock_instance.serialize.return_value = '{"type": "object"}'
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             temp_file = f.name
 
         try:
             run_gen_json_schema("test.yaml", "TestClass", temp_file)
-            
+
             # Check that top_class was set
             assert mock_instance.top_class == "TestClass"
         finally:
