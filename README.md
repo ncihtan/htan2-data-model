@@ -31,6 +31,12 @@ The HTAN2 data model is built using **LinkML**, a modeling language for schemas 
 - **Structure**: Multiple domain files (demographics, diagnosis, therapy, etc.)
 - **Features**: Comprehensive validation rules and conditional requirements
 
+### **Biospecimen Module**
+- **Purpose**: Comprehensive biospecimen metadata and classification
+- **Location**: `modules/Biospecimen/`
+- **Structure**: 18 domain-specific enum files with medical classifications
+- **Features**: RFC-compliant implementation with 39 core attributes, ICD-10/ICD-O-3 integration, UBERON tissue ontology
+
 ### **WES Module**
 - **Purpose**: Bulk Whole Exome Sequencing data
 - **Location**: `modules/WES/`
@@ -44,6 +50,7 @@ htan2-data-model/
 ├── modules/                    # All data model modules
 │   ├── Core/                  # Universal attributes
 │   ├── Clinical/              # Clinical data domains
+│   ├── Biospecimen/           # Biospecimen metadata and classification
 │   └── WES/                   # Whole Exome Sequencing
 ├── config/                    # LinkML configuration
 ├── scripts/                   # Utility scripts
@@ -103,6 +110,7 @@ Each module contains detailed documentation:
 
 - **Core Module**: See `modules/Core/README.md` for primary/foreign key definitions
 - **Clinical Module**: See `modules/Clinical/README.md` for domain descriptions
+- **Biospecimen Module**: See `modules/Biospecimen/README.md` for RFC compliance and enum schemas
 - **WES Module**: See `modules/WES/README.md` for sequencing levels
 
 ## 🤝 Contributing
