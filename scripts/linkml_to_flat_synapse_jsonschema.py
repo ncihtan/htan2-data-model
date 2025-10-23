@@ -71,14 +71,14 @@ def _convert_to_plain_dict(obj, visited=None) -> Union[dict, list, Any]:
     """
     if visited is None:
         visited = set()
-    
+
     # Prevent infinite recursion by tracking visited objects
     obj_id = id(obj)
     if obj_id in visited:
         return obj  # Return the object as-is to break recursion
-    
+
     visited.add(obj_id)
-    
+
     try:
         if isinstance(obj, dict):
             return {k: _convert_to_plain_dict(v, visited) for k, v in obj.items()}
@@ -139,13 +139,13 @@ def remove_unsupported_fields(schema_data: dict) -> dict:
     def recursive_clean(obj, visited=None):
         if visited is None:
             visited = set()
-        
+
         # Prevent infinite recursion by tracking visited objects
         obj_id = id(obj)
         if obj_id in visited:
             return
         visited.add(obj_id)
-        
+
         try:
             if isinstance(obj, dict):
                 # Remove unsupported fields (don't process them recursively)
@@ -175,13 +175,13 @@ def fix_additional_properties(schema_data: dict) -> dict:
     def recursive_fix(obj, visited=None):
         if visited is None:
             visited = set()
-        
+
         # Prevent infinite recursion by tracking visited objects
         obj_id = id(obj)
         if obj_id in visited:
             return
         visited.add(obj_id)
-        
+
         try:
             if isinstance(obj, dict):
                 if "additionalProperties" in obj and isinstance(
@@ -205,17 +205,17 @@ def fix_additional_properties(schema_data: dict) -> dict:
 
 def clean_union_types(schema_data: dict) -> dict:
     """Recursively clean union types like ["string", "null"] to just "string"."""
-    
+
     def recursive_clean_union(obj, visited=None):
         if visited is None:
             visited = set()
-        
+
         # Prevent infinite recursion by tracking visited objects
         obj_id = id(obj)
         if obj_id in visited:
             return
         visited.add(obj_id)
-        
+
         try:
             if isinstance(obj, dict):
                 # Clean union types in type fields
@@ -226,7 +226,7 @@ def clean_union_types(schema_data: dict) -> dict:
                         obj["type"] = types[0]  # Use first non-null type
                     else:
                         obj["type"] = "string"  # Default to string if only null
-                
+
                 # Recursively process remaining values
                 for value in obj.values():
                     recursive_clean_union(value, visited)
