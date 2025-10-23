@@ -73,7 +73,7 @@ def test_invalid_data(invalid_files):
 def test_required_fields():
     """Test that missing required fields are caught."""
     test_data = {
-        "PARTICIPANT_ID": "TEST-001"
+        "HTAN_PARTICIPANT_ID": "TEST-001"
         # Missing required fields
     }
     with pytest.raises(ValueError):
@@ -83,7 +83,7 @@ def test_required_fields():
 def test_enum_values():
     """Test that invalid enum values are caught."""
     test_data = {
-        "PARTICIPANT_ID": "TEST-001",
+        "HTAN_PARTICIPANT_ID": "TEST-001",
         "DIAGNOSIS": {"TUMOR_GRADE": "G5"},  # Invalid enum value
     }
     with pytest.raises(ValueError):
@@ -93,7 +93,7 @@ def test_enum_values():
 def test_data_types():
     """Test that invalid data types are caught."""
     test_data = {
-        "PARTICIPANT_ID": "TEST-001",
+        "HTAN_PARTICIPANT_ID": "TEST-001",
         "DIAGNOSIS": {"AGE_AT_DIAGNOSIS_DAYS": "not_a_number"},  # Should be integer
     }
     with pytest.raises(ValueError):
