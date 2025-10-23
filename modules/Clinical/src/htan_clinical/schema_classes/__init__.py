@@ -13,13 +13,13 @@ from .therapy import *
 from .vital_status import *
 
 __all__ = [
-    'ClinicalData',
-    'Demographics',
-    'Diagnosis',
-    'Exposure',
-    'FamilyHistory',
-    'Followup',
-    'MolecularTest',
-    'Therapy',
-    'VitalStatus',
-] 
+    "ClinicalData",
+    "Demographics",
+    "Diagnosis",
+    "Exposure",
+    "FamilyHistory",
+    "Followup",
+    "MolecularTest",
+    "Therapy",
+    "VitalStatus",
+]
