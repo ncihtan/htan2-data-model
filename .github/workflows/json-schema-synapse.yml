@@ -121,12 +121,6 @@ jobs:
           "modules/WES/domains/level_1.yaml" \
           --class-name "BulkWESLevel1" \
           --output "JSON_Schemas/HTAN.BulkWESLevel1-${{ steps.version.outputs.version }}-schema.json"
-        
-        # Biospecimen (complete module schema)
-        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
-          "modules/Biospecimen/domains/biospecimen.yaml" \
-          --class-name "Biospecimen" \
-          --output "JSON_Schemas/HTAN.Biospecimen-${{ steps.version.outputs.version }}-schema.json"
     
     - name: Register schemas in Synapse
       env:
@@ -177,7 +171,6 @@ jobs:
         - FamilyHistory Schema
         - VitalStatus Schema
         - BulkWESLevel1 Schema (file-based)
-        - Biospecimen Schema (complete module)
         
         All schemas have been registered in Synapse under the ${{ env.ORGANIZATION_NAME }} organization.
         
