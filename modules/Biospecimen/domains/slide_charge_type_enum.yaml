@@ -1,5 +1,13 @@
 name: SlideChargeTypeEnum
+id: https://w3id.org/htan/slide_charge_type_enum
 description: Enumeration for slide charge types based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
 
 enums:
   SlideChargeTypeEnum:
@@ -14,6 +22,6 @@ enums:
       "Other (specify)":
         description: Different than the one(s) previously specified or mentioned.
       "Uncharged":
-        description: An operation in which a term denies or inverts the meaning of another term or construction.: The quantity of unbalanced electricity in a body (either positive or negative) and construed as an excess or deficiency of electrons.
+        description: "An operation in which a term denies or inverts the meaning of another term or construction: The quantity of unbalanced electricity in a body (either positive or negative) and construed as an excess or deficiency of electrons."
       "Unknown":
         description: Not known, not observed, not recorded, or refused.

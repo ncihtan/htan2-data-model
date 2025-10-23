@@ -1,5 +1,12 @@
 name: CellularArchitectureEnum
+id: https://w3id.org/htan/cellular_architecture_enum
 description: Enumeration for specimen cellular architecture based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: htan
 
 enums:
   CellularArchitectureEnum:

@@ -1,5 +1,13 @@
 name: BiospecimenTypeEnum
+id: https://w3id.org/htan/biospecimen_type_enum
 description: Enumeration for biospecimen types based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
 
 enums:
   BiospecimenTypeEnum:

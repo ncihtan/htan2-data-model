@@ -68,21 +68,24 @@ classes:
         required: true
         title: "Biospecimen Type"
         description: Biospecimen Type
-        caDSR_id: "12445832"
+        annotations:
+          caDSR_id: "12445832"
       
       TIMEPOINT:
         range: TimepointEnum
         required: false
         title: "Timepoint"
         description: A specific point in the time continuum, including those established relative to an event
-        caDSR_id: "5899851"
+        annotations:
+          caDSR_id: "5899851"
       
       AGE_IN_DAYS_AT_SPECIMEN_COLLECTION:
         range: integer
         required: true
         title: "Age in Days at Specimen Collection"
         description: The age in days of the subject at the time of specimen collection
-        caDSR_id: "14473376"
+        annotations:
+          caDSR_id: "14473376"
         minimum_value: 0
       
       ACQUISITION_METHOD_TYPE:
@@ -90,14 +93,15 @@ classes:
         required: true
         title: "Acquisition Method Type"
         description: Records the method of acquisition or source for the specimen under consideration
-        caDSR_id: "6626651"
+        annotations:
+          caDSR_id: "6626651"
       
       ACQUISITION_METHOD_OTHER_SPECIFY:
         range: string
         required: false
         title: "Acquisition Method Other Specify"
         description: A custom acquisition method
-        maximum_length: 100
+        pattern: "^.{0,100}$"
         # Conditionally required when ACQUISITION_METHOD_TYPE=Other
       
       SITE_OF_RESECTION_OR_BIOPSY:
@@ -105,21 +109,24 @@ classes:
         required: true
         title: "Site of Resection or Biopsy"
         description: The location within the body from where the disease of interest originated as captured in the Uberon identifier
-        caDSR_id: "14883054"
+        annotations:
+          caDSR_id: "14883054"
       
       SPECIMEN_LATERALITY:
         range: SpecimenLateralityEnum
         required: true
         title: "Specimen Laterality"
         description: For tumors in paired organs, designates the side on which the specimen was obtained
-        caDSR_id: "8028966"
+        annotations:
+          caDSR_id: "8028966"
       
       AGE_IN_DAYS_AT_SPECIMEN_PROCESSING:
         range: integer
         required: true
         title: "Age in Days at Specimen Processing"
         description: The age in days of a subject when a specimen was processed
-        caDSR_id: "16323601"
+        annotations:
+          caDSR_id: "16323601"
         minimum_value: 0
       
       PROCESSING_LOCATION:
@@ -133,28 +140,32 @@ classes:
         required: true
         title: "Preservation Method"
         description: Method used to preserve the sample
-        caDSR_id: "8028962"
+        annotations:
+          caDSR_id: "8028962"
       
       PRESERVATION_MEDIUM:
         range: PreservationMediumEnum
         required: true
         title: "Preservation Medium"
         description: The kind of substance holding another substance in solution or suspension to maintain a specimen in a viable state
-        caDSR_id: "16323957"
+        annotations:
+          caDSR_id: "16323957"
       
       PRESERVATION_METHOD_TEMPERATURE:
         range: PreservationTemperatureEnum
         required: true
         title: "Preservation Method Temperature"
         description: The term which describes the temperature used to maintain the specimen in a viable state
-        caDSR_id: "16306751"
+        annotations:
+          caDSR_id: "16306751"
       
       FIXATION_DURATION_IN_MINUTES:
         range: integer
         required: false
         title: "Fixation Duration in Minutes"
         description: The length of time, from beginning to end, required to process or preserve biospecimens in fixative
-        caDSR_id: "5230144"
+        annotations:
+          caDSR_id: "5230144"
         minimum_value: 0
         # Conditionally required when PRESERVATION_METHOD=Fixation
       
@@ -163,7 +174,8 @@ classes:
         required: false
         title: "Longest Dimension"
         description: Numeric value that represents the longest dimension of the sample, measured in millimeters
-        caDSR_id: "5432602"
+        annotations:
+          caDSR_id: "5432602"
         minimum_value: 0
       
       SHORTEST_DIMENSION:
@@ -171,7 +183,8 @@ classes:
         required: false
         title: "Shortest Dimension"
         description: Numeric value that represents the shortest dimension of the sample, measured in millimeters
-        caDSR_id: "5432603"
+        annotations:
+          caDSR_id: "5432603"
         minimum_value: 0
       
       TISSUE_SAMPLE_TYPE:
@@ -179,7 +192,8 @@ classes:
         required: false
         title: "Tissue Sample Type"
         description: The type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes
-        caDSR_id: "16391068"
+        annotations:
+          caDSR_id: "16391068"
         # Conditionally required when BIOSPECIMEN_TYPE=Tissue
       
       ANALYTE_TYPE:
@@ -187,22 +201,24 @@ classes:
         required: false
         title: "Analyte Type"
         description: The sample or material being subjected to analysis
-        caDSR_id: "15063661"
+        annotations:
+          caDSR_id: "15063661"
         # Conditionally required when BIOSPECIMEN_TYPE=DNA|RNA
       
       METHOD_OF_NUCLEIC_ACID_ISOLATION:
         range: string
         required: false
         title: "Method of Nucleic Acid Isolation"
-        description: Bulk RNA & DNA-seq specific: method used for nucleic acid isolation
-        maximum_length: 100
+        description: "Bulk RNA & DNA-seq specific: method used for nucleic acid isolation"
+        pattern: "^.{0,100}$"
       
       AGE_IN_DAYS_AT_SECTIONING:
         range: integer
         required: false
         title: "Age in Days at Sectioning"
         description: The age in days of a subject when a specimen tissue block was sectioned
-        caDSR_id: "16323604"
+        annotations:
+          caDSR_id: "16323604"
         minimum_value: 0
         # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
       
@@ -210,7 +226,7 @@ classes:
         range: SlicingMethodEnum
         required: false
         title: "Slicing Method"
-        description: Imaging specific: the method by which the tissue was sliced
+        description: "Imaging specific: the method by which the tissue was sliced"
         # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
       
       SECTION_THICKNESS_VALUE:
@@ -218,7 +234,8 @@ classes:
         required: false
         title: "Section Thickness Value"
         description: Numeric value to describe the thickness of a slice to tissue taken from a biospecimen, measured in microns
-        caDSR_id: "3024951"
+        annotations:
+          caDSR_id: "3024951"
         minimum_value: 0
         # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
       
@@ -234,7 +251,8 @@ classes:
         required: false
         title: "Slide Charge Type"
         description: A description of the charge on the glass slide
-        caDSR_id: "5227611"
+        annotations:
+          caDSR_id: "5227611"
         # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
       
       SPECIMEN_CELLULAR_ARCHITECTURE:
@@ -242,14 +260,16 @@ classes:
         required: true
         title: "Specimen Cellular Architecture"
         description: The architectural pattern of an abnormal, normal, or mixed cellular population in a tissue specimen
-        caDSR_id: "16303322"
+        annotations:
+          caDSR_id: "16303322"
       
       TUMOR_CLASSIFICATION:
         range: TumorClassificationEnum
         required: false
         title: "Tumor Classification"
         description: The classification of a tumor at a particular time based primarily on histopathological characteristics
-        caDSR_id: "12922545"
+        annotations:
+          caDSR_id: "12922545"
         # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Tumor
       
       ICD_O_3_TISSUE_MORPHOLOGY:
@@ -257,15 +277,17 @@ classes:
         required: false
         title: "ICD-O-3 Tissue Morphology"
         description: The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3
-        caDSR_id: "11326261"
+        annotations:
+          caDSR_id: "11326261"
         # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Tumor
       
       ICD_10_DISEASE_CODE:
         range: Icd10DiseaseEnum
         required: false
         title: "ICD-10 Disease Code"
-        description: For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM
-        caDSR_id: "11479873"
+        description: "For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM"
+        annotations:
+          caDSR_id: "11479873"
         # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Precancerous
       
       DEGREE_OF_DYSPLASIA:
@@ -273,7 +295,8 @@ classes:
         required: false
         title: "Degree of Dysplasia"
         description: Information related to the presence of cells that look abnormal under a microscope but are not cancer
-        caDSR_id: "5543188"
+        annotations:
+          caDSR_id: "5543188"
         # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Precancerous
       
       PERCENT_NECROSIS:
@@ -281,7 +304,8 @@ classes:
         required: false
         title: "Percent Necrosis"
         description: Numeric value to represent the percentage of cell death in a malignant tumor sample or specimen
-        caDSR_id: "2841237"
+        annotations:
+          caDSR_id: "2841237"
         minimum_value: 0
         maximum_value: 100
       
@@ -290,7 +314,8 @@ classes:
         required: false
         title: "Percent Normal Cells"
         description: Numeric value to represent the percentage of normal cell content in a malignant tumor sample or specimen
-        caDSR_id: "2841233"
+        annotations:
+          caDSR_id: "2841233"
         minimum_value: 0
         maximum_value: 100
       
@@ -299,7 +324,8 @@ classes:
         required: false
         title: "Percent Tumor Cells"
         description: Numeric value that represents the percentage of infiltration by tumor cells in a sample
-        caDSR_id: "5432686"
+        annotations:
+          caDSR_id: "5432686"
         minimum_value: 0
         maximum_value: 100
       
@@ -308,7 +334,8 @@ classes:
         required: false
         title: "Percent Tumor Nuclei"
         description: Numeric value to represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen
-        caDSR_id: "2841225"
+        annotations:
+          caDSR_id: "2841225"
         minimum_value: 0
         maximum_value: 100
       
@@ -317,4 +344,5 @@ classes:
         required: true
         title: "Shipping Condition Type"
         description: Text descriptor of the shipping environment of a biospecimen
-        caDSR_id: "5495533"
+        annotations:
+          caDSR_id: "5495533"

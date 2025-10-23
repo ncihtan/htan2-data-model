@@ -1,5 +1,13 @@
 name: TumorClassificationEnum
+id: https://w3id.org/htan/tumor_classification_enum
 description: Enumeration for tumor classification based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
 
 enums:
   TumorClassificationEnum:

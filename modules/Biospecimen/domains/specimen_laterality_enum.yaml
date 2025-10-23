@@ -1,5 +1,13 @@
 name: SpecimenLateralityEnum
+id: https://w3id.org/htan/specimen_laterality_enum
 description: Enumeration for specimen laterality based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
 
 enums:
   SpecimenLateralityEnum:

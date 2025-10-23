@@ -1,5 +1,13 @@
 name: TissueSampleTypeEnum
+id: https://w3id.org/htan/tissue_sample_type_enum
 description: Enumeration for tissue sample types based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
 
 enums:
   TissueSampleTypeEnum:

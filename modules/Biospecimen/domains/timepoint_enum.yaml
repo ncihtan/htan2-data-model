@@ -1,26 +1,34 @@
 name: TimepointEnum
+id: https://w3id.org/htan/timepoint_enum
 description: Enumeration for timepoint values based on HTAN Phase 2 specification
-  - Complete list of all 895 official values
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
 enums:
   TimepointEnum:
     title: timepoint
     permissible_values:
-      0-6 hr:
+      "0-6 hr":
         description: 'The difference between the lowest and highest numerical values;
           the limits or scale of variation.: A number with no fractional part, including
           the negative and positive numbers as well as zero.::0-6: A unit measure
           of time equal to 3,600 seconds or 60 minutes. It is approximately 1/24 of
           a median day.'
-      0.5 hour (during infusion):
+      "0.5 hour (during infusion)":
         description: 'A number with no fractional part, including the negative and
           positive numbers as well as zero.::0.5: A unit measure of time equal to
           3,600 seconds or 60 minutes. It is approximately 1/24 of a median day.'
-      0.5 hr post dose:
+      "0.5 hr post dose":
         description: 0.5 hr post dose
       '1':
         description: 'The smallest natural number and quantity it denotes: a single
           entity, unit, or object.'
-      1 Month After Starting Study Agent:
+      "1 Month After Starting Study Agent":
         description: 'The smallest natural number and quantity it denotes: a single
           entity, unit, or object._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
@@ -29,7 +37,7 @@ enums:
           practice, or application that is tested in a clinical trial._Have a beginning,
           in a temporal, spatial, or evaluative sense; the point in space or time
           where something begins.'
-      1 Month After Visit 1:
+      "1 Month After Visit 1":
         description: 'The smallest natural number and quantity it denotes: a single
           entity, unit, or object._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
@@ -38,7 +46,7 @@ enums:
           to see some person or place or thing; it can cover a short or long period
           but refers to a non-permanent arrangement._The smallest natural number and
           quantity it denotes: a single entity, unit, or object.'
-      1 Month After Visit 2:
+      "1 Month After Visit 2":
         description: 'The smallest natural number and quantity it denotes: a single
           entity, unit, or object._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
@@ -47,198 +55,198 @@ enums:
           to see some person or place or thing; it can cover a short or long period
           but refers to a non-permanent arrangement._A natural number greater than
           1 and less than 3 and the quantity that it denotes: the sum of one and one.'
-      1 Week After Starting Study Agent:
+      "1 Week After Starting Study Agent":
         description: 'The smallest natural number and quantity it denotes: a single
           entity, unit, or object._Any period of seven consecutive days._Happening
           at a time subsequent to a reference time; later in time or order._A medical
           product, practice, or application that is tested in a clinical trial._Have
           a beginning, in a temporal, spatial, or evaluative sense; the point in space
           or time where something begins.'
-      1 hour (during infusion):
+      "1 hour (during infusion)":
         description: 'The smallest natural number and quantity it denotes: a single
           entity, unit, or object.: A unit measure of time equal to 3,600 seconds
           or 60 minutes. It is approximately 1/24 of a median day.'
-      1 hour after infusion start:
+      "1 hour after infusion start":
         description: 1 hour after infusion start
-      1 hour post start of Triapine (3AP) infusion (IV):
+      "1 hour post start of Triapine (3AP) infusion (IV)":
         description: 1 hour post start of Triapine (3AP) infusion (IV)
-      1 month post RT Completion:
+      "1 month post RT Completion":
         description: 1 month post RT Completion
-      1 year:
+      "1 year":
         description: 'The smallest natural number and quantity it denotes: a single
           entity, unit, or object.: A period of time that it takes for Earth to make
           a complete revolution around the sun, approximately 365 days; a specific
           one year period.'
-      1 year from start of treatment:
+      "1 year from start of treatment":
         description: 1 year from start of treatment
-      1 year post RT Completion:
+      "1 year post RT Completion":
         description: 1 year post RT Completion
-      1.5 h (during infusion):
+      "1.5 h (during infusion)":
         description: 1.5 h (during infusion)
-      1.5 hr post dose:
+      "1.5 hr post dose":
         description: 1.5 hr post dose
-      10 hours post dose:
+      "10 hours post dose":
         description: 10 hours post dose
-      10 months:
+      "10 months":
         description: 'A natural number greater than 9 and less than 11 and the quantity
           that it denotes: the sum of nine and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
           to one cycle of the moon''s phases, about 30 days or 4 weeks.'
-      10 weeks:
+      "10 weeks":
         description: 'A natural number greater than 9 and less than 11 and the quantity
           that it denotes: the sum of nine and one.: Any period of seven consecutive
           days.'
-      10 years:
+      "10 years":
         description: 'A natural number greater than 9 and less than 11 and the quantity
           that it denotes: the sum of nine and one.: A period of time that it takes
           for Earth to make a complete revolution around the sun, approximately 365
           days; a specific one year period.'
-      10-Week Post-Treatment FU:
+      "10-Week Post-Treatment FU":
         description: 10-Week Post-Treatment FU
-      104 weeks:
+      "104 weeks":
         description: 104 weeks
-      108 weeks:
+      "108 weeks":
         description: A natural number greater than 107 and less than 109 and the quantity
           that it denotes._Any period of seven consecutive days.
-      11 weeks:
+      "11 weeks":
         description: 'A natural number greater than 10 and less than 12 and the quantity
           that it denotes.: Any period of seven consecutive days.'
-      116 weeks:
+      "116 weeks":
         description: 116 weeks
       '12':
         description: 'A natural number greater than 11 and less than 13 and the quantity
           that it denotes.: A specific point in the time continuum, including those
           established relative to an event.'
-      12 hours post dose:
+      "12 hours post dose":
         description: 12 hours post dose
-      12 months:
+      "12 months":
         description: 'A natural number greater than 11 and less than 13 and the quantity
           that it denotes.: One of the 12 divisions of a year as determined by a calendar.
           It corresponds to the unit of time of approximately to one cycle of the
           moon''s phases, about 30 days or 4 weeks.'
-      12 months after RT:
+      "12 months after RT":
         description: 12 months after radiation therapy
-      12 months after randomization:
+      "12 months after randomization":
         description: 12 months after randomization
-      12 months after study entry:
+      "12 months after study entry":
         description: 12 months after study entry
-      12 months after surgery:
+      "12 months after surgery":
         description: 12 months after surgery
-      12 months from end of treatment:
+      "12 months from end of treatment":
         description: 12 months from end of treatment
-      12 months from start of ARM 1 or ARM 2 therapy:
+      "12 months from start of ARM 1 or ARM 2 therapy":
         description: 12 months from start of ARM 1 or ARM 2 therapy
-      12 months from start of treatment:
+      "12 months from start of treatment":
         description: 12 months from start of treatment
-      12 months post randomization:
+      "12 months post randomization":
         description: 12 Months Post Randomization
-      12 months post-LITT:
+      "12 months post-LITT":
         description: 12 months post Laser Interstitial Thermal Therapy
-      12 weeks:
+      "12 weeks":
         description: 'A natural number greater than 11 and less than 13 and the quantity
           that it denotes.: Any period of seven consecutive days.'
-      12 weeks after your first study visit:
+      "12 weeks after your first study visit":
         description: 12 weeks after your first study visit
-      12-20 hr:
+      "12-20 hr":
         description: 12-20 hr
-      12-Month Follow-up:
+      "12-Month Follow-up":
         description: 12-Month Follow-up
-      12-month visit:
+      "12-month visit":
         description: 'A natural number greater than 11 and less than 13 and the quantity
           that it denotes.: One of the 12 divisions of a year as determined by a calendar.
           It corresponds to the unit of time of approximately to one cycle of the
           moon''s phases, about 30 days or 4 weeks.: The act of going to see some
           person or place or thing; it can cover a short or long period but refers
           to a non-permanent arrangement.'
-      120 weeks:
+      "120 weeks":
         description: A natural number greater than 119 and less than 121 and the quantity
           that it denotes._Any period of seven consecutive days.
-      128 weeks:
+      "128 weeks":
         description: 128 weeks
-      13 Week:
+      "13 Week":
         description: A natural number greater than 12 and less than 14 and the quantity
           that it denotes._Any period of seven consecutive days.
-      13 months:
+      "13 months":
         description: A natural number greater than 12 and less than 14 and the quantity
           that it denotes._One of the 12 divisions of a year as determined by a calendar.
           It corresponds to the unit of time of approximately to one cycle of the
           moon's phases, about 30 days or 4 weeks.
-      13 weeks following randomization:
+      "13 weeks following randomization":
         description: 13 weeks following randomization
-      13 weeks post randomization:
+      "13 weeks post randomization":
         description: 13 weeks post randomization
-      13-20 hr:
+      "13-20 hr":
         description: 13-20 hr
-      132 weeks:
+      "132 weeks":
         description: 132 weeks
-      14 hours post dose:
+      "14 hours post dose":
         description: 14 hours post dose
-      140 weeks:
+      "140 weeks":
         description: 140 weeks
-      144 weeks:
+      "144 weeks":
         description: 144 weeks
-      15 minutes:
+      "15 minutes":
         description: 'A natural number greater than 14 and less than 16 and the quantity
           that it denotes.: A unit measure of time equal to 60 seconds.'
-      15 months:
+      "15 months":
         description: 15 months post therapeutic procedure
-      152 weeks:
+      "152 weeks":
         description: 152 weeks
-      156 weeks:
+      "156 weeks":
         description: 156 weeks
-      16 +/- 2 weeks following initiation of treatment:
+      "16 +/- 2 weeks following initiation of treatment":
         description: 16 +/- 2 weeks following initiation of treatment
-      16 hours post dose:
+      "16 hours post dose":
         description: 16 hours post dose
-      16 months:
+      "16 months":
         description: 'A natural number greater than 15 and less than 17 and the quantity
           that it denotes.: One of the 12 divisions of a year as determined by a calendar.
           It corresponds to the unit of time of approximately to one cycle of the
           moon''s phases, about 30 days or 4 weeks.'
-      164 weeks:
+      "164 weeks":
         description: 164 weeks
-      176 weeks:
+      "176 weeks":
         description: 176 weeks
-      178 weeks:
+      "178 weeks":
         description: 178 weeks
-      18 Months Post Randomization:
+      "18 Months Post Randomization":
         description: 18 Months Post Randomization
-      18 hours post dose:
+      "18 hours post dose":
         description: 18 hours post dose
-      18 months:
+      "18 months":
         description: A natural number greater than seventeen and less than nineteen
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      18 months after randomization:
+      "18 months after randomization":
         description: 18 months after randomization
-      18 months after study entry:
+      "18 months after study entry":
         description: 18 months after study entry
-      18 months after surgery:
+      "18 months after surgery":
         description: 18 months after surgery
-      18 months following randomization:
+      "18 months following randomization":
         description: 18 months following randomization
-      18 months from start of treatment:
+      "18 months from start of treatment":
         description: 18 months from start of treatment
-      18 months post-LITT:
+      "18 months post-LITT":
         description: 18 months post Laser Interstitial Thermal Therapy
-      18 weeks:
+      "18 weeks":
         description: A natural number greater than seventeen and less than nineteen
           and the quantity that it denotes._Any period of seven consecutive days.
-      18-Month Follow-up:
+      "18-Month Follow-up":
         description: 18-Month Follow-up
-      188 weeks:
+      "188 weeks":
         description: 188 weeks
-      19 months:
+      "19 months":
         description: A natural number greater than eighteen and less than twenty and
           the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      190 weeks:
+      "190 weeks":
         description: 190 weeks
-      1st Followup:
+      "1st Followup":
         description: 1st Followup
-      2 8 weeks post RT:
+      "2 8 weeks post RT":
         description: 'A natural number greater than 1 and less than 3 and the quantity
           that it denotes: the sum of one and one.: Used as a function word to indicate
           direction, purpose, or movement.: A natural number greater than 7 and less
@@ -249,7 +257,7 @@ enums:
           used as part of curative therapy and occasionally as a component of palliative
           treatment for cancer. Other uses include total body irradiation prior to
           transplantation.'
-      2 Months After Starting Study Agent:
+      "2 Months After Starting Study Agent":
         description: 'A natural number greater than 1 and less than 3 and the quantity
           that it denotes: the sum of one and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -258,7 +266,7 @@ enums:
           product, practice, or application that is tested in a clinical trial._Have
           a beginning, in a temporal, spatial, or evaluative sense; the point in space
           or time where something begins.'
-      2 Months After Visit 1:
+      "2 Months After Visit 1":
         description: 'A natural number greater than 1 and less than 3 and the quantity
           that it denotes: the sum of one and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -267,7 +275,7 @@ enums:
           of going to see some person or place or thing; it can cover a short or long
           period but refers to a non-permanent arrangement._The smallest natural number
           and quantity it denotes: a single entity, unit, or object.'
-      2 Months After Visit 2:
+      "2 Months After Visit 2":
         description: 'A natural number greater than 1 and less than 3 and the quantity
           that it denotes: the sum of one and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -277,148 +285,148 @@ enums:
           period but refers to a non-permanent arrangement._A natural number greater
           than 1 and less than 3 and the quantity that it denotes: the sum of one
           and one.'
-      2 days prior to registration:
+      "2 days prior to registration":
         description: 2 days prior to registration
-      2 h (during infusion):
+      "2 h (during infusion)":
         description: 2 h (during infusion)
-      2 hours after infusion start:
+      "2 hours after infusion start":
         description: 2 hours after infusion start
-      2 hours post dose:
+      "2 hours post dose":
         description: 2 hours post dose
-      2 months post-LITT:
+      "2 months post-LITT":
         description: 4 months post Laser Interstitial Thermal Therapy
-      2 weeks:
+      "2 weeks":
         description: 'A natural number greater than 1 and less than 3 and the quantity
           that it denotes: the sum of one and one.: Any period of seven consecutive
           days.'
-      2 year:
+      "2 year":
         description: 'A natural number greater than 1 and less than 3 and the quantity
           that it denotes: the sum of one and one._A period of time that it takes
           for Earth to make a complete revolution around the sun, approximately 365
           days; a specific one year period.'
-      2 years from start of treatment:
+      "2 years from start of treatment":
         description: 2 years from start of treatment
-      2 years post RT Completion:
+      "2 years post RT Completion":
         description: 2 years post RT Completion
-      2.5 h (during infusion):
+      "2.5 h (during infusion)":
         description: 2.5 h (during infusion)
-      20 hours post dose:
+      "20 hours post dose":
         description: 20 hours post dose
-      20 months:
+      "20 months":
         description: A natural number greater than nineteen and less than twenty-one
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      20 weeks:
+      "20 weeks":
         description: 20 weeks
-      20-24 hr:
+      "20-24 hr":
         description: 20-24 hr
-      200 weeks:
+      "200 weeks":
         description: 200 weeks
-      202 weeks:
+      "202 weeks":
         description: 202 weeks
-      21 months:
+      "21 months":
         description: 21 months post therapeutic procedure
-      21-24 hr:
+      "21-24 hr":
         description: 21-24 hr
-      212 weeks:
+      "212 weeks":
         description: 212 weeks
-      214 weeks:
+      "214 weeks":
         description: 214 weeks
-      22 hours post dose:
+      "22 hours post dose":
         description: 22 hours post dose
-      22 months:
+      "22 months":
         description: A natural number greater than twenty-one and less than twenty-three
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      224 weeks:
+      "224 weeks":
         description: 224 weeks
-      226 weeks:
+      "226 weeks":
         description: 226 weeks
-      236 weeks:
+      "236 weeks":
         description: 236 weeks
-      238 weeks:
+      "238 weeks":
         description: 238 weeks
       '24':
         description: A natural number greater than twenty-three and less than twenty-five
           and the quantity that it denotes.
-      24 hours post dose:
+      "24 hours post dose":
         description: 24 hours post dose
-      24 hours post start of T infusion:
+      "24 hours post start of T infusion":
         description: 24 hours post start of T infusion
-      24 hours post start of Triapine (3AP) infusion (IV):
+      "24 hours post start of Triapine (3AP) infusion (IV)":
         description: 24 hours post start of Triapine (3AP) infusion (IV)
-      24 months:
+      "24 months":
         description: A natural number greater than twenty-three and less than twenty-five
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      24 months after randomization:
+      "24 months after randomization":
         description: 24 months after randomization
-      24 months after surgery:
+      "24 months after surgery":
         description: 24 months after surgery
-      24 months following randomization:
+      "24 months following randomization":
         description: 24 months following randomization
-      24 months from end of treatment:
+      "24 months from end of treatment":
         description: 24 months from end of treatment
-      24 months from start of ARM 1 or ARM 2 therapy:
+      "24 months from start of ARM 1 or ARM 2 therapy":
         description: 24 months from start of ARM 1 or ARM 2 therapy
-      24 months post randomization:
+      "24 months post randomization":
         description: A period of time of twenty-four months._Happening at a time subsequent
           to a reference time; later in time or order._The allocation of individuals
           to groups by chance, especially in order to control the variables in an
           experiment.
-      24 months post-LITT:
+      "24 months post-LITT":
         description: 24 months post Laser Interstitial Thermal Therapy
-      24 months post-treatment initiation (+/- 2 weeks):
+      "24 months post-treatment initiation (+/- 2 weeks)":
         description: 24 months post-treatment initiation (+/- 2 weeks)
-      24 weeks:
+      "24 weeks":
         description: A natural number greater than twenty-three and less than twenty-five
           and the quantity that it denotes._Any period of seven consecutive days.
-      24 weeks after your first study visit:
+      "24 weeks after your first study visit":
         description: 24 weeks after your first study visit
-      24-Month Follow-up:
+      "24-Month Follow-up":
         description: 24-Month Follow-up
-      24-month visit:
+      "24-month visit":
         description: 'A natural number greater than twenty-three and less than twenty-five
           and the quantity that it denotes.: One of the 12 divisions of a year as
           determined by a calendar. It corresponds to the unit of time of approximately
           to one cycle of the moon''s phases, about 30 days or 4 weeks.: The act of
           going to see some person or place or thing; it can cover a short or long
           period but refers to a non-permanent arrangement.'
-      240 minutes (4 hours):
+      "240 minutes (4 hours)":
         description: 'A natural number greater than 3 and less than 5 and the quantity
           that it denotes: the sum of three and one.: A unit measure of time equal
           to 3,600 seconds or 60 minutes. It is approximately 1/24 of a median day.'
-      25 months:
+      "25 months":
         description: A natural number greater than twenty-four and less than twenty-six
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      25 weeks post randomization:
+      "25 weeks post randomization":
         description: 25 weeks post randomization
-      250 weeks:
+      "250 weeks":
         description: 250 weeks
-      26 Week:
+      "26 Week":
         description: A natural number greater than twenty-five and less than twenty-seven
           and the quantity that it denotes._Any period of seven consecutive days.
-      262 weeks:
+      "262 weeks":
         description: 262 weeks
-      27 months:
+      "27 months":
         description: 27 months post therapeutic procedure
-      274 weeks:
+      "274 weeks":
         description: 274 weeks
-      28 months:
+      "28 months":
         description: A natural number greater than twenty-seven and less than twenty-nine
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      286 weeks:
+      "286 weeks":
         description: 286 weeks
-      298 weeks:
+      "298 weeks":
         description: 298 weeks
-      2nd Follow Up:
+      "2nd Follow Up":
         description: 'Coming next after the first in position in space or time or
           degree or magnitude.: The process by which information about the health
           status of an individual is obtained after a study has officially closed;
@@ -427,7 +435,7 @@ enums:
       '3':
         description: 'A natural number greater than 2 and less than 4 and the quantity
           that it denotes: the sum of two and one.'
-      3 Months After Starting Study Agent:
+      "3 Months After Starting Study Agent":
         description: 'A natural number greater than 2 and less than 4 and the quantity
           that it denotes: the sum of two and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -436,7 +444,7 @@ enums:
           product, practice, or application that is tested in a clinical trial._Have
           a beginning, in a temporal, spatial, or evaluative sense; the point in space
           or time where something begins.'
-      3 Months After Visit 1:
+      "3 Months After Visit 1":
         description: 'A natural number greater than 2 and less than 4 and the quantity
           that it denotes: the sum of two and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -445,7 +453,7 @@ enums:
           of going to see some person or place or thing; it can cover a short or long
           period but refers to a non-permanent arrangement._The smallest natural number
           and quantity it denotes: a single entity, unit, or object.'
-      3 Months After Visit 2:
+      "3 Months After Visit 2":
         description: 'A natural number greater than 2 and less than 4 and the quantity
           that it denotes: the sum of two and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -455,23 +463,23 @@ enums:
           period but refers to a non-permanent arrangement._A natural number greater
           than 1 and less than 3 and the quantity that it denotes: the sum of one
           and one.'
-      3 Months Post Randomization:
+      "3 Months Post Randomization":
         description: 3 Months Post Randomization
-      3 h (during infusion):
+      "3 h (during infusion)":
         description: 3 h (during infusion)
-      3 hours post start of Triapine (3AP) infusion (IV):
+      "3 hours post start of Triapine (3AP) infusion (IV)":
         description: 3 hours post start of Triapine (3AP) infusion (IV)
-      3 hr post dose:
+      "3 hr post dose":
         description: 3 hr post dose
-      3 months:
+      "3 months":
         description: 3 MONTHS
-      3 months after RT:
+      "3 months after RT":
         description: 3 months after RT
-      3 months after cross-over:
+      "3 months after cross-over":
         description: 3 months after cross-over
-      3 months after randomization:
+      "3 months after randomization":
         description: 3 months after randomization
-      3 months after surgery:
+      "3 months after surgery":
         description: 'A natural number greater than 2 and less than 4 and the quantity
           that it denotes: the sum of two and one.: One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -481,67 +489,67 @@ enums:
           involving an incision and the removal or replacement of a diseased organ
           or tissue; of or relating to or involving or used in surgery or requiring
           or amenable to treatment by surgery.'
-      3 months from end of treatment:
+      "3 months from end of treatment":
         description: 3 months from end of treatment
-      3 months from start of treatment:
+      "3 months from start of treatment":
         description: 3 months from start of treatment
-      3 months post chemoradiation:
+      "3 months post chemoradiation":
         description: 'A natural number greater than 2 and less than 4 and the quantity
           that it denotes: the sum of two and one.: One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
           to one cycle of the moon''s phases, about 30 days or 4 weeks.: Happening
           at a time subsequent to a reference time; later in time or order.: Treatment
           that combines chemotherapy with radiation therapy.'
-      3 weeks after the start of RT:
+      "3 weeks after the start of RT":
         description: 3 weeks after the start of RT
-      3 year:
+      "3 year":
         description: 3 year
-      3 years:
+      "3 years":
         description: 3 Years
-      3 years post RT Completion:
+      "3 years post RT Completion":
         description: 3 years post RT Completion
-      3-4 weeks after last chemotherapy cycle:
+      "3-4 weeks after last chemotherapy cycle":
         description: 3-4 weeks after last chemotherapy cycle
-      3-5 weeks after surgery:
+      "3-5 weeks after surgery":
         description: 3-5 weeks after surgery
-      3-Month Follow-up:
+      "3-Month Follow-up":
         description: 3-Month Follow-up
-      3.5 h (during infusion):
+      "3.5 h (during infusion)":
         description: 3.5 h (during infusion)
-      30 minutes:
+      "30 minutes":
         description: 'A natural number greater than twenty-nine and less than thirty-one
           and the quantity that it denotes.: A unit measure of time equal to 60 seconds.'
-      30 minutes post dose:
+      "30 minutes post dose":
         description: 30 minutes post dose
-      30 months:
+      "30 months":
         description: 30 MONTHS
-      30 months after surgery:
+      "30 months after surgery":
         description: 30 months after surgery
-      30 months from start of treatment:
+      "30 months from start of treatment":
         description: 30 months from start of treatment
-      30 months post-treatment initiation (+ 6 months):
+      "30 months post-treatment initiation (+ 6 months)":
         description: 30 months post-treatment initiation (+ 6 months)
-      30 months post-treatment initiation (+/- 6 months):
+      "30 months post-treatment initiation (+/- 6 months)":
         description: 30 months post-treatment initiation (+/- 6 months)
-      30-Month Follow-up:
+      "30-Month Follow-up":
         description: 30-Month Follow-up
-      31 months:
+      "31 months":
         description: A natural number greater than thirty and less than thirty-two
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      310 weeks:
+      "310 weeks":
         description: 310 weeks
-      32 months:
+      "32 months":
         description: The natural number greater than thirty-one and less than thirty-three
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      32 weeks:
+      "32 weeks":
         description: 32 weeks
-      33 months:
+      "33 months":
         description: 33 months post therapeutic procedure
-      34 months:
+      "34 months":
         description: The natural number greater than thirty-three and less than thirty-five
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
@@ -549,31 +557,31 @@ enums:
       '36':
         description: The natural number greater than thirty-five and less than thirty-seven
           and the quantity that it denotes.
-      36 months:
+      "36 months":
         description: 36 MONTHS
-      36 months after surgery:
+      "36 months after surgery":
         description: 36 months after surgery
-      36 months following randomization:
+      "36 months following randomization":
         description: 36 months following randomization
-      36 months post randomization:
+      "36 months post randomization":
         description: 36 Months Post Randomization
-      36 weeks:
+      "36 weeks":
         description: The natural number greater than thirty-five and less than thirty-seven
           and the quantity that it denotes._Any period of seven consecutive days.
-      36-Month Follow-up:
+      "36-Month Follow-up":
         description: 36-Month Follow-up
-      36-month visit (Clinical Follow-Up):
+      "36-month visit (Clinical Follow-Up)":
         description: 36-month visit (Clinical Follow-Up)
-      37 months:
+      "37 months":
         description: The natural number greater than thirty-six and less than thirty-eight
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      39 Week:
+      "39 Week":
         description: 39 Week
-      39 months:
+      "39 months":
         description: 39 months post therapeutic procedure
-      4 Months After Starting Study Agent:
+      "4 Months After Starting Study Agent":
         description: 'A natural number greater than 3 and less than 5 and the quantity
           that it denotes: the sum of three and one._One of the 12 divisions of a
           year as determined by a calendar. It corresponds to the unit of time of
@@ -582,7 +590,7 @@ enums:
           product, practice, or application that is tested in a clinical trial._Have
           a beginning, in a temporal, spatial, or evaluative sense; the point in space
           or time where something begins.'
-      4 Months After Visit 1:
+      "4 Months After Visit 1":
         description: 'A natural number greater than 3 and less than 5 and the quantity
           that it denotes: the sum of three and one._One of the 12 divisions of a
           year as determined by a calendar. It corresponds to the unit of time of
@@ -591,7 +599,7 @@ enums:
           of going to see some person or place or thing; it can cover a short or long
           period but refers to a non-permanent arrangement._The smallest natural number
           and quantity it denotes: a single entity, unit, or object.'
-      4 Months After Visit 2:
+      "4 Months After Visit 2":
         description: 'A natural number greater than 3 and less than 5 and the quantity
           that it denotes: the sum of three and one._One of the 12 divisions of a
           year as determined by a calendar. It corresponds to the unit of time of
@@ -601,24 +609,24 @@ enums:
           period but refers to a non-permanent arrangement._A natural number greater
           than 1 and less than 3 and the quantity that it denotes: the sum of one
           and one.'
-      4 h (during infusion):
+      "4 h (during infusion)":
         description: 4 h (during infusion)
-      4 hours post dose:
+      "4 hours post dose":
         description: 4 hours post dose
-      4 months:
+      "4 months":
         description: 'A natural number greater than 3 and less than 5 and the quantity
           that it denotes: the sum of three and one.: One of the 12 divisions of a
           year as determined by a calendar. It corresponds to the unit of time of
           approximately to one cycle of the moon''s phases, about 30 days or 4 weeks.'
-      4 months post-LITT:
+      "4 months post-LITT":
         description: 4 months post Laser Interstitial Thermal Therapy
-      4 weeks:
+      "4 weeks":
         description: 'A natural number greater than 3 and less than 5 and the quantity
           that it denotes: the sum of three and one.: Any period of seven consecutive
           days.'
-      4 weeks post-surgery:
+      "4 weeks post-surgery":
         description: 4 weeks post-surgery
-      4 years after surgery:
+      "4 years after surgery":
         description: 'A natural number greater than 3 and less than 5 and the quantity
           that it denotes: the sum of three and one.: A period of time that it takes
           for Earth to make a complete revolution around the sun, approximately 365
@@ -628,62 +636,62 @@ enums:
           removal or replacement of a diseased organ or tissue; of or relating to
           or involving or used in surgery or requiring or amenable to treatment by
           surgery.'
-      4-5 Years:
+      "4-5 Years":
         description: 4-5 years
-      4-6 weeks after surgery:
+      "4-6 weeks after surgery":
         description: 4-6 weeks after surgery
-      4-6 weeks post RT:
+      "4-6 weeks post RT":
         description: 4-6 weeks post RT
-      4-6 weeks post chemoradiation:
+      "4-6 weeks post chemoradiation":
         description: 4-6 weeks post chemoradiation
-      40 months:
+      "40 months":
         description: A natural number greater than thirty-nine and less than forty-one
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      42 months:
+      "42 months":
         description: The natural number greater than forrty-one and less than forty-three
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      43 months:
+      "43 months":
         description: A natural number greater than forty-two and less than forty-four
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      44 weeks:
+      "44 weeks":
         description: 44 weeks
-      45 months:
+      "45 months":
         description: 45 months post therapeutic procedure
-      46 months:
+      "46 months":
         description: A natural number greater than forty five and less than forty
           seven and the quantity that it denotes._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
           to one cycle of the moon's phases, about 30 days or 4 weeks.
-      48 months:
+      "48 months":
         description: 'A number with no fractional part, including the negative and
           positive numbers as well as zero.::48: One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
           to one cycle of the moon''s phases, about 30 days or 4 weeks.'
-      48 months following randomization:
+      "48 months following randomization":
         description: 48 months following randomization
-      48 months post randomization:
+      "48 months post randomization":
         description: 48 Months Post Randomization
-      48 weeks:
+      "48 weeks":
         description: The natural number greater than forty-seven and less than forty-nine
           and the quantity that it denotes._Any period of seven consecutive days.
-      48 weeks (+/- 4 weeks) following initiation of protocol therapy:
+      "48 weeks (+/- 4 weeks) following initiation of protocol therapy":
         description: 48 weeks (+/- 4 weeks) following initiation of protocol therapy
-      48-month visit (Clinical Follow-up):
+      "48-month visit (Clinical Follow-up)":
         description: 48-month visit (Clinical Follow-up)
-      49 months:
+      "49 months":
         description: A natural number greater than forty-eight and less than fifty
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      49 weeks post randomization:
+      "49 weeks post randomization":
         description: 49 weeks post randomization
-      5 Months After Starting Study Agent:
+      "5 Months After Starting Study Agent":
         description: 'A natural number greater than 4 and less than 6 and the quantity
           that it denotes: the sum of four and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -692,7 +700,7 @@ enums:
           product, practice, or application that is tested in a clinical trial._Have
           a beginning, in a temporal, spatial, or evaluative sense; the point in space
           or time where something begins.'
-      5 Months After Visit 1:
+      "5 Months After Visit 1":
         description: 'A natural number greater than 4 and less than 6 and the quantity
           that it denotes: the sum of four and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -701,7 +709,7 @@ enums:
           of going to see some person or place or thing; it can cover a short or long
           period but refers to a non-permanent arrangement._The smallest natural number
           and quantity it denotes: a single entity, unit, or object.'
-      5 Months After Visit 2:
+      "5 Months After Visit 2":
         description: 'A natural number greater than 4 and less than 6 and the quantity
           that it denotes: the sum of four and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -711,26 +719,26 @@ enums:
           period but refers to a non-permanent arrangement._A natural number greater
           than 1 and less than 3 and the quantity that it denotes: the sum of one
           and one.'
-      5 hours post start of Triapine (3AP) infusion (IV):
+      "5 hours post start of Triapine (3AP) infusion (IV)":
         description: 5 hours post start of Triapine (3AP) infusion (IV)
-      5 hr post dose:
+      "5 hr post dose":
         description: 5 hr post dose
-      5 minutes:
+      "5 minutes":
         description: 'A natural number greater than 4 and less than 6 and the quantity
           that it denotes: the sum of four and one.: A unit measure of time equal
           to 60 seconds.'
-      5 weeks:
+      "5 weeks":
         description: 'A natural number greater than 4 and less than 6 and the quantity
           that it denotes: the sum of four and one.: Any period of seven consecutive
           days.'
-      5 weeks after the start of RT:
+      "5 weeks after the start of RT":
         description: 5 weeks after the start of RT
-      5 years:
+      "5 years":
         description: 'A number with no fractional part, including the negative and
           positive numbers as well as zero.::5: A period of time that it takes for
           Earth to make a complete revolution around the sun, approximately 365 days;
           a specific one year period.'
-      5 years after surgery:
+      "5 years after surgery":
         description: 'A natural number greater than 4 and less than 6 and the quantity
           that it denotes: the sum of four and one.: A period of time that it takes
           for Earth to make a complete revolution around the sun, approximately 365
@@ -740,25 +748,25 @@ enums:
           removal or replacement of a diseased organ or tissue; of or relating to
           or involving or used in surgery or requiring or amenable to treatment by
           surgery.'
-      51 months:
+      "51 months":
         description: 51 months post therapeutic procedure
-      52 Week:
+      "52 Week":
         description: 52 Week
-      54 months:
+      "54 months":
         description: The natural number greater than fifty-three and less than fifty-five
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      55 weeks following randomization:
+      "55 weeks following randomization":
         description: 55 weeks following randomization
-      56 weeks:
+      "56 weeks":
         description: 56 weeks
-      57 months:
+      "57 months":
         description: 57 months post therapeutic procedure
       '6':
         description: 'A natural number greater than 5 and less than 7 and the quantity
           that it denotes: the sum of five and one.'
-      6 Months After Starting Study Agent:
+      "6 Months After Starting Study Agent":
         description: 'A natural number greater than 5 and less than 7 and the quantity
           that it denotes: the sum of five and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -767,7 +775,7 @@ enums:
           product, practice, or application that is tested in a clinical trial._Have
           a beginning, in a temporal, spatial, or evaluative sense; the point in space
           or time where something begins.'
-      6 Months After Visit 1:
+      "6 Months After Visit 1":
         description: 'A natural number greater than 5 and less than 7 and the quantity
           that it denotes: the sum of five and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -776,7 +784,7 @@ enums:
           of going to see some person or place or thing; it can cover a short or long
           period but refers to a non-permanent arrangement._The smallest natural number
           and quantity it denotes: a single entity, unit, or object.'
-      6 Months After Visit 2:
+      "6 Months After Visit 2":
         description: 'A natural number greater than 5 and less than 7 and the quantity
           that it denotes: the sum of five and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
@@ -786,31 +794,31 @@ enums:
           period but refers to a non-permanent arrangement._A natural number greater
           than 1 and less than 3 and the quantity that it denotes: the sum of one
           and one.'
-      6 Months Post Randomization:
+      "6 Months Post Randomization":
         description: 6 Months Post Randomization
-      6 hours post dose:
+      "6 hours post dose":
         description: 6 hours post dose
-      6 hours post start of Triapine (3AP) infusion (IV):
+      "6 hours post start of Triapine (3AP) infusion (IV)":
         description: 6 hours post start of Triapine (3AP) infusion (IV)
-      6 months:
+      "6 months":
         description: 6 MONTHS
-      6 months after RT:
+      "6 months after RT":
         description: 6 months of radiation therapy
-      6 months after cross-over:
+      "6 months after cross-over":
         description: 6 months after cross-over
-      6 months after randomization:
+      "6 months after randomization":
         description: 6 months after randomization
-      6 months after surgery:
+      "6 months after surgery":
         description: 6 months after surgery
-      6 months from end of treatment:
+      "6 months from end of treatment":
         description: 6 months from end of treatment
-      6 months post RT Completion:
+      "6 months post RT Completion":
         description: 6 months post RT Completion
-      6 months post-LITT:
+      "6 months post-LITT":
         description: 6 months post Laser Interstitial Thermal Therapy
-      6 weeks after start of study therapy:
+      "6 weeks after start of study therapy":
         description: 6 weeks after start of study therapy
-      6 weeks after surgery:
+      "6 weeks after surgery":
         description: 'A natural number greater than 5 and less than 7 and the quantity
           that it denotes: the sum of five and one.: Any period of seven consecutive
           days.: Happening at a time subsequent to a reference time; later in time
@@ -818,107 +826,107 @@ enums:
           instrumental means, often involving an incision and the removal or replacement
           of a diseased organ or tissue; of or relating to or involving or used in
           surgery or requiring or amenable to treatment by surgery.'
-      6 weeks after your first study visit:
+      "6 weeks after your first study visit":
         description: 6 weeks after your first study visit
-      6-12 hr:
+      "6-12 hr":
         description: 6-12 hr
-      6-8 weeks post chemo/RT:
+      "6-8 weeks post chemo/RT":
         description: 6-8 weeks post chemo/RT
-      6-Month Follow-up:
+      "6-Month Follow-up":
         description: 6-Month Follow-up
-      60 minutes (1 hour):
+      "60 minutes (1 hour)":
         description: 'A natural number greater than fifty-nine and less than sixty-one
           and the quantity that it denotes.: A unit measure of time equal to 60 seconds.'
-      60 months:
+      "60 months":
         description: 'A number with no fractional part, including the negative and
           positive numbers as well as zero.::60: One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
           to one cycle of the moon''s phases, about 30 days or 4 weeks.'
-      60 months after RT:
+      "60 months after RT":
         description: 60 months after radiation therapy
-      60 months following randomization:
+      "60 months following randomization":
         description: 60 months following randomization
-      60 months post randomization:
+      "60 months post randomization":
         description: 60 Months Post Randomization
-      60 months post-treatment initiation (+/- 12 months):
+      "60 months post-treatment initiation (+/- 12 months)":
         description: 60 months post-treatment initiation (+/- 12 months)
-      60 weeks:
+      "60 weeks":
         description: A natural number greater than fifty-nine and less than sixty-one
           and the quantity that it denotes._Any period of seven consecutive days.
-      68 weeks:
+      "68 weeks":
         description: 68 weeks
-      69 months:
+      "69 months":
         description: 69 months post therapeutic procedure
-      7 hours post start of Triapine (3AP) infusion (IV):
+      "7 hours post start of Triapine (3AP) infusion (IV)":
         description: 7 hours post start of Triapine (3AP) infusion (IV)
-      7 months:
+      "7 months":
         description: 'A natural number greater than 6 and less than 8 and the quantity
           that it denotes: the sum of six and one._One of the 12 divisions of a year
           as determined by a calendar. It corresponds to the unit of time of approximately
           to one cycle of the moon''s phases, about 30 days or 4 weeks.'
-      7 weeks:
+      "7 weeks":
         description: 'A natural number greater than 6 and less than 8 and the quantity
           that it denotes: the sum of six and one.: Any period of seven consecutive
           days.'
-      7-12 hr:
+      "7-12 hr":
         description: 7-12 hr
-      72 months:
+      "72 months":
         description: The natural number greater than seventy-one and less than seventy-three
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      72 weeks:
+      "72 weeks":
         description: The natural number greater than seventy-one and less than seventy-three
           and the quantity that it denotes._Any period of seven consecutive days.
-      8 +/- 1 weeks following initiation of treatment:
+      "8 +/- 1 weeks following initiation of treatment":
         description: 8 +/- 1 weeks following initiation of treatment
-      8 hours post dose:
+      "8 hours post dose":
         description: 8 hours post dose
-      8 months:
+      "8 months":
         description: 'A natural number greater than 7 and less than 9 and the quantity
           that it denotes: the sum of seven and one._One of the 12 divisions of a
           year as determined by a calendar. It corresponds to the unit of time of
           approximately to one cycle of the moon''s phases, about 30 days or 4 weeks.'
-      8 weeks:
+      "8 weeks":
         description: 'A natural number greater than 7 and less than 9 and the quantity
           that it denotes: the sum of seven and one.: Any period of seven consecutive
           days.'
-      80 weeks:
+      "80 weeks":
         description: 80 weeks
-      84 months:
+      "84 months":
         description: The natural number greater than eighty-three and less than eighty-five
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      84 weeks:
+      "84 weeks":
         description: The natural number greater than eighty-three and less than eighty-five
           and the quantity that it denotes._Any period of seven consecutive days.
-      9 - 12 months post-treatment initiation:
+      "9 - 12 months post-treatment initiation":
         description: 9 - 12 months post-treatment initiation
-      9 months:
+      "9 months":
         description: 9 MONTHS
-      9 months after cross-over:
+      "9 months after cross-over":
         description: 9 months after cross-over
-      9 months after randomization:
+      "9 months after randomization":
         description: 9 months after randomization
-      9 months from baseline:
+      "9 months from baseline":
         description: 9 MONTHS FROM BASELINE
-      9 months from start of ARM 1 or ARM 2 therapy:
+      "9 months from start of ARM 1 or ARM 2 therapy":
         description: 9 months from start of ARM 1 or ARM 2 therapy
-      9 months post-treatment initiation (+/- 3 months):
+      "9 months post-treatment initiation (+/- 3 months)":
         description: 9 months post-treatment initiation (+/- 3 months)
-      9 weeks:
+      "9 weeks":
         description: 'A natural number greater than 8 and less than 10 and the quantity
           that it denotes: the sum of nine and one.: Any period of seven consecutive
           days.'
-      92 weeks:
+      "92 weeks":
         description: 92 weeks
-      96 months:
+      "96 months":
         description: A natural number greater than ninety-five and less than ninety-seven
           and the quantity that it denotes._One of the 12 divisions of a year as determined
           by a calendar. It corresponds to the unit of time of approximately to one
           cycle of the moon's phases, about 30 days or 4 weeks.
-      96 weeks:
+      "96 weeks":
         description: A natural number greater than ninety-five and less than ninety-seven
           and the quantity that it denotes._Any period of seven consecutive days.
       A:

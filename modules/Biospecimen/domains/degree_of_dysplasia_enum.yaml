@@ -1,5 +1,12 @@
 name: DegreeOfDysplasiaEnum
+id: https://w3id.org/htan/degree_of_dysplasia_enum
 description: Enumeration for degree of dysplasia based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: htan
 
 enums:
   DegreeOfDysplasiaEnum:

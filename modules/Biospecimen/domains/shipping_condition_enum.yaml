@@ -1,14 +1,22 @@
 name: ShippingConditionEnum
+id: https://w3id.org/htan/shipping_condition_enum
 description: Enumeration for shipping condition types based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
 
 enums:
   ShippingConditionEnum:
     title: shipping_condition_type
     permissible_values:
       "Ambient Pack":
-        description: In or of the immediately surrounding area; relating to the immediate surroundings of something.: Performance of the packaging part of the manufacturing process.
+        description: "In or of the immediately surrounding area; relating to the immediate surroundings of something: Performance of the packaging part of the manufacturing process."
       "Cold Pack":
-        description: Having less heat energy than the object against which it is compared; the absence of heat.: Performance of the packaging part of the manufacturing process.
+        description: "Having less heat energy than the object against which it is compared; the absence of heat: Performance of the packaging part of the manufacturing process."
       "Dry Ice":
         description: A solid form of carbon dioxide used as a refrigerant. At temperatures above -78.5 degrees C and ambient pressure, it changes directly to a gas as it absorbs heat.
       "Ice Pack":
@@ -18,9 +26,9 @@ enums:
       "Not recorded":
         description: The information was not captured or stored.
       "Not shipped":
-        description: An operation in which a term denies or inverts the meaning of another term or construction.: The act or business of transporting goods.
+        description: "An operation in which a term denies or inverts the meaning of another term or construction: The act or business of transporting goods."
       "Other shipping environment":
-        description: Different than the one(s) previously specified or mentioned.: The act or business of transporting goods.: The totality of surrounding conditions.
+        description: "Different than the one(s) previously specified or mentioned: The act or business of transporting goods: The totality of surrounding conditions."
       "Specimen at Room Temperature":
         description: A specimen that has been subjected to and adjusted to the average ambient temperature of a room, usually considered to be around 20 degrees C (68 degrees F).
       "Unknown":

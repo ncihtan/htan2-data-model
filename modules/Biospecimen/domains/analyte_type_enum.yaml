@@ -1,5 +1,12 @@
 name: AnalyteTypeEnum
+id: https://w3id.org/htan/analyte_type_enum
 description: Enumeration for analyte types based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: htan
 
 enums:
   AnalyteTypeEnum:

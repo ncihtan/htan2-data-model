@@ -1,5 +1,12 @@
 name: PreservationMediumEnum
+id: https://w3id.org/htan/preservation_medium_enum
 description: Enumeration for preservation mediums based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: htan
 
 enums:
   PreservationMediumEnum:

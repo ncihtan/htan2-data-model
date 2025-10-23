@@ -1,5 +1,13 @@
 name: SlicingMethodEnum
+id: https://w3id.org/htan/slicing_method_enum
 description: Enumeration for slicing methods based on HTAN Phase 2 specification
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
 
 enums:
   SlicingMethodEnum:
