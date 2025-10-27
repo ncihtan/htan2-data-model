@@ -1,0 +1,196 @@
+{
+  "$id": "https://w3id.org/htan/clinical/followup",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "PROGRESSION_OR_RECURRENCE": {
+            "const": "Yes"
+          }
+        },
+        "required": [
+          "PROGRESSION_OR_RECURRENCE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE": {}
+        },
+        "required": [
+          "PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "PROGRESSION_OR_RECURRENCE": {
+            "const": "Yes"
+          }
+        },
+        "required": [
+          "PROGRESSION_OR_RECURRENCE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "PROGRESSION_OR_RECURRENCE_TYPE": {}
+        },
+        "required": [
+          "PROGRESSION_OR_RECURRENCE_TYPE"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "PROGRESSION_OR_RECURRENCE": {
+            "const": "Yes"
+          }
+        },
+        "required": [
+          "PROGRESSION_OR_RECURRENCE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "EVIDENCE_OF_RECURRENCE_TYPE": {}
+        },
+        "required": [
+          "EVIDENCE_OF_RECURRENCE_TYPE"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "PROGRESSION_OR_RECURRENCE": {
+            "const": "Yes"
+          }
+        },
+        "required": [
+          "PROGRESSION_OR_RECURRENCE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE": {}
+        },
+        "required": [
+          "AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE"
+        ]
+      }
+    }
+  ],
+  "description": "Clinical follow-up information",
+  "properties": {
+    "AGE_IN_DAYS_AT_FOLLOWUP": {
+      "description": "Age in days at follow-up"
+    },
+    "AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE": {
+      "description": "Required when PROGRESSION_OR_RECURRENCE is Yes"
+    },
+    "DISEASE_RESPONSE": {
+      "description": "",
+      "enum": [
+        "Complete Response",
+        "No Evidence of Disease",
+        "No Response",
+        "Not Applicable",
+        "Not Evaluable",
+        "Not Reported",
+        "Partial Response",
+        "Persistent Disease",
+        "Progressive Disease",
+        "Stable Disease",
+        "Unknown"
+      ],
+      "title": "DiseaseResponseEnum",
+      "type": "string"
+    },
+    "ECOG_PERFORMANCE_STATUS": {
+      "description": "",
+      "enum": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "title": "ECOGPerformanceStatusEnum",
+      "type": "string"
+    },
+    "EVIDENCE_OF_RECURRENCE_TYPE": {
+      "description": "",
+      "enum": [
+        "Clinical",
+        "Imaging",
+        "Laboratory",
+        "Not Reported",
+        "Pathology",
+        "Unknown"
+      ],
+      "title": "EvidenceOfRecurrenceTypeEnum",
+      "type": "string"
+    },
+    "MENOPAUSE_STATUS": {
+      "description": "",
+      "enum": [
+        "Menopausal",
+        "Not_Applicable",
+        "Not_Reported",
+        "Perimenopausal",
+        "Postmenopausal",
+        "Postmenopausal_Natural",
+        "Postmenopausal_Surgical",
+        "Premenopausal",
+        "Premenopausal_Perimenopausal",
+        "Unknown"
+      ],
+      "title": "MenopauseStatusEnum",
+      "type": "string"
+    },
+    "PROGRESSION_OR_RECURRENCE": {
+      "description": "",
+      "enum": [
+        "Censored",
+        "No",
+        "Not Allowed to Collect",
+        "Not Applicable",
+        "Not Reported",
+        "Unknown",
+        "Yes"
+      ],
+      "title": "ProgressionOrRecurrenceEnum",
+      "type": "string"
+    },
+    "PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE": {
+      "description": "Required when PROGRESSION_OR_RECURRENCE is Yes"
+    },
+    "PROGRESSION_OR_RECURRENCE_TYPE": {
+      "description": "",
+      "enum": [
+        "Biochemical",
+        "Distant",
+        "Local",
+        "Locoregional",
+        "Not Reported",
+        "Regional",
+        "Unknown"
+      ],
+      "title": "ProgressionTypeEnum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "AGE_IN_DAYS_AT_FOLLOWUP",
+    "PROGRESSION_OR_RECURRENCE",
+    "DISEASE_RESPONSE",
+    "ECOG_PERFORMANCE_STATUS"
+  ],
+  "title": "ClinicalFollowUp",
+  "type": "object"
+}
