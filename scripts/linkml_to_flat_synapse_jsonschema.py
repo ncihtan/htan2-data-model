@@ -286,9 +286,15 @@ def main():
         base = Path(args.linkml_yaml).stem
         output_filename = f"{base}.flat.schema.json"
 
-    output_dir = Path(args.output_dir)
-    output_dir.mkdir(exist_ok=True)
-    output_file = output_dir / output_filename
+    if args.output:
+        # If output is specified, use it directly
+        output_file = Path(args.output)
+        output_file.parent.mkdir(parents=True, exist_ok=True)
+    else:
+        # If no output specified, use output_dir
+        output_dir = Path(args.output_dir)
+        output_dir.mkdir(exist_ok=True)
+        output_file = output_dir / output_filename
     tmp_json = output_file.with_suffix(output_file.suffix + ".tmp.json")
 
     # 1. Generate JSON Schema using Python library
