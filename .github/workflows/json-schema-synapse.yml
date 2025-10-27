@@ -72,8 +72,7 @@ jobs:
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/demographics.yaml" \
           --class-name "Demographics" \
-          --output "JSON_Schemas/HTAN.Demographics-${{ steps.version.outputs.version }}-schema.json" \
-          --output-dir ""
+          --output "JSON_Schemas/HTAN.Demographics-${{ steps.version.outputs.version }}-schema.json"
         
         # Diagnosis
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
