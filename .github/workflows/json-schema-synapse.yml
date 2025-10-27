@@ -149,6 +149,9 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
+        # Checkout main branch to commit schemas
+        git checkout main
+        
         # Add the versioned schema directory
         git add JSON_Schemas/${{ steps.version.outputs.version }}/
         
