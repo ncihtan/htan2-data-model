@@ -62,8 +62,8 @@ jobs:
     
     - name: Generate JSON Schemas
       run: |
-        # Create output directory
-        mkdir -p JSON_Schemas
+        # Create versioned output directory
+        mkdir -p JSON_Schemas/${{ steps.version.outputs.version }}
         
         # Generate schemas for individual Clinical domains
         echo "Generating Clinical domain schemas..."
@@ -72,55 +72,55 @@ jobs:
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/demographics.yaml" \
           --class-name "Demographics" \
-          --output "JSON_Schemas/HTAN.Demographics-${{ steps.version.outputs.version }}-schema.json"
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.Demographics-${{ steps.version.outputs.version }}-schema.json"
         
         # Diagnosis
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/diagnosis.yaml" \
           --class-name "Diagnosis" \
-          --output "JSON_Schemas/HTAN.Diagnosis-${{ steps.version.outputs.version }}-schema.json"
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.Diagnosis-${{ steps.version.outputs.version }}-schema.json"
         
         # Therapy
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/therapy.yaml" \
           --class-name "Therapy" \
-          --output "JSON_Schemas/HTAN.Therapy-${{ steps.version.outputs.version }}-schema.json"
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.Therapy-${{ steps.version.outputs.version }}-schema.json"
         
         # FollowUp
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/followup.yaml" \
           --class-name "FollowUp" \
-          --output "JSON_Schemas/HTAN.FollowUp-${{ steps.version.outputs.version }}-schema.json"
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.FollowUp-${{ steps.version.outputs.version }}-schema.json"
         
         # MolecularTest
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/molecular.yaml" \
           --class-name "MolecularTest" \
-          --output "JSON_Schemas/HTAN.MolecularTest-${{ steps.version.outputs.version }}-schema.json"
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MolecularTest-${{ steps.version.outputs.version }}-schema.json"
         
         # Exposure
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/exposure.yaml" \
           --class-name "Exposure" \
-          --output "JSON_Schemas/HTAN.Exposure-${{ steps.version.outputs.version }}-schema.json"
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.Exposure-${{ steps.version.outputs.version }}-schema.json"
         
         # FamilyHistory
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/family_history.yaml" \
           --class-name "FamilyHistory" \
-          --output "JSON_Schemas/HTAN.FamilyHistory-${{ steps.version.outputs.version }}-schema.json"
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.FamilyHistory-${{ steps.version.outputs.version }}-schema.json"
         
         # VitalStatus
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/Clinical/domains/vital_status.yaml" \
           --class-name "VitalStatus" \
-          --output "JSON_Schemas/HTAN.VitalStatus-${{ steps.version.outputs.version }}-schema.json"
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.VitalStatus-${{ steps.version.outputs.version }}-schema.json"
         
         # WES Level 1 (file-based schema)
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/WES/domains/level_1.yaml" \
           --class-name "BulkWESLevel1" \
-          --output "JSON_Schemas/HTAN.BulkWESLevel1-${{ steps.version.outputs.version }}-schema.json"
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.BulkWESLevel1-${{ steps.version.outputs.version }}-schema.json"
     
     - name: Register schemas in Synapse
       env:
@@ -128,7 +128,7 @@ jobs:
         SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
       run: |
         # Register each generated schema
-        for schema_file in JSON_Schemas/*.json; do
+        for schema_file in JSON_Schemas/${{ steps.version.outputs.version }}/*.json; do
           if [ -f "$schema_file" ]; then
             schema_name=$(basename "$schema_file" .json)
             echo "Processing schema: $schema_name"
@@ -161,6 +161,9 @@ jobs:
         
         This release includes updated JSON schemas for the HTAN2 data model.
         
+        ### Schema Organization:
+        All schemas are organized in versioned directories: \`JSON_Schemas/${{ steps.version.outputs.version }}/\`
+        
         ### Generated Schemas:
         - Demographics Schema
         - Diagnosis Schema
@@ -182,7 +185,7 @@ jobs:
         GH_TOKEN: ${{ github.token }}
       run: |
         # Upload each schema file as a release asset
-        for schema_file in JSON_Schemas/*.json; do
+        for schema_file in JSON_Schemas/${{ steps.version.outputs.version }}/*.json; do
           if [ -f "$schema_file" ]; then
             echo "Uploading $schema_file as release asset..."
             gh release upload ${{ github.ref_name }} "$schema_file"
