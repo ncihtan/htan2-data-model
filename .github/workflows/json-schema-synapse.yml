@@ -140,6 +140,26 @@ jobs:
           fi
         done
     
+    - name: Commit schemas to repository
+      if: startsWith(github.ref, 'refs/tags/')
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        # Configure git
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Add the versioned schema directory
+        git add JSON_Schemas/${{ steps.version.outputs.version }}/
+        
+        # Check if there are changes to commit
+        if git diff --staged --quiet; then
+          echo "No schema changes to commit"
+        else
+          git commit -m "feat: add JSON schemas for release ${{ steps.version.outputs.version }}"
+          git push origin main
+        fi
+    
     # Schema binding has been moved to htan2-project-setup repository
     # This workflow handles schema generation and registration only
     
