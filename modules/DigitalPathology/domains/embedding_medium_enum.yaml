@@ -1,0 +1,62 @@
+name: EmbeddingMediumEnum
+id: https://w3id.org/htan/embedding_medium_enum
+description: Enumeration of embedding medium types
+
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: htan
+
+enums:
+  EmbeddingMedium:
+    permissible_values:
+      "Cryopreserved":
+        description: Cryopreserved embedding medium
+      "Cytospin Slide":
+        description: Cytospin Slide embedding medium
+      "EDTA":
+        description: EDTA embedding medium
+      "FFPE":
+        description: Formalin-Fixed Paraffin-Embedded embedding medium
+      "Formalin Fixed - Buffered":
+        description: Formalin Fixed - Buffered embedding medium
+      "Formalin Fixed - Unbuffered":
+        description: Formalin Fixed - Unbuffered embedding medium
+      "Formalin Fixed Tissue":
+        description: Formalin Fixed Tissue embedding medium
+      "Fresh":
+        description: Fresh embedding medium
+      "Fresh Dissociated":
+        description: Fresh Dissociated embedding medium
+      "Fresh Dissociated and Single Cell Sorted":
+        description: Fresh Dissociated and Single Cell Sorted embedding medium
+      "Fresh Dissociated and Single Cell Sorted into Plates":
+        description: Fresh Dissociated and Single Cell Sorted into Plates embedding medium
+      "Frozen":
+        description: Frozen embedding medium
+      "Isopentane":
+        description: Isopentane embedding medium
+      "Liquid Nitrogen":
+        description: Liquid Nitrogen embedding medium
+      "Not Applicable":
+        description: Not applicable embedding medium
+      "Not Reported":
+        description: Not reported embedding medium
+      "OCT":
+        description: OCT embedding medium
+      "RNALater":
+        description: RNALater embedding medium
+      "Snap Frozen":
+        description: Snap Frozen embedding medium
+      "TRIzol":
+        description: TRIzol embedding medium
+      "Unknown":
+        description: Unknown embedding medium
+      "-20 degrees C":
+        description: -20 degrees C embedding medium
+      "-80 degrees C":
+        description: -80 degrees C embedding medium

@@ -1,0 +1,96 @@
+name: TissueFixativeEnum
+id: https://w3id.org/htan/tissue_fixative_enum
+description: Enumeration of tissue fixative types
+
+imports:
+  - linkml:types
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+
+default_prefix: htan
+
+enums:
+  TissueFixative:
+    permissible_values:
+      "95% Ethanol":
+        description: 95% Ethanol fixative
+      "Acetone":
+        description: Acetone fixative
+      "Alcohol":
+        description: Alcohol fixative
+      "Carbodiimide":
+        description: Carbodiimide fixative
+      "Carnoy's Solution":
+        description: Carnoy's Solution fixative
+      "CryoStor":
+        description: CryoStor fixative
+      "Cryopreserved":
+        description: Cryopreserved fixative
+      "Diimidoester":
+        description: Diimidoester fixative
+      "Dimethylacetamide":
+        description: Dimethylacetamide fixative
+      "EDTA":
+        description: EDTA fixative
+      "Formalin":
+        description: Formalin fixative
+      "Formalin Fixed - Buffered":
+        description: Formalin Fixed - Buffered fixative
+      "Formalin Fixed - Unbuffered":
+        description: Formalin Fixed - Unbuffered fixative
+      "Formalin Fixed Tissue":
+        description: Formalin Fixed Tissue fixative
+      "Fresh":
+        description: Fresh fixative
+      "Fresh Dissociated":
+        description: Fresh Dissociated fixative
+      "Fresh Dissociated and Single Cell Sorted":
+        description: Fresh Dissociated and Single Cell Sorted fixative
+      "Fresh Dissociated and Single Cell Sorted into Plates":
+        description: Fresh Dissociated and Single Cell Sorted into Plates fixative
+      "Frozen":
+        description: Frozen fixative
+      "Glutaraldehyde":
+        description: Glutaraldehyde fixative
+      "Isopentane":
+        description: Isopentane fixative
+      "Liquid Nitrogen":
+        description: Liquid Nitrogen fixative
+      "Methacarn":
+        description: Methacarn fixative
+      "None":
+        description: No fixative
+      "Not applicable":
+        description: Not applicable fixative
+      "Not recorded":
+        description: Not recorded fixative
+      "Not Reported":
+        description: Not reported fixative
+      "NP40 Lysis Buffer":
+        description: NP40 Lysis Buffer fixative
+      "OCT media":
+        description: OCT media fixative
+      "Other":
+        description: Other fixative
+      "PAXgene Tissue":
+        description: PAXgene Tissue fixative
+      "Para-benzoquinone":
+        description: Para-benzoquinone fixative
+      "Poloxamer":
+        description: Poloxamer fixative
+      "RNAlater":
+        description: RNAlater fixative
+      "Saline":
+        description: Saline fixative
+      "Snap Frozen":
+        description: Snap Frozen fixative
+      "TCL Lysis Buffer":
+        description: TCL Lysis Buffer fixative
+      "Unknown":
+        description: Unknown fixative
+      "-20 degrees C":
+        description: -20 degrees C fixative
+      "-80 degrees C":
+        description: -80 degrees C fixative
