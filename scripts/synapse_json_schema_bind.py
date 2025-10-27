@@ -355,6 +355,7 @@ def get_register_bind_schema(syn, target: str, schema_org_name: str, org, servic
     print(f"Registering JSON schema {component_adjusted} {version}")
 
     uri = register_json_schema(org, component_adjusted, schema_json, version, schema_org_name)
+    print(f"✅ Schema is registered at: {uri}")
 
     if no_bind is None:
         bind_schema_to_entity(syn, service, uri, target, base_component, includes_ar)
@@ -388,9 +389,14 @@ def main():
 
     if no_bind is not None:
         print(f"Warning ❗❗❗ Schema will not be bound to the entity if one was provided.")
-        print(f"✅ Skipping login since --no_bind flag is set")
+        print(f"Logging in to production stack for schema registration...")
+        syn.login()
+        print(f"Connected to production stack: {syn.repoEndpoint}")
+        syn.get_available_services()
+        schema_service = syn.service("json_schema")
+        service, org, schema_org_name = get_schema_organization(schema_service, org_name)
     else:
-        # Only login if we're actually going to bind
+        # Login for both registration and binding
         print(f"Logging in to production stack...")
         syn.login()
         print(f"Connected to production stack: {syn.repoEndpoint}")
@@ -398,10 +404,8 @@ def main():
         schema_service = syn.service("json_schema")
         service, org, schema_org_name = get_schema_organization(schema_service, org_name)
     
-    if no_bind is None:
-        get_register_bind_schema(syn, target, schema_org_name, org, service, path, url, includes_ar, no_bind, create_fileview)
-    else:
-        print(f"✅ Schema processing completed (no binding due to --no_bind flag)")
+    # Always register the schema, but only bind if no_bind is None
+    get_register_bind_schema(syn, target, schema_org_name, org, service, path, url, includes_ar, no_bind, create_fileview)
     
     if target is None and no_bind is None:
         print(f"\n❗❗❗ No dataset information provided.❗❗❗\nPlease check your command line inputs and try again.")
