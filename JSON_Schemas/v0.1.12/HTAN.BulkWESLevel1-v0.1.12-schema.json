@@ -1,0 +1,181 @@
+{
+  "$id": "https://w3id.org/htan/wes/level_1",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Bulk Whole Exome Sequencing Level 1 - Raw files",
+  "properties": {
+    "ADAPTER_NAME": {
+      "description": "Name of the adapter used",
+      "type": "string"
+    },
+    "ADAPTER_SEQUENCE": {
+      "description": "Adapter sequence",
+      "type": "string"
+    },
+    "BASE_CALLER_NAME": {
+      "description": "Name of the base caller",
+      "type": "string"
+    },
+    "BASE_CALLER_VERSION": {
+      "description": "Version of the base caller",
+      "type": "string"
+    },
+    "COMPONENT": {
+      "description": "Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file",
+      "pattern": "^.+[\\\\/]\\S*$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+      "type": "string"
+    },
+    "FLOW_CELL_BARCODE": {
+      "description": "Flow cell barcode",
+      "type": "string"
+    },
+    "FRAGMENT_MAXIMUM_LENGTH": {
+      "description": "Maximum fragment length",
+      "type": "integer"
+    },
+    "FRAGMENT_MEAN_LENGTH": {
+      "description": "Mean fragment length",
+      "type": "integer"
+    },
+    "FRAGMENT_MINIMUM_LENGTH": {
+      "description": "Minimum fragment length",
+      "type": "integer"
+    },
+    "FRAGMENT_STANDARD_DEVIATION_LENGTH": {
+      "description": "Standard deviation of fragment length",
+      "type": "integer"
+    },
+    "HTAN_BIOSPECIMEN_ID": {
+      "description": "HTAN Biospecimen ID of the parent biospecimen (Primary Key)",
+      "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)",
+      "pattern": "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$",
+      "type": "string"
+    },
+    "HTAN_PARTICIPANT_ID": {
+      "description": "HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)",
+      "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$",
+      "type": "string"
+    },
+    "LANE_NUMBER": {
+      "description": "Lane number",
+      "type": "integer"
+    },
+    "LIBRARY_LAYOUT": {
+      "description": "",
+      "enum": [
+        "Paired-end",
+        "Single-end"
+      ],
+      "title": "LibraryLayoutEnum",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+      "description": "Days from index for library preparation",
+      "type": "integer"
+    },
+    "LIBRARY_PREPARATION_KIT_NAME": {
+      "description": "Name of the library preparation kit",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_KIT_VENDOR": {
+      "description": "Vendor of the library preparation kit",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_KIT_VERSION": {
+      "description": "Version of the library preparation kit",
+      "type": "string"
+    },
+    "LIBRARY_SELECTION_METHOD": {
+      "description": "",
+      "enum": [
+        "Hybrid Selection",
+        "PCR",
+        "RANDOM",
+        "other"
+      ],
+      "title": "LibrarySelectionMethodEnum",
+      "type": "string"
+    },
+    "MULTIPLEX_BARCODE": {
+      "description": "Multiplex barcode",
+      "type": "string"
+    },
+    "READ_INDICATOR": {
+      "description": "Read indicator",
+      "type": "string"
+    },
+    "READ_LENGTH": {
+      "description": "Read length in base pairs",
+      "type": "integer"
+    },
+    "SEQUENCING_BATCH_ID": {
+      "description": "Sequencing batch identifier",
+      "type": "string"
+    },
+    "SEQUENCING_PLATFORM": {
+      "description": "",
+      "enum": [
+        "ABI_SOLID",
+        "BGISEQ",
+        "CAPILLARY",
+        "COMPLETE_GENOMICS",
+        "HELICOS",
+        "ILLUMINA",
+        "ION_TORRENT",
+        "LS454",
+        "OXFORD_NANOPORE",
+        "PACBIO_SMRT"
+      ],
+      "title": "SequencingPlatformEnum",
+      "type": "string"
+    },
+    "SIZE_SELECTION_RANGE": {
+      "description": "Size selection range",
+      "type": "string"
+    },
+    "TARGET_CAPTURE_KIT": {
+      "description": "Target capture kit used",
+      "type": "string"
+    },
+    "TARGET_DEPTH": {
+      "description": "Target sequencing depth",
+      "type": "integer"
+    },
+    "TO_TRIM_ADAPTER_SEQUENCE": {
+      "description": "Whether to trim adapter sequence",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "LIBRARY_LAYOUT",
+    "LIBRARY_SELECTION_METHOD",
+    "READ_LENGTH",
+    "SEQUENCING_PLATFORM",
+    "COMPONENT",
+    "FILENAME",
+    "FILE_FORMAT",
+    "HTAN_PARTICIPANT_ID",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID",
+    "HTAN_BIOSPECIMEN_ID"
+  ],
+  "title": "Level1",
+  "type": "object"
+}
