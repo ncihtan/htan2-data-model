@@ -1,0 +1,198 @@
+name: Generate Python Classes
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'modules/*/domains/*.yaml'
+      - 'modules/*/src/**/*.py'
+      - 'config/config.yaml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'modules/*/domains/*.yaml'
+      - 'modules/*/src/**/*.py'
+      - 'config/config.yaml'
+      - '.github/workflows/generate-python-classes.yml'
+  workflow_dispatch:
+
+jobs:
+  generate-python-classes:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        version: latest
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v3
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+    
+    - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install --no-interaction --no-root
+    
+    - name: Install project
+      run: poetry install --no-interaction
+    
+    - name: Generate Python Classes for Biospecimen
+      run: |
+        cd modules/Biospecimen
+        poetry run gen-python domains/biospecimen.yaml > build/biospecimen.py
+        mkdir -p src/htan_biospecimen/datamodel
+        cp build/biospecimen.py src/htan_biospecimen/datamodel/
+        touch src/htan_biospecimen/datamodel/schema_classes.py
+        poetry run gen-json-schema domains/biospecimen.yaml > build/biospecimen_schema.json
+    
+    - name: Generate Python Classes for Clinical
+      run: |
+        cd modules/Clinical
+        poetry run gen-project --config-file ../../config/config.yaml -d build domains/clinical.yaml
+        mkdir -p src/htan_clinical/datamodel
+        mv build/*.py src/htan_clinical/datamodel/
+        touch src/htan_clinical/datamodel/schema_classes.py
+    
+    - name: Generate Python Classes for WES
+      run: |
+        cd modules/WES
+        poetry run gen-python domains/level_1.yaml > build/wes.py
+        mkdir -p src/htan_wes/datamodel
+        cp build/wes.py src/htan_wes/datamodel/
+        touch src/htan_wes/datamodel/schema_classes.py
+    
+    - name: Run Tests
+      run: |
+        poetry run pytest modules/*/tests/ -v --tb=short
+    
+    - name: Check for Changes
+      id: check-changes
+      run: |
+        if git diff --quiet; then
+          echo "✅ No changes detected - Python classes are up to date"
+          echo "has-changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "❌ Changes detected in generated Python classes"
+          echo "has-changes=true" >> $GITHUB_OUTPUT
+          echo "📋 Changed files:"
+          git diff --name-only
+        fi
+    
+    - name: Fail if Python classes are outdated
+      if: steps.check-changes.outputs.has-changes == 'true'
+      run: |
+        echo "❌ **DEPLOYMENT CHECK FAILED**"
+        echo ""
+        echo "The Python classes are not up to date with the current schemas."
+        echo "This means the generated Python code doesn't match the LinkML YAML files."
+        echo ""
+        echo "**To fix this:**"
+        echo "1. Run the manual Python generation workflow"
+        echo "2. Or run locally: \`make gen-schema\` in each module directory"
+        echo "3. Commit the updated Python classes"
+        echo ""
+        echo "**Changed files:**"
+        git diff --name-only
+        exit 1
+    
+    - name: Create Pull Request (Push to main only)
+      if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'push'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Configure git
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Create a new branch for this update
+        branch_name="update-python-classes-$(date +%Y%m%d-%H%M%S)"
+        git checkout -b "$branch_name"
+        
+        # Add all changes
+        git add modules/*/src/htan_*/datamodel/*.py
+        
+        # Commit changes
+        git commit -m "feat: update Python classes from schema changes
+
+        Auto-generated Python classes from LinkML schema updates.
+        
+        ### Updated Modules:
+        - Biospecimen: Generated from domains/biospecimen.yaml
+        - Clinical: Generated from domains/clinical.yaml  
+        - WES: Generated from domains/level_1.yaml
+        
+        ### Changes:
+        - Updated datamodel classes
+        - Regenerated schema_classes.py files
+        - All tests passing
+        
+        **Auto-generated by Python class generation workflow**"
+        
+        # Push branch
+        git push origin "$branch_name"
+        
+        # Create pull request
+        gh pr create \
+          --title "Update Python Classes from Schema Changes" \
+          --body "## Python Class Generation Update
+
+          This PR updates the Python data model classes based on recent schema changes.
+
+          ### Generated Classes:
+          - **Biospecimen**: Updated from \`domains/biospecimen.yaml\`
+          - **Clinical**: Updated from \`domains/clinical.yaml\`
+          - **WES**: Updated from \`domains/level_1.yaml\`
+
+          ### What Changed:
+          - Regenerated all Python datamodel classes
+          - Updated schema_classes.py files
+          - All tests are passing ✅
+
+          ### Testing:
+          - All module tests pass
+          - Generated classes are syntactically valid
+          - Schema compatibility maintained
+
+          **Auto-generated by GitHub Actions workflow**" \
+          --base main \
+          --head "$branch_name"
+    
+    - name: Comment on PR with Status
+      if: github.event_name == 'pull_request'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        if [ "${{ steps.check-changes.outputs.has-changes }}" == "true" ]; then
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --body "❌ **Python classes are outdated!**
+
+            The Python classes don't match the current schemas. This PR should be updated.
+
+            **Required action:** Update Python classes to match schema changes.
+
+            **Changed files:**
+            \`\`\`
+            $(git diff --name-only)
+            \`\`\`"
+        else
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --body "✅ **Python classes are up to date!**
+
+            All Python classes match the current schemas. No updates needed."
+        fi
