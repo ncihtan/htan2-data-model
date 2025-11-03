@@ -17,14 +17,6 @@
                     "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
                     "type": "string"
                 },
-                "HTAN_BIOSPECIMEN_ID": {
-                    "description": "HTAN Biospecimen ID of the parent biospecimen",
-                    "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "HTAN_DATA_FILE_ID": {
                     "description": "HTAN Data File ID",
                     "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
