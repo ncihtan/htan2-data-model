@@ -16,9 +16,9 @@ This repository is part of ongoing efforts to refine and standardize the HTAN2 d
 
 The HTAN2 data model is built using **LinkML**, a modeling language for schemas that generates Python data model classes and JSON schemas. The model follows a modular architecture with clear separation of concerns:
 
-### **Core Module**
+### **Core File Module**
 - **Purpose**: Universal attributes shared across all file-based modules
-- **Location**: `modules/Core/domains/core.yaml`
+- **Location**: `modules/CoreFile/domains/core.yaml`
 - **Key Features**: 
   - Single primary key definition (`HTAN_DATA_FILE_ID`)
   - Required field definitions for relationships
@@ -108,7 +108,7 @@ make test
 
 Each module contains detailed documentation:
 
-- **Core Module**: See `modules/Core/README.md` for primary/foreign key definitions
+- **Core File Module**: See `modules/CoreFile/README.md` for primary/foreign key definitions
 - **Clinical Module**: See `modules/Clinical/README.md` for domain descriptions
 - **Biospecimen Module**: See `modules/Biospecimen/README.md` for RFC compliance and enum schemas
 - **WES Module**: See `modules/WES/README.md` for sequencing levels

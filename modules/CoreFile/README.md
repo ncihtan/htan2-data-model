@@ -1,4 +1,4 @@
-# HTAN Core Module
+# HTAN Core File Module
 
 Universal attributes shared across all file-based modules in the HTAN project.
 
@@ -67,7 +67,7 @@ Other modules inherit from Core:
 
 ```yaml
 imports:
-  - ../../Core/domains/core
+  - ../../CoreFile/domains/core
 
 classes:
   BulkWESLevel1:

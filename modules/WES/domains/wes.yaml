@@ -4,7 +4,7 @@ description: HTAN Whole Exome Sequencing Data Model Schema
 imports:
   - linkml:types
   - linkml:extensions
-  - ../../Core/domains/core
+  - ../../CoreFile/domains/core
   - level_1
   - level_2
   - level_3
