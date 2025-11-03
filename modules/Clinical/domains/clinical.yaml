@@ -4,7 +4,6 @@ description: HTAN Clinical Data Model Schema
 imports:
   - linkml:types
   - linkml:extensions
-  - ../../CoreFile/domains/core
   - demographics
   - diagnosis
   - exposure
@@ -61,9 +60,19 @@ slots:
 
 classes:
   ClinicalData:
-    is_a: CoreFileAttributes
     description: Container for all clinical data
     attributes:
+      # Record-based module - does not inherit from CoreFileAttributes
+      # Defines its own ID fields for clinical records
+      
+      HTAN_PARTICIPANT_ID:
+        range: string
+        required: true
+        identifier: true
+        title: "HTAN Participant ID"
+        description: HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)
+        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$"
+      
       DEMOGRAPHICS:
         range: Demographics
         required: true

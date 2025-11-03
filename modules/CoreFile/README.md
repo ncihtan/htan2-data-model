@@ -12,7 +12,6 @@ Defines common attributes that every file-based data type in HTAN must have, eli
 - **COMPONENT**: Category of metadata (e.g., "Bulk WES Level 1", "scRNA-seq Level 2")
 - **FILENAME**: Name of the file (pattern: `^.+[\\\\/]\\S*$`)
 - **FILE_FORMAT**: Format of the file (e.g., fastq, bam, vcf, h5ad)
-- **HTAN_PARTICIPANT_ID**: HTAN ID associated with a patient
 - **HTAN_DATA_FILE_ID**: HTAN Data File ID (Primary Key)
 - **HTAN_PARENT_ID**: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
 
@@ -25,7 +24,7 @@ Defines common attributes that every file-based data type in HTAN must have, eli
 - **HTAN_DATA_FILE_ID**: Unique identifier for data files across all levels
 
 ### Required Fields (not primary keys in this context)
-- **HTAN_PARTICIPANT_ID**: HTAN ID associated with a patient
+- None - all required fields are either primary keys or foreign keys
 
 ### Foreign Key
 - **HTAN_PARENT_ID**: References parent entity using suffix convention:
@@ -42,10 +41,6 @@ Participant (HTAN_PARTICIPANT_ID)
 ```
 
 ## Validation Patterns
-
-### HTAN_PARTICIPANT_ID
-- **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$`
-- **Examples**: `HTA200_2`, `HTA200_EXT001`, `HTA200_0000`
 
 ### HTAN_DATA_FILE_ID
 - **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
