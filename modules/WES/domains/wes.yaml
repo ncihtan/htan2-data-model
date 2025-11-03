@@ -29,10 +29,6 @@ classes:
   WESData:
     description: Container for all WES data
     attributes:
-      COMPONENT:
-        range: string
-        required: true
-        description: Category of metadata (e.g. Bulk WES Level 1, Bulk WES Level 2, Bulk WES Level 3)
       LEVEL_1_DATA:
         range: BulkWESLevel1
         required: false

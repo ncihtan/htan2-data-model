@@ -9,11 +9,10 @@ Defines common attributes that every file-based data type in HTAN must have, eli
 ## Universal Attributes
 
 ### Required Attributes
-- **COMPONENT**: Category of metadata (e.g., "Bulk WES Level 1", "scRNA-seq Level 2")
 - **FILENAME**: Name of the file (pattern: `^.+[\\\\/]\\S*$`)
 - **FILE_FORMAT**: Format of the file (e.g., fastq, bam, vcf, h5ad)
 - **HTAN_DATA_FILE_ID**: HTAN Data File ID (Primary Key)
-- **HTAN_PARENT_ID**: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
+- **HTAN_PARENT_ID**: HTAN Parent ID - Foreign Key to parent entity (D for data file only)
 
 ### Optional Attributes
 - None currently defined
@@ -28,7 +27,6 @@ Defines common attributes that every file-based data type in HTAN must have, eli
 
 ### Foreign Key
 - **HTAN_PARENT_ID**: References parent entity using suffix convention:
-  - `_B####` - References a biospecimen (e.g., `HTA200_2_B7001`)
   - `_D####` - References a data file (e.g., `HTA200_2_D36667`)
 
 ### Data Hierarchy
@@ -47,8 +45,8 @@ Participant (HTAN_PARTICIPANT_ID)
 - **Examples**: `HTA200_2_36667`, `HTA200_EXT001_36667`
 
 ### HTAN_PARENT_ID
-- **Pattern**: `^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$`
-- **Examples**: `HTA200_2_B7001` (biospecimen), `HTA200_2_D36667` (data file)
+- **Pattern**: `^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_D\d{1,50}$`
+- **Examples**: `HTA200_2_D36667` (data file)
 
 ## Usage
 
