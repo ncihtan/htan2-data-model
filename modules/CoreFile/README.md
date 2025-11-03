@@ -35,15 +35,6 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 - **HTAN_PARENT_ID**: References parent entity using suffix convention:
   - `_D####` - References a data file (e.g., `HTA200_2_D36667`)
 
-### Data Hierarchy
-```
-Participant (HTAN_PARTICIPANT_ID)
-├── Biospecimen (HTAN_BIOSPECIMEN_ID)
-│   └── Level 1 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _B####
-│       └── Level 2 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
-│           └── Level 3 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
-```
-
 ## Validation Patterns
 
 ### HTAN_DATA_FILE_ID
