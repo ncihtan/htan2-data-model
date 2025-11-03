@@ -72,7 +72,6 @@ from htan_biospecimen import BiospecimenData
 
 # Create a biospecimen record
 biospecimen = BiospecimenData(
-    COMPONENT="Biospecimen",
     HTAN_BIOSPECIMEN_ID="HTA200_2_7001",
     HTAN_PARENT_ID="HTA200_2_B7001",
     BIOSPECIMEN_TYPE="Tissue",

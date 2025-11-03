@@ -229,12 +229,10 @@ Brief description of what this module handles.
 ```yaml
 # Example usage
 YourModuleData:
-  COMPONENT: "Your Module"
   FILENAME: "example.txt"
   FILE_FORMAT: "txt"
-  HTAN_PARTICIPANT_ID: "HTA200_2"
   HTAN_DATA_FILE_ID: "HTA200_2_12345"
-  HTAN_PARENT_ID: "HTA200_2_B7001"
+  HTAN_PARENT_ID: "HTA200_2_D12345"
   YOUR_ATTRIBUTE: "example value"
 ```
 

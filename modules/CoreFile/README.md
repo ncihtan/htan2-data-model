@@ -6,6 +6,12 @@ Universal attributes shared across all file-based modules in the HTAN project.
 
 Defines common attributes that every file-based data type in HTAN must have, eliminating duplication and ensuring consistency.
 
+## Module Architecture Overview
+
+![HTAN2 Module Inheritance Diagram](core_file_inheritance.png)
+
+The diagram above illustrates the separation between **Record-Based Modules** (Clinical, Biospecimen) and **File-Based Modules** (WES, Digital Pathology, etc.), with the **Core File Module** providing universal attributes for all file-based modules.
+
 ## Universal Attributes
 
 ### Required Attributes
