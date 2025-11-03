@@ -43,12 +43,55 @@ The HTAN2 data model is built using **LinkML**, a modeling language for schemas 
 - **Structure**: Three processing levels (Level 1, 2, 3)
 - **Features**: Sequencing platform enums, quality metrics, variant calling
 
+### **Module Inheritance Diagram**
+
+```mermaid
+---
+config:
+  theme: redux
+  layout: elk
+---
+flowchart TB
+ subgraph CoreModule["<font size=4><b>📁 Core File Module</b></font>"]
+        Comp["COMPONENT"]
+        Filename["FILENAME"]
+        FileFormat["FILE_FORMAT"]
+        DataFileID["HTAN_DATA_FILE_ID"]
+        ParentID["HTAN_PARENT_ID <br><i>(allows only data files)</i>"]
+  end
+ subgraph FileBased["<font size=4><b>🧬 File-Based Modules</b></font>"]
+        WES["WES Module"]
+        DigitalPath["Digital Pathology Module"]
+        OtherFile["Other File Modules"]
+  end
+ subgraph Biospec["<b>Biospecimen Module</b>"]
+        BiospecID["Define HTAN_BIOSPECIMEN_ID"]
+        BiospecParentID["Define HTAN_PARENT_ID<br><i>(regex validated to allow  Biospecimen or Participant ID)</i>"]
+  end
+ subgraph Clinical["<b>Clinical Module</b>"]
+        ParticipantID["Define HTAN_PARTICIPANT_ID<br><i>(regex validated)</i>"]
+  end
+ subgraph RecordBased["<font size=4><b>📋 Record-Based Modules</b></font>"]
+        Biospec
+        Clinical
+  end
+    CoreModule --"<b><font size=4>inherits"--> FileBased
+    style WES fill:#bfdbfe,stroke:#2563eb,stroke-width:1px
+    style DigitalPath fill:#bfdbfe,stroke:#2563eb,stroke-width:1px
+    style OtherFile fill:#bfdbfe,stroke:#2563eb,stroke-width:1px
+    style Biospec fill:#e9d5ff,stroke:#7c3aed,stroke-width:1px
+    style Clinical fill:#ddd6fe,stroke:#5b21b6,stroke-width:1px
+    style CoreModule fill:#e0f2fe,stroke:#2563eb,stroke-width:1.5px
+    style FileBased fill:#dbeafe,stroke:#3b82f6,stroke-width:1.5px,stroke-dasharray: 3 3
+    style RecordBased fill:#ede9fe,stroke:#7c3aed,stroke-width:1.5px,stroke-dasharray: 3 3
+```
+
 ## 📁 Project Structure
 
 ```
 htan2-data-model/
 ├── modules/                    # All data model modules
-│   ├── Core/                  # Universal attributes
+│   ├── CoreFile/              # Universal file attributes
 │   ├── Clinical/              # Clinical data domains
 │   ├── Biospecimen/           # Biospecimen metadata and classification
 │   └── WES/                   # Whole Exome Sequencing
