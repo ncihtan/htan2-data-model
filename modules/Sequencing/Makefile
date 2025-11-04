@@ -18,7 +18,7 @@ validate:
 
 # Run tests
 test:
-	python -m pytest tests/ -v
+	cd ../../ && PYTHONPATH=. poetry run pytest modules/Sequencing/tests/ -v
 
 # Clean generated files
 clean:
