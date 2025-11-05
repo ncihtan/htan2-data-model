@@ -3,7 +3,7 @@ id: https://w3id.org/htan/scrna_seq
 description: HTAN scRNA-seq Data Model - Single-cell RNA sequencing data
 imports:
   - linkml:types
-  - ../../Core/domains/core
+  - ../../CoreFile/domains/core
   - level_1
   - level_2
   - level_3_4
