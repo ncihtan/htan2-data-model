@@ -3,6 +3,7 @@ id: https://w3id.org/htan/sequencing
 description: HTAN Base Sequencing Data Model - Common attributes shared across all sequencing modules
 imports:
   - linkml:types
+  - ../../CoreFile/domains/core
   - ../../Biospecimen/domains/biospecimen
 prefixes:
   htan: https://w3id.org/htan/
