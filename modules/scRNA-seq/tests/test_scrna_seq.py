@@ -1,11 +1,20 @@
 """Test suite for HTAN scRNA-seq module."""
 
 import pytest
+import os
 import yaml
 from linkml_runtime import SchemaView
 from linkml_runtime.utils.yamlutils import as_yaml
 from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.dumpers import yaml_dumper
+
+# Get the directory where this test file is located
+TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+MODULE_DIR = os.path.dirname(TEST_DIR)
+SCHEMA_PATH = os.path.join(MODULE_DIR, "domains", "scrna_seq.yaml")
+LEVEL1_PATH = os.path.join(MODULE_DIR, "domains", "level_1.yaml")
+LEVEL2_PATH = os.path.join(MODULE_DIR, "domains", "level_2.yaml")
+LEVEL3_4_PATH = os.path.join(MODULE_DIR, "domains", "level_3_4.yaml")
 
 
 class TestScRNAseqSchema:
@@ -13,15 +22,13 @@ class TestScRNAseqSchema:
 
     def test_schema_loading(self):
         """Test that the schema loads without errors."""
-        schema_path = "domains/scrna_seq.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(SCHEMA_PATH)
         assert sv.schema.name == "scRNA-seq"
         assert sv.schema.id == "https://w3id.org/htan/scrna_seq"
 
     def test_level1_schema(self):
         """Test Level 1 schema structure."""
-        schema_path = "domains/level_1.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(LEVEL1_PATH)
         
         # Check class exists
         assert "scRNALevel1" in sv.all_classes()
@@ -44,8 +51,7 @@ class TestScRNAseqSchema:
 
     def test_level2_schema(self):
         """Test Level 2 schema structure."""
-        schema_path = "domains/level_2.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(LEVEL2_PATH)
         
         # Check class exists
         assert "scRNALevel2" in sv.all_classes()
@@ -62,8 +68,7 @@ class TestScRNAseqSchema:
 
     def test_level3_4_schema(self):
         """Test Level 3/4 schema structure."""
-        schema_path = "domains/level_3_4.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(LEVEL3_4_PATH)
         
         # Check class exists
         assert "scRNALevel3_4" in sv.all_classes()
@@ -87,8 +92,7 @@ class TestScRNAseqSchema:
 
     def test_h5ad_file_format_validation(self):
         """Test h5ad file format validation."""
-        schema_path = "domains/level_3_4.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(LEVEL3_4_PATH)
         
         level3_4_class = sv.get_class("scRNALevel3_4")
         file_format_attr = level3_4_class.attributes["FILE_FORMAT"]
@@ -98,8 +102,7 @@ class TestScRNAseqSchema:
 
     def test_ann_data_schema_compliance(self):
         """Test AnnData schema compliance validation."""
-        schema_path = "domains/level_3_4.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(LEVEL3_4_PATH)
         
         level3_4_class = sv.get_class("scRNALevel3_4")
         
@@ -113,8 +116,7 @@ class TestScRNAseqSchema:
     def test_enum_alphabetical_ordering(self):
         """Test that enum values are in alphabetical order."""
         # Test Level 1 enums
-        schema_path = "domains/level_1.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(LEVEL1_PATH)
         
         level1_enums = [
             "DissociationMethodEnum",
@@ -132,8 +134,7 @@ class TestScRNAseqSchema:
             assert values == sorted(values), f"{enum_name} values not alphabetical: {values}"
         
         # Test Level 2 enums
-        schema_path = "domains/level_2.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(LEVEL2_PATH)
         
         level2_enums = ["scRNAseqWorkflowTypeEnumLevel2"]
         
@@ -143,8 +144,7 @@ class TestScRNAseqSchema:
             assert values == sorted(values), f"{enum_name} values not alphabetical: {values}"
         
         # Test Level 3/4 enums
-        schema_path = "domains/level_3_4.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(LEVEL3_4_PATH)
         
         level3_4_enums = [
             "scRNAseqWorkflowTypeEnumLevel3_4",
@@ -159,8 +159,7 @@ class TestScRNAseqSchema:
 
     def test_inheritance_from_base_sequencing(self):
         """Test that scRNA-seq classes inherit from BaseSequencingAttributes."""
-        schema_path = "domains/scrna_seq.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(SCHEMA_PATH)
         
         # Check inheritance for all levels
         for level_class in ["scRNALevel1", "scRNALevel2", "scRNALevel3_4"]:

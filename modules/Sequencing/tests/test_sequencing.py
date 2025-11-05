@@ -1,11 +1,17 @@
 """Test suite for HTAN Base Sequencing module."""
 
 import pytest
+import os
 import yaml
 from linkml_runtime import SchemaView
 from linkml_runtime.utils.yamlutils import as_yaml
 from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.dumpers import yaml_dumper
+
+# Get the directory where this test file is located
+TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+MODULE_DIR = os.path.dirname(TEST_DIR)
+SCHEMA_PATH = os.path.join(MODULE_DIR, "domains", "sequencing.yaml")
 
 
 class TestBaseSequencingSchema:
@@ -13,15 +19,13 @@ class TestBaseSequencingSchema:
 
     def test_schema_loading(self):
         """Test that the schema loads without errors."""
-        schema_path = "domains/sequencing.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(SCHEMA_PATH)
         assert sv.schema.name == "Sequencing"
         assert sv.schema.id == "https://w3id.org/htan/sequencing"
 
     def test_base_sequencing_attributes_class(self):
         """Test BaseSequencingAttributes class structure."""
-        schema_path = "domains/sequencing.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(SCHEMA_PATH)
         
         # Check class exists
         assert "BaseSequencingAttributes" in sv.all_classes()
@@ -41,8 +45,7 @@ class TestBaseSequencingSchema:
 
     def test_enum_alphabetical_ordering(self):
         """Test that enum values are in alphabetical order."""
-        schema_path = "domains/sequencing.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(SCHEMA_PATH)
         
         # Test LibraryLayoutEnum
         library_layout_enum = sv.get_enum("LibraryLayoutEnum")
@@ -56,8 +59,7 @@ class TestBaseSequencingSchema:
 
     def test_inheritance_from_core(self):
         """Test that BaseSequencingAttributes inherits from BiospecimenAttributes."""
-        schema_path = "domains/sequencing.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(SCHEMA_PATH)
         
         base_class = sv.get_class("BaseSequencingAttributes")
         # BaseSequencingAttributes should inherit from BiospecimenAttributes
@@ -65,8 +67,7 @@ class TestBaseSequencingSchema:
 
     def test_common_attributes_present(self):
         """Test that all common sequencing attributes are present."""
-        schema_path = "domains/sequencing.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(SCHEMA_PATH)
         
         base_class = sv.get_class("BaseSequencingAttributes")
         
@@ -91,8 +92,7 @@ class TestBaseSequencingSchema:
 
     def test_optional_attributes(self):
         """Test that optional attributes are properly marked."""
-        schema_path = "domains/sequencing.yaml"
-        sv = SchemaView(schema_path)
+        sv = SchemaView(SCHEMA_PATH)
         
         base_class = sv.get_class("BaseSequencingAttributes")
         optional_attrs = [
