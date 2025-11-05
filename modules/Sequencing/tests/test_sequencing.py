@@ -58,12 +58,12 @@ class TestBaseSequencingSchema:
         assert values == sorted(values), f"SequencingPlatformEnum values not alphabetical: {values}"
 
     def test_inheritance_from_core(self):
-        """Test that BaseSequencingAttributes inherits from BiospecimenAttributes."""
+        """Test that BaseSequencingAttributes inherits from CoreFileAttributes."""
         sv = SchemaView(SCHEMA_PATH)
         
         base_class = sv.get_class("BaseSequencingAttributes")
-        # BaseSequencingAttributes should inherit from BiospecimenAttributes
-        assert base_class.is_a == "BiospecimenAttributes"
+        # BaseSequencingAttributes should inherit from CoreFileAttributes
+        assert base_class.is_a == "CoreFileAttributes"
 
     def test_common_attributes_present(self):
         """Test that all common sequencing attributes are present."""

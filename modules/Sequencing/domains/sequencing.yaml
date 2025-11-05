@@ -4,7 +4,6 @@ description: HTAN Base Sequencing Data Model - Common attributes shared across a
 imports:
   - linkml:types
   - ../../CoreFile/domains/core
-  - ../../Biospecimen/domains/biospecimen
 prefixes:
   htan: https://w3id.org/htan/
   linkml: https://w3id.org/linkml/
@@ -44,7 +43,7 @@ enums:
 
 classes:
   BaseSequencingAttributes:
-    is_a: BiospecimenAttributes
+    is_a: CoreFileAttributes
     description: Base attributes shared across all sequencing types
     attributes:
       SEQUENCING_BATCH_ID:
