@@ -18,7 +18,7 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 - **FILENAME**: Name of the file (pattern: `^.+[\\\\/]\\S*$`)
 - **FILE_FORMAT**: Format of the file (e.g., fastq, bam, vcf, h5ad)
 - **HTAN_DATA_FILE_ID**: HTAN Data File ID (Primary Key)
-- **HTAN_PARENT_ID**: HTAN Parent ID - Foreign Key to parent entity (D for data file only)
+- **HTAN_PARENT_ID**: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
 
 ### Optional Attributes
 - None currently defined
@@ -33,6 +33,7 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 
 ### Foreign Key
 - **HTAN_PARENT_ID**: References parent entity using suffix convention:
+  - `_B####` - References a biospecimen (e.g., `HTA200_2_B7001`)
   - `_D####` - References a data file (e.g., `HTA200_2_D36667`)
 
 ## Validation Patterns
@@ -42,8 +43,13 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 - **Examples**: `HTA200_2_36667`, `HTA200_EXT001_36667`
 
 ### HTAN_PARENT_ID
-- **Pattern**: `^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_D\d{1,50}$`
-- **Examples**: `HTA200_2_D36667` (data file)
+- **Pattern**: `^(HTA\d+)(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$`
+- **Description**: Must have B suffix for biospecimen IDs or D suffix for data file IDs
+- **Examples**: 
+  - `HTA200_2_B7001` (biospecimen with B suffix)
+  - `HTA200_2_D36667` (data file with D suffix)
+  - `HTA200_EXT001_B7001` (biospecimen with extension and B suffix)
+  - `HTA200_0000_B7001` (biospecimen with 0000 and B suffix)
 
 ## Usage
 
