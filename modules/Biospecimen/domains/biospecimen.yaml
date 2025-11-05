@@ -42,6 +42,17 @@ slots:
     required: false
 
 classes:
+  BiospecimenAttributes:
+    description: Attributes for modules that require biospecimen identification
+    is_a: CoreFileAttributes
+    attributes:
+      HTAN_BIOSPECIMEN_ID:
+        range: string
+        required: true
+        title: "HTAN Biospecimen ID"
+        description: HTAN Biospecimen ID of the parent biospecimen (Primary Key)
+        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"
+
   BiospecimenData:
     description: Container for all Biospecimen data
     is_a: CoreFileAttributes
