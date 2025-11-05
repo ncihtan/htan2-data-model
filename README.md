@@ -41,11 +41,23 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 - **Structure**: 18 domain-specific enum files with medical classifications
 - **Features**: RFC-compliant implementation with 39 core attributes, ICD-10/ICD-O-3 integration, UBERON tissue ontology
 
+### **Sequencing Module**
+- **Purpose**: Base sequencing attributes shared across all sequencing types
+- **Location**: `modules/Sequencing/`
+- **Structure**: BaseSequencingAttributes class with common sequencing metadata
+- **Features**: Library layout enums, sequencing platform enums, workflow metadata
+
 ### **WES Module**
 - **Purpose**: Bulk Whole Exome Sequencing data
 - **Location**: `modules/WES/`
 - **Structure**: Three processing levels (Level 1, 2, 3)
 - **Features**: Sequencing platform enums, quality metrics, variant calling
+
+### **scRNA-seq Module**
+- **Purpose**: Single-cell RNA sequencing data
+- **Location**: `modules/scRNA-seq/`
+- **Structure**: Three data levels (Level 1, 2, 3/4) with h5ad format validation
+- **Features**: Single-cell isolation methods, workflow types, AnnData schema compliance
 
 ## 📁 Project Structure
 
@@ -55,7 +67,9 @@ htan2-data-model/
 │   ├── CoreFile/              # Universal file attributes
 │   ├── Clinical/              # Clinical data domains
 │   ├── Biospecimen/           # Biospecimen metadata and classification
-│   └── WES/                   # Whole Exome Sequencing
+│   ├── Sequencing/            # Base sequencing attributes
+│   ├── WES/                   # Whole Exome Sequencing
+│   └── scRNA-seq/             # Single-cell RNA sequencing
 ├── config/                    # LinkML configuration
 ├── scripts/                   # Utility scripts
 ├── tests/                     # Root-level tests
@@ -115,7 +129,9 @@ Each module contains detailed documentation:
 - **Core File Module**: See `modules/CoreFile/README.md` for primary/foreign key definitions
 - **Clinical Module**: See `modules/Clinical/README.md` for domain descriptions
 - **Biospecimen Module**: See `modules/Biospecimen/README.md` for RFC compliance and enum schemas
+- **Sequencing Module**: See `modules/Sequencing/README.md` for base sequencing attributes
 - **WES Module**: See `modules/WES/README.md` for sequencing levels
+- **scRNA-seq Module**: See `modules/scRNA-seq/README.md` for single-cell RNA sequencing levels
 
 ## 🤝 Contributing
 
