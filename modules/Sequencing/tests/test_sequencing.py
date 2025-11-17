@@ -117,11 +117,11 @@ class TestBaseSequencingDataValidation:
     def test_valid_base_sequencing_data(self):
         """Test valid base sequencing data."""
         valid_data = {
-            "HTAN_DATA_FILE_ID": "HTAN-001_0000_0001",
+            "HTAN_DATA_FILE_ID": "HTA1_0000_0001",
             "FILENAME": "sequencing_data.fastq.gz",
             "FILE_FORMAT": "fastq",
-            "HTAN_PARENT_ID": "HTAN-001_0000_B0001",
-            "HTAN_BIOSPECIMEN_ID": "HTAN-001_0000_B0001",
+            "HTAN_PARENT_ID": "HTA200_0000_B0001",
+            "HTAN_BIOSPECIMEN_ID": "HTA1_0000_0001",
             "LIBRARY_LAYOUT": "Paired-end",
             "SEQUENCING_PLATFORM": "ILLUMINA",
             "WORKFLOW_VERSION": "1.0.0",

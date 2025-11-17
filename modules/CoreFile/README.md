@@ -43,12 +43,13 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 - **Examples**: `HTA200_2_36667`, `HTA200_EXT001_36667`
 
 ### HTAN_PARENT_ID
-- **Pattern**: `^(HTA\d+)(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$`
-- **Description**: Must have B suffix for biospecimen IDs or D suffix for data file IDs
+- **Pattern**: `^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$`
+- **Description**: Must have B suffix for biospecimen IDs or D suffix for data file IDs. Supports HTA200-209 for phase 2.
 - **Examples**: 
   - `HTA200_2_B7001` (biospecimen with B suffix)
   - `HTA200_2_D36667` (data file with D suffix)
-  - `HTA200_EXT001_B7001` (biospecimen with extension and B suffix)
+  - `HTA203_12_EXT5_D42` (data file with extension and additional ID)
+  - `HTA204_0000_21344_D1234` (data file with 0000 and additional ID)
   - `HTA200_0000_B7001` (biospecimen with 0000 and B suffix)
 
 ## Usage
