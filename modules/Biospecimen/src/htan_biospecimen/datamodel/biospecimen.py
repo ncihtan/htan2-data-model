@@ -1,5 +1,5 @@
 # Auto generated from biospecimen.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-05T08:30:17
+# Generation date: 2025-11-18T12:49:46
 # Schema: Biospecimen
 #
 # id: https://w3id.org/htan/biospecimen
@@ -131555,7 +131555,7 @@ slots.biospecimenData__HTAN_BIOSPECIMEN_ID = Slot(uri=HTAN.HTAN_BIOSPECIMEN_ID, 
 
 slots.biospecimenData__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="biospecimenData__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
                    model_uri=HTAN.biospecimenData__HTAN_PARENT_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_B\d{1,50}$|^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$'))
+                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]|\d{2,}))_((EXT)?([0-9]\d*|0000))$|^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_B\d{1,50}$'))
 
 slots.biospecimenData__ADJACENT_BIOSPECIMEN_IDS = Slot(uri=HTAN.ADJACENT_BIOSPECIMEN_IDS, name="biospecimenData__ADJACENT_BIOSPECIMEN_IDS", curie=HTAN.curie('ADJACENT_BIOSPECIMEN_IDS'),
                    model_uri=HTAN.biospecimenData__ADJACENT_BIOSPECIMEN_IDS, domain=None, range=Optional[Union[str, List[str]]])
