@@ -1,5 +1,5 @@
 # Auto generated from biospecimen.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-25T18:18:31
+# Generation date: 2025-11-25T19:43:10
 # Schema: Biospecimen
 #
 # id: https://w3id.org/htan/biospecimen
