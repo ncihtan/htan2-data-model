@@ -16,11 +16,6 @@ classes:
   CoreFileAttributes:
     description: Universal attributes that apply to all file-based data in HTAN
     attributes:
-      COMPONENT:
-        range: string
-        required: true
-        title: "Component"
-        description: Category of metadata (e.g., Bulk WES Level 1, scRNA-seq Level 2, etc.)
       FILENAME:
         range: string
         required: true
@@ -32,12 +27,6 @@ classes:
         required: true
         title: "File Format"
         description: Format of the file (e.g., fastq, bam, vcf, h5ad)
-      HTAN_PARTICIPANT_ID:
-        range: string
-        required: true
-        title: "HTAN Participant ID"
-        description: HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)
-        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$"
       HTAN_DATA_FILE_ID:
         range: string
         required: true
@@ -49,11 +38,5 @@ classes:
         range: string
         required: true
         title: "HTAN Parent ID"
-        description: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
+        description: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-209 for phase 2.
         pattern: "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$"
-      HTAN_BIOSPECIMEN_ID:
-        range: string
-        required: true
-        title: "HTAN Biospecimen ID"
-        description: HTAN Biospecimen ID of the parent biospecimen (Primary Key)
-        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"

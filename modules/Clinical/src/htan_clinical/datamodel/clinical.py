@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-23T10:43:22
+# Generation date: 2025-11-18T12:49:27
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -79,75 +79,12 @@ DEFAULT_ = HTAN
 # Types
 
 # Class references
-class CoreFileAttributesHTANDATAFILEID(extended_str):
-    pass
-
-
-class ClinicalDataHTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
+class ClinicalDataHTANPARTICIPANTID(extended_str):
     pass
 
 
 @dataclass(repr=False)
-class CoreFileAttributes(YAMLRoot):
-    """
-    Universal attributes that apply to all file-based data in HTAN
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = HTAN["CoreFileAttributes"]
-    class_class_curie: ClassVar[str] = "htan:CoreFileAttributes"
-    class_name: ClassVar[str] = "CoreFileAttributes"
-    class_model_uri: ClassVar[URIRef] = HTAN.CoreFileAttributes
-
-    HTAN_DATA_FILE_ID: Union[str, CoreFileAttributesHTANDATAFILEID] = None
-    COMPONENT: str = None
-    FILENAME: str = None
-    FILE_FORMAT: str = None
-    HTAN_PARTICIPANT_ID: str = None
-    HTAN_PARENT_ID: str = None
-    HTAN_BIOSPECIMEN_ID: str = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.HTAN_DATA_FILE_ID):
-            self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, CoreFileAttributesHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = CoreFileAttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
-
-        if self._is_empty(self.COMPONENT):
-            self.MissingRequiredField("COMPONENT")
-        if not isinstance(self.COMPONENT, str):
-            self.COMPONENT = str(self.COMPONENT)
-
-        if self._is_empty(self.FILENAME):
-            self.MissingRequiredField("FILENAME")
-        if not isinstance(self.FILENAME, str):
-            self.FILENAME = str(self.FILENAME)
-
-        if self._is_empty(self.FILE_FORMAT):
-            self.MissingRequiredField("FILE_FORMAT")
-        if not isinstance(self.FILE_FORMAT, str):
-            self.FILE_FORMAT = str(self.FILE_FORMAT)
-
-        if self._is_empty(self.HTAN_PARTICIPANT_ID):
-            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
-        if not isinstance(self.HTAN_PARTICIPANT_ID, str):
-            self.HTAN_PARTICIPANT_ID = str(self.HTAN_PARTICIPANT_ID)
-
-        if self._is_empty(self.HTAN_PARENT_ID):
-            self.MissingRequiredField("HTAN_PARENT_ID")
-        if not isinstance(self.HTAN_PARENT_ID, str):
-            self.HTAN_PARENT_ID = str(self.HTAN_PARENT_ID)
-
-        if self._is_empty(self.HTAN_BIOSPECIMEN_ID):
-            self.MissingRequiredField("HTAN_BIOSPECIMEN_ID")
-        if not isinstance(self.HTAN_BIOSPECIMEN_ID, str):
-            self.HTAN_BIOSPECIMEN_ID = str(self.HTAN_BIOSPECIMEN_ID)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ClinicalData(CoreFileAttributes):
+class ClinicalData(YAMLRoot):
     """
     Container for all clinical data
     """
@@ -158,13 +95,7 @@ class ClinicalData(CoreFileAttributes):
     class_name: ClassVar[str] = "ClinicalData"
     class_model_uri: ClassVar[URIRef] = HTAN.ClinicalData
 
-    HTAN_DATA_FILE_ID: Union[str, ClinicalDataHTANDATAFILEID] = None
-    COMPONENT: str = None
-    FILENAME: str = None
-    FILE_FORMAT: str = None
-    HTAN_PARTICIPANT_ID: str = None
-    HTAN_PARENT_ID: str = None
-    HTAN_BIOSPECIMEN_ID: str = None
+    HTAN_PARTICIPANT_ID: Union[str, ClinicalDataHTANPARTICIPANTID] = None
     DEMOGRAPHICS: Union[dict, "Demographics"] = None
     VITAL_STATUS: Union[dict, "VitalStatus"] = None
     DIAGNOSIS: Union[dict, "Diagnosis"] = None
@@ -175,10 +106,10 @@ class ClinicalData(CoreFileAttributes):
     THERAPIES: Optional[Union[Union[dict, "Therapy"], List[Union[dict, "Therapy"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.HTAN_DATA_FILE_ID):
-            self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, ClinicalDataHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = ClinicalDataHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, ClinicalDataHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = ClinicalDataHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
 
         if self._is_empty(self.DEMOGRAPHICS):
             self.MissingRequiredField("DEMOGRAPHICS")
@@ -47578,6 +47509,10 @@ slots.caDSR_id = Slot(uri=HTAN.caDSR_id, name="caDSR_id", curie=HTAN.curie('caDS
 slots.TISSUE_OR_ORGAN_OF_ORIGIN = Slot(uri=HTAN.TISSUE_OR_ORGAN_OF_ORIGIN, name="TISSUE_OR_ORGAN_OF_ORIGIN", curie=HTAN.curie('TISSUE_OR_ORGAN_OF_ORIGIN'),
                    model_uri=HTAN.TISSUE_OR_ORGAN_OF_ORIGIN, domain=None, range=Union[str, "TissueOrOrganOfOriginUberonEnum"])
 
+slots.clinicalData__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="clinicalData__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
+                   model_uri=HTAN.clinicalData__HTAN_PARTICIPANT_ID, domain=None, range=URIRef,
+                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$'))
+
 slots.clinicalData__DEMOGRAPHICS = Slot(uri=HTAN.DEMOGRAPHICS, name="clinicalData__DEMOGRAPHICS", curie=HTAN.curie('DEMOGRAPHICS'),
                    model_uri=HTAN.clinicalData__DEMOGRAPHICS, domain=None, range=Union[dict, Demographics])
 
@@ -47601,32 +47536,6 @@ slots.clinicalData__MOLECULAR_TESTS = Slot(uri=HTAN.MOLECULAR_TESTS, name="clini
 
 slots.clinicalData__THERAPIES = Slot(uri=HTAN.THERAPIES, name="clinicalData__THERAPIES", curie=HTAN.curie('THERAPIES'),
                    model_uri=HTAN.clinicalData__THERAPIES, domain=None, range=Optional[Union[Union[dict, Therapy], List[Union[dict, Therapy]]]])
-
-slots.coreFileAttributes__COMPONENT = Slot(uri=HTAN.COMPONENT, name="coreFileAttributes__COMPONENT", curie=HTAN.curie('COMPONENT'),
-                   model_uri=HTAN.coreFileAttributes__COMPONENT, domain=None, range=str)
-
-slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+[\\/]\S*$'))
-
-slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
-
-slots.coreFileAttributes__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="coreFileAttributes__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_PARTICIPANT_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$'))
-
-slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="coreFileAttributes__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_DATA_FILE_ID, domain=None, range=URIRef,
-                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
-
-slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$'))
-
-slots.coreFileAttributes__HTAN_BIOSPECIMEN_ID = Slot(uri=HTAN.HTAN_BIOSPECIMEN_ID, name="coreFileAttributes__HTAN_BIOSPECIMEN_ID", curie=HTAN.curie('HTAN_BIOSPECIMEN_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_BIOSPECIMEN_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
 
 slots.demographics__ETHNIC_GROUP = Slot(uri=CADSR['2192201'], name="demographics__ETHNIC_GROUP", curie=CADSR.curie('2192201'),
                    model_uri=HTAN.demographics__ETHNIC_GROUP, domain=None, range=Union[str, "EthnicGroupEnum"])

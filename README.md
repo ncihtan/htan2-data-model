@@ -16,9 +16,13 @@ This repository is part of ongoing efforts to refine and standardize the HTAN2 d
 
 The HTAN2 data model is built using **LinkML**, a modeling language for schemas that generates Python data model classes and JSON schemas. The model follows a modular architecture with clear separation of concerns:
 
-### **Core Module**
+![HTAN2 Module Inheritance Diagram](modules/CoreFile/core_file_inheritance.png)
+
+The diagram above illustrates the separation between **Record-Based Modules** (Clinical, Biospecimen) and **File-Based Modules** (WES, Digital Pathology, etc.), with the **Core File Module** providing universal attributes for all file-based modules.
+
+### **Core File Module**
 - **Purpose**: Universal attributes shared across all file-based modules
-- **Location**: `modules/Core/domains/core.yaml`
+- **Location**: `modules/CoreFile/domains/core.yaml`
 - **Key Features**: 
   - Single primary key definition (`HTAN_DATA_FILE_ID`)
   - Required field definitions for relationships
@@ -37,21 +41,35 @@ The HTAN2 data model is built using **LinkML**, a modeling language for schemas 
 - **Structure**: 18 domain-specific enum files with medical classifications
 - **Features**: RFC-compliant implementation with 39 core attributes, ICD-10/ICD-O-3 integration, UBERON tissue ontology
 
+### **Sequencing Module**
+- **Purpose**: Base sequencing attributes shared across all sequencing types
+- **Location**: `modules/Sequencing/`
+- **Structure**: BaseSequencingAttributes class with common sequencing metadata
+- **Features**: Library layout enums, sequencing platform enums, workflow metadata
+
 ### **WES Module**
 - **Purpose**: Bulk Whole Exome Sequencing data
 - **Location**: `modules/WES/`
 - **Structure**: Three processing levels (Level 1, 2, 3)
 - **Features**: Sequencing platform enums, quality metrics, variant calling
 
+### **scRNA-seq Module**
+- **Purpose**: Single-cell RNA sequencing data
+- **Location**: `modules/scRNA-seq/`
+- **Structure**: Three data levels (Level 1, 2, 3/4) with h5ad format validation
+- **Features**: Single-cell isolation methods, workflow types, AnnData schema compliance
+
 ## 📁 Project Structure
 
 ```
 htan2-data-model/
 ├── modules/                    # All data model modules
-│   ├── Core/                  # Universal attributes
+│   ├── CoreFile/              # Universal file attributes
 │   ├── Clinical/              # Clinical data domains
 │   ├── Biospecimen/           # Biospecimen metadata and classification
-│   └── WES/                   # Whole Exome Sequencing
+│   ├── Sequencing/            # Base sequencing attributes
+│   ├── WES/                   # Whole Exome Sequencing
+│   └── scRNA-seq/             # Single-cell RNA sequencing
 ├── config/                    # LinkML configuration
 ├── scripts/                   # Utility scripts
 ├── tests/                     # Root-level tests
@@ -108,10 +126,12 @@ make test
 
 Each module contains detailed documentation:
 
-- **Core Module**: See `modules/Core/README.md` for primary/foreign key definitions
+- **Core File Module**: See `modules/CoreFile/README.md` for primary/foreign key definitions
 - **Clinical Module**: See `modules/Clinical/README.md` for domain descriptions
 - **Biospecimen Module**: See `modules/Biospecimen/README.md` for RFC compliance and enum schemas
+- **Sequencing Module**: See `modules/Sequencing/README.md` for base sequencing attributes
 - **WES Module**: See `modules/WES/README.md` for sequencing levels
+- **scRNA-seq Module**: See `modules/scRNA-seq/README.md` for single-cell RNA sequencing levels
 
 ## 🤝 Contributing
 
