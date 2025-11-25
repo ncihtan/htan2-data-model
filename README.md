@@ -16,9 +16,13 @@ This repository is part of ongoing efforts to refine and standardize the HTAN2 d
 
 The HTAN2 data model is built using **LinkML**, a modeling language for schemas that generates Python data model classes and JSON schemas. The model follows a modular architecture with clear separation of concerns:
 
-### **Core Module**
+![HTAN2 Module Inheritance Diagram](modules/CoreFile/core_file_inheritance.png)
+
+The diagram above illustrates the separation between **Record-Based Modules** (Clinical, Biospecimen) and **File-Based Modules** (WES, Digital Pathology, etc.), with the **Core File Module** providing universal attributes for all file-based modules.
+
+### **Core File Module**
 - **Purpose**: Universal attributes shared across all file-based modules
-- **Location**: `modules/Core/domains/core.yaml`
+- **Location**: `modules/CoreFile/domains/core.yaml`
 - **Key Features**: 
   - Single primary key definition (`HTAN_DATA_FILE_ID`)
   - Required field definitions for relationships
@@ -60,7 +64,7 @@ The HTAN2 data model is built using **LinkML**, a modeling language for schemas 
 ```
 htan2-data-model/
 ├── modules/                    # All data model modules
-│   ├── Core/                  # Universal attributes
+│   ├── CoreFile/              # Universal file attributes
 │   ├── Clinical/              # Clinical data domains
 │   ├── Biospecimen/           # Biospecimen metadata and classification
 │   ├── Sequencing/            # Base sequencing attributes
@@ -122,7 +126,7 @@ make test
 
 Each module contains detailed documentation:
 
-- **Core Module**: See `modules/Core/README.md` for primary/foreign key definitions
+- **Core File Module**: See `modules/CoreFile/README.md` for primary/foreign key definitions
 - **Clinical Module**: See `modules/Clinical/README.md` for domain descriptions
 - **Biospecimen Module**: See `modules/Biospecimen/README.md` for RFC compliance and enum schemas
 - **Sequencing Module**: See `modules/Sequencing/README.md` for base sequencing attributes

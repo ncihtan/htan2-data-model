@@ -29,15 +29,15 @@ The WES module includes comprehensive tests to ensure schema integrity and data 
 ### Level-Specific Schema Tests
 - **`test_level_1_schema`**: Validates Level 1 schema structure
   - Confirms `BulkWESLevel1` class exists
-  - Verifies all required attributes are present: `COMPONENT`, `FILENAME`, `FILE_FORMAT`, `HTAN_PARENT_BIOSPECIMEN_ID`, `HTAN_DATA_FILE_ID`, `LIBRARY_LAYOUT`, `LIBRARY_SELECTION_METHOD`, `READ_LENGTH`, `SEQUENCING_PLATFORM`
+  - Verifies all required attributes are present: `FILENAME`, `FILE_FORMAT`, `HTAN_DATA_FILE_ID`, `HTAN_PARENT_ID`, `LIBRARY_LAYOUT`, `LIBRARY_SELECTION_METHOD`, `READ_LENGTH`, `SEQUENCING_PLATFORM`
 
 - **`test_level_2_schema`**: Validates Level 2 schema structure
   - Confirms `BulkWESLevel2` class exists
-  - Verifies all required attributes are present: `COMPONENT`, `FILENAME`, `FILE_FORMAT`, `HTAN_PARENT_DATA_FILE_ID`, `HTAN_DATA_FILE_ID`, `ALIGNMENT_WORKFLOW_TYPE`, `GENOMIC_REFERENCE`, `MEAN_COVERAGE`, `TOTAL_READS`, `TOTAL_UNIQUELY_MAPPED`, `TOTAL_UNMAPPED_READS`, `PROPORTION_READS_MAPPED`
+  - Verifies all required attributes are present: `FILENAME`, `FILE_FORMAT`, `HTAN_DATA_FILE_ID`, `HTAN_PARENT_ID`, `ALIGNMENT_WORKFLOW_TYPE`, `GENOMIC_REFERENCE`, `MEAN_COVERAGE`, `TOTAL_READS`, `TOTAL_UNIQUELY_MAPPED`, `TOTAL_UNMAPPED_READS`, `PROPORTION_READS_MAPPED`
 
 - **`test_level_3_schema`**: Validates Level 3 schema structure
   - Confirms `BulkWESLevel3` class exists
-  - Verifies all required attributes are present: `COMPONENT`, `FILENAME`, `FILE_FORMAT`, `HTAN_PARENT_DATA_FILE_ID`, `HTAN_DATA_FILE_ID`, `GENOMIC_REFERENCE`
+  - Verifies all required attributes are present: `FILENAME`, `FILE_FORMAT`, `HTAN_DATA_FILE_ID`, `HTAN_PARENT_ID`, `GENOMIC_REFERENCE`
 
 ### Enum Validation Tests
 - **`test_enums`**: Validates that all enums are properly defined in their respective level files

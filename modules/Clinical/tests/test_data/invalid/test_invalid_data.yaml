@@ -1,4 +1,3 @@
-COMPONENT: "Clinical"
 HTAN_PARTICIPANT_ID: "TEST-002"
 
 # Invalid demographics data - missing required fields

@@ -173,11 +173,11 @@ class TestScRNAseqDataValidation:
     def test_valid_level1_data(self):
         """Test valid Level 1 data."""
         valid_data = {
-            "HTAN_DATA_FILE_ID": "HTAN-001_0000_0001",
+            "HTAN_DATA_FILE_ID": "HTA1_0000_0001",
             "FILENAME": "scrna_level1.fastq.gz",
             "FILE_FORMAT": "fastq",
-            "HTAN_PARENT_ID": "HTAN-001_0000_B0001",
-            "HTAN_BIOSPECIMEN_ID": "HTAN-001_0000_B0001",
+            "HTAN_PARENT_ID": "HTA200_0000_B0001",
+            "HTAN_BIOSPECIMEN_ID": "HTA1_0000_0001",
             "SINGLE_CELL_ISOLATION_METHOD": "Droplet-based",
             "DISSOCIATION_METHOD": "Enzymatic",
             "NUCLEIC_ACID_SOURCE": "RNA",
@@ -196,11 +196,11 @@ class TestScRNAseqDataValidation:
     def test_valid_level3_4_data(self):
         """Test valid Level 3/4 data with h5ad format."""
         valid_data = {
-            "HTAN_DATA_FILE_ID": "HTAN-001_0000_0002",
+            "HTAN_DATA_FILE_ID": "HTA1_0000_0002",
             "FILENAME": "scrna_level3_4.h5ad",
             "FILE_FORMAT": "h5ad",
-            "HTAN_PARENT_ID": "HTAN-001_0000_0001",
-            "HTAN_BIOSPECIMEN_ID": "HTAN-001_0000_B0001",
+            "HTAN_PARENT_ID": "HTA200_0000_D0001",
+            "HTAN_BIOSPECIMEN_ID": "HTA1_0000_B0001",
             "SCRNASEQ_WORKFLOW_TYPE": "CellRanger",
             "WORKFLOW_VERSION": "3.1.0",
             "SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION": "Normalization and log transformation",

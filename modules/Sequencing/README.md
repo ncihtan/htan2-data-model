@@ -57,17 +57,16 @@ The main class that defines common attributes shared across all sequencing types
 The `BaseSequencingAttributes` class uses a clean inheritance chain:
 
 ```
-BaseSequencingAttributes → BiospecimenAttributes → CoreFileAttributes
+BaseSequencingAttributes → CoreFileAttributes
 ```
 
 **Inheritance Benefits:**
-- **Core File Attributes**: Gets universal file attributes (FILENAME, HTAN_DATA_FILE_ID, etc.) from `CoreFileAttributes`
-- **Biospecimen Attributes**: Gets required `HTAN_BIOSPECIMEN_ID` from `BiospecimenAttributes`
+- **Core File Attributes**: Gets universal file attributes (FILENAME, HTAN_DATA_FILE_ID, HTAN_PARENT_ID, etc.) from `CoreFileAttributes`
 - **Base Sequencing Attributes**: All sequencing modules get common sequencing attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.)
 - **No Duplication**: Common attributes are defined once in the base modules
 
 Specific sequencing modules (WES, scRNA-seq) will:
-- Inherit from `BaseSequencingAttributes` to get core file, biospecimen, and sequencing attributes
+- Inherit from `BaseSequencingAttributes` to get core file and sequencing attributes
 - Add their own specific attributes
 - Maintain consistent structure across all sequencing types
 
@@ -135,7 +134,7 @@ The module includes comprehensive tests for:
 ## Dependencies
 
 - **Core Module**: Inherits from `CoreFileAttributes`
-- **Biospecimen Module**: Inherits from `BiospecimenAttributes`
+- **Biospecimen Module**: Record-based module (does not inherit from CoreFileAttributes)
 - **LinkML**: Uses LinkML for schema definition
 - **pytest**: For testing framework
 

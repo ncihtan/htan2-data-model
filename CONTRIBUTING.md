@@ -126,7 +126,7 @@ description: HTAN YourModule Data Model Schema
 imports:
   - linkml:types
   - linkml:extensions
-  - ../../Core/domains/core  # ← Import Core module
+  - ../../CoreFile/domains/core  # ← Import Core File module
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -229,12 +229,10 @@ Brief description of what this module handles.
 ```yaml
 # Example usage
 YourModuleData:
-  COMPONENT: "Your Module"
   FILENAME: "example.txt"
   FILE_FORMAT: "txt"
-  HTAN_PARTICIPANT_ID: "HTA200_2"
   HTAN_DATA_FILE_ID: "HTA200_2_12345"
-  HTAN_PARENT_ID: "HTA200_2_B7001"
+  HTAN_PARENT_ID: "HTA200_2_D12345"
   YOUR_ATTRIBUTE: "example value"
 ```
 
@@ -290,7 +288,7 @@ format:
 ### 1. **Core Inheritance**
 - **All modules must inherit** from `CoreFileAttributes`
 - **Use `is_a: CoreFileAttributes`** in your main class
-- **Import Core module**: `- ../../Core/domains/core`
+- **Import Core File module**: `- ../../CoreFile/domains/core`
 
 ### 2. **Title Fields**
 - **Add `title` field** to all attributes
