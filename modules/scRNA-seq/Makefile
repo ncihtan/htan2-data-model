@@ -18,7 +18,6 @@ gen-schema:
 	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/scrna_seq.py
 	cp $(BUILD_DIR)/scrna_seq.py $(DATAMODEL_DIR)/
 	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/scrna_seq_schema.json
-	touch $(DATAMODEL_DIR)/schema_classes.py
 
 # Generate documentation
 docs:
