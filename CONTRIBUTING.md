@@ -103,6 +103,8 @@ gen-schema:
 	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/your_module_schema.json
 	touch $(DATAMODEL_DIR)/schema_classes.py
 
+**Note:** Use `gen-python` for most modules (generates single file). Use `gen-project --config-file ../../config/config.yaml -d $(BUILD_DIR)` for very large schemas or when you need shared base classes split into separate files (see Clinical module for example).
+
 
 # Run module-specific tests
 test:
