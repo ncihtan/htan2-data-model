@@ -1,29 +1,39 @@
 # HTAN scRNA-seq Module Makefile
 
-.PHONY: all clean test gen-python gen-json-schema validate
+.PHONY: all clean test gen-schema docs validate
 
-all: gen-python gen-json-schema test
+# Environment variables
+SCHEMA_NAME = htan_scrna_seq
+SOURCE_SCHEMA_PATH = domains/scrna_seq.yaml
+BUILD_DIR = build
+DATAMODEL_DIR = src/htan_scrna_seq/datamodel
+DOCS_DIR = docs
 
-# Generate Python classes from LinkML schema
-gen-python:
-	gen-python domains/scrna_seq.yaml > src/htan_scrna_seq/datamodel/scrna_seq.py
+all: gen-schema test docs
 
-# Generate JSON schema
-gen-json-schema:
-	gen-json-schema domains/scrna_seq.yaml > scrna_seq_schema.json
+# Generate schema classes
+gen-schema:
+	mkdir -p $(BUILD_DIR)
+	mkdir -p $(DATAMODEL_DIR)
+	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/scrna_seq.py
+	cp $(BUILD_DIR)/scrna_seq.py $(DATAMODEL_DIR)/
+	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/scrna_seq_schema.json
+
+# Generate documentation
+docs:
+	mkdir -p $(DOCS_DIR)
+	poetry run gen-doc --no-mergeimports $(SOURCE_SCHEMA_PATH) -d $(DOCS_DIR)
 
 # Validate schema
 validate:
-	linkml-validate domains/scrna_seq.yaml
+	poetry run linkml-validate $(SOURCE_SCHEMA_PATH)
 
-# Run tests
+# Run module-specific tests
 test:
 	cd ../../ && PYTHONPATH=. poetry run pytest modules/scRNA-seq/tests/ -v
 
-# Clean generated files
+# Clean build artifacts
 clean:
-	rm -rf src/htan_scrna_seq/datamodel/*.py
-	rm -f scrna_seq_schema.json
-	rm -rf __pycache__
-	rm -rf .pytest_cache
+	rm -rf $(BUILD_DIR)/*
+	find . -type d -name "__pycache__" -exec rm -rf {} +
 

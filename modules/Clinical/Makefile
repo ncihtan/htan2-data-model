@@ -17,7 +17,7 @@ gen-schema:
 	mkdir -p $(DATAMODEL_DIR)
 	poetry run gen-project --config-file ../../config/config.yaml -d $(BUILD_DIR) $(SOURCE_SCHEMA_PATH)
 	mv $(BUILD_DIR)/*.py $(DATAMODEL_DIR)/
-	touch $(DATAMODEL_DIR)/schema_classes.py
+	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/clinical_schema.json
 
 # Generate documentation
 docs:
