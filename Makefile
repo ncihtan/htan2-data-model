@@ -56,8 +56,12 @@ install:
 # Generate schema classes for all modules
 modules-gen:
 	@for module in $(MODULES); do \
-		echo "Generating schema classes for $$module module..."; \
-		$(MAKE) -C $(MODULES_DIR)/$$module gen-schema; \
+		if [ -f $(MODULES_DIR)/$$module/Makefile ]; then \
+			echo "Generating schema classes for $$module module..."; \
+			$(MAKE) -C $(MODULES_DIR)/$$module gen-schema; \
+		else \
+			echo "Skipping $$module module (no Makefile - base schema only)"; \
+		fi; \
 	done
 
 # Run tests for all modules
