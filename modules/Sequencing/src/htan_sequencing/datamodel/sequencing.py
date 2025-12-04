@@ -1,5 +1,5 @@
 # Auto generated from sequencing.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-04T20:06:25
+# Generation date: 2025-12-04T20:14:22
 # Schema: Sequencing
 #
 # id: https://w3id.org/htan/sequencing
