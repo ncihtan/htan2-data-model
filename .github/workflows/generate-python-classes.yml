@@ -160,6 +160,7 @@ jobs:
         fi
     
     - name: Auto-commit generated classes to PR branch
+      id: auto-commit
       if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'pull_request'
       run: |
         # NOTE: For PR events, we push directly to the same PR branch (no new PR created)
@@ -182,6 +183,15 @@ jobs:
         
         # Add generated Python classes
         git add modules/*/src/htan_*/datamodel/*.py || true
+        
+        # Capture list of changed files before committing (for PR comment)
+        CHANGED_FILES=$(git diff --cached --name-only || echo "")
+        # Use multiline output format for GitHub Actions
+        {
+          echo "changed_files<<EOF"
+          echo "$CHANGED_FILES"
+          echo "EOF"
+        } >> $GITHUB_OUTPUT
         
         # Commit changes (skip if no changes or commit already exists)
         git commit -m "chore: auto-generate Python classes from schema changes
@@ -279,6 +289,14 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         if [ "${{ steps.check-changes.outputs.has-changes }}" == "true" ]; then
+          # Use the captured list of changed files from the auto-commit step
+          # If not available, fall back to showing files from the most recent commit
+          if [ -n "${{ steps.auto-commit.outputs.changed_files }}" ]; then
+            CHANGED_FILES="${{ steps.auto-commit.outputs.changed_files }}"
+          else
+            CHANGED_FILES=$(git show --name-only --pretty="" HEAD || echo "")
+          fi
+          
           gh pr comment ${{ github.event.pull_request.number }} \
             --body "✅ **Python classes auto-updated!**
 
@@ -286,7 +304,7 @@ jobs:
 
             **Updated files:**
             \`\`\`
-            $(git diff --name-only HEAD~1 || git diff --name-only)
+            $CHANGED_FILES
             \`\`\`
 
             The generated classes are now up to date with the schema changes."
