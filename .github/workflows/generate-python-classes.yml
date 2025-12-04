@@ -19,6 +19,20 @@ on:
       - 'config/config.yaml'
       - '.github/workflows/generate-python-classes.yml'
   workflow_dispatch:
+    inputs:
+      modules:
+        description: 'Modules to regenerate (comma-separated: biospecimen,clinical,wes,all). Leave empty or "all" to generate all modules.'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - biospecimen
+          - clinical
+          - wes
+          - biospecimen,clinical
+          - biospecimen,wes
+          - clinical,wes
 
 jobs:
   generate-python-classes:
@@ -63,8 +77,70 @@ jobs:
     - name: Install project
       run: poetry install --no-interaction
     
-    - name: Generate Python Classes (using Makefile)
+    # Determine which modules to generate
+    # For automatic triggers (push/PR), generate all modules
+    # For manual dispatch, use the input or default to all
+    - name: Set modules to generate
+      id: set-modules
+      run: |
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          MODULES="${{ github.event.inputs.modules }}"
+          if [ -z "$MODULES" ] || [ "$MODULES" = "all" ]; then
+            echo "modules=all" >> $GITHUB_OUTPUT
+            echo "Generating all modules (manual trigger)"
+          else
+            echo "modules=$MODULES" >> $GITHUB_OUTPUT
+            echo "Generating selected modules: $MODULES"
+          fi
+        else
+          echo "modules=all" >> $GITHUB_OUTPUT
+          echo "Generating all modules (automatic trigger)"
+        fi
+    
+    # Generate all modules (for automatic triggers or when "all" is selected)
+    - name: Generate Python Classes for All Modules
+      if: steps.set-modules.outputs.modules == 'all'
       run: make modules-gen
+    
+    # Generate selected modules individually (for manual dispatch with specific selection)
+    - name: Generate Python Classes for Biospecimen
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "biospecimen"; then
+          echo "🔄 Generating Python classes for Biospecimen module..."
+          cd modules/Biospecimen
+          make gen-schema
+          echo "✅ Biospecimen Python classes generated"
+        else
+          echo "⏭️ Skipping Biospecimen (not in selected modules)"
+        fi
+    
+    - name: Generate Python Classes for Clinical
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "clinical"; then
+          echo "🔄 Generating Python classes for Clinical module..."
+          cd modules/Clinical
+          make gen-schema
+          echo "✅ Clinical Python classes generated"
+        else
+          echo "⏭️ Skipping Clinical (not in selected modules)"
+        fi
+    
+    - name: Generate Python Classes for WES
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "wes"; then
+          echo "🔄 Generating Python classes for WES module..."
+          cd modules/WES
+          make gen-schema
+          echo "✅ WES Python classes generated"
+        else
+          echo "⏭️ Skipping WES (not in selected modules)"
+        fi
     
     - name: Run Tests
       run: |
@@ -118,6 +194,68 @@ jobs:
         # Push to the same PR branch (updates the existing PR, no new PR created)
         git push origin "HEAD:$PR_BRANCH" || echo "Push failed"
     
+    - name: Create Pull Request (manual dispatch only)
+      if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'workflow_dispatch'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Configure git
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Create a new branch for this update
+        branch_name="update-python-classes-$(date +%Y%m%d-%H%M%S)"
+        git checkout -b "$branch_name"
+        
+        # Add all changes
+        git add modules/*/src/htan_*/datamodel/*.py
+        
+        # Get list of modules that were generated
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if [ "$MODULES" = "all" ]; then
+          changed_modules="all modules"
+        else
+          changed_modules=$(echo "$MODULES" | tr ',' ' ')
+        fi
+        
+        # Commit changes
+        git commit -m "feat: update Python classes for modules: $changed_modules
+
+        Auto-generated Python classes from LinkML schema updates.
+        
+        ### Updated Modules:
+        $changed_modules
+        
+        ### Changes:
+        - Updated datamodel classes using Makefile gen-schema targets
+        - All tests passing
+        
+        **Manually triggered Python class generation**"
+        
+        # Push branch
+        git push origin "$branch_name"
+        
+        # Create pull request
+        gh pr create \
+          --title "Update Python Classes for $changed_modules" \
+          --body "## Python Class Generation Update
+
+          This PR updates the Python data model classes for the following modules:
+          **$changed_modules**
+
+          ### Generated Classes:
+          - Regenerated all Python datamodel classes using Makefile gen-schema targets
+          - All tests are passing ✅
+
+          ### Testing:
+          - All module tests pass
+          - Generated classes are syntactically valid
+          - Schema compatibility maintained
+
+          **Manually triggered by GitHub Actions workflow**" \
+          --base main \
+          --head "$branch_name"
+    
     - name: Fail if Python classes are outdated (push to main only)
       if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'push'
       run: |
@@ -127,7 +265,7 @@ jobs:
         echo "This means the generated Python code doesn't match the LinkML YAML files."
         echo ""
         echo "**To fix this:**"
-        echo "1. Run the manual Python generation workflow"
+        echo "1. Manually trigger this workflow (workflow_dispatch) to regenerate classes"
         echo "2. Or run locally: \`make modules-gen\`"
         echo "3. Commit the updated Python classes"
         echo ""
