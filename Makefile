@@ -57,8 +57,8 @@ install:
 modules-gen:
 	@for module in $(MODULES); do \
 		if [ -f $(MODULES_DIR)/$$module/Makefile ]; then \
-			echo "Generating schema classes for $$module module..."; \
-			$(MAKE) -C $(MODULES_DIR)/$$module gen-schema; \
+		echo "Generating schema classes for $$module module..."; \
+		$(MAKE) -C $(MODULES_DIR)/$$module gen-schema; \
 		else \
 			echo "Skipping $$module module (no Makefile - base schema only)"; \
 		fi; \
