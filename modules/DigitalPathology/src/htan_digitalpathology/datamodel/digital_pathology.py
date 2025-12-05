@@ -1,5 +1,5 @@
 # Auto generated from digital_pathology.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T14:14:51
+# Generation date: 2025-12-05T19:44:18
 # Schema: DigitalPathology
 #
 # id: https://w3id.org/htan/digital_pathology
@@ -252,6 +252,9 @@ class BaseImagingAttributes(CoreFileAttributes):
         if self.LENS_NUMERICAL_APERTURE is not None and not isinstance(self.LENS_NUMERICAL_APERTURE, float):
             self.LENS_NUMERICAL_APERTURE = float(self.LENS_NUMERICAL_APERTURE)
 
+        if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
+            self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
+
         super().__post_init__(**kwargs)
 
 
@@ -320,6 +323,12 @@ class DigitalPathologyData(BaseImagingAttributes):
 
         if self.SLIDE_LABEL_REDACTED is not None and not isinstance(self.SLIDE_LABEL_REDACTED, Bool):
             self.SLIDE_LABEL_REDACTED = Bool(self.SLIDE_LABEL_REDACTED)
+
+        if self.ANNOTATION_TYPE is not None and not isinstance(self.ANNOTATION_TYPE, str):
+            self.ANNOTATION_TYPE = str(self.ANNOTATION_TYPE)
+
+        if self.SLIDE_LABEL_REDACTED is not None and not isinstance(self.SLIDE_LABEL_REDACTED, str):
+            self.SLIDE_LABEL_REDACTED = str(self.SLIDE_LABEL_REDACTED)
 
         super().__post_init__(**kwargs)
 
@@ -552,3 +561,21 @@ slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, n
 slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
                    model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
                    pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$'))
+
+slots.DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
+                   model_uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=None, range=Optional[str])
+
+slots.ANNOTATION_TYPE = Slot(uri=HTAN.ANNOTATION_TYPE, name="ANNOTATION_TYPE", curie=HTAN.curie('ANNOTATION_TYPE'),
+                   model_uri=HTAN.ANNOTATION_TYPE, domain=None, range=Optional[str])
+
+slots.SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
+                   model_uri=HTAN.SLIDE_LABEL_REDACTED, domain=None, range=Optional[str])
+
+slots.DigitalPathologyData_ANNOTATION_TYPE = Slot(uri=HTAN.ANNOTATION_TYPE, name="DigitalPathologyData_ANNOTATION_TYPE", curie=HTAN.curie('ANNOTATION_TYPE'),
+                   model_uri=HTAN.DigitalPathologyData_ANNOTATION_TYPE, domain=DigitalPathologyData, range=Optional[str])
+
+slots.DigitalPathologyData_SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="DigitalPathologyData_SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
+                   model_uri=HTAN.DigitalPathologyData_SLIDE_LABEL_REDACTED, domain=DigitalPathologyData, range=Optional[str])
+
+slots.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
+                   model_uri=HTAN.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=BaseImagingAttributes, range=Optional[str])
