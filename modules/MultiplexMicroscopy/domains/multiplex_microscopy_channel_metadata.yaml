@@ -279,7 +279,7 @@ classes:
 
       TARGET_NAME:
         range: string
-        required: true
+        required: false
         title: "Target Name"
         description: Short descriptive name (abbreviation) for this target (antigen)
 

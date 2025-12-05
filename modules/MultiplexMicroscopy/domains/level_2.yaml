@@ -95,14 +95,14 @@ classes:
 
       PHYSICAL_SIZE_Z:
         range: float
-        required: false
+        required: true
         minimum_value: 0.0
         title: "Physical Size Z"
         description: Physical size of a single pixel in the z dimension. In microns.
 
       SIZE_C:
         range: integer
-        required: false
+        required: true
         minimum_value: 1
         title: "Size C"
         description: Number of channels. Integer >= 1
@@ -130,7 +130,7 @@ classes:
 
       SIZE_Z:
         range: integer
-        required: false
+        required: true
         minimum_value: 1
         title: "Size Z"
         description: The number of pixels in the z dimension at the highest resolution available
