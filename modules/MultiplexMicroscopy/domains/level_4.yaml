@@ -5,7 +5,7 @@ description: HTAN Multiplex Microscopy Level 4 - Cell-by-feature tables
 imports:
   - linkml:types
   - linkml:extensions
-  - ../../CoreFile/domains/core
+  - ../../Imaging/domains/imaging
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -32,7 +32,7 @@ enums:
 
 classes:
   MultiplexMicroscopyLevel4:
-    is_a: CoreFileAttributes
+    is_a: BaseImagingAttributes
     description: Multiplex Microscopy Level 4 - Cell-by-feature table (typically cell-by-marker) generated from the segmentation mask and image. No changes from prior definitions (RFC Imaging Level 3 & 4 - v1)
     attributes:
       # Level 4 specific attributes
