@@ -213,10 +213,13 @@ jobs:
         fi
     
     - name: Run Tests
+      id: run-tests
+      continue-on-error: true
       run: |
         poetry run pytest modules/*/tests/ -v --tb=short
     
     - name: Check for Changes
+      if: steps.run-tests.outcome == 'success'
       id: check-changes
       run: |
         if git diff --quiet; then
@@ -231,7 +234,7 @@ jobs:
     
     - name: Auto-commit generated classes to PR branch
       id: auto-commit
-      if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'pull_request'
+      if: steps.run-tests.outcome == 'success' && steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'pull_request'
       run: |
         # NOTE: For PR events, we push directly to the same PR branch (no new PR created)
         # For push to main events, we fail the workflow if classes are outdated (safety check)
@@ -275,7 +278,7 @@ jobs:
         git push origin "HEAD:$PR_BRANCH" || echo "Push failed"
     
     - name: Create Pull Request (manual dispatch only)
-      if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'workflow_dispatch'
+      if: steps.run-tests.outcome == 'success' && steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'workflow_dispatch'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -337,7 +340,7 @@ jobs:
           --head "$branch_name"
     
     - name: Fail if Python classes are outdated (push to main only)
-      if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'push'
+      if: steps.run-tests.outcome == 'success' && steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'push'
       run: |
         echo "❌ **DEPLOYMENT CHECK FAILED**"
         echo ""
@@ -353,8 +356,17 @@ jobs:
         git diff --name-only
         exit 1
     
+    - name: Fail if tests failed
+      if: steps.run-tests.outcome == 'failure'
+      run: |
+        echo "❌ **TESTS FAILED - Python class generation skipped**"
+        echo ""
+        echo "Tests must pass before Python classes can be generated and committed."
+        echo "Please fix the failing tests and try again."
+        exit 1
+    
     - name: Comment on PR with Status
-      if: github.event_name == 'pull_request'
+      if: steps.run-tests.outcome == 'success' && github.event_name == 'pull_request'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
