@@ -98,6 +98,8 @@ format:
 		modules/Biospecimen/tests/ \
 		modules/Sequencing/tests/ \
 		modules/scRNA-seq/tests/ \
+		modules/DigitalPathology/tests/ \
+		modules/MultiplexMicroscopy/tests/ \
 		modules/*/src/
 
 # ---
