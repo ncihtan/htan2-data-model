@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T14:20:01
+# Generation date: 2025-12-05T19:44:21
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -288,6 +288,9 @@ class BaseImagingAttributes(CoreFileAttributes):
 
         if self.LENS_NUMERICAL_APERTURE is not None and not isinstance(self.LENS_NUMERICAL_APERTURE, float):
             self.LENS_NUMERICAL_APERTURE = float(self.LENS_NUMERICAL_APERTURE)
+
+        if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
+            self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
 
         super().__post_init__(**kwargs)
 
@@ -1466,3 +1469,9 @@ slots.channelMetadata__DILUTION = Slot(uri=HTAN.DILUTION, name="channelMetadata_
 
 slots.channelMetadata__CONCENTRATION = Slot(uri=HTAN.CONCENTRATION, name="channelMetadata__CONCENTRATION", curie=HTAN.curie('CONCENTRATION'),
                    model_uri=HTAN.channelMetadata__CONCENTRATION, domain=None, range=Optional[str])
+
+slots.DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
+                   model_uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=None, range=Optional[str])
+
+slots.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
+                   model_uri=HTAN.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=BaseImagingAttributes, range=Optional[str])
