@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
     inputs:
       modules:
-        description: 'Modules to regenerate (comma-separated: biospecimen,clinical,wes,all). Leave empty or "all" to generate all modules.'
+        description: 'Modules to regenerate (comma-separated: biospecimen,clinical,wes,sequencing,scrna-seq,digitalpathology,multiplexmicroscopy,all). Leave empty or "all" to generate all modules.'
         required: false
         default: 'all'
         type: choice
@@ -30,6 +30,10 @@ on:
           - biospecimen
           - clinical
           - wes
+          - sequencing
+          - scrna-seq
+          - digitalpathology
+          - multiplexmicroscopy
           - biospecimen,clinical
           - biospecimen,wes
           - clinical,wes
@@ -140,6 +144,58 @@ jobs:
           echo "✅ WES Python classes generated"
         else
           echo "⏭️ Skipping WES (not in selected modules)"
+        fi
+    
+    - name: Generate Python Classes for Sequencing
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "sequencing"; then
+          echo "🔄 Generating Python classes for Sequencing module..."
+          cd modules/Sequencing
+          make gen-schema
+          echo "✅ Sequencing Python classes generated"
+        else
+          echo "⏭️ Skipping Sequencing (not in selected modules)"
+        fi
+    
+    - name: Generate Python Classes for scRNA-seq
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "scrna-seq"; then
+          echo "🔄 Generating Python classes for scRNA-seq module..."
+          cd modules/scRNA-seq
+          make gen-schema
+          echo "✅ scRNA-seq Python classes generated"
+        else
+          echo "⏭️ Skipping scRNA-seq (not in selected modules)"
+        fi
+    
+    - name: Generate Python Classes for DigitalPathology
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "digitalpathology"; then
+          echo "🔄 Generating Python classes for DigitalPathology module..."
+          cd modules/DigitalPathology
+          make gen-schema
+          echo "✅ DigitalPathology Python classes generated"
+        else
+          echo "⏭️ Skipping DigitalPathology (not in selected modules)"
+        fi
+    
+    - name: Generate Python Classes for MultiplexMicroscopy
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "multiplexmicroscopy"; then
+          echo "🔄 Generating Python classes for MultiplexMicroscopy module..."
+          cd modules/MultiplexMicroscopy
+          make gen-schema
+          echo "✅ MultiplexMicroscopy Python classes generated"
+        else
+          echo "⏭️ Skipping MultiplexMicroscopy (not in selected modules)"
         fi
     
     - name: Run Tests

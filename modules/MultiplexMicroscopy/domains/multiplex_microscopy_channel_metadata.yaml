@@ -1,0 +1,382 @@
+name: MultiplexMicroscopyChannelMetadata
+id: https://w3id.org/htan/multiplex_microscopy/channel_metadata
+description: HTAN Multiplex Microscopy Channel Metadata - Channel-specific attributes for multiplex imaging
+
+imports:
+  - linkml:types
+  - linkml:extensions
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  MetalIsotopeElement:
+    permissible_values:
+      "H":
+        description: Hydrogen
+      "He":
+        description: Helium
+      "Li":
+        description: Lithium
+      "Be":
+        description: Beryllium
+      "B":
+        description: Boron
+      "C":
+        description: Carbon
+      "N":
+        description: Nitrogen
+      "O":
+        description: Oxygen
+      "F":
+        description: Fluorine
+      "Ne":
+        description: Neon
+      "Na":
+        description: Sodium
+      "Mg":
+        description: Magnesium
+      "Al":
+        description: Aluminum
+      "Si":
+        description: Silicon
+      "P":
+        description: Phosphorus
+      "S":
+        description: Sulfur
+      "Cl":
+        description: Chlorine
+      "Ar":
+        description: Argon
+      "K":
+        description: Potassium
+      "Ca":
+        description: Calcium
+      "Sc":
+        description: Scandium
+      "Ti":
+        description: Titanium
+      "V":
+        description: Vanadium
+      "Cr":
+        description: Chromium
+      "Mn":
+        description: Manganese
+      "Fe":
+        description: Iron
+      "Co":
+        description: Cobalt
+      "Ni":
+        description: Nickel
+      "Cu":
+        description: Copper
+      "Zn":
+        description: Zinc
+      "Ga":
+        description: Gallium
+      "Ge":
+        description: Germanium
+      "As":
+        description: Arsenic
+      "Se":
+        description: Selenium
+      "Br":
+        description: Bromine
+      "Kr":
+        description: Krypton
+      "Rb":
+        description: Rubidium
+      "Sr":
+        description: Strontium
+      "Y":
+        description: Yttrium
+      "Zr":
+        description: Zirconium
+      "Nb":
+        description: Niobium
+      "Mo":
+        description: Molybdenum
+      "Tc":
+        description: Technetium
+      "Ru":
+        description: Ruthenium
+      "Rh":
+        description: Rhodium
+      "Pd":
+        description: Palladium
+      "Ag":
+        description: Silver
+      "Cd":
+        description: Cadmium
+      "In":
+        description: Indium
+      "Sn":
+        description: Tin
+      "Sb":
+        description: Antimony
+      "Te":
+        description: Tellurium
+      "I":
+        description: Iodine
+      "Xe":
+        description: Xenon
+      "Cs":
+        description: Cesium
+      "Ba":
+        description: Barium
+      "La":
+        description: Lanthanum
+      "Ce":
+        description: Cerium
+      "Pr":
+        description: Praseodymium
+      "Nd":
+        description: Neodymium
+      "Pm":
+        description: Promethium
+      "Sm":
+        description: Samarium
+      "Eu":
+        description: Europium
+      "Gd":
+        description: Gadolinium
+      "Tb":
+        description: Terbium
+      "Dy":
+        description: Dysprosium
+      "Ho":
+        description: Holmium
+      "Er":
+        description: Erbium
+      "Tm":
+        description: Thulium
+      "Yb":
+        description: Ytterbium
+      "Lu":
+        description: Lutetium
+      "Hf":
+        description: Hafnium
+      "Ta":
+        description: Tantalum
+      "W":
+        description: Tungsten
+      "Re":
+        description: Rhenium
+      "Os":
+        description: Osmium
+      "Ir":
+        description: Iridium
+      "Pt":
+        description: Platinum
+      "Au":
+        description: Gold
+      "Hg":
+        description: Mercury
+      "Tl":
+        description: Thallium
+      "Pb":
+        description: Lead
+      "Bi":
+        description: Bismuth
+      "Po":
+        description: Polonium
+      "At":
+        description: Astatine
+      "Rn":
+        description: Radon
+      "Fr":
+        description: Francium
+      "Ra":
+        description: Radium
+      "Ac":
+        description: Actinium
+      "Th":
+        description: Thorium
+      "Pa":
+        description: Protactinium
+      "U":
+        description: Uranium
+      "Np":
+        description: Neptunium
+      "Pu":
+        description: Plutonium
+      "Am":
+        description: Americium
+      "Cm":
+        description: Curium
+      "Bk":
+        description: Berkelium
+      "Cf":
+        description: Californium
+      "Es":
+        description: Einsteinium
+      "Fm":
+        description: Fermium
+      "Md":
+        description: Mendelevium
+      "No":
+        description: Nobelium
+      "Lr":
+        description: Lawrencium
+      "Rf":
+        description: Rutherfordium
+      "Db":
+        description: Dubnium
+      "Sg":
+        description: Seaborgium
+      "Bh":
+        description: Bohrium
+      "Hs":
+        description: Hassium
+      "Mt":
+        description: Meitnerium
+      "Ds":
+        description: Darmstadtium
+      "Rg":
+        description: Roentgenium
+      "Cn":
+        description: Copernicium
+      "Fl":
+        description: Flerovium
+      "Lv":
+        description: Livermorium
+      "Ts":
+        description: Tennessine
+      "Og":
+        description: Oganesson
+
+classes:
+  ChannelMetadata:
+    description: Metadata for each channel in multiplex microscopy imaging
+    attributes:
+      CHANNEL_ID:
+        range: string
+        required: true
+        title: "Channel ID"
+        description: The unique channel identifier for each channel in this image must match the corresponding field in the imaging file submitted
+
+      CHANNEL_NAME:
+        range: string
+        required: true
+        title: "Channel Name"
+        description: Channel label for each channel in this image must match the corresponding field in the imaging file submitted
+
+      CYCLE_NUMBER:
+        range: integer
+        required: false
+        title: "Cycle Number"
+        description: The cycle # in which the co-listed reagent(s) was(were) used
+
+      SUB_CYCLE_NUMBER:
+        range: integer
+        required: false
+        title: "Sub Cycle Number"
+        description: Sub-cycle #
+
+      TARGET_NAME:
+        range: string
+        required: false
+        title: "Target Name"
+        description: Short descriptive name (abbreviation) for this target (antigen)
+
+      ANTIBODY_NAME:
+        range: string
+        required: false
+        title: "Antibody Name"
+        description: Short descriptive name for this antibody
+
+      RRID_IDENTIFIER:
+        range: string
+        required: false
+        title: "RRID Identifier"
+        description: Research Resource Identifier
+        pattern: "^RRID:AB_\\d+$"
+
+      FLUOROPHORE:
+        range: string
+        required: false
+        title: "Fluorophore"
+        description: Fluorescent dye label
+
+      CLONE:
+        range: string
+        required: false
+        title: "Clone"
+        description: Unique clone identifier
+
+      LOT:
+        range: string
+        required: false
+        title: "Lot"
+        description: Lot number from vendor
+
+      CATALOG_NUMBER:
+        range: string
+        required: false
+        title: "Catalog Number"
+        description: Catalog number from vendor
+
+      EXCITATION_WAVELENGTH:
+        range: float
+        required: false
+        title: "Excitation Wavelength"
+        description: Center/peak of the excitation spectrum (nm)
+
+      EMISSION_WAVELENGTH:
+        range: float
+        required: false
+        title: "Emission Wavelength"
+        description: Center/peak of the emission spectrum (nm)
+
+      EXCITATION_BANDWIDTH:
+        range: float
+        required: false
+        title: "Excitation Bandwidth"
+        description: Nominal width of excitation spectrum (nm)
+
+      EMISSION_BANDWIDTH:
+        range: float
+        required: false
+        title: "Emission Bandwidth"
+        description: Nominal width of emission spectrum (nm)
+
+      METAL_ISOTOPE_ELEMENT_ABBREVIATION:
+        range: MetalIsotopeElement
+        required: false
+        title: "Metal Isotope Element Abbreviation"
+        description: Element abbreviation
+
+      METAL_ISOTOPE_ELEMENT_MASS:
+        range: integer
+        required: false
+        title: "Metal Isotope Element Mass"
+        description: Element mass number
+
+      OLIGO_BARCODE_UPPER_STRAND:
+        range: string
+        required: false
+        title: "Oligo Barcode Upper Strand"
+        description: DNA barcode used for labeling
+
+      OLIGO_BARCODE_LOWER_STRAND:
+        range: string
+        required: false
+        title: "Oligo Barcode Lower Strand"
+        description: DNA barcode used for labeling
+
+      DILUTION:
+        range: string
+        required: false
+        title: "Dilution"
+        description: Final dilution ratio used in experiment
+
+      CONCENTRATION:
+        range: string
+        required: false
+        title: "Concentration"
+        description: Final concentration used in experiment
+
