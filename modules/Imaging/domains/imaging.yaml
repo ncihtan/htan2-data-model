@@ -6,8 +6,6 @@ imports:
   - linkml:types
   - linkml:extensions
   - ../../CoreFile/domains/core
-  - ../../DigitalPathology/domains/tissue_fixative_enum
-  - ../../DigitalPathology/domains/embedding_medium_enum
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -202,29 +200,32 @@ classes:
         title: "QC Comment"
         description: Comments related to quality control checks
 
-      # Biospecimen metadata
+      # Species metadata
       SPECIES:
         range: string
         required: true
         title: "Species"
         description: NCBI Taxonomy ID
-
-      ORGAN_OR_TISSUE:
-        range: string
-        required: true
-        title: "Organ or Tissue"
-        description: ICD-O Origin of Disease Anatomic Site
-        pattern: "^[A-Z][0-9]{2}\\.[0-9]{1,2}$"
-
-      TISSUE_FIXATIVE:
-        range: TissueFixative
-        required: true
-        title: "Tissue Fixative"
-        description: Specimen fixative type
-
-      EMBEDDING_MEDIUM:
-        range: EmbeddingMedium
-        required: true
-        title: "Embedding Medium"
-        description: Biospecimen Preservation Procedure Type
+      
+      # Note: Organ/Tissue, Tissue Fixative, and Embedding Medium are biospecimen attributes
+      # and should be retrieved from the Biospecimen record via HTAN_PARENT_ID
+    
+    slot_usage:
+      DE_IDENTIFICATION_METHOD_DESCRIPTION:
+        required: false
+        description: Required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable'
+    
+    rules:
+      - description: "DE_IDENTIFICATION_METHOD_DESCRIPTION is required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable'"
+        preconditions:
+          slot_conditions:
+            DE_IDENTIFICATION_METHOD_TYPE:
+              any_of:
+                - equals_string: "Automatic"
+                - equals_string: "Manual"
+                - equals_string: "Semiautomatic"
+        postconditions:
+          slot_conditions:
+            DE_IDENTIFICATION_METHOD_DESCRIPTION:
+              required: true
 
