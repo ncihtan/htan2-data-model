@@ -14,16 +14,20 @@ class TestDigitalPathology:
         assert sv is not None
 
     def test_core_inheritance(self):
-        """Test that Digital Pathology inherits from Core."""
+        """Test that Digital Pathology inherits from BaseImagingAttributes (which inherits from CoreFileAttributes)."""
         schema_path = "modules/DigitalPathology/domains/digital_pathology.yaml"
         sv = SchemaView(schema_path)
         
         # Check that the main class exists
         assert "DigitalPathologyData" in sv.all_classes()
         
-        # Check that it inherits from Core
+        # Check that it inherits from BaseImagingAttributes
         digital_pathology_class = sv.get_class("DigitalPathologyData")
-        assert digital_pathology_class.is_a == "CoreFileAttributes"
+        assert digital_pathology_class.is_a == "BaseImagingAttributes"
+        
+        # Verify BaseImagingAttributes inherits from CoreFileAttributes
+        base_imaging_class = sv.get_class("BaseImagingAttributes")
+        assert base_imaging_class.is_a == "CoreFileAttributes"
 
     def test_enums(self):
         """Test that enums are properly defined."""
