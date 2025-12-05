@@ -199,7 +199,7 @@ class TestBaseImagingDataValidation:
         # Valid staining methods
         valid_staining_methods = [
             "CODEX", "CyCIF", "ExSeq", "GeoMX-DSP", "H&E", "IHC", "IMC",
-            "MIBI", "MERFISH", "MxIF", "mIHC", "Not Applicable", "SABER", "t-CyCIF"
+            "MERFISH", "MIBI", "MxIF", "Not Applicable", "SABER", "mIHC", "t-CyCIF"
         ]
         
         # Valid immersion media

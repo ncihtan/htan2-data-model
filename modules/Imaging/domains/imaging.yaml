@@ -48,18 +48,18 @@ enums:
         description: Immunohistochemistry staining method
       "IMC":
         description: Imaging Mass Cytometry staining method
-      "MIBI":
-        description: Multiplexed Ion Beam Imaging staining method
       "MERFISH":
         description: Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method
+      "MIBI":
+        description: Multiplexed Ion Beam Imaging staining method
       "MxIF":
         description: Multiplexed Immunofluorescence staining method
-      "mIHC":
-        description: Multiplexed Immunohistochemistry staining method
       "Not Applicable":
         description: Staining not applicable
       "SABER":
         description: Signal Amplification By Exchange Reaction staining method
+      "mIHC":
+        description: Multiplexed Immunohistochemistry staining method
       "t-CyCIF":
         description: Tissue Cyclic Immunofluorescence staining method
 
