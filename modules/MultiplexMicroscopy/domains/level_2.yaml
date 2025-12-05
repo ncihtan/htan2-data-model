@@ -1,0 +1,704 @@
+name: MultiplexMicroscopyLevel2
+id: https://w3id.org/htan/multiplex_microscopy/level_2
+description: HTAN Multiplex Microscopy Level 2 - Imaging data with channel metadata
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+  - tissue_fixative_enum
+  - embedding_medium_enum
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  DeIdentificationMethodType:
+    permissible_values:
+      "Automatic":
+        description: Automatic de-identification method
+      "Manual":
+        description: Manual de-identification method
+      "Not Applicable":
+        description: De-identification not applicable
+      "Semiautomatic":
+        description: Semi-automatic de-identification method
+
+  ImageModality:
+    permissible_values:
+      "SM":
+        description: Slide Microscopy
+
+  StainingMethod:
+    permissible_values:
+      "CODEX":
+        description: CODEX staining method
+      "CyCIF":
+        description: Cyclic Immunofluorescence staining method
+      "ExSeq":
+        description: Expansion Sequencing staining method
+      "GeoMX-DSP":
+        description: GeoMX Digital Spatial Profiling staining method
+      "H&E":
+        description: Hematoxylin and Eosin staining method
+      "IHC":
+        description: Immunohistochemistry staining method
+      "IMC":
+        description: Imaging Mass Cytometry staining method
+      "MIBI":
+        description: Multiplexed Ion Beam Imaging staining method
+      "MERFISH":
+        description: Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method
+      "MxIF":
+        description: Multiplexed Immunofluorescence staining method
+      "mIHC":
+        description: Multiplexed Immunohistochemistry staining method
+      "Not Applicable":
+        description: Staining not applicable
+      "SABER":
+        description: Signal Amplification By Exchange Reaction staining method
+      "t-CyCIF":
+        description: Tissue Cyclic Immunofluorescence staining method
+
+  ImagingAssayType:
+    permissible_values:
+      "CODEX":
+        description: CODEX imaging assay type
+      "CyCIF":
+        description: Cyclic Immunofluorescence imaging assay type
+      "ExSeq":
+        description: Expansion Sequencing imaging assay type
+      "GeoMX-DSP":
+        description: GeoMX Digital Spatial Profiling imaging assay type
+      "H&E":
+        description: Hematoxylin and Eosin imaging assay type
+      "IHC":
+        description: Immunohistochemistry imaging assay type
+      "IMC":
+        description: Imaging Mass Cytometry imaging assay type
+      "MIBI":
+        description: Multiplexed Ion Beam Imaging imaging assay type
+      "MERFISH":
+        description: Multiplexed Error-Robust Fluorescence In Situ Hybridization imaging assay type
+      "MxIF":
+        description: Multiplexed Immunofluorescence imaging assay type
+      "mIHC":
+        description: Multiplexed Immunohistochemistry imaging assay type
+      "Not Applicable":
+        description: Imaging assay not applicable
+      "SABER":
+        description: Signal Amplification By Exchange Reaction imaging assay type
+      "t-CyCIF":
+        description: Tissue Cyclic Immunofluorescence imaging assay type
+
+  ImmersionMedium:
+    permissible_values:
+      "Air":
+        description: Air immersion medium
+      "Glycerol":
+        description: Glycerol immersion medium
+      "Oil":
+        description: Oil immersion medium
+      "Other":
+        description: Other immersion medium
+      "Water":
+        description: Water immersion medium
+
+  MetalIsotopeElement:
+    permissible_values:
+      "H":
+        description: Hydrogen
+      "He":
+        description: Helium
+      "Li":
+        description: Lithium
+      "Be":
+        description: Beryllium
+      "B":
+        description: Boron
+      "C":
+        description: Carbon
+      "N":
+        description: Nitrogen
+      "O":
+        description: Oxygen
+      "F":
+        description: Fluorine
+      "Ne":
+        description: Neon
+      "Na":
+        description: Sodium
+      "Mg":
+        description: Magnesium
+      "Al":
+        description: Aluminum
+      "Si":
+        description: Silicon
+      "P":
+        description: Phosphorus
+      "S":
+        description: Sulfur
+      "Cl":
+        description: Chlorine
+      "Ar":
+        description: Argon
+      "K":
+        description: Potassium
+      "Ca":
+        description: Calcium
+      "Sc":
+        description: Scandium
+      "Ti":
+        description: Titanium
+      "V":
+        description: Vanadium
+      "Cr":
+        description: Chromium
+      "Mn":
+        description: Manganese
+      "Fe":
+        description: Iron
+      "Co":
+        description: Cobalt
+      "Ni":
+        description: Nickel
+      "Cu":
+        description: Copper
+      "Zn":
+        description: Zinc
+      "Ga":
+        description: Gallium
+      "Ge":
+        description: Germanium
+      "As":
+        description: Arsenic
+      "Se":
+        description: Selenium
+      "Br":
+        description: Bromine
+      "Kr":
+        description: Krypton
+      "Rb":
+        description: Rubidium
+      "Sr":
+        description: Strontium
+      "Y":
+        description: Yttrium
+      "Zr":
+        description: Zirconium
+      "Nb":
+        description: Niobium
+      "Mo":
+        description: Molybdenum
+      "Tc":
+        description: Technetium
+      "Ru":
+        description: Ruthenium
+      "Rh":
+        description: Rhodium
+      "Pd":
+        description: Palladium
+      "Ag":
+        description: Silver
+      "Cd":
+        description: Cadmium
+      "In":
+        description: Indium
+      "Sn":
+        description: Tin
+      "Sb":
+        description: Antimony
+      "Te":
+        description: Tellurium
+      "I":
+        description: Iodine
+      "Xe":
+        description: Xenon
+      "Cs":
+        description: Cesium
+      "Ba":
+        description: Barium
+      "La":
+        description: Lanthanum
+      "Ce":
+        description: Cerium
+      "Pr":
+        description: Praseodymium
+      "Nd":
+        description: Neodymium
+      "Pm":
+        description: Promethium
+      "Sm":
+        description: Samarium
+      "Eu":
+        description: Europium
+      "Gd":
+        description: Gadolinium
+      "Tb":
+        description: Terbium
+      "Dy":
+        description: Dysprosium
+      "Ho":
+        description: Holmium
+      "Er":
+        description: Erbium
+      "Tm":
+        description: Thulium
+      "Yb":
+        description: Ytterbium
+      "Lu":
+        description: Lutetium
+      "Hf":
+        description: Hafnium
+      "Ta":
+        description: Tantalum
+      "W":
+        description: Tungsten
+      "Re":
+        description: Rhenium
+      "Os":
+        description: Osmium
+      "Ir":
+        description: Iridium
+      "Pt":
+        description: Platinum
+      "Au":
+        description: Gold
+      "Hg":
+        description: Mercury
+      "Tl":
+        description: Thallium
+      "Pb":
+        description: Lead
+      "Bi":
+        description: Bismuth
+      "Po":
+        description: Polonium
+      "At":
+        description: Astatine
+      "Rn":
+        description: Radon
+      "Fr":
+        description: Francium
+      "Ra":
+        description: Radium
+      "Ac":
+        description: Actinium
+      "Th":
+        description: Thorium
+      "Pa":
+        description: Protactinium
+      "U":
+        description: Uranium
+      "Np":
+        description: Neptunium
+      "Pu":
+        description: Plutonium
+      "Am":
+        description: Americium
+      "Cm":
+        description: Curium
+      "Bk":
+        description: Berkelium
+      "Cf":
+        description: Californium
+      "Es":
+        description: Einsteinium
+      "Fm":
+        description: Fermium
+      "Md":
+        description: Mendelevium
+      "No":
+        description: Nobelium
+      "Lr":
+        description: Lawrencium
+      "Rf":
+        description: Rutherfordium
+      "Db":
+        description: Dubnium
+      "Sg":
+        description: Seaborgium
+      "Bh":
+        description: Bohrium
+      "Hs":
+        description: Hassium
+      "Mt":
+        description: Meitnerium
+      "Ds":
+        description: Darmstadtium
+      "Rg":
+        description: Roentgenium
+      "Cn":
+        description: Copernicium
+      "Fl":
+        description: Flerovium
+      "Lv":
+        description: Livermorium
+      "Ts":
+        description: Tennessine
+      "Og":
+        description: Oganesson
+
+classes:
+  MultiplexMicroscopyLevel2:
+    is_a: CoreFileAttributes
+    description: Multiplex Microscopy Level 2 - Imaging data compiled into a single file format (preferably tiled and pyramidal OME-TIFF), accompanied by a CSV file containing channel metadata
+    attributes:
+      # Shared attributes with Digital Pathology
+      EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES:
+        range: string
+        required: true
+        title: "Experimental Strategy and Data Subtypes"
+        description: What is the experimental strategy used for the study (or what type of data subtypes exist in the study)?
+
+      DE_IDENTIFICATION_METHOD_TYPE:
+        range: DeIdentificationMethodType
+        required: true
+        title: "De-identification Method Type"
+        description: De-identification Method Type
+
+      DE_IDENTIFICATION_METHOD_DESCRIPTION:
+        range: string
+        required: false
+        title: "De-identification Method Description"
+        description: Description of the process of removing potentially identifying data or data elements to render data into a form that does not identify individuals and where identification is not likely to take place.
+
+      DE_IDENTIFICATION_SOFTWARE:
+        range: string
+        required: false
+        title: "De-identification Software"
+        description: Software that was used to de-identify the images (if used)
+
+      LICENSE:
+        range: string
+        required: true
+        title: "License"
+        description: Official or legal permission to do or own a specified thing.
+
+      IMAGE_MODALITY:
+        range: ImageModality
+        required: true
+        title: "Image Modality"
+        description: The method in which the images are generated.
+
+      IMAGING_EQUIPMENT_MANUFACTURER:
+        range: string
+        required: true
+        title: "Imaging Equipment Manufacturer"
+        description: Producer of the imaging equipment that was used to generate the digital image
+
+      IMAGING_EQUIPMENT_MODEL:
+        range: string
+        required: false
+        title: "Imaging Equipment Model"
+        description: The words used to describe the specific model of the instrument used to carry out an imaging experiment
+
+      IMAGING_SOFTWARE:
+        range: string
+        required: false
+        title: "Imaging Software"
+        description: The name of the software package that was used to capture, generate, and process the image
+
+      CITATION_OR_DOI:
+        range: string
+        required: true
+        title: "Citation or DOI"
+        description: Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies
+
+      IMAGING_PROTOCOL:
+        range: string
+        required: false
+        title: "Imaging Protocol"
+        description: A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol
+
+      STAINING_METHOD:
+        range: StainingMethod
+        required: true
+        title: "Staining Method"
+        description: Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination
+
+      OBJECTIVE:
+        range: string
+        required: true
+        title: "Objective"
+        description: The manufacturer and or model number for the optical element that gathers light from an object being observed and focuses the light rays from it to produce a real image of the object
+
+      NOMINAL_MAGNIFICATION:
+        range: float
+        required: true
+        minimum_value: 1.0
+        title: "Nominal Magnification"
+        description: The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. floating point value > 1(no units)
+
+      IMMERSION:
+        range: ImmersionMedium
+        required: false
+        title: "Immersion"
+        description: Immersion medium. Each objective is designed for a specific immersion medium, which is marked on the objective. The main types of immersion media are air, oil, and water.
+
+      LENS_NUMERICAL_APERTURE:
+        range: float
+        required: false
+        minimum_value: 0.0
+        title: "Lens Numerical Aperture"
+        description: The numerical aperture of the lens. Floating point value > 0.
+
+      PASSED_QC:
+        range: boolean
+        required: true
+        title: "Passed QC"
+        description: Confirm that the image has passed internal quality control checks
+
+      QC_COMMENT:
+        range: string
+        required: true
+        title: "QC Comment"
+        description: Comments related to quality control checks
+
+      SPECIES:
+        range: string
+        required: true
+        title: "Species"
+        description: NCBI Taxonomy ID
+
+      ORGAN_OR_TISSUE:
+        range: string
+        required: true
+        title: "Organ or Tissue"
+        description: ICD-O Origin of Disease Anatomic Site
+        pattern: "^[A-Z][0-9]{2}\\.[0-9]{1,2}$"
+
+      TISSUE_FIXATIVE:
+        range: TissueFixative
+        required: true
+        title: "Tissue Fixative"
+        description: Specimen fixative type
+
+      EMBEDDING_MEDIUM:
+        range: EmbeddingMedium
+        required: true
+        title: "Embedding Medium"
+        description: Biospecimen Preservation Procedure Type
+
+      # Multiplex Microscopy specific attributes
+      WORKING_DISTANCE:
+        range: string
+        required: false
+        title: "Working Distance"
+        description: The working distance of the lens, expressed as a floating point number. Floating point > 0. Size needs to be specified in microns (um)
+
+      IMAGING_ASSAY_TYPE:
+        range: ImagingAssayType
+        required: true
+        title: "Imaging Assay Type"
+        description: Type of imaging assay
+
+      PYRAMID:
+        range: boolean
+        required: false
+        title: "Pyramid"
+        description: The data file contains an image pyramid
+
+      PHYSICAL_SIZE_X:
+        range: float
+        required: true
+        minimum_value: 0.0
+        title: "Physical Size X"
+        description: Physical size of a single pixel in the x dimension. In microns.
+
+      PHYSICAL_SIZE_Y:
+        range: float
+        required: true
+        minimum_value: 0.0
+        title: "Physical Size Y"
+        description: Physical size of a single pixel in the y dimension. In microns.
+
+      PHYSICAL_SIZE_Z:
+        range: float
+        required: false
+        minimum_value: 0.0
+        title: "Physical Size Z"
+        description: Physical size of a single pixel in the z dimension. In microns.
+
+      SIZE_C:
+        range: integer
+        required: false
+        minimum_value: 1
+        title: "Size C"
+        description: Number of channels. Integer >= 1
+
+      SIZE_T:
+        range: integer
+        required: true
+        minimum_value: 1
+        title: "Size T"
+        description: Number of timepoints. Integer >= 1
+
+      SIZE_X:
+        range: integer
+        required: true
+        minimum_value: 1
+        title: "Size X"
+        description: The number of pixels in the x dimension at the highest resolution available
+
+      SIZE_Y:
+        range: integer
+        required: true
+        minimum_value: 1
+        title: "Size Y"
+        description: The number of pixels in the y dimension at the highest resolution available
+
+      SIZE_Z:
+        range: integer
+        required: false
+        minimum_value: 1
+        title: "Size Z"
+        description: The number of pixels in the z dimension at the highest resolution available
+
+      CHANNEL_METADATA_ID:
+        range: string
+        required: true
+        title: "Channel Metadata ID"
+        description: Unique identifier specifying the location of the required channel metadata (likely a Synapse ID)
+
+      CHANNEL_METADATA:
+        range: ChannelMetadata
+        multivalued: true
+        required: false
+        title: "Channel Metadata"
+        description: Metadata for each channel in the multiplex microscopy image
+
+  ChannelMetadata:
+    description: Metadata for each channel in multiplex microscopy imaging
+    attributes:
+      CHANNEL_ID:
+        range: string
+        required: true
+        title: "Channel ID"
+        description: The unique channel identifier for each channel in this image must match the corresponding field in the imaging file submitted
+
+      CHANNEL_NAME:
+        range: string
+        required: true
+        title: "Channel Name"
+        description: Channel label for each channel in this image must match the corresponding field in the imaging file submitted
+
+      CYCLE_NUMBER:
+        range: integer
+        required: false
+        title: "Cycle Number"
+        description: The cycle # in which the co-listed reagent(s) was(were) used
+
+      SUB_CYCLE_NUMBER:
+        range: integer
+        required: false
+        title: "Sub Cycle Number"
+        description: Sub-cycle #
+
+      TARGET_NAME:
+        range: string
+        required: true
+        title: "Target Name"
+        description: Short descriptive name (abbreviation) for this target (antigen)
+
+      ANTIBODY_NAME:
+        range: string
+        required: false
+        title: "Antibody Name"
+        description: Short descriptive name for this antibody
+
+      RRID_IDENTIFIER:
+        range: string
+        required: false
+        title: "RRID Identifier"
+        description: Research Resource Identifier
+        pattern: "^RRID:AB_\\d+$"
+
+      FLUOROPHORE:
+        range: string
+        required: false
+        title: "Fluorophore"
+        description: Fluorescent dye label
+
+      CLONE:
+        range: string
+        required: false
+        title: "Clone"
+        description: Unique clone identifier
+
+      LOT:
+        range: string
+        required: false
+        title: "Lot"
+        description: Lot number from vendor
+
+      CATALOG_NUMBER:
+        range: string
+        required: false
+        title: "Catalog Number"
+        description: Catalog number from vendor
+
+      EXCITATION_WAVELENGTH:
+        range: float
+        required: false
+        title: "Excitation Wavelength"
+        description: Center/peak of the excitation spectrum (nm)
+
+      EMISSION_WAVELENGTH:
+        range: float
+        required: false
+        title: "Emission Wavelength"
+        description: Center/peak of the emission spectrum (nm)
+
+      EXCITATION_BANDWIDTH:
+        range: float
+        required: false
+        title: "Excitation Bandwidth"
+        description: Nominal width of excitation spectrum (nm)
+
+      EMISSION_BANDWIDTH:
+        range: float
+        required: false
+        title: "Emission Bandwidth"
+        description: Nominal width of emission spectrum (nm)
+
+      METAL_ISOTOPE_ELEMENT_ABBREVIATION:
+        range: MetalIsotopeElement
+        required: false
+        title: "Metal Isotope Element Abbreviation"
+        description: Element abbreviation
+
+      METAL_ISOTOPE_ELEMENT_MASS:
+        range: integer
+        required: false
+        title: "Metal Isotope Element Mass"
+        description: Element mass number
+
+      OLIGO_BARCODE_UPPER_STRAND:
+        range: string
+        required: false
+        title: "Oligo Barcode Upper Strand"
+        description: DNA barcode used for labeling
+
+      OLIGO_BARCODE_LOWER_STRAND:
+        range: string
+        required: false
+        title: "Oligo Barcode Lower Strand"
+        description: DNA barcode used for labeling
+
+      DILUTION:
+        range: string
+        required: false
+        title: "Dilution"
+        description: Final dilution ratio used in experiment
+
+      CONCENTRATION:
+        range: string
+        required: false
+        title: "Concentration"
+        description: Final concentration used in experiment
+

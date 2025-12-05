@@ -1,0 +1,94 @@
+name: MultiplexMicroscopyLevel4
+id: https://w3id.org/htan/multiplex_microscopy/level_4
+description: HTAN Multiplex Microscopy Level 4 - Cell-by-feature tables
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  MatrixTypeEnum:
+    permissible_values:
+      "Raw Counts":
+        description: Raw count matrix
+      "Normalized Counts":
+        description: Normalized count matrix
+      "Scaled Counts":
+        description: Scaled count matrix
+      "Log Normalized":
+        description: Log normalized counts
+      "Z-Score Normalized":
+        description: Z-score normalized values
+      "Other":
+        description: Other normalization method
+
+classes:
+  MultiplexMicroscopyLevel4:
+    is_a: CoreFileAttributes
+    description: Multiplex Microscopy Level 4 - Cell-by-feature table (typically cell-by-marker) generated from the segmentation mask and image. No changes from prior definitions (RFC Imaging Level 3 & 4 - v1)
+    attributes:
+      # Level 4 specific attributes
+      FEATURE_EXTRACTION_WORKFLOW_TYPE:
+        range: string
+        required: true
+        title: "Feature Extraction Workflow Type"
+        description: Type of workflow used to extract features from segmented objects
+
+      FEATURE_EXTRACTION_WORKFLOW_URL:
+        range: string
+        required: false
+        title: "Feature Extraction Workflow URL"
+        description: URL or link to the feature extraction workflow used
+
+      FEATURE_EXTRACTION_WORKFLOW_VERSION:
+        range: string
+        required: false
+        title: "Feature Extraction Workflow Version"
+        description: Version of the feature extraction workflow
+
+      MATRIX_TYPE:
+        range: MatrixTypeEnum
+        required: true
+        title: "Matrix Type"
+        description: Type of feature matrix (raw counts, normalized, etc.)
+
+      FEATURE_EXTRACTION_METHOD:
+        range: string
+        required: true
+        title: "Feature Extraction Method"
+        description: Method used for feature extraction (e.g., mean intensity, median intensity, total intensity, texture features)
+
+      FEATURE_EXTRACTION_PARAMETERS:
+        range: string
+        required: false
+        title: "Feature Extraction Parameters"
+        description: Parameters used for feature extraction (e.g., channel names, measurement types, normalization methods)
+
+      NUMBER_OF_FEATURES:
+        range: integer
+        required: false
+        minimum_value: 1
+        title: "Number of Features"
+        description: Number of features (markers/channels) in the feature matrix
+
+      NUMBER_OF_OBJECTS:
+        range: integer
+        required: false
+        minimum_value: 1
+        title: "Number of Objects"
+        description: Number of segmented objects (cells, nuclei, etc.) in the feature matrix
+
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the feature table file (csv or h5ad for Level 4)
+        pattern: "^(csv|h5ad)$"
