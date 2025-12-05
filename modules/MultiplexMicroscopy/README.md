@@ -30,7 +30,7 @@ This module implements the Multiplex Microscopy RFC for HTAN Phase 2, which supp
 - **Staining**: Method used for tissue staining
 - **Microscopy**: Objective, magnification, immersion medium, numerical aperture
 - **Quality Control**: QC status and comments
-- **Biospecimen**: Species, organ/tissue, fixative, and embedding medium
+- **Species**: NCBI Taxonomy ID for the imaged specimen
 
 #### **Multiplex Microscopy Specific**
 - **Imaging Assay Type**: Type of multiplex imaging assay (CODEX, CyCIF, IMC, etc.)
@@ -109,9 +109,8 @@ MultiplexMicroscopyLevel2:
   PASSED_QC: true
   QC_COMMENT: "Image quality acceptable"
   SPECIES: "9606 (Homo sapiens)"
-  ORGAN_OR_TISSUE: "C25.9"
-  TISSUE_FIXATIVE: "Formalin"
-  EMBEDDING_MEDIUM: "FFPE"
+  # Note: Organ/Tissue, Tissue Fixative, and Embedding Medium are biospecimen attributes
+  # and should be retrieved from the Biospecimen record via HTAN_PARENT_ID
   
   # Multiplex Microscopy specific
   IMAGING_ASSAY_TYPE: "CODEX"
@@ -206,7 +205,6 @@ All attributes marked as `required: true` must be provided.
 - `DE_IDENTIFICATION_METHOD_DESCRIPTION`: Required if `DE_IDENTIFICATION_METHOD_TYPE` is not "Not Applicable"
 
 ### **Pattern Validation**
-- `ORGAN_OR_TISSUE`: Must match ICD-O pattern `^[A-Z][0-9]{2}\\.[0-9]{1,2}$`
 - `RRID_IDENTIFIER`: Must match pattern `^RRID:AB_\\d+$`
 
 ### **Value Constraints**
@@ -232,11 +230,12 @@ All attributes marked as `required: true` must be provided.
 ## Integration
 
 This module:
-- **Inherits from Core**: Uses `CoreFileAttributes` for universal HTAN attributes
+- **Inherits from BaseImagingAttributes**: Uses `BaseImagingAttributes` (which inherits from `CoreFileAttributes`) for common imaging attributes
 - **Aligns with CRDC**: Matches CRDC Multiplex Microscopy standards
 - **Supports Bio-Formats/OpenSlide**: Ensures compatibility with standard tools
 - **Maintains HTAN IDs**: Uses standard HTAN identifier patterns
 - **Channel Metadata**: Supports multivalued channel metadata for detailed channel information
+- **Links to Biospecimen**: Organ/Tissue, Tissue Fixative, and Embedding Medium attributes are retrieved from the Biospecimen record via `HTAN_PARENT_ID`
 
 ## References
 
