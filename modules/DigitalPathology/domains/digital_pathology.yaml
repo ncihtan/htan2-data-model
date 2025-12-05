@@ -71,3 +71,31 @@ classes:
         required: true
         title: "De-identified"
         description: Confirm that any HIPPA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI
+
+    slot_usage:
+      ANNOTATION_TYPE:
+        required: false
+        description: Required when HAS_ANNOTATIONS is true
+      SLIDE_LABEL_REDACTED:
+        required: false
+        description: Required when HAS_SLIDE_LABEL is true
+    rules:
+      - description: "ANNOTATION_TYPE is required when HAS_ANNOTATIONS is true"
+        preconditions:
+          slot_conditions:
+            HAS_ANNOTATIONS:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            ANNOTATION_TYPE:
+              required: true
+      
+      - description: "SLIDE_LABEL_REDACTED is required when HAS_SLIDE_LABEL is true"
+        preconditions:
+          slot_conditions:
+            HAS_SLIDE_LABEL:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            SLIDE_LABEL_REDACTED:
+              required: true
