@@ -118,9 +118,8 @@ class TestMultiplexMicroscopy:
         """Test that validation patterns are properly defined."""
         sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
         
-        # Test ICD-O pattern for organ_or_tissue
-        organ_tissue_slot = sv.get_slot("ORGAN_OR_TISSUE")
-        assert organ_tissue_slot.pattern == "^[A-Z][0-9]{2}\\.[0-9]{1,2}$"
+        # Note: ORGAN_OR_TISSUE is a biospecimen attribute, not an imaging attribute
+        # It should be retrieved from the Biospecimen record via HTAN_PARENT_ID
         
         # Test RRID pattern for channel metadata
         rrid_slot = sv.get_slot("RRID_IDENTIFIER")
@@ -155,7 +154,7 @@ class TestMultiplexMicroscopy:
         
         assert "CHANNEL_ID" in required_names
         assert "CHANNEL_NAME" in required_names
-        assert "TARGET_NAME" in required_names
+        # TARGET_NAME is optional per CSV (Required=FALSE)
 
     def test_multivalued_channel_metadata(self):
         """Test that CHANNEL_METADATA is properly marked as multivalued."""

@@ -63,10 +63,9 @@ class TestDigitalPathology:
             "DE_IDENTIFIED",
             "PASSED_QC",
             "QC_COMMENT",
-            "SPECIES",
-            "ORGAN_OR_TISSUE",
-            "TISSUE_FIXATIVE",
-            "EMBEDDING_MEDIUM"
+            "SPECIES"
+            # Note: ORGAN_OR_TISSUE, TISSUE_FIXATIVE, EMBEDDING_MEDIUM are biospecimen attributes
+            # and should be retrieved from the Biospecimen record via HTAN_PARENT_ID
         ]
         
         for attr in required_attrs:
@@ -96,9 +95,8 @@ class TestDigitalPathology:
         """Test that validation patterns are properly defined."""
         sv = SchemaView("modules/DigitalPathology/domains/digital_pathology.yaml")
         
-        # Test ICD-O pattern for organ_or_tissue
-        organ_tissue_slot = sv.get_slot("ORGAN_OR_TISSUE")
-        assert organ_tissue_slot.pattern == "^[A-Z][0-9]{2}\\.[0-9]{1,2}$"
+        # Note: ORGAN_OR_TISSUE is a biospecimen attribute, not an imaging attribute
+        # It should be retrieved from the Biospecimen record via HTAN_PARENT_ID
 
     def test_conditional_requirements(self):
         """Test conditional requirements are properly defined."""
