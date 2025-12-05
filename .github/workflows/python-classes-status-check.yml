@@ -8,7 +8,6 @@ on:
       - 'modules/*/src/**/*.py'
       - 'config/config.yaml'
       - '.github/workflows/generate-python-classes.yml'
-      - '.github/workflows/manual-python-generation.yml'
 
 jobs:
   python-classes-status:
@@ -45,29 +44,9 @@ jobs:
     - name: Install project
       run: poetry install --no-interaction
     
-    - name: Generate Python Classes for Biospecimen
+    - name: Generate Python Classes for All Modules
       run: |
-        cd modules/Biospecimen
-        poetry run gen-python domains/biospecimen.yaml > build/biospecimen.py
-        mkdir -p src/htan_biospecimen/datamodel
-        cp build/biospecimen.py src/htan_biospecimen/datamodel/
-        touch src/htan_biospecimen/datamodel/schema_classes.py
-    
-    - name: Generate Python Classes for Clinical
-      run: |
-        cd modules/Clinical
-        poetry run gen-project --config-file ../../config/config.yaml -d build domains/clinical.yaml
-        mkdir -p src/htan_clinical/datamodel
-        mv build/*.py src/htan_clinical/datamodel/
-        touch src/htan_clinical/datamodel/schema_classes.py
-    
-    - name: Generate Python Classes for WES
-      run: |
-        cd modules/WES
-        poetry run gen-python domains/level_1.yaml > build/wes.py
-        mkdir -p src/htan_wes/datamodel
-        cp build/wes.py src/htan_wes/datamodel/
-        touch src/htan_wes/datamodel/schema_classes.py
+        make modules-gen
     
     - name: Check if Python classes are up-to-date
       id: check-status
