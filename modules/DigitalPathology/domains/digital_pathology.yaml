@@ -176,6 +176,7 @@ classes:
       NOMINAL_MAGNIFICATION:
         range: float
         required: true
+        minimum_value: 1.0
         title: "Nominal Magnification"
         description: The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. floating point value > 1(no units)
 
@@ -188,6 +189,7 @@ classes:
       LENS_NUMERICAL_APERTURE:
         range: float
         required: false
+        minimum_value: 0.0
         title: "Lens Numerical Aperture"
         description: The numerical aperture of the lens. Floating point value > 0.
 
