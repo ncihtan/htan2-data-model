@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T09:46:49
+# Generation date: 2025-12-05T13:59:40
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -80,15 +80,19 @@ class CoreFileAttributesHTANDATAFILEID(extended_str):
     pass
 
 
-class MultiplexMicroscopyLevel2HTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
+class BaseImagingAttributesHTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
     pass
 
 
-class MultiplexMicroscopyLevel3HTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
+class MultiplexMicroscopyLevel2HTANDATAFILEID(BaseImagingAttributesHTANDATAFILEID):
     pass
 
 
-class MultiplexMicroscopyLevel4HTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
+class MultiplexMicroscopyLevel3HTANDATAFILEID(BaseImagingAttributesHTANDATAFILEID):
+    pass
+
+
+class MultiplexMicroscopyLevel4HTANDATAFILEID(BaseImagingAttributesHTANDATAFILEID):
     pass
 
 
@@ -163,19 +167,18 @@ class CoreFileAttributes(YAMLRoot):
 
 
 @dataclass(repr=False)
-class MultiplexMicroscopyLevel2(CoreFileAttributes):
+class BaseImagingAttributes(CoreFileAttributes):
     """
-    Multiplex Microscopy Level 2 - Imaging data compiled into a single file format (preferably tiled and pyramidal
-    OME-TIFF), accompanied by a CSV file containing channel metadata
+    Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = HTAN["MultiplexMicroscopyLevel2"]
-    class_class_curie: ClassVar[str] = "htan:MultiplexMicroscopyLevel2"
-    class_name: ClassVar[str] = "MultiplexMicroscopyLevel2"
-    class_model_uri: ClassVar[URIRef] = HTAN.MultiplexMicroscopyLevel2
+    class_class_uri: ClassVar[URIRef] = HTAN["BaseImagingAttributes"]
+    class_class_curie: ClassVar[str] = "htan:BaseImagingAttributes"
+    class_name: ClassVar[str] = "BaseImagingAttributes"
+    class_model_uri: ClassVar[URIRef] = HTAN.BaseImagingAttributes
 
-    HTAN_DATA_FILE_ID: Union[str, MultiplexMicroscopyLevel2HTANDATAFILEID] = None
+    HTAN_DATA_FILE_ID: Union[str, BaseImagingAttributesHTANDATAFILEID] = None
     FILENAME: str = None
     FILE_FORMAT: str = None
     HTAN_PARENT_ID: str = None
@@ -194,13 +197,6 @@ class MultiplexMicroscopyLevel2(CoreFileAttributes):
     ORGAN_OR_TISSUE: str = None
     TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
     EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
-    IMAGING_ASSAY_TYPE: Union[str, "ImagingAssayType"] = None
-    PHYSICAL_SIZE_X: float = None
-    PHYSICAL_SIZE_Y: float = None
-    SIZE_T: int = None
-    SIZE_X: int = None
-    SIZE_Y: int = None
-    CHANNEL_METADATA_ID: str = None
     DE_IDENTIFICATION_METHOD_DESCRIPTION: Optional[str] = None
     DE_IDENTIFICATION_SOFTWARE: Optional[str] = None
     IMAGING_EQUIPMENT_MODEL: Optional[str] = None
@@ -208,18 +204,12 @@ class MultiplexMicroscopyLevel2(CoreFileAttributes):
     IMAGING_PROTOCOL: Optional[str] = None
     IMMERSION: Optional[Union[str, "ImmersionMedium"]] = None
     LENS_NUMERICAL_APERTURE: Optional[float] = None
-    WORKING_DISTANCE: Optional[str] = None
-    PYRAMID: Optional[Union[bool, Bool]] = None
-    PHYSICAL_SIZE_Z: Optional[float] = None
-    SIZE_C: Optional[int] = None
-    SIZE_Z: Optional[int] = None
-    CHANNEL_METADATA: Optional[Union[Union[dict, "ChannelMetadata"], List[Union[dict, "ChannelMetadata"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, MultiplexMicroscopyLevel2HTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = MultiplexMicroscopyLevel2HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+        if not isinstance(self.HTAN_DATA_FILE_ID, BaseImagingAttributesHTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = BaseImagingAttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
 
         if self._is_empty(self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES):
             self.MissingRequiredField("EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES")
@@ -296,6 +286,87 @@ class MultiplexMicroscopyLevel2(CoreFileAttributes):
         if not isinstance(self.EMBEDDING_MEDIUM, EmbeddingMedium):
             self.EMBEDDING_MEDIUM = EmbeddingMedium(self.EMBEDDING_MEDIUM)
 
+        if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
+            self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
+
+        if self.DE_IDENTIFICATION_SOFTWARE is not None and not isinstance(self.DE_IDENTIFICATION_SOFTWARE, str):
+            self.DE_IDENTIFICATION_SOFTWARE = str(self.DE_IDENTIFICATION_SOFTWARE)
+
+        if self.IMAGING_EQUIPMENT_MODEL is not None and not isinstance(self.IMAGING_EQUIPMENT_MODEL, str):
+            self.IMAGING_EQUIPMENT_MODEL = str(self.IMAGING_EQUIPMENT_MODEL)
+
+        if self.IMAGING_SOFTWARE is not None and not isinstance(self.IMAGING_SOFTWARE, str):
+            self.IMAGING_SOFTWARE = str(self.IMAGING_SOFTWARE)
+
+        if self.IMAGING_PROTOCOL is not None and not isinstance(self.IMAGING_PROTOCOL, str):
+            self.IMAGING_PROTOCOL = str(self.IMAGING_PROTOCOL)
+
+        if self.IMMERSION is not None and not isinstance(self.IMMERSION, ImmersionMedium):
+            self.IMMERSION = ImmersionMedium(self.IMMERSION)
+
+        if self.LENS_NUMERICAL_APERTURE is not None and not isinstance(self.LENS_NUMERICAL_APERTURE, float):
+            self.LENS_NUMERICAL_APERTURE = float(self.LENS_NUMERICAL_APERTURE)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MultiplexMicroscopyLevel2(BaseImagingAttributes):
+    """
+    Multiplex Microscopy Level 2 - Imaging data compiled into a single file format (preferably tiled and pyramidal
+    OME-TIFF), accompanied by a CSV file containing channel metadata
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["MultiplexMicroscopyLevel2"]
+    class_class_curie: ClassVar[str] = "htan:MultiplexMicroscopyLevel2"
+    class_name: ClassVar[str] = "MultiplexMicroscopyLevel2"
+    class_model_uri: ClassVar[URIRef] = HTAN.MultiplexMicroscopyLevel2
+
+    HTAN_DATA_FILE_ID: Union[str, MultiplexMicroscopyLevel2HTANDATAFILEID] = None
+    FILENAME: str = None
+    HTAN_PARENT_ID: str = None
+    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: str = None
+    DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
+    LICENSE: str = None
+    IMAGE_MODALITY: Union[str, "ImageModality"] = None
+    IMAGING_EQUIPMENT_MANUFACTURER: str = None
+    CITATION_OR_DOI: str = None
+    STAINING_METHOD: Union[str, "StainingMethod"] = None
+    OBJECTIVE: str = None
+    NOMINAL_MAGNIFICATION: float = None
+    PASSED_QC: Union[bool, Bool] = None
+    QC_COMMENT: str = None
+    SPECIES: str = None
+    ORGAN_OR_TISSUE: str = None
+    TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
+    EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
+    FILE_FORMAT: str = None
+    IMAGING_ASSAY_TYPE: Union[str, "ImagingAssayType"] = None
+    PHYSICAL_SIZE_X: float = None
+    PHYSICAL_SIZE_Y: float = None
+    SIZE_T: int = None
+    SIZE_X: int = None
+    SIZE_Y: int = None
+    CHANNEL_METADATA_ID: str = None
+    WORKING_DISTANCE: Optional[str] = None
+    PYRAMID: Optional[Union[bool, Bool]] = None
+    PHYSICAL_SIZE_Z: Optional[float] = None
+    SIZE_C: Optional[int] = None
+    SIZE_Z: Optional[int] = None
+    CHANNEL_METADATA: Optional[Union[Union[dict, "ChannelMetadata"], List[Union[dict, "ChannelMetadata"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_DATA_FILE_ID):
+            self.MissingRequiredField("HTAN_DATA_FILE_ID")
+        if not isinstance(self.HTAN_DATA_FILE_ID, MultiplexMicroscopyLevel2HTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = MultiplexMicroscopyLevel2HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
         if self._is_empty(self.IMAGING_ASSAY_TYPE):
             self.MissingRequiredField("IMAGING_ASSAY_TYPE")
         if not isinstance(self.IMAGING_ASSAY_TYPE, ImagingAssayType):
@@ -331,27 +402,6 @@ class MultiplexMicroscopyLevel2(CoreFileAttributes):
         if not isinstance(self.CHANNEL_METADATA_ID, str):
             self.CHANNEL_METADATA_ID = str(self.CHANNEL_METADATA_ID)
 
-        if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
-            self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
-
-        if self.DE_IDENTIFICATION_SOFTWARE is not None and not isinstance(self.DE_IDENTIFICATION_SOFTWARE, str):
-            self.DE_IDENTIFICATION_SOFTWARE = str(self.DE_IDENTIFICATION_SOFTWARE)
-
-        if self.IMAGING_EQUIPMENT_MODEL is not None and not isinstance(self.IMAGING_EQUIPMENT_MODEL, str):
-            self.IMAGING_EQUIPMENT_MODEL = str(self.IMAGING_EQUIPMENT_MODEL)
-
-        if self.IMAGING_SOFTWARE is not None and not isinstance(self.IMAGING_SOFTWARE, str):
-            self.IMAGING_SOFTWARE = str(self.IMAGING_SOFTWARE)
-
-        if self.IMAGING_PROTOCOL is not None and not isinstance(self.IMAGING_PROTOCOL, str):
-            self.IMAGING_PROTOCOL = str(self.IMAGING_PROTOCOL)
-
-        if self.IMMERSION is not None and not isinstance(self.IMMERSION, ImmersionMedium):
-            self.IMMERSION = ImmersionMedium(self.IMMERSION)
-
-        if self.LENS_NUMERICAL_APERTURE is not None and not isinstance(self.LENS_NUMERICAL_APERTURE, float):
-            self.LENS_NUMERICAL_APERTURE = float(self.LENS_NUMERICAL_APERTURE)
-
         if self.WORKING_DISTANCE is not None and not isinstance(self.WORKING_DISTANCE, str):
             self.WORKING_DISTANCE = str(self.WORKING_DISTANCE)
 
@@ -368,6 +418,166 @@ class MultiplexMicroscopyLevel2(CoreFileAttributes):
             self.SIZE_Z = int(self.SIZE_Z)
 
         self._normalize_inlined_as_dict(slot_name="CHANNEL_METADATA", slot_type=ChannelMetadata, key_name="CHANNEL_ID", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MultiplexMicroscopyLevel3(BaseImagingAttributes):
+    """
+    Multiplex Microscopy Level 3 - Segmentation mask. Structured mask data following existing HTAN segmentation
+    templates (RFC Imaging Level 3 & 4 - v1)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["MultiplexMicroscopyLevel3"]
+    class_class_curie: ClassVar[str] = "htan:MultiplexMicroscopyLevel3"
+    class_name: ClassVar[str] = "MultiplexMicroscopyLevel3"
+    class_model_uri: ClassVar[URIRef] = HTAN.MultiplexMicroscopyLevel3
+
+    HTAN_DATA_FILE_ID: Union[str, MultiplexMicroscopyLevel3HTANDATAFILEID] = None
+    FILENAME: str = None
+    HTAN_PARENT_ID: str = None
+    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: str = None
+    DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
+    LICENSE: str = None
+    IMAGE_MODALITY: Union[str, "ImageModality"] = None
+    IMAGING_EQUIPMENT_MANUFACTURER: str = None
+    CITATION_OR_DOI: str = None
+    STAINING_METHOD: Union[str, "StainingMethod"] = None
+    OBJECTIVE: str = None
+    NOMINAL_MAGNIFICATION: float = None
+    PASSED_QC: Union[bool, Bool] = None
+    QC_COMMENT: str = None
+    SPECIES: str = None
+    ORGAN_OR_TISSUE: str = None
+    TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
+    EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
+    SEGMENTATION_WORKFLOW_TYPE: str = None
+    SEGMENTATION_METHOD: str = None
+    FILE_FORMAT: str = None
+    SEGMENTATION_WORKFLOW_URL: Optional[str] = None
+    SEGMENTATION_WORKFLOW_VERSION: Optional[str] = None
+    SEGMENTATION_PARAMETERS: Optional[str] = None
+    SEGMENTATION_ANNOTATION_TYPE: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_DATA_FILE_ID):
+            self.MissingRequiredField("HTAN_DATA_FILE_ID")
+        if not isinstance(self.HTAN_DATA_FILE_ID, MultiplexMicroscopyLevel3HTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = MultiplexMicroscopyLevel3HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.SEGMENTATION_WORKFLOW_TYPE):
+            self.MissingRequiredField("SEGMENTATION_WORKFLOW_TYPE")
+        if not isinstance(self.SEGMENTATION_WORKFLOW_TYPE, str):
+            self.SEGMENTATION_WORKFLOW_TYPE = str(self.SEGMENTATION_WORKFLOW_TYPE)
+
+        if self._is_empty(self.SEGMENTATION_METHOD):
+            self.MissingRequiredField("SEGMENTATION_METHOD")
+        if not isinstance(self.SEGMENTATION_METHOD, str):
+            self.SEGMENTATION_METHOD = str(self.SEGMENTATION_METHOD)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self.SEGMENTATION_WORKFLOW_URL is not None and not isinstance(self.SEGMENTATION_WORKFLOW_URL, str):
+            self.SEGMENTATION_WORKFLOW_URL = str(self.SEGMENTATION_WORKFLOW_URL)
+
+        if self.SEGMENTATION_WORKFLOW_VERSION is not None and not isinstance(self.SEGMENTATION_WORKFLOW_VERSION, str):
+            self.SEGMENTATION_WORKFLOW_VERSION = str(self.SEGMENTATION_WORKFLOW_VERSION)
+
+        if self.SEGMENTATION_PARAMETERS is not None and not isinstance(self.SEGMENTATION_PARAMETERS, str):
+            self.SEGMENTATION_PARAMETERS = str(self.SEGMENTATION_PARAMETERS)
+
+        if self.SEGMENTATION_ANNOTATION_TYPE is not None and not isinstance(self.SEGMENTATION_ANNOTATION_TYPE, str):
+            self.SEGMENTATION_ANNOTATION_TYPE = str(self.SEGMENTATION_ANNOTATION_TYPE)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MultiplexMicroscopyLevel4(BaseImagingAttributes):
+    """
+    Multiplex Microscopy Level 4 - Cell-by-feature table (typically cell-by-marker) generated from the segmentation
+    mask and image. No changes from prior definitions (RFC Imaging Level 3 & 4 - v1)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["MultiplexMicroscopyLevel4"]
+    class_class_curie: ClassVar[str] = "htan:MultiplexMicroscopyLevel4"
+    class_name: ClassVar[str] = "MultiplexMicroscopyLevel4"
+    class_model_uri: ClassVar[URIRef] = HTAN.MultiplexMicroscopyLevel4
+
+    HTAN_DATA_FILE_ID: Union[str, MultiplexMicroscopyLevel4HTANDATAFILEID] = None
+    FILENAME: str = None
+    HTAN_PARENT_ID: str = None
+    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: str = None
+    DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
+    LICENSE: str = None
+    IMAGE_MODALITY: Union[str, "ImageModality"] = None
+    IMAGING_EQUIPMENT_MANUFACTURER: str = None
+    CITATION_OR_DOI: str = None
+    STAINING_METHOD: Union[str, "StainingMethod"] = None
+    OBJECTIVE: str = None
+    NOMINAL_MAGNIFICATION: float = None
+    PASSED_QC: Union[bool, Bool] = None
+    QC_COMMENT: str = None
+    SPECIES: str = None
+    ORGAN_OR_TISSUE: str = None
+    TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
+    EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
+    FEATURE_EXTRACTION_WORKFLOW_TYPE: str = None
+    MATRIX_TYPE: Union[str, "MatrixTypeEnum"] = None
+    FEATURE_EXTRACTION_METHOD: str = None
+    FILE_FORMAT: str = None
+    FEATURE_EXTRACTION_WORKFLOW_URL: Optional[str] = None
+    FEATURE_EXTRACTION_WORKFLOW_VERSION: Optional[str] = None
+    FEATURE_EXTRACTION_PARAMETERS: Optional[str] = None
+    NUMBER_OF_FEATURES: Optional[int] = None
+    NUMBER_OF_OBJECTS: Optional[int] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_DATA_FILE_ID):
+            self.MissingRequiredField("HTAN_DATA_FILE_ID")
+        if not isinstance(self.HTAN_DATA_FILE_ID, MultiplexMicroscopyLevel4HTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = MultiplexMicroscopyLevel4HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.FEATURE_EXTRACTION_WORKFLOW_TYPE):
+            self.MissingRequiredField("FEATURE_EXTRACTION_WORKFLOW_TYPE")
+        if not isinstance(self.FEATURE_EXTRACTION_WORKFLOW_TYPE, str):
+            self.FEATURE_EXTRACTION_WORKFLOW_TYPE = str(self.FEATURE_EXTRACTION_WORKFLOW_TYPE)
+
+        if self._is_empty(self.MATRIX_TYPE):
+            self.MissingRequiredField("MATRIX_TYPE")
+        if not isinstance(self.MATRIX_TYPE, MatrixTypeEnum):
+            self.MATRIX_TYPE = MatrixTypeEnum(self.MATRIX_TYPE)
+
+        if self._is_empty(self.FEATURE_EXTRACTION_METHOD):
+            self.MissingRequiredField("FEATURE_EXTRACTION_METHOD")
+        if not isinstance(self.FEATURE_EXTRACTION_METHOD, str):
+            self.FEATURE_EXTRACTION_METHOD = str(self.FEATURE_EXTRACTION_METHOD)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self.FEATURE_EXTRACTION_WORKFLOW_URL is not None and not isinstance(self.FEATURE_EXTRACTION_WORKFLOW_URL, str):
+            self.FEATURE_EXTRACTION_WORKFLOW_URL = str(self.FEATURE_EXTRACTION_WORKFLOW_URL)
+
+        if self.FEATURE_EXTRACTION_WORKFLOW_VERSION is not None and not isinstance(self.FEATURE_EXTRACTION_WORKFLOW_VERSION, str):
+            self.FEATURE_EXTRACTION_WORKFLOW_VERSION = str(self.FEATURE_EXTRACTION_WORKFLOW_VERSION)
+
+        if self.FEATURE_EXTRACTION_PARAMETERS is not None and not isinstance(self.FEATURE_EXTRACTION_PARAMETERS, str):
+            self.FEATURE_EXTRACTION_PARAMETERS = str(self.FEATURE_EXTRACTION_PARAMETERS)
+
+        if self.NUMBER_OF_FEATURES is not None and not isinstance(self.NUMBER_OF_FEATURES, int):
+            self.NUMBER_OF_FEATURES = int(self.NUMBER_OF_FEATURES)
+
+        if self.NUMBER_OF_OBJECTS is not None and not isinstance(self.NUMBER_OF_OBJECTS, int):
+            self.NUMBER_OF_OBJECTS = int(self.NUMBER_OF_OBJECTS)
 
         super().__post_init__(**kwargs)
 
@@ -479,137 +689,96 @@ class ChannelMetadata(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass(repr=False)
-class MultiplexMicroscopyLevel3(CoreFileAttributes):
-    """
-    Multiplex Microscopy Level 3 - Segmentation mask. Structured mask data following existing HTAN segmentation
-    templates (RFC Imaging Level 3 & 4 - v1)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = HTAN["MultiplexMicroscopyLevel3"]
-    class_class_curie: ClassVar[str] = "htan:MultiplexMicroscopyLevel3"
-    class_name: ClassVar[str] = "MultiplexMicroscopyLevel3"
-    class_model_uri: ClassVar[URIRef] = HTAN.MultiplexMicroscopyLevel3
-
-    HTAN_DATA_FILE_ID: Union[str, MultiplexMicroscopyLevel3HTANDATAFILEID] = None
-    FILENAME: str = None
-    HTAN_PARENT_ID: str = None
-    SEGMENTATION_WORKFLOW_TYPE: str = None
-    SEGMENTATION_METHOD: str = None
-    FILE_FORMAT: str = None
-    SEGMENTATION_WORKFLOW_URL: Optional[str] = None
-    SEGMENTATION_WORKFLOW_VERSION: Optional[str] = None
-    SEGMENTATION_PARAMETERS: Optional[str] = None
-    SEGMENTATION_ANNOTATION_TYPE: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.HTAN_DATA_FILE_ID):
-            self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, MultiplexMicroscopyLevel3HTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = MultiplexMicroscopyLevel3HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
-
-        if self._is_empty(self.SEGMENTATION_WORKFLOW_TYPE):
-            self.MissingRequiredField("SEGMENTATION_WORKFLOW_TYPE")
-        if not isinstance(self.SEGMENTATION_WORKFLOW_TYPE, str):
-            self.SEGMENTATION_WORKFLOW_TYPE = str(self.SEGMENTATION_WORKFLOW_TYPE)
-
-        if self._is_empty(self.SEGMENTATION_METHOD):
-            self.MissingRequiredField("SEGMENTATION_METHOD")
-        if not isinstance(self.SEGMENTATION_METHOD, str):
-            self.SEGMENTATION_METHOD = str(self.SEGMENTATION_METHOD)
-
-        if self._is_empty(self.FILE_FORMAT):
-            self.MissingRequiredField("FILE_FORMAT")
-        if not isinstance(self.FILE_FORMAT, str):
-            self.FILE_FORMAT = str(self.FILE_FORMAT)
-
-        if self.SEGMENTATION_WORKFLOW_URL is not None and not isinstance(self.SEGMENTATION_WORKFLOW_URL, str):
-            self.SEGMENTATION_WORKFLOW_URL = str(self.SEGMENTATION_WORKFLOW_URL)
-
-        if self.SEGMENTATION_WORKFLOW_VERSION is not None and not isinstance(self.SEGMENTATION_WORKFLOW_VERSION, str):
-            self.SEGMENTATION_WORKFLOW_VERSION = str(self.SEGMENTATION_WORKFLOW_VERSION)
-
-        if self.SEGMENTATION_PARAMETERS is not None and not isinstance(self.SEGMENTATION_PARAMETERS, str):
-            self.SEGMENTATION_PARAMETERS = str(self.SEGMENTATION_PARAMETERS)
-
-        if self.SEGMENTATION_ANNOTATION_TYPE is not None and not isinstance(self.SEGMENTATION_ANNOTATION_TYPE, str):
-            self.SEGMENTATION_ANNOTATION_TYPE = str(self.SEGMENTATION_ANNOTATION_TYPE)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class MultiplexMicroscopyLevel4(CoreFileAttributes):
-    """
-    Multiplex Microscopy Level 4 - Cell-by-feature table (typically cell-by-marker) generated from the segmentation
-    mask and image. No changes from prior definitions (RFC Imaging Level 3 & 4 - v1)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = HTAN["MultiplexMicroscopyLevel4"]
-    class_class_curie: ClassVar[str] = "htan:MultiplexMicroscopyLevel4"
-    class_name: ClassVar[str] = "MultiplexMicroscopyLevel4"
-    class_model_uri: ClassVar[URIRef] = HTAN.MultiplexMicroscopyLevel4
-
-    HTAN_DATA_FILE_ID: Union[str, MultiplexMicroscopyLevel4HTANDATAFILEID] = None
-    FILENAME: str = None
-    HTAN_PARENT_ID: str = None
-    FEATURE_EXTRACTION_WORKFLOW_TYPE: str = None
-    MATRIX_TYPE: Union[str, "MatrixTypeEnum"] = None
-    FEATURE_EXTRACTION_METHOD: str = None
-    FILE_FORMAT: str = None
-    FEATURE_EXTRACTION_WORKFLOW_URL: Optional[str] = None
-    FEATURE_EXTRACTION_WORKFLOW_VERSION: Optional[str] = None
-    FEATURE_EXTRACTION_PARAMETERS: Optional[str] = None
-    NUMBER_OF_FEATURES: Optional[int] = None
-    NUMBER_OF_OBJECTS: Optional[int] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.HTAN_DATA_FILE_ID):
-            self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, MultiplexMicroscopyLevel4HTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = MultiplexMicroscopyLevel4HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
-
-        if self._is_empty(self.FEATURE_EXTRACTION_WORKFLOW_TYPE):
-            self.MissingRequiredField("FEATURE_EXTRACTION_WORKFLOW_TYPE")
-        if not isinstance(self.FEATURE_EXTRACTION_WORKFLOW_TYPE, str):
-            self.FEATURE_EXTRACTION_WORKFLOW_TYPE = str(self.FEATURE_EXTRACTION_WORKFLOW_TYPE)
-
-        if self._is_empty(self.MATRIX_TYPE):
-            self.MissingRequiredField("MATRIX_TYPE")
-        if not isinstance(self.MATRIX_TYPE, MatrixTypeEnum):
-            self.MATRIX_TYPE = MatrixTypeEnum(self.MATRIX_TYPE)
-
-        if self._is_empty(self.FEATURE_EXTRACTION_METHOD):
-            self.MissingRequiredField("FEATURE_EXTRACTION_METHOD")
-        if not isinstance(self.FEATURE_EXTRACTION_METHOD, str):
-            self.FEATURE_EXTRACTION_METHOD = str(self.FEATURE_EXTRACTION_METHOD)
-
-        if self._is_empty(self.FILE_FORMAT):
-            self.MissingRequiredField("FILE_FORMAT")
-        if not isinstance(self.FILE_FORMAT, str):
-            self.FILE_FORMAT = str(self.FILE_FORMAT)
-
-        if self.FEATURE_EXTRACTION_WORKFLOW_URL is not None and not isinstance(self.FEATURE_EXTRACTION_WORKFLOW_URL, str):
-            self.FEATURE_EXTRACTION_WORKFLOW_URL = str(self.FEATURE_EXTRACTION_WORKFLOW_URL)
-
-        if self.FEATURE_EXTRACTION_WORKFLOW_VERSION is not None and not isinstance(self.FEATURE_EXTRACTION_WORKFLOW_VERSION, str):
-            self.FEATURE_EXTRACTION_WORKFLOW_VERSION = str(self.FEATURE_EXTRACTION_WORKFLOW_VERSION)
-
-        if self.FEATURE_EXTRACTION_PARAMETERS is not None and not isinstance(self.FEATURE_EXTRACTION_PARAMETERS, str):
-            self.FEATURE_EXTRACTION_PARAMETERS = str(self.FEATURE_EXTRACTION_PARAMETERS)
-
-        if self.NUMBER_OF_FEATURES is not None and not isinstance(self.NUMBER_OF_FEATURES, int):
-            self.NUMBER_OF_FEATURES = int(self.NUMBER_OF_FEATURES)
-
-        if self.NUMBER_OF_OBJECTS is not None and not isinstance(self.NUMBER_OF_OBJECTS, int):
-            self.NUMBER_OF_OBJECTS = int(self.NUMBER_OF_OBJECTS)
-
-        super().__post_init__(**kwargs)
-
-
 # Enumerations
+class ImagingAssayType(EnumDefinitionImpl):
+
+    CODEX = PermissibleValue(
+        text="CODEX",
+        description="CODEX imaging assay type")
+    CyCIF = PermissibleValue(
+        text="CyCIF",
+        description="Cyclic Immunofluorescence imaging assay type")
+    ExSeq = PermissibleValue(
+        text="ExSeq",
+        description="Expansion Sequencing imaging assay type")
+    IHC = PermissibleValue(
+        text="IHC",
+        description="Immunohistochemistry imaging assay type")
+    IMC = PermissibleValue(
+        text="IMC",
+        description="Imaging Mass Cytometry imaging assay type")
+    MIBI = PermissibleValue(
+        text="MIBI",
+        description="Multiplexed Ion Beam Imaging imaging assay type")
+    MERFISH = PermissibleValue(
+        text="MERFISH",
+        description="Multiplexed Error-Robust Fluorescence In Situ Hybridization imaging assay type")
+    MxIF = PermissibleValue(
+        text="MxIF",
+        description="Multiplexed Immunofluorescence imaging assay type")
+    mIHC = PermissibleValue(
+        text="mIHC",
+        description="Multiplexed Immunohistochemistry imaging assay type")
+    SABER = PermissibleValue(
+        text="SABER",
+        description="Signal Amplification By Exchange Reaction imaging assay type")
+
+    _defn = EnumDefinition(
+        name="ImagingAssayType",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "GeoMX-DSP",
+            PermissibleValue(
+                text="GeoMX-DSP",
+                description="GeoMX Digital Spatial Profiling imaging assay type"))
+        setattr(cls, "H&E",
+            PermissibleValue(
+                text="H&E",
+                description="Hematoxylin and Eosin imaging assay type"))
+        setattr(cls, "Not Applicable",
+            PermissibleValue(
+                text="Not Applicable",
+                description="Imaging assay not applicable"))
+        setattr(cls, "t-CyCIF",
+            PermissibleValue(
+                text="t-CyCIF",
+                description="Tissue Cyclic Immunofluorescence imaging assay type"))
+
+class MatrixTypeEnum(EnumDefinitionImpl):
+
+    Other = PermissibleValue(
+        text="Other",
+        description="Other normalization method")
+
+    _defn = EnumDefinition(
+        name="MatrixTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Raw Counts",
+            PermissibleValue(
+                text="Raw Counts",
+                description="Raw count matrix"))
+        setattr(cls, "Normalized Counts",
+            PermissibleValue(
+                text="Normalized Counts",
+                description="Normalized count matrix"))
+        setattr(cls, "Scaled Counts",
+            PermissibleValue(
+                text="Scaled Counts",
+                description="Scaled count matrix"))
+        setattr(cls, "Log Normalized",
+            PermissibleValue(
+                text="Log Normalized",
+                description="Log normalized counts"))
+        setattr(cls, "Z-Score Normalized",
+            PermissibleValue(
+                text="Z-Score Normalized",
+                description="Z-score normalized values"))
+
 class DeIdentificationMethodType(EnumDefinitionImpl):
 
     Automatic = PermissibleValue(
@@ -698,62 +867,6 @@ class StainingMethod(EnumDefinitionImpl):
             PermissibleValue(
                 text="t-CyCIF",
                 description="Tissue Cyclic Immunofluorescence staining method"))
-
-class ImagingAssayType(EnumDefinitionImpl):
-
-    CODEX = PermissibleValue(
-        text="CODEX",
-        description="CODEX imaging assay type")
-    CyCIF = PermissibleValue(
-        text="CyCIF",
-        description="Cyclic Immunofluorescence imaging assay type")
-    ExSeq = PermissibleValue(
-        text="ExSeq",
-        description="Expansion Sequencing imaging assay type")
-    IHC = PermissibleValue(
-        text="IHC",
-        description="Immunohistochemistry imaging assay type")
-    IMC = PermissibleValue(
-        text="IMC",
-        description="Imaging Mass Cytometry imaging assay type")
-    MIBI = PermissibleValue(
-        text="MIBI",
-        description="Multiplexed Ion Beam Imaging imaging assay type")
-    MERFISH = PermissibleValue(
-        text="MERFISH",
-        description="Multiplexed Error-Robust Fluorescence In Situ Hybridization imaging assay type")
-    MxIF = PermissibleValue(
-        text="MxIF",
-        description="Multiplexed Immunofluorescence imaging assay type")
-    mIHC = PermissibleValue(
-        text="mIHC",
-        description="Multiplexed Immunohistochemistry imaging assay type")
-    SABER = PermissibleValue(
-        text="SABER",
-        description="Signal Amplification By Exchange Reaction imaging assay type")
-
-    _defn = EnumDefinition(
-        name="ImagingAssayType",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "GeoMX-DSP",
-            PermissibleValue(
-                text="GeoMX-DSP",
-                description="GeoMX Digital Spatial Profiling imaging assay type"))
-        setattr(cls, "H&E",
-            PermissibleValue(
-                text="H&E",
-                description="Hematoxylin and Eosin imaging assay type"))
-        setattr(cls, "Not Applicable",
-            PermissibleValue(
-                text="Not Applicable",
-                description="Imaging assay not applicable"))
-        setattr(cls, "t-CyCIF",
-            PermissibleValue(
-                text="t-CyCIF",
-                description="Tissue Cyclic Immunofluorescence imaging assay type"))
 
 class ImmersionMedium(EnumDefinitionImpl):
 
@@ -1132,39 +1245,6 @@ class MetalIsotopeElement(EnumDefinitionImpl):
         name="MetalIsotopeElement",
     )
 
-class MatrixTypeEnum(EnumDefinitionImpl):
-
-    Other = PermissibleValue(
-        text="Other",
-        description="Other normalization method")
-
-    _defn = EnumDefinition(
-        name="MatrixTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Raw Counts",
-            PermissibleValue(
-                text="Raw Counts",
-                description="Raw count matrix"))
-        setattr(cls, "Normalized Counts",
-            PermissibleValue(
-                text="Normalized Counts",
-                description="Normalized count matrix"))
-        setattr(cls, "Scaled Counts",
-            PermissibleValue(
-                text="Scaled Counts",
-                description="Scaled count matrix"))
-        setattr(cls, "Log Normalized",
-            PermissibleValue(
-                text="Log Normalized",
-                description="Log normalized counts"))
-        setattr(cls, "Z-Score Normalized",
-            PermissibleValue(
-                text="Z-Score Normalized",
-                description="Z-score normalized values"))
-
 class TissueFixative(EnumDefinitionImpl):
 
     Acetone = PermissibleValue(
@@ -1439,72 +1519,9 @@ slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="c
                    model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
                    pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$'))
 
-slots.multiplexMicroscopyLevel2__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = Slot(uri=HTAN.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, name="multiplexMicroscopyLevel2__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES", curie=HTAN.curie('EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel2__DE_IDENTIFICATION_METHOD_TYPE = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_TYPE, name="multiplexMicroscopyLevel2__DE_IDENTIFICATION_METHOD_TYPE", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_TYPE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__DE_IDENTIFICATION_METHOD_TYPE, domain=None, range=Union[str, "DeIdentificationMethodType"])
-
-slots.multiplexMicroscopyLevel2__DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="multiplexMicroscopyLevel2__DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel2__DE_IDENTIFICATION_SOFTWARE = Slot(uri=HTAN.DE_IDENTIFICATION_SOFTWARE, name="multiplexMicroscopyLevel2__DE_IDENTIFICATION_SOFTWARE", curie=HTAN.curie('DE_IDENTIFICATION_SOFTWARE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__DE_IDENTIFICATION_SOFTWARE, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel2__LICENSE = Slot(uri=HTAN.LICENSE, name="multiplexMicroscopyLevel2__LICENSE", curie=HTAN.curie('LICENSE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__LICENSE, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel2__IMAGE_MODALITY = Slot(uri=HTAN.IMAGE_MODALITY, name="multiplexMicroscopyLevel2__IMAGE_MODALITY", curie=HTAN.curie('IMAGE_MODALITY'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__IMAGE_MODALITY, domain=None, range=Union[str, "ImageModality"])
-
-slots.multiplexMicroscopyLevel2__IMAGING_EQUIPMENT_MANUFACTURER = Slot(uri=HTAN.IMAGING_EQUIPMENT_MANUFACTURER, name="multiplexMicroscopyLevel2__IMAGING_EQUIPMENT_MANUFACTURER", curie=HTAN.curie('IMAGING_EQUIPMENT_MANUFACTURER'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__IMAGING_EQUIPMENT_MANUFACTURER, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel2__IMAGING_EQUIPMENT_MODEL = Slot(uri=HTAN.IMAGING_EQUIPMENT_MODEL, name="multiplexMicroscopyLevel2__IMAGING_EQUIPMENT_MODEL", curie=HTAN.curie('IMAGING_EQUIPMENT_MODEL'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__IMAGING_EQUIPMENT_MODEL, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel2__IMAGING_SOFTWARE = Slot(uri=HTAN.IMAGING_SOFTWARE, name="multiplexMicroscopyLevel2__IMAGING_SOFTWARE", curie=HTAN.curie('IMAGING_SOFTWARE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__IMAGING_SOFTWARE, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel2__CITATION_OR_DOI = Slot(uri=HTAN.CITATION_OR_DOI, name="multiplexMicroscopyLevel2__CITATION_OR_DOI", curie=HTAN.curie('CITATION_OR_DOI'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__CITATION_OR_DOI, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel2__IMAGING_PROTOCOL = Slot(uri=HTAN.IMAGING_PROTOCOL, name="multiplexMicroscopyLevel2__IMAGING_PROTOCOL", curie=HTAN.curie('IMAGING_PROTOCOL'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__IMAGING_PROTOCOL, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel2__STAINING_METHOD = Slot(uri=HTAN.STAINING_METHOD, name="multiplexMicroscopyLevel2__STAINING_METHOD", curie=HTAN.curie('STAINING_METHOD'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__STAINING_METHOD, domain=None, range=Union[str, "StainingMethod"])
-
-slots.multiplexMicroscopyLevel2__OBJECTIVE = Slot(uri=HTAN.OBJECTIVE, name="multiplexMicroscopyLevel2__OBJECTIVE", curie=HTAN.curie('OBJECTIVE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__OBJECTIVE, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel2__NOMINAL_MAGNIFICATION = Slot(uri=HTAN.NOMINAL_MAGNIFICATION, name="multiplexMicroscopyLevel2__NOMINAL_MAGNIFICATION", curie=HTAN.curie('NOMINAL_MAGNIFICATION'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__NOMINAL_MAGNIFICATION, domain=None, range=float)
-
-slots.multiplexMicroscopyLevel2__IMMERSION = Slot(uri=HTAN.IMMERSION, name="multiplexMicroscopyLevel2__IMMERSION", curie=HTAN.curie('IMMERSION'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__IMMERSION, domain=None, range=Optional[Union[str, "ImmersionMedium"]])
-
-slots.multiplexMicroscopyLevel2__LENS_NUMERICAL_APERTURE = Slot(uri=HTAN.LENS_NUMERICAL_APERTURE, name="multiplexMicroscopyLevel2__LENS_NUMERICAL_APERTURE", curie=HTAN.curie('LENS_NUMERICAL_APERTURE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__LENS_NUMERICAL_APERTURE, domain=None, range=Optional[float])
-
-slots.multiplexMicroscopyLevel2__PASSED_QC = Slot(uri=HTAN.PASSED_QC, name="multiplexMicroscopyLevel2__PASSED_QC", curie=HTAN.curie('PASSED_QC'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__PASSED_QC, domain=None, range=Union[bool, Bool])
-
-slots.multiplexMicroscopyLevel2__QC_COMMENT = Slot(uri=HTAN.QC_COMMENT, name="multiplexMicroscopyLevel2__QC_COMMENT", curie=HTAN.curie('QC_COMMENT'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__QC_COMMENT, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel2__SPECIES = Slot(uri=HTAN.SPECIES, name="multiplexMicroscopyLevel2__SPECIES", curie=HTAN.curie('SPECIES'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__SPECIES, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel2__ORGAN_OR_TISSUE = Slot(uri=HTAN.ORGAN_OR_TISSUE, name="multiplexMicroscopyLevel2__ORGAN_OR_TISSUE", curie=HTAN.curie('ORGAN_OR_TISSUE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__ORGAN_OR_TISSUE, domain=None, range=str,
-                   pattern=re.compile(r'^[A-Z][0-9]{2}\.[0-9]{1,2}$'))
-
-slots.multiplexMicroscopyLevel2__TISSUE_FIXATIVE = Slot(uri=HTAN.TISSUE_FIXATIVE, name="multiplexMicroscopyLevel2__TISSUE_FIXATIVE", curie=HTAN.curie('TISSUE_FIXATIVE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__TISSUE_FIXATIVE, domain=None, range=Union[str, "TissueFixative"])
-
-slots.multiplexMicroscopyLevel2__EMBEDDING_MEDIUM = Slot(uri=HTAN.EMBEDDING_MEDIUM, name="multiplexMicroscopyLevel2__EMBEDDING_MEDIUM", curie=HTAN.curie('EMBEDDING_MEDIUM'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__EMBEDDING_MEDIUM, domain=None, range=Union[str, "EmbeddingMedium"])
+slots.multiplexMicroscopyLevel2__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="multiplexMicroscopyLevel2__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.multiplexMicroscopyLevel2__FILE_FORMAT, domain=None, range=str,
+                   pattern=re.compile(r'^(ome-tiff|ome\.tiff|qptiff|svs|tif|dcm|ndpi|vms|vmu|scn|mrxs|tiff|svslide|bit|czi)$'))
 
 slots.multiplexMicroscopyLevel2__WORKING_DISTANCE = Slot(uri=HTAN.WORKING_DISTANCE, name="multiplexMicroscopyLevel2__WORKING_DISTANCE", curie=HTAN.curie('WORKING_DISTANCE'),
                    model_uri=HTAN.multiplexMicroscopyLevel2__WORKING_DISTANCE, domain=None, range=Optional[str])
@@ -1544,6 +1561,123 @@ slots.multiplexMicroscopyLevel2__CHANNEL_METADATA_ID = Slot(uri=HTAN.CHANNEL_MET
 
 slots.multiplexMicroscopyLevel2__CHANNEL_METADATA = Slot(uri=HTAN.CHANNEL_METADATA, name="multiplexMicroscopyLevel2__CHANNEL_METADATA", curie=HTAN.curie('CHANNEL_METADATA'),
                    model_uri=HTAN.multiplexMicroscopyLevel2__CHANNEL_METADATA, domain=None, range=Optional[Union[Union[dict, ChannelMetadata], List[Union[dict, ChannelMetadata]]]])
+
+slots.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE = Slot(uri=HTAN.SEGMENTATION_WORKFLOW_TYPE, name="multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE", curie=HTAN.curie('SEGMENTATION_WORKFLOW_TYPE'),
+                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE, domain=None, range=str)
+
+slots.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_URL = Slot(uri=HTAN.SEGMENTATION_WORKFLOW_URL, name="multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_URL", curie=HTAN.curie('SEGMENTATION_WORKFLOW_URL'),
+                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_URL, domain=None, range=Optional[str])
+
+slots.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_VERSION = Slot(uri=HTAN.SEGMENTATION_WORKFLOW_VERSION, name="multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_VERSION", curie=HTAN.curie('SEGMENTATION_WORKFLOW_VERSION'),
+                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_VERSION, domain=None, range=Optional[str])
+
+slots.multiplexMicroscopyLevel3__SEGMENTATION_METHOD = Slot(uri=HTAN.SEGMENTATION_METHOD, name="multiplexMicroscopyLevel3__SEGMENTATION_METHOD", curie=HTAN.curie('SEGMENTATION_METHOD'),
+                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_METHOD, domain=None, range=str)
+
+slots.multiplexMicroscopyLevel3__SEGMENTATION_PARAMETERS = Slot(uri=HTAN.SEGMENTATION_PARAMETERS, name="multiplexMicroscopyLevel3__SEGMENTATION_PARAMETERS", curie=HTAN.curie('SEGMENTATION_PARAMETERS'),
+                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_PARAMETERS, domain=None, range=Optional[str])
+
+slots.multiplexMicroscopyLevel3__SEGMENTATION_ANNOTATION_TYPE = Slot(uri=HTAN.SEGMENTATION_ANNOTATION_TYPE, name="multiplexMicroscopyLevel3__SEGMENTATION_ANNOTATION_TYPE", curie=HTAN.curie('SEGMENTATION_ANNOTATION_TYPE'),
+                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_ANNOTATION_TYPE, domain=None, range=Optional[str])
+
+slots.multiplexMicroscopyLevel3__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="multiplexMicroscopyLevel3__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.multiplexMicroscopyLevel3__FILE_FORMAT, domain=None, range=str,
+                   pattern=re.compile(r'^(ome-tiff|ome\.tiff)$'))
+
+slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_TYPE = Slot(uri=HTAN.FEATURE_EXTRACTION_WORKFLOW_TYPE, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_TYPE", curie=HTAN.curie('FEATURE_EXTRACTION_WORKFLOW_TYPE'),
+                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_TYPE, domain=None, range=str)
+
+slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_URL = Slot(uri=HTAN.FEATURE_EXTRACTION_WORKFLOW_URL, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_URL", curie=HTAN.curie('FEATURE_EXTRACTION_WORKFLOW_URL'),
+                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_URL, domain=None, range=Optional[str])
+
+slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_VERSION = Slot(uri=HTAN.FEATURE_EXTRACTION_WORKFLOW_VERSION, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_VERSION", curie=HTAN.curie('FEATURE_EXTRACTION_WORKFLOW_VERSION'),
+                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_VERSION, domain=None, range=Optional[str])
+
+slots.multiplexMicroscopyLevel4__MATRIX_TYPE = Slot(uri=HTAN.MATRIX_TYPE, name="multiplexMicroscopyLevel4__MATRIX_TYPE", curie=HTAN.curie('MATRIX_TYPE'),
+                   model_uri=HTAN.multiplexMicroscopyLevel4__MATRIX_TYPE, domain=None, range=Union[str, "MatrixTypeEnum"])
+
+slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_METHOD = Slot(uri=HTAN.FEATURE_EXTRACTION_METHOD, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_METHOD", curie=HTAN.curie('FEATURE_EXTRACTION_METHOD'),
+                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_METHOD, domain=None, range=str)
+
+slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_PARAMETERS = Slot(uri=HTAN.FEATURE_EXTRACTION_PARAMETERS, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_PARAMETERS", curie=HTAN.curie('FEATURE_EXTRACTION_PARAMETERS'),
+                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_PARAMETERS, domain=None, range=Optional[str])
+
+slots.multiplexMicroscopyLevel4__NUMBER_OF_FEATURES = Slot(uri=HTAN.NUMBER_OF_FEATURES, name="multiplexMicroscopyLevel4__NUMBER_OF_FEATURES", curie=HTAN.curie('NUMBER_OF_FEATURES'),
+                   model_uri=HTAN.multiplexMicroscopyLevel4__NUMBER_OF_FEATURES, domain=None, range=Optional[int])
+
+slots.multiplexMicroscopyLevel4__NUMBER_OF_OBJECTS = Slot(uri=HTAN.NUMBER_OF_OBJECTS, name="multiplexMicroscopyLevel4__NUMBER_OF_OBJECTS", curie=HTAN.curie('NUMBER_OF_OBJECTS'),
+                   model_uri=HTAN.multiplexMicroscopyLevel4__NUMBER_OF_OBJECTS, domain=None, range=Optional[int])
+
+slots.multiplexMicroscopyLevel4__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="multiplexMicroscopyLevel4__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.multiplexMicroscopyLevel4__FILE_FORMAT, domain=None, range=str,
+                   pattern=re.compile(r'^(csv|h5ad)$'))
+
+slots.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = Slot(uri=HTAN.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, name="baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES", curie=HTAN.curie('EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES'),
+                   model_uri=HTAN.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, domain=None, range=str)
+
+slots.baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_TYPE, name="baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_TYPE'),
+                   model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE, domain=None, range=Union[str, "DeIdentificationMethodType"])
+
+slots.baseImagingAttributes__DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="baseImagingAttributes__DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
+                   model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=None, range=Optional[str])
+
+slots.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE = Slot(uri=HTAN.DE_IDENTIFICATION_SOFTWARE, name="baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE", curie=HTAN.curie('DE_IDENTIFICATION_SOFTWARE'),
+                   model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE, domain=None, range=Optional[str])
+
+slots.baseImagingAttributes__LICENSE = Slot(uri=HTAN.LICENSE, name="baseImagingAttributes__LICENSE", curie=HTAN.curie('LICENSE'),
+                   model_uri=HTAN.baseImagingAttributes__LICENSE, domain=None, range=str)
+
+slots.baseImagingAttributes__IMAGE_MODALITY = Slot(uri=HTAN.IMAGE_MODALITY, name="baseImagingAttributes__IMAGE_MODALITY", curie=HTAN.curie('IMAGE_MODALITY'),
+                   model_uri=HTAN.baseImagingAttributes__IMAGE_MODALITY, domain=None, range=Union[str, "ImageModality"])
+
+slots.baseImagingAttributes__IMAGING_EQUIPMENT_MANUFACTURER = Slot(uri=HTAN.IMAGING_EQUIPMENT_MANUFACTURER, name="baseImagingAttributes__IMAGING_EQUIPMENT_MANUFACTURER", curie=HTAN.curie('IMAGING_EQUIPMENT_MANUFACTURER'),
+                   model_uri=HTAN.baseImagingAttributes__IMAGING_EQUIPMENT_MANUFACTURER, domain=None, range=str)
+
+slots.baseImagingAttributes__IMAGING_EQUIPMENT_MODEL = Slot(uri=HTAN.IMAGING_EQUIPMENT_MODEL, name="baseImagingAttributes__IMAGING_EQUIPMENT_MODEL", curie=HTAN.curie('IMAGING_EQUIPMENT_MODEL'),
+                   model_uri=HTAN.baseImagingAttributes__IMAGING_EQUIPMENT_MODEL, domain=None, range=Optional[str])
+
+slots.baseImagingAttributes__IMAGING_SOFTWARE = Slot(uri=HTAN.IMAGING_SOFTWARE, name="baseImagingAttributes__IMAGING_SOFTWARE", curie=HTAN.curie('IMAGING_SOFTWARE'),
+                   model_uri=HTAN.baseImagingAttributes__IMAGING_SOFTWARE, domain=None, range=Optional[str])
+
+slots.baseImagingAttributes__CITATION_OR_DOI = Slot(uri=HTAN.CITATION_OR_DOI, name="baseImagingAttributes__CITATION_OR_DOI", curie=HTAN.curie('CITATION_OR_DOI'),
+                   model_uri=HTAN.baseImagingAttributes__CITATION_OR_DOI, domain=None, range=str)
+
+slots.baseImagingAttributes__IMAGING_PROTOCOL = Slot(uri=HTAN.IMAGING_PROTOCOL, name="baseImagingAttributes__IMAGING_PROTOCOL", curie=HTAN.curie('IMAGING_PROTOCOL'),
+                   model_uri=HTAN.baseImagingAttributes__IMAGING_PROTOCOL, domain=None, range=Optional[str])
+
+slots.baseImagingAttributes__STAINING_METHOD = Slot(uri=HTAN.STAINING_METHOD, name="baseImagingAttributes__STAINING_METHOD", curie=HTAN.curie('STAINING_METHOD'),
+                   model_uri=HTAN.baseImagingAttributes__STAINING_METHOD, domain=None, range=Union[str, "StainingMethod"])
+
+slots.baseImagingAttributes__OBJECTIVE = Slot(uri=HTAN.OBJECTIVE, name="baseImagingAttributes__OBJECTIVE", curie=HTAN.curie('OBJECTIVE'),
+                   model_uri=HTAN.baseImagingAttributes__OBJECTIVE, domain=None, range=str)
+
+slots.baseImagingAttributes__NOMINAL_MAGNIFICATION = Slot(uri=HTAN.NOMINAL_MAGNIFICATION, name="baseImagingAttributes__NOMINAL_MAGNIFICATION", curie=HTAN.curie('NOMINAL_MAGNIFICATION'),
+                   model_uri=HTAN.baseImagingAttributes__NOMINAL_MAGNIFICATION, domain=None, range=float)
+
+slots.baseImagingAttributes__IMMERSION = Slot(uri=HTAN.IMMERSION, name="baseImagingAttributes__IMMERSION", curie=HTAN.curie('IMMERSION'),
+                   model_uri=HTAN.baseImagingAttributes__IMMERSION, domain=None, range=Optional[Union[str, "ImmersionMedium"]])
+
+slots.baseImagingAttributes__LENS_NUMERICAL_APERTURE = Slot(uri=HTAN.LENS_NUMERICAL_APERTURE, name="baseImagingAttributes__LENS_NUMERICAL_APERTURE", curie=HTAN.curie('LENS_NUMERICAL_APERTURE'),
+                   model_uri=HTAN.baseImagingAttributes__LENS_NUMERICAL_APERTURE, domain=None, range=Optional[float])
+
+slots.baseImagingAttributes__PASSED_QC = Slot(uri=HTAN.PASSED_QC, name="baseImagingAttributes__PASSED_QC", curie=HTAN.curie('PASSED_QC'),
+                   model_uri=HTAN.baseImagingAttributes__PASSED_QC, domain=None, range=Union[bool, Bool])
+
+slots.baseImagingAttributes__QC_COMMENT = Slot(uri=HTAN.QC_COMMENT, name="baseImagingAttributes__QC_COMMENT", curie=HTAN.curie('QC_COMMENT'),
+                   model_uri=HTAN.baseImagingAttributes__QC_COMMENT, domain=None, range=str)
+
+slots.baseImagingAttributes__SPECIES = Slot(uri=HTAN.SPECIES, name="baseImagingAttributes__SPECIES", curie=HTAN.curie('SPECIES'),
+                   model_uri=HTAN.baseImagingAttributes__SPECIES, domain=None, range=str)
+
+slots.baseImagingAttributes__ORGAN_OR_TISSUE = Slot(uri=HTAN.ORGAN_OR_TISSUE, name="baseImagingAttributes__ORGAN_OR_TISSUE", curie=HTAN.curie('ORGAN_OR_TISSUE'),
+                   model_uri=HTAN.baseImagingAttributes__ORGAN_OR_TISSUE, domain=None, range=str,
+                   pattern=re.compile(r'^[A-Z][0-9]{2}\.[0-9]{1,2}$'))
+
+slots.baseImagingAttributes__TISSUE_FIXATIVE = Slot(uri=HTAN.TISSUE_FIXATIVE, name="baseImagingAttributes__TISSUE_FIXATIVE", curie=HTAN.curie('TISSUE_FIXATIVE'),
+                   model_uri=HTAN.baseImagingAttributes__TISSUE_FIXATIVE, domain=None, range=Union[str, "TissueFixative"])
+
+slots.baseImagingAttributes__EMBEDDING_MEDIUM = Slot(uri=HTAN.EMBEDDING_MEDIUM, name="baseImagingAttributes__EMBEDDING_MEDIUM", curie=HTAN.curie('EMBEDDING_MEDIUM'),
+                   model_uri=HTAN.baseImagingAttributes__EMBEDDING_MEDIUM, domain=None, range=Union[str, "EmbeddingMedium"])
 
 slots.channelMetadata__CHANNEL_ID = Slot(uri=HTAN.CHANNEL_ID, name="channelMetadata__CHANNEL_ID", curie=HTAN.curie('CHANNEL_ID'),
                    model_uri=HTAN.channelMetadata__CHANNEL_ID, domain=None, range=str)
@@ -1608,53 +1742,3 @@ slots.channelMetadata__DILUTION = Slot(uri=HTAN.DILUTION, name="channelMetadata_
 
 slots.channelMetadata__CONCENTRATION = Slot(uri=HTAN.CONCENTRATION, name="channelMetadata__CONCENTRATION", curie=HTAN.curie('CONCENTRATION'),
                    model_uri=HTAN.channelMetadata__CONCENTRATION, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE = Slot(uri=HTAN.SEGMENTATION_WORKFLOW_TYPE, name="multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE", curie=HTAN.curie('SEGMENTATION_WORKFLOW_TYPE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_URL = Slot(uri=HTAN.SEGMENTATION_WORKFLOW_URL, name="multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_URL", curie=HTAN.curie('SEGMENTATION_WORKFLOW_URL'),
-                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_URL, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_VERSION = Slot(uri=HTAN.SEGMENTATION_WORKFLOW_VERSION, name="multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_VERSION", curie=HTAN.curie('SEGMENTATION_WORKFLOW_VERSION'),
-                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_VERSION, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel3__SEGMENTATION_METHOD = Slot(uri=HTAN.SEGMENTATION_METHOD, name="multiplexMicroscopyLevel3__SEGMENTATION_METHOD", curie=HTAN.curie('SEGMENTATION_METHOD'),
-                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_METHOD, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel3__SEGMENTATION_PARAMETERS = Slot(uri=HTAN.SEGMENTATION_PARAMETERS, name="multiplexMicroscopyLevel3__SEGMENTATION_PARAMETERS", curie=HTAN.curie('SEGMENTATION_PARAMETERS'),
-                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_PARAMETERS, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel3__SEGMENTATION_ANNOTATION_TYPE = Slot(uri=HTAN.SEGMENTATION_ANNOTATION_TYPE, name="multiplexMicroscopyLevel3__SEGMENTATION_ANNOTATION_TYPE", curie=HTAN.curie('SEGMENTATION_ANNOTATION_TYPE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_ANNOTATION_TYPE, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel3__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="multiplexMicroscopyLevel3__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.multiplexMicroscopyLevel3__FILE_FORMAT, domain=None, range=str,
-                   pattern=re.compile(r'^(ome-tiff|ome\.tiff)$'))
-
-slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_TYPE = Slot(uri=HTAN.FEATURE_EXTRACTION_WORKFLOW_TYPE, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_TYPE", curie=HTAN.curie('FEATURE_EXTRACTION_WORKFLOW_TYPE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_TYPE, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_URL = Slot(uri=HTAN.FEATURE_EXTRACTION_WORKFLOW_URL, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_URL", curie=HTAN.curie('FEATURE_EXTRACTION_WORKFLOW_URL'),
-                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_URL, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_VERSION = Slot(uri=HTAN.FEATURE_EXTRACTION_WORKFLOW_VERSION, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_VERSION", curie=HTAN.curie('FEATURE_EXTRACTION_WORKFLOW_VERSION'),
-                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_WORKFLOW_VERSION, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel4__MATRIX_TYPE = Slot(uri=HTAN.MATRIX_TYPE, name="multiplexMicroscopyLevel4__MATRIX_TYPE", curie=HTAN.curie('MATRIX_TYPE'),
-                   model_uri=HTAN.multiplexMicroscopyLevel4__MATRIX_TYPE, domain=None, range=Union[str, "MatrixTypeEnum"])
-
-slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_METHOD = Slot(uri=HTAN.FEATURE_EXTRACTION_METHOD, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_METHOD", curie=HTAN.curie('FEATURE_EXTRACTION_METHOD'),
-                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_METHOD, domain=None, range=str)
-
-slots.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_PARAMETERS = Slot(uri=HTAN.FEATURE_EXTRACTION_PARAMETERS, name="multiplexMicroscopyLevel4__FEATURE_EXTRACTION_PARAMETERS", curie=HTAN.curie('FEATURE_EXTRACTION_PARAMETERS'),
-                   model_uri=HTAN.multiplexMicroscopyLevel4__FEATURE_EXTRACTION_PARAMETERS, domain=None, range=Optional[str])
-
-slots.multiplexMicroscopyLevel4__NUMBER_OF_FEATURES = Slot(uri=HTAN.NUMBER_OF_FEATURES, name="multiplexMicroscopyLevel4__NUMBER_OF_FEATURES", curie=HTAN.curie('NUMBER_OF_FEATURES'),
-                   model_uri=HTAN.multiplexMicroscopyLevel4__NUMBER_OF_FEATURES, domain=None, range=Optional[int])
-
-slots.multiplexMicroscopyLevel4__NUMBER_OF_OBJECTS = Slot(uri=HTAN.NUMBER_OF_OBJECTS, name="multiplexMicroscopyLevel4__NUMBER_OF_OBJECTS", curie=HTAN.curie('NUMBER_OF_OBJECTS'),
-                   model_uri=HTAN.multiplexMicroscopyLevel4__NUMBER_OF_OBJECTS, domain=None, range=Optional[int])
-
-slots.multiplexMicroscopyLevel4__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="multiplexMicroscopyLevel4__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.multiplexMicroscopyLevel4__FILE_FORMAT, domain=None, range=str,
-                   pattern=re.compile(r'^(csv|h5ad)$'))
