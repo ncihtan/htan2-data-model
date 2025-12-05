@@ -23,7 +23,7 @@ SOURCE_SCHEMA_PATH = modules/Clinical/domains/clinical.yaml
 GEN_DOC_ARGS = --no-mergeimports
 
 # List of modules (add new modules here)
-MODULES = Clinical WES Core Biospecimen DigitalPathology
+MODULES = Clinical WES CoreFile Biospecimen Sequencing scRNA-seq DigitalPathology
 
 .PHONY: all clean setup gen-project gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format
 
@@ -56,8 +56,12 @@ install:
 # Generate schema classes for all modules
 modules-gen:
 	@for module in $(MODULES); do \
+		if [ -f $(MODULES_DIR)/$$module/Makefile ]; then \
 		echo "Generating schema classes for $$module module..."; \
 		$(MAKE) -C $(MODULES_DIR)/$$module gen-schema; \
+		else \
+			echo "Skipping $$module module (no Makefile - base schema only)"; \
+		fi; \
 	done
 
 # Run tests for all modules
@@ -92,7 +96,8 @@ format:
 		modules/Clinical/tests/ \
 		modules/WES/tests/ \
 		modules/Biospecimen/tests/ \
-		modules/DigitalPathology/tests/ \
+		modules/Sequencing/tests/ \
+		modules/scRNA-seq/tests/ \
 		modules/*/src/
 
 # ---

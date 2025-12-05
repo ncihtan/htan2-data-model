@@ -18,16 +18,16 @@ class TestBiospecimen:
         assert schema["name"] == "Biospecimen"
 
     def test_core_inheritance(self):
-        """Test that Biospecimen inherits from Core."""
+        """Test that Biospecimen is a record-based module (does not inherit from CoreFileAttributes)."""
         schema_path = "modules/Biospecimen/domains/biospecimen.yaml"
         sv = SchemaView(schema_path)
 
         # Check that the main class exists
         assert "BiospecimenData" in sv.all_classes()
 
-        # Check that it inherits from Core
+        # Check that it does NOT inherit from CoreFileAttributes (it's a record-based module)
         biospecimen_class = sv.get_class("BiospecimenData")
-        assert biospecimen_class.is_a == "CoreFileAttributes"
+        assert biospecimen_class.is_a is None, "BiospecimenData is record-based and should not inherit from CoreFileAttributes"
 
     def test_enums(self):
         """Test that enums are properly defined."""

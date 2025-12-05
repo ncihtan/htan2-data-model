@@ -101,7 +101,8 @@ gen-schema:
 	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/your_module.py
 	cp $(BUILD_DIR)/your_module.py $(DATAMODEL_DIR)/
 	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/your_module_schema.json
-	touch $(DATAMODEL_DIR)/schema_classes.py
+
+**Note:** Use `gen-python` for most modules (generates single file). Use `gen-project --config-file ../../config/config.yaml -d $(BUILD_DIR)` for very large schemas or when you need shared base classes split into separate files (see Clinical module for example).
 
 
 # Run module-specific tests
@@ -126,7 +127,7 @@ description: HTAN YourModule Data Model Schema
 imports:
   - linkml:types
   - linkml:extensions
-  - ../../Core/domains/core  # ← Import Core module
+  - ../../CoreFile/domains/core  # ← Import Core File module
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -229,12 +230,10 @@ Brief description of what this module handles.
 ```yaml
 # Example usage
 YourModuleData:
-  COMPONENT: "Your Module"
   FILENAME: "example.txt"
   FILE_FORMAT: "txt"
-  HTAN_PARTICIPANT_ID: "HTA200_2"
   HTAN_DATA_FILE_ID: "HTA200_2_12345"
-  HTAN_PARENT_ID: "HTA200_2_B7001"
+  HTAN_PARENT_ID: "HTA200_2_D12345"
   YOUR_ATTRIBUTE: "example value"
 ```
 
@@ -290,7 +289,7 @@ format:
 ### 1. **Core Inheritance**
 - **All modules must inherit** from `CoreFileAttributes`
 - **Use `is_a: CoreFileAttributes`** in your main class
-- **Import Core module**: `- ../../Core/domains/core`
+- **Import Core File module**: `- ../../CoreFile/domains/core`
 
 ### 2. **Title Fields**
 - **Add `title` field** to all attributes

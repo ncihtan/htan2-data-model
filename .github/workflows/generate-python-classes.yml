@@ -6,25 +6,53 @@ on:
     paths:
       - 'modules/*/domains/*.yaml'
       - 'modules/*/src/**/*.py'
+      - 'modules/*/Makefile'
+      - 'Makefile'
       - 'config/config.yaml'
   pull_request:
     branches: [ main ]
     paths:
       - 'modules/*/domains/*.yaml'
       - 'modules/*/src/**/*.py'
+      - 'modules/*/Makefile'
+      - 'Makefile'
       - 'config/config.yaml'
       - '.github/workflows/generate-python-classes.yml'
   workflow_dispatch:
+    inputs:
+      modules:
+        description: 'Modules to regenerate (comma-separated: biospecimen,clinical,wes,sequencing,scrna-seq,digitalpathology,all). Leave empty or "all" to generate all modules.'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - biospecimen
+          - clinical
+          - wes
+          - sequencing
+          - scrna-seq
+          - digitalpathology
+          - biospecimen,clinical
+          - biospecimen,wes
+          - clinical,wes
 
 jobs:
   generate-python-classes:
     runs-on: ubuntu-latest
+    
+    # Grant permissions to write contents (for auto-committing to PR branches)
+    permissions:
+      contents: write
+      pull-requests: write
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0  # Required for pushing to PR branches
+        # actions/checkout@v4 automatically checks out PR branch for PR events
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -52,30 +80,109 @@ jobs:
     - name: Install project
       run: poetry install --no-interaction
     
-    - name: Generate Python Classes for Biospecimen
+    # Determine which modules to generate
+    # For automatic triggers (push/PR), generate all modules
+    # For manual dispatch, use the input or default to all
+    - name: Set modules to generate
+      id: set-modules
       run: |
-        cd modules/Biospecimen
-        poetry run gen-python domains/biospecimen.yaml > build/biospecimen.py
-        mkdir -p src/htan_biospecimen/datamodel
-        cp build/biospecimen.py src/htan_biospecimen/datamodel/
-        touch src/htan_biospecimen/datamodel/schema_classes.py
-        poetry run gen-json-schema domains/biospecimen.yaml > build/biospecimen_schema.json
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          MODULES="${{ github.event.inputs.modules }}"
+          if [ -z "$MODULES" ] || [ "$MODULES" = "all" ]; then
+            echo "modules=all" >> $GITHUB_OUTPUT
+            echo "Generating all modules (manual trigger)"
+          else
+            echo "modules=$MODULES" >> $GITHUB_OUTPUT
+            echo "Generating selected modules: $MODULES"
+          fi
+        else
+          echo "modules=all" >> $GITHUB_OUTPUT
+          echo "Generating all modules (automatic trigger)"
+        fi
+    
+    # Generate all modules (for automatic triggers or when "all" is selected)
+    - name: Generate Python Classes for All Modules
+      if: steps.set-modules.outputs.modules == 'all'
+      run: make modules-gen
+    
+    # Generate selected modules individually (for manual dispatch with specific selection)
+    - name: Generate Python Classes for Biospecimen
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "biospecimen"; then
+          echo "🔄 Generating Python classes for Biospecimen module..."
+          cd modules/Biospecimen
+          make gen-schema
+          echo "✅ Biospecimen Python classes generated"
+        else
+          echo "⏭️ Skipping Biospecimen (not in selected modules)"
+        fi
     
     - name: Generate Python Classes for Clinical
+      if: steps.set-modules.outputs.modules != 'all'
       run: |
-        cd modules/Clinical
-        poetry run gen-project --config-file ../../config/config.yaml -d build domains/clinical.yaml
-        mkdir -p src/htan_clinical/datamodel
-        mv build/*.py src/htan_clinical/datamodel/
-        touch src/htan_clinical/datamodel/schema_classes.py
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "clinical"; then
+          echo "🔄 Generating Python classes for Clinical module..."
+          cd modules/Clinical
+          make gen-schema
+          echo "✅ Clinical Python classes generated"
+        else
+          echo "⏭️ Skipping Clinical (not in selected modules)"
+        fi
     
     - name: Generate Python Classes for WES
+      if: steps.set-modules.outputs.modules != 'all'
       run: |
-        cd modules/WES
-        poetry run gen-python domains/level_1.yaml > build/wes.py
-        mkdir -p src/htan_wes/datamodel
-        cp build/wes.py src/htan_wes/datamodel/
-        touch src/htan_wes/datamodel/schema_classes.py
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "wes"; then
+          echo "🔄 Generating Python classes for WES module..."
+          cd modules/WES
+          make gen-schema
+          echo "✅ WES Python classes generated"
+        else
+          echo "⏭️ Skipping WES (not in selected modules)"
+        fi
+    
+    - name: Generate Python Classes for Sequencing
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "sequencing"; then
+          echo "🔄 Generating Python classes for Sequencing module..."
+          cd modules/Sequencing
+          make gen-schema
+          echo "✅ Sequencing Python classes generated"
+        else
+          echo "⏭️ Skipping Sequencing (not in selected modules)"
+        fi
+    
+    - name: Generate Python Classes for scRNA-seq
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "scrna-seq"; then
+          echo "🔄 Generating Python classes for scRNA-seq module..."
+          cd modules/scRNA-seq
+          make gen-schema
+          echo "✅ scRNA-seq Python classes generated"
+        else
+          echo "⏭️ Skipping scRNA-seq (not in selected modules)"
+        fi
+    
+    - name: Generate Python Classes for DigitalPathology
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "digitalpathology"; then
+          echo "🔄 Generating Python classes for DigitalPathology module..."
+          cd modules/DigitalPathology
+          make gen-schema
+          echo "✅ DigitalPathology Python classes generated"
+        else
+          echo "⏭️ Skipping DigitalPathology (not in selected modules)"
+        fi
     
     - name: Run Tests
       run: |
@@ -94,25 +201,53 @@ jobs:
           git diff --name-only
         fi
     
-    - name: Fail if Python classes are outdated
-      if: steps.check-changes.outputs.has-changes == 'true'
+    - name: Auto-commit generated classes to PR branch
+      id: auto-commit
+      if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'pull_request'
       run: |
-        echo "❌ **DEPLOYMENT CHECK FAILED**"
-        echo ""
-        echo "The Python classes are not up to date with the current schemas."
-        echo "This means the generated Python code doesn't match the LinkML YAML files."
-        echo ""
-        echo "**To fix this:**"
-        echo "1. Run the manual Python generation workflow"
-        echo "2. Or run locally: \`make gen-schema\` in each module directory"
-        echo "3. Commit the updated Python classes"
-        echo ""
-        echo "**Changed files:**"
-        git diff --name-only
-        exit 1
+        # NOTE: For PR events, we push directly to the same PR branch (no new PR created)
+        # For push to main events, we fail the workflow if classes are outdated (safety check)
+        
+        # Configure git
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Get the PR branch name
+        PR_BRANCH="${{ github.event.pull_request.head.ref }}"
+        PR_REPO="${{ github.event.pull_request.head.repo.full_name }}"
+        
+        # Check if this is a same-repo PR (GITHUB_TOKEN can push) or fork PR (needs PAT/GitHub App)
+        if [ "$PR_REPO" != "${{ github.repository }}" ]; then
+          echo "⚠️ This is a fork PR. Auto-commit requires a GitHub App or PAT token."
+          echo "Please run 'make modules-gen' locally and push the changes."
+          exit 0
+        fi
+        
+        # Add generated Python classes
+        git add modules/*/src/htan_*/datamodel/*.py || true
+        
+        # Capture list of changed files before committing (for PR comment)
+        CHANGED_FILES=$(git diff --cached --name-only || echo "")
+        # Use multiline output format for GitHub Actions
+        {
+          echo "changed_files<<EOF"
+          echo "$CHANGED_FILES"
+          echo "EOF"
+        } >> $GITHUB_OUTPUT
+        
+        # Commit changes (skip if no changes or commit already exists)
+        git commit -m "chore: auto-generate Python classes from schema changes
+
+        Auto-generated Python classes from LinkML schema updates.
+        
+        **Auto-generated by GitHub Actions workflow**
+        [skip ci]" || echo "No changes to commit or commit already exists"
+        
+        # Push to the same PR branch (updates the existing PR, no new PR created)
+        git push origin "HEAD:$PR_BRANCH" || echo "Push failed"
     
-    - name: Create Pull Request (Push to main only)
-      if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'push'
+    - name: Create Pull Request (manual dispatch only)
+      if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'workflow_dispatch'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -127,41 +262,41 @@ jobs:
         # Add all changes
         git add modules/*/src/htan_*/datamodel/*.py
         
+        # Get list of modules that were generated
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if [ "$MODULES" = "all" ]; then
+          changed_modules="all modules"
+        else
+          changed_modules=$(echo "$MODULES" | tr ',' ' ')
+        fi
+        
         # Commit changes
-        git commit -m "feat: update Python classes from schema changes
+        git commit -m "feat: update Python classes for modules: $changed_modules
 
         Auto-generated Python classes from LinkML schema updates.
         
         ### Updated Modules:
-        - Biospecimen: Generated from domains/biospecimen.yaml
-        - Clinical: Generated from domains/clinical.yaml  
-        - WES: Generated from domains/level_1.yaml
+        $changed_modules
         
         ### Changes:
-        - Updated datamodel classes
-        - Regenerated schema_classes.py files
+        - Updated datamodel classes using Makefile gen-schema targets
         - All tests passing
         
-        **Auto-generated by Python class generation workflow**"
+        **Manually triggered Python class generation**"
         
         # Push branch
         git push origin "$branch_name"
         
         # Create pull request
         gh pr create \
-          --title "Update Python Classes from Schema Changes" \
+          --title "Update Python Classes for $changed_modules" \
           --body "## Python Class Generation Update
 
-          This PR updates the Python data model classes based on recent schema changes.
+          This PR updates the Python data model classes for the following modules:
+          **$changed_modules**
 
           ### Generated Classes:
-          - **Biospecimen**: Updated from \`domains/biospecimen.yaml\`
-          - **Clinical**: Updated from \`domains/clinical.yaml\`
-          - **WES**: Updated from \`domains/level_1.yaml\`
-
-          ### What Changed:
-          - Regenerated all Python datamodel classes
-          - Updated schema_classes.py files
+          - Regenerated all Python datamodel classes using Makefile gen-schema targets
           - All tests are passing ✅
 
           ### Testing:
@@ -169,9 +304,26 @@ jobs:
           - Generated classes are syntactically valid
           - Schema compatibility maintained
 
-          **Auto-generated by GitHub Actions workflow**" \
+          **Manually triggered by GitHub Actions workflow**" \
           --base main \
           --head "$branch_name"
+    
+    - name: Fail if Python classes are outdated (push to main only)
+      if: steps.check-changes.outputs.has-changes == 'true' && github.event_name == 'push'
+      run: |
+        echo "❌ **DEPLOYMENT CHECK FAILED**"
+        echo ""
+        echo "The Python classes are not up to date with the current schemas."
+        echo "This means the generated Python code doesn't match the LinkML YAML files."
+        echo ""
+        echo "**To fix this:**"
+        echo "1. Manually trigger this workflow (workflow_dispatch) to regenerate classes"
+        echo "2. Or run locally: \`make modules-gen\`"
+        echo "3. Commit the updated Python classes"
+        echo ""
+        echo "**Changed files:**"
+        git diff --name-only
+        exit 1
     
     - name: Comment on PR with Status
       if: github.event_name == 'pull_request'
@@ -179,17 +331,25 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         if [ "${{ steps.check-changes.outputs.has-changes }}" == "true" ]; then
+          # Use the captured list of changed files from the auto-commit step
+          # If not available, fall back to showing files from the most recent commit
+          if [ -n "${{ steps.auto-commit.outputs.changed_files }}" ]; then
+            CHANGED_FILES="${{ steps.auto-commit.outputs.changed_files }}"
+          else
+            CHANGED_FILES=$(git show --name-only --pretty="" HEAD || echo "")
+          fi
+          
           gh pr comment ${{ github.event.pull_request.number }} \
-            --body "❌ **Python classes are outdated!**
+            --body "✅ **Python classes auto-updated!**
 
-            The Python classes don't match the current schemas. This PR should be updated.
+            The Python classes have been automatically regenerated and committed to this PR branch.
 
-            **Required action:** Update Python classes to match schema changes.
-
-            **Changed files:**
+            **Updated files:**
             \`\`\`
-            $(git diff --name-only)
-            \`\`\`"
+            $CHANGED_FILES
+            \`\`\`
+
+            The generated classes are now up to date with the schema changes."
         else
           gh pr comment ${{ github.event.pull_request.number }} \
             --body "✅ **Python classes are up to date!**

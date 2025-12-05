@@ -1,4 +1,4 @@
-# HTAN Core Module
+# HTAN Core File Module
 
 Universal attributes shared across all file-based modules in the HTAN project.
 
@@ -6,16 +6,19 @@ Universal attributes shared across all file-based modules in the HTAN project.
 
 Defines common attributes that every file-based data type in HTAN must have, eliminating duplication and ensuring consistency.
 
+## Module Architecture Overview
+
+![HTAN2 Module Inheritance Diagram](core_file_inheritance.png)
+
+The diagram above illustrates the separation between **Record-Based Modules** (Clinical, Biospecimen) and **File-Based Modules** (WES, Digital Pathology, etc.), with the **Core File Module** providing universal attributes for all file-based modules.
+
 ## Universal Attributes
 
 ### Required Attributes
-- **COMPONENT**: Category of metadata (e.g., "Bulk WES Level 1", "scRNA-seq Level 2")
 - **FILENAME**: Name of the file (pattern: `^.+[\\\\/]\\S*$`)
 - **FILE_FORMAT**: Format of the file (e.g., fastq, bam, vcf, h5ad)
-- **HTAN_PARTICIPANT_ID**: HTAN ID associated with a patient
 - **HTAN_DATA_FILE_ID**: HTAN Data File ID (Primary Key)
 - **HTAN_PARENT_ID**: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)
-- **HTAN_BIOSPECIMEN_ID**: HTAN Biospecimen ID of the parent biospecimen
 
 ### Optional Attributes
 - None currently defined
@@ -26,28 +29,14 @@ Defines common attributes that every file-based data type in HTAN must have, eli
 - **HTAN_DATA_FILE_ID**: Unique identifier for data files across all levels
 
 ### Required Fields (not primary keys in this context)
-- **HTAN_PARTICIPANT_ID**: HTAN ID associated with a patient
-- **HTAN_BIOSPECIMEN_ID**: HTAN Biospecimen ID of the parent biospecimen
+- None - all required fields are either primary keys or foreign keys
 
 ### Foreign Key
 - **HTAN_PARENT_ID**: References parent entity using suffix convention:
   - `_B####` - References a biospecimen (e.g., `HTA200_2_B7001`)
   - `_D####` - References a data file (e.g., `HTA200_2_D36667`)
 
-### Data Hierarchy
-```
-Participant (HTAN_PARTICIPANT_ID)
-├── Biospecimen (HTAN_BIOSPECIMEN_ID)
-│   └── Level 1 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _B####
-│       └── Level 2 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
-│           └── Level 3 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
-```
-
 ## Validation Patterns
-
-### HTAN_PARTICIPANT_ID
-- **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$`
-- **Examples**: `HTA200_2`, `HTA200_EXT001`, `HTA200_0000`
 
 ### HTAN_DATA_FILE_ID
 - **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
@@ -55,11 +44,13 @@ Participant (HTAN_PARTICIPANT_ID)
 
 ### HTAN_PARENT_ID
 - **Pattern**: `^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$`
-- **Examples**: `HTA200_2_B7001` (biospecimen), `HTA200_2_D36667` (data file)
-
-### HTAN_BIOSPECIMEN_ID
-- **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
-- **Examples**: `HTA200_2_7001`, `HTA200_EXT001_7001`
+- **Description**: Must have B suffix for biospecimen IDs or D suffix for data file IDs. Supports HTA200-209 for phase 2.
+- **Examples**: 
+  - `HTA200_2_B7001` (biospecimen with B suffix)
+  - `HTA200_2_D36667` (data file with D suffix)
+  - `HTA203_12_EXT5_D42` (data file with extension and additional ID)
+  - `HTA204_0000_21344_D1234` (data file with 0000 and additional ID)
+  - `HTA200_0000_B7001` (biospecimen with 0000 and B suffix)
 
 ## Usage
 
@@ -67,7 +58,7 @@ Other modules inherit from Core:
 
 ```yaml
 imports:
-  - ../../Core/domains/core
+  - ../../CoreFile/domains/core
 
 classes:
   BulkWESLevel1:
