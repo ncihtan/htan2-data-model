@@ -15,8 +15,6 @@ This module implements the Digital Pathology RFC for HTAN Phase 2, which introdu
 
 ### **Domain Files**
 - `domains/digital_pathology.yaml` - Main schema file
-- `domains/tissue_fixative_enum.yaml` - Tissue fixative enumeration
-- `domains/embedding_medium_enum.yaml` - Embedding medium enumeration
 
 ### **Key Attributes**
 - **Experimental Strategy**: Pathological experimental strategy
@@ -28,7 +26,7 @@ This module implements the Digital Pathology RFC for HTAN Phase 2, which introdu
 - **Quality Control**: QC status, comments, and validation checks
 - **Annotations**: Presence and types of annotations
 - **Slide Labels**: Presence and redaction status
-- **Biospecimen**: Species, organ/tissue, fixative, and embedding medium
+- **Species**: NCBI Taxonomy ID for the imaged specimen
 
 ### **Supported Formats**
 - `.ome-tiff`, `.qptiff`, `.svs`, `.tif`, `.dcm`, `.ndpi`
@@ -65,9 +63,8 @@ DigitalPathologyData:
   PASSED_QC: true
   QC_COMMENT: "Image quality acceptable"
   SPECIES: "9606 (Homo sapiens)"
-  ORGAN_OR_TISSUE: "C25.9"
-  TISSUE_FIXATIVE: "Formalin"
-  EMBEDDING_MEDIUM: "FFPE"
+  # Note: Organ/Tissue, Tissue Fixative, and Embedding Medium are biospecimen attributes
+  # and should be retrieved from the Biospecimen record via HTAN_PARENT_ID
 ```
 
 ## Testing
@@ -96,9 +93,6 @@ All attributes marked as `required: true` must be provided.
 - `SLIDE_LABEL_REDACTED`: Required if `HAS_SLIDE_LABEL` is true
 - `ANNOTATION_TYPE`: Required if `HAS_ANNOTATIONS` is true
 
-### **Pattern Validation**
-- `ORGAN_OR_TISSUE`: Must match ICD-O pattern `^[A-Z][0-9]{2}\\.[0-9]{1,2}$`
-
 ### **Value Constraints**
 - `NOMINAL_MAGNIFICATION`: Must be > 1
 - `LENS_NUMERICAL_APERTURE`: Must be > 0
@@ -117,19 +111,14 @@ All attributes marked as `required: true` must be provided.
 ### **AnnotationType**
 - Artifact, Cell, Nucleus, ROI, Tissue
 
-### **TissueFixative**
-- Comprehensive list including Formalin, Ethanol, Cryopreserved, Fresh, etc.
-
-### **EmbeddingMedium**
-- FFPE, OCT, Cryopreserved, Fresh, Frozen, etc.
-
 ## Integration
 
 This module:
-- **Inherits from Core**: Uses `CoreFileAttributes` for universal HTAN attributes
+- **Inherits from BaseImagingAttributes**: Uses `BaseImagingAttributes` (which inherits from `CoreFileAttributes`) for common imaging attributes
 - **Aligns with CRDC**: Matches CRDC Non-DICOM Pathology standards
 - **Supports Bio-Formats/OpenSlide**: Ensures compatibility with standard tools
 - **Maintains HTAN IDs**: Uses standard HTAN identifier patterns
+- **Links to Biospecimen**: Organ/Tissue, Tissue Fixative, and Embedding Medium attributes are retrieved from the Biospecimen record via `HTAN_PARENT_ID`
 
 ## References
 
