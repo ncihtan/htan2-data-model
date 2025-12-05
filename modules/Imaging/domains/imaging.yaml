@@ -1,0 +1,230 @@
+name: Imaging
+id: https://w3id.org/htan/imaging
+description: HTAN Base Imaging Data Model - Common attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+  - ../../DigitalPathology/domains/tissue_fixative_enum
+  - ../../DigitalPathology/domains/embedding_medium_enum
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  DeIdentificationMethodType:
+    permissible_values:
+      "Automatic":
+        description: Automatic de-identification method
+      "Manual":
+        description: Manual de-identification method
+      "Not Applicable":
+        description: De-identification not applicable
+      "Semiautomatic":
+        description: Semi-automatic de-identification method
+
+  ImageModality:
+    permissible_values:
+      "SM":
+        description: Slide Microscopy
+
+  StainingMethod:
+    permissible_values:
+      "CODEX":
+        description: CODEX staining method
+      "CyCIF":
+        description: Cyclic Immunofluorescence staining method
+      "ExSeq":
+        description: Expansion Sequencing staining method
+      "GeoMX-DSP":
+        description: GeoMX Digital Spatial Profiling staining method
+      "H&E":
+        description: Hematoxylin and Eosin staining method
+      "IHC":
+        description: Immunohistochemistry staining method
+      "IMC":
+        description: Imaging Mass Cytometry staining method
+      "MIBI":
+        description: Multiplexed Ion Beam Imaging staining method
+      "MERFISH":
+        description: Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method
+      "MxIF":
+        description: Multiplexed Immunofluorescence staining method
+      "mIHC":
+        description: Multiplexed Immunohistochemistry staining method
+      "Not Applicable":
+        description: Staining not applicable
+      "SABER":
+        description: Signal Amplification By Exchange Reaction staining method
+      "t-CyCIF":
+        description: Tissue Cyclic Immunofluorescence staining method
+
+  ImmersionMedium:
+    permissible_values:
+      "Air":
+        description: Air immersion medium
+      "Glycerol":
+        description: Glycerol immersion medium
+      "Oil":
+        description: Oil immersion medium
+      "Other":
+        description: Other immersion medium
+      "Water":
+        description: Water immersion medium
+
+classes:
+  BaseImagingAttributes:
+    is_a: CoreFileAttributes
+    description: Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)
+    attributes:
+      # Experimental strategy
+      EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES:
+        range: string
+        required: true
+        title: "Experimental Strategy and Data Subtypes"
+        description: What is the experimental strategy used for the study (or what type of data subtypes exist in the study)?
+
+      # De-identification
+      DE_IDENTIFICATION_METHOD_TYPE:
+        range: DeIdentificationMethodType
+        required: true
+        title: "De-identification Method Type"
+        description: De-identification Method Type
+
+      DE_IDENTIFICATION_METHOD_DESCRIPTION:
+        range: string
+        required: false
+        title: "De-identification Method Description"
+        description: Description of the process of removing potentially identifying data or data elements to render data into a form that does not identify individuals and where identification is not likely to take place.
+
+      DE_IDENTIFICATION_SOFTWARE:
+        range: string
+        required: false
+        title: "De-identification Software"
+        description: Software that was used to de-identify the images (if used)
+
+      # License
+      LICENSE:
+        range: string
+        required: true
+        title: "License"
+        description: Official or legal permission to do or own a specified thing.
+
+      # Image modality
+      IMAGE_MODALITY:
+        range: ImageModality
+        required: true
+        title: "Image Modality"
+        description: The method in which the images are generated.
+
+      # Imaging equipment
+      IMAGING_EQUIPMENT_MANUFACTURER:
+        range: string
+        required: true
+        title: "Imaging Equipment Manufacturer"
+        description: Producer of the imaging equipment that was used to generate the digital image
+
+      IMAGING_EQUIPMENT_MODEL:
+        range: string
+        required: false
+        title: "Imaging Equipment Model"
+        description: The words used to describe the specific model of the instrument used to carry out an imaging experiment
+
+      IMAGING_SOFTWARE:
+        range: string
+        required: false
+        title: "Imaging Software"
+        description: The name of the software package that was used to capture, generate, and process the image
+
+      # Protocols
+      CITATION_OR_DOI:
+        range: string
+        required: true
+        title: "Citation or DOI"
+        description: Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies
+
+      IMAGING_PROTOCOL:
+        range: string
+        required: false
+        title: "Imaging Protocol"
+        description: A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol
+
+      # Staining
+      STAINING_METHOD:
+        range: StainingMethod
+        required: true
+        title: "Staining Method"
+        description: Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination
+
+      # Microscopy parameters
+      OBJECTIVE:
+        range: string
+        required: true
+        title: "Objective"
+        description: The manufacturer and or model number for the optical element that gathers light from an object being observed and focuses the light rays from it to produce a real image of the object
+
+      NOMINAL_MAGNIFICATION:
+        range: float
+        required: true
+        minimum_value: 1.0
+        title: "Nominal Magnification"
+        description: The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. floating point value > 1(no units)
+
+      IMMERSION:
+        range: ImmersionMedium
+        required: false
+        title: "Immersion"
+        description: Immersion medium. Each objective is designed for a specific immersion medium, which is marked on the objective. The main types of immersion media are air, oil, and water.
+
+      LENS_NUMERICAL_APERTURE:
+        range: float
+        required: false
+        minimum_value: 0.0
+        title: "Lens Numerical Aperture"
+        description: The numerical aperture of the lens. Floating point value > 0.
+
+      # Quality control
+      PASSED_QC:
+        range: boolean
+        required: true
+        title: "Passed QC"
+        description: Confirm that the image has passed internal quality control checks
+
+      QC_COMMENT:
+        range: string
+        required: true
+        title: "QC Comment"
+        description: Comments related to quality control checks
+
+      # Biospecimen metadata
+      SPECIES:
+        range: string
+        required: true
+        title: "Species"
+        description: NCBI Taxonomy ID
+
+      ORGAN_OR_TISSUE:
+        range: string
+        required: true
+        title: "Organ or Tissue"
+        description: ICD-O Origin of Disease Anatomic Site
+        pattern: "^[A-Z][0-9]{2}\\.[0-9]{1,2}$"
+
+      TISSUE_FIXATIVE:
+        range: TissueFixative
+        required: true
+        title: "Tissue Fixative"
+        description: Specimen fixative type
+
+      EMBEDDING_MEDIUM:
+        range: EmbeddingMedium
+        required: true
+        title: "Embedding Medium"
+        description: Biospecimen Preservation Procedure Type
+
