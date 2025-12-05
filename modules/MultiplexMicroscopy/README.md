@@ -239,8 +239,6 @@ This module:
 
 ## References
 
-- [HTAN Multiplex Microscopy RFC](https://docs.google.com/document/d/example)
-- [CRDC Multiplex Microscopy Template](https://example.com)
 - [Bio-Formats Documentation](https://bio-formats.readthedocs.io/)
 - [OpenSlide Python](https://openslide.org/api/python/)
 

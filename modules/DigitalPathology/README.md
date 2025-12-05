@@ -122,7 +122,5 @@ This module:
 
 ## References
 
-- [HTAN Digital Pathology RFC](https://docs.google.com/document/d/example)
-- [CRDC Non-DICOM Pathology Template](https://example.com)
 - [Bio-Formats Documentation](https://bio-formats.readthedocs.io/)
 - [OpenSlide Python](https://openslide.org/api/python/)
