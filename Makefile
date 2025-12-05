@@ -23,7 +23,7 @@ SOURCE_SCHEMA_PATH = modules/Clinical/domains/clinical.yaml
 GEN_DOC_ARGS = --no-mergeimports
 
 # List of modules (add new modules here)
-MODULES = Clinical WES CoreFile Biospecimen Sequencing scRNA-seq DigitalPathology MultiplexMicroscopy
+MODULES = Clinical WES CoreFile Biospecimen Sequencing Imaging scRNA-seq DigitalPathology MultiplexMicroscopy
 
 .PHONY: all clean setup gen-project gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format
 
@@ -97,6 +97,7 @@ format:
 		modules/WES/tests/ \
 		modules/Biospecimen/tests/ \
 		modules/Sequencing/tests/ \
+		modules/Imaging/tests/ \
 		modules/scRNA-seq/tests/ \
 		modules/DigitalPathology/tests/ \
 		modules/MultiplexMicroscopy/tests/ \
