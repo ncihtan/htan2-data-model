@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T13:59:40
+# Generation date: 2025-12-05T14:20:01
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -194,9 +194,6 @@ class BaseImagingAttributes(CoreFileAttributes):
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
     SPECIES: str = None
-    ORGAN_OR_TISSUE: str = None
-    TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
-    EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
     DE_IDENTIFICATION_METHOD_DESCRIPTION: Optional[str] = None
     DE_IDENTIFICATION_SOFTWARE: Optional[str] = None
     IMAGING_EQUIPMENT_MODEL: Optional[str] = None
@@ -271,21 +268,6 @@ class BaseImagingAttributes(CoreFileAttributes):
         if not isinstance(self.SPECIES, str):
             self.SPECIES = str(self.SPECIES)
 
-        if self._is_empty(self.ORGAN_OR_TISSUE):
-            self.MissingRequiredField("ORGAN_OR_TISSUE")
-        if not isinstance(self.ORGAN_OR_TISSUE, str):
-            self.ORGAN_OR_TISSUE = str(self.ORGAN_OR_TISSUE)
-
-        if self._is_empty(self.TISSUE_FIXATIVE):
-            self.MissingRequiredField("TISSUE_FIXATIVE")
-        if not isinstance(self.TISSUE_FIXATIVE, TissueFixative):
-            self.TISSUE_FIXATIVE = TissueFixative(self.TISSUE_FIXATIVE)
-
-        if self._is_empty(self.EMBEDDING_MEDIUM):
-            self.MissingRequiredField("EMBEDDING_MEDIUM")
-        if not isinstance(self.EMBEDDING_MEDIUM, EmbeddingMedium):
-            self.EMBEDDING_MEDIUM = EmbeddingMedium(self.EMBEDDING_MEDIUM)
-
         if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
             self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
 
@@ -338,22 +320,19 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
     SPECIES: str = None
-    ORGAN_OR_TISSUE: str = None
-    TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
-    EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
     FILE_FORMAT: str = None
     IMAGING_ASSAY_TYPE: Union[str, "ImagingAssayType"] = None
     PHYSICAL_SIZE_X: float = None
     PHYSICAL_SIZE_Y: float = None
+    PHYSICAL_SIZE_Z: float = None
+    SIZE_C: int = None
     SIZE_T: int = None
     SIZE_X: int = None
     SIZE_Y: int = None
+    SIZE_Z: int = None
     CHANNEL_METADATA_ID: str = None
     WORKING_DISTANCE: Optional[str] = None
     PYRAMID: Optional[Union[bool, Bool]] = None
-    PHYSICAL_SIZE_Z: Optional[float] = None
-    SIZE_C: Optional[int] = None
-    SIZE_Z: Optional[int] = None
     CHANNEL_METADATA: Optional[Union[Union[dict, "ChannelMetadata"], List[Union[dict, "ChannelMetadata"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -382,6 +361,16 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
         if not isinstance(self.PHYSICAL_SIZE_Y, float):
             self.PHYSICAL_SIZE_Y = float(self.PHYSICAL_SIZE_Y)
 
+        if self._is_empty(self.PHYSICAL_SIZE_Z):
+            self.MissingRequiredField("PHYSICAL_SIZE_Z")
+        if not isinstance(self.PHYSICAL_SIZE_Z, float):
+            self.PHYSICAL_SIZE_Z = float(self.PHYSICAL_SIZE_Z)
+
+        if self._is_empty(self.SIZE_C):
+            self.MissingRequiredField("SIZE_C")
+        if not isinstance(self.SIZE_C, int):
+            self.SIZE_C = int(self.SIZE_C)
+
         if self._is_empty(self.SIZE_T):
             self.MissingRequiredField("SIZE_T")
         if not isinstance(self.SIZE_T, int):
@@ -397,6 +386,11 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
         if not isinstance(self.SIZE_Y, int):
             self.SIZE_Y = int(self.SIZE_Y)
 
+        if self._is_empty(self.SIZE_Z):
+            self.MissingRequiredField("SIZE_Z")
+        if not isinstance(self.SIZE_Z, int):
+            self.SIZE_Z = int(self.SIZE_Z)
+
         if self._is_empty(self.CHANNEL_METADATA_ID):
             self.MissingRequiredField("CHANNEL_METADATA_ID")
         if not isinstance(self.CHANNEL_METADATA_ID, str):
@@ -407,15 +401,6 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
 
         if self.PYRAMID is not None and not isinstance(self.PYRAMID, Bool):
             self.PYRAMID = Bool(self.PYRAMID)
-
-        if self.PHYSICAL_SIZE_Z is not None and not isinstance(self.PHYSICAL_SIZE_Z, float):
-            self.PHYSICAL_SIZE_Z = float(self.PHYSICAL_SIZE_Z)
-
-        if self.SIZE_C is not None and not isinstance(self.SIZE_C, int):
-            self.SIZE_C = int(self.SIZE_C)
-
-        if self.SIZE_Z is not None and not isinstance(self.SIZE_Z, int):
-            self.SIZE_Z = int(self.SIZE_Z)
 
         self._normalize_inlined_as_dict(slot_name="CHANNEL_METADATA", slot_type=ChannelMetadata, key_name="CHANNEL_ID", keyed=False)
 
@@ -450,9 +435,6 @@ class MultiplexMicroscopyLevel3(BaseImagingAttributes):
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
     SPECIES: str = None
-    ORGAN_OR_TISSUE: str = None
-    TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
-    EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
     SEGMENTATION_WORKFLOW_TYPE: str = None
     SEGMENTATION_METHOD: str = None
     FILE_FORMAT: str = None
@@ -525,9 +507,6 @@ class MultiplexMicroscopyLevel4(BaseImagingAttributes):
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
     SPECIES: str = None
-    ORGAN_OR_TISSUE: str = None
-    TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
-    EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
     FEATURE_EXTRACTION_WORKFLOW_TYPE: str = None
     MATRIX_TYPE: Union[str, "MatrixTypeEnum"] = None
     FEATURE_EXTRACTION_METHOD: str = None
@@ -596,9 +575,9 @@ class ChannelMetadata(YAMLRoot):
 
     CHANNEL_ID: str = None
     CHANNEL_NAME: str = None
-    TARGET_NAME: str = None
     CYCLE_NUMBER: Optional[int] = None
     SUB_CYCLE_NUMBER: Optional[int] = None
+    TARGET_NAME: Optional[str] = None
     ANTIBODY_NAME: Optional[str] = None
     RRID_IDENTIFIER: Optional[str] = None
     FLUOROPHORE: Optional[str] = None
@@ -627,16 +606,14 @@ class ChannelMetadata(YAMLRoot):
         if not isinstance(self.CHANNEL_NAME, str):
             self.CHANNEL_NAME = str(self.CHANNEL_NAME)
 
-        if self._is_empty(self.TARGET_NAME):
-            self.MissingRequiredField("TARGET_NAME")
-        if not isinstance(self.TARGET_NAME, str):
-            self.TARGET_NAME = str(self.TARGET_NAME)
-
         if self.CYCLE_NUMBER is not None and not isinstance(self.CYCLE_NUMBER, int):
             self.CYCLE_NUMBER = int(self.CYCLE_NUMBER)
 
         if self.SUB_CYCLE_NUMBER is not None and not isinstance(self.SUB_CYCLE_NUMBER, int):
             self.SUB_CYCLE_NUMBER = int(self.SUB_CYCLE_NUMBER)
+
+        if self.TARGET_NAME is not None and not isinstance(self.TARGET_NAME, str):
+            self.TARGET_NAME = str(self.TARGET_NAME)
 
         if self.ANTIBODY_NAME is not None and not isinstance(self.ANTIBODY_NAME, str):
             self.ANTIBODY_NAME = str(self.ANTIBODY_NAME)
@@ -1245,249 +1222,6 @@ class MetalIsotopeElement(EnumDefinitionImpl):
         name="MetalIsotopeElement",
     )
 
-class TissueFixative(EnumDefinitionImpl):
-
-    Acetone = PermissibleValue(
-        text="Acetone",
-        description="Acetone fixative")
-    Alcohol = PermissibleValue(
-        text="Alcohol",
-        description="Alcohol fixative")
-    Carbodiimide = PermissibleValue(
-        text="Carbodiimide",
-        description="Carbodiimide fixative")
-    CryoStor = PermissibleValue(
-        text="CryoStor",
-        description="CryoStor fixative")
-    Cryopreserved = PermissibleValue(
-        text="Cryopreserved",
-        description="Cryopreserved fixative")
-    Diimidoester = PermissibleValue(
-        text="Diimidoester",
-        description="Diimidoester fixative")
-    Dimethylacetamide = PermissibleValue(
-        text="Dimethylacetamide",
-        description="Dimethylacetamide fixative")
-    EDTA = PermissibleValue(
-        text="EDTA",
-        description="EDTA fixative")
-    Formalin = PermissibleValue(
-        text="Formalin",
-        description="Formalin fixative")
-    Fresh = PermissibleValue(
-        text="Fresh",
-        description="Fresh fixative")
-    Frozen = PermissibleValue(
-        text="Frozen",
-        description="Frozen fixative")
-    Glutaraldehyde = PermissibleValue(
-        text="Glutaraldehyde",
-        description="Glutaraldehyde fixative")
-    Isopentane = PermissibleValue(
-        text="Isopentane",
-        description="Isopentane fixative")
-    Methacarn = PermissibleValue(
-        text="Methacarn",
-        description="Methacarn fixative")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other fixative")
-    Poloxamer = PermissibleValue(
-        text="Poloxamer",
-        description="Poloxamer fixative")
-    RNAlater = PermissibleValue(
-        text="RNAlater",
-        description="RNAlater fixative")
-    Saline = PermissibleValue(
-        text="Saline",
-        description="Saline fixative")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown fixative")
-
-    _defn = EnumDefinition(
-        name="TissueFixative",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "95% Ethanol",
-            PermissibleValue(
-                text="95% Ethanol",
-                description="95% Ethanol fixative"))
-        setattr(cls, "Carnoy's Solution",
-            PermissibleValue(
-                text="Carnoy's Solution",
-                description="Carnoy's Solution fixative"))
-        setattr(cls, "Formalin Fixed - Buffered",
-            PermissibleValue(
-                text="Formalin Fixed - Buffered",
-                description="Formalin Fixed - Buffered fixative"))
-        setattr(cls, "Formalin Fixed - Unbuffered",
-            PermissibleValue(
-                text="Formalin Fixed - Unbuffered",
-                description="Formalin Fixed - Unbuffered fixative"))
-        setattr(cls, "Formalin Fixed Tissue",
-            PermissibleValue(
-                text="Formalin Fixed Tissue",
-                description="Formalin Fixed Tissue fixative"))
-        setattr(cls, "Fresh Dissociated",
-            PermissibleValue(
-                text="Fresh Dissociated",
-                description="Fresh Dissociated fixative"))
-        setattr(cls, "Fresh Dissociated and Single Cell Sorted",
-            PermissibleValue(
-                text="Fresh Dissociated and Single Cell Sorted",
-                description="Fresh Dissociated and Single Cell Sorted fixative"))
-        setattr(cls, "Fresh Dissociated and Single Cell Sorted into Plates",
-            PermissibleValue(
-                text="Fresh Dissociated and Single Cell Sorted into Plates",
-                description="Fresh Dissociated and Single Cell Sorted into Plates fixative"))
-        setattr(cls, "Liquid Nitrogen",
-            PermissibleValue(
-                text="Liquid Nitrogen",
-                description="Liquid Nitrogen fixative"))
-        setattr(cls, "None",
-            PermissibleValue(
-                text="None",
-                description="No fixative"))
-        setattr(cls, "Not applicable",
-            PermissibleValue(
-                text="Not applicable",
-                description="Not applicable fixative"))
-        setattr(cls, "Not recorded",
-            PermissibleValue(
-                text="Not recorded",
-                description="Not recorded fixative"))
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not reported fixative"))
-        setattr(cls, "NP40 Lysis Buffer",
-            PermissibleValue(
-                text="NP40 Lysis Buffer",
-                description="NP40 Lysis Buffer fixative"))
-        setattr(cls, "OCT media",
-            PermissibleValue(
-                text="OCT media",
-                description="OCT media fixative"))
-        setattr(cls, "PAXgene Tissue",
-            PermissibleValue(
-                text="PAXgene Tissue",
-                description="PAXgene Tissue fixative"))
-        setattr(cls, "Para-benzoquinone",
-            PermissibleValue(
-                text="Para-benzoquinone",
-                description="Para-benzoquinone fixative"))
-        setattr(cls, "Snap Frozen",
-            PermissibleValue(
-                text="Snap Frozen",
-                description="Snap Frozen fixative"))
-        setattr(cls, "TCL Lysis Buffer",
-            PermissibleValue(
-                text="TCL Lysis Buffer",
-                description="TCL Lysis Buffer fixative"))
-        setattr(cls, "-20 degrees C",
-            PermissibleValue(
-                text="-20 degrees C",
-                description="-20 degrees C fixative"))
-        setattr(cls, "-80 degrees C",
-            PermissibleValue(
-                text="-80 degrees C",
-                description="-80 degrees C fixative"))
-
-class EmbeddingMedium(EnumDefinitionImpl):
-
-    Cryopreserved = PermissibleValue(
-        text="Cryopreserved",
-        description="Cryopreserved embedding medium")
-    EDTA = PermissibleValue(
-        text="EDTA",
-        description="EDTA embedding medium")
-    FFPE = PermissibleValue(
-        text="FFPE",
-        description="Formalin-Fixed Paraffin-Embedded embedding medium")
-    Fresh = PermissibleValue(
-        text="Fresh",
-        description="Fresh embedding medium")
-    Frozen = PermissibleValue(
-        text="Frozen",
-        description="Frozen embedding medium")
-    Isopentane = PermissibleValue(
-        text="Isopentane",
-        description="Isopentane embedding medium")
-    OCT = PermissibleValue(
-        text="OCT",
-        description="OCT embedding medium")
-    RNALater = PermissibleValue(
-        text="RNALater",
-        description="RNALater embedding medium")
-    TRIzol = PermissibleValue(
-        text="TRIzol",
-        description="TRIzol embedding medium")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown embedding medium")
-
-    _defn = EnumDefinition(
-        name="EmbeddingMedium",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Cytospin Slide",
-            PermissibleValue(
-                text="Cytospin Slide",
-                description="Cytospin Slide embedding medium"))
-        setattr(cls, "Formalin Fixed - Buffered",
-            PermissibleValue(
-                text="Formalin Fixed - Buffered",
-                description="Formalin Fixed - Buffered embedding medium"))
-        setattr(cls, "Formalin Fixed - Unbuffered",
-            PermissibleValue(
-                text="Formalin Fixed - Unbuffered",
-                description="Formalin Fixed - Unbuffered embedding medium"))
-        setattr(cls, "Formalin Fixed Tissue",
-            PermissibleValue(
-                text="Formalin Fixed Tissue",
-                description="Formalin Fixed Tissue embedding medium"))
-        setattr(cls, "Fresh Dissociated",
-            PermissibleValue(
-                text="Fresh Dissociated",
-                description="Fresh Dissociated embedding medium"))
-        setattr(cls, "Fresh Dissociated and Single Cell Sorted",
-            PermissibleValue(
-                text="Fresh Dissociated and Single Cell Sorted",
-                description="Fresh Dissociated and Single Cell Sorted embedding medium"))
-        setattr(cls, "Fresh Dissociated and Single Cell Sorted into Plates",
-            PermissibleValue(
-                text="Fresh Dissociated and Single Cell Sorted into Plates",
-                description="Fresh Dissociated and Single Cell Sorted into Plates embedding medium"))
-        setattr(cls, "Liquid Nitrogen",
-            PermissibleValue(
-                text="Liquid Nitrogen",
-                description="Liquid Nitrogen embedding medium"))
-        setattr(cls, "Not Applicable",
-            PermissibleValue(
-                text="Not Applicable",
-                description="Not applicable embedding medium"))
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not reported embedding medium"))
-        setattr(cls, "Snap Frozen",
-            PermissibleValue(
-                text="Snap Frozen",
-                description="Snap Frozen embedding medium"))
-        setattr(cls, "-20 degrees C",
-            PermissibleValue(
-                text="-20 degrees C",
-                description="-20 degrees C embedding medium"))
-        setattr(cls, "-80 degrees C",
-            PermissibleValue(
-                text="-80 degrees C",
-                description="-80 degrees C embedding medium"))
-
 # Slots
 class slots:
     pass
@@ -1539,10 +1273,10 @@ slots.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Y = Slot(uri=HTAN.PHYSICAL_SIZE_Y
                    model_uri=HTAN.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Y, domain=None, range=float)
 
 slots.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Z = Slot(uri=HTAN.PHYSICAL_SIZE_Z, name="multiplexMicroscopyLevel2__PHYSICAL_SIZE_Z", curie=HTAN.curie('PHYSICAL_SIZE_Z'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Z, domain=None, range=Optional[float])
+                   model_uri=HTAN.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Z, domain=None, range=float)
 
 slots.multiplexMicroscopyLevel2__SIZE_C = Slot(uri=HTAN.SIZE_C, name="multiplexMicroscopyLevel2__SIZE_C", curie=HTAN.curie('SIZE_C'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__SIZE_C, domain=None, range=Optional[int])
+                   model_uri=HTAN.multiplexMicroscopyLevel2__SIZE_C, domain=None, range=int)
 
 slots.multiplexMicroscopyLevel2__SIZE_T = Slot(uri=HTAN.SIZE_T, name="multiplexMicroscopyLevel2__SIZE_T", curie=HTAN.curie('SIZE_T'),
                    model_uri=HTAN.multiplexMicroscopyLevel2__SIZE_T, domain=None, range=int)
@@ -1554,7 +1288,7 @@ slots.multiplexMicroscopyLevel2__SIZE_Y = Slot(uri=HTAN.SIZE_Y, name="multiplexM
                    model_uri=HTAN.multiplexMicroscopyLevel2__SIZE_Y, domain=None, range=int)
 
 slots.multiplexMicroscopyLevel2__SIZE_Z = Slot(uri=HTAN.SIZE_Z, name="multiplexMicroscopyLevel2__SIZE_Z", curie=HTAN.curie('SIZE_Z'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__SIZE_Z, domain=None, range=Optional[int])
+                   model_uri=HTAN.multiplexMicroscopyLevel2__SIZE_Z, domain=None, range=int)
 
 slots.multiplexMicroscopyLevel2__CHANNEL_METADATA_ID = Slot(uri=HTAN.CHANNEL_METADATA_ID, name="multiplexMicroscopyLevel2__CHANNEL_METADATA_ID", curie=HTAN.curie('CHANNEL_METADATA_ID'),
                    model_uri=HTAN.multiplexMicroscopyLevel2__CHANNEL_METADATA_ID, domain=None, range=str)
@@ -1669,16 +1403,6 @@ slots.baseImagingAttributes__QC_COMMENT = Slot(uri=HTAN.QC_COMMENT, name="baseIm
 slots.baseImagingAttributes__SPECIES = Slot(uri=HTAN.SPECIES, name="baseImagingAttributes__SPECIES", curie=HTAN.curie('SPECIES'),
                    model_uri=HTAN.baseImagingAttributes__SPECIES, domain=None, range=str)
 
-slots.baseImagingAttributes__ORGAN_OR_TISSUE = Slot(uri=HTAN.ORGAN_OR_TISSUE, name="baseImagingAttributes__ORGAN_OR_TISSUE", curie=HTAN.curie('ORGAN_OR_TISSUE'),
-                   model_uri=HTAN.baseImagingAttributes__ORGAN_OR_TISSUE, domain=None, range=str,
-                   pattern=re.compile(r'^[A-Z][0-9]{2}\.[0-9]{1,2}$'))
-
-slots.baseImagingAttributes__TISSUE_FIXATIVE = Slot(uri=HTAN.TISSUE_FIXATIVE, name="baseImagingAttributes__TISSUE_FIXATIVE", curie=HTAN.curie('TISSUE_FIXATIVE'),
-                   model_uri=HTAN.baseImagingAttributes__TISSUE_FIXATIVE, domain=None, range=Union[str, "TissueFixative"])
-
-slots.baseImagingAttributes__EMBEDDING_MEDIUM = Slot(uri=HTAN.EMBEDDING_MEDIUM, name="baseImagingAttributes__EMBEDDING_MEDIUM", curie=HTAN.curie('EMBEDDING_MEDIUM'),
-                   model_uri=HTAN.baseImagingAttributes__EMBEDDING_MEDIUM, domain=None, range=Union[str, "EmbeddingMedium"])
-
 slots.channelMetadata__CHANNEL_ID = Slot(uri=HTAN.CHANNEL_ID, name="channelMetadata__CHANNEL_ID", curie=HTAN.curie('CHANNEL_ID'),
                    model_uri=HTAN.channelMetadata__CHANNEL_ID, domain=None, range=str)
 
@@ -1692,7 +1416,7 @@ slots.channelMetadata__SUB_CYCLE_NUMBER = Slot(uri=HTAN.SUB_CYCLE_NUMBER, name="
                    model_uri=HTAN.channelMetadata__SUB_CYCLE_NUMBER, domain=None, range=Optional[int])
 
 slots.channelMetadata__TARGET_NAME = Slot(uri=HTAN.TARGET_NAME, name="channelMetadata__TARGET_NAME", curie=HTAN.curie('TARGET_NAME'),
-                   model_uri=HTAN.channelMetadata__TARGET_NAME, domain=None, range=str)
+                   model_uri=HTAN.channelMetadata__TARGET_NAME, domain=None, range=Optional[str])
 
 slots.channelMetadata__ANTIBODY_NAME = Slot(uri=HTAN.ANTIBODY_NAME, name="channelMetadata__ANTIBODY_NAME", curie=HTAN.curie('ANTIBODY_NAME'),
                    model_uri=HTAN.channelMetadata__ANTIBODY_NAME, domain=None, range=Optional[str])

@@ -1,5 +1,5 @@
 # Auto generated from digital_pathology.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T13:59:36
+# Generation date: 2025-12-05T14:14:51
 # Schema: DigitalPathology
 #
 # id: https://w3id.org/htan/digital_pathology
@@ -157,9 +157,6 @@ class BaseImagingAttributes(CoreFileAttributes):
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
     SPECIES: str = None
-    ORGAN_OR_TISSUE: str = None
-    TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
-    EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
     DE_IDENTIFICATION_METHOD_DESCRIPTION: Optional[str] = None
     DE_IDENTIFICATION_SOFTWARE: Optional[str] = None
     IMAGING_EQUIPMENT_MODEL: Optional[str] = None
@@ -234,21 +231,6 @@ class BaseImagingAttributes(CoreFileAttributes):
         if not isinstance(self.SPECIES, str):
             self.SPECIES = str(self.SPECIES)
 
-        if self._is_empty(self.ORGAN_OR_TISSUE):
-            self.MissingRequiredField("ORGAN_OR_TISSUE")
-        if not isinstance(self.ORGAN_OR_TISSUE, str):
-            self.ORGAN_OR_TISSUE = str(self.ORGAN_OR_TISSUE)
-
-        if self._is_empty(self.TISSUE_FIXATIVE):
-            self.MissingRequiredField("TISSUE_FIXATIVE")
-        if not isinstance(self.TISSUE_FIXATIVE, TissueFixative):
-            self.TISSUE_FIXATIVE = TissueFixative(self.TISSUE_FIXATIVE)
-
-        if self._is_empty(self.EMBEDDING_MEDIUM):
-            self.MissingRequiredField("EMBEDDING_MEDIUM")
-        if not isinstance(self.EMBEDDING_MEDIUM, EmbeddingMedium):
-            self.EMBEDDING_MEDIUM = EmbeddingMedium(self.EMBEDDING_MEDIUM)
-
         if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
             self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
 
@@ -300,9 +282,6 @@ class DigitalPathologyData(BaseImagingAttributes):
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
     SPECIES: str = None
-    ORGAN_OR_TISSUE: str = None
-    TISSUE_FIXATIVE: Union[str, "TissueFixative"] = None
-    EMBEDDING_MEDIUM: Union[str, "EmbeddingMedium"] = None
     FILE_FORMAT: str = None
     HAS_ANNOTATIONS: Union[bool, Bool] = None
     HAS_SLIDE_LABEL: Union[bool, Bool] = None
@@ -479,249 +458,6 @@ class ImmersionMedium(EnumDefinitionImpl):
         name="ImmersionMedium",
     )
 
-class TissueFixative(EnumDefinitionImpl):
-
-    Acetone = PermissibleValue(
-        text="Acetone",
-        description="Acetone fixative")
-    Alcohol = PermissibleValue(
-        text="Alcohol",
-        description="Alcohol fixative")
-    Carbodiimide = PermissibleValue(
-        text="Carbodiimide",
-        description="Carbodiimide fixative")
-    CryoStor = PermissibleValue(
-        text="CryoStor",
-        description="CryoStor fixative")
-    Cryopreserved = PermissibleValue(
-        text="Cryopreserved",
-        description="Cryopreserved fixative")
-    Diimidoester = PermissibleValue(
-        text="Diimidoester",
-        description="Diimidoester fixative")
-    Dimethylacetamide = PermissibleValue(
-        text="Dimethylacetamide",
-        description="Dimethylacetamide fixative")
-    EDTA = PermissibleValue(
-        text="EDTA",
-        description="EDTA fixative")
-    Formalin = PermissibleValue(
-        text="Formalin",
-        description="Formalin fixative")
-    Fresh = PermissibleValue(
-        text="Fresh",
-        description="Fresh fixative")
-    Frozen = PermissibleValue(
-        text="Frozen",
-        description="Frozen fixative")
-    Glutaraldehyde = PermissibleValue(
-        text="Glutaraldehyde",
-        description="Glutaraldehyde fixative")
-    Isopentane = PermissibleValue(
-        text="Isopentane",
-        description="Isopentane fixative")
-    Methacarn = PermissibleValue(
-        text="Methacarn",
-        description="Methacarn fixative")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other fixative")
-    Poloxamer = PermissibleValue(
-        text="Poloxamer",
-        description="Poloxamer fixative")
-    RNAlater = PermissibleValue(
-        text="RNAlater",
-        description="RNAlater fixative")
-    Saline = PermissibleValue(
-        text="Saline",
-        description="Saline fixative")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown fixative")
-
-    _defn = EnumDefinition(
-        name="TissueFixative",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "95% Ethanol",
-            PermissibleValue(
-                text="95% Ethanol",
-                description="95% Ethanol fixative"))
-        setattr(cls, "Carnoy's Solution",
-            PermissibleValue(
-                text="Carnoy's Solution",
-                description="Carnoy's Solution fixative"))
-        setattr(cls, "Formalin Fixed - Buffered",
-            PermissibleValue(
-                text="Formalin Fixed - Buffered",
-                description="Formalin Fixed - Buffered fixative"))
-        setattr(cls, "Formalin Fixed - Unbuffered",
-            PermissibleValue(
-                text="Formalin Fixed - Unbuffered",
-                description="Formalin Fixed - Unbuffered fixative"))
-        setattr(cls, "Formalin Fixed Tissue",
-            PermissibleValue(
-                text="Formalin Fixed Tissue",
-                description="Formalin Fixed Tissue fixative"))
-        setattr(cls, "Fresh Dissociated",
-            PermissibleValue(
-                text="Fresh Dissociated",
-                description="Fresh Dissociated fixative"))
-        setattr(cls, "Fresh Dissociated and Single Cell Sorted",
-            PermissibleValue(
-                text="Fresh Dissociated and Single Cell Sorted",
-                description="Fresh Dissociated and Single Cell Sorted fixative"))
-        setattr(cls, "Fresh Dissociated and Single Cell Sorted into Plates",
-            PermissibleValue(
-                text="Fresh Dissociated and Single Cell Sorted into Plates",
-                description="Fresh Dissociated and Single Cell Sorted into Plates fixative"))
-        setattr(cls, "Liquid Nitrogen",
-            PermissibleValue(
-                text="Liquid Nitrogen",
-                description="Liquid Nitrogen fixative"))
-        setattr(cls, "None",
-            PermissibleValue(
-                text="None",
-                description="No fixative"))
-        setattr(cls, "Not applicable",
-            PermissibleValue(
-                text="Not applicable",
-                description="Not applicable fixative"))
-        setattr(cls, "Not recorded",
-            PermissibleValue(
-                text="Not recorded",
-                description="Not recorded fixative"))
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not reported fixative"))
-        setattr(cls, "NP40 Lysis Buffer",
-            PermissibleValue(
-                text="NP40 Lysis Buffer",
-                description="NP40 Lysis Buffer fixative"))
-        setattr(cls, "OCT media",
-            PermissibleValue(
-                text="OCT media",
-                description="OCT media fixative"))
-        setattr(cls, "PAXgene Tissue",
-            PermissibleValue(
-                text="PAXgene Tissue",
-                description="PAXgene Tissue fixative"))
-        setattr(cls, "Para-benzoquinone",
-            PermissibleValue(
-                text="Para-benzoquinone",
-                description="Para-benzoquinone fixative"))
-        setattr(cls, "Snap Frozen",
-            PermissibleValue(
-                text="Snap Frozen",
-                description="Snap Frozen fixative"))
-        setattr(cls, "TCL Lysis Buffer",
-            PermissibleValue(
-                text="TCL Lysis Buffer",
-                description="TCL Lysis Buffer fixative"))
-        setattr(cls, "-20 degrees C",
-            PermissibleValue(
-                text="-20 degrees C",
-                description="-20 degrees C fixative"))
-        setattr(cls, "-80 degrees C",
-            PermissibleValue(
-                text="-80 degrees C",
-                description="-80 degrees C fixative"))
-
-class EmbeddingMedium(EnumDefinitionImpl):
-
-    Cryopreserved = PermissibleValue(
-        text="Cryopreserved",
-        description="Cryopreserved embedding medium")
-    EDTA = PermissibleValue(
-        text="EDTA",
-        description="EDTA embedding medium")
-    FFPE = PermissibleValue(
-        text="FFPE",
-        description="Formalin-Fixed Paraffin-Embedded embedding medium")
-    Fresh = PermissibleValue(
-        text="Fresh",
-        description="Fresh embedding medium")
-    Frozen = PermissibleValue(
-        text="Frozen",
-        description="Frozen embedding medium")
-    Isopentane = PermissibleValue(
-        text="Isopentane",
-        description="Isopentane embedding medium")
-    OCT = PermissibleValue(
-        text="OCT",
-        description="OCT embedding medium")
-    RNALater = PermissibleValue(
-        text="RNALater",
-        description="RNALater embedding medium")
-    TRIzol = PermissibleValue(
-        text="TRIzol",
-        description="TRIzol embedding medium")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown embedding medium")
-
-    _defn = EnumDefinition(
-        name="EmbeddingMedium",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Cytospin Slide",
-            PermissibleValue(
-                text="Cytospin Slide",
-                description="Cytospin Slide embedding medium"))
-        setattr(cls, "Formalin Fixed - Buffered",
-            PermissibleValue(
-                text="Formalin Fixed - Buffered",
-                description="Formalin Fixed - Buffered embedding medium"))
-        setattr(cls, "Formalin Fixed - Unbuffered",
-            PermissibleValue(
-                text="Formalin Fixed - Unbuffered",
-                description="Formalin Fixed - Unbuffered embedding medium"))
-        setattr(cls, "Formalin Fixed Tissue",
-            PermissibleValue(
-                text="Formalin Fixed Tissue",
-                description="Formalin Fixed Tissue embedding medium"))
-        setattr(cls, "Fresh Dissociated",
-            PermissibleValue(
-                text="Fresh Dissociated",
-                description="Fresh Dissociated embedding medium"))
-        setattr(cls, "Fresh Dissociated and Single Cell Sorted",
-            PermissibleValue(
-                text="Fresh Dissociated and Single Cell Sorted",
-                description="Fresh Dissociated and Single Cell Sorted embedding medium"))
-        setattr(cls, "Fresh Dissociated and Single Cell Sorted into Plates",
-            PermissibleValue(
-                text="Fresh Dissociated and Single Cell Sorted into Plates",
-                description="Fresh Dissociated and Single Cell Sorted into Plates embedding medium"))
-        setattr(cls, "Liquid Nitrogen",
-            PermissibleValue(
-                text="Liquid Nitrogen",
-                description="Liquid Nitrogen embedding medium"))
-        setattr(cls, "Not Applicable",
-            PermissibleValue(
-                text="Not Applicable",
-                description="Not applicable embedding medium"))
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not reported embedding medium"))
-        setattr(cls, "Snap Frozen",
-            PermissibleValue(
-                text="Snap Frozen",
-                description="Snap Frozen embedding medium"))
-        setattr(cls, "-20 degrees C",
-            PermissibleValue(
-                text="-20 degrees C",
-                description="-20 degrees C embedding medium"))
-        setattr(cls, "-80 degrees C",
-            PermissibleValue(
-                text="-80 degrees C",
-                description="-80 degrees C embedding medium"))
-
 # Slots
 class slots:
     pass
@@ -801,16 +537,6 @@ slots.baseImagingAttributes__QC_COMMENT = Slot(uri=HTAN.QC_COMMENT, name="baseIm
 
 slots.baseImagingAttributes__SPECIES = Slot(uri=HTAN.SPECIES, name="baseImagingAttributes__SPECIES", curie=HTAN.curie('SPECIES'),
                    model_uri=HTAN.baseImagingAttributes__SPECIES, domain=None, range=str)
-
-slots.baseImagingAttributes__ORGAN_OR_TISSUE = Slot(uri=HTAN.ORGAN_OR_TISSUE, name="baseImagingAttributes__ORGAN_OR_TISSUE", curie=HTAN.curie('ORGAN_OR_TISSUE'),
-                   model_uri=HTAN.baseImagingAttributes__ORGAN_OR_TISSUE, domain=None, range=str,
-                   pattern=re.compile(r'^[A-Z][0-9]{2}\.[0-9]{1,2}$'))
-
-slots.baseImagingAttributes__TISSUE_FIXATIVE = Slot(uri=HTAN.TISSUE_FIXATIVE, name="baseImagingAttributes__TISSUE_FIXATIVE", curie=HTAN.curie('TISSUE_FIXATIVE'),
-                   model_uri=HTAN.baseImagingAttributes__TISSUE_FIXATIVE, domain=None, range=Union[str, "TissueFixative"])
-
-slots.baseImagingAttributes__EMBEDDING_MEDIUM = Slot(uri=HTAN.EMBEDDING_MEDIUM, name="baseImagingAttributes__EMBEDDING_MEDIUM", curie=HTAN.curie('EMBEDDING_MEDIUM'),
-                   model_uri=HTAN.baseImagingAttributes__EMBEDDING_MEDIUM, domain=None, range=Union[str, "EmbeddingMedium"])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
                    model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
