@@ -59,6 +59,24 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 - **Structure**: Three data levels (Level 1, 2, 3/4) with h5ad format validation
 - **Features**: Single-cell isolation methods, workflow types, AnnData schema compliance
 
+### **Imaging Module**
+- **Purpose**: Base imaging attributes shared across all imaging modules
+- **Location**: `modules/Imaging/`
+- **Structure**: BaseImagingAttributes class with common imaging metadata
+- **Features**: De-identification methods, imaging equipment, microscopy parameters, quality control
+
+### **Digital Pathology Module**
+- **Purpose**: Whole-slide imaging (WSI) data from H&E and other tissue-based assays
+- **Location**: `modules/DigitalPathology/`
+- **Structure**: Single data level (Level 2) with Bio-Formats/OpenSlide compatible formats
+- **Features**: Annotation support, slide label handling, CRDC alignment, format validation
+
+### **Multiplex Microscopy Module**
+- **Purpose**: Multiplexed tissue imaging assays (CODEX, CyCIF, IMC, MIBI, etc.)
+- **Location**: `modules/MultiplexMicroscopy/`
+- **Structure**: Three data levels (Level 2: imaging + channel metadata, Level 3: segmentation masks, Level 4: cell-by-feature tables)
+- **Features**: Channel metadata, image dimensions, multiplex assay types, CRDC alignment
+
 ## 📁 Project Structure
 
 ```
@@ -68,8 +86,11 @@ htan2-data-model/
 │   ├── Clinical/              # Clinical data domains
 │   ├── Biospecimen/           # Biospecimen metadata and classification
 │   ├── Sequencing/            # Base sequencing attributes
+│   ├── Imaging/               # Base imaging attributes
 │   ├── WES/                   # Whole Exome Sequencing
-│   └── scRNA-seq/             # Single-cell RNA sequencing
+│   ├── scRNA-seq/             # Single-cell RNA sequencing
+│   ├── DigitalPathology/      # Digital Pathology imaging
+│   └── MultiplexMicroscopy/   # Multiplex Microscopy imaging
 ├── config/                    # LinkML configuration
 ├── scripts/                   # Utility scripts
 ├── tests/                     # Root-level tests
@@ -130,8 +151,11 @@ Each module contains detailed documentation:
 - **Clinical Module**: See `modules/Clinical/README.md` for domain descriptions
 - **Biospecimen Module**: See `modules/Biospecimen/README.md` for RFC compliance and enum schemas
 - **Sequencing Module**: See `modules/Sequencing/README.md` for base sequencing attributes
+- **Imaging Module**: Base imaging attributes (no separate README, see DigitalPathology and MultiplexMicroscopy)
 - **WES Module**: See `modules/WES/README.md` for sequencing levels
 - **scRNA-seq Module**: See `modules/scRNA-seq/README.md` for single-cell RNA sequencing levels
+- **Digital Pathology Module**: See `modules/DigitalPathology/README.md` for digital pathology imaging
+- **Multiplex Microscopy Module**: See `modules/MultiplexMicroscopy/README.md` for multiplex microscopy imaging
 
 ## 🤝 Contributing
 
