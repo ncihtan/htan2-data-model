@@ -1,5 +1,5 @@
 # Auto generated from digital_pathology.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-09T18:01:56
+# Generation date: 2025-12-09T18:24:30
 # Schema: DigitalPathology
 #
 # id: https://w3id.org/htan/digital_pathology
@@ -157,6 +157,8 @@ class BaseImagingAttributes(CoreFileAttributes):
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
     SPECIES: Union[str, "Species"] = None
+    HAS_SLIDE_LABEL: Union[bool, Bool] = None
+    DE_IDENTIFIED: Union[bool, Bool] = None
     DE_IDENTIFICATION_METHOD_DESCRIPTION: Optional[str] = None
     DE_IDENTIFICATION_SOFTWARE: Optional[str] = None
     IMAGING_EQUIPMENT_MODEL: Optional[str] = None
@@ -164,6 +166,7 @@ class BaseImagingAttributes(CoreFileAttributes):
     IMAGING_PROTOCOL: Optional[str] = None
     IMMERSION: Optional[Union[str, "ImmersionMedium"]] = None
     LENS_NUMERICAL_APERTURE: Optional[float] = None
+    SLIDE_LABEL_REDACTED: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
@@ -231,6 +234,16 @@ class BaseImagingAttributes(CoreFileAttributes):
         if not isinstance(self.SPECIES, Species):
             self.SPECIES = Species(self.SPECIES)
 
+        if self._is_empty(self.HAS_SLIDE_LABEL):
+            self.MissingRequiredField("HAS_SLIDE_LABEL")
+        if not isinstance(self.HAS_SLIDE_LABEL, Bool):
+            self.HAS_SLIDE_LABEL = Bool(self.HAS_SLIDE_LABEL)
+
+        if self._is_empty(self.DE_IDENTIFIED):
+            self.MissingRequiredField("DE_IDENTIFIED")
+        if not isinstance(self.DE_IDENTIFIED, Bool):
+            self.DE_IDENTIFIED = Bool(self.DE_IDENTIFIED)
+
         if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
             self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
 
@@ -252,8 +265,14 @@ class BaseImagingAttributes(CoreFileAttributes):
         if self.LENS_NUMERICAL_APERTURE is not None and not isinstance(self.LENS_NUMERICAL_APERTURE, float):
             self.LENS_NUMERICAL_APERTURE = float(self.LENS_NUMERICAL_APERTURE)
 
+        if self.SLIDE_LABEL_REDACTED is not None and not isinstance(self.SLIDE_LABEL_REDACTED, Bool):
+            self.SLIDE_LABEL_REDACTED = Bool(self.SLIDE_LABEL_REDACTED)
+
         if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
             self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
+
+        if self.SLIDE_LABEL_REDACTED is not None and not isinstance(self.SLIDE_LABEL_REDACTED, str):
+            self.SLIDE_LABEL_REDACTED = str(self.SLIDE_LABEL_REDACTED)
 
         super().__post_init__(**kwargs)
 
@@ -285,12 +304,11 @@ class DigitalPathologyData(BaseImagingAttributes):
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
     SPECIES: Union[str, "Species"] = None
-    FILE_FORMAT: str = None
-    HAS_ANNOTATIONS: Union[bool, Bool] = None
     HAS_SLIDE_LABEL: Union[bool, Bool] = None
     DE_IDENTIFIED: Union[bool, Bool] = None
+    FILE_FORMAT: str = None
+    HAS_ANNOTATIONS: Union[bool, Bool] = None
     ANNOTATION_TYPE: Optional[Union[str, "AnnotationType"]] = None
-    SLIDE_LABEL_REDACTED: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
@@ -308,27 +326,11 @@ class DigitalPathologyData(BaseImagingAttributes):
         if not isinstance(self.HAS_ANNOTATIONS, Bool):
             self.HAS_ANNOTATIONS = Bool(self.HAS_ANNOTATIONS)
 
-        if self._is_empty(self.HAS_SLIDE_LABEL):
-            self.MissingRequiredField("HAS_SLIDE_LABEL")
-        if not isinstance(self.HAS_SLIDE_LABEL, Bool):
-            self.HAS_SLIDE_LABEL = Bool(self.HAS_SLIDE_LABEL)
-
-        if self._is_empty(self.DE_IDENTIFIED):
-            self.MissingRequiredField("DE_IDENTIFIED")
-        if not isinstance(self.DE_IDENTIFIED, Bool):
-            self.DE_IDENTIFIED = Bool(self.DE_IDENTIFIED)
-
         if self.ANNOTATION_TYPE is not None and not isinstance(self.ANNOTATION_TYPE, AnnotationType):
             self.ANNOTATION_TYPE = AnnotationType(self.ANNOTATION_TYPE)
 
-        if self.SLIDE_LABEL_REDACTED is not None and not isinstance(self.SLIDE_LABEL_REDACTED, Bool):
-            self.SLIDE_LABEL_REDACTED = Bool(self.SLIDE_LABEL_REDACTED)
-
         if self.ANNOTATION_TYPE is not None and not isinstance(self.ANNOTATION_TYPE, str):
             self.ANNOTATION_TYPE = str(self.ANNOTATION_TYPE)
-
-        if self.SLIDE_LABEL_REDACTED is not None and not isinstance(self.SLIDE_LABEL_REDACTED, str):
-            self.SLIDE_LABEL_REDACTED = str(self.SLIDE_LABEL_REDACTED)
 
         super().__post_init__(**kwargs)
 
@@ -517,15 +519,6 @@ slots.digitalPathologyData__HAS_ANNOTATIONS = Slot(uri=HTAN.HAS_ANNOTATIONS, nam
 slots.digitalPathologyData__ANNOTATION_TYPE = Slot(uri=HTAN.ANNOTATION_TYPE, name="digitalPathologyData__ANNOTATION_TYPE", curie=HTAN.curie('ANNOTATION_TYPE'),
                    model_uri=HTAN.digitalPathologyData__ANNOTATION_TYPE, domain=None, range=Optional[Union[str, "AnnotationType"]])
 
-slots.digitalPathologyData__HAS_SLIDE_LABEL = Slot(uri=HTAN.HAS_SLIDE_LABEL, name="digitalPathologyData__HAS_SLIDE_LABEL", curie=HTAN.curie('HAS_SLIDE_LABEL'),
-                   model_uri=HTAN.digitalPathologyData__HAS_SLIDE_LABEL, domain=None, range=Union[bool, Bool])
-
-slots.digitalPathologyData__SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="digitalPathologyData__SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
-                   model_uri=HTAN.digitalPathologyData__SLIDE_LABEL_REDACTED, domain=None, range=Optional[Union[bool, Bool]])
-
-slots.digitalPathologyData__DE_IDENTIFIED = Slot(uri=HTAN.DE_IDENTIFIED, name="digitalPathologyData__DE_IDENTIFIED", curie=HTAN.curie('DE_IDENTIFIED'),
-                   model_uri=HTAN.digitalPathologyData__DE_IDENTIFIED, domain=None, range=Union[bool, Bool])
-
 slots.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = Slot(uri=HTAN.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, name="baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES", curie=HTAN.curie('EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES'),
                    model_uri=HTAN.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, domain=None, range=Union[str, "ExperimentalStrategyAndDataSubtypes"])
 
@@ -585,6 +578,15 @@ slots.baseImagingAttributes__QC_COMMENT = Slot(uri=HTAN.QC_COMMENT, name="baseIm
 slots.baseImagingAttributes__SPECIES = Slot(uri=HTAN.SPECIES, name="baseImagingAttributes__SPECIES", curie=HTAN.curie('SPECIES'),
                    model_uri=HTAN.baseImagingAttributes__SPECIES, domain=None, range=Union[str, "Species"])
 
+slots.baseImagingAttributes__HAS_SLIDE_LABEL = Slot(uri=HTAN.HAS_SLIDE_LABEL, name="baseImagingAttributes__HAS_SLIDE_LABEL", curie=HTAN.curie('HAS_SLIDE_LABEL'),
+                   model_uri=HTAN.baseImagingAttributes__HAS_SLIDE_LABEL, domain=None, range=Union[bool, Bool])
+
+slots.baseImagingAttributes__SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="baseImagingAttributes__SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
+                   model_uri=HTAN.baseImagingAttributes__SLIDE_LABEL_REDACTED, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.baseImagingAttributes__DE_IDENTIFIED = Slot(uri=HTAN.DE_IDENTIFIED, name="baseImagingAttributes__DE_IDENTIFIED", curie=HTAN.curie('DE_IDENTIFIED'),
+                   model_uri=HTAN.baseImagingAttributes__DE_IDENTIFIED, domain=None, range=Union[bool, Bool])
+
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
                    model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
                    pattern=re.compile(r'^.+[\\/]\S*$'))
@@ -603,17 +605,17 @@ slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="c
 slots.DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
                    model_uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=None, range=Optional[str])
 
-slots.ANNOTATION_TYPE = Slot(uri=HTAN.ANNOTATION_TYPE, name="ANNOTATION_TYPE", curie=HTAN.curie('ANNOTATION_TYPE'),
-                   model_uri=HTAN.ANNOTATION_TYPE, domain=None, range=Optional[str])
-
 slots.SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
                    model_uri=HTAN.SLIDE_LABEL_REDACTED, domain=None, range=Optional[str])
+
+slots.ANNOTATION_TYPE = Slot(uri=HTAN.ANNOTATION_TYPE, name="ANNOTATION_TYPE", curie=HTAN.curie('ANNOTATION_TYPE'),
+                   model_uri=HTAN.ANNOTATION_TYPE, domain=None, range=Optional[str])
 
 slots.DigitalPathologyData_ANNOTATION_TYPE = Slot(uri=HTAN.ANNOTATION_TYPE, name="DigitalPathologyData_ANNOTATION_TYPE", curie=HTAN.curie('ANNOTATION_TYPE'),
                    model_uri=HTAN.DigitalPathologyData_ANNOTATION_TYPE, domain=DigitalPathologyData, range=Optional[str])
 
-slots.DigitalPathologyData_SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="DigitalPathologyData_SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
-                   model_uri=HTAN.DigitalPathologyData_SLIDE_LABEL_REDACTED, domain=DigitalPathologyData, range=Optional[str])
-
 slots.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
                    model_uri=HTAN.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=BaseImagingAttributes, range=Optional[str])
+
+slots.BaseImagingAttributes_SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="BaseImagingAttributes_SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
+                   model_uri=HTAN.BaseImagingAttributes_SLIDE_LABEL_REDACTED, domain=BaseImagingAttributes, range=Optional[str])
