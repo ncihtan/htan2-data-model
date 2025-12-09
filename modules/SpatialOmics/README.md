@@ -314,10 +314,3 @@ cd modules/SpatialOmics
 make gen-synapse-schema
 ```
 
-## References
-
-- [HTAN Phase 2 Spatial Omics RFC](HTAN%20Phase%202%20Spatial%20RFC.docx)
-- [HTAN Phase 2 Spatial RFC Attributes CSV](HTAN%20Phase%202%20Spatial%20RFC%20attributes%20-%20Level%203%20spatial%20bundle.csv)
-- CRDC General Commons Data Model (spatial omics support pending)
-- [LinkML Rules Documentation](https://linkml.io/linkml/schemas/rules.html) - For conditional requirements implementation
-
