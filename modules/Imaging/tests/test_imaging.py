@@ -277,7 +277,7 @@ class TestBaseImagingDataValidation:
             "NOMINAL_MAGNIFICATION": 20,
             "PASSED_QC": True,
             "QC_COMMENT": "OK",
-            "SPECIES": "9606"
+            "SPECIES": "9606 (Homo sapiens)"
         }
         
         # Should validate successfully

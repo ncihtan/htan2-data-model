@@ -86,6 +86,11 @@ enums:
       "CC BY 4.0":
         description: Creative Commons Attribution 4.0 International License
 
+  Species:
+    permissible_values:
+      "9606 (Homo sapiens)":
+        description: NCBI Taxonomy ID for Homo sapiens
+
 
 classes:
   BaseImagingAttributes:
@@ -215,10 +220,10 @@ classes:
 
       # Species metadata
       SPECIES:
-        range: string
+        range: Species
         required: true
         title: "Species"
-        description: NCBI Taxonomy ID
+        description: NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)".
       
       # Note: Organ/Tissue, Tissue Fixative, and Embedding Medium are biospecimen attributes
       # and should be retrieved from the Biospecimen record via HTAN_PARENT_ID
