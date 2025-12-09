@@ -136,7 +136,8 @@ class TestBaseImagingSchema:
         # Check NOMINAL_MAGNIFICATION has minimum_value constraint
         nominal_mag = base_class.attributes.get("NOMINAL_MAGNIFICATION")
         assert nominal_mag is not None
-        assert nominal_mag.minimum_value == 1.0
+        assert nominal_mag.minimum_value == 0
+        assert nominal_mag.range == "integer"
         
         # Check LENS_NUMERICAL_APERTURE has minimum_value constraint
         lens_na = base_class.attributes.get("LENS_NUMERICAL_APERTURE")
@@ -176,7 +177,7 @@ class TestBaseImagingDataValidation:
             "CITATION_OR_DOI": "https://doi.org/10.1000/example",
             "STAINING_METHOD": "H&E",
             "OBJECTIVE": "Leica HC PL APO 20x/0.75",
-            "NOMINAL_MAGNIFICATION": 20.0,
+            "NOMINAL_MAGNIFICATION": 20,
             "PASSED_QC": True,
             "QC_COMMENT": "Image quality acceptable",
             "SPECIES": "9606 (Homo sapiens)"
@@ -191,7 +192,8 @@ class TestBaseImagingDataValidation:
             "CODEX", "CyCIF", "ExSeq", "GeoMX-DSP", "H&E", "IHC", "IMC", 
             "MIBI", "MERFISH", "MxIF", "mIHC", "Not Applicable", "SABER", "t-CyCIF"
         ]
-        assert valid_data["NOMINAL_MAGNIFICATION"] >= 1.0
+        assert valid_data["NOMINAL_MAGNIFICATION"] >= 0
+        assert isinstance(valid_data["NOMINAL_MAGNIFICATION"], int)
 
     def test_enum_validation(self):
         """Test enum value validation."""
@@ -272,7 +274,7 @@ class TestBaseImagingDataValidation:
             "CITATION_OR_DOI": "https://doi.org/test",
             "STAINING_METHOD": "H&E",
             "OBJECTIVE": "20x",
-            "NOMINAL_MAGNIFICATION": 20.0,
+            "NOMINAL_MAGNIFICATION": 20,
             "PASSED_QC": True,
             "QC_COMMENT": "OK",
             "SPECIES": "9606"

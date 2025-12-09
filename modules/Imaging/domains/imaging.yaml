@@ -176,11 +176,11 @@ classes:
         description: The manufacturer and or model number for the optical element that gathers light from an object being observed and focuses the light rays from it to produce a real image of the object
 
       NOMINAL_MAGNIFICATION:
-        range: float
+        range: integer
         required: true
-        minimum_value: 1.0
+        minimum_value: 0
         title: "Nominal Magnification"
-        description: The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. floating point value > 1(no units)
+        description: The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer value >= 0 (no units)
 
       IMMERSION:
         range: ImmersionMedium
