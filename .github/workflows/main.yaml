@@ -41,3 +41,15 @@ jobs:
         run: |
           export PATH="$HOME/.local/bin:$PATH"
           make test
+
+      - name: Generate Synapse-compatible JSON schemas
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          for module in Clinical WES Biospecimen Sequencing Imaging scRNA-seq DigitalPathology MultiplexMicroscopy; do
+            if [ -f modules/$module/Makefile ] && grep -q "^gen-synapse-schema:" modules/$module/Makefile; then
+              echo "Generating Synapse schema for $module module..."
+              make -C modules/$module gen-synapse-schema
+            else
+              echo "Skipping $module module (no gen-synapse-schema target)"
+            fi
+          done
