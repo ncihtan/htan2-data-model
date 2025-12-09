@@ -1,6 +1,6 @@
 # HTAN Base Imaging Module Makefile
 
-.PHONY: all clean test gen-schema docs validate
+.PHONY: all clean test gen-schema gen-synapse-schema docs validate
 
 # Environment variables
 SCHEMA_NAME = htan_imaging
@@ -17,7 +17,15 @@ gen-schema:
 	mkdir -p $(DATAMODEL_DIR)
 	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/imaging.py
 	cp $(BUILD_DIR)/imaging.py $(DATAMODEL_DIR)/
-	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/imaging_schema.json
+
+# Generate Synapse-compatible flat JSON schema
+gen-synapse-schema:
+	mkdir -p $(BUILD_DIR)
+	cd ../../ && poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+		modules/Imaging/$(SOURCE_SCHEMA_PATH) \
+		--class-name BaseImagingAttributes \
+		--output modules/Imaging/$(BUILD_DIR)/imaging.flat.schema.json
+	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/imaging.flat.schema.json"
 
 # Generate documentation
 docs:

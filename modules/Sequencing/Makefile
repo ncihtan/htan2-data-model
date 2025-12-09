@@ -1,6 +1,6 @@
 # HTAN Base Sequencing Module Makefile
 
-.PHONY: all clean test gen-schema docs validate
+.PHONY: all clean test gen-schema gen-synapse-schema docs validate
 
 # Environment variables
 SCHEMA_NAME = htan_sequencing
@@ -17,7 +17,15 @@ gen-schema:
 	mkdir -p $(DATAMODEL_DIR)
 	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/sequencing.py
 	cp $(BUILD_DIR)/sequencing.py $(DATAMODEL_DIR)/
-	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/sequencing_schema.json
+
+# Generate Synapse-compatible flat JSON schema
+gen-synapse-schema:
+	mkdir -p $(BUILD_DIR)
+	cd ../../ && poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+		modules/Sequencing/$(SOURCE_SCHEMA_PATH) \
+		--class-name BaseSequencingAttributes \
+		--output modules/Sequencing/$(BUILD_DIR)/sequencing.flat.schema.json
+	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/sequencing.flat.schema.json"
 
 # Generate documentation
 docs:

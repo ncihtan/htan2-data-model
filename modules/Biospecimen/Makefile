@@ -1,6 +1,6 @@
 # Biospecimen Module Makefile
 
-.PHONY: all clean test gen-schema docs
+.PHONY: all clean test gen-schema gen-synapse-schema docs
 
 # Environment variables
 SCHEMA_NAME = htan_biospecimen
@@ -17,7 +17,15 @@ gen-schema:
 	mkdir -p $(DATAMODEL_DIR)
 	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/biospecimen.py
 	cp $(BUILD_DIR)/biospecimen.py $(DATAMODEL_DIR)/
-	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/biospecimen_schema.json
+
+# Generate Synapse-compatible flat JSON schema
+gen-synapse-schema:
+	mkdir -p $(BUILD_DIR)
+	cd ../../ && poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+		modules/Biospecimen/$(SOURCE_SCHEMA_PATH) \
+		--class-name BiospecimenData \
+		--output modules/Biospecimen/$(BUILD_DIR)/biospecimen.flat.schema.json
+	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/biospecimen.flat.schema.json"
 
 # Generate documentation
 docs:

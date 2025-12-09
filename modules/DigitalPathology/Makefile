@@ -1,6 +1,6 @@
 # Digital Pathology Module Makefile
 
-.PHONY: all clean test gen-schema docs
+.PHONY: all clean test gen-schema gen-synapse-schema docs
 
 # Environment variables
 SCHEMA_NAME = htan_digitalpathology
@@ -17,7 +17,15 @@ gen-schema:
 	mkdir -p $(DATAMODEL_DIR)
 	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/digital_pathology.py
 	cp $(BUILD_DIR)/digital_pathology.py $(DATAMODEL_DIR)/
-	poetry run gen-json-schema $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/digital_pathology_schema.json
+
+# Generate Synapse-compatible flat JSON schema
+gen-synapse-schema:
+	mkdir -p $(BUILD_DIR)
+	cd ../../ && poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+		modules/DigitalPathology/$(SOURCE_SCHEMA_PATH) \
+		--class-name DigitalPathologyData \
+		--output modules/DigitalPathology/$(BUILD_DIR)/digital_pathology.flat.schema.json
+	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/digital_pathology.flat.schema.json"
 
 # Generate documentation
 docs:
