@@ -1,0 +1,101 @@
+name: DigitalPathology
+id: https://w3id.org/htan/digital_pathology
+description: HTAN Digital Pathology Data Model Schema for Phase 2
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../Imaging/domains/imaging
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  AnnotationType:
+    permissible_values:
+      "Artifact":
+        description: Artifact annotation
+      "Cell":
+        description: Cell annotation
+      "Nucleus":
+        description: Nucleus annotation
+      "ROI":
+        description: Region of Interest annotation
+      "Tissue":
+        description: Tissue annotation
+
+classes:
+  DigitalPathologyData:
+    is_a: BaseImagingAttributes
+    description: Container for digital pathology imaging data
+    attributes:
+      # File format restriction for Level 2 imaging data
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python.
+        pattern: "^(ome-tiff|ome\\.tiff|qptiff|svs|tif|dcm|ndpi|vms|vmu|scn|mrxs|tiff|svslide|bit|czi)$"
+      
+      # Digital Pathology specific attributes
+      HAS_ANNOTATIONS:
+        range: boolean
+        required: true
+        title: "Has Annotations"
+        description: Does the image contain annotations
+
+      ANNOTATION_TYPE:
+        range: AnnotationType
+        required: false
+        title: "Annotation Type"
+        description: What types of annotation are contained in the image
+
+      HAS_SLIDE_LABEL:
+        range: boolean
+        required: true
+        title: "Has Slide Label"
+        description: Does the image contain a slide label
+
+      SLIDE_LABEL_REDACTED:
+        range: boolean
+        required: false
+        title: "Slide Label Redacted"
+        description: Have identifiers including dates been masked in the label image
+
+      DE_IDENTIFIED:
+        range: boolean
+        required: true
+        title: "De-identified"
+        description: Confirm that any HIPPA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI
+
+    slot_usage:
+      ANNOTATION_TYPE:
+        required: false
+        description: Required when HAS_ANNOTATIONS is true
+      SLIDE_LABEL_REDACTED:
+        required: false
+        description: Required when HAS_SLIDE_LABEL is true
+    rules:
+      - description: "ANNOTATION_TYPE is required when HAS_ANNOTATIONS is true"
+        preconditions:
+          slot_conditions:
+            HAS_ANNOTATIONS:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            ANNOTATION_TYPE:
+              required: true
+      
+      - description: "SLIDE_LABEL_REDACTED is required when HAS_SLIDE_LABEL is true"
+        preconditions:
+          slot_conditions:
+            HAS_SLIDE_LABEL:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            SLIDE_LABEL_REDACTED:
+              required: true

@@ -284,6 +284,50 @@ format:
 - **Features**: Key features
 ```
 
+### Step 9: Update GitHub Actions Workflow
+
+**File**: `.github/workflows/generate-python-classes.yml`
+
+**⚠️ Important**: Every time you add a new module, you must update the GitHub Actions workflow to include it for automated Python class generation.
+
+**1. Add your module to the workflow_dispatch description:**
+```yaml
+description: 'Modules to regenerate (comma-separated: biospecimen,clinical,wes,sequencing,imaging,scrna-seq,digitalpathology,multiplexmicroscopy,yourmodule,all). Leave empty or "all" to generate all modules.'
+```
+
+**2. Add your module to the options list:**
+```yaml
+options:
+  - all
+  - biospecimen
+  - clinical
+  - wes
+  - sequencing
+  - imaging
+  - scrna-seq
+  - digitalpathology
+  - multiplexmicroscopy
+  - yourmodule  # ← Add your module here
+```
+
+**3. Add a generation step for your module:**
+```yaml
+- name: Generate Python Classes for YourModule
+  if: steps.set-modules.outputs.modules != 'all'
+  run: |
+    MODULES="${{ steps.set-modules.outputs.modules }}"
+    if echo "$MODULES" | grep -q "yourmodule"; then
+      echo "🔄 Generating Python classes for YourModule module..."
+      cd modules/YourModule
+      make gen-schema
+      echo "✅ YourModule Python classes generated"
+    else
+      echo "⏭️ Skipping YourModule (not in selected modules)"
+    fi
+```
+
+**Note**: The module name in the workflow should be lowercase and match the pattern used by other modules (e.g., `scrna-seq`, `digitalpathology`, `multiplexmicroscopy`).
+
 ## 🔧 Key Requirements for New Modules
 
 ### 1. **Core Inheritance**
@@ -348,6 +392,7 @@ Before submitting a PR, ensure:
 - [ ] **Enums are organized**: Alphabetical order
 - [ ] **Module is added to root Makefile**: MODULES list updated
 - [ ] **Main README is updated**: Project structure documented
+- [ ] **GitHub Actions workflow is updated**: Module added to generate-python-classes.yml
 
 ## 🤝 Getting Help
 

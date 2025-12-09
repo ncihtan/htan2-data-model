@@ -1,0 +1,65 @@
+name: MultiplexMicroscopyLevel3
+id: https://w3id.org/htan/multiplex_microscopy/level_3
+description: HTAN Multiplex Microscopy Level 3 - Segmentation masks
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../Imaging/domains/imaging
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+classes:
+  MultiplexMicroscopyLevel3:
+    is_a: BaseImagingAttributes
+    description: Multiplex Microscopy Level 3 - Segmentation mask. Structured mask data following existing HTAN segmentation templates (RFC Imaging Level 3 & 4 - v1)
+    attributes:
+      # Level 3 specific attributes
+      SEGMENTATION_WORKFLOW_TYPE:
+        range: string
+        required: true
+        title: "Segmentation Workflow Type"
+        description: Type of segmentation workflow used to generate the mask
+
+      SEGMENTATION_WORKFLOW_URL:
+        range: string
+        required: false
+        title: "Segmentation Workflow URL"
+        description: URL or link to the segmentation workflow used
+
+      SEGMENTATION_WORKFLOW_VERSION:
+        range: string
+        required: false
+        title: "Segmentation Workflow Version"
+        description: Version of the segmentation workflow
+
+      SEGMENTATION_METHOD:
+        range: string
+        required: true
+        title: "Segmentation Method"
+        description: Method used for segmentation (e.g., CellPose, StarDist, Ilastik, manual annotation)
+
+      SEGMENTATION_PARAMETERS:
+        range: string
+        required: false
+        title: "Segmentation Parameters"
+        description: Parameters used for segmentation (e.g., model name, threshold values, preprocessing steps)
+
+      SEGMENTATION_ANNOTATION_TYPE:
+        range: string
+        required: false
+        title: "Segmentation Annotation Type"
+        description: Type of objects segmented (e.g., Cell, Nucleus, Tissue, ROI)
+
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the segmentation mask file (should be ome-tiff for Level 3)
+        pattern: "^(ome-tiff|ome\\.tiff)$"
+
