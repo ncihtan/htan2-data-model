@@ -1,12 +1,12 @@
-# HTAN Base Sequencing Module Makefile
+# HTAN Base Imaging Module Makefile
 
 .PHONY: all clean test gen-schema gen-synapse-schema docs validate
 
 # Environment variables
-SCHEMA_NAME = htan_sequencing
-SOURCE_SCHEMA_PATH = domains/sequencing.yaml
+SCHEMA_NAME = htan_imaging
+SOURCE_SCHEMA_PATH = domains/imaging.yaml
 BUILD_DIR = build
-DATAMODEL_DIR = src/htan_sequencing/datamodel
+DATAMODEL_DIR = src/htan_imaging/datamodel
 DOCS_DIR = docs
 
 all: gen-schema test docs
@@ -15,17 +15,17 @@ all: gen-schema test docs
 gen-schema:
 	mkdir -p $(BUILD_DIR)
 	mkdir -p $(DATAMODEL_DIR)
-	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/sequencing.py
-	cp $(BUILD_DIR)/sequencing.py $(DATAMODEL_DIR)/
+	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/imaging.py
+	cp $(BUILD_DIR)/imaging.py $(DATAMODEL_DIR)/
 
 # Generate Synapse-compatible flat JSON schema
 gen-synapse-schema:
 	mkdir -p $(BUILD_DIR)
 	cd ../../ && poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
-		modules/Sequencing/$(SOURCE_SCHEMA_PATH) \
-		--class-name BaseSequencingAttributes \
-		--output modules/Sequencing/$(BUILD_DIR)/sequencing.flat.schema.json
-	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/sequencing.flat.schema.json"
+		modules/Imaging/$(SOURCE_SCHEMA_PATH) \
+		--class-name BaseImagingAttributes \
+		--output modules/Imaging/$(BUILD_DIR)/imaging.flat.schema.json
+	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/imaging.flat.schema.json"
 
 # Generate documentation
 docs:
@@ -38,7 +38,7 @@ validate:
 
 # Run module-specific tests
 test:
-	cd ../../ && PYTHONPATH=. poetry run pytest modules/Sequencing/tests/ -v
+	cd ../../ && PYTHONPATH=. poetry run pytest modules/Imaging/tests/ -v
 
 # Clean build artifacts
 clean:
