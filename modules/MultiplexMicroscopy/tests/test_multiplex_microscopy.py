@@ -129,9 +129,10 @@ class TestMultiplexMicroscopy:
         """Test that minimum value constraints are properly defined."""
         sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
         
-        # Test NOMINAL_MAGNIFICATION minimum
+        # Test NOMINAL_MAGNIFICATION minimum (RFC indicates 0 to inf, integer)
         mag_slot = sv.get_slot("NOMINAL_MAGNIFICATION")
-        assert mag_slot.minimum_value == 1.0
+        assert mag_slot.minimum_value == 0
+        assert mag_slot.range == "integer"
         
         # Test LENS_NUMERICAL_APERTURE minimum
         na_slot = sv.get_slot("LENS_NUMERICAL_APERTURE")

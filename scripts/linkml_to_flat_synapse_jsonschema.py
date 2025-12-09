@@ -4,6 +4,20 @@
 This script converts LinkML YAML files to JSON Schema format that is compatible
 with Synapse's JSON Schema service. It handles flattening, version conversion,
 and Synapse-specific formatting requirements.
+
+Key transformations:
+- Flattens JSON schemas (removes $ref and $defs)
+- Converts schema version to Draft-07 (Synapse requirement)
+- Fixes additionalProperties (converts boolean to {})
+- Cleans union types (removes null from type arrays)
+- Fixes boolean pattern checks (converts pattern: "^true$" to const: true for boolean fields)
+- Removes unsupported fields ($defs, metamodel_version, version)
+
+Note on boolean pattern fixes:
+LinkML rules with pattern: "^true$" or "^false$" for boolean fields are converted
+to const: true or const: false because JSON Schema's pattern keyword only applies
+to strings, not booleans. This ensures conditional requirements work correctly
+for boolean fields in the generated JSON Schema.
 """
 from pathlib import Path
 from typing import Any, Union
@@ -243,6 +257,78 @@ def clean_union_types(schema_data: dict) -> dict:
     return schema_data
 
 
+def fix_boolean_patterns(schema_data: dict) -> dict:
+    """Convert pattern checks for boolean fields to const checks.
+    
+    LinkML rules with pattern: "^true$" or "^false$" for boolean fields
+    need to be converted to const: true or const: false in JSON Schema,
+    since pattern only applies to strings, not booleans.
+    
+    This is necessary because:
+    - JSON Schema's `pattern` keyword only validates strings
+    - Boolean fields use `const` for exact value matching
+    - LinkML generates `pattern: "^true$"` for boolean checks in rules
+    - The conversion ensures conditional requirements work correctly
+    
+    Example transformation:
+    - Before: {"HAS_SLIDE_LABEL": {"pattern": "^true$"}}
+    - After:  {"HAS_SLIDE_LABEL": {"const": true}}
+    
+    Only affects properties with type: "boolean" in the schema.
+    String fields with patterns are left unchanged.
+    """
+    # Get property types from the schema
+    properties = schema_data.get("properties", {})
+    
+    def fix_boolean_patterns_in_obj(obj, visited=None):
+        if visited is None:
+            visited = set()
+        
+        obj_id = id(obj)
+        if obj_id in visited:
+            return
+        visited.add(obj_id)
+        
+        try:
+            if isinstance(obj, dict):
+                # Check if this is an "if" clause with properties
+                if "if" in obj and isinstance(obj["if"], dict):
+                    if_clause = obj["if"]
+                    if "properties" in if_clause:
+                        for prop_name, prop_schema in if_clause["properties"].items():
+                            # Check if this property is a boolean type
+                            prop_def = properties.get(prop_name, {})
+                            if prop_def.get("type") == "boolean":
+                                # Convert pattern to const for boolean fields
+                                if "pattern" in prop_schema:
+                                    pattern = prop_schema["pattern"]
+                                    if pattern == "^true$":
+                                        prop_schema["const"] = True
+                                        del prop_schema["pattern"]
+                                    elif pattern == "^false$":
+                                        prop_schema["const"] = False
+                                        del prop_schema["pattern"]
+                
+                # Recursively process allOf arrays (where rules are typically stored)
+                if "allOf" in obj and isinstance(obj["allOf"], list):
+                    for item in obj["allOf"]:
+                        fix_boolean_patterns_in_obj(item, visited)
+                
+                # Recursively process nested objects
+                for value in obj.values():
+                    fix_boolean_patterns_in_obj(value, visited)
+            elif isinstance(obj, list):
+                for item in obj:
+                    fix_boolean_patterns_in_obj(item, visited)
+        except (RecursionError, TypeError, AttributeError) as e:
+            print(f"Warning: Skipping object due to error: {e}")
+            pass
+    
+    fix_boolean_patterns_in_obj(schema_data)
+    print("Fixed boolean pattern checks to use const")
+    return schema_data
+
+
 def get_args():
     """Set up command-line interface and get arguments."""
     parser = argparse.ArgumentParser(
@@ -309,6 +395,7 @@ def main():
     schema_data = fix_schema_version(schema_data)
     schema_data = fix_additional_properties(schema_data)
     schema_data = clean_union_types(schema_data)
+    schema_data = fix_boolean_patterns(schema_data)
     schema_data = remove_unsupported_fields(schema_data)
 
     # 4. Write final result to output file
