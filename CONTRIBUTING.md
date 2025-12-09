@@ -284,49 +284,31 @@ format:
 - **Features**: Key features
 ```
 
-### Step 9: Update GitHub Actions Workflow
+### Step 9: Update All Module References
 
-**File**: `.github/workflows/generate-python-classes.yml`
+**⚠️ Important**: When adding a new module, you must update **all** of the following locations:
 
-**⚠️ Important**: Every time you add a new module, you must update the GitHub Actions workflow to include it for automated Python class generation.
-
-**1. Add your module to the workflow_dispatch description:**
-```yaml
-description: 'Modules to regenerate (comma-separated: biospecimen,clinical,wes,sequencing,imaging,scrna-seq,digitalpathology,multiplexmicroscopy,yourmodule,all). Leave empty or "all" to generate all modules.'
+#### 1. Root `Makefile` (Line 26)
+Add your module to the `MODULES` variable:
+```makefile
+MODULES = Clinical WES CoreFile Biospecimen Sequencing Imaging scRNA-seq DigitalPathology MultiplexMicroscopy YourModule
 ```
 
-**2. Add your module to the options list:**
-```yaml
-options:
-  - all
-  - biospecimen
-  - clinical
-  - wes
-  - sequencing
-  - imaging
-  - scrna-seq
-  - digitalpathology
-  - multiplexmicroscopy
-  - yourmodule  # ← Add your module here
-```
+#### 2. `.github/workflows/generate-python-classes.yml`
+- **Description** (line ~24): Add `yourmodule` to the comma-separated list
 
-**3. Add a generation step for your module:**
-```yaml
-- name: Generate Python Classes for YourModule
-  if: steps.set-modules.outputs.modules != 'all'
-  run: |
-    MODULES="${{ steps.set-modules.outputs.modules }}"
-    if echo "$MODULES" | grep -q "yourmodule"; then
-      echo "🔄 Generating Python classes for YourModule module..."
-      cd modules/YourModule
-      make gen-schema
-      echo "✅ YourModule Python classes generated"
-    else
-      echo "⏭️ Skipping YourModule (not in selected modules)"
-    fi
-```
+#### 4. `.github/workflows/json-schema-synapse.yml` 
+Add schema generation step 
 
-**Note**: The module name in the workflow should be lowercase and match the pattern used by other modules (e.g., `scrna-seq`, `digitalpathology`, `multiplexmicroscopy`).
+#### 5. Other locations (if applicable)
+- `CONTRIBUTING.md`: Update examples in Step 9
+- `README.md`: Add to project structure section
+- `mkdocs.yml`: Add to navigation if documentation is auto-generated
+
+**Module naming conventions:**
+- **Workflow names**: lowercase, hyphenated (e.g., `scrna-seq`, `digitalpathology`)
+- **Directory names**: PascalCase (e.g., `DigitalPathology`, `MultiplexMicroscopy`)
+
 
 ## 🔧 Key Requirements for New Modules
 
