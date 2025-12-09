@@ -81,6 +81,11 @@ enums:
       "Pathological":
         description: Pathological experimental strategy and data subtype
 
+  License:
+    permissible_values:
+      "CC BY 4.0":
+        description: Creative Commons Attribution 4.0 International License
+
 
 classes:
   BaseImagingAttributes:
@@ -115,10 +120,10 @@ classes:
 
       # License
       LICENSE:
-        range: string
+        range: License
         required: true
         title: "License"
-        description: Official or legal permission to do or own a specified thing.
+        description: Official or legal permission to do or own a specified thing. Per RFC, the only valid value is "CC BY 4.0".
 
       # Image modality
       IMAGE_MODALITY:
@@ -236,4 +241,3 @@ classes:
           slot_conditions:
             DE_IDENTIFICATION_METHOD_DESCRIPTION:
               required: true
-
