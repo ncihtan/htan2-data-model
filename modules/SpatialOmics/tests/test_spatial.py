@@ -38,8 +38,15 @@ class TestSpatial:
         
         for attr in required_attrs:
             assert attr in all_slots, f"Required attribute {attr} not found"
-            slot = sv.get_slot(attr)
-            assert slot.required is True, f"Attribute {attr} should be required"
+            # Check class-specific slot definition for overridden attributes
+            class_slot = level1_class.attributes.get(attr)
+            if class_slot:
+                # Attribute is overridden in this class
+                assert class_slot.required is True, f"Attribute {attr} should be required"
+            else:
+                # Attribute is inherited, check base slot
+                slot = sv.get_slot(attr)
+                assert slot.required is True, f"Attribute {attr} should be required"
 
     def test_level3_class(self):
         """Test that Level 3 class is properly defined."""
@@ -74,8 +81,15 @@ class TestSpatial:
         
         for attr in required_attrs:
             assert attr in all_slots, f"Required attribute {attr} not found"
-            slot = sv.get_slot(attr)
-            assert slot.required is True, f"Attribute {attr} should be required"
+            # Check class-specific slot definition for overridden attributes
+            class_slot = level3_class.attributes.get(attr)
+            if class_slot:
+                # Attribute is overridden in this class
+                assert class_slot.required is True, f"Attribute {attr} should be required"
+            else:
+                # Attribute is inherited, check base slot
+                slot = sv.get_slot(attr)
+                assert slot.required is True, f"Attribute {attr} should be required"
 
     def test_level4_class(self):
         """Test that Level 4 class is properly defined."""
@@ -105,8 +119,15 @@ class TestSpatial:
         
         for attr in required_attrs:
             assert attr in all_slots, f"Required attribute {attr} not found"
-            slot = sv.get_slot(attr)
-            assert slot.required is True, f"Attribute {attr} should be required"
+            # Check class-specific slot definition for overridden attributes
+            class_slot = level4_class.attributes.get(attr)
+            if class_slot:
+                # Attribute is overridden in this class
+                assert class_slot.required is True, f"Attribute {attr} should be required"
+            else:
+                # Attribute is inherited, check base slot
+                slot = sv.get_slot(attr)
+                assert slot.required is True, f"Attribute {attr} should be required"
 
     def test_spatial_panel_class(self):
         """Test that Spatial Panel class is properly defined."""
@@ -128,8 +149,10 @@ class TestSpatial:
         
         for attr in required_attrs:
             assert attr in all_slots, f"Required attribute {attr} not found"
-            slot = sv.get_slot(attr)
-            assert slot.required is True, f"Attribute {attr} should be required"
+            # Check class-specific slot definition (SpatialPanel doesn't inherit, so all are class-specific)
+            class_slot = panel_class.attributes.get(attr)
+            assert class_slot is not None, f"Attribute {attr} should be defined in SpatialPanel"
+            assert class_slot.required is True, f"Attribute {attr} should be required"
 
     def test_enum_values(self):
         """Test that enum values are properly defined."""
