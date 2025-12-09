@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T19:44:21
+# Generation date: 2025-12-05T20:02:28
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -809,21 +809,21 @@ class StainingMethod(EnumDefinitionImpl):
     IMC = PermissibleValue(
         text="IMC",
         description="Imaging Mass Cytometry staining method")
-    MIBI = PermissibleValue(
-        text="MIBI",
-        description="Multiplexed Ion Beam Imaging staining method")
     MERFISH = PermissibleValue(
         text="MERFISH",
         description="Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method")
+    MIBI = PermissibleValue(
+        text="MIBI",
+        description="Multiplexed Ion Beam Imaging staining method")
     MxIF = PermissibleValue(
         text="MxIF",
         description="Multiplexed Immunofluorescence staining method")
-    mIHC = PermissibleValue(
-        text="mIHC",
-        description="Multiplexed Immunohistochemistry staining method")
     SABER = PermissibleValue(
         text="SABER",
         description="Signal Amplification By Exchange Reaction staining method")
+    mIHC = PermissibleValue(
+        text="mIHC",
+        description="Multiplexed Immunohistochemistry staining method")
 
     _defn = EnumDefinition(
         name="StainingMethod",
