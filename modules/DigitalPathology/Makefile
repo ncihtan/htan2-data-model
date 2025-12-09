@@ -1,12 +1,12 @@
-# Biospecimen Module Makefile
+# Digital Pathology Module Makefile
 
 .PHONY: all clean test gen-schema gen-synapse-schema docs
 
 # Environment variables
-SCHEMA_NAME = htan_biospecimen
-SOURCE_SCHEMA_PATH = domains/biospecimen.yaml
+SCHEMA_NAME = htan_digitalpathology
+SOURCE_SCHEMA_PATH = domains/digital_pathology.yaml
 BUILD_DIR = build
-DATAMODEL_DIR = src/htan_biospecimen/datamodel
+DATAMODEL_DIR = src/htan_digitalpathology/datamodel
 DOCS_DIR = docs
 
 all: gen-schema test docs
@@ -15,17 +15,17 @@ all: gen-schema test docs
 gen-schema:
 	mkdir -p $(BUILD_DIR)
 	mkdir -p $(DATAMODEL_DIR)
-	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/biospecimen.py
-	cp $(BUILD_DIR)/biospecimen.py $(DATAMODEL_DIR)/
+	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/digital_pathology.py
+	cp $(BUILD_DIR)/digital_pathology.py $(DATAMODEL_DIR)/
 
 # Generate Synapse-compatible flat JSON schema
 gen-synapse-schema:
 	mkdir -p $(BUILD_DIR)
 	cd ../../ && poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
-		modules/Biospecimen/$(SOURCE_SCHEMA_PATH) \
-		--class-name BiospecimenData \
-		--output modules/Biospecimen/$(BUILD_DIR)/biospecimen.flat.schema.json
-	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/biospecimen.flat.schema.json"
+		modules/DigitalPathology/$(SOURCE_SCHEMA_PATH) \
+		--class-name DigitalPathologyData \
+		--output modules/DigitalPathology/$(BUILD_DIR)/digital_pathology.flat.schema.json
+	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/digital_pathology.flat.schema.json"
 
 # Generate documentation
 docs:
@@ -34,12 +34,9 @@ docs:
 
 # Run module-specific tests
 test:
-	cd ../../ && PYTHONPATH=. poetry run pytest modules/Biospecimen/tests/ -v
+	cd ../../ && PYTHONPATH=. poetry run pytest modules/DigitalPathology/tests/ -v
 
 # Clean build artifacts
 clean:
 	rm -rf $(BUILD_DIR)/*
 	find . -type d -name "__pycache__" -exec rm -rf {} +
-
-
-

@@ -284,6 +284,32 @@ format:
 - **Features**: Key features
 ```
 
+### Step 9: Update All Module References
+
+**⚠️ Important**: When adding a new module, you must update **all** of the following locations:
+
+#### 1. Root `Makefile` (Line 26)
+Add your module to the `MODULES` variable:
+```makefile
+MODULES = Clinical WES CoreFile Biospecimen Sequencing Imaging scRNA-seq DigitalPathology MultiplexMicroscopy YourModule
+```
+
+#### 2. `.github/workflows/generate-python-classes.yml`
+- **Description** (line ~24): Add `yourmodule` to the comma-separated list
+
+#### 4. `.github/workflows/json-schema-synapse.yml` 
+Add schema generation step 
+
+#### 5. Other locations (if applicable)
+- `CONTRIBUTING.md`: Update examples in Step 9
+- `README.md`: Add to project structure section
+- `mkdocs.yml`: Add to navigation if documentation is auto-generated
+
+**Module naming conventions:**
+- **Workflow names**: lowercase, hyphenated (e.g., `scrna-seq`, `digitalpathology`)
+- **Directory names**: PascalCase (e.g., `DigitalPathology`, `MultiplexMicroscopy`)
+
+
 ## 🔧 Key Requirements for New Modules
 
 ### 1. **Core Inheritance**
@@ -348,6 +374,7 @@ Before submitting a PR, ensure:
 - [ ] **Enums are organized**: Alphabetical order
 - [ ] **Module is added to root Makefile**: MODULES list updated
 - [ ] **Main README is updated**: Project structure documented
+- [ ] **GitHub Actions workflow is updated**: Module added to generate-python-classes.yml
 
 ## 🤝 Getting Help
 

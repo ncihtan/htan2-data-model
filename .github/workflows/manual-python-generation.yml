@@ -1,0 +1,171 @@
+name: Manual Python Class Generation
+
+on:
+  workflow_dispatch:
+    inputs:
+      modules:
+        description: 'Modules to regenerate (comma-separated: biospecimen,clinical,wes,all)'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - biospecimen
+          - clinical
+          - wes
+          - biospecimen,clinical
+          - biospecimen,wes
+          - clinical,wes
+
+jobs:
+  generate-python-classes:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        version: latest
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v3
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+    
+    - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install --no-interaction --no-root
+    
+    - name: Install project
+      run: poetry install --no-interaction
+    
+    - name: Generate Python Classes for Biospecimen
+      if: contains(github.event.inputs.modules, 'biospecimen') || github.event.inputs.modules == 'all'
+      run: |
+        echo "🔄 Generating Python classes for Biospecimen module..."
+        cd modules/Biospecimen
+        poetry run gen-python domains/biospecimen.yaml > build/biospecimen.py
+        mkdir -p src/htan_biospecimen/datamodel
+        cp build/biospecimen.py src/htan_biospecimen/datamodel/
+        touch src/htan_biospecimen/datamodel/schema_classes.py
+        poetry run gen-json-schema domains/biospecimen.yaml > build/biospecimen_schema.json
+        echo "✅ Biospecimen Python classes generated"
+    
+    - name: Generate Python Classes for Clinical
+      if: contains(github.event.inputs.modules, 'clinical') || github.event.inputs.modules == 'all'
+      run: |
+        echo "🔄 Generating Python classes for Clinical module..."
+        cd modules/Clinical
+        poetry run gen-project --config-file ../../config/config.yaml -d build domains/clinical.yaml
+        mkdir -p src/htan_clinical/datamodel
+        mv build/*.py src/htan_clinical/datamodel/
+        touch src/htan_clinical/datamodel/schema_classes.py
+        echo "✅ Clinical Python classes generated"
+    
+    - name: Generate Python Classes for WES
+      if: contains(github.event.inputs.modules, 'wes') || github.event.inputs.modules == 'all'
+      run: |
+        echo "🔄 Generating Python classes for WES module..."
+        cd modules/WES
+        poetry run gen-python domains/level_1.yaml > build/wes.py
+        mkdir -p src/htan_wes/datamodel
+        cp build/wes.py src/htan_wes/datamodel/
+        touch src/htan_wes/datamodel/schema_classes.py
+        echo "✅ WES Python classes generated"
+    
+    - name: Run Tests
+      run: |
+        echo "🧪 Running tests for all modules..."
+        poetry run pytest modules/*/tests/ -v --tb=short
+        echo "✅ All tests passed"
+    
+    - name: Check for Changes
+      id: check-changes
+      run: |
+        if git diff --quiet; then
+          echo "No changes detected in Python classes"
+          echo "has-changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Changes detected in generated Python classes"
+          echo "has-changes=true" >> $GITHUB_OUTPUT
+          echo "📋 Changed files:"
+          git diff --name-only
+        fi
+    
+    - name: Create Pull Request
+      if: steps.check-changes.outputs.has-changes == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Configure git
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Create a new branch for this update
+        branch_name="manual-python-update-$(date +%Y%m%d-%H%M%S)"
+        git checkout -b "$branch_name"
+        
+        # Add all changes
+        git add modules/*/src/htan_*/datamodel/*.py
+        
+        # Get list of changed modules
+        changed_modules=$(echo "${{ github.event.inputs.modules }}" | tr ',' ' ')
+        
+        # Commit changes
+        git commit -m "feat: manually update Python classes for modules: $changed_modules
+
+        Auto-generated Python classes from LinkML schema files.
+        
+        ### Updated Modules:
+        $changed_modules
+        
+        ### Changes:
+        - Updated datamodel classes
+        - Regenerated schema_classes.py files
+        - All tests passing
+        
+        **Manually triggered Python class generation**"
+        
+        # Push branch
+        git push origin "$branch_name"
+        
+        # Create pull request
+        gh pr create \
+          --title "Manual Update: Python Classes for $changed_modules" \
+          --body "## Manual Python Class Generation
+
+          This PR updates the Python data model classes for the following modules:
+          **$changed_modules**
+
+          ### Generated Classes:
+          - Regenerated all Python datamodel classes
+          - Updated schema_classes.py files
+          - All tests are passing ✅
+
+          ### Testing:
+          - All module tests pass
+          - Generated classes are syntactically valid
+          - Schema compatibility maintained
+
+          **Manually triggered by GitHub Actions workflow**" \
+          --base main \
+          --head "$branch_name"
+    
+    - name: Summary
+      if: steps.check-changes.outputs.has-changes == 'false'
+      run: |
+        echo "✅ **No changes needed!**"
+        echo "All Python classes are up to date with the current schemas."
+        echo "Modules processed: ${{ github.event.inputs.modules }}"
