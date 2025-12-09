@@ -1,5 +1,5 @@
 # Auto generated from digital_pathology.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-05T20:02:24
+# Generation date: 2025-12-09T13:59:06
 # Schema: DigitalPathology
 #
 # id: https://w3id.org/htan/digital_pathology
@@ -145,7 +145,7 @@ class BaseImagingAttributes(CoreFileAttributes):
     FILENAME: str = None
     FILE_FORMAT: str = None
     HTAN_PARENT_ID: str = None
-    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: str = None
+    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
     LICENSE: str = None
     IMAGE_MODALITY: Union[str, "ImageModality"] = None
@@ -173,8 +173,8 @@ class BaseImagingAttributes(CoreFileAttributes):
 
         if self._is_empty(self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES):
             self.MissingRequiredField("EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES")
-        if not isinstance(self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, str):
-            self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = str(self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES)
+        if not isinstance(self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, ExperimentalStrategyAndDataSubtypes):
+            self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = ExperimentalStrategyAndDataSubtypes(self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES)
 
         if self._is_empty(self.DE_IDENTIFICATION_METHOD_TYPE):
             self.MissingRequiredField("DE_IDENTIFICATION_METHOD_TYPE")
@@ -273,7 +273,7 @@ class DigitalPathologyData(BaseImagingAttributes):
     HTAN_DATA_FILE_ID: Union[str, DigitalPathologyDataHTANDATAFILEID] = None
     FILENAME: str = None
     HTAN_PARENT_ID: str = None
-    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: str = None
+    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
     LICENSE: str = None
     IMAGE_MODALITY: Union[str, "ImageModality"] = None
@@ -467,6 +467,16 @@ class ImmersionMedium(EnumDefinitionImpl):
         name="ImmersionMedium",
     )
 
+class ExperimentalStrategyAndDataSubtypes(EnumDefinitionImpl):
+
+    Pathological = PermissibleValue(
+        text="Pathological",
+        description="Pathological experimental strategy and data subtype")
+
+    _defn = EnumDefinition(
+        name="ExperimentalStrategyAndDataSubtypes",
+    )
+
 # Slots
 class slots:
     pass
@@ -491,7 +501,7 @@ slots.digitalPathologyData__DE_IDENTIFIED = Slot(uri=HTAN.DE_IDENTIFIED, name="d
                    model_uri=HTAN.digitalPathologyData__DE_IDENTIFIED, domain=None, range=Union[bool, Bool])
 
 slots.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = Slot(uri=HTAN.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, name="baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES", curie=HTAN.curie('EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES'),
-                   model_uri=HTAN.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, domain=None, range=str)
+                   model_uri=HTAN.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, domain=None, range=Union[str, "ExperimentalStrategyAndDataSubtypes"])
 
 slots.baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_TYPE, name="baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_TYPE'),
                    model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE, domain=None, range=Union[str, "DeIdentificationMethodType"])
@@ -518,10 +528,12 @@ slots.baseImagingAttributes__IMAGING_SOFTWARE = Slot(uri=HTAN.IMAGING_SOFTWARE, 
                    model_uri=HTAN.baseImagingAttributes__IMAGING_SOFTWARE, domain=None, range=Optional[str])
 
 slots.baseImagingAttributes__CITATION_OR_DOI = Slot(uri=HTAN.CITATION_OR_DOI, name="baseImagingAttributes__CITATION_OR_DOI", curie=HTAN.curie('CITATION_OR_DOI'),
-                   model_uri=HTAN.baseImagingAttributes__CITATION_OR_DOI, domain=None, range=str)
+                   model_uri=HTAN.baseImagingAttributes__CITATION_OR_DOI, domain=None, range=str,
+                   pattern=re.compile(r'^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$'))
 
 slots.baseImagingAttributes__IMAGING_PROTOCOL = Slot(uri=HTAN.IMAGING_PROTOCOL, name="baseImagingAttributes__IMAGING_PROTOCOL", curie=HTAN.curie('IMAGING_PROTOCOL'),
-                   model_uri=HTAN.baseImagingAttributes__IMAGING_PROTOCOL, domain=None, range=Optional[str])
+                   model_uri=HTAN.baseImagingAttributes__IMAGING_PROTOCOL, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$'))
 
 slots.baseImagingAttributes__STAINING_METHOD = Slot(uri=HTAN.STAINING_METHOD, name="baseImagingAttributes__STAINING_METHOD", curie=HTAN.curie('STAINING_METHOD'),
                    model_uri=HTAN.baseImagingAttributes__STAINING_METHOD, domain=None, range=Union[str, "StainingMethod"])
