@@ -214,17 +214,17 @@ jobs:
         fi
     
     - name: Generate Python Classes for SpatialOmics
-        if: steps.set-modules.outputs.modules != 'all'
-        run: |
-          MODULES="${{ steps.set-modules.outputs.modules }}"
-          if echo "$MODULES" | grep -q "spatialomics"; then
-            echo "🔄 Generating Python classes for SpatialOmics module..."
-            cd modules/SpatialOmics
-            make gen-schema
-            echo "✅ SpatialOmics Python classes generated"
-          else
-            echo "⏭️ Skipping SpatialOmics (not in selected modules)"
-          fi
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "spatialomics"; then
+          echo "🔄 Generating Python classes for SpatialOmics module..."
+          cd modules/SpatialOmics
+          make gen-schema
+          echo "✅ SpatialOmics Python classes generated"
+        else
+          echo "⏭️ Skipping SpatialOmics (not in selected modules)"
+        fi
     
     - name: Run Tests
       id: run-tests
