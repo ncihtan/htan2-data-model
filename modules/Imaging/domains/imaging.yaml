@@ -224,6 +224,25 @@ classes:
         required: true
         title: "Species"
         description: NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)".
+
+      # Slide label and de-identification
+      HAS_SLIDE_LABEL:
+        range: boolean
+        required: true
+        title: "Has Slide Label"
+        description: Does the image contain a slide label
+
+      SLIDE_LABEL_REDACTED:
+        range: boolean
+        required: false
+        title: "Slide Label Redacted"
+        description: Have identifiers including dates been masked in the label image
+
+      DE_IDENTIFIED:
+        range: boolean
+        required: true
+        title: "De-identified"
+        description: Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI
       
       # Note: Organ/Tissue, Tissue Fixative, and Embedding Medium are biospecimen attributes
       # and should be retrieved from the Biospecimen record via HTAN_PARENT_ID
@@ -232,6 +251,9 @@ classes:
       DE_IDENTIFICATION_METHOD_DESCRIPTION:
         required: false
         description: Required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable'
+      SLIDE_LABEL_REDACTED:
+        required: false
+        description: Required when HAS_SLIDE_LABEL is true
     
     rules:
       - description: "DE_IDENTIFICATION_METHOD_DESCRIPTION is required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable'"
@@ -245,4 +267,13 @@ classes:
         postconditions:
           slot_conditions:
             DE_IDENTIFICATION_METHOD_DESCRIPTION:
+              required: true
+      - description: "SLIDE_LABEL_REDACTED is required when HAS_SLIDE_LABEL is true"
+        preconditions:
+          slot_conditions:
+            HAS_SLIDE_LABEL:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            SLIDE_LABEL_REDACTED:
               required: true
