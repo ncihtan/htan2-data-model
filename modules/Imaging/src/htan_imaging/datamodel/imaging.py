@@ -1,5 +1,5 @@
 # Auto generated from imaging.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-09T09:06:42
+# Generation date: 2025-12-09T18:01:52
 # Schema: Imaging
 #
 # id: https://w3id.org/htan/imaging
@@ -144,7 +144,7 @@ class BaseImagingAttributes(CoreFileAttributes):
     HTAN_PARENT_ID: str = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
-    LICENSE: str = None
+    LICENSE: Union[str, "License"] = None
     IMAGE_MODALITY: Union[str, "ImageModality"] = None
     IMAGING_EQUIPMENT_MANUFACTURER: str = None
     CITATION_OR_DOI: str = None
@@ -153,7 +153,7 @@ class BaseImagingAttributes(CoreFileAttributes):
     NOMINAL_MAGNIFICATION: int = None
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
-    SPECIES: str = None
+    SPECIES: Union[str, "Species"] = None
     DE_IDENTIFICATION_METHOD_DESCRIPTION: Optional[str] = None
     DE_IDENTIFICATION_SOFTWARE: Optional[str] = None
     IMAGING_EQUIPMENT_MODEL: Optional[str] = None
@@ -180,8 +180,8 @@ class BaseImagingAttributes(CoreFileAttributes):
 
         if self._is_empty(self.LICENSE):
             self.MissingRequiredField("LICENSE")
-        if not isinstance(self.LICENSE, str):
-            self.LICENSE = str(self.LICENSE)
+        if not isinstance(self.LICENSE, License):
+            self.LICENSE = License(self.LICENSE)
 
         if self._is_empty(self.IMAGE_MODALITY):
             self.MissingRequiredField("IMAGE_MODALITY")
@@ -225,8 +225,8 @@ class BaseImagingAttributes(CoreFileAttributes):
 
         if self._is_empty(self.SPECIES):
             self.MissingRequiredField("SPECIES")
-        if not isinstance(self.SPECIES, str):
-            self.SPECIES = str(self.SPECIES)
+        if not isinstance(self.SPECIES, Species):
+            self.SPECIES = Species(self.SPECIES)
 
         if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
             self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
@@ -377,6 +377,32 @@ class ExperimentalStrategyAndDataSubtypes(EnumDefinitionImpl):
         name="ExperimentalStrategyAndDataSubtypes",
     )
 
+class License(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="License",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "CC BY 4.0",
+            PermissibleValue(
+                text="CC BY 4.0",
+                description="Creative Commons Attribution 4.0 International License"))
+
+class Species(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="Species",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "9606 (Homo sapiens)",
+            PermissibleValue(
+                text="9606 (Homo sapiens)",
+                description="NCBI Taxonomy ID for Homo sapiens"))
+
 # Slots
 class slots:
     pass
@@ -394,7 +420,7 @@ slots.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE = Slot(uri=HTAN.DE_IDENT
                    model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE, domain=None, range=Optional[str])
 
 slots.baseImagingAttributes__LICENSE = Slot(uri=HTAN.LICENSE, name="baseImagingAttributes__LICENSE", curie=HTAN.curie('LICENSE'),
-                   model_uri=HTAN.baseImagingAttributes__LICENSE, domain=None, range=str)
+                   model_uri=HTAN.baseImagingAttributes__LICENSE, domain=None, range=Union[str, "License"])
 
 slots.baseImagingAttributes__IMAGE_MODALITY = Slot(uri=HTAN.IMAGE_MODALITY, name="baseImagingAttributes__IMAGE_MODALITY", curie=HTAN.curie('IMAGE_MODALITY'),
                    model_uri=HTAN.baseImagingAttributes__IMAGE_MODALITY, domain=None, range=Union[str, "ImageModality"])
@@ -438,7 +464,7 @@ slots.baseImagingAttributes__QC_COMMENT = Slot(uri=HTAN.QC_COMMENT, name="baseIm
                    model_uri=HTAN.baseImagingAttributes__QC_COMMENT, domain=None, range=str)
 
 slots.baseImagingAttributes__SPECIES = Slot(uri=HTAN.SPECIES, name="baseImagingAttributes__SPECIES", curie=HTAN.curie('SPECIES'),
-                   model_uri=HTAN.baseImagingAttributes__SPECIES, domain=None, range=str)
+                   model_uri=HTAN.baseImagingAttributes__SPECIES, domain=None, range=Union[str, "Species"])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
                    model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,

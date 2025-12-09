@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-09T13:59:09
+# Generation date: 2025-12-09T18:01:57
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -184,16 +184,16 @@ class BaseImagingAttributes(CoreFileAttributes):
     HTAN_PARENT_ID: str = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
-    LICENSE: str = None
+    LICENSE: Union[str, "License"] = None
     IMAGE_MODALITY: Union[str, "ImageModality"] = None
     IMAGING_EQUIPMENT_MANUFACTURER: str = None
     CITATION_OR_DOI: str = None
     STAINING_METHOD: Union[str, "StainingMethod"] = None
     OBJECTIVE: str = None
-    NOMINAL_MAGNIFICATION: float = None
+    NOMINAL_MAGNIFICATION: int = None
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
-    SPECIES: str = None
+    SPECIES: Union[str, "Species"] = None
     DE_IDENTIFICATION_METHOD_DESCRIPTION: Optional[str] = None
     DE_IDENTIFICATION_SOFTWARE: Optional[str] = None
     IMAGING_EQUIPMENT_MODEL: Optional[str] = None
@@ -220,8 +220,8 @@ class BaseImagingAttributes(CoreFileAttributes):
 
         if self._is_empty(self.LICENSE):
             self.MissingRequiredField("LICENSE")
-        if not isinstance(self.LICENSE, str):
-            self.LICENSE = str(self.LICENSE)
+        if not isinstance(self.LICENSE, License):
+            self.LICENSE = License(self.LICENSE)
 
         if self._is_empty(self.IMAGE_MODALITY):
             self.MissingRequiredField("IMAGE_MODALITY")
@@ -250,8 +250,8 @@ class BaseImagingAttributes(CoreFileAttributes):
 
         if self._is_empty(self.NOMINAL_MAGNIFICATION):
             self.MissingRequiredField("NOMINAL_MAGNIFICATION")
-        if not isinstance(self.NOMINAL_MAGNIFICATION, float):
-            self.NOMINAL_MAGNIFICATION = float(self.NOMINAL_MAGNIFICATION)
+        if not isinstance(self.NOMINAL_MAGNIFICATION, int):
+            self.NOMINAL_MAGNIFICATION = int(self.NOMINAL_MAGNIFICATION)
 
         if self._is_empty(self.PASSED_QC):
             self.MissingRequiredField("PASSED_QC")
@@ -265,8 +265,8 @@ class BaseImagingAttributes(CoreFileAttributes):
 
         if self._is_empty(self.SPECIES):
             self.MissingRequiredField("SPECIES")
-        if not isinstance(self.SPECIES, str):
-            self.SPECIES = str(self.SPECIES)
+        if not isinstance(self.SPECIES, Species):
+            self.SPECIES = Species(self.SPECIES)
 
         if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
             self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
@@ -313,16 +313,16 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
     HTAN_PARENT_ID: str = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
-    LICENSE: str = None
+    LICENSE: Union[str, "License"] = None
     IMAGE_MODALITY: Union[str, "ImageModality"] = None
     IMAGING_EQUIPMENT_MANUFACTURER: str = None
     CITATION_OR_DOI: str = None
     STAINING_METHOD: Union[str, "StainingMethod"] = None
     OBJECTIVE: str = None
-    NOMINAL_MAGNIFICATION: float = None
+    NOMINAL_MAGNIFICATION: int = None
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
-    SPECIES: str = None
+    SPECIES: Union[str, "Species"] = None
     FILE_FORMAT: str = None
     IMAGING_ASSAY_TYPE: Union[str, "ImagingAssayType"] = None
     PHYSICAL_SIZE_X: float = None
@@ -428,16 +428,16 @@ class MultiplexMicroscopyLevel3(BaseImagingAttributes):
     HTAN_PARENT_ID: str = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
-    LICENSE: str = None
+    LICENSE: Union[str, "License"] = None
     IMAGE_MODALITY: Union[str, "ImageModality"] = None
     IMAGING_EQUIPMENT_MANUFACTURER: str = None
     CITATION_OR_DOI: str = None
     STAINING_METHOD: Union[str, "StainingMethod"] = None
     OBJECTIVE: str = None
-    NOMINAL_MAGNIFICATION: float = None
+    NOMINAL_MAGNIFICATION: int = None
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
-    SPECIES: str = None
+    SPECIES: Union[str, "Species"] = None
     SEGMENTATION_WORKFLOW_TYPE: str = None
     SEGMENTATION_METHOD: str = None
     FILE_FORMAT: str = None
@@ -500,16 +500,16 @@ class MultiplexMicroscopyLevel4(BaseImagingAttributes):
     HTAN_PARENT_ID: str = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
-    LICENSE: str = None
+    LICENSE: Union[str, "License"] = None
     IMAGE_MODALITY: Union[str, "ImageModality"] = None
     IMAGING_EQUIPMENT_MANUFACTURER: str = None
     CITATION_OR_DOI: str = None
     STAINING_METHOD: Union[str, "StainingMethod"] = None
     OBJECTIVE: str = None
-    NOMINAL_MAGNIFICATION: float = None
+    NOMINAL_MAGNIFICATION: int = None
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
-    SPECIES: str = None
+    SPECIES: Union[str, "Species"] = None
     FEATURE_EXTRACTION_WORKFLOW_TYPE: str = None
     MATRIX_TYPE: Union[str, "MatrixTypeEnum"] = None
     FEATURE_EXTRACTION_METHOD: str = None
@@ -879,6 +879,32 @@ class ExperimentalStrategyAndDataSubtypes(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="ExperimentalStrategyAndDataSubtypes",
     )
+
+class License(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="License",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "CC BY 4.0",
+            PermissibleValue(
+                text="CC BY 4.0",
+                description="Creative Commons Attribution 4.0 International License"))
+
+class Species(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="Species",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "9606 (Homo sapiens)",
+            PermissibleValue(
+                text="9606 (Homo sapiens)",
+                description="NCBI Taxonomy ID for Homo sapiens"))
 
 class MetalIsotopeElement(EnumDefinitionImpl):
 
@@ -1372,7 +1398,7 @@ slots.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE = Slot(uri=HTAN.DE_IDENT
                    model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE, domain=None, range=Optional[str])
 
 slots.baseImagingAttributes__LICENSE = Slot(uri=HTAN.LICENSE, name="baseImagingAttributes__LICENSE", curie=HTAN.curie('LICENSE'),
-                   model_uri=HTAN.baseImagingAttributes__LICENSE, domain=None, range=str)
+                   model_uri=HTAN.baseImagingAttributes__LICENSE, domain=None, range=Union[str, "License"])
 
 slots.baseImagingAttributes__IMAGE_MODALITY = Slot(uri=HTAN.IMAGE_MODALITY, name="baseImagingAttributes__IMAGE_MODALITY", curie=HTAN.curie('IMAGE_MODALITY'),
                    model_uri=HTAN.baseImagingAttributes__IMAGE_MODALITY, domain=None, range=Union[str, "ImageModality"])
@@ -1401,7 +1427,7 @@ slots.baseImagingAttributes__OBJECTIVE = Slot(uri=HTAN.OBJECTIVE, name="baseImag
                    model_uri=HTAN.baseImagingAttributes__OBJECTIVE, domain=None, range=str)
 
 slots.baseImagingAttributes__NOMINAL_MAGNIFICATION = Slot(uri=HTAN.NOMINAL_MAGNIFICATION, name="baseImagingAttributes__NOMINAL_MAGNIFICATION", curie=HTAN.curie('NOMINAL_MAGNIFICATION'),
-                   model_uri=HTAN.baseImagingAttributes__NOMINAL_MAGNIFICATION, domain=None, range=float)
+                   model_uri=HTAN.baseImagingAttributes__NOMINAL_MAGNIFICATION, domain=None, range=int)
 
 slots.baseImagingAttributes__IMMERSION = Slot(uri=HTAN.IMMERSION, name="baseImagingAttributes__IMMERSION", curie=HTAN.curie('IMMERSION'),
                    model_uri=HTAN.baseImagingAttributes__IMMERSION, domain=None, range=Optional[Union[str, "ImmersionMedium"]])
@@ -1416,7 +1442,7 @@ slots.baseImagingAttributes__QC_COMMENT = Slot(uri=HTAN.QC_COMMENT, name="baseIm
                    model_uri=HTAN.baseImagingAttributes__QC_COMMENT, domain=None, range=str)
 
 slots.baseImagingAttributes__SPECIES = Slot(uri=HTAN.SPECIES, name="baseImagingAttributes__SPECIES", curie=HTAN.curie('SPECIES'),
-                   model_uri=HTAN.baseImagingAttributes__SPECIES, domain=None, range=str)
+                   model_uri=HTAN.baseImagingAttributes__SPECIES, domain=None, range=Union[str, "Species"])
 
 slots.channelMetadata__CHANNEL_ID = Slot(uri=HTAN.CHANNEL_ID, name="channelMetadata__CHANNEL_ID", curie=HTAN.curie('CHANNEL_ID'),
                    model_uri=HTAN.channelMetadata__CHANNEL_ID, domain=None, range=str)
