@@ -35,8 +35,8 @@ classes:
         description: Level 1 Spatial Omics data (raw spatial data bundle, optional)
       LEVEL_3_DATA:
         range: SpatialLevel3
-        required: false
-        description: Level 3 Spatial Omics data (processed spatial assay output bundle)
+        required: true
+        description: Level 3 Spatial Omics data (processed spatial assay output bundle, required)
       LEVEL_4_DATA:
         range: SpatialLevel4
         required: false
