@@ -1,5 +1,5 @@
 # Auto generated from digital_pathology.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-09T18:24:30
+# Generation date: 2025-12-09T18:32:06
 # Schema: DigitalPathology
 #
 # id: https://w3id.org/htan/digital_pathology
@@ -511,7 +511,7 @@ class slots:
 
 slots.digitalPathologyData__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="digitalPathologyData__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.digitalPathologyData__FILE_FORMAT, domain=None, range=str,
-                   pattern=re.compile(r'^(ome-tiff|ome\.tiff|qptiff|svs|tif|dcm|ndpi|vms|vmu|scn|mrxs|tiff|svslide|bit|czi)$'))
+                   pattern=re.compile(r'^(ome-tiff|tiff|qptiff|svs)$'))
 
 slots.digitalPathologyData__HAS_ANNOTATIONS = Slot(uri=HTAN.HAS_ANNOTATIONS, name="digitalPathologyData__HAS_ANNOTATIONS", curie=HTAN.curie('HAS_ANNOTATIONS'),
                    model_uri=HTAN.digitalPathologyData__HAS_ANNOTATIONS, domain=None, range=Union[bool, Bool])
