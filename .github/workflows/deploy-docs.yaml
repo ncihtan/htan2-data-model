@@ -11,6 +11,7 @@ on:
 
 jobs:
   build-docs:
+    if: false  # Temporarily disabled - skip documentation build
     runs-on: ubuntu-latest
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
