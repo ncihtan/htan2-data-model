@@ -1,5 +1,5 @@
 # Auto generated from imaging.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-09T13:58:59
+# Generation date: 2025-12-09T09:06:42
 # Schema: Imaging
 #
 # id: https://w3id.org/htan/imaging
@@ -57,7 +57,7 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Float, String
+from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String
 from linkml_runtime.utils.metamodelcore import Bool
 
 metamodel_version = "1.7.0"
@@ -150,7 +150,7 @@ class BaseImagingAttributes(CoreFileAttributes):
     CITATION_OR_DOI: str = None
     STAINING_METHOD: Union[str, "StainingMethod"] = None
     OBJECTIVE: str = None
-    NOMINAL_MAGNIFICATION: float = None
+    NOMINAL_MAGNIFICATION: int = None
     PASSED_QC: Union[bool, Bool] = None
     QC_COMMENT: str = None
     SPECIES: str = None
@@ -210,8 +210,8 @@ class BaseImagingAttributes(CoreFileAttributes):
 
         if self._is_empty(self.NOMINAL_MAGNIFICATION):
             self.MissingRequiredField("NOMINAL_MAGNIFICATION")
-        if not isinstance(self.NOMINAL_MAGNIFICATION, float):
-            self.NOMINAL_MAGNIFICATION = float(self.NOMINAL_MAGNIFICATION)
+        if not isinstance(self.NOMINAL_MAGNIFICATION, int):
+            self.NOMINAL_MAGNIFICATION = int(self.NOMINAL_MAGNIFICATION)
 
         if self._is_empty(self.PASSED_QC):
             self.MissingRequiredField("PASSED_QC")
@@ -423,7 +423,7 @@ slots.baseImagingAttributes__OBJECTIVE = Slot(uri=HTAN.OBJECTIVE, name="baseImag
                    model_uri=HTAN.baseImagingAttributes__OBJECTIVE, domain=None, range=str)
 
 slots.baseImagingAttributes__NOMINAL_MAGNIFICATION = Slot(uri=HTAN.NOMINAL_MAGNIFICATION, name="baseImagingAttributes__NOMINAL_MAGNIFICATION", curie=HTAN.curie('NOMINAL_MAGNIFICATION'),
-                   model_uri=HTAN.baseImagingAttributes__NOMINAL_MAGNIFICATION, domain=None, range=float)
+                   model_uri=HTAN.baseImagingAttributes__NOMINAL_MAGNIFICATION, domain=None, range=int)
 
 slots.baseImagingAttributes__IMMERSION = Slot(uri=HTAN.IMMERSION, name="baseImagingAttributes__IMMERSION", curie=HTAN.curie('IMMERSION'),
                    model_uri=HTAN.baseImagingAttributes__IMMERSION, domain=None, range=Optional[Union[str, "ImmersionMedium"]])
