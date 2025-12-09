@@ -76,6 +76,12 @@ enums:
       "Water":
         description: Water immersion medium
 
+  ExperimentalStrategyAndDataSubtypes:
+    permissible_values:
+      "Pathological":
+        description: Pathological experimental strategy and data subtype
+
+
 classes:
   BaseImagingAttributes:
     is_a: CoreFileAttributes
@@ -83,10 +89,10 @@ classes:
     attributes:
       # Experimental strategy
       EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES:
-        range: string
+        range: ExperimentalStrategyAndDataSubtypes
         required: true
         title: "Experimental Strategy and Data Subtypes"
-        description: What is the experimental strategy used for the study (or what type of data subtypes exist in the study)?
+        description: What is the experimental strategy used for the study (or what type of data subtypes exist in the study)? Per RFC, the only valid value for imaging data types is "Pathological".
 
       # De-identification
       DE_IDENTIFICATION_METHOD_TYPE:

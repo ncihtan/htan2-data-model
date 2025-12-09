@@ -2,6 +2,8 @@
 
 import pytest
 import os
+import json
+import jsonschema
 from linkml_runtime import SchemaView
 
 # Get the directory where this test file is located
@@ -209,6 +211,84 @@ class TestBaseImagingDataValidation:
         assert valid_deid_methods == sorted(valid_deid_methods)
         assert valid_staining_methods == sorted(valid_staining_methods)
         assert valid_immersion == sorted(valid_immersion)
+
+    def test_experimental_strategy_enum(self):
+        """Test that EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES enum only allows 'Pathological'."""
+        sv = SchemaView(SCHEMA_PATH)
+        
+        # Check enum exists
+        strategy_enum = sv.get_enum("ExperimentalStrategyAndDataSubtypes")
+        assert strategy_enum is not None
+        
+        # Check it only has "Pathological" as a valid value
+        permissible_values = list(strategy_enum.permissible_values.keys())
+        assert len(permissible_values) == 1
+        assert "Pathological" in permissible_values
+        
+        # Check the attribute uses this enum
+        base_class = sv.get_class("BaseImagingAttributes")
+        attr = base_class.attributes.get("EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES")
+        assert attr is not None
+        assert attr.range == "ExperimentalStrategyAndDataSubtypes"
+        assert attr.required is True
+
+    def test_experimental_strategy_json_schema_validation(self):
+        """Test JSON schema validation for EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES."""
+        # Load the generated JSON schema
+        schema_file = os.path.join(MODULE_DIR, "build", "imaging_schema.json")
+        if not os.path.exists(schema_file):
+            pytest.skip(f"JSON schema not found at {schema_file}. Run 'make gen-schema' first.")
+        
+        with open(schema_file, 'r') as f:
+            full_schema = json.load(f)
+        
+        # Get the BaseImagingAttributes schema and strategy enum
+        base_schema = full_schema["$defs"]["BaseImagingAttributes"]
+        strategy_schema = full_schema["$defs"]["ExperimentalStrategyAndDataSubtypes"]
+        
+        # Verify the enum definition
+        assert "enum" in strategy_schema
+        assert strategy_schema["enum"] == ["Pathological"]
+        
+        # Create a test schema that references the full schema's $defs
+        test_schema = {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$defs": full_schema["$defs"],
+            "allOf": [{"$ref": "#/$defs/BaseImagingAttributes"}]
+        }
+        
+        # Test valid data
+        valid_data = {
+            "EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES": "Pathological",
+            "HTAN_DATA_FILE_ID": "HTA1_0000_0001",
+            "FILENAME": "test/image.ome.tiff",
+            "FILE_FORMAT": "ome.tiff",
+            "HTAN_PARENT_ID": "HTA200_0000_B0001",
+            "DE_IDENTIFICATION_METHOD_TYPE": "Automatic",
+            "DE_IDENTIFICATION_METHOD_DESCRIPTION": "Automated de-identification process",
+            "LICENSE": "CC BY 4.0",
+            "IMAGE_MODALITY": "SM",
+            "IMAGING_EQUIPMENT_MANUFACTURER": "Leica",
+            "CITATION_OR_DOI": "https://doi.org/test",
+            "STAINING_METHOD": "H&E",
+            "OBJECTIVE": "20x",
+            "NOMINAL_MAGNIFICATION": 20.0,
+            "PASSED_QC": True,
+            "QC_COMMENT": "OK",
+            "SPECIES": "9606"
+        }
+        
+        # Should validate successfully
+        jsonschema.validate(instance=valid_data, schema=test_schema)
+        
+        # Test invalid data - should fail
+        invalid_data = valid_data.copy()
+        invalid_data["EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES"] = "InvalidValue"
+        
+        with pytest.raises(jsonschema.ValidationError) as exc_info:
+            jsonschema.validate(instance=invalid_data, schema=test_schema)
+        # Verify the error is about the invalid enum value
+        assert "InvalidValue" in str(exc_info.value) or "Pathological" in str(exc_info.value)
 
 
 if __name__ == "__main__":
