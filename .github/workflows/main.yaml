@@ -45,7 +45,7 @@ jobs:
       - name: Generate Synapse-compatible JSON schemas
         run: |
           export PATH="$HOME/.local/bin:$PATH"
-          for module in Clinical WES Biospecimen Sequencing Imaging scRNA-seq DigitalPathology MultiplexMicroscopy; do
+          for module in Clinical WES Biospecimen Sequencing Imaging scRNA-seq DigitalPathology MultiplexMicroscopy SpatialOmics; do
             if [ -f modules/$module/Makefile ] && grep -q "^gen-synapse-schema:" modules/$module/Makefile; then
               echo "Generating Synapse schema for $module module..."
               make -C modules/$module gen-synapse-schema

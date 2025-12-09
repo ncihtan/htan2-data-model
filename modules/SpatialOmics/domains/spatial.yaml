@@ -1,0 +1,49 @@
+name: Spatial
+id: https://w3id.org/htan/spatial
+description: HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+  - level_1
+  - level_3
+  - level_4
+  - spatial_panel
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+slots:
+  caDSR_id:
+    description: The caDSR identifier for this element
+    range: string
+    multivalued: false
+    required: false
+
+classes:
+  SpatialData:
+    description: Container for all Spatial Omics data levels
+    attributes:
+      LEVEL_1_DATA:
+        range: SpatialLevel1
+        required: false
+        description: Level 1 Spatial Omics data (raw spatial data bundle, optional)
+      LEVEL_3_DATA:
+        range: SpatialLevel3
+        required: true
+        description: Level 3 Spatial Omics data (processed spatial assay output bundle, required)
+      LEVEL_4_DATA:
+        range: SpatialLevel4
+        required: false
+        description: Level 4 Spatial Omics data (interoperable h5ad or RDS file, optional)
+      PANEL_DATA:
+        range: SpatialPanel
+        multivalued: true
+        required: false
+        description: Spatial panel information for targeted sequencing or protein panels
+

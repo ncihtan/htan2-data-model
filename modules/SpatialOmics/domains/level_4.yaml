@@ -1,0 +1,230 @@
+name: SpatialLevel4
+id: https://w3id.org/htan/spatial/level_4
+description: HTAN Spatial Omics Level 4 - Interoperable h5ad or RDS file (optional)
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  FileFormatLevel4:
+    permissible_values:
+      "h5ad":
+        description: AnnData HDF5 format (Python)
+      "rds":
+        description: RDS format (R)
+      "zarr":
+        description: Zarr format
+
+  ToolCompatibility:
+    permissible_values:
+      "anndata":
+        description: AnnData library compatibility
+      "seurat":
+        description: Seurat library compatibility
+      "spatialdata":
+        description: SpatialData library compatibility
+
+  DimensionalityReductionMethodLevel4:
+    permissible_values:
+      "PCA":
+        description: Principal Component Analysis
+      "t-SNE":
+        description: t-Distributed Stochastic Neighbor Embedding
+      "UMAP":
+        description: Uniform Manifold Approximation and Projection
+      "other":
+        description: Other dimensionality reduction method
+
+  NormalisationMethod:
+    permissible_values:
+      "CPM":
+        description: Counts Per Million normalization
+      "log normalization":
+        description: Log normalization
+      "SCTransform":
+        description: SCTransform normalization
+      "TPM":
+        description: Transcripts Per Million normalization
+      "other":
+        description: Other normalization method
+
+  ImageTypeLevel4:
+    permissible_values:
+      "jpeg":
+        description: JPEG image format
+      "other":
+        description: Other image format
+      "png":
+        description: PNG image format
+      "tiff":
+        description: TIFF image format
+
+classes:
+  SpatialLevel4:
+    is_a: CoreFileAttributes
+    description: Level 4 interoperable spatial omics file (optional) - Harmonized h5ad, RDS, or Zarr file for downstream analysis
+    attributes:
+      FILE_FORMAT:
+        range: FileFormatLevel4
+        required: true
+        title: "File Format"
+        description: File format of the data file
+      TOOL_COMPATIBILITY:
+        range: ToolCompatibility
+        multivalued: true
+        required: false
+        title: "Tool Compatibility"
+        description: Tools or libraries compatible with this file
+      NUMBER_OF_FEATURES:
+        range: integer
+        required: true
+        title: "Number of Features"
+        description: Number of features (e.g. transcripts)
+        minimum_value: 1
+      NUMBER_OF_OBJECTS:
+        range: integer
+        required: true
+        title: "Number of Objects"
+        description: Number of objects (e.g. cells)
+        minimum_value: 1
+      HAS_DIMENSIONALITY_REDUCTION:
+        range: boolean
+        required: true
+        title: "Has Dimensionality Reduction"
+        description: Indicates presence of dimensionally reduced data
+      DIMENSIONALITY_REDUCTION_METHOD:
+        range: DimensionalityReductionMethodLevel4
+        required: false
+        title: "Dimensionality Reduction Method"
+        description: Method used for dimensionality reduction
+      HAS_CLUSTERING:
+        range: boolean
+        required: true
+        title: "Has Clustering"
+        description: Indicates if clustering was performed
+      CLUSTERING_METHOD:
+        range: string
+        required: false
+        title: "Clustering Method"
+        description: Method used to define clusters
+      NUMBER_OF_CLUSTERS:
+        range: integer
+        required: false
+        title: "Number of Clusters"
+        description: Number of clusters identified
+        minimum_value: 1
+      HAS_CELL_TYPE_CALLING:
+        range: boolean
+        required: true
+        title: "Has Cell Type Calling"
+        description: Indicates presence of cell type annotations
+      CELL_TYPE_CALLING_METHOD:
+        range: string
+        required: false
+        title: "Cell Type Calling Method"
+        description: Method used for cell type annotation
+      CELL_TYPES:
+        range: string
+        multivalued: true
+        required: false
+        title: "Cell Types"
+        description: List of cell types present in the data
+      HAS_NORMALISED_ARRAY:
+        range: boolean
+        required: true
+        title: "Has Normalised Array"
+        description: Indicates presence of normalized array
+      NORMALISATION_METHOD:
+        range: NormalisationMethod
+        required: false
+        title: "Normalisation Method"
+        description: Method used for normalizing the array data
+      HAS_RAW_ARRAY:
+        range: boolean
+        required: true
+        title: "Has Raw Array"
+        description: Indicates presence of raw expression array
+      HAS_IMAGE:
+        range: boolean
+        required: true
+        title: "Has Image"
+        description: Indicates presence of associated image data
+      IMAGE_TYPE:
+        range: ImageTypeLevel4
+        required: false
+        title: "Image Type"
+        description: Type of image associated with the data file
+    rules:
+      - description: "DIMENSIONALITY_REDUCTION_METHOD is required when HAS_DIMENSIONALITY_REDUCTION is true"
+        preconditions:
+          slot_conditions:
+            HAS_DIMENSIONALITY_REDUCTION:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            DIMENSIONALITY_REDUCTION_METHOD:
+              required: true
+      - description: "CLUSTERING_METHOD is required when HAS_CLUSTERING is true"
+        preconditions:
+          slot_conditions:
+            HAS_CLUSTERING:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            CLUSTERING_METHOD:
+              required: true
+      - description: "NUMBER_OF_CLUSTERS is required when HAS_CLUSTERING is true"
+        preconditions:
+          slot_conditions:
+            HAS_CLUSTERING:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            NUMBER_OF_CLUSTERS:
+              required: true
+      - description: "CELL_TYPE_CALLING_METHOD is required when HAS_CELL_TYPE_CALLING is true"
+        preconditions:
+          slot_conditions:
+            HAS_CELL_TYPE_CALLING:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            CELL_TYPE_CALLING_METHOD:
+              required: true
+      - description: "CELL_TYPES is required when HAS_CELL_TYPE_CALLING is true"
+        preconditions:
+          slot_conditions:
+            HAS_CELL_TYPE_CALLING:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            CELL_TYPES:
+              required: true
+      - description: "NORMALISATION_METHOD is required when HAS_NORMALISED_ARRAY is true"
+        preconditions:
+          slot_conditions:
+            HAS_NORMALISED_ARRAY:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            NORMALISATION_METHOD:
+              required: true
+      - description: "IMAGE_TYPE is required when HAS_IMAGE is true"
+        preconditions:
+          slot_conditions:
+            HAS_IMAGE:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            IMAGE_TYPE:
+              required: true
+
