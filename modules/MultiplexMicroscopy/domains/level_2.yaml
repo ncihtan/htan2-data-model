@@ -6,7 +6,6 @@ imports:
   - linkml:types
   - linkml:extensions
   - ../../Imaging/domains/imaging
-  - multiplex_microscopy_channel_metadata
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -139,12 +138,6 @@ classes:
         range: string
         required: true
         title: "Channel Metadata ID"
-        description: Unique identifier specifying the location of the required channel metadata (likely a Synapse ID)
-
-      CHANNEL_METADATA:
-        range: ChannelMetadata
-        multivalued: true
-        required: false
-        title: "Channel Metadata"
-        description: Metadata for each channel in the multiplex microscopy image
+        description: Unique identifier specifying the location of the required channel metadata (Synapse ID)
+        pattern: "^syn\\d+$"
 

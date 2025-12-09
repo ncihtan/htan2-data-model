@@ -121,9 +121,10 @@ class TestMultiplexMicroscopy:
         # Note: ORGAN_OR_TISSUE is a biospecimen attribute, not an imaging attribute
         # It should be retrieved from the Biospecimen record via HTAN_PARENT_ID
         
-        # Test RRID pattern for channel metadata
-        rrid_slot = sv.get_slot("RRID_IDENTIFIER")
-        assert rrid_slot.pattern == "^RRID:AB_\\d+$"
+        # Test Synapse ID pattern for CHANNEL_METADATA_ID
+        channel_metadata_id_slot = sv.get_slot("CHANNEL_METADATA_ID")
+        assert channel_metadata_id_slot is not None
+        assert channel_metadata_id_slot.pattern == "^syn\\d+$"
 
     def test_minimum_values(self):
         """Test that minimum value constraints are properly defined."""
@@ -142,25 +143,4 @@ class TestMultiplexMicroscopy:
         size_x_slot = sv.get_slot("SIZE_X")
         assert size_x_slot.minimum_value == 1
 
-    def test_channel_metadata_class(self):
-        """Test that ChannelMetadata class is properly defined."""
-        sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
-        
-        channel_metadata_class = sv.get_class("ChannelMetadata")
-        assert channel_metadata_class is not None
-        
-        # Check required attributes
-        required_slots = [slot for slot in channel_metadata_class.attributes if channel_metadata_class.attributes[slot].required]
-        required_names = [sv.get_slot(slot).name for slot in required_slots]
-        
-        assert "CHANNEL_ID" in required_names
-        assert "CHANNEL_NAME" in required_names
-        # TARGET_NAME is optional per CSV (Required=FALSE)
-
-    def test_multivalued_channel_metadata(self):
-        """Test that CHANNEL_METADATA is properly marked as multivalued."""
-        sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
-        
-        channel_metadata_slot = sv.get_slot("CHANNEL_METADATA")
-        assert channel_metadata_slot.multivalued is True
 
