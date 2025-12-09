@@ -61,5 +61,5 @@ classes:
         required: true
         title: "File Format"
         description: Format of the segmentation mask file (should be ome-tiff for Level 3)
-        pattern: "^(ome-tiff|ome\\.tiff)$"
+        pattern: "^(ome-tiff|ome\\.tiff|tiff|tif)$"
 

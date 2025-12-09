@@ -39,7 +39,7 @@ classes:
         required: true
         title: "File Format"
         description: Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python.
-        pattern: "^(ome-tiff|ome\\.tiff|qptiff|svs|tif|dcm|ndpi|vms|vmu|scn|mrxs|tiff|svslide|bit|czi)$"
+        pattern: "^(ome-tiff|tiff|qptiff|svs)$"
       
       # Digital Pathology specific attributes
       HAS_ANNOTATIONS:
