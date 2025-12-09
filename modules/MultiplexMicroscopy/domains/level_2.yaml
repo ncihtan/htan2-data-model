@@ -1,0 +1,150 @@
+name: MultiplexMicroscopyLevel2
+id: https://w3id.org/htan/multiplex_microscopy/level_2
+description: HTAN Multiplex Microscopy Level 2 - Imaging data with channel metadata
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../Imaging/domains/imaging
+  - multiplex_microscopy_channel_metadata
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  ImagingAssayType:
+    permissible_values:
+      "CODEX":
+        description: CODEX imaging assay type
+      "CyCIF":
+        description: Cyclic Immunofluorescence imaging assay type
+      "ExSeq":
+        description: Expansion Sequencing imaging assay type
+      "GeoMX-DSP":
+        description: GeoMX Digital Spatial Profiling imaging assay type
+      "H&E":
+        description: Hematoxylin and Eosin imaging assay type
+      "IHC":
+        description: Immunohistochemistry imaging assay type
+      "IMC":
+        description: Imaging Mass Cytometry imaging assay type
+      "MIBI":
+        description: Multiplexed Ion Beam Imaging imaging assay type
+      "MERFISH":
+        description: Multiplexed Error-Robust Fluorescence In Situ Hybridization imaging assay type
+      "MxIF":
+        description: Multiplexed Immunofluorescence imaging assay type
+      "mIHC":
+        description: Multiplexed Immunohistochemistry imaging assay type
+      "Not Applicable":
+        description: Imaging assay not applicable
+      "SABER":
+        description: Signal Amplification By Exchange Reaction imaging assay type
+      "t-CyCIF":
+        description: Tissue Cyclic Immunofluorescence imaging assay type
+
+classes:
+  MultiplexMicroscopyLevel2:
+    is_a: BaseImagingAttributes
+    description: Multiplex Microscopy Level 2 - Imaging data compiled into a single file format (preferably tiled and pyramidal OME-TIFF), accompanied by a CSV file containing channel metadata
+    attributes:
+      # File format restriction for Level 2 imaging data
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python.
+        pattern: "^(ome-tiff|ome\\.tiff|qptiff|svs|tif|dcm|ndpi|vms|vmu|scn|mrxs|tiff|svslide|bit|czi)$"
+      
+      # Multiplex Microscopy specific attributes
+      WORKING_DISTANCE:
+        range: string
+        required: false
+        title: "Working Distance"
+        description: The working distance of the lens, expressed as a floating point number. Floating point > 0. Size needs to be specified in microns (um)
+
+      IMAGING_ASSAY_TYPE:
+        range: ImagingAssayType
+        required: true
+        title: "Imaging Assay Type"
+        description: Type of imaging assay
+
+      PYRAMID:
+        range: boolean
+        required: false
+        title: "Pyramid"
+        description: The data file contains an image pyramid
+
+      PHYSICAL_SIZE_X:
+        range: float
+        required: true
+        minimum_value: 0.0
+        title: "Physical Size X"
+        description: Physical size of a single pixel in the x dimension. In microns.
+
+      PHYSICAL_SIZE_Y:
+        range: float
+        required: true
+        minimum_value: 0.0
+        title: "Physical Size Y"
+        description: Physical size of a single pixel in the y dimension. In microns.
+
+      PHYSICAL_SIZE_Z:
+        range: float
+        required: true
+        minimum_value: 0.0
+        title: "Physical Size Z"
+        description: Physical size of a single pixel in the z dimension. In microns.
+
+      SIZE_C:
+        range: integer
+        required: true
+        minimum_value: 1
+        title: "Size C"
+        description: Number of channels. Integer >= 1
+
+      SIZE_T:
+        range: integer
+        required: true
+        minimum_value: 1
+        title: "Size T"
+        description: Number of timepoints. Integer >= 1
+
+      SIZE_X:
+        range: integer
+        required: true
+        minimum_value: 1
+        title: "Size X"
+        description: The number of pixels in the x dimension at the highest resolution available
+
+      SIZE_Y:
+        range: integer
+        required: true
+        minimum_value: 1
+        title: "Size Y"
+        description: The number of pixels in the y dimension at the highest resolution available
+
+      SIZE_Z:
+        range: integer
+        required: true
+        minimum_value: 1
+        title: "Size Z"
+        description: The number of pixels in the z dimension at the highest resolution available
+
+      CHANNEL_METADATA_ID:
+        range: string
+        required: true
+        title: "Channel Metadata ID"
+        description: Unique identifier specifying the location of the required channel metadata (likely a Synapse ID)
+
+      CHANNEL_METADATA:
+        range: ChannelMetadata
+        multivalued: true
+        required: false
+        title: "Channel Metadata"
+        description: Metadata for each channel in the multiplex microscopy image
+
