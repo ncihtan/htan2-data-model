@@ -52,7 +52,7 @@ enums:
 
   SameSectionImagingModality:
     permissible_values:
-      "fluoresence":
+      "fluorescence":
         description: Fluorescence imaging modality
       "H&E":
         description: Hematoxylin and Eosin imaging modality
@@ -353,11 +353,11 @@ classes:
           slot_conditions:
             PANEL_SYNAPSE_ID:
               required: true
-      - description: "SAME_SECTION_IMAGING_CHANNELS is required when SAME_SECTION_IMAGING_MODALITY is fluoresence"
+      - description: "SAME_SECTION_IMAGING_CHANNELS is required when SAME_SECTION_IMAGING_MODALITY is fluorescence"
         preconditions:
           slot_conditions:
             SAME_SECTION_IMAGING_MODALITY:
-              equals_string: "fluoresence"
+              equals_string: "fluorescence"
         postconditions:
           slot_conditions:
             SAME_SECTION_IMAGING_CHANNELS:

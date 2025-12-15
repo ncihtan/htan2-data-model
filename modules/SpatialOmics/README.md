@@ -262,7 +262,7 @@ The Spatial module implements several conditional requirements using LinkML rule
 ### **Level 3**
 - `TRANSCRIPTOME_TYPE` is required when `RNA_MEASURED` is true
 - `PANEL_NAME` and `PANEL_SYNAPSE_ID` are required when `TRANSCRIPTOME_TYPE` is "Targeted" OR `PROTEIN_MEASURED` is true
-- `SAME_SECTION_IMAGING_CHANNELS` is required when `SAME_SECTION_IMAGING_MODALITY` is "fluoresence"
+- `SAME_SECTION_IMAGING_CHANNELS` is required when `SAME_SECTION_IMAGING_MODALITY` is "fluorescence"
 - Segmentation attributes are required when `HAS_CELL_SEGMENTATION` is true
 - Dimensionality reduction method is required when `HAS_DIMENSIONALITY_REDUCTION` is true
 - Clustering attributes are required when `HAS_CLUSTERING` is true
