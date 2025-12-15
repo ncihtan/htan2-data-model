@@ -38,7 +38,7 @@ This module implements the Spatial Omics RFC for HTAN Phase 2, which supports:
 - **HTAN Identifiers**: Data file ID, parent biospecimen ID, parent data file ID (optional)
 - **Platform**: 10x Genomics (Visium, Visium HD, Xenium), Nanostring CosMX, STOmics (Stereo-seq, Stereo-CITE), SeqFISH, DBiT-seq
 - **Assay Details**: Spatial assay type (in situ, capture-based), assay chemistry version, software and version, protocol link
-- **Molecular Targets**: RNA measured, protein measured, transcriptome type (whole transcriptome, protein coding, targeted), panel size/total targets
+- **Molecular Targets**: RNA measured, protein measured, transcriptome type (Whole transcriptome, Protein coding, Targeted), panel size/total targets
 - **Panel Information**: Panel name, panel Synapse ID (for targeted panels or protein measurements)
 - **Same Section Imaging**: Imaging ID, modality (H&E, fluorescence), channels
 - **Region Area**: Capture area in µm²
@@ -261,7 +261,7 @@ The Spatial module implements several conditional requirements using LinkML rule
 
 ### **Level 3**
 - `TRANSCRIPTOME_TYPE` is required when `RNA_MEASURED` is true
-- `PANEL_NAME` and `PANEL_SYNAPSE_ID` are required when `TRANSCRIPTOME_TYPE` is "targeted" OR `PROTEIN_MEASURED` is true
+- `PANEL_NAME` and `PANEL_SYNAPSE_ID` are required when `TRANSCRIPTOME_TYPE` is "Targeted" OR `PROTEIN_MEASURED` is true
 - `SAME_SECTION_IMAGING_CHANNELS` is required when `SAME_SECTION_IMAGING_MODALITY` is "fluoresence"
 - Segmentation attributes are required when `HAS_CELL_SEGMENTATION` is true
 - Dimensionality reduction method is required when `HAS_DIMENSIONALITY_REDUCTION` is true

@@ -43,9 +43,9 @@ enums:
 
   TranscriptomeType:
     permissible_values:
-      "protein coding":
+      "Protein coding":
         description: Protein coding transcriptome type
-      "targeted":
+      "Targeted":
         description: Targeted transcriptome type
       "Whole transcriptome":
         description: Whole transcriptome type
@@ -327,12 +327,12 @@ classes:
           slot_conditions:
             TRANSCRIPTOME_TYPE:
               required: true
-      - description: "PANEL_NAME is required when TRANSCRIPTOME_TYPE is targeted OR PROTEIN_MEASURED is true"
+      - description: "PANEL_NAME is required when TRANSCRIPTOME_TYPE is Targeted OR PROTEIN_MEASURED is true"
         preconditions:
           any_of:
             - slot_conditions:
                 TRANSCRIPTOME_TYPE:
-                  equals_string: "targeted"
+                  equals_string: "Targeted"
             - slot_conditions:
                 PROTEIN_MEASURED:
                   pattern: "^true$"
@@ -340,12 +340,12 @@ classes:
           slot_conditions:
             PANEL_NAME:
               required: true
-      - description: "PANEL_SYNAPSE_ID is required when TRANSCRIPTOME_TYPE is targeted OR PROTEIN_MEASURED is true"
+      - description: "PANEL_SYNAPSE_ID is required when TRANSCRIPTOME_TYPE is Targeted OR PROTEIN_MEASURED is true"
         preconditions:
           any_of:
             - slot_conditions:
                 TRANSCRIPTOME_TYPE:
-                  equals_string: "targeted"
+                  equals_string: "Targeted"
             - slot_conditions:
                 PROTEIN_MEASURED:
                   pattern: "^true$"
