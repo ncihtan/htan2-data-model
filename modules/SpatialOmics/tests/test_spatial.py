@@ -195,6 +195,11 @@ class TestSpatial:
         hgnc_version_slot = sv.get_slot("HGNC_VERSION")
         assert hgnc_version_slot is not None
         assert hgnc_version_slot.pattern == "^\\d{4}-\\d{2}-\\d{2}$"
+        
+        # Test Gene Symbol pattern for GENE_SYMBOL
+        gene_symbol_slot = sv.get_slot("GENE_SYMBOL")
+        assert gene_symbol_slot is not None
+        assert gene_symbol_slot.pattern == "^[A-Za-z0-9_\\-]+(@)?$"
 
     def test_minimum_values(self):
         """Test that minimum value constraints are properly defined."""

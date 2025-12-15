@@ -29,6 +29,7 @@ classes:
         required: true
         title: "Gene Symbol"
         description: HGNC-approved Gene symbol (e.g., MYC, PIK3C)
+        pattern: "^[A-Za-z0-9_\\-]+(@)?$"
       HGNC_VERSION:
         range: string
         required: true
