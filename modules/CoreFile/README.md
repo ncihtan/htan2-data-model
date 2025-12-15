@@ -39,18 +39,51 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 ## Validation Patterns
 
 ### HTAN_DATA_FILE_ID
-- **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
-- **Examples**: `HTA200_2_36667`, `HTA200_EXT001_36667`
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$`
+- **Description**: Primary key for data files. Supports HTA200-229 for phase 2. Total length max 50 characters.
+- **Examples**: 
+  - `HTA200_2_D36667`
+  - `HTA200_EXT001_D123`
+  - `HTA229_0000_D1`
 
 ### HTAN_PARENT_ID
-- **Pattern**: `^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$`
-- **Description**: Must have B suffix for biospecimen IDs or D suffix for data file IDs. Supports HTA200-209 for phase 2.
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$`
+- **Description**: Must have B suffix for biospecimen IDs or D suffix for data file IDs. Supports HTA200-229 for phase 2. Total length max 50 characters.
 - **Examples**: 
   - `HTA200_2_B7001` (biospecimen with B suffix)
   - `HTA200_2_D36667` (data file with D suffix)
-  - `HTA203_12_EXT5_D42` (data file with extension and additional ID)
-  - `HTA204_0000_21344_D1234` (data file with 0000 and additional ID)
-  - `HTA200_0000_B7001` (biospecimen with 0000 and B suffix)
+  - `HTA229_0000_B1` (biospecimen with 0000)
+  - `HTA200_EXT001_D123` (data file with extension)
+
+## Related HTAN Identifiers
+
+The following HTAN identifiers are defined in other modules but follow the same Phase 2 pattern structure:
+
+### HTAN_PARTICIPANT_ID
+- **Location**: `modules/Clinical/domains/clinical.yaml`
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$`
+- **Description**: Primary key for participant/patient records (no entity suffix)
+- **Examples**: `HTA200_2`, `HTA200_EXT001`, `HTA229_0000`
+
+### HTAN_BIOSPECIMEN_ID
+- **Location**: `modules/Biospecimen/domains/biospecimen.yaml`
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$`
+- **Description**: Primary key for biospecimen records (B suffix required)
+- **Examples**: `HTA200_2_B7001`, `HTA200_EXT001_B123`, `HTA229_0000_B1`
+
+### HTAN_PANEL_ID
+- **Location**: `modules/SpatialOmics/domains/spatial_panel.yaml`
+- **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
+- **Description**: Unique identifier for spatial omics panels (legacy pattern, may be updated)
+- **Examples**: `HTA200_2_P0001`, `HTA200_EXT001_P0001`
+
+### HTAN_PARENT_ID (Biospecimen Module)
+- **Location**: `modules/Biospecimen/domains/biospecimen.yaml`
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$`
+- **Description**: Foreign key that can reference either a Participant ID (no suffix) or Biospecimen ID (B suffix)
+- **Examples**: `HTA200_2` (participant), `HTA200_2_B7001` (biospecimen)
+
+> **Note**: For complete documentation of all HTAN identifier patterns, see [`IDENTIFIER_PATTERNS.md`](../../IDENTIFIER_PATTERNS.md) in the repository root.
 
 ## Usage
 

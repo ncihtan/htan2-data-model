@@ -71,7 +71,7 @@ classes:
         identifier: true
         title: "HTAN Participant ID"
         description: HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)
-        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))$"
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$"
       
       DEMOGRAPHICS:
         range: Demographics

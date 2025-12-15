@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-09T21:03:29
+# Generation date: 2025-12-15T17:35:52
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -47511,7 +47511,7 @@ slots.TISSUE_OR_ORGAN_OF_ORIGIN = Slot(uri=HTAN.TISSUE_OR_ORGAN_OF_ORIGIN, name=
 
 slots.clinicalData__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="clinicalData__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
                    model_uri=HTAN.clinicalData__HTAN_PARTICIPANT_ID, domain=None, range=URIRef,
-                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$'))
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$'))
 
 slots.clinicalData__DEMOGRAPHICS = Slot(uri=HTAN.DEMOGRAPHICS, name="clinicalData__DEMOGRAPHICS", curie=HTAN.curie('DEMOGRAPHICS'),
                    model_uri=HTAN.clinicalData__DEMOGRAPHICS, domain=None, range=Union[dict, Demographics])

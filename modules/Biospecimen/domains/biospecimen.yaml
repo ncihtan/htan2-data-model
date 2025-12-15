@@ -53,14 +53,14 @@ classes:
         identifier: true
         title: "HTAN Biospecimen ID"
         description: HTAN Biospecimen ID (Primary Key)
-        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$"
       
       HTAN_PARENT_ID:
         range: string
         required: true
         title: "HTAN Parent ID"
-        description: HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Biospecimen IDs support HTA200-209 for phase 2.
-        pattern: "^(HTA([1-9]|1[0-6]|\\d{2,}))_((EXT)?([0-9]\\d*|0000))$|^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_B\\d{1,50}$"
+        description: HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2.
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$"
       
       ADJACENT_BIOSPECIMEN_IDS:
         range: string

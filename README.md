@@ -2,8 +2,6 @@
 
 ---
 
-## ⚠️ **DO NOT USE – UNDER DEVELOPMENT** ⚠️  
-
 This data model is in **active development**. It builds on **HTAN Phase 1** and incorporates input from the **Cancer Data Standards (CDS)** initiative. Expect frequent changes until a stable version is released.
 
 ---
@@ -77,6 +75,12 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 - **Structure**: Three data levels (Level 2: imaging + channel metadata, Level 3: segmentation masks, Level 4: cell-by-feature tables)
 - **Features**: Channel metadata, image dimensions, multiplex assay types, CRDC alignment
 
+### **Spatial Omics Module**
+- **Purpose**: Sequencing-based and sequence-hybridization spatial omics assays (Visium, Xenium, CosMx, STOmics, etc.)
+- **Location**: `modules/SpatialOmics/`
+- **Structure**: Four data levels (Level 1: raw data bundle optional, Level 3: processed bundle required, Level 4: interoperable file optional, Panel: panel information)
+- **Features**: Platform flexibility, bundle-level metadata, panel information, QC metrics, conditional requirements
+
 ## 📁 Project Structure
 
 ```
@@ -90,7 +94,8 @@ htan2-data-model/
 │   ├── WES/                   # Whole Exome Sequencing
 │   ├── scRNA-seq/             # Single-cell RNA sequencing
 │   ├── DigitalPathology/      # Digital Pathology imaging
-│   └── MultiplexMicroscopy/   # Multiplex Microscopy imaging
+│   ├── MultiplexMicroscopy/   # Multiplex Microscopy imaging
+│   └── SpatialOmics/          # Spatial Omics assays
 ├── config/                    # LinkML configuration
 ├── scripts/                   # Utility scripts
 ├── tests/                     # Root-level tests
@@ -156,6 +161,7 @@ Each module contains detailed documentation:
 - **scRNA-seq Module**: See `modules/scRNA-seq/README.md` for single-cell RNA sequencing levels
 - **Digital Pathology Module**: See `modules/DigitalPathology/README.md` for digital pathology imaging
 - **Multiplex Microscopy Module**: See `modules/MultiplexMicroscopy/README.md` for multiplex microscopy imaging
+- **Spatial Omics Module**: See `modules/SpatialOmics/README.md` for spatial omics assays
 
 ## 🤝 Contributing
 
