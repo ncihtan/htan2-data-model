@@ -1,5 +1,5 @@
 # Auto generated from spatial.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-09T22:14:13
+# Generation date: 2025-12-15T17:36:42
 # Schema: Spatial
 #
 # id: https://w3id.org/htan/spatial
@@ -628,6 +628,9 @@ class SpatialPanel(YAMLRoot):
 # Enumerations
 class FileFormatLevel1(EnumDefinitionImpl):
 
+    tar = PermissibleValue(
+        text="tar",
+        description="TAR archive format")
     zip = PermissibleValue(
         text="zip",
         description="ZIP compressed archive format")
@@ -797,8 +800,8 @@ class SpatialAssayType(EnumDefinitionImpl):
 
 class TranscriptomeType(EnumDefinitionImpl):
 
-    targeted = PermissibleValue(
-        text="targeted",
+    Targeted = PermissibleValue(
+        text="Targeted",
         description="Targeted transcriptome type")
 
     _defn = EnumDefinition(
@@ -807,9 +810,9 @@ class TranscriptomeType(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "protein coding",
+        setattr(cls, "Protein coding",
             PermissibleValue(
-                text="protein coding",
+                text="Protein coding",
                 description="Protein coding transcriptome type"))
         setattr(cls, "Whole transcriptome",
             PermissibleValue(
@@ -818,8 +821,8 @@ class TranscriptomeType(EnumDefinitionImpl):
 
 class SameSectionImagingModality(EnumDefinitionImpl):
 
-    fluoresence = PermissibleValue(
-        text="fluoresence",
+    fluorescence = PermissibleValue(
+        text="fluorescence",
         description="Fluorescence imaging modality")
 
     _defn = EnumDefinition(
@@ -1053,11 +1056,11 @@ slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFil
 
 slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="coreFileAttributes__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
                    model_uri=HTAN.coreFileAttributes__HTAN_DATA_FILE_ID, domain=None, range=URIRef,
-                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$'))
 
 slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
                    model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$'))
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$'))
 
 slots.spatialLevel1__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="spatialLevel1__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.spatialLevel1__FILE_FORMAT, domain=None, range=Union[str, "FileFormatLevel1"])
@@ -1265,7 +1268,8 @@ slots.spatialPanel__HTAN_PANEL_ID = Slot(uri=HTAN.HTAN_PANEL_ID, name="spatialPa
                    pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
 
 slots.spatialPanel__GENE_SYMBOL = Slot(uri=HTAN.GENE_SYMBOL, name="spatialPanel__GENE_SYMBOL", curie=HTAN.curie('GENE_SYMBOL'),
-                   model_uri=HTAN.spatialPanel__GENE_SYMBOL, domain=None, range=str)
+                   model_uri=HTAN.spatialPanel__GENE_SYMBOL, domain=None, range=str,
+                   pattern=re.compile(r'^[A-Za-z0-9_\-]+(@)?$'))
 
 slots.spatialPanel__HGNC_VERSION = Slot(uri=HTAN.HGNC_VERSION, name="spatialPanel__HGNC_VERSION", curie=HTAN.curie('HGNC_VERSION'),
                    model_uri=HTAN.spatialPanel__HGNC_VERSION, domain=None, range=str,
