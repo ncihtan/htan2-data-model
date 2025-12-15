@@ -1,6 +1,13 @@
 name: Core
 id: https://w3id.org/htan/core
 description: HTAN Core Data Model - Universal attributes shared across all file-based modules
+
+# Related HTAN Identifiers (defined in other modules):
+# - HTAN_PARTICIPANT_ID: modules/Clinical/domains/clinical.yaml
+# - HTAN_BIOSPECIMEN_ID: modules/Biospecimen/domains/biospecimen.yaml
+# - HTAN_PANEL_ID: modules/SpatialOmics/domains/spatial_panel.yaml
+# For complete identifier documentation, see IDENTIFIER_PATTERNS.md in repository root
+
 imports:
   - linkml:types
 
@@ -33,10 +40,10 @@ classes:
         identifier: true
         title: "HTAN Data File ID"
         description: HTAN Data File ID (Primary Key)
-        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$"
       HTAN_PARENT_ID:
         range: string
         required: true
         title: "HTAN Parent ID"
-        description: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-209 for phase 2.
-        pattern: "^(HTA20[0-9])(?:_0000)?(?:_\\d+)?(?:_EXT\\d+)?_(B|D)\\d{1,50}$"
+        description: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$"

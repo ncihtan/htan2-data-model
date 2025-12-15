@@ -1,0 +1,157 @@
+name: SpatialLevel1
+id: https://w3id.org/htan/spatial/level_1
+description: HTAN Spatial Omics Level 1 - Raw spatial data bundle (optional)
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  FileFormatLevel1:
+    permissible_values:
+      "tar":
+        description: TAR archive format
+      "tar.gz":
+        description: TAR GZIP compressed archive format
+      "zip":
+        description: ZIP compressed archive format
+
+  Platform:
+    permissible_values:
+      "10x Genomics Visium":
+        description: 10x Genomics Visium platform
+      "10x Genomics Visium HD":
+        description: 10x Genomics Visium HD platform
+      "10x Genomics Xenium":
+        description: 10x Genomics Xenium platform
+      "Nanostring CosMX":
+        description: Nanostring CosMX platform
+      "STOmics Stereo-CITE":
+        description: STOmics Stereo-CITE platform
+      "STOmics Stereo-seq":
+        description: STOmics Stereo-seq platform
+
+  AssayType:
+    permissible_values:
+      "in situ sequencing":
+        description: In situ sequencing assay type
+      "molecular barcoding":
+        description: Molecular barcoding assay type
+      "multi-omic sequencing":
+        description: Multi-omic sequencing assay type
+      "spot-based sequencing":
+        description: Spot-based sequencing assay type
+
+  SequencingFileType:
+    permissible_values:
+      "BAM":
+        description: BAM alignment file format
+      "FASTQ":
+        description: FASTQ sequencing file format
+
+  ImageType:
+    permissible_values:
+      "DAPI":
+        description: DAPI (4',6-diamidino-2-phenylindole) image type
+      "H&E":
+        description: Hematoxylin and Eosin image type
+      "MIF":
+        description: Multiplex Immunofluorescence image type
+      "Other":
+        description: Other image type
+
+classes:
+  SpatialLevel1:
+    is_a: CoreFileAttributes
+    description: Level 1 raw spatial data bundle (optional) - Contains raw sequencing data, images, and registration files
+    attributes:
+      FILE_FORMAT:
+        range: FileFormatLevel1
+        required: true
+        title: "File Format"
+        description: High-level package format of the bundle
+      PLATFORM:
+        range: Platform
+        required: true
+        title: "Platform"
+        description: Name of the platform used to generate the data
+      ASSAY_TYPE:
+        range: AssayType
+        required: true
+        title: "Assay Type"
+        description: Broad assay class (drives downstream conditionals)
+      BUNDLE_CONTENTS:
+        range: string
+        multivalued: true
+        required: true
+        title: "Bundle Contents"
+        description: List of expected files or folders in this bundle (relative paths within the archive)
+      HAS_SEQUENCING:
+        range: boolean
+        required: false
+        title: "Has Sequencing"
+        description: If raw/aligned sequencing data is included
+      SEQUENCING_FILE_TYPE:
+        range: SequencingFileType
+        multivalued: true
+        required: false
+        title: "Sequencing File Type"
+        description: Sequencing file type
+      HAS_IMAGES:
+        range: boolean
+        required: true
+        title: "Has Images"
+        description: Whether any image files (e.g., TIFFs) are included
+      IMAGE_TYPES:
+        range: ImageType
+        multivalued: true
+        required: false
+        title: "Image Types"
+        description: Types of images provided
+      HAS_PROBE_SET:
+        range: boolean
+        required: false
+        title: "Has Probe Set"
+        description: Whether a targeted probe/gene panel is included
+      HAS_REGISTRATION_FILES:
+        range: boolean
+        required: true
+        title: "Has Registration Files"
+        description: Whether any spatial registration transform files are included
+    rules:
+      - description: "SEQUENCING_FILE_TYPE is required when HAS_SEQUENCING is true"
+        preconditions:
+          slot_conditions:
+            HAS_SEQUENCING:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            SEQUENCING_FILE_TYPE:
+              required: true
+      - description: "IMAGE_TYPES is required when HAS_IMAGES is true"
+        preconditions:
+          slot_conditions:
+            HAS_IMAGES:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            IMAGE_TYPES:
+              required: true
+      - description: "HAS_PROBE_SET is required when ASSAY_TYPE is molecular barcoding"
+        preconditions:
+          slot_conditions:
+            ASSAY_TYPE:
+              equals_string: "molecular barcoding"
+        postconditions:
+          slot_conditions:
+            HAS_PROBE_SET:
+              required: true
+

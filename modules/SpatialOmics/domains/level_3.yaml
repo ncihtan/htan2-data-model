@@ -1,0 +1,501 @@
+name: SpatialLevel3
+id: https://w3id.org/htan/spatial/level_3
+description: HTAN Spatial Omics Level 3 - Processed spatial assay output bundle
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  PlatformLevel3:
+    permissible_values:
+      "10x Genomics Visium":
+        description: 10x Genomics Visium platform
+      "10x Genomics Visium HD":
+        description: 10x Genomics Visium HD platform
+      "10x Genomics Xenium":
+        description: 10x Genomics Xenium platform
+      "DBiT-seq":
+        description: DBiT-seq platform
+      "Nanostring CosMX":
+        description: Nanostring CosMX platform
+      "SeqFISH":
+        description: SeqFISH platform
+      "STOmics Stereo-CITE":
+        description: STOmics Stereo-CITE platform
+      "STOmics Stereo-seq":
+        description: STOmics Stereo-seq platform
+
+  SpatialAssayType:
+    permissible_values:
+      "capture-based":
+        description: Capture-based spatial assay type
+      "In situ":
+        description: In situ spatial assay type
+
+  TranscriptomeType:
+    permissible_values:
+      "Protein coding":
+        description: Protein coding transcriptome type
+      "Targeted":
+        description: Targeted transcriptome type
+      "Whole transcriptome":
+        description: Whole transcriptome type
+
+  SameSectionImagingModality:
+    permissible_values:
+      "fluorescence":
+        description: Fluorescence imaging modality
+      "H&E":
+        description: Hematoxylin and Eosin imaging modality
+
+  CellSegmentedObjectType:
+    permissible_values:
+      "cytoplasm":
+        description: Cytoplasm segmentation object type
+      "nucleus":
+        description: Nucleus segmentation object type
+      "Whole cell":
+        description: Whole cell segmentation object type
+
+  DimensionalityReductionMethod:
+    permissible_values:
+      "PCA":
+        description: Principal Component Analysis
+      "t-SNE":
+        description: t-Distributed Stochastic Neighbor Embedding
+      "UMAP":
+        description: Uniform Manifold Approximation and Projection
+      "other":
+        description: Other dimensionality reduction method
+
+  CaptureArea:
+    permissible_values:
+      "A":
+        description: Capture area A (CytAssist slides with 11 mm Capture Area)
+      "A1":
+        description: Capture area A1 (Visium slides v1 with 6.5 mm Capture Area, or CytAssist/Gateway slides with 6.5 mm Capture Area)
+      "B":
+        description: Capture area B (CytAssist slides with 11 mm Capture Area)
+      "B1":
+        description: Capture area B1 (Visium slides v1 with 6.5 mm Capture Area)
+      "C1":
+        description: Capture area C1 (Visium slides v1 with 6.5 mm Capture Area)
+      "D1":
+        description: Capture area D1 (Visium slides v1 with 6.5 mm Capture Area, or CytAssist/Gateway slides with 6.5 mm Capture Area)
+
+  QCSpatialUnit:
+    permissible_values:
+      "100um area":
+        description: 100 micrometer area spatial unit
+      "8um bin":
+        description: 8 micrometer bin spatial unit
+      "cell":
+        description: Cell spatial unit
+      "spot":
+        description: Spot spatial unit
+
+classes:
+  SpatialLevel3:
+    is_a: CoreFileAttributes
+    description: Level 3 processed spatial assay output bundle - Contains platform-specific output files, segmentation, matrices, and QC metrics
+    attributes:
+      PLATFORM:
+        range: PlatformLevel3
+        required: true
+        title: "Platform"
+        description: Name of the platform used to generate the data
+      SPATIAL_ASSAY_TYPE:
+        range: SpatialAssayType
+        required: false
+        title: "Spatial Assay Type"
+        description: Type of spatial assay (in situ or capture-based)
+      ASSAY_CHEMISTRY_VERSION:
+        range: string
+        required: true
+        title: "Assay Chemistry Version"
+        description: Assay chemistry version (e.g., v1, v2)
+      SOFTWARE_AND_VERSION:
+        range: string
+        required: false
+        title: "Software and Version"
+        description: Software/tools used for processing
+      PROTOCOL_LINK:
+        range: string
+        required: false
+        title: "Protocol Link"
+        description: URL to protocol documentation
+        pattern: "^(?:(?:https?)://)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\.\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$"
+      RNA_MEASURED:
+        range: boolean
+        required: true
+        title: "RNA Measured"
+        description: Whether RNA was measured
+      PROTEIN_MEASURED:
+        range: boolean
+        required: true
+        title: "Protein Measured"
+        description: Whether protein was measured
+      TRANSCRIPTOME_TYPE:
+        range: TranscriptomeType
+        required: false
+        title: "Transcriptome Type"
+        description: Molecular targets measured using panels
+      PANEL_SIZE_TOTAL_TARGETS:
+        range: integer
+        required: true
+        title: "Panel Size / Total Targets"
+        description: Total number of targets in the panel
+        minimum_value: 1
+      PANEL_NAME:
+        range: string
+        required: false
+        title: "Panel Name"
+        description: Number of genes/proteins in panel
+      PANEL_SYNAPSE_ID:
+        range: string
+        required: false
+        title: "Panel Synapse ID"
+        description: Synapse ID of the completed spatial_omics_panel template
+        pattern: "^syn\\d+$"
+      SAME_SECTION_IMAGING_ID:
+        range: string
+        multivalued: true
+        required: false
+        title: "Same Section Imaging ID"
+        description: HTAN ID of data file that represents same section imaging
+        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"
+      SAME_SECTION_IMAGING_MODALITY:
+        range: SameSectionImagingModality
+        required: false
+        title: "Same Section Imaging Modality"
+        description: Was same section imaging performed
+      SAME_SECTION_IMAGING_CHANNELS:
+        range: string
+        multivalued: true
+        required: false
+        title: "Same Section Imaging Channels"
+        description: Antigens targeted in same section fluorescence imaging
+      REGION_AREA:
+        range: float
+        required: true
+        title: "Region Area"
+        description: Capture area in µm²
+        minimum_value: 0.0
+      BUNDLE_CONTENTS:
+        range: string
+        multivalued: true
+        required: true
+        title: "Bundle Contents"
+        description: List of expected files or folders in this bundle (relative paths within the archive)
+      PORTAL_PREVIEW_FILE:
+        range: string
+        required: false
+        title: "Portal Preview File"
+        description: Relative path of HTML preview in bundle if present
+      HAS_CELL_SEGMENTATION:
+        range: boolean
+        required: true
+        title: "Has Cell Segmentation"
+        description: Indicates presence of cell segmentation data
+      CELL_SEGMENTATION_METHOD:
+        range: string
+        required: false
+        title: "Cell Segmentation Method"
+        description: Description of segmentation method
+      CELL_SEGMENTED_OBJECT_TYPE:
+        range: CellSegmentedObjectType
+        required: false
+        title: "Cell Segmented Object Type"
+        description: Level of segmentation
+      NUMBER_OF_SEGMENTED_CELLS:
+        range: integer
+        required: false
+        title: "Number of Segmented Cells"
+        description: Total number of segmented cells
+        minimum_value: 0
+      HAS_DIMENSIONALITY_REDUCTION:
+        range: boolean
+        required: false
+        title: "Has Dimensionality Reduction"
+        description: Indicates presence of dimensionally reduced data
+      DIMENSIONALITY_REDUCTION_METHOD:
+        range: DimensionalityReductionMethod
+        required: false
+        title: "Dimensionality Reduction Method"
+        description: Method used for dimensionality reduction
+      HAS_CLUSTERING:
+        range: boolean
+        required: true
+        title: "Has Clustering"
+        description: Indicates if clustering was performed
+      CLUSTERING_METHOD:
+        range: string
+        required: false
+        title: "Clustering Method"
+        description: Method used to define clusters
+      NUMBER_OF_CLUSTERS:
+        range: integer
+        required: false
+        title: "Number of Clusters"
+        description: Number of clusters identified
+        minimum_value: 1
+      SLIDE_SERIAL_NUMBER:
+        range: string
+        required: false
+        title: "Slide Serial Number"
+        description: Slide serial number
+      CAPTURE_AREA:
+        range: CaptureArea
+        required: false
+        title: "Capture Area"
+        description: Area (or Capture Area) - One of the either four or two active regions where tissue can be placed on a Visium slide
+      RUN_ID:
+        range: string
+        required: false
+        title: "Run ID"
+        description: A unique identifier for this individual run (typically associated with a single slide) of the spatial transcriptomic processing workflow
+      CYTASSIST_USED:
+        range: boolean
+        required: false
+        title: "CytAssist Used"
+        description: Whether CytAssist was used
+      GENOMIC_REFERENCE:
+        range: string
+        required: false
+        title: "Genomic Reference"
+        description: Reference genome used
+      SEQUENCING_INSTRUMENT:
+        range: string
+        required: false
+        title: "Sequencing Instrument"
+        description: Sequencer used
+      SEQUENCING_CONFIGURATION:
+        range: string
+        required: false
+        title: "Sequencing Configuration"
+        description: Read and index setup
+      SEQUENCING_DEPTH:
+        range: string
+        required: false
+        title: "Sequencing Depth"
+        description: Sequencing depth
+      QC_SPATIAL_UNIT:
+        range: QCSpatialUnit
+        required: true
+        title: "QC Spatial Unit"
+        description: Type of spatial unit
+      QC_FEATURE_NUMBER:
+        range: integer
+        required: true
+        title: "QC Feature Number"
+        description: Features (e.g. spots or bins) under tissue
+        minimum_value: 0
+      QC_MEAN_READS_PER_FEATURE:
+        range: float
+        required: true
+        title: "QC Mean Reads Per Feature"
+        description: Mean reads per feature
+        minimum_value: 0.0
+      QC_TOTAL_GENES_DETECTED:
+        range: integer
+        required: true
+        title: "QC Total Genes Detected"
+        description: Total genes detected
+        minimum_value: 0
+      QC_TOTAL_NUMBER_OF_READS:
+        range: integer
+        required: true
+        title: "QC Total Number of Reads"
+        description: Total number of reads
+        minimum_value: 0
+    rules:
+      - description: "TRANSCRIPTOME_TYPE is required when RNA_MEASURED is true"
+        preconditions:
+          slot_conditions:
+            RNA_MEASURED:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            TRANSCRIPTOME_TYPE:
+              required: true
+      - description: "PANEL_NAME is required when TRANSCRIPTOME_TYPE is Targeted OR PROTEIN_MEASURED is true"
+        preconditions:
+          any_of:
+            - slot_conditions:
+                TRANSCRIPTOME_TYPE:
+                  equals_string: "Targeted"
+            - slot_conditions:
+                PROTEIN_MEASURED:
+                  pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            PANEL_NAME:
+              required: true
+      - description: "PANEL_SYNAPSE_ID is required when TRANSCRIPTOME_TYPE is Targeted OR PROTEIN_MEASURED is true"
+        preconditions:
+          any_of:
+            - slot_conditions:
+                TRANSCRIPTOME_TYPE:
+                  equals_string: "Targeted"
+            - slot_conditions:
+                PROTEIN_MEASURED:
+                  pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            PANEL_SYNAPSE_ID:
+              required: true
+      - description: "SAME_SECTION_IMAGING_CHANNELS is required when SAME_SECTION_IMAGING_MODALITY is fluorescence"
+        preconditions:
+          slot_conditions:
+            SAME_SECTION_IMAGING_MODALITY:
+              equals_string: "fluorescence"
+        postconditions:
+          slot_conditions:
+            SAME_SECTION_IMAGING_CHANNELS:
+              required: true
+      - description: "CELL_SEGMENTATION_METHOD is required when HAS_CELL_SEGMENTATION is true"
+        preconditions:
+          slot_conditions:
+            HAS_CELL_SEGMENTATION:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            CELL_SEGMENTATION_METHOD:
+              required: true
+      - description: "CELL_SEGMENTED_OBJECT_TYPE is required when HAS_CELL_SEGMENTATION is true"
+        preconditions:
+          slot_conditions:
+            HAS_CELL_SEGMENTATION:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            CELL_SEGMENTED_OBJECT_TYPE:
+              required: true
+      - description: "NUMBER_OF_SEGMENTED_CELLS is required when HAS_CELL_SEGMENTATION is true"
+        preconditions:
+          slot_conditions:
+            HAS_CELL_SEGMENTATION:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            NUMBER_OF_SEGMENTED_CELLS:
+              required: true
+      - description: "DIMENSIONALITY_REDUCTION_METHOD is required when HAS_DIMENSIONALITY_REDUCTION is true"
+        preconditions:
+          slot_conditions:
+            HAS_DIMENSIONALITY_REDUCTION:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            DIMENSIONALITY_REDUCTION_METHOD:
+              required: true
+      - description: "CLUSTERING_METHOD is required when HAS_CLUSTERING is true"
+        preconditions:
+          slot_conditions:
+            HAS_CLUSTERING:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            CLUSTERING_METHOD:
+              required: true
+      - description: "NUMBER_OF_CLUSTERS is required when HAS_CLUSTERING is true"
+        preconditions:
+          slot_conditions:
+            HAS_CLUSTERING:
+              pattern: "^true$"
+        postconditions:
+          slot_conditions:
+            NUMBER_OF_CLUSTERS:
+              required: true
+      - description: "SLIDE_SERIAL_NUMBER is required when PLATFORM is Visium or Visium HD or Xenium"
+        preconditions:
+          any_of:
+            - slot_conditions:
+                PLATFORM:
+                  equals_string: "10x Genomics Visium"
+            - slot_conditions:
+                PLATFORM:
+                  equals_string: "10x Genomics Visium HD"
+            - slot_conditions:
+                PLATFORM:
+                  equals_string: "10x Genomics Xenium"
+        postconditions:
+          slot_conditions:
+            SLIDE_SERIAL_NUMBER:
+              required: true
+      - description: "CAPTURE_AREA is required when PLATFORM is Visium or Visium HD"
+        preconditions:
+          any_of:
+            - slot_conditions:
+                PLATFORM:
+                  equals_string: "10x Genomics Visium"
+            - slot_conditions:
+                PLATFORM:
+                  equals_string: "10x Genomics Visium HD"
+        postconditions:
+          slot_conditions:
+            CAPTURE_AREA:
+              required: true
+      - description: "CYTASSIST_USED is required when PLATFORM is Visium or Visium HD"
+        preconditions:
+          any_of:
+            - slot_conditions:
+                PLATFORM:
+                  equals_string: "10x Genomics Visium"
+            - slot_conditions:
+                PLATFORM:
+                  equals_string: "10x Genomics Visium HD"
+        postconditions:
+          slot_conditions:
+            CYTASSIST_USED:
+              required: true
+      - description: "GENOMIC_REFERENCE is required when PLATFORM is Visium or Visium HD"
+        preconditions:
+          any_of:
+            - slot_conditions:
+                PLATFORM:
+                  equals_string: "10x Genomics Visium"
+            - slot_conditions:
+                PLATFORM:
+                  equals_string: "10x Genomics Visium HD"
+        postconditions:
+          slot_conditions:
+            GENOMIC_REFERENCE:
+              required: true
+      - description: "SEQUENCING_INSTRUMENT is required when SPATIAL_ASSAY_TYPE is capture-based"
+        preconditions:
+          slot_conditions:
+            SPATIAL_ASSAY_TYPE:
+              equals_string: "capture-based"
+        postconditions:
+          slot_conditions:
+            SEQUENCING_INSTRUMENT:
+              required: true
+      - description: "SEQUENCING_CONFIGURATION is required when SPATIAL_ASSAY_TYPE is capture-based"
+        preconditions:
+          slot_conditions:
+            SPATIAL_ASSAY_TYPE:
+              equals_string: "capture-based"
+        postconditions:
+          slot_conditions:
+            SEQUENCING_CONFIGURATION:
+              required: true
+      - description: "SEQUENCING_DEPTH is required when SPATIAL_ASSAY_TYPE is capture-based"
+        preconditions:
+          slot_conditions:
+            SPATIAL_ASSAY_TYPE:
+              equals_string: "capture-based"
+        postconditions:
+          slot_conditions:
+            SEQUENCING_DEPTH:
+              required: true
+

@@ -1,0 +1,50 @@
+name: SpatialPanel
+id: https://w3id.org/htan/spatial/panel
+description: HTAN Spatial Omics Panel Information - Metadata for targeted sequencing or protein panels
+
+imports:
+  - linkml:types
+  - linkml:extensions
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+classes:
+  SpatialPanel:
+    description: Spatial omics panel information for targeted sequencing or protein panels
+    attributes:
+      HTAN_PANEL_ID:
+        range: string
+        required: true
+        identifier: true
+        title: "HTAN Panel ID"
+        description: Unique identifier for the panel
+        pattern: "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$"
+      GENE_SYMBOL:
+        range: string
+        required: true
+        title: "Gene Symbol"
+        description: HGNC-approved Gene symbol (e.g., MYC, PIK3C)
+        pattern: "^[A-Za-z0-9_\\-]+(@)?$"
+      HGNC_VERSION:
+        range: string
+        required: true
+        title: "HGNC Version"
+        description: Version of the HGNC used, indicated with the date of the HGNC reference (e.g., 2025-08-01)
+        pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+      GENE_ID:
+        range: string
+        required: true
+        title: "Gene ID"
+        description: Stable Ensembl gene identifier (e.g., ENSG00000214114, ENSG00000121879). String matching ENSG\\d+ or digits
+        pattern: "^(ENSG\\d+|\\d+)$"
+      USER_GENE_NAME:
+        range: string
+        required: false
+        title: "User Gene Name"
+        description: Optional user-defined name for the Gene
+
