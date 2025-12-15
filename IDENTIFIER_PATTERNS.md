@@ -7,30 +7,32 @@ This document lists all identifier and validation regex patterns used across the
 ### HTAN Data File ID
 **Location**: `modules/CoreFile/domains/core.yaml` (inherited by all file-based modules)
 - **Attribute**: `HTAN_DATA_FILE_ID`
-- **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
-- **Description**: Primary key for all data files
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$`
+- **Description**: Primary key for all data files. Supports HTA200-229 for phase 2. Total length max 50 characters.
 - **Examples**: 
-  - `HTA200_2_36667`
-  - `HTA200_EXT001_36667`
-  - `HTA1_0000_0000`
+  - `HTA200_2_D36667`
+  - `HTA200_EXT001_D123`
+  - `HTA229_0000_D1`
 
 ### HTAN Biospecimen ID
 **Location**: `modules/Biospecimen/domains/biospecimen.yaml`
 - **Attribute**: `HTAN_BIOSPECIMEN_ID`
-- **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
-- **Description**: Primary key for biospecimen records
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$`
+- **Description**: Primary key for biospecimen records. Supports HTA200-229 for phase 2. Total length max 50 characters.
 - **Examples**: 
   - `HTA200_2_B7001`
-  - `HTA200_EXT001_B7001`
+  - `HTA200_EXT001_B123`
+  - `HTA229_0000_B1`
 
 ### HTAN Participant ID
 **Location**: `modules/Clinical/domains/clinical.yaml`
 - **Attribute**: `HTAN_PARTICIPANT_ID`
-- **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$`
-- **Description**: Primary key for participant/patient records
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$`
+- **Description**: Primary key for participant/patient records. Supports HTA200-229 for phase 2. Total length max 50 characters.
 - **Examples**: 
   - `HTA200_2`
   - `HTA200_EXT001`
+  - `HTA229_0000`
 
 ### HTAN Panel ID
 **Location**: `modules/SpatialOmics/domains/spatial_panel.yaml`
@@ -44,22 +46,23 @@ This document lists all identifier and validation regex patterns used across the
 ### HTAN Parent ID (File-based modules)
 **Location**: `modules/CoreFile/domains/core.yaml` (inherited by all file-based modules)
 - **Attribute**: `HTAN_PARENT_ID`
-- **Pattern**: `^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$`
-- **Description**: Foreign key to parent entity (B for Biospecimen, D for data file). Supports HTA200-209 for phase 2.
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$`
+- **Description**: Foreign key to parent entity (B for Biospecimen, D for data file). Supports HTA200-229 for phase 2. Total length max 50 characters.
 - **Examples**: 
   - `HTA200_2_B7001` (biospecimen with B suffix)
   - `HTA200_2_D36667` (data file with D suffix)
-  - `HTA200_0000_B7001`
-  - `HTA200_2_EXT001_B7001`
+  - `HTA229_0000_B1`
+  - `HTA200_EXT001_D123`
 
 ### HTAN Parent ID (Biospecimen module)
 **Location**: `modules/Biospecimen/domains/biospecimen.yaml`
 - **Attribute**: `HTAN_PARENT_ID`
-- **Pattern**: `^(HTA([1-9]|1[0-6]|\d{2,}))_((EXT)?([0-9]\d*|0000))$|^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_B\d{1,50}$`
-- **Description**: Foreign key to parent entity (Participant ID or Biospecimen ID with B suffix). Biospecimen IDs support HTA200-209 for phase 2.
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$`
+- **Description**: Foreign key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2. Total length max 50 characters.
 - **Examples**: 
   - `HTA200_2` (participant ID)
   - `HTA200_2_B7001` (biospecimen ID with B suffix)
+  - `HTA229_EXT001_B123`
 
 ## External Identifiers
 
@@ -161,16 +164,16 @@ These are typically enforced via enums rather than regex, but some modules use p
 ## Summary by Module
 
 ### CoreFile Module
-- `HTAN_DATA_FILE_ID`: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
-- `HTAN_PARENT_ID`: `^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_(B|D)\d{1,50}$`
+- `HTAN_DATA_FILE_ID`: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$`
+- `HTAN_PARENT_ID`: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$`
 - `FILENAME`: `^.+[\\/]\S*$`
 
 ### Biospecimen Module
-- `HTAN_BIOSPECIMEN_ID`: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
-- `HTAN_PARENT_ID`: `^(HTA([1-9]|1[0-6]|\d{2,}))_((EXT)?([0-9]\d*|0000))$|^(HTA20[0-9])(?:_0000)?(?:_\d+)?(?:_EXT\d+)?_B\d{1,50}$`
+- `HTAN_BIOSPECIMEN_ID`: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$`
+- `HTAN_PARENT_ID`: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$`
 
 ### Clinical Module
-- `HTAN_PARTICIPANT_ID`: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))$`
+- `HTAN_PARTICIPANT_ID`: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$`
 
 ### SpatialOmics Module
 - `HTAN_PANEL_ID`: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
@@ -199,13 +202,13 @@ These are typically enforced via enums rather than regex, but some modules use p
 
 ## Notes
 
-1. **HTAN ID Format**: Most HTAN identifiers follow the pattern `HTA{center_id}_{ext?}{participant_id}_{entity_id}` where:
-   - Center ID: `[1-9]|1[0-6]` for Phase 1, `20[0-9]` for Phase 2
-   - EXT: Optional extension marker
-   - Participant ID: Numeric or `0000`
-   - Entity ID: Numeric or `0000` (for data files/biospecimens/panels)
+1. **HTAN ID Format**: HTAN identifiers follow the pattern `HTA{center_id}_{participant_id}_{entity_id?}` where:
+   - Center ID: `2[0-2][0-9]` for Phase 2 (HTA200-229)
+   - Participant ID: `0000`, `EXT[0-9]{1,18}`, or `[0-9]{1,21}` (max 21 characters)
+   - Entity ID: Optional `[BD][0-9]{1,20}` (max 21 characters: B/D + up to 20 digits)
+   - Total length: Maximum 50 characters (enforced by lookahead)
 
-2. **Phase 2 Support**: The `HTAN_PARENT_ID` patterns support Phase 2 center IDs (HTA200-209) with more flexible formatting.
+2. **Phase 2 Support**: All HTAN identifier patterns support Phase 2 center IDs (HTA200-229) with explicit length constraints to ensure total IDs never exceed 50 characters.
 
 3. **URL Validation**: The URL pattern excludes private IP ranges to ensure only publicly accessible URLs are accepted.
 
