@@ -17,6 +17,8 @@ default_prefix: htan
 enums:
   FileFormatLevel1:
     permissible_values:
+      "tar":
+        description: TAR archive format
       "tar.gz":
         description: TAR GZIP compressed archive format
       "zip":

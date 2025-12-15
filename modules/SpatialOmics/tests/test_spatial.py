@@ -171,6 +171,12 @@ class TestSpatial:
         assert "in situ sequencing" in assay_type_enum.permissible_values
         assert "molecular barcoding" in assay_type_enum.permissible_values
         
+        # Test FileFormatLevel1 enum
+        file_format_level1_enum = sv.get_enum("FileFormatLevel1")
+        assert "tar" in file_format_level1_enum.permissible_values
+        assert "tar.gz" in file_format_level1_enum.permissible_values
+        assert "zip" in file_format_level1_enum.permissible_values
+        
         # Test FileFormatLevel4 enum
         file_format_enum = sv.get_enum("FileFormatLevel4")
         assert "h5ad" in file_format_enum.permissible_values
