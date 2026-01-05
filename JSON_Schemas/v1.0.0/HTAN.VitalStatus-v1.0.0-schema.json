@@ -1,0 +1,72 @@
+{
+  "$id": "https://w3id.org/htan/clinical/vital_status",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Information about the vital status",
+  "if": {
+    "properties": {
+      "VITAL_STATUS": {
+        "const": "Deceased"
+      }
+    },
+    "required": [
+      "VITAL_STATUS"
+    ]
+  },
+  "properties": {
+    "AGE_IN_DAYS_AT_DEATH": {
+      "description": "Required when VITAL_STATUS is Deceased"
+    },
+    "CAUSE_OF_DEATH": {
+      "description": "",
+      "enum": [
+        "Disease",
+        "Not Reported",
+        "Other",
+        "Unknown"
+      ],
+      "title": "CauseOfDeathEnum",
+      "type": "string"
+    },
+    "CAUSE_OF_DEATH_SOURCE": {
+      "description": "",
+      "enum": [
+        "Autopsy",
+        "Death Certificate",
+        "Not Reported",
+        "Other",
+        "Unknown"
+      ],
+      "title": "CauseOfDeathSourceEnum",
+      "type": "string"
+    },
+    "VITAL_STATUS": {
+      "description": "",
+      "enum": [
+        "Alive",
+        "Deceased",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "VitalStatusEnum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "VITAL_STATUS"
+  ],
+  "then": {
+    "properties": {
+      "AGE_IN_DAYS_AT_DEATH": {},
+      "CAUSE_OF_DEATH": {},
+      "CAUSE_OF_DEATH_SOURCE": {}
+    },
+    "required": [
+      "AGE_IN_DAYS_AT_DEATH",
+      "CAUSE_OF_DEATH",
+      "CAUSE_OF_DEATH_SOURCE"
+    ]
+  },
+  "title": "ClinicalVitalStatus",
+  "type": "object"
+}

@@ -1,0 +1,40 @@
+{
+  "$id": "https://w3id.org/htan/spatial/panel",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Spatial omics panel information for targeted sequencing or protein panels",
+  "properties": {
+    "GENE_ID": {
+      "description": "Stable Ensembl gene identifier (e.g., ENSG00000214114, ENSG00000121879). String matching ENSG\\\\d+ or digits",
+      "pattern": "^(ENSG\\d+|\\d+)$",
+      "type": "string"
+    },
+    "GENE_SYMBOL": {
+      "description": "HGNC-approved Gene symbol (e.g., MYC, PIK3C)",
+      "pattern": "^[A-Za-z0-9_\\-]+(@)?$",
+      "type": "string"
+    },
+    "HGNC_VERSION": {
+      "description": "Version of the HGNC used, indicated with the date of the HGNC reference (e.g., 2025-08-01)",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "type": "string"
+    },
+    "HTAN_PANEL_ID": {
+      "description": "Unique identifier for the panel",
+      "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+      "type": "string"
+    },
+    "USER_GENE_NAME": {
+      "description": "Optional user-defined name for the Gene",
+      "type": "string"
+    }
+  },
+  "required": [
+    "HTAN_PANEL_ID",
+    "GENE_SYMBOL",
+    "HGNC_VERSION",
+    "GENE_ID"
+  ],
+  "title": "SpatialPanel",
+  "type": "object"
+}

@@ -1,0 +1,717 @@
+{
+  "$id": "https://w3id.org/htan/spatial/level_3",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "RNA_MEASURED": {
+            "const": true
+          }
+        },
+        "required": [
+          "RNA_MEASURED"
+        ]
+      },
+      "then": {
+        "properties": {
+          "TRANSCRIPTOME_TYPE": {}
+        },
+        "required": [
+          "TRANSCRIPTOME_TYPE"
+        ]
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "properties": {
+              "TRANSCRIPTOME_TYPE": {
+                "const": "Targeted"
+              }
+            },
+            "required": [
+              "TRANSCRIPTOME_TYPE"
+            ]
+          },
+          {
+            "properties": {
+              "PROTEIN_MEASURED": {
+                "pattern": "^true$"
+              }
+            },
+            "required": [
+              "PROTEIN_MEASURED"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "properties": {
+          "PANEL_NAME": {}
+        },
+        "required": [
+          "PANEL_NAME"
+        ]
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "properties": {
+              "TRANSCRIPTOME_TYPE": {
+                "const": "Targeted"
+              }
+            },
+            "required": [
+              "TRANSCRIPTOME_TYPE"
+            ]
+          },
+          {
+            "properties": {
+              "PROTEIN_MEASURED": {
+                "pattern": "^true$"
+              }
+            },
+            "required": [
+              "PROTEIN_MEASURED"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "properties": {
+          "PANEL_SYNAPSE_ID": {}
+        },
+        "required": [
+          "PANEL_SYNAPSE_ID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SAME_SECTION_IMAGING_MODALITY": {
+            "const": "fluorescence"
+          }
+        },
+        "required": [
+          "SAME_SECTION_IMAGING_MODALITY"
+        ]
+      },
+      "then": {
+        "properties": {
+          "SAME_SECTION_IMAGING_CHANNELS": {}
+        },
+        "required": [
+          "SAME_SECTION_IMAGING_CHANNELS"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_CELL_SEGMENTATION": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_CELL_SEGMENTATION"
+        ]
+      },
+      "then": {
+        "properties": {
+          "CELL_SEGMENTATION_METHOD": {}
+        },
+        "required": [
+          "CELL_SEGMENTATION_METHOD"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_CELL_SEGMENTATION": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_CELL_SEGMENTATION"
+        ]
+      },
+      "then": {
+        "properties": {
+          "CELL_SEGMENTED_OBJECT_TYPE": {}
+        },
+        "required": [
+          "CELL_SEGMENTED_OBJECT_TYPE"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_CELL_SEGMENTATION": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_CELL_SEGMENTATION"
+        ]
+      },
+      "then": {
+        "properties": {
+          "NUMBER_OF_SEGMENTED_CELLS": {}
+        },
+        "required": [
+          "NUMBER_OF_SEGMENTED_CELLS"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_DIMENSIONALITY_REDUCTION": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_DIMENSIONALITY_REDUCTION"
+        ]
+      },
+      "then": {
+        "properties": {
+          "DIMENSIONALITY_REDUCTION_METHOD": {}
+        },
+        "required": [
+          "DIMENSIONALITY_REDUCTION_METHOD"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_CLUSTERING": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_CLUSTERING"
+        ]
+      },
+      "then": {
+        "properties": {
+          "CLUSTERING_METHOD": {}
+        },
+        "required": [
+          "CLUSTERING_METHOD"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_CLUSTERING": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_CLUSTERING"
+        ]
+      },
+      "then": {
+        "properties": {
+          "NUMBER_OF_CLUSTERS": {}
+        },
+        "required": [
+          "NUMBER_OF_CLUSTERS"
+        ]
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "properties": {
+              "PLATFORM": {
+                "const": "10x Genomics Visium"
+              }
+            },
+            "required": [
+              "PLATFORM"
+            ]
+          },
+          {
+            "properties": {
+              "PLATFORM": {
+                "const": "10x Genomics Visium HD"
+              }
+            },
+            "required": [
+              "PLATFORM"
+            ]
+          },
+          {
+            "properties": {
+              "PLATFORM": {
+                "const": "10x Genomics Xenium"
+              }
+            },
+            "required": [
+              "PLATFORM"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "properties": {
+          "SLIDE_SERIAL_NUMBER": {}
+        },
+        "required": [
+          "SLIDE_SERIAL_NUMBER"
+        ]
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "properties": {
+              "PLATFORM": {
+                "const": "10x Genomics Visium"
+              }
+            },
+            "required": [
+              "PLATFORM"
+            ]
+          },
+          {
+            "properties": {
+              "PLATFORM": {
+                "const": "10x Genomics Visium HD"
+              }
+            },
+            "required": [
+              "PLATFORM"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "properties": {
+          "CAPTURE_AREA": {}
+        },
+        "required": [
+          "CAPTURE_AREA"
+        ]
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "properties": {
+              "PLATFORM": {
+                "const": "10x Genomics Visium"
+              }
+            },
+            "required": [
+              "PLATFORM"
+            ]
+          },
+          {
+            "properties": {
+              "PLATFORM": {
+                "const": "10x Genomics Visium HD"
+              }
+            },
+            "required": [
+              "PLATFORM"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "properties": {
+          "CYTASSIST_USED": {}
+        },
+        "required": [
+          "CYTASSIST_USED"
+        ]
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "properties": {
+              "PLATFORM": {
+                "const": "10x Genomics Visium"
+              }
+            },
+            "required": [
+              "PLATFORM"
+            ]
+          },
+          {
+            "properties": {
+              "PLATFORM": {
+                "const": "10x Genomics Visium HD"
+              }
+            },
+            "required": [
+              "PLATFORM"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "properties": {
+          "GENOMIC_REFERENCE": {}
+        },
+        "required": [
+          "GENOMIC_REFERENCE"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SPATIAL_ASSAY_TYPE": {
+            "const": "capture-based"
+          }
+        },
+        "required": [
+          "SPATIAL_ASSAY_TYPE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "SEQUENCING_INSTRUMENT": {}
+        },
+        "required": [
+          "SEQUENCING_INSTRUMENT"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SPATIAL_ASSAY_TYPE": {
+            "const": "capture-based"
+          }
+        },
+        "required": [
+          "SPATIAL_ASSAY_TYPE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "SEQUENCING_CONFIGURATION": {}
+        },
+        "required": [
+          "SEQUENCING_CONFIGURATION"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SPATIAL_ASSAY_TYPE": {
+            "const": "capture-based"
+          }
+        },
+        "required": [
+          "SPATIAL_ASSAY_TYPE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "SEQUENCING_DEPTH": {}
+        },
+        "required": [
+          "SEQUENCING_DEPTH"
+        ]
+      }
+    }
+  ],
+  "description": "Level 3 processed spatial assay output bundle - Contains platform-specific output files, segmentation, matrices, and QC metrics",
+  "properties": {
+    "ASSAY_CHEMISTRY_VERSION": {
+      "description": "Assay chemistry version (e.g., v1, v2)",
+      "type": "string"
+    },
+    "BUNDLE_CONTENTS": {
+      "description": "List of expected files or folders in this bundle (relative paths within the archive)",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "CAPTURE_AREA": {
+      "description": "",
+      "enum": [
+        "A",
+        "A1",
+        "B",
+        "B1",
+        "C1",
+        "D1"
+      ],
+      "title": "CaptureArea",
+      "type": "string"
+    },
+    "CELL_SEGMENTATION_METHOD": {
+      "description": "Description of segmentation method",
+      "type": "string"
+    },
+    "CELL_SEGMENTED_OBJECT_TYPE": {
+      "description": "",
+      "enum": [
+        "cytoplasm",
+        "nucleus",
+        "Whole cell"
+      ],
+      "title": "CellSegmentedObjectType",
+      "type": "string"
+    },
+    "CLUSTERING_METHOD": {
+      "description": "Method used to define clusters",
+      "type": "string"
+    },
+    "CYTASSIST_USED": {
+      "description": "Whether CytAssist was used",
+      "type": "boolean"
+    },
+    "DIMENSIONALITY_REDUCTION_METHOD": {
+      "description": "",
+      "enum": [
+        "PCA",
+        "t-SNE",
+        "UMAP",
+        "other"
+      ],
+      "title": "DimensionalityReductionMethod",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file",
+      "pattern": "^.+[\\\\/]\\S*$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE": {
+      "description": "Reference genome used",
+      "type": "string"
+    },
+    "HAS_CELL_SEGMENTATION": {
+      "description": "Indicates presence of cell segmentation data",
+      "type": "boolean"
+    },
+    "HAS_CLUSTERING": {
+      "description": "Indicates if clustering was performed",
+      "type": "boolean"
+    },
+    "HAS_DIMENSIONALITY_REDUCTION": {
+      "description": "Indicates presence of dimensionally reduced data",
+      "type": "boolean"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+      "type": "string"
+    },
+    "NUMBER_OF_CLUSTERS": {
+      "description": "Number of clusters identified",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "NUMBER_OF_SEGMENTED_CELLS": {
+      "description": "Total number of segmented cells",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "PANEL_NAME": {
+      "description": "Number of genes/proteins in panel",
+      "type": "string"
+    },
+    "PANEL_SIZE_TOTAL_TARGETS": {
+      "description": "Total number of targets in the panel",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "PANEL_SYNAPSE_ID": {
+      "description": "Synapse ID of the completed spatial_omics_panel template",
+      "pattern": "^syn\\d+$",
+      "type": "string"
+    },
+    "PLATFORM": {
+      "description": "",
+      "enum": [
+        "10x Genomics Visium",
+        "10x Genomics Visium HD",
+        "10x Genomics Xenium",
+        "DBiT-seq",
+        "Nanostring CosMX",
+        "SeqFISH",
+        "STOmics Stereo-CITE",
+        "STOmics Stereo-seq"
+      ],
+      "title": "PlatformLevel3",
+      "type": "string"
+    },
+    "PORTAL_PREVIEW_FILE": {
+      "description": "Relative path of HTML preview in bundle if present",
+      "type": "string"
+    },
+    "PROTEIN_MEASURED": {
+      "description": "Whether protein was measured",
+      "type": "boolean"
+    },
+    "PROTOCOL_LINK": {
+      "description": "URL to protocol documentation",
+      "pattern": "^(?:(?:https?)://)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\.\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$",
+      "type": "string"
+    },
+    "QC_FEATURE_NUMBER": {
+      "description": "Features (e.g. spots or bins) under tissue",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "QC_MEAN_READS_PER_FEATURE": {
+      "description": "Mean reads per feature",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "QC_SPATIAL_UNIT": {
+      "description": "",
+      "enum": [
+        "100um area",
+        "8um bin",
+        "cell",
+        "spot"
+      ],
+      "title": "QCSpatialUnit",
+      "type": "string"
+    },
+    "QC_TOTAL_GENES_DETECTED": {
+      "description": "Total genes detected",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "QC_TOTAL_NUMBER_OF_READS": {
+      "description": "Total number of reads",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "REGION_AREA": {
+      "description": "Capture area in \u00b5m\u00b2",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "RNA_MEASURED": {
+      "description": "Whether RNA was measured",
+      "type": "boolean"
+    },
+    "RUN_ID": {
+      "description": "A unique identifier for this individual run (typically associated with a single slide) of the spatial transcriptomic processing workflow",
+      "type": "string"
+    },
+    "SAME_SECTION_IMAGING_CHANNELS": {
+      "description": "Antigens targeted in same section fluorescence imaging",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "SAME_SECTION_IMAGING_ID": {
+      "description": "HTAN ID of data file that represents same section imaging",
+      "items": {
+        "pattern": "^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\\d*|0000))_([0-9]\\d*|0000)$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "SAME_SECTION_IMAGING_MODALITY": {
+      "description": "",
+      "enum": [
+        "fluorescence",
+        "H&E"
+      ],
+      "title": "SameSectionImagingModality",
+      "type": "string"
+    },
+    "SEQUENCING_CONFIGURATION": {
+      "description": "Read and index setup",
+      "type": "string"
+    },
+    "SEQUENCING_DEPTH": {
+      "description": "Sequencing depth",
+      "type": "string"
+    },
+    "SEQUENCING_INSTRUMENT": {
+      "description": "Sequencer used",
+      "type": "string"
+    },
+    "SLIDE_SERIAL_NUMBER": {
+      "description": "Slide serial number",
+      "type": "string"
+    },
+    "SOFTWARE_AND_VERSION": {
+      "description": "Software/tools used for processing",
+      "type": "string"
+    },
+    "SPATIAL_ASSAY_TYPE": {
+      "description": "",
+      "enum": [
+        "capture-based",
+        "In situ"
+      ],
+      "title": "SpatialAssayType",
+      "type": "string"
+    },
+    "TRANSCRIPTOME_TYPE": {
+      "description": "",
+      "enum": [
+        "Protein coding",
+        "Targeted",
+        "Whole transcriptome"
+      ],
+      "title": "TranscriptomeType",
+      "type": "string"
+    }
+  },
+  "required": [
+    "PLATFORM",
+    "ASSAY_CHEMISTRY_VERSION",
+    "RNA_MEASURED",
+    "PROTEIN_MEASURED",
+    "PANEL_SIZE_TOTAL_TARGETS",
+    "REGION_AREA",
+    "BUNDLE_CONTENTS",
+    "HAS_CELL_SEGMENTATION",
+    "HAS_CLUSTERING",
+    "QC_SPATIAL_UNIT",
+    "QC_FEATURE_NUMBER",
+    "QC_MEAN_READS_PER_FEATURE",
+    "QC_TOTAL_GENES_DETECTED",
+    "QC_TOTAL_NUMBER_OF_READS",
+    "FILENAME",
+    "FILE_FORMAT",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "SpatialLevel3",
+  "type": "object"
+}

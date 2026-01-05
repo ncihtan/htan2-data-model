@@ -1,0 +1,68 @@
+{
+  "$id": "https://w3id.org/htan/clinical/exposure",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Information about the exposure",
+  "properties": {
+    "ALCOHOL_HISTORY_INDICATOR": {
+      "description": "",
+      "enum": [
+        "No",
+        "Yes",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "AlcoholHistoryIndicatorEnum",
+      "type": "string"
+    },
+    "ENVIRONMENTAL_EXPOSURE": {
+      "description": "",
+      "enum": [
+        "No",
+        "Yes",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "EnvironmentalExposureEnum",
+      "type": "string"
+    },
+    "ENVIRONMENTAL_EXPOSURE_TYPE": {
+      "description": "",
+      "enum": [
+        "Asbestos",
+        "Chemical",
+        "Not Reported",
+        "Other",
+        "Radiation",
+        "Unknown"
+      ],
+      "title": "EnvironmentalExposureTypeEnum",
+      "type": "string"
+    },
+    "PACK_YEARS_SMOKED": {
+      "description": "Required when SMOKING_HISTORY is Current smoker or Former smoker"
+    },
+    "SMOKING_HISTORY": {
+      "description": "",
+      "enum": [
+        "Current smoker",
+        "Former smoker",
+        "Never smoker",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "SmokingHistoryEnum",
+      "type": "string"
+    },
+    "YEARS_SMOKED": {
+      "description": "Required when SMOKING_HISTORY is Current smoker or Former smoker"
+    }
+  },
+  "required": [
+    "SMOKING_HISTORY",
+    "ALCOHOL_HISTORY_INDICATOR",
+    "ENVIRONMENTAL_EXPOSURE"
+  ],
+  "title": "ClinicalExposure",
+  "type": "object"
+}

@@ -1,0 +1,160 @@
+{
+  "$id": "https://w3id.org/htan/wes/level_3",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis",
+  "properties": {
+    "CHECKSUM": {
+      "description": "Checksum for data integrity verification",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file",
+      "pattern": "^.+[\\\\/]\\S*$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+      "type": "string"
+    },
+    "GENOME_ANNOTATION_URL": {
+      "description": "URL to genome annotation",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE": {
+      "description": "Genomic reference used for alignment",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE_URL": {
+      "description": "URL to genomic reference",
+      "type": "string"
+    },
+    "GERMLINE_VARIANTS_WORKFLOW_TYPE": {
+      "description": "Type of germline variants workflow",
+      "type": "string"
+    },
+    "GERMLINE_VARIANTS_WORKFLOW_URL": {
+      "description": "URL to the germline variants workflow",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+      "type": "string"
+    },
+    "LIBRARY_LAYOUT": {
+      "description": "",
+      "enum": [
+        "Paired-end",
+        "Single-end"
+      ],
+      "title": "LibraryLayoutEnum",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+      "description": "Days from index for library preparation",
+      "type": "integer"
+    },
+    "MSI_SCORE": {
+      "description": "MSI score",
+      "type": "number"
+    },
+    "MSI_STATUS": {
+      "description": "",
+      "enum": [
+        "MSI-H",
+        "MSI-L",
+        "MSS",
+        "Unknown"
+      ],
+      "title": "MSIStatusEnum",
+      "type": "string"
+    },
+    "MSI_WORKFLOW_LINK": {
+      "description": "Link to MSI workflow",
+      "type": "string"
+    },
+    "PROTOCOL_LINK": {
+      "description": "Link to sequencing protocol",
+      "type": "string"
+    },
+    "SEQUENCING_BATCH_ID": {
+      "description": "Sequencing batch identifier",
+      "type": "string"
+    },
+    "SEQUENCING_PLATFORM": {
+      "description": "",
+      "enum": [
+        "ABI_SOLID",
+        "BGISEQ",
+        "CAPILLARY",
+        "COMPLETE_GENOMICS",
+        "HELICOS",
+        "ILLUMINA",
+        "ION_TORRENT",
+        "LS454",
+        "OXFORD_NANOPORE",
+        "PACBIO_SMRT"
+      ],
+      "title": "SequencingPlatformEnum",
+      "type": "string"
+    },
+    "SOMATIC_VARIANTS_SAMPLE_TYPE": {
+      "description": "",
+      "enum": [
+        "Metastatic",
+        "Normal",
+        "Other",
+        "Primary",
+        "Recurrent"
+      ],
+      "title": "SomaticVariantsSampleTypeEnum",
+      "type": "string"
+    },
+    "SOMATIC_VARIANTS_WORKFLOW_TYPE": {
+      "description": "Type of somatic variants workflow",
+      "type": "string"
+    },
+    "SOMATIC_VARIANTS_WORKFLOW_URL": {
+      "description": "URL to the somatic variants workflow",
+      "type": "string"
+    },
+    "STRUCTURAL_VARIANT_WORKFLOW_TYPE": {
+      "description": "Type of structural variant workflow",
+      "type": "string"
+    },
+    "STRUCTURAL_VARIANT_WORKFLOW_URL": {
+      "description": "URL to the structural variant workflow",
+      "type": "string"
+    },
+    "TECHNICAL_REPLICATE_GROUP": {
+      "description": "Technical replicate group identifier",
+      "type": "string"
+    },
+    "WORKFLOW_LINK": {
+      "description": "Link to workflow or command. DockStore.org recommended",
+      "type": "string"
+    },
+    "WORKFLOW_VERSION": {
+      "description": "Major version of the workflow",
+      "type": "string"
+    }
+  },
+  "required": [
+    "LIBRARY_LAYOUT",
+    "SEQUENCING_PLATFORM",
+    "WORKFLOW_VERSION",
+    "GENOMIC_REFERENCE",
+    "FILENAME",
+    "FILE_FORMAT",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "Level3",
+  "type": "object"
+}

@@ -1,0 +1,187 @@
+{
+  "$id": "https://w3id.org/htan/scrna_seq/level_3_4",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships",
+  "properties": {
+    "ANNDATA_SCHEMA_VERSION": {
+      "description": "Version of AnnData schema (must be 0.1 for CellxGene compliance)",
+      "pattern": "^0\\.1$",
+      "type": "string"
+    },
+    "ANNDATA_STRUCTURE_VALIDATED": {
+      "description": "Whether the h5ad file structure has been validated against AnnData 0.1 schema",
+      "type": "boolean"
+    },
+    "CELL_MEDIAN_NUMBER_GENES": {
+      "description": "Median number of genes detected per cell",
+      "type": "integer"
+    },
+    "CELL_MEDIAN_NUMBER_READS": {
+      "description": "Median number of reads per cell",
+      "type": "integer"
+    },
+    "CELL_TOTAL": {
+      "description": "Number of sequenced cells. Applies to raw counts matrix only",
+      "type": "integer"
+    },
+    "CHECKSUM": {
+      "description": "Checksum for data integrity verification",
+      "type": "string"
+    },
+    "DATA_CATEGORY": {
+      "description": "",
+      "enum": [
+        "Exon Expression Quantification",
+        "Gene Expression",
+        "Gene Expression Quantification",
+        "Isoform Expression Quantification",
+        "Other",
+        "Splice Junction Quantification",
+        "Transcript Expression"
+      ],
+      "title": "DataCategoryEnum",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file",
+      "pattern": "^.+[\\\\/]\\S*$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the file (only h5ad files accepted for Level 3/4)",
+      "pattern": "^h5ad$",
+      "type": "string"
+    },
+    "GENOME_ANNOTATION_URL": {
+      "description": "URL to genome annotation",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE": {
+      "description": "Genomic reference used for alignment",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE_URL": {
+      "description": "URL to genomic reference",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+      "type": "string"
+    },
+    "LIBRARY_LAYOUT": {
+      "description": "",
+      "enum": [
+        "Paired-end",
+        "Single-end"
+      ],
+      "title": "LibraryLayoutEnum",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+      "description": "Days from index for library preparation",
+      "type": "integer"
+    },
+    "LINKED_MATRICES": {
+      "description": "All matrices associated with every part of a SingleCellExperiment object. Comma-delimited list of filenames",
+      "type": "string"
+    },
+    "MATRIX_TYPE": {
+      "description": "",
+      "enum": [
+        "Batch Corrected Counts",
+        "Normalized Counts",
+        "Raw Counts",
+        "Scaled Counts"
+      ],
+      "title": "MatrixTypeEnum",
+      "type": "string"
+    },
+    "PROTOCOL_LINK": {
+      "description": "Link to sequencing protocol",
+      "type": "string"
+    },
+    "SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION": {
+      "description": "Parameters used to run the workflow. scRNA-seq level 3: e.g. Normalization and log transformation, ran empty drops or doublet detection, used filter on # genes/cell, etc. scRNA-seq Level 4: dimensionality reduction with PCA and 50 components, nearest-neighbor graph with k = 20 and Leiden clustering with resolution = 1, UMAP visualization using 50 PCA components, marker genes used to annotate cell types, information about droplet matrix (all barcodes) to cell matrix (only informative barcodes representing real cells) conversion",
+      "type": "string"
+    },
+    "SCRNASEQ_WORKFLOW_TYPE": {
+      "description": "",
+      "enum": [
+        "Cell annotation",
+        "CellRanger",
+        "Cufflinks",
+        "DEXSeq",
+        "Differentiation trajectory analysis",
+        "HCA Optimus",
+        "HTSeq - FPKM",
+        "Other",
+        "SEQC",
+        "STARsolo",
+        "dropEST"
+      ],
+      "title": "ScRNAseqWorkflowTypeEnumLevel34",
+      "type": "string"
+    },
+    "SEQUENCING_BATCH_ID": {
+      "description": "Sequencing batch identifier",
+      "type": "string"
+    },
+    "SEQUENCING_PLATFORM": {
+      "description": "",
+      "enum": [
+        "ABI_SOLID",
+        "BGISEQ",
+        "CAPILLARY",
+        "COMPLETE_GENOMICS",
+        "HELICOS",
+        "ILLUMINA",
+        "ION_TORRENT",
+        "LS454",
+        "OXFORD_NANOPORE",
+        "PACBIO_SMRT"
+      ],
+      "title": "SequencingPlatformEnum",
+      "type": "string"
+    },
+    "TECHNICAL_REPLICATE_GROUP": {
+      "description": "Technical replicate group identifier",
+      "type": "string"
+    },
+    "WORKFLOW_LINK": {
+      "description": "Link to workflow or command. DockStore.org recommended",
+      "type": "string"
+    },
+    "WORKFLOW_VERSION": {
+      "description": "Major version of the workflow",
+      "type": "string"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "SCRNASEQ_WORKFLOW_TYPE",
+    "SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION",
+    "DATA_CATEGORY",
+    "MATRIX_TYPE",
+    "CELL_MEDIAN_NUMBER_READS",
+    "CELL_MEDIAN_NUMBER_GENES",
+    "CELL_TOTAL",
+    "ANNDATA_SCHEMA_VERSION",
+    "ANNDATA_STRUCTURE_VALIDATED",
+    "LIBRARY_LAYOUT",
+    "SEQUENCING_PLATFORM",
+    "WORKFLOW_VERSION",
+    "GENOMIC_REFERENCE",
+    "FILENAME",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "scRNALevel3_4",
+  "type": "object"
+}

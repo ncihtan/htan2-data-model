@@ -1,0 +1,288 @@
+{
+  "$id": "https://w3id.org/htan/multiplex_microscopy/level_4",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "DE_IDENTIFICATION_METHOD_TYPE": {
+            "anyOf": [
+              {
+                "const": "Automatic"
+              },
+              {
+                "const": "Manual"
+              },
+              {
+                "const": "Semiautomatic"
+              }
+            ]
+          }
+        },
+        "required": [
+          "DE_IDENTIFICATION_METHOD_TYPE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "DE_IDENTIFICATION_METHOD_DESCRIPTION": {}
+        },
+        "required": [
+          "DE_IDENTIFICATION_METHOD_DESCRIPTION"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_SLIDE_LABEL": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_SLIDE_LABEL"
+        ]
+      },
+      "then": {
+        "properties": {
+          "SLIDE_LABEL_REDACTED": {}
+        },
+        "required": [
+          "SLIDE_LABEL_REDACTED"
+        ]
+      }
+    }
+  ],
+  "description": "Multiplex Microscopy Level 4 - Cell-by-feature table (typically cell-by-marker) generated from the segmentation mask and image. No changes from prior definitions (RFC Imaging Level 3 & 4 - v1)",
+  "properties": {
+    "CITATION_OR_DOI": {
+      "description": "Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https).",
+      "pattern": "^(?:(?:https?)://)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\.\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$",
+      "type": "string"
+    },
+    "DE_IDENTIFICATION_METHOD_DESCRIPTION": {
+      "description": "Required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable'",
+      "type": "string"
+    },
+    "DE_IDENTIFICATION_METHOD_TYPE": {
+      "description": "",
+      "enum": [
+        "Automatic",
+        "Manual",
+        "Not Applicable",
+        "Semiautomatic"
+      ],
+      "title": "DeIdentificationMethodType",
+      "type": "string"
+    },
+    "DE_IDENTIFICATION_SOFTWARE": {
+      "description": "Software that was used to de-identify the images (if used)",
+      "type": "string"
+    },
+    "DE_IDENTIFIED": {
+      "description": "Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI",
+      "type": "boolean"
+    },
+    "EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES": {
+      "description": "",
+      "enum": [
+        "Pathological"
+      ],
+      "title": "ExperimentalStrategyAndDataSubtypes",
+      "type": "string"
+    },
+    "FEATURE_EXTRACTION_METHOD": {
+      "description": "Method used for feature extraction (e.g., mean intensity, median intensity, total intensity, texture features)",
+      "type": "string"
+    },
+    "FEATURE_EXTRACTION_PARAMETERS": {
+      "description": "Parameters used for feature extraction (e.g., channel names, measurement types, normalization methods)",
+      "type": "string"
+    },
+    "FEATURE_EXTRACTION_WORKFLOW_TYPE": {
+      "description": "Type of workflow used to extract features from segmented objects",
+      "type": "string"
+    },
+    "FEATURE_EXTRACTION_WORKFLOW_URL": {
+      "description": "URL or link to the feature extraction workflow used",
+      "type": "string"
+    },
+    "FEATURE_EXTRACTION_WORKFLOW_VERSION": {
+      "description": "Version of the feature extraction workflow",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file",
+      "pattern": "^.+[\\\\/]\\S*$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the feature table file (csv or h5ad for Level 4)",
+      "pattern": "^(csv|h5ad)$",
+      "type": "string"
+    },
+    "HAS_SLIDE_LABEL": {
+      "description": "Does the image contain a slide label",
+      "type": "boolean"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+      "type": "string"
+    },
+    "IMAGE_MODALITY": {
+      "description": "",
+      "enum": [
+        "SM"
+      ],
+      "title": "ImageModality",
+      "type": "string"
+    },
+    "IMAGING_EQUIPMENT_MANUFACTURER": {
+      "description": "Producer of the imaging equipment that was used to generate the digital image",
+      "type": "string"
+    },
+    "IMAGING_EQUIPMENT_MODEL": {
+      "description": "The words used to describe the specific model of the instrument used to carry out an imaging experiment",
+      "type": "string"
+    },
+    "IMAGING_PROTOCOL": {
+      "description": "A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https).",
+      "pattern": "^(?:(?:https?)://)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\.\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$",
+      "type": "string"
+    },
+    "IMAGING_SOFTWARE": {
+      "description": "The name of the software package that was used to capture, generate, and process the image",
+      "type": "string"
+    },
+    "IMMERSION": {
+      "description": "",
+      "enum": [
+        "Air",
+        "Glycerol",
+        "Oil",
+        "Other",
+        "Water"
+      ],
+      "title": "ImmersionMedium",
+      "type": "string"
+    },
+    "LENS_NUMERICAL_APERTURE": {
+      "description": "The numerical aperture of the lens. Floating point value > 0.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "LICENSE": {
+      "description": "",
+      "enum": [
+        "CC BY 4.0"
+      ],
+      "title": "License",
+      "type": "string"
+    },
+    "MATRIX_TYPE": {
+      "description": "",
+      "enum": [
+        "Raw Counts",
+        "Normalized Counts",
+        "Scaled Counts",
+        "Log Normalized",
+        "Z-Score Normalized",
+        "Other"
+      ],
+      "title": "MatrixTypeEnum",
+      "type": "string"
+    },
+    "NOMINAL_MAGNIFICATION": {
+      "description": "The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer value >= 0 (no units)",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "NUMBER_OF_FEATURES": {
+      "description": "Number of features (markers/channels) in the feature matrix",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "NUMBER_OF_OBJECTS": {
+      "description": "Number of segmented objects (cells, nuclei, etc.) in the feature matrix",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "OBJECTIVE": {
+      "description": "The manufacturer and or model number for the optical element that gathers light from an object being observed and focuses the light rays from it to produce a real image of the object",
+      "type": "string"
+    },
+    "PASSED_QC": {
+      "description": "Confirm that the image has passed internal quality control checks",
+      "type": "boolean"
+    },
+    "QC_COMMENT": {
+      "description": "Comments related to quality control checks",
+      "type": "string"
+    },
+    "SLIDE_LABEL_REDACTED": {
+      "description": "Required when HAS_SLIDE_LABEL is true",
+      "type": "boolean"
+    },
+    "SPECIES": {
+      "description": "",
+      "enum": [
+        "9606 (Homo sapiens)"
+      ],
+      "title": "Species",
+      "type": "string"
+    },
+    "STAINING_METHOD": {
+      "description": "",
+      "enum": [
+        "CODEX",
+        "CyCIF",
+        "ExSeq",
+        "GeoMX-DSP",
+        "H&E",
+        "IHC",
+        "IMC",
+        "MERFISH",
+        "MIBI",
+        "MxIF",
+        "Not Applicable",
+        "SABER",
+        "mIHC",
+        "t-CyCIF"
+      ],
+      "title": "StainingMethod",
+      "type": "string"
+    }
+  },
+  "required": [
+    "FEATURE_EXTRACTION_WORKFLOW_TYPE",
+    "MATRIX_TYPE",
+    "FEATURE_EXTRACTION_METHOD",
+    "FILE_FORMAT",
+    "EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES",
+    "DE_IDENTIFICATION_METHOD_TYPE",
+    "LICENSE",
+    "IMAGE_MODALITY",
+    "IMAGING_EQUIPMENT_MANUFACTURER",
+    "CITATION_OR_DOI",
+    "STAINING_METHOD",
+    "OBJECTIVE",
+    "NOMINAL_MAGNIFICATION",
+    "PASSED_QC",
+    "QC_COMMENT",
+    "SPECIES",
+    "HAS_SLIDE_LABEL",
+    "DE_IDENTIFIED",
+    "FILENAME",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "MultiplexMicroscopyLevel4",
+  "type": "object"
+}

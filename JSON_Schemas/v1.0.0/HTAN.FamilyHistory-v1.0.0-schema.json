@@ -1,0 +1,42 @@
+{
+  "$id": "https://w3id.org/htan/clinical/family_history",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "A class to capture information about the cancer history of family members.",
+  "if": {
+    "properties": {
+      "FAMILY_MEMBER_CANCER_HISTORY": {
+        "const": "Yes"
+      }
+    },
+    "required": [
+      "FAMILY_MEMBER_CANCER_HISTORY"
+    ]
+  },
+  "properties": {
+    "FAMILY_MEMBER_CANCER_HISTORY": {
+      "description": "",
+      "enum": [
+        "No",
+        "Yes",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "YesNoUnknownNotReportedEnum",
+      "type": "string"
+    },
+    "RELATIVES_WITH_CANCER_HISTORY": {
+      "description": "Number of first degree relatives with cancer history"
+    }
+  },
+  "then": {
+    "properties": {
+      "RELATIVES_WITH_CANCER_HISTORY": {}
+    },
+    "required": [
+      "RELATIVES_WITH_CANCER_HISTORY"
+    ]
+  },
+  "title": "ClinicalFamilyHistory",
+  "type": "object"
+}

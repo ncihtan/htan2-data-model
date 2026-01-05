@@ -1,0 +1,255 @@
+{
+  "$id": "https://w3id.org/htan/wes/level_2",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC",
+  "properties": {
+    "ADAPTER_CONTENT": {
+      "description": "Adapter content information",
+      "type": "string"
+    },
+    "ALIGNMENT_WORKFLOW_TYPE": {
+      "description": "Type of alignment workflow used",
+      "type": "string"
+    },
+    "AVERAGE_BASE_QUALITY": {
+      "description": "Average base quality",
+      "type": "number"
+    },
+    "AVERAGE_INSERT_SIZE": {
+      "description": "Average insert size",
+      "type": "integer"
+    },
+    "AVERAGE_READ_LENGTH": {
+      "description": "Average read length",
+      "type": "integer"
+    },
+    "BASIC_STATISTICS": {
+      "description": "Basic statistics from QC",
+      "type": "string"
+    },
+    "CHECKSUM": {
+      "description": "Checksum for data integrity verification",
+      "type": "string"
+    },
+    "CONTAMINATION": {
+      "description": "Contamination estimate",
+      "type": "number"
+    },
+    "CONTAMINATION_ERROR": {
+      "description": "Contamination error estimate",
+      "type": "number"
+    },
+    "ENCODING": {
+      "description": "Encoding information",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file",
+      "pattern": "^.+[\\\\/]\\S*$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the file (e.g., fastq, bam, vcf, h5ad)",
+      "type": "string"
+    },
+    "GENOME_ANNOTATION_URL": {
+      "description": "URL to genome annotation",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE": {
+      "description": "Genomic reference used for alignment",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE_URL": {
+      "description": "URL to genomic reference",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+      "type": "string"
+    },
+    "INDEX_FILE_NAME": {
+      "description": "Name of the index file",
+      "type": "string"
+    },
+    "IS_LOWEST_LEVEL": {
+      "description": "Whether this is the lowest level",
+      "type": "boolean"
+    },
+    "LIBRARY_LAYOUT": {
+      "description": "",
+      "enum": [
+        "Paired-end",
+        "Single-end"
+      ],
+      "title": "LibraryLayoutEnum",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+      "description": "Days from index for library preparation",
+      "type": "integer"
+    },
+    "MEAN_COVERAGE": {
+      "description": "Mean coverage depth",
+      "type": "number"
+    },
+    "OVERREPRESENTED_SEQUENCES": {
+      "description": "Overrepresented sequences",
+      "type": "string"
+    },
+    "PAIRS_ON_DIFF_CHR": {
+      "description": "Number of read pairs on different chromosomes",
+      "type": "integer"
+    },
+    "PERCENT_GC_CONTENT": {
+      "description": "Percent GC content",
+      "type": "number"
+    },
+    "PER_BASE_N_CONTENT": {
+      "description": "Per base N content",
+      "type": "string"
+    },
+    "PER_BASE_SEQUENCE_CONTENT": {
+      "description": "Per base sequence content",
+      "type": "string"
+    },
+    "PER_BASE_SEQUENCE_QUALITY": {
+      "description": "Per base sequence quality",
+      "type": "string"
+    },
+    "PER_SEQUENCE_GC_CONTENT": {
+      "description": "Per sequence GC content",
+      "type": "string"
+    },
+    "PER_SEQUENCE_QUALITY_SCORE": {
+      "description": "Per sequence quality score",
+      "type": "string"
+    },
+    "PER_TILE_SEQUENCE_QUALITY": {
+      "description": "Per tile sequence quality",
+      "type": "string"
+    },
+    "PROPORTION_BASE_MISMATCH": {
+      "description": "Proportion of base mismatches",
+      "type": "number"
+    },
+    "PROPORTION_COVERAGE_10X": {
+      "description": "Proportion of coverage at 10x",
+      "type": "number"
+    },
+    "PROPORTION_COVERAGE_30X": {
+      "description": "Proportion of coverage at 30x",
+      "type": "number"
+    },
+    "PROPORTION_READS_DUPLICATED": {
+      "description": "Proportion of duplicated reads",
+      "type": "number"
+    },
+    "PROPORTION_READS_MAPPED": {
+      "description": "Proportion of mapped reads",
+      "type": "number"
+    },
+    "PROPORTION_TARGETS_NO_COVERAGE": {
+      "description": "Proportion of targets with no coverage",
+      "type": "number"
+    },
+    "PROTOCOL_LINK": {
+      "description": "Link to sequencing protocol",
+      "type": "string"
+    },
+    "QC_WORKFLOW_LINK": {
+      "description": "Link to QC workflow",
+      "type": "string"
+    },
+    "QC_WORKFLOW_TYPE": {
+      "description": "QC workflow type",
+      "type": "string"
+    },
+    "QC_WORKFLOW_VERSION": {
+      "description": "QC workflow version",
+      "type": "string"
+    },
+    "SEQUENCE_DUPLICATION_LEVELS": {
+      "description": "Sequence duplication levels",
+      "type": "string"
+    },
+    "SEQUENCE_LENGTH_DISTRIBUTION": {
+      "description": "Sequence length distribution",
+      "type": "string"
+    },
+    "SEQUENCING_BATCH_ID": {
+      "description": "Sequencing batch identifier",
+      "type": "string"
+    },
+    "SEQUENCING_PLATFORM": {
+      "description": "",
+      "enum": [
+        "ABI_SOLID",
+        "BGISEQ",
+        "CAPILLARY",
+        "COMPLETE_GENOMICS",
+        "HELICOS",
+        "ILLUMINA",
+        "ION_TORRENT",
+        "LS454",
+        "OXFORD_NANOPORE",
+        "PACBIO_SMRT"
+      ],
+      "title": "SequencingPlatformEnum",
+      "type": "string"
+    },
+    "SHORT_READS": {
+      "description": "Number of short reads",
+      "type": "integer"
+    },
+    "TECHNICAL_REPLICATE_GROUP": {
+      "description": "Technical replicate group identifier",
+      "type": "string"
+    },
+    "TOTAL_READS": {
+      "description": "Total number of reads",
+      "type": "integer"
+    },
+    "TOTAL_UNIQUELY_MAPPED": {
+      "description": "Total number of uniquely mapped reads",
+      "type": "integer"
+    },
+    "TOTAL_UNMAPPED_READS": {
+      "description": "Total number of unmapped reads",
+      "type": "integer"
+    },
+    "WORKFLOW_LINK": {
+      "description": "Link to workflow or command. DockStore.org recommended",
+      "type": "string"
+    },
+    "WORKFLOW_VERSION": {
+      "description": "Major version of the workflow",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ALIGNMENT_WORKFLOW_TYPE",
+    "MEAN_COVERAGE",
+    "TOTAL_READS",
+    "TOTAL_UNIQUELY_MAPPED",
+    "TOTAL_UNMAPPED_READS",
+    "PROPORTION_READS_MAPPED",
+    "LIBRARY_LAYOUT",
+    "SEQUENCING_PLATFORM",
+    "WORKFLOW_VERSION",
+    "GENOMIC_REFERENCE",
+    "FILENAME",
+    "FILE_FORMAT",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "Level2",
+  "type": "object"
+}

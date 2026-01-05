@@ -1,0 +1,293 @@
+{
+  "$id": "https://w3id.org/htan/spatial/level_4",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "HAS_DIMENSIONALITY_REDUCTION": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_DIMENSIONALITY_REDUCTION"
+        ]
+      },
+      "then": {
+        "properties": {
+          "DIMENSIONALITY_REDUCTION_METHOD": {}
+        },
+        "required": [
+          "DIMENSIONALITY_REDUCTION_METHOD"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_CLUSTERING": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_CLUSTERING"
+        ]
+      },
+      "then": {
+        "properties": {
+          "CLUSTERING_METHOD": {}
+        },
+        "required": [
+          "CLUSTERING_METHOD"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_CLUSTERING": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_CLUSTERING"
+        ]
+      },
+      "then": {
+        "properties": {
+          "NUMBER_OF_CLUSTERS": {}
+        },
+        "required": [
+          "NUMBER_OF_CLUSTERS"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_CELL_TYPE_CALLING": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_CELL_TYPE_CALLING"
+        ]
+      },
+      "then": {
+        "properties": {
+          "CELL_TYPE_CALLING_METHOD": {}
+        },
+        "required": [
+          "CELL_TYPE_CALLING_METHOD"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_CELL_TYPE_CALLING": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_CELL_TYPE_CALLING"
+        ]
+      },
+      "then": {
+        "properties": {
+          "CELL_TYPES": {}
+        },
+        "required": [
+          "CELL_TYPES"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_NORMALISED_ARRAY": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_NORMALISED_ARRAY"
+        ]
+      },
+      "then": {
+        "properties": {
+          "NORMALISATION_METHOD": {}
+        },
+        "required": [
+          "NORMALISATION_METHOD"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_IMAGE": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_IMAGE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "IMAGE_TYPE": {}
+        },
+        "required": [
+          "IMAGE_TYPE"
+        ]
+      }
+    }
+  ],
+  "description": "Level 4 interoperable spatial omics file (optional) - Harmonized h5ad, RDS, or Zarr file for downstream analysis",
+  "properties": {
+    "CELL_TYPES": {
+      "description": "List of cell types present in the data",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "CELL_TYPE_CALLING_METHOD": {
+      "description": "Method used for cell type annotation",
+      "type": "string"
+    },
+    "CLUSTERING_METHOD": {
+      "description": "Method used to define clusters",
+      "type": "string"
+    },
+    "DIMENSIONALITY_REDUCTION_METHOD": {
+      "description": "",
+      "enum": [
+        "PCA",
+        "t-SNE",
+        "UMAP",
+        "other"
+      ],
+      "title": "DimensionalityReductionMethodLevel4",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file",
+      "pattern": "^.+[\\\\/]\\S*$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "",
+      "enum": [
+        "h5ad",
+        "rds",
+        "zarr"
+      ],
+      "title": "FileFormatLevel4",
+      "type": "string"
+    },
+    "HAS_CELL_TYPE_CALLING": {
+      "description": "Indicates presence of cell type annotations",
+      "type": "boolean"
+    },
+    "HAS_CLUSTERING": {
+      "description": "Indicates if clustering was performed",
+      "type": "boolean"
+    },
+    "HAS_DIMENSIONALITY_REDUCTION": {
+      "description": "Indicates presence of dimensionally reduced data",
+      "type": "boolean"
+    },
+    "HAS_IMAGE": {
+      "description": "Indicates presence of associated image data",
+      "type": "boolean"
+    },
+    "HAS_NORMALISED_ARRAY": {
+      "description": "Indicates presence of normalized array",
+      "type": "boolean"
+    },
+    "HAS_RAW_ARRAY": {
+      "description": "Indicates presence of raw expression array",
+      "type": "boolean"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+      "type": "string"
+    },
+    "IMAGE_TYPE": {
+      "description": "",
+      "enum": [
+        "jpeg",
+        "other",
+        "png",
+        "tiff"
+      ],
+      "title": "ImageTypeLevel4",
+      "type": "string"
+    },
+    "NORMALISATION_METHOD": {
+      "description": "",
+      "enum": [
+        "CPM",
+        "log normalization",
+        "SCTransform",
+        "TPM",
+        "other"
+      ],
+      "title": "NormalisationMethod",
+      "type": "string"
+    },
+    "NUMBER_OF_CLUSTERS": {
+      "description": "Number of clusters identified",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "NUMBER_OF_FEATURES": {
+      "description": "Number of features (e.g. transcripts)",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "NUMBER_OF_OBJECTS": {
+      "description": "Number of objects (e.g. cells)",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "TOOL_COMPATIBILITY": {
+      "description": "Tools or libraries compatible with this file",
+      "items": {
+        "description": "",
+        "enum": [
+          "anndata",
+          "seurat",
+          "spatialdata"
+        ],
+        "title": "ToolCompatibility",
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "NUMBER_OF_FEATURES",
+    "NUMBER_OF_OBJECTS",
+    "HAS_DIMENSIONALITY_REDUCTION",
+    "HAS_CLUSTERING",
+    "HAS_CELL_TYPE_CALLING",
+    "HAS_NORMALISED_ARRAY",
+    "HAS_RAW_ARRAY",
+    "HAS_IMAGE",
+    "FILENAME",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "SpatialLevel4",
+  "type": "object"
+}
