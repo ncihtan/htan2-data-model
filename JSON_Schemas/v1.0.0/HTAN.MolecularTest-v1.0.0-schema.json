@@ -1,0 +1,240 @@
+{
+  "$id": "https://w3id.org/htan/clinical/molecular",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "MOLECULAR_ANALYSIS_METHOD": {
+            "anyOf": [
+              {
+                "const": "DNA Sequencing"
+              },
+              {
+                "const": "RNA Sequencing"
+              }
+            ]
+          }
+        },
+        "required": [
+          "MOLECULAR_ANALYSIS_METHOD"
+        ]
+      },
+      "then": {
+        "properties": {
+          "AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP": {},
+          "TEST_ANALYTE_TYPE": {}
+        },
+        "required": [
+          "AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP",
+          "TEST_ANALYTE_TYPE"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "MOLECULAR_ANALYSIS_RESULT": {
+            "anyOf": [
+              {
+                "const": "Pathogenic variant detected"
+              },
+              {
+                "const": "Variant of uncertain significance detected"
+              }
+            ]
+          }
+        },
+        "required": [
+          "MOLECULAR_ANALYSIS_RESULT"
+        ]
+      },
+      "then": {
+        "properties": {
+          "AA_CHANGE": {},
+          "EXON": {},
+          "MOLECULAR_CONSEQUENCE": {},
+          "PATHOGENICITY": {}
+        },
+        "required": [
+          "AA_CHANGE",
+          "EXON",
+          "MOLECULAR_CONSEQUENCE",
+          "PATHOGENICITY"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "MOLECULAR_ANALYSIS_RESULT": {
+            "const": "Copy number variant detected"
+          }
+        },
+        "required": [
+          "MOLECULAR_ANALYSIS_RESULT"
+        ]
+      },
+      "then": {
+        "properties": {
+          "COPY_NUMBER": {},
+          "TEST_UNITS": {}
+        },
+        "required": [
+          "COPY_NUMBER",
+          "TEST_UNITS"
+        ]
+      }
+    }
+  ],
+  "description": "Information about the molecular test",
+  "properties": {
+    "AA_CHANGE": {
+      "description": "Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected"
+    },
+    "AGE_IN_DAYS_AT_MOLECULAR_TEST_START": {
+      "description": "Age in days at molecular test start (caDSR:2192202) (Aligns to CDRC Standard CDE)"
+    },
+    "AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP": {
+      "description": "Required when MOLECULAR_ANALYSIS_METHOD is DNA Sequencing or RNA Sequencing"
+    },
+    "CLINICAL_BIOSPECIMEN_TYPE": {
+      "description": "",
+      "enum": [
+        "Blood",
+        "Tissue",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "ClinicalBiospecimenTypeEnum",
+      "type": "string"
+    },
+    "COPY_NUMBER": {
+      "description": "Required when MOLECULAR_ANALYSIS_RESULT is Copy number variant detected"
+    },
+    "EXON": {
+      "description": "Required when MOLECULAR_ANALYSIS_RESULT is Pathogenic variant detected or Variant of uncertain significance detected"
+    },
+    "GENE_SYMBOL": {
+      "description": "Valid gene symbols from HGNC database",
+      "enum": [
+        "A1BG",
+        "A1CF",
+        "A2M",
+        "AARS1",
+        "ABCA1",
+        "ABCB1",
+        "BRCA1",
+        "BRCA2",
+        "TP53",
+        "EGFR",
+        "KRAS",
+        "BRAF",
+        "PIK3CA",
+        "AKT1",
+        "PTEN",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "GeneSymbolEnum",
+      "type": "string"
+    },
+    "MOLECULAR_ANALYSIS_METHOD": {
+      "description": "",
+      "enum": [
+        "DNA Sequencing",
+        "RNA Sequencing",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "MolecularAnalysisMethodEnum",
+      "type": "string"
+    },
+    "MOLECULAR_ANALYSIS_RESULT": {
+      "description": "Molecular analysis result (caDSR:2192206) (Aligns to CDRC Standard CDE)"
+    },
+    "MOLECULAR_CONSEQUENCE": {
+      "description": "",
+      "enum": [
+        "Frameshift",
+        "Missense",
+        "Nonsense",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "MolecularConsequenceEnum",
+      "type": "string"
+    },
+    "PATHOGENICITY": {
+      "description": "",
+      "enum": [
+        "Benign",
+        "Likely Benign",
+        "Likely Pathogenic",
+        "Pathogenic",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "PathogenicityEnum",
+      "type": "string"
+    },
+    "TEST_ANALYTE_TYPE": {
+      "description": "",
+      "enum": [
+        "DNA",
+        "RNA",
+        "Protein",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "TestAnalyteTypeEnum",
+      "type": "string"
+    },
+    "TEST_RESULT": {
+      "description": "Test result (caDSR:2192215) (Aligns to CDRC Standard CDE)"
+    },
+    "TEST_UNITS": {
+      "description": "Required when MOLECULAR_ANALYSIS_RESULT is Copy number variant detected"
+    },
+    "TIMEPOINT_LABEL": {
+      "description": "Label for the timepoint (caDSR:2192201) (Aligns to CDRC Standard CDE)"
+    },
+    "VARIANT_ORIGIN": {
+      "description": "",
+      "enum": [
+        "Germline",
+        "Somatic",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "VariantOriginEnum",
+      "type": "string"
+    },
+    "VARIANT_TYPE": {
+      "description": "",
+      "enum": [
+        "Deletion",
+        "Insertion",
+        "Substitution",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "VariantTypeEnum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "TIMEPOINT_LABEL",
+    "AGE_IN_DAYS_AT_MOLECULAR_TEST_START",
+    "GENE_SYMBOL",
+    "MOLECULAR_ANALYSIS_METHOD",
+    "MOLECULAR_ANALYSIS_RESULT",
+    "CLINICAL_BIOSPECIMEN_TYPE",
+    "TEST_RESULT",
+    "VARIANT_ORIGIN",
+    "VARIANT_TYPE"
+  ],
+  "title": "ClinicalMolecular",
+  "type": "object"
+}
