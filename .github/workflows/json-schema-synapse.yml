@@ -123,20 +123,25 @@ jobs:
           --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.BulkWESLevel1-${{ steps.version.outputs.version }}-schema.json"
     
     - name: Register schemas in Synapse
+      env:
+        SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}
+        SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
       run: |
-        # Schema binding has been moved to htan2-project-setup repository
-        # This step is a placeholder - schemas will be registered via that repository
-        echo "Schema registration is handled by htan2-project-setup repository"
-        echo "Generated schemas are available in: JSON_Schemas/${{ steps.version.outputs.version }}/"
+        # Register each generated schema
         for schema_file in JSON_Schemas/${{ steps.version.outputs.version }}/*.json; do
           if [ -f "$schema_file" ]; then
             schema_name=$(basename "$schema_file" .json)
-            echo "Generated schema: $schema_name"
+            echo "Processing schema: $schema_name"
+            
+            poetry run python scripts/synapse_json_schema_bind.py \
+              -p "$schema_file" \
+              -n "${{ env.ORGANIZATION_NAME }}" \
+              --no_bind
           fi
         done
     
     - name: Create Pull Request for Schemas
-      if: startsWith(github.ref, 'refs/tags/')
+      if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
