@@ -1,0 +1,183 @@
+{
+  "$id": "https://w3id.org/htan/spatial/level_1",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "HAS_SEQUENCING": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_SEQUENCING"
+        ]
+      },
+      "then": {
+        "properties": {
+          "SEQUENCING_FILE_TYPE": {}
+        },
+        "required": [
+          "SEQUENCING_FILE_TYPE"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_IMAGES": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_IMAGES"
+        ]
+      },
+      "then": {
+        "properties": {
+          "IMAGE_TYPES": {}
+        },
+        "required": [
+          "IMAGE_TYPES"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "ASSAY_TYPE": {
+            "const": "molecular barcoding"
+          }
+        },
+        "required": [
+          "ASSAY_TYPE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "HAS_PROBE_SET": {}
+        },
+        "required": [
+          "HAS_PROBE_SET"
+        ]
+      }
+    }
+  ],
+  "description": "Level 1 raw spatial data bundle (optional) - Contains raw sequencing data, images, and registration files",
+  "properties": {
+    "ASSAY_TYPE": {
+      "description": "",
+      "enum": [
+        "in situ sequencing",
+        "molecular barcoding",
+        "multi-omic sequencing",
+        "spot-based sequencing"
+      ],
+      "title": "AssayType",
+      "type": "string"
+    },
+    "BUNDLE_CONTENTS": {
+      "description": "List of expected files or folders in this bundle (relative paths within the archive)",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "FILENAME": {
+      "description": "Name of the file",
+      "pattern": "^.+[\\\\/]\\S*$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "",
+      "enum": [
+        "tar",
+        "tar.gz",
+        "zip"
+      ],
+      "title": "FileFormatLevel1",
+      "type": "string"
+    },
+    "HAS_IMAGES": {
+      "description": "Whether any image files (e.g., TIFFs) are included",
+      "type": "boolean"
+    },
+    "HAS_PROBE_SET": {
+      "description": "Whether a targeted probe/gene panel is included",
+      "type": "boolean"
+    },
+    "HAS_REGISTRATION_FILES": {
+      "description": "Whether any spatial registration transform files are included",
+      "type": "boolean"
+    },
+    "HAS_SEQUENCING": {
+      "description": "If raw/aligned sequencing data is included",
+      "type": "boolean"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+      "type": "string"
+    },
+    "IMAGE_TYPES": {
+      "description": "Types of images provided",
+      "items": {
+        "description": "",
+        "enum": [
+          "DAPI",
+          "H&E",
+          "MIF",
+          "Other"
+        ],
+        "title": "ImageType",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "PLATFORM": {
+      "description": "",
+      "enum": [
+        "10x Genomics Visium",
+        "10x Genomics Visium HD",
+        "10x Genomics Xenium",
+        "Nanostring CosMX",
+        "STOmics Stereo-CITE",
+        "STOmics Stereo-seq"
+      ],
+      "title": "Platform",
+      "type": "string"
+    },
+    "SEQUENCING_FILE_TYPE": {
+      "description": "Sequencing file type",
+      "items": {
+        "description": "",
+        "enum": [
+          "BAM",
+          "FASTQ"
+        ],
+        "title": "SequencingFileType",
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "PLATFORM",
+    "ASSAY_TYPE",
+    "BUNDLE_CONTENTS",
+    "HAS_IMAGES",
+    "HAS_REGISTRATION_FILES",
+    "FILENAME",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "SpatialLevel1",
+  "type": "object"
+}

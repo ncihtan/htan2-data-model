@@ -1,0 +1,326 @@
+{
+  "$id": "https://w3id.org/htan/multiplex_microscopy/level_2",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "DE_IDENTIFICATION_METHOD_TYPE": {
+            "anyOf": [
+              {
+                "const": "Automatic"
+              },
+              {
+                "const": "Manual"
+              },
+              {
+                "const": "Semiautomatic"
+              }
+            ]
+          }
+        },
+        "required": [
+          "DE_IDENTIFICATION_METHOD_TYPE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "DE_IDENTIFICATION_METHOD_DESCRIPTION": {}
+        },
+        "required": [
+          "DE_IDENTIFICATION_METHOD_DESCRIPTION"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "HAS_SLIDE_LABEL": {
+            "const": true
+          }
+        },
+        "required": [
+          "HAS_SLIDE_LABEL"
+        ]
+      },
+      "then": {
+        "properties": {
+          "SLIDE_LABEL_REDACTED": {}
+        },
+        "required": [
+          "SLIDE_LABEL_REDACTED"
+        ]
+      }
+    }
+  ],
+  "description": "Multiplex Microscopy Level 2 - Imaging data compiled into a single file format (preferably tiled and pyramidal OME-TIFF), accompanied by a CSV file containing channel metadata",
+  "properties": {
+    "CHANNEL_METADATA_ID": {
+      "description": "Unique identifier specifying the location of the required channel metadata (Synapse ID)",
+      "pattern": "^syn\\d+$",
+      "type": "string"
+    },
+    "CITATION_OR_DOI": {
+      "description": "Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https).",
+      "pattern": "^(?:(?:https?)://)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\.\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$",
+      "type": "string"
+    },
+    "DE_IDENTIFICATION_METHOD_DESCRIPTION": {
+      "description": "Required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable'",
+      "type": "string"
+    },
+    "DE_IDENTIFICATION_METHOD_TYPE": {
+      "description": "",
+      "enum": [
+        "Automatic",
+        "Manual",
+        "Not Applicable",
+        "Semiautomatic"
+      ],
+      "title": "DeIdentificationMethodType",
+      "type": "string"
+    },
+    "DE_IDENTIFICATION_SOFTWARE": {
+      "description": "Software that was used to de-identify the images (if used)",
+      "type": "string"
+    },
+    "DE_IDENTIFIED": {
+      "description": "Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI",
+      "type": "boolean"
+    },
+    "EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES": {
+      "description": "",
+      "enum": [
+        "Pathological"
+      ],
+      "title": "ExperimentalStrategyAndDataSubtypes",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file",
+      "pattern": "^.+[\\\\/]\\S*$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python.",
+      "pattern": "^(ome-tiff|tiff|qptiff|svs)$",
+      "type": "string"
+    },
+    "HAS_SLIDE_LABEL": {
+      "description": "Does the image contain a slide label",
+      "type": "boolean"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+      "type": "string"
+    },
+    "IMAGE_MODALITY": {
+      "description": "",
+      "enum": [
+        "SM"
+      ],
+      "title": "ImageModality",
+      "type": "string"
+    },
+    "IMAGING_ASSAY_TYPE": {
+      "description": "",
+      "enum": [
+        "CODEX",
+        "CyCIF",
+        "ExSeq",
+        "GeoMX-DSP",
+        "H&E",
+        "IHC",
+        "IMC",
+        "MIBI",
+        "MERFISH",
+        "MxIF",
+        "mIHC",
+        "Not Applicable",
+        "SABER",
+        "t-CyCIF"
+      ],
+      "title": "ImagingAssayType",
+      "type": "string"
+    },
+    "IMAGING_EQUIPMENT_MANUFACTURER": {
+      "description": "Producer of the imaging equipment that was used to generate the digital image",
+      "type": "string"
+    },
+    "IMAGING_EQUIPMENT_MODEL": {
+      "description": "The words used to describe the specific model of the instrument used to carry out an imaging experiment",
+      "type": "string"
+    },
+    "IMAGING_PROTOCOL": {
+      "description": "A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https).",
+      "pattern": "^(?:(?:https?)://)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\.\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$",
+      "type": "string"
+    },
+    "IMAGING_SOFTWARE": {
+      "description": "The name of the software package that was used to capture, generate, and process the image",
+      "type": "string"
+    },
+    "IMMERSION": {
+      "description": "",
+      "enum": [
+        "Air",
+        "Glycerol",
+        "Oil",
+        "Other",
+        "Water"
+      ],
+      "title": "ImmersionMedium",
+      "type": "string"
+    },
+    "LENS_NUMERICAL_APERTURE": {
+      "description": "The numerical aperture of the lens. Floating point value > 0.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "LICENSE": {
+      "description": "",
+      "enum": [
+        "CC BY 4.0"
+      ],
+      "title": "License",
+      "type": "string"
+    },
+    "NOMINAL_MAGNIFICATION": {
+      "description": "The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer value >= 0 (no units)",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "OBJECTIVE": {
+      "description": "The manufacturer and or model number for the optical element that gathers light from an object being observed and focuses the light rays from it to produce a real image of the object",
+      "type": "string"
+    },
+    "PASSED_QC": {
+      "description": "Confirm that the image has passed internal quality control checks",
+      "type": "boolean"
+    },
+    "PHYSICAL_SIZE_X": {
+      "description": "Physical size of a single pixel in the x dimension. In microns.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PHYSICAL_SIZE_Y": {
+      "description": "Physical size of a single pixel in the y dimension. In microns.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PHYSICAL_SIZE_Z": {
+      "description": "Physical size of a single pixel in the z dimension. In microns.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PYRAMID": {
+      "description": "The data file contains an image pyramid",
+      "type": "boolean"
+    },
+    "QC_COMMENT": {
+      "description": "Comments related to quality control checks",
+      "type": "string"
+    },
+    "SIZE_C": {
+      "description": "Number of channels. Integer >= 1",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "SIZE_T": {
+      "description": "Number of timepoints. Integer >= 1",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "SIZE_X": {
+      "description": "The number of pixels in the x dimension at the highest resolution available",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "SIZE_Y": {
+      "description": "The number of pixels in the y dimension at the highest resolution available",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "SIZE_Z": {
+      "description": "The number of pixels in the z dimension at the highest resolution available",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "SLIDE_LABEL_REDACTED": {
+      "description": "Required when HAS_SLIDE_LABEL is true",
+      "type": "boolean"
+    },
+    "SPECIES": {
+      "description": "",
+      "enum": [
+        "9606 (Homo sapiens)"
+      ],
+      "title": "Species",
+      "type": "string"
+    },
+    "STAINING_METHOD": {
+      "description": "",
+      "enum": [
+        "CODEX",
+        "CyCIF",
+        "ExSeq",
+        "GeoMX-DSP",
+        "H&E",
+        "IHC",
+        "IMC",
+        "MERFISH",
+        "MIBI",
+        "MxIF",
+        "Not Applicable",
+        "SABER",
+        "mIHC",
+        "t-CyCIF"
+      ],
+      "title": "StainingMethod",
+      "type": "string"
+    },
+    "WORKING_DISTANCE": {
+      "description": "The working distance of the lens, expressed as a floating point number. Floating point > 0. Size needs to be specified in microns (um)",
+      "type": "string"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "IMAGING_ASSAY_TYPE",
+    "PHYSICAL_SIZE_X",
+    "PHYSICAL_SIZE_Y",
+    "PHYSICAL_SIZE_Z",
+    "SIZE_C",
+    "SIZE_T",
+    "SIZE_X",
+    "SIZE_Y",
+    "SIZE_Z",
+    "CHANNEL_METADATA_ID",
+    "EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES",
+    "DE_IDENTIFICATION_METHOD_TYPE",
+    "LICENSE",
+    "IMAGE_MODALITY",
+    "IMAGING_EQUIPMENT_MANUFACTURER",
+    "CITATION_OR_DOI",
+    "STAINING_METHOD",
+    "OBJECTIVE",
+    "NOMINAL_MAGNIFICATION",
+    "PASSED_QC",
+    "QC_COMMENT",
+    "SPECIES",
+    "HAS_SLIDE_LABEL",
+    "DE_IDENTIFIED",
+    "FILENAME",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "MultiplexMicroscopyLevel2",
+  "type": "object"
+}
