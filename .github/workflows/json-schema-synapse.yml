@@ -121,6 +121,95 @@ jobs:
           "modules/WES/domains/level_1.yaml" \
           --class-name "BulkWESLevel1" \
           --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.BulkWESLevel1-${{ steps.version.outputs.version }}-schema.json"
+        
+        # WES Level 2
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/WES/domains/level_2.yaml" \
+          --class-name "BulkWESLevel2" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.BulkWESLevel2-${{ steps.version.outputs.version }}-schema.json"
+        
+        # WES Level 3
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/WES/domains/level_3.yaml" \
+          --class-name "BulkWESLevel3" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.BulkWESLevel3-${{ steps.version.outputs.version }}-schema.json"
+        
+        # Biospecimen
+        echo "Generating Biospecimen schema..."
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/Biospecimen/domains/biospecimen.yaml" \
+          --class-name "BiospecimenData" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.BiospecimenData-${{ steps.version.outputs.version }}-schema.json"
+        
+        # scRNA-seq Level 1
+        echo "Generating scRNA-seq schemas..."
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/scRNA-seq/domains/level_1.yaml" \
+          --class-name "scRNALevel1" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.scRNALevel1-${{ steps.version.outputs.version }}-schema.json"
+        
+        # scRNA-seq Level 2
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/scRNA-seq/domains/level_2.yaml" \
+          --class-name "scRNALevel2" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.scRNALevel2-${{ steps.version.outputs.version }}-schema.json"
+        
+        # scRNA-seq Level 3/4
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/scRNA-seq/domains/level_3_4.yaml" \
+          --class-name "scRNALevel3_4" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.scRNALevel3_4-${{ steps.version.outputs.version }}-schema.json"
+        
+        # SpatialOmics Level 1
+        echo "Generating SpatialOmics schemas..."
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/SpatialOmics/domains/level_1.yaml" \
+          --class-name "SpatialLevel1" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.SpatialLevel1-${{ steps.version.outputs.version }}-schema.json"
+        
+        # SpatialOmics Level 3
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/SpatialOmics/domains/level_3.yaml" \
+          --class-name "SpatialLevel3" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.SpatialLevel3-${{ steps.version.outputs.version }}-schema.json"
+        
+        # SpatialOmics Level 4
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/SpatialOmics/domains/level_4.yaml" \
+          --class-name "SpatialLevel4" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.SpatialLevel4-${{ steps.version.outputs.version }}-schema.json"
+        
+        # SpatialOmics Panel
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/SpatialOmics/domains/spatial_panel.yaml" \
+          --class-name "SpatialPanel" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.SpatialPanel-${{ steps.version.outputs.version }}-schema.json"
+        
+        # MultiplexMicroscopy Level 2
+        echo "Generating MultiplexMicroscopy schemas..."
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/MultiplexMicroscopy/domains/level_2.yaml" \
+          --class-name "MultiplexMicroscopyLevel2" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MultiplexMicroscopyLevel2-${{ steps.version.outputs.version }}-schema.json"
+        
+        # MultiplexMicroscopy Level 3
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/MultiplexMicroscopy/domains/level_3.yaml" \
+          --class-name "MultiplexMicroscopyLevel3" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MultiplexMicroscopyLevel3-${{ steps.version.outputs.version }}-schema.json"
+        
+        # MultiplexMicroscopy Level 4
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/MultiplexMicroscopy/domains/level_4.yaml" \
+          --class-name "MultiplexMicroscopyLevel4" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MultiplexMicroscopyLevel4-${{ steps.version.outputs.version }}-schema.json"
+        
+        # DigitalPathology
+        echo "Generating DigitalPathology schema..."
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/DigitalPathology/domains/digital_pathology.yaml" \
+          --class-name "DigitalPathologyData" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.DigitalPathologyData-${{ steps.version.outputs.version }}-schema.json"
     
     - name: Register schemas in Synapse
       env:
@@ -202,6 +291,8 @@ jobs:
         All schemas are organized in versioned directories: \`JSON_Schemas/${{ steps.version.outputs.version }}/\`
         
         ### Generated Schemas:
+        
+        **Clinical Module:**
         - Demographics Schema
         - Diagnosis Schema
         - Therapy Schema
@@ -210,7 +301,33 @@ jobs:
         - Exposure Schema
         - FamilyHistory Schema
         - VitalStatus Schema
-        - BulkWESLevel1 Schema (file-based)
+        
+        **Biospecimen Module:**
+        - BiospecimenData Schema
+        
+        **WES Module:**
+        - BulkWESLevel1 Schema
+        - BulkWESLevel2 Schema
+        - BulkWESLevel3 Schema
+        
+        **scRNA-seq Module:**
+        - scRNALevel1 Schema
+        - scRNALevel2 Schema
+        - scRNALevel3_4 Schema
+        
+        **SpatialOmics Module:**
+        - SpatialLevel1 Schema
+        - SpatialLevel3 Schema
+        - SpatialLevel4 Schema
+        - SpatialPanel Schema
+        
+        **MultiplexMicroscopy Module:**
+        - MultiplexMicroscopyLevel2 Schema
+        - MultiplexMicroscopyLevel3 Schema
+        - MultiplexMicroscopyLevel4 Schema
+        
+        **DigitalPathology Module:**
+        - DigitalPathologyData Schema
         
         **Note**: Schema registration and binding to project folders is handled by the htan2-project-setup repository."
     
