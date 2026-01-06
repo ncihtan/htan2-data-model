@@ -43,10 +43,15 @@ def generate_module_doc(schema_path: str, output_path: str):
     
     # Load enums from imported files
     base_dir = Path(schema_path).parent
+    all_enums = {}
+    
+    # Start with enums from main schema
+    if schema.enums:
+        for enum_name, enum_def in schema.enums.items():
+            all_enums[enum_name] = enum_def
+    
+    # Load enums from imported files
     if schema.imports:
-        if not schema.enums:
-            schema.enums = {}
-        
         for imp in schema.imports:
             if isinstance(imp, str) and not imp.startswith('linkml:'):
                 # Try to find the enum file
@@ -55,10 +60,14 @@ def generate_module_doc(schema_path: str, output_path: str):
                     try:
                         enum_schema = yaml_loader.load(str(enum_file), SchemaDefinition)
                         if enum_schema.enums:
-                            schema.enums.update(enum_schema.enums)
+                            for enum_name, enum_def in enum_schema.enums.items():
+                                all_enums[enum_name] = enum_def
                     except Exception as e:
                         # Skip if can't load
                         pass
+    
+    # Replace schema.enums with our merged dict
+    schema.enums = all_enums
     
     with open(output_path, 'w') as f:
         f.write(f"# {schema.name}\n\n")
