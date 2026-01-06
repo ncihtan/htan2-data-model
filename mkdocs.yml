@@ -26,6 +26,8 @@ theme:
     - navigation.top
     - search.suggest
     - search.highlight
+  extra_css:
+    - assets/extra.css
 
 plugins:
   - search
