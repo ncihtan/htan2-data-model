@@ -332,17 +332,16 @@ Container for all Spatial Omics data levels
 
 **Attributes:**
 
-- `LEVEL_1_DATA` (SpatialLevel1) - Optional
-  - Level 1 Spatial Omics data (raw spatial data bundle, optional)
-- `LEVEL_3_DATA` (SpatialLevel3) - **Required**
-  - Level 3 Spatial Omics data (processed spatial assay output bundle, required)
-- `LEVEL_4_DATA` (SpatialLevel4) - Optional
-  - Level 4 Spatial Omics data (interoperable h5ad or RDS file, optional)
-- `PANEL_DATA` (SpatialPanel) - Optional
-  - Spatial panel information for targeted sequencing or protein panels
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `LEVEL_1_DATA` | SpatialLevel1 | No | Level 1 Spatial Omics data (raw spatial data bundle, optional) |
+| `LEVEL_3_DATA` | SpatialLevel3 | Yes | Level 3 Spatial Omics data (processed spatial assay output bundle, required) |
+| `LEVEL_4_DATA` | SpatialLevel4 | No | Level 4 Spatial Omics data (interoperable h5ad or RDS file, optional) |
+| `PANEL_DATA` | SpatialPanel | No | Spatial panel information for targeted sequencing or protein panels |
 
 ## Slots
 
-- `caDSR_id` (string) - Optional
-  - The caDSR identifier for this element
+| Slot | Type | Required | Description |
+|------|------|----------|-------------|
+| `caDSR_id` | string | No | The caDSR identifier for this element |
 

@@ -142,22 +142,21 @@ Container for digital pathology imaging data
 
 **Attributes:**
 
-- `FILE_FORMAT` (string) - **Required**
-  - Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python.
-- `HAS_ANNOTATIONS` (boolean) - **Required**
-  - Does the image contain annotations
-- `ANNOTATION_TYPE` (AnnotationType) - Optional
-  - What types of annotation are contained in the image
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `ANNOTATION_TYPE` | AnnotationType<br/>`Artifact`, `Cell`, `Nucleus`, `ROI`, `Tissue` | No | What types of annotation are contained in the image |
+| `FILE_FORMAT` | string | Yes | Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python. |
+| `HAS_ANNOTATIONS` | boolean | Yes | Does the image contain annotations |
 
 ## Enums
 
 ### AnnotationType
 
-**Values:**
-
-- `Artifact` - Artifact annotation
-- `Cell` - Cell annotation
-- `Nucleus` - Nucleus annotation
-- `ROI` - Region of Interest annotation
-- `Tissue` - Tissue annotation
+| Value | Description |
+|-------|-------------|
+| `Artifact` | Artifact annotation |
+| `Cell` | Cell annotation |
+| `Nucleus` | Nucleus annotation |
+| `ROI` | Region of Interest annotation |
+| `Tissue` | Tissue annotation |
 

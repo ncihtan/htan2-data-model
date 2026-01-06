@@ -140,10 +140,9 @@ Root class for scRNA-seq data
 
 **Attributes:**
 
-- `level1_data` (scRNALevel1) - Optional
-  - Level 1 scRNA-seq data
-- `level2_data` (scRNALevel2) - Optional
-  - Level 2 scRNA-seq data
-- `level3_4_data` (scRNALevel3_4) - Optional
-  - Level 3/4 scRNA-seq data
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `level1_data` | scRNALevel1 | No | Level 1 scRNA-seq data |
+| `level2_data` | scRNALevel2 | No | Level 2 scRNA-seq data |
+| `level3_4_data` | scRNALevel3_4 | No | Level 3/4 scRNA-seq data |
 

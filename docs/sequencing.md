@@ -168,52 +168,35 @@ Base attributes shared across all sequencing types
 
 **Attributes:**
 
-- `SEQUENCING_BATCH_ID` (string) - Optional
-  - Sequencing batch identifier
-- `LIBRARY_LAYOUT` (LibraryLayoutEnum) - **Required**
-  - Library layout (paired-end or single-end)
-- `SEQUENCING_PLATFORM` (SequencingPlatformEnum) - **Required**
-  - Sequencing platform used
-- `LIBRARY_PREPARATION_DAYS_FROM_INDEX` (integer) - Optional
-  - Days from index for library preparation
-- `TECHNICAL_REPLICATE_GROUP` (string) - Optional
-  - Technical replicate group identifier
-- `PROTOCOL_LINK` (string) - Optional
-  - Link to sequencing protocol
-- `WORKFLOW_VERSION` (string) - **Required**
-  - Major version of the workflow
-- `WORKFLOW_LINK` (string) - Optional
-  - Link to workflow or command. DockStore.org recommended
-- `GENOMIC_REFERENCE` (string) - **Required**
-  - Genomic reference used for alignment
-- `GENOMIC_REFERENCE_URL` (string) - Optional
-  - URL to genomic reference
-- `GENOME_ANNOTATION_URL` (string) - Optional
-  - URL to genome annotation
-- `CHECKSUM` (string) - Optional
-  - Checksum for data integrity verification
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `CHECKSUM` | string | No | Checksum for data integrity verification |
+| `GENOME_ANNOTATION_URL` | string | No | URL to genome annotation |
+| `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
+| `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
+| `LIBRARY_LAYOUT` | LibraryLayoutEnum<br/>`Paired-end`, `Single-end` | Yes | Library layout (paired-end or single-end) |
+| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Days from index for library preparation |
+| `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
+| `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
+| `SEQUENCING_PLATFORM` | See [SequencingPlatformEnum](#sequencingplatform) enum below | Yes | Sequencing platform used |
+| `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
+| `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
+| `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
 
 ## Enums
 
-### LibraryLayoutEnum
+### SequencingPlatformEnum {#sequencingplatform}
 
-**Values:**
-
-- `Paired-end` - Paired-end sequencing
-- `Single-end` - Single-end sequencing
-
-### SequencingPlatformEnum
-
-**Values:**
-
-- `ABI_SOLID` - ABI SOLID sequencing platform
-- `BGISEQ` - BGI sequencing platform
-- `CAPILLARY` - Capillary sequencing platform
-- `COMPLETE_GENOMICS` - Complete Genomics sequencing platform
-- `HELICOS` - Helicos sequencing platform
-- `ILLUMINA` - Illumina sequencing platform
-- `ION_TORRENT` - Ion Torrent sequencing platform
-- `LS454` - 454 sequencing platform
-- `OXFORD_NANOPORE` - Oxford Nanopore sequencing platform
-- `PACBIO_SMRT` - PacBio SMRT sequencing platform
+| Value | Description |
+|-------|-------------|
+| `ABI_SOLID` | ABI SOLID sequencing platform |
+| `BGISEQ` | BGI sequencing platform |
+| `CAPILLARY` | Capillary sequencing platform |
+| `COMPLETE_GENOMICS` | Complete Genomics sequencing platform |
+| `HELICOS` | Helicos sequencing platform |
+| `ILLUMINA` | Illumina sequencing platform |
+| `ION_TORRENT` | Ion Torrent sequencing platform |
+| `LS454` | 454 sequencing platform |
+| `OXFORD_NANOPORE` | Oxford Nanopore sequencing platform |
+| `PACBIO_SMRT` | PacBio SMRT sequencing platform |
 

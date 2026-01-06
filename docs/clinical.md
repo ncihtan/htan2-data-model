@@ -51,45 +51,38 @@ Container for all clinical data
 
 **Attributes:**
 
-- `HTAN_PARTICIPANT_ID` (string) - **Required**
-  - HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)
-- `DEMOGRAPHICS` (Demographics) - **Required**
-  - Demographic information
-- `VITAL_STATUS` (VitalStatus) - **Required**
-  - Vital status information
-- `DIAGNOSIS` (Diagnosis) - **Required**
-  - Primary diagnosis information
-- `EXPOSURES` (Exposure) - **Required**
-  - Exposure history
-- `FAMILY_HISTORY` (FamilyHistory) - **Required**
-  - Family history of cancer
-- `FOLLOW_UPS` (FollowUp) - Optional
-  - Follow-up observations
-- `MOLECULAR_TESTS` (MolecularTest) - Optional
-  - Molecular test results
-- `THERAPIES` (Therapy) - Optional
-  - Therapy information
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `DEMOGRAPHICS` | Demographics | Yes | Demographic information |
+| `DIAGNOSIS` | Diagnosis | Yes | Primary diagnosis information |
+| `EXPOSURES` | Exposure | Yes | Exposure history |
+| `FAMILY_HISTORY` | FamilyHistory | Yes | Family history of cancer |
+| `FOLLOW_UPS` | FollowUp | No | Follow-up observations |
+| `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
+| `MOLECULAR_TESTS` | MolecularTest | No | Molecular test results |
+| `THERAPIES` | Therapy | No | Therapy information |
+| `VITAL_STATUS` | VitalStatus | Yes | Vital status information |
 
 ## Slots
 
-- `TISSUE_OR_ORGAN_OF_ORIGIN` (tissue_or_organ_of_origin_uberon_enum) - **Required**
-  - The tissue or organ of origin for the primary diagnosis, using UBERON codes
-- `caDSR_id` (string) - Optional
-  - The caDSR identifier for this element
+| Slot | Type | Required | Description |
+|------|------|----------|-------------|
+| `TISSUE_OR_ORGAN_OF_ORIGIN` | tissue_or_organ_of_origin_uberon_enum | Yes | The tissue or organ of origin for the primary diagnosis, using UBERON codes |
+| `caDSR_id` | string | No | The caDSR identifier for this element |
 
 ## Enums
 
-### ComponentEnum
+### ComponentEnum {#component}
 
-**Values:**
-
-- `Clinical` - Clinical data component
-- `Demographics` - Demographics data component
-- `Diagnosis` - Diagnosis data component
-- `Exposure` - Exposure data component
-- `Family History` - Family history data component
-- `Follow-up` - Follow-up data component
-- `Molecular` - Molecular data component
-- `Therapy` - Therapy data component
-- `Vital Status` - Vital status data component
+| Value | Description |
+|-------|-------------|
+| `Clinical` | Clinical data component |
+| `Demographics` | Demographics data component |
+| `Diagnosis` | Diagnosis data component |
+| `Exposure` | Exposure data component |
+| `Family History` | Family history data component |
+| `Follow-up` | Follow-up data component |
+| `Molecular` | Molecular data component |
+| `Therapy` | Therapy data component |
+| `Vital Status` | Vital status data component |
 

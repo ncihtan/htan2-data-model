@@ -101,15 +101,15 @@ Container for all WES data
 
 **Attributes:**
 
-- `LEVEL_1_DATA` (BulkWESLevel1) - Optional
-  - Level 1 WES data (raw files)
-- `LEVEL_2_DATA` (BulkWESLevel2) - Optional
-  - Level 2 WES data (aligned files and QC)
-- `LEVEL_3_DATA` (BulkWESLevel3) - Optional
-  - Level 3 WES data (called variants)
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `LEVEL_1_DATA` | BulkWESLevel1 | No | Level 1 WES data (raw files) |
+| `LEVEL_2_DATA` | BulkWESLevel2 | No | Level 2 WES data (aligned files and QC) |
+| `LEVEL_3_DATA` | BulkWESLevel3 | No | Level 3 WES data (called variants) |
 
 ## Slots
 
-- `caDSR_id` (string) - Optional
-  - The caDSR identifier for this element
+| Slot | Type | Required | Description |
+|------|------|----------|-------------|
+| `caDSR_id` | string | No | The caDSR identifier for this element |
 

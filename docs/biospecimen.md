@@ -183,83 +183,49 @@ Container for all Biospecimen data
 
 **Attributes:**
 
-- `HTAN_BIOSPECIMEN_ID` (string) - **Required**
-  - HTAN Biospecimen ID (Primary Key)
-- `HTAN_PARENT_ID` (string) - **Required**
-  - HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2.
-- `ADJACENT_BIOSPECIMEN_IDS` (string) - Optional
-  - List of HTAN Identifiers (separated by commas) of adjacent biospecimens cut from the same sample
-- `SITE_DATA_SOURCE` (string) - Optional
-  - Text to identify the data source for the specimen/sample from within the HTAN center
-- `BIOSPECIMEN_TYPE` (BiospecimenTypeEnum) - **Required**
-  - Biospecimen Type
-- `TIMEPOINT` (TimepointEnum) - Optional
-  - A specific point in the time continuum, including those established relative to an event
-- `AGE_IN_DAYS_AT_SPECIMEN_COLLECTION` (integer) - **Required**
-  - The age in days of the subject at the time of specimen collection
-- `ACQUISITION_METHOD_TYPE` (AcquisitionMethodTypeEnum) - **Required**
-  - Records the method of acquisition or source for the specimen under consideration
-- `ACQUISITION_METHOD_OTHER_SPECIFY` (string) - Optional
-  - A custom acquisition method
-- `SITE_OF_RESECTION_OR_BIOPSY` (tissue_or_organ_of_origin_uberon_enum) - **Required**
-  - The location within the body from where the disease of interest originated as captured in the Uberon identifier
-- `SPECIMEN_LATERALITY` (SpecimenLateralityEnum) - **Required**
-  - For tumors in paired organs, designates the side on which the specimen was obtained
-- `AGE_IN_DAYS_AT_SPECIMEN_PROCESSING` (integer) - **Required**
-  - The age in days of a subject when a specimen was processed
-- `PROCESSING_LOCATION` (string) - Optional
-  - Site with an HTAN center where specimen processing occurs
-- `PRESERVATION_METHOD` (PreservationMethodEnum) - **Required**
-  - Method used to preserve the sample
-- `PRESERVATION_MEDIUM` (PreservationMediumEnum) - **Required**
-  - The kind of substance holding another substance in solution or suspension to maintain a specimen in a viable state
-- `PRESERVATION_METHOD_TEMPERATURE` (PreservationTemperatureEnum) - **Required**
-  - The term which describes the temperature used to maintain the specimen in a viable state
-- `FIXATION_DURATION_IN_MINUTES` (integer) - Optional
-  - The length of time, from beginning to end, required to process or preserve biospecimens in fixative
-- `LONGEST_DIMENSION` (decimal) - Optional
-  - Numeric value that represents the longest dimension of the sample, measured in millimeters
-- `SHORTEST_DIMENSION` (decimal) - Optional
-  - Numeric value that represents the shortest dimension of the sample, measured in millimeters
-- `TISSUE_SAMPLE_TYPE` (TissueSampleTypeEnum) - Optional
-  - The type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes
-- `ANALYTE_TYPE` (AnalyteTypeEnum) - Optional
-  - The sample or material being subjected to analysis
-- `METHOD_OF_NUCLEIC_ACID_ISOLATION` (string) - Optional
-  - Bulk RNA & DNA-seq specific: method used for nucleic acid isolation
-- `AGE_IN_DAYS_AT_SECTIONING` (integer) - Optional
-  - The age in days of a subject when a specimen tissue block was sectioned
-- `SLICING_METHOD` (SlicingMethodEnum) - Optional
-  - Imaging specific: the method by which the tissue was sliced
-- `SECTION_THICKNESS_VALUE` (decimal) - Optional
-  - Numeric value to describe the thickness of a slice to tissue taken from a biospecimen, measured in microns
-- `SECTION_NUMBER_IN_SEQUENCE` (integer) - Optional
-  - Numeric value (integer, including ranges) provided to a sample in a series of sections
-- `SLIDE_CHARGE_TYPE` (SlideChargeTypeEnum) - Optional
-  - A description of the charge on the glass slide
-- `SPECIMEN_CELLULAR_ARCHITECTURE` (CellularArchitectureEnum) - **Required**
-  - The architectural pattern of an abnormal, normal, or mixed cellular population in a tissue specimen
-- `TUMOR_CLASSIFICATION` (TumorClassificationEnum) - Optional
-  - The classification of a tumor at a particular time based primarily on histopathological characteristics
-- `ICD_O_3_TISSUE_MORPHOLOGY` (IcdO3MorphologyEnum) - Optional
-  - The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3
-- `ICD_10_DISEASE_CODE` (Icd10DiseaseEnum) - Optional
-  - For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM
-- `DEGREE_OF_DYSPLASIA` (DegreeOfDysplasiaEnum) - Optional
-  - Information related to the presence of cells that look abnormal under a microscope but are not cancer
-- `PERCENT_NECROSIS` (decimal) - Optional
-  - Numeric value to represent the percentage of cell death in a malignant tumor sample or specimen
-- `PERCENT_NORMAL_CELLS` (decimal) - Optional
-  - Numeric value to represent the percentage of normal cell content in a malignant tumor sample or specimen
-- `PERCENT_TUMOR_CELLS` (decimal) - Optional
-  - Numeric value that represents the percentage of infiltration by tumor cells in a sample
-- `PERCENT_TUMOR_NUCLEI` (decimal) - Optional
-  - Numeric value to represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen
-- `SHIPPING_CONDITION_TYPE` (ShippingConditionEnum) - **Required**
-  - Text descriptor of the shipping environment of a biospecimen
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `ACQUISITION_METHOD_OTHER_SPECIFY` | string | No | A custom acquisition method |
+| `ACQUISITION_METHOD_TYPE` | AcquisitionMethodTypeEnum | Yes | Records the method of acquisition or source for the specimen under consideration |
+| `ADJACENT_BIOSPECIMEN_IDS` | string | No | List of HTAN Identifiers (separated by commas) of adjacent biospecimens cut from the same sample |
+| `AGE_IN_DAYS_AT_SECTIONING` | integer | No | The age in days of a subject when a specimen tissue block was sectioned |
+| `AGE_IN_DAYS_AT_SPECIMEN_COLLECTION` | integer | Yes | The age in days of the subject at the time of specimen collection |
+| `AGE_IN_DAYS_AT_SPECIMEN_PROCESSING` | integer | Yes | The age in days of a subject when a specimen was processed |
+| `ANALYTE_TYPE` | AnalyteTypeEnum | No | The sample or material being subjected to analysis |
+| `BIOSPECIMEN_TYPE` | BiospecimenTypeEnum | Yes | Biospecimen Type |
+| `DEGREE_OF_DYSPLASIA` | DegreeOfDysplasiaEnum | No | Information related to the presence of cells that look abnormal under a microscope but are not cancer |
+| `FIXATION_DURATION_IN_MINUTES` | integer | No | The length of time, from beginning to end, required to process or preserve biospecimens in fixative |
+| `HTAN_BIOSPECIMEN_ID` | string | Yes | HTAN Biospecimen ID (Primary Key) |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2. |
+| `ICD_10_DISEASE_CODE` | Icd10DiseaseEnum | No | For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM |
+| `ICD_O_3_TISSUE_MORPHOLOGY` | IcdO3MorphologyEnum | No | The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3 |
+| `LONGEST_DIMENSION` | decimal | No | Numeric value that represents the longest dimension of the sample, measured in millimeters |
+| `METHOD_OF_NUCLEIC_ACID_ISOLATION` | string | No | Bulk RNA & DNA-seq specific: method used for nucleic acid isolation |
+| `PERCENT_NECROSIS` | decimal | No | Numeric value to represent the percentage of cell death in a malignant tumor sample or specimen |
+| `PERCENT_NORMAL_CELLS` | decimal | No | Numeric value to represent the percentage of normal cell content in a malignant tumor sample or specimen |
+| `PERCENT_TUMOR_CELLS` | decimal | No | Numeric value that represents the percentage of infiltration by tumor cells in a sample |
+| `PERCENT_TUMOR_NUCLEI` | decimal | No | Numeric value to represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen |
+| `PRESERVATION_MEDIUM` | PreservationMediumEnum | Yes | The kind of substance holding another substance in solution or suspension to maintain a specimen in a viable state |
+| `PRESERVATION_METHOD` | PreservationMethodEnum | Yes | Method used to preserve the sample |
+| `PRESERVATION_METHOD_TEMPERATURE` | PreservationTemperatureEnum | Yes | The term which describes the temperature used to maintain the specimen in a viable state |
+| `PROCESSING_LOCATION` | string | No | Site with an HTAN center where specimen processing occurs |
+| `SECTION_NUMBER_IN_SEQUENCE` | integer | No | Numeric value (integer, including ranges) provided to a sample in a series of sections |
+| `SECTION_THICKNESS_VALUE` | decimal | No | Numeric value to describe the thickness of a slice to tissue taken from a biospecimen, measured in microns |
+| `SHIPPING_CONDITION_TYPE` | ShippingConditionEnum | Yes | Text descriptor of the shipping environment of a biospecimen |
+| `SHORTEST_DIMENSION` | decimal | No | Numeric value that represents the shortest dimension of the sample, measured in millimeters |
+| `SITE_DATA_SOURCE` | string | No | Text to identify the data source for the specimen/sample from within the HTAN center |
+| `SITE_OF_RESECTION_OR_BIOPSY` | tissue_or_organ_of_origin_uberon_enum | Yes | The location within the body from where the disease of interest originated as captured in the Uberon identifier |
+| `SLICING_METHOD` | SlicingMethodEnum | No | Imaging specific: the method by which the tissue was sliced |
+| `SLIDE_CHARGE_TYPE` | SlideChargeTypeEnum | No | A description of the charge on the glass slide |
+| `SPECIMEN_CELLULAR_ARCHITECTURE` | CellularArchitectureEnum | Yes | The architectural pattern of an abnormal, normal, or mixed cellular population in a tissue specimen |
+| `SPECIMEN_LATERALITY` | SpecimenLateralityEnum | Yes | For tumors in paired organs, designates the side on which the specimen was obtained |
+| `TIMEPOINT` | TimepointEnum | No | A specific point in the time continuum, including those established relative to an event |
+| `TISSUE_SAMPLE_TYPE` | TissueSampleTypeEnum | No | The type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes |
+| `TUMOR_CLASSIFICATION` | TumorClassificationEnum | No | The classification of a tumor at a particular time based primarily on histopathological characteristics |
 
 ## Slots
 
-- `caDSR_id` (string) - Optional
-  - The caDSR identifier for this element
+| Slot | Type | Required | Description |
+|------|------|----------|-------------|
+| `caDSR_id` | string | No | The caDSR identifier for this element |
 

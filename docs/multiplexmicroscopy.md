@@ -260,15 +260,15 @@ Container for all Multiplex Microscopy data levels
 
 **Attributes:**
 
-- `LEVEL_2_DATA` (MultiplexMicroscopyLevel2) - Optional
-  - Level 2 Multiplex Microscopy data (imaging data with channel metadata)
-- `LEVEL_3_DATA` (MultiplexMicroscopyLevel3) - Optional
-  - Level 3 Multiplex Microscopy data (segmentation masks)
-- `LEVEL_4_DATA` (MultiplexMicroscopyLevel4) - Optional
-  - Level 4 Multiplex Microscopy data (cell-by-feature tables)
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `LEVEL_2_DATA` | MultiplexMicroscopyLevel2 | No | Level 2 Multiplex Microscopy data (imaging data with channel metadata) |
+| `LEVEL_3_DATA` | MultiplexMicroscopyLevel3 | No | Level 3 Multiplex Microscopy data (segmentation masks) |
+| `LEVEL_4_DATA` | MultiplexMicroscopyLevel4 | No | Level 4 Multiplex Microscopy data (cell-by-feature tables) |
 
 ## Slots
 
-- `caDSR_id` (string) - Optional
-  - The caDSR identifier for this element
+| Slot | Type | Required | Description |
+|------|------|----------|-------------|
+| `caDSR_id` | string | No | The caDSR identifier for this element |
 
