@@ -1,0 +1,2107 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive documentation for the HTAN Phase 2 Data Model">
+      
+      
+        <meta name="author" content="HTAN Consortium">
+      
+      
+        <link rel="canonical" href="https://htan2-data-model.readthedocs.io/modules-readmes/spatialomics/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Overview - HTAN Phase 2 Data Model</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#htan-spatial-omics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="HTAN Phase 2 Data Model" class="md-header__button md-logo" aria-label="HTAN Phase 2 Data Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HTAN Phase 2 Data Model
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../getting-started/" class="md-tabs__link">
+      Getting Started
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../modules/overview/" class="md-tabs__link md-tabs__link--active">
+        Modules
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../contributing/" class="md-tabs__link">
+      Contributing
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="HTAN Phase 2 Data Model" class="md-nav__button md-logo" aria-label="HTAN Phase 2 Data Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    HTAN Phase 2 Data Model
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Record-Based
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Record-Based" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Record-Based
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_1">
+          Clinical
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Clinical" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Clinical
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clinical/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/clinical/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2_2" type="checkbox" id="__nav_3_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_2">
+          Biospecimen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Biospecimen" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Biospecimen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../biospecimen/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/biospecimen/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          File-Based
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File-Based" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          File-Based
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          Core File
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Core File" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Core File
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corefile/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/corefile/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          Sequencing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sequencing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Sequencing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2_1" type="checkbox" id="__nav_3_3_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2_1">
+          Base
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Base" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Base
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sequencing/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/sequencing/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2_2" type="checkbox" id="__nav_3_3_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2_2">
+          WES
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="WES" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          WES
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wes/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/wes/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2_3" type="checkbox" id="__nav_3_3_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2_3">
+          scRNA-seq
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="scRNA-seq" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          scRNA-seq
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scrna-seq/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/scrna-seq/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3" type="checkbox" id="__nav_3_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3">
+          Imaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Imaging" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Imaging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3_1" type="checkbox" id="__nav_3_3_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3_1">
+          Base
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Base" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Base
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imaging/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/imaging/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3_2" type="checkbox" id="__nav_3_3_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3_2">
+          Digital Pathology
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Digital Pathology" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Digital Pathology
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digitalpathology/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/digitalpathology/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3_3" type="checkbox" id="__nav_3_3_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3_3">
+          Multiplex Microscopy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Multiplex Microscopy" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Multiplex Microscopy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiplexmicroscopy/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/multiplexmicroscopy/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_4" type="checkbox" id="__nav_3_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4">
+          Spatial Omics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spatial Omics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Spatial Omics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Overview
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-files" class="md-nav__link">
+    Domain Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-attributes" class="md-nav__link">
+    Key Attributes
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-raw-spatial-data-bundle-optional" class="md-nav__link">
+    Level 1: Raw Spatial Data Bundle (Optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-processed-spatial-assay-output-bundle-required" class="md-nav__link">
+    Level 3: Processed Spatial Assay Output Bundle (Required)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-interoperable-file-optional" class="md-nav__link">
+    Level 4: Interoperable File (Optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-panel-information" class="md-nav__link">
+    Spatial Panel Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-levels" class="md-nav__link">
+    Data Levels
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Levels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-raw-spatial-data-bundle-optional_1" class="md-nav__link">
+    Level 1: Raw Spatial Data Bundle (Optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-processed-spatial-assay-output-bundle-required_1" class="md-nav__link">
+    Level 3: Processed Spatial Assay Output Bundle (Required)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-interoperable-file-optional_1" class="md-nav__link">
+    Level 4: Interoperable File (Optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-panel-information_1" class="md-nav__link">
+    Spatial Panel Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-platforms" class="md-nav__link">
+    Supported Platforms
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Platforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spot-based-capture-assays" class="md-nav__link">
+    Spot-Based Capture Assays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-situ-sequencing-iss-and-hybridization-based-assays" class="md-nav__link">
+    In Situ Sequencing (ISS) and Hybridization-Based Assays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barcoded-capture-with-molecular-decoding" class="md-nav__link">
+    Barcoded Capture with Molecular Decoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-sequencing-based-spatial-molecular-profiling" class="md-nav__link">
+    Other Sequencing-Based Spatial Molecular Profiling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-3-processed-spatial-assay-output-bundle" class="md-nav__link">
+    Level 3: Processed Spatial Assay Output Bundle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-interoperable-file" class="md-nav__link">
+    Level 4: Interoperable File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-panel-information_2" class="md-nav__link">
+    Spatial Panel Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-requirements" class="md-nav__link">
+    Conditional Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditional Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1" class="md-nav__link">
+    Level 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3" class="md-nav__link">
+    Level 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4" class="md-nav__link">
+    Level 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    Validation
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-validation" class="md-nav__link">
+    Pattern Validation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-value-constraints" class="md-nav__link">
+    Minimum Value Constraints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-generation" class="md-nav__link">
+    Schema Generation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/spatialomics/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain-files" class="md-nav__link">
+    Domain Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-attributes" class="md-nav__link">
+    Key Attributes
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-raw-spatial-data-bundle-optional" class="md-nav__link">
+    Level 1: Raw Spatial Data Bundle (Optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-processed-spatial-assay-output-bundle-required" class="md-nav__link">
+    Level 3: Processed Spatial Assay Output Bundle (Required)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-interoperable-file-optional" class="md-nav__link">
+    Level 4: Interoperable File (Optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-panel-information" class="md-nav__link">
+    Spatial Panel Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-levels" class="md-nav__link">
+    Data Levels
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Levels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-raw-spatial-data-bundle-optional_1" class="md-nav__link">
+    Level 1: Raw Spatial Data Bundle (Optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-processed-spatial-assay-output-bundle-required_1" class="md-nav__link">
+    Level 3: Processed Spatial Assay Output Bundle (Required)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-interoperable-file-optional_1" class="md-nav__link">
+    Level 4: Interoperable File (Optional)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-panel-information_1" class="md-nav__link">
+    Spatial Panel Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-platforms" class="md-nav__link">
+    Supported Platforms
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Platforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spot-based-capture-assays" class="md-nav__link">
+    Spot-Based Capture Assays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-situ-sequencing-iss-and-hybridization-based-assays" class="md-nav__link">
+    In Situ Sequencing (ISS) and Hybridization-Based Assays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#barcoded-capture-with-molecular-decoding" class="md-nav__link">
+    Barcoded Capture with Molecular Decoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-sequencing-based-spatial-molecular-profiling" class="md-nav__link">
+    Other Sequencing-Based Spatial Molecular Profiling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-3-processed-spatial-assay-output-bundle" class="md-nav__link">
+    Level 3: Processed Spatial Assay Output Bundle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-interoperable-file" class="md-nav__link">
+    Level 4: Interoperable File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spatial-panel-information_2" class="md-nav__link">
+    Spatial Panel Information
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-requirements" class="md-nav__link">
+    Conditional Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditional Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1" class="md-nav__link">
+    Level 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3" class="md-nav__link">
+    Level 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4" class="md-nav__link">
+    Level 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    Validation
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-validation" class="md-nav__link">
+    Pattern Validation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-value-constraints" class="md-nav__link">
+    Minimum Value Constraints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-generation" class="md-nav__link">
+    Schema Generation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="htan-spatial-omics">HTAN Spatial Omics</h1>
+<p>Spatial Omics module for HTAN Phase 2 data model, implementing standards for sequencing-based and sequence-hybridization spatial omics assays including Visium, Xenium, CosMx, STOmics, and other spatial transcriptomics technologies.</p>
+<h2 id="purpose">Purpose</h2>
+<p>This module implements the Spatial Omics RFC for HTAN Phase 2, which supports:</p>
+<ol>
+<li><strong>Sequencing-Based Spatial Assays</strong>: Spot-based capture (Visium, Visium HD), in situ sequencing (seqFISH), molecular barcoding (Xenium, CosMx), and other spatial transcriptomics platforms</li>
+<li><strong>Multi-Level Data Structure</strong>: Level 1 (raw data, optional), Level 3 (processed bundles), Level 4 (interoperable files, optional), and Panel information</li>
+<li><strong>Platform Flexibility</strong>: Supports current and emerging spatial omics technologies</li>
+<li><strong>Bundle-Level Metadata</strong>: Eliminates per-file metadata requirements, focusing on bundle-level structure</li>
+<li><strong>Panel Information</strong>: Structured metadata for targeted sequencing or protein panels</li>
+</ol>
+<h2 id="structure">Structure</h2>
+<h3 id="domain-files"><strong>Domain Files</strong></h3>
+<ul>
+<li><code>domains/spatial.yaml</code> - Main schema file (imports all levels)</li>
+<li><code>domains/level_1.yaml</code> - Level 1 schema (raw spatial data bundle, optional)</li>
+<li><code>domains/level_3.yaml</code> - Level 3 schema (processed spatial assay output bundle)</li>
+<li><code>domains/level_4.yaml</code> - Level 4 schema (interoperable h5ad or RDS file, optional)</li>
+<li><code>domains/spatial_panel.yaml</code> - Spatial panel information schema</li>
+</ul>
+<h3 id="key-attributes"><strong>Key Attributes</strong></h3>
+<h4 id="level-1-raw-spatial-data-bundle-optional"><strong>Level 1: Raw Spatial Data Bundle (Optional)</strong></h4>
+<ul>
+<li><strong>HTAN Identifiers</strong>: Data file ID, parent biospecimen ID, parent data file ID</li>
+<li><strong>Bundle Format</strong>: tar.gz or zip archive format</li>
+<li><strong>Platform</strong>: 10x Genomics (Visium, Visium HD, Xenium), Nanostring CosMX, STOmics (Stereo-seq, Stereo-CITE)</li>
+<li><strong>Assay Type</strong>: spot-based sequencing, in situ sequencing, molecular barcoding, multi-omic sequencing</li>
+<li><strong>Bundle Contents</strong>: List of expected files or folders in the bundle</li>
+<li><strong>Sequencing Data</strong>: Whether raw/aligned sequencing data is included (FASTQ, BAM)</li>
+<li><strong>Images</strong>: Whether image files are included (H&amp;E, DAPI, MIF, Other)</li>
+<li><strong>Probe Set</strong>: Whether a targeted probe/gene panel is included</li>
+<li><strong>Registration Files</strong>: Whether spatial registration transform files are included</li>
+</ul>
+<h4 id="level-3-processed-spatial-assay-output-bundle-required"><strong>Level 3: Processed Spatial Assay Output Bundle (Required)</strong></h4>
+<ul>
+<li><strong>HTAN Identifiers</strong>: Data file ID, parent biospecimen ID, parent data file ID (optional)</li>
+<li><strong>Platform</strong>: 10x Genomics (Visium, Visium HD, Xenium), Nanostring CosMX, STOmics (Stereo-seq, Stereo-CITE), SeqFISH, DBiT-seq</li>
+<li><strong>Assay Details</strong>: Spatial assay type (in situ, capture-based), assay chemistry version, software and version, protocol link</li>
+<li><strong>Molecular Targets</strong>: RNA measured, protein measured, transcriptome type (Whole transcriptome, Protein coding, Targeted), panel size/total targets</li>
+<li><strong>Panel Information</strong>: Panel name, panel Synapse ID (for targeted panels or protein measurements)</li>
+<li><strong>Same Section Imaging</strong>: Imaging ID, modality (H&amp;E, fluorescence), channels</li>
+<li><strong>Region Area</strong>: Capture area in µm²</li>
+<li><strong>Bundle Contents</strong>: List of expected files or folders in the bundle</li>
+<li><strong>Portal Preview</strong>: Relative path of HTML preview if present</li>
+<li><strong>Cell Segmentation</strong>: Presence, method, object type (whole cell, nucleus, cytoplasm), number of segmented cells</li>
+<li><strong>Dimensionality Reduction</strong>: Presence, method (PCA, UMAP, t-SNE, other)</li>
+<li><strong>Clustering</strong>: Presence, method, number of clusters</li>
+<li><strong>Platform-Specific Attributes</strong>:</li>
+<li><strong>Visium/Visium HD</strong>: Slide serial number, capture area (A1, B1, C1, D1, A, B), CytAssist used, genomic reference</li>
+<li><strong>Xenium</strong>: Slide serial number</li>
+<li><strong>Capture-Based Assays</strong>: Sequencing instrument, sequencing configuration, sequencing depth</li>
+<li><strong>Quality Control Metrics</strong>:</li>
+<li>QC spatial unit (8um bin, spot, 100um area, cell)</li>
+<li>QC feature number (features under tissue)</li>
+<li>QC mean reads per feature</li>
+<li>QC total genes detected</li>
+<li>QC total number of reads</li>
+</ul>
+<h4 id="level-4-interoperable-file-optional"><strong>Level 4: Interoperable File (Optional)</strong></h4>
+<ul>
+<li><strong>HTAN Identifiers</strong>: Data file ID, parent data file ID (optional)</li>
+<li><strong>File Format</strong>: h5ad, rds, or zarr</li>
+<li><strong>Tool Compatibility</strong>: anndata, spatialdata, seurat</li>
+<li><strong>Data Dimensions</strong>: Number of features (e.g., transcripts), number of objects (e.g., cells)</li>
+<li><strong>Dimensionality Reduction</strong>: Presence, method (PCA, UMAP, t-SNE, other)</li>
+<li><strong>Clustering</strong>: Presence, method, number of clusters</li>
+<li><strong>Cell Type Calling</strong>: Presence, method, list of cell types</li>
+<li><strong>Normalization</strong>: Presence, method (CPM, TPM, log normalization, SCTransform, other)</li>
+<li><strong>Arrays</strong>: Raw array presence, normalized array presence</li>
+<li><strong>Image</strong>: Presence, image type (tiff, jpeg, png, other)</li>
+</ul>
+<h4 id="spatial-panel-information"><strong>Spatial Panel Information</strong></h4>
+<ul>
+<li><strong>HTAN Panel ID</strong>: Unique identifier for the panel</li>
+<li><strong>Gene Symbol</strong>: HGNC-approved gene symbol (e.g., MYC, PIK3C)</li>
+<li><strong>HGNC Version</strong>: Version of the HGNC used (date format: YYYY-MM-DD)</li>
+<li><strong>Gene ID</strong>: Stable Ensembl gene identifier (ENSG\d+ or digits)</li>
+<li><strong>User Gene Name</strong>: Optional user-defined name for the gene</li>
+</ul>
+<h3 id="data-levels"><strong>Data Levels</strong></h3>
+<h4 id="level-1-raw-spatial-data-bundle-optional_1"><strong>Level 1: Raw Spatial Data Bundle (Optional)</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: Minimal bundle-level metadata for raw sequencing data submissions</li>
+<li><strong>Contents</strong>: FASTQs/BAMs, original images, registration files</li>
+<li><strong>Format</strong>: tar.gz or zip archive</li>
+<li><strong>Note</strong>: Not required for standard submissions; only if raw data is being submitted</li>
+</ul>
+<h4 id="level-3-processed-spatial-assay-output-bundle-required_1"><strong>Level 3: Processed Spatial Assay Output Bundle (Required)</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: Bundle-level metadata for processed spatial assay submissions</li>
+<li><strong>Contents</strong>: Platform-specific output files (matrices, segmentation, images, vendor JSONs)</li>
+<li><strong>Format</strong>: tar.gz or zip archive</li>
+<li><strong>Structure</strong>: Must follow expected directory and file structure defined in HTAN platform guidance</li>
+<li><strong>Prohibited</strong>: Controlled-access data (fastqs, bams, bai files)</li>
+</ul>
+<h4 id="level-4-interoperable-file-optional_1"><strong>Level 4: Interoperable File (Optional)</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: Harmonized output file for downstream analysis</li>
+<li><strong>Contents</strong>: Expression matrices, spatial coordinates, feature metadata in reusable format</li>
+<li><strong>Format</strong>: h5ad (AnnData), rds (Seurat), or zarr</li>
+<li><strong>Compatibility</strong>: Compatible with Squidpy, Seurat, and other downstream tools</li>
+</ul>
+<h4 id="spatial-panel-information_1"><strong>Spatial Panel Information</strong></h4>
+<ul>
+<li><strong>Purpose</strong>: Structured metadata for targeted sequencing or protein panels</li>
+<li><strong>Contents</strong>: Panel identifier, gene/protein targets with stable identifiers</li>
+<li><strong>Format</strong>: Separate table or filtered by Target_Type</li>
+<li><strong>Usage</strong>: Required for assays using targeted panels (Xenium, CosMx, Stereo-CITE)</li>
+</ul>
+<h2 id="supported-platforms">Supported Platforms</h2>
+<h3 id="spot-based-capture-assays"><strong>Spot-Based Capture Assays</strong></h3>
+<ul>
+<li>10x Genomics Visium</li>
+<li>10x Genomics Visium HD</li>
+<li>Slide-seq and related variants</li>
+</ul>
+<h3 id="in-situ-sequencing-iss-and-hybridization-based-assays"><strong>In Situ Sequencing (ISS) and Hybridization-Based Assays</strong></h3>
+<ul>
+<li>seqFISH and seqFISH+</li>
+<li>MERFISH</li>
+<li>Academic ISS methods</li>
+</ul>
+<h3 id="barcoded-capture-with-molecular-decoding"><strong>Barcoded Capture with Molecular Decoding</strong></h3>
+<ul>
+<li>10x Genomics Xenium</li>
+<li>Nanostring CosMx SMI</li>
+<li>BGI/MGI STOmics platforms:</li>
+<li>Stereo-seq (RNA)</li>
+<li>Stereo-CITE (RNA + protein)</li>
+<li>Stereo-seq OMNI (multiome)</li>
+</ul>
+<h3 id="other-sequencing-based-spatial-molecular-profiling"><strong>Other Sequencing-Based Spatial Molecular Profiling</strong></h3>
+<ul>
+<li>DBiT-seq</li>
+<li>Custom or academic assays combining spatial barcoding with NGS</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<h3 id="level-3-processed-spatial-assay-output-bundle">Level 3: Processed Spatial Assay Output Bundle</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Example Spatial Level 3 data</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">SpatialLevel3</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">COMPONENT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Spatial</span><span class="nv"> </span><span class="s">Omics&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">FILENAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visium_sample.tar.gz&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">FILE_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tar.gz&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">HTAN_DATA_FILE_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_12347&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">HTAN_PARENT_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_B7002&quot;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="c1"># Platform and assay details</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">PLATFORM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10x</span><span class="nv"> </span><span class="s">Genomics</span><span class="nv"> </span><span class="s">Visium&quot;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">SPATIAL_ASSAY_TYPE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;capture-based&quot;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">ASSAY_CHEMISTRY_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v1&quot;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="nt">SOFTWARE_AND_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Space</span><span class="nv"> </span><span class="s">Ranger</span><span class="nv"> </span><span class="s">2.0.0&quot;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="nt">PROTOCOL_LINK</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://protocols.io/example&quot;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="c1"># Molecular targets</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="nt">RNA_MEASURED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="nt">PROTEIN_MEASURED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="nt">TRANSCRIPTOME_TYPE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Whole</span><span class="nv"> </span><span class="s">transcriptome&quot;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="nt">PANEL_SIZE_TOTAL_TARGETS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18000</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="c1"># Same section imaging</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="nt">SAME_SECTION_IMAGING_MODALITY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;H&amp;E&quot;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="c1"># Region and bundle</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="nt">REGION_AREA</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6.5</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="nt">BUNDLE_CONTENTS</span><span class="p">:</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;filtered_feature_bc_matrix.h5&quot;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;spatial/tissue_positions_list.csv&quot;</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;spatial/scalefactors_json.json&quot;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;spatial/tissue_lowres_image.png&quot;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="c1"># Segmentation</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">  </span><span class="nt">HAS_CELL_SEGMENTATION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span><span class="nt">CELL_SEGMENTATION_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Cellpose&quot;</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="nt">CELL_SEGMENTED_OBJECT_TYPE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Whole</span><span class="nv"> </span><span class="s">cell&quot;</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="nt">NUMBER_OF_SEGMENTED_CELLS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="c1"># Analysis</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">  </span><span class="nt">HAS_DIMENSIONALITY_REDUCTION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">  </span><span class="nt">DIMENSIONALITY_REDUCTION_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;UMAP&quot;</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">  </span><span class="nt">HAS_CLUSTERING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">  </span><span class="nt">CLUSTERING_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Leiden&quot;</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span><span class="nt">NUMBER_OF_CLUSTERS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span><span class="c1"># Platform-specific (Visium)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span><span class="nt">SLIDE_SERIAL_NUMBER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;V19J01-123&quot;</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span><span class="nt">CAPTURE_AREA</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;A1&quot;</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="nt">CYTASSIST_USED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">  </span><span class="nt">GENOMIC_REFERENCE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GRCh38&quot;</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">  </span><span class="c1"># Sequencing (capture-based)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">  </span><span class="nt">SEQUENCING_INSTRUMENT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;NovaSeq</span><span class="nv"> </span><span class="s">6000&quot;</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">  </span><span class="nt">SEQUENCING_CONFIGURATION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;28x91&quot;</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span><span class="nt">SEQUENCING_DEPTH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50M</span><span class="nv"> </span><span class="s">reads&quot;</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">  </span><span class="c1"># Quality control</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span><span class="nt">QC_SPATIAL_UNIT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spot&quot;</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">  </span><span class="nt">QC_FEATURE_NUMBER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4992</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">  </span><span class="nt">QC_MEAN_READS_PER_FEATURE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000.5</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">  </span><span class="nt">QC_TOTAL_GENES_DETECTED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12000</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">  </span><span class="nt">QC_TOTAL_NUMBER_OF_READS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25000000</span>
+</code></pre></div>
+<h3 id="level-4-interoperable-file">Level 4: Interoperable File</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Example Spatial Level 4 data</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">SpatialLevel4</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">COMPONENT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Spatial</span><span class="nv"> </span><span class="s">Omics&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">FILENAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spatial_data.h5ad&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">FILE_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;h5ad&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">HTAN_DATA_FILE_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_12348&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">HTAN_PARENT_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_12347&quot;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">TOOL_COMPATIBILITY</span><span class="p">:</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;anndata&quot;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;spatialdata&quot;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="nt">NUMBER_OF_FEATURES</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18000</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="nt">NUMBER_OF_OBJECTS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="nt">HAS_DIMENSIONALITY_REDUCTION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="nt">DIMENSIONALITY_REDUCTION_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;UMAP&quot;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="nt">HAS_CLUSTERING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="nt">CLUSTERING_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Leiden&quot;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="nt">NUMBER_OF_CLUSTERS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">  </span><span class="nt">HAS_CELL_TYPE_CALLING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="nt">CELL_TYPE_CALLING_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SingleR&quot;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="nt">CELL_TYPES</span><span class="p">:</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;T</span><span class="nv"> </span><span class="s">cell&quot;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;B</span><span class="nv"> </span><span class="s">cell&quot;</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Macrophage&quot;</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Epithelial</span><span class="nv"> </span><span class="s">cell&quot;</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span><span class="nt">HAS_NORMALISED_ARRAY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="nt">NORMALISATION_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;log</span><span class="nv"> </span><span class="s">normalization&quot;</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="nt">HAS_RAW_ARRAY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">  </span><span class="nt">HAS_IMAGE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">  </span><span class="nt">IMAGE_TYPE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tiff&quot;</span>
+</code></pre></div>
+<h3 id="spatial-panel-information_2">Spatial Panel Information</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Example Spatial Panel data</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">SpatialPanel</span><span class="p">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">HTAN_PANEL_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_P0001&quot;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">GENE_SYMBOL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MYC&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">HGNC_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-08-01&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">GENE_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ENSG00000136997&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">USER_GENE_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c-Myc&quot;</span>
+</code></pre></div>
+<h2 id="conditional-requirements">Conditional Requirements</h2>
+<p>The Spatial module implements several conditional requirements using LinkML rules:</p>
+<h3 id="level-1"><strong>Level 1</strong></h3>
+<ul>
+<li><code>SEQUENCING_FILE_TYPE</code> is required when <code>HAS_SEQUENCING</code> is true</li>
+<li><code>IMAGE_TYPES</code> is required when <code>HAS_IMAGES</code> is true</li>
+<li><code>HAS_PROBE_SET</code> is required when <code>ASSAY_TYPE</code> is "molecular barcoding"</li>
+</ul>
+<h3 id="level-3"><strong>Level 3</strong></h3>
+<ul>
+<li><code>TRANSCRIPTOME_TYPE</code> is required when <code>RNA_MEASURED</code> is true</li>
+<li><code>PANEL_NAME</code> and <code>PANEL_SYNAPSE_ID</code> are required when <code>TRANSCRIPTOME_TYPE</code> is "Targeted" OR <code>PROTEIN_MEASURED</code> is true</li>
+<li><code>SAME_SECTION_IMAGING_CHANNELS</code> is required when <code>SAME_SECTION_IMAGING_MODALITY</code> is "fluorescence"</li>
+<li>Segmentation attributes are required when <code>HAS_CELL_SEGMENTATION</code> is true</li>
+<li>Dimensionality reduction method is required when <code>HAS_DIMENSIONALITY_REDUCTION</code> is true</li>
+<li>Clustering attributes are required when <code>HAS_CLUSTERING</code> is true</li>
+<li>Platform-specific attributes are required based on platform type</li>
+</ul>
+<h3 id="level-4"><strong>Level 4</strong></h3>
+<ul>
+<li><code>DIMENSIONALITY_REDUCTION_METHOD</code> is required when <code>HAS_DIMENSIONALITY_REDUCTION</code> is true</li>
+<li><code>CLUSTERING_METHOD</code> and <code>NUMBER_OF_CLUSTERS</code> are required when <code>HAS_CLUSTERING</code> is true</li>
+<li><code>CELL_TYPE_CALLING_METHOD</code> and <code>CELL_TYPES</code> are required when <code>HAS_CELL_TYPE_CALLING</code> is true</li>
+<li><code>NORMALISATION_METHOD</code> is required when <code>HAS_NORMALISED_ARRAY</code> is true</li>
+<li><code>IMAGE_TYPE</code> is required when <code>HAS_IMAGE</code> is true</li>
+</ul>
+<h2 id="validation">Validation</h2>
+<h3 id="pattern-validation"><strong>Pattern Validation</strong></h3>
+<ul>
+<li><strong>HTAN IDs</strong>: Must match HTAN ID regex pattern</li>
+<li><strong>Synapse IDs</strong>: <code>^syn\d+$</code> for panel Synapse IDs</li>
+<li><strong>Gene IDs</strong>: <code>^(ENSG\d+|\d+)$</code> for Ensembl gene identifiers</li>
+<li><strong>HGNC Version</strong>: <code>^\d{4}-\d{2}-\d{2}$</code> for date format</li>
+<li><strong>URLs</strong>: Standard HTTP/HTTPS URL pattern for protocol links</li>
+</ul>
+<h3 id="minimum-value-constraints"><strong>Minimum Value Constraints</strong></h3>
+<ul>
+<li><code>PANEL_SIZE_TOTAL_TARGETS</code>: ≥ 1</li>
+<li><code>REGION_AREA</code>: ≥ 0.0</li>
+<li><code>NUMBER_OF_FEATURES</code>: ≥ 1</li>
+<li><code>NUMBER_OF_OBJECTS</code>: ≥ 1</li>
+<li><code>NUMBER_OF_CLUSTERS</code>: ≥ 1</li>
+<li>QC metrics: ≥ 0</li>
+</ul>
+<h2 id="testing">Testing</h2>
+<p>Run module tests:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>modules/SpatialOmics
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>make<span class="w"> </span><span class="nb">test</span>
+</code></pre></div></p>
+<h2 id="schema-generation">Schema Generation</h2>
+<p>Generate Python classes and JSON schema:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>modules/SpatialOmics
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>make<span class="w"> </span>gen-schema
+</code></pre></div></p>
+<p>Generate Synapse-compatible flat JSON schema:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>modules/SpatialOmics
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>make<span class="w"> </span>gen-synapse-schema
+</code></pre></div></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../generated/multiplexmicroscopy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Schema Reference" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Schema Reference
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../generated/spatialomics/" class="md-footer__link md-footer__link--next" aria-label="Next: Schema Reference" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Schema Reference
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>

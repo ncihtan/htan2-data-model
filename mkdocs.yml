@@ -47,21 +47,39 @@ nav:
   - Modules:
     - Overview: modules/overview.md
     - Record-Based:
-      - Clinical: modules/clinical.md
-      - Biospecimen: modules/biospecimen.md
+      - Clinical:
+        - Overview: modules-readmes/clinical.md
+        - Schema Reference: generated/clinical/index.md
+      - Biospecimen:
+        - Overview: modules-readmes/biospecimen.md
+        - Schema Reference: generated/biospecimen/index.md
     - File-Based:
-      - Core File: modules/core-file.md
+      - Core File:
+        - Overview: modules-readmes/corefile.md
+        - Schema Reference: generated/corefile/index.md
       - Sequencing:
-        - Base: modules/sequencing.md
-        - WES: modules/wes.md
-        - scRNA-seq: modules/scrna-seq.md
+        - Base:
+          - Overview: modules-readmes/sequencing.md
+          - Schema Reference: generated/sequencing/index.md
+        - WES:
+          - Overview: modules-readmes/wes.md
+          - Schema Reference: generated/wes/index.md
+        - scRNA-seq:
+          - Overview: modules-readmes/scrna-seq.md
+          - Schema Reference: generated/scrna-seq/index.md
       - Imaging:
-        - Base: modules/imaging.md
-        - Digital Pathology: modules/digital-pathology.md
-        - Multiplex Microscopy: modules/multiplex-microscopy.md
-      - Spatial Omics: modules/spatial-omics.md
-  - Reference:
-    - API Reference: reference/index.md
+        - Base:
+          - Overview: modules-readmes/imaging.md
+          - Schema Reference: generated/imaging/index.md
+        - Digital Pathology:
+          - Overview: modules-readmes/digitalpathology.md
+          - Schema Reference: generated/digitalpathology/index.md
+        - Multiplex Microscopy:
+          - Overview: modules-readmes/multiplexmicroscopy.md
+          - Schema Reference: generated/multiplexmicroscopy/index.md
+      - Spatial Omics:
+        - Overview: modules-readmes/spatialomics.md
+        - Schema Reference: generated/spatialomics/index.md
   - Contributing: contributing.md
 
 markdown_extensions:

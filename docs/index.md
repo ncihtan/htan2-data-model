@@ -25,35 +25,44 @@ graph TD
 
 - **[Getting Started](getting-started.md)** - New to HTAN2? Start here
 - **[Module Overview](modules/overview.md)** - Understand the module architecture
-- **[API Reference](reference/index.md)** - Complete schema reference
 - **[Contributing](contributing.md)** - How to contribute to the data model
 
-## Module Categories
+## Module Documentation
 
 ### Record-Based Modules
 Modules that represent clinical and biospecimen records:
 
-- **[Clinical](modules/clinical.md)** - Clinical and demographic data
-- **[Biospecimen](modules/biospecimen.md)** - Biospecimen metadata and classification
+- **[Clinical](modules-readmes/clinical.md)** - Clinical and demographic data
+  - [Schema Reference](generated/clinical/index.md)
+- **[Biospecimen](modules-readmes/biospecimen.md)** - Biospecimen metadata and classification
+  - [Schema Reference](generated/biospecimen/index.md)
 
 ### File-Based Modules
 Modules that represent data files with hierarchical levels:
 
 #### Sequencing Modules
-- **[WES](modules/wes.md)** - Whole Exome Sequencing (3 levels)
-- **[Sequencing Base](modules/sequencing.md)** - Base sequencing attributes
+- **[Sequencing Base](modules-readmes/sequencing.md)** - Base sequencing attributes
+  - [Schema Reference](generated/sequencing/index.md)
+- **[WES](modules-readmes/wes.md)** - Whole Exome Sequencing (3 levels)
+  - [Schema Reference](generated/wes/index.md)
+- **[scRNA-seq](modules-readmes/scrna-seq.md)** - Single-cell RNA sequencing
+  - [Schema Reference](generated/scrna-seq/index.md)
 
 #### Imaging Modules
-- **[Digital Pathology](modules/digital-pathology.md)** - Whole-slide imaging data
-- **[Multiplex Microscopy](modules/multiplex-microscopy.md)** - Multiplexed tissue imaging
-- **[Imaging Base](modules/imaging.md)** - Base imaging attributes
+- **[Imaging Base](modules-readmes/imaging.md)** - Base imaging attributes
+  - [Schema Reference](generated/imaging/index.md)
+- **[Digital Pathology](modules-readmes/digitalpathology.md)** - Whole-slide imaging data
+  - [Schema Reference](generated/digitalpathology/index.md)
+- **[Multiplex Microscopy](modules-readmes/multiplexmicroscopy.md)** - Multiplexed tissue imaging
+  - [Schema Reference](generated/multiplexmicroscopy/index.md)
 
-#### Single-Cell & Spatial
-- **[scRNA-seq](modules/scrna-seq.md)** - Single-cell RNA sequencing
-- **[Spatial Omics](modules/spatial-omics.md)** - Spatial omics assays
+#### Spatial Omics
+- **[Spatial Omics](modules-readmes/spatialomics.md)** - Spatial omics assays
+  - [Schema Reference](generated/spatialomics/index.md)
 
 ### Core Modules
-- **[Core File](modules/core-file.md)** - Universal file attributes
+- **[Core File](modules-readmes/corefile.md)** - Universal file attributes
+  - [Schema Reference](generated/corefile/index.md)
 
 ## Key Concepts
 
@@ -84,4 +93,4 @@ Participant (HTAN_PARTICIPANT_ID)
 - [HTAN Website](https://humantumoratlas.org)
 - [LinkML Documentation](https://linkml.io)
 - [GitHub Repository](https://github.com/ncihtan/htan2-data-model)
-- [Contributing Guide](../CONTRIBUTING.md)
+- [Contributing Guide](https://github.com/ncihtan/htan2-data-model/blob/main/CONTRIBUTING.md)

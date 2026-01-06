@@ -1,0 +1,1712 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive documentation for the HTAN Phase 2 Data Model">
+      
+      
+        <meta name="author" content="HTAN Consortium">
+      
+      
+        <link rel="canonical" href="https://htan2-data-model.readthedocs.io/generated/spatialomics/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Schema Reference - HTAN Phase 2 Data Model</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spatial" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="HTAN Phase 2 Data Model" class="md-header__button md-logo" aria-label="HTAN Phase 2 Data Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HTAN Phase 2 Data Model
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Schema Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../getting-started/" class="md-tabs__link">
+      Getting Started
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../modules/overview/" class="md-tabs__link md-tabs__link--active">
+        Modules
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../contributing/" class="md-tabs__link">
+      Contributing
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="HTAN Phase 2 Data Model" class="md-nav__button md-logo" aria-label="HTAN Phase 2 Data Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    HTAN Phase 2 Data Model
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Record-Based
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Record-Based" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Record-Based
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_1">
+          Clinical
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Clinical" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Clinical
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/clinical/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clinical/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2_2" type="checkbox" id="__nav_3_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_2">
+          Biospecimen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Biospecimen" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Biospecimen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/biospecimen/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../biospecimen/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          File-Based
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File-Based" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          File-Based
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          Core File
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Core File" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Core File
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/corefile/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../corefile/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          Sequencing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sequencing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Sequencing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2_1" type="checkbox" id="__nav_3_3_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2_1">
+          Base
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Base" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Base
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/sequencing/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sequencing/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2_2" type="checkbox" id="__nav_3_3_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2_2">
+          WES
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="WES" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          WES
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/wes/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wes/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2_3" type="checkbox" id="__nav_3_3_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2_3">
+          scRNA-seq
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="scRNA-seq" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          scRNA-seq
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/scrna-seq/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scrna-seq/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3" type="checkbox" id="__nav_3_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3">
+          Imaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Imaging" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Imaging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3_1" type="checkbox" id="__nav_3_3_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3_1">
+          Base
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Base" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Base
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/imaging/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imaging/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3_2" type="checkbox" id="__nav_3_3_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3_2">
+          Digital Pathology
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Digital Pathology" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Digital Pathology
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/digitalpathology/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digitalpathology/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3_3" type="checkbox" id="__nav_3_3_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3_3">
+          Multiplex Microscopy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Multiplex Microscopy" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Multiplex Microscopy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/multiplexmicroscopy/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiplexmicroscopy/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_4" type="checkbox" id="__nav_3_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4">
+          Spatial Omics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spatial Omics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Spatial Omics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules-readmes/spatialomics/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Schema Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Schema Reference
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    Slots
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    Enumerations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    Types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    Subsets
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    Slots
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    Enumerations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    Types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    Subsets
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="spatial">Spatial</h1>
+<p>HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels</p>
+<p>URI: https://w3id.org/htan/spatial</p>
+<p>Name: Spatial</p>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="SpatialData/">SpatialData</a></td>
+<td>Container for all Spatial Omics data levels</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="ASSAY_CHEMISTRY_VERSION.md">ASSAY_CHEMISTRY_VERSION</a></td>
+<td>Assay chemistry version (e</td>
+</tr>
+<tr>
+<td><a href="ASSAY_TYPE.md">ASSAY_TYPE</a></td>
+<td>Broad assay class (drives downstream conditionals)</td>
+</tr>
+<tr>
+<td><a href="BUNDLE_CONTENTS.md">BUNDLE_CONTENTS</a></td>
+<td>List of expected files or folders in this bundle (relative paths within the a...</td>
+</tr>
+<tr>
+<td><a href="caDSR_id/">caDSR_id</a></td>
+<td>The caDSR identifier for this element</td>
+</tr>
+<tr>
+<td><a href="CAPTURE_AREA.md">CAPTURE_AREA</a></td>
+<td>Area (or Capture Area) - One of the either four or two active regions where t...</td>
+</tr>
+<tr>
+<td><a href="CELL_SEGMENTATION_METHOD.md">CELL_SEGMENTATION_METHOD</a></td>
+<td>Description of segmentation method</td>
+</tr>
+<tr>
+<td><a href="CELL_SEGMENTED_OBJECT_TYPE.md">CELL_SEGMENTED_OBJECT_TYPE</a></td>
+<td>Level of segmentation</td>
+</tr>
+<tr>
+<td><a href="CELL_TYPE_CALLING_METHOD.md">CELL_TYPE_CALLING_METHOD</a></td>
+<td>Method used for cell type annotation</td>
+</tr>
+<tr>
+<td><a href="CELL_TYPES.md">CELL_TYPES</a></td>
+<td>List of cell types present in the data</td>
+</tr>
+<tr>
+<td><a href="CLUSTERING_METHOD.md">CLUSTERING_METHOD</a></td>
+<td>Method used to define clusters</td>
+</tr>
+<tr>
+<td><a href="CYTASSIST_USED.md">CYTASSIST_USED</a></td>
+<td>Whether CytAssist was used</td>
+</tr>
+<tr>
+<td><a href="DIMENSIONALITY_REDUCTION_METHOD.md">DIMENSIONALITY_REDUCTION_METHOD</a></td>
+<td>Method used for dimensionality reduction</td>
+</tr>
+<tr>
+<td><a href="FILE_FORMAT.md">FILE_FORMAT</a></td>
+<td>Format of the file (e</td>
+</tr>
+<tr>
+<td><a href="FILENAME/">FILENAME</a></td>
+<td>Name of the file</td>
+</tr>
+<tr>
+<td><a href="GENE_ID.md">GENE_ID</a></td>
+<td>Stable Ensembl gene identifier (e</td>
+</tr>
+<tr>
+<td><a href="GENE_SYMBOL.md">GENE_SYMBOL</a></td>
+<td>HGNC-approved Gene symbol (e</td>
+</tr>
+<tr>
+<td><a href="GENOMIC_REFERENCE.md">GENOMIC_REFERENCE</a></td>
+<td>Reference genome used</td>
+</tr>
+<tr>
+<td><a href="HAS_CELL_SEGMENTATION.md">HAS_CELL_SEGMENTATION</a></td>
+<td>Indicates presence of cell segmentation data</td>
+</tr>
+<tr>
+<td><a href="HAS_CELL_TYPE_CALLING.md">HAS_CELL_TYPE_CALLING</a></td>
+<td>Indicates presence of cell type annotations</td>
+</tr>
+<tr>
+<td><a href="HAS_CLUSTERING.md">HAS_CLUSTERING</a></td>
+<td>Indicates if clustering was performed</td>
+</tr>
+<tr>
+<td><a href="HAS_DIMENSIONALITY_REDUCTION.md">HAS_DIMENSIONALITY_REDUCTION</a></td>
+<td>Indicates presence of dimensionally reduced data</td>
+</tr>
+<tr>
+<td><a href="HAS_IMAGE.md">HAS_IMAGE</a></td>
+<td>Indicates presence of associated image data</td>
+</tr>
+<tr>
+<td><a href="HAS_IMAGES.md">HAS_IMAGES</a></td>
+<td>Whether any image files (e</td>
+</tr>
+<tr>
+<td><a href="HAS_NORMALISED_ARRAY.md">HAS_NORMALISED_ARRAY</a></td>
+<td>Indicates presence of normalized array</td>
+</tr>
+<tr>
+<td><a href="HAS_PROBE_SET.md">HAS_PROBE_SET</a></td>
+<td>Whether a targeted probe/gene panel is included</td>
+</tr>
+<tr>
+<td><a href="HAS_RAW_ARRAY.md">HAS_RAW_ARRAY</a></td>
+<td>Indicates presence of raw expression array</td>
+</tr>
+<tr>
+<td><a href="HAS_REGISTRATION_FILES.md">HAS_REGISTRATION_FILES</a></td>
+<td>Whether any spatial registration transform files are included</td>
+</tr>
+<tr>
+<td><a href="HAS_SEQUENCING.md">HAS_SEQUENCING</a></td>
+<td>If raw/aligned sequencing data is included</td>
+</tr>
+<tr>
+<td><a href="HGNC_VERSION.md">HGNC_VERSION</a></td>
+<td>Version of the HGNC used, indicated with the date of the HGNC reference (e</td>
+</tr>
+<tr>
+<td><a href="HTAN_DATA_FILE_ID.md">HTAN_DATA_FILE_ID</a></td>
+<td>HTAN Data File ID (Primary Key)</td>
+</tr>
+<tr>
+<td><a href="HTAN_PANEL_ID.md">HTAN_PANEL_ID</a></td>
+<td>Unique identifier for the panel</td>
+</tr>
+<tr>
+<td><a href="HTAN_PARENT_ID.md">HTAN_PARENT_ID</a></td>
+<td>HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data ...</td>
+</tr>
+<tr>
+<td><a href="IMAGE_TYPE.md">IMAGE_TYPE</a></td>
+<td>Type of image associated with the data file</td>
+</tr>
+<tr>
+<td><a href="IMAGE_TYPES.md">IMAGE_TYPES</a></td>
+<td>Types of images provided</td>
+</tr>
+<tr>
+<td><a href="LEVEL_1_DATA.md">LEVEL_1_DATA</a></td>
+<td>Level 1 Spatial Omics data (raw spatial data bundle, optional)</td>
+</tr>
+<tr>
+<td><a href="LEVEL_3_DATA.md">LEVEL_3_DATA</a></td>
+<td>Level 3 Spatial Omics data (processed spatial assay output bundle, required)</td>
+</tr>
+<tr>
+<td><a href="LEVEL_4_DATA.md">LEVEL_4_DATA</a></td>
+<td>Level 4 Spatial Omics data (interoperable h5ad or RDS file, optional)</td>
+</tr>
+<tr>
+<td><a href="NORMALISATION_METHOD.md">NORMALISATION_METHOD</a></td>
+<td>Method used for normalizing the array data</td>
+</tr>
+<tr>
+<td><a href="NUMBER_OF_CLUSTERS.md">NUMBER_OF_CLUSTERS</a></td>
+<td>Number of clusters identified</td>
+</tr>
+<tr>
+<td><a href="NUMBER_OF_FEATURES.md">NUMBER_OF_FEATURES</a></td>
+<td>Number of features (e</td>
+</tr>
+<tr>
+<td><a href="NUMBER_OF_OBJECTS.md">NUMBER_OF_OBJECTS</a></td>
+<td>Number of objects (e</td>
+</tr>
+<tr>
+<td><a href="NUMBER_OF_SEGMENTED_CELLS.md">NUMBER_OF_SEGMENTED_CELLS</a></td>
+<td>Total number of segmented cells</td>
+</tr>
+<tr>
+<td><a href="PANEL_DATA.md">PANEL_DATA</a></td>
+<td>Spatial panel information for targeted sequencing or protein panels</td>
+</tr>
+<tr>
+<td><a href="PANEL_NAME.md">PANEL_NAME</a></td>
+<td>Number of genes/proteins in panel</td>
+</tr>
+<tr>
+<td><a href="PANEL_SIZE_TOTAL_TARGETS.md">PANEL_SIZE_TOTAL_TARGETS</a></td>
+<td>Total number of targets in the panel</td>
+</tr>
+<tr>
+<td><a href="PANEL_SYNAPSE_ID.md">PANEL_SYNAPSE_ID</a></td>
+<td>Synapse ID of the completed spatial_omics_panel template</td>
+</tr>
+<tr>
+<td><a href="PLATFORM.md">PLATFORM</a></td>
+<td>Name of the platform used to generate the data</td>
+</tr>
+<tr>
+<td><a href="PORTAL_PREVIEW_FILE.md">PORTAL_PREVIEW_FILE</a></td>
+<td>Relative path of HTML preview in bundle if present</td>
+</tr>
+<tr>
+<td><a href="PROTEIN_MEASURED.md">PROTEIN_MEASURED</a></td>
+<td>Whether protein was measured</td>
+</tr>
+<tr>
+<td><a href="PROTOCOL_LINK.md">PROTOCOL_LINK</a></td>
+<td>URL to protocol documentation</td>
+</tr>
+<tr>
+<td><a href="QC_FEATURE_NUMBER.md">QC_FEATURE_NUMBER</a></td>
+<td>Features (e</td>
+</tr>
+<tr>
+<td><a href="QC_MEAN_READS_PER_FEATURE.md">QC_MEAN_READS_PER_FEATURE</a></td>
+<td>Mean reads per feature</td>
+</tr>
+<tr>
+<td><a href="QC_SPATIAL_UNIT.md">QC_SPATIAL_UNIT</a></td>
+<td>Type of spatial unit</td>
+</tr>
+<tr>
+<td><a href="QC_TOTAL_GENES_DETECTED.md">QC_TOTAL_GENES_DETECTED</a></td>
+<td>Total genes detected</td>
+</tr>
+<tr>
+<td><a href="QC_TOTAL_NUMBER_OF_READS.md">QC_TOTAL_NUMBER_OF_READS</a></td>
+<td>Total number of reads</td>
+</tr>
+<tr>
+<td><a href="REGION_AREA.md">REGION_AREA</a></td>
+<td>Capture area in µm²</td>
+</tr>
+<tr>
+<td><a href="RNA_MEASURED.md">RNA_MEASURED</a></td>
+<td>Whether RNA was measured</td>
+</tr>
+<tr>
+<td><a href="RUN_ID.md">RUN_ID</a></td>
+<td>A unique identifier for this individual run (typically associated with a sing...</td>
+</tr>
+<tr>
+<td><a href="SAME_SECTION_IMAGING_CHANNELS.md">SAME_SECTION_IMAGING_CHANNELS</a></td>
+<td>Antigens targeted in same section fluorescence imaging</td>
+</tr>
+<tr>
+<td><a href="SAME_SECTION_IMAGING_ID.md">SAME_SECTION_IMAGING_ID</a></td>
+<td>HTAN ID of data file that represents same section imaging</td>
+</tr>
+<tr>
+<td><a href="SAME_SECTION_IMAGING_MODALITY.md">SAME_SECTION_IMAGING_MODALITY</a></td>
+<td>Was same section imaging performed</td>
+</tr>
+<tr>
+<td><a href="SEQUENCING_CONFIGURATION.md">SEQUENCING_CONFIGURATION</a></td>
+<td>Read and index setup</td>
+</tr>
+<tr>
+<td><a href="SEQUENCING_DEPTH.md">SEQUENCING_DEPTH</a></td>
+<td>Sequencing depth</td>
+</tr>
+<tr>
+<td><a href="SEQUENCING_FILE_TYPE.md">SEQUENCING_FILE_TYPE</a></td>
+<td>Sequencing file type</td>
+</tr>
+<tr>
+<td><a href="SEQUENCING_INSTRUMENT.md">SEQUENCING_INSTRUMENT</a></td>
+<td>Sequencer used</td>
+</tr>
+<tr>
+<td><a href="SLIDE_SERIAL_NUMBER.md">SLIDE_SERIAL_NUMBER</a></td>
+<td>Slide serial number</td>
+</tr>
+<tr>
+<td><a href="SOFTWARE_AND_VERSION.md">SOFTWARE_AND_VERSION</a></td>
+<td>Software/tools used for processing</td>
+</tr>
+<tr>
+<td><a href="SPATIAL_ASSAY_TYPE.md">SPATIAL_ASSAY_TYPE</a></td>
+<td>Type of spatial assay (in situ or capture-based)</td>
+</tr>
+<tr>
+<td><a href="TOOL_COMPATIBILITY.md">TOOL_COMPATIBILITY</a></td>
+<td>Tools or libraries compatible with this file</td>
+</tr>
+<tr>
+<td><a href="TRANSCRIPTOME_TYPE.md">TRANSCRIPTOME_TYPE</a></td>
+<td>Molecular targets measured using panels</td>
+</tr>
+<tr>
+<td><a href="USER_GENE_NAME.md">USER_GENE_NAME</a></td>
+<td>Optional user-defined name for the Gene</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations">Enumerations</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="types">Types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="subsets">Subsets</h2>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../modules-readmes/spatialomics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Overview
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contributing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>

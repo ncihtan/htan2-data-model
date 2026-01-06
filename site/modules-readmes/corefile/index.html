@@ -1,0 +1,1705 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive documentation for the HTAN Phase 2 Data Model">
+      
+      
+        <meta name="author" content="HTAN Consortium">
+      
+      
+        <link rel="canonical" href="https://htan2-data-model.readthedocs.io/modules-readmes/corefile/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Overview - HTAN Phase 2 Data Model</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#htan-core-file-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="HTAN Phase 2 Data Model" class="md-header__button md-logo" aria-label="HTAN Phase 2 Data Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HTAN Phase 2 Data Model
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../getting-started/" class="md-tabs__link">
+      Getting Started
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../modules/overview/" class="md-tabs__link md-tabs__link--active">
+        Modules
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../contributing/" class="md-tabs__link">
+      Contributing
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="HTAN Phase 2 Data Model" class="md-nav__button md-logo" aria-label="HTAN Phase 2 Data Model" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    HTAN Phase 2 Data Model
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Modules" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Record-Based
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Record-Based" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Record-Based
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_1">
+          Clinical
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Clinical" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Clinical
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clinical/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/clinical/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2_2" type="checkbox" id="__nav_3_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_2">
+          Biospecimen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Biospecimen" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Biospecimen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../biospecimen/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/biospecimen/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          File-Based
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File-Based" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          File-Based
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          Core File
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Core File" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Core File
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Overview
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-architecture-overview" class="md-nav__link">
+    Module Architecture Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#universal-attributes" class="md-nav__link">
+    Universal Attributes
+  </a>
+  
+    <nav class="md-nav" aria-label="Universal Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-attributes" class="md-nav__link">
+    Required Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-attributes" class="md-nav__link">
+    Optional Attributes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primary-and-foreign-keys" class="md-nav__link">
+    Primary and Foreign Keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary and Foreign Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-keys-marked-with-identifier-true" class="md-nav__link">
+    Primary Keys (marked with identifier: true)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-fields-not-primary-keys-in-this-context" class="md-nav__link">
+    Required Fields (not primary keys in this context)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreign-key" class="md-nav__link">
+    Foreign Key
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-patterns" class="md-nav__link">
+    Validation Patterns
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#htan_data_file_id" class="md-nav__link">
+    HTAN_DATA_FILE_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htan_parent_id" class="md-nav__link">
+    HTAN_PARENT_ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-htan-identifiers" class="md-nav__link">
+    Related HTAN Identifiers
+  </a>
+  
+    <nav class="md-nav" aria-label="Related HTAN Identifiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#htan_participant_id" class="md-nav__link">
+    HTAN_PARTICIPANT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htan_biospecimen_id" class="md-nav__link">
+    HTAN_BIOSPECIMEN_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htan_panel_id" class="md-nav__link">
+    HTAN_PANEL_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htan_parent_id-biospecimen-module" class="md-nav__link">
+    HTAN_PARENT_ID (Biospecimen Module)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-notes" class="md-nav__link">
+    Design Notes
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/corefile/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          Sequencing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sequencing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Sequencing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2_1" type="checkbox" id="__nav_3_3_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2_1">
+          Base
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Base" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Base
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sequencing/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/sequencing/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2_2" type="checkbox" id="__nav_3_3_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2_2">
+          WES
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="WES" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          WES
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wes/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/wes/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_2_3" type="checkbox" id="__nav_3_3_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2_3">
+          scRNA-seq
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="scRNA-seq" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          scRNA-seq
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scrna-seq/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/scrna-seq/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3" type="checkbox" id="__nav_3_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3">
+          Imaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Imaging" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Imaging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3_1" type="checkbox" id="__nav_3_3_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3_1">
+          Base
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Base" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Base
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imaging/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/imaging/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3_2" type="checkbox" id="__nav_3_3_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3_2">
+          Digital Pathology
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Digital Pathology" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Digital Pathology
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digitalpathology/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/digitalpathology/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_3_3" type="checkbox" id="__nav_3_3_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_3_3">
+          Multiplex Microscopy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Multiplex Microscopy" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Multiplex Microscopy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiplexmicroscopy/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/multiplexmicroscopy/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_3_4" type="checkbox" id="__nav_3_3_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_4">
+          Spatial Omics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Spatial Omics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Spatial Omics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spatialomics/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/spatialomics/" class="md-nav__link">
+        Schema Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-architecture-overview" class="md-nav__link">
+    Module Architecture Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#universal-attributes" class="md-nav__link">
+    Universal Attributes
+  </a>
+  
+    <nav class="md-nav" aria-label="Universal Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-attributes" class="md-nav__link">
+    Required Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-attributes" class="md-nav__link">
+    Optional Attributes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primary-and-foreign-keys" class="md-nav__link">
+    Primary and Foreign Keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary and Foreign Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-keys-marked-with-identifier-true" class="md-nav__link">
+    Primary Keys (marked with identifier: true)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-fields-not-primary-keys-in-this-context" class="md-nav__link">
+    Required Fields (not primary keys in this context)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreign-key" class="md-nav__link">
+    Foreign Key
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-patterns" class="md-nav__link">
+    Validation Patterns
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#htan_data_file_id" class="md-nav__link">
+    HTAN_DATA_FILE_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htan_parent_id" class="md-nav__link">
+    HTAN_PARENT_ID
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-htan-identifiers" class="md-nav__link">
+    Related HTAN Identifiers
+  </a>
+  
+    <nav class="md-nav" aria-label="Related HTAN Identifiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#htan_participant_id" class="md-nav__link">
+    HTAN_PARTICIPANT_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htan_biospecimen_id" class="md-nav__link">
+    HTAN_BIOSPECIMEN_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htan_panel_id" class="md-nav__link">
+    HTAN_PANEL_ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htan_parent_id-biospecimen-module" class="md-nav__link">
+    HTAN_PARENT_ID (Biospecimen Module)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-notes" class="md-nav__link">
+    Design Notes
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="htan-core-file-module">HTAN Core File Module</h1>
+<p>Universal attributes shared across all file-based modules in the HTAN project.</p>
+<h2 id="purpose">Purpose</h2>
+<p>Defines common attributes that every file-based data type in HTAN must have, eliminating duplication and ensuring consistency.</p>
+<h2 id="module-architecture-overview">Module Architecture Overview</h2>
+<p><img alt="HTAN2 Module Inheritance Diagram" src="core_file_inheritance.png" /></p>
+<p>The diagram above illustrates the separation between <strong>Record-Based Modules</strong> (Clinical, Biospecimen) and <strong>File-Based Modules</strong> (WES, Digital Pathology, etc.), with the <strong>Core File Module</strong> providing universal attributes for all file-based modules.</p>
+<h2 id="universal-attributes">Universal Attributes</h2>
+<h3 id="required-attributes">Required Attributes</h3>
+<ul>
+<li><strong>FILENAME</strong>: Name of the file (pattern: <code>^.+[\\\\/]\\S*$</code>)</li>
+<li><strong>FILE_FORMAT</strong>: Format of the file (e.g., fastq, bam, vcf, h5ad)</li>
+<li><strong>HTAN_DATA_FILE_ID</strong>: HTAN Data File ID (Primary Key)</li>
+<li><strong>HTAN_PARENT_ID</strong>: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)</li>
+</ul>
+<h3 id="optional-attributes">Optional Attributes</h3>
+<ul>
+<li>None currently defined</li>
+</ul>
+<h2 id="primary-and-foreign-keys">Primary and Foreign Keys</h2>
+<h3 id="primary-keys-marked-with-identifier-true">Primary Keys (marked with <code>identifier: true</code>)</h3>
+<ul>
+<li><strong>HTAN_DATA_FILE_ID</strong>: Unique identifier for data files across all levels</li>
+</ul>
+<h3 id="required-fields-not-primary-keys-in-this-context">Required Fields (not primary keys in this context)</h3>
+<ul>
+<li>None - all required fields are either primary keys or foreign keys</li>
+</ul>
+<h3 id="foreign-key">Foreign Key</h3>
+<ul>
+<li><strong>HTAN_PARENT_ID</strong>: References parent entity using suffix convention:</li>
+<li><code>_B####</code> - References a biospecimen (e.g., <code>HTA200_2_B7001</code>)</li>
+<li><code>_D####</code> - References a data file (e.g., <code>HTA200_2_D36667</code>)</li>
+</ul>
+<h2 id="validation-patterns">Validation Patterns</h2>
+<h3 id="htan_data_file_id">HTAN_DATA_FILE_ID</h3>
+<ul>
+<li><strong>Pattern</strong>: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$</code></li>
+<li><strong>Description</strong>: Primary key for data files. Supports HTA200-229 for phase 2. Total length max 50 characters.</li>
+<li><strong>Examples</strong>: </li>
+<li><code>HTA200_2_D36667</code></li>
+<li><code>HTA200_EXT001_D123</code></li>
+<li><code>HTA229_0000_D1</code></li>
+</ul>
+<h3 id="htan_parent_id">HTAN_PARENT_ID</h3>
+<ul>
+<li><strong>Pattern</strong>: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$</code></li>
+<li><strong>Description</strong>: Must have B suffix for biospecimen IDs or D suffix for data file IDs. Supports HTA200-229 for phase 2. Total length max 50 characters.</li>
+<li><strong>Examples</strong>: </li>
+<li><code>HTA200_2_B7001</code> (biospecimen with B suffix)</li>
+<li><code>HTA200_2_D36667</code> (data file with D suffix)</li>
+<li><code>HTA229_0000_B1</code> (biospecimen with 0000)</li>
+<li><code>HTA200_EXT001_D123</code> (data file with extension)</li>
+</ul>
+<h2 id="related-htan-identifiers">Related HTAN Identifiers</h2>
+<p>The following HTAN identifiers are defined in other modules but follow the same Phase 2 pattern structure:</p>
+<h3 id="htan_participant_id">HTAN_PARTICIPANT_ID</h3>
+<ul>
+<li><strong>Location</strong>: <code>modules/Clinical/domains/clinical.yaml</code></li>
+<li><strong>Pattern</strong>: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$</code></li>
+<li><strong>Description</strong>: Primary key for participant/patient records (no entity suffix)</li>
+<li><strong>Examples</strong>: <code>HTA200_2</code>, <code>HTA200_EXT001</code>, <code>HTA229_0000</code></li>
+</ul>
+<h3 id="htan_biospecimen_id">HTAN_BIOSPECIMEN_ID</h3>
+<ul>
+<li><strong>Location</strong>: <code>modules/Biospecimen/domains/biospecimen.yaml</code></li>
+<li><strong>Pattern</strong>: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$</code></li>
+<li><strong>Description</strong>: Primary key for biospecimen records (B suffix required)</li>
+<li><strong>Examples</strong>: <code>HTA200_2_B7001</code>, <code>HTA200_EXT001_B123</code>, <code>HTA229_0000_B1</code></li>
+</ul>
+<h3 id="htan_panel_id">HTAN_PANEL_ID</h3>
+<ul>
+<li><strong>Location</strong>: <code>modules/SpatialOmics/domains/spatial_panel.yaml</code></li>
+<li><strong>Pattern</strong>: <code>^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$</code></li>
+<li><strong>Description</strong>: Unique identifier for spatial omics panels (legacy pattern, may be updated)</li>
+<li><strong>Examples</strong>: <code>HTA200_2_P0001</code>, <code>HTA200_EXT001_P0001</code></li>
+</ul>
+<h3 id="htan_parent_id-biospecimen-module">HTAN_PARENT_ID (Biospecimen Module)</h3>
+<ul>
+<li><strong>Location</strong>: <code>modules/Biospecimen/domains/biospecimen.yaml</code></li>
+<li><strong>Pattern</strong>: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$</code></li>
+<li><strong>Description</strong>: Foreign key that can reference either a Participant ID (no suffix) or Biospecimen ID (B suffix)</li>
+<li><strong>Examples</strong>: <code>HTA200_2</code> (participant), <code>HTA200_2_B7001</code> (biospecimen)</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: For complete documentation of all HTAN identifier patterns, see <a href="../../IDENTIFIER_PATTERNS.md"><code>IDENTIFIER_PATTERNS.md</code></a> in the repository root.</p>
+</blockquote>
+<h2 id="usage">Usage</h2>
+<p>Other modules inherit from Core:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">imports</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../../CoreFile/domains/core</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">classes</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">BulkWESLevel1</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CoreFileAttributes</span><span class="w">  </span><span class="c1"># Inherit universal attributes</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">attributes</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="c1"># WES-specific attributes only</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nt">LIBRARY_LAYOUT</span><span class="p">:</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LibraryLayoutEnum</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h2 id="design-notes">Design Notes</h2>
+<ul>
+<li><strong>Base schema</strong> for inheritance, not a full module</li>
+<li>No Python implementation generated (schema inheritance only)</li>
+<li>All validation patterns enforced in JSON Schema generation</li>
+<li>Provides foundation for all file-based data types</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../generated/biospecimen/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Schema Reference" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Schema Reference
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../generated/corefile/" class="md-footer__link md-footer__link--next" aria-label="Next: Schema Reference" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Schema Reference
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>
