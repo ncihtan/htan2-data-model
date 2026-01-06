@@ -1,0 +1,20 @@
+Attribute name,Description,Valid values or validation rules,Required,Conditional
+HTAN data file ID,Self-identifier for this data file,Regex for valid HTAN IDs,TRUE,
+HTAN parent data file ID,Identifier for Level 1 bundle if provided,Regex for valid HTAN IDs,FALSE,
+File Format,File format of the data file,"h5ad, rds, zarr",TRUE,
+Tool Compatability,Tools or libraries compatible with this file,"anndata, spatialdata, seurat",FALSE,
+Number of Features,Number of features (e.g. transcripts),int,TRUE,
+Number of Objects,Number of objects (e.g. cells),int,TRUE,
+Has Dimensionality Reduction,Indicates presence of dimensionally reduced data,Boolean,TRUE,
+Dimensionality Reduction Method,Method used for dimensionality reduction,"PCA, UMAP, t-SNE, other",CONDITIONAL REQ,Has dimensionality reduction = TRUE
+Has Clustering,Indicates if clustering was performed,Boolean,TRUE,
+Clustering Method,Method used to define clusters,str,CONDITIONAL REQ,Has clustering = TRUE
+Number of Clusters,Number of clusters identified,int,CONDITIONAL REQ,Has clustering = TRUE
+Has Cell Type Calling,Indicates presence of cell type annotations,Boolean,TRUE,
+Cell Type Calling Method,Method used for cell type annotation,str,CONDITIONAL REQ,Has cell type calling = TRUE
+Cell Types,List of cell types present in the data,list,CONDITIONAL REQ,Has cell type calling = TRUE
+Has Normalised Array,Indicates presence of normalized array,Boolean,TRUE,
+Normalisation Method,Method used for normalizing the array data,"CPM, TPM, log normalization, SCTransform, other",CONDITIONAL REQ,Has normalised array = TRUE
+Has Raw Array,Indicates presence of raw expression array,Boolean,TRUE,
+Has Image,Indicates presence of associated image data,Boolean,TRUE,
+Image Type,Type of image associated with the data file,"tiff, jpeg, png, other",CONDITIONAL REQ,Has image = TRUE
