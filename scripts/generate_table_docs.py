@@ -83,13 +83,9 @@ def generate_module_doc(schema_path: str, output_path: str):
                         required = "Yes" if attr_def.required else "No"
                         range_str = attr_def.range if attr_def.range else "string"
                         
-                        # Check if range is an enum (handle both with and without "Enum" suffix)
+                        # Check if range is an enum
                         enum_def = None
-                        if range_str in schema.enums:
-                            enum_def = schema.enums[range_str]
-                        elif f"{range_str}Enum" in schema.enums:
-                            enum_def = schema.enums[f"{range_str}Enum"]
-                        elif range_str.endswith("Enum") and range_str in schema.enums:
+                        if schema.enums and range_str in schema.enums:
                             enum_def = schema.enums[range_str]
                         
                         if enum_def:
@@ -116,13 +112,9 @@ def generate_module_doc(schema_path: str, output_path: str):
                 required = "Yes" if slot_def.required else "No"
                 range_str = slot_def.range if slot_def.range else "string"
                 
-                # Check if range is an enum (handle both with and without "Enum" suffix)
+                # Check if range is an enum
                 enum_def = None
-                if range_str in schema.enums:
-                    enum_def = schema.enums[range_str]
-                elif f"{range_str}Enum" in schema.enums:
-                    enum_def = schema.enums[f"{range_str}Enum"]
-                elif range_str.endswith("Enum") and range_str in schema.enums:
+                if schema.enums and range_str in schema.enums:
                     enum_def = schema.enums[range_str]
                 
                 if enum_def:

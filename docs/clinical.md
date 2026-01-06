@@ -61,7 +61,7 @@ Container for all clinical data
 | `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 | `MOLECULAR_TESTS` | MolecularTest | No | Molecular test results |
 | `THERAPIES` | Therapy | No | Therapy information |
-| `VITAL_STATUS` | VitalStatus<br/>`Alive`, `Deceased`, `Not Reported`, `Unknown` | Yes | Vital status information |
+| `VITAL_STATUS` | VitalStatus | Yes | Vital status information |
 
 ## Slots
 
