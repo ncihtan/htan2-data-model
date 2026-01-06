@@ -199,7 +199,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../index.md" class="md-nav__link">
         Home
       </a>
     </li>
@@ -267,32 +267,24 @@
     Classes
   </a>
   
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#biospecimendata" class="md-nav__link">
+    BiospecimenData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     Slots
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -456,32 +448,24 @@
     Classes
   </a>
   
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#biospecimendata" class="md-nav__link">
+    BiospecimenData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     Slots
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -503,231 +487,91 @@
 
 <h1 id="biospecimen">Biospecimen</h1>
 <p>HTAN Biospecimen Data Model Schema</p>
-<p>URI: https://w3id.org/htan/biospecimen</p>
-<p>Name: Biospecimen</p>
 <h2 id="classes">Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="BiospecimenData/">BiospecimenData</a></td>
-<td>Container for all Biospecimen data</td>
-</tr>
-</tbody>
-</table>
+<h3 id="biospecimendata">BiospecimenData</h3>
+<p>Container for all Biospecimen data</p>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li><code>HTAN_BIOSPECIMEN_ID</code> (string) - <strong>Required</strong></li>
+<li>HTAN Biospecimen ID (Primary Key)</li>
+<li><code>HTAN_PARENT_ID</code> (string) - <strong>Required</strong></li>
+<li>HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2.</li>
+<li><code>ADJACENT_BIOSPECIMEN_IDS</code> (string) - Optional</li>
+<li>List of HTAN Identifiers (separated by commas) of adjacent biospecimens cut from the same sample</li>
+<li><code>SITE_DATA_SOURCE</code> (string) - Optional</li>
+<li>Text to identify the data source for the specimen/sample from within the HTAN center</li>
+<li><code>BIOSPECIMEN_TYPE</code> (BiospecimenTypeEnum) - <strong>Required</strong></li>
+<li>Biospecimen Type</li>
+<li><code>TIMEPOINT</code> (TimepointEnum) - Optional</li>
+<li>A specific point in the time continuum, including those established relative to an event</li>
+<li><code>AGE_IN_DAYS_AT_SPECIMEN_COLLECTION</code> (integer) - <strong>Required</strong></li>
+<li>The age in days of the subject at the time of specimen collection</li>
+<li><code>ACQUISITION_METHOD_TYPE</code> (AcquisitionMethodTypeEnum) - <strong>Required</strong></li>
+<li>Records the method of acquisition or source for the specimen under consideration</li>
+<li><code>ACQUISITION_METHOD_OTHER_SPECIFY</code> (string) - Optional</li>
+<li>A custom acquisition method</li>
+<li><code>SITE_OF_RESECTION_OR_BIOPSY</code> (tissue_or_organ_of_origin_uberon_enum) - <strong>Required</strong></li>
+<li>The location within the body from where the disease of interest originated as captured in the Uberon identifier</li>
+<li><code>SPECIMEN_LATERALITY</code> (SpecimenLateralityEnum) - <strong>Required</strong></li>
+<li>For tumors in paired organs, designates the side on which the specimen was obtained</li>
+<li><code>AGE_IN_DAYS_AT_SPECIMEN_PROCESSING</code> (integer) - <strong>Required</strong></li>
+<li>The age in days of a subject when a specimen was processed</li>
+<li><code>PROCESSING_LOCATION</code> (string) - Optional</li>
+<li>Site with an HTAN center where specimen processing occurs</li>
+<li><code>PRESERVATION_METHOD</code> (PreservationMethodEnum) - <strong>Required</strong></li>
+<li>Method used to preserve the sample</li>
+<li><code>PRESERVATION_MEDIUM</code> (PreservationMediumEnum) - <strong>Required</strong></li>
+<li>The kind of substance holding another substance in solution or suspension to maintain a specimen in a viable state</li>
+<li><code>PRESERVATION_METHOD_TEMPERATURE</code> (PreservationTemperatureEnum) - <strong>Required</strong></li>
+<li>The term which describes the temperature used to maintain the specimen in a viable state</li>
+<li><code>FIXATION_DURATION_IN_MINUTES</code> (integer) - Optional</li>
+<li>The length of time, from beginning to end, required to process or preserve biospecimens in fixative</li>
+<li><code>LONGEST_DIMENSION</code> (decimal) - Optional</li>
+<li>Numeric value that represents the longest dimension of the sample, measured in millimeters</li>
+<li><code>SHORTEST_DIMENSION</code> (decimal) - Optional</li>
+<li>Numeric value that represents the shortest dimension of the sample, measured in millimeters</li>
+<li><code>TISSUE_SAMPLE_TYPE</code> (TissueSampleTypeEnum) - Optional</li>
+<li>The type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes</li>
+<li><code>ANALYTE_TYPE</code> (AnalyteTypeEnum) - Optional</li>
+<li>The sample or material being subjected to analysis</li>
+<li><code>METHOD_OF_NUCLEIC_ACID_ISOLATION</code> (string) - Optional</li>
+<li>Bulk RNA &amp; DNA-seq specific: method used for nucleic acid isolation</li>
+<li><code>AGE_IN_DAYS_AT_SECTIONING</code> (integer) - Optional</li>
+<li>The age in days of a subject when a specimen tissue block was sectioned</li>
+<li><code>SLICING_METHOD</code> (SlicingMethodEnum) - Optional</li>
+<li>Imaging specific: the method by which the tissue was sliced</li>
+<li><code>SECTION_THICKNESS_VALUE</code> (decimal) - Optional</li>
+<li>Numeric value to describe the thickness of a slice to tissue taken from a biospecimen, measured in microns</li>
+<li><code>SECTION_NUMBER_IN_SEQUENCE</code> (integer) - Optional</li>
+<li>Numeric value (integer, including ranges) provided to a sample in a series of sections</li>
+<li><code>SLIDE_CHARGE_TYPE</code> (SlideChargeTypeEnum) - Optional</li>
+<li>A description of the charge on the glass slide</li>
+<li><code>SPECIMEN_CELLULAR_ARCHITECTURE</code> (CellularArchitectureEnum) - <strong>Required</strong></li>
+<li>The architectural pattern of an abnormal, normal, or mixed cellular population in a tissue specimen</li>
+<li><code>TUMOR_CLASSIFICATION</code> (TumorClassificationEnum) - Optional</li>
+<li>The classification of a tumor at a particular time based primarily on histopathological characteristics</li>
+<li><code>ICD_O_3_TISSUE_MORPHOLOGY</code> (IcdO3MorphologyEnum) - Optional</li>
+<li>The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3</li>
+<li><code>ICD_10_DISEASE_CODE</code> (Icd10DiseaseEnum) - Optional</li>
+<li>For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM</li>
+<li><code>DEGREE_OF_DYSPLASIA</code> (DegreeOfDysplasiaEnum) - Optional</li>
+<li>Information related to the presence of cells that look abnormal under a microscope but are not cancer</li>
+<li><code>PERCENT_NECROSIS</code> (decimal) - Optional</li>
+<li>Numeric value to represent the percentage of cell death in a malignant tumor sample or specimen</li>
+<li><code>PERCENT_NORMAL_CELLS</code> (decimal) - Optional</li>
+<li>Numeric value to represent the percentage of normal cell content in a malignant tumor sample or specimen</li>
+<li><code>PERCENT_TUMOR_CELLS</code> (decimal) - Optional</li>
+<li>Numeric value that represents the percentage of infiltration by tumor cells in a sample</li>
+<li><code>PERCENT_TUMOR_NUCLEI</code> (decimal) - Optional</li>
+<li>Numeric value to represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen</li>
+<li><code>SHIPPING_CONDITION_TYPE</code> (ShippingConditionEnum) - <strong>Required</strong></li>
+<li>Text descriptor of the shipping environment of a biospecimen</li>
+</ul>
 <h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Slot</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="ACQUISITION_METHOD_OTHER_SPECIFY/">ACQUISITION_METHOD_OTHER_SPECIFY</a></td>
-<td>A custom acquisition method</td>
-</tr>
-<tr>
-<td><a href="ACQUISITION_METHOD_TYPE/">ACQUISITION_METHOD_TYPE</a></td>
-<td>Records the method of acquisition or source for the specimen under considerat...</td>
-</tr>
-<tr>
-<td><a href="ADJACENT_BIOSPECIMEN_IDS/">ADJACENT_BIOSPECIMEN_IDS</a></td>
-<td>List of HTAN Identifiers (separated by commas) of adjacent biospecimens cut f...</td>
-</tr>
-<tr>
-<td><a href="AGE_IN_DAYS_AT_SECTIONING/">AGE_IN_DAYS_AT_SECTIONING</a></td>
-<td>The age in days of a subject when a specimen tissue block was sectioned</td>
-</tr>
-<tr>
-<td><a href="AGE_IN_DAYS_AT_SPECIMEN_COLLECTION/">AGE_IN_DAYS_AT_SPECIMEN_COLLECTION</a></td>
-<td>The age in days of the subject at the time of specimen collection</td>
-</tr>
-<tr>
-<td><a href="AGE_IN_DAYS_AT_SPECIMEN_PROCESSING/">AGE_IN_DAYS_AT_SPECIMEN_PROCESSING</a></td>
-<td>The age in days of a subject when a specimen was processed</td>
-</tr>
-<tr>
-<td><a href="ANALYTE_TYPE/">ANALYTE_TYPE</a></td>
-<td>The sample or material being subjected to analysis</td>
-</tr>
-<tr>
-<td><a href="BIOSPECIMEN_TYPE/">BIOSPECIMEN_TYPE</a></td>
-<td>Biospecimen Type</td>
-</tr>
-<tr>
-<td><a href="caDSR_id/">caDSR_id</a></td>
-<td>The caDSR identifier for this element</td>
-</tr>
-<tr>
-<td><a href="DEGREE_OF_DYSPLASIA/">DEGREE_OF_DYSPLASIA</a></td>
-<td>Information related to the presence of cells that look abnormal under a micro...</td>
-</tr>
-<tr>
-<td><a href="FIXATION_DURATION_IN_MINUTES/">FIXATION_DURATION_IN_MINUTES</a></td>
-<td>The length of time, from beginning to end, required to process or preserve bi...</td>
-</tr>
-<tr>
-<td><a href="HTAN_BIOSPECIMEN_ID/">HTAN_BIOSPECIMEN_ID</a></td>
-<td>HTAN Biospecimen ID (Primary Key)</td>
-</tr>
-<tr>
-<td><a href="HTAN_PARENT_ID/">HTAN_PARENT_ID</a></td>
-<td>HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ...</td>
-</tr>
-<tr>
-<td><a href="ICD_10_DISEASE_CODE/">ICD_10_DISEASE_CODE</a></td>
-<td>For coding precancerous lesions: The diagnosis, in humans, as captured in the...</td>
-</tr>
-<tr>
-<td><a href="ICD_O_3_TISSUE_MORPHOLOGY/">ICD_O_3_TISSUE_MORPHOLOGY</a></td>
-<td>The microscopic anatomy of normal and abnormal cells and tissues of the speci...</td>
-</tr>
-<tr>
-<td><a href="LONGEST_DIMENSION/">LONGEST_DIMENSION</a></td>
-<td>Numeric value that represents the longest dimension of the sample, measured i...</td>
-</tr>
-<tr>
-<td><a href="METHOD_OF_NUCLEIC_ACID_ISOLATION/">METHOD_OF_NUCLEIC_ACID_ISOLATION</a></td>
-<td>Bulk RNA &amp; DNA-seq specific: method used for nucleic acid isolation</td>
-</tr>
-<tr>
-<td><a href="PERCENT_NECROSIS/">PERCENT_NECROSIS</a></td>
-<td>Numeric value to represent the percentage of cell death in a malignant tumor ...</td>
-</tr>
-<tr>
-<td><a href="PERCENT_NORMAL_CELLS/">PERCENT_NORMAL_CELLS</a></td>
-<td>Numeric value to represent the percentage of normal cell content in a maligna...</td>
-</tr>
-<tr>
-<td><a href="PERCENT_TUMOR_CELLS/">PERCENT_TUMOR_CELLS</a></td>
-<td>Numeric value that represents the percentage of infiltration by tumor cells i...</td>
-</tr>
-<tr>
-<td><a href="PERCENT_TUMOR_NUCLEI/">PERCENT_TUMOR_NUCLEI</a></td>
-<td>Numeric value to represent the percentage of tumor nuclei in a malignant neop...</td>
-</tr>
-<tr>
-<td><a href="PRESERVATION_MEDIUM/">PRESERVATION_MEDIUM</a></td>
-<td>The kind of substance holding another substance in solution or suspension to ...</td>
-</tr>
-<tr>
-<td><a href="PRESERVATION_METHOD/">PRESERVATION_METHOD</a></td>
-<td>Method used to preserve the sample</td>
-</tr>
-<tr>
-<td><a href="PRESERVATION_METHOD_TEMPERATURE/">PRESERVATION_METHOD_TEMPERATURE</a></td>
-<td>The term which describes the temperature used to maintain the specimen in a v...</td>
-</tr>
-<tr>
-<td><a href="PROCESSING_LOCATION/">PROCESSING_LOCATION</a></td>
-<td>Site with an HTAN center where specimen processing occurs</td>
-</tr>
-<tr>
-<td><a href="SECTION_NUMBER_IN_SEQUENCE/">SECTION_NUMBER_IN_SEQUENCE</a></td>
-<td>Numeric value (integer, including ranges) provided to a sample in a series of...</td>
-</tr>
-<tr>
-<td><a href="SECTION_THICKNESS_VALUE/">SECTION_THICKNESS_VALUE</a></td>
-<td>Numeric value to describe the thickness of a slice to tissue taken from a bio...</td>
-</tr>
-<tr>
-<td><a href="SHIPPING_CONDITION_TYPE/">SHIPPING_CONDITION_TYPE</a></td>
-<td>Text descriptor of the shipping environment of a biospecimen</td>
-</tr>
-<tr>
-<td><a href="SHORTEST_DIMENSION/">SHORTEST_DIMENSION</a></td>
-<td>Numeric value that represents the shortest dimension of the sample, measured ...</td>
-</tr>
-<tr>
-<td><a href="SITE_DATA_SOURCE/">SITE_DATA_SOURCE</a></td>
-<td>Text to identify the data source for the specimen/sample from within the HTAN...</td>
-</tr>
-<tr>
-<td><a href="SITE_OF_RESECTION_OR_BIOPSY/">SITE_OF_RESECTION_OR_BIOPSY</a></td>
-<td>The location within the body from where the disease of interest originated as...</td>
-</tr>
-<tr>
-<td><a href="SLICING_METHOD/">SLICING_METHOD</a></td>
-<td>Imaging specific: the method by which the tissue was sliced</td>
-</tr>
-<tr>
-<td><a href="SLIDE_CHARGE_TYPE/">SLIDE_CHARGE_TYPE</a></td>
-<td>A description of the charge on the glass slide</td>
-</tr>
-<tr>
-<td><a href="SPECIMEN_CELLULAR_ARCHITECTURE/">SPECIMEN_CELLULAR_ARCHITECTURE</a></td>
-<td>The architectural pattern of an abnormal, normal, or mixed cellular populatio...</td>
-</tr>
-<tr>
-<td><a href="SPECIMEN_LATERALITY/">SPECIMEN_LATERALITY</a></td>
-<td>For tumors in paired organs, designates the side on which the specimen was ob...</td>
-</tr>
-<tr>
-<td><a href="TIMEPOINT/">TIMEPOINT</a></td>
-<td>A specific point in the time continuum, including those established relative ...</td>
-</tr>
-<tr>
-<td><a href="TISSUE_SAMPLE_TYPE/">TISSUE_SAMPLE_TYPE</a></td>
-<td>The type of preserved sample material removed for testing, diagnostic, propag...</td>
-</tr>
-<tr>
-<td><a href="TUMOR_CLASSIFICATION/">TUMOR_CLASSIFICATION</a></td>
-<td>The classification of a tumor at a particular time based primarily on histopa...</td>
-</tr>
-</tbody>
-</table>
-<h2 id="enumerations">Enumerations</h2>
-<table>
-<thead>
-<tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="types">Types</h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="subsets">Subsets</h2>
-<table>
-<thead>
-<tr>
-<th>Subset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><code>caDSR_id</code> (string) - Optional</li>
+<li>The caDSR identifier for this element</li>
+</ul>
 
 
 

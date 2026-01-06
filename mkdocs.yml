@@ -15,16 +15,16 @@ plugins:
 
 nav:
   - Home: index.md
-  - Clinical: clinical/index.md
-  - Biospecimen: biospecimen/index.md
-  - Core File: corefile/index.md
-  - Sequencing: sequencing/index.md
-  - WES: wes/index.md
-  - scRNA-seq: scrna-seq/index.md
-  - Imaging: imaging/index.md
-  - Digital Pathology: digitalpathology/index.md
-  - Multiplex Microscopy: multiplexmicroscopy/index.md
-  - Spatial Omics: spatialomics/index.md
+  - Clinical: clinical.md
+  - Biospecimen: biospecimen.md
+  - Core File: corefile.md
+  - Sequencing: sequencing.md
+  - WES: wes.md
+  - scRNA-seq: scrna-seq.md
+  - Imaging: imaging.md
+  - Digital Pathology: digitalpathology.md
+  - Multiplex Microscopy: multiplexmicroscopy.md
+  - Spatial Omics: spatialomics.md
 
 markdown_extensions:
   - pymdownx.highlight

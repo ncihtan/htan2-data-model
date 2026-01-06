@@ -199,7 +199,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../index.md" class="md-nav__link">
         Home
       </a>
     </li>
@@ -387,32 +387,24 @@
     Classes
   </a>
   
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spatialdata" class="md-nav__link">
+    SpatialData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     Slots
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -456,32 +448,24 @@
     Classes
   </a>
   
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spatialdata" class="md-nav__link">
+    SpatialData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     Slots
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -503,363 +487,25 @@
 
 <h1 id="spatial">Spatial</h1>
 <p>HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels</p>
-<p>URI: https://w3id.org/htan/spatial</p>
-<p>Name: Spatial</p>
 <h2 id="classes">Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="SpatialData/">SpatialData</a></td>
-<td>Container for all Spatial Omics data levels</td>
-</tr>
-</tbody>
-</table>
+<h3 id="spatialdata">SpatialData</h3>
+<p>Container for all Spatial Omics data levels</p>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li><code>LEVEL_1_DATA</code> (SpatialLevel1) - Optional</li>
+<li>Level 1 Spatial Omics data (raw spatial data bundle, optional)</li>
+<li><code>LEVEL_3_DATA</code> (SpatialLevel3) - <strong>Required</strong></li>
+<li>Level 3 Spatial Omics data (processed spatial assay output bundle, required)</li>
+<li><code>LEVEL_4_DATA</code> (SpatialLevel4) - Optional</li>
+<li>Level 4 Spatial Omics data (interoperable h5ad or RDS file, optional)</li>
+<li><code>PANEL_DATA</code> (SpatialPanel) - Optional</li>
+<li>Spatial panel information for targeted sequencing or protein panels</li>
+</ul>
 <h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Slot</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="ASSAY_CHEMISTRY_VERSION.md">ASSAY_CHEMISTRY_VERSION</a></td>
-<td>Assay chemistry version (e</td>
-</tr>
-<tr>
-<td><a href="ASSAY_TYPE.md">ASSAY_TYPE</a></td>
-<td>Broad assay class (drives downstream conditionals)</td>
-</tr>
-<tr>
-<td><a href="BUNDLE_CONTENTS.md">BUNDLE_CONTENTS</a></td>
-<td>List of expected files or folders in this bundle (relative paths within the a...</td>
-</tr>
-<tr>
-<td><a href="caDSR_id/">caDSR_id</a></td>
-<td>The caDSR identifier for this element</td>
-</tr>
-<tr>
-<td><a href="CAPTURE_AREA.md">CAPTURE_AREA</a></td>
-<td>Area (or Capture Area) - One of the either four or two active regions where t...</td>
-</tr>
-<tr>
-<td><a href="CELL_SEGMENTATION_METHOD.md">CELL_SEGMENTATION_METHOD</a></td>
-<td>Description of segmentation method</td>
-</tr>
-<tr>
-<td><a href="CELL_SEGMENTED_OBJECT_TYPE.md">CELL_SEGMENTED_OBJECT_TYPE</a></td>
-<td>Level of segmentation</td>
-</tr>
-<tr>
-<td><a href="CELL_TYPE_CALLING_METHOD.md">CELL_TYPE_CALLING_METHOD</a></td>
-<td>Method used for cell type annotation</td>
-</tr>
-<tr>
-<td><a href="CELL_TYPES.md">CELL_TYPES</a></td>
-<td>List of cell types present in the data</td>
-</tr>
-<tr>
-<td><a href="CLUSTERING_METHOD.md">CLUSTERING_METHOD</a></td>
-<td>Method used to define clusters</td>
-</tr>
-<tr>
-<td><a href="CYTASSIST_USED.md">CYTASSIST_USED</a></td>
-<td>Whether CytAssist was used</td>
-</tr>
-<tr>
-<td><a href="DIMENSIONALITY_REDUCTION_METHOD.md">DIMENSIONALITY_REDUCTION_METHOD</a></td>
-<td>Method used for dimensionality reduction</td>
-</tr>
-<tr>
-<td><a href="FILE_FORMAT.md">FILE_FORMAT</a></td>
-<td>Format of the file (e</td>
-</tr>
-<tr>
-<td><a href="FILENAME/">FILENAME</a></td>
-<td>Name of the file</td>
-</tr>
-<tr>
-<td><a href="GENE_ID.md">GENE_ID</a></td>
-<td>Stable Ensembl gene identifier (e</td>
-</tr>
-<tr>
-<td><a href="GENE_SYMBOL.md">GENE_SYMBOL</a></td>
-<td>HGNC-approved Gene symbol (e</td>
-</tr>
-<tr>
-<td><a href="GENOMIC_REFERENCE.md">GENOMIC_REFERENCE</a></td>
-<td>Reference genome used</td>
-</tr>
-<tr>
-<td><a href="HAS_CELL_SEGMENTATION.md">HAS_CELL_SEGMENTATION</a></td>
-<td>Indicates presence of cell segmentation data</td>
-</tr>
-<tr>
-<td><a href="HAS_CELL_TYPE_CALLING.md">HAS_CELL_TYPE_CALLING</a></td>
-<td>Indicates presence of cell type annotations</td>
-</tr>
-<tr>
-<td><a href="HAS_CLUSTERING.md">HAS_CLUSTERING</a></td>
-<td>Indicates if clustering was performed</td>
-</tr>
-<tr>
-<td><a href="HAS_DIMENSIONALITY_REDUCTION.md">HAS_DIMENSIONALITY_REDUCTION</a></td>
-<td>Indicates presence of dimensionally reduced data</td>
-</tr>
-<tr>
-<td><a href="HAS_IMAGE.md">HAS_IMAGE</a></td>
-<td>Indicates presence of associated image data</td>
-</tr>
-<tr>
-<td><a href="HAS_IMAGES.md">HAS_IMAGES</a></td>
-<td>Whether any image files (e</td>
-</tr>
-<tr>
-<td><a href="HAS_NORMALISED_ARRAY.md">HAS_NORMALISED_ARRAY</a></td>
-<td>Indicates presence of normalized array</td>
-</tr>
-<tr>
-<td><a href="HAS_PROBE_SET.md">HAS_PROBE_SET</a></td>
-<td>Whether a targeted probe/gene panel is included</td>
-</tr>
-<tr>
-<td><a href="HAS_RAW_ARRAY.md">HAS_RAW_ARRAY</a></td>
-<td>Indicates presence of raw expression array</td>
-</tr>
-<tr>
-<td><a href="HAS_REGISTRATION_FILES.md">HAS_REGISTRATION_FILES</a></td>
-<td>Whether any spatial registration transform files are included</td>
-</tr>
-<tr>
-<td><a href="HAS_SEQUENCING.md">HAS_SEQUENCING</a></td>
-<td>If raw/aligned sequencing data is included</td>
-</tr>
-<tr>
-<td><a href="HGNC_VERSION.md">HGNC_VERSION</a></td>
-<td>Version of the HGNC used, indicated with the date of the HGNC reference (e</td>
-</tr>
-<tr>
-<td><a href="HTAN_DATA_FILE_ID.md">HTAN_DATA_FILE_ID</a></td>
-<td>HTAN Data File ID (Primary Key)</td>
-</tr>
-<tr>
-<td><a href="HTAN_PANEL_ID.md">HTAN_PANEL_ID</a></td>
-<td>Unique identifier for the panel</td>
-</tr>
-<tr>
-<td><a href="HTAN_PARENT_ID.md">HTAN_PARENT_ID</a></td>
-<td>HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data ...</td>
-</tr>
-<tr>
-<td><a href="IMAGE_TYPE.md">IMAGE_TYPE</a></td>
-<td>Type of image associated with the data file</td>
-</tr>
-<tr>
-<td><a href="IMAGE_TYPES.md">IMAGE_TYPES</a></td>
-<td>Types of images provided</td>
-</tr>
-<tr>
-<td><a href="LEVEL_1_DATA.md">LEVEL_1_DATA</a></td>
-<td>Level 1 Spatial Omics data (raw spatial data bundle, optional)</td>
-</tr>
-<tr>
-<td><a href="LEVEL_3_DATA.md">LEVEL_3_DATA</a></td>
-<td>Level 3 Spatial Omics data (processed spatial assay output bundle, required)</td>
-</tr>
-<tr>
-<td><a href="LEVEL_4_DATA.md">LEVEL_4_DATA</a></td>
-<td>Level 4 Spatial Omics data (interoperable h5ad or RDS file, optional)</td>
-</tr>
-<tr>
-<td><a href="NORMALISATION_METHOD.md">NORMALISATION_METHOD</a></td>
-<td>Method used for normalizing the array data</td>
-</tr>
-<tr>
-<td><a href="NUMBER_OF_CLUSTERS.md">NUMBER_OF_CLUSTERS</a></td>
-<td>Number of clusters identified</td>
-</tr>
-<tr>
-<td><a href="NUMBER_OF_FEATURES.md">NUMBER_OF_FEATURES</a></td>
-<td>Number of features (e</td>
-</tr>
-<tr>
-<td><a href="NUMBER_OF_OBJECTS.md">NUMBER_OF_OBJECTS</a></td>
-<td>Number of objects (e</td>
-</tr>
-<tr>
-<td><a href="NUMBER_OF_SEGMENTED_CELLS.md">NUMBER_OF_SEGMENTED_CELLS</a></td>
-<td>Total number of segmented cells</td>
-</tr>
-<tr>
-<td><a href="PANEL_DATA.md">PANEL_DATA</a></td>
-<td>Spatial panel information for targeted sequencing or protein panels</td>
-</tr>
-<tr>
-<td><a href="PANEL_NAME.md">PANEL_NAME</a></td>
-<td>Number of genes/proteins in panel</td>
-</tr>
-<tr>
-<td><a href="PANEL_SIZE_TOTAL_TARGETS.md">PANEL_SIZE_TOTAL_TARGETS</a></td>
-<td>Total number of targets in the panel</td>
-</tr>
-<tr>
-<td><a href="PANEL_SYNAPSE_ID.md">PANEL_SYNAPSE_ID</a></td>
-<td>Synapse ID of the completed spatial_omics_panel template</td>
-</tr>
-<tr>
-<td><a href="PLATFORM.md">PLATFORM</a></td>
-<td>Name of the platform used to generate the data</td>
-</tr>
-<tr>
-<td><a href="PORTAL_PREVIEW_FILE.md">PORTAL_PREVIEW_FILE</a></td>
-<td>Relative path of HTML preview in bundle if present</td>
-</tr>
-<tr>
-<td><a href="PROTEIN_MEASURED.md">PROTEIN_MEASURED</a></td>
-<td>Whether protein was measured</td>
-</tr>
-<tr>
-<td><a href="PROTOCOL_LINK.md">PROTOCOL_LINK</a></td>
-<td>URL to protocol documentation</td>
-</tr>
-<tr>
-<td><a href="QC_FEATURE_NUMBER.md">QC_FEATURE_NUMBER</a></td>
-<td>Features (e</td>
-</tr>
-<tr>
-<td><a href="QC_MEAN_READS_PER_FEATURE.md">QC_MEAN_READS_PER_FEATURE</a></td>
-<td>Mean reads per feature</td>
-</tr>
-<tr>
-<td><a href="QC_SPATIAL_UNIT.md">QC_SPATIAL_UNIT</a></td>
-<td>Type of spatial unit</td>
-</tr>
-<tr>
-<td><a href="QC_TOTAL_GENES_DETECTED.md">QC_TOTAL_GENES_DETECTED</a></td>
-<td>Total genes detected</td>
-</tr>
-<tr>
-<td><a href="QC_TOTAL_NUMBER_OF_READS.md">QC_TOTAL_NUMBER_OF_READS</a></td>
-<td>Total number of reads</td>
-</tr>
-<tr>
-<td><a href="REGION_AREA.md">REGION_AREA</a></td>
-<td>Capture area in µm²</td>
-</tr>
-<tr>
-<td><a href="RNA_MEASURED.md">RNA_MEASURED</a></td>
-<td>Whether RNA was measured</td>
-</tr>
-<tr>
-<td><a href="RUN_ID.md">RUN_ID</a></td>
-<td>A unique identifier for this individual run (typically associated with a sing...</td>
-</tr>
-<tr>
-<td><a href="SAME_SECTION_IMAGING_CHANNELS.md">SAME_SECTION_IMAGING_CHANNELS</a></td>
-<td>Antigens targeted in same section fluorescence imaging</td>
-</tr>
-<tr>
-<td><a href="SAME_SECTION_IMAGING_ID.md">SAME_SECTION_IMAGING_ID</a></td>
-<td>HTAN ID of data file that represents same section imaging</td>
-</tr>
-<tr>
-<td><a href="SAME_SECTION_IMAGING_MODALITY.md">SAME_SECTION_IMAGING_MODALITY</a></td>
-<td>Was same section imaging performed</td>
-</tr>
-<tr>
-<td><a href="SEQUENCING_CONFIGURATION.md">SEQUENCING_CONFIGURATION</a></td>
-<td>Read and index setup</td>
-</tr>
-<tr>
-<td><a href="SEQUENCING_DEPTH.md">SEQUENCING_DEPTH</a></td>
-<td>Sequencing depth</td>
-</tr>
-<tr>
-<td><a href="SEQUENCING_FILE_TYPE.md">SEQUENCING_FILE_TYPE</a></td>
-<td>Sequencing file type</td>
-</tr>
-<tr>
-<td><a href="SEQUENCING_INSTRUMENT.md">SEQUENCING_INSTRUMENT</a></td>
-<td>Sequencer used</td>
-</tr>
-<tr>
-<td><a href="SLIDE_SERIAL_NUMBER.md">SLIDE_SERIAL_NUMBER</a></td>
-<td>Slide serial number</td>
-</tr>
-<tr>
-<td><a href="SOFTWARE_AND_VERSION.md">SOFTWARE_AND_VERSION</a></td>
-<td>Software/tools used for processing</td>
-</tr>
-<tr>
-<td><a href="SPATIAL_ASSAY_TYPE.md">SPATIAL_ASSAY_TYPE</a></td>
-<td>Type of spatial assay (in situ or capture-based)</td>
-</tr>
-<tr>
-<td><a href="TOOL_COMPATIBILITY.md">TOOL_COMPATIBILITY</a></td>
-<td>Tools or libraries compatible with this file</td>
-</tr>
-<tr>
-<td><a href="TRANSCRIPTOME_TYPE.md">TRANSCRIPTOME_TYPE</a></td>
-<td>Molecular targets measured using panels</td>
-</tr>
-<tr>
-<td><a href="USER_GENE_NAME.md">USER_GENE_NAME</a></td>
-<td>Optional user-defined name for the Gene</td>
-</tr>
-</tbody>
-</table>
-<h2 id="enumerations">Enumerations</h2>
-<table>
-<thead>
-<tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="types">Types</h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="subsets">Subsets</h2>
-<table>
-<thead>
-<tr>
-<th>Subset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><code>caDSR_id</code> (string) - Optional</li>
+<li>The caDSR identifier for this element</li>
+</ul>
 
 
 

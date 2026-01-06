@@ -199,7 +199,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../index.md" class="md-nav__link">
         Home
       </a>
     </li>
@@ -357,33 +357,38 @@
     Classes
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#slots" class="md-nav__link">
-    Slots
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#digitalpathologydata" class="md-nav__link">
+    DigitalPathologyData
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
+  <a href="#enums" class="md-nav__link">
+    Enums
+  </a>
+  
+    <nav class="md-nav" aria-label="Enums">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotationtype" class="md-nav__link">
+    AnnotationType
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -456,33 +461,38 @@
     Classes
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#slots" class="md-nav__link">
-    Slots
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#digitalpathologydata" class="md-nav__link">
+    DigitalPathologyData
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
+  <a href="#enums" class="md-nav__link">
+    Enums
+  </a>
+  
+    <nav class="md-nav" aria-label="Enums">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotationtype" class="md-nav__link">
+    AnnotationType
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -503,191 +513,28 @@
 
 <h1 id="digitalpathology">DigitalPathology</h1>
 <p>HTAN Digital Pathology Data Model Schema for Phase 2</p>
-<p>URI: https://w3id.org/htan/digital_pathology</p>
-<p>Name: DigitalPathology</p>
 <h2 id="classes">Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Slot</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="ANNOTATION_TYPE/">ANNOTATION_TYPE</a></td>
-<td>What types of annotation are contained in the image</td>
-</tr>
-<tr>
-<td><a href="CITATION_OR_DOI/">CITATION_OR_DOI</a></td>
-<td>Raw Data Protocol or Digital Object Identifier Text; Publication and/or digit...</td>
-</tr>
-<tr>
-<td><a href="DE_IDENTIFICATION_METHOD_DESCRIPTION/">DE_IDENTIFICATION_METHOD_DESCRIPTION</a></td>
-<td>Description of the process of removing potentially identifying data or data e...</td>
-</tr>
-<tr>
-<td><a href="DE_IDENTIFICATION_METHOD_TYPE/">DE_IDENTIFICATION_METHOD_TYPE</a></td>
-<td>De-identification Method Type</td>
-</tr>
-<tr>
-<td><a href="DE_IDENTIFICATION_SOFTWARE/">DE_IDENTIFICATION_SOFTWARE</a></td>
-<td>Software that was used to de-identify the images (if used)</td>
-</tr>
-<tr>
-<td><a href="DE_IDENTIFIED/">DE_IDENTIFIED</a></td>
-<td>Confirm that any HIPAA identifiers are redacted, masked, or not present in th...</td>
-</tr>
-<tr>
-<td><a href="EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES/">EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES</a></td>
-<td>What is the experimental strategy used for the study (or what type of data su...</td>
-</tr>
-<tr>
-<td><a href="FILE_FORMAT/">FILE_FORMAT</a></td>
-<td>Format of the file (e</td>
-</tr>
-<tr>
-<td><a href="FILENAME/">FILENAME</a></td>
-<td>Name of the file</td>
-</tr>
-<tr>
-<td><a href="HAS_ANNOTATIONS/">HAS_ANNOTATIONS</a></td>
-<td>Does the image contain annotations</td>
-</tr>
-<tr>
-<td><a href="HAS_SLIDE_LABEL/">HAS_SLIDE_LABEL</a></td>
-<td>Does the image contain a slide label</td>
-</tr>
-<tr>
-<td><a href="HTAN_DATA_FILE_ID/">HTAN_DATA_FILE_ID</a></td>
-<td>HTAN Data File ID (Primary Key)</td>
-</tr>
-<tr>
-<td><a href="HTAN_PARENT_ID/">HTAN_PARENT_ID</a></td>
-<td>HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data ...</td>
-</tr>
-<tr>
-<td><a href="IMAGE_MODALITY/">IMAGE_MODALITY</a></td>
-<td>The method in which the images are generated</td>
-</tr>
-<tr>
-<td><a href="IMAGING_EQUIPMENT_MANUFACTURER/">IMAGING_EQUIPMENT_MANUFACTURER</a></td>
-<td>Producer of the imaging equipment that was used to generate the digital image</td>
-</tr>
-<tr>
-<td><a href="IMAGING_EQUIPMENT_MODEL/">IMAGING_EQUIPMENT_MODEL</a></td>
-<td>The words used to describe the specific model of the instrument used to carry...</td>
-</tr>
-<tr>
-<td><a href="IMAGING_PROTOCOL/">IMAGING_PROTOCOL</a></td>
-<td>A rule which guides how an activity should be performed</td>
-</tr>
-<tr>
-<td><a href="IMAGING_SOFTWARE/">IMAGING_SOFTWARE</a></td>
-<td>The name of the software package that was used to capture, generate, and proc...</td>
-</tr>
-<tr>
-<td><a href="IMMERSION/">IMMERSION</a></td>
-<td>Immersion medium</td>
-</tr>
-<tr>
-<td><a href="LENS_NUMERICAL_APERTURE/">LENS_NUMERICAL_APERTURE</a></td>
-<td>The numerical aperture of the lens</td>
-</tr>
-<tr>
-<td><a href="LICENSE/">LICENSE</a></td>
-<td>Official or legal permission to do or own a specified thing</td>
-</tr>
-<tr>
-<td><a href="NOMINAL_MAGNIFICATION/">NOMINAL_MAGNIFICATION</a></td>
-<td>The magnification of the lens as specified by the manufacturer - i</td>
-</tr>
-<tr>
-<td><a href="OBJECTIVE/">OBJECTIVE</a></td>
-<td>The manufacturer and or model number for the optical element that gathers lig...</td>
-</tr>
-<tr>
-<td><a href="PASSED_QC/">PASSED_QC</a></td>
-<td>Confirm that the image has passed internal quality control checks</td>
-</tr>
-<tr>
-<td><a href="QC_COMMENT/">QC_COMMENT</a></td>
-<td>Comments related to quality control checks</td>
-</tr>
-<tr>
-<td><a href="SLIDE_LABEL_REDACTED/">SLIDE_LABEL_REDACTED</a></td>
-<td>Have identifiers including dates been masked in the label image</td>
-</tr>
-<tr>
-<td><a href="SPECIES/">SPECIES</a></td>
-<td>NCBI Taxonomy ID</td>
-</tr>
-<tr>
-<td><a href="STAINING_METHOD/">STAINING_METHOD</a></td>
-<td>Any of the various methods that use a dye, reagent, or other material for pro...</td>
-</tr>
-</tbody>
-</table>
-<h2 id="enumerations">Enumerations</h2>
-<table>
-<thead>
-<tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="AnnotationType/">AnnotationType</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="types">Types</h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="subsets">Subsets</h2>
-<table>
-<thead>
-<tr>
-<th>Subset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<h3 id="digitalpathologydata">DigitalPathologyData</h3>
+<p>Container for digital pathology imaging data</p>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li><code>FILE_FORMAT</code> (string) - <strong>Required</strong></li>
+<li>Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python.</li>
+<li><code>HAS_ANNOTATIONS</code> (boolean) - <strong>Required</strong></li>
+<li>Does the image contain annotations</li>
+<li><code>ANNOTATION_TYPE</code> (AnnotationType) - Optional</li>
+<li>What types of annotation are contained in the image</li>
+</ul>
+<h2 id="enums">Enums</h2>
+<h3 id="annotationtype">AnnotationType</h3>
+<p><strong>Values:</strong></p>
+<ul>
+<li><code>Artifact</code> - Artifact annotation</li>
+<li><code>Cell</code> - Cell annotation</li>
+<li><code>Nucleus</code> - Nucleus annotation</li>
+<li><code>ROI</code> - Region of Interest annotation</li>
+<li><code>Tissue</code> - Tissue annotation</li>
+</ul>
 
 
 

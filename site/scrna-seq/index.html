@@ -199,7 +199,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../index.md" class="md-nav__link">
         Home
       </a>
     </li>
@@ -327,33 +327,18 @@
     Classes
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#slots" class="md-nav__link">
-    Slots
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scrnaseqdata" class="md-nav__link">
+    scRNAseqData
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -456,33 +441,18 @@
     Classes
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#slots" class="md-nav__link">
-    Slots
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scrnaseqdata" class="md-nav__link">
+    scRNAseqData
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -503,239 +473,18 @@
 
 <h1 id="scrna-seq">scRNA-seq</h1>
 <p>HTAN scRNA-seq Data Model - Single-cell RNA sequencing data</p>
-<p>URI: https://w3id.org/htan/scrna_seq</p>
-<p>Name: scRNA-seq</p>
 <h2 id="classes">Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="ScRNAseqData/">ScRNAseqData</a></td>
-<td>Root class for scRNA-seq data</td>
-</tr>
-</tbody>
-</table>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Slot</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="ANNDATA_SCHEMA_VERSION.md">ANNDATA_SCHEMA_VERSION</a></td>
-<td>Version of AnnData schema (must be 0</td>
-</tr>
-<tr>
-<td><a href="ANNDATA_STRUCTURE_VALIDATED.md">ANNDATA_STRUCTURE_VALIDATED</a></td>
-<td>Whether the h5ad file structure has been validated against AnnData 0</td>
-</tr>
-<tr>
-<td><a href="CELL_BARCODE_TAG.md">CELL_BARCODE_TAG</a></td>
-<td>Tag used for cell barcodes</td>
-</tr>
-<tr>
-<td><a href="CELL_MEDIAN_NUMBER_GENES.md">CELL_MEDIAN_NUMBER_GENES</a></td>
-<td>Median number of genes detected per cell</td>
-</tr>
-<tr>
-<td><a href="CELL_MEDIAN_NUMBER_READS.md">CELL_MEDIAN_NUMBER_READS</a></td>
-<td>Median number of reads per cell</td>
-</tr>
-<tr>
-<td><a href="CELL_TOTAL.md">CELL_TOTAL</a></td>
-<td>Number of sequenced cells</td>
-</tr>
-<tr>
-<td><a href="CHECKSUM/">CHECKSUM</a></td>
-<td>Checksum for data integrity verification</td>
-</tr>
-<tr>
-<td><a href="CRYOPRESERVED_CELLS_IN_SAMPLE/">CRYOPRESERVED_CELLS_IN_SAMPLE</a></td>
-<td>Whether cells were cryopreserved in the sample</td>
-</tr>
-<tr>
-<td><a href="DATA_CATEGORY.md">DATA_CATEGORY</a></td>
-<td>Specific content type of the data file</td>
-</tr>
-<tr>
-<td><a href="DISSOCIATION_METHOD/">DISSOCIATION_METHOD</a></td>
-<td>Method used to dissociate tissue into single cells</td>
-</tr>
-<tr>
-<td><a href="FILE_FORMAT.md">FILE_FORMAT</a></td>
-<td>Format of the file (e</td>
-</tr>
-<tr>
-<td><a href="FILENAME.md">FILENAME</a></td>
-<td>Name of the file</td>
-</tr>
-<tr>
-<td><a href="GENOME_ANNOTATION_URL/">GENOME_ANNOTATION_URL</a></td>
-<td>URL to genome annotation</td>
-</tr>
-<tr>
-<td><a href="GENOMIC_REFERENCE/">GENOMIC_REFERENCE</a></td>
-<td>Genomic reference used for alignment</td>
-</tr>
-<tr>
-<td><a href="GENOMIC_REFERENCE_URL/">GENOMIC_REFERENCE_URL</a></td>
-<td>URL to genomic reference</td>
-</tr>
-<tr>
-<td><a href="HTAN_DATA_FILE_ID.md">HTAN_DATA_FILE_ID</a></td>
-<td>HTAN Data File ID (Primary Key)</td>
-</tr>
-<tr>
-<td><a href="HTAN_PARENT_ID.md">HTAN_PARENT_ID</a></td>
-<td>HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data ...</td>
-</tr>
-<tr>
-<td><a href="level1_data.md">level1_data</a></td>
-<td>Level 1 scRNA-seq data</td>
-</tr>
-<tr>
-<td><a href="level2_data.md">level2_data</a></td>
-<td>Level 2 scRNA-seq data</td>
-</tr>
-<tr>
-<td><a href="level3_4_data.md">level3_4_data</a></td>
-<td>Level 3/4 scRNA-seq data</td>
-</tr>
-<tr>
-<td><a href="LIBRARY_CONSTRUCTION_METHOD/">LIBRARY_CONSTRUCTION_METHOD</a></td>
-<td>Method used to construct the sequencing library</td>
-</tr>
-<tr>
-<td><a href="LIBRARY_LAYOUT/">LIBRARY_LAYOUT</a></td>
-<td>Library layout (paired-end or single-end)</td>
-</tr>
-<tr>
-<td><a href="LIBRARY_PREPARATION_DAYS_FROM_INDEX/">LIBRARY_PREPARATION_DAYS_FROM_INDEX</a></td>
-<td>Days from index for library preparation</td>
-</tr>
-<tr>
-<td><a href="LINKED_MATRICES.md">LINKED_MATRICES</a></td>
-<td>All matrices associated with every part of a SingleCellExperiment object</td>
-</tr>
-<tr>
-<td><a href="MATRIX_TYPE.md">MATRIX_TYPE</a></td>
-<td>Type of data stored in matrix</td>
-</tr>
-<tr>
-<td><a href="NUCLEIC_ACID_SOURCE/">NUCLEIC_ACID_SOURCE</a></td>
-<td>Type of nucleic acid used for sequencing</td>
-</tr>
-<tr>
-<td><a href="PROTOCOL_LINK/">PROTOCOL_LINK</a></td>
-<td>Link to sequencing protocol</td>
-</tr>
-<tr>
-<td><a href="READ_INDICATOR/">READ_INDICATOR</a></td>
-<td>Type of read (forward, reverse, index)</td>
-</tr>
-<tr>
-<td><a href="REVERSE_TRANSCRIPTION_PRIMER/">REVERSE_TRANSCRIPTION_PRIMER</a></td>
-<td>Primer used for reverse transcription</td>
-</tr>
-<tr>
-<td><a href="SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION.md">SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION</a></td>
-<td>Parameters used to run the workflow</td>
-</tr>
-<tr>
-<td><a href="SCRNASEQ_WORKFLOW_TYPE.md">SCRNASEQ_WORKFLOW_TYPE</a></td>
-<td>Generic name for the workflow used to analyze the dataset</td>
-</tr>
-<tr>
-<td><a href="SEQUENCING_BATCH_ID/">SEQUENCING_BATCH_ID</a></td>
-<td>Sequencing batch identifier</td>
-</tr>
-<tr>
-<td><a href="SEQUENCING_PLATFORM/">SEQUENCING_PLATFORM</a></td>
-<td>Sequencing platform used</td>
-</tr>
-<tr>
-<td><a href="SINGLE_CELL_ISOLATION_METHOD/">SINGLE_CELL_ISOLATION_METHOD</a></td>
-<td>Method used to isolate single cells</td>
-</tr>
-<tr>
-<td><a href="SPIKE_IN/">SPIKE_IN</a></td>
-<td>Type of spike-in used, if any</td>
-</tr>
-<tr>
-<td><a href="TECHNICAL_REPLICATE_GROUP/">TECHNICAL_REPLICATE_GROUP</a></td>
-<td>Technical replicate group identifier</td>
-</tr>
-<tr>
-<td><a href="UMI_TAG.md">UMI_TAG</a></td>
-<td>Tag used for UMIs</td>
-</tr>
-<tr>
-<td><a href="WHITELIST_CELL_BARCODE_FILE_LINK.md">WHITELIST_CELL_BARCODE_FILE_LINK</a></td>
-<td>Link to whitelist cell barcode file</td>
-</tr>
-<tr>
-<td><a href="WORKFLOW_LINK/">WORKFLOW_LINK</a></td>
-<td>Link to workflow or command</td>
-</tr>
-<tr>
-<td><a href="WORKFLOW_VERSION/">WORKFLOW_VERSION</a></td>
-<td>Major version of the workflow</td>
-</tr>
-</tbody>
-</table>
-<h2 id="enumerations">Enumerations</h2>
-<table>
-<thead>
-<tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="types">Types</h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="subsets">Subsets</h2>
-<table>
-<thead>
-<tr>
-<th>Subset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<h3 id="scrnaseqdata">scRNAseqData</h3>
+<p>Root class for scRNA-seq data</p>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li><code>level1_data</code> (scRNALevel1) - Optional</li>
+<li>Level 1 scRNA-seq data</li>
+<li><code>level2_data</code> (scRNALevel2) - Optional</li>
+<li>Level 2 scRNA-seq data</li>
+<li><code>level3_4_data</code> (scRNALevel3_4) - Optional</li>
+<li>Level 3/4 scRNA-seq data</li>
+</ul>
 
 
 

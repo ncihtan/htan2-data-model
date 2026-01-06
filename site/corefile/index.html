@@ -199,7 +199,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../index.md" class="md-nav__link">
         Home
       </a>
     </li>
@@ -282,33 +282,18 @@
     Classes
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#slots" class="md-nav__link">
-    Slots
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#corefileattributes" class="md-nav__link">
+    CoreFileAttributes
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -456,33 +441,18 @@
     Classes
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#slots" class="md-nav__link">
-    Slots
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#corefileattributes" class="md-nav__link">
+    CoreFileAttributes
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -503,95 +473,20 @@
 
 <h1 id="core">Core</h1>
 <p>HTAN Core Data Model - Universal attributes shared across all file-based modules</p>
-<p>URI: https://w3id.org/htan/core</p>
-<p>Name: Core</p>
 <h2 id="classes">Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="CoreFileAttributes/">CoreFileAttributes</a></td>
-<td>Universal attributes that apply to all file-based data in HTAN</td>
-</tr>
-</tbody>
-</table>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Slot</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="FILE_FORMAT/">FILE_FORMAT</a></td>
-<td>Format of the file (e</td>
-</tr>
-<tr>
-<td><a href="FILENAME/">FILENAME</a></td>
-<td>Name of the file</td>
-</tr>
-<tr>
-<td><a href="HTAN_DATA_FILE_ID/">HTAN_DATA_FILE_ID</a></td>
-<td>HTAN Data File ID (Primary Key)</td>
-</tr>
-<tr>
-<td><a href="HTAN_PARENT_ID/">HTAN_PARENT_ID</a></td>
-<td>HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data ...</td>
-</tr>
-</tbody>
-</table>
-<h2 id="enumerations">Enumerations</h2>
-<table>
-<thead>
-<tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="types">Types</h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="subsets">Subsets</h2>
-<table>
-<thead>
-<tr>
-<th>Subset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<h3 id="corefileattributes">CoreFileAttributes</h3>
+<p>Universal attributes that apply to all file-based data in HTAN</p>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li><code>FILENAME</code> (string) - <strong>Required</strong></li>
+<li>Name of the file</li>
+<li><code>FILE_FORMAT</code> (string) - <strong>Required</strong></li>
+<li>Format of the file (e.g., fastq, bam, vcf, h5ad)</li>
+<li><code>HTAN_DATA_FILE_ID</code> (string) - <strong>Required</strong></li>
+<li>HTAN Data File ID (Primary Key)</li>
+<li><code>HTAN_PARENT_ID</code> (string) - <strong>Required</strong></li>
+<li>HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2.</li>
+</ul>
 
 
 

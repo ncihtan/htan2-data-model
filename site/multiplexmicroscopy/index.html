@@ -199,7 +199,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../index.md" class="md-nav__link">
         Home
       </a>
     </li>
@@ -372,32 +372,24 @@
     Classes
   </a>
   
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiplexmicroscopydata" class="md-nav__link">
+    MultiplexMicroscopyData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     Slots
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -456,32 +448,24 @@
     Classes
   </a>
   
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiplexmicroscopydata" class="md-nav__link">
+    MultiplexMicroscopyData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     Slots
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -503,303 +487,23 @@
 
 <h1 id="multiplexmicroscopy">MultiplexMicroscopy</h1>
 <p>HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels</p>
-<p>URI: https://w3id.org/htan/multiplex_microscopy</p>
-<p>Name: MultiplexMicroscopy</p>
 <h2 id="classes">Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="MultiplexMicroscopyData/">MultiplexMicroscopyData</a></td>
-<td>Container for all Multiplex Microscopy data levels</td>
-</tr>
-</tbody>
-</table>
+<h3 id="multiplexmicroscopydata">MultiplexMicroscopyData</h3>
+<p>Container for all Multiplex Microscopy data levels</p>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li><code>LEVEL_2_DATA</code> (MultiplexMicroscopyLevel2) - Optional</li>
+<li>Level 2 Multiplex Microscopy data (imaging data with channel metadata)</li>
+<li><code>LEVEL_3_DATA</code> (MultiplexMicroscopyLevel3) - Optional</li>
+<li>Level 3 Multiplex Microscopy data (segmentation masks)</li>
+<li><code>LEVEL_4_DATA</code> (MultiplexMicroscopyLevel4) - Optional</li>
+<li>Level 4 Multiplex Microscopy data (cell-by-feature tables)</li>
+</ul>
 <h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Slot</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="caDSR_id/">caDSR_id</a></td>
-<td>The caDSR identifier for this element</td>
-</tr>
-<tr>
-<td><a href="CHANNEL_METADATA_ID.md">CHANNEL_METADATA_ID</a></td>
-<td>Unique identifier specifying the location of the required channel metadata (S...</td>
-</tr>
-<tr>
-<td><a href="CITATION_OR_DOI.md">CITATION_OR_DOI</a></td>
-<td>Raw Data Protocol or Digital Object Identifier Text; Publication and/or digit...</td>
-</tr>
-<tr>
-<td><a href="DE_IDENTIFICATION_METHOD_DESCRIPTION.md">DE_IDENTIFICATION_METHOD_DESCRIPTION</a></td>
-<td>Description of the process of removing potentially identifying data or data e...</td>
-</tr>
-<tr>
-<td><a href="DE_IDENTIFICATION_METHOD_TYPE.md">DE_IDENTIFICATION_METHOD_TYPE</a></td>
-<td>De-identification Method Type</td>
-</tr>
-<tr>
-<td><a href="DE_IDENTIFICATION_SOFTWARE.md">DE_IDENTIFICATION_SOFTWARE</a></td>
-<td>Software that was used to de-identify the images (if used)</td>
-</tr>
-<tr>
-<td><a href="DE_IDENTIFIED.md">DE_IDENTIFIED</a></td>
-<td>Confirm that any HIPAA identifiers are redacted, masked, or not present in th...</td>
-</tr>
-<tr>
-<td><a href="EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES.md">EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES</a></td>
-<td>What is the experimental strategy used for the study (or what type of data su...</td>
-</tr>
-<tr>
-<td><a href="FEATURE_EXTRACTION_METHOD.md">FEATURE_EXTRACTION_METHOD</a></td>
-<td>Method used for feature extraction (e</td>
-</tr>
-<tr>
-<td><a href="FEATURE_EXTRACTION_PARAMETERS.md">FEATURE_EXTRACTION_PARAMETERS</a></td>
-<td>Parameters used for feature extraction (e</td>
-</tr>
-<tr>
-<td><a href="FEATURE_EXTRACTION_WORKFLOW_TYPE.md">FEATURE_EXTRACTION_WORKFLOW_TYPE</a></td>
-<td>Type of workflow used to extract features from segmented objects</td>
-</tr>
-<tr>
-<td><a href="FEATURE_EXTRACTION_WORKFLOW_URL.md">FEATURE_EXTRACTION_WORKFLOW_URL</a></td>
-<td>URL or link to the feature extraction workflow used</td>
-</tr>
-<tr>
-<td><a href="FEATURE_EXTRACTION_WORKFLOW_VERSION.md">FEATURE_EXTRACTION_WORKFLOW_VERSION</a></td>
-<td>Version of the feature extraction workflow</td>
-</tr>
-<tr>
-<td><a href="FILE_FORMAT.md">FILE_FORMAT</a></td>
-<td>Format of the file (e</td>
-</tr>
-<tr>
-<td><a href="FILENAME/">FILENAME</a></td>
-<td>Name of the file</td>
-</tr>
-<tr>
-<td><a href="HAS_SLIDE_LABEL.md">HAS_SLIDE_LABEL</a></td>
-<td>Does the image contain a slide label</td>
-</tr>
-<tr>
-<td><a href="HTAN_DATA_FILE_ID.md">HTAN_DATA_FILE_ID</a></td>
-<td>HTAN Data File ID (Primary Key)</td>
-</tr>
-<tr>
-<td><a href="HTAN_PARENT_ID.md">HTAN_PARENT_ID</a></td>
-<td>HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data ...</td>
-</tr>
-<tr>
-<td><a href="IMAGE_MODALITY.md">IMAGE_MODALITY</a></td>
-<td>The method in which the images are generated</td>
-</tr>
-<tr>
-<td><a href="IMAGING_ASSAY_TYPE.md">IMAGING_ASSAY_TYPE</a></td>
-<td>Type of imaging assay</td>
-</tr>
-<tr>
-<td><a href="IMAGING_EQUIPMENT_MANUFACTURER.md">IMAGING_EQUIPMENT_MANUFACTURER</a></td>
-<td>Producer of the imaging equipment that was used to generate the digital image</td>
-</tr>
-<tr>
-<td><a href="IMAGING_EQUIPMENT_MODEL.md">IMAGING_EQUIPMENT_MODEL</a></td>
-<td>The words used to describe the specific model of the instrument used to carry...</td>
-</tr>
-<tr>
-<td><a href="IMAGING_PROTOCOL.md">IMAGING_PROTOCOL</a></td>
-<td>A rule which guides how an activity should be performed</td>
-</tr>
-<tr>
-<td><a href="IMAGING_SOFTWARE.md">IMAGING_SOFTWARE</a></td>
-<td>The name of the software package that was used to capture, generate, and proc...</td>
-</tr>
-<tr>
-<td><a href="IMMERSION.md">IMMERSION</a></td>
-<td>Immersion medium</td>
-</tr>
-<tr>
-<td><a href="LENS_NUMERICAL_APERTURE.md">LENS_NUMERICAL_APERTURE</a></td>
-<td>The numerical aperture of the lens</td>
-</tr>
-<tr>
-<td><a href="LEVEL_2_DATA.md">LEVEL_2_DATA</a></td>
-<td>Level 2 Multiplex Microscopy data (imaging data with channel metadata)</td>
-</tr>
-<tr>
-<td><a href="LEVEL_3_DATA.md">LEVEL_3_DATA</a></td>
-<td>Level 3 Multiplex Microscopy data (segmentation masks)</td>
-</tr>
-<tr>
-<td><a href="LEVEL_4_DATA.md">LEVEL_4_DATA</a></td>
-<td>Level 4 Multiplex Microscopy data (cell-by-feature tables)</td>
-</tr>
-<tr>
-<td><a href="LICENSE.md">LICENSE</a></td>
-<td>Official or legal permission to do or own a specified thing</td>
-</tr>
-<tr>
-<td><a href="MATRIX_TYPE.md">MATRIX_TYPE</a></td>
-<td>Type of feature matrix (raw counts, normalized, etc</td>
-</tr>
-<tr>
-<td><a href="NOMINAL_MAGNIFICATION.md">NOMINAL_MAGNIFICATION</a></td>
-<td>The magnification of the lens as specified by the manufacturer - i</td>
-</tr>
-<tr>
-<td><a href="NUMBER_OF_FEATURES.md">NUMBER_OF_FEATURES</a></td>
-<td>Number of features (markers/channels) in the feature matrix</td>
-</tr>
-<tr>
-<td><a href="NUMBER_OF_OBJECTS.md">NUMBER_OF_OBJECTS</a></td>
-<td>Number of segmented objects (cells, nuclei, etc</td>
-</tr>
-<tr>
-<td><a href="OBJECTIVE.md">OBJECTIVE</a></td>
-<td>The manufacturer and or model number for the optical element that gathers lig...</td>
-</tr>
-<tr>
-<td><a href="PASSED_QC.md">PASSED_QC</a></td>
-<td>Confirm that the image has passed internal quality control checks</td>
-</tr>
-<tr>
-<td><a href="PHYSICAL_SIZE_X.md">PHYSICAL_SIZE_X</a></td>
-<td>Physical size of a single pixel in the x dimension</td>
-</tr>
-<tr>
-<td><a href="PHYSICAL_SIZE_Y.md">PHYSICAL_SIZE_Y</a></td>
-<td>Physical size of a single pixel in the y dimension</td>
-</tr>
-<tr>
-<td><a href="PHYSICAL_SIZE_Z.md">PHYSICAL_SIZE_Z</a></td>
-<td>Physical size of a single pixel in the z dimension</td>
-</tr>
-<tr>
-<td><a href="PYRAMID.md">PYRAMID</a></td>
-<td>The data file contains an image pyramid</td>
-</tr>
-<tr>
-<td><a href="QC_COMMENT.md">QC_COMMENT</a></td>
-<td>Comments related to quality control checks</td>
-</tr>
-<tr>
-<td><a href="SEGMENTATION_ANNOTATION_TYPE.md">SEGMENTATION_ANNOTATION_TYPE</a></td>
-<td>Type of objects segmented (e</td>
-</tr>
-<tr>
-<td><a href="SEGMENTATION_METHOD.md">SEGMENTATION_METHOD</a></td>
-<td>Method used for segmentation (e</td>
-</tr>
-<tr>
-<td><a href="SEGMENTATION_PARAMETERS.md">SEGMENTATION_PARAMETERS</a></td>
-<td>Parameters used for segmentation (e</td>
-</tr>
-<tr>
-<td><a href="SEGMENTATION_WORKFLOW_TYPE.md">SEGMENTATION_WORKFLOW_TYPE</a></td>
-<td>Type of segmentation workflow used to generate the mask</td>
-</tr>
-<tr>
-<td><a href="SEGMENTATION_WORKFLOW_URL.md">SEGMENTATION_WORKFLOW_URL</a></td>
-<td>URL or link to the segmentation workflow used</td>
-</tr>
-<tr>
-<td><a href="SEGMENTATION_WORKFLOW_VERSION.md">SEGMENTATION_WORKFLOW_VERSION</a></td>
-<td>Version of the segmentation workflow</td>
-</tr>
-<tr>
-<td><a href="SIZE_C.md">SIZE_C</a></td>
-<td>Number of channels</td>
-</tr>
-<tr>
-<td><a href="SIZE_T.md">SIZE_T</a></td>
-<td>Number of timepoints</td>
-</tr>
-<tr>
-<td><a href="SIZE_X.md">SIZE_X</a></td>
-<td>The number of pixels in the x dimension at the highest resolution available</td>
-</tr>
-<tr>
-<td><a href="SIZE_Y.md">SIZE_Y</a></td>
-<td>The number of pixels in the y dimension at the highest resolution available</td>
-</tr>
-<tr>
-<td><a href="SIZE_Z.md">SIZE_Z</a></td>
-<td>The number of pixels in the z dimension at the highest resolution available</td>
-</tr>
-<tr>
-<td><a href="SLIDE_LABEL_REDACTED.md">SLIDE_LABEL_REDACTED</a></td>
-<td>Have identifiers including dates been masked in the label image</td>
-</tr>
-<tr>
-<td><a href="SPECIES.md">SPECIES</a></td>
-<td>NCBI Taxonomy ID</td>
-</tr>
-<tr>
-<td><a href="STAINING_METHOD.md">STAINING_METHOD</a></td>
-<td>Any of the various methods that use a dye, reagent, or other material for pro...</td>
-</tr>
-<tr>
-<td><a href="WORKING_DISTANCE.md">WORKING_DISTANCE</a></td>
-<td>The working distance of the lens, expressed as a floating point number</td>
-</tr>
-</tbody>
-</table>
-<h2 id="enumerations">Enumerations</h2>
-<table>
-<thead>
-<tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="types">Types</h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="subsets">Subsets</h2>
-<table>
-<thead>
-<tr>
-<th>Subset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><code>caDSR_id</code> (string) - Optional</li>
+<li>The caDSR identifier for this element</li>
+</ul>
 
 
 

@@ -199,7 +199,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../index.md" class="md-nav__link">
         Home
       </a>
     </li>
@@ -312,32 +312,24 @@
     Classes
   </a>
   
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wesdata" class="md-nav__link">
+    WESData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     Slots
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -456,32 +448,24 @@
     Classes
   </a>
   
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wesdata" class="md-nav__link">
+    WESData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     Slots
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -503,427 +487,23 @@
 
 <h1 id="wes">WES</h1>
 <p>HTAN Whole Exome Sequencing Data Model Schema</p>
-<p>URI: https://w3id.org/htan/wes</p>
-<p>Name: WES</p>
 <h2 id="classes">Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="WESData/">WESData</a></td>
-<td>Container for all WES data</td>
-</tr>
-</tbody>
-</table>
+<h3 id="wesdata">WESData</h3>
+<p>Container for all WES data</p>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li><code>LEVEL_1_DATA</code> (BulkWESLevel1) - Optional</li>
+<li>Level 1 WES data (raw files)</li>
+<li><code>LEVEL_2_DATA</code> (BulkWESLevel2) - Optional</li>
+<li>Level 2 WES data (aligned files and QC)</li>
+<li><code>LEVEL_3_DATA</code> (BulkWESLevel3) - Optional</li>
+<li>Level 3 WES data (called variants)</li>
+</ul>
 <h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Slot</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="ADAPTER_CONTENT.md">ADAPTER_CONTENT</a></td>
-<td>Adapter content information</td>
-</tr>
-<tr>
-<td><a href="ADAPTER_NAME.md">ADAPTER_NAME</a></td>
-<td>Name of the adapter used</td>
-</tr>
-<tr>
-<td><a href="ADAPTER_SEQUENCE.md">ADAPTER_SEQUENCE</a></td>
-<td>Adapter sequence</td>
-</tr>
-<tr>
-<td><a href="ALIGNMENT_WORKFLOW_TYPE.md">ALIGNMENT_WORKFLOW_TYPE</a></td>
-<td>Type of alignment workflow used</td>
-</tr>
-<tr>
-<td><a href="AVERAGE_BASE_QUALITY.md">AVERAGE_BASE_QUALITY</a></td>
-<td>Average base quality</td>
-</tr>
-<tr>
-<td><a href="AVERAGE_INSERT_SIZE.md">AVERAGE_INSERT_SIZE</a></td>
-<td>Average insert size</td>
-</tr>
-<tr>
-<td><a href="AVERAGE_READ_LENGTH.md">AVERAGE_READ_LENGTH</a></td>
-<td>Average read length</td>
-</tr>
-<tr>
-<td><a href="BASE_CALLER_NAME.md">BASE_CALLER_NAME</a></td>
-<td>Name of the base caller</td>
-</tr>
-<tr>
-<td><a href="BASE_CALLER_VERSION.md">BASE_CALLER_VERSION</a></td>
-<td>Version of the base caller</td>
-</tr>
-<tr>
-<td><a href="BASIC_STATISTICS.md">BASIC_STATISTICS</a></td>
-<td>Basic statistics from QC</td>
-</tr>
-<tr>
-<td><a href="caDSR_id/">caDSR_id</a></td>
-<td>The caDSR identifier for this element</td>
-</tr>
-<tr>
-<td><a href="CHECKSUM.md">CHECKSUM</a></td>
-<td>Checksum for data integrity verification</td>
-</tr>
-<tr>
-<td><a href="CONTAMINATION.md">CONTAMINATION</a></td>
-<td>Contamination estimate</td>
-</tr>
-<tr>
-<td><a href="CONTAMINATION_ERROR.md">CONTAMINATION_ERROR</a></td>
-<td>Contamination error estimate</td>
-</tr>
-<tr>
-<td><a href="ENCODING.md">ENCODING</a></td>
-<td>Encoding information</td>
-</tr>
-<tr>
-<td><a href="FILE_FORMAT/">FILE_FORMAT</a></td>
-<td>Format of the file (e</td>
-</tr>
-<tr>
-<td><a href="FILENAME/">FILENAME</a></td>
-<td>Name of the file</td>
-</tr>
-<tr>
-<td><a href="FLOW_CELL_BARCODE.md">FLOW_CELL_BARCODE</a></td>
-<td>Flow cell barcode</td>
-</tr>
-<tr>
-<td><a href="FRAGMENT_MAXIMUM_LENGTH.md">FRAGMENT_MAXIMUM_LENGTH</a></td>
-<td>Maximum fragment length</td>
-</tr>
-<tr>
-<td><a href="FRAGMENT_MEAN_LENGTH.md">FRAGMENT_MEAN_LENGTH</a></td>
-<td>Mean fragment length</td>
-</tr>
-<tr>
-<td><a href="FRAGMENT_MINIMUM_LENGTH.md">FRAGMENT_MINIMUM_LENGTH</a></td>
-<td>Minimum fragment length</td>
-</tr>
-<tr>
-<td><a href="FRAGMENT_STANDARD_DEVIATION_LENGTH.md">FRAGMENT_STANDARD_DEVIATION_LENGTH</a></td>
-<td>Standard deviation of fragment length</td>
-</tr>
-<tr>
-<td><a href="GENOME_ANNOTATION_URL.md">GENOME_ANNOTATION_URL</a></td>
-<td>URL to genome annotation</td>
-</tr>
-<tr>
-<td><a href="GENOMIC_REFERENCE.md">GENOMIC_REFERENCE</a></td>
-<td>Genomic reference used for alignment</td>
-</tr>
-<tr>
-<td><a href="GENOMIC_REFERENCE_URL.md">GENOMIC_REFERENCE_URL</a></td>
-<td>URL to genomic reference</td>
-</tr>
-<tr>
-<td><a href="GERMLINE_VARIANTS_WORKFLOW_TYPE.md">GERMLINE_VARIANTS_WORKFLOW_TYPE</a></td>
-<td>Type of germline variants workflow</td>
-</tr>
-<tr>
-<td><a href="GERMLINE_VARIANTS_WORKFLOW_URL.md">GERMLINE_VARIANTS_WORKFLOW_URL</a></td>
-<td>URL to the germline variants workflow</td>
-</tr>
-<tr>
-<td><a href="HTAN_DATA_FILE_ID/">HTAN_DATA_FILE_ID</a></td>
-<td>HTAN Data File ID (Primary Key)</td>
-</tr>
-<tr>
-<td><a href="HTAN_PARENT_ID/">HTAN_PARENT_ID</a></td>
-<td>HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data ...</td>
-</tr>
-<tr>
-<td><a href="INDEX_FILE_NAME.md">INDEX_FILE_NAME</a></td>
-<td>Name of the index file</td>
-</tr>
-<tr>
-<td><a href="IS_LOWEST_LEVEL.md">IS_LOWEST_LEVEL</a></td>
-<td>Whether this is the lowest level</td>
-</tr>
-<tr>
-<td><a href="LANE_NUMBER.md">LANE_NUMBER</a></td>
-<td>Lane number</td>
-</tr>
-<tr>
-<td><a href="LEVEL_1_DATA.md">LEVEL_1_DATA</a></td>
-<td>Level 1 WES data (raw files)</td>
-</tr>
-<tr>
-<td><a href="LEVEL_2_DATA.md">LEVEL_2_DATA</a></td>
-<td>Level 2 WES data (aligned files and QC)</td>
-</tr>
-<tr>
-<td><a href="LEVEL_3_DATA.md">LEVEL_3_DATA</a></td>
-<td>Level 3 WES data (called variants)</td>
-</tr>
-<tr>
-<td><a href="LIBRARY_LAYOUT/">LIBRARY_LAYOUT</a></td>
-<td>Library layout (paired-end or single-end)</td>
-</tr>
-<tr>
-<td><a href="LIBRARY_PREPARATION_DAYS_FROM_INDEX.md">LIBRARY_PREPARATION_DAYS_FROM_INDEX</a></td>
-<td>Days from index for library preparation</td>
-</tr>
-<tr>
-<td><a href="LIBRARY_PREPARATION_KIT_NAME.md">LIBRARY_PREPARATION_KIT_NAME</a></td>
-<td>Name of the library preparation kit</td>
-</tr>
-<tr>
-<td><a href="LIBRARY_PREPARATION_KIT_VENDOR.md">LIBRARY_PREPARATION_KIT_VENDOR</a></td>
-<td>Vendor of the library preparation kit</td>
-</tr>
-<tr>
-<td><a href="LIBRARY_PREPARATION_KIT_VERSION.md">LIBRARY_PREPARATION_KIT_VERSION</a></td>
-<td>Version of the library preparation kit</td>
-</tr>
-<tr>
-<td><a href="LIBRARY_SELECTION_METHOD.md">LIBRARY_SELECTION_METHOD</a></td>
-<td>Method used for library selection</td>
-</tr>
-<tr>
-<td><a href="MEAN_COVERAGE.md">MEAN_COVERAGE</a></td>
-<td>Mean coverage depth</td>
-</tr>
-<tr>
-<td><a href="MSI_SCORE.md">MSI_SCORE</a></td>
-<td>MSI score</td>
-</tr>
-<tr>
-<td><a href="MSI_STATUS.md">MSI_STATUS</a></td>
-<td>MSI status</td>
-</tr>
-<tr>
-<td><a href="MSI_WORKFLOW_LINK.md">MSI_WORKFLOW_LINK</a></td>
-<td>Link to MSI workflow</td>
-</tr>
-<tr>
-<td><a href="MULTIPLEX_BARCODE.md">MULTIPLEX_BARCODE</a></td>
-<td>Multiplex barcode</td>
-</tr>
-<tr>
-<td><a href="OVERREPRESENTED_SEQUENCES.md">OVERREPRESENTED_SEQUENCES</a></td>
-<td>Overrepresented sequences</td>
-</tr>
-<tr>
-<td><a href="PAIRS_ON_DIFF_CHR.md">PAIRS_ON_DIFF_CHR</a></td>
-<td>Number of read pairs on different chromosomes</td>
-</tr>
-<tr>
-<td><a href="PER_BASE_N_CONTENT.md">PER_BASE_N_CONTENT</a></td>
-<td>Per base N content</td>
-</tr>
-<tr>
-<td><a href="PER_BASE_SEQUENCE_CONTENT.md">PER_BASE_SEQUENCE_CONTENT</a></td>
-<td>Per base sequence content</td>
-</tr>
-<tr>
-<td><a href="PER_BASE_SEQUENCE_QUALITY.md">PER_BASE_SEQUENCE_QUALITY</a></td>
-<td>Per base sequence quality</td>
-</tr>
-<tr>
-<td><a href="PER_SEQUENCE_GC_CONTENT.md">PER_SEQUENCE_GC_CONTENT</a></td>
-<td>Per sequence GC content</td>
-</tr>
-<tr>
-<td><a href="PER_SEQUENCE_QUALITY_SCORE.md">PER_SEQUENCE_QUALITY_SCORE</a></td>
-<td>Per sequence quality score</td>
-</tr>
-<tr>
-<td><a href="PER_TILE_SEQUENCE_QUALITY.md">PER_TILE_SEQUENCE_QUALITY</a></td>
-<td>Per tile sequence quality</td>
-</tr>
-<tr>
-<td><a href="PERCENT_GC_CONTENT.md">PERCENT_GC_CONTENT</a></td>
-<td>Percent GC content</td>
-</tr>
-<tr>
-<td><a href="PROPORTION_BASE_MISMATCH.md">PROPORTION_BASE_MISMATCH</a></td>
-<td>Proportion of base mismatches</td>
-</tr>
-<tr>
-<td><a href="PROPORTION_COVERAGE_10X.md">PROPORTION_COVERAGE_10X</a></td>
-<td>Proportion of coverage at 10x</td>
-</tr>
-<tr>
-<td><a href="PROPORTION_COVERAGE_30X.md">PROPORTION_COVERAGE_30X</a></td>
-<td>Proportion of coverage at 30x</td>
-</tr>
-<tr>
-<td><a href="PROPORTION_READS_DUPLICATED.md">PROPORTION_READS_DUPLICATED</a></td>
-<td>Proportion of duplicated reads</td>
-</tr>
-<tr>
-<td><a href="PROPORTION_READS_MAPPED.md">PROPORTION_READS_MAPPED</a></td>
-<td>Proportion of mapped reads</td>
-</tr>
-<tr>
-<td><a href="PROPORTION_TARGETS_NO_COVERAGE.md">PROPORTION_TARGETS_NO_COVERAGE</a></td>
-<td>Proportion of targets with no coverage</td>
-</tr>
-<tr>
-<td><a href="PROTOCOL_LINK.md">PROTOCOL_LINK</a></td>
-<td>Link to sequencing protocol</td>
-</tr>
-<tr>
-<td><a href="QC_WORKFLOW_LINK.md">QC_WORKFLOW_LINK</a></td>
-<td>Link to QC workflow</td>
-</tr>
-<tr>
-<td><a href="QC_WORKFLOW_TYPE.md">QC_WORKFLOW_TYPE</a></td>
-<td>QC workflow type</td>
-</tr>
-<tr>
-<td><a href="QC_WORKFLOW_VERSION.md">QC_WORKFLOW_VERSION</a></td>
-<td>QC workflow version</td>
-</tr>
-<tr>
-<td><a href="READ_INDICATOR.md">READ_INDICATOR</a></td>
-<td>Read indicator</td>
-</tr>
-<tr>
-<td><a href="READ_LENGTH.md">READ_LENGTH</a></td>
-<td>Read length in base pairs</td>
-</tr>
-<tr>
-<td><a href="SEQUENCE_DUPLICATION_LEVELS.md">SEQUENCE_DUPLICATION_LEVELS</a></td>
-<td>Sequence duplication levels</td>
-</tr>
-<tr>
-<td><a href="SEQUENCE_LENGTH_DISTRIBUTION.md">SEQUENCE_LENGTH_DISTRIBUTION</a></td>
-<td>Sequence length distribution</td>
-</tr>
-<tr>
-<td><a href="SEQUENCING_BATCH_ID/">SEQUENCING_BATCH_ID</a></td>
-<td>Sequencing batch identifier</td>
-</tr>
-<tr>
-<td><a href="SEQUENCING_PLATFORM/">SEQUENCING_PLATFORM</a></td>
-<td>Sequencing platform used</td>
-</tr>
-<tr>
-<td><a href="SHORT_READS.md">SHORT_READS</a></td>
-<td>Number of short reads</td>
-</tr>
-<tr>
-<td><a href="SIZE_SELECTION_RANGE.md">SIZE_SELECTION_RANGE</a></td>
-<td>Size selection range</td>
-</tr>
-<tr>
-<td><a href="SOMATIC_VARIANTS_SAMPLE_TYPE.md">SOMATIC_VARIANTS_SAMPLE_TYPE</a></td>
-<td>Type of sample for somatic variants</td>
-</tr>
-<tr>
-<td><a href="SOMATIC_VARIANTS_WORKFLOW_TYPE.md">SOMATIC_VARIANTS_WORKFLOW_TYPE</a></td>
-<td>Type of somatic variants workflow</td>
-</tr>
-<tr>
-<td><a href="SOMATIC_VARIANTS_WORKFLOW_URL.md">SOMATIC_VARIANTS_WORKFLOW_URL</a></td>
-<td>URL to the somatic variants workflow</td>
-</tr>
-<tr>
-<td><a href="STRUCTURAL_VARIANT_WORKFLOW_TYPE.md">STRUCTURAL_VARIANT_WORKFLOW_TYPE</a></td>
-<td>Type of structural variant workflow</td>
-</tr>
-<tr>
-<td><a href="STRUCTURAL_VARIANT_WORKFLOW_URL.md">STRUCTURAL_VARIANT_WORKFLOW_URL</a></td>
-<td>URL to the structural variant workflow</td>
-</tr>
-<tr>
-<td><a href="TARGET_CAPTURE_KIT.md">TARGET_CAPTURE_KIT</a></td>
-<td>Target capture kit used</td>
-</tr>
-<tr>
-<td><a href="TARGET_DEPTH.md">TARGET_DEPTH</a></td>
-<td>Target sequencing depth</td>
-</tr>
-<tr>
-<td><a href="TECHNICAL_REPLICATE_GROUP.md">TECHNICAL_REPLICATE_GROUP</a></td>
-<td>Technical replicate group identifier</td>
-</tr>
-<tr>
-<td><a href="TO_TRIM_ADAPTER_SEQUENCE.md">TO_TRIM_ADAPTER_SEQUENCE</a></td>
-<td>Whether to trim adapter sequence</td>
-</tr>
-<tr>
-<td><a href="TOTAL_READS.md">TOTAL_READS</a></td>
-<td>Total number of reads</td>
-</tr>
-<tr>
-<td><a href="TOTAL_UNIQUELY_MAPPED.md">TOTAL_UNIQUELY_MAPPED</a></td>
-<td>Total number of uniquely mapped reads</td>
-</tr>
-<tr>
-<td><a href="TOTAL_UNMAPPED_READS.md">TOTAL_UNMAPPED_READS</a></td>
-<td>Total number of unmapped reads</td>
-</tr>
-<tr>
-<td><a href="WORKFLOW_LINK.md">WORKFLOW_LINK</a></td>
-<td>Link to workflow or command</td>
-</tr>
-<tr>
-<td><a href="WORKFLOW_VERSION.md">WORKFLOW_VERSION</a></td>
-<td>Major version of the workflow</td>
-</tr>
-</tbody>
-</table>
-<h2 id="enumerations">Enumerations</h2>
-<table>
-<thead>
-<tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="types">Types</h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="subsets">Subsets</h2>
-<table>
-<thead>
-<tr>
-<th>Subset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><code>caDSR_id</code> (string) - Optional</li>
+<li>The caDSR identifier for this element</li>
+</ul>
 
 
 
