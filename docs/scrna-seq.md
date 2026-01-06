@@ -146,3 +146,68 @@ Root class for scRNA-seq data
 | `level2_data` | scRNALevel2 | No | Level 2 scRNA-seq data |
 | `level3_4_data` | scRNALevel3_4 | No | Level 3/4 scRNA-seq data |
 
+## Enums
+
+### DataCategoryEnum {#datacategory}
+
+| Value | Description |
+|-------|-------------|
+| `Exon Expression Quantification` | Exon expression quantification |
+| `Gene Expression` | Gene expression data |
+| `Gene Expression Quantification` | Gene expression quantification |
+| `Isoform Expression Quantification` | Isoform expression quantification |
+| `Other` | Other data category |
+| `Splice Junction Quantification` | Splice junction quantification |
+| `Transcript Expression` | Transcript expression data |
+
+### LibraryConstructionMethodEnum {#libraryconstructionmethod}
+
+| Value | Description |
+|-------|-------------|
+| `10X Genomics` | 10X Genomics library construction method |
+| `Drop-seq` | Drop-seq library construction method |
+| `Fluidigm C1` | Fluidigm C1 library construction method |
+| `InDrop` | InDrop library construction method |
+| `Other` | Other library construction method |
+| `Smart-seq` | Smart-seq library construction method |
+| `Unknown` | Unknown library construction method |
+
+### SingleCellIsolationMethodEnum {#singlecellisolationmethod}
+
+| Value | Description |
+|-------|-------------|
+| `Cell Sorting` | Cell sorting isolation method |
+| `Droplet-based` | Droplet-based isolation method |
+| `Manual Picking` | Manual picking isolation method |
+| `Microfluidics` | Microfluidics isolation method |
+| `Other` | Other isolation method |
+| `Unknown` | Unknown isolation method |
+
+### scRNAseqWorkflowTypeEnumLevel2 {#scrnaseqworkflowtypelevel2}
+
+| Value | Description |
+|-------|-------------|
+| `CellRanger` | CellRanger workflow |
+| `HCA Optimus` | HCA Optimus workflow |
+| `Other` | Other workflow |
+| `SEQC` | SEQC workflow |
+| `STARsolo` | STARsolo workflow |
+| `Unknown` | Unknown workflow |
+| `dropEST` | dropEST workflow |
+
+### scRNAseqWorkflowTypeEnumLevel3_4 {#scrnaseqworkflowtypelevel3-4}
+
+| Value | Description |
+|-------|-------------|
+| `Cell annotation` | Cell annotation workflow |
+| `CellRanger` | 10x Genomics CellRanger workflow |
+| `Cufflinks` | Cufflinks workflow |
+| `DEXSeq` | DEXSeq workflow |
+| `Differentiation trajectory analysis` | Differentiation trajectory analysis workflow |
+| `HCA Optimus` | Human Cell Atlas Optimus workflow |
+| `HTSeq - FPKM` | HTSeq FPKM workflow |
+| `Other` | Other workflow type |
+| `SEQC` | SEQC workflow |
+| `STARsolo` | STARsolo alignment workflow |
+| `dropEST` | dropEST workflow |
+

@@ -113,3 +113,33 @@ Container for all WES data
 |------|------|----------|-------------|
 | `caDSR_id` | string | No | The caDSR identifier for this element |
 
+## Enums
+
+### LibrarySelectionMethodEnum
+
+| Value | Description |
+|-------|-------------|
+| `Hybrid Selection` | Hybrid selection method |
+| `PCR` | PCR-based selection |
+| `RANDOM` | Random selection |
+| `other` | Other selection method |
+
+### MSIStatusEnum
+
+| Value | Description |
+|-------|-------------|
+| `MSI-H` | High microsatellite instability |
+| `MSI-L` | Low microsatellite instability |
+| `MSS` | Microsatellite stable |
+| `Unknown` | Unknown MSI status |
+
+### SomaticVariantsSampleTypeEnum
+
+| Value | Description |
+|-------|-------------|
+| `Metastatic` | Metastatic tumor sample |
+| `Normal` | Normal tissue sample |
+| `Other` | Other sample type |
+| `Primary` | Primary tumor sample |
+| `Recurrent` | Recurrent tumor sample |
+

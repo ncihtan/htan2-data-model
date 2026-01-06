@@ -345,3 +345,40 @@ Container for all Spatial Omics data levels
 |------|------|----------|-------------|
 | `caDSR_id` | string | No | The caDSR identifier for this element |
 
+## Enums
+
+### CaptureArea {#capturearea}
+
+| Value | Description |
+|-------|-------------|
+| `A` | Capture area A (CytAssist slides with 11 mm Capture Area) |
+| `A1` | Capture area A1 (Visium slides v1 with 6.5 mm Capture Area, or CytAssist/Gateway slides with 6.5 mm Capture Area) |
+| `B` | Capture area B (CytAssist slides with 11 mm Capture Area) |
+| `B1` | Capture area B1 (Visium slides v1 with 6.5 mm Capture Area) |
+| `C1` | Capture area C1 (Visium slides v1 with 6.5 mm Capture Area) |
+| `D1` | Capture area D1 (Visium slides v1 with 6.5 mm Capture Area, or CytAssist/Gateway slides with 6.5 mm Capture Area) |
+
+### Platform {#platform}
+
+| Value | Description |
+|-------|-------------|
+| `10x Genomics Visium` | 10x Genomics Visium platform |
+| `10x Genomics Visium HD` | 10x Genomics Visium HD platform |
+| `10x Genomics Xenium` | 10x Genomics Xenium platform |
+| `Nanostring CosMX` | Nanostring CosMX platform |
+| `STOmics Stereo-CITE` | STOmics Stereo-CITE platform |
+| `STOmics Stereo-seq` | STOmics Stereo-seq platform |
+
+### PlatformLevel3 {#platformlevel3}
+
+| Value | Description |
+|-------|-------------|
+| `10x Genomics Visium` | 10x Genomics Visium platform |
+| `10x Genomics Visium HD` | 10x Genomics Visium HD platform |
+| `10x Genomics Xenium` | 10x Genomics Xenium platform |
+| `DBiT-seq` | DBiT-seq platform |
+| `Nanostring CosMX` | Nanostring CosMX platform |
+| `STOmics Stereo-CITE` | STOmics Stereo-CITE platform |
+| `STOmics Stereo-seq` | STOmics Stereo-seq platform |
+| `SeqFISH` | SeqFISH platform |
+

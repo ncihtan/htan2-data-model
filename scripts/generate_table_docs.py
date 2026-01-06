@@ -140,11 +140,11 @@ def generate_module_doc(schema_path: str, output_path: str):
             f.write("\n")
         
         # Enums section (show all enums, but prioritize those with many values)
-        if schema.enums:
+        if all_enums:
             # Separate enums by length
             short_enums = []
             long_enums = []
-            for enum_name, enum_def in sorted(schema.enums.items()):
+            for enum_name, enum_def in sorted(all_enums.items()):
                 if enum_def.permissible_values:
                     if len(enum_def.permissible_values) > 5:
                         long_enums.append((enum_name, enum_def))

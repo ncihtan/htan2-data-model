@@ -272,3 +272,35 @@ Container for all Multiplex Microscopy data levels
 |------|------|----------|-------------|
 | `caDSR_id` | string | No | The caDSR identifier for this element |
 
+## Enums
+
+### ImagingAssayType {#imagingassaytype}
+
+| Value | Description |
+|-------|-------------|
+| `CODEX` | CODEX imaging assay type |
+| `CyCIF` | Cyclic Immunofluorescence imaging assay type |
+| `ExSeq` | Expansion Sequencing imaging assay type |
+| `GeoMX-DSP` | GeoMX Digital Spatial Profiling imaging assay type |
+| `H&E` | Hematoxylin and Eosin imaging assay type |
+| `IHC` | Immunohistochemistry imaging assay type |
+| `IMC` | Imaging Mass Cytometry imaging assay type |
+| `MERFISH` | Multiplexed Error-Robust Fluorescence In Situ Hybridization imaging assay type |
+| `MIBI` | Multiplexed Ion Beam Imaging imaging assay type |
+| `MxIF` | Multiplexed Immunofluorescence imaging assay type |
+| `Not Applicable` | Imaging assay not applicable |
+| `SABER` | Signal Amplification By Exchange Reaction imaging assay type |
+| `mIHC` | Multiplexed Immunohistochemistry imaging assay type |
+| `t-CyCIF` | Tissue Cyclic Immunofluorescence imaging assay type |
+
+### MatrixTypeEnum {#matrixtype}
+
+| Value | Description |
+|-------|-------------|
+| `Log Normalized` | Log normalized counts |
+| `Normalized Counts` | Normalized count matrix |
+| `Other` | Other normalization method |
+| `Raw Counts` | Raw count matrix |
+| `Scaled Counts` | Scaled count matrix |
+| `Z-Score Normalized` | Z-score normalized values |
+
