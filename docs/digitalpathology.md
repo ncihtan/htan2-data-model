@@ -150,13 +150,22 @@ Container for digital pathology imaging data
 
 ## Enums
 
-### AnnotationType
+### StainingMethod {#stainingmethod}
 
 | Value | Description |
 |-------|-------------|
-| `Artifact` | Artifact annotation |
-| `Cell` | Cell annotation |
-| `Nucleus` | Nucleus annotation |
-| `ROI` | Region of Interest annotation |
-| `Tissue` | Tissue annotation |
+| `CODEX` | CODEX staining method |
+| `CyCIF` | Cyclic Immunofluorescence staining method |
+| `ExSeq` | Expansion Sequencing staining method |
+| `GeoMX-DSP` | GeoMX Digital Spatial Profiling staining method |
+| `H&E` | Hematoxylin and Eosin staining method |
+| `IHC` | Immunohistochemistry staining method |
+| `IMC` | Imaging Mass Cytometry staining method |
+| `MERFISH` | Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method |
+| `MIBI` | Multiplexed Ion Beam Imaging staining method |
+| `MxIF` | Multiplexed Immunofluorescence staining method |
+| `Not Applicable` | Staining not applicable |
+| `SABER` | Signal Amplification By Exchange Reaction staining method |
+| `mIHC` | Multiplexed Immunohistochemistry staining method |
+| `t-CyCIF` | Tissue Cyclic Immunofluorescence staining method |
 

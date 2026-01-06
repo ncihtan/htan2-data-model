@@ -38,7 +38,27 @@ def format_enum_values(enum_def, max_inline=5):
 
 def generate_module_doc(schema_path: str, output_path: str):
     """Generate markdown with attributes in tables."""
+    # Load the main schema
     schema = yaml_loader.load(str(schema_path), SchemaDefinition)
+    
+    # Load enums from imported files
+    base_dir = Path(schema_path).parent
+    if schema.imports:
+        if not schema.enums:
+            schema.enums = {}
+        
+        for imp in schema.imports:
+            if isinstance(imp, str) and not imp.startswith('linkml:'):
+                # Try to find the enum file
+                enum_file = base_dir / f"{imp}.yaml"
+                if enum_file.exists():
+                    try:
+                        enum_schema = yaml_loader.load(str(enum_file), SchemaDefinition)
+                        if enum_schema.enums:
+                            schema.enums.update(enum_schema.enums)
+                    except Exception as e:
+                        # Skip if can't load
+                        pass
     
     with open(output_path, 'w') as f:
         f.write(f"# {schema.name}\n\n")
