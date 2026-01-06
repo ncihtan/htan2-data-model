@@ -20,30 +20,8 @@ MODULE_MAPPINGS = {
 }
 
 def merge_readme_with_doc(doc_path: Path, readme_path: Path):
-    """Merge README content at the top of the generated doc."""
-    if not doc_path.exists():
-        print(f"Warning: Doc file not found: {doc_path}")
-        return False
-    
-    if not readme_path.exists():
-        print(f"Warning: README not found: {readme_path}")
-        # Still return True - we'll just use the doc as-is
-        return True
-    
-    # Read both files
-    with open(readme_path, 'r') as f:
-        readme_content = f.read()
-    
-    with open(doc_path, 'r') as f:
-        doc_content = f.read()
-    
-    # Merge: README first, then a separator, then the doc
-    merged = f"{readme_content}\n\n---\n\n## Schema Documentation\n\n{doc_content}"
-    
-    # Write back
-    with open(doc_path, 'w') as f:
-        f.write(merged)
-    
+    """Skip README merging - just use the doc as-is (user wants just tables)."""
+    # Don't merge READMEs anymore - user wants just the tables
     return True
 
 def main():

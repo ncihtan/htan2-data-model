@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Generate table-formatted documentation from LinkML schemas.
-Attributes are shown in tables, enums are linked or shown inline if short.
+For Clinical: Show each class separately with attributes
+For WES: Show each level separately with attributes
 """
 import os
 from pathlib import Path
@@ -28,7 +29,7 @@ def format_enum_values(enum_def, max_inline=5):
     
     values = sorted(enum_def.permissible_values.items())
     if len(values) <= max_inline:
-        # Show inline - just the value names
+        # Show inline
         value_list = ", ".join([f"`{pv_name}`" for pv_name, _ in values])
         return value_list
     else:
@@ -36,143 +37,161 @@ def format_enum_values(enum_def, max_inline=5):
         enum_anchor = enum_def.name.lower().replace('_', '-').replace('enum', '')
         return f"See [{enum_def.name}](#{enum_anchor}) enum below"
 
+def generate_class_table(class_name, class_def, all_enums, f):
+    """Generate attributes table for a class."""
+    if class_def.description:
+        f.write(f"**{class_def.description}**\n\n")
+    
+    if class_def.attributes:
+        f.write("| Attribute | Type | Required | Description |\n")
+        f.write("|-----------|------|----------|-------------|\n")
+        
+        for attr_name, attr_def in sorted(class_def.attributes.items()):
+            required = "Yes" if attr_def.required else "No"
+            range_str = attr_def.range if attr_def.range else "string"
+            
+            # Check if range is an enum
+            enum_def = None
+            if all_enums and range_str in all_enums:
+                enum_def = all_enums[range_str]
+            
+            if enum_def:
+                enum_values = format_enum_values(enum_def)
+                if enum_values and not enum_values.startswith("See"):
+                    range_str = f"{range_str}<br/>{enum_values}"
+                elif enum_values:
+                    range_str = enum_values
+            
+            description = attr_def.description or ""
+            description = description.replace("|", "\\|")
+            
+            f.write(f"| `{attr_name}` | {range_str} | {required} | {description} |\n")
+        f.write("\n")
+
 def generate_module_doc(schema_path: str, output_path: str):
     """Generate markdown with attributes in tables."""
     # Load the main schema
     schema = yaml_loader.load(str(schema_path), SchemaDefinition)
-    
-    # Load enums from imported files
     base_dir = Path(schema_path).parent
-    all_enums = {}
     
-    # Start with enums from main schema
+    all_enums = {}
+    all_classes = {}
+    
+    # Start with enums and classes from main schema
     if schema.enums:
         for enum_name, enum_def in schema.enums.items():
             all_enums[enum_name] = enum_def
     
-    # Load enums from imported files
+    if schema.classes:
+        for class_name, class_def in schema.classes.items():
+            all_classes[class_name] = class_def
+    
+    # Load enums and classes from imported files
     if schema.imports:
         for imp in schema.imports:
             if isinstance(imp, str) and not imp.startswith('linkml:'):
-                # Try to find the enum file
-                enum_file = base_dir / f"{imp}.yaml"
-                if enum_file.exists():
+                # Try to find the file
+                import_file = base_dir / f"{imp}.yaml"
+                if import_file.exists():
                     try:
-                        enum_schema = yaml_loader.load(str(enum_file), SchemaDefinition)
-                        if enum_schema.enums:
-                            for enum_name, enum_def in enum_schema.enums.items():
+                        import_schema = yaml_loader.load(str(import_file), SchemaDefinition)
+                        if import_schema.enums:
+                            for enum_name, enum_def in import_schema.enums.items():
                                 all_enums[enum_name] = enum_def
+                        if import_schema.classes:
+                            for class_name, class_def in import_schema.classes.items():
+                                all_classes[class_name] = class_def
                     except Exception as e:
                         # Skip if can't load
                         pass
-    
-    # Replace schema.enums with our merged dict
-    schema.enums = all_enums
     
     with open(output_path, 'w') as f:
         f.write(f"# {schema.name}\n\n")
         if schema.description:
             f.write(f"{schema.description}\n\n")
         
-        # List all classes with attributes in tables
-        if schema.classes:
+        # Special handling for Clinical - show each class separately
+        if schema.name == "Clinical":
             f.write("## Classes\n\n")
-            for class_name, class_def in schema.classes.items():
-                f.write(f"### {class_name}\n\n")
-                if class_def.description:
-                    f.write(f"{class_def.description}\n\n")
-                
-                # Attributes table
-                if class_def.attributes:
-                    f.write("**Attributes:**\n\n")
-                    f.write("| Attribute | Type | Required | Description |\n")
-                    f.write("|-----------|------|----------|-------------|\n")
-                    
-                    for attr_name, attr_def in sorted(class_def.attributes.items()):
-                        required = "Yes" if attr_def.required else "No"
-                        range_str = attr_def.range if attr_def.range else "string"
-                        
-                        # Check if range is an enum
-                        enum_def = None
-                        if schema.enums and range_str in schema.enums:
-                            enum_def = schema.enums[range_str]
-                        
-                        if enum_def:
-                            enum_values = format_enum_values(enum_def)
-                            if enum_values and not enum_values.startswith("See"):
-                                range_str = f"{range_str}<br/>{enum_values}"
-                            elif enum_values:
-                                range_str = enum_values
-                        
-                        description = attr_def.description or ""
-                        # Escape pipe characters in description
-                        description = description.replace("|", "\\|")
-                        
-                        f.write(f"| `{attr_name}` | {range_str} | {required} | {description} |\n")
-                    f.write("\n")
-        
-        # Slots table
-        if schema.slots:
-            f.write("## Slots\n\n")
-            f.write("| Slot | Type | Required | Description |\n")
-            f.write("|------|------|----------|-------------|\n")
+            # Show main ClinicalData class first
+            if "ClinicalData" in all_classes:
+                f.write("### ClinicalData\n\n")
+                generate_class_table("ClinicalData", all_classes["ClinicalData"], all_enums, f)
             
-            for slot_name, slot_def in sorted(schema.slots.items()):
-                required = "Yes" if slot_def.required else "No"
-                range_str = slot_def.range if slot_def.range else "string"
-                
-                # Check if range is an enum
-                enum_def = None
-                if schema.enums and range_str in schema.enums:
-                    enum_def = schema.enums[range_str]
-                
-                if enum_def:
-                    enum_values = format_enum_values(enum_def)
-                    if enum_values and not enum_values.startswith("See"):
-                        range_str = f"{range_str}<br/>{enum_values}"
-                    elif enum_values:
-                        range_str = enum_values
-                
-                description = slot_def.description or ""
-                description = description.replace("|", "\\|")
-                
-                f.write(f"| `{slot_name}` | {range_str} | {required} | {description} |\n")
-            f.write("\n")
+            # Then show all other classes
+            for class_name, class_def in sorted(all_classes.items()):
+                if class_name != "ClinicalData":
+                    f.write(f"### {class_name}\n\n")
+                    generate_class_table(class_name, class_def, all_enums, f)
         
-        # Enums section (show all enums, but prioritize those with many values)
+        # Special handling for WES - show each level separately
+        elif schema.name == "WES":
+            f.write("## Levels\n\n")
+            # Load level schemas
+            level_files = {
+                "Level 1": base_dir / "level_1.yaml",
+                "Level 2": base_dir / "level_2.yaml",
+                "Level 3": base_dir / "level_3.yaml",
+            }
+            
+            for level_name, level_file in level_files.items():
+                if level_file.exists():
+                    try:
+                        level_schema = yaml_loader.load(str(level_file), SchemaDefinition)
+                        level_enums = {}
+                        if level_schema.enums:
+                            level_enums.update(level_schema.enums)
+                        
+                        # Load enums from level file imports too
+                        if level_schema.imports:
+                            for imp in level_schema.imports:
+                                if isinstance(imp, str) and not imp.startswith('linkml:'):
+                                    enum_file = level_file.parent / f"{imp}.yaml"
+                                    if enum_file.exists():
+                                        try:
+                                            enum_schema = yaml_loader.load(str(enum_file), SchemaDefinition)
+                                            if enum_schema.enums:
+                                                level_enums.update(enum_schema.enums)
+                                        except:
+                                            pass
+                        
+                        # Find the level class (BulkWESLevel1, BulkWESLevel2, etc.)
+                        level_class_name = None
+                        for class_name in level_schema.classes.keys():
+                            if "Level" in class_name:
+                                level_class_name = class_name
+                                break
+                        
+                        if level_class_name:
+                            f.write(f"### {level_name} ({level_class_name})\n\n")
+                            if level_schema.description:
+                                f.write(f"{level_schema.description}\n\n")
+                            
+                            class_def = level_schema.classes[level_class_name]
+                            generate_class_table(level_class_name, class_def, level_enums, f)
+                    except Exception as e:
+                        print(f"Warning: Could not load {level_file}: {e}")
+        
+        # Default: show all classes
+        else:
+            if all_classes:
+                f.write("## Classes\n\n")
+                for class_name, class_def in sorted(all_classes.items()):
+                    f.write(f"### {class_name}\n\n")
+                    generate_class_table(class_name, class_def, all_enums, f)
+        
+        # Enums section (show all enums with many values)
         if all_enums:
-            # Separate enums by length
-            short_enums = []
             long_enums = []
             for enum_name, enum_def in sorted(all_enums.items()):
-                if enum_def.permissible_values:
-                    if len(enum_def.permissible_values) > 5:
-                        long_enums.append((enum_name, enum_def))
-                    else:
-                        short_enums.append((enum_name, enum_def))
+                if enum_def.permissible_values and len(enum_def.permissible_values) > 5:
+                    long_enums.append((enum_name, enum_def))
             
-            # Show long enums first (they were linked from tables)
             if long_enums:
                 f.write("## Enums\n\n")
                 for enum_name, enum_def in long_enums:
                     enum_anchor = enum_name.lower().replace('_', '-').replace('enum', '')
                     f.write(f"### {enum_name} {{#{enum_anchor}}}\n\n")
-                    if enum_def.description:
-                        f.write(f"{enum_def.description}\n\n")
-                    
-                    f.write("| Value | Description |\n")
-                    f.write("|-------|-------------|\n")
-                    for pv_name, pv_def in sorted(enum_def.permissible_values.items()):
-                        description = pv_def.description or ""
-                        description = description.replace("|", "\\|")
-                        f.write(f"| `{pv_name}` | {description} |\n")
-                    f.write("\n")
-            
-            # Show short enums if any (for reference)
-            if short_enums and not long_enums:
-                f.write("## Enums\n\n")
-                for enum_name, enum_def in short_enums:
-                    f.write(f"### {enum_name}\n\n")
                     if enum_def.description:
                         f.write(f"{enum_def.description}\n\n")
                     
@@ -219,4 +238,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
