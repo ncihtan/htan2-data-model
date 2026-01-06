@@ -1,10 +1,32 @@
 ---
-site_name: HTAN LinkML
-site_description: HTAN LinkML Data Model
+site_name: HTAN Phase 2 Data Model
+site_description: Comprehensive documentation for the HTAN Phase 2 Data Model
 site_author: HTAN Consortium
+site_url: https://htan2-data-model.readthedocs.io/
 
 theme:
   name: material
+  palette:
+    - scheme: default
+      primary: red
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: red
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
 
 plugins:
   - search
@@ -21,15 +43,40 @@ plugins:
 
 nav:
   - Home: index.md
+  - Getting Started: getting-started.md
   - Modules:
-    - Clinical:
-      - Demographics: Demographics.md
-      - Diagnosis: Diagnosis.md
-      - Exposure: Exposure.md
-      - Family History: FamilyHistory.md
-      - Followup: FollowUp.md
-      - Molecular Test: MolecularTest.md
-      - Therapy: Therapy.md
-      - Vital Status: VitalStatus.md
-  - Quick Start: quickstart.md
-  - Development: development.md
+    - Overview: modules/overview.md
+    - Record-Based:
+      - Clinical: modules/clinical.md
+      - Biospecimen: modules/biospecimen.md
+    - File-Based:
+      - Core File: modules/core-file.md
+      - Sequencing:
+        - Base: modules/sequencing.md
+        - WES: modules/wes.md
+        - scRNA-seq: modules/scrna-seq.md
+      - Imaging:
+        - Base: modules/imaging.md
+        - Digital Pathology: modules/digital-pathology.md
+        - Multiplex Microscopy: modules/multiplex-microscopy.md
+      - Spatial Omics: modules/spatial-omics.md
+  - Reference:
+    - API Reference: reference/index.md
+  - Contributing: contributing.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html

@@ -1,60 +1,87 @@
-# HTAN LinkML Documentation
+# HTAN Phase 2 Data Model
 
-Welcome to the HTAN LinkML documentation. This documentation describes the data model for the Human Tumor Atlas Network (HTAN).
+Welcome to the HTAN Phase 2 Data Model documentation. This documentation provides comprehensive guides and references for working with the Human Tumor Atlas Network (HTAN) data model.
 
-## Data Model Overview
+## Overview
 
-The HTAN Clinical Data Model is organized hierarchically:
+The HTAN Phase 2 Data Model is a comprehensive, modular data model built using **LinkML** for standardizing cancer research data. It supports multiple data types including clinical records, biospecimens, sequencing data, and imaging data.
 
 ```mermaid
 graph TD
-    A[Clinical Data] --> B[Modules]
-    B --> C[Demographics]
-    B --> D[Diagnosis]
-    B --> E[Exposure]
-    B --> F[Family History]
-    B --> G[Followup]
-    B --> H[Molecular Test]
-    B --> I[Therapy]
-    B --> J[Vital Status]
+    A[HTAN2 Data Model] --> B[Record-Based Modules]
+    A --> C[File-Based Modules]
+    B --> D[Clinical]
+    B --> E[Biospecimen]
+    C --> F[Sequencing]
+    C --> G[Imaging]
+    F --> H[WES]
+    F --> I[scRNA-seq]
+    F --> J[SpatialOmics]
+    G --> K[DigitalPathology]
+    G --> L[MultiplexMicroscopy]
 ```
 
-## Documentation Structure
+## Quick Links
 
-This documentation is organized into the following sections:
+- **[Getting Started](getting-started.md)** - New to HTAN2? Start here
+- **[Module Overview](modules/overview.md)** - Understand the module architecture
+- **[API Reference](reference/index.md)** - Complete schema reference
+- **[Contributing](contributing.md)** - How to contribute to the data model
 
-1. **Modules**: Detailed documentation for each module in the data model
-2. **Quick Start**: Get started with the HTAN LinkML data model
-3. **Development**: Information for developers working with the data model
+## Module Categories
 
+### Record-Based Modules
+Modules that represent clinical and biospecimen records:
 
-## Getting Started
+- **[Clinical](modules/clinical.md)** - Clinical and demographic data
+- **[Biospecimen](modules/biospecimen.md)** - Biospecimen metadata and classification
 
-To get started with the HTAN LinkML data model:
+### File-Based Modules
+Modules that represent data files with hierarchical levels:
 
-1. Explore the [Modules](modules/) documentation
-2. Check out the [Development](development.md) guide for implementation details if you are contributing to the data model
+#### Sequencing Modules
+- **[WES](modules/wes.md)** - Whole Exome Sequencing (3 levels)
+- **[Sequencing Base](modules/sequencing.md)** - Base sequencing attributes
 
-## Contributing
+#### Imaging Modules
+- **[Digital Pathology](modules/digital-pathology.md)** - Whole-slide imaging data
+- **[Multiplex Microscopy](modules/multiplex-microscopy.md)** - Multiplexed tissue imaging
+- **[Imaging Base](modules/imaging.md)** - Base imaging attributes
 
-We welcome contributions to the HTAN LinkML data model. Please see the [Development](development.md) guide for information on how to contribute.
+#### Single-Cell & Spatial
+- **[scRNA-seq](modules/scrna-seq.md)** - Single-cell RNA sequencing
+- **[Spatial Omics](modules/spatial-omics.md)** - Spatial omics assays
 
-## Modules
+### Core Modules
+- **[Core File](modules/core-file.md)** - Universal file attributes
 
-The HTAN LinkML model is organized into the following modules:
+## Key Concepts
 
-- [Demographics](Demographics.md)
-- [Diagnosis](Diagnosis.md)
-- [Exposure](Exposure.md)
-- [Family History](FamilyHistory.md)
-- [Followup](FollowUp.md)
-- [Molecular Test](MolecularTest.md)
-- [Therapy](Therapy.md)
-- [Vital Status](VitalStatus.md)
+### Data Hierarchy
 
+```
+Participant (HTAN_PARTICIPANT_ID)
+├── Biospecimen (HTAN_BIOSPECIMEN_ID)
+│   └── Level 1 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _B####
+│       └── Level 2 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
+│           └── Level 3 Data (HTAN_DATA_FILE_ID) → HTAN_PARENT_ID: _D####
+```
+
+### Primary Identifiers
+
+- **`HTAN_DATA_FILE_ID`**: Unique identifier for all data files
+- **`HTAN_BIOSPECIMEN_ID`**: Unique identifier for biospecimens
+- **`HTAN_PARTICIPANT_ID`**: Unique identifier for participants
+
+### Foreign Keys
+
+- **`HTAN_PARENT_ID`**: References parent entity
+  - `_B####` - References a biospecimen
+  - `_D####` - References a data file
 
 ## Resources
 
 - [HTAN Website](https://humantumoratlas.org)
 - [LinkML Documentation](https://linkml.io)
 - [GitHub Repository](https://github.com/ncihtan/htan2-data-model)
+- [Contributing Guide](../CONTRIBUTING.md)
