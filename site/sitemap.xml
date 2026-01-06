@@ -5,14 +5,6 @@
          <lastmod>2026-01-06</lastmod>
     </url>
     <url>
-         <loc>https://htan2-data-model.readthedocs.io/contributing/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/getting-started/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
          <loc>https://htan2-data-model.readthedocs.io/generated/biospecimen/</loc>
          <lastmod>2026-01-06</lastmod>
     </url>
@@ -1750,50 +1742,6 @@
     </url>
     <url>
          <loc>https://htan2-data-model.readthedocs.io/generated/wes/types/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules/overview/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/biospecimen/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/clinical/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/corefile/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/digitalpathology/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/imaging/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/multiplexmicroscopy/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/scrna-seq/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/sequencing/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/spatialomics/</loc>
-         <lastmod>2026-01-06</lastmod>
-    </url>
-    <url>
-         <loc>https://htan2-data-model.readthedocs.io/modules-readmes/wes/</loc>
          <lastmod>2026-01-06</lastmod>
     </url>
 </urlset>

@@ -1,6 +1,6 @@
 ---
 site_name: HTAN Phase 2 Data Model
-site_description: Comprehensive documentation for the HTAN Phase 2 Data Model
+site_description: HTAN Phase 2 Data Model Documentation
 site_author: HTAN Consortium
 site_url: https://htan2-data-model.readthedocs.io/
 
@@ -26,75 +26,31 @@ theme:
     - navigation.top
     - search.suggest
     - search.highlight
-    - content.code.annotate
 
 plugins:
   - search
-  - mermaid2:
-      arguments:
-        theme: default
-        themeVariables:
-          primaryColor: '#ff0000'
-          primaryTextColor: '#fff'
-          primaryBorderColor: '#7C0000'
-          lineColor: '#F8B229'
-          secondaryColor: '#006100'
-          tertiaryColor: '#fff'
 
 nav:
   - Home: index.md
-  - Getting Started: getting-started.md
   - Modules:
-    - Overview: modules/overview.md
-    - Record-Based:
-      - Clinical:
-        - Overview: modules-readmes/clinical.md
-        - Schema Reference: generated/clinical/index.md
-      - Biospecimen:
-        - Overview: modules-readmes/biospecimen.md
-        - Schema Reference: generated/biospecimen/index.md
-    - File-Based:
-      - Core File:
-        - Overview: modules-readmes/corefile.md
-        - Schema Reference: generated/corefile/index.md
-      - Sequencing:
-        - Base:
-          - Overview: modules-readmes/sequencing.md
-          - Schema Reference: generated/sequencing/index.md
-        - WES:
-          - Overview: modules-readmes/wes.md
-          - Schema Reference: generated/wes/index.md
-        - scRNA-seq:
-          - Overview: modules-readmes/scrna-seq.md
-          - Schema Reference: generated/scrna-seq/index.md
-      - Imaging:
-        - Base:
-          - Overview: modules-readmes/imaging.md
-          - Schema Reference: generated/imaging/index.md
-        - Digital Pathology:
-          - Overview: modules-readmes/digitalpathology.md
-          - Schema Reference: generated/digitalpathology/index.md
-        - Multiplex Microscopy:
-          - Overview: modules-readmes/multiplexmicroscopy.md
-          - Schema Reference: generated/multiplexmicroscopy/index.md
-      - Spatial Omics:
-        - Overview: modules-readmes/spatialomics.md
-        - Schema Reference: generated/spatialomics/index.md
-  - Contributing: contributing.md
+    - Clinical: generated/clinical/index.md
+    - Biospecimen: generated/biospecimen/index.md
+    - Core File: generated/corefile/index.md
+    - Sequencing: generated/sequencing/index.md
+    - WES: generated/wes/index.md
+    - scRNA-seq: generated/scrna-seq/index.md
+    - Imaging: generated/imaging/index.md
+    - Digital Pathology: generated/digitalpathology/index.md
+    - Multiplex Microscopy: generated/multiplexmicroscopy/index.md
+    - Spatial Omics: generated/spatialomics/index.md
 
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - admonition
   - pymdownx.details
-  - pymdownx.tabbed:
-      alternate_style: true
   - attr_list
   - md_in_html
