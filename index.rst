@@ -35,7 +35,7 @@ Reference
 ----------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    :self:
    docs/identifiers
@@ -44,7 +44,7 @@ Modules
 -------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    docs/clinical
    docs/biospecimen
