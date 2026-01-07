@@ -159,13 +159,20 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
                     if hasattr(attr_def, 'pattern') and attr_def.pattern:
                         pattern_val = attr_def.pattern
                         if pattern_val:  # Make sure it's not empty
-                            range_str = f"{range_str}, pattern: `{pattern_val}`"
+                            # Escape pipe characters for markdown tables
+                            pattern_val_escaped = pattern_val.replace("|", "\\|")
+                            range_str = f"{range_str}, pattern: `{pattern_val_escaped}`"
                     elif hasattr(attr_def, 'structured_pattern') and attr_def.structured_pattern:
                         # Handle structured patterns
+                        pattern_val = None
                         if hasattr(attr_def.structured_pattern, 'syntax'):
-                            range_str = f"{range_str}, pattern: `{attr_def.structured_pattern.syntax}`"
+                            pattern_val = attr_def.structured_pattern.syntax
                         elif isinstance(attr_def.structured_pattern, str):
-                            range_str = f"{range_str}, pattern: `{attr_def.structured_pattern}`"
+                            pattern_val = attr_def.structured_pattern
+                        if pattern_val:
+                            # Escape pipe characters for markdown tables
+                            pattern_val_escaped = pattern_val.replace("|", "\\|")
+                            range_str = f"{range_str}, pattern: `{pattern_val_escaped}`"
                 except:
                     pass  # If pattern access fails, just leave it empty
                 
@@ -208,13 +215,20 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
                     if hasattr(attr_def, 'pattern') and attr_def.pattern:
                         pattern_val = attr_def.pattern
                         if pattern_val:  # Make sure it's not empty
-                            range_str = f"{range_str}, pattern: `{pattern_val}`"
+                            # Escape pipe characters for markdown tables
+                            pattern_val_escaped = pattern_val.replace("|", "\\|")
+                            range_str = f"{range_str}, pattern: `{pattern_val_escaped}`"
                     elif hasattr(attr_def, 'structured_pattern') and attr_def.structured_pattern:
                         # Handle structured patterns
+                        pattern_val = None
                         if hasattr(attr_def.structured_pattern, 'syntax'):
-                            range_str = f"{range_str}, pattern: `{attr_def.structured_pattern.syntax}`"
+                            pattern_val = attr_def.structured_pattern.syntax
                         elif isinstance(attr_def.structured_pattern, str):
-                            range_str = f"{range_str}, pattern: `{attr_def.structured_pattern}`"
+                            pattern_val = attr_def.structured_pattern
+                        if pattern_val:
+                            # Escape pipe characters for markdown tables
+                            pattern_val_escaped = pattern_val.replace("|", "\\|")
+                            range_str = f"{range_str}, pattern: `{pattern_val_escaped}`"
                 except:
                     pass  # If pattern access fails, just leave it empty
                 
