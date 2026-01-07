@@ -35,20 +35,23 @@ def get_conditional_requirements(class_def, attr_name):
     """Extract conditional requirements from slot_usage and rules."""
     conditions = []
     
-    # Check slot_usage first (simpler, more direct)
+    # Check slot_usage first (simpler, more direct) - this is the most reliable
     if class_def.slot_usage and attr_name in class_def.slot_usage:
         slot_usage = class_def.slot_usage[attr_name]
         if slot_usage.description:
             desc = slot_usage.description
+            # Extract the condition part - handle various formats
             if "Required when" in desc:
-                # Extract the condition part
                 condition = desc.replace("Required when ", "").strip()
+                # Clean up common patterns
+                condition = condition.replace(" is ", " = ")
                 conditions.append(condition)
             elif "required when" in desc.lower():
                 condition = desc.split("required when", 1)[1].strip()
+                condition = condition.replace(" is ", " = ")
                 conditions.append(condition)
     
-    # Check rules as fallback
+    # Check rules as fallback - but prefer slot_usage if available
     if not conditions and class_def.rules:
         for rule in class_def.rules:
             if rule.postconditions and rule.postconditions.slot_conditions:
@@ -62,16 +65,20 @@ def get_conditional_requirements(class_def, attr_name):
                                 if hasattr(precond_val, 'equals_string'):
                                     precond_desc.append(f"{precond_attr} = '{precond_val.equals_string}'")
                                 elif hasattr(precond_val, 'any_of'):
-                                    # Extract patterns
+                                    # Extract patterns and make them readable
                                     patterns = []
                                     for pattern_obj in precond_val.any_of:
                                         if hasattr(pattern_obj, 'pattern'):
-                                            # Clean up pattern
-                                            pattern = pattern_obj.pattern.replace('.*', '').replace('^', '').replace('$', '')
-                                            if pattern:
+                                            pattern = pattern_obj.pattern
+                                            # Clean up regex patterns to be more readable
+                                            pattern = pattern.replace('.*', '').replace('^', '').replace('$', '')
+                                            if pattern and pattern not in patterns:
                                                 patterns.append(pattern)
                                     if patterns:
-                                        precond_desc.append(f"{precond_attr} matches '{' or '.join(patterns)}'")
+                                        if len(patterns) == 1:
+                                            precond_desc.append(f"{precond_attr} matches '{patterns[0]}'")
+                                        else:
+                                            precond_desc.append(f"{precond_attr} matches one of: {', '.join(patterns)}")
                                 elif hasattr(precond_val, 'required') and precond_val.required:
                                     precond_desc.append(f"{precond_attr} is present")
                             if precond_desc:
