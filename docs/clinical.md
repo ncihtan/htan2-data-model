@@ -46,12 +46,12 @@ HTAN Clinical Data Model Schema
 |-----------|------|----------|---------|-------------|
 | `AGE_IN_DAYS_AT_DIAGNOSIS` | integer | Yes |  | Age in days at which the diagnosis was made (caDSR:2192202) (Aligns to CDRC Standard CDE) |
 | `AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS` | integer | Yes |  | Age in days at which the last known disease status was recorded (caDSR:2192203) (Aligns to CDRC Standard CDE) |
-| `AJCC_STAGING_SYSTEM_EDITION` | [AJCCStagingSystemEditionEnum](#ajccstagingsystemedition) | Required IF TUMOR_STAGE = any stage value |  | Edition of AJCC staging system used (caDSR:2192209) (Aligns to CDRC Standard CDE) |
-| `CLINICAL_M_STAGE` | [ClinicalMStageEnum](#clinicalmstage) | Required IF TUMOR_STAGE = any stage value |  | Clinical M stage of the tumor (caDSR:2192208) (Aligns to CDRC Standard CDE) |
-| `CLINICAL_N_STAGE` | [ClinicalNStageEnum](#clinicalnstage) | Required IF TUMOR_STAGE = any stage value |  | Clinical N stage of the tumor (caDSR:2192207) (Aligns to CDRC Standard CDE) |
-| `CLINICAL_T_STAGE` | [ClinicalTStageEnum](#clinicaltstage) | Required IF TUMOR_STAGE = any stage value |  | Clinical T stage of the tumor (caDSR:2192206) (Aligns to CDRC Standard CDE) |
+| `AJCC_STAGING_SYSTEM_EDITION` | [AJCCStagingSystemEditionEnum](#ajccstagingsystemedition) | Required IF TUMOR_STAGE has any stage value |  | Edition of AJCC staging system used (caDSR:2192209) (Aligns to CDRC Standard CDE) |
+| `CLINICAL_M_STAGE` | [ClinicalMStageEnum](#clinicalmstage) | Required IF TUMOR_STAGE has any stage value |  | Clinical M stage of the tumor (caDSR:2192208) (Aligns to CDRC Standard CDE) |
+| `CLINICAL_N_STAGE` | [ClinicalNStageEnum](#clinicalnstage) | Required IF TUMOR_STAGE has any stage value |  | Clinical N stage of the tumor (caDSR:2192207) (Aligns to CDRC Standard CDE) |
+| `CLINICAL_T_STAGE` | [ClinicalTStageEnum](#clinicaltstage) | Required IF TUMOR_STAGE has any stage value |  | Clinical T stage of the tumor (caDSR:2192206) (Aligns to CDRC Standard CDE) |
 | `LAST_KNOWN_DISEASE_STATUS` | [LastKnownDiseaseStatusEnum](#lastknowndiseasestatus) | Yes |  | Last known disease status (caDSR:2192210) (Aligns to CDRC Standard CDE) |
-| `METASTASIS_AT_DIAGNOSIS` | [MetastasisAtDiagnosisEnum](#metastasisatdiagnosis) | Required IF TUMOR_STAGE = Stage IV or any of its substages |  | Presence of metastasis at diagnosis (caDSR:2192212) (Aligns to CDRC Standard CDE) |
+| `METASTASIS_AT_DIAGNOSIS` | [MetastasisAtDiagnosisEnum](#metastasisatdiagnosis) | Required IF TUMOR_STAGE = Stage IV or any substage |  | Presence of metastasis at diagnosis (caDSR:2192212) (Aligns to CDRC Standard CDE) |
 | `METHOD_OF_DIAGNOSIS` | [MethodOfDiagnosisEnum](#methodofdiagnosis) | Yes |  | Method used to make the diagnosis (caDSR:2192213) (Aligns to CDRC Standard CDE) |
 | `PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID` | string | Yes |  | NCI Thesaurus ID for the primary diagnosis (caDSR:2192201) (Aligns to CDRC Standard CDE) |
 | `TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-) | Yes |  | UBERON code for the tissue or organ of origin (caDSR:2192205) (Aligns to CDRC Standard CDE) |

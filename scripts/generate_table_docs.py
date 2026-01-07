@@ -43,12 +43,21 @@ def get_conditional_requirements(class_def, attr_name):
             # Extract the condition part - handle various formats
             if "Required when" in desc:
                 condition = desc.replace("Required when ", "").strip()
-                # Clean up common patterns
+                # Make it clearer - use "=" consistently and improve readability
                 condition = condition.replace(" is ", " = ")
+                # Handle common phrases to make them clearer
+                condition = condition.replace(" = any stage value", " has any stage value")
+                condition = condition.replace(" = Stage IV or any of its substages", " = Stage IV or any substage")
+                condition = condition.replace(" is a surgical or radiation therapy", " contains 'Surgical' or 'Radiation'")
+                condition = condition.replace(" is present", " is provided")
                 conditions.append(condition)
             elif "required when" in desc.lower():
                 condition = desc.split("required when", 1)[1].strip()
                 condition = condition.replace(" is ", " = ")
+                condition = condition.replace(" = any stage value", " has any stage value")
+                condition = condition.replace(" = Stage IV or any of its substages", " = Stage IV or any substage")
+                condition = condition.replace(" is a surgical or radiation therapy", " contains 'Surgical' or 'Radiation'")
+                condition = condition.replace(" is present", " is provided")
                 conditions.append(condition)
     
     # Check rules as fallback - but prefer slot_usage if available
@@ -137,10 +146,21 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
                     enum_values = format_enum_values(enum_def)
                     range_str = enum_values
                 
-                # Get pattern if exists
+                # Get pattern if exists - check both direct pattern and structured_pattern
                 pattern = ""
-                if hasattr(attr_def, 'pattern') and attr_def.pattern:
-                    pattern = f"`{attr_def.pattern}`"
+                try:
+                    if hasattr(attr_def, 'pattern') and attr_def.pattern:
+                        pattern_val = attr_def.pattern
+                        if pattern_val:  # Make sure it's not empty
+                            pattern = f"`{pattern_val}`"
+                    elif hasattr(attr_def, 'structured_pattern') and attr_def.structured_pattern:
+                        # Handle structured patterns
+                        if hasattr(attr_def.structured_pattern, 'syntax'):
+                            pattern = f"`{attr_def.structured_pattern.syntax}`"
+                        elif isinstance(attr_def.structured_pattern, str):
+                            pattern = f"`{attr_def.structured_pattern}`"
+                except:
+                    pass  # If pattern access fails, just leave it empty
                 
                 description = attr_def.description or ""
                 description = description.replace("|", "\\|")
@@ -176,10 +196,21 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
                     enum_values = format_enum_values(enum_def)
                     range_str = enum_values
                 
-                # Get pattern if exists
+                # Get pattern if exists - check both direct pattern and structured_pattern
                 pattern = ""
-                if hasattr(attr_def, 'pattern') and attr_def.pattern:
-                    pattern = f"`{attr_def.pattern}`"
+                try:
+                    if hasattr(attr_def, 'pattern') and attr_def.pattern:
+                        pattern_val = attr_def.pattern
+                        if pattern_val:  # Make sure it's not empty
+                            pattern = f"`{pattern_val}`"
+                    elif hasattr(attr_def, 'structured_pattern') and attr_def.structured_pattern:
+                        # Handle structured patterns
+                        if hasattr(attr_def.structured_pattern, 'syntax'):
+                            pattern = f"`{attr_def.structured_pattern.syntax}`"
+                        elif isinstance(attr_def.structured_pattern, str):
+                            pattern = f"`{attr_def.structured_pattern}`"
+                except:
+                    pass  # If pattern access fails, just leave it empty
                 
                 description = attr_def.description or ""
                 description = description.replace("|", "\\|")
