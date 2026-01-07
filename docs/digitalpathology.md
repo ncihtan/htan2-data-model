@@ -57,6 +57,59 @@ These attributes are inherited from BaseImagingAttributes.
 
 ## Enums
 
+### AnnotationType {#annotationtype}
+
+| Value | Description |
+|-------|-------------|
+| `Artifact` | Artifact annotation |
+| `Cell` | Cell annotation |
+| `Nucleus` | Nucleus annotation |
+| `ROI` | Region of Interest annotation |
+| `Tissue` | Tissue annotation |
+
+### DeIdentificationMethodType {#deidentificationmethodtype}
+
+| Value | Description |
+|-------|-------------|
+| `Automatic` | Automatic de-identification method |
+| `Manual` | Manual de-identification method |
+| `Not Applicable` | De-identification not applicable |
+| `Semiautomatic` | Semi-automatic de-identification method |
+
+### ExperimentalStrategyAndDataSubtypes {#experimentalstrategyanddatasubtypes}
+
+| Value | Description |
+|-------|-------------|
+| `Pathological` | Pathological experimental strategy and data subtype |
+
+### ImageModality {#imagemodality}
+
+| Value | Description |
+|-------|-------------|
+| `SM` | Slide Microscopy |
+
+### ImmersionMedium {#immersionmedium}
+
+| Value | Description |
+|-------|-------------|
+| `Air` | Air immersion medium |
+| `Glycerol` | Glycerol immersion medium |
+| `Oil` | Oil immersion medium |
+| `Other` | Other immersion medium |
+| `Water` | Water immersion medium |
+
+### License {#license}
+
+| Value | Description |
+|-------|-------------|
+| `CC BY 4.0` | Creative Commons Attribution 4.0 International License |
+
+### Species {#species}
+
+| Value | Description |
+|-------|-------------|
+| `9606 (Homo sapiens)` | NCBI Taxonomy ID for Homo sapiens |
+
 ### StainingMethod {#stainingmethod}
 
 | Value | Description |

@@ -28,7 +28,8 @@ def format_enum_values(enum_def, max_inline=5):
         return ""
     
     # Always link to enum section for cleaner representation
-    enum_anchor = enum_def.name.lower().replace('_', '-').replace('enum', '')
+    # Use full enum name (lowercase, with dashes) to match Sphinx anchor generation
+    enum_anchor = enum_def.name.lower().replace('_', '-')
     return f"[{enum_def.name}](#{enum_anchor})"
 
 def resolve_inheritance_chain(class_def, all_classes, base_dir, visited=None):
@@ -392,7 +393,8 @@ def generate_module_doc(schema_path: str, output_path: str):
         if schema.name == "Clinical" and all_enums:
             f.write("## Enums\n\n")
             for enum_name, enum_def in sorted(all_enums.items()):
-                enum_anchor = enum_name.lower().replace('_', '-').replace('enum', '')
+                # Use full enum name (lowercase, with dashes) to match link anchors
+                enum_anchor = enum_name.lower().replace('_', '-')
                 f.write(f"### {enum_name} {{#{enum_anchor}}}\n\n")
                 if enum_def.description:
                     f.write(f"{enum_def.description}\n\n")
@@ -494,28 +496,46 @@ def generate_module_doc(schema_path: str, output_path: str):
                         else:
                             generate_class_table(class_name, class_def, all_enums, f)
         
-        # Enums section (show all enums with many values) - skip for Clinical and modules with levels
+        # Enums section - show all enums used in this module
+        # Skip for Clinical (has its own enum section) and modules with levels (enums shown on level pages)
         if schema.name not in ["Clinical", "WES", "scRNA-seq", "MultiplexMicroscopy", "Spatial", "SpatialOmics"] and all_enums:
-            long_enums = []
-            for enum_name, enum_def in sorted(all_enums.items()):
-                if enum_def.permissible_values and len(enum_def.permissible_values) > 5:
-                    long_enums.append((enum_name, enum_def))
+            # Collect all enum names that are actually used in attributes
+            used_enums = set()
+            for class_name, class_def in all_classes.items():
+                if class_def.attributes:
+                    for attr_name, attr_def in class_def.attributes.items():
+                        if attr_def.range and attr_def.range in all_enums:
+                            used_enums.add(attr_def.range)
             
-            if long_enums:
+            # Also check parent classes for inherited attributes
+            for class_name, class_def in all_classes.items():
+                if hasattr(class_def, 'is_a') and class_def.is_a:
+                    # Resolve inheritance to get all attributes
+                    all_attrs, _, _ = resolve_inheritance_chain(class_def, all_classes, base_dir)
+                    for attr_name, attr_def in all_attrs.items():
+                        if attr_def.range and attr_def.range in all_enums:
+                            used_enums.add(attr_def.range)
+            
+            # Show all used enums (not just those with > 5 values)
+            if used_enums:
                 f.write("## Enums\n\n")
-                for enum_name, enum_def in long_enums:
-                    enum_anchor = enum_name.lower().replace('_', '-').replace('enum', '')
-                    f.write(f"### {enum_name} {{#{enum_anchor}}}\n\n")
-                    if enum_def.description:
-                        f.write(f"{enum_def.description}\n\n")
-                    
-                    f.write("| Value | Description |\n")
-                    f.write("|-------|-------------|\n")
-                    for pv_name, pv_def in sorted(enum_def.permissible_values.items()):
-                        description = pv_def.description or ""
-                        description = description.replace("|", "\\|")
-                        f.write(f"| `{pv_name}` | {description} |\n")
-                    f.write("\n")
+                for enum_name in sorted(used_enums):
+                    if enum_name in all_enums:
+                        enum_def = all_enums[enum_name]
+                        # Use full enum name (lowercase, with dashes) to match link anchors
+                        enum_anchor = enum_name.lower().replace('_', '-')
+                        f.write(f"### {enum_name} {{#{enum_anchor}}}\n\n")
+                        if enum_def.description:
+                            f.write(f"{enum_def.description}\n\n")
+                        
+                        if enum_def.permissible_values:
+                            f.write("| Value | Description |\n")
+                            f.write("|-------|-------------|\n")
+                            for pv_name, pv_def in sorted(enum_def.permissible_values.items()):
+                                description = pv_def.description or ""
+                                description = description.replace("|", "\\|")
+                                f.write(f"| `{pv_name}` | {description} |\n")
+                        f.write("\n")
 
 def generate_level_page(level_file, level_name, module_name, module_output_name, all_enums, all_classes, base_dir):
     """Generate a separate page for a level."""
