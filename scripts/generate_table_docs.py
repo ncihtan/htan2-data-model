@@ -49,7 +49,11 @@ def get_conditional_requirements(class_def, attr_name):
                 condition = condition.replace(" = any stage value", " has any stage value")
                 condition = condition.replace(" = Stage IV or any of its substages", " = Stage IV or any substage")
                 condition = condition.replace(" is a surgical or radiation therapy", " contains 'Surgical' or 'Radiation'")
+                condition = condition.replace(" = present", " is provided")
                 condition = condition.replace(" is present", " is provided")
+                # Make "= present" clearer
+                if " = present" in condition:
+                    condition = condition.replace(" = present", " is provided")
                 conditions.append(condition)
             elif "required when" in desc.lower():
                 condition = desc.split("required when", 1)[1].strip()
@@ -57,7 +61,11 @@ def get_conditional_requirements(class_def, attr_name):
                 condition = condition.replace(" = any stage value", " has any stage value")
                 condition = condition.replace(" = Stage IV or any of its substages", " = Stage IV or any substage")
                 condition = condition.replace(" is a surgical or radiation therapy", " contains 'Surgical' or 'Radiation'")
+                condition = condition.replace(" = present", " is provided")
                 condition = condition.replace(" is present", " is provided")
+                # Make "= present" clearer
+                if " = present" in condition:
+                    condition = condition.replace(" = present", " is provided")
                 conditions.append(condition)
     
     # Check rules as fallback - but prefer slot_usage if available

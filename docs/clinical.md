@@ -130,10 +130,10 @@ HTAN Clinical Data Model Schema
 | `AGE_IN_DAYS_AT_TREATMENT_START` | integer | Yes |  | The age in days of the subject at the time that this treatment was started |
 | `INITIAL_DISEASE_STATUS` | string | Yes |  | Status of the individual's malignancy when the treatment began |
 | `NUMBER_OF_CYCLES` | integer | Required IF TREATMENT_TYPE = pharmacotherapy |  | Number of treatment cycles administered |
-| `OFF_TREATMENT_REASON` | [OffTreatmentReasonEnum](#offtreatmentreason) | Required IF AGE_IN_DAYS_AT_TREATMENT_END = present |  | Reason for stopping treatment |
+| `OFF_TREATMENT_REASON` | [OffTreatmentReasonEnum](#offtreatmentreason) | Required IF AGE_IN_DAYS_AT_TREATMENT_END is provided |  | Reason for stopping treatment |
 | `PHARMACOTHERAPY_TYPE` | [PharmacotherapyTypeEnum](#pharmacotherapytype) | Yes |  | Whether single or combination pharmacotherapy was used |
 | `REGIMEN_OR_LINE_OF_THERAPY` | [RegimenOrLineOfTherapyEnum](#regimenorlineoftherapy) | Required IF TREATMENT_TYPE = pharmacotherapy |  | Line of therapy |
-| `RESPONSE` | string | Required IF AGE_IN_DAYS_AT_TREATMENT_END = present |  | Response to treatment |
+| `RESPONSE` | string | Required IF AGE_IN_DAYS_AT_TREATMENT_END is provided |  | Response to treatment |
 | `THERAPEUTIC_AGENTS` | [antineoplastic_agent_enum](#antineoplastic-agent-) | Yes | `^[^|]+(\|[^|]+)*$` | The NCit Preferred Name(s) of the Therapeutic agent(s) |
 | `THERAPY_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-) | Required IF TREATMENT_TYPE = a surgical or radiation therapy |  | UBERON identifier for the location within the body targeted by a therapeutic procedure |
 | `TREATMENT_INTENT_TYPE` | [TreatmentIntentTypeEnum](#treatmentintenttype) | Yes |  | Anticipated outcome for therapy |
