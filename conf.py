@@ -16,4 +16,5 @@ html_static_path = ['_static', 'modules/CoreFile']
 
 source_suffix = ['.md', '.rst']
 myst_enable_extensions = ['colon_fence', 'deflist']
+myst_heading_anchors = 2
 
