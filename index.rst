@@ -37,6 +37,15 @@ First, determine whether your data is **file-based** or **record-based**:
 
 Each module page is self-contained and lists all attributes you need to fill out, so you don't need to navigate between multiple pages.
 
+Reference
+----------
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Reference:
+
+   docs/identifiers
+
 Modules
 -------
 

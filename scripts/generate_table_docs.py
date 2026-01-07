@@ -554,8 +554,8 @@ def generate_module_doc(schema_path: str, output_path: str):
                     else:
                         generate_class_table(class_name, class_def, all_enums, f)
         
-        # Enums section (show all enums with many values)
-        if all_enums:
+        # Enums section (show all enums with many values) - skip for Clinical since it has its own section
+        if schema.name != "Clinical" and all_enums:
             long_enums = []
             for enum_name, enum_def in sorted(all_enums.items()):
                 if enum_def.permissible_values and len(enum_def.permissible_values) > 5:
@@ -612,3 +612,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Also generate identifier page
+    from generate_identifiers import generate_identifier_doc
+    generate_identifier_doc()
