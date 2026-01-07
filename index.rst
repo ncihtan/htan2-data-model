@@ -39,3 +39,18 @@ Reference
 
    :self:
    docs/identifiers
+
+Modules
+-------
+
+.. toctree::
+   :maxdepth: 3
+
+   docs/clinical
+   docs/biospecimen
+   docs/wes
+   docs/scrna-seq
+   docs/digitalpathology
+   docs/multiplexmicroscopy
+   docs/spatialomics
+
