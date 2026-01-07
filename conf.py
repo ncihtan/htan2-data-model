@@ -15,5 +15,5 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static', 'modules/CoreFile']
 
 source_suffix = ['.md', '.rst']
-myst_enable_extensions = ['colon_fence']
+myst_enable_extensions = ['colon_fence', 'deflist']
 

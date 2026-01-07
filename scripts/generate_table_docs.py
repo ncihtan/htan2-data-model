@@ -405,9 +405,11 @@ def generate_module_doc(schema_path: str, output_path: str):
                 f.write("- **Level 2**: Aligned files and alignment QC\n")
                 f.write("- **Level 3**: Called variants\n\n")
                 f.write("## Levels\n\n")
-                f.write("- [Level 1 - Raw sequencing files and metadata](wes/level-1.md)\n")
-                f.write("- [Level 2 - Aligned files and alignment QC](wes/level-2.md)\n")
-                f.write("- [Level 3 - Called variants](wes/level-3.md)\n\n")
+                f.write(".. toctree::\n")
+                f.write("   :maxdepth: 1\n\n")
+                f.write("   wes/level-1\n")
+                f.write("   wes/level-2\n")
+                f.write("   wes/level-3\n\n")
             elif schema.name == "scRNA-seq":
                 readme_path = base_dir.parent.parent / "modules" / "scRNA-seq" / "README.md"
                 if readme_path.exists():
@@ -425,18 +427,22 @@ def generate_module_doc(schema_path: str, output_path: str):
                     f.write("- **Level 2**: Workflow and processing metadata\n")
                     f.write("- **Level 3/4**: Combined analysis results with h5ad file format validation\n\n")
                 f.write("## Levels\n\n")
-                f.write("- [Level 1 - Raw sequencing files and metadata](scrna-seq/level-1.md)\n")
-                f.write("- [Level 2 - Workflow and processing metadata](scrna-seq/level-2.md)\n")
-                f.write("- [Level 3/4 - Analysis results with h5ad file format validation](scrna-seq/level-3-4.md)\n\n")
+                f.write(".. toctree::\n")
+                f.write("   :maxdepth: 1\n\n")
+                f.write("   scrna-seq/level-1\n")
+                f.write("   scrna-seq/level-2\n")
+                f.write("   scrna-seq/level-3-4\n\n")
             elif schema.name == "MultiplexMicroscopy":
                 f.write("The HTAN Multiplex Microscopy module provides a comprehensive data model for multiplexed tissue imaging assays. This module defines schemas for three data levels:\n\n")
                 f.write("- **Level 2**: Imaging data with channel metadata\n")
                 f.write("- **Level 3**: Segmentation masks\n")
                 f.write("- **Level 4**: Cell-by-feature tables\n\n")
                 f.write("## Levels\n\n")
-                f.write("- [Level 2 - Imaging data with channel metadata](multiplexmicroscopy/level-2.md)\n")
-                f.write("- [Level 3 - Segmentation masks](multiplexmicroscopy/level-3.md)\n")
-                f.write("- [Level 4 - Cell-by-feature tables](multiplexmicroscopy/level-4.md)\n\n")
+                f.write(".. toctree::\n")
+                f.write("   :maxdepth: 1\n\n")
+                f.write("   multiplexmicroscopy/level-2\n")
+                f.write("   multiplexmicroscopy/level-3\n")
+                f.write("   multiplexmicroscopy/level-4\n\n")
             elif schema.name in ["Spatial", "SpatialOmics"]:
                 f.write("The HTAN Spatial Omics module provides a comprehensive data model for spatial omics assays. This module defines schemas for multiple data levels:\n\n")
                 f.write("- **Level 1**: Raw data bundle (optional)\n")
@@ -444,10 +450,12 @@ def generate_module_doc(schema_path: str, output_path: str):
                 f.write("- **Level 4**: Interoperable file (optional)\n")
                 f.write("- **Panel**: Panel information\n\n")
                 f.write("## Levels\n\n")
-                f.write("- [Level 1 - Raw data bundle](spatialomics/level-1.md)\n")
-                f.write("- [Level 3 - Processed bundle](spatialomics/level-3.md)\n")
-                f.write("- [Level 4 - Interoperable file](spatialomics/level-4.md)\n")
-                f.write("- [Panel - Panel information](spatialomics/panel.md)\n\n")
+                f.write(".. toctree::\n")
+                f.write("   :maxdepth: 1\n\n")
+                f.write("   spatialomics/level-1\n")
+                f.write("   spatialomics/level-3\n")
+                f.write("   spatialomics/level-4\n")
+                f.write("   spatialomics/panel\n\n")
         
         # Default: show all classes (for file-based modules, use inheritance)
         else:
@@ -498,18 +506,45 @@ def generate_level_page(level_file, level_name, module_name, module_output_name,
         if level_schema.enums:
             level_enums.update(level_schema.enums)
         
-        # Load enums from level file imports too
+        # Load classes and enums from imported schemas (Sequencing, CoreFile, Imaging, etc.)
+        combined_classes = {**all_classes}
+        if level_schema.classes:
+            combined_classes.update(level_schema.classes)
+        
+        # Load imported schemas to get parent classes for inheritance resolution
+        # Also need to recursively load imports of imports (e.g., Sequencing imports CoreFile)
+        schemas_to_load = []
         if level_schema.imports:
             for imp in level_schema.imports:
                 if isinstance(imp, str) and not imp.startswith('linkml:'):
-                    enum_file = level_file.parent / f"{imp}.yaml"
-                    if enum_file.exists():
-                        try:
-                            enum_schema = yaml_loader.load(str(enum_file), SchemaDefinition)
-                            if enum_schema.enums:
-                                level_enums.update(enum_schema.enums)
-                        except:
-                            pass
+                    import_file = level_file.parent / f"{imp}.yaml"
+                    if import_file.exists():
+                        schemas_to_load.append(import_file)
+        
+        # Load schemas and their imports recursively
+        loaded_schemas = set()
+        while schemas_to_load:
+            schema_file = schemas_to_load.pop(0)
+            if str(schema_file) in loaded_schemas:
+                continue
+            loaded_schemas.add(str(schema_file))
+            
+            try:
+                import_schema = yaml_loader.load(str(schema_file), SchemaDefinition)
+                if import_schema.enums:
+                    level_enums.update(import_schema.enums)
+                if import_schema.classes:
+                    combined_classes.update(import_schema.classes)
+                
+                # Also load imports of this schema (e.g., Sequencing imports CoreFile)
+                if import_schema.imports:
+                    for sub_imp in import_schema.imports:
+                        if isinstance(sub_imp, str) and not sub_imp.startswith('linkml:'):
+                            sub_import_file = schema_file.parent / f"{sub_imp}.yaml"
+                            if sub_import_file.exists() and str(sub_import_file) not in loaded_schemas:
+                                schemas_to_load.append(sub_import_file)
+            except Exception as e:
+                pass
         
         # Find the level class
         level_class_name = None
@@ -527,10 +562,6 @@ def generate_level_page(level_file, level_name, module_name, module_output_name,
                 class_def = level_schema.classes[level_class_name]
                 # Merge level_enums with all_enums for complete enum lookup
                 combined_enums = {**all_enums, **level_enums}
-                # Merge level classes with all_classes for inheritance resolution
-                combined_classes = {**all_classes}
-                if level_schema.classes:
-                    combined_classes.update(level_schema.classes)
                 generate_class_table_with_inheritance(level_class_name, class_def, combined_enums, f, combined_classes, base_dir)
             
             print(f"Generated {output_path}...")
