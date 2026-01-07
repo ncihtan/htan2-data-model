@@ -418,6 +418,12 @@ def generate_module_doc(schema_path: str, output_path: str):
                         if len(lines) >= 9:
                             overview = '\n'.join(lines[4:9])
                             f.write(f"{overview}\n\n")
+                else:
+                    # Fallback if README doesn't exist
+                    f.write("The HTAN scRNA-seq module provides a comprehensive data model for single-cell RNA sequencing data, following the HTAN data model specifications. This module defines schemas for three data levels:\n\n")
+                    f.write("- **Level 1**: Raw sequencing files and metadata\n")
+                    f.write("- **Level 2**: Workflow and processing metadata\n")
+                    f.write("- **Level 3/4**: Combined analysis results with h5ad file format validation\n\n")
                 f.write("## Levels\n\n")
                 f.write("- :doc:`Level 1 <scrna-seq/level-1>` - Raw sequencing files and metadata\n")
                 f.write("- :doc:`Level 2 <scrna-seq/level-2>` - Workflow and processing metadata\n")
