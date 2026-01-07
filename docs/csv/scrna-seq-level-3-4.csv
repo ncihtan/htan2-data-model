@@ -1,0 +1,27 @@
+Attribute,Type,Pattern,Required,Description
+ANNDATA_SCHEMA_VERSION,string,^0\.1$,Yes,Version of AnnData schema (must be 0.1 for CellxGene compliance)
+ANNDATA_STRUCTURE_VALIDATED,boolean,,Yes,Whether the h5ad file structure has been validated against AnnData 0.1 schema
+CELL_MEDIAN_NUMBER_GENES,integer,,Yes,Median number of genes detected per cell
+CELL_MEDIAN_NUMBER_READS,integer,,Yes,Median number of reads per cell
+CELL_TOTAL,integer,,Yes,Number of sequenced cells. Applies to raw counts matrix only
+CHECKSUM,string,,No,Checksum for data integrity verification
+DATA_CATEGORY,DataCategoryEnum,,Yes,Specific content type of the data file
+FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
+FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+GENOME_ANNOTATION_URL,string,,No,URL to genome annotation
+GENOMIC_REFERENCE,string,,Yes,Genomic reference used for alignment
+GENOMIC_REFERENCE_URL,string,,No,URL to genomic reference
+HTAN_DATA_FILE_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",Yes,HTAN Data File ID (Primary Key)
+HTAN_PARENT_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",Yes,"HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2."
+LIBRARY_LAYOUT,LibraryLayoutEnum,,Yes,Library layout (paired-end or single-end)
+LIBRARY_PREPARATION_DAYS_FROM_INDEX,integer,,No,Days from index for library preparation
+LINKED_MATRICES,string,,No,All matrices associated with every part of a SingleCellExperiment object. Comma-delimited list of filenames
+MATRIX_TYPE,MatrixTypeEnum,,Yes,Type of data stored in matrix
+PROTOCOL_LINK,string,,No,Link to sequencing protocol
+SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION,string,,Yes,"Parameters used to run the workflow. scRNA-seq level 3: e.g. Normalization and log transformation, ran empty drops or doublet detection, used filter on # genes/cell, etc. scRNA-seq Level 4: dimensionality reduction with PCA and 50 components, nearest-neighbor graph with k = 20 and Leiden clustering with resolution = 1, UMAP visualization using 50 PCA components, marker genes used to annotate cell types, information about droplet matrix (all barcodes) to cell matrix (only informative barcodes representing real cells) conversion"
+SCRNASEQ_WORKFLOW_TYPE,scRNAseqWorkflowTypeEnumLevel3_4,,Yes,Generic name for the workflow used to analyze a data set
+SEQUENCING_BATCH_ID,string,,No,Sequencing batch identifier
+SEQUENCING_PLATFORM,SequencingPlatformEnum,,Yes,Sequencing platform used
+TECHNICAL_REPLICATE_GROUP,string,,No,Technical replicate group identifier
+WORKFLOW_LINK,string,,No,Link to workflow or command. DockStore.org recommended
+WORKFLOW_VERSION,string,,Yes,Major version of the workflow

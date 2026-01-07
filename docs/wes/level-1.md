@@ -1,5 +1,7 @@
 # WES - Level 1
 
+📥 [Download attributes as CSV](csv/wes-level-1.csv)
+
 If submitting Level 1 files for WES, here are the list of attributes you need to fill out:
 
 **Bulk Whole Exome Sequencing Level 1 - Raw files**

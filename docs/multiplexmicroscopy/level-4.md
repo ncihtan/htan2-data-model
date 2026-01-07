@@ -1,5 +1,7 @@
 # MultiplexMicroscopy - Level 4
 
+📥 [Download attributes as CSV](csv/multiplexmicroscopy-level-4.csv)
+
 If submitting Level 4 files for MultiplexMicroscopy, here are the list of attributes you need to fill out:
 
 **Multiplex Microscopy Level 4 - Cell-by-feature table (typically cell-by-marker) generated from the segmentation mask and image. No changes from prior definitions (RFC Imaging Level 3 & 4 - v1)**

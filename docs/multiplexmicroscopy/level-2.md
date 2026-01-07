@@ -1,5 +1,7 @@
 # MultiplexMicroscopy - Level 2
 
+📥 [Download attributes as CSV](csv/multiplexmicroscopy-level-2.csv)
+
 If submitting Level 2 files for MultiplexMicroscopy, here are the list of attributes you need to fill out:
 
 **Multiplex Microscopy Level 2 - Imaging data compiled into a single file format (preferably tiled and pyramidal OME-TIFF), accompanied by a CSV file containing channel metadata**

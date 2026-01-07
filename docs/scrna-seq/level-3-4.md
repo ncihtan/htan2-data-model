@@ -1,5 +1,7 @@
 # scRNA-seq - Level 3/4
 
+📥 [Download attributes as CSV](csv/scrna-seq-level-3-4.csv)
+
 If submitting Level 3/4 files for scRNA-seq, here are the list of attributes you need to fill out:
 
 **Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships**

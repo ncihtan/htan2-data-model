@@ -1,0 +1,25 @@
+Attribute,Type,Pattern,Required,Description
+CHECKSUM,string,,No,Checksum for data integrity verification
+CRYOPRESERVED_CELLS_IN_SAMPLE,boolean,,No,Whether cells were cryopreserved in the sample
+DISSOCIATION_METHOD,DissociationMethodEnum,,Yes,Method used to dissociate tissue into single cells
+FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
+FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+GENOME_ANNOTATION_URL,string,,No,URL to genome annotation
+GENOMIC_REFERENCE,string,,Yes,Genomic reference used for alignment
+GENOMIC_REFERENCE_URL,string,,No,URL to genomic reference
+HTAN_DATA_FILE_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",Yes,HTAN Data File ID (Primary Key)
+HTAN_PARENT_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",Yes,"HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2."
+LIBRARY_CONSTRUCTION_METHOD,LibraryConstructionMethodEnum,,Yes,Method used to construct the sequencing library
+LIBRARY_LAYOUT,LibraryLayoutEnum,,Yes,Library layout (paired-end or single-end)
+LIBRARY_PREPARATION_DAYS_FROM_INDEX,integer,,No,Days from index for library preparation
+NUCLEIC_ACID_SOURCE,NucleicAcidSourceEnum,,Yes,Type of nucleic acid used for sequencing
+PROTOCOL_LINK,string,,No,Link to sequencing protocol
+READ_INDICATOR,ReadIndicatorEnum,,Yes,"Type of read (forward, reverse, index)"
+REVERSE_TRANSCRIPTION_PRIMER,ReverseTranscriptionPrimerEnum,,Yes,Primer used for reverse transcription
+SEQUENCING_BATCH_ID,string,,No,Sequencing batch identifier
+SEQUENCING_PLATFORM,SequencingPlatformEnum,,Yes,Sequencing platform used
+SINGLE_CELL_ISOLATION_METHOD,SingleCellIsolationMethodEnum,,Yes,Method used to isolate single cells
+SPIKE_IN,SpikeInEnum,,Yes,"Type of spike-in used, if any"
+TECHNICAL_REPLICATE_GROUP,string,,No,Technical replicate group identifier
+WORKFLOW_LINK,string,,No,Link to workflow or command. DockStore.org recommended
+WORKFLOW_VERSION,string,,Yes,Major version of the workflow

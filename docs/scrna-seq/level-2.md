@@ -1,5 +1,7 @@
 # scRNA-seq - Level 2
 
+📥 [Download attributes as CSV](csv/scrna-seq-level-2.csv)
+
 If submitting Level 2 files for scRNA-seq, here are the list of attributes you need to fill out:
 
 **scRNA-seq Level 2 data - Workflow and processing metadata**

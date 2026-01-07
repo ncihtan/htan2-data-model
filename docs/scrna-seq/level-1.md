@@ -1,5 +1,7 @@
 # scRNA-seq - Level 1
 
+📥 [Download attributes as CSV](csv/scrna-seq-level-1.csv)
+
 If submitting Level 1 files for scRNA-seq, here are the list of attributes you need to fill out:
 
 **scRNA-seq Level 1 data - Raw sequencing files and metadata**

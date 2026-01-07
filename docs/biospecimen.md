@@ -2,6 +2,8 @@
 
 HTAN Biospecimen Data Model Schema
 
+📥 [Download attributes as CSV](csv/biospecimen.csv)
+
 ## BiospecimenData
 
 **Container for all Biospecimen data**

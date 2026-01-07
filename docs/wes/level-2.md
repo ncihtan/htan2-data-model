@@ -1,5 +1,7 @@
 # WES - Level 2
 
+📥 [Download attributes as CSV](csv/wes-level-2.csv)
+
 If submitting Level 2 files for WES, here are the list of attributes you need to fill out:
 
 **Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC**

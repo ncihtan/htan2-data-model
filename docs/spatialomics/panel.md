@@ -1,5 +1,7 @@
 # SpatialOmics - Panel
 
+📥 [Download attributes as CSV](csv/spatialomics-panel.csv)
+
 If submitting Panel files for SpatialOmics, here are the list of attributes you need to fill out:
 
 **Spatial omics panel information for targeted sequencing or protein panels**

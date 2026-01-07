@@ -1,5 +1,7 @@
 # MultiplexMicroscopy - Level 3
 
+📥 [Download attributes as CSV](csv/multiplexmicroscopy-level-3.csv)
+
 If submitting Level 3 files for MultiplexMicroscopy, here are the list of attributes you need to fill out:
 
 **Multiplex Microscopy Level 3 - Segmentation mask. Structured mask data following existing HTAN segmentation templates (RFC Imaging Level 3 & 4 - v1)**

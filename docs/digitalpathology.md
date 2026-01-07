@@ -2,6 +2,8 @@
 
 HTAN Digital Pathology Data Model Schema for Phase 2
 
+📥 [Download attributes as CSV](csv/digitalpathology.csv)
+
 If submitting Digital Pathology files, here are the list of attributes you need to fill out:
 
 ## DigitalPathologyData

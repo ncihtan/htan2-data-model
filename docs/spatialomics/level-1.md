@@ -1,5 +1,7 @@
 # SpatialOmics - Level 1
 
+📥 [Download attributes as CSV](csv/spatialomics-level-1.csv)
+
 If submitting Level 1 files for SpatialOmics, here are the list of attributes you need to fill out:
 
 **Level 1 raw spatial data bundle (optional) - Contains raw sequencing data, images, and registration files**

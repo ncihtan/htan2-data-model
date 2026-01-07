@@ -1,0 +1,10 @@
+Attribute,Type,Pattern,Required,Description
+DEMOGRAPHICS,Demographics,,Yes,Demographic information
+DIAGNOSIS,Diagnosis,,Yes,Primary diagnosis information
+EXPOSURES,Exposure,,Yes,Exposure history
+FAMILY_HISTORY,FamilyHistory,,Yes,Family history of cancer
+FOLLOW_UPS,FollowUp,,No,Follow-up observations
+HTAN_PARTICIPANT_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$",Yes,HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)
+MOLECULAR_TESTS,MolecularTest,,No,Molecular test results
+THERAPIES,Therapy,,No,Therapy information
+VITAL_STATUS,VitalStatus,,Yes,Vital status information

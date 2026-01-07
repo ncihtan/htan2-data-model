@@ -2,6 +2,8 @@
 
 HTAN Clinical Data Model Schema
 
+📥 [Download attributes as CSV](csv/clinical.csv)
+
 ## Manifests
 
 **Container for all clinical data**

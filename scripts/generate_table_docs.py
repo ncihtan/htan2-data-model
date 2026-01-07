@@ -378,6 +378,16 @@ def generate_module_doc(schema_path: str, output_path: str):
         if schema.description:
             f.write(f"{schema.description}\n\n")
         
+        # Add CSV download link for record-based modules
+        output_map = {
+            "Clinical": "clinical",
+            "Biospecimen": "biospecimen",
+            "DigitalPathology": "digitalpathology",
+        }
+        if schema.name in output_map:
+            csv_filename = f"{output_map[schema.name]}.csv"
+            f.write(f"📥 [Download attributes as CSV](csv/{csv_filename})\n\n")
+        
         # Special handling for Clinical - show each class separately (no "Classes" heading)
         if schema.name == "Clinical":
             # Show main ClinicalData class first, but rename to "Manifests"
@@ -602,6 +612,11 @@ def generate_level_page(level_file, level_name, module_name, module_output_name,
         if level_class_name:
             with open(output_path, 'w') as f:
                 f.write(f"# {module_name} - {level_name}\n\n")
+                
+                # Add CSV download link
+                level_filename = level_name.lower().replace(" ", "-").replace("/", "-")
+                csv_filename = f"{module_output_name}-{level_filename}.csv"
+                f.write(f"📥 [Download attributes as CSV](csv/{csv_filename})\n\n")
                 
                 # Add submission guidance text
                 f.write(f"If submitting {level_name} files for {module_name}, here are the list of attributes you need to fill out:\n\n")

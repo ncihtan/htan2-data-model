@@ -1,5 +1,7 @@
 # SpatialOmics - Level 4
 
+📥 [Download attributes as CSV](csv/spatialomics-level-4.csv)
+
 If submitting Level 4 files for SpatialOmics, here are the list of attributes you need to fill out:
 
 **Level 4 interoperable spatial omics file (optional) - Harmonized h5ad, RDS, or Zarr file for downstream analysis**

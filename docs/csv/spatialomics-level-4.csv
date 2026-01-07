@@ -1,0 +1,21 @@
+Attribute,Type,Pattern,Required,Description
+CELL_TYPES,string,,No,List of cell types present in the data
+CELL_TYPE_CALLING_METHOD,string,,No,Method used for cell type annotation
+CLUSTERING_METHOD,string,,No,Method used to define clusters
+DIMENSIONALITY_REDUCTION_METHOD,DimensionalityReductionMethodLevel4,,No,Method used for dimensionality reduction
+FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
+FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+HAS_CELL_TYPE_CALLING,boolean,,Yes,Indicates presence of cell type annotations
+HAS_CLUSTERING,boolean,,Yes,Indicates if clustering was performed
+HAS_DIMENSIONALITY_REDUCTION,boolean,,Yes,Indicates presence of dimensionally reduced data
+HAS_IMAGE,boolean,,Yes,Indicates presence of associated image data
+HAS_NORMALISED_ARRAY,boolean,,Yes,Indicates presence of normalized array
+HAS_RAW_ARRAY,boolean,,Yes,Indicates presence of raw expression array
+HTAN_DATA_FILE_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",Yes,HTAN Data File ID (Primary Key)
+HTAN_PARENT_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",Yes,"HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2."
+IMAGE_TYPE,ImageTypeLevel4,,No,Type of image associated with the data file
+NORMALISATION_METHOD,NormalisationMethod,,No,Method used for normalizing the array data
+NUMBER_OF_CLUSTERS,integer,,No,Number of clusters identified
+NUMBER_OF_FEATURES,integer,,Yes,Number of features (e.g. transcripts)
+NUMBER_OF_OBJECTS,integer,,Yes,Number of objects (e.g. cells)
+TOOL_COMPATIBILITY,ToolCompatibility,,No,Tools or libraries compatible with this file
