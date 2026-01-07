@@ -31,6 +31,62 @@ def format_enum_values(enum_def, max_inline=5):
     enum_anchor = enum_def.name.lower().replace('_', '-').replace('enum', '')
     return f"[{enum_def.name}](#{enum_anchor})"
 
+def resolve_inheritance_chain(class_def, all_classes, base_dir, visited=None):
+    """Resolve inheritance chain and collect all attributes from parent classes.
+    Returns: (all_attributes_dict, inheritance_chain_list, parent_class_defs_dict)
+    """
+    if visited is None:
+        visited = set()
+    
+    all_attrs = {}
+    inheritance_chain = []
+    parent_class_defs = {}
+    
+    # Get attributes from current class
+    if class_def.attributes:
+        all_attrs.update(class_def.attributes)
+    
+    # Follow inheritance chain
+    if hasattr(class_def, 'is_a') and class_def.is_a:
+        parent_name = class_def.is_a
+        if parent_name not in visited:
+            visited.add(parent_name)
+            
+            # Try to find parent in all_classes
+            if parent_name in all_classes:
+                parent_class = all_classes[parent_name]
+                inheritance_chain.append(parent_name)
+                parent_class_defs[parent_name] = parent_class
+                # Recursively get parent attributes
+                parent_attrs, parent_chain, parent_defs = resolve_inheritance_chain(parent_class, all_classes, base_dir, visited)
+                all_attrs.update(parent_attrs)
+                inheritance_chain.extend(parent_chain)
+                parent_class_defs.update(parent_defs)
+            else:
+                # Try to load from imported schemas
+                # Common parent classes: CoreFileAttributes, BaseSequencingAttributes, BaseImagingAttributes
+                parent_schemas = {
+                    'CoreFileAttributes': base_dir.parent.parent / 'CoreFile' / 'domains' / 'core.yaml',
+                    'BaseSequencingAttributes': base_dir.parent.parent / 'Sequencing' / 'domains' / 'sequencing.yaml',
+                    'BaseImagingAttributes': base_dir.parent.parent / 'Imaging' / 'domains' / 'imaging.yaml',
+                }
+                
+                if parent_name in parent_schemas and parent_schemas[parent_name].exists():
+                    try:
+                        parent_schema = yaml_loader.load(str(parent_schemas[parent_name]), SchemaDefinition)
+                        if parent_name in parent_schema.classes:
+                            parent_class = parent_schema.classes[parent_name]
+                            inheritance_chain.append(parent_name)
+                            parent_class_defs[parent_name] = parent_class
+                            parent_attrs, parent_chain, parent_defs = resolve_inheritance_chain(parent_class, parent_schema.classes, base_dir, visited)
+                            all_attrs.update(parent_attrs)
+                            inheritance_chain.extend(parent_chain)
+                            parent_class_defs.update(parent_defs)
+                    except Exception as e:
+                        pass
+    
+    return all_attrs, inheritance_chain, parent_class_defs
+
 def get_conditional_requirements(class_def, attr_name):
     """Extract conditional requirements from slot_usage and rules."""
     conditions = []
@@ -102,6 +158,120 @@ def get_conditional_requirements(class_def, attr_name):
                                 conditions.append(" and ".join(precond_desc))
     
     return conditions
+
+def write_attribute_row(attr_name, attr_def, class_def, all_enums, f):
+    """Helper function to write a single attribute row."""
+    required = "Yes" if attr_def.required else "No"
+    
+    # Get conditional requirements
+    conditions = get_conditional_requirements(class_def, attr_name)
+    if conditions:
+        required = f"Required IF {', '.join(conditions)}"
+    
+    range_str = attr_def.range if attr_def.range else "string"
+    
+    # Check if range is an enum
+    enum_def = None
+    if all_enums and range_str in all_enums:
+        enum_def = all_enums[range_str]
+    
+    if enum_def:
+        enum_values = format_enum_values(enum_def)
+        range_str = enum_values
+    
+    # Get pattern if exists and add to Type column
+    try:
+        if hasattr(attr_def, 'pattern') and attr_def.pattern:
+            pattern_val = attr_def.pattern
+            if pattern_val:
+                pattern_val_escaped = pattern_val.replace("|", "\\|").replace("<", "&lt;").replace(">", "&gt;")
+                range_str = f"{range_str}, pattern: <code>{pattern_val_escaped}</code>"
+        elif hasattr(attr_def, 'structured_pattern') and attr_def.structured_pattern:
+            pattern_val = None
+            if hasattr(attr_def.structured_pattern, 'syntax'):
+                pattern_val = attr_def.structured_pattern.syntax
+            elif isinstance(attr_def.structured_pattern, str):
+                pattern_val = attr_def.structured_pattern
+            if pattern_val:
+                pattern_val_escaped = pattern_val.replace("|", "\\|").replace("<", "&lt;").replace(">", "&gt;")
+                range_str = f"{range_str}, pattern: <code>{pattern_val_escaped}</code>"
+    except:
+        pass
+    
+    description = attr_def.description or ""
+    description = description.replace("|", "\\|")
+    
+    f.write(f"| `{attr_name}` | {range_str} | {required} | {description} |\n")
+
+def generate_class_table_with_inheritance(class_name, class_def, all_enums, f, all_classes, base_dir):
+    """Generate attributes table for a class with inherited attributes organized by source."""
+    if class_def.description:
+        f.write(f"**{class_def.description}**\n\n")
+    
+    # Resolve inheritance chain
+    all_attrs, inheritance_chain, parent_class_defs = resolve_inheritance_chain(class_def, all_classes, base_dir)
+    
+    if not all_attrs:
+        return
+    
+    # Organize attributes by source
+    core_attrs = {}
+    base_attrs = {}
+    module_attrs = {}
+    
+    # Get current class attributes (module-specific)
+    if class_def.attributes:
+        module_attrs = class_def.attributes.copy()
+    
+    # Get parent class attributes
+    for parent_name in inheritance_chain:
+        if parent_name in parent_class_defs:
+            parent_class = parent_class_defs[parent_name]
+            if parent_class.attributes:
+                if parent_name == 'CoreFileAttributes':
+                    core_attrs = parent_class.attributes.copy()
+                elif parent_name in ['BaseSequencingAttributes', 'BaseImagingAttributes']:
+                    base_attrs = parent_class.attributes.copy()
+    
+    # Write sections in order: Core File, Base (Sequencing/Imaging), Module-specific
+    if core_attrs:
+        f.write("### Core File Attributes\n\n")
+        f.write("These attributes are inherited from CoreFileAttributes and apply to all file-based data.\n\n")
+        f.write("| Attribute | Type | Required | Description |\n")
+        f.write("|-----------|------|----------|-------------|\n")
+        for attr_name in sorted(core_attrs.keys()):
+            write_attribute_row(attr_name, core_attrs[attr_name], parent_class_defs.get('CoreFileAttributes', class_def), all_enums, f)
+        f.write("\n")
+    
+    if base_attrs:
+        base_name = 'Base Sequencing Attributes' if 'Sequencing' in str(inheritance_chain) else 'Base Imaging Attributes'
+        base_class_name = None
+        for parent_name in inheritance_chain:
+            if parent_name in ['BaseSequencingAttributes', 'BaseImagingAttributes']:
+                base_class_name = parent_name
+                break
+        if not base_class_name and inheritance_chain:
+            base_class_name = inheritance_chain[0] if 'Sequencing' in str(inheritance_chain) or 'Imaging' in str(inheritance_chain) else inheritance_chain[-1]
+        f.write(f"### {base_name}\n\n")
+        if base_class_name:
+            f.write(f"These attributes are inherited from {base_class_name}.\n\n")
+        else:
+            f.write(f"These attributes are inherited from base classes.\n\n")
+        f.write("| Attribute | Type | Required | Description |\n")
+        f.write("|-----------|------|----------|-------------|\n")
+        for attr_name in sorted(base_attrs.keys()):
+            if attr_name not in core_attrs:  # Don't duplicate core attributes
+                parent_class = parent_class_defs.get(inheritance_chain[1] if len(inheritance_chain) > 1 else inheritance_chain[0], class_def)
+                write_attribute_row(attr_name, base_attrs[attr_name], parent_class, all_enums, f)
+        f.write("\n")
+    
+    if module_attrs:
+        f.write("### Module-Specific Attributes\n\n")
+        f.write("| Attribute | Type | Required | Description |\n")
+        f.write("|-----------|------|----------|-------------|\n")
+        for attr_name in sorted(module_attrs.keys()):
+            write_attribute_row(attr_name, module_attrs[attr_name], class_def, all_enums, f)
+        f.write("\n")
 
 def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False, all_classes=None):
     """Generate attributes table for a class."""
@@ -362,17 +532,27 @@ def generate_module_doc(schema_path: str, output_path: str):
                                 f.write(f"{level_schema.description}\n\n")
                             
                             class_def = level_schema.classes[level_class_name]
-                            generate_class_table(level_class_name, class_def, level_enums, f)
+                            # Merge level_enums with all_enums for complete enum lookup
+                            combined_enums = {**all_enums, **level_enums}
+                            # Merge level classes with all_classes for inheritance resolution
+                            combined_classes = {**all_classes}
+                            if level_schema.classes:
+                                combined_classes.update(level_schema.classes)
+                            generate_class_table_with_inheritance(level_class_name, class_def, combined_enums, f, combined_classes, base_dir)
                     except Exception as e:
                         print(f"Warning: Could not load {level_file}: {e}")
         
-        # Default: show all classes
+        # Default: show all classes (for file-based modules, use inheritance)
         else:
             if all_classes:
                 f.write("## Classes\n\n")
                 for class_name, class_def in sorted(all_classes.items()):
                     f.write(f"### {class_name}\n\n")
-                    generate_class_table(class_name, class_def, all_enums, f)
+                    # Use inheritance for file-based modules (not Clinical or Biospecimen)
+                    if schema.name not in ["Clinical", "Biospecimen"]:
+                        generate_class_table_with_inheritance(class_name, class_def, all_enums, f, all_classes, base_dir)
+                    else:
+                        generate_class_table(class_name, class_def, all_enums, f)
         
         # Enums section (show all enums with many values)
         if all_enums:

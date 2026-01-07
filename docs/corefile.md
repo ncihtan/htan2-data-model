@@ -8,6 +8,8 @@ HTAN Core Data Model - Universal attributes shared across all file-based modules
 
 **Universal attributes that apply to all file-based data in HTAN**
 
+### Module-Specific Attributes
+
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `FILENAME` | string, pattern: <code>^.+[\\/]\S*$</code> | Yes | Name of the file |

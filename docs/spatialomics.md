@@ -8,6 +8,8 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 
 **Universal attributes that apply to all file-based data in HTAN**
 
+### Module-Specific Attributes
+
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `FILENAME` | string, pattern: <code>^.+[\\/]\S*$</code> | Yes | Name of the file |
@@ -19,6 +21,8 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 
 **Container for all Spatial Omics data levels**
 
+### Module-Specific Attributes
+
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `LEVEL_1_DATA` | SpatialLevel1 | No | Level 1 Spatial Omics data (raw spatial data bundle, optional) |
@@ -29,6 +33,19 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 ### SpatialLevel1
 
 **Level 1 raw spatial data bundle (optional) - Contains raw sequencing data, images, and registration files**
+
+### Core File Attributes
+
+These attributes are inherited from CoreFileAttributes and apply to all file-based data.
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `FILENAME` | string, pattern: <code>^.+[\\/]\S*$</code> | Yes | Name of the file |
+| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
+| `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
+| `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
+
+### Module-Specific Attributes
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -46,6 +63,19 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 ### SpatialLevel3
 
 **Level 3 processed spatial assay output bundle - Contains platform-specific output files, segmentation, matrices, and QC metrics**
+
+### Core File Attributes
+
+These attributes are inherited from CoreFileAttributes and apply to all file-based data.
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `FILENAME` | string, pattern: <code>^.+[\\/]\S*$</code> | Yes | Name of the file |
+| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
+| `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
+| `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
+
+### Module-Specific Attributes
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
@@ -93,6 +123,19 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 
 **Level 4 interoperable spatial omics file (optional) - Harmonized h5ad, RDS, or Zarr file for downstream analysis**
 
+### Core File Attributes
+
+These attributes are inherited from CoreFileAttributes and apply to all file-based data.
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `FILENAME` | string, pattern: <code>^.+[\\/]\S*$</code> | Yes | Name of the file |
+| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
+| `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
+| `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
+
+### Module-Specific Attributes
+
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `CELL_TYPES` | string | Required IF HAS_CELL_TYPE_CALLING = 'None' | List of cell types present in the data |
@@ -116,6 +159,8 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 ### SpatialPanel
 
 **Spatial omics panel information for targeted sequencing or protein panels**
+
+### Module-Specific Attributes
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|

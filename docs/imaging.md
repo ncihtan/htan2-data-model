@@ -8,6 +8,19 @@ HTAN Base Imaging Data Model - Common attributes shared across all imaging modul
 
 **Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)**
 
+### Core File Attributes
+
+These attributes are inherited from CoreFileAttributes and apply to all file-based data.
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `FILENAME` | string, pattern: <code>^.+[\\/]\S*$</code> | Yes | Name of the file |
+| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
+| `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
+| `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
+
+### Module-Specific Attributes
+
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `CITATION_OR_DOI` | string, pattern: <code>^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10\|127)(?:\.\d{1,3}){3})(?!(?:169\.254\|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]\|2\d\|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?\|1\d\d\|2[01]\d\|22[0-3])(?:\.(?:1?\d{1,2}\|2[0-4]\d\|25[0-5])){2}(?:\.(?:[1-9]\d?\|1\d\d\|2[0-4]\d\|25[0-4]))\|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$</code> | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https). |
@@ -36,6 +49,8 @@ HTAN Base Imaging Data Model - Common attributes shared across all imaging modul
 ### CoreFileAttributes
 
 **Universal attributes that apply to all file-based data in HTAN**
+
+### Module-Specific Attributes
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|

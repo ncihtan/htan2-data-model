@@ -3,7 +3,7 @@ HTAN Phase 2 Data Model
 
 Documentation for the HTAN Phase 2 Data Model.
 
-This documentation provides comprehensive information about each module in the HTAN Phase 2 Data Model, including module overviews, usage instructions, and complete schema documentation with all attributes, classes, and enums.
+This documentation provides comprehensive information about each module in the HTAN Phase 2 Data Model. Each module page lists **all attributes you need to fill out**, including inherited attributes from base modules.
 
 Data Model Architecture
 ------------------------
@@ -15,79 +15,27 @@ The HTAN2 data model is built using **LinkML**, a modeling language for schemas 
 
 The diagram above illustrates the separation between **Record-Based Modules** (Clinical, Biospecimen) and **File-Based Modules** (WES, Digital Pathology, etc.), with the **Core File Module** providing universal attributes for all file-based modules.
 
-Core File Module
-~~~~~~~~~~~~~~~~
+Getting Started
+---------------
 
-- **Purpose**: Universal attributes shared across all file-based modules
-- **Location**: `modules/CoreFile/domains/core.yaml`
-- **Key Features**: 
-  - Single primary key definition (`HTAN_DATA_FILE_ID`)
-  - Required field definitions for relationships
-  - HTAN identifier validation patterns
-  - Base class for inheritance (`CoreFileAttributes`)
+First, determine whether your data is **file-based** or **record-based**:
 
-Clinical Module
-~~~~~~~~~~~~~~~
+**Record-Based Data**
+   If you have clinical or biospecimen data (patient records, sample metadata), use:
+   
+   - :doc:`Clinical <docs/clinical>` - Clinical and demographic data
+   - :doc:`Biospecimen <docs/biospecimen>` - Biospecimen metadata and classification
 
-- **Purpose**: Clinical and demographic data
-- **Location**: `modules/Clinical/`
-- **Structure**: Multiple domain files (demographics, diagnosis, therapy, etc.)
+**File-Based Data**
+   If you have sequencing, imaging, or other file-based data, use one of the following modules. Each module page shows **all required attributes** including inherited core attributes:
+   
+   - :doc:`WES <docs/wes>` - Bulk Whole Exome Sequencing (includes Core File + Base Sequencing + WES attributes)
+   - :doc:`scRNA-seq <docs/scrna-seq>` - Single-cell RNA sequencing (includes Core File + Base Sequencing + scRNA-seq attributes)
+   - :doc:`Digital Pathology <docs/digitalpathology>` - Whole-slide imaging (includes Core File + Base Imaging + Digital Pathology attributes)
+   - :doc:`Multiplex Microscopy <docs/multiplexmicroscopy>` - Multiplexed tissue imaging (includes Core File + Base Imaging + Multiplex Microscopy attributes)
+   - :doc:`Spatial Omics <docs/spatialomics>` - Spatial omics assays (includes Core File + Spatial Omics attributes)
 
-Biospecimen Module
-~~~~~~~~~~~~~~~~~~
-
-- **Purpose**: Comprehensive biospecimen metadata and classification
-- **Location**: `modules/Biospecimen/`
-- **Structure**: 18 domain-specific enum files with medical classifications
-
-Sequencing Module
-~~~~~~~~~~~~~~~~~
-
-- **Purpose**: Base sequencing attributes shared across all sequencing types
-- **Location**: `modules/Sequencing/`
-- **Structure**: BaseSequencingAttributes class with common sequencing metadata
-
-WES Module
-~~~~~~~~~~
-
-- **Purpose**: Bulk Whole Exome Sequencing data
-- **Location**: `modules/WES/`
-- **Structure**: Three processing levels (Level 1, 2, 3)
-
-scRNA-seq Module
-~~~~~~~~~~~~~~~~
-
-- **Purpose**: Single-cell RNA sequencing data
-- **Location**: `modules/scRNA-seq/`
-- **Structure**: Three data levels (Level 1, 2, 3/4) with h5ad format validation
-
-Imaging Module
-~~~~~~~~~~~~~~
-
-- **Purpose**: Base imaging attributes shared across all imaging modules
-- **Location**: `modules/Imaging/`
-- **Structure**: BaseImagingAttributes class with common imaging metadata
-
-Digital Pathology Module
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Purpose**: Whole-slide imaging (WSI) data from H&E and other tissue-based assays
-- **Location**: `modules/DigitalPathology/`
-- **Structure**: Single data level (Level 2) with Bio-Formats/OpenSlide compatible formats
-
-Multiplex Microscopy Module
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Purpose**: Multiplexed tissue imaging assays (CODEX, CyCIF, IMC, MIBI, etc.)
-- **Location**: `modules/MultiplexMicroscopy/`
-- **Structure**: Three data levels (Level 2: imaging + channel metadata, Level 3: segmentation masks, Level 4: cell-by-feature tables)
-
-Spatial Omics Module
-~~~~~~~~~~~~~~~~~~~~
-
-- **Purpose**: Sequencing-based and sequence-hybridization spatial omics assays (Visium, Xenium, CosMx, STOmics, etc.)
-- **Location**: `modules/SpatialOmics/`
-- **Structure**: Four data levels (Level 1: raw data bundle optional, Level 3: processed bundle required, Level 4: interoperable file optional, Panel: panel information)
+Each module page is self-contained and lists all attributes you need to fill out, so you don't need to navigate between multiple pages.
 
 Modules
 -------
@@ -98,11 +46,8 @@ Modules
 
    docs/clinical
    docs/biospecimen
-   docs/corefile
-   docs/sequencing
    docs/wes
    docs/scrna-seq
-   docs/imaging
    docs/digitalpathology
    docs/multiplexmicroscopy
    docs/spatialomics
