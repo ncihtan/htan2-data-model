@@ -397,7 +397,7 @@ def generate_module_doc(schema_path: str, output_path: str):
                 f.write("\n")
         
         # Special handling for modules with levels - create landing page with links
-        elif schema.name in ["WES", "scRNA-seq", "MultiplexMicroscopy", "SpatialOmics"]:
+        elif schema.name in ["WES", "scRNA-seq", "MultiplexMicroscopy", "Spatial", "SpatialOmics"]:
             # Create landing page with overview and links to levels
             if schema.name == "WES":
                 f.write("The HTAN WES module provides a comprehensive data model for bulk whole exome sequencing data. This module defines schemas for three data levels:\n\n")
@@ -438,10 +438,12 @@ def generate_module_doc(schema_path: str, output_path: str):
                 f.write("- **Level 3**: Segmentation masks\n")
                 f.write("- **Level 4**: Cell-by-feature tables\n\n")
                 f.write("## Levels\n\n")
-                f.write("- :doc:`Level 2 <multiplexmicroscopy/level-2>` - Imaging data with channel metadata\n")
-                f.write("- :doc:`Level 3 <multiplexmicroscopy/level-3>` - Segmentation masks\n")
-                f.write("- :doc:`Level 4 <multiplexmicroscopy/level-4>` - Cell-by-feature tables\n\n")
-            elif schema.name == "SpatialOmics":
+                f.write(".. toctree::\n")
+                f.write("   :maxdepth: 1\n\n")
+                f.write("   multiplexmicroscopy/level-2\n")
+                f.write("   multiplexmicroscopy/level-3\n")
+                f.write("   multiplexmicroscopy/level-4\n\n")
+            elif schema.name in ["Spatial", "SpatialOmics"]:
                 f.write("The HTAN Spatial Omics module provides a comprehensive data model for spatial omics assays. This module defines schemas for multiple data levels:\n\n")
                 f.write("- **Level 1**: Raw data bundle (optional)\n")
                 f.write("- **Level 3**: Processed bundle (required)\n")
@@ -467,7 +469,7 @@ def generate_module_doc(schema_path: str, output_path: str):
                         generate_class_table(class_name, class_def, all_enums, f)
         
         # Enums section (show all enums with many values) - skip for Clinical and modules with levels
-        if schema.name not in ["Clinical", "WES", "scRNA-seq", "MultiplexMicroscopy", "SpatialOmics"] and all_enums:
+        if schema.name not in ["Clinical", "WES", "scRNA-seq", "MultiplexMicroscopy", "Spatial", "SpatialOmics"] and all_enums:
             long_enums = []
             for enum_name, enum_def in sorted(all_enums.items()):
                 if enum_def.permissible_values and len(enum_def.permissible_values) > 5:

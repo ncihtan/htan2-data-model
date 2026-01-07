@@ -10,7 +10,10 @@ The HTAN Multiplex Microscopy module provides a comprehensive data model for mul
 
 ## Levels
 
-- :doc:`Level 2 <multiplexmicroscopy/level-2>` - Imaging data with channel metadata
-- :doc:`Level 3 <multiplexmicroscopy/level-3>` - Segmentation masks
-- :doc:`Level 4 <multiplexmicroscopy/level-4>` - Cell-by-feature tables
+.. toctree::
+   :maxdepth: 1
+
+   multiplexmicroscopy/level-2
+   multiplexmicroscopy/level-3
+   multiplexmicroscopy/level-4
 
