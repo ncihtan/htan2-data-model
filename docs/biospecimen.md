@@ -9,46 +9,46 @@ HTAN Biospecimen Data Model Schema
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `ACQUISITION_METHOD_OTHER_SPECIFY` | string, pattern: <code>^.{0,100}$</code> | No | A custom acquisition method |
-| `ACQUISITION_METHOD_TYPE` | [AcquisitionMethodTypeEnum](#acquisitionmethodtype) | Yes | Records the method of acquisition or source for the specimen under consideration |
+| `ACQUISITION_METHOD_TYPE` | [AcquisitionMethodTypeEnum](#acquisitionmethodtypeenum-acquisitionmethodtype) | Yes | Records the method of acquisition or source for the specimen under consideration |
 | `ADJACENT_BIOSPECIMEN_IDS` | string | No | List of HTAN Identifiers (separated by commas) of adjacent biospecimens cut from the same sample |
 | `AGE_IN_DAYS_AT_SECTIONING` | integer | No | The age in days of a subject when a specimen tissue block was sectioned |
 | `AGE_IN_DAYS_AT_SPECIMEN_COLLECTION` | integer | Yes | The age in days of the subject at the time of specimen collection |
 | `AGE_IN_DAYS_AT_SPECIMEN_PROCESSING` | integer | Yes | The age in days of a subject when a specimen was processed |
-| `ANALYTE_TYPE` | [AnalyteTypeEnum](#analytetype) | No | The sample or material being subjected to analysis |
-| `BIOSPECIMEN_TYPE` | [BiospecimenTypeEnum](#biospecimentype) | Yes | Biospecimen Type |
-| `DEGREE_OF_DYSPLASIA` | [DegreeOfDysplasiaEnum](#degreeofdysplasia) | No | Information related to the presence of cells that look abnormal under a microscope but are not cancer |
+| `ANALYTE_TYPE` | [AnalyteTypeEnum](#analytetypeenum-analytetype) | No | The sample or material being subjected to analysis |
+| `BIOSPECIMEN_TYPE` | [BiospecimenTypeEnum](#biospecimentypeenum-biospecimentype) | Yes | Biospecimen Type |
+| `DEGREE_OF_DYSPLASIA` | [DegreeOfDysplasiaEnum](#degreeofdysplasiaenum-degreeofdysplasia) | No | Information related to the presence of cells that look abnormal under a microscope but are not cancer |
 | `FIXATION_DURATION_IN_MINUTES` | integer | No | The length of time, from beginning to end, required to process or preserve biospecimens in fixative |
 | `HTAN_BIOSPECIMEN_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(B[0-9]{1,20})$</code> | Yes | HTAN Biospecimen ID (Primary Key) |
 | `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2. |
-| `ICD_10_DISEASE_CODE` | [Icd10DiseaseEnum](#icd10disease) | No | For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM |
-| `ICD_O_3_TISSUE_MORPHOLOGY` | [IcdO3MorphologyEnum](#icdo3morphology) | No | The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3 |
+| `ICD_10_DISEASE_CODE` | [Icd10DiseaseEnum](#icd10diseaseenum-icd10disease) | No | For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM |
+| `ICD_O_3_TISSUE_MORPHOLOGY` | [IcdO3MorphologyEnum](#icdo3morphologyenum-icdo3morphology) | No | The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3 |
 | `LONGEST_DIMENSION` | decimal | No | Numeric value that represents the longest dimension of the sample, measured in millimeters |
 | `METHOD_OF_NUCLEIC_ACID_ISOLATION` | string, pattern: <code>^.{0,100}$</code> | No | Bulk RNA & DNA-seq specific: method used for nucleic acid isolation |
 | `PERCENT_NECROSIS` | decimal | No | Numeric value to represent the percentage of cell death in a malignant tumor sample or specimen |
 | `PERCENT_NORMAL_CELLS` | decimal | No | Numeric value to represent the percentage of normal cell content in a malignant tumor sample or specimen |
 | `PERCENT_TUMOR_CELLS` | decimal | No | Numeric value that represents the percentage of infiltration by tumor cells in a sample |
 | `PERCENT_TUMOR_NUCLEI` | decimal | No | Numeric value to represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen |
-| `PRESERVATION_MEDIUM` | [PreservationMediumEnum](#preservationmedium) | Yes | The kind of substance holding another substance in solution or suspension to maintain a specimen in a viable state |
-| `PRESERVATION_METHOD` | [PreservationMethodEnum](#preservationmethod) | Yes | Method used to preserve the sample |
-| `PRESERVATION_METHOD_TEMPERATURE` | [PreservationTemperatureEnum](#preservationtemperature) | Yes | The term which describes the temperature used to maintain the specimen in a viable state |
+| `PRESERVATION_MEDIUM` | [PreservationMediumEnum](#preservationmediumenum-preservationmedium) | Yes | The kind of substance holding another substance in solution or suspension to maintain a specimen in a viable state |
+| `PRESERVATION_METHOD` | [PreservationMethodEnum](#preservationmethodenum-preservationmethod) | Yes | Method used to preserve the sample |
+| `PRESERVATION_METHOD_TEMPERATURE` | [PreservationTemperatureEnum](#preservationtemperatureenum-preservationtemperature) | Yes | The term which describes the temperature used to maintain the specimen in a viable state |
 | `PROCESSING_LOCATION` | string | No | Site with an HTAN center where specimen processing occurs |
 | `SECTION_NUMBER_IN_SEQUENCE` | integer | No | Numeric value (integer, including ranges) provided to a sample in a series of sections |
 | `SECTION_THICKNESS_VALUE` | decimal | No | Numeric value to describe the thickness of a slice to tissue taken from a biospecimen, measured in microns |
-| `SHIPPING_CONDITION_TYPE` | [ShippingConditionEnum](#shippingcondition) | Yes | Text descriptor of the shipping environment of a biospecimen |
+| `SHIPPING_CONDITION_TYPE` | [ShippingConditionEnum](#shippingconditionenum-shippingcondition) | Yes | Text descriptor of the shipping environment of a biospecimen |
 | `SHORTEST_DIMENSION` | decimal | No | Numeric value that represents the shortest dimension of the sample, measured in millimeters |
 | `SITE_DATA_SOURCE` | string | No | Text to identify the data source for the specimen/sample from within the HTAN center |
-| `SITE_OF_RESECTION_OR_BIOPSY` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-) | Yes | The location within the body from where the disease of interest originated as captured in the Uberon identifier |
-| `SLICING_METHOD` | [SlicingMethodEnum](#slicingmethod) | No | Imaging specific: the method by which the tissue was sliced |
-| `SLIDE_CHARGE_TYPE` | [SlideChargeTypeEnum](#slidechargetype) | No | A description of the charge on the glass slide |
-| `SPECIMEN_CELLULAR_ARCHITECTURE` | [CellularArchitectureEnum](#cellulararchitecture) | Yes | The architectural pattern of an abnormal, normal, or mixed cellular population in a tissue specimen |
-| `SPECIMEN_LATERALITY` | [SpecimenLateralityEnum](#specimenlaterality) | Yes | For tumors in paired organs, designates the side on which the specimen was obtained |
-| `TIMEPOINT` | [TimepointEnum](#timepoint) | No | A specific point in the time continuum, including those established relative to an event |
-| `TISSUE_SAMPLE_TYPE` | [TissueSampleTypeEnum](#tissuesampletype) | No | The type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes |
-| `TUMOR_CLASSIFICATION` | [TumorClassificationEnum](#tumorclassification) | No | The classification of a tumor at a particular time based primarily on histopathological characteristics |
+| `SITE_OF_RESECTION_OR_BIOPSY` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum-tissue-or-organ-of-origin-uberon-enum) | Yes | The location within the body from where the disease of interest originated as captured in the Uberon identifier |
+| `SLICING_METHOD` | [SlicingMethodEnum](#slicingmethodenum-slicingmethod) | No | Imaging specific: the method by which the tissue was sliced |
+| `SLIDE_CHARGE_TYPE` | [SlideChargeTypeEnum](#slidechargetypeenum-slidechargetype) | No | A description of the charge on the glass slide |
+| `SPECIMEN_CELLULAR_ARCHITECTURE` | [CellularArchitectureEnum](#cellulararchitectureenum-cellulararchitecture) | Yes | The architectural pattern of an abnormal, normal, or mixed cellular population in a tissue specimen |
+| `SPECIMEN_LATERALITY` | [SpecimenLateralityEnum](#specimenlateralityenum-specimenlaterality) | Yes | For tumors in paired organs, designates the side on which the specimen was obtained |
+| `TIMEPOINT` | [TimepointEnum](#timepointenum-timepoint) | No | A specific point in the time continuum, including those established relative to an event |
+| `TISSUE_SAMPLE_TYPE` | [TissueSampleTypeEnum](#tissuesampletypeenum-tissuesampletype) | No | The type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes |
+| `TUMOR_CLASSIFICATION` | [TumorClassificationEnum](#tumorclassificationenum-tumorclassification) | No | The classification of a tumor at a particular time based primarily on histopathological characteristics |
 
 ## Enums
 
-### AcquisitionMethodTypeEnum {#acquisitionmethodtype}
+### AcquisitionMethodTypeEnum
 
 | Value | Description |
 |-------|-------------|
@@ -73,7 +73,7 @@ HTAN Biospecimen Data Model Schema
 | `Surgical Resection` | The surgical removal of a lesion, often as part of a biopsy and with healthy margins. |
 | `Unknown` | Not known, not observed, not recorded, or refused. |
 
-### AnalyteTypeEnum {#analytetype}
+### AnalyteTypeEnum
 
 | Value | Description |
 |-------|-------------|
@@ -89,7 +89,7 @@ HTAN Biospecimen Data Model Schema
 | `mRNA` | A class of RNA molecule containing protein-coding information in its nucleotide sequence that can be translated into the amino acid sequence of a protein. |
 | `miRNA` | A sequence of single-stranded RNA, that is 20-25 nucleotides in length, which is transcribed from DNA but is not translated into a protein. This nucleic acid may regulate the transcription or translation of other genes. |
 
-### BiospecimenTypeEnum {#biospecimentype}
+### BiospecimenTypeEnum
 
 | Value | Description |
 |-------|-------------|
@@ -113,7 +113,7 @@ HTAN Biospecimen Data Model Schema
 | `Urine` | The fluid that is excreted by the kidneys. It is stored in the bladder and discharged through the urethra. |
 | `Xenograft` | The transfer of cells, tissues, or organs from a donor into a recipient of another species. |
 
-### CellularArchitectureEnum {#cellulararchitecture}
+### CellularArchitectureEnum
 
 | Value | Description |
 |-------|-------------|
@@ -124,7 +124,16 @@ HTAN Biospecimen Data Model Schema
 | `Tumor` | Tissue sample that contains an abnormal cellular infiltrate forming a solid mass. The abnormal cellular component can be benign or malignant. Tumor samples are obtained for microscopic examination and/or molecular analysis. |
 | `Unknown` | Not known, observed, recorded; or reported as unknown by the data contributor. |
 
-### Icd10DiseaseEnum {#icd10disease}
+### DegreeOfDysplasiaEnum
+
+| Value | Description |
+|-------|-------------|
+| `1` | Used to describe tumor samples that exhibit well to moderately well differentiated cells. They are generally expected to be slow growing and less aggressive. |
+| `2` | A term referring to the degree of differentiation of a malignant neoplasm and indicating that it is moderately differentiated. |
+| `3` | Used to describe tumor samples that exhibit poorly differentiated or undifferentiated cells. They are generally expected to be fast growing and aggressive. |
+| `99` | Not known, not observed, not recorded, or refused. |
+
+### Icd10DiseaseEnum
 
 | Value | Description |
 |-------|-------------|
@@ -20476,7 +20485,7 @@ HTAN Biospecimen Data Model Schema
 | `Z99.81` | Dependence - Oxygen |
 | `Z99.89` | Dependence - On - Machine |
 
-### IcdO3MorphologyEnum {#icdo3morphology}
+### IcdO3MorphologyEnum
 
 | Value | Description |
 |-------|-------------|
@@ -20665,7 +20674,7 @@ HTAN Biospecimen Data Model Schema
 | `9992/3` | Refractory thrombocytopenia, for cases diagnosed 2010 - 2020 |
 | `9993/3` | Myelodysplastic syndrome with ring sideroblasts and multilineage dysplasia (MDS-RD-MLD) |
 
-### PreservationMediumEnum {#preservationmedium}
+### PreservationMediumEnum
 
 | Value | Description |
 |-------|-------------|
@@ -20687,7 +20696,7 @@ HTAN Biospecimen Data Model Schema
 | `TRIzol` | A ready-to-use reagent for the isolation of high-quality total RNA or the simultaneous isolation of RNA, DNA, and protein from biological samples. It is a monophasic solution of phenol and guanidine isothiocyanate. |
 | `Unknown` | Not known, observed, recorded; or reported as unknown by the data contributor. |
 
-### PreservationMethodEnum {#preservationmethod}
+### PreservationMethodEnum
 
 | Value | Description |
 |-------|-------------|
@@ -20706,7 +20715,7 @@ HTAN Biospecimen Data Model Schema
 | `Snap Frozen` | To freeze rapidly so as to preserve structure and prevent ice crystal formation. |
 | `Unknown` | Not known, not observed, not recorded, or refused. |
 
-### PreservationTemperatureEnum {#preservationtemperature}
+### PreservationTemperatureEnum
 
 | Value | Description |
 |-------|-------------|
@@ -20721,7 +20730,7 @@ HTAN Biospecimen Data Model Schema
 | `Not Reported` | Not provided or available. |
 | `Unknown` | Not known, observed, recorded; or reported as unknown by the data contributor. |
 
-### ShippingConditionEnum {#shippingcondition}
+### ShippingConditionEnum
 
 | Value | Description |
 |-------|-------------|
@@ -20736,7 +20745,7 @@ HTAN Biospecimen Data Model Schema
 | `Specimen at Room Temperature` | A specimen that has been subjected to and adjusted to the average ambient temperature of a room, usually considered to be around 20 degrees C (68 degrees F). |
 | `Unknown` | Not known, not observed, not recorded, or refused. |
 
-### SlicingMethodEnum {#slicingmethod}
+### SlicingMethodEnum
 
 | Value | Description |
 |-------|-------------|
@@ -20749,7 +20758,7 @@ HTAN Biospecimen Data Model Schema
 | `Unknown` | Not known, not observed, not recorded, or refused. |
 | `Vibratome` | A device that uses a vibrating blade to cut tissue into thin sections. |
 
-### SlideChargeTypeEnum {#slidechargetype}
+### SlideChargeTypeEnum
 
 | Value | Description |
 |-------|-------------|
@@ -20760,7 +20769,7 @@ HTAN Biospecimen Data Model Schema
 | `Uncharged` | An operation in which a term denies or inverts the meaning of another term or construction: The quantity of unbalanced electricity in a body (either positive or negative) and construed as an excess or deficiency of electrons. |
 | `Unknown` | Not known, not observed, not recorded, or refused. |
 
-### SpecimenLateralityEnum {#specimenlaterality}
+### SpecimenLateralityEnum
 
 | Value | Description |
 |-------|-------------|
@@ -20773,7 +20782,7 @@ HTAN Biospecimen Data Model Schema
 | `Right` | Right; being or located on or directed toward the side of the body to the east when facing north. |
 | `Unknown` | Not known, not observed, not recorded, or refused. |
 
-### TimepointEnum {#timepoint}
+### TimepointEnum
 
 | Value | Description |
 |-------|-------------|
@@ -21662,7 +21671,14 @@ HTAN Biospecimen Data Model Schema
 | `week 16 (arm A), week 15 (arm B)` | WEEK 16 (ARM A), WEEK 15 (ARM B) |
 | `week 6` | A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one.: Any period of seven consecutive days. |
 
-### TumorClassificationEnum {#tumorclassification}
+### TissueSampleTypeEnum
+
+| Value | Description |
+|-------|-------------|
+| `Tissue Block` | Refers to preserved specimens embedded in support material. These are typically cut into thin slices for microscopic examination, with or without an enhancement such as staining. |
+| `Tissue Section` | A thin slice of tissue, usually for examination by microscopy. |
+
+### TumorClassificationEnum
 
 | Value | Description |
 |-------|-------------|
@@ -21678,7 +21694,7 @@ HTAN Biospecimen Data Model Schema
 | `Unknown` | Not known, not observed, not recorded, or refused. |
 | `Xenograft` | The transfer of cells, tissues, or organs from a donor into a recipient of another species. |
 
-### tissue_or_organ_of_origin_uberon_enum {#tissue-or-organ-of-origin-uberon-}
+### tissue_or_organ_of_origin_uberon_enum
 
 UBERON codes for tissues and organs of origin
 

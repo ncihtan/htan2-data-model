@@ -28,9 +28,15 @@ def format_enum_values(enum_def, max_inline=5):
         return ""
     
     # Always link to enum section for cleaner representation
-    # Use full enum name (lowercase, with dashes) to match Sphinx anchor generation
+    # Sphinx/MyST auto-generates anchors from headings in format: {enum-name-lowercase}-{heading-text-lowercase}
+    # For "EthnicGroupEnum" heading, Sphinx generates anchor like "ethnicgroupenum-ethnicgroup"
+    # So we use the full enum name (lowercase, with dashes) which should match the first part
     enum_anchor = enum_def.name.lower().replace('_', '-')
-    return f"[{enum_def.name}](#{enum_anchor})"
+    # Sphinx seems to append the heading text without "Enum", so we match that pattern
+    # Actually, let's use the format that matches what Sphinx generates: enum-name + "-" + heading-without-enum
+    heading_without_enum = enum_def.name.replace('Enum', '').lower().replace('_', '-')
+    full_anchor = f"{enum_anchor}-{heading_without_enum}"
+    return f"[{enum_def.name}](#{full_anchor})"
 
 def resolve_inheritance_chain(class_def, all_classes, base_dir, visited=None):
     """Resolve inheritance chain and collect all attributes from parent classes.
@@ -393,9 +399,8 @@ def generate_module_doc(schema_path: str, output_path: str):
         if schema.name == "Clinical" and all_enums:
             f.write("## Enums\n\n")
             for enum_name, enum_def in sorted(all_enums.items()):
-                # Use full enum name (lowercase, with dashes) to match link anchors
-                enum_anchor = enum_name.lower().replace('_', '-')
-                f.write(f"### {enum_name} {{#{enum_anchor}}}\n\n")
+                # Let Sphinx auto-generate anchors - just write the heading without explicit anchor
+                f.write(f"### {enum_name}\n\n")
                 if enum_def.description:
                     f.write(f"{enum_def.description}\n\n")
                 
@@ -522,9 +527,8 @@ def generate_module_doc(schema_path: str, output_path: str):
                 for enum_name in sorted(used_enums):
                     if enum_name in all_enums:
                         enum_def = all_enums[enum_name]
-                        # Use full enum name (lowercase, with dashes) to match link anchors
-                        enum_anchor = enum_name.lower().replace('_', '-')
-                        f.write(f"### {enum_name} {{#{enum_anchor}}}\n\n")
+                        # Let Sphinx auto-generate anchors - just write the heading without explicit anchor
+                        f.write(f"### {enum_name}\n\n")
                         if enum_def.description:
                             f.write(f"{enum_def.description}\n\n")
                         

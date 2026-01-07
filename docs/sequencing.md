@@ -25,11 +25,11 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `GENOME_ANNOTATION_URL` | string | No | URL to genome annotation |
 | `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
 | `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayout) | Yes | Library layout (paired-end or single-end) |
+| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum-librarylayout) | Yes | Library layout (paired-end or single-end) |
 | `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Days from index for library preparation |
 | `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
 | `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatform) | Yes | Sequencing platform used |
+| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum-sequencingplatform) | Yes | Sequencing platform used |
 | `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
 | `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
 | `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
@@ -49,7 +49,14 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 
 ## Enums
 
-### SequencingPlatformEnum {#sequencingplatform}
+### LibraryLayoutEnum
+
+| Value | Description |
+|-------|-------------|
+| `Paired-end` | Paired-end sequencing |
+| `Single-end` | Single-end sequencing |
+
+### SequencingPlatformEnum
 
 | Value | Description |
 |-------|-------------|
