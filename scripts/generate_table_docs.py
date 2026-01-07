@@ -132,8 +132,8 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
         # Show common attributes section if any
         if common_attrs:
             f.write("### Common Attributes\n\n")
-            f.write("| Attribute | Type | Required | Pattern | Description |\n")
-            f.write("|-----------|------|----------|---------|-------------|\n")
+            f.write("| Attribute | Type | Required | Description |\n")
+            f.write("|-----------|------|----------|-------------|\n")
             
             for attr_name, attr_def in sorted(common_attrs.items()):
                 required = "Yes" if attr_def.required else "No"
@@ -154,26 +154,25 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
                     enum_values = format_enum_values(enum_def)
                     range_str = enum_values
                 
-                # Get pattern if exists - check both direct pattern and structured_pattern
-                pattern = ""
+                # Get pattern if exists and add to Type column
                 try:
                     if hasattr(attr_def, 'pattern') and attr_def.pattern:
                         pattern_val = attr_def.pattern
                         if pattern_val:  # Make sure it's not empty
-                            pattern = f"`{pattern_val}`"
+                            range_str = f"{range_str}, pattern: `{pattern_val}`"
                     elif hasattr(attr_def, 'structured_pattern') and attr_def.structured_pattern:
                         # Handle structured patterns
                         if hasattr(attr_def.structured_pattern, 'syntax'):
-                            pattern = f"`{attr_def.structured_pattern.syntax}`"
+                            range_str = f"{range_str}, pattern: `{attr_def.structured_pattern.syntax}`"
                         elif isinstance(attr_def.structured_pattern, str):
-                            pattern = f"`{attr_def.structured_pattern}`"
+                            range_str = f"{range_str}, pattern: `{attr_def.structured_pattern}`"
                 except:
                     pass  # If pattern access fails, just leave it empty
                 
                 description = attr_def.description or ""
                 description = description.replace("|", "\\|")
                 
-                f.write(f"| `{attr_name}` | {range_str} | {required} | {pattern} | {description} |\n")
+                f.write(f"| `{attr_name}` | {range_str} | {required} | {description} |\n")
             f.write("\n")
         
         # Show class-specific attributes
@@ -181,8 +180,8 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
             if common_attrs:
                 f.write("### Class References\n\n")
             
-            f.write("| Attribute | Type | Required | Pattern | Description |\n")
-            f.write("|-----------|------|----------|---------|-------------|\n")
+            f.write("| Attribute | Type | Required | Description |\n")
+            f.write("|-----------|------|----------|-------------|\n")
             
             for attr_name, attr_def in sorted(class_attrs.items()):
                 # Get base required status
@@ -204,26 +203,25 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
                     enum_values = format_enum_values(enum_def)
                     range_str = enum_values
                 
-                # Get pattern if exists - check both direct pattern and structured_pattern
-                pattern = ""
+                # Get pattern if exists and add to Type column
                 try:
                     if hasattr(attr_def, 'pattern') and attr_def.pattern:
                         pattern_val = attr_def.pattern
                         if pattern_val:  # Make sure it's not empty
-                            pattern = f"`{pattern_val}`"
+                            range_str = f"{range_str}, pattern: `{pattern_val}`"
                     elif hasattr(attr_def, 'structured_pattern') and attr_def.structured_pattern:
                         # Handle structured patterns
                         if hasattr(attr_def.structured_pattern, 'syntax'):
-                            pattern = f"`{attr_def.structured_pattern.syntax}`"
+                            range_str = f"{range_str}, pattern: `{attr_def.structured_pattern.syntax}`"
                         elif isinstance(attr_def.structured_pattern, str):
-                            pattern = f"`{attr_def.structured_pattern}`"
+                            range_str = f"{range_str}, pattern: `{attr_def.structured_pattern}`"
                 except:
                     pass  # If pattern access fails, just leave it empty
                 
                 description = attr_def.description or ""
                 description = description.replace("|", "\\|")
                 
-                f.write(f"| `{attr_name}` | {range_str} | {required} | {pattern} | {description} |\n")
+                f.write(f"| `{attr_name}` | {range_str} | {required} | {description} |\n")
             f.write("\n")
 
 def generate_module_doc(schema_path: str, output_path: str):
