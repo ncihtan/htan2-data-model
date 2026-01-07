@@ -1,6 +1,6 @@
 # scRNA-seq - Level 2
 
-HTAN scRNA-seq Level 2 Data Model - Workflow and processing metadata
+If submitting Level 2 files for scRNA-seq, here are the list of attributes you need to fill out:
 
 **scRNA-seq Level 2 data - Workflow and processing metadata**
 

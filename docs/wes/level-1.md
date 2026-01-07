@@ -1,6 +1,6 @@
 # WES - Level 1
 
-Bulk Whole Exome Sequencing Level 1 - Raw files
+If submitting Level 1 files for WES, here are the list of attributes you need to fill out:
 
 **Bulk Whole Exome Sequencing Level 1 - Raw files**
 
@@ -26,7 +26,6 @@ These attributes are inherited from BaseSequencingAttributes.
 | `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
 | `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
 | `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayout) | Yes | Library layout (paired-end or single-end) |
-| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Days from index for library preparation |
 | `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
 | `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
 | `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatform) | Yes | Sequencing platform used |

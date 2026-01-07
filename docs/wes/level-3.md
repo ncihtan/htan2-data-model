@@ -1,6 +1,6 @@
 # WES - Level 3
 
-Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis
+If submitting Level 3 files for WES, here are the list of attributes you need to fill out:
 
 **Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis**
 

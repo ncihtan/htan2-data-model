@@ -1,6 +1,6 @@
 # scRNA-seq - Level 1
 
-HTAN scRNA-seq Level 1 Data Model - Raw sequencing files and metadata
+If submitting Level 1 files for scRNA-seq, here are the list of attributes you need to fill out:
 
 **scRNA-seq Level 1 data - Raw sequencing files and metadata**
 

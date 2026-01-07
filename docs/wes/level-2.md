@@ -1,6 +1,6 @@
 # WES - Level 2
 
-Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC
+If submitting Level 2 files for WES, here are the list of attributes you need to fill out:
 
 **Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC**
 

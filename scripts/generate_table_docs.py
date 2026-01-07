@@ -233,6 +233,15 @@ def generate_class_table_with_inheritance(class_name, class_def, all_enums, f, a
                 elif parent_name in ['BaseSequencingAttributes', 'BaseImagingAttributes']:
                     base_attrs = parent_class.attributes.copy()
     
+    # Remove duplicates: if an attribute exists in module_attrs, remove it from core_attrs or base_attrs
+    # (module-specific attributes override inherited ones, e.g., FILE_FORMAT with pattern)
+    for attr_name in list(core_attrs.keys()):
+        if attr_name in module_attrs:
+            del core_attrs[attr_name]
+    for attr_name in list(base_attrs.keys()):
+        if attr_name in module_attrs:
+            del base_attrs[attr_name]
+    
     # Write sections in order: Core File, Base (Sequencing/Imaging), Module-specific
     if core_attrs:
         f.write("### Core File Attributes\n\n")
@@ -464,13 +473,26 @@ def generate_module_doc(schema_path: str, output_path: str):
         # Default: show all classes (for file-based modules, use inheritance)
         else:
             if all_classes:
-                for class_name, class_def in sorted(all_classes.items()):
-                    f.write(f"## {class_name}\n\n")
-                    # Use inheritance for file-based modules (not Clinical or Biospecimen)
-                    if schema.name not in ["Clinical", "Biospecimen"]:
-                        generate_class_table_with_inheritance(class_name, class_def, all_enums, f, all_classes, base_dir)
-                    else:
-                        generate_class_table(class_name, class_def, all_enums, f)
+                # For DigitalPathology, only show the main class, not imported base classes
+                if schema.name == "DigitalPathology":
+                    # Find the main class (should be DigitalPathologyData)
+                    main_class_name = None
+                    for class_name in all_classes.keys():
+                        if class_name == "DigitalPathologyData":
+                            main_class_name = class_name
+                            break
+                    if main_class_name:
+                        f.write("If submitting Digital Pathology files, here are the list of attributes you need to fill out:\n\n")
+                        f.write(f"## {main_class_name}\n\n")
+                        generate_class_table_with_inheritance(main_class_name, all_classes[main_class_name], all_enums, f, all_classes, base_dir)
+                else:
+                    for class_name, class_def in sorted(all_classes.items()):
+                        f.write(f"## {class_name}\n\n")
+                        # Use inheritance for file-based modules (not Clinical or Biospecimen)
+                        if schema.name not in ["Clinical", "Biospecimen"]:
+                            generate_class_table_with_inheritance(class_name, class_def, all_enums, f, all_classes, base_dir)
+                        else:
+                            generate_class_table(class_name, class_def, all_enums, f)
         
         # Enums section (show all enums with many values) - skip for Clinical and modules with levels
         if schema.name not in ["Clinical", "WES", "scRNA-seq", "MultiplexMicroscopy", "Spatial", "SpatialOmics"] and all_enums:
@@ -560,8 +582,9 @@ def generate_level_page(level_file, level_name, module_name, module_output_name,
         if level_class_name:
             with open(output_path, 'w') as f:
                 f.write(f"# {module_name} - {level_name}\n\n")
-                if level_schema.description:
-                    f.write(f"{level_schema.description}\n\n")
+                
+                # Add submission guidance text
+                f.write(f"If submitting {level_name} files for {module_name}, here are the list of attributes you need to fill out:\n\n")
                 
                 class_def = level_schema.classes[level_class_name]
                 # Merge level_enums with all_enums for complete enum lookup

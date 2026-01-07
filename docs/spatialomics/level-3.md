@@ -1,6 +1,6 @@
 # SpatialOmics - Level 3
 
-HTAN Spatial Omics Level 3 - Processed spatial assay output bundle
+If submitting Level 3 files for SpatialOmics, here are the list of attributes you need to fill out:
 
 **Level 3 processed spatial assay output bundle - Contains platform-specific output files, segmentation, matrices, and QC metrics**
 
