@@ -405,9 +405,11 @@ def generate_module_doc(schema_path: str, output_path: str):
                 f.write("- **Level 2**: Aligned files and alignment QC\n")
                 f.write("- **Level 3**: Called variants\n\n")
                 f.write("## Levels\n\n")
-                f.write("- :doc:`Level 1 <wes/level-1>` - Raw sequencing files and metadata\n")
-                f.write("- :doc:`Level 2 <wes/level-2>` - Aligned files and alignment QC\n")
-                f.write("- :doc:`Level 3 <wes/level-3>` - Called variants\n\n")
+                f.write(".. toctree::\n")
+                f.write("   :maxdepth: 1\n\n")
+                f.write("   wes/level-1\n")
+                f.write("   wes/level-2\n")
+                f.write("   wes/level-3\n\n")
             elif schema.name == "scRNA-seq":
                 readme_path = base_dir.parent.parent / "modules" / "scRNA-seq" / "README.md"
                 if readme_path.exists():
@@ -425,9 +427,11 @@ def generate_module_doc(schema_path: str, output_path: str):
                     f.write("- **Level 2**: Workflow and processing metadata\n")
                     f.write("- **Level 3/4**: Combined analysis results with h5ad file format validation\n\n")
                 f.write("## Levels\n\n")
-                f.write("- :doc:`Level 1 <scrna-seq/level-1>` - Raw sequencing files and metadata\n")
-                f.write("- :doc:`Level 2 <scrna-seq/level-2>` - Workflow and processing metadata\n")
-                f.write("- :doc:`Level 3/4 <scrna-seq/level-3-4>` - Analysis results with h5ad file format validation\n\n")
+                f.write(".. toctree::\n")
+                f.write("   :maxdepth: 1\n\n")
+                f.write("   scrna-seq/level-1\n")
+                f.write("   scrna-seq/level-2\n")
+                f.write("   scrna-seq/level-3-4\n\n")
             elif schema.name == "MultiplexMicroscopy":
                 f.write("The HTAN Multiplex Microscopy module provides a comprehensive data model for multiplexed tissue imaging assays. This module defines schemas for three data levels:\n\n")
                 f.write("- **Level 2**: Imaging data with channel metadata\n")
@@ -444,10 +448,12 @@ def generate_module_doc(schema_path: str, output_path: str):
                 f.write("- **Level 4**: Interoperable file (optional)\n")
                 f.write("- **Panel**: Panel information\n\n")
                 f.write("## Levels\n\n")
-                f.write("- :doc:`Level 1 <spatialomics/level-1>` - Raw data bundle\n")
-                f.write("- :doc:`Level 3 <spatialomics/level-3>` - Processed bundle\n")
-                f.write("- :doc:`Level 4 <spatialomics/level-4>` - Interoperable file\n")
-                f.write("- :doc:`Panel <spatialomics/panel>` - Panel information\n\n")
+                f.write(".. toctree::\n")
+                f.write("   :maxdepth: 1\n\n")
+                f.write("   spatialomics/level-1\n")
+                f.write("   spatialomics/level-3\n")
+                f.write("   spatialomics/level-4\n")
+                f.write("   spatialomics/panel\n\n")
         
         # Default: show all classes (for file-based modules, use inheritance)
         else:
