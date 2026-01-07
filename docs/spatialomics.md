@@ -11,11 +11,12 @@ The HTAN Spatial Omics module provides a comprehensive data model for spatial om
 
 ## Levels
 
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   spatialomics/level-1
-   spatialomics/level-3
-   spatialomics/level-4
-   spatialomics/panel
+spatialomics/level-1
+spatialomics/level-3
+spatialomics/level-4
+spatialomics/panel
+```
 

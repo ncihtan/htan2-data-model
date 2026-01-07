@@ -51,21 +51,8 @@ Modules
    docs/clinical
    docs/biospecimen
    docs/wes
-   docs/wes/level-1
-   docs/wes/level-2
-   docs/wes/level-3
    docs/scrna-seq
-   docs/scrna-seq/level-1
-   docs/scrna-seq/level-2
-   docs/scrna-seq/level-3-4
    docs/digitalpathology
    docs/multiplexmicroscopy
-   docs/multiplexmicroscopy/level-2
-   docs/multiplexmicroscopy/level-3
-   docs/multiplexmicroscopy/level-4
    docs/spatialomics
-   docs/spatialomics/level-1
-   docs/spatialomics/level-3
-   docs/spatialomics/level-4
-   docs/spatialomics/panel
 

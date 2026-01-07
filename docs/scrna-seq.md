@@ -10,10 +10,11 @@ The HTAN scRNA-seq module provides a comprehensive data model for single-cell RN
 
 ## Levels
 
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   scrna-seq/level-1
-   scrna-seq/level-2
-   scrna-seq/level-3-4
+scrna-seq/level-1
+scrna-seq/level-2
+scrna-seq/level-3-4
+```
 
