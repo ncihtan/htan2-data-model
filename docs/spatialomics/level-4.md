@@ -36,3 +36,41 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `NUMBER_OF_OBJECTS` | integer | Yes | Number of objects (e.g. cells) |
 | `TOOL_COMPATIBILITY` | [ToolCompatibility](#toolcompatibility) | No | Tools or libraries compatible with this file |
 
+## Enums
+
+### DimensionalityReductionMethodLevel4
+
+| Value | Description |
+|-------|-------------|
+| `PCA` | Principal Component Analysis |
+| `UMAP` | Uniform Manifold Approximation and Projection |
+| `other` | Other dimensionality reduction method |
+| `t-SNE` | t-Distributed Stochastic Neighbor Embedding |
+
+### ImageTypeLevel4
+
+| Value | Description |
+|-------|-------------|
+| `jpeg` | JPEG image format |
+| `other` | Other image format |
+| `png` | PNG image format |
+| `tiff` | TIFF image format |
+
+### NormalisationMethod
+
+| Value | Description |
+|-------|-------------|
+| `CPM` | Counts Per Million normalization |
+| `SCTransform` | SCTransform normalization |
+| `TPM` | Transcripts Per Million normalization |
+| `log normalization` | Log normalization |
+| `other` | Other normalization method |
+
+### ToolCompatibility
+
+| Value | Description |
+|-------|-------------|
+| `anndata` | AnnData library compatibility |
+| `seurat` | Seurat library compatibility |
+| `spatialdata` | SpatialData library compatibility |
+

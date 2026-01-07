@@ -53,7 +53,82 @@ These attributes are inherited from BaseImagingAttributes.
 | `FEATURE_EXTRACTION_WORKFLOW_URL` | string | No | URL or link to the feature extraction workflow used |
 | `FEATURE_EXTRACTION_WORKFLOW_VERSION` | string | No | Version of the feature extraction workflow |
 | `FILE_FORMAT` | string, pattern: <code>^(csv\|h5ad)$</code> | Yes | Format of the feature table file (csv or h5ad for Level 4) |
-| `MATRIX_TYPE` | [MatrixTypeEnum](#matrixtype) | Yes | Type of feature matrix (raw counts, normalized, etc.) |
+| `MATRIX_TYPE` | [MatrixTypeEnum](#matrixtypeenum) | Yes | Type of feature matrix (raw counts, normalized, etc.) |
 | `NUMBER_OF_FEATURES` | integer | No | Number of features (markers/channels) in the feature matrix |
 | `NUMBER_OF_OBJECTS` | integer | No | Number of segmented objects (cells, nuclei, etc.) in the feature matrix |
+
+## Enums
+
+### DeIdentificationMethodType
+
+| Value | Description |
+|-------|-------------|
+| `Automatic` | Automatic de-identification method |
+| `Manual` | Manual de-identification method |
+| `Not Applicable` | De-identification not applicable |
+| `Semiautomatic` | Semi-automatic de-identification method |
+
+### ExperimentalStrategyAndDataSubtypes
+
+| Value | Description |
+|-------|-------------|
+| `Pathological` | Pathological experimental strategy and data subtype |
+
+### ImageModality
+
+| Value | Description |
+|-------|-------------|
+| `SM` | Slide Microscopy |
+
+### ImmersionMedium
+
+| Value | Description |
+|-------|-------------|
+| `Air` | Air immersion medium |
+| `Glycerol` | Glycerol immersion medium |
+| `Oil` | Oil immersion medium |
+| `Other` | Other immersion medium |
+| `Water` | Water immersion medium |
+
+### License
+
+| Value | Description |
+|-------|-------------|
+| `CC BY 4.0` | Creative Commons Attribution 4.0 International License |
+
+### MatrixTypeEnum
+
+| Value | Description |
+|-------|-------------|
+| `Log Normalized` | Log normalized counts |
+| `Normalized Counts` | Normalized count matrix |
+| `Other` | Other normalization method |
+| `Raw Counts` | Raw count matrix |
+| `Scaled Counts` | Scaled count matrix |
+| `Z-Score Normalized` | Z-score normalized values |
+
+### Species
+
+| Value | Description |
+|-------|-------------|
+| `9606 (Homo sapiens)` | NCBI Taxonomy ID for Homo sapiens |
+
+### StainingMethod
+
+| Value | Description |
+|-------|-------------|
+| `CODEX` | CODEX staining method |
+| `CyCIF` | Cyclic Immunofluorescence staining method |
+| `ExSeq` | Expansion Sequencing staining method |
+| `GeoMX-DSP` | GeoMX Digital Spatial Profiling staining method |
+| `H&E` | Hematoxylin and Eosin staining method |
+| `IHC` | Immunohistochemistry staining method |
+| `IMC` | Imaging Mass Cytometry staining method |
+| `MERFISH` | Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method |
+| `MIBI` | Multiplexed Ion Beam Imaging staining method |
+| `MxIF` | Multiplexed Immunofluorescence staining method |
+| `Not Applicable` | Staining not applicable |
+| `SABER` | Signal Amplification By Exchange Reaction staining method |
+| `mIHC` | Multiplexed Immunohistochemistry staining method |
+| `t-CyCIF` | Tissue Cyclic Immunofluorescence staining method |
 

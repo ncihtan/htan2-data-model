@@ -25,11 +25,11 @@ These attributes are inherited from BaseSequencingAttributes.
 | `GENOME_ANNOTATION_URL` | string | No | URL to genome annotation |
 | `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
 | `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayout) | Yes | Library layout (paired-end or single-end) |
+| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum) | Yes | Library layout (paired-end or single-end) |
 | `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Days from index for library preparation |
 | `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
 | `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatform) | Yes | Sequencing platform used |
+| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum) | Yes | Sequencing platform used |
 | `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
 | `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
 | `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
@@ -39,11 +39,101 @@ These attributes are inherited from BaseSequencingAttributes.
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `CRYOPRESERVED_CELLS_IN_SAMPLE` | boolean | No | Whether cells were cryopreserved in the sample |
-| `DISSOCIATION_METHOD` | [DissociationMethodEnum](#dissociationmethod) | Yes | Method used to dissociate tissue into single cells |
-| `LIBRARY_CONSTRUCTION_METHOD` | [LibraryConstructionMethodEnum](#libraryconstructionmethod) | Yes | Method used to construct the sequencing library |
-| `NUCLEIC_ACID_SOURCE` | [NucleicAcidSourceEnum](#nucleicacidsource) | Yes | Type of nucleic acid used for sequencing |
-| `READ_INDICATOR` | [ReadIndicatorEnum](#readindicator) | Yes | Type of read (forward, reverse, index) |
-| `REVERSE_TRANSCRIPTION_PRIMER` | [ReverseTranscriptionPrimerEnum](#reversetranscriptionprimer) | Yes | Primer used for reverse transcription |
-| `SINGLE_CELL_ISOLATION_METHOD` | [SingleCellIsolationMethodEnum](#singlecellisolationmethod) | Yes | Method used to isolate single cells |
-| `SPIKE_IN` | [SpikeInEnum](#spikein) | Yes | Type of spike-in used, if any |
+| `DISSOCIATION_METHOD` | [DissociationMethodEnum](#dissociationmethodenum) | Yes | Method used to dissociate tissue into single cells |
+| `LIBRARY_CONSTRUCTION_METHOD` | [LibraryConstructionMethodEnum](#libraryconstructionmethodenum) | Yes | Method used to construct the sequencing library |
+| `NUCLEIC_ACID_SOURCE` | [NucleicAcidSourceEnum](#nucleicacidsourceenum) | Yes | Type of nucleic acid used for sequencing |
+| `READ_INDICATOR` | [ReadIndicatorEnum](#readindicatorenum) | Yes | Type of read (forward, reverse, index) |
+| `REVERSE_TRANSCRIPTION_PRIMER` | [ReverseTranscriptionPrimerEnum](#reversetranscriptionprimerenum) | Yes | Primer used for reverse transcription |
+| `SINGLE_CELL_ISOLATION_METHOD` | [SingleCellIsolationMethodEnum](#singlecellisolationmethodenum) | Yes | Method used to isolate single cells |
+| `SPIKE_IN` | [SpikeInEnum](#spikeinenum) | Yes | Type of spike-in used, if any |
+
+## Enums
+
+### DissociationMethodEnum
+
+| Value | Description |
+|-------|-------------|
+| `Enzymatic` | Enzymatic dissociation method |
+| `Mechanical` | Mechanical dissociation method |
+| `Other` | Other dissociation method |
+| `Unknown` | Unknown dissociation method |
+
+### LibraryConstructionMethodEnum
+
+| Value | Description |
+|-------|-------------|
+| `10X Genomics` | 10X Genomics library construction method |
+| `Drop-seq` | Drop-seq library construction method |
+| `Fluidigm C1` | Fluidigm C1 library construction method |
+| `InDrop` | InDrop library construction method |
+| `Other` | Other library construction method |
+| `Smart-seq` | Smart-seq library construction method |
+| `Unknown` | Unknown library construction method |
+
+### LibraryLayoutEnum
+
+| Value | Description |
+|-------|-------------|
+| `Paired-end` | Paired-end sequencing |
+| `Single-end` | Single-end sequencing |
+
+### NucleicAcidSourceEnum
+
+| Value | Description |
+|-------|-------------|
+| `DNA` | DNA nucleic acid source |
+| `RNA` | RNA nucleic acid source |
+| `Unknown` | Unknown nucleic acid source |
+
+### ReadIndicatorEnum
+
+| Value | Description |
+|-------|-------------|
+| `Forward` | Forward read indicator |
+| `Index` | Index read indicator |
+| `Reverse` | Reverse read indicator |
+| `Unknown` | Unknown read indicator |
+
+### ReverseTranscriptionPrimerEnum
+
+| Value | Description |
+|-------|-------------|
+| `Oligo-dT` | Oligo-dT reverse transcription primer |
+| `Random Hexamer` | Random hexamer reverse transcription primer |
+| `Unknown` | Unknown reverse transcription primer |
+
+### SequencingPlatformEnum
+
+| Value | Description |
+|-------|-------------|
+| `ABI_SOLID` | ABI SOLID sequencing platform |
+| `BGISEQ` | BGI sequencing platform |
+| `CAPILLARY` | Capillary sequencing platform |
+| `COMPLETE_GENOMICS` | Complete Genomics sequencing platform |
+| `HELICOS` | Helicos sequencing platform |
+| `ILLUMINA` | Illumina sequencing platform |
+| `ION_TORRENT` | Ion Torrent sequencing platform |
+| `LS454` | 454 sequencing platform |
+| `OXFORD_NANOPORE` | Oxford Nanopore sequencing platform |
+| `PACBIO_SMRT` | PacBio SMRT sequencing platform |
+
+### SingleCellIsolationMethodEnum
+
+| Value | Description |
+|-------|-------------|
+| `Cell Sorting` | Cell sorting isolation method |
+| `Droplet-based` | Droplet-based isolation method |
+| `Manual Picking` | Manual picking isolation method |
+| `Microfluidics` | Microfluidics isolation method |
+| `Other` | Other isolation method |
+| `Unknown` | Unknown isolation method |
+
+### SpikeInEnum
+
+| Value | Description |
+|-------|-------------|
+| `ERCC` | ERCC spike-in |
+| `None` | No spike-in |
+| `Other` | Other spike-in |
+| `Unknown` | Unknown spike-in |
 

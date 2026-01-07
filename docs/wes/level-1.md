@@ -25,10 +25,10 @@ These attributes are inherited from BaseSequencingAttributes.
 | `GENOME_ANNOTATION_URL` | string | No | URL to genome annotation |
 | `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
 | `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayout) | Yes | Library layout (paired-end or single-end) |
+| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum) | Yes | Library layout (paired-end or single-end) |
 | `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
 | `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatform) | Yes | Sequencing platform used |
+| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum) | Yes | Sequencing platform used |
 | `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
 | `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
 | `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
@@ -51,7 +51,7 @@ These attributes are inherited from BaseSequencingAttributes.
 | `LIBRARY_PREPARATION_KIT_NAME` | string | No | Name of the library preparation kit |
 | `LIBRARY_PREPARATION_KIT_VENDOR` | string | No | Vendor of the library preparation kit |
 | `LIBRARY_PREPARATION_KIT_VERSION` | string | No | Version of the library preparation kit |
-| `LIBRARY_SELECTION_METHOD` | [LibrarySelectionMethodEnum](#libraryselectionmethod) | Yes | Method used for library selection |
+| `LIBRARY_SELECTION_METHOD` | [LibrarySelectionMethodEnum](#libraryselectionmethodenum) | Yes | Method used for library selection |
 | `MULTIPLEX_BARCODE` | string | No | Multiplex barcode |
 | `READ_INDICATOR` | string | No | Read indicator |
 | `READ_LENGTH` | integer | Yes | Read length in base pairs |
@@ -59,4 +59,37 @@ These attributes are inherited from BaseSequencingAttributes.
 | `TARGET_CAPTURE_KIT` | string | No | Target capture kit used |
 | `TARGET_DEPTH` | integer | No | Target sequencing depth |
 | `TO_TRIM_ADAPTER_SEQUENCE` | boolean | No | Whether to trim adapter sequence |
+
+## Enums
+
+### LibraryLayoutEnum
+
+| Value | Description |
+|-------|-------------|
+| `Paired-end` | Paired-end sequencing |
+| `Single-end` | Single-end sequencing |
+
+### LibrarySelectionMethodEnum
+
+| Value | Description |
+|-------|-------------|
+| `Hybrid Selection` | Hybrid selection method |
+| `PCR` | PCR-based selection |
+| `RANDOM` | Random selection |
+| `other` | Other selection method |
+
+### SequencingPlatformEnum
+
+| Value | Description |
+|-------|-------------|
+| `ABI_SOLID` | ABI SOLID sequencing platform |
+| `BGISEQ` | BGI sequencing platform |
+| `CAPILLARY` | Capillary sequencing platform |
+| `COMPLETE_GENOMICS` | Complete Genomics sequencing platform |
+| `HELICOS` | Helicos sequencing platform |
+| `ILLUMINA` | Illumina sequencing platform |
+| `ION_TORRENT` | Ion Torrent sequencing platform |
+| `LS454` | 454 sequencing platform |
+| `OXFORD_NANOPORE` | Oxford Nanopore sequencing platform |
+| `PACBIO_SMRT` | PacBio SMRT sequencing platform |
 

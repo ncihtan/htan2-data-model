@@ -25,11 +25,11 @@ These attributes are inherited from BaseSequencingAttributes.
 | `GENOME_ANNOTATION_URL` | string | No | URL to genome annotation |
 | `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
 | `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayout) | Yes | Library layout (paired-end or single-end) |
+| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum) | Yes | Library layout (paired-end or single-end) |
 | `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Days from index for library preparation |
 | `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
 | `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatform) | Yes | Sequencing platform used |
+| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum) | Yes | Sequencing platform used |
 | `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
 | `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
 | `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
@@ -39,7 +39,43 @@ These attributes are inherited from BaseSequencingAttributes.
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `CELL_BARCODE_TAG` | string | No | Tag used for cell barcodes |
-| `SCRNASEQ_WORKFLOW_TYPE` | [scRNAseqWorkflowTypeEnumLevel2](#scrnaseqworkflowtypelevel2) | Yes | Generic name for the workflow used to analyze the dataset |
+| `SCRNASEQ_WORKFLOW_TYPE` | [scRNAseqWorkflowTypeEnumLevel2](#scrnaseqworkflowtypeenumlevel2) | Yes | Generic name for the workflow used to analyze the dataset |
 | `UMI_TAG` | string | No | Tag used for UMIs |
 | `WHITELIST_CELL_BARCODE_FILE_LINK` | string | No | Link to whitelist cell barcode file |
+
+## Enums
+
+### LibraryLayoutEnum
+
+| Value | Description |
+|-------|-------------|
+| `Paired-end` | Paired-end sequencing |
+| `Single-end` | Single-end sequencing |
+
+### SequencingPlatformEnum
+
+| Value | Description |
+|-------|-------------|
+| `ABI_SOLID` | ABI SOLID sequencing platform |
+| `BGISEQ` | BGI sequencing platform |
+| `CAPILLARY` | Capillary sequencing platform |
+| `COMPLETE_GENOMICS` | Complete Genomics sequencing platform |
+| `HELICOS` | Helicos sequencing platform |
+| `ILLUMINA` | Illumina sequencing platform |
+| `ION_TORRENT` | Ion Torrent sequencing platform |
+| `LS454` | 454 sequencing platform |
+| `OXFORD_NANOPORE` | Oxford Nanopore sequencing platform |
+| `PACBIO_SMRT` | PacBio SMRT sequencing platform |
+
+### scRNAseqWorkflowTypeEnumLevel2
+
+| Value | Description |
+|-------|-------------|
+| `CellRanger` | CellRanger workflow |
+| `HCA Optimus` | HCA Optimus workflow |
+| `Other` | Other workflow |
+| `SEQC` | SEQC workflow |
+| `STARsolo` | STARsolo workflow |
+| `Unknown` | Unknown workflow |
+| `dropEST` | dropEST workflow |
 

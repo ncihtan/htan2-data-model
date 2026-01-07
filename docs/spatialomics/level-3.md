@@ -59,3 +59,77 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `SPATIAL_ASSAY_TYPE` | [SpatialAssayType](#spatialassaytype) | No | Type of spatial assay (in situ or capture-based) |
 | `TRANSCRIPTOME_TYPE` | [TranscriptomeType](#transcriptometype) | Required IF RNA_MEASURED = 'None' | Molecular targets measured using panels |
 
+## Enums
+
+### CaptureArea
+
+| Value | Description |
+|-------|-------------|
+| `A` | Capture area A (CytAssist slides with 11 mm Capture Area) |
+| `A1` | Capture area A1 (Visium slides v1 with 6.5 mm Capture Area, or CytAssist/Gateway slides with 6.5 mm Capture Area) |
+| `B` | Capture area B (CytAssist slides with 11 mm Capture Area) |
+| `B1` | Capture area B1 (Visium slides v1 with 6.5 mm Capture Area) |
+| `C1` | Capture area C1 (Visium slides v1 with 6.5 mm Capture Area) |
+| `D1` | Capture area D1 (Visium slides v1 with 6.5 mm Capture Area, or CytAssist/Gateway slides with 6.5 mm Capture Area) |
+
+### CellSegmentedObjectType
+
+| Value | Description |
+|-------|-------------|
+| `Whole cell` | Whole cell segmentation object type |
+| `cytoplasm` | Cytoplasm segmentation object type |
+| `nucleus` | Nucleus segmentation object type |
+
+### DimensionalityReductionMethod
+
+| Value | Description |
+|-------|-------------|
+| `PCA` | Principal Component Analysis |
+| `UMAP` | Uniform Manifold Approximation and Projection |
+| `other` | Other dimensionality reduction method |
+| `t-SNE` | t-Distributed Stochastic Neighbor Embedding |
+
+### PlatformLevel3
+
+| Value | Description |
+|-------|-------------|
+| `10x Genomics Visium` | 10x Genomics Visium platform |
+| `10x Genomics Visium HD` | 10x Genomics Visium HD platform |
+| `10x Genomics Xenium` | 10x Genomics Xenium platform |
+| `DBiT-seq` | DBiT-seq platform |
+| `Nanostring CosMX` | Nanostring CosMX platform |
+| `STOmics Stereo-CITE` | STOmics Stereo-CITE platform |
+| `STOmics Stereo-seq` | STOmics Stereo-seq platform |
+| `SeqFISH` | SeqFISH platform |
+
+### QCSpatialUnit
+
+| Value | Description |
+|-------|-------------|
+| `100um area` | 100 micrometer area spatial unit |
+| `8um bin` | 8 micrometer bin spatial unit |
+| `cell` | Cell spatial unit |
+| `spot` | Spot spatial unit |
+
+### SameSectionImagingModality
+
+| Value | Description |
+|-------|-------------|
+| `H&E` | Hematoxylin and Eosin imaging modality |
+| `fluorescence` | Fluorescence imaging modality |
+
+### SpatialAssayType
+
+| Value | Description |
+|-------|-------------|
+| `In situ` | In situ spatial assay type |
+| `capture-based` | Capture-based spatial assay type |
+
+### TranscriptomeType
+
+| Value | Description |
+|-------|-------------|
+| `Protein coding` | Protein coding transcriptome type |
+| `Targeted` | Targeted transcriptome type |
+| `Whole transcriptome` | Whole transcriptome type |
+

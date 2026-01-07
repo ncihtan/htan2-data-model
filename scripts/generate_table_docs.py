@@ -610,6 +610,34 @@ def generate_level_page(level_file, level_name, module_name, module_output_name,
                 # Merge level_enums with all_enums for complete enum lookup
                 combined_enums = {**all_enums, **level_enums}
                 generate_class_table_with_inheritance(level_class_name, class_def, combined_enums, f, combined_classes, base_dir)
+                
+                # Add enum section for level pages
+                # Collect all enum names that are actually used in attributes
+                used_enums = set()
+                all_attrs, _, _ = resolve_inheritance_chain(class_def, combined_classes, base_dir)
+                for attr_name, attr_def in all_attrs.items():
+                    if attr_def.range and attr_def.range in combined_enums:
+                        used_enums.add(attr_def.range)
+                
+                # Show all used enums
+                if used_enums:
+                    f.write("## Enums\n\n")
+                    for enum_name in sorted(used_enums):
+                        if enum_name in combined_enums:
+                            enum_def = combined_enums[enum_name]
+                            # Let Sphinx auto-generate anchors - just write the heading without explicit anchor
+                            f.write(f"### {enum_name}\n\n")
+                            if enum_def.description:
+                                f.write(f"{enum_def.description}\n\n")
+                            
+                            if enum_def.permissible_values:
+                                f.write("| Value | Description |\n")
+                                f.write("|-------|-------------|\n")
+                                for pv_name, pv_def in sorted(enum_def.permissible_values.items()):
+                                    description = pv_def.description or ""
+                                    description = description.replace("|", "\\|")
+                                    f.write(f"| `{pv_name}` | {description} |\n")
+                            f.write("\n")
             
             print(f"Generated {output_path}...")
     except Exception as e:

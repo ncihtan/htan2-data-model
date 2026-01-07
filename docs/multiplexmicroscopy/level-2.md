@@ -61,3 +61,86 @@ These attributes are inherited from BaseImagingAttributes.
 | `SIZE_Z` | integer | Yes | The number of pixels in the z dimension at the highest resolution available |
 | `WORKING_DISTANCE` | string | No | The working distance of the lens, expressed as a floating point number. Floating point > 0. Size needs to be specified in microns (um) |
 
+## Enums
+
+### DeIdentificationMethodType
+
+| Value | Description |
+|-------|-------------|
+| `Automatic` | Automatic de-identification method |
+| `Manual` | Manual de-identification method |
+| `Not Applicable` | De-identification not applicable |
+| `Semiautomatic` | Semi-automatic de-identification method |
+
+### ExperimentalStrategyAndDataSubtypes
+
+| Value | Description |
+|-------|-------------|
+| `Pathological` | Pathological experimental strategy and data subtype |
+
+### ImageModality
+
+| Value | Description |
+|-------|-------------|
+| `SM` | Slide Microscopy |
+
+### ImagingAssayType
+
+| Value | Description |
+|-------|-------------|
+| `CODEX` | CODEX imaging assay type |
+| `CyCIF` | Cyclic Immunofluorescence imaging assay type |
+| `ExSeq` | Expansion Sequencing imaging assay type |
+| `GeoMX-DSP` | GeoMX Digital Spatial Profiling imaging assay type |
+| `H&E` | Hematoxylin and Eosin imaging assay type |
+| `IHC` | Immunohistochemistry imaging assay type |
+| `IMC` | Imaging Mass Cytometry imaging assay type |
+| `MERFISH` | Multiplexed Error-Robust Fluorescence In Situ Hybridization imaging assay type |
+| `MIBI` | Multiplexed Ion Beam Imaging imaging assay type |
+| `MxIF` | Multiplexed Immunofluorescence imaging assay type |
+| `Not Applicable` | Imaging assay not applicable |
+| `SABER` | Signal Amplification By Exchange Reaction imaging assay type |
+| `mIHC` | Multiplexed Immunohistochemistry imaging assay type |
+| `t-CyCIF` | Tissue Cyclic Immunofluorescence imaging assay type |
+
+### ImmersionMedium
+
+| Value | Description |
+|-------|-------------|
+| `Air` | Air immersion medium |
+| `Glycerol` | Glycerol immersion medium |
+| `Oil` | Oil immersion medium |
+| `Other` | Other immersion medium |
+| `Water` | Water immersion medium |
+
+### License
+
+| Value | Description |
+|-------|-------------|
+| `CC BY 4.0` | Creative Commons Attribution 4.0 International License |
+
+### Species
+
+| Value | Description |
+|-------|-------------|
+| `9606 (Homo sapiens)` | NCBI Taxonomy ID for Homo sapiens |
+
+### StainingMethod
+
+| Value | Description |
+|-------|-------------|
+| `CODEX` | CODEX staining method |
+| `CyCIF` | Cyclic Immunofluorescence staining method |
+| `ExSeq` | Expansion Sequencing staining method |
+| `GeoMX-DSP` | GeoMX Digital Spatial Profiling staining method |
+| `H&E` | Hematoxylin and Eosin staining method |
+| `IHC` | Immunohistochemistry staining method |
+| `IMC` | Imaging Mass Cytometry staining method |
+| `MERFISH` | Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method |
+| `MIBI` | Multiplexed Ion Beam Imaging staining method |
+| `MxIF` | Multiplexed Immunofluorescence staining method |
+| `Not Applicable` | Staining not applicable |
+| `SABER` | Signal Amplification By Exchange Reaction staining method |
+| `mIHC` | Multiplexed Immunohistochemistry staining method |
+| `t-CyCIF` | Tissue Cyclic Immunofluorescence staining method |
+

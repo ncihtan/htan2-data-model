@@ -55,3 +55,67 @@ These attributes are inherited from BaseImagingAttributes.
 | `SEGMENTATION_WORKFLOW_URL` | string | No | URL or link to the segmentation workflow used |
 | `SEGMENTATION_WORKFLOW_VERSION` | string | No | Version of the segmentation workflow |
 
+## Enums
+
+### DeIdentificationMethodType
+
+| Value | Description |
+|-------|-------------|
+| `Automatic` | Automatic de-identification method |
+| `Manual` | Manual de-identification method |
+| `Not Applicable` | De-identification not applicable |
+| `Semiautomatic` | Semi-automatic de-identification method |
+
+### ExperimentalStrategyAndDataSubtypes
+
+| Value | Description |
+|-------|-------------|
+| `Pathological` | Pathological experimental strategy and data subtype |
+
+### ImageModality
+
+| Value | Description |
+|-------|-------------|
+| `SM` | Slide Microscopy |
+
+### ImmersionMedium
+
+| Value | Description |
+|-------|-------------|
+| `Air` | Air immersion medium |
+| `Glycerol` | Glycerol immersion medium |
+| `Oil` | Oil immersion medium |
+| `Other` | Other immersion medium |
+| `Water` | Water immersion medium |
+
+### License
+
+| Value | Description |
+|-------|-------------|
+| `CC BY 4.0` | Creative Commons Attribution 4.0 International License |
+
+### Species
+
+| Value | Description |
+|-------|-------------|
+| `9606 (Homo sapiens)` | NCBI Taxonomy ID for Homo sapiens |
+
+### StainingMethod
+
+| Value | Description |
+|-------|-------------|
+| `CODEX` | CODEX staining method |
+| `CyCIF` | Cyclic Immunofluorescence staining method |
+| `ExSeq` | Expansion Sequencing staining method |
+| `GeoMX-DSP` | GeoMX Digital Spatial Profiling staining method |
+| `H&E` | Hematoxylin and Eosin staining method |
+| `IHC` | Immunohistochemistry staining method |
+| `IMC` | Imaging Mass Cytometry staining method |
+| `MERFISH` | Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method |
+| `MIBI` | Multiplexed Ion Beam Imaging staining method |
+| `MxIF` | Multiplexed Immunofluorescence staining method |
+| `Not Applicable` | Staining not applicable |
+| `SABER` | Signal Amplification By Exchange Reaction staining method |
+| `mIHC` | Multiplexed Immunohistochemistry staining method |
+| `t-CyCIF` | Tissue Cyclic Immunofluorescence staining method |
+
