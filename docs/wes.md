@@ -10,10 +10,7 @@ The HTAN WES module provides a comprehensive data model for bulk whole exome seq
 
 ## Levels
 
-.. toctree::
-   :maxdepth: 1
-
-   wes/level-1
-   wes/level-2
-   wes/level-3
+- [Level 1 - Raw sequencing files and metadata](wes/level-1.md)
+- [Level 2 - Aligned files and alignment QC](wes/level-2.md)
+- [Level 3 - Called variants](wes/level-3.md)
 
