@@ -276,12 +276,30 @@ def generate_module_csv(schema_path: str, module_name: str, output_map: dict, ba
     csv_dir = base_dir / "docs" / "csv"
     csv_dir.mkdir(exist_ok=True)
     
-    # For record-based modules (Clinical, Biospecimen), generate CSV for main class
-    if module_name in ["Clinical", "Biospecimen"]:
-        if "ClinicalData" in all_classes:
-            output_path = csv_dir / f"{output_map[module_name]}.csv"
-            generate_csv_for_class("ClinicalData", all_classes["ClinicalData"], all_enums, all_classes, Path(schema_path).parent, output_path)
-        elif "BiospecimenData" in all_classes:
+    # For record-based modules (Clinical, Biospecimen), generate CSV with all attributes
+    if module_name == "Clinical":
+        # For Clinical, include all attributes from all classes (not just ClinicalData manifest)
+        output_path = csv_dir / f"{output_map[module_name]}.csv"
+        with open(output_path, 'w', newline='', encoding='utf-8') as csvfile:
+            fieldnames = ['Attribute', 'Type', 'Pattern', 'Required', 'Description', 'Class']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            
+            # Write attributes from all classes
+            for class_name in sorted(all_classes.keys()):
+                class_def = all_classes[class_name]
+                if class_def.attributes:
+                    for attr_name in sorted(class_def.attributes.keys()):
+                        attr_def = class_def.attributes[attr_name]
+                        row = get_attribute_info(attr_name, attr_def, class_def, all_enums)
+                        row['Class'] = class_name
+                        writer.writerow(row)
+        
+        print(f"Generated CSV: {output_path}")
+    
+    elif module_name == "Biospecimen":
+        # For Biospecimen, include all attributes from BiospecimenData
+        if "BiospecimenData" in all_classes:
             output_path = csv_dir / f"{output_map[module_name]}.csv"
             generate_csv_for_class("BiospecimenData", all_classes["BiospecimenData"], all_enums, all_classes, Path(schema_path).parent, output_path)
     
