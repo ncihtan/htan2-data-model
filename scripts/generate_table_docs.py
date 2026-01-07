@@ -75,44 +75,110 @@ def get_conditional_requirements(class_def, attr_name):
                                 elif hasattr(precond_val, 'required') and precond_val.required:
                                     precond_desc.append(f"{precond_attr} is present")
                             if precond_desc:
-                                conditions.append("when " + " and ".join(precond_desc))
+                                conditions.append(" and ".join(precond_desc))
     
     return conditions
 
-def generate_class_table(class_name, class_def, all_enums, f):
+def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False, all_classes=None):
     """Generate attributes table for a class."""
     if class_def.description:
         f.write(f"**{class_def.description}**\n\n")
     
     if class_def.attributes:
-        f.write("| Attribute | Type | Required | Description |\n")
-        f.write("|-----------|------|----------|-------------|\n")
+        # For manifests, separate identifier/common attributes from class references
+        common_attrs = {}
+        class_attrs = {}
         
-        for attr_name, attr_def in sorted(class_def.attributes.items()):
-            # Get base required status
-            required = "Yes" if attr_def.required else "No"
+        if is_manifest:
+            # Separate identifier/common attributes (like HTAN_PARTICIPANT_ID) from class references
+            for attr_name, attr_def in class_def.attributes.items():
+                # Check if it's an identifier or a simple type (not a class reference)
+                if hasattr(attr_def, 'identifier') and attr_def.identifier:
+                    common_attrs[attr_name] = attr_def
+                elif attr_def.range and attr_def.range not in all_classes and attr_def.range not in ['Demographics', 'Diagnosis', 'Exposure', 'FamilyHistory', 'FollowUp', 'MolecularTest', 'Therapy', 'VitalStatus']:
+                    # It's a simple type, not a class reference
+                    common_attrs[attr_name] = attr_def
+                else:
+                    # It's a class reference
+                    class_attrs[attr_name] = attr_def
+        else:
+            # For other classes, all attributes are class-specific
+            class_attrs = class_def.attributes
+        
+        # Show common attributes section if any
+        if common_attrs:
+            f.write("### Common Attributes\n\n")
+            f.write("| Attribute | Type | Required | Pattern | Description |\n")
+            f.write("|-----------|------|----------|---------|-------------|\n")
             
-            # Get conditional requirements
-            conditions = get_conditional_requirements(class_def, attr_name)
-            if conditions:
-                required = f"No<br/>*Required {', '.join(conditions)}*"
+            for attr_name, attr_def in sorted(common_attrs.items()):
+                required = "Yes" if attr_def.required else "No"
+                
+                # Get conditional requirements
+                conditions = get_conditional_requirements(class_def, attr_name)
+                if conditions:
+                    required = f"Required IF {', '.join(conditions)}"
+                
+                range_str = attr_def.range if attr_def.range else "string"
+                
+                # Check if range is an enum
+                enum_def = None
+                if all_enums and range_str in all_enums:
+                    enum_def = all_enums[range_str]
+                
+                if enum_def:
+                    enum_values = format_enum_values(enum_def)
+                    range_str = enum_values
+                
+                # Get pattern if exists
+                pattern = ""
+                if hasattr(attr_def, 'pattern') and attr_def.pattern:
+                    pattern = f"`{attr_def.pattern}`"
+                
+                description = attr_def.description or ""
+                description = description.replace("|", "\\|")
+                
+                f.write(f"| `{attr_name}` | {range_str} | {required} | {pattern} | {description} |\n")
+            f.write("\n")
+        
+        # Show class-specific attributes
+        if class_attrs:
+            if common_attrs:
+                f.write("### Class References\n\n")
             
-            range_str = attr_def.range if attr_def.range else "string"
+            f.write("| Attribute | Type | Required | Pattern | Description |\n")
+            f.write("|-----------|------|----------|---------|-------------|\n")
             
-            # Check if range is an enum
-            enum_def = None
-            if all_enums and range_str in all_enums:
-                enum_def = all_enums[range_str]
-            
-            if enum_def:
-                enum_values = format_enum_values(enum_def)
-                range_str = enum_values
-            
-            description = attr_def.description or ""
-            description = description.replace("|", "\\|")
-            
-            f.write(f"| `{attr_name}` | {range_str} | {required} | {description} |\n")
-        f.write("\n")
+            for attr_name, attr_def in sorted(class_attrs.items()):
+                # Get base required status
+                required = "Yes" if attr_def.required else "No"
+                
+                # Get conditional requirements
+                conditions = get_conditional_requirements(class_def, attr_name)
+                if conditions:
+                    required = f"Required IF {', '.join(conditions)}"
+                
+                range_str = attr_def.range if attr_def.range else "string"
+                
+                # Check if range is an enum
+                enum_def = None
+                if all_enums and range_str in all_enums:
+                    enum_def = all_enums[range_str]
+                
+                if enum_def:
+                    enum_values = format_enum_values(enum_def)
+                    range_str = enum_values
+                
+                # Get pattern if exists
+                pattern = ""
+                if hasattr(attr_def, 'pattern') and attr_def.pattern:
+                    pattern = f"`{attr_def.pattern}`"
+                
+                description = attr_def.description or ""
+                description = description.replace("|", "\\|")
+                
+                f.write(f"| `{attr_name}` | {range_str} | {required} | {pattern} | {description} |\n")
+            f.write("\n")
 
 def generate_module_doc(schema_path: str, output_path: str):
     """Generate markdown with attributes in tables."""
@@ -131,6 +197,9 @@ def generate_module_doc(schema_path: str, output_path: str):
     if schema.classes:
         for class_name, class_def in schema.classes.items():
             all_classes[class_name] = class_def
+    
+    # Store all_classes in a way that generate_class_table can access it
+    # We'll pass it as a parameter
     
     # Load enums and classes from imported files
     if schema.imports:
@@ -162,13 +231,13 @@ def generate_module_doc(schema_path: str, output_path: str):
             # Show main ClinicalData class first, but rename to "Manifests"
             if "ClinicalData" in all_classes:
                 f.write("### Manifests\n\n")
-                generate_class_table("ClinicalData", all_classes["ClinicalData"], all_enums, f)
+                generate_class_table("ClinicalData", all_classes["ClinicalData"], all_enums, f, is_manifest=True, all_classes=all_classes)
             
             # Then show all other classes
             for class_name, class_def in sorted(all_classes.items()):
                 if class_name != "ClinicalData":
                     f.write(f"### {class_name}\n\n")
-                    generate_class_table(class_name, class_def, all_enums, f)
+                    generate_class_table(class_name, class_def, all_enums, f, is_manifest=False, all_classes=all_classes)
         
         # Enums section for Clinical - show all enums in tables
         if schema.name == "Clinical" and all_enums:
