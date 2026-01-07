@@ -2,9 +2,7 @@
 
 HTAN Biospecimen Data Model Schema
 
-## Classes
-
-### BiospecimenData
+## BiospecimenData
 
 **Container for all Biospecimen data**
 

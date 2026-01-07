@@ -2,9 +2,7 @@
 
 HTAN Core Data Model - Universal attributes shared across all file-based modules
 
-## Classes
-
-### CoreFileAttributes
+## CoreFileAttributes
 
 **Universal attributes that apply to all file-based data in HTAN**
 

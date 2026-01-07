@@ -2,9 +2,7 @@
 
 HTAN Base Sequencing Data Model - Common attributes shared across all sequencing modules
 
-## Classes
-
-### BaseSequencingAttributes
+## BaseSequencingAttributes
 
 **Base attributes shared across all sequencing types**
 
@@ -36,7 +34,7 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
 | `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
 
-### CoreFileAttributes
+## CoreFileAttributes
 
 **Universal attributes that apply to all file-based data in HTAN**
 

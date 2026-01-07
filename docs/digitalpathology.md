@@ -2,9 +2,7 @@
 
 HTAN Digital Pathology Data Model Schema for Phase 2
 
-## Classes
-
-### BaseImagingAttributes
+## BaseImagingAttributes
 
 **Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)**
 
@@ -46,7 +44,7 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `SPECIES` | [Species](#species) | Yes | NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)". |
 | `STAINING_METHOD` | [StainingMethod](#stainingmethod) | Yes | Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination |
 
-### DigitalPathologyData
+## DigitalPathologyData
 
 **Container for digital pathology imaging data**
 

@@ -2,9 +2,7 @@
 
 HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 
-## Classes
-
-### CoreFileAttributes
+## CoreFileAttributes
 
 **Universal attributes that apply to all file-based data in HTAN**
 
@@ -17,7 +15,7 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 | `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
 | `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
-### SpatialData
+## SpatialData
 
 **Container for all Spatial Omics data levels**
 
@@ -30,7 +28,7 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 | `LEVEL_4_DATA` | SpatialLevel4 | No | Level 4 Spatial Omics data (interoperable h5ad or RDS file, optional) |
 | `PANEL_DATA` | SpatialPanel | No | Spatial panel information for targeted sequencing or protein panels |
 
-### SpatialLevel1
+## SpatialLevel1
 
 **Level 1 raw spatial data bundle (optional) - Contains raw sequencing data, images, and registration files**
 
@@ -60,7 +58,7 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `PLATFORM` | [Platform](#platform) | Yes | Name of the platform used to generate the data |
 | `SEQUENCING_FILE_TYPE` | [SequencingFileType](#sequencingfiletype) | Required IF HAS_SEQUENCING = 'None' | Sequencing file type |
 
-### SpatialLevel3
+## SpatialLevel3
 
 **Level 3 processed spatial assay output bundle - Contains platform-specific output files, segmentation, matrices, and QC metrics**
 
@@ -119,7 +117,7 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `SPATIAL_ASSAY_TYPE` | [SpatialAssayType](#spatialassaytype) | No | Type of spatial assay (in situ or capture-based) |
 | `TRANSCRIPTOME_TYPE` | [TranscriptomeType](#transcriptometype) | Required IF RNA_MEASURED = 'None' | Molecular targets measured using panels |
 
-### SpatialLevel4
+## SpatialLevel4
 
 **Level 4 interoperable spatial omics file (optional) - Harmonized h5ad, RDS, or Zarr file for downstream analysis**
 
@@ -156,7 +154,7 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `NUMBER_OF_OBJECTS` | integer | Yes | Number of objects (e.g. cells) |
 | `TOOL_COMPATIBILITY` | [ToolCompatibility](#toolcompatibility) | No | Tools or libraries compatible with this file |
 
-### SpatialPanel
+## SpatialPanel
 
 **Spatial omics panel information for targeted sequencing or protein panels**
 

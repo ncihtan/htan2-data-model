@@ -366,18 +366,17 @@ def generate_module_doc(schema_path: str, output_path: str):
         if schema.description:
             f.write(f"{schema.description}\n\n")
         
-        # Special handling for Clinical - show each class separately
+        # Special handling for Clinical - show each class separately (no "Classes" heading)
         if schema.name == "Clinical":
-            f.write("## Classes\n\n")
             # Show main ClinicalData class first, but rename to "Manifests"
             if "ClinicalData" in all_classes:
-                f.write("### Manifests\n\n")
+                f.write("## Manifests\n\n")
                 generate_class_table("ClinicalData", all_classes["ClinicalData"], all_enums, f, is_manifest=True, all_classes=all_classes)
             
             # Then show all other classes
             for class_name, class_def in sorted(all_classes.items()):
                 if class_name != "ClinicalData":
-                    f.write(f"### {class_name}\n\n")
+                    f.write(f"## {class_name}\n\n")
                     generate_class_table(class_name, class_def, all_enums, f, is_manifest=False, all_classes=all_classes)
         
         # Enums section for Clinical - show all enums in tables
@@ -397,74 +396,66 @@ def generate_module_doc(schema_path: str, output_path: str):
                     f.write(f"| `{pv_name}` | {description} |\n")
                 f.write("\n")
         
-        # Special handling for WES - show each level separately
-        elif schema.name == "WES":
-            f.write("## Levels\n\n")
-            # Load level schemas
-            level_files = {
-                "Level 1": base_dir / "level_1.yaml",
-                "Level 2": base_dir / "level_2.yaml",
-                "Level 3": base_dir / "level_3.yaml",
-            }
-            
-            for level_name, level_file in level_files.items():
-                if level_file.exists():
-                    try:
-                        level_schema = yaml_loader.load(str(level_file), SchemaDefinition)
-                        level_enums = {}
-                        if level_schema.enums:
-                            level_enums.update(level_schema.enums)
-                        
-                        # Load enums from level file imports too
-                        if level_schema.imports:
-                            for imp in level_schema.imports:
-                                if isinstance(imp, str) and not imp.startswith('linkml:'):
-                                    enum_file = level_file.parent / f"{imp}.yaml"
-                                    if enum_file.exists():
-                                        try:
-                                            enum_schema = yaml_loader.load(str(enum_file), SchemaDefinition)
-                                            if enum_schema.enums:
-                                                level_enums.update(enum_schema.enums)
-                                        except:
-                                            pass
-                        
-                        # Find the level class (BulkWESLevel1, BulkWESLevel2, etc.)
-                        level_class_name = None
-                        for class_name in level_schema.classes.keys():
-                            if "Level" in class_name:
-                                level_class_name = class_name
-                                break
-                        
-                        if level_class_name:
-                            f.write(f"### {level_name} ({level_class_name})\n\n")
-                            if level_schema.description:
-                                f.write(f"{level_schema.description}\n\n")
-                            
-                            class_def = level_schema.classes[level_class_name]
-                            # Merge level_enums with all_enums for complete enum lookup
-                            combined_enums = {**all_enums, **level_enums}
-                            # Merge level classes with all_classes for inheritance resolution
-                            combined_classes = {**all_classes}
-                            if level_schema.classes:
-                                combined_classes.update(level_schema.classes)
-                            generate_class_table_with_inheritance(level_class_name, class_def, combined_enums, f, combined_classes, base_dir)
-                    except Exception as e:
-                        print(f"Warning: Could not load {level_file}: {e}")
+        # Special handling for modules with levels - create landing page with links
+        elif schema.name in ["WES", "scRNA-seq", "MultiplexMicroscopy", "SpatialOmics"]:
+            # Create landing page with overview and links to levels
+            if schema.name == "WES":
+                f.write("The HTAN WES module provides a comprehensive data model for bulk whole exome sequencing data. This module defines schemas for three data levels:\n\n")
+                f.write("- **Level 1**: Raw sequencing files and metadata\n")
+                f.write("- **Level 2**: Aligned files and alignment QC\n")
+                f.write("- **Level 3**: Called variants\n\n")
+                f.write("## Levels\n\n")
+                f.write("- :doc:`Level 1 <wes/level-1>` - Raw sequencing files and metadata\n")
+                f.write("- :doc:`Level 2 <wes/level-2>` - Aligned files and alignment QC\n")
+                f.write("- :doc:`Level 3 <wes/level-3>` - Called variants\n\n")
+            elif schema.name == "scRNA-seq":
+                readme_path = base_dir.parent.parent / "modules" / "scRNA-seq" / "README.md"
+                if readme_path.exists():
+                    with open(readme_path, 'r') as readme_file:
+                        readme_content = readme_file.read()
+                        # Extract lines 5-9 (0-indexed: 4-8)
+                        lines = readme_content.split('\n')
+                        if len(lines) >= 9:
+                            overview = '\n'.join(lines[4:9])
+                            f.write(f"{overview}\n\n")
+                f.write("## Levels\n\n")
+                f.write("- :doc:`Level 1 <scrna-seq/level-1>` - Raw sequencing files and metadata\n")
+                f.write("- :doc:`Level 2 <scrna-seq/level-2>` - Workflow and processing metadata\n")
+                f.write("- :doc:`Level 3/4 <scrna-seq/level-3-4>` - Analysis results with h5ad file format validation\n\n")
+            elif schema.name == "MultiplexMicroscopy":
+                f.write("The HTAN Multiplex Microscopy module provides a comprehensive data model for multiplexed tissue imaging assays. This module defines schemas for three data levels:\n\n")
+                f.write("- **Level 2**: Imaging data with channel metadata\n")
+                f.write("- **Level 3**: Segmentation masks\n")
+                f.write("- **Level 4**: Cell-by-feature tables\n\n")
+                f.write("## Levels\n\n")
+                f.write("- :doc:`Level 2 <multiplexmicroscopy/level-2>` - Imaging data with channel metadata\n")
+                f.write("- :doc:`Level 3 <multiplexmicroscopy/level-3>` - Segmentation masks\n")
+                f.write("- :doc:`Level 4 <multiplexmicroscopy/level-4>` - Cell-by-feature tables\n\n")
+            elif schema.name == "SpatialOmics":
+                f.write("The HTAN Spatial Omics module provides a comprehensive data model for spatial omics assays. This module defines schemas for multiple data levels:\n\n")
+                f.write("- **Level 1**: Raw data bundle (optional)\n")
+                f.write("- **Level 3**: Processed bundle (required)\n")
+                f.write("- **Level 4**: Interoperable file (optional)\n")
+                f.write("- **Panel**: Panel information\n\n")
+                f.write("## Levels\n\n")
+                f.write("- :doc:`Level 1 <spatialomics/level-1>` - Raw data bundle\n")
+                f.write("- :doc:`Level 3 <spatialomics/level-3>` - Processed bundle\n")
+                f.write("- :doc:`Level 4 <spatialomics/level-4>` - Interoperable file\n")
+                f.write("- :doc:`Panel <spatialomics/panel>` - Panel information\n\n")
         
         # Default: show all classes (for file-based modules, use inheritance)
         else:
             if all_classes:
-                f.write("## Classes\n\n")
                 for class_name, class_def in sorted(all_classes.items()):
-                    f.write(f"### {class_name}\n\n")
+                    f.write(f"## {class_name}\n\n")
                     # Use inheritance for file-based modules (not Clinical or Biospecimen)
                     if schema.name not in ["Clinical", "Biospecimen"]:
                         generate_class_table_with_inheritance(class_name, class_def, all_enums, f, all_classes, base_dir)
                     else:
                         generate_class_table(class_name, class_def, all_enums, f)
         
-        # Enums section (show all enums with many values) - skip for Clinical since it has its own section
-        if schema.name != "Clinical" and all_enums:
+        # Enums section (show all enums with many values) - skip for Clinical and modules with levels
+        if schema.name not in ["Clinical", "WES", "scRNA-seq", "MultiplexMicroscopy", "SpatialOmics"] and all_enums:
             long_enums = []
             for enum_name, enum_def in sorted(all_enums.items()):
                 if enum_def.permissible_values and len(enum_def.permissible_values) > 5:
@@ -485,6 +476,60 @@ def generate_module_doc(schema_path: str, output_path: str):
                         description = description.replace("|", "\\|")
                         f.write(f"| `{pv_name}` | {description} |\n")
                     f.write("\n")
+
+def generate_level_page(level_file, level_name, module_name, module_output_name, all_enums, all_classes, base_dir):
+    """Generate a separate page for a level."""
+    level_dir = base_dir / "docs" / module_output_name
+    level_dir.mkdir(exist_ok=True)
+    
+    # Create filename from level name
+    level_filename = level_name.lower().replace(" ", "-").replace("/", "-")
+    output_path = level_dir / f"{level_filename}.md"
+    
+    try:
+        level_schema = yaml_loader.load(str(level_file), SchemaDefinition)
+        level_enums = {}
+        if level_schema.enums:
+            level_enums.update(level_schema.enums)
+        
+        # Load enums from level file imports too
+        if level_schema.imports:
+            for imp in level_schema.imports:
+                if isinstance(imp, str) and not imp.startswith('linkml:'):
+                    enum_file = level_file.parent / f"{imp}.yaml"
+                    if enum_file.exists():
+                        try:
+                            enum_schema = yaml_loader.load(str(enum_file), SchemaDefinition)
+                            if enum_schema.enums:
+                                level_enums.update(enum_schema.enums)
+                        except:
+                            pass
+        
+        # Find the level class
+        level_class_name = None
+        for class_name in level_schema.classes.keys():
+            if "Level" in class_name or "Panel" in class_name:
+                level_class_name = class_name
+                break
+        
+        if level_class_name:
+            with open(output_path, 'w') as f:
+                f.write(f"# {module_name} - {level_name}\n\n")
+                if level_schema.description:
+                    f.write(f"{level_schema.description}\n\n")
+                
+                class_def = level_schema.classes[level_class_name]
+                # Merge level_enums with all_enums for complete enum lookup
+                combined_enums = {**all_enums, **level_enums}
+                # Merge level classes with all_classes for inheritance resolution
+                combined_classes = {**all_classes}
+                if level_schema.classes:
+                    combined_classes.update(level_schema.classes)
+                generate_class_table_with_inheritance(level_class_name, class_def, combined_enums, f, combined_classes, base_dir)
+            
+            print(f"Generated {output_path}...")
+    except Exception as e:
+        print(f"Warning: Could not generate level page {level_file}: {e}")
 
 def main():
     base_dir = Path(__file__).parent.parent
@@ -514,6 +559,81 @@ def main():
         print(f"Generating {output_path}...")
         try:
             generate_module_doc(str(full_path), str(output_path))
+            
+            # Generate separate level pages for modules with levels
+            if module_name == "WES":
+                schema = yaml_loader.load(str(full_path), SchemaDefinition)
+                all_enums = {}
+                all_classes = {}
+                if schema.enums:
+                    all_enums.update(schema.enums)
+                if schema.classes:
+                    all_classes.update(schema.classes)
+                
+                level_files = {
+                    "Level 1": full_path.parent / "level_1.yaml",
+                    "Level 2": full_path.parent / "level_2.yaml",
+                    "Level 3": full_path.parent / "level_3.yaml",
+                }
+                for level_name, level_file in level_files.items():
+                    if level_file.exists():
+                        generate_level_page(level_file, level_name, module_name, output_map[module_name], all_enums, all_classes, base_dir)
+            
+            elif module_name == "scRNA-seq":
+                schema = yaml_loader.load(str(full_path), SchemaDefinition)
+                all_enums = {}
+                all_classes = {}
+                if schema.enums:
+                    all_enums.update(schema.enums)
+                if schema.classes:
+                    all_classes.update(schema.classes)
+                
+                level_files = {
+                    "Level 1": full_path.parent / "level_1.yaml",
+                    "Level 2": full_path.parent / "level_2.yaml",
+                    "Level 3/4": full_path.parent / "level_3_4.yaml",
+                }
+                for level_name, level_file in level_files.items():
+                    if level_file.exists():
+                        generate_level_page(level_file, level_name, module_name, output_map[module_name], all_enums, all_classes, base_dir)
+            
+            elif module_name == "MultiplexMicroscopy":
+                schema = yaml_loader.load(str(full_path), SchemaDefinition)
+                all_enums = {}
+                all_classes = {}
+                if schema.enums:
+                    all_enums.update(schema.enums)
+                if schema.classes:
+                    all_classes.update(schema.classes)
+                
+                level_files = {
+                    "Level 2": full_path.parent / "level_2.yaml",
+                    "Level 3": full_path.parent / "level_3.yaml",
+                    "Level 4": full_path.parent / "level_4.yaml",
+                }
+                for level_name, level_file in level_files.items():
+                    if level_file.exists():
+                        generate_level_page(level_file, level_name, module_name, output_map[module_name], all_enums, all_classes, base_dir)
+            
+            elif module_name == "SpatialOmics":
+                schema = yaml_loader.load(str(full_path), SchemaDefinition)
+                all_enums = {}
+                all_classes = {}
+                if schema.enums:
+                    all_enums.update(schema.enums)
+                if schema.classes:
+                    all_classes.update(schema.classes)
+                
+                level_files = {
+                    "Level 1": full_path.parent / "level_1.yaml",
+                    "Level 3": full_path.parent / "level_3.yaml",
+                    "Level 4": full_path.parent / "level_4.yaml",
+                    "Panel": full_path.parent / "spatial_panel.yaml",
+                }
+                for level_name, level_file in level_files.items():
+                    if level_file.exists():
+                        generate_level_page(level_file, level_name, module_name, output_map[module_name], all_enums, all_classes, base_dir)
+                        
         except Exception as e:
             print(f"Error generating {module_name}: {e}")
             import traceback

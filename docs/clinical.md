@@ -2,9 +2,7 @@
 
 HTAN Clinical Data Model Schema
 
-## Classes
-
-### Manifests
+## Manifests
 
 **Container for all clinical data**
 
@@ -27,7 +25,7 @@ HTAN Clinical Data Model Schema
 | `THERAPIES` | Therapy | No | Therapy information |
 | `VITAL_STATUS` | VitalStatus | Yes | Vital status information |
 
-### Demographics
+## Demographics
 
 **Information about the demographics**
 
@@ -38,7 +36,7 @@ HTAN Clinical Data Model Schema
 | `RACE` | [RaceEnum](#race) | Yes | Race of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE) |
 | `SEX` | [SexEnum](#sex) | Yes | Sex of the participant (caDSR:2192203) (Aligns to CDRC Standard CDE) |
 
-### Diagnosis
+## Diagnosis
 
 **Information about the diagnosis**
 
@@ -58,7 +56,7 @@ HTAN Clinical Data Model Schema
 | `TUMOR_CLASSIFICATION_CATEGORY` | [TumorClassificationCategoryEnum](#tumorclassificationcategory) | Yes | Classification category of the tumor (caDSR:2192211) (Aligns to CDRC Standard CDE) |
 | `TUMOR_GRADE` | [TumorGradeEnum](#tumorgrade) | Yes | The grade of the tumor (caDSR:2192203) (Aligns to CDRC Standard CDE) |
 
-### Exposure
+## Exposure
 
 **Information about the exposure**
 
@@ -71,7 +69,7 @@ HTAN Clinical Data Model Schema
 | `SMOKING_HISTORY` | [SmokingHistoryEnum](#smokinghistory) | Yes | Smoking history of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE) |
 | `YEARS_SMOKED` | integer | Required IF SMOKING_HISTORY = Current smoker or Former smoker | Number of years the participant has smoked (caDSR:2192202) (Aligns to CDRC Standard CDE) |
 
-### FamilyHistory
+## FamilyHistory
 
 **A class to capture information about the cancer history of family members.**
 
@@ -80,7 +78,7 @@ HTAN Clinical Data Model Schema
 | `FAMILY_MEMBER_CANCER_HISTORY` | [YesNoUnknownNotReportedEnum](#yesnounknownnotreported) | No | Has a family member been diagnosed with cancer? |
 | `RELATIVES_WITH_CANCER_HISTORY` | integer | Required IF FAMILY_MEMBER_CANCER_HISTORY = 'Yes' | Number of first degree relatives with cancer history |
 
-### FollowUp
+## FollowUp
 
 **Clinical follow-up information**
 
@@ -96,7 +94,7 @@ HTAN Clinical Data Model Schema
 | `PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-) | Required IF PROGRESSION_OR_RECURRENCE = Yes | UBERON code for the anatomic site of progression or recurrence |
 | `PROGRESSION_OR_RECURRENCE_TYPE` | [ProgressionTypeEnum](#progressiontype) | Required IF PROGRESSION_OR_RECURRENCE = Yes | Type of progression or recurrence |
 
-### MolecularTest
+## MolecularTest
 
 **Information about the molecular test**
 
@@ -120,7 +118,7 @@ HTAN Clinical Data Model Schema
 | `VARIANT_ORIGIN` | [VariantOriginEnum](#variantorigin) | Yes | Variant origin (caDSR:2192216) (Aligns to CDRC Standard CDE) |
 | `VARIANT_TYPE` | [VariantTypeEnum](#varianttype) | Yes | Variant type (caDSR:2192217) (Aligns to CDRC Standard CDE) |
 
-### Therapy
+## Therapy
 
 **Information about therapeutic interventions**
 
@@ -139,7 +137,7 @@ HTAN Clinical Data Model Schema
 | `TREATMENT_INTENT_TYPE` | [TreatmentIntentTypeEnum](#treatmentintenttype) | Yes | Anticipated outcome for therapy |
 | `TREATMENT_TYPE` | [TreatmentTypeEnum](#treatmenttype), pattern: <code>^[^\|]+(\\|[^\|]+)*$</code> | Yes | Type of treatment administered |
 
-### VitalStatus
+## VitalStatus
 
 **Information about the vital status**
 

@@ -45,7 +45,7 @@ Modules
 -------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Data Model Modules:
 
    docs/clinical
