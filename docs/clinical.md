@@ -12,7 +12,7 @@ HTAN Clinical Data Model Schema
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `HTAN_PARTICIPANT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})$` | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
+| `HTAN_PARTICIPANT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})$</code> | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 
 ### Class References
 
@@ -134,10 +134,10 @@ HTAN Clinical Data Model Schema
 | `PHARMACOTHERAPY_TYPE` | [PharmacotherapyTypeEnum](#pharmacotherapytype) | Yes | Whether single or combination pharmacotherapy was used |
 | `REGIMEN_OR_LINE_OF_THERAPY` | [RegimenOrLineOfTherapyEnum](#regimenorlineoftherapy) | Required IF TREATMENT_TYPE = pharmacotherapy | Line of therapy |
 | `RESPONSE` | string | Required IF AGE_IN_DAYS_AT_TREATMENT_END is provided | Response to treatment |
-| `THERAPEUTIC_AGENTS` | [antineoplastic_agent_enum](#antineoplastic-agent-), pattern: `^[^\|]+(\\|[^\|]+)*$` | Yes | The NCit Preferred Name(s) of the Therapeutic agent(s) |
+| `THERAPEUTIC_AGENTS` | [antineoplastic_agent_enum](#antineoplastic-agent-), pattern: <code>^[^\|]+(\\|[^\|]+)*$</code> | Yes | The NCit Preferred Name(s) of the Therapeutic agent(s) |
 | `THERAPY_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-) | Required IF TREATMENT_TYPE = a surgical or radiation therapy | UBERON identifier for the location within the body targeted by a therapeutic procedure |
 | `TREATMENT_INTENT_TYPE` | [TreatmentIntentTypeEnum](#treatmentintenttype) | Yes | Anticipated outcome for therapy |
-| `TREATMENT_TYPE` | [TreatmentTypeEnum](#treatmenttype), pattern: `^[^\|]+(\\|[^\|]+)*$` | Yes | Type of treatment administered |
+| `TREATMENT_TYPE` | [TreatmentTypeEnum](#treatmenttype), pattern: <code>^[^\|]+(\\|[^\|]+)*$</code> | Yes | Type of treatment administered |
 
 ### VitalStatus
 

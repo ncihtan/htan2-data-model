@@ -10,7 +10,7 @@ HTAN Digital Pathology Data Model Schema for Phase 2
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `CITATION_OR_DOI` | string, pattern: `^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10\|127)(?:\.\d{1,3}){3})(?!(?:169\.254\|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]\|2\d\|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?\|1\d\d\|2[01]\d\|22[0-3])(?:\.(?:1?\d{1,2}\|2[0-4]\d\|25[0-5])){2}(?:\.(?:[1-9]\d?\|1\d\d\|2[0-4]\d\|25[0-4]))\|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$` | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https). |
+| `CITATION_OR_DOI` | string, pattern: <code>^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10\|127)(?:\.\d{1,3}){3})(?!(?:169\.254\|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]\|2\d\|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?\|1\d\d\|2[01]\d\|22[0-3])(?:\.(?:1?\d{1,2}\|2[0-4]\d\|25[0-5])){2}(?:\.(?:[1-9]\d?\|1\d\d\|2[0-4]\d\|25[0-4]))\|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$</code> | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https). |
 | `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | Required IF DE_IDENTIFICATION_METHOD_TYPE = not 'Not Applicable' | Description of the process of removing potentially identifying data or data elements to render data into a form that does not identify individuals and where identification is not likely to take place. |
 | `DE_IDENTIFICATION_METHOD_TYPE` | [DeIdentificationMethodType](#deidentificationmethodtype) | Yes | De-identification Method Type |
 | `DE_IDENTIFICATION_SOFTWARE` | string | No | Software that was used to de-identify the images (if used) |
@@ -20,7 +20,7 @@ HTAN Digital Pathology Data Model Schema for Phase 2
 | `IMAGE_MODALITY` | [ImageModality](#imagemodality) | Yes | The method in which the images are generated. |
 | `IMAGING_EQUIPMENT_MANUFACTURER` | string | Yes | Producer of the imaging equipment that was used to generate the digital image |
 | `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging experiment |
-| `IMAGING_PROTOCOL` | string, pattern: `^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10\|127)(?:\.\d{1,3}){3})(?!(?:169\.254\|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]\|2\d\|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?\|1\d\d\|2[01]\d\|22[0-3])(?:\.(?:1?\d{1,2}\|2[0-4]\d\|25[0-5])){2}(?:\.(?:[1-9]\d?\|1\d\d\|2[0-4]\d\|25[0-4]))\|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$` | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https). |
+| `IMAGING_PROTOCOL` | string, pattern: <code>^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10\|127)(?:\.\d{1,3}){3})(?!(?:169\.254\|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]\|2\d\|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?\|1\d\d\|2[01]\d\|22[0-3])(?:\.(?:1?\d{1,2}\|2[0-4]\d\|25[0-5])){2}(?:\.(?:[1-9]\d?\|1\d\d\|2[0-4]\d\|25[0-4]))\|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$</code> | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https). |
 | `IMAGING_SOFTWARE` | string | No | The name of the software package that was used to capture, generate, and process the image |
 | `IMMERSION` | [ImmersionMedium](#immersionmedium) | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on the objective. The main types of immersion media are air, oil, and water. |
 | `LENS_NUMERICAL_APERTURE` | float | No | The numerical aperture of the lens. Floating point value > 0. |
@@ -40,7 +40,7 @@ HTAN Digital Pathology Data Model Schema for Phase 2
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `ANNOTATION_TYPE` | [AnnotationType](#annotationtype) | Required IF HAS_ANNOTATIONS = true | What types of annotation are contained in the image |
-| `FILE_FORMAT` | string, pattern: `^(ome-tiff\|tiff\|qptiff\|svs)$` | Yes | Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python. |
+| `FILE_FORMAT` | string, pattern: <code>^(ome-tiff\|tiff\|qptiff\|svs)$</code> | Yes | Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python. |
 | `HAS_ANNOTATIONS` | boolean | Yes | Does the image contain annotations |
 
 ## Enums

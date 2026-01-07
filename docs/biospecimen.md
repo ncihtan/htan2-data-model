@@ -10,7 +10,7 @@ HTAN Biospecimen Data Model Schema
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `ACQUISITION_METHOD_OTHER_SPECIFY` | string, pattern: `^.{0,100}$` | No | A custom acquisition method |
+| `ACQUISITION_METHOD_OTHER_SPECIFY` | string, pattern: <code>^.{0,100}$</code> | No | A custom acquisition method |
 | `ACQUISITION_METHOD_TYPE` | [AcquisitionMethodTypeEnum](#acquisitionmethodtype) | Yes | Records the method of acquisition or source for the specimen under consideration |
 | `ADJACENT_BIOSPECIMEN_IDS` | string | No | List of HTAN Identifiers (separated by commas) of adjacent biospecimens cut from the same sample |
 | `AGE_IN_DAYS_AT_SECTIONING` | integer | No | The age in days of a subject when a specimen tissue block was sectioned |
@@ -20,12 +20,12 @@ HTAN Biospecimen Data Model Schema
 | `BIOSPECIMEN_TYPE` | [BiospecimenTypeEnum](#biospecimentype) | Yes | Biospecimen Type |
 | `DEGREE_OF_DYSPLASIA` | [DegreeOfDysplasiaEnum](#degreeofdysplasia) | No | Information related to the presence of cells that look abnormal under a microscope but are not cancer |
 | `FIXATION_DURATION_IN_MINUTES` | integer | No | The length of time, from beginning to end, required to process or preserve biospecimens in fixative |
-| `HTAN_BIOSPECIMEN_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(B[0-9]{1,20})$` | Yes | HTAN Biospecimen ID (Primary Key) |
-| `HTAN_PARENT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$` | Yes | HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2. |
+| `HTAN_BIOSPECIMEN_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(B[0-9]{1,20})$</code> | Yes | HTAN Biospecimen ID (Primary Key) |
+| `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2. |
 | `ICD_10_DISEASE_CODE` | [Icd10DiseaseEnum](#icd10disease) | No | For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM |
 | `ICD_O_3_TISSUE_MORPHOLOGY` | [IcdO3MorphologyEnum](#icdo3morphology) | No | The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3 |
 | `LONGEST_DIMENSION` | decimal | No | Numeric value that represents the longest dimension of the sample, measured in millimeters |
-| `METHOD_OF_NUCLEIC_ACID_ISOLATION` | string, pattern: `^.{0,100}$` | No | Bulk RNA & DNA-seq specific: method used for nucleic acid isolation |
+| `METHOD_OF_NUCLEIC_ACID_ISOLATION` | string, pattern: <code>^.{0,100}$</code> | No | Bulk RNA & DNA-seq specific: method used for nucleic acid isolation |
 | `PERCENT_NECROSIS` | decimal | No | Numeric value to represent the percentage of cell death in a malignant tumor sample or specimen |
 | `PERCENT_NORMAL_CELLS` | decimal | No | Numeric value to represent the percentage of normal cell content in a malignant tumor sample or specimen |
 | `PERCENT_TUMOR_CELLS` | decimal | No | Numeric value that represents the percentage of infiltration by tumor cells in a sample |
