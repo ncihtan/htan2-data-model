@@ -306,52 +306,7 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
             f.write("|-----------|------|----------|-------------|\n")
             
             for attr_name, attr_def in sorted(common_attrs.items()):
-                required = "Yes" if attr_def.required else "No"
-                
-                # Get conditional requirements
-                conditions = get_conditional_requirements(class_def, attr_name)
-                if conditions:
-                    required = f"Required IF {', '.join(conditions)}"
-                
-                range_str = attr_def.range if attr_def.range else "string"
-                
-                # Check if range is an enum
-                enum_def = None
-                if all_enums and range_str in all_enums:
-                    enum_def = all_enums[range_str]
-                
-                if enum_def:
-                    enum_values = format_enum_values(enum_def)
-                    range_str = enum_values
-                
-                # Get pattern if exists and add to Type column
-                try:
-                    if hasattr(attr_def, 'pattern') and attr_def.pattern:
-                        pattern_val = attr_def.pattern
-                        if pattern_val:  # Make sure it's not empty
-                            # Escape special markdown characters for markdown tables
-                            # Use HTML code tags instead of backticks for better table compatibility
-                            pattern_val_escaped = pattern_val.replace("|", "\\|").replace("<", "&lt;").replace(">", "&gt;")
-                            range_str = f"{range_str}, pattern: <code>{pattern_val_escaped}</code>"
-                    elif hasattr(attr_def, 'structured_pattern') and attr_def.structured_pattern:
-                        # Handle structured patterns
-                        pattern_val = None
-                        if hasattr(attr_def.structured_pattern, 'syntax'):
-                            pattern_val = attr_def.structured_pattern.syntax
-                        elif isinstance(attr_def.structured_pattern, str):
-                            pattern_val = attr_def.structured_pattern
-                        if pattern_val:
-                            # Escape special markdown characters for markdown tables
-                            # Use HTML code tags instead of backticks for better table compatibility
-                            pattern_val_escaped = pattern_val.replace("|", "\\|").replace("<", "&lt;").replace(">", "&gt;")
-                            range_str = f"{range_str}, pattern: <code>{pattern_val_escaped}</code>"
-                except:
-                    pass  # If pattern access fails, just leave it empty
-                
-                description = attr_def.description or ""
-                description = description.replace("|", "\\|")
-                
-                f.write(f"| `{attr_name}` | {range_str} | {required} | {description} |\n")
+                write_attribute_row(attr_name, attr_def, class_def, all_enums, f)
             f.write("\n")
         
         # Show class-specific attributes
@@ -363,53 +318,7 @@ def generate_class_table(class_name, class_def, all_enums, f, is_manifest=False,
             f.write("|-----------|------|----------|-------------|\n")
             
             for attr_name, attr_def in sorted(class_attrs.items()):
-                # Get base required status
-                required = "Yes" if attr_def.required else "No"
-                
-                # Get conditional requirements
-                conditions = get_conditional_requirements(class_def, attr_name)
-                if conditions:
-                    required = f"Required IF {', '.join(conditions)}"
-                
-                range_str = attr_def.range if attr_def.range else "string"
-                
-                # Check if range is an enum
-                enum_def = None
-                if all_enums and range_str in all_enums:
-                    enum_def = all_enums[range_str]
-                
-                if enum_def:
-                    enum_values = format_enum_values(enum_def)
-                    range_str = enum_values
-                
-                # Get pattern if exists and add to Type column
-                try:
-                    if hasattr(attr_def, 'pattern') and attr_def.pattern:
-                        pattern_val = attr_def.pattern
-                        if pattern_val:  # Make sure it's not empty
-                            # Escape special markdown characters for markdown tables
-                            # Use HTML code tags instead of backticks for better table compatibility
-                            pattern_val_escaped = pattern_val.replace("|", "\\|").replace("<", "&lt;").replace(">", "&gt;")
-                            range_str = f"{range_str}, pattern: <code>{pattern_val_escaped}</code>"
-                    elif hasattr(attr_def, 'structured_pattern') and attr_def.structured_pattern:
-                        # Handle structured patterns
-                        pattern_val = None
-                        if hasattr(attr_def.structured_pattern, 'syntax'):
-                            pattern_val = attr_def.structured_pattern.syntax
-                        elif isinstance(attr_def.structured_pattern, str):
-                            pattern_val = attr_def.structured_pattern
-                        if pattern_val:
-                            # Escape special markdown characters for markdown tables
-                            # Use HTML code tags instead of backticks for better table compatibility
-                            pattern_val_escaped = pattern_val.replace("|", "\\|").replace("<", "&lt;").replace(">", "&gt;")
-                            range_str = f"{range_str}, pattern: <code>{pattern_val_escaped}</code>"
-                except:
-                    pass  # If pattern access fails, just leave it empty
-                
-                description = attr_def.description or ""
-                description = description.replace("|", "\\|")
-                
-                f.write(f"| `{attr_name}` | {range_str} | {required} | {description} |\n")
+                write_attribute_row(attr_name, attr_def, class_def, all_enums, f)
             f.write("\n")
 
 def generate_module_doc(schema_path: str, output_path: str):
