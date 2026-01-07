@@ -1,0 +1,24 @@
+/* Custom CSS to increase content width for HTAN documentation */
+
+/* Increase the max-width of the main content area */
+.wy-nav-content {
+    max-width: 1200px !important;
+}
+
+/* For wider screens, allow even more width */
+@media screen and (min-width: 1400px) {
+    .wy-nav-content {
+        max-width: 1400px !important;
+    }
+}
+
+/* Ensure tables can use the full width */
+.rst-content table.docutils {
+    width: 100%;
+}
+
+/* Make sure code blocks don't overflow */
+.rst-content pre {
+    overflow-x: auto;
+}
+
