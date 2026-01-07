@@ -20,8 +20,8 @@ HTAN Biospecimen Data Model Schema
 | `BIOSPECIMEN_TYPE` | [BiospecimenTypeEnum](#biospecimentype) | Yes | Biospecimen Type |
 | `DEGREE_OF_DYSPLASIA` | [DegreeOfDysplasiaEnum](#degreeofdysplasia) | No | Information related to the presence of cells that look abnormal under a microscope but are not cancer |
 | `FIXATION_DURATION_IN_MINUTES` | integer | No | The length of time, from beginning to end, required to process or preserve biospecimens in fixative |
-| `HTAN_BIOSPECIMEN_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$` | Yes | HTAN Biospecimen ID (Primary Key) |
-| `HTAN_PARENT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$` | Yes | HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2. |
+| `HTAN_BIOSPECIMEN_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(B[0-9]{1,20})$` | Yes | HTAN Biospecimen ID (Primary Key) |
+| `HTAN_PARENT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$` | Yes | HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2. |
 | `ICD_10_DISEASE_CODE` | [Icd10DiseaseEnum](#icd10disease) | No | For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM |
 | `ICD_O_3_TISSUE_MORPHOLOGY` | [IcdO3MorphologyEnum](#icdo3morphology) | No | The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3 |
 | `LONGEST_DIMENSION` | decimal | No | Numeric value that represents the longest dimension of the sample, measured in millimeters |

@@ -12,8 +12,8 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 |-----------|------|----------|-------------|
 | `FILENAME` | string, pattern: `^.+[\\/]\S*$` | Yes | Name of the file |
 | `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
-| `HTAN_DATA_FILE_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$` | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$` | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_DATA_FILE_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$` | Yes | HTAN Data File ID (Primary Key) |
+| `HTAN_PARENT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$` | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
 ### SpatialData
 
@@ -69,7 +69,7 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 | `PLATFORM` | [PlatformLevel3](#platformlevel3) | Yes | Name of the platform used to generate the data |
 | `PORTAL_PREVIEW_FILE` | string | No | Relative path of HTML preview in bundle if present |
 | `PROTEIN_MEASURED` | boolean | Yes | Whether protein was measured |
-| `PROTOCOL_LINK` | string, pattern: `^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$` | No | URL to protocol documentation |
+| `PROTOCOL_LINK` | string, pattern: `^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10\|127)(?:\.\d{1,3}){3})(?!(?:169\.254\|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]\|2\d\|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?\|1\d\d\|2[01]\d\|22[0-3])(?:\.(?:1?\d{1,2}\|2[0-4]\d\|25[0-5])){2}(?:\.(?:[1-9]\d?\|1\d\d\|2[0-4]\d\|25[0-4]))\|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$` | No | URL to protocol documentation |
 | `QC_FEATURE_NUMBER` | integer | Yes | Features (e.g. spots or bins) under tissue |
 | `QC_MEAN_READS_PER_FEATURE` | float | Yes | Mean reads per feature |
 | `QC_SPATIAL_UNIT` | [QCSpatialUnit](#qcspatialunit) | Yes | Type of spatial unit |
@@ -79,7 +79,7 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 | `RNA_MEASURED` | boolean | Yes | Whether RNA was measured |
 | `RUN_ID` | string | No | A unique identifier for this individual run (typically associated with a single slide) of the spatial transcriptomic processing workflow |
 | `SAME_SECTION_IMAGING_CHANNELS` | string | Required IF SAME_SECTION_IMAGING_MODALITY = 'fluorescence' | Antigens targeted in same section fluorescence imaging |
-| `SAME_SECTION_IMAGING_ID` | string, pattern: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$` | No | HTAN ID of data file that represents same section imaging |
+| `SAME_SECTION_IMAGING_ID` | string, pattern: `^(HTA([1-9]\|1[0-6]))_((EXT)?([0-9]\d*\|0000))_([0-9]\d*\|0000)$` | No | HTAN ID of data file that represents same section imaging |
 | `SAME_SECTION_IMAGING_MODALITY` | [SameSectionImagingModality](#samesectionimagingmodality) | No | Was same section imaging performed |
 | `SEQUENCING_CONFIGURATION` | string | Required IF SPATIAL_ASSAY_TYPE = 'capture-based' | Read and index setup |
 | `SEQUENCING_DEPTH` | string | Required IF SPATIAL_ASSAY_TYPE = 'capture-based' | Sequencing depth |
@@ -119,10 +119,10 @@ HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `GENE_ID` | string, pattern: `^(ENSG\d+|\d+)$` | Yes | Stable Ensembl gene identifier (e.g., ENSG00000214114, ENSG00000121879). String matching ENSG\\d+ or digits |
+| `GENE_ID` | string, pattern: `^(ENSG\d+\|\d+)$` | Yes | Stable Ensembl gene identifier (e.g., ENSG00000214114, ENSG00000121879). String matching ENSG\\d+ or digits |
 | `GENE_SYMBOL` | string, pattern: `^[A-Za-z0-9_\-]+(@)?$` | Yes | HGNC-approved Gene symbol (e.g., MYC, PIK3C) |
 | `HGNC_VERSION` | string, pattern: `^\d{4}-\d{2}-\d{2}$` | Yes | Version of the HGNC used, indicated with the date of the HGNC reference (e.g., 2025-08-01) |
-| `HTAN_PANEL_ID` | string, pattern: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$` | Yes | Unique identifier for the panel |
+| `HTAN_PANEL_ID` | string, pattern: `^(HTA([1-9]\|1[0-6]))_((EXT)?([0-9]\d*\|0000))_([0-9]\d*\|0000)$` | Yes | Unique identifier for the panel |
 | `USER_GENE_NAME` | string | No | Optional user-defined name for the Gene |
 
 ## Enums

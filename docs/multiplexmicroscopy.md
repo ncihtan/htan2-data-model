@@ -12,8 +12,8 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 |-----------|------|----------|-------------|
 | `FILENAME` | string, pattern: `^.+[\\/]\S*$` | Yes | Name of the file |
 | `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
-| `HTAN_DATA_FILE_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$` | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$` | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_DATA_FILE_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$` | Yes | HTAN Data File ID (Primary Key) |
+| `HTAN_PARENT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$` | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
 ### MultiplexMicroscopyData
 
@@ -32,7 +32,7 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `CHANNEL_METADATA_ID` | string, pattern: `^syn\d+$` | Yes | Unique identifier specifying the location of the required channel metadata (Synapse ID) |
-| `FILE_FORMAT` | string, pattern: `^(ome-tiff|tiff|qptiff|svs)$` | Yes | Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python. |
+| `FILE_FORMAT` | string, pattern: `^(ome-tiff\|tiff\|qptiff\|svs)$` | Yes | Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python. |
 | `IMAGING_ASSAY_TYPE` | [ImagingAssayType](#imagingassaytype) | Yes | Type of imaging assay |
 | `PHYSICAL_SIZE_X` | float | Yes | Physical size of a single pixel in the x dimension. In microns. |
 | `PHYSICAL_SIZE_Y` | float | Yes | Physical size of a single pixel in the y dimension. In microns. |
@@ -51,7 +51,7 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILE_FORMAT` | string, pattern: `^(ome-tiff|ome\.tiff|tiff|tif)$` | Yes | Format of the segmentation mask file (should be ome-tiff for Level 3) |
+| `FILE_FORMAT` | string, pattern: `^(ome-tiff\|ome\.tiff\|tiff\|tif)$` | Yes | Format of the segmentation mask file (should be ome-tiff for Level 3) |
 | `SEGMENTATION_ANNOTATION_TYPE` | string | No | Type of objects segmented (e.g., Cell, Nucleus, Tissue, ROI) |
 | `SEGMENTATION_METHOD` | string | Yes | Method used for segmentation (e.g., CellPose, StarDist, Ilastik, manual annotation) |
 | `SEGMENTATION_PARAMETERS` | string | No | Parameters used for segmentation (e.g., model name, threshold values, preprocessing steps) |
@@ -70,7 +70,7 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 | `FEATURE_EXTRACTION_WORKFLOW_TYPE` | string | Yes | Type of workflow used to extract features from segmented objects |
 | `FEATURE_EXTRACTION_WORKFLOW_URL` | string | No | URL or link to the feature extraction workflow used |
 | `FEATURE_EXTRACTION_WORKFLOW_VERSION` | string | No | Version of the feature extraction workflow |
-| `FILE_FORMAT` | string, pattern: `^(csv|h5ad)$` | Yes | Format of the feature table file (csv or h5ad for Level 4) |
+| `FILE_FORMAT` | string, pattern: `^(csv\|h5ad)$` | Yes | Format of the feature table file (csv or h5ad for Level 4) |
 | `MATRIX_TYPE` | [MatrixTypeEnum](#matrixtype) | Yes | Type of feature matrix (raw counts, normalized, etc.) |
 | `NUMBER_OF_FEATURES` | integer | No | Number of features (markers/channels) in the feature matrix |
 | `NUMBER_OF_OBJECTS` | integer | No | Number of segmented objects (cells, nuclei, etc.) in the feature matrix |

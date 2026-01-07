@@ -10,7 +10,7 @@ HTAN Base Imaging Data Model - Common attributes shared across all imaging modul
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `CITATION_OR_DOI` | string, pattern: `^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$` | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https). |
+| `CITATION_OR_DOI` | string, pattern: `^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10\|127)(?:\.\d{1,3}){3})(?!(?:169\.254\|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]\|2\d\|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?\|1\d\d\|2[01]\d\|22[0-3])(?:\.(?:1?\d{1,2}\|2[0-4]\d\|25[0-5])){2}(?:\.(?:[1-9]\d?\|1\d\d\|2[0-4]\d\|25[0-4]))\|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$` | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https). |
 | `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | Required IF DE_IDENTIFICATION_METHOD_TYPE = not 'Not Applicable' | Description of the process of removing potentially identifying data or data elements to render data into a form that does not identify individuals and where identification is not likely to take place. |
 | `DE_IDENTIFICATION_METHOD_TYPE` | [DeIdentificationMethodType](#deidentificationmethodtype) | Yes | De-identification Method Type |
 | `DE_IDENTIFICATION_SOFTWARE` | string | No | Software that was used to de-identify the images (if used) |
@@ -20,7 +20,7 @@ HTAN Base Imaging Data Model - Common attributes shared across all imaging modul
 | `IMAGE_MODALITY` | [ImageModality](#imagemodality) | Yes | The method in which the images are generated. |
 | `IMAGING_EQUIPMENT_MANUFACTURER` | string | Yes | Producer of the imaging equipment that was used to generate the digital image |
 | `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging experiment |
-| `IMAGING_PROTOCOL` | string, pattern: `^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$` | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https). |
+| `IMAGING_PROTOCOL` | string, pattern: `^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10\|127)(?:\.\d{1,3}){3})(?!(?:169\.254\|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]\|2\d\|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?\|1\d\d\|2[01]\d\|22[0-3])(?:\.(?:1?\d{1,2}\|2[0-4]\d\|25[0-5])){2}(?:\.(?:[1-9]\d?\|1\d\d\|2[0-4]\d\|25[0-4]))\|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$` | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https). |
 | `IMAGING_SOFTWARE` | string | No | The name of the software package that was used to capture, generate, and process the image |
 | `IMMERSION` | [ImmersionMedium](#immersionmedium) | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on the objective. The main types of immersion media are air, oil, and water. |
 | `LENS_NUMERICAL_APERTURE` | float | No | The numerical aperture of the lens. Floating point value > 0. |
@@ -41,8 +41,8 @@ HTAN Base Imaging Data Model - Common attributes shared across all imaging modul
 |-----------|------|----------|-------------|
 | `FILENAME` | string, pattern: `^.+[\\/]\S*$` | Yes | Name of the file |
 | `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
-| `HTAN_DATA_FILE_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$` | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$` | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_DATA_FILE_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$` | Yes | HTAN Data File ID (Primary Key) |
+| `HTAN_PARENT_ID` | string, pattern: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$` | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
 ## Enums
 
