@@ -31,10 +31,10 @@ HTAN Clinical Data Model Schema
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `ETHNIC_GROUP` | [EthnicGroupEnum](#ethnicgroupenum-ethnicgroup) | Yes | Ethnic group of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE) |
-| `GENDER_IDENTITY` | [GenderIdentityEnum](#genderidentityenum-genderidentity) | Yes | Gender identity of the participant (caDSR:2192202) (Aligns to CDRC Standard CDE) |
-| `RACE` | [RaceEnum](#raceenum-race) | Yes | Race of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE) |
-| `SEX` | [SexEnum](#sexenum-sex) | Yes | Sex of the participant (caDSR:2192203) (Aligns to CDRC Standard CDE) |
+| `ETHNIC_GROUP` | [EthnicGroupEnum](#ethnicgroupenum) | Yes | Ethnic group of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE) |
+| `GENDER_IDENTITY` | [GenderIdentityEnum](#genderidentityenum) | Yes | Gender identity of the participant (caDSR:2192202) (Aligns to CDRC Standard CDE) |
+| `RACE` | [RaceEnum](#raceenum) | Yes | Race of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE) |
+| `SEX` | [SexEnum](#sexenum) | Yes | Sex of the participant (caDSR:2192203) (Aligns to CDRC Standard CDE) |
 
 ## Diagnosis
 
@@ -44,17 +44,17 @@ HTAN Clinical Data Model Schema
 |-----------|------|----------|-------------|
 | `AGE_IN_DAYS_AT_DIAGNOSIS` | integer | Yes | Age in days at which the diagnosis was made (caDSR:2192202) (Aligns to CDRC Standard CDE) |
 | `AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS` | integer | Yes | Age in days at which the last known disease status was recorded (caDSR:2192203) (Aligns to CDRC Standard CDE) |
-| `AJCC_STAGING_SYSTEM_EDITION` | [AJCCStagingSystemEditionEnum](#ajccstagingsystemeditionenum-ajccstagingsystemedition) | Required IF TUMOR_STAGE has any stage value | Edition of AJCC staging system used (caDSR:2192209) (Aligns to CDRC Standard CDE) |
-| `CLINICAL_M_STAGE` | [ClinicalMStageEnum](#clinicalmstageenum-clinicalmstage) | Required IF TUMOR_STAGE has any stage value | Clinical M stage of the tumor (caDSR:2192208) (Aligns to CDRC Standard CDE) |
-| `CLINICAL_N_STAGE` | [ClinicalNStageEnum](#clinicalnstageenum-clinicalnstage) | Required IF TUMOR_STAGE has any stage value | Clinical N stage of the tumor (caDSR:2192207) (Aligns to CDRC Standard CDE) |
-| `CLINICAL_T_STAGE` | [ClinicalTStageEnum](#clinicaltstageenum-clinicaltstage) | Required IF TUMOR_STAGE has any stage value | Clinical T stage of the tumor (caDSR:2192206) (Aligns to CDRC Standard CDE) |
-| `LAST_KNOWN_DISEASE_STATUS` | [LastKnownDiseaseStatusEnum](#lastknowndiseasestatusenum-lastknowndiseasestatus) | Yes | Last known disease status (caDSR:2192210) (Aligns to CDRC Standard CDE) |
-| `METASTASIS_AT_DIAGNOSIS` | [MetastasisAtDiagnosisEnum](#metastasisatdiagnosisenum-metastasisatdiagnosis) | Required IF TUMOR_STAGE = Stage IV or any substage | Presence of metastasis at diagnosis (caDSR:2192212) (Aligns to CDRC Standard CDE) |
-| `METHOD_OF_DIAGNOSIS` | [MethodOfDiagnosisEnum](#methodofdiagnosisenum-methodofdiagnosis) | Yes | Method used to make the diagnosis (caDSR:2192213) (Aligns to CDRC Standard CDE) |
+| `AJCC_STAGING_SYSTEM_EDITION` | [AJCCStagingSystemEditionEnum](#ajccstagingsystemeditionenum) | Required IF TUMOR_STAGE has any stage value | Edition of AJCC staging system used (caDSR:2192209) (Aligns to CDRC Standard CDE) |
+| `CLINICAL_M_STAGE` | [ClinicalMStageEnum](#clinicalmstageenum) | Required IF TUMOR_STAGE has any stage value | Clinical M stage of the tumor (caDSR:2192208) (Aligns to CDRC Standard CDE) |
+| `CLINICAL_N_STAGE` | [ClinicalNStageEnum](#clinicalnstageenum) | Required IF TUMOR_STAGE has any stage value | Clinical N stage of the tumor (caDSR:2192207) (Aligns to CDRC Standard CDE) |
+| `CLINICAL_T_STAGE` | [ClinicalTStageEnum](#clinicaltstageenum) | Required IF TUMOR_STAGE has any stage value | Clinical T stage of the tumor (caDSR:2192206) (Aligns to CDRC Standard CDE) |
+| `LAST_KNOWN_DISEASE_STATUS` | [LastKnownDiseaseStatusEnum](#lastknowndiseasestatusenum) | Yes | Last known disease status (caDSR:2192210) (Aligns to CDRC Standard CDE) |
+| `METASTASIS_AT_DIAGNOSIS` | [MetastasisAtDiagnosisEnum](#metastasisatdiagnosisenum) | Required IF TUMOR_STAGE = Stage IV or any substage | Presence of metastasis at diagnosis (caDSR:2192212) (Aligns to CDRC Standard CDE) |
+| `METHOD_OF_DIAGNOSIS` | [MethodOfDiagnosisEnum](#methodofdiagnosisenum) | Yes | Method used to make the diagnosis (caDSR:2192213) (Aligns to CDRC Standard CDE) |
 | `PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID` | string | Yes | NCI Thesaurus ID for the primary diagnosis (caDSR:2192201) (Aligns to CDRC Standard CDE) |
-| `TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum-tissue-or-organ-of-origin-uberon-enum) | Yes | UBERON code for the tissue or organ of origin (caDSR:2192205) (Aligns to CDRC Standard CDE) |
-| `TUMOR_CLASSIFICATION_CATEGORY` | [TumorClassificationCategoryEnum](#tumorclassificationcategoryenum-tumorclassificationcategory) | Yes | Classification category of the tumor (caDSR:2192211) (Aligns to CDRC Standard CDE) |
-| `TUMOR_GRADE` | [TumorGradeEnum](#tumorgradeenum-tumorgrade) | Yes | The grade of the tumor (caDSR:2192203) (Aligns to CDRC Standard CDE) |
+| `TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum) | Yes | UBERON code for the tissue or organ of origin (caDSR:2192205) (Aligns to CDRC Standard CDE) |
+| `TUMOR_CLASSIFICATION_CATEGORY` | [TumorClassificationCategoryEnum](#tumorclassificationcategoryenum) | Yes | Classification category of the tumor (caDSR:2192211) (Aligns to CDRC Standard CDE) |
+| `TUMOR_GRADE` | [TumorGradeEnum](#tumorgradeenum) | Yes | The grade of the tumor (caDSR:2192203) (Aligns to CDRC Standard CDE) |
 
 ## Exposure
 
@@ -62,11 +62,11 @@ HTAN Clinical Data Model Schema
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `ALCOHOL_HISTORY_INDICATOR` | [AlcoholHistoryIndicatorEnum](#alcoholhistoryindicatorenum-alcoholhistoryindicator) | Yes | Alcohol history indicator of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE) |
-| `ENVIRONMENTAL_EXPOSURE` | [EnvironmentalExposureEnum](#environmentalexposureenum-environmentalexposure) | Yes | Environmental exposure of the participant (caDSR:2192205) (Aligns to CDRC Standard CDE) |
-| `ENVIRONMENTAL_EXPOSURE_TYPE` | [EnvironmentalExposureTypeEnum](#environmentalexposuretypeenum-environmentalexposuretype) | Required IF ENVIRONMENTAL_EXPOSURE = Yes | Type of environmental exposure (caDSR:2192206) (Aligns to CDRC Standard CDE) |
+| `ALCOHOL_HISTORY_INDICATOR` | [AlcoholHistoryIndicatorEnum](#alcoholhistoryindicatorenum) | Yes | Alcohol history indicator of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE) |
+| `ENVIRONMENTAL_EXPOSURE` | [EnvironmentalExposureEnum](#environmentalexposureenum) | Yes | Environmental exposure of the participant (caDSR:2192205) (Aligns to CDRC Standard CDE) |
+| `ENVIRONMENTAL_EXPOSURE_TYPE` | [EnvironmentalExposureTypeEnum](#environmentalexposuretypeenum) | Required IF ENVIRONMENTAL_EXPOSURE = Yes | Type of environmental exposure (caDSR:2192206) (Aligns to CDRC Standard CDE) |
 | `PACK_YEARS_SMOKED` | decimal | Required IF SMOKING_HISTORY = Current smoker or Former smoker | Number of pack years the participant has smoked (caDSR:2192203) (Aligns to CDRC Standard CDE) |
-| `SMOKING_HISTORY` | [SmokingHistoryEnum](#smokinghistoryenum-smokinghistory) | Yes | Smoking history of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE) |
+| `SMOKING_HISTORY` | [SmokingHistoryEnum](#smokinghistoryenum) | Yes | Smoking history of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE) |
 | `YEARS_SMOKED` | integer | Required IF SMOKING_HISTORY = Current smoker or Former smoker | Number of years the participant has smoked (caDSR:2192202) (Aligns to CDRC Standard CDE) |
 
 ## FamilyHistory
@@ -75,7 +75,7 @@ HTAN Clinical Data Model Schema
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FAMILY_MEMBER_CANCER_HISTORY` | [YesNoUnknownNotReportedEnum](#yesnounknownnotreportedenum-yesnounknownnotreported) | No | Has a family member been diagnosed with cancer? |
+| `FAMILY_MEMBER_CANCER_HISTORY` | [YesNoUnknownNotReportedEnum](#yesnounknownnotreportedenum) | No | Has a family member been diagnosed with cancer? |
 | `RELATIVES_WITH_CANCER_HISTORY` | integer | Required IF FAMILY_MEMBER_CANCER_HISTORY = 'Yes' | Number of first degree relatives with cancer history |
 
 ## FollowUp
@@ -86,13 +86,13 @@ HTAN Clinical Data Model Schema
 |-----------|------|----------|-------------|
 | `AGE_IN_DAYS_AT_FOLLOWUP` | integer | Yes | Age in days at follow-up |
 | `AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE` | integer | Required IF PROGRESSION_OR_RECURRENCE = Yes | Age in days at progression or recurrence |
-| `DISEASE_RESPONSE` | [DiseaseResponseEnum](#diseaseresponseenum-diseaseresponse) | Yes | Response to treatment |
-| `ECOG_PERFORMANCE_STATUS` | [ECOGPerformanceStatusEnum](#ecogperformancestatusenum-ecogperformancestatus) | Yes | ECOG performance status |
-| `EVIDENCE_OF_RECURRENCE_TYPE` | [EvidenceOfRecurrenceTypeEnum](#evidenceofrecurrencetypeenum-evidenceofrecurrencetype) | Required IF PROGRESSION_OR_RECURRENCE = Yes | Type of evidence for recurrence |
-| `MENOPAUSE_STATUS` | [MenopauseStatusEnum](#menopausestatusenum-menopausestatus) | No | Menopause status |
-| `PROGRESSION_OR_RECURRENCE` | [ProgressionOrRecurrenceEnum](#progressionorrecurrenceenum-progressionorrecurrence) | Yes | Indicates whether the disease has progressed or recurred |
-| `PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum-tissue-or-organ-of-origin-uberon-enum) | Required IF PROGRESSION_OR_RECURRENCE = Yes | UBERON code for the anatomic site of progression or recurrence |
-| `PROGRESSION_OR_RECURRENCE_TYPE` | [ProgressionTypeEnum](#progressiontypeenum-progressiontype) | Required IF PROGRESSION_OR_RECURRENCE = Yes | Type of progression or recurrence |
+| `DISEASE_RESPONSE` | [DiseaseResponseEnum](#diseaseresponseenum) | Yes | Response to treatment |
+| `ECOG_PERFORMANCE_STATUS` | [ECOGPerformanceStatusEnum](#ecogperformancestatusenum) | Yes | ECOG performance status |
+| `EVIDENCE_OF_RECURRENCE_TYPE` | [EvidenceOfRecurrenceTypeEnum](#evidenceofrecurrencetypeenum) | Required IF PROGRESSION_OR_RECURRENCE = Yes | Type of evidence for recurrence |
+| `MENOPAUSE_STATUS` | [MenopauseStatusEnum](#menopausestatusenum) | No | Menopause status |
+| `PROGRESSION_OR_RECURRENCE` | [ProgressionOrRecurrenceEnum](#progressionorrecurrenceenum) | Yes | Indicates whether the disease has progressed or recurred |
+| `PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum) | Required IF PROGRESSION_OR_RECURRENCE = Yes | UBERON code for the anatomic site of progression or recurrence |
+| `PROGRESSION_OR_RECURRENCE_TYPE` | [ProgressionTypeEnum](#progressiontypeenum) | Required IF PROGRESSION_OR_RECURRENCE = Yes | Type of progression or recurrence |
 
 ## MolecularTest
 
@@ -103,20 +103,20 @@ HTAN Clinical Data Model Schema
 | `AA_CHANGE` | string | Required IF MOLECULAR_ANALYSIS_RESULT = Pathogenic variant detected or Variant of uncertain significance detected | Amino acid change (caDSR:2192207) (Aligns to CDRC Standard CDE) |
 | `AGE_IN_DAYS_AT_MOLECULAR_TEST_START` | integer | Yes | Age in days at molecular test start (caDSR:2192202) (Aligns to CDRC Standard CDE) |
 | `AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP` | integer | Required IF MOLECULAR_ANALYSIS_METHOD = DNA Sequencing or RNA Sequencing | Age in days at molecular test stop (caDSR:2192203) (Aligns to CDRC Standard CDE) |
-| `CLINICAL_BIOSPECIMEN_TYPE` | [ClinicalBiospecimenTypeEnum](#clinicalbiospecimentypeenum-clinicalbiospecimentype) | Yes | Clinical biospecimen type (caDSR:2192208) (Aligns to CDRC Standard CDE) |
+| `CLINICAL_BIOSPECIMEN_TYPE` | [ClinicalBiospecimenTypeEnum](#clinicalbiospecimentypeenum) | Yes | Clinical biospecimen type (caDSR:2192208) (Aligns to CDRC Standard CDE) |
 | `COPY_NUMBER` | integer | Required IF MOLECULAR_ANALYSIS_RESULT = Copy number variant detected | Copy number (caDSR:2192209) (Aligns to CDRC Standard CDE) |
 | `EXON` | integer | Required IF MOLECULAR_ANALYSIS_RESULT = Pathogenic variant detected or Variant of uncertain significance detected | Exon number (caDSR:2192210) (Aligns to CDRC Standard CDE) |
-| `GENE_SYMBOL` | [gene_symbol_enum](#gene-symbol-enum-gene-symbol-enum) | Yes | Gene symbol (caDSR:2192204) (Aligns to CDRC Standard CDE) |
-| `MOLECULAR_ANALYSIS_METHOD` | [MolecularAnalysisMethodEnum](#molecularanalysismethodenum-molecularanalysismethod) | Yes | Molecular analysis method (caDSR:2192205) (Aligns to CDRC Standard CDE) |
+| `GENE_SYMBOL` | [gene_symbol_enum](#gene-symbol-enum) | Yes | Gene symbol (caDSR:2192204) (Aligns to CDRC Standard CDE) |
+| `MOLECULAR_ANALYSIS_METHOD` | [MolecularAnalysisMethodEnum](#molecularanalysismethodenum) | Yes | Molecular analysis method (caDSR:2192205) (Aligns to CDRC Standard CDE) |
 | `MOLECULAR_ANALYSIS_RESULT` | string | Yes | Molecular analysis result (caDSR:2192206) (Aligns to CDRC Standard CDE) |
-| `MOLECULAR_CONSEQUENCE` | [MolecularConsequenceEnum](#molecularconsequenceenum-molecularconsequence) | Required IF MOLECULAR_ANALYSIS_RESULT = Pathogenic variant detected or Variant of uncertain significance detected | Molecular consequence (caDSR:2192211) (Aligns to CDRC Standard CDE) |
-| `PATHOGENICITY` | [PathogenicityEnum](#pathogenicityenum-pathogenicity) | Required IF MOLECULAR_ANALYSIS_RESULT = Pathogenic variant detected or Variant of uncertain significance detected | Pathogenicity (caDSR:2192212) (Aligns to CDRC Standard CDE) |
-| `TEST_ANALYTE_TYPE` | [TestAnalyteTypeEnum](#testanalytetypeenum-testanalytetype) | Required IF MOLECULAR_ANALYSIS_METHOD = DNA Sequencing or RNA Sequencing | Test analyte type (caDSR:2192213) (Aligns to CDRC Standard CDE) |
+| `MOLECULAR_CONSEQUENCE` | [MolecularConsequenceEnum](#molecularconsequenceenum) | Required IF MOLECULAR_ANALYSIS_RESULT = Pathogenic variant detected or Variant of uncertain significance detected | Molecular consequence (caDSR:2192211) (Aligns to CDRC Standard CDE) |
+| `PATHOGENICITY` | [PathogenicityEnum](#pathogenicityenum) | Required IF MOLECULAR_ANALYSIS_RESULT = Pathogenic variant detected or Variant of uncertain significance detected | Pathogenicity (caDSR:2192212) (Aligns to CDRC Standard CDE) |
+| `TEST_ANALYTE_TYPE` | [TestAnalyteTypeEnum](#testanalytetypeenum) | Required IF MOLECULAR_ANALYSIS_METHOD = DNA Sequencing or RNA Sequencing | Test analyte type (caDSR:2192213) (Aligns to CDRC Standard CDE) |
 | `TEST_RESULT` | string | Yes | Test result (caDSR:2192215) (Aligns to CDRC Standard CDE) |
 | `TEST_UNITS` | string | Required IF MOLECULAR_ANALYSIS_RESULT = Copy number variant detected | Test units (caDSR:2192214) (Aligns to CDRC Standard CDE) |
 | `TIMEPOINT_LABEL` | string | Yes | Label for the timepoint (caDSR:2192201) (Aligns to CDRC Standard CDE) |
-| `VARIANT_ORIGIN` | [VariantOriginEnum](#variantoriginenum-variantorigin) | Yes | Variant origin (caDSR:2192216) (Aligns to CDRC Standard CDE) |
-| `VARIANT_TYPE` | [VariantTypeEnum](#varianttypeenum-varianttype) | Yes | Variant type (caDSR:2192217) (Aligns to CDRC Standard CDE) |
+| `VARIANT_ORIGIN` | [VariantOriginEnum](#variantoriginenum) | Yes | Variant origin (caDSR:2192216) (Aligns to CDRC Standard CDE) |
+| `VARIANT_TYPE` | [VariantTypeEnum](#varianttypeenum) | Yes | Variant type (caDSR:2192217) (Aligns to CDRC Standard CDE) |
 
 ## Therapy
 
@@ -128,14 +128,14 @@ HTAN Clinical Data Model Schema
 | `AGE_IN_DAYS_AT_TREATMENT_START` | integer | Yes | The age in days of the subject at the time that this treatment was started |
 | `INITIAL_DISEASE_STATUS` | string | Yes | Status of the individual's malignancy when the treatment began |
 | `NUMBER_OF_CYCLES` | integer | Required IF TREATMENT_TYPE = pharmacotherapy | Number of treatment cycles administered |
-| `OFF_TREATMENT_REASON` | [OffTreatmentReasonEnum](#offtreatmentreasonenum-offtreatmentreason) | Required IF AGE_IN_DAYS_AT_TREATMENT_END is provided | Reason for stopping treatment |
-| `PHARMACOTHERAPY_TYPE` | [PharmacotherapyTypeEnum](#pharmacotherapytypeenum-pharmacotherapytype) | Yes | Whether single or combination pharmacotherapy was used |
-| `REGIMEN_OR_LINE_OF_THERAPY` | [RegimenOrLineOfTherapyEnum](#regimenorlineoftherapyenum-regimenorlineoftherapy) | Required IF TREATMENT_TYPE = pharmacotherapy | Line of therapy |
+| `OFF_TREATMENT_REASON` | [OffTreatmentReasonEnum](#offtreatmentreasonenum) | Required IF AGE_IN_DAYS_AT_TREATMENT_END is provided | Reason for stopping treatment |
+| `PHARMACOTHERAPY_TYPE` | [PharmacotherapyTypeEnum](#pharmacotherapytypeenum) | Yes | Whether single or combination pharmacotherapy was used |
+| `REGIMEN_OR_LINE_OF_THERAPY` | [RegimenOrLineOfTherapyEnum](#regimenorlineoftherapyenum) | Required IF TREATMENT_TYPE = pharmacotherapy | Line of therapy |
 | `RESPONSE` | string | Required IF AGE_IN_DAYS_AT_TREATMENT_END is provided | Response to treatment |
-| `THERAPEUTIC_AGENTS` | [antineoplastic_agent_enum](#antineoplastic-agent-enum-antineoplastic-agent-enum), pattern: <code>^[^\|]+(\\|[^\|]+)*$</code> | Yes | The NCit Preferred Name(s) of the Therapeutic agent(s) |
-| `THERAPY_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum-tissue-or-organ-of-origin-uberon-enum) | Required IF TREATMENT_TYPE = a surgical or radiation therapy | UBERON identifier for the location within the body targeted by a therapeutic procedure |
-| `TREATMENT_INTENT_TYPE` | [TreatmentIntentTypeEnum](#treatmentintenttypeenum-treatmentintenttype) | Yes | Anticipated outcome for therapy |
-| `TREATMENT_TYPE` | [TreatmentTypeEnum](#treatmenttypeenum-treatmenttype), pattern: <code>^[^\|]+(\\|[^\|]+)*$</code> | Yes | Type of treatment administered |
+| `THERAPEUTIC_AGENTS` | [antineoplastic_agent_enum](#antineoplastic-agent-enum), pattern: <code>^[^\|]+(\\|[^\|]+)*$</code> | Yes | The NCit Preferred Name(s) of the Therapeutic agent(s) |
+| `THERAPY_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum) | Required IF TREATMENT_TYPE = a surgical or radiation therapy | UBERON identifier for the location within the body targeted by a therapeutic procedure |
+| `TREATMENT_INTENT_TYPE` | [TreatmentIntentTypeEnum](#treatmentintenttypeenum) | Yes | Anticipated outcome for therapy |
+| `TREATMENT_TYPE` | [TreatmentTypeEnum](#treatmenttypeenum), pattern: <code>^[^\|]+(\\|[^\|]+)*$</code> | Yes | Type of treatment administered |
 
 ## VitalStatus
 
@@ -144,9 +144,9 @@ HTAN Clinical Data Model Schema
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `AGE_IN_DAYS_AT_DEATH` | integer | Required IF VITAL_STATUS = Deceased | Age in days at death (caDSR:2192202) (Aligns to CDRC Standard CDE) |
-| `CAUSE_OF_DEATH` | [CauseOfDeathEnum](#causeofdeathenum-causeofdeath) | Required IF VITAL_STATUS = Deceased | Cause of death (caDSR:2192203) (Aligns to CDRC Standard CDE) |
-| `CAUSE_OF_DEATH_SOURCE` | [CauseOfDeathSourceEnum](#causeofdeathsourceenum-causeofdeathsource) | Required IF VITAL_STATUS = Deceased | Source of cause of death (caDSR:2192204) (Aligns to CDRC Standard CDE) |
-| `VITAL_STATUS` | [VitalStatusEnum](#vitalstatusenum-vitalstatus) | Yes | Vital status of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE) |
+| `CAUSE_OF_DEATH` | [CauseOfDeathEnum](#causeofdeathenum) | Required IF VITAL_STATUS = Deceased | Cause of death (caDSR:2192203) (Aligns to CDRC Standard CDE) |
+| `CAUSE_OF_DEATH_SOURCE` | [CauseOfDeathSourceEnum](#causeofdeathsourceenum) | Required IF VITAL_STATUS = Deceased | Source of cause of death (caDSR:2192204) (Aligns to CDRC Standard CDE) |
+| `VITAL_STATUS` | [VitalStatusEnum](#vitalstatusenum) | Yes | Vital status of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE) |
 
 ## Enums
 

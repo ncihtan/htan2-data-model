@@ -28,15 +28,11 @@ def format_enum_values(enum_def, max_inline=5):
         return ""
     
     # Always link to enum section for cleaner representation
-    # Sphinx/MyST auto-generates anchors from headings in format: {enum-name-lowercase}-{heading-text-lowercase}
-    # For "EthnicGroupEnum" heading, Sphinx generates anchor like "ethnicgroupenum-ethnicgroup"
-    # So we use the full enum name (lowercase, with dashes) which should match the first part
+    # MyST with myst_heading_anchors = 2 generates anchors from headings
+    # For heading "### EthnicGroupEnum", MyST generates anchor "ethnicgroupenum" (lowercase, no special chars)
+    # The anchor is just the heading text converted to lowercase with underscores/dashes preserved
     enum_anchor = enum_def.name.lower().replace('_', '-')
-    # Sphinx seems to append the heading text without "Enum", so we match that pattern
-    # Actually, let's use the format that matches what Sphinx generates: enum-name + "-" + heading-without-enum
-    heading_without_enum = enum_def.name.replace('Enum', '').lower().replace('_', '-')
-    full_anchor = f"{enum_anchor}-{heading_without_enum}"
-    return f"[{enum_def.name}](#{full_anchor})"
+    return f"[{enum_def.name}](#{enum_anchor})"
 
 def resolve_inheritance_chain(class_def, all_classes, base_dir, visited=None):
     """Resolve inheritance chain and collect all attributes from parent classes.
