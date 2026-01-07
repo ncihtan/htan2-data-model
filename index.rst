@@ -38,7 +38,6 @@ Reference
    :maxdepth: 1
 
    :self:
-   docs/identifiers
 
 Modules
 -------
