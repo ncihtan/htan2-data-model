@@ -9,16 +9,6 @@ This documentation describes the HTAN data model, including required metadata at
 
 This documentation provides comprehensive information about each module in the HTAN Phase 2 Data Model. Each module page lists **all attributes you need to fill out**, including inherited attributes from base modules.
 
-Data Model Architecture
-------------------------
-
-The HTAN2 data model is built using **LinkML**, a modeling language for schemas that generates Python data model classes and JSON schemas. The model follows a modular architecture with clear separation of concerns:
-
-.. image:: modules/CoreFile/core_file_inheritance.png
-   :alt: HTAN2 Module Inheritance Diagram
-
-The diagram above illustrates the separation between **Record-Based Modules** (Clinical, Biospecimen) and **File-Based Modules** (WES, Digital Pathology, etc.), with the **Core File Module** providing universal attributes for all file-based modules.
-
 Getting Started
 ---------------
 
@@ -41,15 +31,6 @@ First, determine whether your data is **file-based** or **record-based**:
 
 Each module page is self-contained and lists all attributes you need to fill out, so you don't need to navigate between multiple pages.
 
-Contents
---------
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   :self:
-
 Reference
 ----------
 
@@ -57,6 +38,7 @@ Reference
    :maxdepth: 2
    :caption: Reference:
 
+   :self:
    docs/identifiers
 
 Modules
