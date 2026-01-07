@@ -36,23 +36,6 @@ Reference
 
 .. toctree::
    :maxdepth: 2
-   :caption: Reference:
 
    :self:
    docs/identifiers
-
-Modules
--------
-
-.. toctree::
-   :maxdepth: 3
-   :caption: Data Model Modules:
-
-   docs/clinical
-   docs/biospecimen
-   docs/wes
-   docs/scrna-seq
-   docs/digitalpathology
-   docs/multiplexmicroscopy
-   docs/spatialomics
-
