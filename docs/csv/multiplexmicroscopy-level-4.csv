@@ -11,7 +11,7 @@ FEATURE_EXTRACTION_WORKFLOW_TYPE,string,,Yes,Type of workflow used to extract fe
 FEATURE_EXTRACTION_WORKFLOW_URL,string,,No,URL or link to the feature extraction workflow used
 FEATURE_EXTRACTION_WORKFLOW_VERSION,string,,No,Version of the feature extraction workflow
 FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
-FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+FILE_FORMAT,string,^(csv|h5ad)$,Yes,Format of the feature table file (csv or h5ad for Level 4)
 HAS_SLIDE_LABEL,boolean,,Yes,Does the image contain a slide label
 HTAN_DATA_FILE_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",Yes,HTAN Data File ID (Primary Key)
 HTAN_PARENT_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",Yes,"HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2."

@@ -42,6 +42,14 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `multi-omic sequencing` | Multi-omic sequencing assay type |
 | `spot-based sequencing` | Spot-based sequencing assay type |
 
+### FileFormatLevel1
+
+| Value | Description |
+|-------|-------------|
+| `tar` | TAR archive format |
+| `tar.gz` | TAR GZIP compressed archive format |
+| `zip` | ZIP compressed archive format |
+
 ### ImageType
 
 | Value | Description |

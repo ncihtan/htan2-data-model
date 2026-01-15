@@ -6,7 +6,7 @@ DE_IDENTIFICATION_SOFTWARE,string,,No,Software that was used to de-identify the 
 DE_IDENTIFIED,boolean,,Yes,"Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI"
 EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES,ExperimentalStrategyAndDataSubtypes,,Yes,"What is the experimental strategy used for the study (or what type of data subtypes exist in the study)? Per RFC, the only valid value for imaging data types is ""Pathological""."
 FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
-FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+FILE_FORMAT,string,^(ome-tiff|ome\.tiff|tiff|tif)$,Yes,Format of the segmentation mask file (should be ome-tiff for Level 3)
 HAS_SLIDE_LABEL,boolean,,Yes,Does the image contain a slide label
 HTAN_DATA_FILE_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",Yes,HTAN Data File ID (Primary Key)
 HTAN_PARENT_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",Yes,"HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2."

@@ -2,7 +2,7 @@ Attribute,Type,Pattern,Required,Description
 ASSAY_TYPE,AssayType,,Yes,Broad assay class (drives downstream conditionals)
 BUNDLE_CONTENTS,string,,Yes,List of expected files or folders in this bundle (relative paths within the archive)
 FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
-FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+FILE_FORMAT,FileFormatLevel1,,Yes,High-level package format of the bundle
 HAS_IMAGES,boolean,,Yes,"Whether any image files (e.g., TIFFs) are included"
 HAS_PROBE_SET,boolean,,No,Whether a targeted probe/gene panel is included
 HAS_REGISTRATION_FILES,boolean,,Yes,Whether any spatial registration transform files are included
