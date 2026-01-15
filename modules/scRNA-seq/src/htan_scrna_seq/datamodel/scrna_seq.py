@@ -1,5 +1,5 @@
 # Auto generated from scrna_seq.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-15T17:36:37
+# Generation date: 2026-01-15T20:07:29
 # Schema: scRNA-seq
 #
 # id: https://w3id.org/htan/scrna_seq
@@ -261,13 +261,13 @@ class ScRNALevel1(BaseSequencingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.ScRNALevel1
 
     HTAN_DATA_FILE_ID: Union[str, ScRNALevel1HTANDATAFILEID] = None
-    FILENAME: str = None
-    FILE_FORMAT: str = None
     HTAN_PARENT_ID: str = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
     GENOMIC_REFERENCE: str = None
+    FILE_FORMAT: str = None
+    FILENAME: str = None
     SINGLE_CELL_ISOLATION_METHOD: Union[str, "SingleCellIsolationMethodEnum"] = None
     DISSOCIATION_METHOD: Union[str, "DissociationMethodEnum"] = None
     NUCLEIC_ACID_SOURCE: Union[str, "NucleicAcidSourceEnum"] = None
@@ -282,6 +282,16 @@ class ScRNALevel1(BaseSequencingAttributes):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, ScRNALevel1HTANDATAFILEID):
             self.HTAN_DATA_FILE_ID = ScRNALevel1HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self._is_empty(self.SINGLE_CELL_ISOLATION_METHOD):
             self.MissingRequiredField("SINGLE_CELL_ISOLATION_METHOD")
@@ -337,13 +347,13 @@ class ScRNALevel2(BaseSequencingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.ScRNALevel2
 
     HTAN_DATA_FILE_ID: Union[str, ScRNALevel2HTANDATAFILEID] = None
-    FILENAME: str = None
-    FILE_FORMAT: str = None
     HTAN_PARENT_ID: str = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
     GENOMIC_REFERENCE: str = None
+    FILE_FORMAT: str = None
+    FILENAME: str = None
     SCRNASEQ_WORKFLOW_TYPE: Union[str, "ScRNAseqWorkflowTypeEnumLevel2"] = None
     WHITELIST_CELL_BARCODE_FILE_LINK: Optional[str] = None
     CELL_BARCODE_TAG: Optional[str] = None
@@ -354,6 +364,16 @@ class ScRNALevel2(BaseSequencingAttributes):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, ScRNALevel2HTANDATAFILEID):
             self.HTAN_DATA_FILE_ID = ScRNALevel2HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self._is_empty(self.SCRNASEQ_WORKFLOW_TYPE):
             self.MissingRequiredField("SCRNASEQ_WORKFLOW_TYPE")
@@ -385,13 +405,13 @@ class ScRNALevel34(BaseSequencingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.ScRNALevel34
 
     HTAN_DATA_FILE_ID: Union[str, ScRNALevel34HTANDATAFILEID] = None
-    FILENAME: str = None
     HTAN_PARENT_ID: str = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
     GENOMIC_REFERENCE: str = None
     FILE_FORMAT: str = None
+    FILENAME: str = None
     SCRNASEQ_WORKFLOW_TYPE: Union[str, "ScRNAseqWorkflowTypeEnumLevel34"] = None
     SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION: str = None
     DATA_CATEGORY: Union[str, "DataCategoryEnum"] = None
@@ -413,6 +433,11 @@ class ScRNALevel34(BaseSequencingAttributes):
             self.MissingRequiredField("FILE_FORMAT")
         if not isinstance(self.FILE_FORMAT, str):
             self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self._is_empty(self.SCRNASEQ_WORKFLOW_TYPE):
             self.MissingRequiredField("SCRNASEQ_WORKFLOW_TYPE")
@@ -838,6 +863,14 @@ slots.scRNAseqData__level2_data = Slot(uri=HTAN.level2_data, name="scRNAseqData_
 slots.scRNAseqData__level3_4_data = Slot(uri=HTAN.level3_4_data, name="scRNAseqData__level3_4_data", curie=HTAN.curie('level3_4_data'),
                    model_uri=HTAN.scRNAseqData__level3_4_data, domain=None, range=Optional[Union[str, ScRNALevel34HTANDATAFILEID]])
 
+slots.scRNALevel1__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="scRNALevel1__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.scRNALevel1__FILE_FORMAT, domain=None, range=str,
+                   pattern=re.compile(r'^(fastq|fastq\.gz)$'))
+
+slots.scRNALevel1__FILENAME = Slot(uri=HTAN.FILENAME, name="scRNALevel1__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.scRNALevel1__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+\.(fastq|fq)(\.gz)?$'))
+
 slots.scRNALevel1__SINGLE_CELL_ISOLATION_METHOD = Slot(uri=HTAN.SINGLE_CELL_ISOLATION_METHOD, name="scRNALevel1__SINGLE_CELL_ISOLATION_METHOD", curie=HTAN.curie('SINGLE_CELL_ISOLATION_METHOD'),
                    model_uri=HTAN.scRNALevel1__SINGLE_CELL_ISOLATION_METHOD, domain=None, range=Union[str, "SingleCellIsolationMethodEnum"])
 
@@ -862,6 +895,14 @@ slots.scRNALevel1__SPIKE_IN = Slot(uri=HTAN.SPIKE_IN, name="scRNALevel1__SPIKE_I
 slots.scRNALevel1__READ_INDICATOR = Slot(uri=HTAN.READ_INDICATOR, name="scRNALevel1__READ_INDICATOR", curie=HTAN.curie('READ_INDICATOR'),
                    model_uri=HTAN.scRNALevel1__READ_INDICATOR, domain=None, range=Union[str, "ReadIndicatorEnum"])
 
+slots.scRNALevel2__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="scRNALevel2__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.scRNALevel2__FILE_FORMAT, domain=None, range=str,
+                   pattern=re.compile(r'^(bam|cram)$'))
+
+slots.scRNALevel2__FILENAME = Slot(uri=HTAN.FILENAME, name="scRNALevel2__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.scRNALevel2__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+\.(bam|cram)$'))
+
 slots.scRNALevel2__SCRNASEQ_WORKFLOW_TYPE = Slot(uri=HTAN.SCRNASEQ_WORKFLOW_TYPE, name="scRNALevel2__SCRNASEQ_WORKFLOW_TYPE", curie=HTAN.curie('SCRNASEQ_WORKFLOW_TYPE'),
                    model_uri=HTAN.scRNALevel2__SCRNASEQ_WORKFLOW_TYPE, domain=None, range=Union[str, "ScRNAseqWorkflowTypeEnumLevel2"])
 
@@ -877,6 +918,10 @@ slots.scRNALevel2__UMI_TAG = Slot(uri=HTAN.UMI_TAG, name="scRNALevel2__UMI_TAG",
 slots.scRNALevel34__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="scRNALevel34__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.scRNALevel34__FILE_FORMAT, domain=None, range=str,
                    pattern=re.compile(r'^h5ad$'))
+
+slots.scRNALevel34__FILENAME = Slot(uri=HTAN.FILENAME, name="scRNALevel34__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.scRNALevel34__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+\.h5ad$'))
 
 slots.scRNALevel34__SCRNASEQ_WORKFLOW_TYPE = Slot(uri=HTAN.SCRNASEQ_WORKFLOW_TYPE, name="scRNALevel34__SCRNASEQ_WORKFLOW_TYPE", curie=HTAN.curie('SCRNASEQ_WORKFLOW_TYPE'),
                    model_uri=HTAN.scRNALevel34__SCRNASEQ_WORKFLOW_TYPE, domain=None, range=Union[str, "ScRNAseqWorkflowTypeEnumLevel34"])
@@ -946,8 +991,7 @@ slots.baseSequencingAttributes__CHECKSUM = Slot(uri=HTAN.CHECKSUM, name="baseSeq
                    model_uri=HTAN.baseSequencingAttributes__CHECKSUM, domain=None, range=Optional[str])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+[\\/]\S*$'))
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
 
 slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)

@@ -143,4 +143,70 @@ class TestMultiplexMicroscopy:
         size_x_slot = sv.get_slot("SIZE_X")
         assert size_x_slot.minimum_value == 1
 
+    def test_file_format_and_filename_patterns(self):
+        """Test that FILE_FORMAT and FILENAME patterns match correctly."""
+        import re
+        
+        # Test Level 2
+        sv2 = SchemaView("modules/MultiplexMicroscopy/domains/level_2.yaml")
+        level2_class = sv2.get_class("MultiplexMicroscopyLevel2")
+        file_format_attr = level2_class.attributes.get("FILE_FORMAT")
+        filename_attr = level2_class.attributes.get("FILENAME")
+        
+        assert file_format_attr.pattern == "^(ome-tiff|tiff|qptiff|svs)$"
+        assert filename_attr.pattern == "^.+\\.(ome\\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs)$"
+        
+        # Validate pattern matching
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        # Test valid combinations
+        assert fmt_regex.match("ome-tiff")
+        assert filename_regex.match("image.ome.tiff")
+        assert filename_regex.match("image.ome.tif")
+        assert filename_regex.match("image.ome.tf2")
+        assert fmt_regex.match("tiff")
+        assert filename_regex.match("image.tiff")
+        assert filename_regex.match("image.tif")
+        assert fmt_regex.match("qptiff")
+        assert filename_regex.match("image.qptiff")
+        assert fmt_regex.match("svs")
+        assert filename_regex.match("image.svs")
+        
+        # Test Level 3
+        sv3 = SchemaView("modules/MultiplexMicroscopy/domains/level_3.yaml")
+        level3_class = sv3.get_class("MultiplexMicroscopyLevel3")
+        file_format_attr = level3_class.attributes.get("FILE_FORMAT")
+        filename_attr = level3_class.attributes.get("FILENAME")
+        
+        assert file_format_attr.pattern == "^(ome-tiff|tiff|tif)$"
+        assert filename_attr.pattern == "^.+\\.(ome\\.(tif|tiff|tf2|tf8|btf)|tiff?)$"
+        
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        assert fmt_regex.match("ome-tiff")
+        assert filename_regex.match("image.ome.tiff")
+        assert fmt_regex.match("tiff")
+        assert filename_regex.match("image.tiff")
+        assert fmt_regex.match("tif")
+        assert filename_regex.match("image.tif")
+        
+        # Test Level 4
+        sv4 = SchemaView("modules/MultiplexMicroscopy/domains/level_4.yaml")
+        level4_class = sv4.get_class("MultiplexMicroscopyLevel4")
+        file_format_attr = level4_class.attributes.get("FILE_FORMAT")
+        filename_attr = level4_class.attributes.get("FILENAME")
+        
+        assert file_format_attr.pattern == "^(csv|h5ad)$"
+        assert filename_attr.pattern == "^.+\\.(csv|h5ad)$"
+        
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        assert fmt_regex.match("csv")
+        assert filename_regex.match("data.csv")
+        assert fmt_regex.match("h5ad")
+        assert filename_regex.match("data.h5ad")
+
 

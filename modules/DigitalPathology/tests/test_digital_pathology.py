@@ -111,3 +111,32 @@ class TestDigitalPathology:
         
         annotation_type_slot = sv.get_slot("ANNOTATION_TYPE")
         assert annotation_type_slot.required is False
+
+    def test_file_format_and_filename_patterns(self):
+        """Test that FILE_FORMAT and FILENAME patterns match correctly."""
+        import re
+        sv = SchemaView("modules/DigitalPathology/domains/digital_pathology.yaml")
+        
+        digital_pathology_class = sv.get_class("DigitalPathologyData")
+        file_format_attr = digital_pathology_class.attributes.get("FILE_FORMAT")
+        filename_attr = digital_pathology_class.attributes.get("FILENAME")
+        
+        assert file_format_attr.pattern == "^(ome-tiff|tiff|qptiff|svs)$"
+        assert filename_attr.pattern == "^.+\\.(ome\\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs)$"
+        
+        # Validate pattern matching
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        # Test valid combinations
+        assert fmt_regex.match("ome-tiff")
+        assert filename_regex.match("image.ome.tiff")
+        assert filename_regex.match("image.ome.tif")
+        assert filename_regex.match("image.ome.tf2")
+        assert fmt_regex.match("tiff")
+        assert filename_regex.match("image.tiff")
+        assert filename_regex.match("image.tif")
+        assert fmt_regex.match("qptiff")
+        assert filename_regex.match("image.qptiff")
+        assert fmt_regex.match("svs")
+        assert filename_regex.match("image.svs")

@@ -1,5 +1,5 @@
 # Auto generated from digital_pathology.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-15T17:36:38
+# Generation date: 2026-01-15T20:07:31
 # Schema: DigitalPathology
 #
 # id: https://w3id.org/htan/digital_pathology
@@ -290,7 +290,6 @@ class DigitalPathologyData(BaseImagingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.DigitalPathologyData
 
     HTAN_DATA_FILE_ID: Union[str, DigitalPathologyDataHTANDATAFILEID] = None
-    FILENAME: str = None
     HTAN_PARENT_ID: str = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
@@ -307,6 +306,7 @@ class DigitalPathologyData(BaseImagingAttributes):
     HAS_SLIDE_LABEL: Union[bool, Bool] = None
     DE_IDENTIFIED: Union[bool, Bool] = None
     FILE_FORMAT: str = None
+    FILENAME: str = None
     HAS_ANNOTATIONS: Union[bool, Bool] = None
     ANNOTATION_TYPE: Optional[Union[str, "AnnotationType"]] = None
 
@@ -320,6 +320,11 @@ class DigitalPathologyData(BaseImagingAttributes):
             self.MissingRequiredField("FILE_FORMAT")
         if not isinstance(self.FILE_FORMAT, str):
             self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self._is_empty(self.HAS_ANNOTATIONS):
             self.MissingRequiredField("HAS_ANNOTATIONS")
@@ -513,6 +518,10 @@ slots.digitalPathologyData__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="digit
                    model_uri=HTAN.digitalPathologyData__FILE_FORMAT, domain=None, range=str,
                    pattern=re.compile(r'^(ome-tiff|tiff|qptiff|svs)$'))
 
+slots.digitalPathologyData__FILENAME = Slot(uri=HTAN.FILENAME, name="digitalPathologyData__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.digitalPathologyData__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+\.(ome\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs)$'))
+
 slots.digitalPathologyData__HAS_ANNOTATIONS = Slot(uri=HTAN.HAS_ANNOTATIONS, name="digitalPathologyData__HAS_ANNOTATIONS", curie=HTAN.curie('HAS_ANNOTATIONS'),
                    model_uri=HTAN.digitalPathologyData__HAS_ANNOTATIONS, domain=None, range=Union[bool, Bool])
 
@@ -588,8 +597,7 @@ slots.baseImagingAttributes__DE_IDENTIFIED = Slot(uri=HTAN.DE_IDENTIFIED, name="
                    model_uri=HTAN.baseImagingAttributes__DE_IDENTIFIED, domain=None, range=Union[bool, Bool])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+[\\/]\S*$'))
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
 
 slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)

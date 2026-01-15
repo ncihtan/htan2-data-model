@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTAN Base Imaging Module &mdash; HTAN Phase 2 Data Model 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HTAN Phase 2 Data Model
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/clinical.html">Clinical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/biospecimen.html">Biospecimen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/corefile.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/sequencing.html">Sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/wes.html">WES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/scrna-seq.html">scRNA-seq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/imaging.html">Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/digitalpathology.html">DigitalPathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/multiplexmicroscopy.html">MultiplexMicroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/spatialomics.html">Spatial</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HTAN Phase 2 Data Model</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HTAN Base Imaging Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/modules/Imaging/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="htan-base-imaging-module">
+<h1>HTAN Base Imaging Module<a class="headerlink" href="#htan-base-imaging-module" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The HTAN Base Imaging module provides a shared foundation for all imaging data types in the HTAN project. This module defines common attributes, enums, and base classes that are shared across different imaging modalities (Digital Pathology, Multiplex Microscopy, etc.).</p>
+</section>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>The base imaging module serves as a foundation to:</p>
+<ul class="simple">
+<li><p><strong>Reduce duplication</strong> across imaging modules</p></li>
+<li><p><strong>Ensure consistency</strong> in common attributes</p></li>
+<li><p><strong>Simplify maintenance</strong> of shared imaging metadata</p></li>
+<li><p><strong>Enable modular architecture</strong> for different imaging types</p></li>
+</ul>
+</section>
+<section id="schema-structure">
+<h2>Schema Structure<a class="headerlink" href="#schema-structure" title="Link to this heading"></a></h2>
+<section id="baseimagingattributes-class">
+<h3>BaseImagingAttributes Class<a class="headerlink" href="#baseimagingattributes-class" title="Link to this heading"></a></h3>
+<p>The main class that defines common attributes shared across all imaging types:</p>
+<p><strong>Required Attributes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES</span></code>: Experimental strategy used for the study</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DE_IDENTIFICATION_METHOD_TYPE</span></code>: De-identification method type (Automatic, Manual, Semiautomatic, Not Applicable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code>: Official or legal permission to do or own a specified thing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMAGE_MODALITY</span></code>: The method in which the images are generated (currently: Slide Microscopy)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMAGING_EQUIPMENT_MANUFACTURER</span></code>: Producer of the imaging equipment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CITATION_OR_DOI</span></code>: Raw Data Protocol or Digital Object Identifier Text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STAINING_METHOD</span></code>: Staining method used (CODEX, CyCIF, H&amp;E, IHC, IMC, MIBI, MERFISH, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OBJECTIVE</span></code>: Manufacturer and/or model number for the optical element</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NOMINAL_MAGNIFICATION</span></code>: Magnification of the lens (floating point value &gt; 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PASSED_QC</span></code>: Confirm that the image has passed internal quality control checks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QC_COMMENT</span></code>: Comments related to quality control checks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPECIES</span></code>: NCBI Taxonomy ID</p></li>
+</ul>
+<p><strong>Optional Attributes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DE_IDENTIFICATION_METHOD_DESCRIPTION</span></code>: Description of the de-identification process (required when DE_IDENTIFICATION_METHOD_TYPE is not “Not Applicable”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DE_IDENTIFICATION_SOFTWARE</span></code>: Software used to de-identify the images</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMAGING_EQUIPMENT_MODEL</span></code>: Specific model of the instrument</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMAGING_SOFTWARE</span></code>: Software package used to capture, generate, and process the image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMAGING_PROTOCOL</span></code>: Protocols.io ID or DOI link to imaging protocol</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMMERSION</span></code>: Immersion medium (Air, Glycerol, Oil, Other, Water)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LENS_NUMERICAL_APERTURE</span></code>: Numerical aperture of the lens (floating point value &gt; 0)</p></li>
+</ul>
+<p><strong>Note:</strong> Organ/Tissue, Tissue Fixative, and Embedding Medium are biospecimen attributes and should be retrieved from the Biospecimen record via <code class="docutils literal notranslate"><span class="pre">HTAN_PARENT_ID</span></code> (which references the biospecimen with B suffix).</p>
+</section>
+<section id="enums-alphabetically-ordered">
+<h3>Enums (Alphabetically Ordered)<a class="headerlink" href="#enums-alphabetically-ordered" title="Link to this heading"></a></h3>
+<p><strong>DeIdentificationMethodType:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Automatic</span></code>: Automatic de-identification method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Manual</span></code>: Manual de-identification method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">Applicable</span></code>: De-identification not applicable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Semiautomatic</span></code>: Semi-automatic de-identification method</p></li>
+</ul>
+<p><strong>ImageModality:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SM</span></code>: Slide Microscopy</p></li>
+</ul>
+<p><strong>StainingMethod:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CODEX</span></code>: CODEX staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CyCIF</span></code>: Cyclic Immunofluorescence staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExSeq</span></code>: Expansion Sequencing staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeoMX-DSP</span></code>: GeoMX Digital Spatial Profiling staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">H&amp;E</span></code>: Hematoxylin and Eosin staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IHC</span></code>: Immunohistochemistry staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMC</span></code>: Imaging Mass Cytometry staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MIBI</span></code>: Multiplexed Ion Beam Imaging staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MERFISH</span></code>: Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MxIF</span></code>: Multiplexed Immunofluorescence staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mIHC</span></code>: Multiplexed Immunohistochemistry staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">Applicable</span></code>: Staining not applicable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SABER</span></code>: Signal Amplification By Exchange Reaction staining method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t-CyCIF</span></code>: Tissue Cyclic Immunofluorescence staining method</p></li>
+</ul>
+<p><strong>ImmersionMedium:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Air</span></code>: Air immersion medium</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Glycerol</span></code>: Glycerol immersion medium</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Oil</span></code>: Oil immersion medium</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Other</span></code>: Other immersion medium</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Water</span></code>: Water immersion medium</p></li>
+</ul>
+</section>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">BaseImagingAttributes</span></code> class uses a clean inheritance chain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BaseImagingAttributes → CoreFileAttributes
+</pre></div>
+</div>
+<p><strong>Inheritance Benefits:</strong></p>
+<ul class="simple">
+<li><p><strong>Core File Attributes</strong>: Gets universal file attributes (FILENAME, HTAN_DATA_FILE_ID, HTAN_PARENT_ID, etc.) from <code class="docutils literal notranslate"><span class="pre">CoreFileAttributes</span></code></p></li>
+<li><p><strong>Base Imaging Attributes</strong>: All imaging modules get common imaging attributes (EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, DE_IDENTIFICATION_METHOD_TYPE, etc.)</p></li>
+<li><p><strong>No Duplication</strong>: Common attributes are defined once in the base modules</p></li>
+</ul>
+<p>Specific imaging modules (Digital Pathology, Multiplex Microscopy) will:</p>
+<ul class="simple">
+<li><p>Inherit from <code class="docutils literal notranslate"><span class="pre">BaseImagingAttributes</span></code> to get core file and imaging attributes</p></li>
+<li><p>Add their own specific attributes</p></li>
+<li><p>Maintain consistent structure across all imaging types</p></li>
+</ul>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<section id="import-in-other-modules">
+<h3>Import in Other Modules<a class="headerlink" href="#import-in-other-modules" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># In Digital Pathology module</span>
+<span class="nt">imports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../../Imaging/domains/imaging</span>
+
+<span class="nt">classes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">DigitalPathologyData</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BaseImagingAttributes</span>
+<span class="w">    </span><span class="nt">attributes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Digital Pathology-specific attributes</span>
+<span class="w">      </span><span class="nt">HAS_ANNOTATIONS</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># In Multiplex Microscopy module</span>
+<span class="nt">imports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../../Imaging/domains/imaging</span>
+
+<span class="nt">classes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">MultiplexMicroscopyLevel2</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BaseImagingAttributes</span>
+<span class="w">    </span><span class="nt">attributes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Multiplex Microscopy-specific attributes</span>
+<span class="w">      </span><span class="nt">IMAGING_ASSAY_TYPE</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImagingAssayType</span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conditional-requirements">
+<h2>Conditional Requirements<a class="headerlink" href="#conditional-requirements" title="Link to this heading"></a></h2>
+<p>The module implements conditional requirements using LinkML rules:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DE_IDENTIFICATION_METHOD_DESCRIPTION</span></code>: Required when <code class="docutils literal notranslate"><span class="pre">DE_IDENTIFICATION_METHOD_TYPE</span></code> is not “Not Applicable”</p>
+<ul>
+<li><p>Implemented as a LinkML rule with preconditions and postconditions</p></li>
+<li><p>Ensures proper validation in generated JSON schemas</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="build-and-testing">
+<h2>Build and Testing<a class="headerlink" href="#build-and-testing" title="Link to this heading"></a></h2>
+<section id="schema-validation">
+<h3>Schema Validation<a class="headerlink" href="#schema-validation" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validate schema</span>
+make<span class="w"> </span>validate
+
+<span class="c1"># Generate Python classes</span>
+make<span class="w"> </span>gen-schema
+
+<span class="c1"># Generate JSON schema</span>
+make<span class="w"> </span>gen-json-schema
+
+<span class="c1"># Run tests</span>
+make<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<p>The module includes comprehensive tests for:</p>
+<ul class="simple">
+<li><p>Schema loading and validation</p></li>
+<li><p>Enum alphabetical ordering</p></li>
+<li><p>Inheritance from CoreFileAttributes</p></li>
+<li><p>Common attribute presence and validation</p></li>
+<li><p>Optional vs required attribute marking</p></li>
+<li><p>Conditional requirements validation</p></li>
+<li><p>Minimum value constraints</p></li>
+</ul>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Core Module</strong>: Inherits from <code class="docutils literal notranslate"><span class="pre">CoreFileAttributes</span></code></p></li>
+<li><p><strong>Biospecimen Module</strong>: Record-based module (does not inherit from CoreFileAttributes)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, HTAN Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
