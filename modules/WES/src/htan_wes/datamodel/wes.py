@@ -1,5 +1,5 @@
 # Auto generated from wes.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-15T17:36:18
+# Generation date: 2026-01-15T19:37:06
 # Schema: WES
 #
 # id: https://w3id.org/htan/wes
@@ -769,8 +769,7 @@ slots.wESData__LEVEL_3_DATA = Slot(uri=HTAN.LEVEL_3_DATA, name="wESData__LEVEL_3
                    model_uri=HTAN.wESData__LEVEL_3_DATA, domain=None, range=Optional[Union[str, BulkWESLevel3HTANDATAFILEID]])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+[\\/]\S*$'))
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
 
 slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
