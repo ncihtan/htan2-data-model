@@ -6,7 +6,8 @@ build:
     python: "3.11"
   commands:
     - pip install -r requirements.txt
-    - python -m sphinx -b html . "${READTHEDOCS_OUTPUT}/html"
+    - rm -rf _build _readthedocs
+    - python -m sphinx -b html -d "${READTHEDOCS_OUTPUT}/.doctrees" . "${READTHEDOCS_OUTPUT}/html"
 
 python:
   install:
