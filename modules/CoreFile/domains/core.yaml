@@ -28,7 +28,6 @@ classes:
         required: true
         title: "File Name"
         description: Name of the file
-        pattern: "^.+[\\\\/]\\S*$"
       FILE_FORMAT:
         range: string
         required: true

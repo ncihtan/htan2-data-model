@@ -1,5 +1,5 @@
 # Auto generated from imaging.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-15T17:36:35
+# Generation date: 2026-01-15T20:35:46
 # Schema: Imaging
 #
 # id: https://w3id.org/htan/imaging
@@ -495,8 +495,7 @@ slots.baseImagingAttributes__DE_IDENTIFIED = Slot(uri=HTAN.DE_IDENTIFIED, name="
                    model_uri=HTAN.baseImagingAttributes__DE_IDENTIFIED, domain=None, range=Union[bool, Bool])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+[\\/]\S*$'))
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
 
 slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)

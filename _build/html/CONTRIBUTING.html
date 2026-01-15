@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing to HTAN LinkML &mdash; HTAN Phase 2 Data Model 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            HTAN Phase 2 Data Model
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/clinical.html">Clinical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/biospecimen.html">Biospecimen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/corefile.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/sequencing.html">Sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/wes.html">WES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/scrna-seq.html">scRNA-seq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/imaging.html">Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/digitalpathology.html">DigitalPathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/multiplexmicroscopy.html">MultiplexMicroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/spatialomics.html">Spatial</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HTAN Phase 2 Data Model</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contributing to HTAN LinkML</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/CONTRIBUTING.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing-to-htan-linkml">
+<h1>Contributing to HTAN LinkML<a class="headerlink" href="#contributing-to-htan-linkml" title="Link to this heading"></a></h1>
+<p>Thank you for your interest in contributing to the HTAN LinkML project! This document provides guidelines and step-by-step instructions for contributors.</p>
+<section id="quick-start">
+<h2>🚀 Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Fork the repository</strong></p></li>
+<li><p><strong>Create a feature branch</strong>: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">feat/your-module-name</span></code></p></li>
+<li><p><strong>Follow the development guidelines</strong> below</p></li>
+<li><p><strong>Run tests</strong>: <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code></p></li>
+<li><p><strong>Submit a pull request</strong></p></li>
+</ol>
+</section>
+<section id="development-guidelines">
+<h2>📋 Development Guidelines<a class="headerlink" href="#development-guidelines" title="Link to this heading"></a></h2>
+<section id="code-style">
+<h3>Code Style<a class="headerlink" href="#code-style" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Python</strong>: Use Black for formatting (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">format</span></code>)</p></li>
+<li><p><strong>YAML</strong>: Follow existing indentation patterns (2 spaces)</p></li>
+<li><p><strong>Enums</strong>: Organize alphabetically for consistency</p></li>
+<li><p><strong>Documentation</strong>: Update README files for new modules</p></li>
+</ul>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>All tests must pass</strong> before submitting PR</p></li>
+<li><p><strong>Add tests</strong> for new modules following existing patterns</p></li>
+<li><p><strong>Test schema loading</strong> and validation</p></li>
+<li><p><strong>Verify inheritance</strong> works correctly</p></li>
+</ul>
+</section>
+</section>
+<section id="development-conventions">
+<h2>🔧 Development Conventions<a class="headerlink" href="#development-conventions" title="Link to this heading"></a></h2>
+<section id="enum-organization">
+<h3><strong>Enum Organization</strong><a class="headerlink" href="#enum-organization" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>All enums are <strong>alphabetically ordered</strong> for consistency</p></li>
+<li><p>Enum values within each enum are also alphabetically ordered</p></li>
+<li><p>This applies to both enum names and their permissible values</p></li>
+</ul>
+</section>
+<section id="enum-style-guide">
+<h3><strong>ENUM STYLE GUIDE</strong><a class="headerlink" href="#enum-style-guide" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Attribute slots</strong>: <code class="docutils literal notranslate"><span class="pre">ALL_CAPS_WITH_UNDERSCORES</span></code></p></li>
+<li><p><strong>Enums</strong>: <code class="docutils literal notranslate"><span class="pre">CamelCase</span></code></p></li>
+<li><p><strong>Titles</strong>: <code class="docutils literal notranslate"><span class="pre">Title</span> <span class="pre">Case</span></code></p></li>
+<li><p><strong>Descriptions</strong>: <code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">word</span> <span class="pre">capital</span> <span class="pre">letter</span></code></p></li>
+</ul>
+</section>
+<section id="schema-structure">
+<h3><strong>Schema Structure</strong><a class="headerlink" href="#schema-structure" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Inheritance</strong>: Modules inherit from <code class="docutils literal notranslate"><span class="pre">CoreFileAttributes</span></code> for universal attributes</p></li>
+<li><p><strong>Validation</strong>: Regex patterns for HTAN identifiers</p></li>
+<li><p><strong>Documentation</strong>: Each attribute includes <code class="docutils literal notranslate"><span class="pre">title</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> fields</p></li>
+</ul>
+</section>
+<section id="file-naming">
+<h3><strong>File Naming</strong><a class="headerlink" href="#file-naming" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Domain files</strong>: <code class="docutils literal notranslate"><span class="pre">domains/[domain_name].yaml</span></code></p></li>
+<li><p><strong>Test files</strong>: <code class="docutils literal notranslate"><span class="pre">tests/test_[module_name].py</span></code></p></li>
+<li><p><strong>Generated code</strong>: <code class="docutils literal notranslate"><span class="pre">src/htan_[module]/datamodel/</span></code></p></li>
+</ul>
+</section>
+<section id="testing-strategy">
+<h3><strong>Testing Strategy</strong><a class="headerlink" href="#testing-strategy" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Schema loading</strong>: Verify YAML files can be parsed</p></li>
+<li><p><strong>Inheritance</strong>: Confirm Core module inheritance works correctly</p></li>
+<li><p><strong>Enums</strong>: Validate enum definitions and values</p></li>
+<li><p><strong>Validation</strong>: Test regex patterns and required fields</p></li>
+</ul>
+</section>
+</section>
+<section id="adding-a-new-module-step-by-step-guide">
+<h2>🏗️ Adding a New Module: Step-by-Step Guide<a class="headerlink" href="#adding-a-new-module-step-by-step-guide" title="Link to this heading"></a></h2>
+<section id="step-1-create-module-directory-structure">
+<h3>Step 1: Create Module Directory Structure<a class="headerlink" href="#step-1-create-module-directory-structure" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>modules/YourModule/<span class="o">{</span>domains,src/htan_yourmodule/datamodel,tests<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>Required files to create:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>modules/YourModule/
+├── README.md                    # Module documentation
+├── Makefile                     # Build configuration
+├── domains/
+│   └── your_module.yaml        # Main schema file
+├── src/htan_yourmodule/
+│   ├── __init__.py             # Python package init
+│   └── datamodel/
+│       └── __init__.py         # Data model init
+└── tests/
+    └── test_your_module.py     # Test suite
+</pre></div>
+</div>
+</section>
+<section id="step-2-create-module-makefile">
+<h3>Step 2: Create Module Makefile<a class="headerlink" href="#step-2-create-module-makefile" title="Link to this heading"></a></h3>
+<p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">modules/YourModule/Makefile</span></code></p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># YourModule Makefile</span>
+
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">all</span> <span class="n">clean</span> <span class="n">test</span> <span class="n">gen</span>-<span class="n">schema</span> <span class="n">docs</span>
+
+<span class="c"># Environment variables</span>
+<span class="nv">SCHEMA_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>htan_yourmodule
+<span class="nv">SOURCE_SCHEMA_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>domains/your_module.yaml
+<span class="nv">BUILD_DIR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>build
+<span class="nv">DATAMODEL_DIR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>src/htan_yourmodule/datamodel
+<span class="nv">DOCS_DIR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>docs
+
+<span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="n">gen</span>-<span class="n">schema</span> <span class="n">test</span> <span class="n">docs</span>
+
+<span class="c"># Generate schema classes</span>
+<span class="nf">gen-schema</span><span class="o">:</span>
+<span class="w">	</span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>BUILD_DIR<span class="k">)</span>
+<span class="w">	</span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>DATAMODEL_DIR<span class="k">)</span>
+<span class="w">	</span>poetry<span class="w"> </span>run<span class="w"> </span>gen-python<span class="w"> </span><span class="k">$(</span>SOURCE_SCHEMA_PATH<span class="k">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="k">$(</span>BUILD_DIR<span class="k">)</span>/your_module.py
+<span class="w">	</span>cp<span class="w"> </span><span class="k">$(</span>BUILD_DIR<span class="k">)</span>/your_module.py<span class="w"> </span><span class="k">$(</span>DATAMODEL_DIR<span class="k">)</span>/
+<span class="w">	</span>poetry<span class="w"> </span>run<span class="w"> </span>gen-json-schema<span class="w"> </span><span class="k">$(</span>SOURCE_SCHEMA_PATH<span class="k">)</span><span class="w"> </span>&gt;<span class="w"> </span><span class="k">$(</span>BUILD_DIR<span class="k">)</span>/your_module_schema.json
+
+<span class="nf">**Note</span><span class="o">:</span>** <span class="n">Use</span> `<span class="n">gen</span>-<span class="n">python</span>` <span class="n">for</span> <span class="n">most</span> <span class="n">modules</span> (<span class="n">generates</span> <span class="n">single</span> <span class="n">file</span>). <span class="n">Use</span> `<span class="n">gen</span>-<span class="n">project</span> --<span class="n">config</span>-<span class="n">file</span> ../../<span class="n">config</span>/<span class="n">config</span>.<span class="n">yaml</span> -<span class="n">d</span> <span class="k">$(</span><span class="nv">BUILD_DIR</span><span class="k">)</span>` <span class="n">for</span> <span class="n">very</span> <span class="n">large</span> <span class="n">schemas</span> <span class="n">or</span> <span class="n">when</span> <span class="n">you</span> <span class="n">need</span> <span class="n">shared</span> <span class="n">base</span> <span class="n">classes</span> <span class="n">split</span> <span class="n">into</span> <span class="n">separate</span> <span class="n">files</span> (<span class="n">see</span> <span class="n">Clinical</span> <span class="n">module</span> <span class="n">for</span> <span class="n">example</span>).
+
+
+<span class="c"># Run module-specific tests</span>
+<span class="nf">test</span><span class="o">:</span>
+<span class="w">	</span><span class="nb">cd</span><span class="w"> </span>../../<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>modules/YourModule/tests/<span class="w"> </span>-v
+
+<span class="c"># Clean build artifacts</span>
+<span class="nf">clean</span><span class="o">:</span>
+<span class="w">	</span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="k">$(</span>BUILD_DIR<span class="k">)</span>/*
+<span class="w">	</span>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;__pycache__&quot;</span><span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="o">{}</span><span class="w"> </span>+
+</pre></div>
+</div>
+</section>
+<section id="step-3-create-main-schema-file">
+<h3>Step 3: Create Main Schema File<a class="headerlink" href="#step-3-create-main-schema-file" title="Link to this heading"></a></h3>
+<p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">modules/YourModule/domains/your_module.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YourModule</span>
+<span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/htan/your_module</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTAN YourModule Data Model Schema</span>
+
+<span class="nt">imports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linkml:types</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linkml:extensions</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../../CoreFile/domains/core</span><span class="w">  </span><span class="c1"># ← Import Core File module</span>
+
+<span class="nt">prefixes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">htan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/htan/</span>
+<span class="w">  </span><span class="nt">linkml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/</span>
+<span class="w">  </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://schema.org/</span>
+
+<span class="nt">default_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">htan</span>
+
+<span class="nt">enums</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">YourEnum</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">permissible_values</span><span class="p">:</span>
+<span class="w">      </span><span class="s">&quot;Value1&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">First value</span>
+<span class="w">      </span><span class="s">&quot;Value2&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Second value</span>
+
+<span class="nt">classes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">YourModuleData</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CoreFileAttributes</span><span class="w">  </span><span class="c1"># ← Inherit from Core</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container for your module data</span>
+<span class="w">    </span><span class="nt">attributes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">YOUR_ATTRIBUTE</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Your</span><span class="nv"> </span><span class="s">Attribute&quot;</span><span class="w">  </span><span class="c1"># ← Add human-readable title</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Description of your attribute</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-create-python-package-files">
+<h3>Step 4: Create Python Package Files<a class="headerlink" href="#step-4-create-python-package-files" title="Link to this heading"></a></h3>
+<p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">modules/YourModule/src/htan_yourmodule/__init__.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;HTAN YourModule package.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">modules/YourModule/src/htan_yourmodule/datamodel/__init__.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;HTAN YourModule data model.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-create-test-suite">
+<h3>Step 5: Create Test Suite<a class="headerlink" href="#step-5-create-test-suite" title="Link to this heading"></a></h3>
+<p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">modules/YourModule/tests/test_your_module.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Tests for the HTAN YourModule.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">linkml_runtime.utils.schemaview</span> <span class="kn">import</span> <span class="n">SchemaView</span>
+
+
+<span class="k">class</span> <span class="nc">TestYourModule</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test cases for the YourModule.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">test_schema_loading</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test that the YourModule schema can be loaded.&quot;&quot;&quot;</span>
+        <span class="n">schema_path</span> <span class="o">=</span> <span class="s2">&quot;modules/YourModule/domains/your_module.yaml&quot;</span>
+        <span class="n">sv</span> <span class="o">=</span> <span class="n">SchemaView</span><span class="p">(</span><span class="n">schema_path</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">sv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">test_core_inheritance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test that YourModule inherits from Core.&quot;&quot;&quot;</span>
+        <span class="n">schema_path</span> <span class="o">=</span> <span class="s2">&quot;modules/YourModule/domains/your_module.yaml&quot;</span>
+        <span class="n">sv</span> <span class="o">=</span> <span class="n">SchemaView</span><span class="p">(</span><span class="n">schema_path</span><span class="p">)</span>
+        
+        <span class="c1"># Check that the main class exists</span>
+        <span class="k">assert</span> <span class="s2">&quot;YourModuleData&quot;</span> <span class="ow">in</span> <span class="n">sv</span><span class="o">.</span><span class="n">all_classes</span><span class="p">()</span>
+        
+        <span class="c1"># Check that it inherits from Core</span>
+        <span class="n">your_module_class</span> <span class="o">=</span> <span class="n">sv</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="s2">&quot;YourModuleData&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">your_module_class</span><span class="o">.</span><span class="n">is_a</span> <span class="o">==</span> <span class="s2">&quot;CoreFileAttributes&quot;</span>
+
+    <span class="k">def</span> <span class="nf">test_enums</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test that enums are properly defined.&quot;&quot;&quot;</span>
+        <span class="n">sv</span> <span class="o">=</span> <span class="n">SchemaView</span><span class="p">(</span><span class="s2">&quot;modules/YourModule/domains/your_module.yaml&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="s2">&quot;YourEnum&quot;</span> <span class="ow">in</span> <span class="n">sv</span><span class="o">.</span><span class="n">all_enums</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="step-6-create-module-readme">
+<h3>Step 6: Create Module README<a class="headerlink" href="#step-6-create-module-readme" title="Link to this heading"></a></h3>
+<p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">modules/YourModule/README.md</span></code></p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># HTAN YourModule</span>
+
+Description of your module and its purpose.
+
+<span class="gu">## Purpose</span>
+
+Brief description of what this module handles.
+
+<span class="gu">## Structure</span>
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Domain files**</span>: Description of your domain structure
+<span class="k">-</span><span class="w"> </span><span class="gs">**Attributes**</span>: Key attributes and their purposes
+<span class="k">-</span><span class="w"> </span><span class="gs">**Validation**</span>: Any special validation rules
+
+<span class="gu">## Usage</span>
+
+```yaml
+<span class="gh"># Example usage</span>
+YourModuleData:
+  FILENAME: &quot;example.txt&quot;
+  FILE_FORMAT: &quot;txt&quot;
+  HTAN_DATA_FILE_ID: &quot;HTA200_2_12345&quot;
+  HTAN_PARENT_ID: &quot;HTA200_2_D12345&quot;
+  YOUR_ATTRIBUTE: &quot;example value&quot;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>Testing<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>Run module tests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>modules/YourModule
+make<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</section>
+<section id="schema-generation">
+<h2>Schema Generation<a class="headerlink" href="#schema-generation" title="Link to this heading"></a></h2>
+<p>Generate Python classes and JSON schema:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>modules/YourModule
+make<span class="w"> </span>gen-schema
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+### Step 7: Update Root Makefile
+
+**File**: `Makefile` (root level)
+
+**Add your module to the MODULES list:**
+```makefile
+# List of modules (add new modules here)
+MODULES = Clinical WES Core YourModule
+</pre></div>
+</div>
+<p><strong>Update the format target:</strong></p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">format</span><span class="o">:</span>
+<span class="w">	</span><span class="k">$(</span>RUN<span class="k">)</span><span class="w"> </span>black<span class="w"> </span>scripts/<span class="w"> </span>tests/<span class="w"> </span>modules/Clinical/tests/<span class="w"> </span>modules/WES/tests/<span class="w"> </span>modules/YourModule/tests/
+</pre></div>
+</div>
+<section id="step-8-update-main-readme">
+<h3>Step 8: Update Main README<a class="headerlink" href="#step-8-update-main-readme" title="Link to this heading"></a></h3>
+<p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">README.md</span></code> (root level)</p>
+<p><strong>Add your module to the project structure:</strong></p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">### **YourModule**</span>
+<span class="k">-</span><span class="w"> </span><span class="gs">**Purpose**</span>: Brief description
+<span class="k">-</span><span class="w"> </span><span class="gs">**Location**</span>: <span class="sb">`modules/YourModule/`</span>
+<span class="k">-</span><span class="w"> </span><span class="gs">**Structure**</span>: Description of structure
+<span class="k">-</span><span class="w"> </span><span class="gs">**Features**</span>: Key features
+</pre></div>
+</div>
+</section>
+<section id="step-9-update-all-module-references">
+<h3>Step 9: Update All Module References<a class="headerlink" href="#step-9-update-all-module-references" title="Link to this heading"></a></h3>
+<p><strong>⚠️ Important</strong>: When adding a new module, you must update <strong>all</strong> of the following locations:</p>
+<section id="root-makefile-line-26">
+<h4>1. Root <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> (Line 26)<a class="headerlink" href="#root-makefile-line-26" title="Link to this heading"></a></h4>
+<p>Add your module to the <code class="docutils literal notranslate"><span class="pre">MODULES</span></code> variable:</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">MODULES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Clinical<span class="w"> </span>WES<span class="w"> </span>CoreFile<span class="w"> </span>Biospecimen<span class="w"> </span>Sequencing<span class="w"> </span>Imaging<span class="w"> </span>scRNA-seq<span class="w"> </span>DigitalPathology<span class="w"> </span>MultiplexMicroscopy<span class="w"> </span>YourModule
+</pre></div>
+</div>
+</section>
+<section id="github-workflows-generate-python-classes-yml">
+<h4>2. <code class="docutils literal notranslate"><span class="pre">.github/workflows/generate-python-classes.yml</span></code><a class="headerlink" href="#github-workflows-generate-python-classes-yml" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Description</strong> (line ~24): Add <code class="docutils literal notranslate"><span class="pre">yourmodule</span></code> to the comma-separated list</p></li>
+</ul>
+</section>
+<section id="github-workflows-json-schema-synapse-yml">
+<h4>4. <code class="docutils literal notranslate"><span class="pre">.github/workflows/json-schema-synapse.yml</span></code><a class="headerlink" href="#github-workflows-json-schema-synapse-yml" title="Link to this heading"></a></h4>
+<p>Add schema generation step</p>
+</section>
+<section id="other-locations-if-applicable">
+<h4>5. Other locations (if applicable)<a class="headerlink" href="#other-locations-if-applicable" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code>: Update examples in Step 9</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code>: Add to project structure section</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdocs.yml</span></code>: Add to navigation if documentation is auto-generated</p></li>
+</ul>
+<p><strong>Module naming conventions:</strong></p>
+<ul class="simple">
+<li><p><strong>Workflow names</strong>: lowercase, hyphenated (e.g., <code class="docutils literal notranslate"><span class="pre">scrna-seq</span></code>, <code class="docutils literal notranslate"><span class="pre">digitalpathology</span></code>)</p></li>
+<li><p><strong>Directory names</strong>: PascalCase (e.g., <code class="docutils literal notranslate"><span class="pre">DigitalPathology</span></code>, <code class="docutils literal notranslate"><span class="pre">MultiplexMicroscopy</span></code>)</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="key-requirements-for-new-modules">
+<h2>🔧 Key Requirements for New Modules<a class="headerlink" href="#key-requirements-for-new-modules" title="Link to this heading"></a></h2>
+<section id="core-inheritance">
+<h3>1. <strong>Core Inheritance</strong><a class="headerlink" href="#core-inheritance" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>All modules must inherit</strong> from <code class="docutils literal notranslate"><span class="pre">CoreFileAttributes</span></code></p></li>
+<li><p><strong>Use <code class="docutils literal notranslate"><span class="pre">is_a:</span> <span class="pre">CoreFileAttributes</span></code></strong> in your main class</p></li>
+<li><p><strong>Import Core File module</strong>: <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">../../CoreFile/domains/core</span></code></p></li>
+</ul>
+</section>
+<section id="title-fields">
+<h3>2. <strong>Title Fields</strong><a class="headerlink" href="#title-fields" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Add <code class="docutils literal notranslate"><span class="pre">title</span></code> field</strong> to all attributes</p></li>
+<li><p><strong>Use human-readable names</strong>: <code class="docutils literal notranslate"><span class="pre">title:</span> <span class="pre">&quot;Your</span> <span class="pre">Attribute&quot;</span></code></p></li>
+<li><p><strong>Follow existing patterns</strong> for consistency</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>3. <strong>Enum Organization</strong><a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Organize enums alphabetically</strong></p></li>
+<li><p><strong>Organize enum values alphabetically</strong></p></li>
+<li><p><strong>Include descriptions</strong> for all values</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>4. <strong>Testing</strong><a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Test schema loading</strong></p></li>
+<li><p><strong>Test Core inheritance</strong></p></li>
+<li><p><strong>Test enum definitions</strong></p></li>
+<li><p><strong>All tests must pass</strong></p></li>
+</ul>
+</section>
+<section id="documentation">
+<h3>5. <strong>Documentation</strong><a class="headerlink" href="#documentation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Create comprehensive README</strong></p></li>
+<li><p><strong>Include usage examples</strong></p></li>
+<li><p><strong>Document any special requirements</strong></p></li>
+</ul>
+</section>
+</section>
+<section id="testing-your-module">
+<h2>🧪 Testing Your Module<a class="headerlink" href="#testing-your-module" title="Link to this heading"></a></h2>
+<section id="run-module-tests">
+<h3>Run Module Tests<a class="headerlink" href="#run-module-tests" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>modules/YourModule
+make<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</section>
+<section id="run-all-tests">
+<h3>Run All Tests<a class="headerlink" href="#run-all-tests" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</section>
+<section id="generate-schema">
+<h3>Generate Schema<a class="headerlink" href="#generate-schema" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>modules/YourModule
+make<span class="w"> </span>gen-schema
+</pre></div>
+</div>
+</section>
+<section id="format-code">
+<h3>Format Code<a class="headerlink" href="#format-code" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>format
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pull-request-checklist">
+<h2>📝 Pull Request Checklist<a class="headerlink" href="#pull-request-checklist" title="Link to this heading"></a></h2>
+<p>Before submitting a PR, ensure:</p>
+<ul class="simple">
+<li><p>[ ] <strong>All tests pass</strong>: <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code></p></li>
+<li><p>[ ] <strong>Code is formatted</strong>: <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">format</span></code></p></li>
+<li><p>[ ] <strong>Documentation is updated</strong>: README files</p></li>
+<li><p>[ ] <strong>Core inheritance is implemented</strong>: <code class="docutils literal notranslate"><span class="pre">is_a:</span> <span class="pre">CoreFileAttributes</span></code></p></li>
+<li><p>[ ] <strong>Title fields are added</strong>: All attributes have human-readable titles</p></li>
+<li><p>[ ] <strong>Enums are organized</strong>: Alphabetical order</p></li>
+<li><p>[ ] <strong>Module is added to root Makefile</strong>: MODULES list updated</p></li>
+<li><p>[ ] <strong>Main README is updated</strong>: Project structure documented</p></li>
+<li><p>[ ] <strong>GitHub Actions workflow is updated</strong>: Module added to generate-python-classes.yml</p></li>
+</ul>
+</section>
+<section id="getting-help">
+<h2>🤝 Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Check existing modules</strong> for examples</p></li>
+<li><p><strong>Review the Core module</strong> for inheritance patterns</p></li>
+<li><p><strong>Look at test files</strong> for testing patterns</p></li>
+<li><p><strong>Ask questions</strong> in GitHub issues or discussions</p></li>
+</ul>
+</section>
+<section id="additional-resources">
+<h2>📚 Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>LinkML Documentation</strong>: <a class="reference external" href="https://linkml.io/">https://linkml.io/</a></p></li>
+<li><p><strong>HTAN Phase 1</strong>: <a class="reference external" href="https://github.com/ncihtan/data-models">https://github.com/ncihtan/data-models</a></p></li>
+<li><p><strong>Project README</strong>: See main README.md for project overview</p></li>
+</ul>
+<hr class="docutils" />
+<p>Thank you for contributing to the HTAN LinkML project! 🎉</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, HTAN Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,31 +1,11 @@
 # HTAN Biospecimen Module
 
-This module implements the **complete HTAN Phase 2 Biospecimen Data Model** based on the official RFC specification, achieving 100% compliance with all 39 required attributes.
+This module implements the **complete HTAN Phase 2 Biospecimen Data Model** based on the official RFC specification
 
 ## Overview
 
 The Biospecimen module provides comprehensive data modeling for biospecimen metadata including:
 
-- **✅ 39 Core Attributes**: All attributes defined in the RFC HTAN Phase 2 Biospecimen Model
-- **✅ 19 Enum Schemas**: Official permissible values from HTAN Phase 2 specifications
-- **✅ Conditional Requirements**: Smart validation based on attribute dependencies
-- **✅ CRDC Alignment**: Integration with Cancer Research Data Commons standards
-- **✅ caDSR Integration**: All caDSR identifiers included for CRDC compatibility
-
-## Key Features
-
-### RFC Compliance
-- **100% RFC Implementation**: All 39 attributes from RFC Table 3 implemented
-- **Official Enum Values**: All permissible values from official HTAN Phase 2 TSV files
-- **caDSR Integration**: All caDSR identifiers included for CRDC compatibility
-- **Tier 2 Support**: Flexible structure for additional biospecimen annotations
-
-### Core Attributes
-- HTAN identifier validation (HTAN_BIOSPECIMEN_ID, HTAN_PARENT_ID)
-- Biospecimen type and acquisition method tracking
-- Preservation and processing metadata
-- Tissue sample characteristics
-- Cellular architecture and pathology data
 
 ### Conditional Requirements
 - **ACQUISITION_METHOD_OTHER_SPECIFY**: Required when ACQUISITION_METHOD_TYPE=Other

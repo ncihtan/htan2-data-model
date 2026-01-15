@@ -1,0 +1,38 @@
+Attribute,Type,Pattern,Required,Description
+ADAPTER_NAME,string,,No,Name of the adapter used
+ADAPTER_SEQUENCE,string,,No,Adapter sequence
+BASE_CALLER_NAME,string,,No,Name of the base caller
+BASE_CALLER_VERSION,string,,No,Version of the base caller
+CHECKSUM,string,,No,Checksum for data integrity verification
+FILENAME,string,^.+\.(fastq|fq)(\.gz)?$,Yes,Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz)
+FILE_FORMAT,string,^(fastq|fastq\.gz)$,Yes,Format of the raw sequencing file (fastq or fastq.gz)
+FLOW_CELL_BARCODE,string,,No,Flow cell barcode
+FRAGMENT_MAXIMUM_LENGTH,integer,,No,Maximum fragment length
+FRAGMENT_MEAN_LENGTH,integer,,No,Mean fragment length
+FRAGMENT_MINIMUM_LENGTH,integer,,No,Minimum fragment length
+FRAGMENT_STANDARD_DEVIATION_LENGTH,integer,,No,Standard deviation of fragment length
+GENOME_ANNOTATION_URL,string,,No,URL to genome annotation
+GENOMIC_REFERENCE,string,,Yes,Genomic reference used for alignment
+GENOMIC_REFERENCE_URL,string,,No,URL to genomic reference
+HTAN_DATA_FILE_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",Yes,HTAN Data File ID (Primary Key)
+HTAN_PARENT_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",Yes,"HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2."
+LANE_NUMBER,integer,,No,Lane number
+LIBRARY_LAYOUT,LibraryLayoutEnum,,Yes,Library layout (paired-end or single-end)
+LIBRARY_PREPARATION_DAYS_FROM_INDEX,integer,,No,Days from index for library preparation
+LIBRARY_PREPARATION_KIT_NAME,string,,No,Name of the library preparation kit
+LIBRARY_PREPARATION_KIT_VENDOR,string,,No,Vendor of the library preparation kit
+LIBRARY_PREPARATION_KIT_VERSION,string,,No,Version of the library preparation kit
+LIBRARY_SELECTION_METHOD,LibrarySelectionMethodEnum,,Yes,Method used for library selection
+MULTIPLEX_BARCODE,string,,No,Multiplex barcode
+PROTOCOL_LINK,string,,No,Link to sequencing protocol
+READ_INDICATOR,string,,No,Read indicator
+READ_LENGTH,integer,,Yes,Read length in base pairs
+SEQUENCING_BATCH_ID,string,,No,Sequencing batch identifier
+SEQUENCING_PLATFORM,SequencingPlatformEnum,,Yes,Sequencing platform used
+SIZE_SELECTION_RANGE,string,,No,Size selection range
+TARGET_CAPTURE_KIT,string,,No,Target capture kit used
+TARGET_DEPTH,integer,,No,Target sequencing depth
+TECHNICAL_REPLICATE_GROUP,string,,No,Technical replicate group identifier
+TO_TRIM_ADAPTER_SEQUENCE,boolean,,No,Whether to trim adapter sequence
+WORKFLOW_LINK,string,,No,Link to workflow or command. DockStore.org recommended
+WORKFLOW_VERSION,string,,Yes,Major version of the workflow

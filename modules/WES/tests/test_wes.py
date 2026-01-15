@@ -96,3 +96,62 @@ class TestWESModule:
         sv3 = SchemaView("modules/WES/domains/level_3.yaml")
         assert "SomaticVariantsSampleTypeEnum" in sv3.all_enums()
         assert "MSIStatusEnum" in sv3.all_enums()
+
+    def test_file_format_and_filename_patterns(self):
+        """Test that FILE_FORMAT and FILENAME patterns match correctly."""
+        import re
+        
+        # Test Level 1
+        sv1 = SchemaView("modules/WES/domains/level_1.yaml")
+        level1_class = sv1.get_class("BulkWESLevel1")
+        file_format_attr = level1_class.attributes.get("FILE_FORMAT")
+        filename_attr = level1_class.attributes.get("FILENAME")
+        
+        assert file_format_attr.pattern == "^(fastq|fastq\\.gz)$"
+        assert filename_attr.pattern == "^.+\\.(fastq|fq)(\\.gz)?$"
+        
+        # Validate pattern matching
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        # Test valid combinations
+        assert fmt_regex.match("fastq")
+        assert filename_regex.match("file.fastq")
+        assert filename_regex.match("file.fq")
+        assert fmt_regex.match("fastq.gz")
+        assert filename_regex.match("file.fastq.gz")
+        assert filename_regex.match("file.fq.gz")
+        
+        # Test Level 2
+        sv2 = SchemaView("modules/WES/domains/level_2.yaml")
+        level2_class = sv2.get_class("BulkWESLevel2")
+        file_format_attr = level2_class.attributes.get("FILE_FORMAT")
+        filename_attr = level2_class.attributes.get("FILENAME")
+        
+        assert file_format_attr.pattern == "^(bam|cram)$"
+        assert filename_attr.pattern == "^.+\\.(bam|cram)$"
+        
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        assert fmt_regex.match("bam")
+        assert filename_regex.match("file.bam")
+        assert fmt_regex.match("cram")
+        assert filename_regex.match("file.cram")
+        
+        # Test Level 3
+        sv3 = SchemaView("modules/WES/domains/level_3.yaml")
+        level3_class = sv3.get_class("BulkWESLevel3")
+        file_format_attr = level3_class.attributes.get("FILE_FORMAT")
+        filename_attr = level3_class.attributes.get("FILENAME")
+        
+        assert file_format_attr.pattern == "^(vcf|vcf\\.gz)$"
+        assert filename_attr.pattern == "^.+\\.vcf(\\.gz)?$"
+        
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        assert fmt_regex.match("vcf")
+        assert filename_regex.match("file.vcf")
+        assert fmt_regex.match("vcf.gz")
+        assert filename_regex.match("file.vcf.gz")

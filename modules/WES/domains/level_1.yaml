@@ -29,6 +29,19 @@ classes:
     is_a: BaseSequencingAttributes
     description: Bulk Whole Exome Sequencing Level 1 - Raw files
     attributes:
+      # File format restriction for Level 1 raw sequencing files
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the raw sequencing file (fastq or fastq.gz)
+        pattern: "^(fastq|fastq\\.gz)$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz)
+        pattern: "^.+\\.(fastq|fq)(\\.gz)?$"
       # WES-specific attributes
       READ_INDICATOR:
         range: string
