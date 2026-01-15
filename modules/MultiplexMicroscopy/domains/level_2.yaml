@@ -56,8 +56,14 @@ classes:
         range: string
         required: true
         title: "File Format"
-        description: Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python.
+        description: Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python. OME-TIFF files use extensions .ome.tif, .ome.tiff, .ome.tf2, .ome.tf8, or .ome.btf
         pattern: "^(ome-tiff|tiff|qptiff|svs)$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with an extension matching the FILE_FORMAT (.ome.tif, .ome.tiff, .ome.tf2, .ome.tf8, .ome.btf for ome-tiff; .tiff or .tif for tiff; .qptiff for qptiff; .svs for svs)
+        pattern: "^.+\\.(ome\\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs)$"
       
       # Multiplex Microscopy specific attributes
       WORKING_DISTANCE:

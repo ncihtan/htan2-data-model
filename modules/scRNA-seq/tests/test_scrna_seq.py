@@ -99,6 +99,64 @@ class TestScRNAseqSchema:
         
         # Check pattern validation
         assert file_format_attr.pattern == "^h5ad$"
+        
+        # Check FILENAME pattern matches FILE_FORMAT
+        filename_attr = level3_4_class.attributes.get("FILENAME")
+        assert filename_attr.pattern == "^.+\\.h5ad$"
+        
+        # Validate pattern matching
+        import re
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        assert fmt_regex.match("h5ad")
+        assert filename_regex.match("file.h5ad")
+        assert not filename_regex.match("file.txt")
+
+    def test_level1_file_format_and_filename_patterns(self):
+        """Test that Level 1 FILE_FORMAT and FILENAME patterns match correctly."""
+        import re
+        sv = SchemaView(LEVEL1_PATH)
+        
+        level1_class = sv.get_class("scRNALevel1")
+        file_format_attr = level1_class.attributes.get("FILE_FORMAT")
+        filename_attr = level1_class.attributes.get("FILENAME")
+        
+        assert file_format_attr.pattern == "^(fastq|fastq\\.gz)$"
+        assert filename_attr.pattern == "^.+\\.(fastq|fq)(\\.gz)?$"
+        
+        # Validate pattern matching
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        # Test valid combinations
+        assert fmt_regex.match("fastq")
+        assert filename_regex.match("file.fastq")
+        assert filename_regex.match("file.fq")
+        assert fmt_regex.match("fastq.gz")
+        assert filename_regex.match("file.fastq.gz")
+        assert filename_regex.match("file.fq.gz")
+
+    def test_level2_file_format_and_filename_patterns(self):
+        """Test that Level 2 FILE_FORMAT and FILENAME patterns match correctly."""
+        import re
+        sv = SchemaView(LEVEL2_PATH)
+        
+        level2_class = sv.get_class("scRNALevel2")
+        file_format_attr = level2_class.attributes.get("FILE_FORMAT")
+        filename_attr = level2_class.attributes.get("FILENAME")
+        
+        assert file_format_attr.pattern == "^(bam|cram)$"
+        assert filename_attr.pattern == "^.+\\.(bam|cram)$"
+        
+        # Validate pattern matching
+        fmt_regex = re.compile(file_format_attr.pattern)
+        filename_regex = re.compile(filename_attr.pattern)
+        
+        assert fmt_regex.match("bam")
+        assert filename_regex.match("file.bam")
+        assert fmt_regex.match("cram")
+        assert filename_regex.match("file.cram")
 
     def test_ann_data_schema_compliance(self):
         """Test AnnData schema compliance validation."""
@@ -175,7 +233,7 @@ class TestScRNAseqDataValidation:
         valid_data = {
             "HTAN_DATA_FILE_ID": "HTA1_0000_0001",
             "FILENAME": "scrna_level1.fastq.gz",
-            "FILE_FORMAT": "fastq",
+            "FILE_FORMAT": "fastq.gz",
             "HTAN_PARENT_ID": "HTA200_0000_B0001",
             "HTAN_BIOSPECIMEN_ID": "HTA1_0000_0001",
             "SINGLE_CELL_ISOLATION_METHOD": "Droplet-based",
