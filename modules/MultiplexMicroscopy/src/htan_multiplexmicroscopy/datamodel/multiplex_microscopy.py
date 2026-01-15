@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-15T17:36:40
+# Generation date: 2026-01-15T19:37:27
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -840,8 +840,7 @@ slots.multiplexMicroscopyData__LEVEL_4_DATA = Slot(uri=HTAN.LEVEL_4_DATA, name="
                    model_uri=HTAN.multiplexMicroscopyData__LEVEL_4_DATA, domain=None, range=Optional[Union[str, MultiplexMicroscopyLevel4HTANDATAFILEID]])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+[\\/]\S*$'))
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
 
 slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)

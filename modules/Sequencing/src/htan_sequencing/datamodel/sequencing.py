@@ -1,5 +1,5 @@
 # Auto generated from sequencing.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-15T17:36:34
+# Generation date: 2026-01-15T19:37:22
 # Schema: Sequencing
 #
 # id: https://w3id.org/htan/sequencing
@@ -302,8 +302,7 @@ slots.baseSequencingAttributes__CHECKSUM = Slot(uri=HTAN.CHECKSUM, name="baseSeq
                    model_uri=HTAN.baseSequencingAttributes__CHECKSUM, domain=None, range=Optional[str])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+[\\/]\S*$'))
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
 
 slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
