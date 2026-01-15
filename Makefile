@@ -109,17 +109,9 @@ format:
 # ---
 #
 # check we are up to date
-check: cruft-check
-cruft-check:
-	cruft check
-cruft-diff:
-	cruft diff
+check: update-linkml
 
-update: update-template update-linkml
-update-template:
-	cruft update
-
-# todo: consider pinning to template
+update: update-linkml
 update-linkml:
 	poetry add -D linkml@latest
 
@@ -184,17 +176,12 @@ mkd-%:
 git-init-add: git-init git-add git-commit git-status
 git-init:
 	git init
-git-add: .cruft.json
+git-add:
 	git add .
 git-commit:
 	git commit -m 'chore: make setup was run' -a
 git-status:
 	git status
-
-# only necessary if setting up via cookiecutter
-.cruft.json:
-	echo "creating a stub for .cruft.json. IMPORTANT: setup via cruft not cookiecutter recommended!" ; \
-	touch $@
 
 check-config:
 ifndef LINKML_SCHEMA_NAME
