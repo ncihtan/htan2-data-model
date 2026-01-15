@@ -87,9 +87,16 @@ class TestSpatial:
                 # Attribute is overridden in this class
                 assert class_slot.required is True, f"Attribute {attr} should be required"
             else:
-                # Attribute is inherited, check base slot
-                slot = sv.get_slot(attr)
-                assert slot.required is True, f"Attribute {attr} should be required"
+                # Attribute is inherited, check using class_induced_slots which properly resolves inheritance
+                induced_slots = sv.class_induced_slots("SpatialLevel3")
+                induced_slot = next((s for s in induced_slots if s.name == attr), None)
+                if induced_slot:
+                    assert induced_slot.required is True, f"Attribute {attr} should be required"
+                else:
+                    # Fallback to get_slot
+                    slot = sv.get_slot(attr)
+                    assert slot is not None, f"Slot {attr} not found"
+                    assert slot.required is True, f"Attribute {attr} should be required"
 
     def test_level4_class(self):
         """Test that Level 4 class is properly defined."""
