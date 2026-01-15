@@ -1,8 +1,0 @@
-Attribute name,Description,Valid values or validation rules,Required,Conditional
-HTAN Panel ID,Unique identifier for the panel,,TRUE,
-Gene Symbol,HGNC-approved Gene symbol,"Eg MYC, PIK3C,",TRUE,
-HGNC Version,"Version of the HGNC used, indicated with the date of the HGNC reference",e.g. 2025-08-01,TRUE,
-Gene_ID,Stable Ensembl gene identifier,"Eg ENSG00000214114 ENSG00000121879
-
-String matching ENSG\d+ or digits",TRUE,
-User_Gene_Name,optional user-defined name for the Gene,,FALSE,
