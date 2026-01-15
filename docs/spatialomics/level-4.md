@@ -49,6 +49,14 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `other` | Other dimensionality reduction method |
 | `t-SNE` | t-Distributed Stochastic Neighbor Embedding |
 
+### FileFormatLevel4
+
+| Value | Description |
+|-------|-------------|
+| `h5ad` | AnnData HDF5 format (Python) |
+| `rds` | RDS format (R) |
+| `zarr` | Zarr format |
+
 ### ImageTypeLevel4
 
 | Value | Description |

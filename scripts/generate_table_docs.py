@@ -62,7 +62,10 @@ def resolve_inheritance_chain(class_def, all_classes, base_dir, visited=None):
                 parent_class_defs[parent_name] = parent_class
                 # Recursively get parent attributes
                 parent_attrs, parent_chain, parent_defs = resolve_inheritance_chain(parent_class, all_classes, base_dir, visited)
-                all_attrs.update(parent_attrs)
+                # Only add parent attributes that don't exist in child (child attributes take precedence)
+                for attr_name, attr_def in parent_attrs.items():
+                    if attr_name not in all_attrs:
+                        all_attrs[attr_name] = attr_def
                 inheritance_chain.extend(parent_chain)
                 parent_class_defs.update(parent_defs)
             else:
@@ -82,7 +85,10 @@ def resolve_inheritance_chain(class_def, all_classes, base_dir, visited=None):
                             inheritance_chain.append(parent_name)
                             parent_class_defs[parent_name] = parent_class
                             parent_attrs, parent_chain, parent_defs = resolve_inheritance_chain(parent_class, parent_schema.classes, base_dir, visited)
-                            all_attrs.update(parent_attrs)
+                            # Only add parent attributes that don't exist in child (child attributes take precedence)
+                            for attr_name, attr_def in parent_attrs.items():
+                                if attr_name not in all_attrs:
+                                    all_attrs[attr_name] = attr_def
                             inheritance_chain.extend(parent_chain)
                             parent_class_defs.update(parent_defs)
                     except Exception as e:

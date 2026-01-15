@@ -4,7 +4,7 @@ CELL_TYPE_CALLING_METHOD,string,,No,Method used for cell type annotation
 CLUSTERING_METHOD,string,,No,Method used to define clusters
 DIMENSIONALITY_REDUCTION_METHOD,DimensionalityReductionMethodLevel4,,No,Method used for dimensionality reduction
 FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
-FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+FILE_FORMAT,FileFormatLevel4,,Yes,File format of the data file
 HAS_CELL_TYPE_CALLING,boolean,,Yes,Indicates presence of cell type annotations
 HAS_CLUSTERING,boolean,,Yes,Indicates if clustering was performed
 HAS_DIMENSIONALITY_REDUCTION,boolean,,Yes,Indicates presence of dimensionally reduced data
