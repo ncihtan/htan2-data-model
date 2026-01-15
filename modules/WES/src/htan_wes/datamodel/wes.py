@@ -1,5 +1,5 @@
 # Auto generated from wes.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-15T17:36:18
+# Generation date: 2026-01-15T20:26:52
 # Schema: WES
 #
 # id: https://w3id.org/htan/wes
@@ -263,13 +263,13 @@ class BulkWESLevel1(BaseSequencingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.BulkWESLevel1
 
     HTAN_DATA_FILE_ID: Union[str, BulkWESLevel1HTANDATAFILEID] = None
-    FILENAME: str = None
-    FILE_FORMAT: str = None
     HTAN_PARENT_ID: str = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
     GENOMIC_REFERENCE: str = None
+    FILE_FORMAT: str = None
+    FILENAME: str = None
     LIBRARY_SELECTION_METHOD: Union[str, "LibrarySelectionMethodEnum"] = None
     READ_LENGTH: int = None
     READ_INDICATOR: Optional[str] = None
@@ -298,6 +298,16 @@ class BulkWESLevel1(BaseSequencingAttributes):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, BulkWESLevel1HTANDATAFILEID):
             self.HTAN_DATA_FILE_ID = BulkWESLevel1HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self._is_empty(self.LIBRARY_SELECTION_METHOD):
             self.MissingRequiredField("LIBRARY_SELECTION_METHOD")
@@ -385,13 +395,13 @@ class BulkWESLevel2(BaseSequencingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.BulkWESLevel2
 
     HTAN_DATA_FILE_ID: Union[str, BulkWESLevel2HTANDATAFILEID] = None
-    FILENAME: str = None
-    FILE_FORMAT: str = None
     HTAN_PARENT_ID: str = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
     GENOMIC_REFERENCE: str = None
+    FILE_FORMAT: str = None
+    FILENAME: str = None
     ALIGNMENT_WORKFLOW_TYPE: str = None
     MEAN_COVERAGE: float = None
     TOTAL_READS: int = None
@@ -434,6 +444,16 @@ class BulkWESLevel2(BaseSequencingAttributes):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, BulkWESLevel2HTANDATAFILEID):
             self.HTAN_DATA_FILE_ID = BulkWESLevel2HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self._is_empty(self.ALIGNMENT_WORKFLOW_TYPE):
             self.MissingRequiredField("ALIGNMENT_WORKFLOW_TYPE")
@@ -571,13 +591,13 @@ class BulkWESLevel3(BaseSequencingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.BulkWESLevel3
 
     HTAN_DATA_FILE_ID: Union[str, BulkWESLevel3HTANDATAFILEID] = None
-    FILENAME: str = None
-    FILE_FORMAT: str = None
     HTAN_PARENT_ID: str = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
     GENOMIC_REFERENCE: str = None
+    FILE_FORMAT: str = None
+    FILENAME: str = None
     GERMLINE_VARIANTS_WORKFLOW_URL: Optional[str] = None
     GERMLINE_VARIANTS_WORKFLOW_TYPE: Optional[str] = None
     SOMATIC_VARIANTS_WORKFLOW_URL: Optional[str] = None
@@ -594,6 +614,16 @@ class BulkWESLevel3(BaseSequencingAttributes):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, BulkWESLevel3HTANDATAFILEID):
             self.HTAN_DATA_FILE_ID = BulkWESLevel3HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self.GERMLINE_VARIANTS_WORKFLOW_URL is not None and not isinstance(self.GERMLINE_VARIANTS_WORKFLOW_URL, str):
             self.GERMLINE_VARIANTS_WORKFLOW_URL = str(self.GERMLINE_VARIANTS_WORKFLOW_URL)
@@ -769,8 +799,7 @@ slots.wESData__LEVEL_3_DATA = Slot(uri=HTAN.LEVEL_3_DATA, name="wESData__LEVEL_3
                    model_uri=HTAN.wESData__LEVEL_3_DATA, domain=None, range=Optional[Union[str, BulkWESLevel3HTANDATAFILEID]])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+[\\/]\S*$'))
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
 
 slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
@@ -782,6 +811,14 @@ slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, n
 slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
                    model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$'))
+
+slots.bulkWESLevel1__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="bulkWESLevel1__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.bulkWESLevel1__FILE_FORMAT, domain=None, range=str,
+                   pattern=re.compile(r'^(fastq|fastq\.gz)$'))
+
+slots.bulkWESLevel1__FILENAME = Slot(uri=HTAN.FILENAME, name="bulkWESLevel1__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.bulkWESLevel1__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+\.(fastq|fq)(\.gz)?$'))
 
 slots.bulkWESLevel1__READ_INDICATOR = Slot(uri=HTAN.READ_INDICATOR, name="bulkWESLevel1__READ_INDICATOR", curie=HTAN.curie('READ_INDICATOR'),
                    model_uri=HTAN.bulkWESLevel1__READ_INDICATOR, domain=None, range=Optional[str])
@@ -848,6 +885,14 @@ slots.bulkWESLevel1__TARGET_DEPTH = Slot(uri=HTAN.TARGET_DEPTH, name="bulkWESLev
 
 slots.bulkWESLevel1__TO_TRIM_ADAPTER_SEQUENCE = Slot(uri=HTAN.TO_TRIM_ADAPTER_SEQUENCE, name="bulkWESLevel1__TO_TRIM_ADAPTER_SEQUENCE", curie=HTAN.curie('TO_TRIM_ADAPTER_SEQUENCE'),
                    model_uri=HTAN.bulkWESLevel1__TO_TRIM_ADAPTER_SEQUENCE, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.bulkWESLevel2__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="bulkWESLevel2__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.bulkWESLevel2__FILE_FORMAT, domain=None, range=str,
+                   pattern=re.compile(r'^(bam|cram)$'))
+
+slots.bulkWESLevel2__FILENAME = Slot(uri=HTAN.FILENAME, name="bulkWESLevel2__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.bulkWESLevel2__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+\.(bam|cram)$'))
 
 slots.bulkWESLevel2__ALIGNMENT_WORKFLOW_TYPE = Slot(uri=HTAN.ALIGNMENT_WORKFLOW_TYPE, name="bulkWESLevel2__ALIGNMENT_WORKFLOW_TYPE", curie=HTAN.curie('ALIGNMENT_WORKFLOW_TYPE'),
                    model_uri=HTAN.bulkWESLevel2__ALIGNMENT_WORKFLOW_TYPE, domain=None, range=str)
@@ -956,6 +1001,14 @@ slots.bulkWESLevel2__PROPORTION_COVERAGE_30X = Slot(uri=HTAN.PROPORTION_COVERAGE
 
 slots.bulkWESLevel2__IS_LOWEST_LEVEL = Slot(uri=HTAN.IS_LOWEST_LEVEL, name="bulkWESLevel2__IS_LOWEST_LEVEL", curie=HTAN.curie('IS_LOWEST_LEVEL'),
                    model_uri=HTAN.bulkWESLevel2__IS_LOWEST_LEVEL, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.bulkWESLevel3__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="bulkWESLevel3__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.bulkWESLevel3__FILE_FORMAT, domain=None, range=str,
+                   pattern=re.compile(r'^(vcf|vcf\.gz)$'))
+
+slots.bulkWESLevel3__FILENAME = Slot(uri=HTAN.FILENAME, name="bulkWESLevel3__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.bulkWESLevel3__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+\.vcf(\.gz)?$'))
 
 slots.bulkWESLevel3__GERMLINE_VARIANTS_WORKFLOW_URL = Slot(uri=HTAN.GERMLINE_VARIANTS_WORKFLOW_URL, name="bulkWESLevel3__GERMLINE_VARIANTS_WORKFLOW_URL", curie=HTAN.curie('GERMLINE_VARIANTS_WORKFLOW_URL'),
                    model_uri=HTAN.bulkWESLevel3__GERMLINE_VARIANTS_WORKFLOW_URL, domain=None, range=Optional[str])

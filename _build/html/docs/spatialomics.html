@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTAN Spatial Omics &mdash; HTAN Phase 2 Data Model 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="HTAN Multiplex Microscopy" href="multiplexmicroscopy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HTAN Phase 2 Data Model
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Data Model Modules:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="clinical.html">HTAN Clinical Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clinical.html#clinical">Clinical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biospecimen.html">HTAN Biospecimen Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biospecimen.html#biospecimen">Biospecimen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="corefile.html">HTAN Core File Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="corefile.html#core">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequencing.html">HTAN Base Sequencing Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequencing.html#sequencing">Sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wes.html">HTAN WES Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wes.html#wes">WES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrna-seq.html">HTAN scRNA-seq Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrna-seq.html#scrna-seq">scRNA-seq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imaging.html">HTAN Base Imaging Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imaging.html#imaging">Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digitalpathology.html">HTAN Digital Pathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digitalpathology.html#digitalpathology">DigitalPathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplexmicroscopy.html">HTAN Multiplex Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplexmicroscopy.html#multiplexmicroscopy">MultiplexMicroscopy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HTAN Spatial Omics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#domain-files"><strong>Domain Files</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-attributes"><strong>Key Attributes</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#level-1-raw-spatial-data-bundle-optional"><strong>Level 1: Raw Spatial Data Bundle (Optional)</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#level-3-processed-spatial-assay-output-bundle-required"><strong>Level 3: Processed Spatial Assay Output Bundle (Required)</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#level-4-interoperable-file-optional"><strong>Level 4: Interoperable File (Optional)</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spatial-panel-information"><strong>Spatial Panel Information</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#data-levels"><strong>Data Levels</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><strong>Level 1: Raw Spatial Data Bundle (Optional)</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><strong>Level 3: Processed Spatial Assay Output Bundle (Required)</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><strong>Level 4: Interoperable File (Optional)</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4"><strong>Spatial Panel Information</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-platforms">Supported Platforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spot-based-capture-assays"><strong>Spot-Based Capture Assays</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-situ-sequencing-iss-and-hybridization-based-assays"><strong>In Situ Sequencing (ISS) and Hybridization-Based Assays</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#barcoded-capture-with-molecular-decoding"><strong>Barcoded Capture with Molecular Decoding</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-sequencing-based-spatial-molecular-profiling"><strong>Other Sequencing-Based Spatial Molecular Profiling</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#level-3-processed-spatial-assay-output-bundle">Level 3: Processed Spatial Assay Output Bundle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#level-4-interoperable-file">Level 4: Interoperable File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Spatial Panel Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#conditional-requirements">Conditional Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#level-1"><strong>Level 1</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#level-3"><strong>Level 3</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#level-4"><strong>Level 4</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pattern-validation"><strong>Pattern Validation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimum-value-constraints"><strong>Minimum Value Constraints</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schema-generation">Schema Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schema-documentation">Schema Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#spatial">Spatial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spatialdata">SpatialData</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#slots">Slots</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HTAN Phase 2 Data Model</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HTAN Spatial Omics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/spatialomics.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="htan-spatial-omics">
+<h1>HTAN Spatial Omics<a class="headerlink" href="#htan-spatial-omics" title="Link to this heading"></a></h1>
+<p>Spatial Omics module for HTAN Phase 2 data model, implementing standards for sequencing-based and sequence-hybridization spatial omics assays including Visium, Xenium, CosMx, STOmics, and other spatial transcriptomics technologies.</p>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>This module implements the Spatial Omics RFC for HTAN Phase 2, which supports:</p>
+<ol class="arabic simple">
+<li><p><strong>Sequencing-Based Spatial Assays</strong>: Spot-based capture (Visium, Visium HD), in situ sequencing (seqFISH), molecular barcoding (Xenium, CosMx), and other spatial transcriptomics platforms</p></li>
+<li><p><strong>Multi-Level Data Structure</strong>: Level 1 (raw data, optional), Level 3 (processed bundles), Level 4 (interoperable files, optional), and Panel information</p></li>
+<li><p><strong>Platform Flexibility</strong>: Supports current and emerging spatial omics technologies</p></li>
+<li><p><strong>Bundle-Level Metadata</strong>: Eliminates per-file metadata requirements, focusing on bundle-level structure</p></li>
+<li><p><strong>Panel Information</strong>: Structured metadata for targeted sequencing or protein panels</p></li>
+</ol>
+</section>
+<section id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Link to this heading"></a></h2>
+<section id="domain-files">
+<h3><strong>Domain Files</strong><a class="headerlink" href="#domain-files" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">domains/spatial.yaml</span></code> - Main schema file (imports all levels)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">domains/level_1.yaml</span></code> - Level 1 schema (raw spatial data bundle, optional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">domains/level_3.yaml</span></code> - Level 3 schema (processed spatial assay output bundle)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">domains/level_4.yaml</span></code> - Level 4 schema (interoperable h5ad or RDS file, optional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">domains/spatial_panel.yaml</span></code> - Spatial panel information schema</p></li>
+</ul>
+</section>
+<section id="key-attributes">
+<h3><strong>Key Attributes</strong><a class="headerlink" href="#key-attributes" title="Link to this heading"></a></h3>
+<section id="level-1-raw-spatial-data-bundle-optional">
+<h4><strong>Level 1: Raw Spatial Data Bundle (Optional)</strong><a class="headerlink" href="#level-1-raw-spatial-data-bundle-optional" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>HTAN Identifiers</strong>: Data file ID, parent biospecimen ID, parent data file ID</p></li>
+<li><p><strong>Bundle Format</strong>: tar.gz or zip archive format</p></li>
+<li><p><strong>Platform</strong>: 10x Genomics (Visium, Visium HD, Xenium), Nanostring CosMX, STOmics (Stereo-seq, Stereo-CITE)</p></li>
+<li><p><strong>Assay Type</strong>: spot-based sequencing, in situ sequencing, molecular barcoding, multi-omic sequencing</p></li>
+<li><p><strong>Bundle Contents</strong>: List of expected files or folders in the bundle</p></li>
+<li><p><strong>Sequencing Data</strong>: Whether raw/aligned sequencing data is included (FASTQ, BAM)</p></li>
+<li><p><strong>Images</strong>: Whether image files are included (H&amp;E, DAPI, MIF, Other)</p></li>
+<li><p><strong>Probe Set</strong>: Whether a targeted probe/gene panel is included</p></li>
+<li><p><strong>Registration Files</strong>: Whether spatial registration transform files are included</p></li>
+</ul>
+</section>
+<section id="level-3-processed-spatial-assay-output-bundle-required">
+<h4><strong>Level 3: Processed Spatial Assay Output Bundle (Required)</strong><a class="headerlink" href="#level-3-processed-spatial-assay-output-bundle-required" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>HTAN Identifiers</strong>: Data file ID, parent biospecimen ID, parent data file ID (optional)</p></li>
+<li><p><strong>Platform</strong>: 10x Genomics (Visium, Visium HD, Xenium), Nanostring CosMX, STOmics (Stereo-seq, Stereo-CITE), SeqFISH, DBiT-seq</p></li>
+<li><p><strong>Assay Details</strong>: Spatial assay type (in situ, capture-based), assay chemistry version, software and version, protocol link</p></li>
+<li><p><strong>Molecular Targets</strong>: RNA measured, protein measured, transcriptome type (Whole transcriptome, Protein coding, Targeted), panel size/total targets</p></li>
+<li><p><strong>Panel Information</strong>: Panel name, panel Synapse ID (for targeted panels or protein measurements)</p></li>
+<li><p><strong>Same Section Imaging</strong>: Imaging ID, modality (H&amp;E, fluorescence), channels</p></li>
+<li><p><strong>Region Area</strong>: Capture area in µm²</p></li>
+<li><p><strong>Bundle Contents</strong>: List of expected files or folders in the bundle</p></li>
+<li><p><strong>Portal Preview</strong>: Relative path of HTML preview if present</p></li>
+<li><p><strong>Cell Segmentation</strong>: Presence, method, object type (whole cell, nucleus, cytoplasm), number of segmented cells</p></li>
+<li><p><strong>Dimensionality Reduction</strong>: Presence, method (PCA, UMAP, t-SNE, other)</p></li>
+<li><p><strong>Clustering</strong>: Presence, method, number of clusters</p></li>
+<li><p><strong>Platform-Specific Attributes</strong>:</p>
+<ul>
+<li><p><strong>Visium/Visium HD</strong>: Slide serial number, capture area (A1, B1, C1, D1, A, B), CytAssist used, genomic reference</p></li>
+<li><p><strong>Xenium</strong>: Slide serial number</p></li>
+<li><p><strong>Capture-Based Assays</strong>: Sequencing instrument, sequencing configuration, sequencing depth</p></li>
+</ul>
+</li>
+<li><p><strong>Quality Control Metrics</strong>:</p>
+<ul>
+<li><p>QC spatial unit (8um bin, spot, 100um area, cell)</p></li>
+<li><p>QC feature number (features under tissue)</p></li>
+<li><p>QC mean reads per feature</p></li>
+<li><p>QC total genes detected</p></li>
+<li><p>QC total number of reads</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="level-4-interoperable-file-optional">
+<h4><strong>Level 4: Interoperable File (Optional)</strong><a class="headerlink" href="#level-4-interoperable-file-optional" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>HTAN Identifiers</strong>: Data file ID, parent data file ID (optional)</p></li>
+<li><p><strong>File Format</strong>: h5ad, rds, or zarr</p></li>
+<li><p><strong>Tool Compatibility</strong>: anndata, spatialdata, seurat</p></li>
+<li><p><strong>Data Dimensions</strong>: Number of features (e.g., transcripts), number of objects (e.g., cells)</p></li>
+<li><p><strong>Dimensionality Reduction</strong>: Presence, method (PCA, UMAP, t-SNE, other)</p></li>
+<li><p><strong>Clustering</strong>: Presence, method, number of clusters</p></li>
+<li><p><strong>Cell Type Calling</strong>: Presence, method, list of cell types</p></li>
+<li><p><strong>Normalization</strong>: Presence, method (CPM, TPM, log normalization, SCTransform, other)</p></li>
+<li><p><strong>Arrays</strong>: Raw array presence, normalized array presence</p></li>
+<li><p><strong>Image</strong>: Presence, image type (tiff, jpeg, png, other)</p></li>
+</ul>
+</section>
+<section id="spatial-panel-information">
+<h4><strong>Spatial Panel Information</strong><a class="headerlink" href="#spatial-panel-information" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>HTAN Panel ID</strong>: Unique identifier for the panel</p></li>
+<li><p><strong>Gene Symbol</strong>: HGNC-approved gene symbol (e.g., MYC, PIK3C)</p></li>
+<li><p><strong>HGNC Version</strong>: Version of the HGNC used (date format: YYYY-MM-DD)</p></li>
+<li><p><strong>Gene ID</strong>: Stable Ensembl gene identifier (ENSG\d+ or digits)</p></li>
+<li><p><strong>User Gene Name</strong>: Optional user-defined name for the gene</p></li>
+</ul>
+</section>
+</section>
+<section id="data-levels">
+<h3><strong>Data Levels</strong><a class="headerlink" href="#data-levels" title="Link to this heading"></a></h3>
+<section id="id1">
+<h4><strong>Level 1: Raw Spatial Data Bundle (Optional)</strong><a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Minimal bundle-level metadata for raw sequencing data submissions</p></li>
+<li><p><strong>Contents</strong>: FASTQs/BAMs, original images, registration files</p></li>
+<li><p><strong>Format</strong>: tar.gz or zip archive</p></li>
+<li><p><strong>Note</strong>: Not required for standard submissions; only if raw data is being submitted</p></li>
+</ul>
+</section>
+<section id="id2">
+<h4><strong>Level 3: Processed Spatial Assay Output Bundle (Required)</strong><a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Bundle-level metadata for processed spatial assay submissions</p></li>
+<li><p><strong>Contents</strong>: Platform-specific output files (matrices, segmentation, images, vendor JSONs)</p></li>
+<li><p><strong>Format</strong>: tar.gz or zip archive</p></li>
+<li><p><strong>Structure</strong>: Must follow expected directory and file structure defined in HTAN platform guidance</p></li>
+<li><p><strong>Prohibited</strong>: Controlled-access data (fastqs, bams, bai files)</p></li>
+</ul>
+</section>
+<section id="id3">
+<h4><strong>Level 4: Interoperable File (Optional)</strong><a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Harmonized output file for downstream analysis</p></li>
+<li><p><strong>Contents</strong>: Expression matrices, spatial coordinates, feature metadata in reusable format</p></li>
+<li><p><strong>Format</strong>: h5ad (AnnData), rds (Seurat), or zarr</p></li>
+<li><p><strong>Compatibility</strong>: Compatible with Squidpy, Seurat, and other downstream tools</p></li>
+</ul>
+</section>
+<section id="id4">
+<h4><strong>Spatial Panel Information</strong><a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Structured metadata for targeted sequencing or protein panels</p></li>
+<li><p><strong>Contents</strong>: Panel identifier, gene/protein targets with stable identifiers</p></li>
+<li><p><strong>Format</strong>: Separate table or filtered by Target_Type</p></li>
+<li><p><strong>Usage</strong>: Required for assays using targeted panels (Xenium, CosMx, Stereo-CITE)</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="supported-platforms">
+<h2>Supported Platforms<a class="headerlink" href="#supported-platforms" title="Link to this heading"></a></h2>
+<section id="spot-based-capture-assays">
+<h3><strong>Spot-Based Capture Assays</strong><a class="headerlink" href="#spot-based-capture-assays" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>10x Genomics Visium</p></li>
+<li><p>10x Genomics Visium HD</p></li>
+<li><p>Slide-seq and related variants</p></li>
+</ul>
+</section>
+<section id="in-situ-sequencing-iss-and-hybridization-based-assays">
+<h3><strong>In Situ Sequencing (ISS) and Hybridization-Based Assays</strong><a class="headerlink" href="#in-situ-sequencing-iss-and-hybridization-based-assays" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>seqFISH and seqFISH+</p></li>
+<li><p>MERFISH</p></li>
+<li><p>Academic ISS methods</p></li>
+</ul>
+</section>
+<section id="barcoded-capture-with-molecular-decoding">
+<h3><strong>Barcoded Capture with Molecular Decoding</strong><a class="headerlink" href="#barcoded-capture-with-molecular-decoding" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>10x Genomics Xenium</p></li>
+<li><p>Nanostring CosMx SMI</p></li>
+<li><p>BGI/MGI STOmics platforms:</p>
+<ul>
+<li><p>Stereo-seq (RNA)</p></li>
+<li><p>Stereo-CITE (RNA + protein)</p></li>
+<li><p>Stereo-seq OMNI (multiome)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="other-sequencing-based-spatial-molecular-profiling">
+<h3><strong>Other Sequencing-Based Spatial Molecular Profiling</strong><a class="headerlink" href="#other-sequencing-based-spatial-molecular-profiling" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>DBiT-seq</p></li>
+<li><p>Custom or academic assays combining spatial barcoding with NGS</p></li>
+</ul>
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<section id="level-3-processed-spatial-assay-output-bundle">
+<h3>Level 3: Processed Spatial Assay Output Bundle<a class="headerlink" href="#level-3-processed-spatial-assay-output-bundle" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example Spatial Level 3 data</span>
+<span class="nt">SpatialLevel3</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">COMPONENT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Spatial</span><span class="nv"> </span><span class="s">Omics&quot;</span>
+<span class="w">  </span><span class="nt">FILENAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visium_sample.tar.gz&quot;</span>
+<span class="w">  </span><span class="nt">FILE_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tar.gz&quot;</span>
+<span class="w">  </span><span class="nt">HTAN_DATA_FILE_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_12347&quot;</span>
+<span class="w">  </span><span class="nt">HTAN_PARENT_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_B7002&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Platform and assay details</span>
+<span class="w">  </span><span class="nt">PLATFORM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10x</span><span class="nv"> </span><span class="s">Genomics</span><span class="nv"> </span><span class="s">Visium&quot;</span>
+<span class="w">  </span><span class="nt">SPATIAL_ASSAY_TYPE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;capture-based&quot;</span>
+<span class="w">  </span><span class="nt">ASSAY_CHEMISTRY_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v1&quot;</span>
+<span class="w">  </span><span class="nt">SOFTWARE_AND_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Space</span><span class="nv"> </span><span class="s">Ranger</span><span class="nv"> </span><span class="s">2.0.0&quot;</span>
+<span class="w">  </span><span class="nt">PROTOCOL_LINK</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://protocols.io/example&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Molecular targets</span>
+<span class="w">  </span><span class="nt">RNA_MEASURED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">PROTEIN_MEASURED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">TRANSCRIPTOME_TYPE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Whole</span><span class="nv"> </span><span class="s">transcriptome&quot;</span>
+<span class="w">  </span><span class="nt">PANEL_SIZE_TOTAL_TARGETS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18000</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Same section imaging</span>
+<span class="w">  </span><span class="nt">SAME_SECTION_IMAGING_MODALITY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;H&amp;E&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Region and bundle</span>
+<span class="w">  </span><span class="nt">REGION_AREA</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6.5</span>
+<span class="w">  </span><span class="nt">BUNDLE_CONTENTS</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;filtered_feature_bc_matrix.h5&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;spatial/tissue_positions_list.csv&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;spatial/scalefactors_json.json&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;spatial/tissue_lowres_image.png&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Segmentation</span>
+<span class="w">  </span><span class="nt">HAS_CELL_SEGMENTATION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">CELL_SEGMENTATION_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Cellpose&quot;</span>
+<span class="w">  </span><span class="nt">CELL_SEGMENTED_OBJECT_TYPE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Whole</span><span class="nv"> </span><span class="s">cell&quot;</span>
+<span class="w">  </span><span class="nt">NUMBER_OF_SEGMENTED_CELLS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Analysis</span>
+<span class="w">  </span><span class="nt">HAS_DIMENSIONALITY_REDUCTION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">DIMENSIONALITY_REDUCTION_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;UMAP&quot;</span>
+<span class="w">  </span><span class="nt">HAS_CLUSTERING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">CLUSTERING_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Leiden&quot;</span>
+<span class="w">  </span><span class="nt">NUMBER_OF_CLUSTERS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Platform-specific (Visium)</span>
+<span class="w">  </span><span class="nt">SLIDE_SERIAL_NUMBER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;V19J01-123&quot;</span>
+<span class="w">  </span><span class="nt">CAPTURE_AREA</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;A1&quot;</span>
+<span class="w">  </span><span class="nt">CYTASSIST_USED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">GENOMIC_REFERENCE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GRCh38&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Sequencing (capture-based)</span>
+<span class="w">  </span><span class="nt">SEQUENCING_INSTRUMENT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;NovaSeq</span><span class="nv"> </span><span class="s">6000&quot;</span>
+<span class="w">  </span><span class="nt">SEQUENCING_CONFIGURATION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;28x91&quot;</span>
+<span class="w">  </span><span class="nt">SEQUENCING_DEPTH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50M</span><span class="nv"> </span><span class="s">reads&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Quality control</span>
+<span class="w">  </span><span class="nt">QC_SPATIAL_UNIT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spot&quot;</span>
+<span class="w">  </span><span class="nt">QC_FEATURE_NUMBER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4992</span>
+<span class="w">  </span><span class="nt">QC_MEAN_READS_PER_FEATURE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000.5</span>
+<span class="w">  </span><span class="nt">QC_TOTAL_GENES_DETECTED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12000</span>
+<span class="w">  </span><span class="nt">QC_TOTAL_NUMBER_OF_READS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25000000</span>
+</pre></div>
+</div>
+</section>
+<section id="level-4-interoperable-file">
+<h3>Level 4: Interoperable File<a class="headerlink" href="#level-4-interoperable-file" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example Spatial Level 4 data</span>
+<span class="nt">SpatialLevel4</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">COMPONENT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Spatial</span><span class="nv"> </span><span class="s">Omics&quot;</span>
+<span class="w">  </span><span class="nt">FILENAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spatial_data.h5ad&quot;</span>
+<span class="w">  </span><span class="nt">FILE_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;h5ad&quot;</span>
+<span class="w">  </span><span class="nt">HTAN_DATA_FILE_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_12348&quot;</span>
+<span class="w">  </span><span class="nt">HTAN_PARENT_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_12347&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nt">TOOL_COMPATIBILITY</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;anndata&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;spatialdata&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nt">NUMBER_OF_FEATURES</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18000</span>
+<span class="w">  </span><span class="nt">NUMBER_OF_OBJECTS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nt">HAS_DIMENSIONALITY_REDUCTION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">DIMENSIONALITY_REDUCTION_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;UMAP&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nt">HAS_CLUSTERING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">CLUSTERING_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Leiden&quot;</span>
+<span class="w">  </span><span class="nt">NUMBER_OF_CLUSTERS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nt">HAS_CELL_TYPE_CALLING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">CELL_TYPE_CALLING_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SingleR&quot;</span>
+<span class="w">  </span><span class="nt">CELL_TYPES</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;T</span><span class="nv"> </span><span class="s">cell&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;B</span><span class="nv"> </span><span class="s">cell&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Macrophage&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Epithelial</span><span class="nv"> </span><span class="s">cell&quot;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nt">HAS_NORMALISED_ARRAY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">NORMALISATION_METHOD</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;log</span><span class="nv"> </span><span class="s">normalization&quot;</span>
+<span class="w">  </span><span class="nt">HAS_RAW_ARRAY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nt">HAS_IMAGE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">IMAGE_TYPE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tiff&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>Spatial Panel Information<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example Spatial Panel data</span>
+<span class="nt">SpatialPanel</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">HTAN_PANEL_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HTA200_2_P0001&quot;</span>
+<span class="w">  </span><span class="nt">GENE_SYMBOL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MYC&quot;</span>
+<span class="w">  </span><span class="nt">HGNC_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-08-01&quot;</span>
+<span class="w">  </span><span class="nt">GENE_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ENSG00000136997&quot;</span>
+<span class="w">  </span><span class="nt">USER_GENE_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c-Myc&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conditional-requirements">
+<h2>Conditional Requirements<a class="headerlink" href="#conditional-requirements" title="Link to this heading"></a></h2>
+<p>The Spatial module implements several conditional requirements using LinkML rules:</p>
+<section id="level-1">
+<h3><strong>Level 1</strong><a class="headerlink" href="#level-1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SEQUENCING_FILE_TYPE</span></code> is required when <code class="docutils literal notranslate"><span class="pre">HAS_SEQUENCING</span></code> is true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMAGE_TYPES</span></code> is required when <code class="docutils literal notranslate"><span class="pre">HAS_IMAGES</span></code> is true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HAS_PROBE_SET</span></code> is required when <code class="docutils literal notranslate"><span class="pre">ASSAY_TYPE</span></code> is “molecular barcoding”</p></li>
+</ul>
+</section>
+<section id="level-3">
+<h3><strong>Level 3</strong><a class="headerlink" href="#level-3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRANSCRIPTOME_TYPE</span></code> is required when <code class="docutils literal notranslate"><span class="pre">RNA_MEASURED</span></code> is true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PANEL_NAME</span></code> and <code class="docutils literal notranslate"><span class="pre">PANEL_SYNAPSE_ID</span></code> are required when <code class="docutils literal notranslate"><span class="pre">TRANSCRIPTOME_TYPE</span></code> is “Targeted” OR <code class="docutils literal notranslate"><span class="pre">PROTEIN_MEASURED</span></code> is true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SAME_SECTION_IMAGING_CHANNELS</span></code> is required when <code class="docutils literal notranslate"><span class="pre">SAME_SECTION_IMAGING_MODALITY</span></code> is “fluorescence”</p></li>
+<li><p>Segmentation attributes are required when <code class="docutils literal notranslate"><span class="pre">HAS_CELL_SEGMENTATION</span></code> is true</p></li>
+<li><p>Dimensionality reduction method is required when <code class="docutils literal notranslate"><span class="pre">HAS_DIMENSIONALITY_REDUCTION</span></code> is true</p></li>
+<li><p>Clustering attributes are required when <code class="docutils literal notranslate"><span class="pre">HAS_CLUSTERING</span></code> is true</p></li>
+<li><p>Platform-specific attributes are required based on platform type</p></li>
+</ul>
+</section>
+<section id="level-4">
+<h3><strong>Level 4</strong><a class="headerlink" href="#level-4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DIMENSIONALITY_REDUCTION_METHOD</span></code> is required when <code class="docutils literal notranslate"><span class="pre">HAS_DIMENSIONALITY_REDUCTION</span></code> is true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLUSTERING_METHOD</span></code> and <code class="docutils literal notranslate"><span class="pre">NUMBER_OF_CLUSTERS</span></code> are required when <code class="docutils literal notranslate"><span class="pre">HAS_CLUSTERING</span></code> is true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CELL_TYPE_CALLING_METHOD</span></code> and <code class="docutils literal notranslate"><span class="pre">CELL_TYPES</span></code> are required when <code class="docutils literal notranslate"><span class="pre">HAS_CELL_TYPE_CALLING</span></code> is true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMALISATION_METHOD</span></code> is required when <code class="docutils literal notranslate"><span class="pre">HAS_NORMALISED_ARRAY</span></code> is true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMAGE_TYPE</span></code> is required when <code class="docutils literal notranslate"><span class="pre">HAS_IMAGE</span></code> is true</p></li>
+</ul>
+</section>
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Link to this heading"></a></h2>
+<section id="pattern-validation">
+<h3><strong>Pattern Validation</strong><a class="headerlink" href="#pattern-validation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>HTAN IDs</strong>: Must match HTAN ID regex pattern</p></li>
+<li><p><strong>Synapse IDs</strong>: <code class="docutils literal notranslate"><span class="pre">^syn\d+$</span></code> for panel Synapse IDs</p></li>
+<li><p><strong>Gene IDs</strong>: <code class="docutils literal notranslate"><span class="pre">^(ENSG\d+|\d+)$</span></code> for Ensembl gene identifiers</p></li>
+<li><p><strong>HGNC Version</strong>: <code class="docutils literal notranslate"><span class="pre">^\d{4}-\d{2}-\d{2}$</span></code> for date format</p></li>
+<li><p><strong>URLs</strong>: Standard HTTP/HTTPS URL pattern for protocol links</p></li>
+</ul>
+</section>
+<section id="minimum-value-constraints">
+<h3><strong>Minimum Value Constraints</strong><a class="headerlink" href="#minimum-value-constraints" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PANEL_SIZE_TOTAL_TARGETS</span></code>: ≥ 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REGION_AREA</span></code>: ≥ 0.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NUMBER_OF_FEATURES</span></code>: ≥ 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NUMBER_OF_OBJECTS</span></code>: ≥ 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NUMBER_OF_CLUSTERS</span></code>: ≥ 1</p></li>
+<li><p>QC metrics: ≥ 0</p></li>
+</ul>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<p>Run module tests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>modules/SpatialOmics
+make<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</section>
+<section id="schema-generation">
+<h2>Schema Generation<a class="headerlink" href="#schema-generation" title="Link to this heading"></a></h2>
+<p>Generate Python classes and JSON schema:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>modules/SpatialOmics
+make<span class="w"> </span>gen-schema
+</pre></div>
+</div>
+<p>Generate Synapse-compatible flat JSON schema:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>modules/SpatialOmics
+make<span class="w"> </span>gen-synapse-schema
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="schema-documentation">
+<h2>Schema Documentation<a class="headerlink" href="#schema-documentation" title="Link to this heading"></a></h2>
+</section>
+</section>
+<section id="spatial">
+<h1>Spatial<a class="headerlink" href="#spatial" title="Link to this heading"></a></h1>
+<p>HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels</p>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<section id="spatialdata">
+<h3>SpatialData<a class="headerlink" href="#spatialdata" title="Link to this heading"></a></h3>
+<p>Container for all Spatial Omics data levels</p>
+<p><strong>Attributes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LEVEL_1_DATA</span></code> (SpatialLevel1) - Optional</p>
+<ul>
+<li><p>Level 1 Spatial Omics data (raw spatial data bundle, optional)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LEVEL_3_DATA</span></code> (SpatialLevel3) - <strong>Required</strong></p>
+<ul>
+<li><p>Level 3 Spatial Omics data (processed spatial assay output bundle, required)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LEVEL_4_DATA</span></code> (SpatialLevel4) - Optional</p>
+<ul>
+<li><p>Level 4 Spatial Omics data (interoperable h5ad or RDS file, optional)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PANEL_DATA</span></code> (SpatialPanel) - Optional</p>
+<ul>
+<li><p>Spatial panel information for targeted sequencing or protein panels</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="slots">
+<h2>Slots<a class="headerlink" href="#slots" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">caDSR_id</span></code> (string) - Optional</p>
+<ul>
+<li><p>The caDSR identifier for this element</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="multiplexmicroscopy.html" class="btn btn-neutral float-left" title="HTAN Multiplex Microscopy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, HTAN Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

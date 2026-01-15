@@ -92,3 +92,9 @@ classes:
         title: "File Format"
         description: Format of the feature table file (csv or h5ad for Level 4)
         pattern: "^(csv|h5ad)$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with an extension matching the FILE_FORMAT (.csv for csv; .h5ad for h5ad)
+        pattern: "^.+\\.(csv|h5ad)$"
