@@ -5,7 +5,7 @@ build:
   tools:
     python: "3.11"
   commands:
-    - sphinx-build -b html . "${READTHEDOCS_OUTPUT}/html"
+    - python -m sphinx -b html . "${READTHEDOCS_OUTPUT}/html"
 
 python:
   install:
