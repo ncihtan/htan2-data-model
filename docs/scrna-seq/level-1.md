@@ -12,8 +12,6 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILENAME` | string | Yes | Name of the file |
-| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
 | `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
 | `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
@@ -42,6 +40,8 @@ These attributes are inherited from BaseSequencingAttributes.
 |-----------|------|----------|-------------|
 | `CRYOPRESERVED_CELLS_IN_SAMPLE` | boolean | No | Whether cells were cryopreserved in the sample |
 | `DISSOCIATION_METHOD` | [DissociationMethodEnum](#dissociationmethodenum) | Yes | Method used to dissociate tissue into single cells |
+| `FILENAME` | string, pattern: <code>^.+\.(fastq\|fq)(\.gz)?$</code> | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz) |
+| `FILE_FORMAT` | string, pattern: <code>^(fastq\|fastq\.gz)$</code> | Yes | Format of the raw sequencing file (fastq or fastq.gz) |
 | `LIBRARY_CONSTRUCTION_METHOD` | [LibraryConstructionMethodEnum](#libraryconstructionmethodenum) | Yes | Method used to construct the sequencing library |
 | `NUCLEIC_ACID_SOURCE` | [NucleicAcidSourceEnum](#nucleicacidsourceenum) | Yes | Type of nucleic acid used for sequencing |
 | `READ_INDICATOR` | [ReadIndicatorEnum](#readindicatorenum) | Yes | Type of read (forward, reverse, index) |
