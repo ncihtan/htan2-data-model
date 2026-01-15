@@ -4,8 +4,8 @@ ADAPTER_SEQUENCE,string,,No,Adapter sequence
 BASE_CALLER_NAME,string,,No,Name of the base caller
 BASE_CALLER_VERSION,string,,No,Version of the base caller
 CHECKSUM,string,,No,Checksum for data integrity verification
-FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
-FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+FILENAME,string,^.+\.(fastq|fq)(\.gz)?$,Yes,Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz)
+FILE_FORMAT,string,^(fastq|fastq\.gz)$,Yes,Format of the raw sequencing file (fastq or fastq.gz)
 FLOW_CELL_BARCODE,string,,No,Flow cell barcode
 FRAGMENT_MAXIMUM_LENGTH,integer,,No,Maximum fragment length
 FRAGMENT_MEAN_LENGTH,integer,,No,Mean fragment length

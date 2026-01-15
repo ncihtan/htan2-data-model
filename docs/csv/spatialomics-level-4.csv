@@ -3,7 +3,7 @@ CELL_TYPES,string,,No,List of cell types present in the data
 CELL_TYPE_CALLING_METHOD,string,,No,Method used for cell type annotation
 CLUSTERING_METHOD,string,,No,Method used to define clusters
 DIMENSIONALITY_REDUCTION_METHOD,DimensionalityReductionMethodLevel4,,No,Method used for dimensionality reduction
-FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
+FILENAME,string,^.+\.(h5ad|rds|zarr)$,Yes,Name of the file. Must end with an extension matching the FILE_FORMAT (.h5ad for h5ad; .rds for rds; .zarr for zarr)
 FILE_FORMAT,FileFormatLevel4,,Yes,File format of the data file
 HAS_CELL_TYPE_CALLING,boolean,,Yes,Indicates presence of cell type annotations
 HAS_CLUSTERING,boolean,,Yes,Indicates if clustering was performed

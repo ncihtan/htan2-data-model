@@ -9,8 +9,8 @@ CHECKSUM,string,,No,Checksum for data integrity verification
 CONTAMINATION,float,,No,Contamination estimate
 CONTAMINATION_ERROR,float,,No,Contamination error estimate
 ENCODING,string,,No,Encoding information
-FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
-FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+FILENAME,string,^.+\.(bam|cram)$,Yes,Name of the file. Must end with an extension matching the FILE_FORMAT (.bam for bam; .cram for cram)
+FILE_FORMAT,string,^(bam|cram)$,Yes,Format of the aligned file (bam or cram)
 GENOME_ANNOTATION_URL,string,,No,URL to genome annotation
 GENOMIC_REFERENCE,string,,Yes,Genomic reference used for alignment
 GENOMIC_REFERENCE_URL,string,,No,URL to genomic reference

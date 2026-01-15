@@ -7,7 +7,7 @@ CELL_SEGMENTED_OBJECT_TYPE,CellSegmentedObjectType,,No,Level of segmentation
 CLUSTERING_METHOD,string,,No,Method used to define clusters
 CYTASSIST_USED,boolean,,No,Whether CytAssist was used
 DIMENSIONALITY_REDUCTION_METHOD,DimensionalityReductionMethod,,No,Method used for dimensionality reduction
-FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
+FILENAME,string,,Yes,Name of the file
 FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
 GENOMIC_REFERENCE,string,,No,Reference genome used
 HAS_CELL_SEGMENTATION,boolean,,Yes,Indicates presence of cell segmentation data

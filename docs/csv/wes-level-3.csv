@@ -1,7 +1,7 @@
 Attribute,Type,Pattern,Required,Description
 CHECKSUM,string,,No,Checksum for data integrity verification
-FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
-FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+FILENAME,string,^.+\.vcf(\.gz)?$,Yes,Name of the file. Must end with an extension matching the FILE_FORMAT (.vcf for vcf; .vcf.gz for vcf.gz)
+FILE_FORMAT,string,^(vcf|vcf\.gz)$,Yes,Format of the variant file (vcf or vcf.gz)
 GENOME_ANNOTATION_URL,string,,No,URL to genome annotation
 GENOMIC_REFERENCE,string,,Yes,Genomic reference used for alignment
 GENOMIC_REFERENCE_URL,string,,No,URL to genomic reference

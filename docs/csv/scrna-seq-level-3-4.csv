@@ -6,7 +6,7 @@ CELL_MEDIAN_NUMBER_READS,integer,,Yes,Median number of reads per cell
 CELL_TOTAL,integer,,Yes,Number of sequenced cells. Applies to raw counts matrix only
 CHECKSUM,string,,No,Checksum for data integrity verification
 DATA_CATEGORY,DataCategoryEnum,,Yes,Specific content type of the data file
-FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
+FILENAME,string,^.+\.h5ad$,Yes,Name of the file. Must end with .h5ad extension
 FILE_FORMAT,string,^h5ad$,Yes,Format of the file (only h5ad files accepted for Level 3/4)
 GENOME_ANNOTATION_URL,string,,No,URL to genome annotation
 GENOMIC_REFERENCE,string,,Yes,Genomic reference used for alignment

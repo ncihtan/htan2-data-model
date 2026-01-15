@@ -2,8 +2,8 @@ Attribute,Type,Pattern,Required,Description
 CHECKSUM,string,,No,Checksum for data integrity verification
 CRYOPRESERVED_CELLS_IN_SAMPLE,boolean,,No,Whether cells were cryopreserved in the sample
 DISSOCIATION_METHOD,DissociationMethodEnum,,Yes,Method used to dissociate tissue into single cells
-FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
-FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+FILENAME,string,^.+\.(fastq|fq)(\.gz)?$,Yes,Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz)
+FILE_FORMAT,string,^(fastq|fastq\.gz)$,Yes,Format of the raw sequencing file (fastq or fastq.gz)
 GENOME_ANNOTATION_URL,string,,No,URL to genome annotation
 GENOMIC_REFERENCE,string,,Yes,Genomic reference used for alignment
 GENOMIC_REFERENCE_URL,string,,No,URL to genomic reference
