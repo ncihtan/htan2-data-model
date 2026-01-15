@@ -15,7 +15,7 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 ## Universal Attributes
 
 ### Required Attributes
-- **FILENAME**: Name of the file (pattern: `^.+[\\\\/]\\S*$`)
+- **FILENAME**: Name of the file (no pattern constraint - accepts any filename with or without path)
 - **FILE_FORMAT**: Format of the file (e.g., fastq, bam, vcf, h5ad)
 - **HTAN_DATA_FILE_ID**: HTAN Data File ID (Primary Key)
 - **HTAN_PARENT_ID**: HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file)

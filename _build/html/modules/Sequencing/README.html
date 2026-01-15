@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTAN Base Sequencing Module &mdash; HTAN Phase 2 Data Model 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HTAN Phase 2 Data Model
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/clinical.html">Clinical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/biospecimen.html">Biospecimen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/corefile.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/sequencing.html">Sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/wes.html">WES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/scrna-seq.html">scRNA-seq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/imaging.html">Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/digitalpathology.html">DigitalPathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/multiplexmicroscopy.html">MultiplexMicroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/spatialomics.html">Spatial</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HTAN Phase 2 Data Model</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HTAN Base Sequencing Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/modules/Sequencing/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="htan-base-sequencing-module">
+<h1>HTAN Base Sequencing Module<a class="headerlink" href="#htan-base-sequencing-module" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The HTAN Base Sequencing module provides a shared foundation for all sequencing data types in the HTAN project. This module defines common attributes, enums, and base classes that are shared across different sequencing modalities (WES, scRNA-seq, etc.).</p>
+</section>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>The base sequencing module serves as a foundation to:</p>
+<ul class="simple">
+<li><p><strong>Reduce duplication</strong> across sequencing modules</p></li>
+<li><p><strong>Ensure consistency</strong> in common attributes</p></li>
+<li><p><strong>Simplify maintenance</strong> of shared sequencing metadata</p></li>
+<li><p><strong>Enable modular architecture</strong> for different sequencing types</p></li>
+</ul>
+</section>
+<section id="schema-structure">
+<h2>Schema Structure<a class="headerlink" href="#schema-structure" title="Link to this heading"></a></h2>
+<section id="basesequencingattributes-class">
+<h3>BaseSequencingAttributes Class<a class="headerlink" href="#basesequencingattributes-class" title="Link to this heading"></a></h3>
+<p>The main class that defines common attributes shared across all sequencing types:</p>
+<p><strong>Required Attributes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LIBRARY_LAYOUT</span></code>: Library layout (paired-end or single-end)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SEQUENCING_PLATFORM</span></code>: Sequencing platform used</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORKFLOW_VERSION</span></code>: Major version of the workflow</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENOMIC_REFERENCE</span></code>: Genomic reference used for alignment</p></li>
+</ul>
+<p><strong>Optional Attributes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SEQUENCING_BATCH_ID</span></code>: Sequencing batch identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIBRARY_PREPARATION_DAYS_FROM_INDEX</span></code>: Days from index for library preparation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TECHNICAL_REPLICATE_GROUP</span></code>: Technical replicate group identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROTOCOL_LINK</span></code>: Link to sequencing protocol</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORKFLOW_LINK</span></code>: Link to workflow (DockStore.org recommended)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENOMIC_REFERENCE_URL</span></code>: URL to genomic reference</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENOME_ANNOTATION_URL</span></code>: URL to genome annotation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHECKSUM</span></code>: Checksum for data integrity verification</p></li>
+</ul>
+</section>
+<section id="enums-alphabetically-ordered">
+<h3>Enums (Alphabetically Ordered)<a class="headerlink" href="#enums-alphabetically-ordered" title="Link to this heading"></a></h3>
+<p><strong>LibraryLayoutEnum:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Paired-end</span></code>: Paired-end sequencing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Single-end</span></code>: Single-end sequencing</p></li>
+</ul>
+<p><strong>SequencingPlatformEnum:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ABI_SOLID</span></code>: ABI SOLID sequencing platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BGISEQ</span></code>: BGI sequencing platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CAPILLARY</span></code>: Capillary sequencing platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPLETE_GENOMICS</span></code>: Complete Genomics sequencing platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HELICOS</span></code>: Helicos sequencing platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ILLUMINA</span></code>: Illumina sequencing platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ION_TORRENT</span></code>: Ion Torrent sequencing platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LS454</span></code>: 454 sequencing platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OXFORD_NANOPORE</span></code>: Oxford Nanopore sequencing platform</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PACBIO_SMRT</span></code>: PacBio SMRT sequencing platform</p></li>
+</ul>
+</section>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">BaseSequencingAttributes</span></code> class uses a clean inheritance chain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BaseSequencingAttributes → CoreFileAttributes
+</pre></div>
+</div>
+<p><strong>Inheritance Benefits:</strong></p>
+<ul class="simple">
+<li><p><strong>Core File Attributes</strong>: Gets universal file attributes (FILENAME, HTAN_DATA_FILE_ID, HTAN_PARENT_ID, etc.) from <code class="docutils literal notranslate"><span class="pre">CoreFileAttributes</span></code></p></li>
+<li><p><strong>Base Sequencing Attributes</strong>: All sequencing modules get common sequencing attributes (LIBRARY_LAYOUT, SEQUENCING_PLATFORM, etc.)</p></li>
+<li><p><strong>No Duplication</strong>: Common attributes are defined once in the base modules</p></li>
+</ul>
+<p>Specific sequencing modules (WES, scRNA-seq) will:</p>
+<ul class="simple">
+<li><p>Inherit from <code class="docutils literal notranslate"><span class="pre">BaseSequencingAttributes</span></code> to get core file and sequencing attributes</p></li>
+<li><p>Add their own specific attributes</p></li>
+<li><p>Maintain consistent structure across all sequencing types</p></li>
+</ul>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<section id="import-in-other-modules">
+<h3>Import in Other Modules<a class="headerlink" href="#import-in-other-modules" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># In WES module</span>
+<span class="nt">imports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../../Sequencing/domains/sequencing</span>
+
+<span class="nt">classes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">BulkWESLevel1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BaseSequencingAttributes</span>
+<span class="w">    </span><span class="nt">attributes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># WES-specific attributes</span>
+<span class="w">      </span><span class="nt">TARGET_CAPTURE_KIT</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># In scRNA-seq module</span>
+<span class="nt">imports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../../Sequencing/domains/sequencing</span>
+
+<span class="nt">classes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scRNALevel1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BaseSequencingAttributes</span>
+<span class="w">    </span><span class="nt">attributes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># scRNA-seq-specific attributes</span>
+<span class="w">      </span><span class="nt">SINGLE_CELL_ISOLATION_METHOD</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SingleCellIsolationMethodEnum</span>
+<span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="build-and-testing">
+<h2>Build and Testing<a class="headerlink" href="#build-and-testing" title="Link to this heading"></a></h2>
+<section id="schema-validation">
+<h3>Schema Validation<a class="headerlink" href="#schema-validation" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validate schema</span>
+make<span class="w"> </span>validate
+
+<span class="c1"># Generate Python classes</span>
+make<span class="w"> </span>gen-python
+
+<span class="c1"># Generate JSON schema</span>
+make<span class="w"> </span>gen-json-schema
+
+<span class="c1"># Run tests</span>
+make<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<p>The module includes comprehensive tests for:</p>
+<ul class="simple">
+<li><p>Schema loading and validation</p></li>
+<li><p>Enum alphabetical ordering</p></li>
+<li><p>Inheritance from CoreFileAttributes</p></li>
+<li><p>Common attribute presence and validation</p></li>
+<li><p>Optional vs required attribute marking</p></li>
+<li><p>Data validation examples</p></li>
+</ul>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Core Module</strong>: Inherits from <code class="docutils literal notranslate"><span class="pre">CoreFileAttributes</span></code></p></li>
+<li><p><strong>Biospecimen Module</strong>: Record-based module (does not inherit from CoreFileAttributes)</p></li>
+<li><p><strong>LinkML</strong>: Uses LinkML for schema definition</p></li>
+<li><p><strong>pytest</strong>: For testing framework</p></li>
+</ul>
+</section>
+<section id="architecture-benefits">
+<h2>Architecture Benefits<a class="headerlink" href="#architecture-benefits" title="Link to this heading"></a></h2>
+<section id="modular-design">
+<h3>Modular Design<a class="headerlink" href="#modular-design" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>WES Module</strong>: Extends base with WES-specific attributes</p></li>
+<li><p><strong>scRNA-seq Module</strong>: Extends base with scRNA-seq-specific attributes</p></li>
+<li><p><strong>Future Modules</strong>: Can easily extend base for new sequencing types</p></li>
+</ul>
+</section>
+<section id="consistency">
+<h3>Consistency<a class="headerlink" href="#consistency" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>All sequencing modules share the same common attributes</p></li>
+<li><p>Consistent enum values across all sequencing types</p></li>
+<li><p>Unified validation patterns</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, HTAN Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
