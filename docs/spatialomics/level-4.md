@@ -12,7 +12,6 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILENAME` | string | Yes | Name of the file |
 | `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
 | `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
@@ -24,6 +23,7 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 | `CELL_TYPE_CALLING_METHOD` | string | Required IF HAS_CELL_TYPE_CALLING = 'None' | Method used for cell type annotation |
 | `CLUSTERING_METHOD` | string | Required IF HAS_CLUSTERING = 'None' | Method used to define clusters |
 | `DIMENSIONALITY_REDUCTION_METHOD` | [DimensionalityReductionMethodLevel4](#dimensionalityreductionmethodlevel4) | Required IF HAS_DIMENSIONALITY_REDUCTION = 'None' | Method used for dimensionality reduction |
+| `FILENAME` | string, pattern: <code>^.+\.(h5ad\|rds\|zarr)$</code> | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.h5ad for h5ad; .rds for rds; .zarr for zarr) |
 | `FILE_FORMAT` | [FileFormatLevel4](#fileformatlevel4) | Yes | File format of the data file |
 | `HAS_CELL_TYPE_CALLING` | boolean | Yes | Indicates presence of cell type annotations |
 | `HAS_CLUSTERING` | boolean | Yes | Indicates if clustering was performed |

@@ -12,7 +12,6 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILENAME` | string | Yes | Name of the file |
 | `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
 | `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
@@ -22,6 +21,7 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 |-----------|------|----------|-------------|
 | `ASSAY_TYPE` | [AssayType](#assaytype) | Yes | Broad assay class (drives downstream conditionals) |
 | `BUNDLE_CONTENTS` | string | Yes | List of expected files or folders in this bundle (relative paths within the archive) |
+| `FILENAME` | string, pattern: <code>^.+\.(tar(\.gz)?\|zip)$</code> | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.tar for tar; .tar.gz for tar.gz; .zip for zip) |
 | `FILE_FORMAT` | [FileFormatLevel1](#fileformatlevel1) | Yes | High-level package format of the bundle |
 | `HAS_IMAGES` | boolean | Yes | Whether any image files (e.g., TIFFs) are included |
 | `HAS_PROBE_SET` | boolean | Required IF ASSAY_TYPE = 'molecular barcoding' | Whether a targeted probe/gene panel is included |

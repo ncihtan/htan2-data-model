@@ -12,7 +12,6 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILENAME` | string | Yes | Name of the file |
 | `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
 | `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
@@ -54,6 +53,7 @@ These attributes are inherited from BaseImagingAttributes.
 | `FEATURE_EXTRACTION_WORKFLOW_TYPE` | string | Yes | Type of workflow used to extract features from segmented objects |
 | `FEATURE_EXTRACTION_WORKFLOW_URL` | string | No | URL or link to the feature extraction workflow used |
 | `FEATURE_EXTRACTION_WORKFLOW_VERSION` | string | No | Version of the feature extraction workflow |
+| `FILENAME` | string, pattern: <code>^.+\.(csv\|h5ad)$</code> | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.csv for csv; .h5ad for h5ad) |
 | `FILE_FORMAT` | string, pattern: <code>^(csv\|h5ad)$</code> | Yes | Format of the feature table file (csv or h5ad for Level 4) |
 | `MATRIX_TYPE` | [MatrixTypeEnum](#matrixtypeenum) | Yes | Type of feature matrix (raw counts, normalized, etc.) |
 | `NUMBER_OF_FEATURES` | integer | No | Number of features (markers/channels) in the feature matrix |

@@ -12,7 +12,6 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILENAME` | string | Yes | Name of the file |
 | `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
 | `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
@@ -45,6 +44,7 @@ These attributes are inherited from BaseSequencingAttributes.
 | `CELL_MEDIAN_NUMBER_READS` | integer | Yes | Median number of reads per cell |
 | `CELL_TOTAL` | integer | Yes | Number of sequenced cells. Applies to raw counts matrix only |
 | `DATA_CATEGORY` | [DataCategoryEnum](#datacategoryenum) | Yes | Specific content type of the data file |
+| `FILENAME` | string, pattern: <code>^.+\.h5ad$</code> | Yes | Name of the file. Must end with .h5ad extension |
 | `FILE_FORMAT` | string, pattern: <code>^h5ad$</code> | Yes | Format of the file (only h5ad files accepted for Level 3/4) |
 | `LINKED_MATRICES` | string | No | All matrices associated with every part of a SingleCellExperiment object. Comma-delimited list of filenames |
 | `MATRIX_TYPE` | [MatrixTypeEnum](#matrixtypeenum) | Yes | Type of data stored in matrix |

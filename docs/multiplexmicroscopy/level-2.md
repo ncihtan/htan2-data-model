@@ -12,7 +12,6 @@ These attributes are inherited from CoreFileAttributes and apply to all file-bas
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILENAME` | string | Yes | Name of the file |
 | `HTAN_DATA_FILE_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_(D[0-9]{1,20})$</code> | Yes | HTAN Data File ID (Primary Key) |
 | `HTAN_PARENT_ID` | string, pattern: <code>^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000\|EXT[0-9]{1,18}\|[0-9]{1,21})_([BD][0-9]{1,20})$</code> | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2. |
 
@@ -50,7 +49,8 @@ These attributes are inherited from BaseImagingAttributes.
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `CHANNEL_METADATA_ID` | string, pattern: <code>^syn\d+$</code> | Yes | Unique identifier specifying the location of the required channel metadata (Synapse ID) |
-| `FILE_FORMAT` | string, pattern: <code>^(ome-tiff\|tiff\|qptiff\|svs)$</code> | Yes | Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python. |
+| `FILENAME` | string, pattern: <code>^.+\.(ome\.(tif\|tiff\|tf2\|tf8\|btf)\|tiff?\|qptiff\|svs)$</code> | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.ome.tif, .ome.tiff, .ome.tf2, .ome.tf8, .ome.btf for ome-tiff; .tiff or .tif for tiff; .qptiff for qptiff; .svs for svs) |
+| `FILE_FORMAT` | string, pattern: <code>^(ome-tiff\|tiff\|qptiff\|svs)$</code> | Yes | Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python. OME-TIFF files use extensions .ome.tif, .ome.tiff, .ome.tf2, .ome.tf8, or .ome.btf |
 | `IMAGING_ASSAY_TYPE` | [ImagingAssayType](#imagingassaytype) | Yes | Type of imaging assay |
 | `PHYSICAL_SIZE_X` | float | Yes | Physical size of a single pixel in the x dimension. In microns. |
 | `PHYSICAL_SIZE_Y` | float | Yes | Physical size of a single pixel in the y dimension. In microns. |
