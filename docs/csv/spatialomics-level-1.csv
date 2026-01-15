@@ -1,0 +1,14 @@
+Attribute,Type,Pattern,Required,Description
+ASSAY_TYPE,AssayType,,Yes,Broad assay class (drives downstream conditionals)
+BUNDLE_CONTENTS,string,,Yes,List of expected files or folders in this bundle (relative paths within the archive)
+FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
+FILE_FORMAT,FileFormatLevel1,,Yes,High-level package format of the bundle
+HAS_IMAGES,boolean,,Yes,"Whether any image files (e.g., TIFFs) are included"
+HAS_PROBE_SET,boolean,,No,Whether a targeted probe/gene panel is included
+HAS_REGISTRATION_FILES,boolean,,Yes,Whether any spatial registration transform files are included
+HAS_SEQUENCING,boolean,,No,If raw/aligned sequencing data is included
+HTAN_DATA_FILE_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",Yes,HTAN Data File ID (Primary Key)
+HTAN_PARENT_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",Yes,"HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2."
+IMAGE_TYPES,ImageType,,No,Types of images provided
+PLATFORM,Platform,,Yes,Name of the platform used to generate the data
+SEQUENCING_FILE_TYPE,SequencingFileType,,No,Sequencing file type

@@ -1,0 +1,21 @@
+Attribute,Type,Pattern,Required,Description
+CELL_BARCODE_TAG,string,,No,Tag used for cell barcodes
+CHECKSUM,string,,No,Checksum for data integrity verification
+FILENAME,string,^.+[\\/]\S*$,Yes,Name of the file
+FILE_FORMAT,string,,Yes,"Format of the file (e.g., fastq, bam, vcf, h5ad)"
+GENOME_ANNOTATION_URL,string,,No,URL to genome annotation
+GENOMIC_REFERENCE,string,,Yes,Genomic reference used for alignment
+GENOMIC_REFERENCE_URL,string,,No,URL to genomic reference
+HTAN_DATA_FILE_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",Yes,HTAN Data File ID (Primary Key)
+HTAN_PARENT_ID,string,"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",Yes,"HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B or D suffix. Supports HTA200-229 for phase 2."
+LIBRARY_LAYOUT,LibraryLayoutEnum,,Yes,Library layout (paired-end or single-end)
+LIBRARY_PREPARATION_DAYS_FROM_INDEX,integer,,No,Days from index for library preparation
+PROTOCOL_LINK,string,,No,Link to sequencing protocol
+SCRNASEQ_WORKFLOW_TYPE,scRNAseqWorkflowTypeEnumLevel2,,Yes,Generic name for the workflow used to analyze the dataset
+SEQUENCING_BATCH_ID,string,,No,Sequencing batch identifier
+SEQUENCING_PLATFORM,SequencingPlatformEnum,,Yes,Sequencing platform used
+TECHNICAL_REPLICATE_GROUP,string,,No,Technical replicate group identifier
+UMI_TAG,string,,No,Tag used for UMIs
+WHITELIST_CELL_BARCODE_FILE_LINK,string,,No,Link to whitelist cell barcode file
+WORKFLOW_LINK,string,,No,Link to workflow or command. DockStore.org recommended
+WORKFLOW_VERSION,string,,Yes,Major version of the workflow

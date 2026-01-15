@@ -44,6 +44,15 @@ docs/*
 !docs/development.md
 !docs/quickstart.md
 !docs/index.md
+# Allow generated documentation files
+!docs/*.md
+!docs/**/*.md
+# Allow subdirectories with markdown files
+!docs/*/
+!docs/*/*.md
+# Allow CSV exports
+!docs/csv/
+!docs/csv/*.csv
 # Also ignore these specific doc directories
 docs/_build/
 docs/site/

@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTAN Biospecimen Module &mdash; HTAN Phase 2 Data Model 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HTAN Phase 2 Data Model
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/clinical.html">Clinical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/biospecimen.html">Biospecimen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/corefile.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/sequencing.html">Sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/wes.html">WES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/scrna-seq.html">scRNA-seq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/imaging.html">Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/digitalpathology.html">DigitalPathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/multiplexmicroscopy.html">MultiplexMicroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/spatialomics.html">Spatial</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HTAN Phase 2 Data Model</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HTAN Biospecimen Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/modules/Biospecimen/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="htan-biospecimen-module">
+<h1>HTAN Biospecimen Module<a class="headerlink" href="#htan-biospecimen-module" title="Link to this heading"></a></h1>
+<p>This module implements the <strong>complete HTAN Phase 2 Biospecimen Data Model</strong> based on the official RFC specification, achieving 100% compliance with all 39 required attributes.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The Biospecimen module provides comprehensive data modeling for biospecimen metadata including:</p>
+<ul class="simple">
+<li><p><strong>✅ 39 Core Attributes</strong>: All attributes defined in the RFC HTAN Phase 2 Biospecimen Model</p></li>
+<li><p><strong>✅ 19 Enum Schemas</strong>: Official permissible values from HTAN Phase 2 specifications</p></li>
+<li><p><strong>✅ Conditional Requirements</strong>: Smart validation based on attribute dependencies</p></li>
+<li><p><strong>✅ CRDC Alignment</strong>: Integration with Cancer Research Data Commons standards</p></li>
+<li><p><strong>✅ caDSR Integration</strong>: All caDSR identifiers included for CRDC compatibility</p></li>
+</ul>
+</section>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h2>
+<section id="rfc-compliance">
+<h3>RFC Compliance<a class="headerlink" href="#rfc-compliance" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>100% RFC Implementation</strong>: All 39 attributes from RFC Table 3 implemented</p></li>
+<li><p><strong>Official Enum Values</strong>: All permissible values from official HTAN Phase 2 TSV files</p></li>
+<li><p><strong>caDSR Integration</strong>: All caDSR identifiers included for CRDC compatibility</p></li>
+<li><p><strong>Tier 2 Support</strong>: Flexible structure for additional biospecimen annotations</p></li>
+</ul>
+</section>
+<section id="core-attributes">
+<h3>Core Attributes<a class="headerlink" href="#core-attributes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>HTAN identifier validation (HTAN_BIOSPECIMEN_ID, HTAN_PARENT_ID)</p></li>
+<li><p>Biospecimen type and acquisition method tracking</p></li>
+<li><p>Preservation and processing metadata</p></li>
+<li><p>Tissue sample characteristics</p></li>
+<li><p>Cellular architecture and pathology data</p></li>
+</ul>
+</section>
+<section id="conditional-requirements">
+<h3>Conditional Requirements<a class="headerlink" href="#conditional-requirements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>ACQUISITION_METHOD_OTHER_SPECIFY</strong>: Required when ACQUISITION_METHOD_TYPE=Other</p></li>
+<li><p><strong>FIXATION_DURATION_IN_MINUTES</strong>: Required when PRESERVATION_METHOD=Fixation</p></li>
+<li><p><strong>TISSUE_SAMPLE_TYPE</strong>: Required when BIOSPECIMEN_TYPE=Tissue</p></li>
+<li><p><strong>ANALYTE_TYPE</strong>: Required when BIOSPECIMEN_TYPE=DNA|RNA</p></li>
+<li><p><strong>SLICING_METHOD</strong>: Required when TISSUE_SAMPLE_TYPE=Tissue Section</p></li>
+<li><p><strong>TUMOR_CLASSIFICATION</strong>: Required when SPECIMEN_CELLULAR_ARCHITECTURE=Tumor</p></li>
+<li><p><strong>ICD_O_3_TISSUE_MORPHOLOGY</strong>: Required when SPECIMEN_CELLULAR_ARCHITECTURE=Tumor</p></li>
+<li><p><strong>ICD_10_DISEASE_CODE</strong>: Required when SPECIMEN_CELLULAR_ARCHITECTURE=Precancerous</p></li>
+<li><p><strong>DEGREE_OF_DYSPLASIA</strong>: Required when SPECIMEN_CELLULAR_ARCHITECTURE=Precancerous</p></li>
+</ul>
+</section>
+<section id="enum-validation-coverage">
+<h3>Enum Validation Coverage<a class="headerlink" href="#enum-validation-coverage" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>BIOSPECIMEN_TYPE</strong>: 19 official values (Ascites, Blood, Tissue, etc.)</p></li>
+<li><p><strong>ACQUISITION_METHOD_TYPE</strong>: 20 surgical and biopsy procedures</p></li>
+<li><p><strong>PRESERVATION_METHOD</strong>: 14 preservation techniques</p></li>
+<li><p><strong>PRESERVATION_MEDIUM</strong>: 17 chemical and physical mediums</p></li>
+<li><p><strong>PRESERVATION_TEMPERATURE</strong>: 10 temperature ranges</p></li>
+<li><p><strong>ANALYTE_TYPE</strong>: 11 molecular analyte types</p></li>
+<li><p><strong>SLICING_METHOD</strong>: 8 tissue sectioning methods</p></li>
+<li><p><strong>SPECIMEN_CELLULAR_ARCHITECTURE</strong>: 6 cellular architecture types</p></li>
+<li><p><strong>TUMOR_CLASSIFICATION</strong>: 11 tumor classification categories</p></li>
+<li><p><strong>DEGREE_OF_DYSPLASIA</strong>: 4 dysplasia grades</p></li>
+<li><p><strong>SHIPPING_CONDITION_TYPE</strong>: 10 shipping environment types</p></li>
+<li><p><strong>TIMEPOINT</strong>: Comprehensive timepoint values</p></li>
+<li><p><strong>SPECIMEN_LATERALITY</strong>: 8 anatomical laterality options</p></li>
+<li><p><strong>SLIDE_CHARGE_TYPE</strong>: 6 slide charge states</p></li>
+<li><p><strong>TISSUE_SAMPLE_TYPE</strong>: 2 tissue sample types</p></li>
+<li><p><strong>SITE_OF_RESECTION_OR_BIOPSY</strong>: UBERON anatomical codes</p></li>
+<li><p><strong>ICD_O_3_MORPHOLOGY</strong>: ICD-O-3 morphology codes</p></li>
+<li><p><strong>ICD_10_DISEASE</strong>: ICD-10 disease codes</p></li>
+</ul>
+</section>
+<section id="data-quality-features">
+<h3>Data Quality Features<a class="headerlink" href="#data-quality-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Numeric range validation (percentages, dimensions, ages)</p></li>
+<li><p>String length limits for text fields</p></li>
+<li><p>Multi-value support for adjacent biospecimen IDs</p></li>
+<li><p>CRDC standard alignment with caDSR identifiers</p></li>
+</ul>
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<section id="basic-usage">
+<h3>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">htan_biospecimen</span> <span class="kn">import</span> <span class="n">BiospecimenData</span>
+
+<span class="c1"># Create a biospecimen record</span>
+<span class="n">biospecimen</span> <span class="o">=</span> <span class="n">BiospecimenData</span><span class="p">(</span>
+    <span class="n">HTAN_BIOSPECIMEN_ID</span><span class="o">=</span><span class="s2">&quot;HTA200_2_7001&quot;</span><span class="p">,</span>
+    <span class="n">HTAN_PARENT_ID</span><span class="o">=</span><span class="s2">&quot;HTA200_2_B7001&quot;</span><span class="p">,</span>
+    <span class="n">BIOSPECIMEN_TYPE</span><span class="o">=</span><span class="s2">&quot;Tissue&quot;</span><span class="p">,</span>
+    <span class="n">ACQUISITION_METHOD_TYPE</span><span class="o">=</span><span class="s2">&quot;Surgical Resection&quot;</span><span class="p">,</span>
+    <span class="n">SITE_OF_RESECTION_OR_BIOPSY</span><span class="o">=</span><span class="s2">&quot;UBERON:0000948&quot;</span><span class="p">,</span>  <span class="c1"># Stomach</span>
+    <span class="n">SPECIMEN_LATERALITY</span><span class="o">=</span><span class="s2">&quot;Left&quot;</span><span class="p">,</span>
+    <span class="n">PRESERVATION_METHOD</span><span class="o">=</span><span class="s2">&quot;Formalin Fixed&quot;</span><span class="p">,</span>
+    <span class="n">SPECIMEN_CELLULAR_ARCHITECTURE</span><span class="o">=</span><span class="s2">&quot;Tumor&quot;</span><span class="p">,</span>
+    <span class="n">SHIPPING_CONDITION_TYPE</span><span class="o">=</span><span class="s2">&quot;Frozen&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="validation">
+<h3>Validation<a class="headerlink" href="#validation" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validate the record</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">biospecimen</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Biospecimen record is valid&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Validation error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="schema-structure">
+<h2>Schema Structure<a class="headerlink" href="#schema-structure" title="Link to this heading"></a></h2>
+<section id="main-schema">
+<h3>Main Schema<a class="headerlink" href="#main-schema" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">domains/biospecimen.yaml</span></code> - Main schema definition</p></li>
+<li><p>Inherits from Core module for universal attributes</p></li>
+<li><p>Defines BiospecimenData class with all 39 attributes</p></li>
+</ul>
+</section>
+<section id="enum-schemas">
+<h3>Enum Schemas<a class="headerlink" href="#enum-schemas" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">biospecimen_type_enum.yaml</span></code> - Biospecimen types</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">acquisition_method_type_enum.yaml</span></code> - Acquisition methods</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">specimen_laterality_enum.yaml</span></code> - Laterality options</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preservation_method_enum.yaml</span></code> - Preservation methods</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cellular_architecture_enum.yaml</span></code> - Cellular architecture patterns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slicing_method_enum.yaml</span></code> - Tissue slicing methods</p></li>
+<li><p>And 13 additional enum schemas for comprehensive validation</p></li>
+</ul>
+</section>
+</section>
+<section id="development">
+<h2>Development<a class="headerlink" href="#development" title="Link to this heading"></a></h2>
+<section id="building-the-module">
+<h3>Building the Module<a class="headerlink" href="#building-the-module" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Python classes and JSON schema</span>
+make<span class="w"> </span>all
+
+<span class="c1"># Generate only Python classes</span>
+make<span class="w"> </span>python
+
+<span class="c1"># Generate only JSON schema</span>
+make<span class="w"> </span>json-schema
+
+<span class="c1"># Validate schema</span>
+make<span class="w"> </span>validate
+
+<span class="c1"># Run tests</span>
+make<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all tests</span>
+pytest<span class="w"> </span>tests/
+
+<span class="c1"># Run with coverage</span>
+pytest<span class="w"> </span>tests/<span class="w"> </span>--cov<span class="o">=</span>htan_biospecimen
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integration">
+<h2>Integration<a class="headerlink" href="#integration" title="Link to this heading"></a></h2>
+<p>This module integrates with:</p>
+<ul class="simple">
+<li><p><strong>Core Module</strong>: Inherits universal HTAN attributes</p></li>
+<li><p><strong>Clinical Module</strong>: Shares participant and diagnosis data</p></li>
+<li><p><strong>WES Module</strong>: Links to sequencing data</p></li>
+<li><p><strong>CRDC Standards</strong>: Aligns with Cancer Research Data Commons</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>RFC Compliance<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>This implementation is based on:</p>
+<ul class="simple">
+<li><p><strong>RFC HTAN Phase 2 Biospecimen Model</strong></p></li>
+<li><p><strong>39 Core CDEs</strong> from the specification</p></li>
+<li><p><strong>CRDC Standard Alignment</strong> with caDSR identifiers</p></li>
+<li><p><strong>Conditional Requirements</strong> as specified in the RFC</p></li>
+</ul>
+</section>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Follow the existing module structure</p></li>
+<li><p>Update enum values as needed</p></li>
+<li><p>Add tests for new functionality</p></li>
+<li><p>Update documentation</p></li>
+</ol>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<p>This module is part of the HTAN LinkML project and follows the same licensing terms.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, HTAN Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
