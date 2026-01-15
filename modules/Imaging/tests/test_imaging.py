@@ -163,10 +163,10 @@ class TestBaseImagingDataValidation:
     """Test base imaging data validation."""
 
     def test_valid_base_imaging_data(self):
-        """Test valid base imaging data."""
+        """Test valid base imaging data with filename (no path separator required)."""
         valid_data = {
             "HTAN_DATA_FILE_ID": "HTA1_0000_0001",
-            "FILENAME": "image.ome.tiff",
+            "FILENAME": "image.ome.tiff",  # Filename without path separator is valid
             "FILE_FORMAT": "ome.tiff",
             "HTAN_PARENT_ID": "HTA200_0000_B0001",
             "EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES": "Pathological",
@@ -182,6 +182,9 @@ class TestBaseImagingDataValidation:
             "QC_COMMENT": "Image quality acceptable",
             "SPECIES": "9606 (Homo sapiens)"
         }
+        
+        # Validate that FILENAME without path separator is valid (pattern removed)
+        assert "/" not in valid_data["FILENAME"] and "\\" not in valid_data["FILENAME"]
         
         # Validate required fields
         assert valid_data["DE_IDENTIFICATION_METHOD_TYPE"] in [
@@ -259,11 +262,11 @@ class TestBaseImagingDataValidation:
             "allOf": [{"$ref": "#/$defs/BaseImagingAttributes"}]
         }
         
-        # Test valid data
+        # Test valid data with path separator (also valid)
         valid_data = {
             "EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES": "Pathological",
             "HTAN_DATA_FILE_ID": "HTA1_0000_0001",
-            "FILENAME": "test/image.ome.tiff",
+            "FILENAME": "test/image.ome.tiff",  # Filename with path separator is also valid
             "FILE_FORMAT": "ome.tiff",
             "HTAN_PARENT_ID": "HTA200_0000_B0001",
             "DE_IDENTIFICATION_METHOD_TYPE": "Automatic",
