@@ -1,5 +1,5 @@
 # Auto generated from spatial.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-15T17:36:42
+# Generation date: 2026-01-15T20:46:47
 # Schema: Spatial
 #
 # id: https://w3id.org/htan/spatial
@@ -186,9 +186,9 @@ class SpatialLevel1(CoreFileAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.SpatialLevel1
 
     HTAN_DATA_FILE_ID: Union[str, SpatialLevel1HTANDATAFILEID] = None
-    FILENAME: str = None
     HTAN_PARENT_ID: str = None
     FILE_FORMAT: Union[str, "FileFormatLevel1"] = None
+    FILENAME: str = None
     PLATFORM: Union[str, "Platform"] = None
     ASSAY_TYPE: Union[str, "AssayType"] = None
     BUNDLE_CONTENTS: Union[str, List[str]] = None
@@ -209,6 +209,11 @@ class SpatialLevel1(CoreFileAttributes):
             self.MissingRequiredField("FILE_FORMAT")
         if not isinstance(self.FILE_FORMAT, FileFormatLevel1):
             self.FILE_FORMAT = FileFormatLevel1(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self._is_empty(self.PLATFORM):
             self.MissingRequiredField("PLATFORM")
@@ -480,9 +485,9 @@ class SpatialLevel4(CoreFileAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.SpatialLevel4
 
     HTAN_DATA_FILE_ID: Union[str, SpatialLevel4HTANDATAFILEID] = None
-    FILENAME: str = None
     HTAN_PARENT_ID: str = None
     FILE_FORMAT: Union[str, "FileFormatLevel4"] = None
+    FILENAME: str = None
     NUMBER_OF_FEATURES: int = None
     NUMBER_OF_OBJECTS: int = None
     HAS_DIMENSIONALITY_REDUCTION: Union[bool, Bool] = None
@@ -510,6 +515,11 @@ class SpatialLevel4(CoreFileAttributes):
             self.MissingRequiredField("FILE_FORMAT")
         if not isinstance(self.FILE_FORMAT, FileFormatLevel4):
             self.FILE_FORMAT = FileFormatLevel4(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self._is_empty(self.NUMBER_OF_FEATURES):
             self.MissingRequiredField("NUMBER_OF_FEATURES")
@@ -1048,8 +1058,7 @@ slots.spatialData__PANEL_DATA = Slot(uri=HTAN.PANEL_DATA, name="spatialData__PAN
                    model_uri=HTAN.spatialData__PANEL_DATA, domain=None, range=Optional[Union[Union[str, SpatialPanelHTANPANELID], List[Union[str, SpatialPanelHTANPANELID]]]])
 
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+[\\/]\S*$'))
+                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
 
 slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
@@ -1064,6 +1073,10 @@ slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="c
 
 slots.spatialLevel1__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="spatialLevel1__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.spatialLevel1__FILE_FORMAT, domain=None, range=Union[str, "FileFormatLevel1"])
+
+slots.spatialLevel1__FILENAME = Slot(uri=HTAN.FILENAME, name="spatialLevel1__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.spatialLevel1__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+\.(tar(\.gz)?|zip)$'))
 
 slots.spatialLevel1__PLATFORM = Slot(uri=HTAN.PLATFORM, name="spatialLevel1__PLATFORM", curie=HTAN.curie('PLATFORM'),
                    model_uri=HTAN.spatialLevel1__PLATFORM, domain=None, range=Union[str, "Platform"])
@@ -1214,6 +1227,10 @@ slots.spatialLevel3__QC_TOTAL_NUMBER_OF_READS = Slot(uri=HTAN.QC_TOTAL_NUMBER_OF
 
 slots.spatialLevel4__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="spatialLevel4__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.spatialLevel4__FILE_FORMAT, domain=None, range=Union[str, "FileFormatLevel4"])
+
+slots.spatialLevel4__FILENAME = Slot(uri=HTAN.FILENAME, name="spatialLevel4__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.spatialLevel4__FILENAME, domain=None, range=str,
+                   pattern=re.compile(r'^.+\.(h5ad|rds|zarr)$'))
 
 slots.spatialLevel4__TOOL_COMPATIBILITY = Slot(uri=HTAN.TOOL_COMPATIBILITY, name="spatialLevel4__TOOL_COMPATIBILITY", curie=HTAN.curie('TOOL_COMPATIBILITY'),
                    model_uri=HTAN.spatialLevel4__TOOL_COMPATIBILITY, domain=None, range=Optional[Union[Union[str, "ToolCompatibility"], List[Union[str, "ToolCompatibility"]]]])

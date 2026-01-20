@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTAN Data Model - Identifier Regex Patterns &mdash; HTAN Phase 2 Data Model 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            HTAN Phase 2 Data Model
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/clinical.html">Clinical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/biospecimen.html">Biospecimen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/corefile.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/sequencing.html">Sequencing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/wes.html">WES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/scrna-seq.html">scRNA-seq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/imaging.html">Imaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/digitalpathology.html">DigitalPathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/multiplexmicroscopy.html">MultiplexMicroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/spatialomics.html">Spatial</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HTAN Phase 2 Data Model</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HTAN Data Model - Identifier Regex Patterns</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/IDENTIFIER_PATTERNS.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="htan-data-model-identifier-regex-patterns">
+<h1>HTAN Data Model - Identifier Regex Patterns<a class="headerlink" href="#htan-data-model-identifier-regex-patterns" title="Link to this heading"></a></h1>
+<p>This document lists all identifier and validation regex patterns used across the HTAN data model.</p>
+<section id="htan-identifiers">
+<h2>HTAN Identifiers<a class="headerlink" href="#htan-identifiers" title="Link to this heading"></a></h2>
+<section id="htan-data-file-id">
+<h3>HTAN Data File ID<a class="headerlink" href="#htan-data-file-id" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/CoreFile/domains/core.yaml</span></code> (inherited by all file-based modules)</p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">HTAN_DATA_FILE_ID</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$</span></code></p></li>
+<li><p><strong>Description</strong>: Primary key for all data files. Supports HTA200-229 for phase 2. Total length max 50 characters.</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_2_D36667</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_EXT001_D123</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA229_0000_D1</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="htan-biospecimen-id">
+<h3>HTAN Biospecimen ID<a class="headerlink" href="#htan-biospecimen-id" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/Biospecimen/domains/biospecimen.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">HTAN_BIOSPECIMEN_ID</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$</span></code></p></li>
+<li><p><strong>Description</strong>: Primary key for biospecimen records. Supports HTA200-229 for phase 2. Total length max 50 characters.</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_2_B7001</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_EXT001_B123</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA229_0000_B1</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="htan-participant-id">
+<h3>HTAN Participant ID<a class="headerlink" href="#htan-participant-id" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/Clinical/domains/clinical.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">HTAN_PARTICIPANT_ID</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$</span></code></p></li>
+<li><p><strong>Description</strong>: Primary key for participant/patient records. Supports HTA200-229 for phase 2. Total length max 50 characters.</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_EXT001</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA229_0000</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="htan-panel-id">
+<h3>HTAN Panel ID<a class="headerlink" href="#htan-panel-id" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/SpatialOmics/domains/spatial_panel.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">HTAN_PANEL_ID</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$</span></code></p></li>
+<li><p><strong>Description</strong>: Unique identifier for spatial omics panels</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_2_P0001</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_EXT001_P0001</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="htan-parent-id-file-based-modules">
+<h3>HTAN Parent ID (File-based modules)<a class="headerlink" href="#htan-parent-id-file-based-modules" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/CoreFile/domains/core.yaml</span></code> (inherited by all file-based modules)</p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">HTAN_PARENT_ID</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$</span></code></p></li>
+<li><p><strong>Description</strong>: Foreign key to parent entity (B for Biospecimen, D for data file). Supports HTA200-229 for phase 2. Total length max 50 characters.</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_2_B7001</span></code> (biospecimen with B suffix)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_2_D36667</span></code> (data file with D suffix)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA229_0000_B1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_EXT001_D123</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="htan-parent-id-biospecimen-module">
+<h3>HTAN Parent ID (Biospecimen module)<a class="headerlink" href="#htan-parent-id-biospecimen-module" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/Biospecimen/domains/biospecimen.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">HTAN_PARENT_ID</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$</span></code></p></li>
+<li><p><strong>Description</strong>: Foreign key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2. Total length max 50 characters.</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_2</span></code> (participant ID)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA200_2_B7001</span></code> (biospecimen ID with B suffix)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTA229_EXT001_B123</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="external-identifiers">
+<h2>External Identifiers<a class="headerlink" href="#external-identifiers" title="Link to this heading"></a></h2>
+<section id="synapse-id">
+<h3>Synapse ID<a class="headerlink" href="#synapse-id" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">modules/SpatialOmics/domains/level_3.yaml</span></code> (PANEL_SYNAPSE_ID)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modules/MultiplexMicroscopy/domains/level_2.yaml</span></code> (CHANNEL_METADATA_ID)</p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^syn\d+$</span></code></p></li>
+<li><p><strong>Description</strong>: Synapse platform identifier</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">syn123456</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syn9876543</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="ensembl-gene-id">
+<h3>Ensembl Gene ID<a class="headerlink" href="#ensembl-gene-id" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/SpatialOmics/domains/spatial_panel.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">GENE_ID</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(ENSG\d+|\d+)$</span></code></p></li>
+<li><p><strong>Description</strong>: Stable Ensembl gene identifier or numeric ID</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENSG00000214114</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENSG00000121879</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">12345</span></code> (numeric ID)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="hgnc-version">
+<h3>HGNC Version<a class="headerlink" href="#hgnc-version" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/SpatialOmics/domains/spatial_panel.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">HGNC_VERSION</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^\d{4}-\d{2}-\d{2}$</span></code></p></li>
+<li><p><strong>Description</strong>: Version of the HGNC used, indicated with the date (YYYY-MM-DD format)</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">2025-08-01</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2024-12-15</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="rrid-research-resource-identifier-antibody">
+<h3>RRID (Research Resource Identifier) - Antibody<a class="headerlink" href="#rrid-research-resource-identifier-antibody" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/MultiplexMicroscopy/domains/multiplex_microscopy_channel_metadata.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">ANTIBODY_RRID</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^RRID:AB_\d+$</span></code></p></li>
+<li><p><strong>Description</strong>: Research Resource Identifier for antibodies</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">RRID:AB_123456</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RRID:AB_987654</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="url-patterns">
+<h2>URL Patterns<a class="headerlink" href="#url-patterns" title="Link to this heading"></a></h2>
+<section id="http-https-url-general">
+<h3>HTTP/HTTPS URL (General)<a class="headerlink" href="#http-https-url-general" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">modules/SpatialOmics/domains/level_3.yaml</span></code> (PROTOCOL_URL)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modules/Imaging/domains/imaging.yaml</span></code> (CITATION_OR_DOI, IMAGING_PROTOCOL)</p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(?:(?:https?)://)(?:\S+(?::\S*)?&#64;)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$</span></code></p></li>
+<li><p><strong>Description</strong>: Validates HTTP/HTTPS URLs, excluding private IP ranges (10.x.x.x, 127.x.x.x, 169.254.x.x, 192.168.x.x, 172.16-31.x.x)</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://protocols.io/view/my-protocol</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://example.com/path?query=value</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://doi.org/10.1234/example</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="file-format-patterns">
+<h2>File Format Patterns<a class="headerlink" href="#file-format-patterns" title="Link to this heading"></a></h2>
+<section id="filename">
+<h3>Filename<a class="headerlink" href="#filename" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/CoreFile/domains/core.yaml</span></code> (inherited by all file-based modules)</p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">FILENAME</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^.+[\\/]\S*$</span></code></p></li>
+<li><p><strong>Description</strong>: File path with directory separator</p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">data/file.txt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path/to/file.fastq.gz</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="file-format-patterns-module-specific">
+<h3>File Format Patterns (Module-specific)<a class="headerlink" href="#file-format-patterns-module-specific" title="Link to this heading"></a></h3>
+<p>These are typically enforced via enums rather than regex, but some modules use patterns:</p>
+<section id="level-4-file-format-multiplexmicroscopy">
+<h4>Level 4 File Format (MultiplexMicroscopy)<a class="headerlink" href="#level-4-file-format-multiplexmicroscopy" title="Link to this heading"></a></h4>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/MultiplexMicroscopy/domains/level_4.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(csv|h5ad)$</span></code></p></li>
+</ul>
+</section>
+<section id="level-3-file-format-multiplexmicroscopy">
+<h4>Level 3 File Format (MultiplexMicroscopy)<a class="headerlink" href="#level-3-file-format-multiplexmicroscopy" title="Link to this heading"></a></h4>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/MultiplexMicroscopy/domains/level_3.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(ome-tiff|ome\.tiff|tiff|tif)$</span></code></p></li>
+</ul>
+</section>
+<section id="level-2-file-format-multiplexmicroscopy">
+<h4>Level 2 File Format (MultiplexMicroscopy)<a class="headerlink" href="#level-2-file-format-multiplexmicroscopy" title="Link to this heading"></a></h4>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/MultiplexMicroscopy/domains/level_2.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(ome-tiff|tiff|qptiff|svs)$</span></code></p></li>
+</ul>
+</section>
+<section id="digital-pathology-file-format">
+<h4>Digital Pathology File Format<a class="headerlink" href="#digital-pathology-file-format" title="Link to this heading"></a></h4>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/DigitalPathology/domains/digital_pathology.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^(ome-tiff|tiff|qptiff|svs)$</span></code></p></li>
+</ul>
+</section>
+<section id="scrna-seq-file-format">
+<h4>scRNA-seq File Format<a class="headerlink" href="#scrna-seq-file-format" title="Link to this heading"></a></h4>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/scRNA-seq/domains/level_3_4.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^h5ad$</span></code></p></li>
+</ul>
+</section>
+<section id="scrna-seq-anndata-schema-version">
+<h4>scRNA-seq AnnData Schema Version<a class="headerlink" href="#scrna-seq-anndata-schema-version" title="Link to this heading"></a></h4>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">modules/scRNA-seq/domains/level_3_4.yaml</span></code></p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>: <code class="docutils literal notranslate"><span class="pre">ANNDATA_SCHEMA_VERSION</span></code></p></li>
+<li><p><strong>Pattern</strong>: <code class="docutils literal notranslate"><span class="pre">^0\.1$</span></code></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="summary-by-module">
+<h2>Summary by Module<a class="headerlink" href="#summary-by-module" title="Link to this heading"></a></h2>
+<section id="corefile-module">
+<h3>CoreFile Module<a class="headerlink" href="#corefile-module" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HTAN_DATA_FILE_ID</span></code>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTAN_PARENT_ID</span></code>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILENAME</span></code>: <code class="docutils literal notranslate"><span class="pre">^.+[\\/]\S*$</span></code></p></li>
+</ul>
+</section>
+<section id="biospecimen-module">
+<h3>Biospecimen Module<a class="headerlink" href="#biospecimen-module" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HTAN_BIOSPECIMEN_ID</span></code>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HTAN_PARENT_ID</span></code>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$</span></code></p></li>
+</ul>
+</section>
+<section id="clinical-module">
+<h3>Clinical Module<a class="headerlink" href="#clinical-module" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HTAN_PARTICIPANT_ID</span></code>: <code class="docutils literal notranslate"><span class="pre">^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$</span></code></p></li>
+</ul>
+</section>
+<section id="spatialomics-module">
+<h3>SpatialOmics Module<a class="headerlink" href="#spatialomics-module" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HTAN_PANEL_ID</span></code>: <code class="docutils literal notranslate"><span class="pre">^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PANEL_SYNAPSE_ID</span></code>: <code class="docutils literal notranslate"><span class="pre">^syn\d+$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENE_ID</span></code>: <code class="docutils literal notranslate"><span class="pre">^(ENSG\d+|\d+)$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HGNC_VERSION</span></code>: <code class="docutils literal notranslate"><span class="pre">^\d{4}-\d{2}-\d{2}$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROTOCOL_URL</span></code>: HTTP/HTTPS URL pattern</p></li>
+</ul>
+</section>
+<section id="multiplexmicroscopy-module">
+<h3>MultiplexMicroscopy Module<a class="headerlink" href="#multiplexmicroscopy-module" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CHANNEL_METADATA_ID</span></code>: <code class="docutils literal notranslate"><span class="pre">^syn\d+$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ANTIBODY_RRID</span></code>: <code class="docutils literal notranslate"><span class="pre">^RRID:AB_\d+$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code> (Level 2): <code class="docutils literal notranslate"><span class="pre">^(ome-tiff|tiff|qptiff|svs)$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code> (Level 3): <code class="docutils literal notranslate"><span class="pre">^(ome-tiff|ome\.tiff|tiff|tif)$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code> (Level 4): <code class="docutils literal notranslate"><span class="pre">^(csv|h5ad)$</span></code></p></li>
+</ul>
+</section>
+<section id="imaging-module">
+<h3>Imaging Module<a class="headerlink" href="#imaging-module" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CITATION_OR_DOI</span></code>: HTTP/HTTPS URL pattern</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMAGING_PROTOCOL</span></code>: HTTP/HTTPS URL pattern</p></li>
+</ul>
+</section>
+<section id="digitalpathology-module">
+<h3>DigitalPathology Module<a class="headerlink" href="#digitalpathology-module" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code>: <code class="docutils literal notranslate"><span class="pre">^(ome-tiff|tiff|qptiff|svs)$</span></code></p></li>
+</ul>
+</section>
+<section id="scrna-seq-module">
+<h3>scRNA-seq Module<a class="headerlink" href="#scrna-seq-module" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code>: <code class="docutils literal notranslate"><span class="pre">^h5ad$</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ANNDATA_SCHEMA_VERSION</span></code>: <code class="docutils literal notranslate"><span class="pre">^0\.1$</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>HTAN ID Format</strong>: HTAN identifiers follow the pattern <code class="docutils literal notranslate"><span class="pre">HTA{center_id}_{participant_id}_{entity_id?}</span></code> where:</p>
+<ul class="simple">
+<li><p>Center ID: <code class="docutils literal notranslate"><span class="pre">2[0-2][0-9]</span></code> for Phase 2 (HTA200-229)</p></li>
+<li><p>Participant ID: <code class="docutils literal notranslate"><span class="pre">0000</span></code>, <code class="docutils literal notranslate"><span class="pre">EXT[0-9]{1,18}</span></code>, or <code class="docutils literal notranslate"><span class="pre">[0-9]{1,21}</span></code> (max 21 characters)</p></li>
+<li><p>Entity ID: Optional <code class="docutils literal notranslate"><span class="pre">[BD][0-9]{1,20}</span></code> (max 21 characters: B/D + up to 20 digits)</p></li>
+<li><p>Total length: Maximum 50 characters (enforced by lookahead)</p></li>
+</ul>
+</li>
+<li><p><strong>Phase 2 Support</strong>: All HTAN identifier patterns support Phase 2 center IDs (HTA200-229) with explicit length constraints to ensure total IDs never exceed 50 characters.</p></li>
+<li><p><strong>URL Validation</strong>: The URL pattern excludes private IP ranges to ensure only publicly accessible URLs are accepted.</p></li>
+<li><p><strong>File Format Validation</strong>: Most file formats are validated via enums, but some modules use regex patterns for stricter validation.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, HTAN Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

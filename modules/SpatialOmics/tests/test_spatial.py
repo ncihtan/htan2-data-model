@@ -87,9 +87,16 @@ class TestSpatial:
                 # Attribute is overridden in this class
                 assert class_slot.required is True, f"Attribute {attr} should be required"
             else:
-                # Attribute is inherited, check base slot
-                slot = sv.get_slot(attr)
-                assert slot.required is True, f"Attribute {attr} should be required"
+                # Attribute is inherited, check using class_induced_slots which properly resolves inheritance
+                induced_slots = sv.class_induced_slots("SpatialLevel3")
+                induced_slot = next((s for s in induced_slots if s.name == attr), None)
+                if induced_slot:
+                    assert induced_slot.required is True, f"Attribute {attr} should be required"
+                else:
+                    # Fallback to get_slot
+                    slot = sv.get_slot(attr)
+                    assert slot is not None, f"Slot {attr} not found"
+                    assert slot.required is True, f"Attribute {attr} should be required"
 
     def test_level4_class(self):
         """Test that Level 4 class is properly defined."""
@@ -259,4 +266,36 @@ class TestSpatial:
         # Check Level 4 inheritance
         level4_class = sv.get_class("SpatialLevel4")
         assert level4_class.is_a == "CoreFileAttributes"
+
+    def test_file_format_and_filename_patterns(self):
+        """Test that FILE_FORMAT and FILENAME patterns match correctly."""
+        import re
+        
+        # Test Level 1
+        sv1 = SchemaView("modules/SpatialOmics/domains/level_1.yaml")
+        level1_class = sv1.get_class("SpatialLevel1")
+        file_format_attr = level1_class.attributes.get("FILE_FORMAT")
+        filename_attr = level1_class.attributes.get("FILENAME")
+        
+        # Level 1 uses enum, check FILENAME pattern matches enum values
+        assert filename_attr.pattern == "^.+\\.(tar(\\.gz)?|zip)$"
+        
+        filename_regex = re.compile(filename_attr.pattern)
+        assert filename_regex.match("bundle.tar")
+        assert filename_regex.match("bundle.tar.gz")
+        assert filename_regex.match("bundle.zip")
+        
+        # Test Level 4
+        sv4 = SchemaView("modules/SpatialOmics/domains/level_4.yaml")
+        level4_class = sv4.get_class("SpatialLevel4")
+        file_format_attr = level4_class.attributes.get("FILE_FORMAT")
+        filename_attr = level4_class.attributes.get("FILENAME")
+        
+        # Level 4 uses enum, check FILENAME pattern matches enum values
+        assert filename_attr.pattern == "^.+\\.(h5ad|rds|zarr)$"
+        
+        filename_regex = re.compile(filename_attr.pattern)
+        assert filename_regex.match("file.h5ad")
+        assert filename_regex.match("file.rds")
+        assert filename_regex.match("file.zarr")
 
