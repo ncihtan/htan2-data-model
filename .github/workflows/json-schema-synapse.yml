@@ -157,8 +157,8 @@ jobs:
         # scRNA-seq Level 3/4
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/scRNA-seq/domains/level_3_4.yaml" \
-          --class-name "scRNALevel3_4" \
-          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.scRNALevel3_4-${{ steps.version.outputs.version }}-schema.json"
+          --class-name "scRNALevel34" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.scRNALevel34-${{ steps.version.outputs.version }}-schema.json"
         
         # SpatialOmics Level 1
         echo "Generating SpatialOmics schemas..."
@@ -328,7 +328,7 @@ jobs:
         **scRNA-seq Module:**
         - scRNALevel1 Schema
         - scRNALevel2 Schema
-        - scRNALevel3_4 Schema
+        - scRNALevel34 Schema
         
         **SpatialOmics Module:**
         - SpatialLevel1 Schema
