@@ -71,10 +71,10 @@ class TestScRNAseqSchema:
         sv = SchemaView(LEVEL3_4_PATH)
         
         # Check class exists
-        assert "scRNALevel3_4" in sv.all_classes()
+        assert "scRNALevel34" in sv.all_classes()
         
         # Check required attributes (base attributes come from inheritance)
-        level3_4_class = sv.get_class("scRNALevel3_4")
+        level3_4_class = sv.get_class("scRNALevel34")
         required_attrs = [
             "FILE_FORMAT",
             "SCRNASEQ_WORKFLOW_TYPE",
@@ -94,7 +94,7 @@ class TestScRNAseqSchema:
         """Test h5ad file format validation."""
         sv = SchemaView(LEVEL3_4_PATH)
         
-        level3_4_class = sv.get_class("scRNALevel3_4")
+        level3_4_class = sv.get_class("scRNALevel34")
         file_format_attr = level3_4_class.attributes["FILE_FORMAT"]
         
         # Check pattern validation
@@ -162,7 +162,7 @@ class TestScRNAseqSchema:
         """Test AnnData schema compliance validation."""
         sv = SchemaView(LEVEL3_4_PATH)
         
-        level3_4_class = sv.get_class("scRNALevel3_4")
+        level3_4_class = sv.get_class("scRNALevel34")
         
         # Check AnnData schema version pattern
         schema_version_attr = level3_4_class.attributes["ANNDATA_SCHEMA_VERSION"]
@@ -205,7 +205,7 @@ class TestScRNAseqSchema:
         sv = SchemaView(LEVEL3_4_PATH)
         
         level3_4_enums = [
-            "scRNAseqWorkflowTypeEnumLevel3_4",
+            "scRNAseqWorkflowTypeEnumLevel34",
             "DataCategoryEnum",
             "MatrixTypeEnum"
         ]
@@ -220,7 +220,7 @@ class TestScRNAseqSchema:
         sv = SchemaView(SCHEMA_PATH)
         
         # Check inheritance for all levels
-        for level_class in ["scRNALevel1", "scRNALevel2", "scRNALevel3_4"]:
+        for level_class in ["scRNALevel1", "scRNALevel2", "scRNALevel34"]:
             class_def = sv.get_class(level_class)
             assert class_def.is_a == "BaseSequencingAttributes"
 
