@@ -1,5 +1,5 @@
 # Auto generated from scrna_seq.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-15T20:46:42
+# Generation date: 2026-01-22T10:33:06
 # Schema: scRNA-seq
 #
 # id: https://w3id.org/htan/scrna_seq
@@ -401,7 +401,7 @@ class ScRNALevel34(BaseSequencingAttributes):
 
     class_class_uri: ClassVar[URIRef] = HTAN["ScRNALevel34"]
     class_class_curie: ClassVar[str] = "htan:ScRNALevel34"
-    class_name: ClassVar[str] = "scRNALevel3_4"
+    class_name: ClassVar[str] = "scRNALevel34"
     class_model_uri: ClassVar[URIRef] = HTAN.ScRNALevel34
 
     HTAN_DATA_FILE_ID: Union[str, ScRNALevel34HTANDATAFILEID] = None
