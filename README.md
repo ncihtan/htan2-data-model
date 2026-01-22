@@ -8,7 +8,9 @@ This data model is in **active development**. It builds on **HTAN Phase 1** and 
 
 ## Overview 
 
-This repository is part of ongoing efforts to refine and standardize the HTAN2 data model. 
+This repository is part of ongoing efforts to refine and standardize the HTAN2 data model.
+
+📖 **Documentation**: Full documentation is available at [https://htan2-data-model.readthedocs.io/en/main/](https://htan2-data-model.readthedocs.io/en/main/) 
 
 ## 🏗️ Data Model Architecture
 
