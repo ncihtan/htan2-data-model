@@ -27,7 +27,7 @@ First, determine whether your data is **file-based** or **record-based**:
    - :doc:`scRNA-seq <docs/scrna-seq>` - Single-cell RNA sequencing (includes Core File + Base Sequencing + scRNA-seq attributes)
    - :doc:`Digital Pathology <docs/digitalpathology>` - Whole-slide imaging (includes Core File + Base Imaging + Digital Pathology attributes)
    - :doc:`Multiplex Microscopy <docs/multiplexmicroscopy>` - Multiplexed tissue imaging (includes Core File + Base Imaging + Multiplex Microscopy attributes)
-   - :doc:`Spatial Omics <docs/spatialomics>` - Spatial omics assays (includes Core File + Spatial Omics attributes)
+   - :doc:`SpatialOmics <docs/spatialomics>` - Spatial omics assays (includes Core File + SpatialOmics attributes)
 
 Each module page is self-contained and lists all attributes you need to fill out, so you don't need to navigate between multiple pages.
 

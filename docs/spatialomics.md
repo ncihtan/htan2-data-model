@@ -1,4 +1,4 @@
-# Spatial
+# SpatialOmics
 
 HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 
