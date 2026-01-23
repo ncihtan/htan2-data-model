@@ -1,4 +1,4 @@
-name: scRNALevel34
+name: scRNALevel3and4
 id: https://w3id.org/htan/scrna_seq/level_3_4
 description: Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
 imports:
@@ -13,7 +13,7 @@ prefixes:
 default_prefix: htan
 
 enums:
-  scRNAseqWorkflowTypeEnumLevel34:
+  scRNAseqWorkflowTypeEnumLevel3and4:
     permissible_values:
       "Cell annotation":
         description: Cell annotation workflow
@@ -67,7 +67,7 @@ enums:
         description: Scaled count matrix
 
 classes:
-  scRNALevel34:
+  scRNALevel3and4:
     is_a: BaseSequencingAttributes
     description: Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
     attributes:
@@ -87,7 +87,7 @@ classes:
       
       # scRNA-seq-specific attributes
       SCRNASEQ_WORKFLOW_TYPE:
-        range: scRNAseqWorkflowTypeEnumLevel34
+        range: scRNAseqWorkflowTypeEnumLevel3and4
         required: true
         title: "scRNAseq Workflow Type"
         description: Generic name for the workflow used to analyze a data set

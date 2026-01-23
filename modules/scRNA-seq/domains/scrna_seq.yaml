@@ -23,6 +23,6 @@ classes:
         range: scRNALevel2
         description: Level 2 scRNA-seq data
       level3_4_data:
-        range: scRNALevel34
+        range: scRNALevel3and4
         description: Level 3/4 scRNA-seq data
 

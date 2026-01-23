@@ -1,5 +1,5 @@
 # Auto generated from scrna_seq.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-22T10:33:06
+# Generation date: 2026-01-23T15:49:22
 # Schema: scRNA-seq
 #
 # id: https://w3id.org/htan/scrna_seq
@@ -92,7 +92,7 @@ class ScRNALevel2HTANDATAFILEID(BaseSequencingAttributesHTANDATAFILEID):
     pass
 
 
-class ScRNALevel34HTANDATAFILEID(BaseSequencingAttributesHTANDATAFILEID):
+class ScRNALevel3and4HTANDATAFILEID(BaseSequencingAttributesHTANDATAFILEID):
     pass
 
 
@@ -110,7 +110,7 @@ class ScRNAseqData(YAMLRoot):
 
     level1_data: Optional[Union[str, ScRNALevel1HTANDATAFILEID]] = None
     level2_data: Optional[Union[str, ScRNALevel2HTANDATAFILEID]] = None
-    level3_4_data: Optional[Union[str, ScRNALevel34HTANDATAFILEID]] = None
+    level3_4_data: Optional[Union[str, ScRNALevel3and4HTANDATAFILEID]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.level1_data is not None and not isinstance(self.level1_data, ScRNALevel1HTANDATAFILEID):
@@ -119,8 +119,8 @@ class ScRNAseqData(YAMLRoot):
         if self.level2_data is not None and not isinstance(self.level2_data, ScRNALevel2HTANDATAFILEID):
             self.level2_data = ScRNALevel2HTANDATAFILEID(self.level2_data)
 
-        if self.level3_4_data is not None and not isinstance(self.level3_4_data, ScRNALevel34HTANDATAFILEID):
-            self.level3_4_data = ScRNALevel34HTANDATAFILEID(self.level3_4_data)
+        if self.level3_4_data is not None and not isinstance(self.level3_4_data, ScRNALevel3and4HTANDATAFILEID):
+            self.level3_4_data = ScRNALevel3and4HTANDATAFILEID(self.level3_4_data)
 
         super().__post_init__(**kwargs)
 
@@ -393,18 +393,18 @@ class ScRNALevel2(BaseSequencingAttributes):
 
 
 @dataclass(repr=False)
-class ScRNALevel34(BaseSequencingAttributes):
+class ScRNALevel3and4(BaseSequencingAttributes):
     """
     Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = HTAN["ScRNALevel34"]
-    class_class_curie: ClassVar[str] = "htan:ScRNALevel34"
-    class_name: ClassVar[str] = "scRNALevel34"
-    class_model_uri: ClassVar[URIRef] = HTAN.ScRNALevel34
+    class_class_uri: ClassVar[URIRef] = HTAN["ScRNALevel3and4"]
+    class_class_curie: ClassVar[str] = "htan:ScRNALevel3and4"
+    class_name: ClassVar[str] = "scRNALevel3and4"
+    class_model_uri: ClassVar[URIRef] = HTAN.ScRNALevel3and4
 
-    HTAN_DATA_FILE_ID: Union[str, ScRNALevel34HTANDATAFILEID] = None
+    HTAN_DATA_FILE_ID: Union[str, ScRNALevel3and4HTANDATAFILEID] = None
     HTAN_PARENT_ID: str = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
@@ -412,7 +412,7 @@ class ScRNALevel34(BaseSequencingAttributes):
     GENOMIC_REFERENCE: str = None
     FILE_FORMAT: str = None
     FILENAME: str = None
-    SCRNASEQ_WORKFLOW_TYPE: Union[str, "ScRNAseqWorkflowTypeEnumLevel34"] = None
+    SCRNASEQ_WORKFLOW_TYPE: Union[str, "ScRNAseqWorkflowTypeEnumLevel3and4"] = None
     SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION: str = None
     DATA_CATEGORY: Union[str, "DataCategoryEnum"] = None
     MATRIX_TYPE: Union[str, "MatrixTypeEnum"] = None
@@ -426,8 +426,8 @@ class ScRNALevel34(BaseSequencingAttributes):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, ScRNALevel34HTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = ScRNALevel34HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+        if not isinstance(self.HTAN_DATA_FILE_ID, ScRNALevel3and4HTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = ScRNALevel3and4HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
 
         if self._is_empty(self.FILE_FORMAT):
             self.MissingRequiredField("FILE_FORMAT")
@@ -441,8 +441,8 @@ class ScRNALevel34(BaseSequencingAttributes):
 
         if self._is_empty(self.SCRNASEQ_WORKFLOW_TYPE):
             self.MissingRequiredField("SCRNASEQ_WORKFLOW_TYPE")
-        if not isinstance(self.SCRNASEQ_WORKFLOW_TYPE, ScRNAseqWorkflowTypeEnumLevel34):
-            self.SCRNASEQ_WORKFLOW_TYPE = ScRNAseqWorkflowTypeEnumLevel34(self.SCRNASEQ_WORKFLOW_TYPE)
+        if not isinstance(self.SCRNASEQ_WORKFLOW_TYPE, ScRNAseqWorkflowTypeEnumLevel3and4):
+            self.SCRNASEQ_WORKFLOW_TYPE = ScRNAseqWorkflowTypeEnumLevel3and4(self.SCRNASEQ_WORKFLOW_TYPE)
 
         if self._is_empty(self.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION):
             self.MissingRequiredField("SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION")
@@ -687,7 +687,7 @@ class ScRNAseqWorkflowTypeEnumLevel2(EnumDefinitionImpl):
                 text="HCA Optimus",
                 description="HCA Optimus workflow"))
 
-class ScRNAseqWorkflowTypeEnumLevel34(EnumDefinitionImpl):
+class ScRNAseqWorkflowTypeEnumLevel3and4(EnumDefinitionImpl):
 
     CellRanger = PermissibleValue(
         text="CellRanger",
@@ -712,7 +712,7 @@ class ScRNAseqWorkflowTypeEnumLevel34(EnumDefinitionImpl):
         description="dropEST workflow")
 
     _defn = EnumDefinition(
-        name="ScRNAseqWorkflowTypeEnumLevel34",
+        name="ScRNAseqWorkflowTypeEnumLevel3and4",
     )
 
     @classmethod
@@ -861,7 +861,7 @@ slots.scRNAseqData__level2_data = Slot(uri=HTAN.level2_data, name="scRNAseqData_
                    model_uri=HTAN.scRNAseqData__level2_data, domain=None, range=Optional[Union[str, ScRNALevel2HTANDATAFILEID]])
 
 slots.scRNAseqData__level3_4_data = Slot(uri=HTAN.level3_4_data, name="scRNAseqData__level3_4_data", curie=HTAN.curie('level3_4_data'),
-                   model_uri=HTAN.scRNAseqData__level3_4_data, domain=None, range=Optional[Union[str, ScRNALevel34HTANDATAFILEID]])
+                   model_uri=HTAN.scRNAseqData__level3_4_data, domain=None, range=Optional[Union[str, ScRNALevel3and4HTANDATAFILEID]])
 
 slots.scRNALevel1__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="scRNALevel1__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.scRNALevel1__FILE_FORMAT, domain=None, range=str,
@@ -915,44 +915,44 @@ slots.scRNALevel2__CELL_BARCODE_TAG = Slot(uri=HTAN.CELL_BARCODE_TAG, name="scRN
 slots.scRNALevel2__UMI_TAG = Slot(uri=HTAN.UMI_TAG, name="scRNALevel2__UMI_TAG", curie=HTAN.curie('UMI_TAG'),
                    model_uri=HTAN.scRNALevel2__UMI_TAG, domain=None, range=Optional[str])
 
-slots.scRNALevel34__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="scRNALevel34__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.scRNALevel34__FILE_FORMAT, domain=None, range=str,
+slots.scRNALevel3and4__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="scRNALevel3and4__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.scRNALevel3and4__FILE_FORMAT, domain=None, range=str,
                    pattern=re.compile(r'^h5ad$'))
 
-slots.scRNALevel34__FILENAME = Slot(uri=HTAN.FILENAME, name="scRNALevel34__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.scRNALevel34__FILENAME, domain=None, range=str,
+slots.scRNALevel3and4__FILENAME = Slot(uri=HTAN.FILENAME, name="scRNALevel3and4__FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.scRNALevel3and4__FILENAME, domain=None, range=str,
                    pattern=re.compile(r'^.+\.h5ad$'))
 
-slots.scRNALevel34__SCRNASEQ_WORKFLOW_TYPE = Slot(uri=HTAN.SCRNASEQ_WORKFLOW_TYPE, name="scRNALevel34__SCRNASEQ_WORKFLOW_TYPE", curie=HTAN.curie('SCRNASEQ_WORKFLOW_TYPE'),
-                   model_uri=HTAN.scRNALevel34__SCRNASEQ_WORKFLOW_TYPE, domain=None, range=Union[str, "ScRNAseqWorkflowTypeEnumLevel34"])
+slots.scRNALevel3and4__SCRNASEQ_WORKFLOW_TYPE = Slot(uri=HTAN.SCRNASEQ_WORKFLOW_TYPE, name="scRNALevel3and4__SCRNASEQ_WORKFLOW_TYPE", curie=HTAN.curie('SCRNASEQ_WORKFLOW_TYPE'),
+                   model_uri=HTAN.scRNALevel3and4__SCRNASEQ_WORKFLOW_TYPE, domain=None, range=Union[str, "ScRNAseqWorkflowTypeEnumLevel3and4"])
 
-slots.scRNALevel34__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION = Slot(uri=HTAN.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION, name="scRNALevel34__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION", curie=HTAN.curie('SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION'),
-                   model_uri=HTAN.scRNALevel34__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION, domain=None, range=str)
+slots.scRNALevel3and4__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION = Slot(uri=HTAN.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION, name="scRNALevel3and4__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION", curie=HTAN.curie('SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION'),
+                   model_uri=HTAN.scRNALevel3and4__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION, domain=None, range=str)
 
-slots.scRNALevel34__DATA_CATEGORY = Slot(uri=HTAN.DATA_CATEGORY, name="scRNALevel34__DATA_CATEGORY", curie=HTAN.curie('DATA_CATEGORY'),
-                   model_uri=HTAN.scRNALevel34__DATA_CATEGORY, domain=None, range=Union[str, "DataCategoryEnum"])
+slots.scRNALevel3and4__DATA_CATEGORY = Slot(uri=HTAN.DATA_CATEGORY, name="scRNALevel3and4__DATA_CATEGORY", curie=HTAN.curie('DATA_CATEGORY'),
+                   model_uri=HTAN.scRNALevel3and4__DATA_CATEGORY, domain=None, range=Union[str, "DataCategoryEnum"])
 
-slots.scRNALevel34__MATRIX_TYPE = Slot(uri=HTAN.MATRIX_TYPE, name="scRNALevel34__MATRIX_TYPE", curie=HTAN.curie('MATRIX_TYPE'),
-                   model_uri=HTAN.scRNALevel34__MATRIX_TYPE, domain=None, range=Union[str, "MatrixTypeEnum"])
+slots.scRNALevel3and4__MATRIX_TYPE = Slot(uri=HTAN.MATRIX_TYPE, name="scRNALevel3and4__MATRIX_TYPE", curie=HTAN.curie('MATRIX_TYPE'),
+                   model_uri=HTAN.scRNALevel3and4__MATRIX_TYPE, domain=None, range=Union[str, "MatrixTypeEnum"])
 
-slots.scRNALevel34__LINKED_MATRICES = Slot(uri=HTAN.LINKED_MATRICES, name="scRNALevel34__LINKED_MATRICES", curie=HTAN.curie('LINKED_MATRICES'),
-                   model_uri=HTAN.scRNALevel34__LINKED_MATRICES, domain=None, range=Optional[str])
+slots.scRNALevel3and4__LINKED_MATRICES = Slot(uri=HTAN.LINKED_MATRICES, name="scRNALevel3and4__LINKED_MATRICES", curie=HTAN.curie('LINKED_MATRICES'),
+                   model_uri=HTAN.scRNALevel3and4__LINKED_MATRICES, domain=None, range=Optional[str])
 
-slots.scRNALevel34__CELL_MEDIAN_NUMBER_READS = Slot(uri=HTAN.CELL_MEDIAN_NUMBER_READS, name="scRNALevel34__CELL_MEDIAN_NUMBER_READS", curie=HTAN.curie('CELL_MEDIAN_NUMBER_READS'),
-                   model_uri=HTAN.scRNALevel34__CELL_MEDIAN_NUMBER_READS, domain=None, range=int)
+slots.scRNALevel3and4__CELL_MEDIAN_NUMBER_READS = Slot(uri=HTAN.CELL_MEDIAN_NUMBER_READS, name="scRNALevel3and4__CELL_MEDIAN_NUMBER_READS", curie=HTAN.curie('CELL_MEDIAN_NUMBER_READS'),
+                   model_uri=HTAN.scRNALevel3and4__CELL_MEDIAN_NUMBER_READS, domain=None, range=int)
 
-slots.scRNALevel34__CELL_MEDIAN_NUMBER_GENES = Slot(uri=HTAN.CELL_MEDIAN_NUMBER_GENES, name="scRNALevel34__CELL_MEDIAN_NUMBER_GENES", curie=HTAN.curie('CELL_MEDIAN_NUMBER_GENES'),
-                   model_uri=HTAN.scRNALevel34__CELL_MEDIAN_NUMBER_GENES, domain=None, range=int)
+slots.scRNALevel3and4__CELL_MEDIAN_NUMBER_GENES = Slot(uri=HTAN.CELL_MEDIAN_NUMBER_GENES, name="scRNALevel3and4__CELL_MEDIAN_NUMBER_GENES", curie=HTAN.curie('CELL_MEDIAN_NUMBER_GENES'),
+                   model_uri=HTAN.scRNALevel3and4__CELL_MEDIAN_NUMBER_GENES, domain=None, range=int)
 
-slots.scRNALevel34__CELL_TOTAL = Slot(uri=HTAN.CELL_TOTAL, name="scRNALevel34__CELL_TOTAL", curie=HTAN.curie('CELL_TOTAL'),
-                   model_uri=HTAN.scRNALevel34__CELL_TOTAL, domain=None, range=int)
+slots.scRNALevel3and4__CELL_TOTAL = Slot(uri=HTAN.CELL_TOTAL, name="scRNALevel3and4__CELL_TOTAL", curie=HTAN.curie('CELL_TOTAL'),
+                   model_uri=HTAN.scRNALevel3and4__CELL_TOTAL, domain=None, range=int)
 
-slots.scRNALevel34__ANNDATA_SCHEMA_VERSION = Slot(uri=HTAN.ANNDATA_SCHEMA_VERSION, name="scRNALevel34__ANNDATA_SCHEMA_VERSION", curie=HTAN.curie('ANNDATA_SCHEMA_VERSION'),
-                   model_uri=HTAN.scRNALevel34__ANNDATA_SCHEMA_VERSION, domain=None, range=str,
+slots.scRNALevel3and4__ANNDATA_SCHEMA_VERSION = Slot(uri=HTAN.ANNDATA_SCHEMA_VERSION, name="scRNALevel3and4__ANNDATA_SCHEMA_VERSION", curie=HTAN.curie('ANNDATA_SCHEMA_VERSION'),
+                   model_uri=HTAN.scRNALevel3and4__ANNDATA_SCHEMA_VERSION, domain=None, range=str,
                    pattern=re.compile(r'^0\.1$'))
 
-slots.scRNALevel34__ANNDATA_STRUCTURE_VALIDATED = Slot(uri=HTAN.ANNDATA_STRUCTURE_VALIDATED, name="scRNALevel34__ANNDATA_STRUCTURE_VALIDATED", curie=HTAN.curie('ANNDATA_STRUCTURE_VALIDATED'),
-                   model_uri=HTAN.scRNALevel34__ANNDATA_STRUCTURE_VALIDATED, domain=None, range=Union[bool, Bool])
+slots.scRNALevel3and4__ANNDATA_STRUCTURE_VALIDATED = Slot(uri=HTAN.ANNDATA_STRUCTURE_VALIDATED, name="scRNALevel3and4__ANNDATA_STRUCTURE_VALIDATED", curie=HTAN.curie('ANNDATA_STRUCTURE_VALIDATED'),
+                   model_uri=HTAN.scRNALevel3and4__ANNDATA_STRUCTURE_VALIDATED, domain=None, range=Union[bool, Bool])
 
 slots.baseSequencingAttributes__SEQUENCING_BATCH_ID = Slot(uri=HTAN.SEQUENCING_BATCH_ID, name="baseSequencingAttributes__SEQUENCING_BATCH_ID", curie=HTAN.curie('SEQUENCING_BATCH_ID'),
                    model_uri=HTAN.baseSequencingAttributes__SEQUENCING_BATCH_ID, domain=None, range=Optional[str])
