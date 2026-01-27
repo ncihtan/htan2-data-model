@@ -27,13 +27,13 @@ enums:
     title: environmental_exposure
     permissible_values:
       "No":
-        description: No environmental exposure
-      "Yes":
-        description: Environmental exposure present
+        description: The non-affirmative response to a question.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "Yes":
+        description: The affirmative response to a question.
 
   EnvironmentalExposureTypeEnum:
     title: environmental_exposure_type
@@ -103,8 +103,8 @@ classes:
         range: EnvironmentalExposureEnum
         required: true
         title: "Environmental Exposure"
-        description: Environmental exposure of the participant (caDSR:2192205) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192205
+        description: Response indicating whether or not an individual was exposed to potentially harmful environmental agents (caDSR:15753166) (Aligns to CRDC Node)
+        slot_uri: caDSR:15753166
       ENVIRONMENTAL_EXPOSURE_TYPE:
         range: EnvironmentalExposureTypeEnum
         required: false
