@@ -88,14 +88,30 @@ enums:
   ClinicalBiospecimenTypeEnum:
     title: clinical_biospecimen_type
     permissible_values:
-      "Blood":
-        description: Blood
-      "Tissue":
-        description: Tissue
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
+      "BLOOD":
+        description: A liquid tissue; its major function is to transport oxygen throughout the body. It also supplies the tissues with nutrients, removes waste products, and contains various components of the immune system defending the body against infection. Several hormones also travel in the blood.
+      "BONE MARROW":
+        description: The tissue occupying the spaces of bone. It consists of blood vessel sinuses and a network of hematopoietic cells which give rise to the red cells, white cells, and megakaryocytes.
+      "BUCCAL CELL SAMPLE":
+        description: The mucosal membranes located on the inside of the cheek, in the buccal cavity.: The smallest units of living structure capable of independent existence, composed of a membrane-enclosed mass of protoplasm and containing a nucleus or nucleoid.: Any material sample taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. Biospecimen can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products.
+      "CEREBROSPINAL FLUID":
+        description: The fluid that is contained within the brain ventricles, the subarachnoid space and the central canal of the spinal cord.
+      "FORMALIN FIXED PARAFFIN EMBEDDED TISSUE":
+        description: Refers to a process where a sample is preserved with formalin and then embedded into a paraffin block for sectioning.: An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function.
+      "FORMALIN FIXED TISSUE":
+        description: A colorless poisonous gas synthesized by the oxidation of methanol and used as an antiseptic, disinfectant, histologic fixative, and general-purpose chemical reagent for laboratory applications. Formaldehyde is readily soluble in water and is commonly distributed as a 37% solution in water; formalin, a 10% solution of formaldehyde in water, is used as a disinfectant and to preserve biological specimens. Environmentally, formaldehyde may be found in the atmosphere, smoke from fires, automobile exhaust and cigarette smoke. Small amounts are produced during normal metabolic processes in most organisms, including humans._Tissue which is preserved in a fixative solution, usually formalin.
+      "FRESH TISSUE":
+        description: Tissue that is not frozen or embedded in preservatives
+      "FROZEN TISSUE":
+        description: A specimen that has been subjected to and immobilized by severe cold.
+      "OTHER BODILY FLUIDS":
+        description: Different than the one(s) previously specified or mentioned.: Material produced by living organisms; it can be a necessary constituent of, or product of an organismal process.
+      "SALIVA":
+        description: The watery fluid in the mouth made by the salivary glands. Saliva moistens food to help digestion and it helps protect the mouth against infections.
+      "STOOL":
+        description: The material discharged from the bowel during defecation. It consists of undigested food, intestinal mucus, epithelial cells, and bacteria.
+      "URINE":
+        description: The fluid that is excreted by the kidneys. It is stored in the bladder and discharged through the urethra.
 
   MolecularConsequenceEnum:
     title: molecular_consequence
@@ -217,8 +233,8 @@ classes:
         range: ClinicalBiospecimenTypeEnum
         required: true
         title: "Clinical Biospecimen Type"
-        description: Clinical biospecimen type (caDSR:2192208) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192208
+        description: Kind of material taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes. (caDSR:7069877) (Aligns to CRDC Node)
+        slot_uri: caDSR:7069877
       COPY_NUMBER:
         range: integer
         required: false
