@@ -48,18 +48,12 @@ enums:
   EvidenceOfRecurrenceTypeEnum:
     title: evidence_of_recurrence_type
     permissible_values:
-      "Clinical":
-        description: Recurrence was determined by clinical examination.
-      "Imaging":
-        description: Recurrence was determined by imaging.
-      "Laboratory":
-        description: Recurrence was determined by laboratory test.
-      "Not Reported":
-        description: Not provided or available.
-      "Pathology":
-        description: Recurrence was determined by pathology.
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused.
+      "Biopsy with Histologic Confirmation":
+        description: A biopsy with microscopic confirmation.
+      "Convincing Image (i.e. CT/PET/MRI)":
+        description: Radiologic evidence that supports a diagnosis.
+      "Positive Biomarkers":
+        description: A finding indicating the presence of a biomarker in a tumor sample from a patient with a malignant neoplasm.
 
   ProgressionOrRecurrenceEnum:
     title: progression_or_recurrence
@@ -152,7 +146,8 @@ classes:
         range: EvidenceOfRecurrenceTypeEnum
         required: false
         title: "Evidence of Recurrence Type"
-        description: Type of evidence for recurrence
+        description: Type of evidence used to determine whether the individual's disease has recurred. (caDSR:7668166) (No CRDC Standard Available)
+        slot_uri: caDSR:7668166
       AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
         range: integer
         required: false
