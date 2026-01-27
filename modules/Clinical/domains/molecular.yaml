@@ -53,6 +53,38 @@ enums:
       "WXS":
         description: A procedure that can determine the DNA sequence for all of the exons in an individual.
 
+  MolecularAnalysisResultEnum:
+    title: molecular_analysis_result
+    permissible_values:
+      "Abnormal, NOS":
+        description: Not characterized in any other way.: Deviating from the norm.
+      "Copy Number Reported":
+        description: The number of molecules of a particular type on or in a cell or part of a cell. Usually applied to specific genes or to plasmids within a bacterium.
+      "Equivocal":
+        description: Open to question.
+      "High":
+        description: An elevated level or position or degree; greater than normal in degree or intensity or amount.
+      "Intermediate":
+        description: Lying between two extremes in time or space or degree.
+      "Loss of Expression":
+        description: An indication that expression of a gene, RNA species or protein is not detected in a sample.
+      "Low":
+        description: A minimum level or position or degree; less than normal in degree, intensity or amount.
+      "Negative":
+        description: A finding of normality following an examination or investigation looking for the presence of a microorganism, disease, or condition.
+      "Normal":
+        description: Being approximately average or within certain limits; conforming with or constituting a norm or standard or level or type or social norm.
+      "Not Reported":
+        description: Not provided or available.
+      "Overexpressed":
+        description: Synthesis of excess polypeptide within the cell. Overexpression is often due to the amplification or deregulation of the gene which encodes the gene product.
+      "Positive":
+        description: A finding of abnormality following an examination or observation confirming something, such as the presence of a disease, condition, or microorganism.
+      "Test Value Reported":
+        description: An indication as to whether a test value has been reported or recorded.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+
   ClinicalBiospecimenTypeEnum:
     title: clinical_biospecimen_type
     permissible_values:
@@ -170,11 +202,11 @@ classes:
         description: Description of the method used for clinical molecular analysis. (caDSR:6142401) (No CRDC Standard Available)
         slot_uri: caDSR:6142401
       MOLECULAR_ANALYSIS_RESULT:
-        range: string
+        range: MolecularAnalysisResultEnum
         required: true
         title: "Molecular Analysis Result"
-        description: Molecular analysis result (caDSR:2192206) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192206
+        description: Description of the result of clinical molecular analysis. (caDSR:6142397) (No CRDC Standard Available)
+        slot_uri: caDSR:6142397
       AA_CHANGE:
         range: string
         required: true
