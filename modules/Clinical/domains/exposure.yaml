@@ -6,14 +6,22 @@ enums:
   AlcoholHistoryIndicatorEnum:
     title: alcohol_history_indicator
     permissible_values:
+      "Data not available":
+        description: Data from an original source is not present, accessible or ready for use or service.
       "No":
-        description: No alcohol history
-      "Yes":
-        description: Alcohol history present
-      "Not Reported":
-        description: Not provided or available
+        description: The non-affirmative response to a question.
+      "Not applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not reported":
+        description: Not provided or available.
+      "Pending":
+        description: Not yet decided or settled; awaiting conclusion or confirmation.
+      "Refused":
+        description: To decline to do, accept, give, or allow something.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "Yes":
+        description: The affirmative response to a question.
 
   EnvironmentalExposureEnum:
     title: environmental_exposure
@@ -89,8 +97,8 @@ classes:
         range: AlcoholHistoryIndicatorEnum
         required: true
         title: "Alcohol History Indicator"
-        description: Alcohol history indicator of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192204
+        description: Response indicating whether or not an individual has ever consumed alcohol. (caDSR:7537144) (No CRDC Standard Available)
+        slot_uri: caDSR:7537144
       ENVIRONMENTAL_EXPOSURE:
         range: EnvironmentalExposureEnum
         required: true
