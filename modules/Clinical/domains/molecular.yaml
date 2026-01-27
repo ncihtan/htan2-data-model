@@ -117,15 +117,29 @@ enums:
     title: molecular_consequence
     permissible_values:
       "Frameshift":
-        description: Frameshift mutation
+        description: A type of mutation in which one or more paired nucleotides are inserted or deleted in the coding region of a gene, which causes the triplet codons to be read in the wrong frame; the resulting polypeptide has a garbled amino acid sequence from the mutated codon on.
       "Missense":
-        description: Missense mutation
-      "Nonsense":
-        description: Nonsense mutation
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: A mutation in which a base change results in substitution of one amino acid for another. This change may result in alteration of the protein's activity or stability.
+      "Monosomy":
+        description: The condition in which one chromosome of a pair is missing. In a normally diploid cell it is represented symbolically as 2N-1.
+      "None (inframe)":
+        description: Any mutation that does not cause a change in reading frame.
+      "Nullisomy":
+        description: A chromosomal abnormality consisting of the absence of both copies of a pair of homologous chromosomes.
+      "Splice Acceptor":
+        description: A heritable single nucleotide polymorphism located at the acceptor splice site in certain allelic variants of eukaryotic genes. These sites are located in genes at intron to exon junctions at the 3' end of the intron.
+      "Splice Donor":
+        description: An inherited single base change at a donor splice site in a genomic DNA sequence that results in an allelic variant of the wild-type gene. Donor splice sites are located at exon to intron junctions at the 5' end of the intron.
+      "Start Lost":
+        description: A mutation occurring within the start codon of a gene that results in a sequence that no longer encodes a start codon. This can result in a gene deletion or gene transcription may start from an alternative start site.
+      "Stop Gained":
+        description: A mutation in which a base change creates a stop codon, resulting in premature termination of a polypeptide product.
+      "Stop Lost":
+        description: A mutation occurring within the stop codon of a gene that results in a sequence that no longer encodes a stop codon and results in the transcription of non-coding regions downstream of the gene.
+      "Synonymous":
+        description: A mutation that alters the DNA sequence, but encodes the same amino acid.
+      "Trisomy":
+        description: A chromosomal abnormality consisting of the presence of one chromosome in addition to the normal diploid number.
 
   PathogenicityEnum:
     title: pathogenicity
@@ -249,10 +263,10 @@ classes:
         slot_uri: caDSR:6142411
       MOLECULAR_CONSEQUENCE:
         range: MolecularConsequenceEnum
-        required: true
+        required: false
         title: "Molecular Consequence"
-        description: Molecular consequence (caDSR:2192211) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192211
+        description: Description of the molecular consequence of genetic variation identified by a clinical test. (caDSR:13367935) (No CRDC Standard Available)
+        slot_uri: caDSR:13367935
       PATHOGENICITY:
         range: PathogenicityEnum
         required: true
