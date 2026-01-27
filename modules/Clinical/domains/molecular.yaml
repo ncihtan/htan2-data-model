@@ -145,17 +145,19 @@ enums:
     title: pathogenicity
     permissible_values:
       "Benign":
-        description: Benign
+        description: A genetic variant that is known to not contribute to the development of a disease.
       "Likely Benign":
-        description: Likely benign
+        description: A genetic variant that is not expected to contribute to the development of a disease, but the scientific evidence may be insufficient to prove this conclusively.
       "Likely Pathogenic":
-        description: Likely pathogenic
-      "Pathogenic":
-        description: Pathogenic
+        description: An ad hoc category that describes genetic variants with 90% or greater certainty of contributing to the development of a disease.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
+      "Pathogenic":
+        description: A genetic variant that is known to directly contribute to the development of disease.
+      "Uncertain Significance":
+        description: An indication that there is not enough information to support a more definitive classification of the pathogenicity of a genetic variant.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
 
   TestAnalyteTypeEnum:
     title: test_analyte_type
@@ -269,10 +271,10 @@ classes:
         slot_uri: caDSR:13367935
       PATHOGENICITY:
         range: PathogenicityEnum
-        required: true
+        required: false
         title: "Pathogenicity"
-        description: Pathogenicity (caDSR:2192212) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192212
+        description: Description of a variant's level of involvement in the cause of the individual's disease according to the standards outlined by the American College of Medical Genetics and Genomics (ACMG). (caDSR:14532361) (No CRDC Standard Available)
+        slot_uri: caDSR:14532361
       TEST_ANALYTE_TYPE:
         range: TestAnalyteTypeEnum
         required: true
