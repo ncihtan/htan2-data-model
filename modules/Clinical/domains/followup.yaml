@@ -94,25 +94,25 @@ enums:
   MenopauseStatusEnum:
     title: menopause_status
     permissible_values:
-      Menopausal:
+      "Menopausal":
         description: The permanent cessation of menses, usually defined by 6 to 12 months of amenorrhea in a woman over 45 years of age.
-      "Not_Applicable":
+      "Not Applicable":
         description: Determination of a value is not relevant in the current context.
-      "Not_Reported":
+      "Not Reported":
         description: Not provided or available.
-      Perimenopausal:
-        description: The time of a woman's life when menstrual periods become irregular.
-      Postmenopausal:
-        description: Having to do with the time after menopause.
-      "Postmenopausal_Natural":
-        description: Having to do with the time after menopause (>12 months since last menstrual period with no prior ovariectomy).
-      "Postmenopausal_Surgical":
-        description: Having to do with the time after menopause (prior bilateral ovariectomy).
-      Premenopausal:
-        description: Refers to the time before menopause.
-      "Premenopausal_Perimenopausal":
-        description: Prior to menopause or in the perimenopausal phase.
-      Unknown:
+      "Perimenopausal":
+        description: The time of a woman's life when menstrual periods become irregular. Refers to the time near menopause.
+      "Postmenopausal":
+        description: Having to do with the time after menopause. Menopause ('change of life') is the time in a woman's life when menstrual periods stop permanently.
+      "Postmenopausal (>12 mo since LMP with no prior ovariectomy)":
+        description: Having to do with the time after menopause. Menopause ('change of life') is the time in a woman's life when menstrual periods stop permanently.
+      "Postmenopausal (prior bilateral ovariectomy)":
+        description: Having to do with the time after menopause. Menopause ('change of life') is the time in a woman's life when menstrual periods stop permanently.
+      "Premenopausal":
+        description: Refers to the time before menopause. Menopause is the time of life when a women's menstrual periods stop permanently; also called 'change of life.'
+      "Premenopausal/Perimenopausal":
+        description: Prior to menopause. : Used to indicate that either or both of two items or options may be valid.: Describes the time in a woman's life when menstrual periods become irregular as she approaches menopause. This is usually three to five years before menopause and is often marked by many of the symptoms of menopause, including hot flashes, mood swings, night sweats, vaginal dryness, trouble concentrating, and infertility.
+      "Unknown":
         description: Not known, not observed, not recorded, or refused.
 
 classes:
@@ -168,9 +168,10 @@ classes:
         slot_uri: caDSR:88
       MENOPAUSE_STATUS:
         range: MenopauseStatusEnum
-        required: false
+        required: true
         title: "Menopause Status"
-        description: Menopause status
+        description: Menopausal status of the individual. (caDSR:2434914) (No CRDC Standard Available)
+        slot_uri: caDSR:2434914
     slot_usage:
       PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE:
         required: false
