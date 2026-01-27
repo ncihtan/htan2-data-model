@@ -152,7 +152,8 @@ classes:
         range: integer
         required: false
         title: "Age in Days at Progression or Recurrence"
-        description: Age in days at progression or recurrence
+        description: Age of an individual, in days, when a diagnosis of disease progression or recurrence was made. Use -1 if this data point is not available. (caDSR:15748659) (No CRDC Standard Available)
+        slot_uri: caDSR:15748659
       DISEASE_RESPONSE:
         range: DiseaseResponseEnum
         required: true
