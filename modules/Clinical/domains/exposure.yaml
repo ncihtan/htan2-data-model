@@ -46,16 +46,22 @@ enums:
   SmokingHistoryEnum:
     title: smoking_history
     permissible_values:
+      "Current Every-Day Smoker":
+        description: Indicates a person that currently smokes every day.
+      "Current Some-Day Smoker":
+        description: Indicates a person who has smoked at least 100 cigarettes in his or her lifetime, who smokes now, but does not smoke every day.
       "Current smoker":
-        description: Current smoker
-      "Former smoker":
-        description: Former smoker
-      "Never smoker":
-        description: Never smoker
-      "Not Reported":
-        description: Not provided or available
+        description: An adult who has smoked 100 cigarettes in his or her lifetime and who currently smokes cigarettes. Includes daily smokers and non-daily smokers (also known as occasional smokers).
+      "Former Smoker":
+        description: A person who was not smoking at the time of the interview but has smoked at least 100 cigarettes in their life.
+      "Never Smoker":
+        description: A person who was not smoking at the time of the interview and has smoked less than 100 cigarettes in their life.
+      "Non-smoker":
+        description: indicates a person who has smoked for an undetermined length of time or number of cigarettes, but was not smoking at the time of the interview nor habitually at any point in the past (may be less than 100 cigarettes in a lifetime).
+      "Not reported":
+        description: Not provided or available.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
 
 classes:
   Exposure:
@@ -65,8 +71,8 @@ classes:
         range: SmokingHistoryEnum
         required: true
         title: "Smoking History"
-        description: Smoking history of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192201
+        description: Current or past smoking status. (caDSR:3626148) (Aligns to CRDC Node)
+        slot_uri: caDSR:3626148
       YEARS_SMOKED:
         range: integer
         required: false
