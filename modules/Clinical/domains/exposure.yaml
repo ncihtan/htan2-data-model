@@ -38,18 +38,26 @@ enums:
   EnvironmentalExposureTypeEnum:
     title: environmental_exposure_type
     permissible_values:
-      "Asbestos":
-        description: Asbestos exposure
-      "Chemical":
-        description: Chemical exposure
-      "Not Reported":
-        description: Not provided or available
-      "Other":
-        description: Other type of exposure
-      "Radiation":
-        description: Radiation exposure
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
+      "Asbestos Exposure":
+        description: Inhalation of asbestos fibers.
+      "Chemical Exposure":
+        description: Contact with a chemical substance through touch, inhalation, or ingestion.
+      "Marijuana Smoke Exposure":
+        description: Environmental, occupational or consumer-based exposure to airborne gases and particulates produced by direct or nearby use of a vaporized or combusted product made from the leaves and flowers of the cannabis plant.
+      "Radiation Exposure":
+        description: Exposure to radioactive materials or ionizing radiation, whether by external irradiation, contact or contamination with radioactive material, or incorporation of radioactive materials, as in the case of certain diagnostic procedures.
+      "Radon Exposure":
+        description: Inhalation of radon gas which is found in rocks, soil and groundwater as a result of radioactive decay of uranium, thorium, or radium in the environment.
+      "Respirable Crystalline Silica Exposure":
+        description: Environmental, occupational or consumer-based exposure to respirable particles derived from industrial processing or breakdown of silica-containing materials such as sand, concrete, stone, mortar, bricks, glass, pottery and ceramics.
+      "Smoke Exposure":
+        description: Environmental, occupational or consumer-based exposure to airborne gases and particulates produced when materials undergo combustion or thermal decomposition.
+      "Smokeless Tobacco Exposure":
+        description: Environmental, occupational, or consumer-based exposure to any smokeless tobacco product.
+      "Tobacco Related Exposure":
+        description: Environmental, occupational or consumer-based exposure to airborne gases and particulates produced by direct or nearby use of a vaporized or combusted tobacco product.
+      "Wood Dust Exposure":
+        description: Environmental or occupational exposure to granular solids generated when timber is processed, such as when it is chipped, sawed, turned, drilled or sanded.
 
   SmokingHistoryEnum:
     title: smoking_history
@@ -109,8 +117,8 @@ classes:
         range: EnvironmentalExposureTypeEnum
         required: false
         title: "Environmental Exposure Type"
-        description: Type of environmental exposure (caDSR:2192206) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192206
+        description: Type of potentially harmful environmental agents to which an individual was exposed. (caDSR:15753203) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:15753203
     slot_usage:
       YEARS_SMOKED:
         required: false
