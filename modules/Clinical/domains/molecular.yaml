@@ -125,8 +125,8 @@ classes:
         range: gene_symbol_enum
         required: true
         title: "Gene Symbol"
-        description: Gene symbol (caDSR:2192204) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192204
+        description: Gene symbol of the gene targeted or included in molecular analysis. (caDSR:11280318) (No CRDC Standard Available)
+        slot_uri: caDSR:11280318
       MOLECULAR_ANALYSIS_METHOD:
         range: MolecularAnalysisMethodEnum
         required: true
