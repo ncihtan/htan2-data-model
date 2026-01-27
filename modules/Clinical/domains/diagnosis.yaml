@@ -307,22 +307,60 @@ enums:
   MethodOfDiagnosisEnum:
     title: method_of_diagnosis
     permissible_values:
+      "Autopsy":
+        description: Autopsy; an examination and dissection of a dead body to determine cause of death or the changes produced by disease.
       "Biopsy":
-        description: Diagnosis made by biopsy
-      "Clinical":
-        description: Diagnosis made by clinical examination
-      "Cytology":
-        description: Diagnosis made by cytology
-      "Imaging":
-        description: Diagnosis made by imaging
-      "Laboratory":
-        description: Diagnosis made by laboratory test
+        description: The removal of tissue specimens or fluid from the living body for microscopic examination, performed to establish a diagnosis.
+      "Blood Sample":
+        description: A small volume of blood removed for testing or storage.
+      "Bone Marrow Aspirate":
+        description: Aspirate from bone marrow.
+      "Core Biopsy":
+        description: The removal of a tissue sample using a needle with a relatively large diameter, for microscopic examination.
+      "Cystoscopy":
+        description: Endoscopic examination of the urinary bladder or urethra.
+      "Diagnostic Imaging":
+        description: Any method that uses a visual display of structural or functional patterns of organs or tissues for diagnostic evaluation.
+      "Dilation and Curettage":
+        description: A surgical scraping and removal of the inner lining of the uterus through direct dilation of the uterine cervix.
+      "Enucleation":
+        description: A surgical procedure by which tissue or an organ (usually containing a tumor) is removed without rupture from a specific anatomic site.
+      "Excisional Biopsy":
+        description: A surgical procedure in which an entire lesion is removed for microscopic examination.
+      "Fine Needle Aspiration":
+        description: The removal of tissue or fluid with a thin needle for examination under a microscope.
+      "Histopathology":
+        description: The microscopic study of characteristic tissue abnormalities by employing various cytochemical and immunocytochemical stains. -- 2004
+      "Imaging Technique":
+        description: Any technology or method that aids in the visualization of any biological process, cell, tissue or organ for use in screening, diagnosis, surgical procedures or therapy.
+      "Incisional Biopsy":
+        description: A surgical procedure in which part of a lesion is removed for microscopic examination.
+      "Laparoscopy":
+        description: Laparoscopic examination of the abdominal cavity and its contents.
+      "Laparotomy":
+        description: Creation of a surgical opening into the abdominal cavity.
+      "Magnetic Resonance Imaging Study File":
+        description: Imaging that uses radiofrequency waves and a strong magnetic field rather than x-rays to provide amazingly clear and detailed pictures of internal organs and tissues. The technique is valuable for the diagnosis of many pathologic conditions, including cancer, heart and vascular disease, stroke, and joint and musculoskeletal disorders.
       "Not Reported":
-        description: Not provided or available
-      "Pathology":
-        description: Diagnosis made by pathology
+        description: Not provided or available.
+      "Pap Smear":
+        description: A biospecimen collection and staining procedure in which secretions and superficial cells of the cervix are collected and stained with the Papanicolaou stain followed by microscopic examination to identify the presence of abnormal cells.
+      "Pathologic Review":
+        description: An assessment of disease process to include cause, development, and/or structural and functional changes associated with the disease.
+      "Physical Examination":
+        description: A systemic evaluation of the body and its functions using visual inspection, palpation, percussion and auscultation. The purpose is to determine the presence or absence of physical signs of disease or abnormality for an individual's health assessment.
+      "Surgical Resection":
+        description: The surgical removal of an organ or a part of an organ.
+      "Thoracentesis":
+        description: The removal of excess fluid via needle puncture from the thoracic cavity.
+      "Tumor Debulking":
+        description: The surgical removal of as much of a malignant tumor as is reasonably possible. This procedure increases the effectiveness of the subsequent administration of chemotherapy and/or radiation therapy.
+      "Ultrasound Guided Biopsy":
+        description: A biopsy procedure that uses an ultrasound imaging device to find an abnormal area of tissue and guide its removal for examination under a microscope.
+      "Ultrasound Imaging":
+        description: A technique in which high-frequency sound waves are bounced off internal organs and the echo pattern is converted into a 2 dimensional picture of the structures beneath the transducer.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
 
 classes:
   Diagnosis:
@@ -404,8 +442,8 @@ classes:
         range: MethodOfDiagnosisEnum
         required: true
         title: "Method of Diagnosis"
-        description: Method used to make the diagnosis (caDSR:2192213) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192213
+        description: Type of clinical or laboratory procedure(s) used in the determination of a disease diagnosis. (caDSR:14857681) (Aligns to CRDC Node)
+        slot_uri: caDSR:14857681
     slot_usage:
       CLINICAL_T_STAGE:
         required: false
