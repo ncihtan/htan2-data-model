@@ -7,7 +7,7 @@ enums:
     title: disease_response
     permissible_values:
       "Complete Response":
-        description: Complete disappearance of all target lesions.
+        description: Complete disappearance of all clinical evidence of disease with skin, nodes, blood and viscera categories having complete response or noninvolvement.
       "No Evidence of Disease":
         description: Diagnostic tests fail to detect presence of disease.
       "No Response":
@@ -19,13 +19,13 @@ enums:
       "Not Reported":
         description: Not provided or available.
       "Partial Response":
-        description: At least a 30% decrease in the sum of the diameters of target lesions.
+        description: A finding indicating that there is a decrease in the size and the extent of tissue involvement by a malignant tumor in a patient.
       "Persistent Disease":
         description: A disease that does not go to remission despite treatment.
       "Progressive Disease":
-        description: At least a 20% increase in the sum of the diameters of target lesions.
+        description: A clinical, pathologic, and/or molecular finding indicating that the course of a disease is worsening in terms of extent or severity.
       "Stable Disease":
-        description: Neither sufficient shrinkage to qualify for partial response nor sufficient increase to qualify for progressive disease.
+        description: Cancer that is neither decreasing nor increasing in extent or severity.
       "Unknown":
         description: Not known, not observed, not recorded, or refused.
 
@@ -158,7 +158,8 @@ classes:
         range: DiseaseResponseEnum
         required: true
         title: "Disease Response"
-        description: Response to treatment
+        description: Result of an evaluation to determine whether pathologic and/or clinical changes resulted from treatment. (caDSR:13383448) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:13383448
       ECOG_PERFORMANCE_STATUS:
         range: ECOGPerformanceStatusEnum
         required: true
