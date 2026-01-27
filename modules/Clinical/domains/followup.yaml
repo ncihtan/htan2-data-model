@@ -85,7 +85,7 @@ enums:
       "Biochemical":
         description: An indication that biochemical markers of a disease are present.
       "Distant":
-        description: A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor.
+        description: A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor. Relocation of malignant cells during metastasis can be restricted to movement within a specific tissue/organ or may entail migration to a distal locus within the body. This phenotype is a characteristic of all malignant tumors.
       "Local":
         description: A disease that is confined to a specific organ or tissue and has not spread to other anatomic sites.
       "Locoregional":
