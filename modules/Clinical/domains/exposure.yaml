@@ -77,14 +77,14 @@ classes:
         range: integer
         required: false
         title: "Years Smoked"
-        description: Number of years the participant has smoked (caDSR:2192202) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192202
+        description: Number of years a person has been smoking. Use -1 if this data point is not available. (caDSR:3137957) (No CRDC Standard Available)
+        slot_uri: caDSR:3137957
       PACK_YEARS_SMOKED:
         range: decimal
         required: false
         title: "Pack Years Smoked"
-        description: Number of pack years the participant has smoked (caDSR:2192203) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192203
+        description: Numeric computed value to represent lifetime tobacco exposure defined as number of cigarettes smoked per day x number of years smoked divided by 20. Use -1 if this data point is not available. (caDSR:2955385) (No CRDC Standard Available)
+        slot_uri: caDSR:2955385
       ALCOHOL_HISTORY_INDICATOR:
         range: AlcoholHistoryIndicatorEnum
         required: true
