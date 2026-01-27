@@ -8,14 +8,50 @@ enums:
   MolecularAnalysisMethodEnum:
     title: molecular_analysis_method
     permissible_values:
-      "DNA Sequencing":
-        description: DNA sequencing
-      "RNA Sequencing":
-        description: RNA sequencing
+      "Comparative genomic hybridization":
+        description: Comparative genomic hybridization (CGH) is a technique that allows the detection of losses and gains in DNA copy number across the entire genome without prior knowledge of specific chromosomal abnormalities. Comparative genomic hybridization utilizes the hybridization of differentially labeled tumor and reference DNA to generate a map of DNA copy number changes in tumor genomes. Comparative genomic hybridization is an ideal tool for analyzing chromosomal imbalances in archived tumor material and for examining possible correlations between these findings and tumor phenotypes. (from Ried et al. J Mol Med 1997 75:801-14)
+      "Cytogenetics, NOS":
+        description: Not characterized in any other way.: Techniques for analysis of chromosomal and subchromosomal properties and structures, such as those to diagnose, classify, screen for, or manage genetic diseases and abnormalities.
+      "FISH":
+        description: A physical mapping approach that uses fluorescent tags to detect hybridization of probes within metaphase chromosomes or less condensed somatic interphase chromatin. This technique can be used for identification of chromosomal abnormalities and for gene mapping.
+      "Flow cytometry":
+        description: A technique for counting, examining and sorting microscopic particles suspended in a stream of fluid.
+      "IHC":
+        description: Immunohistochemical staining techniques allow for the visualization of antigens via the sequential application of a specific antibody to the antigen (primary antibody), a secondary antibody to the primary antibody and an enzyme complex with a chromogenic substrate. The enzymatic activation of the chromogen results in a visible reaction product at the antigen site. The specimen may then be counterstained and coverslipped. Results are interpreted using a light microscope and aid in the differential diagnosis of pathophysiological processes, which may or may not be associated with a particular antigen.
+      "ISH":
+        description: In Situ Hybridization staining is an immunohistochemistry staining procedure which allows the demonstration of specific nucleic acid sequences (genes) in their cellular environment. The DNA sequence in the host cell is detected by hybridization with a biotin-labeled cDNA probe. Used for detecting protein and gene expression, determining tissue specificity, and localizing genes and proteins within tissue samples.
+      "Immunofluorescence":
+        description: A microscopy staining method that utilizes immunofluorescent markers for use with histological applications of preserved cells.
+      "Karyotype":
+        description: The preparation, analysis, and interpretation of a karyotype, the representation of the chromosome set of a cell.
+      "Microarray":
+        description: Analysis using microarray technology (e.g., cDNA arrays to see gene expression or protein microarrays to profile the pattern of proteins).
+      "Microsatellite analysis":
+        description: Analysis that looks for differences in the lengths of microsatellite repeats between alleles. Polymorphic microsatellites are present in the genome every few thousand base pairs and can function as molecular markers.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
+      "Nuclear staining":
+        description: Pertaining to the nucleus.: Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination.
+      "Other":
+        description: Different than the one(s) previously specified or mentioned.
+      "PCR":
+        description: A method for amplifying a DNA base sequence using multiple rounds of heat denaturation of the DNA and annealing of oligonucleotide primers complementary to flanking regions in the presence of a heat-stable polymerase. This results in duplication of the targeted DNA region. Newly synthesized DNA strands can subsequently serve as additional templates for the same primer sequences, so that successive rounds of primer annealing, strand elongation, and dissociation produce rapid and highly specific amplification of the desired sequence. PCR also can be used to detect the existence of the defined sequence in a DNA sample.
+      "RNA sequencing":
+        description: Single-stranded long chain of nucleotides containing ribose. It is the end product of DNA transcription by the enzyme RNA polymerase. It is essential in protein synthesis.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides.
+      "RT-PCR":
+        description: RT-PCR is short for reverse transcriptase-polymerase chain reaction. It is a technique in which an RNA strand is first transcribed into a DNA complement and then subjected to PCR amplification. Transcribing an RNA strand into a DNA complement is termed reverse transcription and is done by the enzyme reverse transcriptase. (from Wikipedia)
+      "Sequencing, NOS":
+        description: Not characterized in any other way.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides.
+      "Southern blotting":
+        description: A technique for the detection of specific DNA fragments that have been separated by polyacrylamide-gel electrophoresis, transferred to a nitrocellulose or other type of paper or nylon membrane, and detected by hybridization and visualization with a labeled probe.
+      "Targeted sequencing":
+        description: The process of directing an agent to a specific anatomic location.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "WGS":
+        description: A procedure that can determine the DNA sequence for nearly the entire genome of an individual.
+      "WXS":
+        description: A procedure that can determine the DNA sequence for all of the exons in an individual.
 
   ClinicalBiospecimenTypeEnum:
     title: clinical_biospecimen_type
@@ -131,8 +167,8 @@ classes:
         range: MolecularAnalysisMethodEnum
         required: true
         title: "Molecular Analysis Method"
-        description: Molecular analysis method (caDSR:2192205) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192205
+        description: Description of the method used for clinical molecular analysis. (caDSR:6142401) (No CRDC Standard Available)
+        slot_uri: caDSR:6142401
       MOLECULAR_ANALYSIS_RESULT:
         range: string
         required: true
