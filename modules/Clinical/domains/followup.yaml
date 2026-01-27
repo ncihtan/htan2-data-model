@@ -141,7 +141,8 @@ classes:
         range: tissue_or_organ_of_origin_uberon_enum
         required: false
         title: "Progression or Recurrence Anatomic Site UBERON Code"
-        description: UBERON code for the anatomic site of progression or recurrence
+        description: UBERON identifier indicating where in the body a disease has progressed or recurred, e.g. UBERON:0000002. (caDSR:14883061) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:14883061
       PROGRESSION_OR_RECURRENCE_TYPE:
         range: ProgressionTypeEnum
         required: false
