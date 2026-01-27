@@ -35,15 +35,15 @@ enums:
       "0":
         description: Fully active, able to carry on all pre-disease performance without restriction.
       "1":
-        description: Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature.
+        description: Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g., light housework, office work.
       "2":
-        description: Ambulatory and capable of all selfcare but unable to carry out any work activities. Up and about more than 50% of waking hours.
+        description: Ambulatory and capable of all self care but unable to carry out any work activities. Up and about more than 50% of waking hours.
       "3":
         description: Capable of only limited selfcare, confined to bed or chair more than 50% of waking hours.
       "4":
         description: Completely disabled. Cannot carry on any selfcare. Totally confined to bed or chair.
       "5":
-        description: Dead
+        description: Dead.
 
   EvidenceOfRecurrenceTypeEnum:
     title: evidence_of_recurrence_type
@@ -164,7 +164,8 @@ classes:
         range: ECOGPerformanceStatusEnum
         required: true
         title: "ECOG Performance Status"
-        description: ECOG performance status
+        description: ECOG functional performance status of the individual. (caDSR:88) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:88
       MENOPAUSE_STATUS:
         range: MenopauseStatusEnum
         required: false
