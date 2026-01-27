@@ -106,10 +106,10 @@ classes:
     slot_usage:
       YEARS_SMOKED:
         required: false
-        description: Required when SMOKING_HISTORY is Current smoker or Former smoker
+        description: Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker
       PACK_YEARS_SMOKED:
         required: false
-        description: Required when SMOKING_HISTORY is Current smoker or Former smoker
+        description: Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker
       ENVIRONMENTAL_EXPOSURE_TYPE:
         required: false
         description: Required when ENVIRONMENTAL_EXPOSURE is Yes 
