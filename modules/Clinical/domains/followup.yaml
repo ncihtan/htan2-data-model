@@ -128,8 +128,9 @@ classes:
       AGE_IN_DAYS_AT_FOLLOWUP:
         range: integer
         required: true
-        title: "Age in Days at Follow-up"
-        description: Age in days at follow-up
+        title: "Age in Days at Followup"
+        description: Age in days of the subject at the the time of follow-up. Use -1 if this data point is not available. (caDSR:15748634) (No CRDC Standard Available)
+        slot_uri: caDSR:15748634
       PROGRESSION_OR_RECURRENCE:
         range: ProgressionOrRecurrenceEnum
         required: true
