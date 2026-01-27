@@ -209,10 +209,10 @@ classes:
         slot_uri: caDSR:6142397
       AA_CHANGE:
         range: string
-        required: true
+        required: false
         title: "Amino Acid Change"
-        description: Amino acid change (caDSR:2192207) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192207
+        description: Alphanumeric value used to describe the amino acid change for a specific genetic variant, e.g., R116Q, as determined by clinical testing. (caDSR:6142508) (No CRDC Standard Available)
+        slot_uri: caDSR:6142508
       CLINICAL_BIOSPECIMEN_TYPE:
         range: ClinicalBiospecimenTypeEnum
         required: true
@@ -221,16 +221,16 @@ classes:
         slot_uri: caDSR:2192208
       COPY_NUMBER:
         range: integer
-        required: true
+        required: false
         title: "Copy Number"
-        description: Copy number (caDSR:2192209) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192209
+        description: The quantity of gene copies resulting from a mutation. (caDSR:13367966) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:13367966
       EXON:
         range: integer
-        required: true
+        required: false
         title: "Exon"
-        description: Exon number (caDSR:2192210) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192210
+        description: Exon number targeted or included in a clinical molecular analysis. (caDSR:6142411) (No CRDC Standard Available)
+        slot_uri: caDSR:6142411
       MOLECULAR_CONSEQUENCE:
         range: MolecularConsequenceEnum
         required: true
