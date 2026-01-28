@@ -8,96 +8,578 @@ enums:
   MolecularAnalysisMethodEnum:
     title: molecular_analysis_method
     permissible_values:
-      "DNA Sequencing":
-        description: DNA sequencing
-      "RNA Sequencing":
-        description: RNA sequencing
+      "Comparative genomic hybridization":
+        description: Comparative genomic hybridization (CGH) is a technique that allows the detection of losses and gains in DNA copy number across the entire genome without prior knowledge of specific chromosomal abnormalities. Comparative genomic hybridization utilizes the hybridization of differentially labeled tumor and reference DNA to generate a map of DNA copy number changes in tumor genomes. Comparative genomic hybridization is an ideal tool for analyzing chromosomal imbalances in archived tumor material and for examining possible correlations between these findings and tumor phenotypes. (from Ried et al. J Mol Med 1997 75:801-14)
+      "Cytogenetics, NOS":
+        description: "Not characterized in any other way.: Techniques for analysis of chromosomal and subchromosomal properties and structures, such as those to diagnose, classify, screen for, or manage genetic diseases and abnormalities."
+      "FISH":
+        description: A physical mapping approach that uses fluorescent tags to detect hybridization of probes within metaphase chromosomes or less condensed somatic interphase chromatin. This technique can be used for identification of chromosomal abnormalities and for gene mapping.
+      "Flow cytometry":
+        description: A technique for counting, examining and sorting microscopic particles suspended in a stream of fluid.
+      "IHC":
+        description: Immunohistochemical staining techniques allow for the visualization of antigens via the sequential application of a specific antibody to the antigen (primary antibody), a secondary antibody to the primary antibody and an enzyme complex with a chromogenic substrate. The enzymatic activation of the chromogen results in a visible reaction product at the antigen site. The specimen may then be counterstained and coverslipped. Results are interpreted using a light microscope and aid in the differential diagnosis of pathophysiological processes, which may or may not be associated with a particular antigen.
+      "ISH":
+        description: In Situ Hybridization staining is an immunohistochemistry staining procedure which allows the demonstration of specific nucleic acid sequences (genes) in their cellular environment. The DNA sequence in the host cell is detected by hybridization with a biotin-labeled cDNA probe. Used for detecting protein and gene expression, determining tissue specificity, and localizing genes and proteins within tissue samples.
+      "Immunofluorescence":
+        description: A microscopy staining method that utilizes immunofluorescent markers for use with histological applications of preserved cells.
+      "Karyotype":
+        description: The preparation, analysis, and interpretation of a karyotype, the representation of the chromosome set of a cell.
+      "Microarray":
+        description: Analysis using microarray technology (e.g., cDNA arrays to see gene expression or protein microarrays to profile the pattern of proteins).
+      "Microsatellite analysis":
+        description: Analysis that looks for differences in the lengths of microsatellite repeats between alleles. Polymorphic microsatellites are present in the genome every few thousand base pairs and can function as molecular markers.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
+      "Nuclear staining":
+        description: "Pertaining to the nucleus.: Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination."
+      "Other":
+        description: Different than the one(s) previously specified or mentioned.
+      "PCR":
+        description: A method for amplifying a DNA base sequence using multiple rounds of heat denaturation of the DNA and annealing of oligonucleotide primers complementary to flanking regions in the presence of a heat-stable polymerase. This results in duplication of the targeted DNA region. Newly synthesized DNA strands can subsequently serve as additional templates for the same primer sequences, so that successive rounds of primer annealing, strand elongation, and dissociation produce rapid and highly specific amplification of the desired sequence. PCR also can be used to detect the existence of the defined sequence in a DNA sample.
+      "RNA sequencing":
+        description: "Single-stranded long chain of nucleotides containing ribose. It is the end product of DNA transcription by the enzyme RNA polymerase. It is essential in protein synthesis.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides."
+      "RT-PCR":
+        description: RT-PCR is short for reverse transcriptase-polymerase chain reaction. It is a technique in which an RNA strand is first transcribed into a DNA complement and then subjected to PCR amplification. Transcribing an RNA strand into a DNA complement is termed reverse transcription and is done by the enzyme reverse transcriptase. (from Wikipedia)
+      "Sequencing, NOS":
+        description: "Not characterized in any other way.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides."
+      "Southern blotting":
+        description: A technique for the detection of specific DNA fragments that have been separated by polyacrylamide-gel electrophoresis, transferred to a nitrocellulose or other type of paper or nylon membrane, and detected by hybridization and visualization with a labeled probe.
+      "Targeted sequencing":
+        description: "The process of directing an agent to a specific anatomic location.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides."
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "WGS":
+        description: A procedure that can determine the DNA sequence for nearly the entire genome of an individual.
+      "WXS":
+        description: A procedure that can determine the DNA sequence for all of the exons in an individual.
+
+  MolecularAnalysisResultEnum:
+    title: molecular_analysis_result
+    permissible_values:
+      "Abnormal, NOS":
+        description: "Not characterized in any other way.: Deviating from the norm."
+      "Copy Number Reported":
+        description: The number of molecules of a particular type on or in a cell or part of a cell. Usually applied to specific genes or to plasmids within a bacterium.
+      "Equivocal":
+        description: Open to question.
+      "High":
+        description: An elevated level or position or degree; greater than normal in degree or intensity or amount.
+      "Intermediate":
+        description: Lying between two extremes in time or space or degree.
+      "Loss of Expression":
+        description: An indication that expression of a gene, RNA species or protein is not detected in a sample.
+      "Low":
+        description: A minimum level or position or degree; less than normal in degree, intensity or amount.
+      "Negative":
+        description: A finding of normality following an examination or investigation looking for the presence of a microorganism, disease, or condition.
+      "Normal":
+        description: Being approximately average or within certain limits; conforming with or constituting a norm or standard or level or type or social norm.
+      "Not Reported":
+        description: Not provided or available.
+      "Overexpressed":
+        description: Synthesis of excess polypeptide within the cell. Overexpression is often due to the amplification or deregulation of the gene which encodes the gene product.
+      "Positive":
+        description: A finding of abnormality following an examination or observation confirming something, such as the presence of a disease, condition, or microorganism.
+      "Test Value Reported":
+        description: An indication as to whether a test value has been reported or recorded.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
 
   ClinicalBiospecimenTypeEnum:
     title: clinical_biospecimen_type
     permissible_values:
-      "Blood":
-        description: Blood
-      "Tissue":
-        description: Tissue
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
+      "BLOOD":
+        description: A liquid tissue; its major function is to transport oxygen throughout the body. It also supplies the tissues with nutrients, removes waste products, and contains various components of the immune system defending the body against infection. Several hormones also travel in the blood.
+      "BONE MARROW":
+        description: The tissue occupying the spaces of bone. It consists of blood vessel sinuses and a network of hematopoietic cells which give rise to the red cells, white cells, and megakaryocytes.
+      "BUCCAL CELL SAMPLE":
+        description: "The mucosal membranes located on the inside of the cheek, in the buccal cavity.: The smallest units of living structure capable of independent existence, composed of a membrane-enclosed mass of protoplasm and containing a nucleus or nucleoid.: Any material sample taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. Biospecimen can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products."
+      "CEREBROSPINAL FLUID":
+        description: The fluid that is contained within the brain ventricles, the subarachnoid space and the central canal of the spinal cord.
+      "FORMALIN FIXED PARAFFIN EMBEDDED TISSUE":
+        description: "Refers to a process where a sample is preserved with formalin and then embedded into a paraffin block for sectioning.: An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function."
+      "FORMALIN FIXED TISSUE":
+        description: A colorless poisonous gas synthesized by the oxidation of methanol and used as an antiseptic, disinfectant, histologic fixative, and general-purpose chemical reagent for laboratory applications. Formaldehyde is readily soluble in water and is commonly distributed as a 37% solution in water; formalin, a 10% solution of formaldehyde in water, is used as a disinfectant and to preserve biological specimens. Environmentally, formaldehyde may be found in the atmosphere, smoke from fires, automobile exhaust and cigarette smoke. Small amounts are produced during normal metabolic processes in most organisms, including humans._Tissue which is preserved in a fixative solution, usually formalin.
+      "FRESH TISSUE":
+        description: Tissue that is not frozen or embedded in preservatives
+      "FROZEN TISSUE":
+        description: A specimen that has been subjected to and immobilized by severe cold.
+      "OTHER BODILY FLUIDS":
+        description: "Different than the one(s) previously specified or mentioned.: Material produced by living organisms; it can be a necessary constituent of, or product of an organismal process."
+      "SALIVA":
+        description: The watery fluid in the mouth made by the salivary glands. Saliva moistens food to help digestion and it helps protect the mouth against infections.
+      "STOOL":
+        description: The material discharged from the bowel during defecation. It consists of undigested food, intestinal mucus, epithelial cells, and bacteria.
+      "URINE":
+        description: The fluid that is excreted by the kidneys. It is stored in the bladder and discharged through the urethra.
 
   MolecularConsequenceEnum:
     title: molecular_consequence
     permissible_values:
       "Frameshift":
-        description: Frameshift mutation
+        description: A type of mutation in which one or more paired nucleotides are inserted or deleted in the coding region of a gene, which causes the triplet codons to be read in the wrong frame; the resulting polypeptide has a garbled amino acid sequence from the mutated codon on.
       "Missense":
-        description: Missense mutation
-      "Nonsense":
-        description: Nonsense mutation
-      "Not Reported":
-        description: Not provided or available
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: A mutation in which a base change results in substitution of one amino acid for another. This change may result in alteration of the protein's activity or stability.
+      "Monosomy":
+        description: The condition in which one chromosome of a pair is missing. In a normally diploid cell it is represented symbolically as 2N-1.
+      "None (inframe)":
+        description: Any mutation that does not cause a change in reading frame.
+      "Nullisomy":
+        description: A chromosomal abnormality consisting of the absence of both copies of a pair of homologous chromosomes.
+      "Splice Acceptor":
+        description: A heritable single nucleotide polymorphism located at the acceptor splice site in certain allelic variants of eukaryotic genes. These sites are located in genes at intron to exon junctions at the 3' end of the intron.
+      "Splice Donor":
+        description: An inherited single base change at a donor splice site in a genomic DNA sequence that results in an allelic variant of the wild-type gene. Donor splice sites are located at exon to intron junctions at the 5' end of the intron.
+      "Start Lost":
+        description: A mutation occurring within the start codon of a gene that results in a sequence that no longer encodes a start codon. This can result in a gene deletion or gene transcription may start from an alternative start site.
+      "Stop Gained":
+        description: A mutation in which a base change creates a stop codon, resulting in premature termination of a polypeptide product.
+      "Stop Lost":
+        description: A mutation occurring within the stop codon of a gene that results in a sequence that no longer encodes a stop codon and results in the transcription of non-coding regions downstream of the gene.
+      "Synonymous":
+        description: A mutation that alters the DNA sequence, but encodes the same amino acid.
+      "Trisomy":
+        description: A chromosomal abnormality consisting of the presence of one chromosome in addition to the normal diploid number.
 
   PathogenicityEnum:
     title: pathogenicity
     permissible_values:
       "Benign":
-        description: Benign
+        description: A genetic variant that is known to not contribute to the development of a disease.
       "Likely Benign":
-        description: Likely benign
+        description: A genetic variant that is not expected to contribute to the development of a disease, but the scientific evidence may be insufficient to prove this conclusively.
       "Likely Pathogenic":
-        description: Likely pathogenic
-      "Pathogenic":
-        description: Pathogenic
+        description: An ad hoc category that describes genetic variants with 90% or greater certainty of contributing to the development of a disease.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
+      "Pathogenic":
+        description: A genetic variant that is known to directly contribute to the development of disease.
+      "Uncertain Significance":
+        description: An indication that there is not enough information to support a more definitive classification of the pathogenicity of a genetic variant.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
 
   TestAnalyteTypeEnum:
     title: test_analyte_type
     permissible_values:
       "DNA":
-        description: DNA
-      "RNA":
-        description: RNA
-      "Protein":
-        description: Protein
+        description: A long linear double-stranded polymer formed from nucleotides attached to a deoxyribose backbone and found in the nucleus of a cell; associated with the transmission of genetic information.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
+      "Nucleic RNA":
+        description: A biological specimen comprised of the RNA isolated from the nuclei of cells.
+      "Protein":
+        description: Any of a group of complex organic macromolecules that contain carbon, hydrogen, oxygen, nitrogen, and usually sulfur and are composed of one or more chains of amino acids. Proteins are fundamental components of all living cells and include many substances, such as enzymes, hormones, and antibodies, that are necessary for the proper functioning of an organism.
+      "RNA":
+        description: A biospecimen created to contain an isolated or enriched RNA sample.
+      "Total RNA":
+        description: A biological sample comprised of all of the RNA collected from an experimental subject.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "cfDNA":
+        description: DNA found in blood plasma and other bodily fluids that is not associated with cells.
+      "ctDNA":
+        description: Neoplasm-derived DNA found in blood plasma and other bodily fluids that is not associated with cells.
+      "mRNA":
+        description: A class of RNA molecule containing protein-coding information in its nucleotide sequence that can be translated into the amino acid sequence of a protein.
+      "miRNA":
+        description: A sequence of single-stranded RNA, that is 20-25 nucleotides in length, which is transcribed from DNA but is not translated into a protein. This nucleic acid may regulate the transcription or translation of other genes.
+
+  TestUnitsEnum:
+    title: test_units
+    permissible_values:
+      "%":
+        description: A unit for expressing a number as a fraction of hundred (on the basis of a rate or proportion per hundred).
+      "%/100 WBC":
+        description: A unit for percentage measurement of fraction of any type of white blood cells in the total white blood cell count differential.
+      "/100 WBC":
+        description: Natural number unit for measurement of portion of a particular type of blood cells (such as any type of white blood cells or nucleated red blood cells) in the total white blood cell count expressed per count of 100.
+      "/mm3":
+        description: Per millimeter cubed
+      "/nL":
+        description: A volume unit equal to one nanoliter used as a denominator to build a derived unit expressed as a ratio.
+      "/pL":
+        description: A volume unit equal to one picoliter used as a denominator to build a derived unit expressed as a ratio.
+      "10E-15L (fL)":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A function of the form f(x) = ab^x, characterized by the fact that the growth rate of such a function is directly proportional to the value of the function.: A number with no fractional part, including the negative and positive numbers as well as zero.::15: The non-SI unit of volume accepted for use with the SI. One liter is equal to cubic decimeter, or one thousandth of cubic meter, or 1000 cubic centimeters, or approximately 61.023 744 cubic inches."
+      "10E10":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::10: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E11":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::11: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E12":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::12: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E12 Cells/L":
+        description: A unit of cell concentration expressed as a number of cells in trillions per unit volume equal to one liter.
+      "10E13":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::13: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E14":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::14: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E15":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::15: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E16":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::16: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E17":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::17: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E18":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::18: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E19":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::19: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E2":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::2: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E20":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::20: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E3":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::3: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E3 Cells/microL":
+        description: 10E3 Cells per microliter
+      "10E4":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::4: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E5":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::5: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E6":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::6: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E6 Cells":
+        description: A unit of cell count expressed in millions.
+      "10E6 Cells/microL":
+        description: 10E6 Cells per microLiter
+      "10E6 Cells/mm3":
+        description: 10E6 Cells per millimeter cubed
+      "10E6/L":
+        description: 10E6 per Liter
+      "10E7":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::7: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E7 Cells/kg":
+        description: 10E7 Cells per kilogram
+      "10E8":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::8: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E8 Cells":
+        description: 10E8 Cells
+      "10E9":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::9: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "10E9 Cells":
+        description: 10E9 Cells
+      "10E9 Cells/L":
+        description: 10E9 Cells per Liter
+      "10E9 Cells/microL":
+        description: 10E9 Cells per microliter
+      "2X10E6 Cells":
+        description: "A number with no fractional part, including the negative and positive numbers as well as zero.::2: An arithmetic operation by which the product of two numbers is computed; the inverse of division.: A natural number following 999999 and preceding 100001 and the quantity that it denotes: one thousand thousand.: The smallest units of living structure capable of independent existence, composed of a membrane-enclosed mass of protoplasm and containing a nucleus or nucleoid."
+      "2X10E7 Cells":
+        description: Two times 10 exponential value 7 (ten million) cells
+      "2X10E8 Cells":
+        description: Two times 10 exponential value 8 (one hundred million) cells
+      "Arbitrary unit per milliliter":
+        description: A single undivided thing (unit) based on or subject to individual judgment or preference, and not by necessity, reason, or principle._A volume unit equal to one milliliter used as a denominator to build a derived unit expressed as a ratio. (NCI)
+      "Billion/L":
+        description: Billion per Liter
+      "CAE Unit":
+        description: Complement activity enzyme unit
+      "Cells/kg":
+        description: "Any small compartment.: For each, generally denoting a ratio.: A basic SI unit of mass. It is definied as the mass of an  international prototype in the form of a platinum-iridium cylinder kept at Sevres in france.   A kilogram is equal to 1,000 grams and 2.2046226 pounds.: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "Cells/microL":
+        description: Cells per microliter
+      "Copies":
+        description: Copies
+      "Copies per milliliter":
+        description: A unit of concentration expressed as a number of copies per unit volume equal to one milliliter.
+      "Copies/mL":
+        description: A unit of concentration of RNA copies expressed as a number of copies per unit volume equal to one milliliter.
+      "EU":
+        description: The property used in conjunction with a nutrient or food component, typically expressed in gram (g), milligram (mg), microgram (mcg), joule, or kilojoule.
+      "EU/dL":
+        description: Enzyme Units per deciliter
+      "EU/mL":
+        description: Enzyme Units per milliliter
+      "GPL":
+        description: IgG anti-cardiolipin antibodies
+      "HPF":
+        description: Per High Power Field
+      "Hours":
+        description: In modern usage, an hour is defined as a unit of time 60 minutes, or 3600 seconds in length. It is approximately 1/24 of a median day.
+      "IUnit/L":
+        description: Unit of arbitrary substance concentration (biologic activity concentration) defined as the concentration of one international unit per one liter of the system volume.
+      "IUnit/m2":
+        description: International unit per meter squared
+      "IUnit/mL":
+        description: A unit of arbitrary substance concentration (biologic activity concentration) defined as the concentration of one international unit per one milliliter of system volume.
+      "Index value":
+        description: Index value
+      "Iunit":
+        description: INTERNATIONAL UNIT
+      "L":
+        description: LITER
+      "L/min":
+        description: Liters per minute
+      "L/sec":
+        description: Liter per second
+      "LPF":
+        description: Per Low Power Field
+      "Log":
+        description: For a specified base b, a function such that its argument results when b is raised to the power given by this function's value.
+      "Log copies per milliliter":
+        description: A logarithmic-scale (base 10) unit for measuring copies per unit of volume equal to one milliliter.
+      "Log10 IU/mL":
+        description: A logarithmic-scale (base 10) unit for measuring international units per unit of volume equal to one milliliter.
+      "MPL":
+        description: IgM anti-cardiolipin antibodies
+      "MU/mL":
+        description: Million units per milliliter
+      "Million":
+        description: "A natural number following 999999 and preceding 100001 and the quantity that it denotes: one thousand thousand."
+      "Million/microL":
+        description: Million per microliter
+      "Million/mm3":
+        description: Million per millimeter cubed
+      "Minutes":
+        description: A unit measure of time equal to 60 seconds.
+      "NA":
+        description: Not applicable; no UOM required
+      "No Srce":
+        description: No Source Data
+      "RNA copies/mL":
+        description: RNA copies per milliliter
+      "Ratio":
+        description: ratio
+      "Thousand":
+        description: "A natural number following 999 and preceding 1001 and the quantity that it denotes: ten times one hundred."
+      "Thousand/microL":
+        description: Thousand per microliter
+      "Thousand/mm2":
+        description: Thousand per millimeter squared
+      "Thousand/mm3":
+        description: Thousand per millimeter cubed
+      "Threshold":
+        description: The lowest limit at which something becomes detectable or relevant.
+      "Titer":
+        description: Titer
+      "Trillion/L":
+        description: Trillion per Liter
+      "Unit":
+        description: Any division of quantity accepted as a standard of measurement or exchange.
+      "Unit/24hr":
+        description: Unit per 24 hours
+      "Unit/L":
+        description: Unit per liter
+      "Unit/m2":
+        description: A dose calculation unit expressed as a number of arbitrary units of substance per one square meter of a body surface area.
+      "Unit/mL":
+        description: Unit per millilliter
+      "Unit/mm3":
+        description: Unit per millimeters cubed
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+      "cm H2O":
+        description: A unit of pressure defined by a column of water with a height of one centimeter, frequently used to measure central venous pressure, intracranial pressure, and for pressures during mechanical ventilation.
+      "copies/L":
+        description: "A secondary representation, reproduction, or replica.: A volume unit equal to one liter used as a denominator to build a derived unit expressed as a ratio."
+      "cubic microns":
+        description: Cubic microns
+      "fL":
+        description: The non-SI unit of volume accepted for use with the SI equal to one quadrillionth of a liter (10E-15 liter).
+      "g":
+        description: Grams (g)
+      "g/24hr":
+        description: Gram per 24 hours
+      "g/L":
+        description: Gram per liter
+      "g/dL":
+        description: Gram per deciliter
+      "g/microL":
+        description: Gram per microliter
+      "kU/L":
+        description: Kilounit per Liter
+      "mEq":
+        description: Milliequivalent
+      "mEq/24hr":
+        description: Milliequivalents per 24 hours
+      "mEq/L":
+        description: Milliequivalent per liter
+      "mEq/dL":
+        description: Milliequivalent per deciliter
+      "mEq/kg":
+        description: Milliequivalent per kilogram
+      "mL":
+        description: Milliter
+      "mL/24hr":
+        description: "A measure of volume for a liquid.  A milliliter is approximately 950 times smaller than a quart and 30 times smaller than a fluid ounce.  A milliliter of liquid and a cubic centimeter (cc) of liquid are the same.: For each, generally denoting a ratio.: A number with no fractional part, including the negative and positive numbers as well as zero.::24: In modern usage, an hour is defined as a unit of time 60 minutes, or 3600 seconds in length. It is approximately 1/24 of a median day.: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "mL/min":
+        description: Milliliter per minute
+      "mL/min/1.73/BSA":
+        description: Milliliter per minute times 1.73 times BSA
+      "mL/min/kg":
+        description: A dose calculation unit expressed in milliliter(s) per kilogram per period of time equal to sixty seconds.
+      "mL/minute/mmHg":
+        description: Milliter per minute per millimeters of Mercury
+      "mL/minute/mmHg/L":
+        description: Milliliter per minute per millimeter Hg per Liter
+      "mU/mL":
+        description: "A quantity equivalent to the one thousandth unit (10E-3 unit).: For each, generally denoting a ratio.: A measure of volume for a liquid.  A milliliter is approximately 950 times smaller than a quart and 30 times smaller than a fluid ounce.  A milliliter of liquid and a cubic centimeter (cc) of liquid are the same.: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
+      "mcg/24hr":
+        description: Microgram per 24 hours
+      "mcg/L":
+        description: microgram per liter
+      "mcg/dL":
+        description: Microgram per deciliter
+      "mcg/mL":
+        description: Microgram per milliliter
+      "mcg/spec":
+        description: Microgram per specimen
+      "mg":
+        description: A measure of weight.  A milligram is approximately 450,000 times smaller than a pound and 28,000 times smaller than an ounce.
+      "mg/24hr":
+        description: A unit of mass flow rate equivalent to the rate at which one thousandth of a gram of matter crosses a given surface or is delivered to a given object or space over a period of time equal to twenty four hours. Milligram per twenty four hours is also a dose administration rate unit equal to the rate at which one thousandth of a gram of a product is administered per unit of time equal to twenty four hours.
+      "mg/L":
+        description: Milligram per liter
+      "mg/dL":
+        description: A unit of mass concentration defined as the concentration of one milligram of a substance in unit volume of the mixture equal to one cubic deciliter or 100 cubic centimeters. It is also a unit of mass density (volumic mass) defined as the density of substance which mass equal to one milligram occupies the volume one cubic deciliter or 100 cubic centimeters.
+      "mg/g":
+        description: A unit of a mass fraction expressed as a number of grams of substance per kilogram of mixture. Gram per kilogram is also used as a dose calculation unit to express a quantity of substance in grams per one kilogram of body mass.
+      "mg/kg":
+        description: A unit of a mass fraction expressed as a number of milligrams of substance per kilogram of mixture. The unit is also used as a dose calculation unit.
+      "mg/mL":
+        description: A SI derived unit of mass concentration defined as the concentration of one kilogram of a substance per unit volume of the mixture equal to one cubic meter, or the concentration of one milligram of a substance per unit volume of the mixture equal to one milliliter, or one gram of a substance per one liter of the mixture. It is also a unit of mass density (volumic mass) defined as the density of substance which mass equal to one milligram occupies the volume one milliliter.
+      "mg/mL/min":
+        description: Milligram per milliliter per minute
+      "mg/mmol":
+        description: Gram per Mole
+      "microIU/mL":
+        description: Micro International Unit per milliliter
+      "microL":
+        description: MICROLITER
+      "microU/mL":
+        description: Microunit per milliliter
+      "micromol/24hr":
+        description: Micromole per 24 hours
+      "micromol/L":
+        description: Micromole per liter
+      "micromol/dL":
+        description: Micromole per deciliter
+      "mill PFU":
+        description: A measure of viable infectious entities expressed in millions in the specimen or product defined as the smallest quantity that can produce a cytopathic effect in the host cell culture challenged with the defined inoculum, visible under the microscope or/and to the naked eye as a plaque.
+      "miu":
+        description: Milliinternational unit
+      "miu/m2":
+        description: Milliinternational units per meter squared
+      "miu/mL":
+        description: Milliinternational unit per milliliter
+      "ml CO/min/mm Hg":
+        description: "An odorless, tasteless, poisonous gas, CO, that results from the incomplete combustion of carbon. Inhalation causes central nervous system damage and asphyxiation.: A unit for measuring a pulmonary diffusing capacity expressed in units of gas flow rate (in milliliters per minute) per a unit of pressure (in torrs)."
+      "mm/hr":
+        description: Millimeter per hour
+      "mm3":
+        description: Millimeter cubed
+      "mmHg":
+        description: A unit of pressure equal to 0.001316 atmosphere and equal to the pressure indicated by one millimeter rise of mercury in a barometer at the Earth's surface.
+      "mmol":
+        description: MILLIMOLE
+      "mmol CO/min/kPa":
+        description: "An odorless, tasteless, poisonous gas, CO, that results from the incomplete combustion of carbon. Inhalation causes central nervous system damage and asphyxiation.: A unit of gas diffusion capacity equal to one millimole per minute per kilopascal."
+      "mmol/24hr":
+        description: Millimole per 24 hours
+      "mmol/L":
+        description: millimole per liter
+      "mmol/min/kPa/L":
+        description: Millimole per minute per thousand Pascal per Liter
+      "mosmol/kg":
+        description: Milliosmole per kilogram
+      "nMol/mg protein":
+        description: Nanomole per milligram of protein
+      "ng/dL":
+        description: nanogram per deciliter
+      "ng/mL":
+        description: A unit of mass concentration defined as the concentration of one microgram of a substance per unit volume of the mixture equal to one liter. The concept also refers to the unit of mass density (volumetric mass) defined as the density of a substance which mass equal to one microgram occupies the volume of one liter.
+      "ng/mL/hr":
+        description: A dose calculation unit equal to mass concentration of a substance expressed in nanograms per unit volume of one milliliter per time period of one hour.
+      "nmol/L":
+        description: A unit of concentration (molarity unit) equal to one billionth of a mole (10E-9 mole) of solute in one liter of solution.
+      "nmol/hr/mg protein":
+        description: Nanomole per hour per milligram of protein
+      "nmol/mL":
+        description: Nanomole per milliliter
+      "pg":
+        description: The metric unit of mass equal to one trillionth of a gram (10E-12 gram).
+      "pg/dL":
+        description: Picogram per deciliter
+      "pg/mL":
+        description: Picrogram per milliliter
+      "pgPGE2/mg protein":
+        description: pgPGE2/mg protein
+      "pmol/L":
+        description: A unit of concentration (molarity unit) equal to one trillionth of a mole (10E-12 mole) in one liter of solution.
+      "pmol/hr/mg protein":
+        description: Picomole per hour per milligram of protein
+      "sec":
+        description: seconds
+      "ug/mL FEU":
+        description: "A metric unit of mass concentration defined as the concentration of one gram of a substance per unit volume of the mixture equal to one cubic meter. The concept also refers to the metric unit of mass density (volumic mass) defined as the density of a substance which mass equal to one gram occupies the volume of one cubic meter.: A unit of measure for the concentration of fibrin degradation products in a sample, calculated based upon the mass of fibrinogen contained within that sample."
+      "ukat/L":
+        description: Unit of catalytic activity concentration defined as activity equal to one millionth of katal per one liter of the system volume.
 
   VariantOriginEnum:
     title: variant_origin
     permissible_values:
       "Germline":
-        description: Germline variant
-      "Somatic":
-        description: Somatic variant
+        description: The DNA in germ cells (egg and sperm cells that join to form an embryo). Germline DNA is the source of DNA for all other cells in the body.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
+      "Somatic":
+        description: The genomic DNA found in the non-reproductive (non-germ) cells of an organism.
+      "Somatic Mosaic":
+        description: The presence of genetic mosaicism in non-germ cells.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
 
   VariantTypeEnum:
     title: variant_type
     permissible_values:
+      "Alleles":
+        description: Mutually exclusive alternative forms of the same gene occupying the same locus on homologous chromosomes, differing in nucleotide sequence and governing the same biochemical and developmental process.
+      "Amplification":
+        description: An increase in the copy number of a particular gene. This type of abnormality can be either inherited or somatic.
+      "Chimerism":
+        description: The occurrence in an individual of two or more cell populations of different chromosomal constitutions, derived from different individuals. This contrasts with mosaicism in which the different cell populations are derived from a single individual.
+      "Chromosomal Gain":
+        description: A cytogenetic abnormality that refers to gain of an entire chromosome, a chromosome arm or a chromosomal band.
+      "Chromosomal Loss":
+        description: Loss of an entire chromosome or chromosome arm.
+      "Conversion":
+        description: "The act of changing the nature, form, function, or purpose of something to another.: Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer."
       "Deletion":
-        description: Deletion
+        description: A loss of any genetic material on a chromosome, ranging from loss of a single nucleotide, to loss of part or all of a gene, to loss of a visible portion of the chromosome involving multiple genes. Deletions often disrupt gene or protein function and cell function as a result.
+      "Deletion-insertion":
+        description: "Any rearrangement to the genomic content that results in the loss of one or more nucleotides of DNA. Deletions are generally irreversible rearrangements. They may alter the reading frame of a gene, or may result in loss of large chromosomal regions.: An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: Any rearrangement to the genomic content that adds one or more extra nucleotides into the DNA. Insertions may be reversible, particulary if caused by transposable elements. They may alter the reading frame of a gene, or may cause large scale additions of genomic DNA."
+      "Duplication":
+        description: Generation of an extra copy of a particular gene in the genome. A gene duplication abnormality may occur by gene amplification, random breakage and reunion, retrotransposition or unequal crossing-over at meiosis. A gene duplication abnormality can be either heritable or somatic.
+      "Extension":
+        description: "To increase in length or duration.: Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer."
+      "Hypermethylation":
+        description: Hypermethylation appears to be a controlled, epigenetic, heritable, and aberrant DNA methylation reaction on gene promoter regions and CpG islands associated with loss of (e.g., tumor-suppressor) gene function in diverse cellular pathways through transcriptional silencing by the formation of transcriptionally repressive chromatin.
       "Insertion":
-        description: Insertion
-      "Substitution":
-        description: Substitution
+        description: Mutations that result in the insertion of one or more nucleotides into a wild type DNA sequence. Can result in a frame shift in the coding sequence of a gene.
+      "Inversion":
+        description: A structural change in genomic DNA where the 5' to 3' order of a nucleotide sequence is completely reversed to the 3' to 5' order relative to its adjacent sequences. This inversion is termed either pericentric, if it includes the centromere of a chromosome, or pancentric, if it excludes the centromere. An inversion mutation abnormality may be heritable or occur somatically.
+      "Methylation":
+        description: The covalent chemical or biochemical addition of a methyl group(s) to a compound. (NCI)
+      "Mosaicism":
+        description: The presence of more than one genetically distinct cell line in germ and/or somatic cells.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
+      "Other":
+        description: Different than the one(s) previously specified or mentioned.
+      "Partial methylation":
+        description: "Being or affecting only a part of something.: The covalent chemical or biochemical addition of a methyl group(s) to a compound. (NCI)"
+      "Rearrangement":
+        description: Any process affecting a DNA sequence that results in the gain, loss or exchange of DNA between chromosomes and/or autonomous replicons.
+      "Repeated sequences":
+        description: "Make or do or perform again.: The sequence of nucleotide residues along a DNA chain."
+      "Splice":
+        description: A mutation that alters or abolishes the specific sequence denoting the site at which the splicing of an intron takes place. Such mutations may result in one or more introns remaining in the mature messenger RNA or fusion of non-adjacent exons and can disrupt the generation of the protein product.
+      "Substitution":
+        description: "The act of putting one thing or person in the place of another.: Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer."
+      "Translocation":
+        description: "The movement of a physical object from one place to another. (NCI): Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer."
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
 
 classes:
   MolecularTest:
@@ -105,106 +587,106 @@ classes:
     attributes:
       TIMEPOINT_LABEL:
         range: string
-        required: true
+        required: false
         title: "Timepoint Label"
-        description: Label for the timepoint (caDSR:2192201) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192201
+        description: Label to identify the time point at which the clinical data or biospecimen was obtained (e.g. Baseline, End of Treatment, Overall survival, Final). NO PHI/PII INFORMATION IS ALLOWED. (caDSR:8031077) (No CRDC Standard Available)
+        slot_uri: caDSR:8031077
       AGE_IN_DAYS_AT_MOLECULAR_TEST_START:
         range: integer
         required: true
         title: "Age in Days at Molecular Test Start"
-        description: Age in days at molecular test start (caDSR:2192202) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192202
+        description: Age in days of the subject at the start of a molecular analysis. Use -1 if this data point is not available. (caDSR:15879017) (No CRDC Standard Available)
+        slot_uri: caDSR:15879017
       AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP:
         range: integer
-        required: true
+        required: false
         title: "Age in Days at Molecular Test Stop"
-        description: Age in days at molecular test stop (caDSR:2192203) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192203
+        description: Age in days of the subject at the end of a molecular analysis. (caDSR:15879662) (No CRDC Standard Available)
+        slot_uri: caDSR:15879662
       GENE_SYMBOL:
         range: gene_symbol_enum
         required: true
         title: "Gene Symbol"
-        description: Gene symbol (caDSR:2192204) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192204
+        description: Gene symbol of the gene targeted or included in molecular analysis. (caDSR:11280318) (No CRDC Standard Available)
+        slot_uri: caDSR:11280318
       MOLECULAR_ANALYSIS_METHOD:
         range: MolecularAnalysisMethodEnum
         required: true
         title: "Molecular Analysis Method"
-        description: Molecular analysis method (caDSR:2192205) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192205
+        description: Description of the method used for clinical molecular analysis. (caDSR:6142401) (No CRDC Standard Available)
+        slot_uri: caDSR:6142401
       MOLECULAR_ANALYSIS_RESULT:
-        range: string
+        range: MolecularAnalysisResultEnum
         required: true
         title: "Molecular Analysis Result"
-        description: Molecular analysis result (caDSR:2192206) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192206
+        description: Description of the result of clinical molecular analysis. (caDSR:6142397) (No CRDC Standard Available)
+        slot_uri: caDSR:6142397
       AA_CHANGE:
         range: string
-        required: true
+        required: false
         title: "Amino Acid Change"
-        description: Amino acid change (caDSR:2192207) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192207
+        description: Alphanumeric value used to describe the amino acid change for a specific genetic variant, e.g., R116Q, as determined by clinical testing. (caDSR:6142508) (No CRDC Standard Available)
+        slot_uri: caDSR:6142508
       CLINICAL_BIOSPECIMEN_TYPE:
         range: ClinicalBiospecimenTypeEnum
         required: true
         title: "Clinical Biospecimen Type"
-        description: Clinical biospecimen type (caDSR:2192208) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192208
+        description: Kind of material taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes. (caDSR:7069877) (Aligns to CRDC Node)
+        slot_uri: caDSR:7069877
       COPY_NUMBER:
         range: integer
-        required: true
+        required: false
         title: "Copy Number"
-        description: Copy number (caDSR:2192209) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192209
+        description: The quantity of gene copies resulting from a mutation. (caDSR:13367966) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:13367966
       EXON:
         range: integer
-        required: true
+        required: false
         title: "Exon"
-        description: Exon number (caDSR:2192210) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192210
+        description: Exon number targeted or included in a clinical molecular analysis. (caDSR:6142411) (No CRDC Standard Available)
+        slot_uri: caDSR:6142411
       MOLECULAR_CONSEQUENCE:
         range: MolecularConsequenceEnum
-        required: true
+        required: false
         title: "Molecular Consequence"
-        description: Molecular consequence (caDSR:2192211) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192211
+        description: Description of the molecular consequence of genetic variation identified by a clinical test. (caDSR:13367935) (No CRDC Standard Available)
+        slot_uri: caDSR:13367935
       PATHOGENICITY:
         range: PathogenicityEnum
-        required: true
+        required: false
         title: "Pathogenicity"
-        description: Pathogenicity (caDSR:2192212) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192212
+        description: Description of a variant's level of involvement in the cause of the individual's disease according to the standards outlined by the American College of Medical Genetics and Genomics (ACMG). (caDSR:14532361) (No CRDC Standard Available)
+        slot_uri: caDSR:14532361
       TEST_ANALYTE_TYPE:
         range: TestAnalyteTypeEnum
-        required: true
+        required: false
         title: "Test Analyte Type"
-        description: Test analyte type (caDSR:2192213) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192213
+        description: Sample type or material being subjected to analysis. (caDSR:15063661) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:15063661
       TEST_UNITS:
-        range: string
-        required: true
+        range: TestUnitsEnum
+        required: false
         title: "Test Units"
-        description: Test units (caDSR:2192214) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192214
+        description: Preferred unit of measure (UOM) for a laboratory test result, per NCI standards or per protocol specification. (caDSR:2195977) (No CRDC Standard Available)
+        slot_uri: caDSR:2195977
       TEST_RESULT:
         range: string
-        required: true
+        required: false
         title: "Test Result"
-        description: Test result (caDSR:2192215) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192215
+        description: Specific result of a clinical molecular test. Use this field only if one of the permissible values in MOLECULAR_ANALYSIS_RESULT isn't relevant. Please provide TEST_UNITS if applicable. (caDSR:2230153) (No CRDC Standard Available)
+        slot_uri: caDSR:2230153
       VARIANT_ORIGIN:
         range: VariantOriginEnum
-        required: true
+        required: false
         title: "Variant Origin"
-        description: Variant origin (caDSR:2192216) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192216
+        description: Biological origin of a specific genetic variant identified by a clinical test. (caDSR:14473382) (No CRDC Standard Available)
+        slot_uri: caDSR:14473382
       VARIANT_TYPE:
         range: VariantTypeEnum
-        required: true
+        required: false
         title: "Variant Type"
-        description: Variant type (caDSR:2192217) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192217
+        description: Description of the type of genetic variation. (caDSR:6142402) (No CRDC Standard Available)
+        slot_uri: caDSR:6142402
     slot_usage:
       AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP:
         required: false

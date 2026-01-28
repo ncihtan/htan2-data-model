@@ -6,56 +6,78 @@ enums:
   AlcoholHistoryIndicatorEnum:
     title: alcohol_history_indicator
     permissible_values:
+      "Data not available":
+        description: Data from an original source is not present, accessible or ready for use or service.
       "No":
-        description: No alcohol history
-      "Yes":
-        description: Alcohol history present
-      "Not Reported":
-        description: Not provided or available
+        description: The non-affirmative response to a question.
+      "Not applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not reported":
+        description: Not provided or available.
+      "Pending":
+        description: Not yet decided or settled; awaiting conclusion or confirmation.
+      "Refused":
+        description: To decline to do, accept, give, or allow something.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "Yes":
+        description: The affirmative response to a question.
 
   EnvironmentalExposureEnum:
     title: environmental_exposure
     permissible_values:
       "No":
-        description: No environmental exposure
-      "Yes":
-        description: Environmental exposure present
+        description: The non-affirmative response to a question.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "Yes":
+        description: The affirmative response to a question.
 
   EnvironmentalExposureTypeEnum:
     title: environmental_exposure_type
     permissible_values:
-      "Asbestos":
-        description: Asbestos exposure
-      "Chemical":
-        description: Chemical exposure
-      "Not Reported":
-        description: Not provided or available
-      "Other":
-        description: Other type of exposure
-      "Radiation":
-        description: Radiation exposure
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
+      "Asbestos Exposure":
+        description: Inhalation of asbestos fibers.
+      "Chemical Exposure":
+        description: Contact with a chemical substance through touch, inhalation, or ingestion.
+      "Marijuana Smoke Exposure":
+        description: Environmental, occupational or consumer-based exposure to airborne gases and particulates produced by direct or nearby use of a vaporized or combusted product made from the leaves and flowers of the cannabis plant.
+      "Radiation Exposure":
+        description: Exposure to radioactive materials or ionizing radiation, whether by external irradiation, contact or contamination with radioactive material, or incorporation of radioactive materials, as in the case of certain diagnostic procedures.
+      "Radon Exposure":
+        description: Inhalation of radon gas which is found in rocks, soil and groundwater as a result of radioactive decay of uranium, thorium, or radium in the environment.
+      "Respirable Crystalline Silica Exposure":
+        description: Environmental, occupational or consumer-based exposure to respirable particles derived from industrial processing or breakdown of silica-containing materials such as sand, concrete, stone, mortar, bricks, glass, pottery and ceramics.
+      "Smoke Exposure":
+        description: Environmental, occupational or consumer-based exposure to airborne gases and particulates produced when materials undergo combustion or thermal decomposition.
+      "Smokeless Tobacco Exposure":
+        description: Environmental, occupational, or consumer-based exposure to any smokeless tobacco product.
+      "Tobacco Related Exposure":
+        description: Environmental, occupational or consumer-based exposure to airborne gases and particulates produced by direct or nearby use of a vaporized or combusted tobacco product.
+      "Wood Dust Exposure":
+        description: Environmental or occupational exposure to granular solids generated when timber is processed, such as when it is chipped, sawed, turned, drilled or sanded.
 
   SmokingHistoryEnum:
     title: smoking_history
     permissible_values:
+      "Current Every-Day Smoker":
+        description: Indicates a person that currently smokes every day.
+      "Current Some-Day Smoker":
+        description: Indicates a person who has smoked at least 100 cigarettes in his or her lifetime, who smokes now, but does not smoke every day.
       "Current smoker":
-        description: Current smoker
-      "Former smoker":
-        description: Former smoker
-      "Never smoker":
-        description: Never smoker
-      "Not Reported":
-        description: Not provided or available
+        description: An adult who has smoked 100 cigarettes in his or her lifetime and who currently smokes cigarettes. Includes daily smokers and non-daily smokers (also known as occasional smokers).
+      "Former Smoker":
+        description: A person who was not smoking at the time of the interview but has smoked at least 100 cigarettes in their life.
+      "Never Smoker":
+        description: A person who was not smoking at the time of the interview and has smoked less than 100 cigarettes in their life.
+      "Non-smoker":
+        description: indicates a person who has smoked for an undetermined length of time or number of cigarettes, but was not smoking at the time of the interview nor habitually at any point in the past (may be less than 100 cigarettes in a lifetime).
+      "Not reported":
+        description: Not provided or available.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
 
 classes:
   Exposure:
@@ -65,45 +87,46 @@ classes:
         range: SmokingHistoryEnum
         required: true
         title: "Smoking History"
-        description: Smoking history of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192201
+        description: Current or past smoking status. (caDSR:3626148) (Aligns to CRDC Node)
+        slot_uri: caDSR:3626148
       YEARS_SMOKED:
         range: integer
         required: false
         title: "Years Smoked"
-        description: Number of years the participant has smoked (caDSR:2192202) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192202
+        description: Number of years a person has been smoking. Use -1 if this data point is not available. (caDSR:3137957) (No CRDC Standard Available)
+        slot_uri: caDSR:3137957
       PACK_YEARS_SMOKED:
         range: decimal
         required: false
         title: "Pack Years Smoked"
-        description: Number of pack years the participant has smoked (caDSR:2192203) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192203
+        description: Numeric computed value to represent lifetime tobacco exposure defined as number of cigarettes smoked per day x number of years smoked divided by 20. Use -1 if this data point is not available. (caDSR:2955385) (No CRDC Standard Available)
+        slot_uri: caDSR:2955385
       ALCOHOL_HISTORY_INDICATOR:
         range: AlcoholHistoryIndicatorEnum
         required: true
         title: "Alcohol History Indicator"
-        description: Alcohol history indicator of the participant (caDSR:2192204) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192204
+        description: Response indicating whether or not an individual has ever consumed alcohol. (caDSR:7537144) (No CRDC Standard Available)
+        slot_uri: caDSR:7537144
       ENVIRONMENTAL_EXPOSURE:
         range: EnvironmentalExposureEnum
         required: true
         title: "Environmental Exposure"
-        description: Environmental exposure of the participant (caDSR:2192205) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192205
+        description: Response indicating whether or not an individual was exposed to potentially harmful environmental agents (caDSR:15753166) (Aligns to CRDC Node)
+        slot_uri: caDSR:15753166
       ENVIRONMENTAL_EXPOSURE_TYPE:
         range: EnvironmentalExposureTypeEnum
         required: false
+        multivalued: true
         title: "Environmental Exposure Type"
-        description: Type of environmental exposure (caDSR:2192206) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192206
+        description: Type of potentially harmful environmental agents to which an individual was exposed. (caDSR:15753203) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:15753203
     slot_usage:
       YEARS_SMOKED:
         required: false
-        description: Required when SMOKING_HISTORY is Current smoker or Former smoker
+        description: Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker
       PACK_YEARS_SMOKED:
         required: false
-        description: Required when SMOKING_HISTORY is Current smoker or Former smoker
+        description: Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker
       ENVIRONMENTAL_EXPOSURE_TYPE:
         required: false
         description: Required when ENVIRONMENTAL_EXPOSURE is Yes 
