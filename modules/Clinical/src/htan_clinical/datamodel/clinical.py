@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-28T12:51:43
+# Generation date: 2026-01-28T17:56:11
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
