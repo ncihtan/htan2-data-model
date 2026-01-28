@@ -9,7 +9,7 @@ enums:
       "APL Differentiation Syndrome":
         description: A syndrome observed in patients with acute promyelocytic leukemia treated with all-trans retinoic acid. It is characterized by weight gain, dyspnea, pleural and pericardial effusions, leukocytosis, and renal failure.
       "Accidental death":
-        description: An unforeseen and unplanned event or circumstance frequently causing loss or injury.: The absence of life or state of being dead.
+        description: "An unforeseen and unplanned event or circumstance frequently causing loss or injury.: The absence of life or state of being dead."
       "Acute GVHD":
         description: A syndrome of immunologically mediated tissue damage that may occur following an allogeneic transplant, usually affecting the skin, liver, and GI tract. The onset is usually within one hundred days of transplantation or immunologic manipulation.
       "Adult Respiratory Distress Syndrome (ARDS)":
@@ -19,7 +19,7 @@ enums:
       "Aspiration Pneumonia":
         description: Pneumonia secondary to aspiration of liquids and gastric contents into the lungs.
       "BCNU IP":
-        description: An antineoplastic nitrosourea. Carmustine alkylates and cross-links DNA during all phases of the cell cycle, resulting in disruption of DNA function, cell cycle arrest, and apoptosis. This agent also carbamoylates proteins, including DNA repair enzymes, resulting in an enhanced cytotoxic effect. Carmustine is highly lipophilic and crosses the blood-brain barrier readily. (NCI04): Inflammation of interstitial lung tissue, usually associated with infection.
+        description: "An antineoplastic nitrosourea. Carmustine alkylates and cross-links DNA during all phases of the cell cycle, resulting in disruption of DNA function, cell cycle arrest, and apoptosis. This agent also carbamoylates proteins, including DNA repair enzymes, resulting in an enhanced cytotoxic effect. Carmustine is highly lipophilic and crosses the blood-brain barrier readily. (NCI04): Inflammation of interstitial lung tissue, usually associated with infection."
       "Bacterial infection":
         description: infections and associated diseases by bacteria, general or unspecified.
       "Cancer Related":
@@ -35,7 +35,7 @@ enums:
       "Cardiovascular accident":
         description: A sudden loss of neurologic function secondary to hemorrhagic or ischemia in the brain parenchyma due to a vascular event. Infarction or hemorrhage may be demonstrated either directly by imaging,laboratory, or pathologic examination in patients with symptom duration less than 24 hours, or inferred by symptoms lasting greater than or equal to 24 hours (or fatal within 24 hours) that cannot be attributed to another cause. Diagnostic tests include CT scan, MRI, angiography, and EEG to locate and evaluate the extent of the hemorrhagic or ischemic damage in the brain parenchyma, coagulation studies, complete blood count, comprehensive metabolic panel, and urinalysis.
       "Central nervous system(CNS) failure":
-        description: The main information-processing organs of the nervous system, consisting of the brain, spinal cord, and meninges.: loss of ability to function normally.
+        description: "The main information-processing organs of the nervous system, consisting of the brain, spinal cord, and meninges.: loss of ability to function normally."
       "Chronic GVHD":
         description: A syndrome of immunologically mediated tissue damage that may occur following an allogeneic transplant, and may affect multiple organs with manifestations similar to autoimmune diseases. The onset is usually within three years of transplantation or immunologic manipulation.
       "Chronic Obstructive Pulmonary Disease":
@@ -61,31 +61,31 @@ enums:
       "Fungal infection":
         description: An infection caused by eukaryotic heterotrophic organisms that live as saprobes or parasites, including mushrooms, yeasts, smuts, molds, etc. They reproduce either sexually or asexually, and have life cycles that range from simple to complex. Filamentous fungi refer to those that grow as multicellular colonies (mushrooms and molds).
       "Gastrointestinal (GI) failure (not liver)":
-        description: (GAS-tro-in-TES-tih-nul) GI. Refers to the stomach and intestines.: loss of ability to function normally.
+        description: "(GAS-tro-in-TES-tih-nul) GI. Refers to the stomach and intestines.: loss of ability to function normally."
       "Gastrointestinal hemorrhage":
-        description: (GAS-tro-in-TES-tih-nul) GI. Refers to the stomach and intestines.: Bleeding or escape of blood from a vessel.
+        description: "(GAS-tro-in-TES-tih-nul) GI. Refers to the stomach and intestines.: Bleeding or escape of blood from a vessel."
       "Graft Versus Host Disease":
         description: An incompatibility reaction (which may be fatal) in a subject (host) of low immunological competence (deficient lymphoid tissue) who has been the recipient of immunologically competent lymphoid tissue from a donor who lacks at least one antigen possessed by the recipient host; the reaction, or disease, is the result of action of the transplanted cells against those host tissues that possess the antigen not possessed by the donor. Seen most commonly following bone marrow transplantation, acute disease is seen after 5-40 days and chronic disease weeks to months after transplantation, affecting, principally, the gastrointestinal tract, liver, and skin.
       "Graft rejection or failure":
         description: Failure of transplanted tissue to become functional or operational, often as a result of destruction by the host's immune system.
       "HIV/AIDS":
-        description: Human immunodeficiency virus. Species of LENTIVIRUS, subgenus primate lentiviruses (LENTIVIRUSES, PRIMATE), formerly designated T-cell lymphotropic virus type III/lymphadenopathy-associated virus (HTLV-III/LAV). It is acknowledged to be the agent responsible for the acute infectious manifestations, neurologic disorders, and immunologic abnormalities linked to the ACQUIRED IMMUNODEFICIENCY SYNDROME.: Used to indicate that either or both of two items or options may be valid.: A syndrome resulting from the acquired deficiency of cellular immunity caused by the human immunodeficiency virus (HIV). It is characterized by the reduction of the Helper T-lymphocytes in the peripheral blood and the lymph nodes; opportunistic infections (usually pneumocystis carinii pneumonia, cytomegalovirus (CMV) infections, tuberculosis, candida infections, and cryptococcosis); and the development of malignant neoplasms (usually non-Hodgkin's lymphoma and Kaposi's sarcoma). The human immunodeficiency virus is transmitted through sexual contact, sharing of contaminated needles, or transfusion of contaminated blood. Generalized lymphadenopathy, fever, weight loss, and chronic diarrhea are common symptoms of AIDS. The patients usually die either of opportunistic infections or malignant neoplasms. -- 2004
+        description: "Human immunodeficiency virus. Species of LENTIVIRUS, subgenus primate lentiviruses (LENTIVIRUSES, PRIMATE), formerly designated T-cell lymphotropic virus type III/lymphadenopathy-associated virus (HTLV-III/LAV). It is acknowledged to be the agent responsible for the acute infectious manifestations, neurologic disorders, and immunologic abnormalities linked to the ACQUIRED IMMUNODEFICIENCY SYNDROME.: Used to indicate that either or both of two items or options may be valid.: A syndrome resulting from the acquired deficiency of cellular immunity caused by the human immunodeficiency virus (HIV). It is characterized by the reduction of the Helper T-lymphocytes in the peripheral blood and the lymph nodes; opportunistic infections (usually pneumocystis carinii pneumonia, cytomegalovirus (CMV) infections, tuberculosis, candida infections, and cryptococcosis); and the development of malignant neoplasms (usually non-Hodgkin's lymphoma and Kaposi's sarcoma). The human immunodeficiency virus is transmitted through sexual contact, sharing of contaminated needles, or transfusion of contaminated blood. Generalized lymphadenopathy, fever, weight loss, and chronic diarrhea are common symptoms of AIDS. The patients usually die either of opportunistic infections or malignant neoplasms. -- 2004"
       "Hemorrhage":
         description: Bleeding or escape of blood from a vessel.
       "Hemorrhage, not otherwise specified":
-        description: Bleeding or escape of blood from a vessel.: Not characterized in any other way.
+        description: "Bleeding or escape of blood from a vessel.: Not characterized in any other way."
       "Hemorrhagic cystitis":
-        description: Bleeding or escape of blood from a vessel.: Inflammation of the urinary bladder. (Dorland, 27th ed)
+        description: "Bleeding or escape of blood from a vessel.: Inflammation of the urinary bladder. (Dorland, 27th ed)"
       "Hepatitis":
         description: Inflammation of the liver; usually from a viral infection, but sometimes from toxic agents.
       "Herpes":
         description: Any inflammatory skin disease caused by a herpesvirus and characterized by the formation of small vesicles in clusters.
       "IPS, idiopathic":
-        description: An inflammatory lung disease characterized by diffuse interstitial pneumonitis and alveolitis leading to interstitial fibrosis in the absence of an identifiable infectious agent.: Describes a disease of unknown cause.
+        description: "An inflammatory lung disease characterized by diffuse interstitial pneumonitis and alveolitis leading to interstitial fibrosis in the absence of an identifiable infectious agent.: Describes a disease of unknown cause."
       "IPS, viral, cytomegalovirus(CMV)":
-        description: An inflammatory lung disease characterized by diffuse interstitial pneumonitis and alveolitis leading to interstitial fibrosis in the absence of an identifiable infectious agent.: Having to do with a virus.: A genus of the family herpesviridae, subfamily betaherpesvirinae, infecting the salivary glands, liver, spleen, lungs, eyes, and other organs, in which they produce characteristically enlarged cells with intranuclear inclusions.
+        description: "An inflammatory lung disease characterized by diffuse interstitial pneumonitis and alveolitis leading to interstitial fibrosis in the absence of an identifiable infectious agent.: Having to do with a virus.: A genus of the family herpesviridae, subfamily betaherpesvirinae, infecting the salivary glands, liver, spleen, lungs, eyes, and other organs, in which they produce characteristically enlarged cells with intranuclear inclusions."
       "IPS, viral, other":
-        description: An inflammatory lung disease characterized by diffuse interstitial pneumonitis and alveolitis leading to interstitial fibrosis in the absence of an identifiable infectious agent.: Having to do with a virus.: Not otherwise specified.
+        description: "An inflammatory lung disease characterized by diffuse interstitial pneumonitis and alveolitis leading to interstitial fibrosis in the absence of an identifiable infectious agent.: Having to do with a virus.: Not otherwise specified."
       "Immunotherapy-Related":
         description: An observation that a situation is related to immunotherapy received.
       "Infection":
@@ -93,39 +93,39 @@ enums:
       "Infection, NOS":
         description: The invasion of an organism's body tissues by disease-causing agents and their multiplication, as well as the reaction by the host to these organisms and/or toxins that the organisms produce._Not characterized in any other way.
       "Infection, organism not identified":
-        description: A disorder resulting from the presence and activity of a microbial, viral, fungal, or parasitic agent. It can be transmitted by direct or indirect contact.: A living thing, such as an animal, a plant, a bacterium, or a fungus.: The finding is not present, but a value of 'none' cannot be unequivocally established absence in the current context.
+        description: "A disorder resulting from the presence and activity of a microbial, viral, fungal, or parasitic agent. It can be transmitted by direct or indirect contact.: A living thing, such as an animal, a plant, a bacterium, or a fungus.: The finding is not present, but a value of 'none' cannot be unequivocally established absence in the current context."
       "Influenza":
         description: An acute viral infection of the respiratory tract, occurring in isolated cases, in epidemics, or in pandemics; it is caused by serologically different strains of viruses (influenzaviruses) designated A, B, and C, has a 3-day incubation period, and usually lasts for 3 to 10 days. It is marked by inflammation of the nasal mucosa, pharynx, and conjunctiva; headache; myalgia; often fever, chills, and prostration; and occasionally involvement of the myocardium or central nervous system.
       "Interstitial Pneumonia (IP) NOS":
-        description: Not characterized in any other way.: Inflammation of interstitial lung tissue, usually associated with infection.
+        description: "Not characterized in any other way.: Inflammation of interstitial lung tissue, usually associated with infection."
       "Intracranial hemorrhage":
         description: Bleeding within the cranium.
       "Liver failure (not VOD)":
-        description: A large organ located in the upper abdomen. The liver cleanses the blood and aids in digestion by secreting bile.: loss of ability to function normally.
+        description: "A large organ located in the upper abdomen. The liver cleanses the blood and aids in digestion by secreting bile.: loss of ability to function normally."
       "Multiple Organ Failure":
         description: A progressive condition usually characterized by combined failure of the lungs, liver, kidney, and clotting mechanisms.
       "Myocardial infarction":
         description: Gross necrosis of the myocardium, as a result of interruption of the blood supply to the area. (Dorland, 27th ed)
       "Natural causes":
-        description: A description for something that exists in or is produced by nature, and is not artificial or man-made.: The circumstance or condition that results in the death of a living being.
+        description: "A description for something that exists in or is produced by nature, and is not artificial or man-made.: The circumstance or condition that results in the death of a living being."
       "Non-protocol cancer therapy":
-        description: Treatment not specified in a protocol.: Any intervention for management of a malignant neoplasm.
+        description: "Treatment not specified in a protocol.: Any intervention for management of a malignant neoplasm."
       "Not Cancer Related":
         description: A death attributed to any cause other than the progression of a cancer-related pathologic condition.
       "Not Reported":
         description: Not provided or available.
       "Organ failure, not otherwise specified":
-        description: A part of the body that performs a specific function. For example, the heart is an organ.: loss of ability to function normally.: Not characterized in any other way.
+        description: "A part of the body that performs a specific function. For example, the heart is an organ.: loss of ability to function normally.: Not characterized in any other way."
       "Other cause":
-        description: Not otherwise specified.: An explanation of the cause of some phenomenon or action.
+        description: "Not otherwise specified.: An explanation of the cause of some phenomenon or action."
       "Parkinson's Disease":
         description: A progressive degenerative disorder of the central nervous system characterized by loss of dopamine producing neurons in the substantia nigra and the presence of Lewy bodies in the substantia nigra and locus coeruleus. Signs and symptoms include tremor which is most pronounced during rest, muscle rigidity, slowing of the voluntary movements, a tendency to fall back, and a mask-like facial expression.
       "Persistence or recurrence of underlying disease":
-        description: A disease that does not go to remission despite treatment.: An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: The return of a disease after a period of remission.
+        description: "A disease that does not go to remission despite treatment.: An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: The return of a disease after a period of remission."
       "Pneumonia NOS":
-        description: Not characterized in any other way.: Inflammation of the lungs.
+        description: "Not characterized in any other way.: Inflammation of the lungs."
       "Prior malignancy":
-        description: Earlier in time or order.: A tumor composed of atypical neoplastic, often pleomorphic cells that invade other tissues. Malignant neoplasms usually metastasize to distant anatomic sites and may recur after excision. The most common malignant neoplasms are carcinomas (adenocarcinomas or squamous cell carcinomas), Hodgkin's and non-Hodgkin's lymphomas, leukemias, melanomas, and sarcomas. -- 2004
+        description: "Earlier in time or order.: A tumor composed of atypical neoplastic, often pleomorphic cells that invade other tissues. Malignant neoplasms usually metastasize to distant anatomic sites and may recur after excision. The most common malignant neoplasms are carcinomas (adenocarcinomas or squamous cell carcinomas), Hodgkin's and non-Hodgkin's lymphomas, leukemias, melanomas, and sarcomas. -- 2004"
       "Protozoal infection":
         description: Infections with unicellular organisms of the subkingdom PROTOZOA.
       "Pulmonary Disease":
@@ -133,13 +133,13 @@ enums:
       "Pulmonary Embolism":
         description: The closure of the pulmonary artery or one of its branches by an embolus, sometimes associated with infarction of the lung.
       "Pulmonary failure":
-        description: Relating to the lungs.: loss of ability to function normally.
+        description: "Relating to the lungs.: loss of ability to function normally."
       "Pulmonary hemorrhage":
-        description: Relating to the lungs.: Bleeding or escape of blood from a vessel.
+        description: "Relating to the lungs.: Bleeding or escape of blood from a vessel."
       "Radiation IP":
-        description: Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation.: Inflammation of interstitial lung tissue, usually associated with infection.
+        description: "Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation.: Inflammation of interstitial lung tissue, usually associated with infection."
       "Recurrence/persistence/progression of disease reported for first HSCT":
-        description: To come back or to return.: Retained; never-ceasing.: Cancer that is increasing in scope or severity.
+        description: "To come back or to return.: Retained; never-ceasing.: Cancer that is increasing in scope or severity."
       "Renal Disorder, NOS":
         description: A neoplastic or non-neoplastic condition affecting the kidney. Representative examples of non-neoplastic conditions include glomerulonephritis and nephrotic syndrome. Representative examples of neoplastic conditions include benign processes (e.g., renal lipoma and renal fibroma) and malignant processes (e.g., renal cell carcinoma and renal lymphoma).
       "Renal failure":
@@ -167,13 +167,13 @@ enums:
       "Unacceptable Toxicity":
         description: Therapy-related toxicity leading to multiple treatment dose reductions or delays, early treatment stoppage, unplanned hospital admission, or death.
       "Unclassified infection / Infection NOS":
-        description: Not characterized in any other way.: Not arranged or included in any specific grouping.: A disorder resulting from the presence and activity of a microbial, viral, or parasitic agent. It can be transmitted by direct or indirect contact.
+        description: "Not characterized in any other way.: Not arranged or included in any specific grouping.: A disorder resulting from the presence and activity of a microbial, viral, or parasitic agent. It can be transmitted by direct or indirect contact."
       "Unknown":
         description: Not known, not observed, not recorded, or refused.
       "VOD":
         description: Disorder in which veins are partially or completely obstructed or the blood flow through the veins is suboptimal.--2004
       "Vascular, not otherwise specified":
-        description: Relating to or containing blood vessels.: Not characterized in any other way.
+        description: "Relating to or containing blood vessels.: Not characterized in any other way."
       "Veno-occlusive disease (VOD) / sinusodial obstruction syndrome (SOS)":
         description: Blockage of the small- or medium-sized hepatic veins due to nonthrombotic subendothelial edema which may progress to fibrosis.
       "Viral infection":
@@ -189,11 +189,11 @@ enums:
       "Medical Record":
         description: A chronological written account of a patient's examination and treatment that includes the patient's medical history and complaints, the physician's physical findings, the results of diagnostic tests and procedures, and medications and therapeutic procedures.
       "Other, specify":
-        description: Be specific about something; define clearly.: Different than the one(s) previously specified or mentioned.
+        description: "Be specific about something; define clearly.: Different than the one(s) previously specified or mentioned."
       "Physician":
         description: A doctor; a person who has been educated, trained, and licensed to practice the art and science of medicine; a practitioner of medicine, as contrasted with a surgeon.
       "Relative or Friend":
-        description: A person related by blood or marriage.: An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: A person whom an individual knows, likes, and trusts.
+        description: "A person related by blood or marriage.: An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: A person whom an individual knows, likes, and trusts."
       "Social Security Death Index":
         description: A publically-accessible database derived from the Social Security Administration's (SSA) Death Master File Extract. It includes a listing of the vital statistics of a majority of decedents reported to the SSA since 1962.
 
@@ -219,31 +219,31 @@ classes:
         range: VitalStatusEnum
         required: true
         title: "Vital Status"
-        description: Survival status for individual. (caDSR:2847330) (Aligns to CDRC Standard CDE)
+        description: "Survival status for individual. (caDSR:2847330) (Aligns to CDRC Standard CDE)"
         slot_uri: caDSR:2847330
       AGE_IN_DAYS_AT_LAST_KNOWN_SURVIVAL_STATUS:
         range: integer
         required: true
         title: "Age in Days at Last Known Survival Status"
-        description: Age in days when the last known survival status of the subject was captured. Use -1 if this data point is not available. (caDSR:12305768) (Aligns to CDRC Standard CDE)
+        description: "Age in days when the last known survival status of the subject was captured. Use -1 if this data point is not available. (caDSR:12305768) (Aligns to CDRC Standard CDE)"
         slot_uri: caDSR:12305768
       AGE_IN_DAYS_AT_DEATH:
         range: integer
         required: false
         title: "Age in Days at Death"
-        description: Age in days of the subject at which death occurred. Use -1 if this data point is not available. (caDSR:15748633) (Aligns to CDRC Standard CDE)
+        description: "Age in days of the subject at which death occurred. Use -1 if this data point is not available. (caDSR:15748633) (Aligns to CDRC Standard CDE)"
         slot_uri: caDSR:15748633
       CAUSE_OF_DEATH:
         range: CauseOfDeathEnum
         required: false
         title: "Cause of Death"
-        description: Circumstance or condition of greatest importance that resulted in the death. (caDSR:4783274) (Aligns to CDRC Standard CDE)
+        description: "Circumstance or condition of greatest importance that resulted in the death. (caDSR:4783274) (Aligns to CDRC Standard CDE)"
         slot_uri: caDSR:4783274
       CAUSE_OF_DEATH_SOURCE:
         range: CauseOfDeathSourceEnum
         required: false
         title: "Cause of Death Source"
-        description: Source of information used in describing the death of an individual. (caDSR:2390921) (Aligns to CDRC Standard CDE)
+        description: "Source of information used in describing the death of an individual. (caDSR:2390921) (Aligns to CDRC Standard CDE)"
         slot_uri: caDSR:2390921
     slot_usage:
       AGE_IN_DAYS_AT_DEATH:
