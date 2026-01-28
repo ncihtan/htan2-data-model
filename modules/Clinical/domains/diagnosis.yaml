@@ -391,6 +391,11 @@ classes:
         title: "Tumor Grade"
         description: Degree of abnormality of cancer cells as a measure of differentiation and aggressiveness. (caDSR:11325685) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:11325685
+      TUMOR_STAGE:
+        range: TumorStageEnum
+        required: false
+        title: "Tumor Stage"
+        description: Overall cancer stage classification (e.g., Stage I, Stage II, Stage III, Stage IV) based on TNM staging system.
       CLINICAL_T_STAGE:
         range: ClinicalTStageEnum
         required: true
