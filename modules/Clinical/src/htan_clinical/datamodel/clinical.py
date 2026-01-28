@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-28T19:20:08
+# Generation date: 2026-01-28T19:46:24
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -213,6 +213,7 @@ class Diagnosis(YAMLRoot):
     TUMOR_CLASSIFICATION_CATEGORY: Union[str, "TumorClassificationCategoryEnum"] = None
     METASTASIS_AT_DIAGNOSIS: Union[str, "MetastasisAtDiagnosisEnum"] = None
     METHOD_OF_DIAGNOSIS: Union[str, "MethodOfDiagnosisEnum"] = None
+    TUMOR_STAGE: Optional[Union[str, "TumorStageEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID):
@@ -279,6 +280,9 @@ class Diagnosis(YAMLRoot):
             self.MissingRequiredField("METHOD_OF_DIAGNOSIS")
         if not isinstance(self.METHOD_OF_DIAGNOSIS, MethodOfDiagnosisEnum):
             self.METHOD_OF_DIAGNOSIS = MethodOfDiagnosisEnum(self.METHOD_OF_DIAGNOSIS)
+
+        if self.TUMOR_STAGE is not None and not isinstance(self.TUMOR_STAGE, TumorStageEnum):
+            self.TUMOR_STAGE = TumorStageEnum(self.TUMOR_STAGE)
 
         if self.CLINICAL_T_STAGE is not None and not isinstance(self.CLINICAL_T_STAGE, str):
             self.CLINICAL_T_STAGE = str(self.CLINICAL_T_STAGE)
@@ -549,30 +553,6 @@ class MolecularTest(YAMLRoot):
 
         if self.VARIANT_TYPE is not None and not isinstance(self.VARIANT_TYPE, VariantTypeEnum):
             self.VARIANT_TYPE = VariantTypeEnum(self.VARIANT_TYPE)
-
-        if self.AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP is not None and not isinstance(self.AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP, str):
-            self.AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP = str(self.AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP)
-
-        if self.AA_CHANGE is not None and not isinstance(self.AA_CHANGE, str):
-            self.AA_CHANGE = str(self.AA_CHANGE)
-
-        if self.COPY_NUMBER is not None and not isinstance(self.COPY_NUMBER, str):
-            self.COPY_NUMBER = str(self.COPY_NUMBER)
-
-        if self.EXON is not None and not isinstance(self.EXON, str):
-            self.EXON = str(self.EXON)
-
-        if self.MOLECULAR_CONSEQUENCE is not None and not isinstance(self.MOLECULAR_CONSEQUENCE, str):
-            self.MOLECULAR_CONSEQUENCE = str(self.MOLECULAR_CONSEQUENCE)
-
-        if self.PATHOGENICITY is not None and not isinstance(self.PATHOGENICITY, str):
-            self.PATHOGENICITY = str(self.PATHOGENICITY)
-
-        if self.TEST_ANALYTE_TYPE is not None and not isinstance(self.TEST_ANALYTE_TYPE, str):
-            self.TEST_ANALYTE_TYPE = str(self.TEST_ANALYTE_TYPE)
-
-        if self.TEST_UNITS is not None and not isinstance(self.TEST_UNITS, str):
-            self.TEST_UNITS = str(self.TEST_UNITS)
 
         super().__post_init__(**kwargs)
 
@@ -309235,6 +309215,9 @@ slots.diagnosis__TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE = Slot(uri=CADSR['1488304
 slots.diagnosis__TUMOR_GRADE = Slot(uri=CADSR['11325685'], name="diagnosis__TUMOR_GRADE", curie=CADSR.curie('11325685'),
                    model_uri=HTAN.diagnosis__TUMOR_GRADE, domain=None, range=Union[str, "TumorGradeEnum"])
 
+slots.diagnosis__TUMOR_STAGE = Slot(uri=HTAN['clinical/diagnosis/TUMOR_STAGE'], name="diagnosis__TUMOR_STAGE", curie=HTAN.curie('clinical/diagnosis/TUMOR_STAGE'),
+                   model_uri=HTAN.diagnosis__TUMOR_STAGE, domain=None, range=Optional[Union[str, "TumorStageEnum"]])
+
 slots.diagnosis__CLINICAL_T_STAGE = Slot(uri=CADSR['3440328'], name="diagnosis__CLINICAL_T_STAGE", curie=CADSR.curie('3440328'),
                    model_uri=HTAN.diagnosis__CLINICAL_T_STAGE, domain=None, range=Union[str, "ClinicalTStageEnum"])
 
@@ -309453,30 +309436,6 @@ slots.EVIDENCE_OF_RECURRENCE_TYPE = Slot(uri=HTAN.EVIDENCE_OF_RECURRENCE_TYPE, n
 slots.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE = Slot(uri=HTAN.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, name="AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE", curie=HTAN.curie('AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE'),
                    model_uri=HTAN.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, domain=None, range=Optional[str])
 
-slots.AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP = Slot(uri=HTAN.AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP, name="AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP", curie=HTAN.curie('AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP'),
-                   model_uri=HTAN.AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP, domain=None, range=Optional[str])
-
-slots.AA_CHANGE = Slot(uri=HTAN.AA_CHANGE, name="AA_CHANGE", curie=HTAN.curie('AA_CHANGE'),
-                   model_uri=HTAN.AA_CHANGE, domain=None, range=Optional[str])
-
-slots.COPY_NUMBER = Slot(uri=HTAN.COPY_NUMBER, name="COPY_NUMBER", curie=HTAN.curie('COPY_NUMBER'),
-                   model_uri=HTAN.COPY_NUMBER, domain=None, range=Optional[str])
-
-slots.EXON = Slot(uri=HTAN.EXON, name="EXON", curie=HTAN.curie('EXON'),
-                   model_uri=HTAN.EXON, domain=None, range=Optional[str])
-
-slots.MOLECULAR_CONSEQUENCE = Slot(uri=HTAN.MOLECULAR_CONSEQUENCE, name="MOLECULAR_CONSEQUENCE", curie=HTAN.curie('MOLECULAR_CONSEQUENCE'),
-                   model_uri=HTAN.MOLECULAR_CONSEQUENCE, domain=None, range=Optional[str])
-
-slots.PATHOGENICITY = Slot(uri=HTAN.PATHOGENICITY, name="PATHOGENICITY", curie=HTAN.curie('PATHOGENICITY'),
-                   model_uri=HTAN.PATHOGENICITY, domain=None, range=Optional[str])
-
-slots.TEST_ANALYTE_TYPE = Slot(uri=HTAN.TEST_ANALYTE_TYPE, name="TEST_ANALYTE_TYPE", curie=HTAN.curie('TEST_ANALYTE_TYPE'),
-                   model_uri=HTAN.TEST_ANALYTE_TYPE, domain=None, range=Optional[str])
-
-slots.TEST_UNITS = Slot(uri=HTAN.TEST_UNITS, name="TEST_UNITS", curie=HTAN.curie('TEST_UNITS'),
-                   model_uri=HTAN.TEST_UNITS, domain=None, range=Optional[str])
-
 slots.THERAPY_ANATOMIC_SITE_UBERON_CODE = Slot(uri=HTAN.THERAPY_ANATOMIC_SITE_UBERON_CODE, name="THERAPY_ANATOMIC_SITE_UBERON_CODE", curie=HTAN.curie('THERAPY_ANATOMIC_SITE_UBERON_CODE'),
                    model_uri=HTAN.THERAPY_ANATOMIC_SITE_UBERON_CODE, domain=None, range=Optional[str])
 
@@ -309536,30 +309495,6 @@ slots.FollowUp_EVIDENCE_OF_RECURRENCE_TYPE = Slot(uri=HTAN.EVIDENCE_OF_RECURRENC
 
 slots.FollowUp_AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE = Slot(uri=HTAN.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, name="FollowUp_AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE", curie=HTAN.curie('AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE'),
                    model_uri=HTAN.FollowUp_AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, domain=FollowUp, range=Optional[str])
-
-slots.MolecularTest_AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP = Slot(uri=HTAN.AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP, name="MolecularTest_AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP", curie=HTAN.curie('AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP'),
-                   model_uri=HTAN.MolecularTest_AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP, domain=MolecularTest, range=Optional[str])
-
-slots.MolecularTest_AA_CHANGE = Slot(uri=HTAN.AA_CHANGE, name="MolecularTest_AA_CHANGE", curie=HTAN.curie('AA_CHANGE'),
-                   model_uri=HTAN.MolecularTest_AA_CHANGE, domain=MolecularTest, range=Optional[str])
-
-slots.MolecularTest_COPY_NUMBER = Slot(uri=HTAN.COPY_NUMBER, name="MolecularTest_COPY_NUMBER", curie=HTAN.curie('COPY_NUMBER'),
-                   model_uri=HTAN.MolecularTest_COPY_NUMBER, domain=MolecularTest, range=Optional[str])
-
-slots.MolecularTest_EXON = Slot(uri=HTAN.EXON, name="MolecularTest_EXON", curie=HTAN.curie('EXON'),
-                   model_uri=HTAN.MolecularTest_EXON, domain=MolecularTest, range=Optional[str])
-
-slots.MolecularTest_MOLECULAR_CONSEQUENCE = Slot(uri=HTAN.MOLECULAR_CONSEQUENCE, name="MolecularTest_MOLECULAR_CONSEQUENCE", curie=HTAN.curie('MOLECULAR_CONSEQUENCE'),
-                   model_uri=HTAN.MolecularTest_MOLECULAR_CONSEQUENCE, domain=MolecularTest, range=Optional[str])
-
-slots.MolecularTest_PATHOGENICITY = Slot(uri=HTAN.PATHOGENICITY, name="MolecularTest_PATHOGENICITY", curie=HTAN.curie('PATHOGENICITY'),
-                   model_uri=HTAN.MolecularTest_PATHOGENICITY, domain=MolecularTest, range=Optional[str])
-
-slots.MolecularTest_TEST_ANALYTE_TYPE = Slot(uri=HTAN.TEST_ANALYTE_TYPE, name="MolecularTest_TEST_ANALYTE_TYPE", curie=HTAN.curie('TEST_ANALYTE_TYPE'),
-                   model_uri=HTAN.MolecularTest_TEST_ANALYTE_TYPE, domain=MolecularTest, range=Optional[str])
-
-slots.MolecularTest_TEST_UNITS = Slot(uri=HTAN.TEST_UNITS, name="MolecularTest_TEST_UNITS", curie=HTAN.curie('TEST_UNITS'),
-                   model_uri=HTAN.MolecularTest_TEST_UNITS, domain=MolecularTest, range=Optional[str])
 
 slots.Therapy_THERAPY_ANATOMIC_SITE_UBERON_CODE = Slot(uri=HTAN.THERAPY_ANATOMIC_SITE_UBERON_CODE, name="Therapy_THERAPY_ANATOMIC_SITE_UBERON_CODE", curie=HTAN.curie('THERAPY_ANATOMIC_SITE_UBERON_CODE'),
                    model_uri=HTAN.Therapy_THERAPY_ANATOMIC_SITE_UBERON_CODE, domain=Therapy, range=Optional[str])
