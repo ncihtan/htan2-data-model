@@ -116,6 +116,7 @@ classes:
       ENVIRONMENTAL_EXPOSURE_TYPE:
         range: EnvironmentalExposureTypeEnum
         required: false
+        multivalued: true
         title: "Environmental Exposure Type"
         description: Type of potentially harmful environmental agents to which an individual was exposed. (caDSR:15753203) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:15753203

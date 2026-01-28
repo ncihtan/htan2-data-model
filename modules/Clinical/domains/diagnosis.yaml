@@ -4,6 +4,7 @@ description: HTAN Clinical Data Model - Diagnosis Domain
 
 imports:
   - uberon_tissues
+  - ncit_diagnosis
 
 enums:
   ClinicalNStageEnum:
@@ -367,23 +368,23 @@ classes:
     description: Information about the diagnosis
     attributes:
       PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID:
-        range: string
+        range: PrimaryDiagnosisNCIThesaurusIDEnum
         required: true
         title: "Primary Diagnosis NCI Thesaurus ID"
-        description: NCI Thesaurus ID for the primary diagnosis (caDSR:2192201) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192201
+        description: NCI Thesaurus concept identifier for primary diagnosis. Note that NCI Thesaurus offers very broad and very granular cancer types. Please select the most granular disease term most relevant to your research atlas. For example, for Ovarian Cancer, use: C4908: Ovarian Carcinoma, and not a more specific code such as: C139964: Stage I Ovarian Cancer AJCC v8. (caDSR:14905532) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:14905532
       AGE_IN_DAYS_AT_DIAGNOSIS:
         range: integer
         required: true
         title: "Age in Days at Diagnosis"
-        description: Age in days at which the diagnosis was made (caDSR:2192202) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192202
+        description: Age at the time of diagnosis expressed in number of days since birth. Use -1 if this data point is not available. (caDSR:15019300) (No CRDC Standard Available)
+        slot_uri: caDSR:15019300
       TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE:
         range: tissue_or_organ_of_origin_uberon_enum
         required: true
         title: "Tissue or Organ of Origin UBERON Code"
-        description: UBERON code for the tissue or organ of origin (caDSR:2192205) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192205
+        description: UBERON identifier indicating the tissue or organ where the disease of interest originated, e.g. UBERON:0000002. (caDSR:14883047) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:14883047
       TUMOR_GRADE:
         range: TumorGradeEnum
         required: true

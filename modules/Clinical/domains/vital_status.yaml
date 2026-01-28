@@ -6,40 +6,210 @@ enums:
   CauseOfDeathEnum:
     title: cause_of_death
     permissible_values:
-      "Disease":
-        description: Death due to disease
+      "APL Differentiation Syndrome":
+        description: A syndrome observed in patients with acute promyelocytic leukemia treated with all-trans retinoic acid. It is characterized by weight gain, dyspnea, pleural and pericardial effusions, leukocytosis, and renal failure.
+      "Accidental death":
+        description: An unforeseen and unplanned event or circumstance frequently causing loss or injury.: The absence of life or state of being dead.
+      "Acute GVHD":
+        description: A syndrome of immunologically mediated tissue damage that may occur following an allogeneic transplant, usually affecting the skin, liver, and GI tract. The onset is usually within one hundred days of transplantation or immunologic manipulation.
+      "Adult Respiratory Distress Syndrome (ARDS)":
+        description: fulminant pulmonary interstitial and alveolar edema resulting from diffuse infection, shock, or trauma of the lungs.
+      "Adverse Event":
+        description: Any unfavorable or unintended disease, sign, or symptom (including an abnormal laboratory finding) that is temporally associated with the use of a medical treatment or procedure, and that may or may not be considered related to the medical treatment or procedure. Such events can be related to the intervention, dose, route of administration, patient, or caused by an interaction with another drug(s) or procedure(s).
+      "Aspiration Pneumonia":
+        description: Pneumonia secondary to aspiration of liquids and gastric contents into the lungs.
+      "BCNU IP":
+        description: An antineoplastic nitrosourea. Carmustine alkylates and cross-links DNA during all phases of the cell cycle, resulting in disruption of DNA function, cell cycle arrest, and apoptosis. This agent also carbamoylates proteins, including DNA repair enzymes, resulting in an enhanced cytotoxic effect. Carmustine is highly lipophilic and crosses the blood-brain barrier readily. (NCI04): Inflammation of interstitial lung tissue, usually associated with infection.
+      "Bacterial infection":
+        description: infections and associated diseases by bacteria, general or unspecified.
+      "Cancer Related":
+        description: A death attributed to the progression of a cancer-related pathologic condition.
+      "Cardiac Disease":
+        description: A non-neoplastic or neoplastic disorder that affects the heart and/or the pericardium. Representative examples include endocarditis, pericarditis, atrial myxoma, cardiac myeloid sarcoma, and pericardial malignant mesothelioma.
+      "Cardiac failure":
+        description: Inability of the heart to pump blood at an adequate rate to meet tissue metabolic requirements or the ability to do so only at an elevated filling pressure.
+      "Cardiopulmonary Arrest":
+        description: Cessation of breathing and/or cardiac function.
+      "Cardiovascular Disorder":
+        description: A non-neoplastic or neoplastic disorder affecting the heart or the vessels (arteries, veins and lymph vessels). Representative examples of non-neoplastic cardiovascular disorders are endocarditis and hypertension. Representative examples of neoplastic cardiovascular disorders are endocardial myxoma and angiosarcoma. -- 2003
+      "Cardiovascular accident":
+        description: A sudden loss of neurologic function secondary to hemorrhagic or ischemia in the brain parenchyma due to a vascular event. Infarction or hemorrhage may be demonstrated either directly by imaging,laboratory, or pathologic examination in patients with symptom duration less than 24 hours, or inferred by symptoms lasting greater than or equal to 24 hours (or fatal within 24 hours) that cannot be attributed to another cause. Diagnostic tests include CT scan, MRI, angiography, and EEG to locate and evaluate the extent of the hemorrhagic or ischemic damage in the brain parenchyma, coagulation studies, complete blood count, comprehensive metabolic panel, and urinalysis.
+      "Central nervous system(CNS) failure":
+        description: The main information-processing organs of the nervous system, consisting of the brain, spinal cord, and meninges.: loss of ability to function normally.
+      "Chronic GVHD":
+        description: A syndrome of immunologically mediated tissue damage that may occur following an allogeneic transplant, and may affect multiple organs with manifestations similar to autoimmune diseases. The onset is usually within three years of transplantation or immunologic manipulation.
+      "Chronic Obstructive Pulmonary Disease":
+        description: A chronic and progressive lung disorder characterized by the loss of elasticity of the bronchial tree and the air sacs, destruction of the air sacs wall, thickening of the bronchial wall, and mucous accumulation in the bronchial tree. The pathologic changes result in the disruption of the air flow in the bronchial airways. Signs and symptoms include shortness of breath, wheezing, productive cough, and chest tightness. The two main types of chronic obstructive pulmonary disease are chronic obstructive bronchitis and emphysema.
+      "Chronic liver disease":
+        description: Signs of chronic liver disease which include jaundice, ascites, palmar erythema, spider hemangiomas, gynecomastia, and encephalopathy.
+      "Congestive Heart Failure":
+        description: Failure of the heart to pump a sufficient amount of blood to meet the needs of the body tissues, resulting in tissue congestion and edema. Signs and symptoms include shortness of breath, pitting edema, enlarged tender liver, engorged neck veins, and pulmonary rales.
+      "Coronary artery disease (atherosclerosis)":
+        description: An imbalance between myocardial functional requirements and the capacity of the coronary vessels to supply sufficient blood flow. It is a form of MYOCARDIAL ISCHEMIA (insufficient blood supply to the heart muscle) caused by a decreased capacity of the coronary vessels.
+      "Dementia (including Alzheimer's disease)":
+        description: An acquired organic mental disorder with loss of intellectual abilities of sufficient severity to interfere with social or occupational functioning. The dysfunction is multifaceted and involves memory, behavior, personality, judgment, attention, spatial relations, language, abstract thought, and other executive functions. The intellectual decline is usually progressive, and initially spares the level of consciousness.
+      "Diabetes Mellitus":
+        description: A metabolic disorder characterized by abnormally high blood sugar levels due to diminished production of insulin or insulin resistance/desensitization.
+      "Disseminated intravascular coagulation (DIC)":
+        description: Disseminated intravascular coagulation (DIC) is a pathological process in the body where the blood starts to coagulate throughout the whole body. This depletes the body of its platelets and coagulation factors, and there is an increased the risk of hemorrhage. There are a variety of causes of DIC, all usually causing the release of chemicals into the blood that instigates the coagulation. (from Wikipedia)
+      "Drug Related":
+        description: An adverse effect of a drug used therapeutically or diagnostically.
+      "End-stage Renal Disease":
+        description: Long-standing and persistent renal disease with glomerular filtration rate (GFR) less than 15 ml/min.
+      "Failure to Thrive":
+        description: A clinical finding indicating less than normal growth in an infant or child, or a state of global decline in an adult.
+      "Fungal infection":
+        description: An infection caused by eukaryotic heterotrophic organisms that live as saprobes or parasites, including mushrooms, yeasts, smuts, molds, etc. They reproduce either sexually or asexually, and have life cycles that range from simple to complex. Filamentous fungi refer to those that grow as multicellular colonies (mushrooms and molds).
+      "Gastrointestinal (GI) failure (not liver)":
+        description: (GAS-tro-in-TES-tih-nul) GI. Refers to the stomach and intestines.: loss of ability to function normally.
+      "Gastrointestinal hemorrhage":
+        description: (GAS-tro-in-TES-tih-nul) GI. Refers to the stomach and intestines.: Bleeding or escape of blood from a vessel.
+      "Graft Versus Host Disease":
+        description: An incompatibility reaction (which may be fatal) in a subject (host) of low immunological competence (deficient lymphoid tissue) who has been the recipient of immunologically competent lymphoid tissue from a donor who lacks at least one antigen possessed by the recipient host; the reaction, or disease, is the result of action of the transplanted cells against those host tissues that possess the antigen not possessed by the donor. Seen most commonly following bone marrow transplantation, acute disease is seen after 5-40 days and chronic disease weeks to months after transplantation, affecting, principally, the gastrointestinal tract, liver, and skin.
+      "Graft rejection or failure":
+        description: Failure of transplanted tissue to become functional or operational, often as a result of destruction by the host's immune system.
+      "HIV/AIDS":
+        description: Human immunodeficiency virus. Species of LENTIVIRUS, subgenus primate lentiviruses (LENTIVIRUSES, PRIMATE), formerly designated T-cell lymphotropic virus type III/lymphadenopathy-associated virus (HTLV-III/LAV). It is acknowledged to be the agent responsible for the acute infectious manifestations, neurologic disorders, and immunologic abnormalities linked to the ACQUIRED IMMUNODEFICIENCY SYNDROME.: Used to indicate that either or both of two items or options may be valid.: A syndrome resulting from the acquired deficiency of cellular immunity caused by the human immunodeficiency virus (HIV). It is characterized by the reduction of the Helper T-lymphocytes in the peripheral blood and the lymph nodes; opportunistic infections (usually pneumocystis carinii pneumonia, cytomegalovirus (CMV) infections, tuberculosis, candida infections, and cryptococcosis); and the development of malignant neoplasms (usually non-Hodgkin's lymphoma and Kaposi's sarcoma). The human immunodeficiency virus is transmitted through sexual contact, sharing of contaminated needles, or transfusion of contaminated blood. Generalized lymphadenopathy, fever, weight loss, and chronic diarrhea are common symptoms of AIDS. The patients usually die either of opportunistic infections or malignant neoplasms. -- 2004
+      "Hemorrhage":
+        description: Bleeding or escape of blood from a vessel.
+      "Hemorrhage, not otherwise specified":
+        description: Bleeding or escape of blood from a vessel.: Not characterized in any other way.
+      "Hemorrhagic cystitis":
+        description: Bleeding or escape of blood from a vessel.: Inflammation of the urinary bladder. (Dorland, 27th ed)
+      "Hepatitis":
+        description: Inflammation of the liver; usually from a viral infection, but sometimes from toxic agents.
+      "Herpes":
+        description: Any inflammatory skin disease caused by a herpesvirus and characterized by the formation of small vesicles in clusters.
+      "IPS, idiopathic":
+        description: An inflammatory lung disease characterized by diffuse interstitial pneumonitis and alveolitis leading to interstitial fibrosis in the absence of an identifiable infectious agent.: Describes a disease of unknown cause.
+      "IPS, viral, cytomegalovirus(CMV)":
+        description: An inflammatory lung disease characterized by diffuse interstitial pneumonitis and alveolitis leading to interstitial fibrosis in the absence of an identifiable infectious agent.: Having to do with a virus.: A genus of the family herpesviridae, subfamily betaherpesvirinae, infecting the salivary glands, liver, spleen, lungs, eyes, and other organs, in which they produce characteristically enlarged cells with intranuclear inclusions.
+      "IPS, viral, other":
+        description: An inflammatory lung disease characterized by diffuse interstitial pneumonitis and alveolitis leading to interstitial fibrosis in the absence of an identifiable infectious agent.: Having to do with a virus.: Not otherwise specified.
+      "Immunotherapy-Related":
+        description: An observation that a situation is related to immunotherapy received.
+      "Infection":
+        description: A disorder resulting from the presence and activity of a microbial, viral, or parasitic agent. It can be transmitted by direct or indirect contact.
+      "Infection, NOS":
+        description: The invasion of an organism's body tissues by disease-causing agents and their multiplication, as well as the reaction by the host to these organisms and/or toxins that the organisms produce._Not characterized in any other way.
+      "Infection, organism not identified":
+        description: A disorder resulting from the presence and activity of a microbial, viral, fungal, or parasitic agent. It can be transmitted by direct or indirect contact.: A living thing, such as an animal, a plant, a bacterium, or a fungus.: The finding is not present, but a value of 'none' cannot be unequivocally established absence in the current context.
+      "Influenza":
+        description: An acute viral infection of the respiratory tract, occurring in isolated cases, in epidemics, or in pandemics; it is caused by serologically different strains of viruses (influenzaviruses) designated A, B, and C, has a 3-day incubation period, and usually lasts for 3 to 10 days. It is marked by inflammation of the nasal mucosa, pharynx, and conjunctiva; headache; myalgia; often fever, chills, and prostration; and occasionally involvement of the myocardium or central nervous system.
+      "Interstitial Pneumonia (IP) NOS":
+        description: Not characterized in any other way.: Inflammation of interstitial lung tissue, usually associated with infection.
+      "Intracranial hemorrhage":
+        description: Bleeding within the cranium.
+      "Liver failure (not VOD)":
+        description: A large organ located in the upper abdomen. The liver cleanses the blood and aids in digestion by secreting bile.: loss of ability to function normally.
+      "Multiple Organ Failure":
+        description: A progressive condition usually characterized by combined failure of the lungs, liver, kidney, and clotting mechanisms.
+      "Myocardial infarction":
+        description: Gross necrosis of the myocardium, as a result of interruption of the blood supply to the area. (Dorland, 27th ed)
+      "Natural causes":
+        description: A description for something that exists in or is produced by nature, and is not artificial or man-made.: The circumstance or condition that results in the death of a living being.
+      "Non-protocol cancer therapy":
+        description: Treatment not specified in a protocol.: Any intervention for management of a malignant neoplasm.
+      "Not Cancer Related":
+        description: A death attributed to any cause other than the progression of a cancer-related pathologic condition.
       "Not Reported":
-        description: Not provided or available
-      "Other":
-        description: Death due to other causes
+        description: Not provided or available.
+      "Organ failure, not otherwise specified":
+        description: A part of the body that performs a specific function. For example, the heart is an organ.: loss of ability to function normally.: Not characterized in any other way.
+      "Other cause":
+        description: Not otherwise specified.: An explanation of the cause of some phenomenon or action.
+      "Parkinson's Disease":
+        description: A progressive degenerative disorder of the central nervous system characterized by loss of dopamine producing neurons in the substantia nigra and the presence of Lewy bodies in the substantia nigra and locus coeruleus. Signs and symptoms include tremor which is most pronounced during rest, muscle rigidity, slowing of the voluntary movements, a tendency to fall back, and a mask-like facial expression.
+      "Persistence or recurrence of underlying disease":
+        description: A disease that does not go to remission despite treatment.: An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: The return of a disease after a period of remission.
+      "Pneumonia NOS":
+        description: Not characterized in any other way.: Inflammation of the lungs.
+      "Prior malignancy":
+        description: Earlier in time or order.: A tumor composed of atypical neoplastic, often pleomorphic cells that invade other tissues. Malignant neoplasms usually metastasize to distant anatomic sites and may recur after excision. The most common malignant neoplasms are carcinomas (adenocarcinomas or squamous cell carcinomas), Hodgkin's and non-Hodgkin's lymphomas, leukemias, melanomas, and sarcomas. -- 2004
+      "Protozoal infection":
+        description: Infections with unicellular organisms of the subkingdom PROTOZOA.
+      "Pulmonary Disease":
+        description: A non-neoplastic or neoplastic disorder affecting the lung. Representative examples of non-neoplastic disorders include chronic obstructive pulmonary disease and pneumonia. Representative examples of neoplastic disorders include benign processes (e.g., respiratory papilloma) and malignant processes (e.g., lung carcinoma and metastatic cancer to the lung).
+      "Pulmonary Embolism":
+        description: The closure of the pulmonary artery or one of its branches by an embolus, sometimes associated with infarction of the lung.
+      "Pulmonary failure":
+        description: Relating to the lungs.: loss of ability to function normally.
+      "Pulmonary hemorrhage":
+        description: Relating to the lungs.: Bleeding or escape of blood from a vessel.
+      "Radiation IP":
+        description: Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation.: Inflammation of interstitial lung tissue, usually associated with infection.
+      "Recurrence/persistence/progression of disease reported for first HSCT":
+        description: To come back or to return.: Retained; never-ceasing.: Cancer that is increasing in scope or severity.
+      "Renal Disorder, NOS":
+        description: A neoplastic or non-neoplastic condition affecting the kidney. Representative examples of non-neoplastic conditions include glomerulonephritis and nephrotic syndrome. Representative examples of neoplastic conditions include benign processes (e.g., renal lipoma and renal fibroma) and malignant processes (e.g., renal cell carcinoma and renal lymphoma).
+      "Renal failure":
+        description: Acute or chronic condition, characterized by the inability of the kidneys to adequately filter the blood substances, resulting in uremia and electrolyte imbalances. Acute renal failure is usually associated with oliguria or anuria, hyperkalemia, and pulmonary edema. Chronic renal failure is irreversible and requires hemodialysis.--2004
+      "Respiratory failure":
+        description: Impaired gas exchange by the respiratory system resulting in hypoxemia and decreased oxygenation of the tissues that may be associated with increased arterial levels of carbon dioxide. Causes include chronic obstructive pulmonary disease, asthma, emphysema, acute respiratory distress syndrome, pneumonia, pulmonary edema, pneumothorax, and congestive heart failure.
+      "Sepsis":
+        description: The presence of pathogenic microorganisms in the blood stream causing a rapidly progressing systemic reaction that may lead to shock. Symptoms include fever, chills, tachycardia, and increased respiratory rate. It is a medical emergency that requires urgent medical attention.
+      "Sinusoidal Obstruction Syndrome":
+        description: Blockage of the small- or medium-sized hepatic veins due to nonthrombotic subendothelial edema which may progress to fibrosis.
+      "Spinal Muscular Atrophy":
+        description: An inherited disorder characterized by degeneration of the spinal cord and the cerebellum. Symptoms may appear at any age and include progressive loss of coordination of gait, hands, speech, and eye movements.
+      "Suicide":
+        description: The act of ending one's own life.
+      "Surgical Complication":
+        description: A disease or disorder that occurs during, soon after or as a result of a surgical procedure.
+      "Thromboembolic":
+        description: Obstruction of a vessel by a blood clot that has been transported from a distant site by the blood stream.
+      "Thrombosis":
+        description: The formation of a blood clot in the lumen of a vessel or heart chamber; causes include coagulation disorders and vascular endothelial injury.
+      "Thrombotic thrombocytopenic purpura (HUS/TTP)":
+        description: Purpura associated with a reduction in circulating blood platelets which can result from a variety of factors.
+      "Toxicity":
+        description: The finding of bodily harm due to the poisonous effects of something.
+      "Unacceptable Toxicity":
+        description: Therapy-related toxicity leading to multiple treatment dose reductions or delays, early treatment stoppage, unplanned hospital admission, or death.
+      "Unclassified infection / Infection NOS":
+        description: Not characterized in any other way.: Not arranged or included in any specific grouping.: A disorder resulting from the presence and activity of a microbial, viral, or parasitic agent. It can be transmitted by direct or indirect contact.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "VOD":
+        description: Disorder in which veins are partially or completely obstructed or the blood flow through the veins is suboptimal.--2004
+      "Vascular, not otherwise specified":
+        description: Relating to or containing blood vessels.: Not characterized in any other way.
+      "Veno-occlusive disease (VOD) / sinusodial obstruction syndrome (SOS)":
+        description: Blockage of the small- or medium-sized hepatic veins due to nonthrombotic subendothelial edema which may progress to fibrosis.
+      "Viral infection":
+        description: A general term for diseases produced by viruses.
 
   CauseOfDeathSourceEnum:
     title: cause_of_death_source
     permissible_values:
-      "Autopsy":
-        description: Autopsy
+      "Autopsy Report":
+        description: No Value Exists
       "Death Certificate":
-        description: Death certificate
-      "Not Reported":
-        description: Not provided or available
-      "Other":
-        description: Other source
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: A document earned by a person indicating that the person has specific knowledge, skills, or abilities in the view of a certifying body. Similarly, a document indicating that a product or process is suitable or in working order for a specific purpose.
+      "Medical Record":
+        description: A chronological written account of a patient's examination and treatment that includes the patient's medical history and complaints, the physician's physical findings, the results of diagnostic tests and procedures, and medications and therapeutic procedures.
+      "Other, specify":
+        description: Be specific about something; define clearly.: Different than the one(s) previously specified or mentioned.
+      "Physician":
+        description: A doctor; a person who has been educated, trained, and licensed to practice the art and science of medicine; a practitioner of medicine, as contrasted with a surgeon.
+      "Relative or Friend":
+        description: A person related by blood or marriage.: An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: A person whom an individual knows, likes, and trusts.
+      "Social Security Death Index":
+        description: A publically-accessible database derived from the Social Security Administration's (SSA) Death Master File Extract. It includes a listing of the vital statistics of a majority of decedents reported to the SSA since 1962.
 
   VitalStatusEnum:
     title: vital_status
     permissible_values:
       "Alive":
-        description: Alive
-      "Deceased":
-        description: Deceased
-      "Not Reported":
-        description: Not provided or available
+        description: Showing characteristics of life; displaying signs of life.
+      "Dead":
+        description: The absence of life or state of being dead.
+      "Not reported":
+        description: Not provided or available.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "Unspecified":
+        description: Not stated explicitly or in detail.
 
 classes:
   VitalStatus:
@@ -49,42 +219,48 @@ classes:
         range: VitalStatusEnum
         required: true
         title: "Vital Status"
-        description: Vital status of the participant (caDSR:2192201) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192201
+        description: Survival status for individual. (caDSR:2847330) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2847330
+      AGE_IN_DAYS_AT_LAST_KNOWN_SURVIVAL_STATUS:
+        range: integer
+        required: true
+        title: "Age in Days at Last Known Survival Status"
+        description: Age in days when the last known survival status of the subject was captured. Use -1 if this data point is not available. (caDSR:12305768) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:12305768
       AGE_IN_DAYS_AT_DEATH:
         range: integer
         required: false
         title: "Age in Days at Death"
-        description: Age in days at death (caDSR:2192202) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192202
+        description: Age in days of the subject at which death occurred. Use -1 if this data point is not available. (caDSR:15748633) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:15748633
       CAUSE_OF_DEATH:
         range: CauseOfDeathEnum
         required: false
         title: "Cause of Death"
-        description: Cause of death (caDSR:2192203) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192203
+        description: Circumstance or condition of greatest importance that resulted in the death. (caDSR:4783274) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:4783274
       CAUSE_OF_DEATH_SOURCE:
         range: CauseOfDeathSourceEnum
         required: false
         title: "Cause of Death Source"
-        description: Source of cause of death (caDSR:2192204) (Aligns to CDRC Standard CDE)
-        slot_uri: caDSR:2192204
+        description: Source of information used in describing the death of an individual. (caDSR:2390921) (Aligns to CDRC Standard CDE)
+        slot_uri: caDSR:2390921
     slot_usage:
       AGE_IN_DAYS_AT_DEATH:
         required: false
-        description: Required when VITAL_STATUS is Deceased
+        description: Required when VITAL_STATUS is Dead
       CAUSE_OF_DEATH:
         required: false
-        description: Required when VITAL_STATUS is Deceased
+        description: Required when VITAL_STATUS is Dead
       CAUSE_OF_DEATH_SOURCE:
         required: false
-        description: Required when VITAL_STATUS is Deceased
+        description: Required when VITAL_STATUS is Dead
     rules:
-      - description: "When vital status is deceased, death-related fields become required"
+      - description: "When vital status is dead, death-related fields become required"
         preconditions:
           slot_conditions:
             VITAL_STATUS:
-              equals_string: "Deceased"
+              equals_string: "Dead"
         postconditions:
           slot_conditions:
             AGE_IN_DAYS_AT_DEATH:
