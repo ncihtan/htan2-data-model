@@ -111,5 +111,6 @@ classes:
       THERAPIES:
         range: Therapy
         multivalued: true
+        inlined_as_list: true
         title: "Therapies"
         description: Therapy information 

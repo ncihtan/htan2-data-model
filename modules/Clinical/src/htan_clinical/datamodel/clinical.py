@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-28T11:44:33
+# Generation date: 2026-01-28T12:51:43
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -140,7 +140,9 @@ class ClinicalData(YAMLRoot):
 
         self._normalize_inlined_as_dict(slot_name="MOLECULAR_TESTS", slot_type=MolecularTest, key_name="AGE_IN_DAYS_AT_MOLECULAR_TEST_START", keyed=False)
 
-        self._normalize_inlined_as_dict(slot_name="THERAPIES", slot_type=Therapy, key_name="AGE_IN_DAYS_AT_TREATMENT_START", keyed=False)
+        if not isinstance(self.THERAPIES, list):
+            self.THERAPIES = [self.THERAPIES] if self.THERAPIES is not None else []
+        self.THERAPIES = [v if isinstance(v, Therapy) else Therapy(**as_dict(v)) for v in self.THERAPIES]
 
         super().__post_init__(**kwargs)
 
