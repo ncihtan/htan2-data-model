@@ -75,7 +75,7 @@ enums:
       "T1a":
         description: A general term that refers to a TNM finding of a primary tumor limited to the site of growth. The definition of T1a TNM finding depends on the specific type of cancer that it refers to; for example, for breast cancer it refers to a primary tumor that is more than 0.1cm, but not more than 0.5 cm in greatest dimension; for kidney cancer it refers to a primary tumor that is 4 cm or less in greatest dimension; and for thyroid cancer it refers to a primary tumor that is 1 cm or less in greatest dimension.
       "T1a1":
-        description: A pathologic primary tumor TNM stage finding. The definition of pT1a stage finding depends on the particular type of cancer that it refers to; for example, for breast cancer, pT1a stage finding is defined as follows: cancer with tumor size more than 0.1 cm, but not more than 0.5 cm in greatest dimension; for lung cancer, pT1a stage finding is defined as follows: cancer with a tumor size of 2 cm or less in greatest dimension, surrounded by lung or visceral pleura and without bronchoscopic evidence of invasion more proximal than the lobar bronchus (i.e., not in the main bronchus). The uncommon superficial tumor of any size with its invasive component limited to the bronchial wall, which may extend proximal to the main bronchus, is also classified as T1a. (from AJCC 7th Ed.)
+        description: "A pathologic primary tumor TNM stage finding. The definition of pT1a stage finding depends on the particular type of cancer that it refers to; for example, for breast cancer, pT1a stage finding is defined as follows: cancer with tumor size more than 0.1 cm, but not more than 0.5 cm in greatest dimension; for lung cancer, pT1a stage finding is defined as follows: cancer with a tumor size of 2 cm or less in greatest dimension, surrounded by lung or visceral pleura and without bronchoscopic evidence of invasion more proximal than the lobar bronchus (i.e., not in the main bronchus). The uncommon superficial tumor of any size with its invasive component limited to the bronchial wall, which may extend proximal to the main bronchus, is also classified as T1a. (from AJCC 7th Ed.)"
       "T1a2":
         description: Invasive cervical cancer with measured stromal invasion more than 3.0 mm and not more than 5.0 mm with a horizontal spread 7.0 mm or less. (from AJCC 7th Ed.)
       "T1b":
@@ -133,11 +133,11 @@ enums:
       "Tis":
         description: Breast cancer with a finding of carcinoma in situ. (from AJCC 6th and 7th Eds.)
       "Tis (DCIS)":
-        description: A term that refers to a TNM finding of a primary tumor microscopically defined as carcinoma in situ.: A carcinoma entirely confined to the mammary ducts. It is also known as DCIS. There is no evidence of invasion of the basement membrane. Currently, it is classified into three categories: High-grade DCIS, intermediate-grade DCIS and low-grade DCIS. In this classification the DCIS grade is defined by a combination of nuclear grade, architectural growth pattern and presence of necrosis. The size of the lesion as well as the grade and the clearance margins play a major role in dictating the most appropriate therapy for DCIS.
+        description: "A term that refers to a TNM finding of a primary tumor microscopically defined as carcinoma in situ.: A carcinoma entirely confined to the mammary ducts. It is also known as DCIS. There is no evidence of invasion of the basement membrane. Currently, it is classified into three categories: High-grade DCIS, intermediate-grade DCIS and low-grade DCIS. In this classification the DCIS grade is defined by a combination of nuclear grade, architectural growth pattern and presence of necrosis. The size of the lesion as well as the grade and the clearance margins play a major role in dictating the most appropriate therapy for DCIS."
       "Tis (LCIS)":
-        description: A term that refers to a TNM finding of a primary tumor microscopically defined as carcinoma in situ.: A non-invasive adenocarcinoma of the breast characterized by a proliferation of monomorphic cells completely filling the lumina. The overall lobular architecture is preserved. It is frequently multifocal (90% in some series) and bilateral. It seldom becomes invasive; however there is an increased risk of infiltrating ductal adenocarcinoma.
+        description: "A term that refers to a TNM finding of a primary tumor microscopically defined as carcinoma in situ.: A non-invasive adenocarcinoma of the breast characterized by a proliferation of monomorphic cells completely filling the lumina. The overall lobular architecture is preserved. It is frequently multifocal (90% in some series) and bilateral. It seldom becomes invasive; however there is an increased risk of infiltrating ductal adenocarcinoma."
       "Tis (Paget's)":
-        description: A term that refers to a TNM finding of a primary tumor microscopically defined as carcinoma in situ.: Paget disease involving the skin overlying the mammary gland, without accompanying invasive ductal or lobular breast carcinoma.
+        description: "A term that refers to a TNM finding of a primary tumor microscopically defined as carcinoma in situ.: Paget disease involving the skin overlying the mammary gland, without accompanying invasive ductal or lobular breast carcinoma."
       "Unknown":
         description: Not known, not observed, not recorded, or refused.
 
@@ -225,21 +225,21 @@ enums:
     title: ajcc_staging_system_edition
     permissible_values:
       "1st":
-        description: Preceding all others in time or space or degree.: The form in which a text (especially a printed book) is published.
+        description: "Preceding all others in time or space or degree.: The form in which a text (especially a printed book) is published."
       "2nd":
-        description: Coming next after the first in position in space or time or degree or magnitude.: The form in which a text (especially a printed book) is published.
+        description: "Coming next after the first in position in space or time or degree or magnitude.: The form in which a text (especially a printed book) is published."
       "3rd":
-        description: Following the second position in an ordering or series; coming next after the second and just before the fourth in position.: The form in which a text (especially a printed book) is published.
+        description: "Following the second position in an ordering or series; coming next after the second and just before the fourth in position.: The form in which a text (especially a printed book) is published."
       "4th":
-        description: Following the third position in an ordering or series; coming next after the third and just before the fifth in position.: The form in which a text (especially a printed book) is published.
+        description: "Following the third position in an ordering or series; coming next after the third and just before the fifth in position.: The form in which a text (especially a printed book) is published."
       "5th":
-        description: Following the fourth position in an ordering or series; coming next after the fourth and just before the sixth in position.: The form in which a text (especially a printed book) is published.
+        description: "Following the fourth position in an ordering or series; coming next after the fourth and just before the sixth in position.: The form in which a text (especially a printed book) is published."
       "6th":
-        description: Following the fifth position in an ordering or series; coming next after the fifth and just before the seventh in position.: The form in which a text (especially a printed book) is published.
+        description: "Following the fifth position in an ordering or series; coming next after the fifth and just before the seventh in position.: The form in which a text (especially a printed book) is published."
       "7th":
-        description: A natural number greater than 6 and less than 8 and the quantity that it denotes: the sum of six and one.: The form in which a text (especially a printed book) is published.
+        description: "A natural number greater than 6 and less than 8 and the quantity that it denotes: the sum of six and one.: The form in which a text (especially a printed book) is published."
       "8th":
-        description: A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one.: The form in which a text (especially a printed book) is published.
+        description: "A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one.: The form in which a text (especially a printed book) is published."
 
   LastKnownDiseaseStatusEnum:
     title: last_known_disease_status
@@ -299,9 +299,9 @@ enums:
       "Metastatic":
         description: A term referring to the clinical or pathologic observation of a tumor extension from its original site of growth to another anatomic site.
       "Non-metastatic (confirmed)":
-        description: An operation in which a term denies or inverts the meaning of another term or construction.: A term referring to the clinical or pathologic observation of a tumor extension from its original site of growth to another anatomic site.: Confirmed; having been established or verified.
+        description: "An operation in which a term denies or inverts the meaning of another term or construction.: A term referring to the clinical or pathologic observation of a tumor extension from its original site of growth to another anatomic site.: Confirmed; having been established or verified."
       "Non-metastatic (unconfirmed)":
-        description: An operation in which a term denies or inverts the meaning of another term or construction.: A term referring to the clinical or pathologic observation of a tumor extension from its original site of growth to another anatomic site.: An operation in which a term denies or inverts the meaning of another term or construction.: Confirmed; having been established or verified.
+        description: "An operation in which a term denies or inverts the meaning of another term or construction.: A term referring to the clinical or pathologic observation of a tumor extension from its original site of growth to another anatomic site.: An operation in which a term denies or inverts the meaning of another term or construction.: Confirmed; having been established or verified."
       "Unknown":
         description: Not known, observed, recorded; or reported as unknown by the data contributor.
 
@@ -371,7 +371,7 @@ classes:
         range: PrimaryDiagnosisNCIThesaurusIDEnum
         required: true
         title: "Primary Diagnosis NCI Thesaurus ID"
-        description: NCI Thesaurus concept identifier for primary diagnosis. Note that NCI Thesaurus offers very broad and very granular cancer types. Please select the most granular disease term most relevant to your research atlas. For example, for Ovarian Cancer, use: C4908: Ovarian Carcinoma, and not a more specific code such as: C139964: Stage I Ovarian Cancer AJCC v8. (caDSR:14905532) (Aligns to CDRC Standard CDE)
+        description: "NCI Thesaurus concept identifier for primary diagnosis. Note that NCI Thesaurus offers very broad and very granular cancer types. Please select the most granular disease term most relevant to your research atlas. For example, for Ovarian Cancer, use: C4908: Ovarian Carcinoma, and not a more specific code such as: C139964: Stage I Ovarian Cancer AJCC v8. (caDSR:14905532) (Aligns to CDRC Standard CDE)"
         slot_uri: caDSR:14905532
       AGE_IN_DAYS_AT_DIAGNOSIS:
         range: integer

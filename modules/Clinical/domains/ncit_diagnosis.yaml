@@ -6,7 +6,7 @@ version: 1.0.0
 enums:
   PrimaryDiagnosisNCIThesaurusIDEnum:
     name: PrimaryDiagnosisNCIThesaurusIDEnum
-    description: NCI Thesaurus concept identifier for primary diagnosis. Note that NCI Thesaurus offers very broad and very granular cancer types. Please select the most granular disease term most relevant to your research atlas. For example, for Ovarian Cancer, use: C4908: Ovarian Carcinoma, and not a more specific code such as: C139964: Stage I Ovarian Cancer AJCC v8.
+    description: "NCI Thesaurus concept identifier for primary diagnosis. Note that NCI Thesaurus offers very broad and very granular cancer types. Please select the most granular disease term most relevant to your research atlas. For example, for Ovarian Cancer, use: C4908: Ovarian Carcinoma, and not a more specific code such as: C139964: Stage I Ovarian Cancer AJCC v8."
     permissible_values:
       "C100012":
         description: "Evidence of severe retrograde blood flow through the valve(s) of the heart. (ACC)"

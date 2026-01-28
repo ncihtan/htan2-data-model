@@ -111,7 +111,7 @@ enums:
       "Premenopausal":
         description: Refers to the time before menopause. Menopause is the time of life when a women's menstrual periods stop permanently; also called 'change of life.'
       "Premenopausal/Perimenopausal":
-        description: Prior to menopause. : Used to indicate that either or both of two items or options may be valid.: Describes the time in a woman's life when menstrual periods become irregular as she approaches menopause. This is usually three to five years before menopause and is often marked by many of the symptoms of menopause, including hot flashes, mood swings, night sweats, vaginal dryness, trouble concentrating, and infertility.
+        description: "Prior to menopause. : Used to indicate that either or both of two items or options may be valid.: Describes the time in a woman's life when menstrual periods become irregular as she approaches menopause. This is usually three to five years before menopause and is often marked by many of the symptoms of menopause, including hot flashes, mood swings, night sweats, vaginal dryness, trouble concentrating, and infertility."
       "Unknown":
         description: Not known, not observed, not recorded, or refused.
 

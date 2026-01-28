@@ -11,7 +11,7 @@ enums:
       "Comparative genomic hybridization":
         description: Comparative genomic hybridization (CGH) is a technique that allows the detection of losses and gains in DNA copy number across the entire genome without prior knowledge of specific chromosomal abnormalities. Comparative genomic hybridization utilizes the hybridization of differentially labeled tumor and reference DNA to generate a map of DNA copy number changes in tumor genomes. Comparative genomic hybridization is an ideal tool for analyzing chromosomal imbalances in archived tumor material and for examining possible correlations between these findings and tumor phenotypes. (from Ried et al. J Mol Med 1997 75:801-14)
       "Cytogenetics, NOS":
-        description: Not characterized in any other way.: Techniques for analysis of chromosomal and subchromosomal properties and structures, such as those to diagnose, classify, screen for, or manage genetic diseases and abnormalities.
+        description: "Not characterized in any other way.: Techniques for analysis of chromosomal and subchromosomal properties and structures, such as those to diagnose, classify, screen for, or manage genetic diseases and abnormalities."
       "FISH":
         description: A physical mapping approach that uses fluorescent tags to detect hybridization of probes within metaphase chromosomes or less condensed somatic interphase chromatin. This technique can be used for identification of chromosomal abnormalities and for gene mapping.
       "Flow cytometry":
@@ -31,21 +31,21 @@ enums:
       "Not Reported":
         description: Not provided or available.
       "Nuclear staining":
-        description: Pertaining to the nucleus.: Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination.
+        description: "Pertaining to the nucleus.: Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination."
       "Other":
         description: Different than the one(s) previously specified or mentioned.
       "PCR":
         description: A method for amplifying a DNA base sequence using multiple rounds of heat denaturation of the DNA and annealing of oligonucleotide primers complementary to flanking regions in the presence of a heat-stable polymerase. This results in duplication of the targeted DNA region. Newly synthesized DNA strands can subsequently serve as additional templates for the same primer sequences, so that successive rounds of primer annealing, strand elongation, and dissociation produce rapid and highly specific amplification of the desired sequence. PCR also can be used to detect the existence of the defined sequence in a DNA sample.
       "RNA sequencing":
-        description: Single-stranded long chain of nucleotides containing ribose. It is the end product of DNA transcription by the enzyme RNA polymerase. It is essential in protein synthesis.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides.
+        description: "Single-stranded long chain of nucleotides containing ribose. It is the end product of DNA transcription by the enzyme RNA polymerase. It is essential in protein synthesis.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides."
       "RT-PCR":
         description: RT-PCR is short for reverse transcriptase-polymerase chain reaction. It is a technique in which an RNA strand is first transcribed into a DNA complement and then subjected to PCR amplification. Transcribing an RNA strand into a DNA complement is termed reverse transcription and is done by the enzyme reverse transcriptase. (from Wikipedia)
       "Sequencing, NOS":
-        description: Not characterized in any other way.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides.
+        description: "Not characterized in any other way.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides."
       "Southern blotting":
         description: A technique for the detection of specific DNA fragments that have been separated by polyacrylamide-gel electrophoresis, transferred to a nitrocellulose or other type of paper or nylon membrane, and detected by hybridization and visualization with a labeled probe.
       "Targeted sequencing":
-        description: The process of directing an agent to a specific anatomic location.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides.
+        description: "The process of directing an agent to a specific anatomic location.: The process of determining the sequence of purines and pyrimidines in nucleic acids and polynucleotides."
       "Unknown":
         description: Not known, not observed, not recorded, or refused.
       "WGS":
@@ -57,7 +57,7 @@ enums:
     title: molecular_analysis_result
     permissible_values:
       "Abnormal, NOS":
-        description: Not characterized in any other way.: Deviating from the norm.
+        description: "Not characterized in any other way.: Deviating from the norm."
       "Copy Number Reported":
         description: The number of molecules of a particular type on or in a cell or part of a cell. Usually applied to specific genes or to plasmids within a bacterium.
       "Equivocal":
@@ -93,11 +93,11 @@ enums:
       "BONE MARROW":
         description: The tissue occupying the spaces of bone. It consists of blood vessel sinuses and a network of hematopoietic cells which give rise to the red cells, white cells, and megakaryocytes.
       "BUCCAL CELL SAMPLE":
-        description: The mucosal membranes located on the inside of the cheek, in the buccal cavity.: The smallest units of living structure capable of independent existence, composed of a membrane-enclosed mass of protoplasm and containing a nucleus or nucleoid.: Any material sample taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. Biospecimen can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products.
+        description: "The mucosal membranes located on the inside of the cheek, in the buccal cavity.: The smallest units of living structure capable of independent existence, composed of a membrane-enclosed mass of protoplasm and containing a nucleus or nucleoid.: Any material sample taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. Biospecimen can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products."
       "CEREBROSPINAL FLUID":
         description: The fluid that is contained within the brain ventricles, the subarachnoid space and the central canal of the spinal cord.
       "FORMALIN FIXED PARAFFIN EMBEDDED TISSUE":
-        description: Refers to a process where a sample is preserved with formalin and then embedded into a paraffin block for sectioning.: An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function.
+        description: "Refers to a process where a sample is preserved with formalin and then embedded into a paraffin block for sectioning.: An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function."
       "FORMALIN FIXED TISSUE":
         description: A colorless poisonous gas synthesized by the oxidation of methanol and used as an antiseptic, disinfectant, histologic fixative, and general-purpose chemical reagent for laboratory applications. Formaldehyde is readily soluble in water and is commonly distributed as a 37% solution in water; formalin, a 10% solution of formaldehyde in water, is used as a disinfectant and to preserve biological specimens. Environmentally, formaldehyde may be found in the atmosphere, smoke from fires, automobile exhaust and cigarette smoke. Small amounts are produced during normal metabolic processes in most organisms, including humans._Tissue which is preserved in a fixative solution, usually formalin.
       "FRESH TISSUE":
@@ -105,7 +105,7 @@ enums:
       "FROZEN TISSUE":
         description: A specimen that has been subjected to and immobilized by severe cold.
       "OTHER BODILY FLUIDS":
-        description: Different than the one(s) previously specified or mentioned.: Material produced by living organisms; it can be a necessary constituent of, or product of an organismal process.
+        description: "Different than the one(s) previously specified or mentioned.: Material produced by living organisms; it can be a necessary constituent of, or product of an organismal process."
       "SALIVA":
         description: The watery fluid in the mouth made by the salivary glands. Saliva moistens food to help digestion and it helps protect the mouth against infections.
       "STOOL":
@@ -201,43 +201,43 @@ enums:
       "/pL":
         description: A volume unit equal to one picoliter used as a denominator to build a derived unit expressed as a ratio.
       "10E-15L (fL)":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A function of the form f(x) = ab^x, characterized by the fact that the growth rate of such a function is directly proportional to the value of the function.: A number with no fractional part, including the negative and positive numbers as well as zero.::15: The non-SI unit of volume accepted for use with the SI. One liter is equal to cubic decimeter, or one thousandth of cubic meter, or 1000 cubic centimeters, or approximately 61.023 744 cubic inches.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A function of the form f(x) = ab^x, characterized by the fact that the growth rate of such a function is directly proportional to the value of the function.: A number with no fractional part, including the negative and positive numbers as well as zero.::15: The non-SI unit of volume accepted for use with the SI. One liter is equal to cubic decimeter, or one thousandth of cubic meter, or 1000 cubic centimeters, or approximately 61.023 744 cubic inches."
       "10E10":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::10: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::10: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E11":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::11: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::11: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E12":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::12: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::12: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E12 Cells/L":
         description: A unit of cell concentration expressed as a number of cells in trillions per unit volume equal to one liter.
       "10E13":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::13: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::13: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E14":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::14: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::14: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E15":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::15: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::15: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E16":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::16: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::16: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E17":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::17: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::17: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E18":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::18: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::18: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E19":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::19: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::19: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E2":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::2: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::2: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E20":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::20: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::20: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E3":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::3: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::3: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E3 Cells/microL":
         description: 10E3 Cells per microliter
       "10E4":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::4: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::4: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E5":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::5: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::5: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E6":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::6: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::6: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E6 Cells":
         description: A unit of cell count expressed in millions.
       "10E6 Cells/microL":
@@ -247,15 +247,15 @@ enums:
       "10E6/L":
         description: 10E6 per Liter
       "10E7":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::7: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::7: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E7 Cells/kg":
         description: 10E7 Cells per kilogram
       "10E8":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::8: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::8: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E8 Cells":
         description: 10E8 Cells
       "10E9":
-        description: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::9: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A mathematical expression that results when e(=2.71828) is raised to it argument's power.: A number with no fractional part, including the negative and positive numbers as well as zero.::9: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "10E9 Cells":
         description: 10E9 Cells
       "10E9 Cells/L":
@@ -263,7 +263,7 @@ enums:
       "10E9 Cells/microL":
         description: 10E9 Cells per microliter
       "2X10E6 Cells":
-        description: A number with no fractional part, including the negative and positive numbers as well as zero.::2: An arithmetic operation by which the product of two numbers is computed; the inverse of division.: A natural number following 999999 and preceding 100001 and the quantity that it denotes: one thousand thousand.: The smallest units of living structure capable of independent existence, composed of a membrane-enclosed mass of protoplasm and containing a nucleus or nucleoid.
+        description: "A number with no fractional part, including the negative and positive numbers as well as zero.::2: An arithmetic operation by which the product of two numbers is computed; the inverse of division.: A natural number following 999999 and preceding 100001 and the quantity that it denotes: one thousand thousand.: The smallest units of living structure capable of independent existence, composed of a membrane-enclosed mass of protoplasm and containing a nucleus or nucleoid."
       "2X10E7 Cells":
         description: Two times 10 exponential value 7 (ten million) cells
       "2X10E8 Cells":
@@ -275,7 +275,7 @@ enums:
       "CAE Unit":
         description: Complement activity enzyme unit
       "Cells/kg":
-        description: Any small compartment.: For each, generally denoting a ratio.: A basic SI unit of mass. It is definied as the mass of an  international prototype in the form of a platinum-iridium cylinder kept at Sevres in france.   A kilogram is equal to 1,000 grams and 2.2046226 pounds.: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "Any small compartment.: For each, generally denoting a ratio.: A basic SI unit of mass. It is definied as the mass of an  international prototype in the form of a platinum-iridium cylinder kept at Sevres in france.   A kilogram is equal to 1,000 grams and 2.2046226 pounds.: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "Cells/microL":
         description: Cells per microliter
       "Copies":
@@ -325,7 +325,7 @@ enums:
       "MU/mL":
         description: Million units per milliliter
       "Million":
-        description: A natural number following 999999 and preceding 100001 and the quantity that it denotes: one thousand thousand.
+        description: "A natural number following 999999 and preceding 100001 and the quantity that it denotes: one thousand thousand."
       "Million/microL":
         description: Million per microliter
       "Million/mm3":
@@ -341,7 +341,7 @@ enums:
       "Ratio":
         description: ratio
       "Thousand":
-        description: A natural number following 999 and preceding 1001 and the quantity that it denotes: ten times one hundred.
+        description: "A natural number following 999 and preceding 1001 and the quantity that it denotes: ten times one hundred."
       "Thousand/microL":
         description: Thousand per microliter
       "Thousand/mm2":
@@ -371,7 +371,7 @@ enums:
       "cm H2O":
         description: A unit of pressure defined by a column of water with a height of one centimeter, frequently used to measure central venous pressure, intracranial pressure, and for pressures during mechanical ventilation.
       "copies/L":
-        description: A secondary representation, reproduction, or replica.: A volume unit equal to one liter used as a denominator to build a derived unit expressed as a ratio.
+        description: "A secondary representation, reproduction, or replica.: A volume unit equal to one liter used as a denominator to build a derived unit expressed as a ratio."
       "cubic microns":
         description: Cubic microns
       "fL":
@@ -401,7 +401,7 @@ enums:
       "mL":
         description: Milliter
       "mL/24hr":
-        description: A measure of volume for a liquid.  A milliliter is approximately 950 times smaller than a quart and 30 times smaller than a fluid ounce.  A milliliter of liquid and a cubic centimeter (cc) of liquid are the same.: For each, generally denoting a ratio.: A number with no fractional part, including the negative and positive numbers as well as zero.::24: In modern usage, an hour is defined as a unit of time 60 minutes, or 3600 seconds in length. It is approximately 1/24 of a median day.: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A measure of volume for a liquid.  A milliliter is approximately 950 times smaller than a quart and 30 times smaller than a fluid ounce.  A milliliter of liquid and a cubic centimeter (cc) of liquid are the same.: For each, generally denoting a ratio.: A number with no fractional part, including the negative and positive numbers as well as zero.::24: In modern usage, an hour is defined as a unit of time 60 minutes, or 3600 seconds in length. It is approximately 1/24 of a median day.: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "mL/min":
         description: Milliliter per minute
       "mL/min/1.73/BSA":
@@ -413,7 +413,7 @@ enums:
       "mL/minute/mmHg/L":
         description: Milliliter per minute per millimeter Hg per Liter
       "mU/mL":
-        description: A quantity equivalent to the one thousandth unit (10E-3 unit).: For each, generally denoting a ratio.: A measure of volume for a liquid.  A milliliter is approximately 950 times smaller than a quart and 30 times smaller than a fluid ounce.  A milliliter of liquid and a cubic centimeter (cc) of liquid are the same.: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds.
+        description: "A quantity equivalent to the one thousandth unit (10E-3 unit).: For each, generally denoting a ratio.: A measure of volume for a liquid.  A milliliter is approximately 950 times smaller than a quart and 30 times smaller than a fluid ounce.  A milliliter of liquid and a cubic centimeter (cc) of liquid are the same.: A named quantity in terms of which other quantities are measured or specified, used as a standard measurement of like kinds."
       "mcg/24hr":
         description: Microgram per 24 hours
       "mcg/L":
@@ -463,7 +463,7 @@ enums:
       "miu/mL":
         description: Milliinternational unit per milliliter
       "ml CO/min/mm Hg":
-        description: An odorless, tasteless, poisonous gas, CO, that results from the incomplete combustion of carbon. Inhalation causes central nervous system damage and asphyxiation.: A unit for measuring a pulmonary diffusing capacity expressed in units of gas flow rate (in milliliters per minute) per a unit of pressure (in torrs).
+        description: "An odorless, tasteless, poisonous gas, CO, that results from the incomplete combustion of carbon. Inhalation causes central nervous system damage and asphyxiation.: A unit for measuring a pulmonary diffusing capacity expressed in units of gas flow rate (in milliliters per minute) per a unit of pressure (in torrs)."
       "mm/hr":
         description: Millimeter per hour
       "mm3":
@@ -473,7 +473,7 @@ enums:
       "mmol":
         description: MILLIMOLE
       "mmol CO/min/kPa":
-        description: An odorless, tasteless, poisonous gas, CO, that results from the incomplete combustion of carbon. Inhalation causes central nervous system damage and asphyxiation.: A unit of gas diffusion capacity equal to one millimole per minute per kilopascal.
+        description: "An odorless, tasteless, poisonous gas, CO, that results from the incomplete combustion of carbon. Inhalation causes central nervous system damage and asphyxiation.: A unit of gas diffusion capacity equal to one millimole per minute per kilopascal."
       "mmol/24hr":
         description: Millimole per 24 hours
       "mmol/L":
@@ -511,7 +511,7 @@ enums:
       "sec":
         description: seconds
       "ug/mL FEU":
-        description: A metric unit of mass concentration defined as the concentration of one gram of a substance per unit volume of the mixture equal to one cubic meter. The concept also refers to the metric unit of mass density (volumic mass) defined as the density of a substance which mass equal to one gram occupies the volume of one cubic meter.: A unit of measure for the concentration of fibrin degradation products in a sample, calculated based upon the mass of fibrinogen contained within that sample.
+        description: "A metric unit of mass concentration defined as the concentration of one gram of a substance per unit volume of the mixture equal to one cubic meter. The concept also refers to the metric unit of mass density (volumic mass) defined as the density of a substance which mass equal to one gram occupies the volume of one cubic meter.: A unit of measure for the concentration of fibrin degradation products in a sample, calculated based upon the mass of fibrinogen contained within that sample."
       "ukat/L":
         description: Unit of catalytic activity concentration defined as activity equal to one millionth of katal per one liter of the system volume.
 
@@ -543,15 +543,15 @@ enums:
       "Chromosomal Loss":
         description: Loss of an entire chromosome or chromosome arm.
       "Conversion":
-        description: The act of changing the nature, form, function, or purpose of something to another.: Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer.
+        description: "The act of changing the nature, form, function, or purpose of something to another.: Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer."
       "Deletion":
         description: A loss of any genetic material on a chromosome, ranging from loss of a single nucleotide, to loss of part or all of a gene, to loss of a visible portion of the chromosome involving multiple genes. Deletions often disrupt gene or protein function and cell function as a result.
       "Deletion-insertion":
-        description: Any rearrangement to the genomic content that results in the loss of one or more nucleotides of DNA. Deletions are generally irreversible rearrangements. They may alter the reading frame of a gene, or may result in loss of large chromosomal regions.: An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: Any rearrangement to the genomic content that adds one or more extra nucleotides into the DNA. Insertions may be reversible, particulary if caused by transposable elements. They may alter the reading frame of a gene, or may cause large scale additions of genomic DNA.
+        description: "Any rearrangement to the genomic content that results in the loss of one or more nucleotides of DNA. Deletions are generally irreversible rearrangements. They may alter the reading frame of a gene, or may result in loss of large chromosomal regions.: An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: Any rearrangement to the genomic content that adds one or more extra nucleotides into the DNA. Insertions may be reversible, particulary if caused by transposable elements. They may alter the reading frame of a gene, or may cause large scale additions of genomic DNA."
       "Duplication":
         description: Generation of an extra copy of a particular gene in the genome. A gene duplication abnormality may occur by gene amplification, random breakage and reunion, retrotransposition or unequal crossing-over at meiosis. A gene duplication abnormality can be either heritable or somatic.
       "Extension":
-        description: To increase in length or duration.: Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer.
+        description: "To increase in length or duration.: Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer."
       "Hypermethylation":
         description: Hypermethylation appears to be a controlled, epigenetic, heritable, and aberrant DNA methylation reaction on gene promoter regions and CpG islands associated with loss of (e.g., tumor-suppressor) gene function in diverse cellular pathways through transcriptional silencing by the formation of transcriptionally repressive chromatin.
       "Insertion":
@@ -567,17 +567,17 @@ enums:
       "Other":
         description: Different than the one(s) previously specified or mentioned.
       "Partial methylation":
-        description: Being or affecting only a part of something.: The covalent chemical or biochemical addition of a methyl group(s) to a compound. (NCI)
+        description: "Being or affecting only a part of something.: The covalent chemical or biochemical addition of a methyl group(s) to a compound. (NCI)"
       "Rearrangement":
         description: Any process affecting a DNA sequence that results in the gain, loss or exchange of DNA between chromosomes and/or autonomous replicons.
       "Repeated sequences":
-        description: Make or do or perform again.: The sequence of nucleotide residues along a DNA chain.
+        description: "Make or do or perform again.: The sequence of nucleotide residues along a DNA chain."
       "Splice":
         description: A mutation that alters or abolishes the specific sequence denoting the site at which the splicing of an intron takes place. Such mutations may result in one or more introns remaining in the mature messenger RNA or fusion of non-adjacent exons and can disrupt the generation of the protein product.
       "Substitution":
-        description: The act of putting one thing or person in the place of another.: Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer.
+        description: "The act of putting one thing or person in the place of another.: Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer."
       "Translocation":
-        description: The movement of a physical object from one place to another. (NCI): Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer.
+        description: "The movement of a physical object from one place to another. (NCI): Any transmissible change in the genetic material of an organism, which can result from radiation, viral infection, transposition, treatment with mutagenic chemicals and errors during DNA replication or meiosis. The effects of mutation range from single base changes to loss or gain of complete chromosomes. As many of the simpler alterations to DNA may be repaired, such changes are only heritable once the change is fixed in the DNA by the process of replication. Mutations may be associated with genetic diversity or with pathologies including cancer."
       "Unknown":
         description: Not known, not observed, not recorded, or refused.
 
