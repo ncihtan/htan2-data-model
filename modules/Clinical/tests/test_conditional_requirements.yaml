@@ -9,12 +9,12 @@ DEMOGRAPHICS:
 
 # Valid exposure data
 EXPOSURES:
-  SMOKING_HISTORY: "Former smoker"  # Valid enum value
+  SMOKING_HISTORY: "Former Smoker"  # Valid enum value
   YEARS_SMOKED: 20
   PACK_YEARS_SMOKED: 10.5
   ALCOHOL_HISTORY_INDICATOR: "Yes"  # Valid enum value
   ENVIRONMENTAL_EXPOSURE: "Yes"  # Valid enum value
-  ENVIRONMENTAL_EXPOSURE_TYPE: "Chemical"  # Valid enum value
+  ENVIRONMENTAL_EXPOSURE_TYPE: "Chemical Exposure"  # Valid enum value
 
 # Valid family history data with conditional requirements
 FAMILY_HISTORY:
@@ -39,16 +39,16 @@ MOLECULAR_TESTS:
     AGE_IN_DAYS_AT_MOLECULAR_TEST_START: 0
     AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP: 1
     GENE_SYMBOL: "BRCA1"
-    MOLECULAR_ANALYSIS_METHOD: "DNA Sequencing"  # Valid enum value
-    MOLECULAR_ANALYSIS_RESULT: "Pathogenic variant detected"  # Valid enum value
+    MOLECULAR_ANALYSIS_METHOD: "WGS"  # Valid enum value (Whole Genome Sequencing)
+    MOLECULAR_ANALYSIS_RESULT: "Positive"  # Valid enum value (indicates positive finding)
     AA_CHANGE: "R1443X"
-    CLINICAL_BIOSPECIMEN_TYPE: "Blood"  # Valid enum value
+    CLINICAL_BIOSPECIMEN_TYPE: "BLOOD"  # Valid enum value
     COPY_NUMBER: 2
     EXON: 11
-    MOLECULAR_CONSEQUENCE: "Nonsense"  # Valid enum value
+    MOLECULAR_CONSEQUENCE: "Stop Gained"  # Valid enum value (nonsense mutation creates stop codon)
     PATHOGENICITY: "Pathogenic"  # Valid enum value
     TEST_ANALYTE_TYPE: "DNA"  # Valid enum value
-    TEST_UNITS: "copies"  # Valid enum value
+    TEST_UNITS: "Copies"  # Valid enum value
     TEST_RESULT: "Positive"  # Valid enum value
     VARIANT_ORIGIN: "Germline"  # Valid enum value
     VARIANT_TYPE: "Substitution"  # Valid enum value
@@ -72,7 +72,7 @@ DIAGNOSIS:
   CLINICAL_M_STAGE: "M0"  # Valid enum value
   AJCC_STAGING_SYSTEM_EDITION: "8th"  # Valid enum value
   AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS: 19000
-  LAST_KNOWN_DISEASE_STATUS: "Progressive Disease"  # Valid enum value
+  LAST_KNOWN_DISEASE_STATUS: "Distant Metastasis"  # Valid enum value
   TUMOR_CLASSIFICATION_CATEGORY: "Primary"  # Valid enum value
   METASTASIS_AT_DIAGNOSIS: "Non-metastatic (confirmed)"  # Valid enum value
   METHOD_OF_DIAGNOSIS: "Biopsy"  # Valid enum value

@@ -5,6 +5,171 @@ imports:
   - uberon_tissues
   - ncit_antineoplastic_agent
 
+enums:
+  InitialDiseaseStatusEnum:
+    title: initial_disease_status
+    permissible_values:
+      "Not Reported":
+        description: Not provided or available.
+      "Precancerous":
+        description: Descriptive of a condition that may or is likely to become cancerous.
+      "Primary":
+        description: A tumor at the original site of origin.
+      "Progression or Recurrence":
+        description: An indication as to whether a subject has a progressive disease or a recurrent disease.
+      "Residual Disease":
+        description: Cancer cells that remain after attempts to remove the cancer have been made.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+
+  TreatmentIntentTypeEnum:
+    title: treatment_intent_type
+    permissible_values:
+      "Adjuvant":
+        description: "(AD-joo-vant) Treatment given after the primary treatment to increase the chances of a cure. Adjuvant therapy may include chemotherapy, radiation therapy, hormone therapy, or biological therapy."
+      "Curative":
+        description: A therapy designed to cure a condition.
+      "Maintenance":
+        description: Continuation of treatment for an extended period of time to prevent relapse.
+      "Neoadjuvant":
+        description: Therapy administered prior to the primary treatment for the purpose of making the primary treatment more effective.
+      "Palliative":
+        description: "The patient- and family-centered active holistic care of patients with advanced, progressive disease. Essential components of palliative care are: pain and symptom control, communication regarding treatment and alternatives, prognosis, and available services, rehabilitation services, care that addresses treatment and palliative concerns, intellectual, emotional, social, and spiritual needs, terminal care, support in bereavement. The goal of palliative care is an achievement of the best quality of life for patients and their families."
+      "Prevention":
+        description: An attempt to prevent disease.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+
+  TreatmentTypeEnum:
+    title: treatment_type
+    permissible_values:
+      "3-Dimensional Conformal Radiation Therapy":
+        description: "A process by which a dose of radiation is automatically shaped to closely conform to the entire volume of the tumor, so that surrounding normal tissue is spared and treatment toxicity is decreased."
+      "Allogeneic Hematopoietic Stem Cell Transplantation":
+        description: "A clinical treatment in which HSC capable of reconstituting the immune system and blood production (hematopoiesis) are transferred from one genetically dissimilar individual to another. The donor and recipient may or may not be related. 2005"
+      "Autologous Stem Cell Transplantation":
+        description: The transference of stem cells within the same individual.
+      "Brachytherapy":
+        description: A type of radiation therapy in which radioactive material sealed in needles, seeds, wires, or catheters is placed directly into or near a tumor.
+      "Cellular Therapy":
+        description: Utilization of specific cells, modified or not, for treatment of diseases. Donor lymphocyte infusion is a type of cellular therapy.
+      "Chemotherapy":
+        description: The use of synthetic or naturally-occurring chemicals for the treatment of diseases.
+      "Concurrent Chemoradiation":
+        description: Treatment in which radiation therapy is administered at the same time as chemotherapy.
+      "Conventional Radiotherapy":
+        description: "A course of radiotherapy where minimal imaging support (i.e. X-rays films) is used to determine the positioning of radiotherapy."
+      "Electron Beam Radiation Therapy":
+        description: Radiation therapy using electron beam
+      "External Beam Radiation Therapy":
+        description: A type of radiation therapy that uses a machine to aim high-energy rays at the cancer from outside of the body.
+      "High-Dose Rate Brachytherapy":
+        description: Internal radiation treatment that targets a cancerous tissue with accurate, high doses of radiation through the use of inserted temporary implants.
+      "Hormone Therapy":
+        description: Various treatment modalities that produce the desired therapeutic effect by means of change of hormone/hormones level.
+      "Immunotherapy":
+        description: Therapy designed to induce changes in a patient's immune status in order to treat disease.
+      "Intensity-Modulated Radiation Therapy":
+        description: An advanced form of 3-Dimensional Conformal Radiation Therapy
+      "Low-Dose Rate Brachytherapy":
+        description: Internal radiation treatment that targets a cancerous tissue with low doses of radiation through the use of inserted temporary or permanent implants.
+      "Not Reported":
+        description: Not provided or available.
+      "Organ Transplantation":
+        description: "The transfer of an organ, organ part, or tissue from one body to another, for the purpose of replacing the recipient's damaged or failing organ with a working one from the donor. Donors can be living, or cadaveric (dead)."
+      "Palliative Care":
+        description: "Palliative care is the patient-and family-centered active holistic care of patients with advanced, progressive disease. Traditional models reflect abandonment of proactive treatment and a simultaneous increase in symptom control and comfort-related services, as a disease progressed in linear fashion through its course. Essential components of palliative care are: pain and symptom control, communication regarding treatment and alternatives, prognosis, and available services, rehabilitation services, care that addresses treatment and palliative concerns, intellectual, emotional, social, and spiritual needs, terminal care, support in bereavement. The goal of palliative care is an achievement of the best quality of life for patients and their families."
+      "Pharmacotherapy":
+        description: Treatment of disease through the use of drugs.
+      "Photon Beam Radiation Therapy":
+        description: Radiation therapy using photon beam.
+      "Proton Beam Radiation Therapy":
+        description: "A type of external beam radiation therapy using a beam of protons. It has the advantage of precisely localizing the radiation dose on the targeted tissue and avoiding damage to the healthy surrounding tissues."
+      "Radiation Therapy":
+        description: "Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation."
+      "Radiofrequency Ablation":
+        description: "A therapeutic procedure to eradicate or reduce small tumors using radiowaves to generate heat. The procedure is performed by the insertion of a thin needle through the skin and into a tumor, which is guided by computed tomography (CT) or ultrasound. Electrical energy delivered through this needle (electrode) heats and destroys the tumor. This therapeutic option is widely utilized by patients that have inoperable cancers, or are unsuitable chemotherapy candidates."
+      "Radiopharmaceutical":
+        description: Treatment with an agent that contains a radioactive pharmaceutical agent.
+      "Stem Cell Transplant":
+        description: "A therapeutic procedure that involves the transplantation of hematopoietic stem cells, either with the patient as their own donor or from a donor to a patient. This can be used for treatment of malignant and non-malignant diseases."
+      "Stereotactic Body Radiation Therapy":
+        description: Stereotactic radiation therapy in which one or several maximum dose radiation treatments are delivered targeting cancers of the body, excluding the brain or spine.
+      "Stereotactic Radiosurgery":
+        description: "A type of external radiation therapy that uses special equipment to position the patient and precisely give a single large dose of radiation to a tumor. It is used to treat brain tumors and other brain disorders that cannot be treated by regular surgery. It is also being studied in the treatment of other types of cancer."
+      "Surgical Procedure":
+        description: "A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery."
+      "Targeted Molecular Therapy":
+        description: Cancer therapies designed to act upon specific molecules in metabolic pathways or processes involved in carcinogenesis, tumor growth, or tumor spread.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+
+  PharmacotherapyTypeEnum:
+    title: pharmacotherapy_type
+    permissible_values:
+      "Combination Drug Therapy":
+        description: Drug therapy with two or more drugs given separately or together for a combined effect.
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Reported":
+        description: Not provided or available.
+      "Single Drug Therapy":
+        description: Pharmacotherapy consisting of a single agent.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+
+  OffTreatmentReasonEnum:
+    title: off_treatment_reason
+    permissible_values:
+      "Adverse Event":
+        description: "Any unfavorable or unintended disease, sign, or symptom (including an abnormal laboratory finding) that is temporally associated with the use of a medical treatment or procedure, and that may or may not be considered related to the medical treatment or procedure. Such events can be related to the intervention, dose, route of administration, patient, or caused by an interaction with another drug(s) or procedure(s)."
+      "Death":
+        description: The absence of life or state of being dead.
+      "Disease Progression":
+        description: The worsening of a disease over time
+      "Non Compliance":
+        description: Failure of a study subject to comply with an aspect of the study.
+      "Other":
+        description: Different than the one(s) previously specified or mentioned.
+      "Participant Withdrawal":
+        description: An indication that a study participant has removed itself from the study.
+      "Physician Decision":
+        description: A position, opinion or judgment reached after consideration by a physician with reference to subject.
+      "Protocol Defined Delay":
+        description: A break or delay in treatment that is fully described in a protocol.
+      "Protocol Violation":
+        description: "A significant departure from processes or procedures that were required by the protocol. Violations often result in data that are not deemed evaluable for a per-protocol analysis, and may require that the subject(s) who violate the protocol be discontinued from the study. Compare to protocol deviation. (CDISC Glossary)"
+      "Treatment Complete":
+        description: An indication or description that the course of study treatment has been carried out in full.
+
+  RegimenOrLineOfTherapyEnum:
+    title: regimen_or_line_of_therapy
+    permissible_values:
+      "1":
+        description: "The smallest natural number and quantity it denotes: a single entity, unit, or object."
+      "10":
+        description: "A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one."
+      "2":
+        description: "A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one."
+      "3":
+        description: "A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one."
+      "4":
+        description: "A natural number greater than 3 and less than 5 and the quantity that it denotes: the sum of three and one."
+      "5":
+        description: "A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one."
+      "6":
+        description: "A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one."
+      "7":
+        description: "A natural number greater than 6 and less than 8 and the quantity that it denotes: the sum of six and one."
+      "8":
+        description: "A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one."
+      "9":
+        description: "A natural number greater than 8 and less than 10 and the quantity that it denotes: the sum of nine and one."
+      "Not Reported":
+        description: Not provided or available.
+      "Unknown":
+        description: Not known, observed, recorded; or reported as unknown by the data contributor.
+
 classes:
   Therapy:
     description: Information about therapeutic interventions
