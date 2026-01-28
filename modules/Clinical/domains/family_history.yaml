@@ -19,13 +19,13 @@ enums:
     title: family_member_cancer_history
     permissible_values:
       "No":
-        description: No family member with cancer history
-      "Yes":
-        description: Family member with cancer history
+        description: The non-affirmative response to a question.
       "Not Reported":
-        description: Not provided or available
+        description: Not provided or available.
       "Unknown":
-        description: Not known, not observed, not recorded, or refused
+        description: Not known, not observed, not recorded, or refused.
+      "Yes":
+        description: The affirmative response to a question.
 
 classes:
   FamilyHistory:
@@ -33,15 +33,17 @@ classes:
       A class to capture information about the cancer history of family members.
     attributes:
       FAMILY_MEMBER_CANCER_HISTORY:
-        description: >-
-          Has a family member been diagnosed with cancer?
-        range: YesNoUnknownNotReportedEnum
+        description: Response to indicate if any relative has a medical history that includes cancer. (caDSR:13309936) (No CRDC Standard Available)
+        range: FamilyMemberCancerHistoryEnum
+        required: true
         title: "Family Member Cancer History"
+        slot_uri: caDSR:13309936
       RELATIVES_WITH_CANCER_HISTORY:
-        description: >-
-          Number of first degree relatives with cancer history
+        description: Number of relatives the individual has with a known history of cancer. Use -1 if this data point is not available. (caDSR:15907364) (No CRDC Standard Available)
         range: integer
-        title: "Relatives with Cancer History"
+        required: false
+        title: "Relatives with Cancer History Count"
+        slot_uri: caDSR:15907364
     rules:
       - preconditions:
           slot_conditions:
