@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-28T19:46:24
+# Generation date: 2026-01-29T14:01:33
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -57,8 +57,7 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Decimal, Integer, String
-from linkml_runtime.utils.metamodelcore import Decimal
+from linkml_runtime.linkml_model.types import Integer, String
 
 metamodel_version = "1.7.0"
 version = None
@@ -213,7 +212,6 @@ class Diagnosis(YAMLRoot):
     TUMOR_CLASSIFICATION_CATEGORY: Union[str, "TumorClassificationCategoryEnum"] = None
     METASTASIS_AT_DIAGNOSIS: Union[str, "MetastasisAtDiagnosisEnum"] = None
     METHOD_OF_DIAGNOSIS: Union[str, "MethodOfDiagnosisEnum"] = None
-    TUMOR_STAGE: Optional[Union[str, "TumorStageEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID):
@@ -281,24 +279,6 @@ class Diagnosis(YAMLRoot):
         if not isinstance(self.METHOD_OF_DIAGNOSIS, MethodOfDiagnosisEnum):
             self.METHOD_OF_DIAGNOSIS = MethodOfDiagnosisEnum(self.METHOD_OF_DIAGNOSIS)
 
-        if self.TUMOR_STAGE is not None and not isinstance(self.TUMOR_STAGE, TumorStageEnum):
-            self.TUMOR_STAGE = TumorStageEnum(self.TUMOR_STAGE)
-
-        if self.CLINICAL_T_STAGE is not None and not isinstance(self.CLINICAL_T_STAGE, str):
-            self.CLINICAL_T_STAGE = str(self.CLINICAL_T_STAGE)
-
-        if self.CLINICAL_N_STAGE is not None and not isinstance(self.CLINICAL_N_STAGE, str):
-            self.CLINICAL_N_STAGE = str(self.CLINICAL_N_STAGE)
-
-        if self.CLINICAL_M_STAGE is not None and not isinstance(self.CLINICAL_M_STAGE, str):
-            self.CLINICAL_M_STAGE = str(self.CLINICAL_M_STAGE)
-
-        if self.AJCC_STAGING_SYSTEM_EDITION is not None and not isinstance(self.AJCC_STAGING_SYSTEM_EDITION, str):
-            self.AJCC_STAGING_SYSTEM_EDITION = str(self.AJCC_STAGING_SYSTEM_EDITION)
-
-        if self.METASTASIS_AT_DIAGNOSIS is not None and not isinstance(self.METASTASIS_AT_DIAGNOSIS, str):
-            self.METASTASIS_AT_DIAGNOSIS = str(self.METASTASIS_AT_DIAGNOSIS)
-
         super().__post_init__(**kwargs)
 
 
@@ -318,7 +298,7 @@ class Exposure(YAMLRoot):
     ALCOHOL_HISTORY_INDICATOR: Union[str, "AlcoholHistoryIndicatorEnum"] = None
     ENVIRONMENTAL_EXPOSURE: Union[str, "EnvironmentalExposureEnum"] = None
     YEARS_SMOKED: Optional[int] = None
-    PACK_YEARS_SMOKED: Optional[Decimal] = None
+    PACK_YEARS_SMOKED: Optional[int] = None
     ENVIRONMENTAL_EXPOSURE_TYPE: Optional[Union[Union[str, "EnvironmentalExposureTypeEnum"], List[Union[str, "EnvironmentalExposureTypeEnum"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -340,8 +320,8 @@ class Exposure(YAMLRoot):
         if self.YEARS_SMOKED is not None and not isinstance(self.YEARS_SMOKED, int):
             self.YEARS_SMOKED = int(self.YEARS_SMOKED)
 
-        if self.PACK_YEARS_SMOKED is not None and not isinstance(self.PACK_YEARS_SMOKED, Decimal):
-            self.PACK_YEARS_SMOKED = Decimal(self.PACK_YEARS_SMOKED)
+        if self.PACK_YEARS_SMOKED is not None and not isinstance(self.PACK_YEARS_SMOKED, int):
+            self.PACK_YEARS_SMOKED = int(self.PACK_YEARS_SMOKED)
 
         if not isinstance(self.ENVIRONMENTAL_EXPOSURE_TYPE, list):
             self.ENVIRONMENTAL_EXPOSURE_TYPE = [self.ENVIRONMENTAL_EXPOSURE_TYPE] if self.ENVIRONMENTAL_EXPOSURE_TYPE is not None else []
@@ -309215,9 +309195,6 @@ slots.diagnosis__TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE = Slot(uri=CADSR['1488304
 slots.diagnosis__TUMOR_GRADE = Slot(uri=CADSR['11325685'], name="diagnosis__TUMOR_GRADE", curie=CADSR.curie('11325685'),
                    model_uri=HTAN.diagnosis__TUMOR_GRADE, domain=None, range=Union[str, "TumorGradeEnum"])
 
-slots.diagnosis__TUMOR_STAGE = Slot(uri=HTAN['clinical/diagnosis/TUMOR_STAGE'], name="diagnosis__TUMOR_STAGE", curie=HTAN.curie('clinical/diagnosis/TUMOR_STAGE'),
-                   model_uri=HTAN.diagnosis__TUMOR_STAGE, domain=None, range=Optional[Union[str, "TumorStageEnum"]])
-
 slots.diagnosis__CLINICAL_T_STAGE = Slot(uri=CADSR['3440328'], name="diagnosis__CLINICAL_T_STAGE", curie=CADSR.curie('3440328'),
                    model_uri=HTAN.diagnosis__CLINICAL_T_STAGE, domain=None, range=Union[str, "ClinicalTStageEnum"])
 
@@ -309252,7 +309229,7 @@ slots.exposure__YEARS_SMOKED = Slot(uri=CADSR['3137957'], name="exposure__YEARS_
                    model_uri=HTAN.exposure__YEARS_SMOKED, domain=None, range=Optional[int])
 
 slots.exposure__PACK_YEARS_SMOKED = Slot(uri=CADSR['2955385'], name="exposure__PACK_YEARS_SMOKED", curie=CADSR.curie('2955385'),
-                   model_uri=HTAN.exposure__PACK_YEARS_SMOKED, domain=None, range=Optional[Decimal])
+                   model_uri=HTAN.exposure__PACK_YEARS_SMOKED, domain=None, range=Optional[int])
 
 slots.exposure__ALCOHOL_HISTORY_INDICATOR = Slot(uri=CADSR['7537144'], name="exposure__ALCOHOL_HISTORY_INDICATOR", curie=CADSR.curie('7537144'),
                    model_uri=HTAN.exposure__ALCOHOL_HISTORY_INDICATOR, domain=None, range=Union[str, "AlcoholHistoryIndicatorEnum"])
@@ -309400,21 +309377,6 @@ slots.vitalStatus__CAUSE_OF_DEATH = Slot(uri=CADSR['4783274'], name="vitalStatus
 slots.vitalStatus__CAUSE_OF_DEATH_SOURCE = Slot(uri=CADSR['2390921'], name="vitalStatus__CAUSE_OF_DEATH_SOURCE", curie=CADSR.curie('2390921'),
                    model_uri=HTAN.vitalStatus__CAUSE_OF_DEATH_SOURCE, domain=None, range=Optional[Union[str, "CauseOfDeathSourceEnum"]])
 
-slots.CLINICAL_T_STAGE = Slot(uri=HTAN.CLINICAL_T_STAGE, name="CLINICAL_T_STAGE", curie=HTAN.curie('CLINICAL_T_STAGE'),
-                   model_uri=HTAN.CLINICAL_T_STAGE, domain=None, range=Optional[str])
-
-slots.CLINICAL_N_STAGE = Slot(uri=HTAN.CLINICAL_N_STAGE, name="CLINICAL_N_STAGE", curie=HTAN.curie('CLINICAL_N_STAGE'),
-                   model_uri=HTAN.CLINICAL_N_STAGE, domain=None, range=Optional[str])
-
-slots.CLINICAL_M_STAGE = Slot(uri=HTAN.CLINICAL_M_STAGE, name="CLINICAL_M_STAGE", curie=HTAN.curie('CLINICAL_M_STAGE'),
-                   model_uri=HTAN.CLINICAL_M_STAGE, domain=None, range=Optional[str])
-
-slots.AJCC_STAGING_SYSTEM_EDITION = Slot(uri=HTAN.AJCC_STAGING_SYSTEM_EDITION, name="AJCC_STAGING_SYSTEM_EDITION", curie=HTAN.curie('AJCC_STAGING_SYSTEM_EDITION'),
-                   model_uri=HTAN.AJCC_STAGING_SYSTEM_EDITION, domain=None, range=Optional[str])
-
-slots.METASTASIS_AT_DIAGNOSIS = Slot(uri=HTAN.METASTASIS_AT_DIAGNOSIS, name="METASTASIS_AT_DIAGNOSIS", curie=HTAN.curie('METASTASIS_AT_DIAGNOSIS'),
-                   model_uri=HTAN.METASTASIS_AT_DIAGNOSIS, domain=None, range=Optional[str])
-
 slots.YEARS_SMOKED = Slot(uri=HTAN.YEARS_SMOKED, name="YEARS_SMOKED", curie=HTAN.curie('YEARS_SMOKED'),
                    model_uri=HTAN.YEARS_SMOKED, domain=None, range=Optional[str])
 
@@ -309459,21 +309421,6 @@ slots.CAUSE_OF_DEATH = Slot(uri=HTAN.CAUSE_OF_DEATH, name="CAUSE_OF_DEATH", curi
 
 slots.CAUSE_OF_DEATH_SOURCE = Slot(uri=HTAN.CAUSE_OF_DEATH_SOURCE, name="CAUSE_OF_DEATH_SOURCE", curie=HTAN.curie('CAUSE_OF_DEATH_SOURCE'),
                    model_uri=HTAN.CAUSE_OF_DEATH_SOURCE, domain=None, range=Optional[str])
-
-slots.Diagnosis_CLINICAL_T_STAGE = Slot(uri=HTAN.CLINICAL_T_STAGE, name="Diagnosis_CLINICAL_T_STAGE", curie=HTAN.curie('CLINICAL_T_STAGE'),
-                   model_uri=HTAN.Diagnosis_CLINICAL_T_STAGE, domain=Diagnosis, range=Optional[str])
-
-slots.Diagnosis_CLINICAL_N_STAGE = Slot(uri=HTAN.CLINICAL_N_STAGE, name="Diagnosis_CLINICAL_N_STAGE", curie=HTAN.curie('CLINICAL_N_STAGE'),
-                   model_uri=HTAN.Diagnosis_CLINICAL_N_STAGE, domain=Diagnosis, range=Optional[str])
-
-slots.Diagnosis_CLINICAL_M_STAGE = Slot(uri=HTAN.CLINICAL_M_STAGE, name="Diagnosis_CLINICAL_M_STAGE", curie=HTAN.curie('CLINICAL_M_STAGE'),
-                   model_uri=HTAN.Diagnosis_CLINICAL_M_STAGE, domain=Diagnosis, range=Optional[str])
-
-slots.Diagnosis_AJCC_STAGING_SYSTEM_EDITION = Slot(uri=HTAN.AJCC_STAGING_SYSTEM_EDITION, name="Diagnosis_AJCC_STAGING_SYSTEM_EDITION", curie=HTAN.curie('AJCC_STAGING_SYSTEM_EDITION'),
-                   model_uri=HTAN.Diagnosis_AJCC_STAGING_SYSTEM_EDITION, domain=Diagnosis, range=Optional[str])
-
-slots.Diagnosis_METASTASIS_AT_DIAGNOSIS = Slot(uri=HTAN.METASTASIS_AT_DIAGNOSIS, name="Diagnosis_METASTASIS_AT_DIAGNOSIS", curie=HTAN.curie('METASTASIS_AT_DIAGNOSIS'),
-                   model_uri=HTAN.Diagnosis_METASTASIS_AT_DIAGNOSIS, domain=Diagnosis, range=Optional[str])
 
 slots.Exposure_YEARS_SMOKED = Slot(uri=HTAN.YEARS_SMOKED, name="Exposure_YEARS_SMOKED", curie=HTAN.curie('YEARS_SMOKED'),
                    model_uri=HTAN.Exposure_YEARS_SMOKED, domain=Exposure, range=Optional[str])
