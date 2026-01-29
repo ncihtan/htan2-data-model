@@ -11,7 +11,7 @@ DEMOGRAPHICS:
 EXPOSURES:
   SMOKING_HISTORY: "Former Smoker"  # Valid enum value
   YEARS_SMOKED: 20
-  PACK_YEARS_SMOKED: 10.5
+  PACK_YEARS_SMOKED: 10
   ALCOHOL_HISTORY_INDICATOR: "Yes"  # Valid enum value
   ENVIRONMENTAL_EXPOSURE: "Yes"  # Valid enum value
   ENVIRONMENTAL_EXPOSURE_TYPE: "Chemical Exposure"  # Valid enum value
