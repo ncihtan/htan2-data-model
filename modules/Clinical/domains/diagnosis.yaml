@@ -391,11 +391,6 @@ classes:
         title: "Tumor Grade"
         description: Degree of abnormality of cancer cells as a measure of differentiation and aggressiveness. (caDSR:11325685) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:11325685
-      TUMOR_STAGE:
-        range: TumorStageEnum
-        required: false
-        title: "Tumor Stage"
-        description: Overall cancer stage classification (e.g., Stage I, Stage II, Stage III, Stage IV) based on TNM staging system.
       CLINICAL_T_STAGE:
         range: ClinicalTStageEnum
         required: true
@@ -450,44 +445,3 @@ classes:
         title: "Method of Diagnosis"
         description: Type of clinical or laboratory procedure(s) used in the determination of a disease diagnosis. (caDSR:14857681) (Aligns to CRDC Node)
         slot_uri: caDSR:14857681
-    slot_usage:
-      CLINICAL_T_STAGE:
-        required: false
-        description: Required when TUMOR_STAGE is any stage value
-      CLINICAL_N_STAGE:
-        required: false
-        description: Required when TUMOR_STAGE is any stage value
-      CLINICAL_M_STAGE:
-        required: false
-        description: Required when TUMOR_STAGE is any stage value
-      AJCC_STAGING_SYSTEM_EDITION:
-        required: false
-        description: Required when TUMOR_STAGE is any stage value
-      METASTASIS_AT_DIAGNOSIS:
-        required: false
-        description: Required when TUMOR_STAGE is Stage IV or any of its substages
-    rules:
-      - description: "When TUMOR_STAGE has a value, staging fields become required"
-        preconditions:
-          slot_conditions:
-            TUMOR_STAGE:
-              pattern: "^Stage.*"
-        postconditions:
-          slot_conditions:
-            CLINICAL_T_STAGE:
-              required: true
-            CLINICAL_N_STAGE:
-              required: true
-            CLINICAL_M_STAGE:
-              required: true
-            AJCC_STAGING_SYSTEM_EDITION:
-              required: true
-      - description: "When TUMOR_STAGE is Stage IV, metastasis field becomes required"
-        preconditions:
-          slot_conditions:
-            TUMOR_STAGE:
-              pattern: "^Stage IV.*"
-        postconditions:
-          slot_conditions:
-            METASTASIS_AT_DIAGNOSIS:
-              required: true 
