@@ -24,7 +24,7 @@ FAMILY_HISTORY:
 # Valid follow-up data with conditional requirements
 FOLLOW_UPS:
   - AGE_IN_DAYS_AT_FOLLOWUP: 20000
-    PROGRESSION_OR_RECURRENCE: "Local"  # Valid enum value - triggers conditional requirements
+    PROGRESSION_OR_RECURRENCE: "Yes"  # Valid enum value - triggers conditional requirements
     PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE: "UBERON:0000002"  # Required when PROGRESSION_OR_RECURRENCE indicates progression/recurrence
     PROGRESSION_OR_RECURRENCE_TYPE: "Local"  # Required when PROGRESSION_OR_RECURRENCE indicates progression/recurrence
     EVIDENCE_OF_RECURRENCE_TYPE: "Convincing Image (i.e. CT/PET/MRI)"  # Required when PROGRESSION_OR_RECURRENCE indicates progression/recurrence

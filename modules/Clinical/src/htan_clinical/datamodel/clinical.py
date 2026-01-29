@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-29T14:01:33
+# Generation date: 2026-01-29T09:12:29
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -1806,24 +1806,18 @@ class EvidenceOfRecurrenceTypeEnum(EnumDefinitionImpl):
 
 class ProgressionOrRecurrenceEnum(EnumDefinitionImpl):
 
-    Biochemical = PermissibleValue(
-        text="Biochemical",
-        description="An indication that biochemical markers of a disease are present.")
-    Distant = PermissibleValue(
-        text="Distant",
-        description="""A biological process that involves the transfer and growth of cancer cells from the site of the primary tumor. Relocation of malignant cells during metastasis can be restricted to movement within a specific tissue/organ or may entail migration to a distal locus within the body. This phenotype is a characteristic of all malignant tumors.""")
-    Local = PermissibleValue(
-        text="Local",
-        description="""A disease that is confined to a specific organ or tissue and has not spread to other anatomic sites.""")
-    Locoregional = PermissibleValue(
-        text="Locoregional",
-        description="""A disease that occurs within a specific organ or tissue and extends into adjacent areas including lymph nodes.""")
-    Regional = PermissibleValue(
-        text="Regional",
-        description="""A disease or condition that extends beyond the site and spreads into adjacent tissues and regional lymph nodes.""")
+    Censored = PermissibleValue(
+        text="Censored",
+        description="Points of data for which only partial information is known.")
+    No = PermissibleValue(
+        text="No",
+        description="The non-affirmative response to a question.")
     Unknown = PermissibleValue(
         text="Unknown",
         description="Not known, observed, recorded; or reported as unknown by the data contributor.")
+    Yes = PermissibleValue(
+        text="Yes",
+        description="The affirmative response to a question.")
 
     _defn = EnumDefinition(
         name="ProgressionOrRecurrenceEnum",
@@ -1831,6 +1825,14 @@ class ProgressionOrRecurrenceEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "Not Allowed to Collect",
+            PermissibleValue(
+                text="Not Allowed to Collect",
+                description="An indicator that specifies that a collection event was not permitted."))
+        setattr(cls, "Not Applicable",
+            PermissibleValue(
+                text="Not Applicable",
+                description="Determination of a value is not relevant in the current context."))
         setattr(cls, "Not Reported",
             PermissibleValue(
                 text="Not Reported",

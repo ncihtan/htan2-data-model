@@ -38,12 +38,11 @@ def test_followup_conditional_requirements(test_data):
     """Test conditional requirements in follow-up data"""
     clinical_data = yaml_loader.loads(yaml.dump(test_data), target_class=ClinicalData)
 
-    # When PROGRESSION_OR_RECURRENCE indicates progression/recurrence (not "Not Reported" or "Unknown"), certain fields should be required
+    # When PROGRESSION_OR_RECURRENCE is "Yes", certain fields should be required
     for followup in clinical_data.FOLLOW_UPS:
         if (
             hasattr(followup, "PROGRESSION_OR_RECURRENCE")
-            and followup.PROGRESSION_OR_RECURRENCE is not None
-            and followup.PROGRESSION_OR_RECURRENCE not in ["Not Reported", "Unknown"]
+            and followup.PROGRESSION_OR_RECURRENCE == "Yes"
         ):
             assert (
                 followup.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE is not None
