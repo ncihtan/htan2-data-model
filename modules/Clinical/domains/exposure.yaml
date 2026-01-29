@@ -96,7 +96,7 @@ classes:
         description: Number of years a person has been smoking. Use -1 if this data point is not available. (caDSR:3137957) (No CRDC Standard Available)
         slot_uri: caDSR:3137957
       PACK_YEARS_SMOKED:
-        range: decimal
+        range: integer
         required: false
         title: "Pack Years Smoked"
         description: Numeric computed value to represent lifetime tobacco exposure defined as number of cigarettes smoked per day x number of years smoked divided by 20. Use -1 if this data point is not available. (caDSR:2955385) (No CRDC Standard Available)
