@@ -15,7 +15,7 @@ all: gen-schema test docs
 gen-schema:
 	mkdir -p $(BUILD_DIR)
 	mkdir -p $(DATAMODEL_DIR)
-	poetry run gen-project --config-file ../../config/config.yaml -d $(BUILD_DIR) $(SOURCE_SCHEMA_PATH)
+	poetry run gen-project --config-file ../../config/config.yaml --exclude owl --exclude rdf -d $(BUILD_DIR) $(SOURCE_SCHEMA_PATH)
 	mv $(BUILD_DIR)/*.py $(DATAMODEL_DIR)/
 
 # Generate Synapse-compatible flat JSON schema
