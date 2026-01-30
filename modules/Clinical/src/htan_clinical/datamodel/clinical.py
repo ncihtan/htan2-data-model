@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-29T14:29:02
+# Generation date: 2026-01-30T09:29:25
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -1696,59 +1696,6 @@ class FamilyMemberCancerHistoryEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Not Reported",
                 description="Not provided or available."))
-
-class DiseaseResponseEnum(EnumDefinitionImpl):
-
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, not observed, not recorded, or refused.")
-
-    _defn = EnumDefinition(
-        name="DiseaseResponseEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Complete Response",
-            PermissibleValue(
-                text="Complete Response",
-                description="""Complete disappearance of all clinical evidence of disease with skin, nodes, blood and viscera categories having complete response or noninvolvement."""))
-        setattr(cls, "No Evidence of Disease",
-            PermissibleValue(
-                text="No Evidence of Disease",
-                description="Diagnostic tests fail to detect presence of disease."))
-        setattr(cls, "No Response",
-            PermissibleValue(
-                text="No Response",
-                description="No apparent change or worsening in tumor staging classification."))
-        setattr(cls, "Not Applicable",
-            PermissibleValue(
-                text="Not Applicable",
-                description="Determination of a value is not relevant in the current context."))
-        setattr(cls, "Not Evaluable",
-            PermissibleValue(
-                text="Not Evaluable",
-                description="Unable to be evaluated."))
-        setattr(cls, "Not Reported",
-            PermissibleValue(
-                text="Not Reported",
-                description="Not provided or available."))
-        setattr(cls, "Partial Response",
-            PermissibleValue(
-                text="Partial Response",
-                description="""A finding indicating that there is a decrease in the size and the extent of tissue involvement by a malignant tumor in a patient."""))
-        setattr(cls, "Persistent Disease",
-            PermissibleValue(
-                text="Persistent Disease",
-                description="A disease that does not go to remission despite treatment."))
-        setattr(cls, "Progressive Disease",
-            PermissibleValue(
-                text="Progressive Disease",
-                description="""A clinical, pathologic, and/or molecular finding indicating that the course of a disease is worsening in terms of extent or severity."""))
-        setattr(cls, "Stable Disease",
-            PermissibleValue(
-                text="Stable Disease",
-                description="Cancer that is neither decreasing nor increasing in extent or severity."))
 
 class ECOGPerformanceStatusEnum(EnumDefinitionImpl):
 
@@ -190997,6 +190944,59 @@ class GeneSymbolEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Not Reported",
                 description="Not provided or available."))
+
+class DiseaseResponseEnum(EnumDefinitionImpl):
+
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded; or reported as unknown by the data contributor.")
+
+    _defn = EnumDefinition(
+        name="DiseaseResponseEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Complete Response",
+            PermissibleValue(
+                text="Complete Response",
+                description="""Complete disappearance of all clinical evidence of disease with skin, nodes, blood and viscera categories having complete response or noninvolvement."""))
+        setattr(cls, "No Evidence of Disease",
+            PermissibleValue(
+                text="No Evidence of Disease",
+                description="Diagnostic tests fail to detect presence of disease."))
+        setattr(cls, "No Response",
+            PermissibleValue(
+                text="No Response",
+                description="No apparent change or worsening in tumor staging classification."))
+        setattr(cls, "Not Applicable",
+            PermissibleValue(
+                text="Not Applicable",
+                description="Determination of a value is not relevant in the current context."))
+        setattr(cls, "Not Evaluable",
+            PermissibleValue(
+                text="Not Evaluable",
+                description="Unable to be evaluated."))
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available."))
+        setattr(cls, "Partial Response",
+            PermissibleValue(
+                text="Partial Response",
+                description="""A finding indicating that there is a decrease in the size and the extent of tissue involvement by a malignant tumor in a patient."""))
+        setattr(cls, "Persistent Disease",
+            PermissibleValue(
+                text="Persistent Disease",
+                description="A disease that does not go to remission despite treatment."))
+        setattr(cls, "Progressive Disease",
+            PermissibleValue(
+                text="Progressive Disease",
+                description="""A clinical, pathologic, and/or molecular finding indicating that the course of a disease is worsening in terms of extent or severity."""))
+        setattr(cls, "Stable Disease",
+            PermissibleValue(
+                text="Stable Disease",
+                description="Cancer that is neither decreasing nor increasing in extent or severity."))
 
 class PrimaryDiagnosisNCIThesaurusIDEnum(EnumDefinitionImpl):
     """
