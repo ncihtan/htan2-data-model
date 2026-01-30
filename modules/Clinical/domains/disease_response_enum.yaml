@@ -1,0 +1,31 @@
+name: DiseaseResponseEnum
+id: https://w3id.org/htan/clinical/disease_response_enum
+description: Enumeration of disease response values
+
+enums:
+  DiseaseResponseEnum:
+    title: disease_response
+    permissible_values:
+      "Complete Response":
+        description: Complete disappearance of all clinical evidence of disease with skin, nodes, blood and viscera categories having complete response or noninvolvement.
+      "No Evidence of Disease":
+        description: Diagnostic tests fail to detect presence of disease.
+      "No Response":
+        description: No apparent change or worsening in tumor staging classification.
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Evaluable":
+        description: Unable to be evaluated.
+      "Not Reported":
+        description: Not provided or available.
+      "Partial Response":
+        description: A finding indicating that there is a decrease in the size and the extent of tissue involvement by a malignant tumor in a patient.
+      "Persistent Disease":
+        description: A disease that does not go to remission despite treatment.
+      "Progressive Disease":
+        description: A clinical, pathologic, and/or molecular finding indicating that the course of a disease is worsening in terms of extent or severity.
+      "Stable Disease":
+        description: Cancer that is neither decreasing nor increasing in extent or severity.
+      "Unknown":
+        description: Not known, not observed, not recorded; or reported as unknown by the data contributor.
+

@@ -1,5 +1,5 @@
 # Auto generated from imaging.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-23T15:49:20
+# Generation date: 2026-01-29T14:31:50
 # Schema: Imaging
 #
 # id: https://w3id.org/htan/imaging
