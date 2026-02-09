@@ -18,11 +18,39 @@ MODULES = {
     "Imaging": "modules/Imaging/domains/imaging.yaml",
 }
 
+def get_conditional_requirements(cls) -> dict:
+    """Extract conditional requirements from class rules.
+    Returns a dict mapping slot_name -> condition description.
+    """
+    conditional = {}
+    if not hasattr(cls, 'rules') or not cls.rules:
+        return conditional
+    
+    for rule in cls.rules:
+        if not rule:
+            continue
+        # Get the rule description
+        rule_desc = getattr(rule, 'description', None) or ""
+        
+        # Extract which slots are conditionally required from postconditions
+        postconditions = getattr(rule, 'postconditions', None)
+        if postconditions:
+            slot_conditions = getattr(postconditions, 'slot_conditions', None)
+            if slot_conditions:
+                for slot_name, slot_cond in slot_conditions.items():
+                    if hasattr(slot_cond, 'required') and slot_cond.required:
+                        conditional[slot_name] = rule_desc
+    
+    return conditional
+
 def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> str:
     """Generate markdown table for a class."""
     cls = sv.get_class(class_name)
     if not cls or cls.mixin or cls.abstract:
         return ""
+    
+    # Get conditional requirements from rules
+    conditional_reqs = get_conditional_requirements(cls)
     
     lines = [f"## {class_name}\n"]
     if cls.description:
@@ -40,7 +68,16 @@ def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> st
                 type_display = f"[{slot_range}](#{slot_range.lower()})"
             else:
                 type_display = slot_range
-            required = "Yes" if slot.required else "No"
+            
+            # Determine required status
+            if slot.required:
+                required = "Yes"
+            elif slot_name in conditional_reqs:
+                cond_desc = conditional_reqs[slot_name].replace("|", "\\|")
+                required = f"Conditional: {cond_desc}"
+            else:
+                required = "No"
+            
             desc = (slot.description or "").replace("\n", " ").replace("|", "\\|")
             lines.append(f"| `{slot_name}` | {type_display} | {required} | {desc} |")
     
