@@ -18,6 +18,9 @@ MODULES = {
     "Imaging": "modules/Imaging/domains/imaging.yaml",
 }
 
+# LinkML built-in classes to exclude from documentation
+EXCLUDED_CLASSES = {"AnyValue", "extension", "Extension", "Extensible", "Annotatable"}
+
 def get_conditional_requirements(cls) -> dict:
     """Extract conditional requirements from class rules and slot_usage.
     Returns a dict mapping slot_name -> condition description.
@@ -54,6 +57,10 @@ def get_conditional_requirements(cls) -> dict:
 
 def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> str:
     """Generate markdown table for a class."""
+    # Skip LinkML built-in classes
+    if class_name in EXCLUDED_CLASSES:
+        return ""
+    
     cls = sv.get_class(class_name)
     if not cls or cls.mixin or cls.abstract:
         return ""
