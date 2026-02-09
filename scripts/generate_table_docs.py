@@ -75,13 +75,9 @@ def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> st
     lines.append("| Attribute | Type | Required | Description |")
     lines.append("|-----------|------|----------|-------------|")
     
-    # Get slot_usage overrides for this class
-    slot_usage = {}
-    if hasattr(cls, 'slot_usage') and cls.slot_usage:
-        slot_usage = cls.slot_usage
-    
     for slot_name in sv.class_slots(class_name):
-        slot = sv.get_slot(slot_name)
+        # Use induced_slot to get the slot with all class-specific overrides applied
+        slot = sv.induced_slot(slot_name, class_name)
         if slot:
             slot_range = slot.range or "string"
             # Link to enum if the type is an enum
@@ -99,14 +95,7 @@ def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> st
             else:
                 required = "No"
             
-            # Get description - prefer slot_usage override if present
-            desc = slot.description or ""
-            if slot_name in slot_usage and slot_usage[slot_name]:
-                usage = slot_usage[slot_name]
-                if hasattr(usage, 'description') and usage.description:
-                    desc = usage.description
-            desc = desc.replace("\n", " ").replace("|", "\\|")
-            
+            desc = (slot.description or "").replace("\n", " ").replace("|", "\\|")
             lines.append(f"| `{slot_name}` | {type_display} | {required} | {desc} |")
     
     return "\n".join(lines) + "\n"
