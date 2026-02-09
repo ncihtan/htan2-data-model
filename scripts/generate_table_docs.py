@@ -22,22 +22,22 @@ MODULES = {
 EXCLUDED_CLASSES = {"AnyValue", "extension", "Extension", "Extensible", "Annotatable",
                     "ClinicalData", "WESData", "scRNAseqData", "SpatialData"}
 
+CSV_MAP = {
+    "Demographics": "demographics.csv", "Diagnosis": "diagnosis.csv", "Exposure": "exposure.csv",
+    "FamilyHistory": "familyhistory.csv", "FollowUp": "followup.csv", "MolecularTest": "moleculartest.csv",
+    "Therapy": "therapy.csv", "VitalStatus": "vitalstatus.csv", "BiospecimenData": "biospecimen.csv",
+    "BulkWESLevel1": "wes-level-1.csv", "BulkWESLevel2": "wes-level-2.csv", "BulkWESLevel3": "wes-level-3.csv",
+    "scRNALevel1": "scrna-seq-level-1.csv", "scRNALevel2": "scrna-seq-level-2.csv", "scRNALevel3and4": "scrna-seq-level-3-4.csv",
+    "SpatialLevel1": "spatialomics-level-1.csv", "SpatialLevel3": "spatialomics-level-3.csv",
+    "SpatialLevel4": "spatialomics-level-4.csv", "SpatialPanel": "spatialomics-panel.csv",
+    "MultiplexMicroscopyLevel2": "multiplexmicroscopy-level-2.csv", "MultiplexMicroscopyLevel3": "multiplexmicroscopy-level-3.csv",
+    "MultiplexMicroscopyLevel4": "multiplexmicroscopy-level-4.csv", "DigitalPathologyData": "digitalpathology.csv",
+}
+
 def get_csv_filename(class_name: str, csv_dir: Path) -> str | None:
-    """Return CSV filename if it exists for this class, else None."""
-    # Convert CamelCase to lowercase with hyphens for level classes
-    import re
-    name = re.sub(r'(?<!^)(?=[A-Z])', '-', class_name).lower()
-    name = name.replace("-data", "").replace("and", "")
-    
-    # Check common patterns
-    candidates = [
-        f"{name}.csv",
-        f"{name.replace('-', '')}.csv",
-        class_name.lower() + ".csv",
-    ]
-    for candidate in candidates:
-        if (csv_dir / candidate).exists():
-            return candidate
+    """Return CSV filename if it exists for this class."""
+    if class_name in CSV_MAP and (csv_dir / CSV_MAP[class_name]).exists():
+        return CSV_MAP[class_name]
     return None
 
 def get_conditional_requirements(cls) -> dict:
