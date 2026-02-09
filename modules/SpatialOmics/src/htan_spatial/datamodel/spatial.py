@@ -1,5 +1,5 @@
 # Auto generated from spatial.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-01-30T14:39:16
+# Generation date: 2026-02-09T18:04:36
 # Schema: SpatialOmics
 #
 # id: https://w3id.org/htan/spatial
@@ -272,8 +272,6 @@ class SpatialLevel3(CoreFileAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.SpatialLevel3
 
     HTAN_DATA_FILE_ID: Union[str, SpatialLevel3HTANDATAFILEID] = None
-    FILENAME: str = None
-    FILE_FORMAT: str = None
     HTAN_PARENT_ID: str = None
     PLATFORM: Union[str, "PlatformLevel3"] = None
     ASSAY_CHEMISTRY_VERSION: str = None
@@ -289,6 +287,8 @@ class SpatialLevel3(CoreFileAttributes):
     QC_MEAN_READS_PER_FEATURE: float = None
     QC_TOTAL_GENES_DETECTED: int = None
     QC_TOTAL_NUMBER_OF_READS: int = None
+    FILE_FORMAT: str = None
+    FILENAME: str = None
     SPATIAL_ASSAY_TYPE: Optional[Union[str, "SpatialAssayType"]] = None
     SOFTWARE_AND_VERSION: Optional[str] = None
     PROTOCOL_LINK: Optional[str] = None
@@ -391,6 +391,16 @@ class SpatialLevel3(CoreFileAttributes):
             self.MissingRequiredField("QC_TOTAL_NUMBER_OF_READS")
         if not isinstance(self.QC_TOTAL_NUMBER_OF_READS, int):
             self.QC_TOTAL_NUMBER_OF_READS = int(self.QC_TOTAL_NUMBER_OF_READS)
+
+        if self._is_empty(self.FILE_FORMAT):
+            self.MissingRequiredField("FILE_FORMAT")
+        if not isinstance(self.FILE_FORMAT, str):
+            self.FILE_FORMAT = str(self.FILE_FORMAT)
+
+        if self._is_empty(self.FILENAME):
+            self.MissingRequiredField("FILENAME")
+        if not isinstance(self.FILENAME, str):
+            self.FILENAME = str(self.FILENAME)
 
         if self.SPATIAL_ASSAY_TYPE is not None and not isinstance(self.SPATIAL_ASSAY_TYPE, SpatialAssayType):
             self.SPATIAL_ASSAY_TYPE = SpatialAssayType(self.SPATIAL_ASSAY_TYPE)
@@ -1298,3 +1308,11 @@ slots.spatialPanel__GENE_ID = Slot(uri=HTAN.GENE_ID, name="spatialPanel__GENE_ID
 
 slots.spatialPanel__USER_GENE_NAME = Slot(uri=HTAN.USER_GENE_NAME, name="spatialPanel__USER_GENE_NAME", curie=HTAN.curie('USER_GENE_NAME'),
                    model_uri=HTAN.spatialPanel__USER_GENE_NAME, domain=None, range=Optional[str])
+
+slots.SpatialLevel3_FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="SpatialLevel3_FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
+                   model_uri=HTAN.SpatialLevel3_FILE_FORMAT, domain=SpatialLevel3, range=str,
+                   pattern=re.compile(r'^(tar\.gz|gz)$'))
+
+slots.SpatialLevel3_FILENAME = Slot(uri=HTAN.FILENAME, name="SpatialLevel3_FILENAME", curie=HTAN.curie('FILENAME'),
+                   model_uri=HTAN.SpatialLevel3_FILENAME, domain=SpatialLevel3, range=str,
+                   pattern=re.compile(r'^.+\.(tar\.gz|gz)$'))

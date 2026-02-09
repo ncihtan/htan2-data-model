@@ -107,6 +107,15 @@ classes:
   SpatialLevel3:
     is_a: CoreFileAttributes
     description: Level 3 processed spatial assay output bundle - Contains platform-specific output files, segmentation, matrices, and QC metrics
+    slot_usage:
+      FILE_FORMAT:
+        required: true
+        pattern: "^(tar\\.gz|gz)$"
+        description: Format of the bundle file (tar.gz or gz)
+      FILENAME:
+        required: true
+        pattern: "^.+\\.(tar\\.gz|gz)$"
+        description: Name of the bundle file. Must end with .tar.gz or .gz
     attributes:
       PLATFORM:
         range: PlatformLevel3
