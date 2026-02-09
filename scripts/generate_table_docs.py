@@ -22,24 +22,6 @@ MODULES = {
 EXCLUDED_CLASSES = {"AnyValue", "extension", "Extension", "Extensible", "Annotatable",
                     "ClinicalData", "WESData", "scRNAseqData", "SpatialData"}
 
-CSV_MAP = {
-    "Demographics": "demographics.csv", "Diagnosis": "diagnosis.csv", "Exposure": "exposure.csv",
-    "FamilyHistory": "familyhistory.csv", "FollowUp": "followup.csv", "MolecularTest": "moleculartest.csv",
-    "Therapy": "therapy.csv", "VitalStatus": "vitalstatus.csv", "BiospecimenData": "biospecimen.csv",
-    "BulkWESLevel1": "wes-level-1.csv", "BulkWESLevel2": "wes-level-2.csv", "BulkWESLevel3": "wes-level-3.csv",
-    "scRNALevel1": "scrna-seq-level-1.csv", "scRNALevel2": "scrna-seq-level-2.csv", "scRNALevel3and4": "scrna-seq-level-3-4.csv",
-    "SpatialLevel1": "spatialomics-level-1.csv", "SpatialLevel3": "spatialomics-level-3.csv",
-    "SpatialLevel4": "spatialomics-level-4.csv", "SpatialPanel": "spatialomics-panel.csv",
-    "MultiplexMicroscopyLevel2": "multiplexmicroscopy-level-2.csv", "MultiplexMicroscopyLevel3": "multiplexmicroscopy-level-3.csv",
-    "MultiplexMicroscopyLevel4": "multiplexmicroscopy-level-4.csv", "DigitalPathologyData": "digitalpathology.csv",
-}
-
-def get_csv_filename(class_name: str, csv_dir: Path) -> str | None:
-    """Return CSV filename if it exists for this class."""
-    if class_name in CSV_MAP and (csv_dir / CSV_MAP[class_name]).exists():
-        return CSV_MAP[class_name]
-    return None
-
 def get_conditional_requirements(cls) -> dict:
     """Extract conditional requirements from class rules and slot_usage.
     Returns a dict mapping slot_name -> condition description.
@@ -74,9 +56,8 @@ def get_conditional_requirements(cls) -> dict:
     
     return conditional
 
-def generate_class_table(sv: SchemaView, class_name: str, enum_names: set, csv_dir: Path) -> str:
+def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> str:
     """Generate markdown table for a class."""
-    # Skip LinkML built-in classes
     if class_name in EXCLUDED_CLASSES:
         return ""
     
@@ -84,17 +65,11 @@ def generate_class_table(sv: SchemaView, class_name: str, enum_names: set, csv_d
     if not cls or cls.mixin or cls.abstract:
         return ""
     
-    # Get conditional requirements from rules
     conditional_reqs = get_conditional_requirements(cls)
     
     lines = [f"## {class_name}\n"]
     if cls.description:
         lines.append(f"**{cls.description}**\n")
-    
-    # Add CSV download link if available for this class
-    csv_file = get_csv_filename(class_name, csv_dir)
-    if csv_file:
-        lines.append(f"📥 [Download as CSV](csv/{csv_file})\n")
     
     lines.append("| Attribute | Type | Required | Description |")
     lines.append("|-----------|------|----------|-------------|")
@@ -143,7 +118,7 @@ def generate_enum_table(sv: SchemaView, enum_name: str) -> str:
     
     return "\n".join(lines) + "\n"
 
-def generate_module_docs(name: str, schema_path: str, output_path: str, base_dir: Path):
+def generate_module_docs(name: str, schema_path: str, output_path: str):
     """Generate docs for a module."""
     sv = SchemaView(schema_path)
     
@@ -151,13 +126,10 @@ def generate_module_docs(name: str, schema_path: str, output_path: str, base_dir
     if sv.schema.description:
         lines.append(f"{sv.schema.description}\n")
     
-    # Get all enum names for linking
     enum_names = set(sv.all_enums())
-    csv_dir = base_dir / "docs" / "csv"
     
-    # Classes
     for class_name in sv.all_classes():
-        table = generate_class_table(sv, class_name, enum_names, csv_dir)
+        table = generate_class_table(sv, class_name, enum_names)
         if table:
             lines.append(table)
     
@@ -195,7 +167,7 @@ def main():
         full_path = base_dir / schema_path
         if full_path.exists():
             output_path = base_dir / "docs" / f"{output_names[name]}.md"
-            generate_module_docs(name, str(full_path), str(output_path), base_dir)
+            generate_module_docs(name, str(full_path), str(output_path))
         else:
             print(f"⚠ {name}: schema not found")
     
