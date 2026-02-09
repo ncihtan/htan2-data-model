@@ -12,7 +12,7 @@ MODULES = {
     "Biospecimen": "modules/Biospecimen/domains/biospecimen.yaml",
     "WES": "modules/WES/domains/wes.yaml",
     "scRNA-seq": "modules/scRNA-seq/domains/scrna_seq.yaml",
-    "SpatialOmics": "modules/SpatialOmics/domains/spatialomics.yaml",
+    "SpatialOmics": "modules/SpatialOmics/domains/spatial.yaml",
     "MultiplexMicroscopy": "modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml",
     "DigitalPathology": "modules/DigitalPathology/domains/digitalpathology.yaml",
     "Imaging": "modules/Imaging/domains/imaging.yaml",
