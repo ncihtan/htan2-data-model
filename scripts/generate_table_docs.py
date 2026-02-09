@@ -19,27 +19,36 @@ MODULES = {
 }
 
 def get_conditional_requirements(cls) -> dict:
-    """Extract conditional requirements from class rules.
+    """Extract conditional requirements from class rules and slot_usage.
     Returns a dict mapping slot_name -> condition description.
     """
     conditional = {}
-    if not hasattr(cls, 'rules') or not cls.rules:
-        return conditional
     
-    for rule in cls.rules:
-        if not rule:
-            continue
-        # Get the rule description
-        rule_desc = getattr(rule, 'description', None) or ""
-        
-        # Extract which slots are conditionally required from postconditions
-        postconditions = getattr(rule, 'postconditions', None)
-        if postconditions:
-            slot_conditions = getattr(postconditions, 'slot_conditions', None)
-            if slot_conditions:
-                for slot_name, slot_cond in slot_conditions.items():
-                    if hasattr(slot_cond, 'required') and slot_cond.required:
-                        conditional[slot_name] = rule_desc
+    # Extract from formal rules
+    if hasattr(cls, 'rules') and cls.rules:
+        for rule in cls.rules:
+            if not rule:
+                continue
+            # Get the rule description
+            rule_desc = getattr(rule, 'description', None) or ""
+            
+            # Extract which slots are conditionally required from postconditions
+            postconditions = getattr(rule, 'postconditions', None)
+            if postconditions:
+                slot_conditions = getattr(postconditions, 'slot_conditions', None)
+                if slot_conditions:
+                    for slot_name, slot_cond in slot_conditions.items():
+                        if hasattr(slot_cond, 'required') and slot_cond.required:
+                            conditional[slot_name] = rule_desc
+    
+    # Also extract from slot_usage descriptions that contain "Required when"
+    if hasattr(cls, 'slot_usage') and cls.slot_usage:
+        for slot_name, slot_usage in cls.slot_usage.items():
+            if slot_usage and hasattr(slot_usage, 'description') and slot_usage.description:
+                desc = slot_usage.description
+                # Check if description contains conditional requirement info
+                if 'required when' in desc.lower() or 'required if' in desc.lower():
+                    conditional[slot_name] = desc
     
     return conditional
 
