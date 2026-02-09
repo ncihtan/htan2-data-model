@@ -18,7 +18,7 @@ MODULES = {
     "Imaging": "modules/Imaging/domains/imaging.yaml",
 }
 
-def generate_class_table(sv: SchemaView, class_name: str) -> str:
+def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> str:
     """Generate markdown table for a class."""
     cls = sv.get_class(class_name)
     if not cls or cls.mixin or cls.abstract:
@@ -35,11 +35,14 @@ def generate_class_table(sv: SchemaView, class_name: str) -> str:
         slot = sv.get_slot(slot_name)
         if slot:
             slot_range = slot.range or "string"
+            # Link to enum if the type is an enum
+            if slot_range in enum_names:
+                type_display = f"[{slot_range}](#{slot_range.lower()})"
+            else:
+                type_display = slot_range
             required = "Yes" if slot.required else "No"
             desc = (slot.description or "").replace("\n", " ").replace("|", "\\|")
-            if len(desc) > 100:
-                desc = desc[:97] + "..."
-            lines.append(f"| `{slot_name}` | {slot_range} | {required} | {desc} |")
+            lines.append(f"| `{slot_name}` | {type_display} | {required} | {desc} |")
     
     return "\n".join(lines) + "\n"
 
@@ -58,8 +61,6 @@ def generate_enum_table(sv: SchemaView, enum_name: str) -> str:
     
     for pv_name, pv in enum.permissible_values.items():
         desc = (pv.description or "").replace("\n", " ").replace("|", "\\|")
-        if len(desc) > 80:
-            desc = desc[:77] + "..."
         lines.append(f"| {pv_name} | {desc} |")
     
     return "\n".join(lines) + "\n"
@@ -79,9 +80,12 @@ def generate_module_docs(name: str, schema_path: str, output_path: str):
     if name in ["Clinical", "Biospecimen", "DigitalPathology"]:
         lines.append(f"📥 [Download attributes as CSV](csv/{csv_name}.csv)\n")
     
+    # Get all enum names for linking
+    enum_names = set(sv.all_enums())
+    
     # Classes
     for class_name in sv.all_classes():
-        table = generate_class_table(sv, class_name)
+        table = generate_class_table(sv, class_name, enum_names)
         if table:
             lines.append(table)
     
