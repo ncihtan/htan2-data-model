@@ -6,6 +6,7 @@ build:
     python: "3.11"
   commands:
     - pip install -r requirements.txt
+    - python scripts/generate_csv_docs.py
     - python scripts/generate_table_docs.py
     - rm -rf _build _readthedocs
     - python -m sphinx -b html -d "${READTHEDOCS_OUTPUT}/.doctrees" . "${READTHEDOCS_OUTPUT}/html"
