@@ -18,8 +18,27 @@ MODULES = {
     "Imaging": "modules/Imaging/domains/imaging.yaml",
 }
 
-# LinkML built-in classes to exclude from documentation
-EXCLUDED_CLASSES = {"AnyValue", "extension", "Extension", "Extensible", "Annotatable"}
+# LinkML built-in classes and container classes to exclude from documentation
+EXCLUDED_CLASSES = {"AnyValue", "extension", "Extension", "Extensible", "Annotatable",
+                    "ClinicalData", "WESData", "scRNAseqData", "SpatialData"}
+
+def get_csv_filename(class_name: str, csv_dir: Path) -> str | None:
+    """Return CSV filename if it exists for this class, else None."""
+    # Convert CamelCase to lowercase with hyphens for level classes
+    import re
+    name = re.sub(r'(?<!^)(?=[A-Z])', '-', class_name).lower()
+    name = name.replace("-data", "").replace("and", "")
+    
+    # Check common patterns
+    candidates = [
+        f"{name}.csv",
+        f"{name.replace('-', '')}.csv",
+        class_name.lower() + ".csv",
+    ]
+    for candidate in candidates:
+        if (csv_dir / candidate).exists():
+            return candidate
+    return None
 
 def get_conditional_requirements(cls) -> dict:
     """Extract conditional requirements from class rules and slot_usage.
@@ -55,7 +74,7 @@ def get_conditional_requirements(cls) -> dict:
     
     return conditional
 
-def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> str:
+def generate_class_table(sv: SchemaView, class_name: str, enum_names: set, csv_dir: Path) -> str:
     """Generate markdown table for a class."""
     # Skip LinkML built-in classes
     if class_name in EXCLUDED_CLASSES:
@@ -71,6 +90,11 @@ def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> st
     lines = [f"## {class_name}\n"]
     if cls.description:
         lines.append(f"**{cls.description}**\n")
+    
+    # Add CSV download link if available for this class
+    csv_file = get_csv_filename(class_name, csv_dir)
+    if csv_file:
+        lines.append(f"📥 [Download as CSV](csv/{csv_file})\n")
     
     lines.append("| Attribute | Type | Required | Description |")
     lines.append("|-----------|------|----------|-------------|")
@@ -119,27 +143,21 @@ def generate_enum_table(sv: SchemaView, enum_name: str) -> str:
     
     return "\n".join(lines) + "\n"
 
-def generate_module_docs(name: str, schema_path: str, output_path: str):
+def generate_module_docs(name: str, schema_path: str, output_path: str, base_dir: Path):
     """Generate docs for a module."""
     sv = SchemaView(schema_path)
-    
-    # Output filename for CSV link
-    csv_name = Path(output_path).stem
     
     lines = [f"# {name}\n"]
     if sv.schema.description:
         lines.append(f"{sv.schema.description}\n")
     
-    # CSV download link (only for record-based modules)
-    if name in ["Clinical", "Biospecimen", "DigitalPathology"]:
-        lines.append(f"📥 [Download attributes as CSV](csv/{csv_name}.csv)\n")
-    
     # Get all enum names for linking
     enum_names = set(sv.all_enums())
+    csv_dir = base_dir / "docs" / "csv"
     
     # Classes
     for class_name in sv.all_classes():
-        table = generate_class_table(sv, class_name, enum_names)
+        table = generate_class_table(sv, class_name, enum_names, csv_dir)
         if table:
             lines.append(table)
     
@@ -177,7 +195,7 @@ def main():
         full_path = base_dir / schema_path
         if full_path.exists():
             output_path = base_dir / "docs" / f"{output_names[name]}.md"
-            generate_module_docs(name, str(full_path), str(output_path))
+            generate_module_docs(name, str(full_path), str(output_path), base_dir)
         else:
             print(f"⚠ {name}: schema not found")
     

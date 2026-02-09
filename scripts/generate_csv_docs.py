@@ -282,80 +282,32 @@ def generate_module_csv(schema_path: str, module_name: str, output_map: dict, ba
     csv_dir = base_dir / "docs" / "csv"
     csv_dir.mkdir(exist_ok=True)
     
-    # For record-based modules (Clinical, Biospecimen), generate CSV with all attributes
+    # Level files config: module -> list of (level_name, filename)
+    LEVEL_FILES = {
+        "WES": [("Level 1", "level_1.yaml"), ("Level 2", "level_2.yaml"), ("Level 3", "level_3.yaml")],
+        "scRNA-seq": [("Level 1", "level_1.yaml"), ("Level 2", "level_2.yaml"), ("Level 3/4", "level_3_4.yaml")],
+        "MultiplexMicroscopy": [("Level 2", "level_2.yaml"), ("Level 3", "level_3.yaml"), ("Level 4", "level_4.yaml")],
+        "SpatialOmics": [("Level 1", "level_1.yaml"), ("Level 3", "level_3.yaml"), ("Level 4", "level_4.yaml"), ("Panel", "spatial_panel.yaml")],
+    }
+    
+    # Clinical: generate CSV per domain class
     if module_name == "Clinical":
-        # For Clinical, include all attributes from all classes (not just ClinicalData manifest)
-        output_path = csv_dir / f"{output_map[module_name]}.csv"
-        with open(output_path, 'w', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ['Attribute', 'Type', 'Pattern', 'Required', 'Description', 'Class']
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            
-            # Write attributes from all classes
-            for class_name in sorted(all_classes.keys()):
-                class_def = all_classes[class_name]
-                if class_def.attributes:
-                    for attr_name in sorted(class_def.attributes.keys()):
-                        attr_def = class_def.attributes[attr_name]
-                        row = get_attribute_info(attr_name, attr_def, class_def, all_enums)
-                        row['Class'] = class_name
-                        writer.writerow(row)
-        
-        print(f"Generated CSV: {output_path}")
+        for cls in ["Demographics", "Diagnosis", "Exposure", "FamilyHistory", "FollowUp", "MolecularTest", "Therapy", "VitalStatus"]:
+            if cls in all_classes:
+                generate_csv_for_class(cls, all_classes[cls], all_enums, all_classes, Path(schema_path).parent, csv_dir / f"{cls.lower()}.csv")
     
-    elif module_name == "Biospecimen":
-        # For Biospecimen, include all attributes from BiospecimenData
-        if "BiospecimenData" in all_classes:
-            output_path = csv_dir / f"{output_map[module_name]}.csv"
-            generate_csv_for_class("BiospecimenData", all_classes["BiospecimenData"], all_enums, all_classes, Path(schema_path).parent, output_path)
+    # Biospecimen / DigitalPathology: single class
+    elif module_name in ["Biospecimen", "DigitalPathology"]:
+        cls_name = f"{module_name}Data"
+        if cls_name in all_classes:
+            generate_csv_for_class(cls_name, all_classes[cls_name], all_enums, all_classes, Path(schema_path).parent, csv_dir / f"{output_map[module_name]}.csv")
     
-    # For file-based modules with levels, generate CSV for each level
-    elif module_name == "WES":
-        level_files = {
-            "Level 1": Path(schema_path).parent / "level_1.yaml",
-            "Level 2": Path(schema_path).parent / "level_2.yaml",
-            "Level 3": Path(schema_path).parent / "level_3.yaml",
-        }
-        for level_name, level_file in level_files.items():
+    # Level-based modules
+    elif module_name in LEVEL_FILES:
+        for level_name, filename in LEVEL_FILES[module_name]:
+            level_file = Path(schema_path).parent / filename
             if level_file.exists():
                 generate_level_csv(level_file, level_name, module_name, output_map[module_name], all_enums, all_classes, base_dir)
-    
-    elif module_name == "scRNA-seq":
-        level_files = {
-            "Level 1": Path(schema_path).parent / "level_1.yaml",
-            "Level 2": Path(schema_path).parent / "level_2.yaml",
-            "Level 3/4": Path(schema_path).parent / "level_3_4.yaml",
-        }
-        for level_name, level_file in level_files.items():
-            if level_file.exists():
-                generate_level_csv(level_file, level_name, module_name, output_map[module_name], all_enums, all_classes, base_dir)
-    
-    elif module_name == "MultiplexMicroscopy":
-        level_files = {
-            "Level 2": Path(schema_path).parent / "level_2.yaml",
-            "Level 3": Path(schema_path).parent / "level_3.yaml",
-            "Level 4": Path(schema_path).parent / "level_4.yaml",
-        }
-        for level_name, level_file in level_files.items():
-            if level_file.exists():
-                generate_level_csv(level_file, level_name, module_name, output_map[module_name], all_enums, all_classes, base_dir)
-    
-    elif module_name == "SpatialOmics":
-        level_files = {
-            "Level 1": Path(schema_path).parent / "level_1.yaml",
-            "Level 3": Path(schema_path).parent / "level_3.yaml",
-            "Level 4": Path(schema_path).parent / "level_4.yaml",
-            "Panel": Path(schema_path).parent / "spatial_panel.yaml",
-        }
-        for level_name, level_file in level_files.items():
-            if level_file.exists():
-                generate_level_csv(level_file, level_name, module_name, output_map[module_name], all_enums, all_classes, base_dir)
-    
-    # For DigitalPathology (single level, but file-based)
-    elif module_name == "DigitalPathology":
-        if "DigitalPathologyData" in all_classes:
-            output_path = csv_dir / f"{output_map[module_name]}.csv"
-            generate_csv_for_class("DigitalPathologyData", all_classes["DigitalPathologyData"], all_enums, all_classes, Path(schema_path).parent, output_path)
 
 def main():
     base_dir = Path(__file__).parent.parent
