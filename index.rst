@@ -5,7 +5,7 @@ Documentation for the HTAN Phase 2 Data Model.
 
 All HTAN Centers are required to encode their data and metadata in a common HTAN Data Model. The HTAN Data Model is created via a community Request for Comment (RFC) process, with participation from all HTAN Centers, and covers clinical, biospecimen, genomic, transcriptomic, proteomic, imaging and spatial profiling data.
 
-This documentation describes the HTAN data model, including required metadata attributes for each assay type. To annotate metadata or submit data, use `Curator <https://curator.htan.org>`_.
+This documentation describes the HTAN data model, including required metadata attributes for each assay type. To annotate metadata or submit data, use `Curator <https://docs.synapse.org/synapse-docs/managing-metadata-with-curator>`_.
 
 This documentation provides comprehensive information about each module in the HTAN Phase 2 Data Model. Each module page lists **all attributes you need to fill out**, including inherited attributes from base modules.
 
