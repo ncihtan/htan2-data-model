@@ -1,0 +1,83 @@
+{
+  "$id": "https://w3id.org/htan/clinical/exposure",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Information about the exposure",
+  "properties": {
+    "ALCOHOL_HISTORY_INDICATOR": {
+      "description": "",
+      "enum": [
+        "Data not available",
+        "No",
+        "Not applicable",
+        "Not reported",
+        "Pending",
+        "Refused",
+        "Unknown",
+        "Yes"
+      ],
+      "title": "AlcoholHistoryIndicatorEnum",
+      "type": "string"
+    },
+    "ENVIRONMENTAL_EXPOSURE": {
+      "description": "",
+      "enum": [
+        "No",
+        "Not Reported",
+        "Unknown",
+        "Yes"
+      ],
+      "title": "EnvironmentalExposureEnum",
+      "type": "string"
+    },
+    "ENVIRONMENTAL_EXPOSURE_TYPE": {
+      "description": "Required when ENVIRONMENTAL_EXPOSURE is Yes",
+      "items": {
+        "description": "",
+        "enum": [
+          "Asbestos Exposure",
+          "Chemical Exposure",
+          "Marijuana Smoke Exposure",
+          "Radiation Exposure",
+          "Radon Exposure",
+          "Respirable Crystalline Silica Exposure",
+          "Smoke Exposure",
+          "Smokeless Tobacco Exposure",
+          "Tobacco Related Exposure",
+          "Wood Dust Exposure"
+        ],
+        "title": "EnvironmentalExposureTypeEnum",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "PACK_YEARS_SMOKED": {
+      "description": "Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker"
+    },
+    "SMOKING_HISTORY": {
+      "description": "",
+      "enum": [
+        "Current Every-Day Smoker",
+        "Current Some-Day Smoker",
+        "Current smoker",
+        "Former Smoker",
+        "Never Smoker",
+        "Non-smoker",
+        "Not reported",
+        "Unknown"
+      ],
+      "title": "SmokingHistoryEnum",
+      "type": "string"
+    },
+    "YEARS_SMOKED": {
+      "description": "Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker"
+    }
+  },
+  "required": [
+    "SMOKING_HISTORY",
+    "ALCOHOL_HISTORY_INDICATOR",
+    "ENVIRONMENTAL_EXPOSURE"
+  ],
+  "title": "ClinicalExposure",
+  "type": "object"
+}

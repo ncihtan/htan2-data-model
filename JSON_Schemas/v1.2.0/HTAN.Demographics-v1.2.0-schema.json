@@ -1,0 +1,67 @@
+{
+  "$id": "https://w3id.org/htan/clinical/demographics",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Information about the demographics",
+  "properties": {
+    "ETHNIC_GROUP": {
+      "description": "",
+      "enum": [
+        "Hispanic or Latino",
+        "Not Hispanic or Latino",
+        "Not Allowed To Collect",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "EthnicGroupEnum",
+      "type": "string"
+    },
+    "GENDER_IDENTITY": {
+      "description": "",
+      "enum": [
+        "Female",
+        "Male",
+        "Other",
+        "Unknown",
+        "Not Reported"
+      ],
+      "title": "GenderIdentityEnum",
+      "type": "string"
+    },
+    "RACE": {
+      "description": "",
+      "enum": [
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or Other Pacific Islander",
+        "White",
+        "Not Allowed To Collect",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "RaceEnum",
+      "type": "string"
+    },
+    "SEX": {
+      "description": "",
+      "enum": [
+        "Female",
+        "Male",
+        "Other",
+        "Unknown",
+        "Not Reported"
+      ],
+      "title": "SexEnum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ETHNIC_GROUP",
+    "GENDER_IDENTITY",
+    "SEX",
+    "RACE"
+  ],
+  "title": "ClinicalDemographics",
+  "type": "object"
+}

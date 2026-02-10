@@ -1,0 +1,161 @@
+{
+  "$id": "https://w3id.org/htan/clinical/vital_status",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Information about the vital status",
+  "if": {
+    "properties": {
+      "VITAL_STATUS": {
+        "const": "Dead"
+      }
+    },
+    "required": [
+      "VITAL_STATUS"
+    ]
+  },
+  "properties": {
+    "AGE_IN_DAYS_AT_DEATH": {
+      "description": "Required when VITAL_STATUS is Dead"
+    },
+    "AGE_IN_DAYS_AT_LAST_KNOWN_SURVIVAL_STATUS": {
+      "description": "Age in days when the last known survival status of the subject was captured. Use -1 if this data point is not available. (caDSR:12305768) (Aligns to CDRC Standard CDE)"
+    },
+    "CAUSE_OF_DEATH": {
+      "description": "",
+      "enum": [
+        "APL Differentiation Syndrome",
+        "Accidental death",
+        "Acute GVHD",
+        "Adult Respiratory Distress Syndrome (ARDS)",
+        "Adverse Event",
+        "Aspiration Pneumonia",
+        "BCNU IP",
+        "Bacterial infection",
+        "Cancer Related",
+        "Cardiac Disease",
+        "Cardiac failure",
+        "Cardiopulmonary Arrest",
+        "Cardiovascular Disorder",
+        "Cardiovascular accident",
+        "Central nervous system(CNS) failure",
+        "Chronic GVHD",
+        "Chronic Obstructive Pulmonary Disease",
+        "Chronic liver disease",
+        "Congestive Heart Failure",
+        "Coronary artery disease (atherosclerosis)",
+        "Dementia (including Alzheimer's disease)",
+        "Diabetes Mellitus",
+        "Disseminated intravascular coagulation (DIC)",
+        "Drug Related",
+        "End-stage Renal Disease",
+        "Failure to Thrive",
+        "Fungal infection",
+        "Gastrointestinal (GI) failure (not liver)",
+        "Gastrointestinal hemorrhage",
+        "Graft Versus Host Disease",
+        "Graft rejection or failure",
+        "HIV/AIDS",
+        "Hemorrhage",
+        "Hemorrhage, not otherwise specified",
+        "Hemorrhagic cystitis",
+        "Hepatitis",
+        "Herpes",
+        "IPS, idiopathic",
+        "IPS, viral, cytomegalovirus(CMV)",
+        "IPS, viral, other",
+        "Immunotherapy-Related",
+        "Infection",
+        "Infection, NOS",
+        "Infection, organism not identified",
+        "Influenza",
+        "Interstitial Pneumonia (IP) NOS",
+        "Intracranial hemorrhage",
+        "Liver failure (not VOD)",
+        "Multiple Organ Failure",
+        "Myocardial infarction",
+        "Natural causes",
+        "Non-protocol cancer therapy",
+        "Not Cancer Related",
+        "Not Reported",
+        "Organ failure, not otherwise specified",
+        "Other cause",
+        "Parkinson's Disease",
+        "Persistence or recurrence of underlying disease",
+        "Pneumonia NOS",
+        "Prior malignancy",
+        "Protozoal infection",
+        "Pulmonary Disease",
+        "Pulmonary Embolism",
+        "Pulmonary failure",
+        "Pulmonary hemorrhage",
+        "Radiation IP",
+        "Recurrence/persistence/progression of disease reported for first HSCT",
+        "Renal Disorder, NOS",
+        "Renal failure",
+        "Respiratory failure",
+        "Sepsis",
+        "Sinusoidal Obstruction Syndrome",
+        "Spinal Muscular Atrophy",
+        "Suicide",
+        "Surgical Complication",
+        "Thromboembolic",
+        "Thrombosis",
+        "Thrombotic thrombocytopenic purpura (HUS/TTP)",
+        "Toxicity",
+        "Unacceptable Toxicity",
+        "Unclassified infection / Infection NOS",
+        "Unknown",
+        "VOD",
+        "Vascular, not otherwise specified",
+        "Veno-occlusive disease (VOD) / sinusodial obstruction syndrome (SOS)",
+        "Viral infection"
+      ],
+      "title": "CauseOfDeathEnum",
+      "type": "string"
+    },
+    "CAUSE_OF_DEATH_SOURCE": {
+      "description": "",
+      "enum": [
+        "Autopsy Report",
+        "Death Certificate",
+        "Medical Record",
+        "Other, specify",
+        "Physician",
+        "Relative or Friend",
+        "Social Security Death Index"
+      ],
+      "title": "CauseOfDeathSourceEnum",
+      "type": "string"
+    },
+    "VITAL_STATUS": {
+      "description": "",
+      "enum": [
+        "Alive",
+        "Dead",
+        "Not reported",
+        "Unknown",
+        "Unspecified"
+      ],
+      "title": "VitalStatusEnum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "VITAL_STATUS",
+    "AGE_IN_DAYS_AT_LAST_KNOWN_SURVIVAL_STATUS"
+  ],
+  "then": {
+    "properties": {
+      "AGE_IN_DAYS_AT_DEATH": {},
+      "CAUSE_OF_DEATH": {},
+      "CAUSE_OF_DEATH_SOURCE": {}
+    },
+    "required": [
+      "AGE_IN_DAYS_AT_DEATH",
+      "CAUSE_OF_DEATH",
+      "CAUSE_OF_DEATH_SOURCE"
+    ]
+  },
+  "title": "ClinicalVitalStatus",
+  "type": "object"
+}
