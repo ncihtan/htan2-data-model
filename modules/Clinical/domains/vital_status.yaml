@@ -213,6 +213,7 @@ enums:
 
 classes:
   VitalStatus:
+    is_a: ClinicalRecordAttributes
     description: Information about the vital status
     attributes:
       VITAL_STATUS:

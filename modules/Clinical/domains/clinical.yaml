@@ -60,6 +60,17 @@ slots:
     description: The tissue or organ of origin for the primary diagnosis, using UBERON codes
 
 classes:
+  ClinicalRecordAttributes:
+    description: Base attributes shared by all clinical record types
+    attributes:
+      HTAN_PARTICIPANT_ID:
+        range: string
+        required: true
+        identifier: true
+        title: "HTAN Participant ID"
+        description: HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$"
+
   ClinicalData:
     description: Container for all clinical data
     attributes:

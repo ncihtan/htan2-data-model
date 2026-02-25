@@ -81,6 +81,7 @@ enums:
 
 classes:
   Exposure:
+    is_a: ClinicalRecordAttributes
     description: Information about the exposure
     attributes:
       SMOKING_HISTORY:
