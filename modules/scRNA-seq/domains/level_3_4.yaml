@@ -70,6 +70,10 @@ classes:
   scRNALevel3and4:
     is_a: BaseSequencingAttributes
     description: Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
+    slot_usage:
+      HTAN_PARENT_ID:
+        multivalued: true
+        description: "HTAN Parent ID(s) - Foreign key(s) to upstream Level 2 data file(s). For aggregated Level 3/4 files, provide multiple parent data file IDs; for non-aggregated files, provide a single ID. Each ID must have D suffix. Supports HTA200-229 for phase 2."
     attributes:
       # File format validation - only h5ad files accepted
       FILE_FORMAT:
