@@ -58,8 +58,9 @@ classes:
       HTAN_PARENT_ID:
         range: string
         required: true
+        multivalued: true
         title: "HTAN Parent ID"
-        description: HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2.
+        description: HTAN Parent ID(s) - Foreign key(s) to parent entity (Participant ID or Biospecimen ID with B suffix). One or more IDs. Supports HTA200-229 for phase 2.
         pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$"
       
       ADJACENT_BIOSPECIMEN_IDS:
