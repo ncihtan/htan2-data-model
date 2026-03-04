@@ -1,5 +1,5 @@
 # Auto generated from scrna_seq.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-04T20:01:31
+# Generation date: 2026-03-04T20:08:16
 # Schema: scRNA-seq
 #
 # id: https://w3id.org/htan/scrna_seq
