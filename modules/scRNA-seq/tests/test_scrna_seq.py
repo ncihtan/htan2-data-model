@@ -223,13 +223,17 @@ class TestScRNAseqSchema:
             ), f"{enum_name} values not alphabetical: {values}"
 
     def test_inheritance_from_base_sequencing(self):
-        """Test that scRNA-seq classes inherit from BaseSequencingAttributes."""
+        """Test that scRNA-seq classes inherit from level-specific base classes (issue #132)."""
         sv = SchemaView(SCHEMA_PATH)
 
-        # Check inheritance for all levels
-        for level_class in ["scRNALevel1", "scRNALevel2", "scRNALevel3and4"]:
+        expected_base = {
+            "scRNALevel1": "BaseSequencingLevel1Attributes",
+            "scRNALevel2": "BaseSequencingLevel2Attributes",
+            "scRNALevel3and4": "BaseSequencingLevel3Attributes",
+        }
+        for level_class, base in expected_base.items():
             class_def = sv.get_class(level_class)
-            assert class_def.is_a == "BaseSequencingAttributes"
+            assert class_def.is_a == base, f"{level_class} should inherit from {base}"
 
 
 class TestScRNAseqDataValidation:
