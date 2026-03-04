@@ -9,53 +9,30 @@
 import dataclasses
 import re
 from dataclasses import dataclass
-from datetime import (
-    date,
-    datetime,
-    time
-)
-from typing import (
-    Any,
-    ClassVar,
-    Dict,
-    List,
-    Optional,
-    Union
-)
+from datetime import date, datetime, time
+from typing import Any, ClassVar, Dict, List, Optional, Union
 
-from jsonasobj2 import (
-    JsonObj,
-    as_dict
-)
+from jsonasobj2 import JsonObj, as_dict
 from linkml_runtime.linkml_model.meta import (
     EnumDefinition,
     PermissibleValue,
-    PvFormulaOptions
+    PvFormulaOptions,
 )
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml_runtime.utils.dataclass_extensions_376 import (
+    dataclasses_init_fn_with_kwargs,
+)
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
-from linkml_runtime.utils.formatutils import (
-    camelcase,
-    sfx,
-    underscore
-)
-from linkml_runtime.utils.metamodelcore import (
-    bnode,
-    empty_dict,
-    empty_list
-)
+from linkml_runtime.utils.formatutils import camelcase, sfx, underscore
+from linkml_runtime.utils.metamodelcore import bnode, empty_dict, empty_list
 from linkml_runtime.utils.slot import Slot
 from linkml_runtime.utils.yamlutils import (
     YAMLRoot,
     extended_float,
     extended_int,
-    extended_str
+    extended_str,
 )
-from rdflib import (
-    Namespace,
-    URIRef
-)
+from rdflib import Namespace, URIRef
 
 from linkml_runtime.linkml_model.types import Boolean, Integer, String
 from linkml_runtime.utils.metamodelcore import Bool
@@ -67,13 +44,14 @@ version = None
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
-HTAN = CurieNamespace('htan', 'https://w3id.org/htan/')
-LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+NCIT = CurieNamespace("NCIT", "http://purl.obolibrary.org/obo/NCIT_")
+HTAN = CurieNamespace("htan", "https://w3id.org/htan/")
+LINKML = CurieNamespace("linkml", "https://w3id.org/linkml/")
 DEFAULT_ = HTAN
 
 
 # Types
+
 
 # Class references
 class CoreFileAttributesHTANDATAFILEID(extended_str):
@@ -84,7 +62,9 @@ class BaseSequencingAttributesHTANDATAFILEID(CoreFileAttributesHTANDATAFILEID):
     pass
 
 
-class BaseSequencingLevel1AttributesHTANDATAFILEID(BaseSequencingAttributesHTANDATAFILEID):
+class BaseSequencingLevel1AttributesHTANDATAFILEID(
+    BaseSequencingAttributesHTANDATAFILEID
+):
     pass
 
 
@@ -92,7 +72,9 @@ class ScRNALevel1HTANDATAFILEID(BaseSequencingLevel1AttributesHTANDATAFILEID):
     pass
 
 
-class BaseSequencingLevel2AttributesHTANDATAFILEID(BaseSequencingLevel1AttributesHTANDATAFILEID):
+class BaseSequencingLevel2AttributesHTANDATAFILEID(
+    BaseSequencingLevel1AttributesHTANDATAFILEID
+):
     pass
 
 
@@ -100,7 +82,9 @@ class ScRNALevel2HTANDATAFILEID(BaseSequencingLevel2AttributesHTANDATAFILEID):
     pass
 
 
-class BaseSequencingLevel3AttributesHTANDATAFILEID(BaseSequencingLevel2AttributesHTANDATAFILEID):
+class BaseSequencingLevel3AttributesHTANDATAFILEID(
+    BaseSequencingLevel2AttributesHTANDATAFILEID
+):
     pass
 
 
@@ -113,6 +97,7 @@ class ScRNAseqData(YAMLRoot):
     """
     Root class for scRNA-seq data
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["ScRNAseqData"]
@@ -125,13 +110,19 @@ class ScRNAseqData(YAMLRoot):
     level3_4_data: Optional[Union[str, ScRNALevel3and4HTANDATAFILEID]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.level1_data is not None and not isinstance(self.level1_data, ScRNALevel1HTANDATAFILEID):
+        if self.level1_data is not None and not isinstance(
+            self.level1_data, ScRNALevel1HTANDATAFILEID
+        ):
             self.level1_data = ScRNALevel1HTANDATAFILEID(self.level1_data)
 
-        if self.level2_data is not None and not isinstance(self.level2_data, ScRNALevel2HTANDATAFILEID):
+        if self.level2_data is not None and not isinstance(
+            self.level2_data, ScRNALevel2HTANDATAFILEID
+        ):
             self.level2_data = ScRNALevel2HTANDATAFILEID(self.level2_data)
 
-        if self.level3_4_data is not None and not isinstance(self.level3_4_data, ScRNALevel3and4HTANDATAFILEID):
+        if self.level3_4_data is not None and not isinstance(
+            self.level3_4_data, ScRNALevel3and4HTANDATAFILEID
+        ):
             self.level3_4_data = ScRNALevel3and4HTANDATAFILEID(self.level3_4_data)
 
         super().__post_init__(**kwargs)
@@ -142,6 +133,7 @@ class CoreFileAttributes(YAMLRoot):
     """
     Universal attributes that apply to all file-based data in HTAN
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["CoreFileAttributes"]
@@ -158,7 +150,9 @@ class CoreFileAttributes(YAMLRoot):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, CoreFileAttributesHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = CoreFileAttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+            self.HTAN_DATA_FILE_ID = CoreFileAttributesHTANDATAFILEID(
+                self.HTAN_DATA_FILE_ID
+            )
 
         if self._is_empty(self.FILENAME):
             self.MissingRequiredField("FILENAME")
@@ -173,8 +167,12 @@ class CoreFileAttributes(YAMLRoot):
         if self._is_empty(self.HTAN_PARENT_ID):
             self.MissingRequiredField("HTAN_PARENT_ID")
         if not isinstance(self.HTAN_PARENT_ID, list):
-            self.HTAN_PARENT_ID = [self.HTAN_PARENT_ID] if self.HTAN_PARENT_ID is not None else []
-        self.HTAN_PARENT_ID = [v if isinstance(v, str) else str(v) for v in self.HTAN_PARENT_ID]
+            self.HTAN_PARENT_ID = (
+                [self.HTAN_PARENT_ID] if self.HTAN_PARENT_ID is not None else []
+            )
+        self.HTAN_PARENT_ID = [
+            v if isinstance(v, str) else str(v) for v in self.HTAN_PARENT_ID
+        ]
 
         super().__post_init__(**kwargs)
 
@@ -184,6 +182,7 @@ class BaseSequencingAttributes(CoreFileAttributes):
     """
     Minimal base attributes shared across all sequencing types
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["BaseSequencingAttributes"]
@@ -200,8 +199,12 @@ class BaseSequencingAttributes(CoreFileAttributes):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, BaseSequencingAttributesHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = BaseSequencingAttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+        if not isinstance(
+            self.HTAN_DATA_FILE_ID, BaseSequencingAttributesHTANDATAFILEID
+        ):
+            self.HTAN_DATA_FILE_ID = BaseSequencingAttributesHTANDATAFILEID(
+                self.HTAN_DATA_FILE_ID
+            )
 
         if self.CHECKSUM is not None and not isinstance(self.CHECKSUM, str):
             self.CHECKSUM = str(self.CHECKSUM)
@@ -214,6 +217,7 @@ class BaseSequencingLevel1Attributes(BaseSequencingAttributes):
     """
     Level 1 attributes - sequencing run and library (raw data)
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["BaseSequencingLevel1Attributes"]
@@ -235,8 +239,12 @@ class BaseSequencingLevel1Attributes(BaseSequencingAttributes):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, BaseSequencingLevel1AttributesHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = BaseSequencingLevel1AttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+        if not isinstance(
+            self.HTAN_DATA_FILE_ID, BaseSequencingLevel1AttributesHTANDATAFILEID
+        ):
+            self.HTAN_DATA_FILE_ID = BaseSequencingLevel1AttributesHTANDATAFILEID(
+                self.HTAN_DATA_FILE_ID
+            )
 
         if self._is_empty(self.LIBRARY_LAYOUT):
             self.MissingRequiredField("LIBRARY_LAYOUT")
@@ -248,13 +256,21 @@ class BaseSequencingLevel1Attributes(BaseSequencingAttributes):
         if not isinstance(self.SEQUENCING_PLATFORM, SequencingPlatformEnum):
             self.SEQUENCING_PLATFORM = SequencingPlatformEnum(self.SEQUENCING_PLATFORM)
 
-        if self.SEQUENCING_BATCH_ID is not None and not isinstance(self.SEQUENCING_BATCH_ID, str):
+        if self.SEQUENCING_BATCH_ID is not None and not isinstance(
+            self.SEQUENCING_BATCH_ID, str
+        ):
             self.SEQUENCING_BATCH_ID = str(self.SEQUENCING_BATCH_ID)
 
-        if self.LIBRARY_PREPARATION_DAYS_FROM_INDEX is not None and not isinstance(self.LIBRARY_PREPARATION_DAYS_FROM_INDEX, int):
-            self.LIBRARY_PREPARATION_DAYS_FROM_INDEX = int(self.LIBRARY_PREPARATION_DAYS_FROM_INDEX)
+        if self.LIBRARY_PREPARATION_DAYS_FROM_INDEX is not None and not isinstance(
+            self.LIBRARY_PREPARATION_DAYS_FROM_INDEX, int
+        ):
+            self.LIBRARY_PREPARATION_DAYS_FROM_INDEX = int(
+                self.LIBRARY_PREPARATION_DAYS_FROM_INDEX
+            )
 
-        if self.TECHNICAL_REPLICATE_GROUP is not None and not isinstance(self.TECHNICAL_REPLICATE_GROUP, str):
+        if self.TECHNICAL_REPLICATE_GROUP is not None and not isinstance(
+            self.TECHNICAL_REPLICATE_GROUP, str
+        ):
             self.TECHNICAL_REPLICATE_GROUP = str(self.TECHNICAL_REPLICATE_GROUP)
 
         if self.PROTOCOL_LINK is not None and not isinstance(self.PROTOCOL_LINK, str):
@@ -268,6 +284,7 @@ class ScRNALevel1(BaseSequencingLevel1Attributes):
     """
     scRNA-seq Level 1 data - Raw sequencing files and metadata
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["ScRNALevel1"]
@@ -308,8 +325,12 @@ class ScRNALevel1(BaseSequencingLevel1Attributes):
 
         if self._is_empty(self.SINGLE_CELL_ISOLATION_METHOD):
             self.MissingRequiredField("SINGLE_CELL_ISOLATION_METHOD")
-        if not isinstance(self.SINGLE_CELL_ISOLATION_METHOD, SingleCellIsolationMethodEnum):
-            self.SINGLE_CELL_ISOLATION_METHOD = SingleCellIsolationMethodEnum(self.SINGLE_CELL_ISOLATION_METHOD)
+        if not isinstance(
+            self.SINGLE_CELL_ISOLATION_METHOD, SingleCellIsolationMethodEnum
+        ):
+            self.SINGLE_CELL_ISOLATION_METHOD = SingleCellIsolationMethodEnum(
+                self.SINGLE_CELL_ISOLATION_METHOD
+            )
 
         if self._is_empty(self.DISSOCIATION_METHOD):
             self.MissingRequiredField("DISSOCIATION_METHOD")
@@ -323,13 +344,21 @@ class ScRNALevel1(BaseSequencingLevel1Attributes):
 
         if self._is_empty(self.LIBRARY_CONSTRUCTION_METHOD):
             self.MissingRequiredField("LIBRARY_CONSTRUCTION_METHOD")
-        if not isinstance(self.LIBRARY_CONSTRUCTION_METHOD, LibraryConstructionMethodEnum):
-            self.LIBRARY_CONSTRUCTION_METHOD = LibraryConstructionMethodEnum(self.LIBRARY_CONSTRUCTION_METHOD)
+        if not isinstance(
+            self.LIBRARY_CONSTRUCTION_METHOD, LibraryConstructionMethodEnum
+        ):
+            self.LIBRARY_CONSTRUCTION_METHOD = LibraryConstructionMethodEnum(
+                self.LIBRARY_CONSTRUCTION_METHOD
+            )
 
         if self._is_empty(self.REVERSE_TRANSCRIPTION_PRIMER):
             self.MissingRequiredField("REVERSE_TRANSCRIPTION_PRIMER")
-        if not isinstance(self.REVERSE_TRANSCRIPTION_PRIMER, ReverseTranscriptionPrimerEnum):
-            self.REVERSE_TRANSCRIPTION_PRIMER = ReverseTranscriptionPrimerEnum(self.REVERSE_TRANSCRIPTION_PRIMER)
+        if not isinstance(
+            self.REVERSE_TRANSCRIPTION_PRIMER, ReverseTranscriptionPrimerEnum
+        ):
+            self.REVERSE_TRANSCRIPTION_PRIMER = ReverseTranscriptionPrimerEnum(
+                self.REVERSE_TRANSCRIPTION_PRIMER
+            )
 
         if self._is_empty(self.SPIKE_IN):
             self.MissingRequiredField("SPIKE_IN")
@@ -341,8 +370,12 @@ class ScRNALevel1(BaseSequencingLevel1Attributes):
         if not isinstance(self.READ_INDICATOR, ReadIndicatorEnum):
             self.READ_INDICATOR = ReadIndicatorEnum(self.READ_INDICATOR)
 
-        if self.CRYOPRESERVED_CELLS_IN_SAMPLE is not None and not isinstance(self.CRYOPRESERVED_CELLS_IN_SAMPLE, Bool):
-            self.CRYOPRESERVED_CELLS_IN_SAMPLE = Bool(self.CRYOPRESERVED_CELLS_IN_SAMPLE)
+        if self.CRYOPRESERVED_CELLS_IN_SAMPLE is not None and not isinstance(
+            self.CRYOPRESERVED_CELLS_IN_SAMPLE, Bool
+        ):
+            self.CRYOPRESERVED_CELLS_IN_SAMPLE = Bool(
+                self.CRYOPRESERVED_CELLS_IN_SAMPLE
+            )
 
         super().__post_init__(**kwargs)
 
@@ -352,6 +385,7 @@ class BaseSequencingLevel2Attributes(BaseSequencingLevel1Attributes):
     """
     Level 2 attributes - alignment and alignment workflow
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["BaseSequencingLevel2Attributes"]
@@ -374,8 +408,12 @@ class BaseSequencingLevel2Attributes(BaseSequencingLevel1Attributes):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, BaseSequencingLevel2AttributesHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = BaseSequencingLevel2AttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+        if not isinstance(
+            self.HTAN_DATA_FILE_ID, BaseSequencingLevel2AttributesHTANDATAFILEID
+        ):
+            self.HTAN_DATA_FILE_ID = BaseSequencingLevel2AttributesHTANDATAFILEID(
+                self.HTAN_DATA_FILE_ID
+            )
 
         if self._is_empty(self.GENOMIC_REFERENCE):
             self.MissingRequiredField("GENOMIC_REFERENCE")
@@ -392,10 +430,14 @@ class BaseSequencingLevel2Attributes(BaseSequencingLevel1Attributes):
         if not isinstance(self.WORKFLOW_LINK, str):
             self.WORKFLOW_LINK = str(self.WORKFLOW_LINK)
 
-        if self.GENOMIC_REFERENCE_URL is not None and not isinstance(self.GENOMIC_REFERENCE_URL, str):
+        if self.GENOMIC_REFERENCE_URL is not None and not isinstance(
+            self.GENOMIC_REFERENCE_URL, str
+        ):
             self.GENOMIC_REFERENCE_URL = str(self.GENOMIC_REFERENCE_URL)
 
-        if self.GENOME_ANNOTATION_URL is not None and not isinstance(self.GENOME_ANNOTATION_URL, str):
+        if self.GENOME_ANNOTATION_URL is not None and not isinstance(
+            self.GENOME_ANNOTATION_URL, str
+        ):
             self.GENOME_ANNOTATION_URL = str(self.GENOME_ANNOTATION_URL)
 
         super().__post_init__(**kwargs)
@@ -406,6 +448,7 @@ class ScRNALevel2(BaseSequencingLevel2Attributes):
     """
     scRNA-seq Level 2 data - Workflow and processing metadata
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["ScRNALevel2"]
@@ -446,12 +489,20 @@ class ScRNALevel2(BaseSequencingLevel2Attributes):
         if self._is_empty(self.SCRNASEQ_WORKFLOW_TYPE):
             self.MissingRequiredField("SCRNASEQ_WORKFLOW_TYPE")
         if not isinstance(self.SCRNASEQ_WORKFLOW_TYPE, ScRNAseqWorkflowTypeEnumLevel2):
-            self.SCRNASEQ_WORKFLOW_TYPE = ScRNAseqWorkflowTypeEnumLevel2(self.SCRNASEQ_WORKFLOW_TYPE)
+            self.SCRNASEQ_WORKFLOW_TYPE = ScRNAseqWorkflowTypeEnumLevel2(
+                self.SCRNASEQ_WORKFLOW_TYPE
+            )
 
-        if self.WHITELIST_CELL_BARCODE_FILE_LINK is not None and not isinstance(self.WHITELIST_CELL_BARCODE_FILE_LINK, str):
-            self.WHITELIST_CELL_BARCODE_FILE_LINK = str(self.WHITELIST_CELL_BARCODE_FILE_LINK)
+        if self.WHITELIST_CELL_BARCODE_FILE_LINK is not None and not isinstance(
+            self.WHITELIST_CELL_BARCODE_FILE_LINK, str
+        ):
+            self.WHITELIST_CELL_BARCODE_FILE_LINK = str(
+                self.WHITELIST_CELL_BARCODE_FILE_LINK
+            )
 
-        if self.CELL_BARCODE_TAG is not None and not isinstance(self.CELL_BARCODE_TAG, str):
+        if self.CELL_BARCODE_TAG is not None and not isinstance(
+            self.CELL_BARCODE_TAG, str
+        ):
             self.CELL_BARCODE_TAG = str(self.CELL_BARCODE_TAG)
 
         if self.UMI_TAG is not None and not isinstance(self.UMI_TAG, str):
@@ -465,6 +516,7 @@ class BaseSequencingLevel3Attributes(BaseSequencingLevel2Attributes):
     """
     Level 3+ attributes - inherits alignment and workflow; used for processed/analysis levels
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["BaseSequencingLevel3Attributes"]
@@ -485,8 +537,12 @@ class BaseSequencingLevel3Attributes(BaseSequencingLevel2Attributes):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
-        if not isinstance(self.HTAN_DATA_FILE_ID, BaseSequencingLevel3AttributesHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = BaseSequencingLevel3AttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+        if not isinstance(
+            self.HTAN_DATA_FILE_ID, BaseSequencingLevel3AttributesHTANDATAFILEID
+        ):
+            self.HTAN_DATA_FILE_ID = BaseSequencingLevel3AttributesHTANDATAFILEID(
+                self.HTAN_DATA_FILE_ID
+            )
 
         super().__post_init__(**kwargs)
 
@@ -496,6 +552,7 @@ class ScRNALevel3and4(BaseSequencingLevel3Attributes):
     """
     Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["ScRNALevel3and4"]
@@ -527,7 +584,9 @@ class ScRNALevel3and4(BaseSequencingLevel3Attributes):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, ScRNALevel3and4HTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = ScRNALevel3and4HTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+            self.HTAN_DATA_FILE_ID = ScRNALevel3and4HTANDATAFILEID(
+                self.HTAN_DATA_FILE_ID
+            )
 
         if self._is_empty(self.FILE_FORMAT):
             self.MissingRequiredField("FILE_FORMAT")
@@ -541,13 +600,19 @@ class ScRNALevel3and4(BaseSequencingLevel3Attributes):
 
         if self._is_empty(self.SCRNASEQ_WORKFLOW_TYPE):
             self.MissingRequiredField("SCRNASEQ_WORKFLOW_TYPE")
-        if not isinstance(self.SCRNASEQ_WORKFLOW_TYPE, ScRNAseqWorkflowTypeEnumLevel3and4):
-            self.SCRNASEQ_WORKFLOW_TYPE = ScRNAseqWorkflowTypeEnumLevel3and4(self.SCRNASEQ_WORKFLOW_TYPE)
+        if not isinstance(
+            self.SCRNASEQ_WORKFLOW_TYPE, ScRNAseqWorkflowTypeEnumLevel3and4
+        ):
+            self.SCRNASEQ_WORKFLOW_TYPE = ScRNAseqWorkflowTypeEnumLevel3and4(
+                self.SCRNASEQ_WORKFLOW_TYPE
+            )
 
         if self._is_empty(self.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION):
             self.MissingRequiredField("SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION")
         if not isinstance(self.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION, str):
-            self.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION = str(self.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION)
+            self.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION = str(
+                self.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION
+            )
 
         if self._is_empty(self.DATA_CATEGORY):
             self.MissingRequiredField("DATA_CATEGORY")
@@ -584,7 +649,9 @@ class ScRNALevel3and4(BaseSequencingLevel3Attributes):
         if not isinstance(self.ANNDATA_STRUCTURE_VALIDATED, Bool):
             self.ANNDATA_STRUCTURE_VALIDATED = Bool(self.ANNDATA_STRUCTURE_VALIDATED)
 
-        if self.LINKED_MATRICES is not None and not isinstance(self.LINKED_MATRICES, str):
+        if self.LINKED_MATRICES is not None and not isinstance(
+            self.LINKED_MATRICES, str
+        ):
             self.LINKED_MATRICES = str(self.LINKED_MATRICES)
 
         super().__post_init__(**kwargs)
@@ -594,33 +661,32 @@ class ScRNALevel3and4(BaseSequencingLevel3Attributes):
 class DissociationMethodEnum(EnumDefinitionImpl):
 
     Enzymatic = PermissibleValue(
-        text="Enzymatic",
-        description="Enzymatic dissociation method")
+        text="Enzymatic", description="Enzymatic dissociation method"
+    )
     Mechanical = PermissibleValue(
-        text="Mechanical",
-        description="Mechanical dissociation method")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other dissociation method")
+        text="Mechanical", description="Mechanical dissociation method"
+    )
+    Other = PermissibleValue(text="Other", description="Other dissociation method")
     Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown dissociation method")
+        text="Unknown", description="Unknown dissociation method"
+    )
 
     _defn = EnumDefinition(
         name="DissociationMethodEnum",
     )
 
+
 class LibraryConstructionMethodEnum(EnumDefinitionImpl):
 
     InDrop = PermissibleValue(
-        text="InDrop",
-        description="InDrop library construction method")
+        text="InDrop", description="InDrop library construction method"
+    )
     Other = PermissibleValue(
-        text="Other",
-        description="Other library construction method")
+        text="Other", description="Other library construction method"
+    )
     Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown library construction method")
+        text="Unknown", description="Unknown library construction method"
+    )
 
     _defn = EnumDefinition(
         name="LibraryConstructionMethodEnum",
@@ -628,63 +694,68 @@ class LibraryConstructionMethodEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "10X Genomics",
+        setattr(
+            cls,
+            "10X Genomics",
             PermissibleValue(
                 text="10X Genomics",
-                description="10X Genomics library construction method"))
-        setattr(cls, "Drop-seq",
+                description="10X Genomics library construction method",
+            ),
+        )
+        setattr(
+            cls,
+            "Drop-seq",
             PermissibleValue(
-                text="Drop-seq",
-                description="Drop-seq library construction method"))
-        setattr(cls, "Fluidigm C1",
+                text="Drop-seq", description="Drop-seq library construction method"
+            ),
+        )
+        setattr(
+            cls,
+            "Fluidigm C1",
             PermissibleValue(
                 text="Fluidigm C1",
-                description="Fluidigm C1 library construction method"))
-        setattr(cls, "Smart-seq",
+                description="Fluidigm C1 library construction method",
+            ),
+        )
+        setattr(
+            cls,
+            "Smart-seq",
             PermissibleValue(
-                text="Smart-seq",
-                description="Smart-seq library construction method"))
+                text="Smart-seq", description="Smart-seq library construction method"
+            ),
+        )
+
 
 class NucleicAcidSourceEnum(EnumDefinitionImpl):
 
-    DNA = PermissibleValue(
-        text="DNA",
-        description="DNA nucleic acid source")
-    RNA = PermissibleValue(
-        text="RNA",
-        description="RNA nucleic acid source")
+    DNA = PermissibleValue(text="DNA", description="DNA nucleic acid source")
+    RNA = PermissibleValue(text="RNA", description="RNA nucleic acid source")
     Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown nucleic acid source")
+        text="Unknown", description="Unknown nucleic acid source"
+    )
 
     _defn = EnumDefinition(
         name="NucleicAcidSourceEnum",
     )
 
+
 class ReadIndicatorEnum(EnumDefinitionImpl):
 
-    Forward = PermissibleValue(
-        text="Forward",
-        description="Forward read indicator")
-    Index = PermissibleValue(
-        text="Index",
-        description="Index read indicator")
-    Reverse = PermissibleValue(
-        text="Reverse",
-        description="Reverse read indicator")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown read indicator")
+    Forward = PermissibleValue(text="Forward", description="Forward read indicator")
+    Index = PermissibleValue(text="Index", description="Index read indicator")
+    Reverse = PermissibleValue(text="Reverse", description="Reverse read indicator")
+    Unknown = PermissibleValue(text="Unknown", description="Unknown read indicator")
 
     _defn = EnumDefinition(
         name="ReadIndicatorEnum",
     )
 
+
 class ReverseTranscriptionPrimerEnum(EnumDefinitionImpl):
 
     Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown reverse transcription primer")
+        text="Unknown", description="Unknown reverse transcription primer"
+    )
 
     _defn = EnumDefinition(
         name="ReverseTranscriptionPrimerEnum",
@@ -692,26 +763,30 @@ class ReverseTranscriptionPrimerEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Oligo-dT",
+        setattr(
+            cls,
+            "Oligo-dT",
             PermissibleValue(
-                text="Oligo-dT",
-                description="Oligo-dT reverse transcription primer"))
-        setattr(cls, "Random Hexamer",
+                text="Oligo-dT", description="Oligo-dT reverse transcription primer"
+            ),
+        )
+        setattr(
+            cls,
+            "Random Hexamer",
             PermissibleValue(
                 text="Random Hexamer",
-                description="Random hexamer reverse transcription primer"))
+                description="Random hexamer reverse transcription primer",
+            ),
+        )
+
 
 class SingleCellIsolationMethodEnum(EnumDefinitionImpl):
 
     Microfluidics = PermissibleValue(
-        text="Microfluidics",
-        description="Microfluidics isolation method")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other isolation method")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown isolation method")
+        text="Microfluidics", description="Microfluidics isolation method"
+    )
+    Other = PermissibleValue(text="Other", description="Other isolation method")
+    Unknown = PermissibleValue(text="Unknown", description="Unknown isolation method")
 
     _defn = EnumDefinition(
         name="SingleCellIsolationMethodEnum",
@@ -719,30 +794,34 @@ class SingleCellIsolationMethodEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Cell Sorting",
+        setattr(
+            cls,
+            "Cell Sorting",
             PermissibleValue(
-                text="Cell Sorting",
-                description="Cell sorting isolation method"))
-        setattr(cls, "Droplet-based",
+                text="Cell Sorting", description="Cell sorting isolation method"
+            ),
+        )
+        setattr(
+            cls,
+            "Droplet-based",
             PermissibleValue(
-                text="Droplet-based",
-                description="Droplet-based isolation method"))
-        setattr(cls, "Manual Picking",
+                text="Droplet-based", description="Droplet-based isolation method"
+            ),
+        )
+        setattr(
+            cls,
+            "Manual Picking",
             PermissibleValue(
-                text="Manual Picking",
-                description="Manual picking isolation method"))
+                text="Manual Picking", description="Manual picking isolation method"
+            ),
+        )
+
 
 class SpikeInEnum(EnumDefinitionImpl):
 
-    ERCC = PermissibleValue(
-        text="ERCC",
-        description="ERCC spike-in")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other spike-in")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown spike-in")
+    ERCC = PermissibleValue(text="ERCC", description="ERCC spike-in")
+    Other = PermissibleValue(text="Other", description="Other spike-in")
+    Unknown = PermissibleValue(text="Unknown", description="Unknown spike-in")
 
     _defn = EnumDefinition(
         name="SpikeInEnum",
@@ -750,31 +829,17 @@ class SpikeInEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "None",
-            PermissibleValue(
-                text="None",
-                description="No spike-in"))
+        setattr(cls, "None", PermissibleValue(text="None", description="No spike-in"))
+
 
 class ScRNAseqWorkflowTypeEnumLevel2(EnumDefinitionImpl):
 
-    CellRanger = PermissibleValue(
-        text="CellRanger",
-        description="CellRanger workflow")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other workflow")
-    SEQC = PermissibleValue(
-        text="SEQC",
-        description="SEQC workflow")
-    STARsolo = PermissibleValue(
-        text="STARsolo",
-        description="STARsolo workflow")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Unknown workflow")
-    dropEST = PermissibleValue(
-        text="dropEST",
-        description="dropEST workflow")
+    CellRanger = PermissibleValue(text="CellRanger", description="CellRanger workflow")
+    Other = PermissibleValue(text="Other", description="Other workflow")
+    SEQC = PermissibleValue(text="SEQC", description="SEQC workflow")
+    STARsolo = PermissibleValue(text="STARsolo", description="STARsolo workflow")
+    Unknown = PermissibleValue(text="Unknown", description="Unknown workflow")
+    dropEST = PermissibleValue(text="dropEST", description="dropEST workflow")
 
     _defn = EnumDefinition(
         name="ScRNAseqWorkflowTypeEnumLevel2",
@@ -782,34 +847,26 @@ class ScRNAseqWorkflowTypeEnumLevel2(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "HCA Optimus",
-            PermissibleValue(
-                text="HCA Optimus",
-                description="HCA Optimus workflow"))
+        setattr(
+            cls,
+            "HCA Optimus",
+            PermissibleValue(text="HCA Optimus", description="HCA Optimus workflow"),
+        )
+
 
 class ScRNAseqWorkflowTypeEnumLevel3and4(EnumDefinitionImpl):
 
     CellRanger = PermissibleValue(
-        text="CellRanger",
-        description="10x Genomics CellRanger workflow")
-    Cufflinks = PermissibleValue(
-        text="Cufflinks",
-        description="Cufflinks workflow")
-    DEXSeq = PermissibleValue(
-        text="DEXSeq",
-        description="DEXSeq workflow")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other workflow type")
-    SEQC = PermissibleValue(
-        text="SEQC",
-        description="SEQC workflow")
+        text="CellRanger", description="10x Genomics CellRanger workflow"
+    )
+    Cufflinks = PermissibleValue(text="Cufflinks", description="Cufflinks workflow")
+    DEXSeq = PermissibleValue(text="DEXSeq", description="DEXSeq workflow")
+    Other = PermissibleValue(text="Other", description="Other workflow type")
+    SEQC = PermissibleValue(text="SEQC", description="SEQC workflow")
     STARsolo = PermissibleValue(
-        text="STARsolo",
-        description="STARsolo alignment workflow")
-    dropEST = PermissibleValue(
-        text="dropEST",
-        description="dropEST workflow")
+        text="STARsolo", description="STARsolo alignment workflow"
+    )
+    dropEST = PermissibleValue(text="dropEST", description="dropEST workflow")
 
     _defn = EnumDefinition(
         name="ScRNAseqWorkflowTypeEnumLevel3and4",
@@ -817,28 +874,38 @@ class ScRNAseqWorkflowTypeEnumLevel3and4(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Cell annotation",
+        setattr(
+            cls,
+            "Cell annotation",
             PermissibleValue(
-                text="Cell annotation",
-                description="Cell annotation workflow"))
-        setattr(cls, "Differentiation trajectory analysis",
+                text="Cell annotation", description="Cell annotation workflow"
+            ),
+        )
+        setattr(
+            cls,
+            "Differentiation trajectory analysis",
             PermissibleValue(
                 text="Differentiation trajectory analysis",
-                description="Differentiation trajectory analysis workflow"))
-        setattr(cls, "HCA Optimus",
+                description="Differentiation trajectory analysis workflow",
+            ),
+        )
+        setattr(
+            cls,
+            "HCA Optimus",
             PermissibleValue(
-                text="HCA Optimus",
-                description="Human Cell Atlas Optimus workflow"))
-        setattr(cls, "HTSeq - FPKM",
-            PermissibleValue(
-                text="HTSeq - FPKM",
-                description="HTSeq FPKM workflow"))
+                text="HCA Optimus", description="Human Cell Atlas Optimus workflow"
+            ),
+        )
+        setattr(
+            cls,
+            "HTSeq - FPKM",
+            PermissibleValue(text="HTSeq - FPKM", description="HTSeq FPKM workflow"),
+        )
+
 
 class DataCategoryEnum(EnumDefinitionImpl):
 
-    Other = PermissibleValue(
-        text="Other",
-        description="Other data category")
+    Other = PermissibleValue(text="Other", description="Other data category")
 
     _defn = EnumDefinition(
         name="DataCategoryEnum",
@@ -846,30 +913,53 @@ class DataCategoryEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Exon Expression Quantification",
+        setattr(
+            cls,
+            "Exon Expression Quantification",
             PermissibleValue(
                 text="Exon Expression Quantification",
-                description="Exon expression quantification"))
-        setattr(cls, "Gene Expression",
+                description="Exon expression quantification",
+            ),
+        )
+        setattr(
+            cls,
+            "Gene Expression",
             PermissibleValue(
-                text="Gene Expression",
-                description="Gene expression data"))
-        setattr(cls, "Gene Expression Quantification",
+                text="Gene Expression", description="Gene expression data"
+            ),
+        )
+        setattr(
+            cls,
+            "Gene Expression Quantification",
             PermissibleValue(
                 text="Gene Expression Quantification",
-                description="Gene expression quantification"))
-        setattr(cls, "Isoform Expression Quantification",
+                description="Gene expression quantification",
+            ),
+        )
+        setattr(
+            cls,
+            "Isoform Expression Quantification",
             PermissibleValue(
                 text="Isoform Expression Quantification",
-                description="Isoform expression quantification"))
-        setattr(cls, "Splice Junction Quantification",
+                description="Isoform expression quantification",
+            ),
+        )
+        setattr(
+            cls,
+            "Splice Junction Quantification",
             PermissibleValue(
                 text="Splice Junction Quantification",
-                description="Splice junction quantification"))
-        setattr(cls, "Transcript Expression",
+                description="Splice junction quantification",
+            ),
+        )
+        setattr(
+            cls,
+            "Transcript Expression",
             PermissibleValue(
-                text="Transcript Expression",
-                description="Transcript expression data"))
+                text="Transcript Expression", description="Transcript expression data"
+            ),
+        )
+
 
 class MatrixTypeEnum(EnumDefinitionImpl):
 
@@ -879,22 +969,32 @@ class MatrixTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Batch Corrected Counts",
+        setattr(
+            cls,
+            "Batch Corrected Counts",
             PermissibleValue(
                 text="Batch Corrected Counts",
-                description="Batch corrected count matrix"))
-        setattr(cls, "Normalized Counts",
+                description="Batch corrected count matrix",
+            ),
+        )
+        setattr(
+            cls,
+            "Normalized Counts",
             PermissibleValue(
-                text="Normalized Counts",
-                description="Normalized count matrix"))
-        setattr(cls, "Raw Counts",
-            PermissibleValue(
-                text="Raw Counts",
-                description="Raw count matrix"))
-        setattr(cls, "Scaled Counts",
-            PermissibleValue(
-                text="Scaled Counts",
-                description="Scaled count matrix"))
+                text="Normalized Counts", description="Normalized count matrix"
+            ),
+        )
+        setattr(
+            cls,
+            "Raw Counts",
+            PermissibleValue(text="Raw Counts", description="Raw count matrix"),
+        )
+        setattr(
+            cls,
+            "Scaled Counts",
+            PermissibleValue(text="Scaled Counts", description="Scaled count matrix"),
+        )
+
 
 class LibraryLayoutEnum(EnumDefinitionImpl):
 
@@ -904,74 +1004,74 @@ class LibraryLayoutEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Paired-end",
-            PermissibleValue(
-                text="Paired-end",
-                description="Paired-end sequencing"))
-        setattr(cls, "Single-end",
-            PermissibleValue(
-                text="Single-end",
-                description="Single-end sequencing"))
+        setattr(
+            cls,
+            "Paired-end",
+            PermissibleValue(text="Paired-end", description="Paired-end sequencing"),
+        )
+        setattr(
+            cls,
+            "Single-end",
+            PermissibleValue(text="Single-end", description="Single-end sequencing"),
+        )
+
 
 class SequencingPlatformEnum(EnumDefinitionImpl):
 
     ABI_SOLID = PermissibleValue(
-        text="ABI_SOLID",
-        description="ABI SOLID sequencing platform")
-    BGISEQ = PermissibleValue(
-        text="BGISEQ",
-        description="BGI sequencing platform")
+        text="ABI_SOLID", description="ABI SOLID sequencing platform"
+    )
+    BGISEQ = PermissibleValue(text="BGISEQ", description="BGI sequencing platform")
     CAPILLARY = PermissibleValue(
-        text="CAPILLARY",
-        description="Capillary sequencing platform")
+        text="CAPILLARY", description="Capillary sequencing platform"
+    )
     COMPLETE_GENOMICS = PermissibleValue(
-        text="COMPLETE_GENOMICS",
-        description="Complete Genomics sequencing platform")
+        text="COMPLETE_GENOMICS", description="Complete Genomics sequencing platform"
+    )
     HELICOS = PermissibleValue(
-        text="HELICOS",
-        description="Helicos sequencing platform")
+        text="HELICOS", description="Helicos sequencing platform"
+    )
     ILLUMINA = PermissibleValue(
-        text="ILLUMINA",
-        description="Illumina sequencing platform")
+        text="ILLUMINA", description="Illumina sequencing platform"
+    )
     ION_TORRENT = PermissibleValue(
-        text="ION_TORRENT",
-        description="Ion Torrent sequencing platform")
-    LS454 = PermissibleValue(
-        text="LS454",
-        description="454 sequencing platform")
+        text="ION_TORRENT", description="Ion Torrent sequencing platform"
+    )
+    LS454 = PermissibleValue(text="LS454", description="454 sequencing platform")
     OXFORD_NANOPORE = PermissibleValue(
-        text="OXFORD_NANOPORE",
-        description="Oxford Nanopore sequencing platform")
+        text="OXFORD_NANOPORE", description="Oxford Nanopore sequencing platform"
+    )
     PACBIO_SMRT = PermissibleValue(
-        text="PACBIO_SMRT",
-        description="PacBio SMRT sequencing platform")
+        text="PACBIO_SMRT", description="PacBio SMRT sequencing platform"
+    )
 
     _defn = EnumDefinition(
         name="SequencingPlatformEnum",
     )
 
+
 class GenomicReferenceEnum(EnumDefinitionImpl):
     """
     Genomic reference assembly used for alignment
     """
-    hg19 = PermissibleValue(
-        text="hg19",
-        description="UCSC human genome reference hg19")
+
+    hg19 = PermissibleValue(text="hg19", description="UCSC human genome reference hg19")
     Hg19 = PermissibleValue(
-        text="Hg19",
-        description="UCSC human genome reference hg19 (legacy casing)")
+        text="Hg19", description="UCSC human genome reference hg19 (legacy casing)"
+    )
     GRCh37 = PermissibleValue(
-        text="GRCh37",
-        description="Genome Reference Consortium human build 37")
+        text="GRCh37", description="Genome Reference Consortium human build 37"
+    )
     GRCh38 = PermissibleValue(
-        text="GRCh38",
-        description="Genome Reference Consortium human build 38")
+        text="GRCh38", description="Genome Reference Consortium human build 38"
+    )
     Hg38 = PermissibleValue(
-        text="Hg38",
-        description="Human genome build 38 (legacy casing)")
+        text="Hg38", description="Human genome build 38 (legacy casing)"
+    )
     Other = PermissibleValue(
         text="Other",
-        description="Other genomic reference (specify in GENOMIC_REFERENCE_URL or description)")
+        description="Other genomic reference (specify in GENOMIC_REFERENCE_URL or description)",
+    )
 
     _defn = EnumDefinition(
         name="GenomicReferenceEnum",
@@ -980,31 +1080,46 @@ class GenomicReferenceEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "GrCh37-lite",
-            PermissibleValue(
-                text="GrCh37-lite",
-                description="GRCh37-lite reference"))
-        setattr(cls, "GRCh38.p13",
-            PermissibleValue(
-                text="GRCh38.p13",
-                description="GRCh38 patch release 13"))
-        setattr(cls, "human_g1k_v37_decoy.fasta",
+        setattr(
+            cls,
+            "GrCh37-lite",
+            PermissibleValue(text="GrCh37-lite", description="GRCh37-lite reference"),
+        )
+        setattr(
+            cls,
+            "GRCh38.p13",
+            PermissibleValue(text="GRCh38.p13", description="GRCh38 patch release 13"),
+        )
+        setattr(
+            cls,
+            "human_g1k_v37_decoy.fasta",
             PermissibleValue(
                 text="human_g1k_v37_decoy.fasta",
-                description="1000 Genomes project human reference v37 with decoy"))
-        setattr(cls, "Gencode Release 38 (GRCh38.p13)",
+                description="1000 Genomes project human reference v37 with decoy",
+            ),
+        )
+        setattr(
+            cls,
+            "Gencode Release 38 (GRCh38.p13)",
             PermissibleValue(
                 text="Gencode Release 38 (GRCh38.p13)",
-                description="Gencode annotation release 38 on GRCh38.p13"))
-        setattr(cls, "hg38+EBV",
+                description="Gencode annotation release 38 on GRCh38.p13",
+            ),
+        )
+        setattr(
+            cls,
+            "hg38+EBV",
             PermissibleValue(
-                text="hg38+EBV",
-                description="hg38 with Epstein-Barr virus reference"))
+                text="hg38+EBV", description="hg38 with Epstein-Barr virus reference"
+            ),
+        )
+
 
 class WorkflowVersionEnum(EnumDefinitionImpl):
     """
     Special value when a workflow version does not apply
     """
+
     _defn = EnumDefinition(
         name="WorkflowVersionEnum",
         description="Special value when a workflow version does not apply",
@@ -1012,161 +1127,453 @@ class WorkflowVersionEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Not applicable",
+        setattr(
+            cls,
+            "Not applicable",
             PermissibleValue(
                 text="Not applicable",
-                description="No workflow version applies (e.g. raw data, legacy submission)"))
+                description="No workflow version applies (e.g. raw data, legacy submission)",
+            ),
+        )
+
 
 # Slots
 class slots:
     pass
 
-slots.scRNAseqData__level1_data = Slot(uri=HTAN.level1_data, name="scRNAseqData__level1_data", curie=HTAN.curie('level1_data'),
-                   model_uri=HTAN.scRNAseqData__level1_data, domain=None, range=Optional[Union[str, ScRNALevel1HTANDATAFILEID]])
 
-slots.scRNAseqData__level2_data = Slot(uri=HTAN.level2_data, name="scRNAseqData__level2_data", curie=HTAN.curie('level2_data'),
-                   model_uri=HTAN.scRNAseqData__level2_data, domain=None, range=Optional[Union[str, ScRNALevel2HTANDATAFILEID]])
+slots.scRNAseqData__level1_data = Slot(
+    uri=HTAN.level1_data,
+    name="scRNAseqData__level1_data",
+    curie=HTAN.curie("level1_data"),
+    model_uri=HTAN.scRNAseqData__level1_data,
+    domain=None,
+    range=Optional[Union[str, ScRNALevel1HTANDATAFILEID]],
+)
 
-slots.scRNAseqData__level3_4_data = Slot(uri=HTAN.level3_4_data, name="scRNAseqData__level3_4_data", curie=HTAN.curie('level3_4_data'),
-                   model_uri=HTAN.scRNAseqData__level3_4_data, domain=None, range=Optional[Union[str, ScRNALevel3and4HTANDATAFILEID]])
+slots.scRNAseqData__level2_data = Slot(
+    uri=HTAN.level2_data,
+    name="scRNAseqData__level2_data",
+    curie=HTAN.curie("level2_data"),
+    model_uri=HTAN.scRNAseqData__level2_data,
+    domain=None,
+    range=Optional[Union[str, ScRNALevel2HTANDATAFILEID]],
+)
 
-slots.scRNALevel1__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="scRNALevel1__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.scRNALevel1__FILE_FORMAT, domain=None, range=str,
-                   pattern=re.compile(r'^(fastq|fastq\.gz)$'))
+slots.scRNAseqData__level3_4_data = Slot(
+    uri=HTAN.level3_4_data,
+    name="scRNAseqData__level3_4_data",
+    curie=HTAN.curie("level3_4_data"),
+    model_uri=HTAN.scRNAseqData__level3_4_data,
+    domain=None,
+    range=Optional[Union[str, ScRNALevel3and4HTANDATAFILEID]],
+)
 
-slots.scRNALevel1__FILENAME = Slot(uri=HTAN.FILENAME, name="scRNALevel1__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.scRNALevel1__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+\.(fastq|fq)(\.gz)?$'))
+slots.scRNALevel1__FILE_FORMAT = Slot(
+    uri=HTAN.FILE_FORMAT,
+    name="scRNALevel1__FILE_FORMAT",
+    curie=HTAN.curie("FILE_FORMAT"),
+    model_uri=HTAN.scRNALevel1__FILE_FORMAT,
+    domain=None,
+    range=str,
+    pattern=re.compile(r"^(fastq|fastq\.gz)$"),
+)
 
-slots.scRNALevel1__SINGLE_CELL_ISOLATION_METHOD = Slot(uri=HTAN.SINGLE_CELL_ISOLATION_METHOD, name="scRNALevel1__SINGLE_CELL_ISOLATION_METHOD", curie=HTAN.curie('SINGLE_CELL_ISOLATION_METHOD'),
-                   model_uri=HTAN.scRNALevel1__SINGLE_CELL_ISOLATION_METHOD, domain=None, range=Union[str, "SingleCellIsolationMethodEnum"])
+slots.scRNALevel1__FILENAME = Slot(
+    uri=HTAN.FILENAME,
+    name="scRNALevel1__FILENAME",
+    curie=HTAN.curie("FILENAME"),
+    model_uri=HTAN.scRNALevel1__FILENAME,
+    domain=None,
+    range=str,
+    pattern=re.compile(r"^.+\.(fastq|fq)(\.gz)?$"),
+)
 
-slots.scRNALevel1__DISSOCIATION_METHOD = Slot(uri=HTAN.DISSOCIATION_METHOD, name="scRNALevel1__DISSOCIATION_METHOD", curie=HTAN.curie('DISSOCIATION_METHOD'),
-                   model_uri=HTAN.scRNALevel1__DISSOCIATION_METHOD, domain=None, range=Union[str, "DissociationMethodEnum"])
+slots.scRNALevel1__SINGLE_CELL_ISOLATION_METHOD = Slot(
+    uri=HTAN.SINGLE_CELL_ISOLATION_METHOD,
+    name="scRNALevel1__SINGLE_CELL_ISOLATION_METHOD",
+    curie=HTAN.curie("SINGLE_CELL_ISOLATION_METHOD"),
+    model_uri=HTAN.scRNALevel1__SINGLE_CELL_ISOLATION_METHOD,
+    domain=None,
+    range=Union[str, "SingleCellIsolationMethodEnum"],
+)
 
-slots.scRNALevel1__CRYOPRESERVED_CELLS_IN_SAMPLE = Slot(uri=HTAN.CRYOPRESERVED_CELLS_IN_SAMPLE, name="scRNALevel1__CRYOPRESERVED_CELLS_IN_SAMPLE", curie=HTAN.curie('CRYOPRESERVED_CELLS_IN_SAMPLE'),
-                   model_uri=HTAN.scRNALevel1__CRYOPRESERVED_CELLS_IN_SAMPLE, domain=None, range=Optional[Union[bool, Bool]])
+slots.scRNALevel1__DISSOCIATION_METHOD = Slot(
+    uri=HTAN.DISSOCIATION_METHOD,
+    name="scRNALevel1__DISSOCIATION_METHOD",
+    curie=HTAN.curie("DISSOCIATION_METHOD"),
+    model_uri=HTAN.scRNALevel1__DISSOCIATION_METHOD,
+    domain=None,
+    range=Union[str, "DissociationMethodEnum"],
+)
 
-slots.scRNALevel1__NUCLEIC_ACID_SOURCE = Slot(uri=HTAN.NUCLEIC_ACID_SOURCE, name="scRNALevel1__NUCLEIC_ACID_SOURCE", curie=HTAN.curie('NUCLEIC_ACID_SOURCE'),
-                   model_uri=HTAN.scRNALevel1__NUCLEIC_ACID_SOURCE, domain=None, range=Union[str, "NucleicAcidSourceEnum"])
+slots.scRNALevel1__CRYOPRESERVED_CELLS_IN_SAMPLE = Slot(
+    uri=HTAN.CRYOPRESERVED_CELLS_IN_SAMPLE,
+    name="scRNALevel1__CRYOPRESERVED_CELLS_IN_SAMPLE",
+    curie=HTAN.curie("CRYOPRESERVED_CELLS_IN_SAMPLE"),
+    model_uri=HTAN.scRNALevel1__CRYOPRESERVED_CELLS_IN_SAMPLE,
+    domain=None,
+    range=Optional[Union[bool, Bool]],
+)
 
-slots.scRNALevel1__LIBRARY_CONSTRUCTION_METHOD = Slot(uri=HTAN.LIBRARY_CONSTRUCTION_METHOD, name="scRNALevel1__LIBRARY_CONSTRUCTION_METHOD", curie=HTAN.curie('LIBRARY_CONSTRUCTION_METHOD'),
-                   model_uri=HTAN.scRNALevel1__LIBRARY_CONSTRUCTION_METHOD, domain=None, range=Union[str, "LibraryConstructionMethodEnum"])
+slots.scRNALevel1__NUCLEIC_ACID_SOURCE = Slot(
+    uri=HTAN.NUCLEIC_ACID_SOURCE,
+    name="scRNALevel1__NUCLEIC_ACID_SOURCE",
+    curie=HTAN.curie("NUCLEIC_ACID_SOURCE"),
+    model_uri=HTAN.scRNALevel1__NUCLEIC_ACID_SOURCE,
+    domain=None,
+    range=Union[str, "NucleicAcidSourceEnum"],
+)
 
-slots.scRNALevel1__REVERSE_TRANSCRIPTION_PRIMER = Slot(uri=HTAN.REVERSE_TRANSCRIPTION_PRIMER, name="scRNALevel1__REVERSE_TRANSCRIPTION_PRIMER", curie=HTAN.curie('REVERSE_TRANSCRIPTION_PRIMER'),
-                   model_uri=HTAN.scRNALevel1__REVERSE_TRANSCRIPTION_PRIMER, domain=None, range=Union[str, "ReverseTranscriptionPrimerEnum"])
+slots.scRNALevel1__LIBRARY_CONSTRUCTION_METHOD = Slot(
+    uri=HTAN.LIBRARY_CONSTRUCTION_METHOD,
+    name="scRNALevel1__LIBRARY_CONSTRUCTION_METHOD",
+    curie=HTAN.curie("LIBRARY_CONSTRUCTION_METHOD"),
+    model_uri=HTAN.scRNALevel1__LIBRARY_CONSTRUCTION_METHOD,
+    domain=None,
+    range=Union[str, "LibraryConstructionMethodEnum"],
+)
 
-slots.scRNALevel1__SPIKE_IN = Slot(uri=HTAN.SPIKE_IN, name="scRNALevel1__SPIKE_IN", curie=HTAN.curie('SPIKE_IN'),
-                   model_uri=HTAN.scRNALevel1__SPIKE_IN, domain=None, range=Union[str, "SpikeInEnum"])
+slots.scRNALevel1__REVERSE_TRANSCRIPTION_PRIMER = Slot(
+    uri=HTAN.REVERSE_TRANSCRIPTION_PRIMER,
+    name="scRNALevel1__REVERSE_TRANSCRIPTION_PRIMER",
+    curie=HTAN.curie("REVERSE_TRANSCRIPTION_PRIMER"),
+    model_uri=HTAN.scRNALevel1__REVERSE_TRANSCRIPTION_PRIMER,
+    domain=None,
+    range=Union[str, "ReverseTranscriptionPrimerEnum"],
+)
 
-slots.scRNALevel1__READ_INDICATOR = Slot(uri=HTAN.READ_INDICATOR, name="scRNALevel1__READ_INDICATOR", curie=HTAN.curie('READ_INDICATOR'),
-                   model_uri=HTAN.scRNALevel1__READ_INDICATOR, domain=None, range=Union[str, "ReadIndicatorEnum"])
+slots.scRNALevel1__SPIKE_IN = Slot(
+    uri=HTAN.SPIKE_IN,
+    name="scRNALevel1__SPIKE_IN",
+    curie=HTAN.curie("SPIKE_IN"),
+    model_uri=HTAN.scRNALevel1__SPIKE_IN,
+    domain=None,
+    range=Union[str, "SpikeInEnum"],
+)
 
-slots.scRNALevel2__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="scRNALevel2__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.scRNALevel2__FILE_FORMAT, domain=None, range=str,
-                   pattern=re.compile(r'^(bam|cram)$'))
+slots.scRNALevel1__READ_INDICATOR = Slot(
+    uri=HTAN.READ_INDICATOR,
+    name="scRNALevel1__READ_INDICATOR",
+    curie=HTAN.curie("READ_INDICATOR"),
+    model_uri=HTAN.scRNALevel1__READ_INDICATOR,
+    domain=None,
+    range=Union[str, "ReadIndicatorEnum"],
+)
 
-slots.scRNALevel2__FILENAME = Slot(uri=HTAN.FILENAME, name="scRNALevel2__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.scRNALevel2__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+\.(bam|cram)$'))
+slots.scRNALevel2__FILE_FORMAT = Slot(
+    uri=HTAN.FILE_FORMAT,
+    name="scRNALevel2__FILE_FORMAT",
+    curie=HTAN.curie("FILE_FORMAT"),
+    model_uri=HTAN.scRNALevel2__FILE_FORMAT,
+    domain=None,
+    range=str,
+    pattern=re.compile(r"^(bam|cram)$"),
+)
 
-slots.scRNALevel2__SCRNASEQ_WORKFLOW_TYPE = Slot(uri=HTAN.SCRNASEQ_WORKFLOW_TYPE, name="scRNALevel2__SCRNASEQ_WORKFLOW_TYPE", curie=HTAN.curie('SCRNASEQ_WORKFLOW_TYPE'),
-                   model_uri=HTAN.scRNALevel2__SCRNASEQ_WORKFLOW_TYPE, domain=None, range=Union[str, "ScRNAseqWorkflowTypeEnumLevel2"])
+slots.scRNALevel2__FILENAME = Slot(
+    uri=HTAN.FILENAME,
+    name="scRNALevel2__FILENAME",
+    curie=HTAN.curie("FILENAME"),
+    model_uri=HTAN.scRNALevel2__FILENAME,
+    domain=None,
+    range=str,
+    pattern=re.compile(r"^.+\.(bam|cram)$"),
+)
 
-slots.scRNALevel2__WHITELIST_CELL_BARCODE_FILE_LINK = Slot(uri=HTAN.WHITELIST_CELL_BARCODE_FILE_LINK, name="scRNALevel2__WHITELIST_CELL_BARCODE_FILE_LINK", curie=HTAN.curie('WHITELIST_CELL_BARCODE_FILE_LINK'),
-                   model_uri=HTAN.scRNALevel2__WHITELIST_CELL_BARCODE_FILE_LINK, domain=None, range=Optional[str])
+slots.scRNALevel2__SCRNASEQ_WORKFLOW_TYPE = Slot(
+    uri=HTAN.SCRNASEQ_WORKFLOW_TYPE,
+    name="scRNALevel2__SCRNASEQ_WORKFLOW_TYPE",
+    curie=HTAN.curie("SCRNASEQ_WORKFLOW_TYPE"),
+    model_uri=HTAN.scRNALevel2__SCRNASEQ_WORKFLOW_TYPE,
+    domain=None,
+    range=Union[str, "ScRNAseqWorkflowTypeEnumLevel2"],
+)
 
-slots.scRNALevel2__CELL_BARCODE_TAG = Slot(uri=HTAN.CELL_BARCODE_TAG, name="scRNALevel2__CELL_BARCODE_TAG", curie=HTAN.curie('CELL_BARCODE_TAG'),
-                   model_uri=HTAN.scRNALevel2__CELL_BARCODE_TAG, domain=None, range=Optional[str])
+slots.scRNALevel2__WHITELIST_CELL_BARCODE_FILE_LINK = Slot(
+    uri=HTAN.WHITELIST_CELL_BARCODE_FILE_LINK,
+    name="scRNALevel2__WHITELIST_CELL_BARCODE_FILE_LINK",
+    curie=HTAN.curie("WHITELIST_CELL_BARCODE_FILE_LINK"),
+    model_uri=HTAN.scRNALevel2__WHITELIST_CELL_BARCODE_FILE_LINK,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.scRNALevel2__UMI_TAG = Slot(uri=HTAN.UMI_TAG, name="scRNALevel2__UMI_TAG", curie=HTAN.curie('UMI_TAG'),
-                   model_uri=HTAN.scRNALevel2__UMI_TAG, domain=None, range=Optional[str])
+slots.scRNALevel2__CELL_BARCODE_TAG = Slot(
+    uri=HTAN.CELL_BARCODE_TAG,
+    name="scRNALevel2__CELL_BARCODE_TAG",
+    curie=HTAN.curie("CELL_BARCODE_TAG"),
+    model_uri=HTAN.scRNALevel2__CELL_BARCODE_TAG,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.scRNALevel3and4__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="scRNALevel3and4__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.scRNALevel3and4__FILE_FORMAT, domain=None, range=str,
-                   pattern=re.compile(r'^h5ad$'))
+slots.scRNALevel2__UMI_TAG = Slot(
+    uri=HTAN.UMI_TAG,
+    name="scRNALevel2__UMI_TAG",
+    curie=HTAN.curie("UMI_TAG"),
+    model_uri=HTAN.scRNALevel2__UMI_TAG,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.scRNALevel3and4__FILENAME = Slot(uri=HTAN.FILENAME, name="scRNALevel3and4__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.scRNALevel3and4__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+\.h5ad$'))
+slots.scRNALevel3and4__FILE_FORMAT = Slot(
+    uri=HTAN.FILE_FORMAT,
+    name="scRNALevel3and4__FILE_FORMAT",
+    curie=HTAN.curie("FILE_FORMAT"),
+    model_uri=HTAN.scRNALevel3and4__FILE_FORMAT,
+    domain=None,
+    range=str,
+    pattern=re.compile(r"^h5ad$"),
+)
 
-slots.scRNALevel3and4__SCRNASEQ_WORKFLOW_TYPE = Slot(uri=HTAN.SCRNASEQ_WORKFLOW_TYPE, name="scRNALevel3and4__SCRNASEQ_WORKFLOW_TYPE", curie=HTAN.curie('SCRNASEQ_WORKFLOW_TYPE'),
-                   model_uri=HTAN.scRNALevel3and4__SCRNASEQ_WORKFLOW_TYPE, domain=None, range=Union[str, "ScRNAseqWorkflowTypeEnumLevel3and4"])
+slots.scRNALevel3and4__FILENAME = Slot(
+    uri=HTAN.FILENAME,
+    name="scRNALevel3and4__FILENAME",
+    curie=HTAN.curie("FILENAME"),
+    model_uri=HTAN.scRNALevel3and4__FILENAME,
+    domain=None,
+    range=str,
+    pattern=re.compile(r"^.+\.h5ad$"),
+)
 
-slots.scRNALevel3and4__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION = Slot(uri=HTAN.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION, name="scRNALevel3and4__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION", curie=HTAN.curie('SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION'),
-                   model_uri=HTAN.scRNALevel3and4__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION, domain=None, range=str)
+slots.scRNALevel3and4__SCRNASEQ_WORKFLOW_TYPE = Slot(
+    uri=HTAN.SCRNASEQ_WORKFLOW_TYPE,
+    name="scRNALevel3and4__SCRNASEQ_WORKFLOW_TYPE",
+    curie=HTAN.curie("SCRNASEQ_WORKFLOW_TYPE"),
+    model_uri=HTAN.scRNALevel3and4__SCRNASEQ_WORKFLOW_TYPE,
+    domain=None,
+    range=Union[str, "ScRNAseqWorkflowTypeEnumLevel3and4"],
+)
 
-slots.scRNALevel3and4__DATA_CATEGORY = Slot(uri=HTAN.DATA_CATEGORY, name="scRNALevel3and4__DATA_CATEGORY", curie=HTAN.curie('DATA_CATEGORY'),
-                   model_uri=HTAN.scRNALevel3and4__DATA_CATEGORY, domain=None, range=Union[str, "DataCategoryEnum"])
+slots.scRNALevel3and4__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION = Slot(
+    uri=HTAN.SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION,
+    name="scRNALevel3and4__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION",
+    curie=HTAN.curie("SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION"),
+    model_uri=HTAN.scRNALevel3and4__SCRNASEQ_WORKFLOW_PARAMETERS_DESCRIPTION,
+    domain=None,
+    range=str,
+)
 
-slots.scRNALevel3and4__MATRIX_TYPE = Slot(uri=HTAN.MATRIX_TYPE, name="scRNALevel3and4__MATRIX_TYPE", curie=HTAN.curie('MATRIX_TYPE'),
-                   model_uri=HTAN.scRNALevel3and4__MATRIX_TYPE, domain=None, range=Union[str, "MatrixTypeEnum"])
+slots.scRNALevel3and4__DATA_CATEGORY = Slot(
+    uri=HTAN.DATA_CATEGORY,
+    name="scRNALevel3and4__DATA_CATEGORY",
+    curie=HTAN.curie("DATA_CATEGORY"),
+    model_uri=HTAN.scRNALevel3and4__DATA_CATEGORY,
+    domain=None,
+    range=Union[str, "DataCategoryEnum"],
+)
 
-slots.scRNALevel3and4__LINKED_MATRICES = Slot(uri=HTAN.LINKED_MATRICES, name="scRNALevel3and4__LINKED_MATRICES", curie=HTAN.curie('LINKED_MATRICES'),
-                   model_uri=HTAN.scRNALevel3and4__LINKED_MATRICES, domain=None, range=Optional[str])
+slots.scRNALevel3and4__MATRIX_TYPE = Slot(
+    uri=HTAN.MATRIX_TYPE,
+    name="scRNALevel3and4__MATRIX_TYPE",
+    curie=HTAN.curie("MATRIX_TYPE"),
+    model_uri=HTAN.scRNALevel3and4__MATRIX_TYPE,
+    domain=None,
+    range=Union[str, "MatrixTypeEnum"],
+)
 
-slots.scRNALevel3and4__CELL_MEDIAN_NUMBER_READS = Slot(uri=HTAN.CELL_MEDIAN_NUMBER_READS, name="scRNALevel3and4__CELL_MEDIAN_NUMBER_READS", curie=HTAN.curie('CELL_MEDIAN_NUMBER_READS'),
-                   model_uri=HTAN.scRNALevel3and4__CELL_MEDIAN_NUMBER_READS, domain=None, range=int)
+slots.scRNALevel3and4__LINKED_MATRICES = Slot(
+    uri=HTAN.LINKED_MATRICES,
+    name="scRNALevel3and4__LINKED_MATRICES",
+    curie=HTAN.curie("LINKED_MATRICES"),
+    model_uri=HTAN.scRNALevel3and4__LINKED_MATRICES,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.scRNALevel3and4__CELL_MEDIAN_NUMBER_GENES = Slot(uri=HTAN.CELL_MEDIAN_NUMBER_GENES, name="scRNALevel3and4__CELL_MEDIAN_NUMBER_GENES", curie=HTAN.curie('CELL_MEDIAN_NUMBER_GENES'),
-                   model_uri=HTAN.scRNALevel3and4__CELL_MEDIAN_NUMBER_GENES, domain=None, range=int)
+slots.scRNALevel3and4__CELL_MEDIAN_NUMBER_READS = Slot(
+    uri=HTAN.CELL_MEDIAN_NUMBER_READS,
+    name="scRNALevel3and4__CELL_MEDIAN_NUMBER_READS",
+    curie=HTAN.curie("CELL_MEDIAN_NUMBER_READS"),
+    model_uri=HTAN.scRNALevel3and4__CELL_MEDIAN_NUMBER_READS,
+    domain=None,
+    range=int,
+)
 
-slots.scRNALevel3and4__CELL_TOTAL = Slot(uri=HTAN.CELL_TOTAL, name="scRNALevel3and4__CELL_TOTAL", curie=HTAN.curie('CELL_TOTAL'),
-                   model_uri=HTAN.scRNALevel3and4__CELL_TOTAL, domain=None, range=int)
+slots.scRNALevel3and4__CELL_MEDIAN_NUMBER_GENES = Slot(
+    uri=HTAN.CELL_MEDIAN_NUMBER_GENES,
+    name="scRNALevel3and4__CELL_MEDIAN_NUMBER_GENES",
+    curie=HTAN.curie("CELL_MEDIAN_NUMBER_GENES"),
+    model_uri=HTAN.scRNALevel3and4__CELL_MEDIAN_NUMBER_GENES,
+    domain=None,
+    range=int,
+)
 
-slots.scRNALevel3and4__ANNDATA_SCHEMA_VERSION = Slot(uri=HTAN.ANNDATA_SCHEMA_VERSION, name="scRNALevel3and4__ANNDATA_SCHEMA_VERSION", curie=HTAN.curie('ANNDATA_SCHEMA_VERSION'),
-                   model_uri=HTAN.scRNALevel3and4__ANNDATA_SCHEMA_VERSION, domain=None, range=str,
-                   pattern=re.compile(r'^0\.1$'))
+slots.scRNALevel3and4__CELL_TOTAL = Slot(
+    uri=HTAN.CELL_TOTAL,
+    name="scRNALevel3and4__CELL_TOTAL",
+    curie=HTAN.curie("CELL_TOTAL"),
+    model_uri=HTAN.scRNALevel3and4__CELL_TOTAL,
+    domain=None,
+    range=int,
+)
 
-slots.scRNALevel3and4__ANNDATA_STRUCTURE_VALIDATED = Slot(uri=HTAN.ANNDATA_STRUCTURE_VALIDATED, name="scRNALevel3and4__ANNDATA_STRUCTURE_VALIDATED", curie=HTAN.curie('ANNDATA_STRUCTURE_VALIDATED'),
-                   model_uri=HTAN.scRNALevel3and4__ANNDATA_STRUCTURE_VALIDATED, domain=None, range=Union[bool, Bool])
+slots.scRNALevel3and4__ANNDATA_SCHEMA_VERSION = Slot(
+    uri=HTAN.ANNDATA_SCHEMA_VERSION,
+    name="scRNALevel3and4__ANNDATA_SCHEMA_VERSION",
+    curie=HTAN.curie("ANNDATA_SCHEMA_VERSION"),
+    model_uri=HTAN.scRNALevel3and4__ANNDATA_SCHEMA_VERSION,
+    domain=None,
+    range=str,
+    pattern=re.compile(r"^0\.1$"),
+)
 
-slots.baseSequencingAttributes__CHECKSUM = Slot(uri=HTAN.CHECKSUM, name="baseSequencingAttributes__CHECKSUM", curie=HTAN.curie('CHECKSUM'),
-                   model_uri=HTAN.baseSequencingAttributes__CHECKSUM, domain=None, range=Optional[str])
+slots.scRNALevel3and4__ANNDATA_STRUCTURE_VALIDATED = Slot(
+    uri=HTAN.ANNDATA_STRUCTURE_VALIDATED,
+    name="scRNALevel3and4__ANNDATA_STRUCTURE_VALIDATED",
+    curie=HTAN.curie("ANNDATA_STRUCTURE_VALIDATED"),
+    model_uri=HTAN.scRNALevel3and4__ANNDATA_STRUCTURE_VALIDATED,
+    domain=None,
+    range=Union[bool, Bool],
+)
 
-slots.baseSequencingLevel1Attributes__LIBRARY_LAYOUT = Slot(uri=HTAN.LIBRARY_LAYOUT, name="baseSequencingLevel1Attributes__LIBRARY_LAYOUT", curie=HTAN.curie('LIBRARY_LAYOUT'),
-                   model_uri=HTAN.baseSequencingLevel1Attributes__LIBRARY_LAYOUT, domain=None, range=Union[str, "LibraryLayoutEnum"])
+slots.baseSequencingAttributes__CHECKSUM = Slot(
+    uri=HTAN.CHECKSUM,
+    name="baseSequencingAttributes__CHECKSUM",
+    curie=HTAN.curie("CHECKSUM"),
+    model_uri=HTAN.baseSequencingAttributes__CHECKSUM,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseSequencingLevel1Attributes__SEQUENCING_PLATFORM = Slot(uri=HTAN.SEQUENCING_PLATFORM, name="baseSequencingLevel1Attributes__SEQUENCING_PLATFORM", curie=HTAN.curie('SEQUENCING_PLATFORM'),
-                   model_uri=HTAN.baseSequencingLevel1Attributes__SEQUENCING_PLATFORM, domain=None, range=Union[str, "SequencingPlatformEnum"])
+slots.baseSequencingLevel1Attributes__LIBRARY_LAYOUT = Slot(
+    uri=HTAN.LIBRARY_LAYOUT,
+    name="baseSequencingLevel1Attributes__LIBRARY_LAYOUT",
+    curie=HTAN.curie("LIBRARY_LAYOUT"),
+    model_uri=HTAN.baseSequencingLevel1Attributes__LIBRARY_LAYOUT,
+    domain=None,
+    range=Union[str, "LibraryLayoutEnum"],
+)
 
-slots.baseSequencingLevel1Attributes__SEQUENCING_BATCH_ID = Slot(uri=HTAN.SEQUENCING_BATCH_ID, name="baseSequencingLevel1Attributes__SEQUENCING_BATCH_ID", curie=HTAN.curie('SEQUENCING_BATCH_ID'),
-                   model_uri=HTAN.baseSequencingLevel1Attributes__SEQUENCING_BATCH_ID, domain=None, range=Optional[str])
+slots.baseSequencingLevel1Attributes__SEQUENCING_PLATFORM = Slot(
+    uri=HTAN.SEQUENCING_PLATFORM,
+    name="baseSequencingLevel1Attributes__SEQUENCING_PLATFORM",
+    curie=HTAN.curie("SEQUENCING_PLATFORM"),
+    model_uri=HTAN.baseSequencingLevel1Attributes__SEQUENCING_PLATFORM,
+    domain=None,
+    range=Union[str, "SequencingPlatformEnum"],
+)
 
-slots.baseSequencingLevel1Attributes__LIBRARY_PREPARATION_DAYS_FROM_INDEX = Slot(uri=HTAN.LIBRARY_PREPARATION_DAYS_FROM_INDEX, name="baseSequencingLevel1Attributes__LIBRARY_PREPARATION_DAYS_FROM_INDEX", curie=HTAN.curie('LIBRARY_PREPARATION_DAYS_FROM_INDEX'),
-                   model_uri=HTAN.baseSequencingLevel1Attributes__LIBRARY_PREPARATION_DAYS_FROM_INDEX, domain=None, range=Optional[int])
+slots.baseSequencingLevel1Attributes__SEQUENCING_BATCH_ID = Slot(
+    uri=HTAN.SEQUENCING_BATCH_ID,
+    name="baseSequencingLevel1Attributes__SEQUENCING_BATCH_ID",
+    curie=HTAN.curie("SEQUENCING_BATCH_ID"),
+    model_uri=HTAN.baseSequencingLevel1Attributes__SEQUENCING_BATCH_ID,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseSequencingLevel1Attributes__TECHNICAL_REPLICATE_GROUP = Slot(uri=HTAN.TECHNICAL_REPLICATE_GROUP, name="baseSequencingLevel1Attributes__TECHNICAL_REPLICATE_GROUP", curie=HTAN.curie('TECHNICAL_REPLICATE_GROUP'),
-                   model_uri=HTAN.baseSequencingLevel1Attributes__TECHNICAL_REPLICATE_GROUP, domain=None, range=Optional[str])
+slots.baseSequencingLevel1Attributes__LIBRARY_PREPARATION_DAYS_FROM_INDEX = Slot(
+    uri=HTAN.LIBRARY_PREPARATION_DAYS_FROM_INDEX,
+    name="baseSequencingLevel1Attributes__LIBRARY_PREPARATION_DAYS_FROM_INDEX",
+    curie=HTAN.curie("LIBRARY_PREPARATION_DAYS_FROM_INDEX"),
+    model_uri=HTAN.baseSequencingLevel1Attributes__LIBRARY_PREPARATION_DAYS_FROM_INDEX,
+    domain=None,
+    range=Optional[int],
+)
 
-slots.baseSequencingLevel1Attributes__PROTOCOL_LINK = Slot(uri=HTAN.PROTOCOL_LINK, name="baseSequencingLevel1Attributes__PROTOCOL_LINK", curie=HTAN.curie('PROTOCOL_LINK'),
-                   model_uri=HTAN.baseSequencingLevel1Attributes__PROTOCOL_LINK, domain=None, range=Optional[str])
+slots.baseSequencingLevel1Attributes__TECHNICAL_REPLICATE_GROUP = Slot(
+    uri=HTAN.TECHNICAL_REPLICATE_GROUP,
+    name="baseSequencingLevel1Attributes__TECHNICAL_REPLICATE_GROUP",
+    curie=HTAN.curie("TECHNICAL_REPLICATE_GROUP"),
+    model_uri=HTAN.baseSequencingLevel1Attributes__TECHNICAL_REPLICATE_GROUP,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseSequencingLevel2Attributes__GENOMIC_REFERENCE = Slot(uri=HTAN.GENOMIC_REFERENCE, name="baseSequencingLevel2Attributes__GENOMIC_REFERENCE", curie=HTAN.curie('GENOMIC_REFERENCE'),
-                   model_uri=HTAN.baseSequencingLevel2Attributes__GENOMIC_REFERENCE, domain=None, range=Union[str, "GenomicReferenceEnum"])
+slots.baseSequencingLevel1Attributes__PROTOCOL_LINK = Slot(
+    uri=HTAN.PROTOCOL_LINK,
+    name="baseSequencingLevel1Attributes__PROTOCOL_LINK",
+    curie=HTAN.curie("PROTOCOL_LINK"),
+    model_uri=HTAN.baseSequencingLevel1Attributes__PROTOCOL_LINK,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL = Slot(uri=HTAN.GENOMIC_REFERENCE_URL, name="baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL", curie=HTAN.curie('GENOMIC_REFERENCE_URL'),
-                   model_uri=HTAN.baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL, domain=None, range=Optional[str])
+slots.baseSequencingLevel2Attributes__GENOMIC_REFERENCE = Slot(
+    uri=HTAN.GENOMIC_REFERENCE,
+    name="baseSequencingLevel2Attributes__GENOMIC_REFERENCE",
+    curie=HTAN.curie("GENOMIC_REFERENCE"),
+    model_uri=HTAN.baseSequencingLevel2Attributes__GENOMIC_REFERENCE,
+    domain=None,
+    range=Union[str, "GenomicReferenceEnum"],
+)
 
-slots.baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL = Slot(uri=HTAN.GENOME_ANNOTATION_URL, name="baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL", curie=HTAN.curie('GENOME_ANNOTATION_URL'),
-                   model_uri=HTAN.baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL, domain=None, range=Optional[str])
+slots.baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL = Slot(
+    uri=HTAN.GENOMIC_REFERENCE_URL,
+    name="baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL",
+    curie=HTAN.curie("GENOMIC_REFERENCE_URL"),
+    model_uri=HTAN.baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseSequencingLevel2Attributes__WORKFLOW_VERSION = Slot(uri=HTAN.WORKFLOW_VERSION, name="baseSequencingLevel2Attributes__WORKFLOW_VERSION", curie=HTAN.curie('WORKFLOW_VERSION'),
-                   model_uri=HTAN.baseSequencingLevel2Attributes__WORKFLOW_VERSION, domain=None, range=str)
+slots.baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL = Slot(
+    uri=HTAN.GENOME_ANNOTATION_URL,
+    name="baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL",
+    curie=HTAN.curie("GENOME_ANNOTATION_URL"),
+    model_uri=HTAN.baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseSequencingLevel2Attributes__WORKFLOW_LINK = Slot(uri=HTAN.WORKFLOW_LINK, name="baseSequencingLevel2Attributes__WORKFLOW_LINK", curie=HTAN.curie('WORKFLOW_LINK'),
-                   model_uri=HTAN.baseSequencingLevel2Attributes__WORKFLOW_LINK, domain=None, range=str)
+slots.baseSequencingLevel2Attributes__WORKFLOW_VERSION = Slot(
+    uri=HTAN.WORKFLOW_VERSION,
+    name="baseSequencingLevel2Attributes__WORKFLOW_VERSION",
+    curie=HTAN.curie("WORKFLOW_VERSION"),
+    model_uri=HTAN.baseSequencingLevel2Attributes__WORKFLOW_VERSION,
+    domain=None,
+    range=str,
+)
 
-slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
+slots.baseSequencingLevel2Attributes__WORKFLOW_LINK = Slot(
+    uri=HTAN.WORKFLOW_LINK,
+    name="baseSequencingLevel2Attributes__WORKFLOW_LINK",
+    curie=HTAN.curie("WORKFLOW_LINK"),
+    model_uri=HTAN.baseSequencingLevel2Attributes__WORKFLOW_LINK,
+    domain=None,
+    range=str,
+)
 
-slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
+slots.coreFileAttributes__FILENAME = Slot(
+    uri=HTAN.FILENAME,
+    name="coreFileAttributes__FILENAME",
+    curie=HTAN.curie("FILENAME"),
+    model_uri=HTAN.coreFileAttributes__FILENAME,
+    domain=None,
+    range=str,
+)
 
-slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="coreFileAttributes__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_DATA_FILE_ID, domain=None, range=URIRef,
-                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$'))
+slots.coreFileAttributes__FILE_FORMAT = Slot(
+    uri=HTAN.FILE_FORMAT,
+    name="coreFileAttributes__FILE_FORMAT",
+    curie=HTAN.curie("FILE_FORMAT"),
+    model_uri=HTAN.coreFileAttributes__FILE_FORMAT,
+    domain=None,
+    range=str,
+)
 
-slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=Union[str, List[str]],
-                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$'))
+slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(
+    uri=HTAN.HTAN_DATA_FILE_ID,
+    name="coreFileAttributes__HTAN_DATA_FILE_ID",
+    curie=HTAN.curie("HTAN_DATA_FILE_ID"),
+    model_uri=HTAN.coreFileAttributes__HTAN_DATA_FILE_ID,
+    domain=None,
+    range=URIRef,
+    pattern=re.compile(
+        r"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$"
+    ),
+)
+
+slots.coreFileAttributes__HTAN_PARENT_ID = Slot(
+    uri=HTAN.HTAN_PARENT_ID,
+    name="coreFileAttributes__HTAN_PARENT_ID",
+    curie=HTAN.curie("HTAN_PARENT_ID"),
+    model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID,
+    domain=None,
+    range=Union[str, List[str]],
+    pattern=re.compile(
+        r"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$"
+    ),
+)

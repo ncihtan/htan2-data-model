@@ -26,19 +26,19 @@ class TestBaseSequencingSchema:
     def test_base_sequencing_attributes_class(self):
         """Test BaseSequencingAttributes class structure."""
         sv = SchemaView(SCHEMA_PATH)
-        
+
         # Check class exists
         assert "BaseSequencingAttributes" in sv.all_classes()
-        
+
         # Check required attributes
         base_class = sv.get_class("BaseSequencingAttributes")
         required_attrs = [
             "LIBRARY_LAYOUT",
             "SEQUENCING_PLATFORM",
             "WORKFLOW_VERSION",
-            "GENOMIC_REFERENCE"
+            "GENOMIC_REFERENCE",
         ]
-        
+
         for attr in required_attrs:
             assert attr in base_class.attributes
             assert base_class.attributes[attr].required
@@ -46,21 +46,25 @@ class TestBaseSequencingSchema:
     def test_enum_alphabetical_ordering(self):
         """Test that enum values are in alphabetical order."""
         sv = SchemaView(SCHEMA_PATH)
-        
+
         # Test LibraryLayoutEnum
         library_layout_enum = sv.get_enum("LibraryLayoutEnum")
         values = list(library_layout_enum.permissible_values.keys())
-        assert values == sorted(values), f"LibraryLayoutEnum values not alphabetical: {values}"
-        
+        assert values == sorted(
+            values
+        ), f"LibraryLayoutEnum values not alphabetical: {values}"
+
         # Test SequencingPlatformEnum
         platform_enum = sv.get_enum("SequencingPlatformEnum")
         values = list(platform_enum.permissible_values.keys())
-        assert values == sorted(values), f"SequencingPlatformEnum values not alphabetical: {values}"
+        assert values == sorted(
+            values
+        ), f"SequencingPlatformEnum values not alphabetical: {values}"
 
     def test_inheritance_from_core(self):
         """Test that BaseSequencingAttributes inherits from CoreFileAttributes."""
         sv = SchemaView(SCHEMA_PATH)
-        
+
         base_class = sv.get_class("BaseSequencingAttributes")
         # BaseSequencingAttributes should inherit from CoreFileAttributes
         assert base_class.is_a == "CoreFileAttributes"
@@ -68,9 +72,9 @@ class TestBaseSequencingSchema:
     def test_common_attributes_present(self):
         """Test that all common sequencing attributes are present."""
         sv = SchemaView(SCHEMA_PATH)
-        
+
         base_class = sv.get_class("BaseSequencingAttributes")
-        
+
         # Check for common sequencing attributes
         common_attrs = [
             "SEQUENCING_BATCH_ID",
@@ -84,16 +88,16 @@ class TestBaseSequencingSchema:
             "GENOMIC_REFERENCE",
             "GENOMIC_REFERENCE_URL",
             "GENOME_ANNOTATION_URL",
-            "CHECKSUM"
+            "CHECKSUM",
         ]
-        
+
         for attr in common_attrs:
             assert attr in base_class.attributes, f"Missing common attribute: {attr}"
 
     def test_optional_attributes(self):
         """Test that optional attributes are properly marked."""
         sv = SchemaView(SCHEMA_PATH)
-        
+
         base_class = sv.get_class("BaseSequencingAttributes")
         optional_attrs = [
             "SEQUENCING_BATCH_ID",
@@ -103,9 +107,9 @@ class TestBaseSequencingSchema:
             "WORKFLOW_LINK",
             "GENOMIC_REFERENCE_URL",
             "GENOME_ANNOTATION_URL",
-            "CHECKSUM"
+            "CHECKSUM",
         ]
-        
+
         for attr in optional_attrs:
             assert attr in base_class.attributes
             assert not base_class.attributes[attr].required
@@ -125,29 +129,43 @@ class TestBaseSequencingDataValidation:
             "LIBRARY_LAYOUT": "Paired-end",
             "SEQUENCING_PLATFORM": "ILLUMINA",
             "WORKFLOW_VERSION": "1.0.0",
-            "GENOMIC_REFERENCE": "GRCh38"
+            "GENOMIC_REFERENCE": "GRCh38",
         }
-        
+
         # Validate required fields
         assert valid_data["LIBRARY_LAYOUT"] in ["Paired-end", "Single-end"]
         assert valid_data["SEQUENCING_PLATFORM"] in [
-            "ABI_SOLID", "BGISEQ", "CAPILLARY", "COMPLETE_GENOMICS", 
-            "HELICOS", "ILLUMINA", "ION_TORRENT", "LS454", 
-            "OXFORD_NANOPORE", "PACBIO_SMRT"
+            "ABI_SOLID",
+            "BGISEQ",
+            "CAPILLARY",
+            "COMPLETE_GENOMICS",
+            "HELICOS",
+            "ILLUMINA",
+            "ION_TORRENT",
+            "LS454",
+            "OXFORD_NANOPORE",
+            "PACBIO_SMRT",
         ]
 
     def test_enum_validation(self):
         """Test enum value validation."""
         # Valid library layouts
         valid_layouts = ["Paired-end", "Single-end"]
-        
+
         # Valid sequencing platforms
         valid_platforms = [
-            "ABI_SOLID", "BGISEQ", "CAPILLARY", "COMPLETE_GENOMICS",
-            "HELICOS", "ILLUMINA", "ION_TORRENT", "LS454",
-            "OXFORD_NANOPORE", "PACBIO_SMRT"
+            "ABI_SOLID",
+            "BGISEQ",
+            "CAPILLARY",
+            "COMPLETE_GENOMICS",
+            "HELICOS",
+            "ILLUMINA",
+            "ION_TORRENT",
+            "LS454",
+            "OXFORD_NANOPORE",
+            "PACBIO_SMRT",
         ]
-        
+
         # Test that all values are in alphabetical order
         assert valid_layouts == sorted(valid_layouts)
         assert valid_platforms == sorted(valid_platforms)
@@ -155,4 +173,3 @@ class TestBaseSequencingDataValidation:
 
 if __name__ == "__main__":
     pytest.main([__file__])
-

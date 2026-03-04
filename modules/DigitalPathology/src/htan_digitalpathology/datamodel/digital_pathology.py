@@ -9,53 +9,30 @@
 import dataclasses
 import re
 from dataclasses import dataclass
-from datetime import (
-    date,
-    datetime,
-    time
-)
-from typing import (
-    Any,
-    ClassVar,
-    Dict,
-    List,
-    Optional,
-    Union
-)
+from datetime import date, datetime, time
+from typing import Any, ClassVar, Dict, List, Optional, Union
 
-from jsonasobj2 import (
-    JsonObj,
-    as_dict
-)
+from jsonasobj2 import JsonObj, as_dict
 from linkml_runtime.linkml_model.meta import (
     EnumDefinition,
     PermissibleValue,
-    PvFormulaOptions
+    PvFormulaOptions,
 )
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml_runtime.utils.dataclass_extensions_376 import (
+    dataclasses_init_fn_with_kwargs,
+)
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
-from linkml_runtime.utils.formatutils import (
-    camelcase,
-    sfx,
-    underscore
-)
-from linkml_runtime.utils.metamodelcore import (
-    bnode,
-    empty_dict,
-    empty_list
-)
+from linkml_runtime.utils.formatutils import camelcase, sfx, underscore
+from linkml_runtime.utils.metamodelcore import bnode, empty_dict, empty_list
 from linkml_runtime.utils.slot import Slot
 from linkml_runtime.utils.yamlutils import (
     YAMLRoot,
     extended_float,
     extended_int,
-    extended_str
+    extended_str,
 )
-from rdflib import (
-    Namespace,
-    URIRef
-)
+from rdflib import Namespace, URIRef
 
 from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String
 from linkml_runtime.utils.metamodelcore import Bool
@@ -67,13 +44,14 @@ version = None
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
-HTAN = CurieNamespace('htan', 'https://w3id.org/htan/')
-LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-SCHEMA = CurieNamespace('schema', 'http://schema.org/')
+HTAN = CurieNamespace("htan", "https://w3id.org/htan/")
+LINKML = CurieNamespace("linkml", "https://w3id.org/linkml/")
+SCHEMA = CurieNamespace("schema", "http://schema.org/")
 DEFAULT_ = HTAN
 
 
 # Types
+
 
 # Class references
 class CoreFileAttributesHTANDATAFILEID(extended_str):
@@ -93,6 +71,7 @@ class CoreFileAttributes(YAMLRoot):
     """
     Universal attributes that apply to all file-based data in HTAN
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["CoreFileAttributes"]
@@ -109,7 +88,9 @@ class CoreFileAttributes(YAMLRoot):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, CoreFileAttributesHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = CoreFileAttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+            self.HTAN_DATA_FILE_ID = CoreFileAttributesHTANDATAFILEID(
+                self.HTAN_DATA_FILE_ID
+            )
 
         if self._is_empty(self.FILENAME):
             self.MissingRequiredField("FILENAME")
@@ -124,8 +105,12 @@ class CoreFileAttributes(YAMLRoot):
         if self._is_empty(self.HTAN_PARENT_ID):
             self.MissingRequiredField("HTAN_PARENT_ID")
         if not isinstance(self.HTAN_PARENT_ID, list):
-            self.HTAN_PARENT_ID = [self.HTAN_PARENT_ID] if self.HTAN_PARENT_ID is not None else []
-        self.HTAN_PARENT_ID = [v if isinstance(v, str) else str(v) for v in self.HTAN_PARENT_ID]
+            self.HTAN_PARENT_ID = (
+                [self.HTAN_PARENT_ID] if self.HTAN_PARENT_ID is not None else []
+            )
+        self.HTAN_PARENT_ID = [
+            v if isinstance(v, str) else str(v) for v in self.HTAN_PARENT_ID
+        ]
 
         super().__post_init__(**kwargs)
 
@@ -135,6 +120,7 @@ class BaseImagingAttributes(CoreFileAttributes):
     """
     Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["BaseImagingAttributes"]
@@ -146,7 +132,9 @@ class BaseImagingAttributes(CoreFileAttributes):
     FILENAME: str = None
     FILE_FORMAT: str = None
     HTAN_PARENT_ID: Union[str, List[str]] = None
-    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
+    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[
+        str, "ExperimentalStrategyAndDataSubtypes"
+    ] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
     LICENSE: Union[str, "License"] = None
     IMAGE_MODALITY: Union[str, "ImageModality"] = None
@@ -173,17 +161,30 @@ class BaseImagingAttributes(CoreFileAttributes):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, BaseImagingAttributesHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = BaseImagingAttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+            self.HTAN_DATA_FILE_ID = BaseImagingAttributesHTANDATAFILEID(
+                self.HTAN_DATA_FILE_ID
+            )
 
         if self._is_empty(self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES):
             self.MissingRequiredField("EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES")
-        if not isinstance(self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, ExperimentalStrategyAndDataSubtypes):
-            self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = ExperimentalStrategyAndDataSubtypes(self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES)
+        if not isinstance(
+            self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES,
+            ExperimentalStrategyAndDataSubtypes,
+        ):
+            self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = (
+                ExperimentalStrategyAndDataSubtypes(
+                    self.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES
+                )
+            )
 
         if self._is_empty(self.DE_IDENTIFICATION_METHOD_TYPE):
             self.MissingRequiredField("DE_IDENTIFICATION_METHOD_TYPE")
-        if not isinstance(self.DE_IDENTIFICATION_METHOD_TYPE, DeIdentificationMethodType):
-            self.DE_IDENTIFICATION_METHOD_TYPE = DeIdentificationMethodType(self.DE_IDENTIFICATION_METHOD_TYPE)
+        if not isinstance(
+            self.DE_IDENTIFICATION_METHOD_TYPE, DeIdentificationMethodType
+        ):
+            self.DE_IDENTIFICATION_METHOD_TYPE = DeIdentificationMethodType(
+                self.DE_IDENTIFICATION_METHOD_TYPE
+            )
 
         if self._is_empty(self.LICENSE):
             self.MissingRequiredField("LICENSE")
@@ -198,7 +199,9 @@ class BaseImagingAttributes(CoreFileAttributes):
         if self._is_empty(self.IMAGING_EQUIPMENT_MANUFACTURER):
             self.MissingRequiredField("IMAGING_EQUIPMENT_MANUFACTURER")
         if not isinstance(self.IMAGING_EQUIPMENT_MANUFACTURER, str):
-            self.IMAGING_EQUIPMENT_MANUFACTURER = str(self.IMAGING_EQUIPMENT_MANUFACTURER)
+            self.IMAGING_EQUIPMENT_MANUFACTURER = str(
+                self.IMAGING_EQUIPMENT_MANUFACTURER
+            )
 
         if self._is_empty(self.CITATION_OR_DOI):
             self.MissingRequiredField("CITATION_OR_DOI")
@@ -245,34 +248,58 @@ class BaseImagingAttributes(CoreFileAttributes):
         if not isinstance(self.DE_IDENTIFIED, Bool):
             self.DE_IDENTIFIED = Bool(self.DE_IDENTIFIED)
 
-        if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
-            self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
+        if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(
+            self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str
+        ):
+            self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(
+                self.DE_IDENTIFICATION_METHOD_DESCRIPTION
+            )
 
-        if self.DE_IDENTIFICATION_SOFTWARE is not None and not isinstance(self.DE_IDENTIFICATION_SOFTWARE, str):
+        if self.DE_IDENTIFICATION_SOFTWARE is not None and not isinstance(
+            self.DE_IDENTIFICATION_SOFTWARE, str
+        ):
             self.DE_IDENTIFICATION_SOFTWARE = str(self.DE_IDENTIFICATION_SOFTWARE)
 
-        if self.IMAGING_EQUIPMENT_MODEL is not None and not isinstance(self.IMAGING_EQUIPMENT_MODEL, str):
+        if self.IMAGING_EQUIPMENT_MODEL is not None and not isinstance(
+            self.IMAGING_EQUIPMENT_MODEL, str
+        ):
             self.IMAGING_EQUIPMENT_MODEL = str(self.IMAGING_EQUIPMENT_MODEL)
 
-        if self.IMAGING_SOFTWARE is not None and not isinstance(self.IMAGING_SOFTWARE, str):
+        if self.IMAGING_SOFTWARE is not None and not isinstance(
+            self.IMAGING_SOFTWARE, str
+        ):
             self.IMAGING_SOFTWARE = str(self.IMAGING_SOFTWARE)
 
-        if self.IMAGING_PROTOCOL is not None and not isinstance(self.IMAGING_PROTOCOL, str):
+        if self.IMAGING_PROTOCOL is not None and not isinstance(
+            self.IMAGING_PROTOCOL, str
+        ):
             self.IMAGING_PROTOCOL = str(self.IMAGING_PROTOCOL)
 
-        if self.IMMERSION is not None and not isinstance(self.IMMERSION, ImmersionMedium):
+        if self.IMMERSION is not None and not isinstance(
+            self.IMMERSION, ImmersionMedium
+        ):
             self.IMMERSION = ImmersionMedium(self.IMMERSION)
 
-        if self.LENS_NUMERICAL_APERTURE is not None and not isinstance(self.LENS_NUMERICAL_APERTURE, float):
+        if self.LENS_NUMERICAL_APERTURE is not None and not isinstance(
+            self.LENS_NUMERICAL_APERTURE, float
+        ):
             self.LENS_NUMERICAL_APERTURE = float(self.LENS_NUMERICAL_APERTURE)
 
-        if self.SLIDE_LABEL_REDACTED is not None and not isinstance(self.SLIDE_LABEL_REDACTED, Bool):
+        if self.SLIDE_LABEL_REDACTED is not None and not isinstance(
+            self.SLIDE_LABEL_REDACTED, Bool
+        ):
             self.SLIDE_LABEL_REDACTED = Bool(self.SLIDE_LABEL_REDACTED)
 
-        if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str):
-            self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(self.DE_IDENTIFICATION_METHOD_DESCRIPTION)
+        if self.DE_IDENTIFICATION_METHOD_DESCRIPTION is not None and not isinstance(
+            self.DE_IDENTIFICATION_METHOD_DESCRIPTION, str
+        ):
+            self.DE_IDENTIFICATION_METHOD_DESCRIPTION = str(
+                self.DE_IDENTIFICATION_METHOD_DESCRIPTION
+            )
 
-        if self.SLIDE_LABEL_REDACTED is not None and not isinstance(self.SLIDE_LABEL_REDACTED, str):
+        if self.SLIDE_LABEL_REDACTED is not None and not isinstance(
+            self.SLIDE_LABEL_REDACTED, str
+        ):
             self.SLIDE_LABEL_REDACTED = str(self.SLIDE_LABEL_REDACTED)
 
         super().__post_init__(**kwargs)
@@ -283,6 +310,7 @@ class DigitalPathologyData(BaseImagingAttributes):
     """
     Container for digital pathology imaging data
     """
+
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = HTAN["DigitalPathologyData"]
@@ -292,7 +320,9 @@ class DigitalPathologyData(BaseImagingAttributes):
 
     HTAN_DATA_FILE_ID: Union[str, DigitalPathologyDataHTANDATAFILEID] = None
     HTAN_PARENT_ID: Union[str, List[str]] = None
-    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
+    EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[
+        str, "ExperimentalStrategyAndDataSubtypes"
+    ] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
     LICENSE: Union[str, "License"] = None
     IMAGE_MODALITY: Union[str, "ImageModality"] = None
@@ -315,7 +345,9 @@ class DigitalPathologyData(BaseImagingAttributes):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
             self.MissingRequiredField("HTAN_DATA_FILE_ID")
         if not isinstance(self.HTAN_DATA_FILE_ID, DigitalPathologyDataHTANDATAFILEID):
-            self.HTAN_DATA_FILE_ID = DigitalPathologyDataHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+            self.HTAN_DATA_FILE_ID = DigitalPathologyDataHTANDATAFILEID(
+                self.HTAN_DATA_FILE_ID
+            )
 
         if self._is_empty(self.FILE_FORMAT):
             self.MissingRequiredField("FILE_FORMAT")
@@ -332,10 +364,14 @@ class DigitalPathologyData(BaseImagingAttributes):
         if not isinstance(self.HAS_ANNOTATIONS, Bool):
             self.HAS_ANNOTATIONS = Bool(self.HAS_ANNOTATIONS)
 
-        if self.ANNOTATION_TYPE is not None and not isinstance(self.ANNOTATION_TYPE, AnnotationType):
+        if self.ANNOTATION_TYPE is not None and not isinstance(
+            self.ANNOTATION_TYPE, AnnotationType
+        ):
             self.ANNOTATION_TYPE = AnnotationType(self.ANNOTATION_TYPE)
 
-        if self.ANNOTATION_TYPE is not None and not isinstance(self.ANNOTATION_TYPE, str):
+        if self.ANNOTATION_TYPE is not None and not isinstance(
+            self.ANNOTATION_TYPE, str
+        ):
             self.ANNOTATION_TYPE = str(self.ANNOTATION_TYPE)
 
         super().__post_init__(**kwargs)
@@ -344,37 +380,28 @@ class DigitalPathologyData(BaseImagingAttributes):
 # Enumerations
 class AnnotationType(EnumDefinitionImpl):
 
-    Artifact = PermissibleValue(
-        text="Artifact",
-        description="Artifact annotation")
-    Cell = PermissibleValue(
-        text="Cell",
-        description="Cell annotation")
-    Nucleus = PermissibleValue(
-        text="Nucleus",
-        description="Nucleus annotation")
-    ROI = PermissibleValue(
-        text="ROI",
-        description="Region of Interest annotation")
-    Tissue = PermissibleValue(
-        text="Tissue",
-        description="Tissue annotation")
+    Artifact = PermissibleValue(text="Artifact", description="Artifact annotation")
+    Cell = PermissibleValue(text="Cell", description="Cell annotation")
+    Nucleus = PermissibleValue(text="Nucleus", description="Nucleus annotation")
+    ROI = PermissibleValue(text="ROI", description="Region of Interest annotation")
+    Tissue = PermissibleValue(text="Tissue", description="Tissue annotation")
 
     _defn = EnumDefinition(
         name="AnnotationType",
     )
 
+
 class DeIdentificationMethodType(EnumDefinitionImpl):
 
     Automatic = PermissibleValue(
-        text="Automatic",
-        description="Automatic de-identification method")
+        text="Automatic", description="Automatic de-identification method"
+    )
     Manual = PermissibleValue(
-        text="Manual",
-        description="Manual de-identification method")
+        text="Manual", description="Manual de-identification method"
+    )
     Semiautomatic = PermissibleValue(
-        text="Semiautomatic",
-        description="Semi-automatic de-identification method")
+        text="Semiautomatic", description="Semi-automatic de-identification method"
+    )
 
     _defn = EnumDefinition(
         name="DeIdentificationMethodType",
@@ -382,53 +409,56 @@ class DeIdentificationMethodType(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "Not Applicable",
+        setattr(
+            cls,
+            "Not Applicable",
             PermissibleValue(
-                text="Not Applicable",
-                description="De-identification not applicable"))
+                text="Not Applicable", description="De-identification not applicable"
+            ),
+        )
+
 
 class ImageModality(EnumDefinitionImpl):
 
-    SM = PermissibleValue(
-        text="SM",
-        description="Slide Microscopy")
+    SM = PermissibleValue(text="SM", description="Slide Microscopy")
 
     _defn = EnumDefinition(
         name="ImageModality",
     )
 
+
 class StainingMethod(EnumDefinitionImpl):
 
-    CODEX = PermissibleValue(
-        text="CODEX",
-        description="CODEX staining method")
+    CODEX = PermissibleValue(text="CODEX", description="CODEX staining method")
     CyCIF = PermissibleValue(
-        text="CyCIF",
-        description="Cyclic Immunofluorescence staining method")
+        text="CyCIF", description="Cyclic Immunofluorescence staining method"
+    )
     ExSeq = PermissibleValue(
-        text="ExSeq",
-        description="Expansion Sequencing staining method")
+        text="ExSeq", description="Expansion Sequencing staining method"
+    )
     IHC = PermissibleValue(
-        text="IHC",
-        description="Immunohistochemistry staining method")
+        text="IHC", description="Immunohistochemistry staining method"
+    )
     IMC = PermissibleValue(
-        text="IMC",
-        description="Imaging Mass Cytometry staining method")
+        text="IMC", description="Imaging Mass Cytometry staining method"
+    )
     MERFISH = PermissibleValue(
         text="MERFISH",
-        description="Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method")
+        description="Multiplexed Error-Robust Fluorescence In Situ Hybridization staining method",
+    )
     MIBI = PermissibleValue(
-        text="MIBI",
-        description="Multiplexed Ion Beam Imaging staining method")
+        text="MIBI", description="Multiplexed Ion Beam Imaging staining method"
+    )
     MxIF = PermissibleValue(
-        text="MxIF",
-        description="Multiplexed Immunofluorescence staining method")
+        text="MxIF", description="Multiplexed Immunofluorescence staining method"
+    )
     SABER = PermissibleValue(
         text="SABER",
-        description="Signal Amplification By Exchange Reaction staining method")
+        description="Signal Amplification By Exchange Reaction staining method",
+    )
     mIHC = PermissibleValue(
-        text="mIHC",
-        description="Multiplexed Immunohistochemistry staining method")
+        text="mIHC", description="Multiplexed Immunohistochemistry staining method"
+    )
 
     _defn = EnumDefinition(
         name="StainingMethod",
@@ -436,54 +466,64 @@ class StainingMethod(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "GeoMX-DSP",
+        setattr(
+            cls,
+            "GeoMX-DSP",
             PermissibleValue(
                 text="GeoMX-DSP",
-                description="GeoMX Digital Spatial Profiling staining method"))
-        setattr(cls, "H&E",
+                description="GeoMX Digital Spatial Profiling staining method",
+            ),
+        )
+        setattr(
+            cls,
+            "H&E",
             PermissibleValue(
-                text="H&E",
-                description="Hematoxylin and Eosin staining method"))
-        setattr(cls, "Not Applicable",
+                text="H&E", description="Hematoxylin and Eosin staining method"
+            ),
+        )
+        setattr(
+            cls,
+            "Not Applicable",
             PermissibleValue(
-                text="Not Applicable",
-                description="Staining not applicable"))
-        setattr(cls, "t-CyCIF",
+                text="Not Applicable", description="Staining not applicable"
+            ),
+        )
+        setattr(
+            cls,
+            "t-CyCIF",
             PermissibleValue(
                 text="t-CyCIF",
-                description="Tissue Cyclic Immunofluorescence staining method"))
+                description="Tissue Cyclic Immunofluorescence staining method",
+            ),
+        )
+
 
 class ImmersionMedium(EnumDefinitionImpl):
 
-    Air = PermissibleValue(
-        text="Air",
-        description="Air immersion medium")
+    Air = PermissibleValue(text="Air", description="Air immersion medium")
     Glycerol = PermissibleValue(
-        text="Glycerol",
-        description="Glycerol immersion medium")
-    Oil = PermissibleValue(
-        text="Oil",
-        description="Oil immersion medium")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other immersion medium")
-    Water = PermissibleValue(
-        text="Water",
-        description="Water immersion medium")
+        text="Glycerol", description="Glycerol immersion medium"
+    )
+    Oil = PermissibleValue(text="Oil", description="Oil immersion medium")
+    Other = PermissibleValue(text="Other", description="Other immersion medium")
+    Water = PermissibleValue(text="Water", description="Water immersion medium")
 
     _defn = EnumDefinition(
         name="ImmersionMedium",
     )
 
+
 class ExperimentalStrategyAndDataSubtypes(EnumDefinitionImpl):
 
     Pathological = PermissibleValue(
         text="Pathological",
-        description="Pathological experimental strategy and data subtype")
+        description="Pathological experimental strategy and data subtype",
+    )
 
     _defn = EnumDefinition(
         name="ExperimentalStrategyAndDataSubtypes",
     )
+
 
 class License(EnumDefinitionImpl):
 
@@ -493,10 +533,15 @@ class License(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "CC BY 4.0",
+        setattr(
+            cls,
+            "CC BY 4.0",
             PermissibleValue(
                 text="CC BY 4.0",
-                description="Creative Commons Attribution 4.0 International License"))
+                description="Creative Commons Attribution 4.0 International License",
+            ),
+        )
+
 
 class Species(EnumDefinitionImpl):
 
@@ -506,125 +551,355 @@ class Species(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "9606 (Homo sapiens)",
+        setattr(
+            cls,
+            "9606 (Homo sapiens)",
             PermissibleValue(
                 text="9606 (Homo sapiens)",
-                description="NCBI Taxonomy ID for Homo sapiens"))
+                description="NCBI Taxonomy ID for Homo sapiens",
+            ),
+        )
+
 
 # Slots
 class slots:
     pass
 
-slots.digitalPathologyData__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="digitalPathologyData__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.digitalPathologyData__FILE_FORMAT, domain=None, range=str,
-                   pattern=re.compile(r'^(ome-tiff|tiff|qptiff|svs|ndpi)$'))
 
-slots.digitalPathologyData__FILENAME = Slot(uri=HTAN.FILENAME, name="digitalPathologyData__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.digitalPathologyData__FILENAME, domain=None, range=str,
-                   pattern=re.compile(r'^.+\.(ome\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs|ndpi)$'))
+slots.digitalPathologyData__FILE_FORMAT = Slot(
+    uri=HTAN.FILE_FORMAT,
+    name="digitalPathologyData__FILE_FORMAT",
+    curie=HTAN.curie("FILE_FORMAT"),
+    model_uri=HTAN.digitalPathologyData__FILE_FORMAT,
+    domain=None,
+    range=str,
+    pattern=re.compile(r"^(ome-tiff|tiff|qptiff|svs|ndpi)$"),
+)
 
-slots.digitalPathologyData__HAS_ANNOTATIONS = Slot(uri=HTAN.HAS_ANNOTATIONS, name="digitalPathologyData__HAS_ANNOTATIONS", curie=HTAN.curie('HAS_ANNOTATIONS'),
-                   model_uri=HTAN.digitalPathologyData__HAS_ANNOTATIONS, domain=None, range=Union[bool, Bool])
+slots.digitalPathologyData__FILENAME = Slot(
+    uri=HTAN.FILENAME,
+    name="digitalPathologyData__FILENAME",
+    curie=HTAN.curie("FILENAME"),
+    model_uri=HTAN.digitalPathologyData__FILENAME,
+    domain=None,
+    range=str,
+    pattern=re.compile(r"^.+\.(ome\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs|ndpi)$"),
+)
 
-slots.digitalPathologyData__ANNOTATION_TYPE = Slot(uri=HTAN.ANNOTATION_TYPE, name="digitalPathologyData__ANNOTATION_TYPE", curie=HTAN.curie('ANNOTATION_TYPE'),
-                   model_uri=HTAN.digitalPathologyData__ANNOTATION_TYPE, domain=None, range=Optional[Union[str, "AnnotationType"]])
+slots.digitalPathologyData__HAS_ANNOTATIONS = Slot(
+    uri=HTAN.HAS_ANNOTATIONS,
+    name="digitalPathologyData__HAS_ANNOTATIONS",
+    curie=HTAN.curie("HAS_ANNOTATIONS"),
+    model_uri=HTAN.digitalPathologyData__HAS_ANNOTATIONS,
+    domain=None,
+    range=Union[bool, Bool],
+)
 
-slots.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = Slot(uri=HTAN.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, name="baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES", curie=HTAN.curie('EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES'),
-                   model_uri=HTAN.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, domain=None, range=Union[str, "ExperimentalStrategyAndDataSubtypes"])
+slots.digitalPathologyData__ANNOTATION_TYPE = Slot(
+    uri=HTAN.ANNOTATION_TYPE,
+    name="digitalPathologyData__ANNOTATION_TYPE",
+    curie=HTAN.curie("ANNOTATION_TYPE"),
+    model_uri=HTAN.digitalPathologyData__ANNOTATION_TYPE,
+    domain=None,
+    range=Optional[Union[str, "AnnotationType"]],
+)
 
-slots.baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_TYPE, name="baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_TYPE'),
-                   model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE, domain=None, range=Union[str, "DeIdentificationMethodType"])
+slots.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = Slot(
+    uri=HTAN.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES,
+    name="baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES",
+    curie=HTAN.curie("EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES"),
+    model_uri=HTAN.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES,
+    domain=None,
+    range=Union[str, "ExperimentalStrategyAndDataSubtypes"],
+)
 
-slots.baseImagingAttributes__DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="baseImagingAttributes__DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
-                   model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=None, range=Optional[str])
+slots.baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE = Slot(
+    uri=HTAN.DE_IDENTIFICATION_METHOD_TYPE,
+    name="baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE",
+    curie=HTAN.curie("DE_IDENTIFICATION_METHOD_TYPE"),
+    model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_METHOD_TYPE,
+    domain=None,
+    range=Union[str, "DeIdentificationMethodType"],
+)
 
-slots.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE = Slot(uri=HTAN.DE_IDENTIFICATION_SOFTWARE, name="baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE", curie=HTAN.curie('DE_IDENTIFICATION_SOFTWARE'),
-                   model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE, domain=None, range=Optional[str])
+slots.baseImagingAttributes__DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(
+    uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION,
+    name="baseImagingAttributes__DE_IDENTIFICATION_METHOD_DESCRIPTION",
+    curie=HTAN.curie("DE_IDENTIFICATION_METHOD_DESCRIPTION"),
+    model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_METHOD_DESCRIPTION,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseImagingAttributes__LICENSE = Slot(uri=HTAN.LICENSE, name="baseImagingAttributes__LICENSE", curie=HTAN.curie('LICENSE'),
-                   model_uri=HTAN.baseImagingAttributes__LICENSE, domain=None, range=Union[str, "License"])
+slots.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE = Slot(
+    uri=HTAN.DE_IDENTIFICATION_SOFTWARE,
+    name="baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE",
+    curie=HTAN.curie("DE_IDENTIFICATION_SOFTWARE"),
+    model_uri=HTAN.baseImagingAttributes__DE_IDENTIFICATION_SOFTWARE,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseImagingAttributes__IMAGE_MODALITY = Slot(uri=HTAN.IMAGE_MODALITY, name="baseImagingAttributes__IMAGE_MODALITY", curie=HTAN.curie('IMAGE_MODALITY'),
-                   model_uri=HTAN.baseImagingAttributes__IMAGE_MODALITY, domain=None, range=Union[str, "ImageModality"])
+slots.baseImagingAttributes__LICENSE = Slot(
+    uri=HTAN.LICENSE,
+    name="baseImagingAttributes__LICENSE",
+    curie=HTAN.curie("LICENSE"),
+    model_uri=HTAN.baseImagingAttributes__LICENSE,
+    domain=None,
+    range=Union[str, "License"],
+)
 
-slots.baseImagingAttributes__IMAGING_EQUIPMENT_MANUFACTURER = Slot(uri=HTAN.IMAGING_EQUIPMENT_MANUFACTURER, name="baseImagingAttributes__IMAGING_EQUIPMENT_MANUFACTURER", curie=HTAN.curie('IMAGING_EQUIPMENT_MANUFACTURER'),
-                   model_uri=HTAN.baseImagingAttributes__IMAGING_EQUIPMENT_MANUFACTURER, domain=None, range=str)
+slots.baseImagingAttributes__IMAGE_MODALITY = Slot(
+    uri=HTAN.IMAGE_MODALITY,
+    name="baseImagingAttributes__IMAGE_MODALITY",
+    curie=HTAN.curie("IMAGE_MODALITY"),
+    model_uri=HTAN.baseImagingAttributes__IMAGE_MODALITY,
+    domain=None,
+    range=Union[str, "ImageModality"],
+)
 
-slots.baseImagingAttributes__IMAGING_EQUIPMENT_MODEL = Slot(uri=HTAN.IMAGING_EQUIPMENT_MODEL, name="baseImagingAttributes__IMAGING_EQUIPMENT_MODEL", curie=HTAN.curie('IMAGING_EQUIPMENT_MODEL'),
-                   model_uri=HTAN.baseImagingAttributes__IMAGING_EQUIPMENT_MODEL, domain=None, range=Optional[str])
+slots.baseImagingAttributes__IMAGING_EQUIPMENT_MANUFACTURER = Slot(
+    uri=HTAN.IMAGING_EQUIPMENT_MANUFACTURER,
+    name="baseImagingAttributes__IMAGING_EQUIPMENT_MANUFACTURER",
+    curie=HTAN.curie("IMAGING_EQUIPMENT_MANUFACTURER"),
+    model_uri=HTAN.baseImagingAttributes__IMAGING_EQUIPMENT_MANUFACTURER,
+    domain=None,
+    range=str,
+)
 
-slots.baseImagingAttributes__IMAGING_SOFTWARE = Slot(uri=HTAN.IMAGING_SOFTWARE, name="baseImagingAttributes__IMAGING_SOFTWARE", curie=HTAN.curie('IMAGING_SOFTWARE'),
-                   model_uri=HTAN.baseImagingAttributes__IMAGING_SOFTWARE, domain=None, range=Optional[str])
+slots.baseImagingAttributes__IMAGING_EQUIPMENT_MODEL = Slot(
+    uri=HTAN.IMAGING_EQUIPMENT_MODEL,
+    name="baseImagingAttributes__IMAGING_EQUIPMENT_MODEL",
+    curie=HTAN.curie("IMAGING_EQUIPMENT_MODEL"),
+    model_uri=HTAN.baseImagingAttributes__IMAGING_EQUIPMENT_MODEL,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseImagingAttributes__CITATION_OR_DOI = Slot(uri=HTAN.CITATION_OR_DOI, name="baseImagingAttributes__CITATION_OR_DOI", curie=HTAN.curie('CITATION_OR_DOI'),
-                   model_uri=HTAN.baseImagingAttributes__CITATION_OR_DOI, domain=None, range=str,
-                   pattern=re.compile(r'^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$'))
+slots.baseImagingAttributes__IMAGING_SOFTWARE = Slot(
+    uri=HTAN.IMAGING_SOFTWARE,
+    name="baseImagingAttributes__IMAGING_SOFTWARE",
+    curie=HTAN.curie("IMAGING_SOFTWARE"),
+    model_uri=HTAN.baseImagingAttributes__IMAGING_SOFTWARE,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.baseImagingAttributes__IMAGING_PROTOCOL = Slot(uri=HTAN.IMAGING_PROTOCOL, name="baseImagingAttributes__IMAGING_PROTOCOL", curie=HTAN.curie('IMAGING_PROTOCOL'),
-                   model_uri=HTAN.baseImagingAttributes__IMAGING_PROTOCOL, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$'))
+slots.baseImagingAttributes__CITATION_OR_DOI = Slot(
+    uri=HTAN.CITATION_OR_DOI,
+    name="baseImagingAttributes__CITATION_OR_DOI",
+    curie=HTAN.curie("CITATION_OR_DOI"),
+    model_uri=HTAN.baseImagingAttributes__CITATION_OR_DOI,
+    domain=None,
+    range=str,
+    pattern=re.compile(
+        r"^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$"
+    ),
+)
 
-slots.baseImagingAttributes__STAINING_METHOD = Slot(uri=HTAN.STAINING_METHOD, name="baseImagingAttributes__STAINING_METHOD", curie=HTAN.curie('STAINING_METHOD'),
-                   model_uri=HTAN.baseImagingAttributes__STAINING_METHOD, domain=None, range=Union[str, "StainingMethod"])
+slots.baseImagingAttributes__IMAGING_PROTOCOL = Slot(
+    uri=HTAN.IMAGING_PROTOCOL,
+    name="baseImagingAttributes__IMAGING_PROTOCOL",
+    curie=HTAN.curie("IMAGING_PROTOCOL"),
+    model_uri=HTAN.baseImagingAttributes__IMAGING_PROTOCOL,
+    domain=None,
+    range=Optional[str],
+    pattern=re.compile(
+        r"^(?:(?:https?)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$"
+    ),
+)
 
-slots.baseImagingAttributes__OBJECTIVE = Slot(uri=HTAN.OBJECTIVE, name="baseImagingAttributes__OBJECTIVE", curie=HTAN.curie('OBJECTIVE'),
-                   model_uri=HTAN.baseImagingAttributes__OBJECTIVE, domain=None, range=str)
+slots.baseImagingAttributes__STAINING_METHOD = Slot(
+    uri=HTAN.STAINING_METHOD,
+    name="baseImagingAttributes__STAINING_METHOD",
+    curie=HTAN.curie("STAINING_METHOD"),
+    model_uri=HTAN.baseImagingAttributes__STAINING_METHOD,
+    domain=None,
+    range=Union[str, "StainingMethod"],
+)
 
-slots.baseImagingAttributes__NOMINAL_MAGNIFICATION = Slot(uri=HTAN.NOMINAL_MAGNIFICATION, name="baseImagingAttributes__NOMINAL_MAGNIFICATION", curie=HTAN.curie('NOMINAL_MAGNIFICATION'),
-                   model_uri=HTAN.baseImagingAttributes__NOMINAL_MAGNIFICATION, domain=None, range=int)
+slots.baseImagingAttributes__OBJECTIVE = Slot(
+    uri=HTAN.OBJECTIVE,
+    name="baseImagingAttributes__OBJECTIVE",
+    curie=HTAN.curie("OBJECTIVE"),
+    model_uri=HTAN.baseImagingAttributes__OBJECTIVE,
+    domain=None,
+    range=str,
+)
 
-slots.baseImagingAttributes__IMMERSION = Slot(uri=HTAN.IMMERSION, name="baseImagingAttributes__IMMERSION", curie=HTAN.curie('IMMERSION'),
-                   model_uri=HTAN.baseImagingAttributes__IMMERSION, domain=None, range=Optional[Union[str, "ImmersionMedium"]])
+slots.baseImagingAttributes__NOMINAL_MAGNIFICATION = Slot(
+    uri=HTAN.NOMINAL_MAGNIFICATION,
+    name="baseImagingAttributes__NOMINAL_MAGNIFICATION",
+    curie=HTAN.curie("NOMINAL_MAGNIFICATION"),
+    model_uri=HTAN.baseImagingAttributes__NOMINAL_MAGNIFICATION,
+    domain=None,
+    range=int,
+)
 
-slots.baseImagingAttributes__LENS_NUMERICAL_APERTURE = Slot(uri=HTAN.LENS_NUMERICAL_APERTURE, name="baseImagingAttributes__LENS_NUMERICAL_APERTURE", curie=HTAN.curie('LENS_NUMERICAL_APERTURE'),
-                   model_uri=HTAN.baseImagingAttributes__LENS_NUMERICAL_APERTURE, domain=None, range=Optional[float])
+slots.baseImagingAttributes__IMMERSION = Slot(
+    uri=HTAN.IMMERSION,
+    name="baseImagingAttributes__IMMERSION",
+    curie=HTAN.curie("IMMERSION"),
+    model_uri=HTAN.baseImagingAttributes__IMMERSION,
+    domain=None,
+    range=Optional[Union[str, "ImmersionMedium"]],
+)
 
-slots.baseImagingAttributes__PASSED_QC = Slot(uri=HTAN.PASSED_QC, name="baseImagingAttributes__PASSED_QC", curie=HTAN.curie('PASSED_QC'),
-                   model_uri=HTAN.baseImagingAttributes__PASSED_QC, domain=None, range=Union[bool, Bool])
+slots.baseImagingAttributes__LENS_NUMERICAL_APERTURE = Slot(
+    uri=HTAN.LENS_NUMERICAL_APERTURE,
+    name="baseImagingAttributes__LENS_NUMERICAL_APERTURE",
+    curie=HTAN.curie("LENS_NUMERICAL_APERTURE"),
+    model_uri=HTAN.baseImagingAttributes__LENS_NUMERICAL_APERTURE,
+    domain=None,
+    range=Optional[float],
+)
 
-slots.baseImagingAttributes__QC_COMMENT = Slot(uri=HTAN.QC_COMMENT, name="baseImagingAttributes__QC_COMMENT", curie=HTAN.curie('QC_COMMENT'),
-                   model_uri=HTAN.baseImagingAttributes__QC_COMMENT, domain=None, range=str)
+slots.baseImagingAttributes__PASSED_QC = Slot(
+    uri=HTAN.PASSED_QC,
+    name="baseImagingAttributes__PASSED_QC",
+    curie=HTAN.curie("PASSED_QC"),
+    model_uri=HTAN.baseImagingAttributes__PASSED_QC,
+    domain=None,
+    range=Union[bool, Bool],
+)
 
-slots.baseImagingAttributes__SPECIES = Slot(uri=HTAN.SPECIES, name="baseImagingAttributes__SPECIES", curie=HTAN.curie('SPECIES'),
-                   model_uri=HTAN.baseImagingAttributes__SPECIES, domain=None, range=Union[str, "Species"])
+slots.baseImagingAttributes__QC_COMMENT = Slot(
+    uri=HTAN.QC_COMMENT,
+    name="baseImagingAttributes__QC_COMMENT",
+    curie=HTAN.curie("QC_COMMENT"),
+    model_uri=HTAN.baseImagingAttributes__QC_COMMENT,
+    domain=None,
+    range=str,
+)
 
-slots.baseImagingAttributes__HAS_SLIDE_LABEL = Slot(uri=HTAN.HAS_SLIDE_LABEL, name="baseImagingAttributes__HAS_SLIDE_LABEL", curie=HTAN.curie('HAS_SLIDE_LABEL'),
-                   model_uri=HTAN.baseImagingAttributes__HAS_SLIDE_LABEL, domain=None, range=Union[bool, Bool])
+slots.baseImagingAttributes__SPECIES = Slot(
+    uri=HTAN.SPECIES,
+    name="baseImagingAttributes__SPECIES",
+    curie=HTAN.curie("SPECIES"),
+    model_uri=HTAN.baseImagingAttributes__SPECIES,
+    domain=None,
+    range=Union[str, "Species"],
+)
 
-slots.baseImagingAttributes__SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="baseImagingAttributes__SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
-                   model_uri=HTAN.baseImagingAttributes__SLIDE_LABEL_REDACTED, domain=None, range=Optional[Union[bool, Bool]])
+slots.baseImagingAttributes__HAS_SLIDE_LABEL = Slot(
+    uri=HTAN.HAS_SLIDE_LABEL,
+    name="baseImagingAttributes__HAS_SLIDE_LABEL",
+    curie=HTAN.curie("HAS_SLIDE_LABEL"),
+    model_uri=HTAN.baseImagingAttributes__HAS_SLIDE_LABEL,
+    domain=None,
+    range=Union[bool, Bool],
+)
 
-slots.baseImagingAttributes__DE_IDENTIFIED = Slot(uri=HTAN.DE_IDENTIFIED, name="baseImagingAttributes__DE_IDENTIFIED", curie=HTAN.curie('DE_IDENTIFIED'),
-                   model_uri=HTAN.baseImagingAttributes__DE_IDENTIFIED, domain=None, range=Union[bool, Bool])
+slots.baseImagingAttributes__SLIDE_LABEL_REDACTED = Slot(
+    uri=HTAN.SLIDE_LABEL_REDACTED,
+    name="baseImagingAttributes__SLIDE_LABEL_REDACTED",
+    curie=HTAN.curie("SLIDE_LABEL_REDACTED"),
+    model_uri=HTAN.baseImagingAttributes__SLIDE_LABEL_REDACTED,
+    domain=None,
+    range=Optional[Union[bool, Bool]],
+)
 
-slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
-                   model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
+slots.baseImagingAttributes__DE_IDENTIFIED = Slot(
+    uri=HTAN.DE_IDENTIFIED,
+    name="baseImagingAttributes__DE_IDENTIFIED",
+    curie=HTAN.curie("DE_IDENTIFIED"),
+    model_uri=HTAN.baseImagingAttributes__DE_IDENTIFIED,
+    domain=None,
+    range=Union[bool, Bool],
+)
 
-slots.coreFileAttributes__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="coreFileAttributes__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
-                   model_uri=HTAN.coreFileAttributes__FILE_FORMAT, domain=None, range=str)
+slots.coreFileAttributes__FILENAME = Slot(
+    uri=HTAN.FILENAME,
+    name="coreFileAttributes__FILENAME",
+    curie=HTAN.curie("FILENAME"),
+    model_uri=HTAN.coreFileAttributes__FILENAME,
+    domain=None,
+    range=str,
+)
 
-slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, name="coreFileAttributes__HTAN_DATA_FILE_ID", curie=HTAN.curie('HTAN_DATA_FILE_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_DATA_FILE_ID, domain=None, range=URIRef,
-                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$'))
+slots.coreFileAttributes__FILE_FORMAT = Slot(
+    uri=HTAN.FILE_FORMAT,
+    name="coreFileAttributes__FILE_FORMAT",
+    curie=HTAN.curie("FILE_FORMAT"),
+    model_uri=HTAN.coreFileAttributes__FILE_FORMAT,
+    domain=None,
+    range=str,
+)
 
-slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=Union[str, List[str]],
-                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$'))
+slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(
+    uri=HTAN.HTAN_DATA_FILE_ID,
+    name="coreFileAttributes__HTAN_DATA_FILE_ID",
+    curie=HTAN.curie("HTAN_DATA_FILE_ID"),
+    model_uri=HTAN.coreFileAttributes__HTAN_DATA_FILE_ID,
+    domain=None,
+    range=URIRef,
+    pattern=re.compile(
+        r"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$"
+    ),
+)
 
-slots.DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
-                   model_uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=None, range=Optional[str])
+slots.coreFileAttributes__HTAN_PARENT_ID = Slot(
+    uri=HTAN.HTAN_PARENT_ID,
+    name="coreFileAttributes__HTAN_PARENT_ID",
+    curie=HTAN.curie("HTAN_PARENT_ID"),
+    model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID,
+    domain=None,
+    range=Union[str, List[str]],
+    pattern=re.compile(
+        r"^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$"
+    ),
+)
 
-slots.SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
-                   model_uri=HTAN.SLIDE_LABEL_REDACTED, domain=None, range=Optional[str])
+slots.DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(
+    uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION,
+    name="DE_IDENTIFICATION_METHOD_DESCRIPTION",
+    curie=HTAN.curie("DE_IDENTIFICATION_METHOD_DESCRIPTION"),
+    model_uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.ANNOTATION_TYPE = Slot(uri=HTAN.ANNOTATION_TYPE, name="ANNOTATION_TYPE", curie=HTAN.curie('ANNOTATION_TYPE'),
-                   model_uri=HTAN.ANNOTATION_TYPE, domain=None, range=Optional[str])
+slots.SLIDE_LABEL_REDACTED = Slot(
+    uri=HTAN.SLIDE_LABEL_REDACTED,
+    name="SLIDE_LABEL_REDACTED",
+    curie=HTAN.curie("SLIDE_LABEL_REDACTED"),
+    model_uri=HTAN.SLIDE_LABEL_REDACTED,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.DigitalPathologyData_ANNOTATION_TYPE = Slot(uri=HTAN.ANNOTATION_TYPE, name="DigitalPathologyData_ANNOTATION_TYPE", curie=HTAN.curie('ANNOTATION_TYPE'),
-                   model_uri=HTAN.DigitalPathologyData_ANNOTATION_TYPE, domain=DigitalPathologyData, range=Optional[str])
+slots.ANNOTATION_TYPE = Slot(
+    uri=HTAN.ANNOTATION_TYPE,
+    name="ANNOTATION_TYPE",
+    curie=HTAN.curie("ANNOTATION_TYPE"),
+    model_uri=HTAN.ANNOTATION_TYPE,
+    domain=None,
+    range=Optional[str],
+)
 
-slots.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION, name="BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION", curie=HTAN.curie('DE_IDENTIFICATION_METHOD_DESCRIPTION'),
-                   model_uri=HTAN.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION, domain=BaseImagingAttributes, range=Optional[str])
+slots.DigitalPathologyData_ANNOTATION_TYPE = Slot(
+    uri=HTAN.ANNOTATION_TYPE,
+    name="DigitalPathologyData_ANNOTATION_TYPE",
+    curie=HTAN.curie("ANNOTATION_TYPE"),
+    model_uri=HTAN.DigitalPathologyData_ANNOTATION_TYPE,
+    domain=DigitalPathologyData,
+    range=Optional[str],
+)
 
-slots.BaseImagingAttributes_SLIDE_LABEL_REDACTED = Slot(uri=HTAN.SLIDE_LABEL_REDACTED, name="BaseImagingAttributes_SLIDE_LABEL_REDACTED", curie=HTAN.curie('SLIDE_LABEL_REDACTED'),
-                   model_uri=HTAN.BaseImagingAttributes_SLIDE_LABEL_REDACTED, domain=BaseImagingAttributes, range=Optional[str])
+slots.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION = Slot(
+    uri=HTAN.DE_IDENTIFICATION_METHOD_DESCRIPTION,
+    name="BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION",
+    curie=HTAN.curie("DE_IDENTIFICATION_METHOD_DESCRIPTION"),
+    model_uri=HTAN.BaseImagingAttributes_DE_IDENTIFICATION_METHOD_DESCRIPTION,
+    domain=BaseImagingAttributes,
+    range=Optional[str],
+)
+
+slots.BaseImagingAttributes_SLIDE_LABEL_REDACTED = Slot(
+    uri=HTAN.SLIDE_LABEL_REDACTED,
+    name="BaseImagingAttributes_SLIDE_LABEL_REDACTED",
+    curie=HTAN.curie("SLIDE_LABEL_REDACTED"),
+    model_uri=HTAN.BaseImagingAttributes_SLIDE_LABEL_REDACTED,
+    domain=BaseImagingAttributes,
+    range=Optional[str],
+)

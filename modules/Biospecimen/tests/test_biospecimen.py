@@ -27,7 +27,9 @@ class TestBiospecimen:
 
         # Check that it does NOT inherit from CoreFileAttributes (it's a record-based module)
         biospecimen_class = sv.get_class("BiospecimenData")
-        assert biospecimen_class.is_a is None, "BiospecimenData is record-based and should not inherit from CoreFileAttributes"
+        assert (
+            biospecimen_class.is_a is None
+        ), "BiospecimenData is record-based and should not inherit from CoreFileAttributes"
 
     def test_enums(self):
         """Test that enums are properly defined."""
@@ -201,9 +203,19 @@ class TestBiospecimen:
         rules = biospecimen_class.rules or []
 
         def triple(r):
-            pre = getattr(getattr(r, "preconditions", None), "slot_conditions", None) or {}
-            post = getattr(getattr(r, "postconditions", None), "slot_conditions", None) or {}
-            if not pre or not post or getattr(next(iter(post.values())), "required", None) is not True:
+            pre = (
+                getattr(getattr(r, "preconditions", None), "slot_conditions", None)
+                or {}
+            )
+            post = (
+                getattr(getattr(r, "postconditions", None), "slot_conditions", None)
+                or {}
+            )
+            if (
+                not pre
+                or not post
+                or getattr(next(iter(post.values())), "required", None) is not True
+            ):
                 return None
             pre_slot, post_slot = next(iter(pre)), next(iter(post))
             return (pre_slot, getattr(pre[pre_slot], "equals_string", None), post_slot)
@@ -224,7 +236,9 @@ class TestBiospecimen:
             ("SPECIMEN_CELLULAR_ARCHITECTURE", "Precancerous", "DEGREE_OF_DYSPLASIA"),
         }
         actual = {t for r in rules for t in [triple(r)] if t is not None}
-        assert actual == expected, f"Rule mismatch: missing {expected - actual}, unexpected {actual - expected}"
+        assert (
+            actual == expected
+        ), f"Rule mismatch: missing {expected - actual}, unexpected {actual - expected}"
 
         for _, _, post_slot in expected:
             assert biospecimen_class.attributes[post_slot].required is False
