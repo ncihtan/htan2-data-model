@@ -1,5 +1,5 @@
 # Auto generated from biospecimen.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-09T18:04:12
+# Generation date: 2026-03-04T16:07:00
 # Schema: Biospecimen
 #
 # id: https://w3id.org/htan/biospecimen
@@ -96,7 +96,7 @@ class BiospecimenData(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = HTAN.BiospecimenData
 
     HTAN_BIOSPECIMEN_ID: Union[str, BiospecimenDataHTANBIOSPECIMENID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     BIOSPECIMEN_TYPE: Union[str, "BiospecimenTypeEnum"] = None
     AGE_IN_DAYS_AT_SPECIMEN_COLLECTION: int = None
     ACQUISITION_METHOD_TYPE: Union[str, "AcquisitionMethodTypeEnum"] = None
@@ -141,8 +141,9 @@ class BiospecimenData(YAMLRoot):
 
         if self._is_empty(self.HTAN_PARENT_ID):
             self.MissingRequiredField("HTAN_PARENT_ID")
-        if not isinstance(self.HTAN_PARENT_ID, str):
-            self.HTAN_PARENT_ID = str(self.HTAN_PARENT_ID)
+        if not isinstance(self.HTAN_PARENT_ID, list):
+            self.HTAN_PARENT_ID = [self.HTAN_PARENT_ID] if self.HTAN_PARENT_ID is not None else []
+        self.HTAN_PARENT_ID = [v if isinstance(v, str) else str(v) for v in self.HTAN_PARENT_ID]
 
         if self._is_empty(self.BIOSPECIMEN_TYPE):
             self.MissingRequiredField("BIOSPECIMEN_TYPE")
@@ -271,6 +272,42 @@ class BiospecimenData(YAMLRoot):
 
         if self.PERCENT_TUMOR_NUCLEI is not None and not isinstance(self.PERCENT_TUMOR_NUCLEI, Decimal):
             self.PERCENT_TUMOR_NUCLEI = Decimal(self.PERCENT_TUMOR_NUCLEI)
+
+        if self.ACQUISITION_METHOD_OTHER_SPECIFY is not None and not isinstance(self.ACQUISITION_METHOD_OTHER_SPECIFY, str):
+            self.ACQUISITION_METHOD_OTHER_SPECIFY = str(self.ACQUISITION_METHOD_OTHER_SPECIFY)
+
+        if self.FIXATION_DURATION_IN_MINUTES is not None and not isinstance(self.FIXATION_DURATION_IN_MINUTES, str):
+            self.FIXATION_DURATION_IN_MINUTES = str(self.FIXATION_DURATION_IN_MINUTES)
+
+        if self.TISSUE_SAMPLE_TYPE is not None and not isinstance(self.TISSUE_SAMPLE_TYPE, str):
+            self.TISSUE_SAMPLE_TYPE = str(self.TISSUE_SAMPLE_TYPE)
+
+        if self.ANALYTE_TYPE is not None and not isinstance(self.ANALYTE_TYPE, str):
+            self.ANALYTE_TYPE = str(self.ANALYTE_TYPE)
+
+        if self.AGE_IN_DAYS_AT_SECTIONING is not None and not isinstance(self.AGE_IN_DAYS_AT_SECTIONING, str):
+            self.AGE_IN_DAYS_AT_SECTIONING = str(self.AGE_IN_DAYS_AT_SECTIONING)
+
+        if self.SLICING_METHOD is not None and not isinstance(self.SLICING_METHOD, str):
+            self.SLICING_METHOD = str(self.SLICING_METHOD)
+
+        if self.SECTION_THICKNESS_VALUE is not None and not isinstance(self.SECTION_THICKNESS_VALUE, str):
+            self.SECTION_THICKNESS_VALUE = str(self.SECTION_THICKNESS_VALUE)
+
+        if self.SLIDE_CHARGE_TYPE is not None and not isinstance(self.SLIDE_CHARGE_TYPE, str):
+            self.SLIDE_CHARGE_TYPE = str(self.SLIDE_CHARGE_TYPE)
+
+        if self.TUMOR_CLASSIFICATION is not None and not isinstance(self.TUMOR_CLASSIFICATION, str):
+            self.TUMOR_CLASSIFICATION = str(self.TUMOR_CLASSIFICATION)
+
+        if self.ICD_O_3_TISSUE_MORPHOLOGY is not None and not isinstance(self.ICD_O_3_TISSUE_MORPHOLOGY, str):
+            self.ICD_O_3_TISSUE_MORPHOLOGY = str(self.ICD_O_3_TISSUE_MORPHOLOGY)
+
+        if self.ICD_10_DISEASE_CODE is not None and not isinstance(self.ICD_10_DISEASE_CODE, str):
+            self.ICD_10_DISEASE_CODE = str(self.ICD_10_DISEASE_CODE)
+
+        if self.DEGREE_OF_DYSPLASIA is not None and not isinstance(self.DEGREE_OF_DYSPLASIA, str):
+            self.DEGREE_OF_DYSPLASIA = str(self.DEGREE_OF_DYSPLASIA)
 
         super().__post_init__(**kwargs)
 
@@ -131554,7 +131591,7 @@ slots.biospecimenData__HTAN_BIOSPECIMEN_ID = Slot(uri=HTAN.HTAN_BIOSPECIMEN_ID, 
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$'))
 
 slots.biospecimenData__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="biospecimenData__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
-                   model_uri=HTAN.biospecimenData__HTAN_PARENT_ID, domain=None, range=str,
+                   model_uri=HTAN.biospecimenData__HTAN_PARENT_ID, domain=None, range=Union[str, List[str]],
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$'))
 
 slots.biospecimenData__ADJACENT_BIOSPECIMEN_IDS = Slot(uri=HTAN.ADJACENT_BIOSPECIMEN_IDS, name="biospecimenData__ADJACENT_BIOSPECIMEN_IDS", curie=HTAN.curie('ADJACENT_BIOSPECIMEN_IDS'),
@@ -131663,3 +131700,75 @@ slots.biospecimenData__PERCENT_TUMOR_NUCLEI = Slot(uri=HTAN.PERCENT_TUMOR_NUCLEI
 
 slots.biospecimenData__SHIPPING_CONDITION_TYPE = Slot(uri=HTAN.SHIPPING_CONDITION_TYPE, name="biospecimenData__SHIPPING_CONDITION_TYPE", curie=HTAN.curie('SHIPPING_CONDITION_TYPE'),
                    model_uri=HTAN.biospecimenData__SHIPPING_CONDITION_TYPE, domain=None, range=Union[str, "ShippingConditionEnum"])
+
+slots.ACQUISITION_METHOD_OTHER_SPECIFY = Slot(uri=HTAN.ACQUISITION_METHOD_OTHER_SPECIFY, name="ACQUISITION_METHOD_OTHER_SPECIFY", curie=HTAN.curie('ACQUISITION_METHOD_OTHER_SPECIFY'),
+                   model_uri=HTAN.ACQUISITION_METHOD_OTHER_SPECIFY, domain=None, range=Optional[str])
+
+slots.FIXATION_DURATION_IN_MINUTES = Slot(uri=HTAN.FIXATION_DURATION_IN_MINUTES, name="FIXATION_DURATION_IN_MINUTES", curie=HTAN.curie('FIXATION_DURATION_IN_MINUTES'),
+                   model_uri=HTAN.FIXATION_DURATION_IN_MINUTES, domain=None, range=Optional[str])
+
+slots.TISSUE_SAMPLE_TYPE = Slot(uri=HTAN.TISSUE_SAMPLE_TYPE, name="TISSUE_SAMPLE_TYPE", curie=HTAN.curie('TISSUE_SAMPLE_TYPE'),
+                   model_uri=HTAN.TISSUE_SAMPLE_TYPE, domain=None, range=Optional[str])
+
+slots.ANALYTE_TYPE = Slot(uri=HTAN.ANALYTE_TYPE, name="ANALYTE_TYPE", curie=HTAN.curie('ANALYTE_TYPE'),
+                   model_uri=HTAN.ANALYTE_TYPE, domain=None, range=Optional[str])
+
+slots.AGE_IN_DAYS_AT_SECTIONING = Slot(uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, name="AGE_IN_DAYS_AT_SECTIONING", curie=HTAN.curie('AGE_IN_DAYS_AT_SECTIONING'),
+                   model_uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, domain=None, range=Optional[str])
+
+slots.SLICING_METHOD = Slot(uri=HTAN.SLICING_METHOD, name="SLICING_METHOD", curie=HTAN.curie('SLICING_METHOD'),
+                   model_uri=HTAN.SLICING_METHOD, domain=None, range=Optional[str])
+
+slots.SECTION_THICKNESS_VALUE = Slot(uri=HTAN.SECTION_THICKNESS_VALUE, name="SECTION_THICKNESS_VALUE", curie=HTAN.curie('SECTION_THICKNESS_VALUE'),
+                   model_uri=HTAN.SECTION_THICKNESS_VALUE, domain=None, range=Optional[str])
+
+slots.SLIDE_CHARGE_TYPE = Slot(uri=HTAN.SLIDE_CHARGE_TYPE, name="SLIDE_CHARGE_TYPE", curie=HTAN.curie('SLIDE_CHARGE_TYPE'),
+                   model_uri=HTAN.SLIDE_CHARGE_TYPE, domain=None, range=Optional[str])
+
+slots.TUMOR_CLASSIFICATION = Slot(uri=HTAN.TUMOR_CLASSIFICATION, name="TUMOR_CLASSIFICATION", curie=HTAN.curie('TUMOR_CLASSIFICATION'),
+                   model_uri=HTAN.TUMOR_CLASSIFICATION, domain=None, range=Optional[str])
+
+slots.ICD_O_3_TISSUE_MORPHOLOGY = Slot(uri=HTAN.ICD_O_3_TISSUE_MORPHOLOGY, name="ICD_O_3_TISSUE_MORPHOLOGY", curie=HTAN.curie('ICD_O_3_TISSUE_MORPHOLOGY'),
+                   model_uri=HTAN.ICD_O_3_TISSUE_MORPHOLOGY, domain=None, range=Optional[str])
+
+slots.ICD_10_DISEASE_CODE = Slot(uri=HTAN.ICD_10_DISEASE_CODE, name="ICD_10_DISEASE_CODE", curie=HTAN.curie('ICD_10_DISEASE_CODE'),
+                   model_uri=HTAN.ICD_10_DISEASE_CODE, domain=None, range=Optional[str])
+
+slots.DEGREE_OF_DYSPLASIA = Slot(uri=HTAN.DEGREE_OF_DYSPLASIA, name="DEGREE_OF_DYSPLASIA", curie=HTAN.curie('DEGREE_OF_DYSPLASIA'),
+                   model_uri=HTAN.DEGREE_OF_DYSPLASIA, domain=None, range=Optional[str])
+
+slots.BiospecimenData_ACQUISITION_METHOD_OTHER_SPECIFY = Slot(uri=HTAN.ACQUISITION_METHOD_OTHER_SPECIFY, name="BiospecimenData_ACQUISITION_METHOD_OTHER_SPECIFY", curie=HTAN.curie('ACQUISITION_METHOD_OTHER_SPECIFY'),
+                   model_uri=HTAN.BiospecimenData_ACQUISITION_METHOD_OTHER_SPECIFY, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_FIXATION_DURATION_IN_MINUTES = Slot(uri=HTAN.FIXATION_DURATION_IN_MINUTES, name="BiospecimenData_FIXATION_DURATION_IN_MINUTES", curie=HTAN.curie('FIXATION_DURATION_IN_MINUTES'),
+                   model_uri=HTAN.BiospecimenData_FIXATION_DURATION_IN_MINUTES, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_TISSUE_SAMPLE_TYPE = Slot(uri=HTAN.TISSUE_SAMPLE_TYPE, name="BiospecimenData_TISSUE_SAMPLE_TYPE", curie=HTAN.curie('TISSUE_SAMPLE_TYPE'),
+                   model_uri=HTAN.BiospecimenData_TISSUE_SAMPLE_TYPE, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_ANALYTE_TYPE = Slot(uri=HTAN.ANALYTE_TYPE, name="BiospecimenData_ANALYTE_TYPE", curie=HTAN.curie('ANALYTE_TYPE'),
+                   model_uri=HTAN.BiospecimenData_ANALYTE_TYPE, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_AGE_IN_DAYS_AT_SECTIONING = Slot(uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, name="BiospecimenData_AGE_IN_DAYS_AT_SECTIONING", curie=HTAN.curie('AGE_IN_DAYS_AT_SECTIONING'),
+                   model_uri=HTAN.BiospecimenData_AGE_IN_DAYS_AT_SECTIONING, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_SLICING_METHOD = Slot(uri=HTAN.SLICING_METHOD, name="BiospecimenData_SLICING_METHOD", curie=HTAN.curie('SLICING_METHOD'),
+                   model_uri=HTAN.BiospecimenData_SLICING_METHOD, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_SECTION_THICKNESS_VALUE = Slot(uri=HTAN.SECTION_THICKNESS_VALUE, name="BiospecimenData_SECTION_THICKNESS_VALUE", curie=HTAN.curie('SECTION_THICKNESS_VALUE'),
+                   model_uri=HTAN.BiospecimenData_SECTION_THICKNESS_VALUE, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_SLIDE_CHARGE_TYPE = Slot(uri=HTAN.SLIDE_CHARGE_TYPE, name="BiospecimenData_SLIDE_CHARGE_TYPE", curie=HTAN.curie('SLIDE_CHARGE_TYPE'),
+                   model_uri=HTAN.BiospecimenData_SLIDE_CHARGE_TYPE, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_TUMOR_CLASSIFICATION = Slot(uri=HTAN.TUMOR_CLASSIFICATION, name="BiospecimenData_TUMOR_CLASSIFICATION", curie=HTAN.curie('TUMOR_CLASSIFICATION'),
+                   model_uri=HTAN.BiospecimenData_TUMOR_CLASSIFICATION, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_ICD_O_3_TISSUE_MORPHOLOGY = Slot(uri=HTAN.ICD_O_3_TISSUE_MORPHOLOGY, name="BiospecimenData_ICD_O_3_TISSUE_MORPHOLOGY", curie=HTAN.curie('ICD_O_3_TISSUE_MORPHOLOGY'),
+                   model_uri=HTAN.BiospecimenData_ICD_O_3_TISSUE_MORPHOLOGY, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_ICD_10_DISEASE_CODE = Slot(uri=HTAN.ICD_10_DISEASE_CODE, name="BiospecimenData_ICD_10_DISEASE_CODE", curie=HTAN.curie('ICD_10_DISEASE_CODE'),
+                   model_uri=HTAN.BiospecimenData_ICD_10_DISEASE_CODE, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_DEGREE_OF_DYSPLASIA = Slot(uri=HTAN.DEGREE_OF_DYSPLASIA, name="BiospecimenData_DEGREE_OF_DYSPLASIA", curie=HTAN.curie('DEGREE_OF_DYSPLASIA'),
+                   model_uri=HTAN.BiospecimenData_DEGREE_OF_DYSPLASIA, domain=BiospecimenData, range=Optional[str])

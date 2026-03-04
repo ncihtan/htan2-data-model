@@ -193,3 +193,38 @@ class TestBiospecimen:
         assert "ADJACENT_BIOSPECIMEN_IDS" in biospecimen_class.attributes
         adjacent_attr = biospecimen_class.attributes["ADJACENT_BIOSPECIMEN_IDS"]
         assert "string" in str(adjacent_attr.range)  # Should be a list of strings
+
+    def test_conditional_rules(self):
+        """Test that all 13 conditional requirement rules exist; conditionally-required slots are optional at attribute level."""
+        sv = SchemaView("modules/Biospecimen/domains/biospecimen.yaml")
+        biospecimen_class = sv.get_class("BiospecimenData")
+        rules = biospecimen_class.rules or []
+
+        def triple(r):
+            pre = getattr(getattr(r, "preconditions", None), "slot_conditions", None) or {}
+            post = getattr(getattr(r, "postconditions", None), "slot_conditions", None) or {}
+            if not pre or not post or getattr(next(iter(post.values())), "required", None) is not True:
+                return None
+            pre_slot, post_slot = next(iter(pre)), next(iter(post))
+            return (pre_slot, getattr(pre[pre_slot], "equals_string", None), post_slot)
+
+        expected = {
+            ("ACQUISITION_METHOD_TYPE", "Other", "ACQUISITION_METHOD_OTHER_SPECIFY"),
+            ("PRESERVATION_METHOD", "Fixation", "FIXATION_DURATION_IN_MINUTES"),
+            ("BIOSPECIMEN_TYPE", "Tissue", "TISSUE_SAMPLE_TYPE"),
+            ("BIOSPECIMEN_TYPE", "DNA", "ANALYTE_TYPE"),
+            ("BIOSPECIMEN_TYPE", "RNA", "ANALYTE_TYPE"),
+            ("TISSUE_SAMPLE_TYPE", "Tissue Section", "AGE_IN_DAYS_AT_SECTIONING"),
+            ("TISSUE_SAMPLE_TYPE", "Tissue Section", "SLICING_METHOD"),
+            ("TISSUE_SAMPLE_TYPE", "Tissue Section", "SECTION_THICKNESS_VALUE"),
+            ("TISSUE_SAMPLE_TYPE", "Tissue Section", "SLIDE_CHARGE_TYPE"),
+            ("SPECIMEN_CELLULAR_ARCHITECTURE", "Tumor", "TUMOR_CLASSIFICATION"),
+            ("SPECIMEN_CELLULAR_ARCHITECTURE", "Tumor", "ICD_O_3_TISSUE_MORPHOLOGY"),
+            ("SPECIMEN_CELLULAR_ARCHITECTURE", "Precancerous", "ICD_10_DISEASE_CODE"),
+            ("SPECIMEN_CELLULAR_ARCHITECTURE", "Precancerous", "DEGREE_OF_DYSPLASIA"),
+        }
+        actual = {t for r in rules for t in [triple(r)] if t is not None}
+        assert actual == expected, f"Rule mismatch: missing {expected - actual}, unexpected {actual - expected}"
+
+        for _, _, post_slot in expected:
+            assert biospecimen_class.attributes[post_slot].required is False

@@ -173,6 +173,7 @@ enums:
 
 classes:
   Therapy:
+    is_a: ClinicalRecordAttributes
     description: Information about therapeutic interventions
     attributes:
       INITIAL_DISEASE_STATUS:

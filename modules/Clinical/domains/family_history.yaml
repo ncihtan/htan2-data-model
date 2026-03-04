@@ -29,6 +29,7 @@ enums:
 
 classes:
   FamilyHistory:
+    is_a: ClinicalRecordAttributes
     description: >-
       A class to capture information about the cancer history of family members.
     attributes:

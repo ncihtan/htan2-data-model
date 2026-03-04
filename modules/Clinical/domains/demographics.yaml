@@ -67,6 +67,7 @@ enums:
 
 classes:
   Demographics:
+    is_a: ClinicalRecordAttributes
     description: Information about the demographics
     attributes:
       ETHNIC_GROUP:

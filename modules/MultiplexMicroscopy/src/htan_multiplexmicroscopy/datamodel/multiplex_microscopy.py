@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-09T18:04:34
+# Generation date: 2026-03-04T16:07:21
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -140,7 +140,7 @@ class CoreFileAttributes(YAMLRoot):
     HTAN_DATA_FILE_ID: Union[str, CoreFileAttributesHTANDATAFILEID] = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
@@ -160,8 +160,9 @@ class CoreFileAttributes(YAMLRoot):
 
         if self._is_empty(self.HTAN_PARENT_ID):
             self.MissingRequiredField("HTAN_PARENT_ID")
-        if not isinstance(self.HTAN_PARENT_ID, str):
-            self.HTAN_PARENT_ID = str(self.HTAN_PARENT_ID)
+        if not isinstance(self.HTAN_PARENT_ID, list):
+            self.HTAN_PARENT_ID = [self.HTAN_PARENT_ID] if self.HTAN_PARENT_ID is not None else []
+        self.HTAN_PARENT_ID = [v if isinstance(v, str) else str(v) for v in self.HTAN_PARENT_ID]
 
         super().__post_init__(**kwargs)
 
@@ -181,7 +182,7 @@ class BaseImagingAttributes(CoreFileAttributes):
     HTAN_DATA_FILE_ID: Union[str, BaseImagingAttributesHTANDATAFILEID] = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
     LICENSE: Union[str, "License"] = None
@@ -328,7 +329,7 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.MultiplexMicroscopyLevel2
 
     HTAN_DATA_FILE_ID: Union[str, MultiplexMicroscopyLevel2HTANDATAFILEID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
     LICENSE: Union[str, "License"] = None
@@ -447,7 +448,7 @@ class MultiplexMicroscopyLevel3(BaseImagingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.MultiplexMicroscopyLevel3
 
     HTAN_DATA_FILE_ID: Union[str, MultiplexMicroscopyLevel3HTANDATAFILEID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
     LICENSE: Union[str, "License"] = None
@@ -526,7 +527,7 @@ class MultiplexMicroscopyLevel4(BaseImagingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.MultiplexMicroscopyLevel4
 
     HTAN_DATA_FILE_ID: Union[str, MultiplexMicroscopyLevel4HTANDATAFILEID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES: Union[str, "ExperimentalStrategyAndDataSubtypes"] = None
     DE_IDENTIFICATION_METHOD_TYPE: Union[str, "DeIdentificationMethodType"] = None
     LICENSE: Union[str, "License"] = None
@@ -865,7 +866,7 @@ slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, n
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$'))
 
 slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
+                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=Union[str, List[str]],
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$'))
 
 slots.multiplexMicroscopyLevel2__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="multiplexMicroscopyLevel2__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),

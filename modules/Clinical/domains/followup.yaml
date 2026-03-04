@@ -93,6 +93,7 @@ enums:
 
 classes:
   FollowUp:
+    is_a: ClinicalRecordAttributes
     description: Clinical follow-up information
     attributes:
       AGE_IN_DAYS_AT_FOLLOWUP:
