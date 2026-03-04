@@ -1,5 +1,5 @@
 # Auto generated from spatial.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-09T18:04:36
+# Generation date: 2026-03-04T16:07:23
 # Schema: SpatialOmics
 #
 # id: https://w3id.org/htan/spatial
@@ -147,7 +147,7 @@ class CoreFileAttributes(YAMLRoot):
     HTAN_DATA_FILE_ID: Union[str, CoreFileAttributesHTANDATAFILEID] = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
@@ -167,8 +167,9 @@ class CoreFileAttributes(YAMLRoot):
 
         if self._is_empty(self.HTAN_PARENT_ID):
             self.MissingRequiredField("HTAN_PARENT_ID")
-        if not isinstance(self.HTAN_PARENT_ID, str):
-            self.HTAN_PARENT_ID = str(self.HTAN_PARENT_ID)
+        if not isinstance(self.HTAN_PARENT_ID, list):
+            self.HTAN_PARENT_ID = [self.HTAN_PARENT_ID] if self.HTAN_PARENT_ID is not None else []
+        self.HTAN_PARENT_ID = [v if isinstance(v, str) else str(v) for v in self.HTAN_PARENT_ID]
 
         super().__post_init__(**kwargs)
 
@@ -186,7 +187,7 @@ class SpatialLevel1(CoreFileAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.SpatialLevel1
 
     HTAN_DATA_FILE_ID: Union[str, SpatialLevel1HTANDATAFILEID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     FILE_FORMAT: Union[str, "FileFormatLevel1"] = None
     FILENAME: str = None
     PLATFORM: Union[str, "Platform"] = None
@@ -272,7 +273,7 @@ class SpatialLevel3(CoreFileAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.SpatialLevel3
 
     HTAN_DATA_FILE_ID: Union[str, SpatialLevel3HTANDATAFILEID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     PLATFORM: Union[str, "PlatformLevel3"] = None
     ASSAY_CHEMISTRY_VERSION: str = None
     RNA_MEASURED: Union[bool, Bool] = None
@@ -495,7 +496,7 @@ class SpatialLevel4(CoreFileAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.SpatialLevel4
 
     HTAN_DATA_FILE_ID: Union[str, SpatialLevel4HTANDATAFILEID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     FILE_FORMAT: Union[str, "FileFormatLevel4"] = None
     FILENAME: str = None
     NUMBER_OF_FEATURES: int = None
@@ -1078,7 +1079,7 @@ slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, n
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$'))
 
 slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
+                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=Union[str, List[str]],
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$'))
 
 slots.spatialLevel1__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="spatialLevel1__FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
@@ -1152,7 +1153,7 @@ slots.spatialLevel3__PANEL_SYNAPSE_ID = Slot(uri=HTAN.PANEL_SYNAPSE_ID, name="sp
 
 slots.spatialLevel3__SAME_SECTION_IMAGING_ID = Slot(uri=HTAN.SAME_SECTION_IMAGING_ID, name="spatialLevel3__SAME_SECTION_IMAGING_ID", curie=HTAN.curie('SAME_SECTION_IMAGING_ID'),
                    model_uri=HTAN.spatialLevel3__SAME_SECTION_IMAGING_ID, domain=None, range=Optional[Union[str, List[str]]],
-                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$'))
 
 slots.spatialLevel3__SAME_SECTION_IMAGING_MODALITY = Slot(uri=HTAN.SAME_SECTION_IMAGING_MODALITY, name="spatialLevel3__SAME_SECTION_IMAGING_MODALITY", curie=HTAN.curie('SAME_SECTION_IMAGING_MODALITY'),
                    model_uri=HTAN.spatialLevel3__SAME_SECTION_IMAGING_MODALITY, domain=None, range=Optional[Union[str, "SameSectionImagingModality"]])
@@ -1292,7 +1293,7 @@ slots.spatialLevel4__IMAGE_TYPE = Slot(uri=HTAN.IMAGE_TYPE, name="spatialLevel4_
 
 slots.spatialPanel__HTAN_PANEL_ID = Slot(uri=HTAN.HTAN_PANEL_ID, name="spatialPanel__HTAN_PANEL_ID", curie=HTAN.curie('HTAN_PANEL_ID'),
                    model_uri=HTAN.spatialPanel__HTAN_PANEL_ID, domain=None, range=URIRef,
-                   pattern=re.compile(r'^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$'))
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$'))
 
 slots.spatialPanel__GENE_SYMBOL = Slot(uri=HTAN.GENE_SYMBOL, name="spatialPanel__GENE_SYMBOL", curie=HTAN.curie('GENE_SYMBOL'),
                    model_uri=HTAN.spatialPanel__GENE_SYMBOL, domain=None, range=str,

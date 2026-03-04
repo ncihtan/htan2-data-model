@@ -1,5 +1,5 @@
 # Auto generated from scrna_seq.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-09T18:04:31
+# Generation date: 2026-03-04T16:07:18
 # Schema: scRNA-seq
 #
 # id: https://w3id.org/htan/scrna_seq
@@ -140,7 +140,7 @@ class CoreFileAttributes(YAMLRoot):
     HTAN_DATA_FILE_ID: Union[str, CoreFileAttributesHTANDATAFILEID] = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
@@ -160,8 +160,9 @@ class CoreFileAttributes(YAMLRoot):
 
         if self._is_empty(self.HTAN_PARENT_ID):
             self.MissingRequiredField("HTAN_PARENT_ID")
-        if not isinstance(self.HTAN_PARENT_ID, str):
-            self.HTAN_PARENT_ID = str(self.HTAN_PARENT_ID)
+        if not isinstance(self.HTAN_PARENT_ID, list):
+            self.HTAN_PARENT_ID = [self.HTAN_PARENT_ID] if self.HTAN_PARENT_ID is not None else []
+        self.HTAN_PARENT_ID = [v if isinstance(v, str) else str(v) for v in self.HTAN_PARENT_ID]
 
         super().__post_init__(**kwargs)
 
@@ -181,7 +182,7 @@ class BaseSequencingAttributes(CoreFileAttributes):
     HTAN_DATA_FILE_ID: Union[str, BaseSequencingAttributesHTANDATAFILEID] = None
     FILENAME: str = None
     FILE_FORMAT: str = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
@@ -261,7 +262,7 @@ class ScRNALevel1(BaseSequencingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.ScRNALevel1
 
     HTAN_DATA_FILE_ID: Union[str, ScRNALevel1HTANDATAFILEID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
@@ -347,7 +348,7 @@ class ScRNALevel2(BaseSequencingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.ScRNALevel2
 
     HTAN_DATA_FILE_ID: Union[str, ScRNALevel2HTANDATAFILEID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
@@ -405,7 +406,7 @@ class ScRNALevel3and4(BaseSequencingAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.ScRNALevel3and4
 
     HTAN_DATA_FILE_ID: Union[str, ScRNALevel3and4HTANDATAFILEID] = None
-    HTAN_PARENT_ID: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     WORKFLOW_VERSION: str = None
@@ -1001,5 +1002,5 @@ slots.coreFileAttributes__HTAN_DATA_FILE_ID = Slot(uri=HTAN.HTAN_DATA_FILE_ID, n
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$'))
 
 slots.coreFileAttributes__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="coreFileAttributes__HTAN_PARENT_ID", curie=HTAN.curie('HTAN_PARENT_ID'),
-                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=str,
+                   model_uri=HTAN.coreFileAttributes__HTAN_PARENT_ID, domain=None, range=Union[str, List[str]],
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$'))

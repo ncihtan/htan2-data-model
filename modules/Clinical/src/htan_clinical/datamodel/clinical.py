@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-09T18:01:11
+# Generation date: 2026-03-04T16:04:03
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -78,12 +78,71 @@ DEFAULT_ = HTAN
 # Types
 
 # Class references
-class ClinicalDataHTANPARTICIPANTID(extended_str):
+class ClinicalRecordAttributesHTANPARTICIPANTID(extended_str):
+    pass
+
+
+class ClinicalDataHTANPARTICIPANTID(ClinicalRecordAttributesHTANPARTICIPANTID):
+    pass
+
+
+class DemographicsHTANPARTICIPANTID(ClinicalRecordAttributesHTANPARTICIPANTID):
+    pass
+
+
+class DiagnosisHTANPARTICIPANTID(ClinicalRecordAttributesHTANPARTICIPANTID):
+    pass
+
+
+class ExposureHTANPARTICIPANTID(ClinicalRecordAttributesHTANPARTICIPANTID):
+    pass
+
+
+class FamilyHistoryHTANPARTICIPANTID(ClinicalRecordAttributesHTANPARTICIPANTID):
+    pass
+
+
+class FollowUpHTANPARTICIPANTID(ClinicalRecordAttributesHTANPARTICIPANTID):
+    pass
+
+
+class MolecularTestHTANPARTICIPANTID(ClinicalRecordAttributesHTANPARTICIPANTID):
+    pass
+
+
+class TherapyHTANPARTICIPANTID(ClinicalRecordAttributesHTANPARTICIPANTID):
+    pass
+
+
+class VitalStatusHTANPARTICIPANTID(ClinicalRecordAttributesHTANPARTICIPANTID):
     pass
 
 
 @dataclass(repr=False)
-class ClinicalData(YAMLRoot):
+class ClinicalRecordAttributes(YAMLRoot):
+    """
+    Base attributes shared by all clinical record types
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["ClinicalRecordAttributes"]
+    class_class_curie: ClassVar[str] = "htan:ClinicalRecordAttributes"
+    class_name: ClassVar[str] = "ClinicalRecordAttributes"
+    class_model_uri: ClassVar[URIRef] = HTAN.ClinicalRecordAttributes
+
+    HTAN_PARTICIPANT_ID: Union[str, ClinicalRecordAttributesHTANPARTICIPANTID] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, ClinicalRecordAttributesHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = ClinicalRecordAttributesHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ClinicalData(ClinicalRecordAttributes):
     """
     Container for all clinical data
     """
@@ -95,14 +154,14 @@ class ClinicalData(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = HTAN.ClinicalData
 
     HTAN_PARTICIPANT_ID: Union[str, ClinicalDataHTANPARTICIPANTID] = None
-    DEMOGRAPHICS: Union[dict, "Demographics"] = None
-    VITAL_STATUS: Union[dict, "VitalStatus"] = None
-    DIAGNOSIS: Union[dict, "Diagnosis"] = None
-    EXPOSURES: Union[dict, "Exposure"] = None
-    FAMILY_HISTORY: Union[dict, "FamilyHistory"] = None
-    FOLLOW_UPS: Optional[Union[Union[dict, "FollowUp"], List[Union[dict, "FollowUp"]]]] = empty_list()
-    MOLECULAR_TESTS: Optional[Union[Union[dict, "MolecularTest"], List[Union[dict, "MolecularTest"]]]] = empty_list()
-    THERAPIES: Optional[Union[Union[dict, "Therapy"], List[Union[dict, "Therapy"]]]] = empty_list()
+    DEMOGRAPHICS: Union[str, DemographicsHTANPARTICIPANTID] = None
+    VITAL_STATUS: Union[str, VitalStatusHTANPARTICIPANTID] = None
+    DIAGNOSIS: Union[str, DiagnosisHTANPARTICIPANTID] = None
+    EXPOSURES: Union[str, ExposureHTANPARTICIPANTID] = None
+    FAMILY_HISTORY: Union[str, FamilyHistoryHTANPARTICIPANTID] = None
+    FOLLOW_UPS: Optional[Union[Union[str, FollowUpHTANPARTICIPANTID], List[Union[str, FollowUpHTANPARTICIPANTID]]]] = empty_list()
+    MOLECULAR_TESTS: Optional[Union[Union[str, MolecularTestHTANPARTICIPANTID], List[Union[str, MolecularTestHTANPARTICIPANTID]]]] = empty_list()
+    THERAPIES: Optional[Union[Dict[Union[str, TherapyHTANPARTICIPANTID], Union[dict, "Therapy"]], List[Union[dict, "Therapy"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_PARTICIPANT_ID):
@@ -112,42 +171,44 @@ class ClinicalData(YAMLRoot):
 
         if self._is_empty(self.DEMOGRAPHICS):
             self.MissingRequiredField("DEMOGRAPHICS")
-        if not isinstance(self.DEMOGRAPHICS, Demographics):
-            self.DEMOGRAPHICS = Demographics(**as_dict(self.DEMOGRAPHICS))
+        if not isinstance(self.DEMOGRAPHICS, DemographicsHTANPARTICIPANTID):
+            self.DEMOGRAPHICS = DemographicsHTANPARTICIPANTID(self.DEMOGRAPHICS)
 
         if self._is_empty(self.VITAL_STATUS):
             self.MissingRequiredField("VITAL_STATUS")
-        if not isinstance(self.VITAL_STATUS, VitalStatus):
-            self.VITAL_STATUS = VitalStatus(**as_dict(self.VITAL_STATUS))
+        if not isinstance(self.VITAL_STATUS, VitalStatusHTANPARTICIPANTID):
+            self.VITAL_STATUS = VitalStatusHTANPARTICIPANTID(self.VITAL_STATUS)
 
         if self._is_empty(self.DIAGNOSIS):
             self.MissingRequiredField("DIAGNOSIS")
-        if not isinstance(self.DIAGNOSIS, Diagnosis):
-            self.DIAGNOSIS = Diagnosis(**as_dict(self.DIAGNOSIS))
+        if not isinstance(self.DIAGNOSIS, DiagnosisHTANPARTICIPANTID):
+            self.DIAGNOSIS = DiagnosisHTANPARTICIPANTID(self.DIAGNOSIS)
 
         if self._is_empty(self.EXPOSURES):
             self.MissingRequiredField("EXPOSURES")
-        if not isinstance(self.EXPOSURES, Exposure):
-            self.EXPOSURES = Exposure(**as_dict(self.EXPOSURES))
+        if not isinstance(self.EXPOSURES, ExposureHTANPARTICIPANTID):
+            self.EXPOSURES = ExposureHTANPARTICIPANTID(self.EXPOSURES)
 
         if self._is_empty(self.FAMILY_HISTORY):
             self.MissingRequiredField("FAMILY_HISTORY")
-        if not isinstance(self.FAMILY_HISTORY, FamilyHistory):
-            self.FAMILY_HISTORY = FamilyHistory(**as_dict(self.FAMILY_HISTORY))
+        if not isinstance(self.FAMILY_HISTORY, FamilyHistoryHTANPARTICIPANTID):
+            self.FAMILY_HISTORY = FamilyHistoryHTANPARTICIPANTID(self.FAMILY_HISTORY)
 
-        self._normalize_inlined_as_dict(slot_name="FOLLOW_UPS", slot_type=FollowUp, key_name="AGE_IN_DAYS_AT_FOLLOWUP", keyed=False)
+        if not isinstance(self.FOLLOW_UPS, list):
+            self.FOLLOW_UPS = [self.FOLLOW_UPS] if self.FOLLOW_UPS is not None else []
+        self.FOLLOW_UPS = [v if isinstance(v, FollowUpHTANPARTICIPANTID) else FollowUpHTANPARTICIPANTID(v) for v in self.FOLLOW_UPS]
 
-        self._normalize_inlined_as_dict(slot_name="MOLECULAR_TESTS", slot_type=MolecularTest, key_name="AGE_IN_DAYS_AT_MOLECULAR_TEST_START", keyed=False)
+        if not isinstance(self.MOLECULAR_TESTS, list):
+            self.MOLECULAR_TESTS = [self.MOLECULAR_TESTS] if self.MOLECULAR_TESTS is not None else []
+        self.MOLECULAR_TESTS = [v if isinstance(v, MolecularTestHTANPARTICIPANTID) else MolecularTestHTANPARTICIPANTID(v) for v in self.MOLECULAR_TESTS]
 
-        if not isinstance(self.THERAPIES, list):
-            self.THERAPIES = [self.THERAPIES] if self.THERAPIES is not None else []
-        self.THERAPIES = [v if isinstance(v, Therapy) else Therapy(**as_dict(v)) for v in self.THERAPIES]
+        self._normalize_inlined_as_list(slot_name="THERAPIES", slot_type=Therapy, key_name="HTAN_PARTICIPANT_ID", keyed=True)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class Demographics(YAMLRoot):
+class Demographics(ClinicalRecordAttributes):
     """
     Information about the demographics
     """
@@ -158,12 +219,18 @@ class Demographics(YAMLRoot):
     class_name: ClassVar[str] = "Demographics"
     class_model_uri: ClassVar[URIRef] = HTAN.Demographics
 
+    HTAN_PARTICIPANT_ID: Union[str, DemographicsHTANPARTICIPANTID] = None
     ETHNIC_GROUP: Union[str, "EthnicGroupEnum"] = None
     GENDER_IDENTITY: Union[str, "GenderIdentityEnum"] = None
     SEX: Union[str, "SexEnum"] = None
     RACE: Union[str, "RaceEnum"] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, DemographicsHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = DemographicsHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
+
         if self._is_empty(self.ETHNIC_GROUP):
             self.MissingRequiredField("ETHNIC_GROUP")
         if not isinstance(self.ETHNIC_GROUP, EthnicGroupEnum):
@@ -188,7 +255,7 @@ class Demographics(YAMLRoot):
 
 
 @dataclass(repr=False)
-class Diagnosis(YAMLRoot):
+class Diagnosis(ClinicalRecordAttributes):
     """
     Information about the diagnosis
     """
@@ -199,6 +266,7 @@ class Diagnosis(YAMLRoot):
     class_name: ClassVar[str] = "Diagnosis"
     class_model_uri: ClassVar[URIRef] = HTAN.Diagnosis
 
+    HTAN_PARTICIPANT_ID: Union[str, DiagnosisHTANPARTICIPANTID] = None
     PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID: Union[str, "PrimaryDiagnosisNCIThesaurusIDEnum"] = None
     AGE_IN_DAYS_AT_DIAGNOSIS: int = None
     TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE: Union[str, "TissueOrOrganOfOriginUberonEnum"] = None
@@ -214,6 +282,11 @@ class Diagnosis(YAMLRoot):
     METHOD_OF_DIAGNOSIS: Union[str, "MethodOfDiagnosisEnum"] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, DiagnosisHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = DiagnosisHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
+
         if self._is_empty(self.PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID):
             self.MissingRequiredField("PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID")
         if not isinstance(self.PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID, PrimaryDiagnosisNCIThesaurusIDEnum):
@@ -283,7 +356,7 @@ class Diagnosis(YAMLRoot):
 
 
 @dataclass(repr=False)
-class Exposure(YAMLRoot):
+class Exposure(ClinicalRecordAttributes):
     """
     Information about the exposure
     """
@@ -294,6 +367,7 @@ class Exposure(YAMLRoot):
     class_name: ClassVar[str] = "Exposure"
     class_model_uri: ClassVar[URIRef] = HTAN.Exposure
 
+    HTAN_PARTICIPANT_ID: Union[str, ExposureHTANPARTICIPANTID] = None
     SMOKING_HISTORY: Union[str, "SmokingHistoryEnum"] = None
     ALCOHOL_HISTORY_INDICATOR: Union[str, "AlcoholHistoryIndicatorEnum"] = None
     ENVIRONMENTAL_EXPOSURE: Union[str, "EnvironmentalExposureEnum"] = None
@@ -302,6 +376,11 @@ class Exposure(YAMLRoot):
     ENVIRONMENTAL_EXPOSURE_TYPE: Optional[Union[Union[str, "EnvironmentalExposureTypeEnum"], List[Union[str, "EnvironmentalExposureTypeEnum"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, ExposureHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = ExposureHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
+
         if self._is_empty(self.SMOKING_HISTORY):
             self.MissingRequiredField("SMOKING_HISTORY")
         if not isinstance(self.SMOKING_HISTORY, SmokingHistoryEnum):
@@ -340,7 +419,7 @@ class Exposure(YAMLRoot):
 
 
 @dataclass(repr=False)
-class FamilyHistory(YAMLRoot):
+class FamilyHistory(ClinicalRecordAttributes):
     """
     A class to capture information about the cancer history of family members.
     """
@@ -351,10 +430,16 @@ class FamilyHistory(YAMLRoot):
     class_name: ClassVar[str] = "FamilyHistory"
     class_model_uri: ClassVar[URIRef] = HTAN.FamilyHistory
 
+    HTAN_PARTICIPANT_ID: Union[str, FamilyHistoryHTANPARTICIPANTID] = None
     FAMILY_MEMBER_CANCER_HISTORY: Union[str, "FamilyMemberCancerHistoryEnum"] = None
     RELATIVES_WITH_CANCER_HISTORY: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, FamilyHistoryHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = FamilyHistoryHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
+
         if self._is_empty(self.FAMILY_MEMBER_CANCER_HISTORY):
             self.MissingRequiredField("FAMILY_MEMBER_CANCER_HISTORY")
         if not isinstance(self.FAMILY_MEMBER_CANCER_HISTORY, FamilyMemberCancerHistoryEnum):
@@ -367,7 +452,7 @@ class FamilyHistory(YAMLRoot):
 
 
 @dataclass(repr=False)
-class FollowUp(YAMLRoot):
+class FollowUp(ClinicalRecordAttributes):
     """
     Clinical follow-up information
     """
@@ -378,6 +463,7 @@ class FollowUp(YAMLRoot):
     class_name: ClassVar[str] = "FollowUp"
     class_model_uri: ClassVar[URIRef] = HTAN.FollowUp
 
+    HTAN_PARTICIPANT_ID: Union[str, FollowUpHTANPARTICIPANTID] = None
     AGE_IN_DAYS_AT_FOLLOWUP: int = None
     PROGRESSION_OR_RECURRENCE: Union[str, "ProgressionOrRecurrenceEnum"] = None
     DISEASE_RESPONSE: Union[str, "DiseaseResponseEnum"] = None
@@ -389,6 +475,11 @@ class FollowUp(YAMLRoot):
     AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, FollowUpHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = FollowUpHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
+
         if self._is_empty(self.AGE_IN_DAYS_AT_FOLLOWUP):
             self.MissingRequiredField("AGE_IN_DAYS_AT_FOLLOWUP")
         if not isinstance(self.AGE_IN_DAYS_AT_FOLLOWUP, int):
@@ -443,7 +534,7 @@ class FollowUp(YAMLRoot):
 
 
 @dataclass(repr=False)
-class MolecularTest(YAMLRoot):
+class MolecularTest(ClinicalRecordAttributes):
     """
     Information about the molecular test
     """
@@ -454,6 +545,7 @@ class MolecularTest(YAMLRoot):
     class_name: ClassVar[str] = "MolecularTest"
     class_model_uri: ClassVar[URIRef] = HTAN.MolecularTest
 
+    HTAN_PARTICIPANT_ID: Union[str, MolecularTestHTANPARTICIPANTID] = None
     AGE_IN_DAYS_AT_MOLECULAR_TEST_START: int = None
     GENE_SYMBOL: Union[str, "GeneSymbolEnum"] = None
     MOLECULAR_ANALYSIS_METHOD: Union[str, "MolecularAnalysisMethodEnum"] = None
@@ -473,6 +565,11 @@ class MolecularTest(YAMLRoot):
     VARIANT_TYPE: Optional[Union[str, "VariantTypeEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, MolecularTestHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = MolecularTestHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
+
         if self._is_empty(self.AGE_IN_DAYS_AT_MOLECULAR_TEST_START):
             self.MissingRequiredField("AGE_IN_DAYS_AT_MOLECULAR_TEST_START")
         if not isinstance(self.AGE_IN_DAYS_AT_MOLECULAR_TEST_START, int):
@@ -538,7 +635,7 @@ class MolecularTest(YAMLRoot):
 
 
 @dataclass(repr=False)
-class Therapy(YAMLRoot):
+class Therapy(ClinicalRecordAttributes):
     """
     Information about therapeutic interventions
     """
@@ -549,6 +646,7 @@ class Therapy(YAMLRoot):
     class_name: ClassVar[str] = "Therapy"
     class_model_uri: ClassVar[URIRef] = HTAN.Therapy
 
+    HTAN_PARTICIPANT_ID: Union[str, TherapyHTANPARTICIPANTID] = None
     INITIAL_DISEASE_STATUS: Union[str, "InitialDiseaseStatusEnum"] = None
     TREATMENT_INTENT_TYPE: Union[str, "TreatmentIntentTypeEnum"] = None
     TREATMENT_TYPE: Union[Union[str, "TreatmentTypeEnum"], List[Union[str, "TreatmentTypeEnum"]]] = None
@@ -563,6 +661,11 @@ class Therapy(YAMLRoot):
     THERAPY_ANATOMIC_SITE_UBERON_CODE: Optional[Union[str, "TissueOrOrganOfOriginUberonEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, TherapyHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = TherapyHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
+
         if self._is_empty(self.INITIAL_DISEASE_STATUS):
             self.MissingRequiredField("INITIAL_DISEASE_STATUS")
         if not isinstance(self.INITIAL_DISEASE_STATUS, InitialDiseaseStatusEnum):
@@ -642,7 +745,7 @@ class Therapy(YAMLRoot):
 
 
 @dataclass(repr=False)
-class VitalStatus(YAMLRoot):
+class VitalStatus(ClinicalRecordAttributes):
     """
     Information about the vital status
     """
@@ -653,6 +756,7 @@ class VitalStatus(YAMLRoot):
     class_name: ClassVar[str] = "VitalStatus"
     class_model_uri: ClassVar[URIRef] = HTAN.VitalStatus
 
+    HTAN_PARTICIPANT_ID: Union[str, VitalStatusHTANPARTICIPANTID] = None
     VITAL_STATUS: Union[str, "VitalStatusEnum"] = None
     AGE_IN_DAYS_AT_LAST_KNOWN_SURVIVAL_STATUS: int = None
     AGE_IN_DAYS_AT_DEATH: Optional[int] = None
@@ -660,6 +764,11 @@ class VitalStatus(YAMLRoot):
     CAUSE_OF_DEATH_SOURCE: Optional[Union[str, "CauseOfDeathSourceEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PARTICIPANT_ID):
+            self.MissingRequiredField("HTAN_PARTICIPANT_ID")
+        if not isinstance(self.HTAN_PARTICIPANT_ID, VitalStatusHTANPARTICIPANTID):
+            self.HTAN_PARTICIPANT_ID = VitalStatusHTANPARTICIPANTID(self.HTAN_PARTICIPANT_ID)
+
         if self._is_empty(self.VITAL_STATUS):
             self.MissingRequiredField("VITAL_STATUS")
         if not isinstance(self.VITAL_STATUS, VitalStatusEnum):
@@ -309145,33 +309254,33 @@ slots.caDSR_id = Slot(uri=HTAN.caDSR_id, name="caDSR_id", curie=HTAN.curie('caDS
 slots.TISSUE_OR_ORGAN_OF_ORIGIN = Slot(uri=HTAN.TISSUE_OR_ORGAN_OF_ORIGIN, name="TISSUE_OR_ORGAN_OF_ORIGIN", curie=HTAN.curie('TISSUE_OR_ORGAN_OF_ORIGIN'),
                    model_uri=HTAN.TISSUE_OR_ORGAN_OF_ORIGIN, domain=None, range=Union[str, "TissueOrOrganOfOriginUberonEnum"])
 
-slots.clinicalData__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="clinicalData__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
-                   model_uri=HTAN.clinicalData__HTAN_PARTICIPANT_ID, domain=None, range=URIRef,
+slots.clinicalRecordAttributes__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICIPANT_ID, name="clinicalRecordAttributes__HTAN_PARTICIPANT_ID", curie=HTAN.curie('HTAN_PARTICIPANT_ID'),
+                   model_uri=HTAN.clinicalRecordAttributes__HTAN_PARTICIPANT_ID, domain=None, range=URIRef,
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$'))
 
 slots.clinicalData__DEMOGRAPHICS = Slot(uri=HTAN.DEMOGRAPHICS, name="clinicalData__DEMOGRAPHICS", curie=HTAN.curie('DEMOGRAPHICS'),
-                   model_uri=HTAN.clinicalData__DEMOGRAPHICS, domain=None, range=Union[dict, Demographics])
+                   model_uri=HTAN.clinicalData__DEMOGRAPHICS, domain=None, range=Union[str, DemographicsHTANPARTICIPANTID])
 
 slots.clinicalData__VITAL_STATUS = Slot(uri=HTAN.VITAL_STATUS, name="clinicalData__VITAL_STATUS", curie=HTAN.curie('VITAL_STATUS'),
-                   model_uri=HTAN.clinicalData__VITAL_STATUS, domain=None, range=Union[dict, VitalStatus])
+                   model_uri=HTAN.clinicalData__VITAL_STATUS, domain=None, range=Union[str, VitalStatusHTANPARTICIPANTID])
 
 slots.clinicalData__DIAGNOSIS = Slot(uri=HTAN.DIAGNOSIS, name="clinicalData__DIAGNOSIS", curie=HTAN.curie('DIAGNOSIS'),
-                   model_uri=HTAN.clinicalData__DIAGNOSIS, domain=None, range=Union[dict, Diagnosis])
+                   model_uri=HTAN.clinicalData__DIAGNOSIS, domain=None, range=Union[str, DiagnosisHTANPARTICIPANTID])
 
 slots.clinicalData__EXPOSURES = Slot(uri=HTAN.EXPOSURES, name="clinicalData__EXPOSURES", curie=HTAN.curie('EXPOSURES'),
-                   model_uri=HTAN.clinicalData__EXPOSURES, domain=None, range=Union[dict, Exposure])
+                   model_uri=HTAN.clinicalData__EXPOSURES, domain=None, range=Union[str, ExposureHTANPARTICIPANTID])
 
 slots.clinicalData__FAMILY_HISTORY = Slot(uri=HTAN.FAMILY_HISTORY, name="clinicalData__FAMILY_HISTORY", curie=HTAN.curie('FAMILY_HISTORY'),
-                   model_uri=HTAN.clinicalData__FAMILY_HISTORY, domain=None, range=Union[dict, FamilyHistory])
+                   model_uri=HTAN.clinicalData__FAMILY_HISTORY, domain=None, range=Union[str, FamilyHistoryHTANPARTICIPANTID])
 
 slots.clinicalData__FOLLOW_UPS = Slot(uri=HTAN.FOLLOW_UPS, name="clinicalData__FOLLOW_UPS", curie=HTAN.curie('FOLLOW_UPS'),
-                   model_uri=HTAN.clinicalData__FOLLOW_UPS, domain=None, range=Optional[Union[Union[dict, FollowUp], List[Union[dict, FollowUp]]]])
+                   model_uri=HTAN.clinicalData__FOLLOW_UPS, domain=None, range=Optional[Union[Union[str, FollowUpHTANPARTICIPANTID], List[Union[str, FollowUpHTANPARTICIPANTID]]]])
 
 slots.clinicalData__MOLECULAR_TESTS = Slot(uri=HTAN.MOLECULAR_TESTS, name="clinicalData__MOLECULAR_TESTS", curie=HTAN.curie('MOLECULAR_TESTS'),
-                   model_uri=HTAN.clinicalData__MOLECULAR_TESTS, domain=None, range=Optional[Union[Union[dict, MolecularTest], List[Union[dict, MolecularTest]]]])
+                   model_uri=HTAN.clinicalData__MOLECULAR_TESTS, domain=None, range=Optional[Union[Union[str, MolecularTestHTANPARTICIPANTID], List[Union[str, MolecularTestHTANPARTICIPANTID]]]])
 
 slots.clinicalData__THERAPIES = Slot(uri=HTAN.THERAPIES, name="clinicalData__THERAPIES", curie=HTAN.curie('THERAPIES'),
-                   model_uri=HTAN.clinicalData__THERAPIES, domain=None, range=Optional[Union[Union[dict, Therapy], List[Union[dict, Therapy]]]])
+                   model_uri=HTAN.clinicalData__THERAPIES, domain=None, range=Optional[Union[Dict[Union[str, TherapyHTANPARTICIPANTID], Union[dict, Therapy]], List[Union[dict, Therapy]]]])
 
 slots.demographics__ETHNIC_GROUP = Slot(uri=CADSR['2192217'], name="demographics__ETHNIC_GROUP", curie=CADSR.curie('2192217'),
                    model_uri=HTAN.demographics__ETHNIC_GROUP, domain=None, range=Union[str, "EthnicGroupEnum"])
