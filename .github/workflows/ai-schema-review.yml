@@ -25,14 +25,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install Claude Code
-        run: npm install -g @anthropic-ai/claude-code
-
       - name: Fetch PR diff and metadata
         env:
           GH_TOKEN: ${{ github.token }}
@@ -85,9 +77,41 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          claude --print --model claude-sonnet-4-6 \
-            < /tmp/review_prompt.txt \
-            > /tmp/review_output.md
+          python3 - << 'PYEOF'
+          import json
+          import os
+          import urllib.request
+          import urllib.error
+
+          with open('/tmp/review_prompt.txt') as f:
+              prompt = f.read()
+
+          payload = json.dumps({
+              "model": "claude-sonnet-4-6",
+              "max_tokens": 4096,
+              "messages": [{"role": "user", "content": prompt}]
+          }).encode()
+
+          req = urllib.request.Request(
+              "https://api.anthropic.com/v1/messages",
+              data=payload,
+              headers={
+                  "x-api-key": os.environ["ANTHROPIC_API_KEY"],
+                  "anthropic-version": "2023-06-01",
+                  "content-type": "application/json",
+              },
+          )
+
+          with urllib.request.urlopen(req) as resp:
+              result = json.loads(resp.read())
+
+          review = result["content"][0]["text"]
+
+          with open('/tmp/review_output.md', 'w') as f:
+              f.write(review)
+
+          print(f"Review written ({len(review):,} chars)")
+          PYEOF
 
           echo "--- Review output preview (first 20 lines) ---"
           head -20 /tmp/review_output.md
