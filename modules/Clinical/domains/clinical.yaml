@@ -78,36 +78,43 @@ classes:
       DEMOGRAPHICS:
         range: Demographics
         required: true
+        inlined: true
         title: "Demographics"
         description: Demographic information
       VITAL_STATUS:
         range: VitalStatus
         required: true
+        inlined: true
         title: "Vital Status"
         description: Vital status information
       DIAGNOSIS:
         range: Diagnosis
         required: true
+        inlined: true
         title: "Diagnosis"
         description: Primary diagnosis information
       EXPOSURES:
         range: Exposure
         required: true
+        inlined: true
         title: "Exposures"
         description: Exposure history
       FAMILY_HISTORY:
         range: FamilyHistory
         required: true
+        inlined: true
         title: "Family History"
         description: Family history of cancer
       FOLLOW_UPS:
         range: FollowUp
         multivalued: true
+        inlined_as_list: true
         title: "Follow-ups"
         description: Follow-up observations
       MOLECULAR_TESTS:
         range: MolecularTest
         multivalued: true
+        inlined_as_list: true
         title: "Molecular Tests"
         description: Molecular test results
       THERAPIES:
