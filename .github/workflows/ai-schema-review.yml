@@ -85,9 +85,8 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          claude --print \
-            --model claude-sonnet-4-6 \
-            "$(cat /tmp/review_prompt.txt)" \
+          claude --print --model claude-sonnet-4-6 \
+            < /tmp/review_prompt.txt \
             > /tmp/review_output.md
 
           echo "--- Review output preview (first 20 lines) ---"
