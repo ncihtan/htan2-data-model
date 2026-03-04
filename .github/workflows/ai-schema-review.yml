@@ -42,13 +42,44 @@ jobs:
           with open('/tmp/pr_meta.json') as f:
               meta = json.load(f)
           with open('/tmp/pr.diff') as f:
-              diff = f.read()
+              raw_diff = f.read()
           with open('CLAUDE.md') as f:
               rules = f.read()
+
+          # Strip generated files from the diff — they dominate token count
+          # and are not subject to review (schema correctness is checked via
+          # the source YAML, not the generated Python or JSON Schema output).
+          SKIP = [
+              'src/htan_',       # generated Python datamodels
+              'JSON_Schemas/',   # generated JSON schemas
+          ]
+          MAX_DIFF_CHARS = 80_000  # safety cap (~20k tokens)
+
+          sections, current, skip = [], [], False
+          for line in raw_diff.splitlines(keepends=True):
+              if line.startswith('diff --git'):
+                  if current and not skip:
+                      sections.append(''.join(current))
+                  current = [line]
+                  skip = any(p in line for p in SKIP)
+              else:
+                  current.append(line)
+          if current and not skip:
+              sections.append(''.join(current))
+
+          diff = ''.join(sections)
+          skipped_chars = len(raw_diff) - len(diff)
+          if len(diff) > MAX_DIFF_CHARS:
+              diff = diff[:MAX_DIFF_CHARS] + '\n\n[diff truncated]'
+          print(f"Diff: {len(diff):,} chars after filtering ({skipped_chars:,} chars of generated files removed)")
 
           prompt = f"""You are reviewing a pull request for the htan2-data-model repository.
 
           Apply the review rules below exactly. Do not flag anything outside the defined scope.
+
+          Note: generated files (src/htan_*/datamodel/*.py, JSON_Schemas/) are excluded from
+          this diff. The generated artifacts checklist item asks only whether they were
+          regenerated — not to review their contents.
 
           ---
 
@@ -62,7 +93,7 @@ jobs:
 
           **Stats:** {meta['changedFiles']} files changed, +{meta['additions']}/-{meta['deletions']} lines
 
-          ## Diff
+          ## Diff (source files only)
 
           {diff}
           """
