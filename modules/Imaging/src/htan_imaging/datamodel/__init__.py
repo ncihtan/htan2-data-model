@@ -1,2 +1,1 @@
 """HTAN Imaging data model."""
-
