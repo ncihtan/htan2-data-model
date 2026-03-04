@@ -81,6 +81,7 @@ enums:
 
 classes:
   Exposure:
+    is_a: ClinicalRecordAttributes
     description: Information about the exposure
     attributes:
       SMOKING_HISTORY:
@@ -129,4 +130,63 @@ classes:
         description: Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker
       ENVIRONMENTAL_EXPOSURE_TYPE:
         required: false
-        description: Required when ENVIRONMENTAL_EXPOSURE is Yes 
+        description: Required when ENVIRONMENTAL_EXPOSURE is Yes
+    
+    rules:
+      - description: "YEARS_SMOKED and PACK_YEARS_SMOKED are required when SMOKING_HISTORY is Current smoker"
+        preconditions:
+          slot_conditions:
+            SMOKING_HISTORY:
+              equals_string: "Current smoker"
+        postconditions:
+          slot_conditions:
+            YEARS_SMOKED:
+              required: true
+            PACK_YEARS_SMOKED:
+              required: true
+      
+      - description: "YEARS_SMOKED and PACK_YEARS_SMOKED are required when SMOKING_HISTORY is Current Every-Day Smoker"
+        preconditions:
+          slot_conditions:
+            SMOKING_HISTORY:
+              equals_string: "Current Every-Day Smoker"
+        postconditions:
+          slot_conditions:
+            YEARS_SMOKED:
+              required: true
+            PACK_YEARS_SMOKED:
+              required: true
+      
+      - description: "YEARS_SMOKED and PACK_YEARS_SMOKED are required when SMOKING_HISTORY is Current Some-Day Smoker"
+        preconditions:
+          slot_conditions:
+            SMOKING_HISTORY:
+              equals_string: "Current Some-Day Smoker"
+        postconditions:
+          slot_conditions:
+            YEARS_SMOKED:
+              required: true
+            PACK_YEARS_SMOKED:
+              required: true
+      
+      - description: "YEARS_SMOKED and PACK_YEARS_SMOKED are required when SMOKING_HISTORY is Former Smoker"
+        preconditions:
+          slot_conditions:
+            SMOKING_HISTORY:
+              equals_string: "Former Smoker"
+        postconditions:
+          slot_conditions:
+            YEARS_SMOKED:
+              required: true
+            PACK_YEARS_SMOKED:
+              required: true
+      
+      - description: "ENVIRONMENTAL_EXPOSURE_TYPE is required when ENVIRONMENTAL_EXPOSURE is Yes"
+        preconditions:
+          slot_conditions:
+            ENVIRONMENTAL_EXPOSURE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            ENVIRONMENTAL_EXPOSURE_TYPE:
+              required: true

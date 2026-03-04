@@ -58,8 +58,9 @@ classes:
       HTAN_PARENT_ID:
         range: string
         required: true
+        multivalued: true
         title: "HTAN Parent ID"
-        description: HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). Supports HTA200-229 for phase 2.
+        description: HTAN Parent ID(s) - Foreign key(s) to parent entity (Participant ID or Biospecimen ID with B suffix). One or more IDs. Supports HTA200-229 for phase 2.
         pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$"
       
       ADJACENT_BIOSPECIMEN_IDS:
@@ -114,7 +115,6 @@ classes:
         title: "Acquisition Method Other Specify"
         description: A custom acquisition method
         pattern: "^.{0,100}$"
-        # Conditionally required when ACQUISITION_METHOD_TYPE=Other
       
       SITE_OF_RESECTION_OR_BIOPSY:
         range: tissue_or_organ_of_origin_uberon_enum
@@ -179,7 +179,6 @@ classes:
         annotations:
           caDSR_id: "5230144"
         minimum_value: 0
-        # Conditionally required when PRESERVATION_METHOD=Fixation
       
       LONGEST_DIMENSION:
         range: decimal
@@ -206,7 +205,6 @@ classes:
         description: The type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes
         annotations:
           caDSR_id: "16391068"
-        # Conditionally required when BIOSPECIMEN_TYPE=Tissue
       
       ANALYTE_TYPE:
         range: AnalyteTypeEnum
@@ -215,7 +213,6 @@ classes:
         description: The sample or material being subjected to analysis
         annotations:
           caDSR_id: "15063661"
-        # Conditionally required when BIOSPECIMEN_TYPE=DNA|RNA
       
       METHOD_OF_NUCLEIC_ACID_ISOLATION:
         range: string
@@ -232,14 +229,12 @@ classes:
         annotations:
           caDSR_id: "16323604"
         minimum_value: 0
-        # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
       
       SLICING_METHOD:
         range: SlicingMethodEnum
         required: false
         title: "Slicing Method"
         description: "Imaging specific: the method by which the tissue was sliced"
-        # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
       
       SECTION_THICKNESS_VALUE:
         range: decimal
@@ -249,7 +244,6 @@ classes:
         annotations:
           caDSR_id: "3024951"
         minimum_value: 0
-        # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
       
       SECTION_NUMBER_IN_SEQUENCE:
         range: integer
@@ -265,7 +259,6 @@ classes:
         description: A description of the charge on the glass slide
         annotations:
           caDSR_id: "5227611"
-        # Conditionally required when TISSUE_SAMPLE_TYPE=Tissue Section
       
       SPECIMEN_CELLULAR_ARCHITECTURE:
         range: CellularArchitectureEnum
@@ -282,7 +275,6 @@ classes:
         description: The classification of a tumor at a particular time based primarily on histopathological characteristics
         annotations:
           caDSR_id: "12922545"
-        # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Tumor
       
       ICD_O_3_TISSUE_MORPHOLOGY:
         range: IcdO3MorphologyEnum
@@ -291,7 +283,6 @@ classes:
         description: The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in the morphology codes of ICD-O-3
         annotations:
           caDSR_id: "11326261"
-        # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Tumor
       
       ICD_10_DISEASE_CODE:
         range: Icd10DiseaseEnum
@@ -300,7 +291,6 @@ classes:
         description: "For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of ICD-10-CM"
         annotations:
           caDSR_id: "11479873"
-        # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Precancerous
       
       DEGREE_OF_DYSPLASIA:
         range: DegreeOfDysplasiaEnum
@@ -309,7 +299,6 @@ classes:
         description: Information related to the presence of cells that look abnormal under a microscope but are not cancer
         annotations:
           caDSR_id: "5543188"
-        # Conditionally required when SPECIMEN_CELLULAR_ARCHITECTURE=Precancerous
       
       PERCENT_NECROSIS:
         range: decimal
@@ -358,3 +347,172 @@ classes:
         description: Text descriptor of the shipping environment of a biospecimen
         annotations:
           caDSR_id: "5495533"
+    
+    slot_usage:
+      ACQUISITION_METHOD_OTHER_SPECIFY:
+        required: false
+        description: Required when ACQUISITION_METHOD_TYPE is "Other"
+      FIXATION_DURATION_IN_MINUTES:
+        required: false
+        description: Required when PRESERVATION_METHOD is "Fixation"
+      TISSUE_SAMPLE_TYPE:
+        required: false
+        description: Required when BIOSPECIMEN_TYPE is "Tissue"
+      ANALYTE_TYPE:
+        required: false
+        description: Required when BIOSPECIMEN_TYPE is "DNA" or "RNA"
+      AGE_IN_DAYS_AT_SECTIONING:
+        required: false
+        description: Required when TISSUE_SAMPLE_TYPE is "Tissue Section"
+      SLICING_METHOD:
+        required: false
+        description: Required when TISSUE_SAMPLE_TYPE is "Tissue Section"
+      SECTION_THICKNESS_VALUE:
+        required: false
+        description: Required when TISSUE_SAMPLE_TYPE is "Tissue Section"
+      SLIDE_CHARGE_TYPE:
+        required: false
+        description: Required when TISSUE_SAMPLE_TYPE is "Tissue Section"
+      TUMOR_CLASSIFICATION:
+        required: false
+        description: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Tumor"
+      ICD_O_3_TISSUE_MORPHOLOGY:
+        required: false
+        description: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Tumor"
+      ICD_10_DISEASE_CODE:
+        required: false
+        description: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Precancerous"
+      DEGREE_OF_DYSPLASIA:
+        required: false
+        description: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Precancerous"
+    
+    rules:
+      - description: "ACQUISITION_METHOD_OTHER_SPECIFY is required when ACQUISITION_METHOD_TYPE is Other"
+        preconditions:
+          slot_conditions:
+            ACQUISITION_METHOD_TYPE:
+              equals_string: "Other"
+        postconditions:
+          slot_conditions:
+            ACQUISITION_METHOD_OTHER_SPECIFY:
+              required: true
+      
+      - description: "FIXATION_DURATION_IN_MINUTES is required when PRESERVATION_METHOD is Fixation"
+        preconditions:
+          slot_conditions:
+            PRESERVATION_METHOD:
+              equals_string: "Fixation"
+        postconditions:
+          slot_conditions:
+            FIXATION_DURATION_IN_MINUTES:
+              required: true
+      
+      - description: "TISSUE_SAMPLE_TYPE is required when BIOSPECIMEN_TYPE is Tissue"
+        preconditions:
+          slot_conditions:
+            BIOSPECIMEN_TYPE:
+              equals_string: "Tissue"
+        postconditions:
+          slot_conditions:
+            TISSUE_SAMPLE_TYPE:
+              required: true
+      
+      - description: "ANALYTE_TYPE is required when BIOSPECIMEN_TYPE is DNA"
+        preconditions:
+          slot_conditions:
+            BIOSPECIMEN_TYPE:
+              equals_string: "DNA"
+        postconditions:
+          slot_conditions:
+            ANALYTE_TYPE:
+              required: true
+      
+      - description: "ANALYTE_TYPE is required when BIOSPECIMEN_TYPE is RNA"
+        preconditions:
+          slot_conditions:
+            BIOSPECIMEN_TYPE:
+              equals_string: "RNA"
+        postconditions:
+          slot_conditions:
+            ANALYTE_TYPE:
+              required: true
+      
+      - description: "AGE_IN_DAYS_AT_SECTIONING is required when TISSUE_SAMPLE_TYPE is Tissue Section"
+        preconditions:
+          slot_conditions:
+            TISSUE_SAMPLE_TYPE:
+              equals_string: "Tissue Section"
+        postconditions:
+          slot_conditions:
+            AGE_IN_DAYS_AT_SECTIONING:
+              required: true
+      
+      - description: "SLICING_METHOD is required when TISSUE_SAMPLE_TYPE is Tissue Section"
+        preconditions:
+          slot_conditions:
+            TISSUE_SAMPLE_TYPE:
+              equals_string: "Tissue Section"
+        postconditions:
+          slot_conditions:
+            SLICING_METHOD:
+              required: true
+      
+      - description: "SECTION_THICKNESS_VALUE is required when TISSUE_SAMPLE_TYPE is Tissue Section"
+        preconditions:
+          slot_conditions:
+            TISSUE_SAMPLE_TYPE:
+              equals_string: "Tissue Section"
+        postconditions:
+          slot_conditions:
+            SECTION_THICKNESS_VALUE:
+              required: true
+      
+      - description: "SLIDE_CHARGE_TYPE is required when TISSUE_SAMPLE_TYPE is Tissue Section"
+        preconditions:
+          slot_conditions:
+            TISSUE_SAMPLE_TYPE:
+              equals_string: "Tissue Section"
+        postconditions:
+          slot_conditions:
+            SLIDE_CHARGE_TYPE:
+              required: true
+      
+      - description: "TUMOR_CLASSIFICATION is required when SPECIMEN_CELLULAR_ARCHITECTURE is Tumor"
+        preconditions:
+          slot_conditions:
+            SPECIMEN_CELLULAR_ARCHITECTURE:
+              equals_string: "Tumor"
+        postconditions:
+          slot_conditions:
+            TUMOR_CLASSIFICATION:
+              required: true
+      
+      - description: "ICD_O_3_TISSUE_MORPHOLOGY is required when SPECIMEN_CELLULAR_ARCHITECTURE is Tumor"
+        preconditions:
+          slot_conditions:
+            SPECIMEN_CELLULAR_ARCHITECTURE:
+              equals_string: "Tumor"
+        postconditions:
+          slot_conditions:
+            ICD_O_3_TISSUE_MORPHOLOGY:
+              required: true
+      
+      - description: "ICD_10_DISEASE_CODE is required when SPECIMEN_CELLULAR_ARCHITECTURE is Precancerous"
+        preconditions:
+          slot_conditions:
+            SPECIMEN_CELLULAR_ARCHITECTURE:
+              equals_string: "Precancerous"
+        postconditions:
+          slot_conditions:
+            ICD_10_DISEASE_CODE:
+              required: true
+      
+      - description: "DEGREE_OF_DYSPLASIA is required when SPECIMEN_CELLULAR_ARCHITECTURE is Precancerous"
+        preconditions:
+          slot_conditions:
+            SPECIMEN_CELLULAR_ARCHITECTURE:
+              equals_string: "Precancerous"
+        postconditions:
+          slot_conditions:
+            DEGREE_OF_DYSPLASIA:
+              required: true

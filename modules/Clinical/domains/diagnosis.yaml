@@ -365,6 +365,7 @@ enums:
 
 classes:
   Diagnosis:
+    is_a: ClinicalRecordAttributes
     description: Information about the diagnosis
     attributes:
       PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID:

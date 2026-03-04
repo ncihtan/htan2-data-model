@@ -121,8 +121,8 @@ class TestDigitalPathology:
         file_format_attr = digital_pathology_class.attributes.get("FILE_FORMAT")
         filename_attr = digital_pathology_class.attributes.get("FILENAME")
         
-        assert file_format_attr.pattern == "^(ome-tiff|tiff|qptiff|svs)$"
-        assert filename_attr.pattern == "^.+\\.(ome\\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs)$"
+        assert file_format_attr.pattern == "^(ome-tiff|tiff|qptiff|svs|ndpi)$"
+        assert filename_attr.pattern == "^.+\\.(ome\\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs|ndpi)$"
         
         # Validate pattern matching
         fmt_regex = re.compile(file_format_attr.pattern)
@@ -140,3 +140,5 @@ class TestDigitalPathology:
         assert filename_regex.match("image.qptiff")
         assert fmt_regex.match("svs")
         assert filename_regex.match("image.svs")
+        assert fmt_regex.match("ndpi")
+        assert filename_regex.match("slide.ndpi")

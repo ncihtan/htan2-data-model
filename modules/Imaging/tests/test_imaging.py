@@ -165,7 +165,7 @@ class TestBaseImagingDataValidation:
     def test_valid_base_imaging_data(self):
         """Test valid base imaging data with filename (no path separator required)."""
         valid_data = {
-            "HTAN_DATA_FILE_ID": "HTA1_0000_0001",
+            "HTAN_DATA_FILE_ID": "HTA200_0000_D0001",
             "FILENAME": "image.ome.tiff",  # Filename without path separator is valid
             "FILE_FORMAT": "ome.tiff",
             "HTAN_PARENT_ID": "HTA200_0000_B0001",
@@ -265,7 +265,7 @@ class TestBaseImagingDataValidation:
         # Test valid data with path separator (also valid)
         valid_data = {
             "EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES": "Pathological",
-            "HTAN_DATA_FILE_ID": "HTA1_0000_0001",
+            "HTAN_DATA_FILE_ID": "HTA200_0000_D0001",
             "FILENAME": "test/image.ome.tiff",  # Filename with path separator is also valid
             "FILE_FORMAT": "ome.tiff",
             "HTAN_PARENT_ID": "HTA200_0000_B0001",

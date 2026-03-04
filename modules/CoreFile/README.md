@@ -73,8 +73,8 @@ The following HTAN identifiers are defined in other modules but follow the same 
 
 ### HTAN_PANEL_ID
 - **Location**: `modules/SpatialOmics/domains/spatial_panel.yaml`
-- **Pattern**: `^(HTA([1-9]|1[0-6]))_((EXT)?([0-9]\d*|0000))_([0-9]\d*|0000)$`
-- **Description**: Unique identifier for spatial omics panels (legacy pattern, may be updated)
+- **Pattern**: `^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$`
+- **Description**: Unique identifier for spatial omics panels. Supports HTA200-229 for phase 2.
 - **Examples**: `HTA200_2_P0001`, `HTA200_EXT001_P0001`
 
 ### HTAN_PARENT_ID (Biospecimen Module)
