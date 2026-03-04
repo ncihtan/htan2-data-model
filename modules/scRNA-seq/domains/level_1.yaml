@@ -96,7 +96,7 @@ enums:
 
 classes:
   scRNALevel1:
-    is_a: BaseSequencingAttributes
+    is_a: BaseSequencingLevel1Attributes
     description: scRNA-seq Level 1 data - Raw sequencing files and metadata
     attributes:
       # File format restriction for Level 1 raw sequencing files

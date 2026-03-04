@@ -1,0 +1,172 @@
+name: AI Schema Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+# Cancel in-progress review if a new commit is pushed to the same PR
+concurrency:
+  group: ai-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    # Skip bot-authored PRs (e.g. Dependabot, release automation)
+    if: ${{ !contains(github.actor, '[bot]') }}
+
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch PR diff and metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr diff ${{ github.event.pull_request.number }} > /tmp/pr.diff
+          gh pr view ${{ github.event.pull_request.number }} \
+            --json number,title,body,additions,deletions,changedFiles \
+            > /tmp/pr_meta.json
+
+      - name: Build review prompt
+        run: |
+          python3 - << 'PYEOF'
+          import json
+
+          with open('/tmp/pr_meta.json') as f:
+              meta = json.load(f)
+          with open('/tmp/pr.diff') as f:
+              diff = f.read()
+          with open('CLAUDE.md') as f:
+              rules = f.read()
+
+          prompt = f"""You are reviewing a pull request for the htan2-data-model repository.
+
+          Apply the review rules below exactly. Do not flag anything outside the defined scope.
+
+          ---
+
+          {rules}
+
+          ---
+
+          ## PR #{meta['number']} — {meta['title']}
+
+          **Description:** {meta.get('body') or '(none)'}
+
+          **Stats:** {meta['changedFiles']} files changed, +{meta['additions']}/-{meta['deletions']} lines
+
+          ## Diff
+
+          {diff}
+          """
+
+          with open('/tmp/review_prompt.txt', 'w') as f:
+              f.write(prompt)
+
+          print(f"Prompt written ({len(prompt):,} chars)")
+          PYEOF
+
+      - name: Run Claude review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python3 - << 'PYEOF'
+          import json
+          import os
+          import urllib.request
+          import urllib.error
+
+          with open('/tmp/review_prompt.txt') as f:
+              prompt = f.read()
+
+          payload = json.dumps({
+              "model": "claude-sonnet-4-6",
+              "max_tokens": 4096,
+              "messages": [{"role": "user", "content": prompt}]
+          }).encode()
+
+          req = urllib.request.Request(
+              "https://api.anthropic.com/v1/messages",
+              data=payload,
+              headers={
+                  "x-api-key": os.environ["ANTHROPIC_API_KEY"],
+                  "anthropic-version": "2023-06-01",
+                  "content-type": "application/json",
+              },
+          )
+
+          with urllib.request.urlopen(req) as resp:
+              result = json.loads(resp.read())
+
+          review = result["content"][0]["text"]
+
+          with open('/tmp/review_output.md', 'w') as f:
+              f.write(review)
+
+          print(f"Review written ({len(review):,} chars)")
+          PYEOF
+
+          echo "--- Review output preview (first 20 lines) ---"
+          head -20 /tmp/review_output.md
+
+      - name: Determine verdict
+        run: |
+          if grep -q "\[BLOCKING\]" /tmp/review_output.md; then
+            echo "VERDICT=request-changes" >> $GITHUB_ENV
+            echo "VERDICT_LABEL=🔴 Changes requested" >> $GITHUB_ENV
+            echo "Verdict: request-changes"
+          else
+            echo "VERDICT=approve" >> $GITHUB_ENV
+            echo "VERDICT_LABEL=✅ Approved" >> $GITHUB_ENV
+            echo "Verdict: approve"
+          fi
+
+      - name: Dismiss previous bot review
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Dismiss any active bot review so the new one is the current verdict
+          PREV_REVIEW_ID=$(gh api \
+            "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews" \
+            --jq '.[] | select(
+              .user.login == "github-actions[bot]" and
+              (.state == "APPROVED" or .state == "CHANGES_REQUESTED")
+            ) | .id' | head -1)
+
+          if [ -n "$PREV_REVIEW_ID" ]; then
+            echo "Dismissing previous review $PREV_REVIEW_ID"
+            gh api -X PUT \
+              "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews/$PREV_REVIEW_ID/dismissals" \
+              -f message="Superseded by updated review on commit ${{ github.event.pull_request.head.sha }}"
+          fi
+
+      - name: Submit formal review
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          REVIEW_BODY="<!-- htan-ai-review -->
+          ## HTAN Schema Review — ${{ env.VERDICT_LABEL }}
+
+          > Automated review by [htan-claude](https://github.com/ncihtan/htan-claude) · commit \`${{ github.event.pull_request.head.sha }}\`
+
+          $(cat /tmp/review_output.md)
+
+          ---
+          <sub>Rules defined in [CLAUDE.md](../blob/${{ github.event.pull_request.head.sha }}/CLAUDE.md) · To update review rules, edit \`CLAUDE.md\` and open a PR to \`main\`</sub>"
+
+          if [ "${{ env.VERDICT }}" = "request-changes" ]; then
+            gh pr review ${{ github.event.pull_request.number }} \
+              --request-changes \
+              --body "$REVIEW_BODY"
+          else
+            gh pr review ${{ github.event.pull_request.number }} \
+              --approve \
+              --body "$REVIEW_BODY"
+          fi
