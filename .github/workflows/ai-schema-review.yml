@@ -102,8 +102,14 @@ jobs:
               },
           )
 
-          with urllib.request.urlopen(req) as resp:
-              result = json.loads(resp.read())
+          try:
+              with urllib.request.urlopen(req) as resp:
+                  result = json.loads(resp.read())
+          except urllib.error.HTTPError as e:
+              body = e.read().decode()
+              print(f"API error {e.code}: {e.reason}")
+              print(body)
+              raise SystemExit(1)
 
           review = result["content"][0]["text"]
 
