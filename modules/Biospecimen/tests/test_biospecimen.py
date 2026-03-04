@@ -1,5 +1,7 @@
 """Tests for the HTAN Biospecimen module."""
 
+import re
+
 import pytest
 import yaml
 import os
@@ -27,7 +29,9 @@ class TestBiospecimen:
 
         # Check that it does NOT inherit from CoreFileAttributes (it's a record-based module)
         biospecimen_class = sv.get_class("BiospecimenData")
-        assert biospecimen_class.is_a is None, "BiospecimenData is record-based and should not inherit from CoreFileAttributes"
+        assert (
+            biospecimen_class.is_a is None
+        ), "BiospecimenData is record-based and should not inherit from CoreFileAttributes"
 
     def test_enums(self):
         """Test that enums are properly defined."""
@@ -194,6 +198,36 @@ class TestBiospecimen:
         adjacent_attr = biospecimen_class.attributes["ADJACENT_BIOSPECIMEN_IDS"]
         assert "string" in str(adjacent_attr.range)  # Should be a list of strings
 
+    def test_adjacent_biospecimen_ids_regex_rejects_malformed(self):
+        """Test that ADJACENT_BIOSPECIMEN_IDS pattern rejects malformed IDs."""
+        sv = SchemaView("modules/Biospecimen/domains/biospecimen.yaml")
+        biospecimen_class = sv.get_class("BiospecimenData")
+        adjacent_attr = biospecimen_class.attributes["ADJACENT_BIOSPECIMEN_IDS"]
+        pattern = adjacent_attr.pattern
+        assert pattern is not None, "ADJACENT_BIOSPECIMEN_IDS should have a pattern"
+        compiled = re.compile(pattern)
+
+        # Each ID in the multivalued field must match the biospecimen ID pattern (e.g. HTA200_0000_B1)
+        valid_ids = [
+            "HTA200_0000_B1",
+            "HTA201_12345_B2",
+            "HTA229_EXT1_B999",
+        ]
+        for vid in valid_ids:
+            assert compiled.fullmatch(vid), f"Valid ID should match: {vid!r}"
+
+        malformed_ids = [
+            "not-an-id",
+            "HTA200_0000",           # missing _B suffix
+            "HTA200_0000_D1",        # D suffix (data file), not B
+            "HTA300_0000_B1",        # invalid center (only 200-229)
+            "HTA20_0000_B1",         # center too short
+            "HTA200_0000_B",         # B with no digits
+            "",
+        ]
+        for mid in malformed_ids:
+            assert compiled.fullmatch(mid) is None, f"Malformed ID should be rejected: {mid!r}"
+
     def test_conditional_rules(self):
         """Test that all 13 conditional requirement rules exist; conditionally-required slots are optional at attribute level."""
         sv = SchemaView("modules/Biospecimen/domains/biospecimen.yaml")
@@ -201,9 +235,19 @@ class TestBiospecimen:
         rules = biospecimen_class.rules or []
 
         def triple(r):
-            pre = getattr(getattr(r, "preconditions", None), "slot_conditions", None) or {}
-            post = getattr(getattr(r, "postconditions", None), "slot_conditions", None) or {}
-            if not pre or not post or getattr(next(iter(post.values())), "required", None) is not True:
+            pre = (
+                getattr(getattr(r, "preconditions", None), "slot_conditions", None)
+                or {}
+            )
+            post = (
+                getattr(getattr(r, "postconditions", None), "slot_conditions", None)
+                or {}
+            )
+            if (
+                not pre
+                or not post
+                or getattr(next(iter(post.values())), "required", None) is not True
+            ):
                 return None
             pre_slot, post_slot = next(iter(pre)), next(iter(post))
             return (pre_slot, getattr(pre[pre_slot], "equals_string", None), post_slot)
@@ -224,7 +268,9 @@ class TestBiospecimen:
             ("SPECIMEN_CELLULAR_ARCHITECTURE", "Precancerous", "DEGREE_OF_DYSPLASIA"),
         }
         actual = {t for r in rules for t in [triple(r)] if t is not None}
-        assert actual == expected, f"Rule mismatch: missing {expected - actual}, unexpected {actual - expected}"
+        assert (
+            actual == expected
+        ), f"Rule mismatch: missing {expected - actual}, unexpected {actual - expected}"
 
         for _, _, post_slot in expected:
             assert biospecimen_class.attributes[post_slot].required is False

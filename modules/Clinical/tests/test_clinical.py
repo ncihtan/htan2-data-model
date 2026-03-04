@@ -66,14 +66,13 @@ def test_invalid_data(invalid_files):
     for file_path in invalid_files:
         with pytest.raises(ValueError):
             with open(file_path) as f:
-                # This should raise a ValueError during loading
                 yaml_loader.load(f, target_class=ClinicalData)
 
 
 def test_required_fields():
     """Test that missing required fields are caught."""
     test_data = {
-        "HTAN_PARTICIPANT_ID": "TEST-001"
+        "HTAN_PARTICIPANT_ID": "HTA200_0000"
         # Missing required fields
     }
     with pytest.raises(ValueError):
@@ -83,8 +82,8 @@ def test_required_fields():
 def test_enum_values():
     """Test that invalid enum values are caught."""
     test_data = {
-        "HTAN_PARTICIPANT_ID": "TEST-001",
-        "DIAGNOSIS": {"TUMOR_GRADE": "G5"},  # Invalid enum value
+        "HTAN_PARTICIPANT_ID": "HTA200_0000",
+        "DIAGNOSIS": {"HTAN_PARTICIPANT_ID": "HTA200_0000", "TUMOR_GRADE": "G5"},  # Invalid enum value
     }
     with pytest.raises(ValueError):
         ClinicalData(**test_data)
@@ -93,8 +92,8 @@ def test_enum_values():
 def test_data_types():
     """Test that invalid data types are caught."""
     test_data = {
-        "HTAN_PARTICIPANT_ID": "TEST-001",
-        "DIAGNOSIS": {"AGE_AT_DIAGNOSIS_DAYS": "not_a_number"},  # Should be integer
+        "HTAN_PARTICIPANT_ID": "HTA200_0000",
+        "DIAGNOSIS": {"HTAN_PARTICIPANT_ID": "HTA200_0000", "AGE_AT_DIAGNOSIS_DAYS": "not_a_number"},  # Should be integer
     }
     with pytest.raises(ValueError):
         ClinicalData(**test_data)
