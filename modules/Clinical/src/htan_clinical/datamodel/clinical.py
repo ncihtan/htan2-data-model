@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-04T16:04:03
+# Generation date: 2026-03-04T19:05:37
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -154,13 +154,13 @@ class ClinicalData(ClinicalRecordAttributes):
     class_model_uri: ClassVar[URIRef] = HTAN.ClinicalData
 
     HTAN_PARTICIPANT_ID: Union[str, ClinicalDataHTANPARTICIPANTID] = None
-    DEMOGRAPHICS: Union[str, DemographicsHTANPARTICIPANTID] = None
-    VITAL_STATUS: Union[str, VitalStatusHTANPARTICIPANTID] = None
-    DIAGNOSIS: Union[str, DiagnosisHTANPARTICIPANTID] = None
-    EXPOSURES: Union[str, ExposureHTANPARTICIPANTID] = None
-    FAMILY_HISTORY: Union[str, FamilyHistoryHTANPARTICIPANTID] = None
-    FOLLOW_UPS: Optional[Union[Union[str, FollowUpHTANPARTICIPANTID], List[Union[str, FollowUpHTANPARTICIPANTID]]]] = empty_list()
-    MOLECULAR_TESTS: Optional[Union[Union[str, MolecularTestHTANPARTICIPANTID], List[Union[str, MolecularTestHTANPARTICIPANTID]]]] = empty_list()
+    DEMOGRAPHICS: Union[dict, "Demographics"] = None
+    VITAL_STATUS: Union[dict, "VitalStatus"] = None
+    DIAGNOSIS: Union[dict, "Diagnosis"] = None
+    EXPOSURES: Union[dict, "Exposure"] = None
+    FAMILY_HISTORY: Union[dict, "FamilyHistory"] = None
+    FOLLOW_UPS: Optional[Union[Dict[Union[str, FollowUpHTANPARTICIPANTID], Union[dict, "FollowUp"]], List[Union[dict, "FollowUp"]]]] = empty_dict()
+    MOLECULAR_TESTS: Optional[Union[Dict[Union[str, MolecularTestHTANPARTICIPANTID], Union[dict, "MolecularTest"]], List[Union[dict, "MolecularTest"]]]] = empty_dict()
     THERAPIES: Optional[Union[Dict[Union[str, TherapyHTANPARTICIPANTID], Union[dict, "Therapy"]], List[Union[dict, "Therapy"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -171,36 +171,32 @@ class ClinicalData(ClinicalRecordAttributes):
 
         if self._is_empty(self.DEMOGRAPHICS):
             self.MissingRequiredField("DEMOGRAPHICS")
-        if not isinstance(self.DEMOGRAPHICS, DemographicsHTANPARTICIPANTID):
-            self.DEMOGRAPHICS = DemographicsHTANPARTICIPANTID(self.DEMOGRAPHICS)
+        if not isinstance(self.DEMOGRAPHICS, Demographics):
+            self.DEMOGRAPHICS = Demographics(**as_dict(self.DEMOGRAPHICS))
 
         if self._is_empty(self.VITAL_STATUS):
             self.MissingRequiredField("VITAL_STATUS")
-        if not isinstance(self.VITAL_STATUS, VitalStatusHTANPARTICIPANTID):
-            self.VITAL_STATUS = VitalStatusHTANPARTICIPANTID(self.VITAL_STATUS)
+        if not isinstance(self.VITAL_STATUS, VitalStatus):
+            self.VITAL_STATUS = VitalStatus(**as_dict(self.VITAL_STATUS))
 
         if self._is_empty(self.DIAGNOSIS):
             self.MissingRequiredField("DIAGNOSIS")
-        if not isinstance(self.DIAGNOSIS, DiagnosisHTANPARTICIPANTID):
-            self.DIAGNOSIS = DiagnosisHTANPARTICIPANTID(self.DIAGNOSIS)
+        if not isinstance(self.DIAGNOSIS, Diagnosis):
+            self.DIAGNOSIS = Diagnosis(**as_dict(self.DIAGNOSIS))
 
         if self._is_empty(self.EXPOSURES):
             self.MissingRequiredField("EXPOSURES")
-        if not isinstance(self.EXPOSURES, ExposureHTANPARTICIPANTID):
-            self.EXPOSURES = ExposureHTANPARTICIPANTID(self.EXPOSURES)
+        if not isinstance(self.EXPOSURES, Exposure):
+            self.EXPOSURES = Exposure(**as_dict(self.EXPOSURES))
 
         if self._is_empty(self.FAMILY_HISTORY):
             self.MissingRequiredField("FAMILY_HISTORY")
-        if not isinstance(self.FAMILY_HISTORY, FamilyHistoryHTANPARTICIPANTID):
-            self.FAMILY_HISTORY = FamilyHistoryHTANPARTICIPANTID(self.FAMILY_HISTORY)
+        if not isinstance(self.FAMILY_HISTORY, FamilyHistory):
+            self.FAMILY_HISTORY = FamilyHistory(**as_dict(self.FAMILY_HISTORY))
 
-        if not isinstance(self.FOLLOW_UPS, list):
-            self.FOLLOW_UPS = [self.FOLLOW_UPS] if self.FOLLOW_UPS is not None else []
-        self.FOLLOW_UPS = [v if isinstance(v, FollowUpHTANPARTICIPANTID) else FollowUpHTANPARTICIPANTID(v) for v in self.FOLLOW_UPS]
+        self._normalize_inlined_as_list(slot_name="FOLLOW_UPS", slot_type=FollowUp, key_name="HTAN_PARTICIPANT_ID", keyed=True)
 
-        if not isinstance(self.MOLECULAR_TESTS, list):
-            self.MOLECULAR_TESTS = [self.MOLECULAR_TESTS] if self.MOLECULAR_TESTS is not None else []
-        self.MOLECULAR_TESTS = [v if isinstance(v, MolecularTestHTANPARTICIPANTID) else MolecularTestHTANPARTICIPANTID(v) for v in self.MOLECULAR_TESTS]
+        self._normalize_inlined_as_list(slot_name="MOLECULAR_TESTS", slot_type=MolecularTest, key_name="HTAN_PARTICIPANT_ID", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="THERAPIES", slot_type=Therapy, key_name="HTAN_PARTICIPANT_ID", keyed=True)
 
@@ -309259,25 +309255,25 @@ slots.clinicalRecordAttributes__HTAN_PARTICIPANT_ID = Slot(uri=HTAN.HTAN_PARTICI
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$'))
 
 slots.clinicalData__DEMOGRAPHICS = Slot(uri=HTAN.DEMOGRAPHICS, name="clinicalData__DEMOGRAPHICS", curie=HTAN.curie('DEMOGRAPHICS'),
-                   model_uri=HTAN.clinicalData__DEMOGRAPHICS, domain=None, range=Union[str, DemographicsHTANPARTICIPANTID])
+                   model_uri=HTAN.clinicalData__DEMOGRAPHICS, domain=None, range=Union[dict, Demographics])
 
 slots.clinicalData__VITAL_STATUS = Slot(uri=HTAN.VITAL_STATUS, name="clinicalData__VITAL_STATUS", curie=HTAN.curie('VITAL_STATUS'),
-                   model_uri=HTAN.clinicalData__VITAL_STATUS, domain=None, range=Union[str, VitalStatusHTANPARTICIPANTID])
+                   model_uri=HTAN.clinicalData__VITAL_STATUS, domain=None, range=Union[dict, VitalStatus])
 
 slots.clinicalData__DIAGNOSIS = Slot(uri=HTAN.DIAGNOSIS, name="clinicalData__DIAGNOSIS", curie=HTAN.curie('DIAGNOSIS'),
-                   model_uri=HTAN.clinicalData__DIAGNOSIS, domain=None, range=Union[str, DiagnosisHTANPARTICIPANTID])
+                   model_uri=HTAN.clinicalData__DIAGNOSIS, domain=None, range=Union[dict, Diagnosis])
 
 slots.clinicalData__EXPOSURES = Slot(uri=HTAN.EXPOSURES, name="clinicalData__EXPOSURES", curie=HTAN.curie('EXPOSURES'),
-                   model_uri=HTAN.clinicalData__EXPOSURES, domain=None, range=Union[str, ExposureHTANPARTICIPANTID])
+                   model_uri=HTAN.clinicalData__EXPOSURES, domain=None, range=Union[dict, Exposure])
 
 slots.clinicalData__FAMILY_HISTORY = Slot(uri=HTAN.FAMILY_HISTORY, name="clinicalData__FAMILY_HISTORY", curie=HTAN.curie('FAMILY_HISTORY'),
-                   model_uri=HTAN.clinicalData__FAMILY_HISTORY, domain=None, range=Union[str, FamilyHistoryHTANPARTICIPANTID])
+                   model_uri=HTAN.clinicalData__FAMILY_HISTORY, domain=None, range=Union[dict, FamilyHistory])
 
 slots.clinicalData__FOLLOW_UPS = Slot(uri=HTAN.FOLLOW_UPS, name="clinicalData__FOLLOW_UPS", curie=HTAN.curie('FOLLOW_UPS'),
-                   model_uri=HTAN.clinicalData__FOLLOW_UPS, domain=None, range=Optional[Union[Union[str, FollowUpHTANPARTICIPANTID], List[Union[str, FollowUpHTANPARTICIPANTID]]]])
+                   model_uri=HTAN.clinicalData__FOLLOW_UPS, domain=None, range=Optional[Union[Dict[Union[str, FollowUpHTANPARTICIPANTID], Union[dict, FollowUp]], List[Union[dict, FollowUp]]]])
 
 slots.clinicalData__MOLECULAR_TESTS = Slot(uri=HTAN.MOLECULAR_TESTS, name="clinicalData__MOLECULAR_TESTS", curie=HTAN.curie('MOLECULAR_TESTS'),
-                   model_uri=HTAN.clinicalData__MOLECULAR_TESTS, domain=None, range=Optional[Union[Union[str, MolecularTestHTANPARTICIPANTID], List[Union[str, MolecularTestHTANPARTICIPANTID]]]])
+                   model_uri=HTAN.clinicalData__MOLECULAR_TESTS, domain=None, range=Optional[Union[Dict[Union[str, MolecularTestHTANPARTICIPANTID], Union[dict, MolecularTest]], List[Union[dict, MolecularTest]]]])
 
 slots.clinicalData__THERAPIES = Slot(uri=HTAN.THERAPIES, name="clinicalData__THERAPIES", curie=HTAN.curie('THERAPIES'),
                    model_uri=HTAN.clinicalData__THERAPIES, domain=None, range=Optional[Union[Dict[Union[str, TherapyHTANPARTICIPANTID], Union[dict, Therapy]], List[Union[dict, Therapy]]]])

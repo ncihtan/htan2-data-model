@@ -1,4 +1,4 @@
-HTAN_PARTICIPANT_ID: "TEST-002"
+HTAN_PARTICIPANT_ID: "HTA200_0001"
 
 # Invalid demographics data - missing required fields
 DEMOGRAPHICS:
@@ -6,12 +6,14 @@ DEMOGRAPHICS:
   # Missing GENDER_IDENTITY
   SEX: "Male"
   # Missing RACE
+  HTAN_PARTICIPANT_ID: "HTA200_0001"
 
 # Invalid vital status data - invalid enum value
 VITAL_STATUS:
   VITAL_STATUS: "Invalid Status"
   AGE_IN_DAYS_AT_DEATH: "not a number"
   CAUSE_OF_DEATH: "Unknown Cause"
+  HTAN_PARTICIPANT_ID: "HTA200_0001"
 
 # Invalid diagnosis data - invalid enum values and missing required fields
 DIAGNOSIS:
@@ -20,6 +22,7 @@ DIAGNOSIS:
   TUMOR_GRADE: "G5"  # Invalid grade
   CLINICAL_T_STAGE: "TX2"  # Invalid stage
   # Missing required fields
+  HTAN_PARTICIPANT_ID: "HTA200_0001"
 
 # Invalid exposure data - invalid values
 EXPOSURES:
@@ -27,8 +30,10 @@ EXPOSURES:
   YEARS_SMOKED: "not a number"
   PACK_YEARS_SMOKED: "not a number"
   ALCOHOL_HISTORY_INDICATOR: "Maybe"  # Invalid value
+  HTAN_PARTICIPANT_ID: "HTA200_0001"
 
 # Invalid family history data - missing required field when FAMILY_MEMBER_CANCER_HISTORY is "Yes"
 FAMILY_HISTORY:
   FAMILY_MEMBER_CANCER_HISTORY: "Yes"
-  # Missing RELATIVES_WITH_CANCER_HISTORY 
+  # Missing RELATIVES_WITH_CANCER_HISTORY
+  HTAN_PARTICIPANT_ID: "HTA200_0001"
