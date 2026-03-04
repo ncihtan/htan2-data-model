@@ -28,6 +28,7 @@ import sys
 
 import jsonref
 from linkml.generators.jsonschemagen import JsonSchemaGenerator
+from linkml_runtime.utils.schemaview import SchemaView
 
 
 def run_gen_json_schema(linkml_yaml: str, class_name: str, tmp_json: str) -> None:
@@ -329,6 +330,37 @@ def fix_boolean_patterns(schema_data: dict) -> dict:
     return schema_data
 
 
+def backfill_descriptions_from_linkml(
+    schema_data: dict, linkml_yaml: str, class_name: str
+) -> dict:
+    """Set description on any top-level property that is missing it, using the LinkML schema.
+
+    LinkML's JsonSchemaGenerator can omit descriptions for some properties (e.g. inherited).
+    Uses induced_slot() when class_name is set so slot_usage overrides from the class
+    are applied; falls back to get_slot() on resolution failure or when class_name is empty.
+    """
+    sv = SchemaView(linkml_yaml)
+    props = schema_data.get("properties", {})
+    filled = 0
+    for prop_name, prop_val in props.items():
+        if not isinstance(prop_val, dict) or prop_val.get("description"):
+            continue
+        try:
+            slot = (
+                sv.induced_slot(prop_name, class_name)
+                if class_name
+                else sv.get_slot(prop_name)
+            )
+        except Exception:
+            slot = sv.get_slot(prop_name)
+        if slot and getattr(slot, "description", None):
+            prop_val["description"] = slot.description
+            filled += 1
+    if filled:
+        print(f"Backfilled {filled} missing description(s) from LinkML schema")
+    return schema_data
+
+
 def get_args():
     """Set up command-line interface and get arguments."""
     parser = argparse.ArgumentParser(
@@ -393,6 +425,9 @@ def main():
     # 3. Process schema in memory (no file I/O between steps)
     schema_data = flatten_json_schema(schema_data)
     schema_data = fix_schema_version(schema_data)
+    schema_data = backfill_descriptions_from_linkml(
+        schema_data, args.linkml_yaml, args.class_name
+    )
     schema_data = fix_additional_properties(schema_data)
     schema_data = clean_union_types(schema_data)
     schema_data = fix_boolean_patterns(schema_data)
