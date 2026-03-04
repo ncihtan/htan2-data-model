@@ -1,5 +1,5 @@
 # Auto generated from biospecimen.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-04T16:07:00
+# Generation date: 2026-03-04T19:52:59
 # Schema: Biospecimen
 #
 # id: https://w3id.org/htan/biospecimen
@@ -131595,7 +131595,8 @@ slots.biospecimenData__HTAN_PARENT_ID = Slot(uri=HTAN.HTAN_PARENT_ID, name="bios
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})(?:_(B[0-9]{1,20}))?$'))
 
 slots.biospecimenData__ADJACENT_BIOSPECIMEN_IDS = Slot(uri=HTAN.ADJACENT_BIOSPECIMEN_IDS, name="biospecimenData__ADJACENT_BIOSPECIMEN_IDS", curie=HTAN.curie('ADJACENT_BIOSPECIMEN_IDS'),
-                   model_uri=HTAN.biospecimenData__ADJACENT_BIOSPECIMEN_IDS, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=HTAN.biospecimenData__ADJACENT_BIOSPECIMEN_IDS, domain=None, range=Optional[Union[str, List[str]]],
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$'))
 
 slots.biospecimenData__SITE_DATA_SOURCE = Slot(uri=HTAN.SITE_DATA_SOURCE, name="biospecimenData__SITE_DATA_SOURCE", curie=HTAN.curie('SITE_DATA_SOURCE'),
                    model_uri=HTAN.biospecimenData__SITE_DATA_SOURCE, domain=None, range=Optional[str])

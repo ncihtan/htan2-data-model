@@ -17,14 +17,14 @@ class TestDigitalPathology:
         """Test that Digital Pathology inherits from BaseImagingAttributes (which inherits from CoreFileAttributes)."""
         schema_path = "modules/DigitalPathology/domains/digital_pathology.yaml"
         sv = SchemaView(schema_path)
-        
+
         # Check that the main class exists
         assert "DigitalPathologyData" in sv.all_classes()
-        
+
         # Check that it inherits from BaseImagingAttributes
         digital_pathology_class = sv.get_class("DigitalPathologyData")
         assert digital_pathology_class.is_a == "BaseImagingAttributes"
-        
+
         # Verify BaseImagingAttributes inherits from CoreFileAttributes
         base_imaging_class = sv.get_class("BaseImagingAttributes")
         assert base_imaging_class.is_a == "CoreFileAttributes"
@@ -32,7 +32,7 @@ class TestDigitalPathology:
     def test_enums(self):
         """Test that enums are properly defined."""
         sv = SchemaView("modules/DigitalPathology/domains/digital_pathology.yaml")
-        
+
         # Check main schema enums
         assert "DeIdentificationMethodType" in sv.all_enums()
         assert "ImageModality" in sv.all_enums()
@@ -43,10 +43,10 @@ class TestDigitalPathology:
     def test_required_attributes(self):
         """Test that required attributes are properly defined."""
         sv = SchemaView("modules/DigitalPathology/domains/digital_pathology.yaml")
-        
+
         digital_pathology_class = sv.get_class("DigitalPathologyData")
         required_slots = sv.class_slots("DigitalPathologyData")
-        
+
         # Check some key required attributes
         required_attrs = [
             "EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES",
@@ -63,11 +63,11 @@ class TestDigitalPathology:
             "DE_IDENTIFIED",
             "PASSED_QC",
             "QC_COMMENT",
-            "SPECIES"
+            "SPECIES",
             # Note: ORGAN_OR_TISSUE, TISSUE_FIXATIVE, EMBEDDING_MEDIUM are biospecimen attributes
             # and should be retrieved from the Biospecimen record via HTAN_PARENT_ID
         ]
-        
+
         for attr in required_attrs:
             assert attr in required_slots
             slot = sv.get_slot(attr)
@@ -76,14 +76,14 @@ class TestDigitalPathology:
     def test_enum_values(self):
         """Test that enum values are properly defined."""
         sv = SchemaView("modules/DigitalPathology/domains/digital_pathology.yaml")
-        
+
         # Test DeIdentificationMethodType enum
         de_id_enum = sv.get_enum("DeIdentificationMethodType")
         assert "Automatic" in de_id_enum.permissible_values
         assert "Manual" in de_id_enum.permissible_values
         assert "Not Applicable" in de_id_enum.permissible_values
         assert "Semiautomatic" in de_id_enum.permissible_values
-        
+
         # Test StainingMethod enum
         staining_enum = sv.get_enum("StainingMethod")
         assert "H&E" in staining_enum.permissible_values
@@ -94,40 +94,44 @@ class TestDigitalPathology:
     def test_validation_patterns(self):
         """Test that validation patterns are properly defined."""
         sv = SchemaView("modules/DigitalPathology/domains/digital_pathology.yaml")
-        
+
         # Note: ORGAN_OR_TISSUE is a biospecimen attribute, not an imaging attribute
         # It should be retrieved from the Biospecimen record via HTAN_PARENT_ID
 
     def test_conditional_requirements(self):
         """Test conditional requirements are properly defined."""
         sv = SchemaView("modules/DigitalPathology/domains/digital_pathology.yaml")
-        
+
         # Test that conditional attributes are not required by default
         de_id_desc_slot = sv.get_slot("DE_IDENTIFICATION_METHOD_DESCRIPTION")
         assert de_id_desc_slot.required is False
-        
+
         slide_label_redacted_slot = sv.get_slot("SLIDE_LABEL_REDACTED")
         assert slide_label_redacted_slot.required is False
-        
+
         annotation_type_slot = sv.get_slot("ANNOTATION_TYPE")
         assert annotation_type_slot.required is False
 
     def test_file_format_and_filename_patterns(self):
         """Test that FILE_FORMAT and FILENAME patterns match correctly."""
         import re
+
         sv = SchemaView("modules/DigitalPathology/domains/digital_pathology.yaml")
-        
+
         digital_pathology_class = sv.get_class("DigitalPathologyData")
         file_format_attr = digital_pathology_class.attributes.get("FILE_FORMAT")
         filename_attr = digital_pathology_class.attributes.get("FILENAME")
-        
+
         assert file_format_attr.pattern == "^(ome-tiff|tiff|qptiff|svs|ndpi)$"
-        assert filename_attr.pattern == "^.+\\.(ome\\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs|ndpi)$"
-        
+        assert (
+            filename_attr.pattern
+            == "^.+\\.(ome\\.(tif|tiff|tf2|tf8|btf)|tiff?|qptiff|svs|ndpi)$"
+        )
+
         # Validate pattern matching
         fmt_regex = re.compile(file_format_attr.pattern)
         filename_regex = re.compile(filename_attr.pattern)
-        
+
         # Test valid combinations
         assert fmt_regex.match("ome-tiff")
         assert filename_regex.match("image.ome.tiff")
