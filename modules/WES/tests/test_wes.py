@@ -21,9 +21,9 @@ class TestWESModule:
         # Check that the main class exists
         assert "BulkWESLevel1" in sv.all_classes()
 
-        # Check that it inherits from BaseSequencingAttributes
+        # Check that it inherits from BaseSequencingLevel1Attributes (issue #132)
         level1_class = sv.get_class("BulkWESLevel1")
-        assert level1_class.is_a == "BaseSequencingAttributes"
+        assert level1_class.is_a == "BaseSequencingLevel1Attributes"
 
         # Check WES Level 1 specific required attributes
         # Note: LIBRARY_LAYOUT and SEQUENCING_PLATFORM are now in BaseSequencingAttributes
@@ -43,9 +43,9 @@ class TestWESModule:
         # Check that the main class exists
         assert "BulkWESLevel2" in sv.all_classes()
 
-        # Check that it inherits from BaseSequencingAttributes
+        # Check that it inherits from BaseSequencingLevel2Attributes (issue #132)
         level2_class = sv.get_class("BulkWESLevel2")
-        assert level2_class.is_a == "BaseSequencingAttributes"
+        assert level2_class.is_a == "BaseSequencingLevel2Attributes"
 
         # Check WES Level 2 specific required attributes
         # Note: GENOMIC_REFERENCE is now in BaseSequencingAttributes
@@ -69,9 +69,9 @@ class TestWESModule:
         # Check that the main class exists
         assert "BulkWESLevel3" in sv.all_classes()
 
-        # Check that it inherits from BaseSequencingAttributes
+        # Check that it inherits from BaseSequencingLevel3Attributes (issue #132)
         level3_class = sv.get_class("BulkWESLevel3")
-        assert level3_class.is_a == "BaseSequencingAttributes"
+        assert level3_class.is_a == "BaseSequencingLevel3Attributes"
 
         # Check WES Level 3 specific required attributes
         # Note: GENOMIC_REFERENCE is now in BaseSequencingAttributes
