@@ -26,7 +26,7 @@ enums:
 
 classes:
   BulkWESLevel1:
-    is_a: BaseSequencingAttributes
+    is_a: BaseSequencingLevel1Attributes
     description: Bulk Whole Exome Sequencing Level 1 - Raw files
     attributes:
       # File format restriction for Level 1 raw sequencing files

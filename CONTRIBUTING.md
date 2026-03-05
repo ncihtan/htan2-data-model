@@ -362,6 +362,8 @@ make gen-schema
 make format
 ```
 
+Optional: `pre-commit install` to run Black on commit.
+
 ## 📝 Pull Request Checklist
 
 Before submitting a PR, ensure:
