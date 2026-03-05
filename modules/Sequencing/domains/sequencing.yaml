@@ -44,28 +44,28 @@ enums:
   GenomicReferenceEnum:
     description: Genomic reference assembly used for alignment
     permissible_values:
-      "hg19":
-        description: UCSC human genome reference hg19
-      "Hg19":
-        description: UCSC human genome reference hg19 (legacy casing)
       "GRCh37":
         description: Genome Reference Consortium human build 37
-      "GrCh37-lite":
-        description: GRCh37-lite reference
       "GRCh38":
         description: Genome Reference Consortium human build 38
-      "Hg38":
-        description: Human genome build 38 (legacy casing)
       "GRCh38.p13":
         description: GRCh38 patch release 13
-      "human_g1k_v37_decoy.fasta":
-        description: 1000 Genomes project human reference v37 with decoy
+      "GrCh37-lite":
+        description: GRCh37-lite reference
       "Gencode Release 38 (GRCh38.p13)":
         description: Gencode annotation release 38 on GRCh38.p13
-      "hg38+EBV":
-        description: hg38 with Epstein-Barr virus reference
+      "Hg19":
+        description: UCSC human genome reference hg19 (legacy casing)
+      "Hg38":
+        description: Human genome build 38 (legacy casing)
       "Other":
         description: Other genomic reference (specify in GENOMIC_REFERENCE_URL or description)
+      "hg19":
+        description: UCSC human genome reference hg19
+      "hg38+EBV":
+        description: hg38 with Epstein-Barr virus reference
+      "human_g1k_v37_decoy.fasta":
+        description: 1000 Genomes project human reference v37 with decoy
 
 classes:
   BaseSequencingAttributes:
