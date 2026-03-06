@@ -124,12 +124,12 @@ classes:
         description: Genomic reference assembly used for alignment
       GENOMIC_REFERENCE_URL:
         range: string
-        required: false
+        required: true
         title: "Genomic Reference URL"
         description: URL to genomic reference
       GENOME_ANNOTATION_URL:
         range: string
-        required: false
+        required: true
         title: "Genome Annotation URL"
         description: URL to genome annotation
       WORKFLOW_VERSION:
