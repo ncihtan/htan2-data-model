@@ -84,29 +84,32 @@ class TestBaseSequencingSchema:
             assert attr in level2.attributes and level2.attributes[attr].required
 
     def test_enum_alphabetical_ordering(self):
-        """Test that enum values are in alphabetical order."""
+        """Test that enum values are in case-insensitive alphabetical order."""
         sv = SchemaView(SCHEMA_PATH)
+        # Use key=str.lower so mixed-case enums (e.g. GenomicReferenceEnum) are ordered readably
+        def alpha_order(vals):
+            return sorted(vals, key=str.lower)
 
         # Test LibraryLayoutEnum
         library_layout_enum = sv.get_enum("LibraryLayoutEnum")
         values = list(library_layout_enum.permissible_values.keys())
-        assert values == sorted(
-            values
-        ), f"LibraryLayoutEnum values not alphabetical: {values}"
+        assert values == alpha_order(values), (
+            f"LibraryLayoutEnum values not alphabetical: {values}"
+        )
 
         # Test SequencingPlatformEnum
         platform_enum = sv.get_enum("SequencingPlatformEnum")
         values = list(platform_enum.permissible_values.keys())
-        assert values == sorted(
-            values
-        ), f"SequencingPlatformEnum values not alphabetical: {values}"
+        assert values == alpha_order(values), (
+            f"SequencingPlatformEnum values not alphabetical: {values}"
+        )
 
-        # Test GenomicReferenceEnum
+        # Test GenomicReferenceEnum (mixed-case; case-insensitive order)
         genomic_ref_enum = sv.get_enum("GenomicReferenceEnum")
         values = list(genomic_ref_enum.permissible_values.keys())
-        assert values == sorted(
-            values
-        ), f"GenomicReferenceEnum values not alphabetical: {values}"
+        assert values == alpha_order(values), (
+            f"GenomicReferenceEnum values not alphabetical: {values}"
+        )
 
     def test_inheritance_from_core(self):
         """Test that BaseSequencingAttributes inherits from CoreFileAttributes."""

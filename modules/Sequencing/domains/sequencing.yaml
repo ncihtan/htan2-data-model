@@ -46,26 +46,18 @@ enums:
     permissible_values:
       "GRCh37":
         description: Genome Reference Consortium human build 37
+      "GRCh37.p13":
+        description: GRCh37 patch release 13
       "GRCh38":
         description: Genome Reference Consortium human build 38
       "GRCh38.p13":
         description: GRCh38 patch release 13
-      "Gencode Release 38 (GRCh38.p13)":
-        description: Gencode annotation release 38 on GRCh38.p13
-      "GrCh37-lite":
-        description: GRCh37-lite reference
-      "Hg19":
-        description: UCSC human genome reference hg19 (legacy casing)
-      "Hg38":
-        description: Human genome build 38 (legacy casing)
-      "Other":
-        description: Other genomic or transcriptomic reference (specify in GENOMIC_REFERENCE_URL or description)
+      "GRCh38.p14":
+        description: GRCh38 patch release 14
       "hg19":
         description: UCSC human genome reference hg19
-      "hg38+EBV":
-        description: hg38 with Epstein-Barr virus reference
-      "human_g1k_v37_decoy.fasta":
-        description: 1000 Genomes project human reference v37 with decoy
+      "hg38":
+        description: UCSC human genome reference hg38
 
 classes:
   BaseSequencingAttributes:
@@ -121,7 +113,7 @@ classes:
         range: GenomicReferenceEnum
         required: true
         title: "Genomic or transcriptomic Reference"
-        description: Genomic or transcriptomic reference assembly used for alignment
+        description: "Genomic or transcriptomic reference assembly used for alignment. If your genome reference is not among the valid values, please contact your data liaison."
       GENOMIC_REFERENCE_URL:
         range: string
         required: true
