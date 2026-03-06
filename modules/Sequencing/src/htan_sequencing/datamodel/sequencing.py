@@ -1,5 +1,5 @@
 # Auto generated from sequencing.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-05T16:28:31
+# Generation date: 2026-03-06T14:01:22
 # Schema: Sequencing
 #
 # id: https://w3id.org/htan/sequencing
@@ -240,10 +240,10 @@ class BaseSequencingLevel2Attributes(BaseSequencingLevel1Attributes):
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     GENOMIC_REFERENCE: Union[str, "GenomicReferenceEnum"] = None
+    GENOMIC_REFERENCE_URL: str = None
+    GENOME_ANNOTATION_URL: str = None
     WORKFLOW_VERSION: str = None
     WORKFLOW_LINK: str = None
-    GENOMIC_REFERENCE_URL: Optional[str] = None
-    GENOME_ANNOTATION_URL: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
@@ -256,6 +256,16 @@ class BaseSequencingLevel2Attributes(BaseSequencingLevel1Attributes):
         if not isinstance(self.GENOMIC_REFERENCE, GenomicReferenceEnum):
             self.GENOMIC_REFERENCE = GenomicReferenceEnum(self.GENOMIC_REFERENCE)
 
+        if self._is_empty(self.GENOMIC_REFERENCE_URL):
+            self.MissingRequiredField("GENOMIC_REFERENCE_URL")
+        if not isinstance(self.GENOMIC_REFERENCE_URL, str):
+            self.GENOMIC_REFERENCE_URL = str(self.GENOMIC_REFERENCE_URL)
+
+        if self._is_empty(self.GENOME_ANNOTATION_URL):
+            self.MissingRequiredField("GENOME_ANNOTATION_URL")
+        if not isinstance(self.GENOME_ANNOTATION_URL, str):
+            self.GENOME_ANNOTATION_URL = str(self.GENOME_ANNOTATION_URL)
+
         if self._is_empty(self.WORKFLOW_VERSION):
             self.MissingRequiredField("WORKFLOW_VERSION")
         if not isinstance(self.WORKFLOW_VERSION, str):
@@ -265,12 +275,6 @@ class BaseSequencingLevel2Attributes(BaseSequencingLevel1Attributes):
             self.MissingRequiredField("WORKFLOW_LINK")
         if not isinstance(self.WORKFLOW_LINK, str):
             self.WORKFLOW_LINK = str(self.WORKFLOW_LINK)
-
-        if self.GENOMIC_REFERENCE_URL is not None and not isinstance(self.GENOMIC_REFERENCE_URL, str):
-            self.GENOMIC_REFERENCE_URL = str(self.GENOMIC_REFERENCE_URL)
-
-        if self.GENOME_ANNOTATION_URL is not None and not isinstance(self.GENOME_ANNOTATION_URL, str):
-            self.GENOME_ANNOTATION_URL = str(self.GENOME_ANNOTATION_URL)
 
         super().__post_init__(**kwargs)
 
@@ -294,6 +298,8 @@ class BaseSequencingLevel3Attributes(BaseSequencingLevel2Attributes):
     LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
     SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
     GENOMIC_REFERENCE: Union[str, "GenomicReferenceEnum"] = None
+    GENOMIC_REFERENCE_URL: str = None
+    GENOME_ANNOTATION_URL: str = None
     WORKFLOW_VERSION: str = None
     WORKFLOW_LINK: str = None
 
@@ -363,54 +369,54 @@ class SequencingPlatformEnum(EnumDefinitionImpl):
 
 class GenomicReferenceEnum(EnumDefinitionImpl):
     """
-    Genomic reference assembly used for alignment
+    Genomic or transcriptomic reference assembly used for alignment
     """
-    hg19 = PermissibleValue(
-        text="hg19",
-        description="UCSC human genome reference hg19")
-    Hg19 = PermissibleValue(
-        text="Hg19",
-        description="UCSC human genome reference hg19 (legacy casing)")
     GRCh37 = PermissibleValue(
         text="GRCh37",
         description="Genome Reference Consortium human build 37")
     GRCh38 = PermissibleValue(
         text="GRCh38",
         description="Genome Reference Consortium human build 38")
+    Hg19 = PermissibleValue(
+        text="Hg19",
+        description="UCSC human genome reference hg19 (legacy casing)")
     Hg38 = PermissibleValue(
         text="Hg38",
         description="Human genome build 38 (legacy casing)")
     Other = PermissibleValue(
         text="Other",
-        description="Other genomic reference (specify in GENOMIC_REFERENCE_URL or description)")
+        description="Other genomic or transcriptomic reference (specify in GENOMIC_REFERENCE_URL or description)")
+    hg19 = PermissibleValue(
+        text="hg19",
+        description="UCSC human genome reference hg19")
 
     _defn = EnumDefinition(
         name="GenomicReferenceEnum",
-        description="Genomic reference assembly used for alignment",
+        description="Genomic or transcriptomic reference assembly used for alignment",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "GrCh37-lite",
-            PermissibleValue(
-                text="GrCh37-lite",
-                description="GRCh37-lite reference"))
         setattr(cls, "GRCh38.p13",
             PermissibleValue(
                 text="GRCh38.p13",
                 description="GRCh38 patch release 13"))
-        setattr(cls, "human_g1k_v37_decoy.fasta",
-            PermissibleValue(
-                text="human_g1k_v37_decoy.fasta",
-                description="1000 Genomes project human reference v37 with decoy"))
         setattr(cls, "Gencode Release 38 (GRCh38.p13)",
             PermissibleValue(
                 text="Gencode Release 38 (GRCh38.p13)",
                 description="Gencode annotation release 38 on GRCh38.p13"))
+        setattr(cls, "GrCh37-lite",
+            PermissibleValue(
+                text="GrCh37-lite",
+                description="GRCh37-lite reference"))
         setattr(cls, "hg38+EBV",
             PermissibleValue(
                 text="hg38+EBV",
                 description="hg38 with Epstein-Barr virus reference"))
+        setattr(cls, "human_g1k_v37_decoy.fasta",
+            PermissibleValue(
+                text="human_g1k_v37_decoy.fasta",
+                description="1000 Genomes project human reference v37 with decoy"))
 
 # Slots
 class slots:
@@ -441,10 +447,10 @@ slots.baseSequencingLevel2Attributes__GENOMIC_REFERENCE = Slot(uri=HTAN.GENOMIC_
                    model_uri=HTAN.baseSequencingLevel2Attributes__GENOMIC_REFERENCE, domain=None, range=Union[str, "GenomicReferenceEnum"])
 
 slots.baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL = Slot(uri=HTAN.GENOMIC_REFERENCE_URL, name="baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL", curie=HTAN.curie('GENOMIC_REFERENCE_URL'),
-                   model_uri=HTAN.baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL, domain=None, range=Optional[str])
+                   model_uri=HTAN.baseSequencingLevel2Attributes__GENOMIC_REFERENCE_URL, domain=None, range=str)
 
 slots.baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL = Slot(uri=HTAN.GENOME_ANNOTATION_URL, name="baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL", curie=HTAN.curie('GENOME_ANNOTATION_URL'),
-                   model_uri=HTAN.baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL, domain=None, range=Optional[str])
+                   model_uri=HTAN.baseSequencingLevel2Attributes__GENOME_ANNOTATION_URL, domain=None, range=str)
 
 slots.baseSequencingLevel2Attributes__WORKFLOW_VERSION = Slot(uri=HTAN.WORKFLOW_VERSION, name="baseSequencingLevel2Attributes__WORKFLOW_VERSION", curie=HTAN.curie('WORKFLOW_VERSION'),
                    model_uri=HTAN.baseSequencingLevel2Attributes__WORKFLOW_VERSION, domain=None, range=str)
