@@ -1,0 +1,73 @@
+{
+  "$id": "https://w3id.org/htan/clinical",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Information about the demographics",
+  "properties": {
+    "ETHNIC_GROUP": {
+      "description": "Ethnic group of the participant (caDSR:2192217) (Aligns to CDRC Standard CDE)",
+      "enum": [
+        "Hispanic or Latino",
+        "Not Hispanic or Latino",
+        "Not Allowed To Collect",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "EthnicGroupEnum",
+      "type": "string"
+    },
+    "GENDER_IDENTITY": {
+      "description": "Gender identity of the participant",
+      "enum": [
+        "Female",
+        "Male",
+        "Other",
+        "Unknown",
+        "Not Reported"
+      ],
+      "title": "GenderIdentityEnum",
+      "type": "string"
+    },
+    "HTAN_PARTICIPANT_ID": {
+      "description": "HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$",
+      "type": "string"
+    },
+    "RACE": {
+      "description": "Race of the participant (caDSR:2192199) (Aligns to CDRC Standard CDE)",
+      "enum": [
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or Other Pacific Islander",
+        "White",
+        "Not Allowed To Collect",
+        "Not Reported",
+        "Unknown"
+      ],
+      "title": "RaceEnum",
+      "type": "string"
+    },
+    "SEX": {
+      "description": "Sex of the participant",
+      "enum": [
+        "Female",
+        "Male",
+        "Other",
+        "Unknown",
+        "Not Reported"
+      ],
+      "title": "SexEnum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ETHNIC_GROUP",
+    "GENDER_IDENTITY",
+    "SEX",
+    "RACE",
+    "HTAN_PARTICIPANT_ID"
+  ],
+  "title": "Clinical",
+  "type": "object"
+}
