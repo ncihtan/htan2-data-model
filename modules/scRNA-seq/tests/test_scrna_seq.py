@@ -71,8 +71,11 @@ class TestScRNAseqSchema:
         # Check class exists
         assert "scRNALevel3and4" in sv.all_classes()
 
-        # Check required attributes (base attributes come from inheritance)
+        # Check that it inherits from BaseSequencingLevel3Attributes
         level3_4_class = sv.get_class("scRNALevel3and4")
+        assert level3_4_class.is_a == "BaseSequencingLevel3Attributes"
+
+        # Check required attributes (base attributes come from inheritance)
         required_attrs = [
             "FILE_FORMAT",
             "SCRNASEQ_WORKFLOW_TYPE",

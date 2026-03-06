@@ -225,6 +225,14 @@ class TestBaseSequencingDataValidation:
         level3 = sv.get_class("BaseSequencingLevel3Attributes")
         assert level3.is_a == "BaseSequencingLevel2Attributes"
 
+    def test_level3_has_no_class_specific_attributes(self):
+        """BaseSequencingLevel3Attributes is a placeholder with no class-specific attributes (inherits all from Level 2)."""
+        sv = SchemaView(SCHEMA_PATH)
+        level3 = sv.get_class("BaseSequencingLevel3Attributes")
+        assert level3.attributes == {} or level3.attributes is None, (
+            "BaseSequencingLevel3Attributes should have no class-specific attributes"
+        )
+
     def test_valid_level3_instance_loads_without_error(self):
         """A valid BaseSequencingLevel3Attributes instance passes schema validation (same required as Level 2)."""
         sv = SchemaView(SCHEMA_PATH)
