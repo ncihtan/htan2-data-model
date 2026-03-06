@@ -29,22 +29,22 @@ class TestScRNAseqSchema:
     def test_level1_schema(self):
         """Test Level 1 schema structure."""
         sv = SchemaView(LEVEL1_PATH)
-        
+
         # Check class exists
         assert "scRNALevel1" in sv.all_classes()
-        
+
         # Check required attributes (base attributes come from inheritance)
         level1_class = sv.get_class("scRNALevel1")
         required_attrs = [
             "SINGLE_CELL_ISOLATION_METHOD",
-            "DISSOCIATION_METHOD", 
+            "DISSOCIATION_METHOD",
             "NUCLEIC_ACID_SOURCE",
             "LIBRARY_CONSTRUCTION_METHOD",
             "REVERSE_TRANSCRIPTION_PRIMER",
             "SPIKE_IN",
-            "READ_INDICATOR"
+            "READ_INDICATOR",
         ]
-        
+
         for attr in required_attrs:
             assert attr in level1_class.attributes
             assert level1_class.attributes[attr].required
@@ -52,16 +52,14 @@ class TestScRNAseqSchema:
     def test_level2_schema(self):
         """Test Level 2 schema structure."""
         sv = SchemaView(LEVEL2_PATH)
-        
+
         # Check class exists
         assert "scRNALevel2" in sv.all_classes()
-        
+
         # Check required attributes (base attributes come from inheritance)
         level2_class = sv.get_class("scRNALevel2")
-        required_attrs = [
-            "SCRNASEQ_WORKFLOW_TYPE"
-        ]
-        
+        required_attrs = ["SCRNASEQ_WORKFLOW_TYPE"]
+
         for attr in required_attrs:
             assert attr in level2_class.attributes
             assert level2_class.attributes[attr].required
@@ -69,12 +67,15 @@ class TestScRNAseqSchema:
     def test_level3_4_schema(self):
         """Test Level 3/4 schema structure."""
         sv = SchemaView(LEVEL3_4_PATH)
-        
+
         # Check class exists
         assert "scRNALevel3and4" in sv.all_classes()
-        
-        # Check required attributes (base attributes come from inheritance)
+
+        # Check that it inherits from BaseSequencingLevel3Attributes
         level3_4_class = sv.get_class("scRNALevel3and4")
+        assert level3_4_class.is_a == "BaseSequencingLevel3Attributes"
+
+        # Check required attributes (base attributes come from inheritance)
         required_attrs = [
             "FILE_FORMAT",
             "SCRNASEQ_WORKFLOW_TYPE",
@@ -83,9 +84,9 @@ class TestScRNAseqSchema:
             "MATRIX_TYPE",
             "CELL_MEDIAN_NUMBER_READS",
             "CELL_MEDIAN_NUMBER_GENES",
-            "CELL_TOTAL"
+            "CELL_TOTAL",
         ]
-        
+
         for attr in required_attrs:
             assert attr in level3_4_class.attributes
             assert level3_4_class.attributes[attr].required
@@ -93,22 +94,23 @@ class TestScRNAseqSchema:
     def test_h5ad_file_format_validation(self):
         """Test h5ad file format validation."""
         sv = SchemaView(LEVEL3_4_PATH)
-        
+
         level3_4_class = sv.get_class("scRNALevel3and4")
         file_format_attr = level3_4_class.attributes["FILE_FORMAT"]
-        
+
         # Check pattern validation
         assert file_format_attr.pattern == "^h5ad$"
-        
+
         # Check FILENAME pattern matches FILE_FORMAT
         filename_attr = level3_4_class.attributes.get("FILENAME")
         assert filename_attr.pattern == "^.+\\.h5ad$"
-        
+
         # Validate pattern matching
         import re
+
         fmt_regex = re.compile(file_format_attr.pattern)
         filename_regex = re.compile(filename_attr.pattern)
-        
+
         assert fmt_regex.match("h5ad")
         assert filename_regex.match("file.h5ad")
         assert not filename_regex.match("file.txt")
@@ -116,19 +118,20 @@ class TestScRNAseqSchema:
     def test_level1_file_format_and_filename_patterns(self):
         """Test that Level 1 FILE_FORMAT and FILENAME patterns match correctly."""
         import re
+
         sv = SchemaView(LEVEL1_PATH)
-        
+
         level1_class = sv.get_class("scRNALevel1")
         file_format_attr = level1_class.attributes.get("FILE_FORMAT")
         filename_attr = level1_class.attributes.get("FILENAME")
-        
+
         assert file_format_attr.pattern == "^(fastq|fastq\\.gz)$"
         assert filename_attr.pattern == "^.+\\.(fastq|fq)(\\.gz)?$"
-        
+
         # Validate pattern matching
         fmt_regex = re.compile(file_format_attr.pattern)
         filename_regex = re.compile(filename_attr.pattern)
-        
+
         # Test valid combinations
         assert fmt_regex.match("fastq")
         assert filename_regex.match("file.fastq")
@@ -140,19 +143,20 @@ class TestScRNAseqSchema:
     def test_level2_file_format_and_filename_patterns(self):
         """Test that Level 2 FILE_FORMAT and FILENAME patterns match correctly."""
         import re
+
         sv = SchemaView(LEVEL2_PATH)
-        
+
         level2_class = sv.get_class("scRNALevel2")
         file_format_attr = level2_class.attributes.get("FILE_FORMAT")
         filename_attr = level2_class.attributes.get("FILENAME")
-        
+
         assert file_format_attr.pattern == "^(bam|cram)$"
         assert filename_attr.pattern == "^.+\\.(bam|cram)$"
-        
+
         # Validate pattern matching
         fmt_regex = re.compile(file_format_attr.pattern)
         filename_regex = re.compile(filename_attr.pattern)
-        
+
         assert fmt_regex.match("bam")
         assert filename_regex.match("file.bam")
         assert fmt_regex.match("cram")
@@ -161,13 +165,13 @@ class TestScRNAseqSchema:
     def test_ann_data_schema_compliance(self):
         """Test AnnData schema compliance validation."""
         sv = SchemaView(LEVEL3_4_PATH)
-        
+
         level3_4_class = sv.get_class("scRNALevel3and4")
-        
+
         # Check AnnData schema version pattern
         schema_version_attr = level3_4_class.attributes["ANNDATA_SCHEMA_VERSION"]
         assert schema_version_attr.pattern == "^0\\.1$"
-        
+
         # Check structure validation attribute exists
         assert "ANNDATA_STRUCTURE_VALIDATED" in level3_4_class.attributes
 
@@ -175,54 +179,64 @@ class TestScRNAseqSchema:
         """Test that enum values are in alphabetical order."""
         # Test Level 1 enums
         sv = SchemaView(LEVEL1_PATH)
-        
+
         level1_enums = [
             "DissociationMethodEnum",
-            "LibraryConstructionMethodEnum", 
+            "LibraryConstructionMethodEnum",
             "NucleicAcidSourceEnum",
             "ReadIndicatorEnum",
             "ReverseTranscriptionPrimerEnum",
             "SingleCellIsolationMethodEnum",
-            "SpikeInEnum"
+            "SpikeInEnum",
         ]
-        
+
         for enum_name in level1_enums:
             enum = sv.get_enum(enum_name)
             values = list(enum.permissible_values.keys())
-            assert values == sorted(values), f"{enum_name} values not alphabetical: {values}"
-        
+            assert values == sorted(
+                values
+            ), f"{enum_name} values not alphabetical: {values}"
+
         # Test Level 2 enums
         sv = SchemaView(LEVEL2_PATH)
-        
+
         level2_enums = ["scRNAseqWorkflowTypeEnumLevel2"]
-        
+
         for enum_name in level2_enums:
             enum = sv.get_enum(enum_name)
             values = list(enum.permissible_values.keys())
-            assert values == sorted(values), f"{enum_name} values not alphabetical: {values}"
-        
+            assert values == sorted(
+                values
+            ), f"{enum_name} values not alphabetical: {values}"
+
         # Test Level 3/4 enums
         sv = SchemaView(LEVEL3_4_PATH)
-        
+
         level3_4_enums = [
             "scRNAseqWorkflowTypeEnumLevel3and4",
             "DataCategoryEnum",
-            "MatrixTypeEnum"
+            "MatrixTypeEnum",
         ]
-        
+
         for enum_name in level3_4_enums:
             enum = sv.get_enum(enum_name)
             values = list(enum.permissible_values.keys())
-            assert values == sorted(values), f"{enum_name} values not alphabetical: {values}"
+            assert values == sorted(
+                values
+            ), f"{enum_name} values not alphabetical: {values}"
 
     def test_inheritance_from_base_sequencing(self):
-        """Test that scRNA-seq classes inherit from BaseSequencingAttributes."""
+        """Test that scRNA-seq classes inherit from level-specific base classes (issue #132)."""
         sv = SchemaView(SCHEMA_PATH)
-        
-        # Check inheritance for all levels
-        for level_class in ["scRNALevel1", "scRNALevel2", "scRNALevel3and4"]:
+
+        expected_base = {
+            "scRNALevel1": "BaseSequencingLevel1Attributes",
+            "scRNALevel2": "BaseSequencingLevel2Attributes",
+            "scRNALevel3and4": "BaseSequencingLevel3Attributes",
+        }
+        for level_class, base in expected_base.items():
             class_def = sv.get_class(level_class)
-            assert class_def.is_a == "BaseSequencingAttributes"
+            assert class_def.is_a == base, f"{level_class} should inherit from {base}"
 
 
 class TestScRNAseqDataValidation:
@@ -244,12 +258,19 @@ class TestScRNAseqDataValidation:
             "SPIKE_IN": "ERCC",
             "READ_INDICATOR": "Forward",
             "LIBRARY_LAYOUT": "Paired-end",
-            "SEQUENCING_PLATFORM": "ILLUMINA"
+            "SEQUENCING_PLATFORM": "ILLUMINA",
         }
-        
+
         # This would be validated against the schema
         assert "SINGLE_CELL_ISOLATION_METHOD" in valid_data
-        assert valid_data["SINGLE_CELL_ISOLATION_METHOD"] in ["Droplet-based", "Cell Sorting", "Manual Picking", "Microfluidics", "Other", "Unknown"]
+        assert valid_data["SINGLE_CELL_ISOLATION_METHOD"] in [
+            "Droplet-based",
+            "Cell Sorting",
+            "Manual Picking",
+            "Microfluidics",
+            "Other",
+            "Unknown",
+        ]
 
     def test_valid_level3_4_data(self):
         """Test valid Level 3/4 data with h5ad format."""
@@ -269,19 +290,18 @@ class TestScRNAseqDataValidation:
             "CELL_MEDIAN_NUMBER_GENES": "2000",
             "CELL_TOTAL": "10000",
             "ANNDATA_SCHEMA_VERSION": "0.1",
-            "ANNDATA_STRUCTURE_VALIDATED": True
+            "ANNDATA_STRUCTURE_VALIDATED": True,
         }
-        
+
         # Validate h5ad format
         assert valid_data["FILE_FORMAT"] == "h5ad"
-        
+
         # Validate AnnData schema version
         assert valid_data["ANNDATA_SCHEMA_VERSION"] == "0.1"
-        
+
         # Validate structure validation
         assert valid_data["ANNDATA_STRUCTURE_VALIDATED"] is True
 
 
 if __name__ == "__main__":
     pytest.main([__file__])
-

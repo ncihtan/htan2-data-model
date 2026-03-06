@@ -38,7 +38,7 @@ enums:
 
 classes:
   BulkWESLevel3:
-    is_a: BaseSequencingAttributes
+    is_a: BaseSequencingLevel3Attributes
     description: Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis
     attributes:
       # File format restriction for Level 3 variant files
