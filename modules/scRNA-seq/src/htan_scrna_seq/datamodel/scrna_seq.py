@@ -1,5 +1,5 @@
 # Auto generated from scrna_seq.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-06T14:01:25
+# Generation date: 2026-03-06T17:18:52
 # Schema: scRNA-seq
 #
 # id: https://w3id.org/htan/scrna_seq
@@ -970,18 +970,12 @@ class GenomicReferenceEnum(EnumDefinitionImpl):
     GRCh38 = PermissibleValue(
         text="GRCh38",
         description="Genome Reference Consortium human build 38")
-    Hg19 = PermissibleValue(
-        text="Hg19",
-        description="UCSC human genome reference hg19 (legacy casing)")
-    Hg38 = PermissibleValue(
-        text="Hg38",
-        description="Human genome build 38 (legacy casing)")
-    Other = PermissibleValue(
-        text="Other",
-        description="Other genomic or transcriptomic reference (specify in GENOMIC_REFERENCE_URL or description)")
     hg19 = PermissibleValue(
         text="hg19",
         description="UCSC human genome reference hg19")
+    hg38 = PermissibleValue(
+        text="hg38",
+        description="UCSC human genome reference hg38")
 
     _defn = EnumDefinition(
         name="GenomicReferenceEnum",
@@ -990,26 +984,18 @@ class GenomicReferenceEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "GRCh37.p13",
+            PermissibleValue(
+                text="GRCh37.p13",
+                description="GRCh37 patch release 13"))
         setattr(cls, "GRCh38.p13",
             PermissibleValue(
                 text="GRCh38.p13",
                 description="GRCh38 patch release 13"))
-        setattr(cls, "Gencode Release 38 (GRCh38.p13)",
+        setattr(cls, "GRCh38.p14",
             PermissibleValue(
-                text="Gencode Release 38 (GRCh38.p13)",
-                description="Gencode annotation release 38 on GRCh38.p13"))
-        setattr(cls, "GrCh37-lite",
-            PermissibleValue(
-                text="GrCh37-lite",
-                description="GRCh37-lite reference"))
-        setattr(cls, "hg38+EBV",
-            PermissibleValue(
-                text="hg38+EBV",
-                description="hg38 with Epstein-Barr virus reference"))
-        setattr(cls, "human_g1k_v37_decoy.fasta",
-            PermissibleValue(
-                text="human_g1k_v37_decoy.fasta",
-                description="1000 Genomes project human reference v37 with decoy"))
+                text="GRCh38.p14",
+                description="GRCh38 patch release 14"))
 
 # Slots
 class slots:
