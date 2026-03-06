@@ -28,6 +28,7 @@ import sys
 
 import jsonref
 from linkml.generators.jsonschemagen import JsonSchemaGenerator
+from linkml_runtime.utils.schemaview import SchemaView
 
 
 def run_gen_json_schema(linkml_yaml: str, class_name: str, tmp_json: str) -> None:
@@ -259,36 +260,36 @@ def clean_union_types(schema_data: dict) -> dict:
 
 def fix_boolean_patterns(schema_data: dict) -> dict:
     """Convert pattern checks for boolean fields to const checks.
-    
+
     LinkML rules with pattern: "^true$" or "^false$" for boolean fields
     need to be converted to const: true or const: false in JSON Schema,
     since pattern only applies to strings, not booleans.
-    
+
     This is necessary because:
     - JSON Schema's `pattern` keyword only validates strings
     - Boolean fields use `const` for exact value matching
     - LinkML generates `pattern: "^true$"` for boolean checks in rules
     - The conversion ensures conditional requirements work correctly
-    
+
     Example transformation:
     - Before: {"HAS_SLIDE_LABEL": {"pattern": "^true$"}}
     - After:  {"HAS_SLIDE_LABEL": {"const": true}}
-    
+
     Only affects properties with type: "boolean" in the schema.
     String fields with patterns are left unchanged.
     """
     # Get property types from the schema
     properties = schema_data.get("properties", {})
-    
+
     def fix_boolean_patterns_in_obj(obj, visited=None):
         if visited is None:
             visited = set()
-        
+
         obj_id = id(obj)
         if obj_id in visited:
             return
         visited.add(obj_id)
-        
+
         try:
             if isinstance(obj, dict):
                 # Check if this is an "if" clause with properties
@@ -308,12 +309,12 @@ def fix_boolean_patterns(schema_data: dict) -> dict:
                                     elif pattern == "^false$":
                                         prop_schema["const"] = False
                                         del prop_schema["pattern"]
-                
+
                 # Recursively process allOf arrays (where rules are typically stored)
                 if "allOf" in obj and isinstance(obj["allOf"], list):
                     for item in obj["allOf"]:
                         fix_boolean_patterns_in_obj(item, visited)
-                
+
                 # Recursively process nested objects
                 for value in obj.values():
                     fix_boolean_patterns_in_obj(value, visited)
@@ -323,9 +324,40 @@ def fix_boolean_patterns(schema_data: dict) -> dict:
         except (RecursionError, TypeError, AttributeError) as e:
             print(f"Warning: Skipping object due to error: {e}")
             pass
-    
+
     fix_boolean_patterns_in_obj(schema_data)
     print("Fixed boolean pattern checks to use const")
+    return schema_data
+
+
+def backfill_descriptions_from_linkml(
+    schema_data: dict, linkml_yaml: str, class_name: str
+) -> dict:
+    """Set description on any top-level property that is missing it, using the LinkML schema.
+
+    LinkML's JsonSchemaGenerator can omit descriptions for some properties (e.g. inherited).
+    Uses induced_slot() when class_name is set so slot_usage overrides from the class
+    are applied; falls back to get_slot() on resolution failure or when class_name is empty.
+    """
+    sv = SchemaView(linkml_yaml)
+    props = schema_data.get("properties", {})
+    filled = 0
+    for prop_name, prop_val in props.items():
+        if not isinstance(prop_val, dict) or prop_val.get("description"):
+            continue
+        try:
+            slot = (
+                sv.induced_slot(prop_name, class_name)
+                if class_name
+                else sv.get_slot(prop_name)
+            )
+        except Exception:
+            slot = sv.get_slot(prop_name)
+        if slot and getattr(slot, "description", None):
+            prop_val["description"] = slot.description
+            filled += 1
+    if filled:
+        print(f"Backfilled {filled} missing description(s) from LinkML schema")
     return schema_data
 
 
@@ -393,6 +425,9 @@ def main():
     # 3. Process schema in memory (no file I/O between steps)
     schema_data = flatten_json_schema(schema_data)
     schema_data = fix_schema_version(schema_data)
+    schema_data = backfill_descriptions_from_linkml(
+        schema_data, args.linkml_yaml, args.class_name
+    )
     schema_data = fix_additional_properties(schema_data)
     schema_data = clean_union_types(schema_data)
     schema_data = fix_boolean_patterns(schema_data)

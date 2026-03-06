@@ -41,80 +41,100 @@ enums:
       "PACBIO_SMRT":
         description: PacBio SMRT sequencing platform
 
+  GenomicReferenceEnum:
+    description: Genomic or transcriptomic reference assembly used for alignment
+    permissible_values:
+      "GRCh37":
+        description: Genome Reference Consortium human build 37
+      "GRCh37.p13":
+        description: GRCh37 patch release 13
+      "GRCh38":
+        description: Genome Reference Consortium human build 38
+      "GRCh38.p13":
+        description: GRCh38 patch release 13
+      "GRCh38.p14":
+        description: GRCh38 patch release 14
+      "hg19":
+        description: UCSC human genome reference hg19
+      "hg38":
+        description: UCSC human genome reference hg38
+
 classes:
   BaseSequencingAttributes:
     is_a: CoreFileAttributes
-    description: Base attributes shared across all sequencing types
+    description: Minimal base attributes shared across all sequencing types
     attributes:
-      SEQUENCING_BATCH_ID:
-        range: string
-        required: false
-        title: "Sequencing Batch ID"
-        description: Sequencing batch identifier
-      
-      LIBRARY_LAYOUT:
-        range: LibraryLayoutEnum
-        required: true
-        title: "Library Layout"
-        description: Library layout (paired-end or single-end)
-      
-      SEQUENCING_PLATFORM:
-        range: SequencingPlatformEnum
-        required: true
-        title: "Sequencing Platform"
-        description: Sequencing platform used
-      
-      LIBRARY_PREPARATION_DAYS_FROM_INDEX:
-        range: integer
-        required: false
-        title: "Library Preparation Days From Index"
-        description: Days from index for library preparation
-      
-      TECHNICAL_REPLICATE_GROUP:
-        range: string
-        required: false
-        title: "Technical Replicate Group"
-        description: Technical replicate group identifier
-      
-      PROTOCOL_LINK:
-        range: string
-        required: false
-        title: "Protocol Link"
-        description: Link to sequencing protocol
-      
-      WORKFLOW_VERSION:
-        range: string
-        required: true
-        title: "Workflow Version"
-        description: Major version of the workflow
-      
-      WORKFLOW_LINK:
-        range: string
-        required: false
-        title: "Workflow Link"
-        description: Link to workflow or command. DockStore.org recommended
-      
-      GENOMIC_REFERENCE:
-        range: string
-        required: true
-        title: "Genomic Reference"
-        description: Genomic reference used for alignment
-      
-      GENOMIC_REFERENCE_URL:
-        range: string
-        required: false
-        title: "Genomic Reference URL"
-        description: URL to genomic reference
-      
-      GENOME_ANNOTATION_URL:
-        range: string
-        required: false
-        title: "Genome Annotation URL"
-        description: URL to genome annotation
-      
       CHECKSUM:
         range: string
         required: false
         title: "Checksum"
         description: Checksum for data integrity verification
 
+  BaseSequencingLevel1Attributes:
+    is_a: BaseSequencingAttributes
+    description: Level 1 attributes - sequencing run and library (raw data)
+    attributes:
+      LIBRARY_LAYOUT:
+        range: LibraryLayoutEnum
+        required: true
+        title: "Library Layout"
+        description: Library layout (paired-end or single-end)
+      SEQUENCING_PLATFORM:
+        range: SequencingPlatformEnum
+        required: true
+        title: "Sequencing Platform"
+        description: Sequencing platform used
+      SEQUENCING_BATCH_ID:
+        range: string
+        required: false
+        title: "Sequencing Batch ID"
+        description: Sequencing batch identifier
+      LIBRARY_PREPARATION_DAYS_FROM_INDEX:
+        range: integer
+        required: false
+        title: "Library Preparation Days From Index"
+        description: "Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable')"
+      TECHNICAL_REPLICATE_GROUP:
+        range: string
+        required: false
+        title: "Technical Replicate Group"
+        description: Technical replicate group identifier
+      PROTOCOL_LINK:
+        range: string
+        required: false
+        title: "Protocol Link"
+        description: Link to sequencing protocol
+
+  BaseSequencingLevel2Attributes:
+    is_a: BaseSequencingLevel1Attributes
+    description: Level 2 attributes - alignment and alignment workflow
+    attributes:
+      GENOMIC_REFERENCE:
+        range: GenomicReferenceEnum
+        required: true
+        title: "Genomic or Transcriptomic Reference"
+        description: "Genomic or transcriptomic reference assembly used for alignment. If your genome reference is not among the valid values, please contact your data liaison."
+      GENOMIC_REFERENCE_URL:
+        range: string
+        required: true
+        title: "Genomic or Transcriptomic Reference URL"
+        description: URL to genomic or transcriptomic reference
+      GENOME_ANNOTATION_URL:
+        range: string
+        required: true
+        title: "Genome or Transcriptome Annotation URL"
+        description: URL to genome or transcriptome annotation
+      WORKFLOW_VERSION:
+        range: string
+        required: true
+        title: "Workflow Version"
+        description: Major version of the workflow, or 'Not applicable' when no workflow version applies.
+      WORKFLOW_LINK:
+        range: string
+        required: true
+        title: "Workflow Link"
+        description: Link to workflow or command. DockStore.org recommended
+
+  BaseSequencingLevel3Attributes:
+    is_a: BaseSequencingLevel2Attributes
+    description: Level 3+ attributes - inherits alignment and workflow; used for processed/analysis levels

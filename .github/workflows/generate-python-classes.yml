@@ -5,17 +5,11 @@ on:
     branches: [ main ]
     paths:
       - 'modules/*/domains/*.yaml'
-      - 'modules/*/src/**/*.py'
-      - 'modules/*/Makefile'
-      - 'Makefile'
       - 'config/config.yaml'
   pull_request:
     branches: [ main ]
     paths:
       - 'modules/*/domains/*.yaml'
-      - 'modules/*/src/**/*.py'
-      - 'modules/*/Makefile'
-      - 'Makefile'
       - 'config/config.yaml'
       - '.github/workflows/generate-python-classes.yml'
   workflow_dispatch:
