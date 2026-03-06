@@ -14,8 +14,8 @@ prose quality, or anything outside this scope.**
 - Descriptions: sentence case, first word capitalised
 - All enum permissible values: alphabetically ordered
 - Every slot must have `title` and `description`
-- Generated artifacts (`src/*/datamodel/*.py`, `JSON_Schemas/*.json`) must be
-  regenerated whenever domain YAML changes
+- Generated artifacts (`src/*/datamodel/*.py`, `JSON_Schemas/*.json`) are produced
+  in a separate downstream PR — do not require them in the same PR as YAML changes
 
 ---
 
@@ -51,10 +51,11 @@ These must be resolved before merge.
 - No duplicate permissible values within an enum
 
 #### Generated artifacts
-- If any `domains/*.yaml` file is modified, the corresponding
-  `src/*/datamodel/*.py` must be regenerated (`make gen-python` or `poetry run gen-python`)
-- If any YAML is modified, `JSON_Schemas/*.json` must be regenerated (`make gen-schema`)
-- Flag if the diff includes YAML changes but no corresponding artifact updates
+- Generated artifacts (`src/*/datamodel/*.py`, `JSON_Schemas/*.json`) are intentionally
+  produced in a **separate downstream PR** via `make gen-schema`. Do NOT flag their
+  absence in a PR that only modifies `domains/*.yaml` files.
+- Only flag as blocking if a PR explicitly claims to include regenerated artifacts
+  but the diff shows they are missing or stale.
 
 ---
 
