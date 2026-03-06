@@ -30,7 +30,7 @@ enums:
 
 classes:
   scRNALevel2:
-    is_a: BaseSequencingAttributes
+    is_a: BaseSequencingLevel2Attributes
     description: scRNA-seq Level 2 data - Workflow and processing metadata
     attributes:
       # File format restriction for Level 2 aligned files
