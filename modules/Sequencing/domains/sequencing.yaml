@@ -50,10 +50,10 @@ enums:
         description: Genome Reference Consortium human build 38
       "GRCh38.p13":
         description: GRCh38 patch release 13
-      "GrCh37-lite":
-        description: GRCh37-lite reference
       "Gencode Release 38 (GRCh38.p13)":
         description: Gencode annotation release 38 on GRCh38.p13
+      "GrCh37-lite":
+        description: GRCh37-lite reference
       "Hg19":
         description: UCSC human genome reference hg19 (legacy casing)
       "Hg38":
@@ -101,7 +101,7 @@ classes:
         range: integer
         required: false
         title: "Library Preparation Days From Index"
-        description: "Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable'. (Exists in phase 1 data model; ncihtan/data-models.)"
+        description: "Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable')"
       TECHNICAL_REPLICATE_GROUP:
         range: string
         required: false
