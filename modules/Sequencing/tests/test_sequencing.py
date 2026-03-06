@@ -144,9 +144,7 @@ class TestBaseSequencingSchema:
                      "TECHNICAL_REPLICATE_GROUP", "PROTOCOL_LINK"]:
             assert attr in level1.attributes and not level1.attributes[attr].required
 
-        level2 = sv.get_class("BaseSequencingLevel2Attributes")
-        for attr in ["GENOMIC_REFERENCE_URL", "GENOME_ANNOTATION_URL"]:
-            assert attr in level2.attributes and not level2.attributes[attr].required
+        # Level 2: GENOMIC_REFERENCE_URL and GENOME_ANNOTATION_URL are required (not optional)
 
 
 class TestBaseSequencingDataValidation:
@@ -165,6 +163,8 @@ class TestBaseSequencingDataValidation:
             "LIBRARY_LAYOUT": "Paired-end",
             "SEQUENCING_PLATFORM": "ILLUMINA",
             "GENOMIC_REFERENCE": "GRCh38",
+            "GENOMIC_REFERENCE_URL": "https://example.org/ref.fa",
+            "GENOME_ANNOTATION_URL": "https://example.org/anno.gtf",
             "WORKFLOW_VERSION": "1.0.0",
             "WORKFLOW_LINK": "https://dockstore.org/workflows/github.com/.../workflow",
         }
@@ -190,6 +190,8 @@ class TestBaseSequencingDataValidation:
             "LIBRARY_LAYOUT": "Single-end",
             "SEQUENCING_PLATFORM": "ILLUMINA",
             "GENOMIC_REFERENCE": "GRCh38",
+            "GENOMIC_REFERENCE_URL": "https://example.org/ref.fa",
+            "GENOME_ANNOTATION_URL": "https://example.org/anno.gtf",
             "WORKFLOW_VERSION": "2.0",
             "WORKFLOW_LINK": "https://dockstore.org/workflows/example",
         }
@@ -208,6 +210,8 @@ class TestBaseSequencingDataValidation:
             "LIBRARY_LAYOUT": "Single-end",
             "SEQUENCING_PLATFORM": "ILLUMINA",
             "GENOMIC_REFERENCE": "GRCh38",
+            "GENOMIC_REFERENCE_URL": "https://example.org/ref.fa",
+            "GENOME_ANNOTATION_URL": "https://example.org/anno.gtf",
             "WORKFLOW_VERSION": "2.0",
             # WORKFLOW_LINK omitted
         }
@@ -233,6 +237,8 @@ class TestBaseSequencingDataValidation:
             "LIBRARY_LAYOUT": "Paired-end",
             "SEQUENCING_PLATFORM": "ILLUMINA",
             "GENOMIC_REFERENCE": "GRCh38",
+            "GENOMIC_REFERENCE_URL": "https://example.org/ref.fa",
+            "GENOME_ANNOTATION_URL": "https://example.org/anno.gtf",
             "WORKFLOW_VERSION": "1.0",
             "WORKFLOW_LINK": "https://dockstore.org/workflows/example",
         }
@@ -251,6 +257,8 @@ class TestBaseSequencingDataValidation:
             "LIBRARY_LAYOUT": "Paired-end",
             "SEQUENCING_PLATFORM": "ILLUMINA",
             "GENOMIC_REFERENCE": "GRCh38",
+            "GENOMIC_REFERENCE_URL": "https://example.org/ref.fa",
+            "GENOME_ANNOTATION_URL": "https://example.org/anno.gtf",
             "WORKFLOW_VERSION": "1.0",
             # WORKFLOW_LINK omitted
         }
@@ -279,6 +287,8 @@ class TestBaseSequencingDataValidation:
             "LIBRARY_LAYOUT": "Single-end",
             "SEQUENCING_PLATFORM": "ILLUMINA",
             "GENOMIC_REFERENCE": "INVALID_GENOMIC_REF",
+            "GENOMIC_REFERENCE_URL": "https://example.org/ref.fa",
+            "GENOME_ANNOTATION_URL": "https://example.org/anno.gtf",
             "WORKFLOW_VERSION": "1.0",
             "WORKFLOW_LINK": "https://example.org",
         }
