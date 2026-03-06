@@ -112,17 +112,17 @@ classes:
       GENOMIC_REFERENCE:
         range: GenomicReferenceEnum
         required: true
-        title: "Genomic or transcriptomic Reference"
+        title: "Genomic or Transcriptomic Reference"
         description: "Genomic or transcriptomic reference assembly used for alignment. If your genome reference is not among the valid values, please contact your data liaison."
       GENOMIC_REFERENCE_URL:
         range: string
         required: true
-        title: "Genomic or transcriptomic Reference URL"
+        title: "Genomic or Transcriptomic Reference URL"
         description: URL to genomic or transcriptomic reference
       GENOME_ANNOTATION_URL:
         range: string
         required: true
-        title: "Genome or transcriptome Annotation URL"
+        title: "Genome or Transcriptome Annotation URL"
         description: URL to genome or transcriptome annotation
       WORKFLOW_VERSION:
         range: string
