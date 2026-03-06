@@ -101,7 +101,7 @@ classes:
         range: integer
         required: false
         title: "Library Preparation Days From Index"
-        description: Days from index for library preparation
+        description: "Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable'. (Exists in phase 1 data model; ncihtan/data-models.)"
       TECHNICAL_REPLICATE_GROUP:
         range: string
         required: false
