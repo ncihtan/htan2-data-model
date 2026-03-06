@@ -67,8 +67,9 @@ classes:
         range: string
         required: false
         title: "Adjacent Biospecimen IDs"
-        description: List of HTAN Identifiers (separated by commas) of adjacent biospecimens cut from the same sample
+        description: List of HTAN Biospecimen IDs of adjacent biospecimens cut from the same sample. Each ID must match the HTAN biospecimen ID pattern.
         multivalued: true
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(B[0-9]{1,20})$"
       
       SITE_DATA_SOURCE:
         range: string

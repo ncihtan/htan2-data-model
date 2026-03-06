@@ -68,7 +68,7 @@ enums:
 
 classes:
   scRNALevel3and4:
-    is_a: BaseSequencingAttributes
+    is_a: BaseSequencingLevel3Attributes
     description: Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
     attributes:
       # File format validation - only h5ad files accepted

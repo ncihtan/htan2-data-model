@@ -1,4 +1,4 @@
-HTAN_PARTICIPANT_ID: "TEST-001"
+HTAN_PARTICIPANT_ID: "HTA200_0000"
 
 # Valid demographics data
 DEMOGRAPHICS:
@@ -6,6 +6,7 @@ DEMOGRAPHICS:
   GENDER_IDENTITY: "Male"  # Valid enum value
   SEX: "Male"  # Valid enum value
   RACE: "White"  # Valid enum value
+  HTAN_PARTICIPANT_ID: "HTA200_0000"
 
 # Valid exposure data
 EXPOSURES:
@@ -15,11 +16,13 @@ EXPOSURES:
   ALCOHOL_HISTORY_INDICATOR: "Yes"  # Valid enum value
   ENVIRONMENTAL_EXPOSURE: "Yes"  # Valid enum value
   ENVIRONMENTAL_EXPOSURE_TYPE: "Chemical Exposure"  # Valid enum value
+  HTAN_PARTICIPANT_ID: "HTA200_0000"
 
 # Valid family history data with conditional requirements
 FAMILY_HISTORY:
   FAMILY_MEMBER_CANCER_HISTORY: "Yes"  # Valid enum value
   RELATIVES_WITH_CANCER_HISTORY: 2  # Required when FAMILY_MEMBER_CANCER_HISTORY is "Yes"
+  HTAN_PARTICIPANT_ID: "HTA200_0000"
 
 # Valid follow-up data with conditional requirements
 FOLLOW_UPS:
@@ -32,6 +35,7 @@ FOLLOW_UPS:
     DISEASE_RESPONSE: "Stable Disease"  # Valid enum value
     ECOG_PERFORMANCE_STATUS: "0"  # Valid enum value
     MENOPAUSE_STATUS: "Premenopausal"  # Valid enum value
+    HTAN_PARTICIPANT_ID: "HTA200_0000"
 
 # Valid molecular test data
 MOLECULAR_TESTS:
@@ -52,6 +56,7 @@ MOLECULAR_TESTS:
     TEST_RESULT: "Positive"  # Valid enum value
     VARIANT_ORIGIN: "Germline"  # Valid enum value
     VARIANT_TYPE: "Substitution"  # Valid enum value
+    HTAN_PARTICIPANT_ID: "HTA200_0000"
 
 # Valid vital status data
 VITAL_STATUS:
@@ -60,6 +65,7 @@ VITAL_STATUS:
   AGE_IN_DAYS_AT_DEATH: 15000  # Required when VITAL_STATUS is "Dead"
   CAUSE_OF_DEATH: "Cancer Related"  # Required when VITAL_STATUS is "Dead"
   CAUSE_OF_DEATH_SOURCE: "Death Certificate"  # Required when VITAL_STATUS is "Dead"
+  HTAN_PARTICIPANT_ID: "HTA200_0000"
 
 # Valid diagnosis data
 DIAGNOSIS:
@@ -76,6 +82,7 @@ DIAGNOSIS:
   TUMOR_CLASSIFICATION_CATEGORY: "Primary"  # Valid enum value
   METASTASIS_AT_DIAGNOSIS: "Non-metastatic (confirmed)"  # Valid enum value
   METHOD_OF_DIAGNOSIS: "Biopsy"  # Valid enum value
+  HTAN_PARTICIPANT_ID: "HTA200_0000"
 
 # Valid therapy data
 THERAPIES:
@@ -92,4 +99,5 @@ THERAPIES:
     OFF_TREATMENT_REASON: "Treatment Complete"  # Required when AGE_IN_DAYS_AT_TREATMENT_END is present
     REGIMEN_OR_LINE_OF_THERAPY: "1"  # Valid enum value (numeric string)
     NUMBER_OF_CYCLES: 4
-    RESPONSE: "Complete Response"  # Required when AGE_IN_DAYS_AT_TREATMENT_END is present 
+    RESPONSE: "Complete Response"  # Required when AGE_IN_DAYS_AT_TREATMENT_END is present
+    HTAN_PARTICIPANT_ID: "HTA200_0000"
