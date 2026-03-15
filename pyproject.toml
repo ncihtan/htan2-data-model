@@ -21,7 +21,7 @@ synapseclient = "^4.9.0"
 exrex = "^0.11"
 faker = "^24.0"
 jsonschema = "^4.0"
-anthropic = "^0.40"
+anthropic = "^0.50"
 
 [tool.poetry-dynamic-versioning]
 enable = true

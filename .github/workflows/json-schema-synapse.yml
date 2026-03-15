@@ -229,6 +229,7 @@ jobs:
           --data-dir synthetic_data/$VERSION/constraint_tests
 
     - name: Generate demonstrator ecosystem
+      if: ${{ secrets.ANTHROPIC_API_KEY != '' }}
       env:
         ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       run: |

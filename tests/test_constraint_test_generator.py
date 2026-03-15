@@ -409,5 +409,193 @@ class TestDemonstratorPostprocessing:
         assert fixed["TREATMENTS"] == ["Chemo", "Surgery"]
 
 
+class TestDemonstratorHelpers:
+    """Tests for deterministic helpers in generate_demonstrator.py."""
+
+    def test_extract_level_with_level(self):
+        from scripts.generate_demonstrator import _extract_level
+        assert _extract_level("BulkWESLevel1") == 1
+        assert _extract_level("scRNALevel3and4") == 3
+        assert _extract_level("SpatialLevel4") == 4
+
+    def test_extract_level_without_level(self):
+        from scripts.generate_demonstrator import _extract_level
+        assert _extract_level("Demographics") == 0
+        assert _extract_level("BiospecimenData") == 0
+
+    def test_assay_group(self):
+        from scripts.generate_demonstrator import _assay_group
+        assert _assay_group("BulkWESLevel1") == "BulkWES"
+        assert _assay_group("scRNALevel3and4") == "scRNA"
+        assert _assay_group("SpatialLevel4") == "Spatial"
+        assert _assay_group("DigitalPathologyData") == "DigitalPathologyData"
+
+    def test_id_preassignments(self):
+        from scripts.generate_demonstrator import _id_preassignments
+        counter = [1]
+        result = _id_preassignments(["HTA201_1_B1", "HTA201_2_B1"], counter, 2)
+        assert len(result) == 2
+        assert result[0]["HTAN_DATA_FILE_ID"] == "HTA201_1_D1"
+        assert result[0]["HTAN_PARENT_ID"] == ["HTA201_1_B1"]
+        assert result[1]["HTAN_DATA_FILE_ID"] == "HTA201_2_D2"
+        assert counter[0] == 3
+
+    def test_id_preassignments_respects_count(self):
+        from scripts.generate_demonstrator import _id_preassignments
+        counter = [10]
+        result = _id_preassignments(["HTA201_1_B1", "HTA201_2_B1", "HTA201_3_B1"], counter, 2)
+        assert len(result) == 2
+
+    def test_summarise_schema_required_only(self):
+        from scripts.generate_demonstrator import _summarise_schema
+        schema = {
+            "required": ["FIELD_A", "FIELD_B"],
+            "properties": {
+                "FIELD_A": {"type": "string", "enum": ["X", "Y"]},
+                "FIELD_B": {"type": "integer", "description": "A count"},
+                "FIELD_C": {"type": "string"},
+            },
+        }
+        summary = _summarise_schema(schema)
+        assert "FIELD_A" in summary["properties"]
+        assert "FIELD_B" in summary["properties"]
+        assert "FIELD_C" not in summary["properties"]
+
+    def test_summarise_schema_strips_large_enums(self):
+        from scripts.generate_demonstrator import _summarise_schema, _LARGE_ENUM_THRESHOLD
+        big_enum = [f"val_{i}" for i in range(_LARGE_ENUM_THRESHOLD + 5)]
+        schema = {
+            "required": ["BIG"],
+            "properties": {
+                "BIG": {"type": "string", "enum": big_enum, "description": "A big field"},
+            },
+        }
+        summary = _summarise_schema(schema)
+        assert "enum" not in summary["properties"]["BIG"]
+        assert "description" in summary["properties"]["BIG"]
+
+    def test_summarise_schema_keeps_small_enums(self):
+        from scripts.generate_demonstrator import _summarise_schema
+        schema = {
+            "required": ["SMALL"],
+            "properties": {
+                "SMALL": {"type": "string", "enum": ["A", "B", "C"]},
+            },
+        }
+        summary = _summarise_schema(schema)
+        assert summary["properties"]["SMALL"]["enum"] == ["A", "B", "C"]
+
+    def test_summarise_schema_includes_allof(self):
+        from scripts.generate_demonstrator import _summarise_schema
+        schema = {
+            "required": ["X"],
+            "properties": {"X": {"type": "string"}},
+            "allOf": [{"if": {}, "then": {}}],
+        }
+        summary = _summarise_schema(schema)
+        assert "allOf" in summary
+
+    def test_summarise_schema_includes_toplevel_if_then(self):
+        from scripts.generate_demonstrator import _summarise_schema
+        schema = {
+            "required": ["X"],
+            "properties": {"X": {"type": "string"}},
+            "if": {"properties": {"X": {"const": "Y"}}, "required": ["X"]},
+            "then": {"required": ["Z"]},
+        }
+        summary = _summarise_schema(schema)
+        assert "if" in summary
+        assert "then" in summary
+
+
+class TestValidateSyntheticData:
+    """Tests for validate_synthetic_data.py."""
+
+    def test_valid_passes(self):
+        from scripts.validate_synthetic_data import validate_schema_dir
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmpdir = Path(tmpdir)
+            schema_path = tmpdir / "HTAN.TestSchema-v1.0.0-schema.json"
+            data_dir = tmpdir / "data"
+            test_dir = data_dir / "TestSchema"
+            test_dir.mkdir(parents=True)
+
+            schema = {
+                "type": "object",
+                "properties": {"NAME": {"type": "string"}},
+                "required": ["NAME"],
+            }
+            with open(schema_path, "w") as f:
+                json.dump(schema, f)
+            with open(test_dir / "valid.json", "w") as f:
+                json.dump({"NAME": "hello"}, f)
+            with open(test_dir / "invalid_missing_required_NAME.json", "w") as f:
+                json.dump({}, f)
+
+            failures = validate_schema_dir(schema_path, data_dir)
+            assert failures == []
+
+    def test_valid_that_should_fail(self):
+        from scripts.validate_synthetic_data import validate_schema_dir
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmpdir = Path(tmpdir)
+            schema_path = tmpdir / "HTAN.TestSchema-v1.0.0-schema.json"
+            data_dir = tmpdir / "data"
+            test_dir = data_dir / "TestSchema"
+            test_dir.mkdir(parents=True)
+
+            schema = {
+                "type": "object",
+                "properties": {"NAME": {"type": "string"}},
+                "required": ["NAME"],
+            }
+            with open(schema_path, "w") as f:
+                json.dump(schema, f)
+            # valid.json that actually fails validation
+            with open(test_dir / "valid.json", "w") as f:
+                json.dump({}, f)
+
+            failures = validate_schema_dir(schema_path, data_dir)
+            assert any("valid.json FAILED" in f for f in failures)
+
+    def test_invalid_that_passes(self):
+        from scripts.validate_synthetic_data import validate_schema_dir
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmpdir = Path(tmpdir)
+            schema_path = tmpdir / "HTAN.TestSchema-v1.0.0-schema.json"
+            data_dir = tmpdir / "data"
+            test_dir = data_dir / "TestSchema"
+            test_dir.mkdir(parents=True)
+
+            schema = {
+                "type": "object",
+                "properties": {"NAME": {"type": "string"}},
+                "required": ["NAME"],
+            }
+            with open(schema_path, "w") as f:
+                json.dump(schema, f)
+            with open(test_dir / "valid.json", "w") as f:
+                json.dump({"NAME": "hello"}, f)
+            # invalid file that actually passes — should be flagged
+            with open(test_dir / "invalid_bad_NAME.json", "w") as f:
+                json.dump({"NAME": "still valid"}, f)
+
+            failures = validate_schema_dir(schema_path, data_dir)
+            assert any("PASSED validation (expected failure)" in f for f in failures)
+
+    def test_missing_test_directory(self):
+        from scripts.validate_synthetic_data import validate_schema_dir
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmpdir = Path(tmpdir)
+            schema_path = tmpdir / "HTAN.TestSchema-v1.0.0-schema.json"
+            with open(schema_path, "w") as f:
+                json.dump({"type": "object"}, f)
+            data_dir = tmpdir / "data"
+            data_dir.mkdir()
+
+            failures = validate_schema_dir(schema_path, data_dir)
+            assert any("No constraint test directory" in f for f in failures)
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
