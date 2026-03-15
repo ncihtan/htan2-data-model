@@ -10,6 +10,7 @@ Usage:
         --output-dir synthetic_data/v1.3.0/demonstrator \\
         --participants 5 --biospecimens-per-participant 3
 """
+from __future__ import annotations
 
 import argparse
 import json

@@ -12,6 +12,7 @@ Produces:
 Usage:
     python scripts/generate_constraint_tests.py <schema.json> --output-dir <dir>
 """
+from __future__ import annotations
 
 import argparse
 import copy
