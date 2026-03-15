@@ -34,121 +34,37 @@ jobs:
             --json number,title,body,additions,deletions,changedFiles \
             > /tmp/pr_meta.json
 
-      - name: Build review prompt
+      - name: Fetch full YAML files
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          python3 - << 'PYEOF'
-          import json
+          # Get list of changed YAML files from the diff
+          grep '^diff --git' /tmp/pr.diff \
+            | sed 's|diff --git a/.* b/||' \
+            | grep '\.yaml$' \
+            | grep -v '^archive/' \
+            > /tmp/changed_yaml_files.txt || true
 
-          with open('/tmp/pr_meta.json') as f:
-              meta = json.load(f)
-          with open('/tmp/pr.diff') as f:
-              raw_diff = f.read()
-          with open('CLAUDE.md') as f:
-              rules = f.read()
+          # Fetch each file's full content at the PR head SHA
+          mkdir -p /tmp/full_files
+          while IFS= read -r filepath; do
+            gh api "repos/${{ github.repository }}/contents/${filepath}?ref=${{ github.event.pull_request.head.sha }}" \
+              --jq '.content' | base64 -d > "/tmp/full_files/$(basename "$filepath")" 2>/dev/null || true
+          done < /tmp/changed_yaml_files.txt
 
-          # Strip generated files from the diff — they dominate token count
-          # and are not subject to review (schema correctness is checked via
-          # the source YAML, not the generated Python or JSON Schema output).
-          SKIP = [
-              'src/htan_',       # generated Python datamodels
-              'JSON_Schemas/',   # generated JSON schemas
-          ]
-          MAX_DIFF_CHARS = 80_000  # safety cap (~20k tokens)
+          echo "Full files fetched:"
+          ls -lh /tmp/full_files/ 2>/dev/null || echo "(none)"
 
-          sections, current, skip = [], [], False
-          for line in raw_diff.splitlines(keepends=True):
-              if line.startswith('diff --git'):
-                  if current and not skip:
-                      sections.append(''.join(current))
-                  current = [line]
-                  skip = any(p in line for p in SKIP)
-              else:
-                  current.append(line)
-          if current and not skip:
-              sections.append(''.join(current))
-
-          diff = ''.join(sections)
-          skipped_chars = len(raw_diff) - len(diff)
-          if len(diff) > MAX_DIFF_CHARS:
-              diff = diff[:MAX_DIFF_CHARS] + '\n\n[diff truncated]'
-          print(f"Diff: {len(diff):,} chars after filtering ({skipped_chars:,} chars of generated files removed)")
-
-          prompt = f"""You are reviewing a pull request for the htan2-data-model repository.
-
-          Apply the review rules below exactly. Do not flag anything outside the defined scope.
-
-          Note: generated files (src/htan_*/datamodel/*.py, JSON_Schemas/) are excluded from
-          this diff. The generated artifacts checklist item asks only whether they were
-          regenerated — not to review their contents.
-
-          ---
-
-          {rules}
-
-          ---
-
-          ## PR #{meta['number']} — {meta['title']}
-
-          **Description:** {meta.get('body') or '(none)'}
-
-          **Stats:** {meta['changedFiles']} files changed, +{meta['additions']}/-{meta['deletions']} lines
-
-          ## Diff (source files only)
-
-          {diff}
-          """
-
-          with open('/tmp/review_prompt.txt', 'w') as f:
-              f.write(prompt)
-
-          print(f"Prompt written ({len(prompt):,} chars)")
-          PYEOF
-
-      - name: Run Claude review
+      - name: Run AI review
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          python3 - << 'PYEOF'
-          import json
-          import os
-          import urllib.request
-          import urllib.error
-
-          with open('/tmp/review_prompt.txt') as f:
-              prompt = f.read()
-
-          payload = json.dumps({
-              "model": "claude-sonnet-4-6",
-              "max_tokens": 4096,
-              "messages": [{"role": "user", "content": prompt}]
-          }).encode()
-
-          req = urllib.request.Request(
-              "https://api.anthropic.com/v1/messages",
-              data=payload,
-              headers={
-                  "x-api-key": os.environ["ANTHROPIC_API_KEY"],
-                  "anthropic-version": "2023-06-01",
-                  "content-type": "application/json",
-              },
-          )
-
-          try:
-              with urllib.request.urlopen(req) as resp:
-                  result = json.loads(resp.read())
-          except urllib.error.HTTPError as e:
-              body = e.read().decode()
-              print(f"API error {e.code}: {e.reason}")
-              print(body)
-              raise SystemExit(1)
-
-          review = result["content"][0]["text"]
-
-          with open('/tmp/review_output.md', 'w') as f:
-              f.write(review)
-
-          print(f"Review written ({len(review):,} chars)")
-          PYEOF
+          python3 scripts/run_review.py \
+            --diff /tmp/pr.diff \
+            --meta /tmp/pr_meta.json \
+            --rules .claude/skills/review-schema-pr/SKILL.md \
+            --full-files /tmp/full_files/ \
+            --out /tmp/review_output.md
 
           echo "--- Review output preview (first 20 lines) ---"
           head -20 /tmp/review_output.md
@@ -196,7 +112,7 @@ jobs:
           $(cat /tmp/review_output.md)
 
           ---
-          <sub>Rules defined in [CLAUDE.md](../blob/${{ github.event.pull_request.head.sha }}/CLAUDE.md) · To update review rules, edit \`CLAUDE.md\` and open a PR to \`main\`</sub>"
+          <sub>Rules defined in [SKILL.md](../blob/${{ github.event.pull_request.head.sha }}/.claude/skills/review-schema-pr/SKILL.md) · To update review rules, edit \`.claude/skills/review-schema-pr/SKILL.md\` and open a PR to \`main\`</sub>"
 
           if [ "${{ env.VERDICT }}" = "request-changes" ]; then
             gh pr review ${{ github.event.pull_request.number }} \
