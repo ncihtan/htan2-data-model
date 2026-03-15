@@ -212,6 +212,32 @@ jobs:
           --class-name "DigitalPathologyData" \
           --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.DigitalPathologyData-${{ steps.version.outputs.version }}-schema.json"
     
+    - name: Generate constraint test suites
+      run: |
+        VERSION=${{ steps.version.outputs.version }}
+        for schema in JSON_Schemas/$VERSION/*.json; do
+          name=$(basename "$schema" | sed 's/HTAN\.\(.*\)-'"$VERSION"'-schema\.json/\1/')
+          poetry run python scripts/generate_constraint_tests.py \
+            "$schema" --output-dir synthetic_data/$VERSION/constraint_tests/$name
+        done
+
+    - name: Validate constraint test data
+      run: |
+        VERSION=${{ steps.version.outputs.version }}
+        poetry run python scripts/validate_synthetic_data.py \
+          --schema-dir JSON_Schemas/$VERSION \
+          --data-dir synthetic_data/$VERSION/constraint_tests
+
+    - name: Generate demonstrator ecosystem
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      run: |
+        VERSION=${{ steps.version.outputs.version }}
+        poetry run python scripts/generate_demonstrator.py \
+          --schema-dir JSON_Schemas/$VERSION \
+          --output-dir synthetic_data/$VERSION/demonstrator \
+          --participants 5 --biospecimens-per-participant 3
+
     - name: Register schemas in Synapse
       env:
         SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}
@@ -253,8 +279,9 @@ jobs:
           git checkout -b "$branch_name"
         fi
         
-        # Add the versioned schema directory
+        # Add the versioned schema and synthetic data directories
         git add JSON_Schemas/${{ steps.version.outputs.version }}/
+        git add synthetic_data/${{ steps.version.outputs.version }}/ 2>/dev/null || true
         
         # Check if there are changes to commit
         if git diff --staged --quiet && git diff --quiet; then
