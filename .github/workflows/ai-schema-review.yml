@@ -62,7 +62,7 @@ jobs:
           python3 scripts/run_review.py \
             --diff /tmp/pr.diff \
             --meta /tmp/pr_meta.json \
-            --rules .claude/skills/review-schema-pr/SKILL.md \
+            --rules CLAUDE.md \
             --full-files /tmp/full_files/ \
             --out /tmp/review_output.md
 
@@ -112,7 +112,7 @@ jobs:
           $(cat /tmp/review_output.md)
 
           ---
-          <sub>Rules defined in [SKILL.md](../blob/${{ github.event.pull_request.head.sha }}/.claude/skills/review-schema-pr/SKILL.md) · To update review rules, edit \`.claude/skills/review-schema-pr/SKILL.md\` and open a PR to \`main\`</sub>"
+          <sub>Rules defined in [CLAUDE.md](../blob/${{ github.event.pull_request.head.sha }}/CLAUDE.md) · To update review rules, edit \`CLAUDE.md\` and open a PR to \`main\`</sub>"
 
           if [ "${{ env.VERDICT }}" = "request-changes" ]; then
             gh pr review ${{ github.event.pull_request.number }} \
