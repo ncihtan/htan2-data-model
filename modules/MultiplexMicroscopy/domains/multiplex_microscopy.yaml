@@ -9,6 +9,7 @@ imports:
   - level_2
   - level_3
   - level_4
+  - multiplex_microscopy_channel_metadata
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -40,4 +41,10 @@ classes:
         range: MultiplexMicroscopyLevel4
         required: false
         description: Level 4 Multiplex Microscopy data (cell-by-feature tables)
+      CHANNEL_METADATA:
+        range: ChannelMetadata
+        multivalued: true
+        inlined_as_list: true
+        required: false
+        description: Channel metadata records for multiplex microscopy imaging
 
