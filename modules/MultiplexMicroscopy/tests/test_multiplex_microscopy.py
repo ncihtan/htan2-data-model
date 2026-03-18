@@ -1,8 +1,11 @@
 """Tests for the Multiplex Microscopy module."""
 
+import sys
 import pytest
 from linkml_runtime import SchemaView
 from linkml_runtime.utils.introspection import package_schemaview
+
+sys.path.insert(0, "modules/MultiplexMicroscopy/src")
 
 
 class TestMultiplexMicroscopy:
@@ -216,3 +219,71 @@ class TestMultiplexMicroscopy:
         assert filename_regex.match("data.csv")
         assert fmt_regex.match("h5ad")
         assert filename_regex.match("data.h5ad")
+
+
+class TestChannelMetadata:
+    """Test cases for the ChannelMetadata class and CHANNEL_METADATA slot."""
+
+    def test_channel_metadata_class_exists(self):
+        """Test that ChannelMetadata class is present in the schema."""
+        sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
+        assert "ChannelMetadata" in sv.all_classes()
+
+    def test_channel_metadata_no_parent(self):
+        """Test that ChannelMetadata has no is_a (standalone record class)."""
+        sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
+        cls = sv.get_class("ChannelMetadata")
+        assert cls.is_a is None
+
+    def test_channel_metadata_required_slots(self):
+        """Test that CHANNEL_ID and CHANNEL_NAME are marked required."""
+        sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
+        cls = sv.get_class("ChannelMetadata")
+        required_slots = ["CHANNEL_ID", "CHANNEL_NAME"]
+        for slot_name in required_slots:
+            slot = cls.attributes[slot_name]
+            assert slot.required is True, f"{slot_name} should be required"
+
+    def test_channel_metadata_optional_slots_not_required(self):
+        """Test that optional slots are not marked required."""
+        sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
+        cls = sv.get_class("ChannelMetadata")
+        optional_slots = [
+            "CYCLE_NUMBER", "SUB_CYCLE_NUMBER", "TARGET_NAME",
+            "ANTIBODY_NAME", "FLUOROPHORE", "CLONE",
+        ]
+        for slot_name in optional_slots:
+            slot = cls.attributes[slot_name]
+            assert not slot.required, f"{slot_name} should not be required"
+
+    def test_channel_metadata_slot_on_container(self):
+        """Test that CHANNEL_METADATA slot exists on MultiplexMicroscopyData."""
+        sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
+        container = sv.get_class("MultiplexMicroscopyData")
+        assert "CHANNEL_METADATA" in container.attributes
+        slot = container.attributes["CHANNEL_METADATA"]
+        assert slot.multivalued is True
+        assert slot.inlined_as_list is True
+        assert slot.required is False
+
+    def test_valid_channel_metadata_instance(self):
+        """Test that a valid ChannelMetadata instance loads without error."""
+        from htan_multiplexmicroscopy.datamodel.multiplex_microscopy import ChannelMetadata
+
+        instance = ChannelMetadata(CHANNEL_ID="ch1", CHANNEL_NAME="DAPI")
+        assert instance.CHANNEL_ID == "ch1"
+        assert instance.CHANNEL_NAME == "DAPI"
+
+    def test_invalid_channel_metadata_missing_required(self):
+        """Test that a ChannelMetadata instance missing required fields raises ValueError."""
+        from htan_multiplexmicroscopy.datamodel.multiplex_microscopy import ChannelMetadata
+
+        with pytest.raises(ValueError):
+            ChannelMetadata()
+
+    def test_invalid_channel_metadata_missing_channel_name(self):
+        """Test that a ChannelMetadata instance missing CHANNEL_NAME raises ValueError."""
+        from htan_multiplexmicroscopy.datamodel.multiplex_microscopy import ChannelMetadata
+
+        with pytest.raises(ValueError):
+            ChannelMetadata(CHANNEL_ID="ch1")
