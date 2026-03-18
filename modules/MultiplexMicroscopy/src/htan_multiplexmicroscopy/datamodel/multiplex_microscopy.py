@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-06T17:35:07
+# Generation date: 2026-03-18T14:23:13
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -111,6 +111,7 @@ class MultiplexMicroscopyData(YAMLRoot):
     LEVEL_2_DATA: Optional[Union[str, MultiplexMicroscopyLevel2HTANDATAFILEID]] = None
     LEVEL_3_DATA: Optional[Union[str, MultiplexMicroscopyLevel3HTANDATAFILEID]] = None
     LEVEL_4_DATA: Optional[Union[str, MultiplexMicroscopyLevel4HTANDATAFILEID]] = None
+    CHANNEL_METADATA: Optional[Union[Union[dict, "ChannelMetadata"], List[Union[dict, "ChannelMetadata"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.LEVEL_2_DATA is not None and not isinstance(self.LEVEL_2_DATA, MultiplexMicroscopyLevel2HTANDATAFILEID):
@@ -121,6 +122,10 @@ class MultiplexMicroscopyData(YAMLRoot):
 
         if self.LEVEL_4_DATA is not None and not isinstance(self.LEVEL_4_DATA, MultiplexMicroscopyLevel4HTANDATAFILEID):
             self.LEVEL_4_DATA = MultiplexMicroscopyLevel4HTANDATAFILEID(self.LEVEL_4_DATA)
+
+        if not isinstance(self.CHANNEL_METADATA, list):
+            self.CHANNEL_METADATA = [self.CHANNEL_METADATA] if self.CHANNEL_METADATA is not None else []
+        self.CHANNEL_METADATA = [v if isinstance(v, ChannelMetadata) else ChannelMetadata(**as_dict(v)) for v in self.CHANNEL_METADATA]
 
         super().__post_init__(**kwargs)
 
@@ -163,6 +168,111 @@ class CoreFileAttributes(YAMLRoot):
         if not isinstance(self.HTAN_PARENT_ID, list):
             self.HTAN_PARENT_ID = [self.HTAN_PARENT_ID] if self.HTAN_PARENT_ID is not None else []
         self.HTAN_PARENT_ID = [v if isinstance(v, str) else str(v) for v in self.HTAN_PARENT_ID]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ChannelMetadata(YAMLRoot):
+    """
+    Metadata for each channel in multiplex microscopy imaging
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["ChannelMetadata"]
+    class_class_curie: ClassVar[str] = "htan:ChannelMetadata"
+    class_name: ClassVar[str] = "ChannelMetadata"
+    class_model_uri: ClassVar[URIRef] = HTAN.ChannelMetadata
+
+    CHANNEL_ID: str = None
+    CHANNEL_NAME: str = None
+    CYCLE_NUMBER: Optional[int] = None
+    SUB_CYCLE_NUMBER: Optional[int] = None
+    TARGET_NAME: Optional[str] = None
+    ANTIBODY_NAME: Optional[str] = None
+    RRID_IDENTIFIER: Optional[str] = None
+    FLUOROPHORE: Optional[str] = None
+    CLONE: Optional[str] = None
+    LOT: Optional[str] = None
+    CATALOG_NUMBER: Optional[str] = None
+    EXCITATION_WAVELENGTH: Optional[float] = None
+    EMISSION_WAVELENGTH: Optional[float] = None
+    EXCITATION_BANDWIDTH: Optional[float] = None
+    EMISSION_BANDWIDTH: Optional[float] = None
+    METAL_ISOTOPE_ELEMENT_ABBREVIATION: Optional[Union[str, "MetalIsotopeElement"]] = None
+    METAL_ISOTOPE_ELEMENT_MASS: Optional[int] = None
+    OLIGO_BARCODE_UPPER_STRAND: Optional[str] = None
+    OLIGO_BARCODE_LOWER_STRAND: Optional[str] = None
+    DILUTION: Optional[str] = None
+    CONCENTRATION: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.CHANNEL_ID):
+            self.MissingRequiredField("CHANNEL_ID")
+        if not isinstance(self.CHANNEL_ID, str):
+            self.CHANNEL_ID = str(self.CHANNEL_ID)
+
+        if self._is_empty(self.CHANNEL_NAME):
+            self.MissingRequiredField("CHANNEL_NAME")
+        if not isinstance(self.CHANNEL_NAME, str):
+            self.CHANNEL_NAME = str(self.CHANNEL_NAME)
+
+        if self.CYCLE_NUMBER is not None and not isinstance(self.CYCLE_NUMBER, int):
+            self.CYCLE_NUMBER = int(self.CYCLE_NUMBER)
+
+        if self.SUB_CYCLE_NUMBER is not None and not isinstance(self.SUB_CYCLE_NUMBER, int):
+            self.SUB_CYCLE_NUMBER = int(self.SUB_CYCLE_NUMBER)
+
+        if self.TARGET_NAME is not None and not isinstance(self.TARGET_NAME, str):
+            self.TARGET_NAME = str(self.TARGET_NAME)
+
+        if self.ANTIBODY_NAME is not None and not isinstance(self.ANTIBODY_NAME, str):
+            self.ANTIBODY_NAME = str(self.ANTIBODY_NAME)
+
+        if self.RRID_IDENTIFIER is not None and not isinstance(self.RRID_IDENTIFIER, str):
+            self.RRID_IDENTIFIER = str(self.RRID_IDENTIFIER)
+
+        if self.FLUOROPHORE is not None and not isinstance(self.FLUOROPHORE, str):
+            self.FLUOROPHORE = str(self.FLUOROPHORE)
+
+        if self.CLONE is not None and not isinstance(self.CLONE, str):
+            self.CLONE = str(self.CLONE)
+
+        if self.LOT is not None and not isinstance(self.LOT, str):
+            self.LOT = str(self.LOT)
+
+        if self.CATALOG_NUMBER is not None and not isinstance(self.CATALOG_NUMBER, str):
+            self.CATALOG_NUMBER = str(self.CATALOG_NUMBER)
+
+        if self.EXCITATION_WAVELENGTH is not None and not isinstance(self.EXCITATION_WAVELENGTH, float):
+            self.EXCITATION_WAVELENGTH = float(self.EXCITATION_WAVELENGTH)
+
+        if self.EMISSION_WAVELENGTH is not None and not isinstance(self.EMISSION_WAVELENGTH, float):
+            self.EMISSION_WAVELENGTH = float(self.EMISSION_WAVELENGTH)
+
+        if self.EXCITATION_BANDWIDTH is not None and not isinstance(self.EXCITATION_BANDWIDTH, float):
+            self.EXCITATION_BANDWIDTH = float(self.EXCITATION_BANDWIDTH)
+
+        if self.EMISSION_BANDWIDTH is not None and not isinstance(self.EMISSION_BANDWIDTH, float):
+            self.EMISSION_BANDWIDTH = float(self.EMISSION_BANDWIDTH)
+
+        if self.METAL_ISOTOPE_ELEMENT_ABBREVIATION is not None and not isinstance(self.METAL_ISOTOPE_ELEMENT_ABBREVIATION, MetalIsotopeElement):
+            self.METAL_ISOTOPE_ELEMENT_ABBREVIATION = MetalIsotopeElement(self.METAL_ISOTOPE_ELEMENT_ABBREVIATION)
+
+        if self.METAL_ISOTOPE_ELEMENT_MASS is not None and not isinstance(self.METAL_ISOTOPE_ELEMENT_MASS, int):
+            self.METAL_ISOTOPE_ELEMENT_MASS = int(self.METAL_ISOTOPE_ELEMENT_MASS)
+
+        if self.OLIGO_BARCODE_UPPER_STRAND is not None and not isinstance(self.OLIGO_BARCODE_UPPER_STRAND, str):
+            self.OLIGO_BARCODE_UPPER_STRAND = str(self.OLIGO_BARCODE_UPPER_STRAND)
+
+        if self.OLIGO_BARCODE_LOWER_STRAND is not None and not isinstance(self.OLIGO_BARCODE_LOWER_STRAND, str):
+            self.OLIGO_BARCODE_LOWER_STRAND = str(self.OLIGO_BARCODE_LOWER_STRAND)
+
+        if self.DILUTION is not None and not isinstance(self.DILUTION, str):
+            self.DILUTION = str(self.DILUTION)
+
+        if self.CONCENTRATION is not None and not isinstance(self.CONCENTRATION, str):
+            self.CONCENTRATION = str(self.CONCENTRATION)
 
         super().__post_init__(**kwargs)
 
@@ -692,6 +802,361 @@ class MatrixTypeEnum(EnumDefinitionImpl):
                 text="Z-Score Normalized",
                 description="Z-score normalized values"))
 
+class MetalIsotopeElement(EnumDefinitionImpl):
+
+    H = PermissibleValue(
+        text="H",
+        description="Hydrogen")
+    He = PermissibleValue(
+        text="He",
+        description="Helium")
+    Li = PermissibleValue(
+        text="Li",
+        description="Lithium")
+    Be = PermissibleValue(
+        text="Be",
+        description="Beryllium")
+    B = PermissibleValue(
+        text="B",
+        description="Boron")
+    C = PermissibleValue(
+        text="C",
+        description="Carbon")
+    N = PermissibleValue(
+        text="N",
+        description="Nitrogen")
+    O = PermissibleValue(
+        text="O",
+        description="Oxygen")
+    F = PermissibleValue(
+        text="F",
+        description="Fluorine")
+    Ne = PermissibleValue(
+        text="Ne",
+        description="Neon")
+    Na = PermissibleValue(
+        text="Na",
+        description="Sodium")
+    Mg = PermissibleValue(
+        text="Mg",
+        description="Magnesium")
+    Al = PermissibleValue(
+        text="Al",
+        description="Aluminum")
+    Si = PermissibleValue(
+        text="Si",
+        description="Silicon")
+    P = PermissibleValue(
+        text="P",
+        description="Phosphorus")
+    S = PermissibleValue(
+        text="S",
+        description="Sulfur")
+    Cl = PermissibleValue(
+        text="Cl",
+        description="Chlorine")
+    Ar = PermissibleValue(
+        text="Ar",
+        description="Argon")
+    K = PermissibleValue(
+        text="K",
+        description="Potassium")
+    Ca = PermissibleValue(
+        text="Ca",
+        description="Calcium")
+    Sc = PermissibleValue(
+        text="Sc",
+        description="Scandium")
+    Ti = PermissibleValue(
+        text="Ti",
+        description="Titanium")
+    V = PermissibleValue(
+        text="V",
+        description="Vanadium")
+    Cr = PermissibleValue(
+        text="Cr",
+        description="Chromium")
+    Mn = PermissibleValue(
+        text="Mn",
+        description="Manganese")
+    Fe = PermissibleValue(
+        text="Fe",
+        description="Iron")
+    Co = PermissibleValue(
+        text="Co",
+        description="Cobalt")
+    Ni = PermissibleValue(
+        text="Ni",
+        description="Nickel")
+    Cu = PermissibleValue(
+        text="Cu",
+        description="Copper")
+    Zn = PermissibleValue(
+        text="Zn",
+        description="Zinc")
+    Ga = PermissibleValue(
+        text="Ga",
+        description="Gallium")
+    Ge = PermissibleValue(
+        text="Ge",
+        description="Germanium")
+    As = PermissibleValue(
+        text="As",
+        description="Arsenic")
+    Se = PermissibleValue(
+        text="Se",
+        description="Selenium")
+    Br = PermissibleValue(
+        text="Br",
+        description="Bromine")
+    Kr = PermissibleValue(
+        text="Kr",
+        description="Krypton")
+    Rb = PermissibleValue(
+        text="Rb",
+        description="Rubidium")
+    Sr = PermissibleValue(
+        text="Sr",
+        description="Strontium")
+    Y = PermissibleValue(
+        text="Y",
+        description="Yttrium")
+    Zr = PermissibleValue(
+        text="Zr",
+        description="Zirconium")
+    Nb = PermissibleValue(
+        text="Nb",
+        description="Niobium")
+    Mo = PermissibleValue(
+        text="Mo",
+        description="Molybdenum")
+    Tc = PermissibleValue(
+        text="Tc",
+        description="Technetium")
+    Ru = PermissibleValue(
+        text="Ru",
+        description="Ruthenium")
+    Rh = PermissibleValue(
+        text="Rh",
+        description="Rhodium")
+    Pd = PermissibleValue(
+        text="Pd",
+        description="Palladium")
+    Ag = PermissibleValue(
+        text="Ag",
+        description="Silver")
+    Cd = PermissibleValue(
+        text="Cd",
+        description="Cadmium")
+    In = PermissibleValue(
+        text="In",
+        description="Indium")
+    Sn = PermissibleValue(
+        text="Sn",
+        description="Tin")
+    Sb = PermissibleValue(
+        text="Sb",
+        description="Antimony")
+    Te = PermissibleValue(
+        text="Te",
+        description="Tellurium")
+    I = PermissibleValue(
+        text="I",
+        description="Iodine")
+    Xe = PermissibleValue(
+        text="Xe",
+        description="Xenon")
+    Cs = PermissibleValue(
+        text="Cs",
+        description="Cesium")
+    Ba = PermissibleValue(
+        text="Ba",
+        description="Barium")
+    La = PermissibleValue(
+        text="La",
+        description="Lanthanum")
+    Ce = PermissibleValue(
+        text="Ce",
+        description="Cerium")
+    Pr = PermissibleValue(
+        text="Pr",
+        description="Praseodymium")
+    Nd = PermissibleValue(
+        text="Nd",
+        description="Neodymium")
+    Pm = PermissibleValue(
+        text="Pm",
+        description="Promethium")
+    Sm = PermissibleValue(
+        text="Sm",
+        description="Samarium")
+    Eu = PermissibleValue(
+        text="Eu",
+        description="Europium")
+    Gd = PermissibleValue(
+        text="Gd",
+        description="Gadolinium")
+    Tb = PermissibleValue(
+        text="Tb",
+        description="Terbium")
+    Dy = PermissibleValue(
+        text="Dy",
+        description="Dysprosium")
+    Ho = PermissibleValue(
+        text="Ho",
+        description="Holmium")
+    Er = PermissibleValue(
+        text="Er",
+        description="Erbium")
+    Tm = PermissibleValue(
+        text="Tm",
+        description="Thulium")
+    Yb = PermissibleValue(
+        text="Yb",
+        description="Ytterbium")
+    Lu = PermissibleValue(
+        text="Lu",
+        description="Lutetium")
+    Hf = PermissibleValue(
+        text="Hf",
+        description="Hafnium")
+    Ta = PermissibleValue(
+        text="Ta",
+        description="Tantalum")
+    W = PermissibleValue(
+        text="W",
+        description="Tungsten")
+    Re = PermissibleValue(
+        text="Re",
+        description="Rhenium")
+    Os = PermissibleValue(
+        text="Os",
+        description="Osmium")
+    Ir = PermissibleValue(
+        text="Ir",
+        description="Iridium")
+    Pt = PermissibleValue(
+        text="Pt",
+        description="Platinum")
+    Au = PermissibleValue(
+        text="Au",
+        description="Gold")
+    Hg = PermissibleValue(
+        text="Hg",
+        description="Mercury")
+    Tl = PermissibleValue(
+        text="Tl",
+        description="Thallium")
+    Pb = PermissibleValue(
+        text="Pb",
+        description="Lead")
+    Bi = PermissibleValue(
+        text="Bi",
+        description="Bismuth")
+    Po = PermissibleValue(
+        text="Po",
+        description="Polonium")
+    At = PermissibleValue(
+        text="At",
+        description="Astatine")
+    Rn = PermissibleValue(
+        text="Rn",
+        description="Radon")
+    Fr = PermissibleValue(
+        text="Fr",
+        description="Francium")
+    Ra = PermissibleValue(
+        text="Ra",
+        description="Radium")
+    Ac = PermissibleValue(
+        text="Ac",
+        description="Actinium")
+    Th = PermissibleValue(
+        text="Th",
+        description="Thorium")
+    Pa = PermissibleValue(
+        text="Pa",
+        description="Protactinium")
+    U = PermissibleValue(
+        text="U",
+        description="Uranium")
+    Np = PermissibleValue(
+        text="Np",
+        description="Neptunium")
+    Pu = PermissibleValue(
+        text="Pu",
+        description="Plutonium")
+    Am = PermissibleValue(
+        text="Am",
+        description="Americium")
+    Cm = PermissibleValue(
+        text="Cm",
+        description="Curium")
+    Bk = PermissibleValue(
+        text="Bk",
+        description="Berkelium")
+    Cf = PermissibleValue(
+        text="Cf",
+        description="Californium")
+    Es = PermissibleValue(
+        text="Es",
+        description="Einsteinium")
+    Fm = PermissibleValue(
+        text="Fm",
+        description="Fermium")
+    Md = PermissibleValue(
+        text="Md",
+        description="Mendelevium")
+    No = PermissibleValue(
+        text="No",
+        description="Nobelium")
+    Lr = PermissibleValue(
+        text="Lr",
+        description="Lawrencium")
+    Rf = PermissibleValue(
+        text="Rf",
+        description="Rutherfordium")
+    Db = PermissibleValue(
+        text="Db",
+        description="Dubnium")
+    Sg = PermissibleValue(
+        text="Sg",
+        description="Seaborgium")
+    Bh = PermissibleValue(
+        text="Bh",
+        description="Bohrium")
+    Hs = PermissibleValue(
+        text="Hs",
+        description="Hassium")
+    Mt = PermissibleValue(
+        text="Mt",
+        description="Meitnerium")
+    Ds = PermissibleValue(
+        text="Ds",
+        description="Darmstadtium")
+    Rg = PermissibleValue(
+        text="Rg",
+        description="Roentgenium")
+    Cn = PermissibleValue(
+        text="Cn",
+        description="Copernicium")
+    Fl = PermissibleValue(
+        text="Fl",
+        description="Flerovium")
+    Lv = PermissibleValue(
+        text="Lv",
+        description="Livermorium")
+    Ts = PermissibleValue(
+        text="Ts",
+        description="Tennessine")
+    Og = PermissibleValue(
+        text="Og",
+        description="Oganesson")
+
+    _defn = EnumDefinition(
+        name="MetalIsotopeElement",
+    )
+
 class DeIdentificationMethodType(EnumDefinitionImpl):
 
     Automatic = PermissibleValue(
@@ -855,6 +1320,9 @@ slots.multiplexMicroscopyData__LEVEL_3_DATA = Slot(uri=HTAN.LEVEL_3_DATA, name="
 slots.multiplexMicroscopyData__LEVEL_4_DATA = Slot(uri=HTAN.LEVEL_4_DATA, name="multiplexMicroscopyData__LEVEL_4_DATA", curie=HTAN.curie('LEVEL_4_DATA'),
                    model_uri=HTAN.multiplexMicroscopyData__LEVEL_4_DATA, domain=None, range=Optional[Union[str, MultiplexMicroscopyLevel4HTANDATAFILEID]])
 
+slots.multiplexMicroscopyData__CHANNEL_METADATA = Slot(uri=HTAN.CHANNEL_METADATA, name="multiplexMicroscopyData__CHANNEL_METADATA", curie=HTAN.curie('CHANNEL_METADATA'),
+                   model_uri=HTAN.multiplexMicroscopyData__CHANNEL_METADATA, domain=None, range=Optional[Union[Union[dict, ChannelMetadata], List[Union[dict, ChannelMetadata]]]])
+
 slots.coreFileAttributes__FILENAME = Slot(uri=HTAN.FILENAME, name="coreFileAttributes__FILENAME", curie=HTAN.curie('FILENAME'),
                    model_uri=HTAN.coreFileAttributes__FILENAME, domain=None, range=str)
 
@@ -971,6 +1439,70 @@ slots.multiplexMicroscopyLevel4__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="
 slots.multiplexMicroscopyLevel4__FILENAME = Slot(uri=HTAN.FILENAME, name="multiplexMicroscopyLevel4__FILENAME", curie=HTAN.curie('FILENAME'),
                    model_uri=HTAN.multiplexMicroscopyLevel4__FILENAME, domain=None, range=str,
                    pattern=re.compile(r'^.+\.(csv|h5ad)$'))
+
+slots.channelMetadata__CHANNEL_ID = Slot(uri=HTAN.CHANNEL_ID, name="channelMetadata__CHANNEL_ID", curie=HTAN.curie('CHANNEL_ID'),
+                   model_uri=HTAN.channelMetadata__CHANNEL_ID, domain=None, range=str)
+
+slots.channelMetadata__CHANNEL_NAME = Slot(uri=HTAN.CHANNEL_NAME, name="channelMetadata__CHANNEL_NAME", curie=HTAN.curie('CHANNEL_NAME'),
+                   model_uri=HTAN.channelMetadata__CHANNEL_NAME, domain=None, range=str)
+
+slots.channelMetadata__CYCLE_NUMBER = Slot(uri=HTAN.CYCLE_NUMBER, name="channelMetadata__CYCLE_NUMBER", curie=HTAN.curie('CYCLE_NUMBER'),
+                   model_uri=HTAN.channelMetadata__CYCLE_NUMBER, domain=None, range=Optional[int])
+
+slots.channelMetadata__SUB_CYCLE_NUMBER = Slot(uri=HTAN.SUB_CYCLE_NUMBER, name="channelMetadata__SUB_CYCLE_NUMBER", curie=HTAN.curie('SUB_CYCLE_NUMBER'),
+                   model_uri=HTAN.channelMetadata__SUB_CYCLE_NUMBER, domain=None, range=Optional[int])
+
+slots.channelMetadata__TARGET_NAME = Slot(uri=HTAN.TARGET_NAME, name="channelMetadata__TARGET_NAME", curie=HTAN.curie('TARGET_NAME'),
+                   model_uri=HTAN.channelMetadata__TARGET_NAME, domain=None, range=Optional[str])
+
+slots.channelMetadata__ANTIBODY_NAME = Slot(uri=HTAN.ANTIBODY_NAME, name="channelMetadata__ANTIBODY_NAME", curie=HTAN.curie('ANTIBODY_NAME'),
+                   model_uri=HTAN.channelMetadata__ANTIBODY_NAME, domain=None, range=Optional[str])
+
+slots.channelMetadata__RRID_IDENTIFIER = Slot(uri=HTAN.RRID_IDENTIFIER, name="channelMetadata__RRID_IDENTIFIER", curie=HTAN.curie('RRID_IDENTIFIER'),
+                   model_uri=HTAN.channelMetadata__RRID_IDENTIFIER, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^RRID:AB_\d+$'))
+
+slots.channelMetadata__FLUOROPHORE = Slot(uri=HTAN.FLUOROPHORE, name="channelMetadata__FLUOROPHORE", curie=HTAN.curie('FLUOROPHORE'),
+                   model_uri=HTAN.channelMetadata__FLUOROPHORE, domain=None, range=Optional[str])
+
+slots.channelMetadata__CLONE = Slot(uri=HTAN.CLONE, name="channelMetadata__CLONE", curie=HTAN.curie('CLONE'),
+                   model_uri=HTAN.channelMetadata__CLONE, domain=None, range=Optional[str])
+
+slots.channelMetadata__LOT = Slot(uri=HTAN.LOT, name="channelMetadata__LOT", curie=HTAN.curie('LOT'),
+                   model_uri=HTAN.channelMetadata__LOT, domain=None, range=Optional[str])
+
+slots.channelMetadata__CATALOG_NUMBER = Slot(uri=HTAN.CATALOG_NUMBER, name="channelMetadata__CATALOG_NUMBER", curie=HTAN.curie('CATALOG_NUMBER'),
+                   model_uri=HTAN.channelMetadata__CATALOG_NUMBER, domain=None, range=Optional[str])
+
+slots.channelMetadata__EXCITATION_WAVELENGTH = Slot(uri=HTAN.EXCITATION_WAVELENGTH, name="channelMetadata__EXCITATION_WAVELENGTH", curie=HTAN.curie('EXCITATION_WAVELENGTH'),
+                   model_uri=HTAN.channelMetadata__EXCITATION_WAVELENGTH, domain=None, range=Optional[float])
+
+slots.channelMetadata__EMISSION_WAVELENGTH = Slot(uri=HTAN.EMISSION_WAVELENGTH, name="channelMetadata__EMISSION_WAVELENGTH", curie=HTAN.curie('EMISSION_WAVELENGTH'),
+                   model_uri=HTAN.channelMetadata__EMISSION_WAVELENGTH, domain=None, range=Optional[float])
+
+slots.channelMetadata__EXCITATION_BANDWIDTH = Slot(uri=HTAN.EXCITATION_BANDWIDTH, name="channelMetadata__EXCITATION_BANDWIDTH", curie=HTAN.curie('EXCITATION_BANDWIDTH'),
+                   model_uri=HTAN.channelMetadata__EXCITATION_BANDWIDTH, domain=None, range=Optional[float])
+
+slots.channelMetadata__EMISSION_BANDWIDTH = Slot(uri=HTAN.EMISSION_BANDWIDTH, name="channelMetadata__EMISSION_BANDWIDTH", curie=HTAN.curie('EMISSION_BANDWIDTH'),
+                   model_uri=HTAN.channelMetadata__EMISSION_BANDWIDTH, domain=None, range=Optional[float])
+
+slots.channelMetadata__METAL_ISOTOPE_ELEMENT_ABBREVIATION = Slot(uri=HTAN.METAL_ISOTOPE_ELEMENT_ABBREVIATION, name="channelMetadata__METAL_ISOTOPE_ELEMENT_ABBREVIATION", curie=HTAN.curie('METAL_ISOTOPE_ELEMENT_ABBREVIATION'),
+                   model_uri=HTAN.channelMetadata__METAL_ISOTOPE_ELEMENT_ABBREVIATION, domain=None, range=Optional[Union[str, "MetalIsotopeElement"]])
+
+slots.channelMetadata__METAL_ISOTOPE_ELEMENT_MASS = Slot(uri=HTAN.METAL_ISOTOPE_ELEMENT_MASS, name="channelMetadata__METAL_ISOTOPE_ELEMENT_MASS", curie=HTAN.curie('METAL_ISOTOPE_ELEMENT_MASS'),
+                   model_uri=HTAN.channelMetadata__METAL_ISOTOPE_ELEMENT_MASS, domain=None, range=Optional[int])
+
+slots.channelMetadata__OLIGO_BARCODE_UPPER_STRAND = Slot(uri=HTAN.OLIGO_BARCODE_UPPER_STRAND, name="channelMetadata__OLIGO_BARCODE_UPPER_STRAND", curie=HTAN.curie('OLIGO_BARCODE_UPPER_STRAND'),
+                   model_uri=HTAN.channelMetadata__OLIGO_BARCODE_UPPER_STRAND, domain=None, range=Optional[str])
+
+slots.channelMetadata__OLIGO_BARCODE_LOWER_STRAND = Slot(uri=HTAN.OLIGO_BARCODE_LOWER_STRAND, name="channelMetadata__OLIGO_BARCODE_LOWER_STRAND", curie=HTAN.curie('OLIGO_BARCODE_LOWER_STRAND'),
+                   model_uri=HTAN.channelMetadata__OLIGO_BARCODE_LOWER_STRAND, domain=None, range=Optional[str])
+
+slots.channelMetadata__DILUTION = Slot(uri=HTAN.DILUTION, name="channelMetadata__DILUTION", curie=HTAN.curie('DILUTION'),
+                   model_uri=HTAN.channelMetadata__DILUTION, domain=None, range=Optional[str])
+
+slots.channelMetadata__CONCENTRATION = Slot(uri=HTAN.CONCENTRATION, name="channelMetadata__CONCENTRATION", curie=HTAN.curie('CONCENTRATION'),
+                   model_uri=HTAN.channelMetadata__CONCENTRATION, domain=None, range=Optional[str])
 
 slots.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES = Slot(uri=HTAN.EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, name="baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES", curie=HTAN.curie('EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES'),
                    model_uri=HTAN.baseImagingAttributes__EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES, domain=None, range=Union[str, "ExperimentalStrategyAndDataSubtypes"])
