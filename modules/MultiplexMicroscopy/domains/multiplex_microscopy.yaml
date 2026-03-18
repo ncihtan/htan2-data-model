@@ -46,5 +46,6 @@ classes:
         multivalued: true
         inlined_as_list: true
         required: false
+        title: Channel Metadata
         description: Channel metadata records for multiplex microscopy imaging
 
