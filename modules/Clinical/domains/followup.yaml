@@ -20,6 +20,8 @@ enums:
         description: Completely disabled. Cannot carry on any selfcare. Totally confined to bed or chair.
       "5":
         description: Dead.
+      "Not Reported":
+        description: Not provided or available.
 
   EvidenceOfRecurrenceTypeEnum:
     title: evidence_of_recurrence_type

@@ -241,6 +241,16 @@ enums:
       "8th":
         description: "A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one.: The form in which a text (especially a printed book) is published."
 
+  AJCCTumorStagingAvailableEnum:
+    title: ajcc_tumor_staging_available
+    permissible_values:
+      "No":
+        description: The AJCC staging information is not available to report.
+      "Unknown":
+        description: It is not known whether AJCC staging information is available.
+      "Yes":
+        description: The AJCC staging information is available to report.
+
   LastKnownDiseaseStatusEnum:
     title: last_known_disease_status
     permissible_values:
@@ -410,11 +420,15 @@ classes:
         title: "Clinical M Stage"
         description: Extent of the distant metastasis for the cancer based on evidence obtained from clinical assessment parameters determined prior to treatment. (caDSR:3440331) (Aligns to CRDC Node)
         slot_uri: caDSR:3440331
+      AJCC_TUMOR_STAGING_AVAILABLE:
+        range: AJCCTumorStagingAvailableEnum
+        required: true
+        title: "AJCC Tumor Staging Available"
+        description: Indicates whether AJCC staging information is available to report. If No or Unknown, AJCC_STAGING_SYSTEM_EDITION is expected to be null; CLINICAL_T_STAGE, CLINICAL_N_STAGE, and CLINICAL_M_STAGE should be set to Not Reported or Unknown.
       AJCC_STAGING_SYSTEM_EDITION:
         range: AJCCStagingSystemEditionEnum
-        required: true
         title: "AJCC Staging System Edition"
-        description: Version or edition of the American Joint Committee on Cancer Cancer Staging Handbooks used to guide TMN clinical staging in CLINICAL_T_STAGE, CLINICAL_M_STAGE and CLINICAL_N_STAGE fields. (caDSR:2722309) (Aligns to CRDC Node)
+        description: Version or edition of the American Joint Committee on Cancer Cancer Staging Handbooks used to guide TMN clinical staging in CLINICAL_T_STAGE, CLINICAL_M_STAGE and CLINICAL_N_STAGE fields. (caDSR:2722309) (Aligns to CRDC Node) Required when AJCC_TUMOR_STAGING_AVAILABLE is Yes.
         slot_uri: caDSR:2722309
       AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS:
         range: integer

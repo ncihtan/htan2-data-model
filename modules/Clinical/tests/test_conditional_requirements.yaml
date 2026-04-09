@@ -76,7 +76,8 @@ DIAGNOSIS:
   CLINICAL_T_STAGE: "T2"  # Valid enum value
   CLINICAL_N_STAGE: "N1"  # Valid enum value
   CLINICAL_M_STAGE: "M0"  # Valid enum value
-  AJCC_STAGING_SYSTEM_EDITION: "8th"  # Valid enum value
+  AJCC_TUMOR_STAGING_AVAILABLE: "Yes"  # Required - staging information is available
+  AJCC_STAGING_SYSTEM_EDITION: "8th"  # Valid enum value - required when AJCC_TUMOR_STAGING_AVAILABLE is Yes
   AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS: 19000
   LAST_KNOWN_DISEASE_STATUS: "Distant Metastasis"  # Valid enum value
   TUMOR_CLASSIFICATION_CATEGORY: "Primary"  # Valid enum value
