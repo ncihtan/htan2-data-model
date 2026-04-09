@@ -330,6 +330,92 @@ def fix_boolean_patterns(schema_data: dict) -> dict:
     return schema_data
 
 
+def fix_multivalued_conditions(schema_data: dict) -> dict:
+    """Fix conditional checks on multivalued (array) properties.
+
+    LinkML generates simple const/pattern checks in if-clauses for all slots,
+    regardless of whether the slot is multivalued (array). For array properties,
+    the correct JSON Schema is to use 'contains' so the condition fires when
+    the array contains the specified value.
+
+    Example transformations:
+    - Before: {"TREATMENT_TYPE": {"const": "Pharmacotherapy"}}
+    - After:  {"TREATMENT_TYPE": {"contains": {"const": "Pharmacotherapy"}}}
+
+    - Before: {"TREATMENT_TYPE": {"pattern": ".*Surgical.*"}}
+    - After:  {"TREATMENT_TYPE": {"contains": {"pattern": ".*Surgical.*"}}}
+
+    - Before: {"TREATMENT_TYPE": {"anyOf": [{"pattern": ".*Surgical.*"}, ...]}}
+    - After:  {"TREATMENT_TYPE": {"anyOf": [{"contains": {"pattern": ".*Surgical.*"}}, ...]}}
+    """
+    # Collect all property names that are arrays — from both the top-level
+    # properties and every definition in $defs, so the fix works regardless of
+    # whether we're generating for the leaf class or a parent container class.
+    def _is_array(prop):
+        return isinstance(prop, dict) and prop.get("type") == "array"
+
+    array_props = {
+        name
+        for name, prop in schema_data.get("properties", {}).items()
+        if _is_array(prop)
+    }
+    for defn in schema_data.get("$defs", {}).values():
+        if isinstance(defn, dict):
+            for name, prop in defn.get("properties", {}).items():
+                if _is_array(prop):
+                    array_props.add(name)
+
+    def wrap_in_contains(cond: dict) -> dict:
+        """Wrap a const or pattern condition in a contains clause."""
+        if "const" in cond and "contains" not in cond:
+            return {"contains": {"const": cond["const"]}}
+        if "pattern" in cond and "contains" not in cond:
+            return {"contains": {"pattern": cond["pattern"]}}
+        if "anyOf" in cond and "contains" not in cond:
+            new_items = []
+            for item in cond["anyOf"]:
+                if isinstance(item, dict):
+                    if "const" in item and "contains" not in item:
+                        new_items.append({"contains": {"const": item["const"]}})
+                    elif "pattern" in item and "contains" not in item:
+                        new_items.append({"contains": {"pattern": item["pattern"]}})
+                    else:
+                        new_items.append(item)
+                else:
+                    new_items.append(item)
+            return {"anyOf": new_items}
+        return cond
+
+    def fix_if_clause(if_clause: dict) -> None:
+        if_props = if_clause.get("properties", {})
+        for prop_name in list(if_props.keys()):
+            if prop_name in array_props and isinstance(if_props[prop_name], dict):
+                if_props[prop_name] = wrap_in_contains(if_props[prop_name])
+
+    def recursive_fix(obj, visited=None):
+        if visited is None:
+            visited = set()
+        obj_id = id(obj)
+        if obj_id in visited:
+            return
+        visited.add(obj_id)
+        try:
+            if isinstance(obj, dict):
+                if "if" in obj and isinstance(obj["if"], dict):
+                    fix_if_clause(obj["if"])
+                for value in obj.values():
+                    recursive_fix(value, visited)
+            elif isinstance(obj, list):
+                for item in obj:
+                    recursive_fix(item, visited)
+        except (RecursionError, TypeError, AttributeError) as e:
+            print(f"Warning: Skipping object due to error: {e}")
+
+    recursive_fix(schema_data)
+    print("Fixed multivalued property conditions to use 'contains'")
+    return schema_data
+
+
 def backfill_descriptions_from_linkml(
     schema_data: dict, linkml_yaml: str, class_name: str
 ) -> dict:
@@ -431,6 +517,7 @@ def main():
     schema_data = fix_additional_properties(schema_data)
     schema_data = clean_union_types(schema_data)
     schema_data = fix_boolean_patterns(schema_data)
+    schema_data = fix_multivalued_conditions(schema_data)
     schema_data = remove_unsupported_fields(schema_data)
 
     # 4. Write final result to output file
