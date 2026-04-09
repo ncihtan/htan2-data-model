@@ -198,13 +198,13 @@ classes:
         slot_uri: caDSR:14737565
       PHARMACOTHERAPY_TYPE:
         range: PharmacotherapyTypeEnum
-        required: true
+        required: false
         title: "Pharmacotherapy Type"
         description: Whether single or combination pharmacotherapy was used. (caDSR:15743233) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:15743233
       THERAPEUTIC_AGENTS:
         range: AntineoplasticAgentEnum
-        required: true
+        required: false
         multivalued: true
         pattern: "^[^|]+(\\|[^|]+)*$"
         title: "Therapeutic Agents"
@@ -256,15 +256,21 @@ classes:
       THERAPY_ANATOMIC_SITE_UBERON_CODE:
         required: false
         description: Required when TREATMENT_TYPE is a surgical or radiation therapy
+      PHARMACOTHERAPY_TYPE:
+        required: false
+        description: Required when TREATMENT_TYPE includes pharmacotherapy
+      THERAPEUTIC_AGENTS:
+        required: false
+        description: Required when TREATMENT_TYPE includes pharmacotherapy
       OFF_TREATMENT_REASON:
         required: false
         description: Required when AGE_IN_DAYS_AT_TREATMENT_END is present
       REGIMEN_OR_LINE_OF_THERAPY:
         required: false
-        description: Required when TREATMENT_TYPE is pharmacotherapy
+        description: Required when TREATMENT_TYPE includes pharmacotherapy
       NUMBER_OF_CYCLES:
         required: false
-        description: Required when TREATMENT_TYPE is pharmacotherapy
+        description: Required when TREATMENT_TYPE includes pharmacotherapy
       RESPONSE:
         required: false
         description: Required when AGE_IN_DAYS_AT_TREATMENT_END is present
@@ -291,7 +297,12 @@ classes:
               required: true
             RESPONSE:
               required: true
-      - description: "When treatment type is pharmacotherapy, regimen and cycles become required"
+      # Note: equals_string on a multivalued slot has undefined semantics in
+      # LinkML and generates {"const": "..."} in JSON Schema, which never matches
+      # an array value. The linkml_to_flat_synapse_jsonschema.py post-processor
+      # (fix_multivalued_conditions) rewrites this to {"contains": {"const": "..."}}
+      # at build time to produce a correct Synapse JSON Schema conditional.
+      - description: "When treatment type is pharmacotherapy, regimen, cycles, pharmacotherapy type, and therapeutic agents become required"
         preconditions:
           slot_conditions:
             TREATMENT_TYPE:
@@ -301,4 +312,8 @@ classes:
             REGIMEN_OR_LINE_OF_THERAPY:
               required: true
             NUMBER_OF_CYCLES:
-              required: true 
+              required: true
+            PHARMACOTHERAPY_TYPE:
+              required: true
+            THERAPEUTIC_AGENTS:
+              required: true
