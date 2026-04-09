@@ -18,7 +18,7 @@ gen-schema:
 	poetry run gen-python $(SOURCE_SCHEMA_PATH) > $(BUILD_DIR)/multiplex_microscopy.py
 	cp $(BUILD_DIR)/multiplex_microscopy.py $(DATAMODEL_DIR)/
 
-# Generate Synapse-compatible flat JSON schema
+# Generate Synapse-compatible flat JSON schemas
 gen-synapse-schema:
 	mkdir -p $(BUILD_DIR)
 	cd ../../ && poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
@@ -26,6 +26,11 @@ gen-synapse-schema:
 		--class-name MultiplexMicroscopyData \
 		--output modules/MultiplexMicroscopy/$(BUILD_DIR)/multiplex_microscopy.flat.schema.json
 	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/multiplex_microscopy.flat.schema.json"
+	cd ../../ && poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+		modules/MultiplexMicroscopy/domains/multiplex_microscopy_channel_metadata.yaml \
+		--class-name ChannelMetadata \
+		--output modules/MultiplexMicroscopy/$(BUILD_DIR)/channel_metadata.flat.schema.json
+	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/channel_metadata.flat.schema.json"
 
 # Generate documentation
 docs:
