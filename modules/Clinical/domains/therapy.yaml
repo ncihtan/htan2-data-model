@@ -297,16 +297,12 @@ classes:
               required: true
             RESPONSE:
               required: true
-      # Note: equals_string on a multivalued slot has undefined semantics in
-      # LinkML and generates {"const": "..."} in JSON Schema, which never matches
-      # an array value. The linkml_to_flat_synapse_jsonschema.py post-processor
-      # (fix_multivalued_conditions) rewrites this to {"contains": {"const": "..."}}
-      # at build time to produce a correct Synapse JSON Schema conditional.
       - description: "When treatment type is pharmacotherapy, regimen, cycles, pharmacotherapy type, and therapeutic agents become required"
         preconditions:
           slot_conditions:
             TREATMENT_TYPE:
-              equals_string: "Pharmacotherapy"
+              any_of:
+                - pattern: ".*Pharmacotherapy.*"
         postconditions:
           slot_conditions:
             REGIMEN_OR_LINE_OF_THERAPY:
