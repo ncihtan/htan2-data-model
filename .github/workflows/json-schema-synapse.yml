@@ -192,18 +192,24 @@ jobs:
           "modules/MultiplexMicroscopy/domains/level_2.yaml" \
           --class-name "MultiplexMicroscopyLevel2" \
           --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MultiplexMicroscopyLevel2-${{ steps.version.outputs.version }}-schema.json"
-        
+
         # MultiplexMicroscopy Level 3
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/MultiplexMicroscopy/domains/level_3.yaml" \
           --class-name "MultiplexMicroscopyLevel3" \
           --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MultiplexMicroscopyLevel3-${{ steps.version.outputs.version }}-schema.json"
-        
+
         # MultiplexMicroscopy Level 4
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
           "modules/MultiplexMicroscopy/domains/level_4.yaml" \
           --class-name "MultiplexMicroscopyLevel4" \
           --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MultiplexMicroscopyLevel4-${{ steps.version.outputs.version }}-schema.json"
+
+        # MultiplexMicroscopy Channel Metadata
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/MultiplexMicroscopy/domains/multiplex_microscopy_channel_metadata.yaml" \
+          --class-name "ChannelMetadata" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.ChannelMetadata-${{ steps.version.outputs.version }}-schema.json"
         
         # DigitalPathology
         echo "Generating DigitalPathology schema..."
@@ -341,6 +347,7 @@ jobs:
         - MultiplexMicroscopyLevel2 Schema
         - MultiplexMicroscopyLevel3 Schema
         - MultiplexMicroscopyLevel4 Schema
+        - ChannelMetadata Schema
         
         **DigitalPathology Module:**
         - DigitalPathologyData Schema
