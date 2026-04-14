@@ -204,7 +204,7 @@ classes:
         slot_uri: caDSR:15743233
       THERAPEUTIC_AGENTS:
         range: AntineoplasticAgentEnum
-        required: true
+        required: false
         multivalued: true
         pattern: "^[^|]+(\\|[^|]+)*$"
         title: "Therapeutic Agents"
@@ -230,25 +230,25 @@ classes:
         slot_uri: caDSR:12304723
       OFF_TREATMENT_REASON:
         range: OffTreatmentReasonEnum
-        required: true
+        required: false
         title: "Off Treatment Reason"
         description: Reason that an individual did not receive treatment. (caDSR:15743249) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:15743249
       REGIMEN_OR_LINE_OF_THERAPY:
         range: RegimenOrLineOfTherapyEnum
-        required: true
+        required: false
         title: "Regimen or Line of Therapy"
         description: Description of the treatment regimen or line of therapy. (caDSR:15915841) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:15915841
       NUMBER_OF_CYCLES:
         range: integer
-        required: true
+        required: false
         title: "Number of Cycles"
         description: Number of cycles of the administered therapeutic procedure. Use -1 if this data point is not available. (caDSR:3060718) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:3060718
       RESPONSE:
         range: DiseaseResponseEnum
-        required: true
+        required: false
         title: "Response"
         description: The result of an evaluation to determine whether pathologic and/or clinical changes resulted from treatment. (caDSR:13383448) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:13383448
@@ -256,12 +256,15 @@ classes:
       THERAPY_ANATOMIC_SITE_UBERON_CODE:
         required: false
         description: Required when TREATMENT_TYPE is a surgical or radiation therapy
+      THERAPEUTIC_AGENTS:
+        required: false
+        description: Required when TREATMENT_TYPE is Chemotherapy, Concurrent Chemoradiation, or Pharmacotherapy
       OFF_TREATMENT_REASON:
         required: false
         description: Required when AGE_IN_DAYS_AT_TREATMENT_END is present
       REGIMEN_OR_LINE_OF_THERAPY:
         required: false
-        description: Required when TREATMENT_TYPE is pharmacotherapy
+        description: Required when TREATMENT_TYPE is Chemotherapy, Concurrent Chemoradiation, or Pharmacotherapy
       NUMBER_OF_CYCLES:
         required: false
         description: Required when TREATMENT_TYPE is pharmacotherapy
@@ -291,14 +294,30 @@ classes:
               required: true
             RESPONSE:
               required: true
-      - description: "When treatment type is pharmacotherapy, regimen and cycles become required"
+      - description: "When treatment type includes Chemotherapy or Concurrent Chemoradiation, therapeutic agents and regimen become required"
         preconditions:
           slot_conditions:
             TREATMENT_TYPE:
-              equals_string: "Pharmacotherapy"
+              any_of:
+                - pattern: ".*Chemotherapy.*"
+                - pattern: ".*Concurrent Chemoradiation.*"
         postconditions:
           slot_conditions:
+            THERAPEUTIC_AGENTS:
+              required: true
+            REGIMEN_OR_LINE_OF_THERAPY:
+              required: true
+      - description: "When treatment type includes Pharmacotherapy, therapeutic agents, regimen, and cycles become required"
+        preconditions:
+          slot_conditions:
+            TREATMENT_TYPE:
+              any_of:
+                - pattern: ".*Pharmacotherapy.*"
+        postconditions:
+          slot_conditions:
+            THERAPEUTIC_AGENTS:
+              required: true
             REGIMEN_OR_LINE_OF_THERAPY:
               required: true
             NUMBER_OF_CYCLES:
-              required: true 
+              required: true
