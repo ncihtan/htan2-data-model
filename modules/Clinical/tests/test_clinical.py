@@ -143,9 +143,9 @@ def test_gleason_grade_group_slot_optional(schema_view):
 
 
 def test_gleason_grade_group_enum_values(schema_view):
-    """Test GleasonGradeGroupEnum has grade groups I-V plus Not Applicable/Not Reported/Unknown."""
+    """Test GleasonGradeGroupEnum has grade groups 1-5 plus Not Applicable/Not Reported/Unknown."""
     enum = schema_view.get_enum("GleasonGradeGroupEnum")
-    for grade in ("Grade Group I", "Grade Group II", "Grade Group III", "Grade Group IV", "Grade Group V"):
+    for grade in ("1", "2", "3", "4", "5"):
         assert grade in enum.permissible_values
     for sentinel in ("Not Applicable", "Not Reported", "Unknown"):
         assert sentinel in enum.permissible_values

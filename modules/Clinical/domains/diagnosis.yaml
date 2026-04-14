@@ -366,16 +366,16 @@ enums:
   GleasonGradeGroupEnum:
     title: gleason_grade_group
     permissible_values:
-      "Grade Group I":
-        description: Only individual discrete well-formed glands. (caDSR:6051222)
-      "Grade Group II":
-        description: Predominantly well-formed glands with lesser component of poorly-formed/fused/cribriform glands. (caDSR:6051013)
-      "Grade Group III":
-        description: Predominantly poorly formed/fused/cribriform glands with lesser component of well-formed glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at radical prostatectomy, the component of less than 5% well-formed glands is not factored into the grade. (caDSR:6051226)
-      "Grade Group IV":
-        description: Only poorly-formed/fused/cribriform glands or predominantly well-formed glands and lesser component lacking glands or predominantly lacking glands and lesser component of well-formed gland. Poorly-formed/fused/cribriform glands can be a more minor component. (caDSR:6051227)
-      "Grade Group V":
-        description: Lacks gland formation (or with necrosis) with or without poorly formed/fused/cribriform glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at RP, the component of less than 5% well-formed glands is not factored into the grade. (caDSR:6051228)
+      "1":
+        description: Grade Group I - Only individual discrete well-formed glands. (caDSR:6051222)
+      "2":
+        description: Grade Group II - Predominantly well-formed glands with lesser component of poorly-formed/fused/cribriform glands. (caDSR:6051013)
+      "3":
+        description: Grade Group III - Predominantly poorly formed/fused/cribriform glands with lesser component of well-formed glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at radical prostatectomy, the component of less than 5% well-formed glands is not factored into the grade. (caDSR:6051226)
+      "4":
+        description: Grade Group IV - Only poorly-formed/fused/cribriform glands or predominantly well-formed glands and lesser component lacking glands or predominantly lacking glands and lesser component of well-formed gland. Poorly-formed/fused/cribriform glands can be a more minor component. (caDSR:6051227)
+      "5":
+        description: Grade Group V - Lacks gland formation (or with necrosis) with or without poorly formed/fused/cribriform glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at RP, the component of less than 5% well-formed glands is not factored into the grade. (caDSR:6051228)
       "Not Applicable":
         description: Determination of a value is not relevant in the current context.
       "Not Reported":
