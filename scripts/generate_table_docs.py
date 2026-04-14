@@ -94,9 +94,14 @@ def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> st
         slot = sv.induced_slot(slot_name, class_name)
         if slot:
             slot_range = slot.range or "string"
-            # Link to enum if the type is an enum
+            # Link to enum if the type is an enum.
+            # Sphinx/MyST slugifies heading IDs: lowercase + non-alphanumeric → dash.
+            # Use the same transformation so the anchor matches the generated heading ID.
             if slot_range in enum_names:
-                type_display = f"[{slot_range}](#{slot_range.lower()})"
+                slug = "".join(
+                    c if c.isalnum() else "-" for c in slot_range.lower()
+                ).strip("-")
+                type_display = f"[{slot_range}](#{slug})"
             else:
                 type_display = slot_range
 
