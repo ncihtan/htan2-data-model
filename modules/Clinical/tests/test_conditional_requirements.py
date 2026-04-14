@@ -88,12 +88,12 @@ def test_diagnosis_tumor_staged_conditional_requirements(test_data):
             assert diagnosis.AJCC_STAGING_SYSTEM_EDITION is not None
 
 
-def test_ecog_availability_conditional_requirements(test_data):
-    """Test ECOG_PERFORMANCE_STATUS_IS_AVAILABLE conditional: ECOG status required when available is Yes."""
+def test_ecog_score_performed_conditional_requirements(test_data):
+    """Test ECOG_SCORE_PERFORMED conditional: ECOG status required when ECOG_SCORE_PERFORMED is Known."""
     clinical_data = yaml_loader.loads(_dump(test_data), target_class=ClinicalData)
 
     for followup in clinical_data.FOLLOW_UPS:
-        if getattr(followup, "ECOG_PERFORMANCE_STATUS_IS_AVAILABLE", None) == "Yes":
+        if getattr(followup, "ECOG_SCORE_PERFORMED", None) == "Known":
             assert followup.ECOG_PERFORMANCE_STATUS is not None
 
 

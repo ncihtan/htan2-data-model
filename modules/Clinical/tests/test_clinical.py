@@ -151,14 +151,14 @@ def test_gleason_grade_group_enum_values(schema_view):
         assert sentinel in enum.permissible_values
 
 
-def test_ecog_availability_enum_exists(schema_view):
-    """Test that EcogAvailabilityEnum is present in the followup schema."""
-    assert "EcogAvailabilityEnum" in schema_view.all_enums()
+def test_ecog_score_performed_enum_exists(schema_view):
+    """Test that EcogScorePerformedEnum is present in the followup schema."""
+    assert "EcogScorePerformedEnum" in schema_view.all_enums()
 
 
-def test_ecog_availability_slot_required(schema_view):
-    """Test that ECOG_PERFORMANCE_STATUS_IS_AVAILABLE is required and ECOG_PERFORMANCE_STATUS is optional."""
+def test_ecog_score_performed_slot_required(schema_view):
+    """Test that ECOG_SCORE_PERFORMED is required and ECOG_PERFORMANCE_STATUS is optional."""
     followup_class = schema_view.get_class("FollowUp")
-    assert "ECOG_PERFORMANCE_STATUS_IS_AVAILABLE" in followup_class.attributes
-    assert followup_class.attributes["ECOG_PERFORMANCE_STATUS_IS_AVAILABLE"].required is True
+    assert "ECOG_SCORE_PERFORMED" in followup_class.attributes
+    assert followup_class.attributes["ECOG_SCORE_PERFORMED"].required is True
     assert followup_class.attributes["ECOG_PERFORMANCE_STATUS"].required is False
