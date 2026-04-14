@@ -363,6 +363,36 @@ enums:
       "Unknown":
         description: Not known, not observed, not recorded, or refused.
 
+  GleasonGradeGroupEnum:
+    title: gleason_grade_group
+    permissible_values:
+      "1":
+        description: Grade Group I - Only individual discrete well-formed glands.
+      "2":
+        description: Grade Group II - Predominantly well-formed glands with lesser component of poorly-formed/fused/cribriform glands.
+      "3":
+        description: Grade Group III - Predominantly poorly formed/fused/cribriform glands with lesser component of well-formed glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at radical prostatectomy, the component of less than 5% well-formed glands is not factored into the grade.
+      "4":
+        description: Grade Group IV - Only poorly-formed/fused/cribriform glands or predominantly well-formed glands and lesser component lacking glands or predominantly lacking glands and lesser component of well-formed gland. Poorly-formed/fused/cribriform glands can be a more minor component.
+      "5":
+        description: Grade Group V - Lacks gland formation (or with necrosis) with or without poorly formed/fused/cribriform glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at RP, the component of less than 5% well-formed glands is not factored into the grade.
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Reported":
+        description: Not provided or available.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+
+  TumorStagedEnum:
+    title: tumor_staged
+    permissible_values:
+      "No":
+        description: The non-affirmative response to a question.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+      "Yes":
+        description: The affirmative response to a question.
+
 classes:
   Diagnosis:
     is_a: ClinicalRecordAttributes
@@ -392,27 +422,32 @@ classes:
         title: "Tumor Grade"
         description: Degree of abnormality of cancer cells as a measure of differentiation and aggressiveness. (caDSR:11325685) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:11325685
+      TUMOR_STAGED:
+        range: TumorStagedEnum
+        required: true
+        title: "Tumor Staged"
+        description: Indicator of whether the tumor was staged using the AJCC classification system.
       CLINICAL_T_STAGE:
         range: ClinicalTStageEnum
-        required: true
+        required: false
         title: "Clinical T Stage"
         description: Extent of spread of the primary cancer based on evidence obtained from clinical assessment parameters determined prior to treatment. (caDSR:3440328) (Aligns to CRDC Node)
         slot_uri: caDSR:3440328
       CLINICAL_N_STAGE:
         range: ClinicalNStageEnum
-        required: true
+        required: false
         title: "Clinical N Stage"
         description: Extent of the regional lymph node involvement for the cancer based on evidence obtained from clinical assessment parameters determined prior to treatment. (caDSR:3440330) (Aligns to CRDC Node)
         slot_uri: caDSR:3440330
       CLINICAL_M_STAGE:
         range: ClinicalMStageEnum
-        required: true
+        required: false
         title: "Clinical M Stage"
         description: Extent of the distant metastasis for the cancer based on evidence obtained from clinical assessment parameters determined prior to treatment. (caDSR:3440331) (Aligns to CRDC Node)
         slot_uri: caDSR:3440331
       AJCC_STAGING_SYSTEM_EDITION:
         range: AJCCStagingSystemEditionEnum
-        required: true
+        required: false
         title: "AJCC Staging System Edition"
         description: Version or edition of the American Joint Committee on Cancer Cancer Staging Handbooks used to guide TMN clinical staging in CLINICAL_T_STAGE, CLINICAL_M_STAGE and CLINICAL_N_STAGE fields. (caDSR:2722309) (Aligns to CRDC Node)
         slot_uri: caDSR:2722309
@@ -446,3 +481,38 @@ classes:
         title: "Method of Diagnosis"
         description: Type of clinical or laboratory procedure(s) used in the determination of a disease diagnosis. (caDSR:14857681) (Aligns to CRDC Node)
         slot_uri: caDSR:14857681
+      GLEASON_GRADE_GROUP:
+        range: GleasonGradeGroupEnum
+        required: false
+        title: "Gleason Grade Group"
+        description: The Gleason grade group for prostate cancer, derived from the primary and secondary Gleason pattern scores. (caDSR:5918370)
+        slot_uri: caDSR:5918370
+    slot_usage:
+      AJCC_STAGING_SYSTEM_EDITION:
+        required: false
+        description: Required when TUMOR_STAGED is "Yes"
+      CLINICAL_M_STAGE:
+        required: false
+        description: Required when TUMOR_STAGED is "Yes"
+      CLINICAL_N_STAGE:
+        required: false
+        description: Required when TUMOR_STAGED is "Yes"
+      CLINICAL_T_STAGE:
+        required: false
+        description: Required when TUMOR_STAGED is "Yes"
+    rules:
+      - description: "When TUMOR_STAGED is Yes, AJCC staging fields become required"
+        preconditions:
+          slot_conditions:
+            TUMOR_STAGED:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            AJCC_STAGING_SYSTEM_EDITION:
+              required: true
+            CLINICAL_M_STAGE:
+              required: true
+            CLINICAL_N_STAGE:
+              required: true
+            CLINICAL_T_STAGE:
+              required: true
