@@ -294,33 +294,25 @@ classes:
               required: true
             RESPONSE:
               required: true
-      - description: "When treatment type is Chemotherapy, therapeutic agents and regimen become required"
+      - description: "When treatment type includes Chemotherapy or Concurrent Chemoradiation, therapeutic agents and regimen become required"
         preconditions:
           slot_conditions:
             TREATMENT_TYPE:
-              equals_string: "Chemotherapy"
+              any_of:
+                - pattern: ".*Chemotherapy.*"
+                - pattern: ".*Concurrent Chemoradiation.*"
         postconditions:
           slot_conditions:
             THERAPEUTIC_AGENTS:
               required: true
             REGIMEN_OR_LINE_OF_THERAPY:
               required: true
-      - description: "When treatment type is Concurrent Chemoradiation, therapeutic agents and regimen become required"
+      - description: "When treatment type includes Pharmacotherapy, therapeutic agents, regimen, and cycles become required"
         preconditions:
           slot_conditions:
             TREATMENT_TYPE:
-              equals_string: "Concurrent Chemoradiation"
-        postconditions:
-          slot_conditions:
-            THERAPEUTIC_AGENTS:
-              required: true
-            REGIMEN_OR_LINE_OF_THERAPY:
-              required: true
-      - description: "When treatment type is Pharmacotherapy, therapeutic agents, regimen, and cycles become required"
-        preconditions:
-          slot_conditions:
-            TREATMENT_TYPE:
-              equals_string: "Pharmacotherapy"
+              any_of:
+                - pattern: ".*Pharmacotherapy.*"
         postconditions:
           slot_conditions:
             THERAPEUTIC_AGENTS:
