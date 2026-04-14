@@ -230,25 +230,25 @@ classes:
         slot_uri: caDSR:12304723
       OFF_TREATMENT_REASON:
         range: OffTreatmentReasonEnum
-        required: true
+        required: false
         title: "Off Treatment Reason"
         description: Reason that an individual did not receive treatment. (caDSR:15743249) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:15743249
       REGIMEN_OR_LINE_OF_THERAPY:
         range: RegimenOrLineOfTherapyEnum
-        required: true
+        required: false
         title: "Regimen or Line of Therapy"
         description: Description of the treatment regimen or line of therapy. (caDSR:15915841) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:15915841
       NUMBER_OF_CYCLES:
         range: integer
-        required: true
+        required: false
         title: "Number of Cycles"
         description: Number of cycles of the administered therapeutic procedure. Use -1 if this data point is not available. (caDSR:3060718) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:3060718
       RESPONSE:
         range: DiseaseResponseEnum
-        required: true
+        required: false
         title: "Response"
         description: The result of an evaluation to determine whether pathologic and/or clinical changes resulted from treatment. (caDSR:13383448) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:13383448
