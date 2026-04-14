@@ -97,3 +97,9 @@ def test_data_types():
     }
     with pytest.raises(ValueError):
         ClinicalData(**test_data)
+
+
+def test_therapeutic_agents_not_required(schema_view):
+    """Test that THERAPEUTIC_AGENTS is optional at base level (conditionally required via rules)."""
+    therapy_class = schema_view.get_class("Therapy")
+    assert therapy_class.attributes["THERAPEUTIC_AGENTS"].required is False

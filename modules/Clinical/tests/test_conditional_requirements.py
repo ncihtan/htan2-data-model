@@ -61,6 +61,17 @@ def test_family_history_conditional_requirements(test_data):
         assert clinical_data.FAMILY_HISTORY.RELATIVES_WITH_CANCER_HISTORY is not None
 
 
+def test_therapy_chemotherapy_conditional_requirements(test_data):
+    """Test THERAPEUTIC_AGENTS and REGIMEN are required when TREATMENT_TYPE is Chemotherapy."""
+    clinical_data = yaml_loader.loads(yaml.dump(test_data), target_class=ClinicalData)
+
+    for therapy in clinical_data.THERAPIES:
+        treatment_types = getattr(therapy, "TREATMENT_TYPE", []) or []
+        if "Chemotherapy" in treatment_types or "Concurrent Chemoradiation" in treatment_types:
+            assert therapy.THERAPEUTIC_AGENTS is not None
+            assert therapy.REGIMEN_OR_LINE_OF_THERAPY is not None
+
+
 def test_invalid_data_missing_required_field(test_data):
     """Test that missing required fields raise appropriate errors"""
     invalid_data = deepcopy(test_data)
