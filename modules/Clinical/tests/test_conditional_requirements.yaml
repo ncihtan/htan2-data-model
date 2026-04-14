@@ -74,7 +74,8 @@ DIAGNOSIS:
   AGE_IN_DAYS_AT_DIAGNOSIS: 18250
   TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE: "UBERON:0000310"
   TUMOR_GRADE: "G2 Intermediate Grade"  # Valid enum value
-  CLINICAL_T_STAGE: "T2"  # Valid enum value
+  TUMOR_STAGED: "Yes"  # Valid enum value - triggers conditional staging requirements
+  CLINICAL_T_STAGE: "T2"  # Valid enum value - required when TUMOR_STAGED is "Yes"
   CLINICAL_N_STAGE: "N1"  # Valid enum value
   CLINICAL_M_STAGE: "M0"  # Valid enum value
   AJCC_STAGING_SYSTEM_EDITION: "8th"  # Valid enum value

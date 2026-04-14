@@ -105,6 +105,31 @@ def test_therapeutic_agents_not_required(schema_view):
     assert therapy_class.attributes["THERAPEUTIC_AGENTS"].required is False
 
 
+def test_tumor_staged_enum_exists(schema_view):
+    """Test that TumorStagedEnum is present in the schema."""
+    assert "TumorStagedEnum" in schema_view.all_enums()
+
+
+def test_tumor_staged_slot_required(schema_view):
+    """Test that TUMOR_STAGED is required in the Diagnosis class."""
+    diagnosis_class = schema_view.get_class("Diagnosis")
+    assert "TUMOR_STAGED" in diagnosis_class.attributes
+    assert diagnosis_class.attributes["TUMOR_STAGED"].required is True
+
+
+def test_ajcc_staging_slots_not_required(schema_view):
+    """Test that AJCC staging slots are optional at base level (conditionally required via rules)."""
+    diagnosis_class = schema_view.get_class("Diagnosis")
+    for slot in ("CLINICAL_T_STAGE", "CLINICAL_N_STAGE", "CLINICAL_M_STAGE", "AJCC_STAGING_SYSTEM_EDITION"):
+        assert diagnosis_class.attributes[slot].required is False, f"{slot} should be optional at base level"
+
+
+def test_tumor_staged_enum_values(schema_view):
+    """Test TumorStagedEnum has exactly Yes/No/Unknown."""
+    enum = schema_view.get_enum("TumorStagedEnum")
+    assert set(enum.permissible_values.keys()) == {"Yes", "No", "Unknown"}
+
+
 def test_ecog_availability_enum_exists(schema_view):
     """Test that EcogAvailabilityEnum is present in the followup schema."""
     assert "EcogAvailabilityEnum" in schema_view.all_enums()

@@ -61,6 +61,19 @@ def test_family_history_conditional_requirements(test_data):
         assert clinical_data.FAMILY_HISTORY.RELATIVES_WITH_CANCER_HISTORY is not None
 
 
+def test_diagnosis_tumor_staged_conditional_requirements(test_data):
+    """Test TUMOR_STAGED conditional requirements: staging fields required when TUMOR_STAGED is Yes."""
+    clinical_data = yaml_loader.loads(yaml.dump(test_data), target_class=ClinicalData)
+
+    if hasattr(clinical_data, "DIAGNOSIS") and clinical_data.DIAGNOSIS is not None:
+        diagnosis = clinical_data.DIAGNOSIS
+        if getattr(diagnosis, "TUMOR_STAGED", None) == "Yes":
+            assert diagnosis.CLINICAL_T_STAGE is not None
+            assert diagnosis.CLINICAL_N_STAGE is not None
+            assert diagnosis.CLINICAL_M_STAGE is not None
+            assert diagnosis.AJCC_STAGING_SYSTEM_EDITION is not None
+
+
 def test_ecog_availability_conditional_requirements(test_data):
     """Test ECOG_PERFORMANCE_STATUS_IS_AVAILABLE conditional: ECOG status required when available is Yes."""
     clinical_data = yaml_loader.loads(yaml.dump(test_data), target_class=ClinicalData)
