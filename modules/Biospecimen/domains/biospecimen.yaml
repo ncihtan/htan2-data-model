@@ -12,7 +12,6 @@ imports:
   - preservation_method_enum
   - preservation_medium_enum
   - preservation_temperature_enum
-  - tissue_sample_type_enum
   - analyte_type_enum
   - slicing_method_enum
   - slide_charge_type_enum
@@ -199,14 +198,6 @@ classes:
           caDSR_id: "5432603"
         minimum_value: 0
       
-      TISSUE_SAMPLE_TYPE:
-        range: TissueSampleTypeEnum
-        required: false
-        title: "Tissue Sample Type"
-        description: The type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes
-        annotations:
-          caDSR_id: "16391068"
-      
       ANALYTE_TYPE:
         range: AnalyteTypeEnum
         required: false
@@ -356,24 +347,9 @@ classes:
       FIXATION_DURATION_IN_MINUTES:
         required: false
         description: Required when PRESERVATION_METHOD is "Fixation"
-      TISSUE_SAMPLE_TYPE:
-        required: false
-        description: Required when BIOSPECIMEN_TYPE is "Tissue"
       ANALYTE_TYPE:
         required: false
         description: Required when BIOSPECIMEN_TYPE is "DNA" or "RNA"
-      AGE_IN_DAYS_AT_SECTIONING:
-        required: false
-        description: Required when TISSUE_SAMPLE_TYPE is "Tissue Section"
-      SLICING_METHOD:
-        required: false
-        description: Required when TISSUE_SAMPLE_TYPE is "Tissue Section"
-      SECTION_THICKNESS_VALUE:
-        required: false
-        description: Required when TISSUE_SAMPLE_TYPE is "Tissue Section"
-      SLIDE_CHARGE_TYPE:
-        required: false
-        description: Required when TISSUE_SAMPLE_TYPE is "Tissue Section"
       TUMOR_CLASSIFICATION:
         required: false
         description: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Tumor"
@@ -408,16 +384,6 @@ classes:
             FIXATION_DURATION_IN_MINUTES:
               required: true
       
-      - description: "TISSUE_SAMPLE_TYPE is required when BIOSPECIMEN_TYPE is Tissue"
-        preconditions:
-          slot_conditions:
-            BIOSPECIMEN_TYPE:
-              equals_string: "Tissue"
-        postconditions:
-          slot_conditions:
-            TISSUE_SAMPLE_TYPE:
-              required: true
-      
       - description: "ANALYTE_TYPE is required when BIOSPECIMEN_TYPE is DNA"
         preconditions:
           slot_conditions:
@@ -436,46 +402,6 @@ classes:
         postconditions:
           slot_conditions:
             ANALYTE_TYPE:
-              required: true
-      
-      - description: "AGE_IN_DAYS_AT_SECTIONING is required when TISSUE_SAMPLE_TYPE is Tissue Section"
-        preconditions:
-          slot_conditions:
-            TISSUE_SAMPLE_TYPE:
-              equals_string: "Tissue Section"
-        postconditions:
-          slot_conditions:
-            AGE_IN_DAYS_AT_SECTIONING:
-              required: true
-      
-      - description: "SLICING_METHOD is required when TISSUE_SAMPLE_TYPE is Tissue Section"
-        preconditions:
-          slot_conditions:
-            TISSUE_SAMPLE_TYPE:
-              equals_string: "Tissue Section"
-        postconditions:
-          slot_conditions:
-            SLICING_METHOD:
-              required: true
-      
-      - description: "SECTION_THICKNESS_VALUE is required when TISSUE_SAMPLE_TYPE is Tissue Section"
-        preconditions:
-          slot_conditions:
-            TISSUE_SAMPLE_TYPE:
-              equals_string: "Tissue Section"
-        postconditions:
-          slot_conditions:
-            SECTION_THICKNESS_VALUE:
-              required: true
-      
-      - description: "SLIDE_CHARGE_TYPE is required when TISSUE_SAMPLE_TYPE is Tissue Section"
-        preconditions:
-          slot_conditions:
-            TISSUE_SAMPLE_TYPE:
-              equals_string: "Tissue Section"
-        postconditions:
-          slot_conditions:
-            SLIDE_CHARGE_TYPE:
               required: true
       
       - description: "TUMOR_CLASSIFICATION is required when SPECIMEN_CELLULAR_ARCHITECTURE is Tumor"

@@ -45,7 +45,6 @@ class TestBiospecimen:
             "PreservationMethodEnum",
             "PreservationMediumEnum",
             "PreservationTemperatureEnum",
-            "TissueSampleTypeEnum",
             "AnalyteTypeEnum",
             "SlicingMethodEnum",
             "SlideChargeTypeEnum",
@@ -103,7 +102,6 @@ class TestBiospecimen:
         conditional_attributes = [
             "ACQUISITION_METHOD_OTHER_SPECIFY",
             "FIXATION_DURATION_IN_MINUTES",
-            "TISSUE_SAMPLE_TYPE",
             "ANALYTE_TYPE",
             "SLICING_METHOD",
             "TUMOR_CLASSIFICATION",
@@ -229,7 +227,7 @@ class TestBiospecimen:
             assert compiled.fullmatch(mid) is None, f"Malformed ID should be rejected: {mid!r}"
 
     def test_conditional_rules(self):
-        """Test that all 13 conditional requirement rules exist; conditionally-required slots are optional at attribute level."""
+        """Test that all 8 conditional requirement rules exist; conditionally-required slots are optional at attribute level."""
         sv = SchemaView("modules/Biospecimen/domains/biospecimen.yaml")
         biospecimen_class = sv.get_class("BiospecimenData")
         rules = biospecimen_class.rules or []
@@ -255,13 +253,8 @@ class TestBiospecimen:
         expected = {
             ("ACQUISITION_METHOD_TYPE", "Other", "ACQUISITION_METHOD_OTHER_SPECIFY"),
             ("PRESERVATION_METHOD", "Fixation", "FIXATION_DURATION_IN_MINUTES"),
-            ("BIOSPECIMEN_TYPE", "Tissue", "TISSUE_SAMPLE_TYPE"),
             ("BIOSPECIMEN_TYPE", "DNA", "ANALYTE_TYPE"),
             ("BIOSPECIMEN_TYPE", "RNA", "ANALYTE_TYPE"),
-            ("TISSUE_SAMPLE_TYPE", "Tissue Section", "AGE_IN_DAYS_AT_SECTIONING"),
-            ("TISSUE_SAMPLE_TYPE", "Tissue Section", "SLICING_METHOD"),
-            ("TISSUE_SAMPLE_TYPE", "Tissue Section", "SECTION_THICKNESS_VALUE"),
-            ("TISSUE_SAMPLE_TYPE", "Tissue Section", "SLIDE_CHARGE_TYPE"),
             ("SPECIMEN_CELLULAR_ARCHITECTURE", "Tumor", "TUMOR_CLASSIFICATION"),
             ("SPECIMEN_CELLULAR_ARCHITECTURE", "Tumor", "ICD_O_3_TISSUE_MORPHOLOGY"),
             ("SPECIMEN_CELLULAR_ARCHITECTURE", "Precancerous", "ICD_10_DISEASE_CODE"),
@@ -274,3 +267,10 @@ class TestBiospecimen:
 
         for _, _, post_slot in expected:
             assert biospecimen_class.attributes[post_slot].required is False
+
+    def test_tissue_sample_type_removed(self):
+        """Test that TISSUE_SAMPLE_TYPE has been removed from the schema (issue #168)."""
+        sv = SchemaView("modules/Biospecimen/domains/biospecimen.yaml")
+        biospecimen_class = sv.get_class("BiospecimenData")
+        assert "TISSUE_SAMPLE_TYPE" not in biospecimen_class.attributes
+        assert "TissueSampleTypeEnum" not in sv.all_enums()
