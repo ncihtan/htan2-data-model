@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-14T18:21:01
+# Generation date: 2026-04-14T18:29:08
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -670,12 +670,12 @@ class Therapy(ClinicalRecordAttributes):
     PHARMACOTHERAPY_TYPE: Union[str, "PharmacotherapyTypeEnum"] = None
     AGE_IN_DAYS_AT_TREATMENT_START: int = None
     AGE_IN_DAYS_AT_TREATMENT_END: int = None
-    OFF_TREATMENT_REASON: Union[str, "OffTreatmentReasonEnum"] = None
-    REGIMEN_OR_LINE_OF_THERAPY: Union[str, "RegimenOrLineOfTherapyEnum"] = None
-    NUMBER_OF_CYCLES: int = None
-    RESPONSE: Union[str, "DiseaseResponseEnum"] = None
     THERAPEUTIC_AGENTS: Optional[Union[Union[str, "AntineoplasticAgentEnum"], List[Union[str, "AntineoplasticAgentEnum"]]]] = empty_list()
     THERAPY_ANATOMIC_SITE_UBERON_CODE: Optional[Union[str, "TissueOrOrganOfOriginUberonEnum"]] = None
+    OFF_TREATMENT_REASON: Optional[Union[str, "OffTreatmentReasonEnum"]] = None
+    REGIMEN_OR_LINE_OF_THERAPY: Optional[Union[str, "RegimenOrLineOfTherapyEnum"]] = None
+    NUMBER_OF_CYCLES: Optional[int] = None
+    RESPONSE: Optional[Union[str, "DiseaseResponseEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_PARTICIPANT_ID):
@@ -714,32 +714,24 @@ class Therapy(ClinicalRecordAttributes):
         if not isinstance(self.AGE_IN_DAYS_AT_TREATMENT_END, int):
             self.AGE_IN_DAYS_AT_TREATMENT_END = int(self.AGE_IN_DAYS_AT_TREATMENT_END)
 
-        if self._is_empty(self.OFF_TREATMENT_REASON):
-            self.MissingRequiredField("OFF_TREATMENT_REASON")
-        if not isinstance(self.OFF_TREATMENT_REASON, OffTreatmentReasonEnum):
-            self.OFF_TREATMENT_REASON = OffTreatmentReasonEnum(self.OFF_TREATMENT_REASON)
-
-        if self._is_empty(self.REGIMEN_OR_LINE_OF_THERAPY):
-            self.MissingRequiredField("REGIMEN_OR_LINE_OF_THERAPY")
-        if not isinstance(self.REGIMEN_OR_LINE_OF_THERAPY, RegimenOrLineOfTherapyEnum):
-            self.REGIMEN_OR_LINE_OF_THERAPY = RegimenOrLineOfTherapyEnum(self.REGIMEN_OR_LINE_OF_THERAPY)
-
-        if self._is_empty(self.NUMBER_OF_CYCLES):
-            self.MissingRequiredField("NUMBER_OF_CYCLES")
-        if not isinstance(self.NUMBER_OF_CYCLES, int):
-            self.NUMBER_OF_CYCLES = int(self.NUMBER_OF_CYCLES)
-
-        if self._is_empty(self.RESPONSE):
-            self.MissingRequiredField("RESPONSE")
-        if not isinstance(self.RESPONSE, DiseaseResponseEnum):
-            self.RESPONSE = DiseaseResponseEnum(self.RESPONSE)
-
         if not isinstance(self.THERAPEUTIC_AGENTS, list):
             self.THERAPEUTIC_AGENTS = [self.THERAPEUTIC_AGENTS] if self.THERAPEUTIC_AGENTS is not None else []
         self.THERAPEUTIC_AGENTS = [v if isinstance(v, AntineoplasticAgentEnum) else AntineoplasticAgentEnum(v) for v in self.THERAPEUTIC_AGENTS]
 
         if self.THERAPY_ANATOMIC_SITE_UBERON_CODE is not None and not isinstance(self.THERAPY_ANATOMIC_SITE_UBERON_CODE, TissueOrOrganOfOriginUberonEnum):
             self.THERAPY_ANATOMIC_SITE_UBERON_CODE = TissueOrOrganOfOriginUberonEnum(self.THERAPY_ANATOMIC_SITE_UBERON_CODE)
+
+        if self.OFF_TREATMENT_REASON is not None and not isinstance(self.OFF_TREATMENT_REASON, OffTreatmentReasonEnum):
+            self.OFF_TREATMENT_REASON = OffTreatmentReasonEnum(self.OFF_TREATMENT_REASON)
+
+        if self.REGIMEN_OR_LINE_OF_THERAPY is not None and not isinstance(self.REGIMEN_OR_LINE_OF_THERAPY, RegimenOrLineOfTherapyEnum):
+            self.REGIMEN_OR_LINE_OF_THERAPY = RegimenOrLineOfTherapyEnum(self.REGIMEN_OR_LINE_OF_THERAPY)
+
+        if self.NUMBER_OF_CYCLES is not None and not isinstance(self.NUMBER_OF_CYCLES, int):
+            self.NUMBER_OF_CYCLES = int(self.NUMBER_OF_CYCLES)
+
+        if self.RESPONSE is not None and not isinstance(self.RESPONSE, DiseaseResponseEnum):
+            self.RESPONSE = DiseaseResponseEnum(self.RESPONSE)
 
         if self.THERAPY_ANATOMIC_SITE_UBERON_CODE is not None and not isinstance(self.THERAPY_ANATOMIC_SITE_UBERON_CODE, str):
             self.THERAPY_ANATOMIC_SITE_UBERON_CODE = str(self.THERAPY_ANATOMIC_SITE_UBERON_CODE)
@@ -309562,16 +309554,16 @@ slots.therapy__AGE_IN_DAYS_AT_TREATMENT_END = Slot(uri=CADSR['12304723'], name="
                    model_uri=HTAN.therapy__AGE_IN_DAYS_AT_TREATMENT_END, domain=None, range=int)
 
 slots.therapy__OFF_TREATMENT_REASON = Slot(uri=CADSR['15743249'], name="therapy__OFF_TREATMENT_REASON", curie=CADSR.curie('15743249'),
-                   model_uri=HTAN.therapy__OFF_TREATMENT_REASON, domain=None, range=Union[str, "OffTreatmentReasonEnum"])
+                   model_uri=HTAN.therapy__OFF_TREATMENT_REASON, domain=None, range=Optional[Union[str, "OffTreatmentReasonEnum"]])
 
 slots.therapy__REGIMEN_OR_LINE_OF_THERAPY = Slot(uri=CADSR['15915841'], name="therapy__REGIMEN_OR_LINE_OF_THERAPY", curie=CADSR.curie('15915841'),
-                   model_uri=HTAN.therapy__REGIMEN_OR_LINE_OF_THERAPY, domain=None, range=Union[str, "RegimenOrLineOfTherapyEnum"])
+                   model_uri=HTAN.therapy__REGIMEN_OR_LINE_OF_THERAPY, domain=None, range=Optional[Union[str, "RegimenOrLineOfTherapyEnum"]])
 
 slots.therapy__NUMBER_OF_CYCLES = Slot(uri=CADSR['3060718'], name="therapy__NUMBER_OF_CYCLES", curie=CADSR.curie('3060718'),
-                   model_uri=HTAN.therapy__NUMBER_OF_CYCLES, domain=None, range=int)
+                   model_uri=HTAN.therapy__NUMBER_OF_CYCLES, domain=None, range=Optional[int])
 
 slots.therapy__RESPONSE = Slot(uri=CADSR['13383448'], name="therapy__RESPONSE", curie=CADSR.curie('13383448'),
-                   model_uri=HTAN.therapy__RESPONSE, domain=None, range=Union[str, "DiseaseResponseEnum"])
+                   model_uri=HTAN.therapy__RESPONSE, domain=None, range=Optional[Union[str, "DiseaseResponseEnum"]])
 
 slots.vitalStatus__VITAL_STATUS = Slot(uri=CADSR['2847330'], name="vitalStatus__VITAL_STATUS", curie=CADSR.curie('2847330'),
                    model_uri=HTAN.vitalStatus__VITAL_STATUS, domain=None, range=Union[str, "VitalStatusEnum"])
