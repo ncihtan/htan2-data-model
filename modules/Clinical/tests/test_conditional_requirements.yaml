@@ -86,19 +86,8 @@ DIAGNOSIS:
   METHOD_OF_DIAGNOSIS: "Biopsy"  # Valid enum value
   HTAN_PARTICIPANT_ID: "HTA200_0000"
 
-# Valid therapy data
+# Valid therapy data - single Chemotherapy entry exercises the conditional requirements
 THERAPIES:
-  - INITIAL_DISEASE_STATUS: "Primary"  # Valid enum value
-    TREATMENT_INTENT_TYPE: "Curative"  # Valid enum value
-    TREATMENT_TYPE: "Surgical Procedure"  # Valid enum value - THERAPEUTIC_AGENTS and REGIMEN not required for this type
-    THERAPY_ANATOMIC_SITE_UBERON_CODE: "UBERON:0000002"  # Required when TREATMENT_TYPE is surgical or radiation
-    PHARMACOTHERAPY_TYPE: "Not Applicable"  # Valid enum value
-    AGE_IN_DAYS_AT_TREATMENT_START: 18350
-    AGE_IN_DAYS_AT_TREATMENT_END: 18600
-    OFF_TREATMENT_REASON: "Treatment Complete"  # Required when AGE_IN_DAYS_AT_TREATMENT_END is present
-    NUMBER_OF_CYCLES: -1
-    RESPONSE: "Complete Response"  # Required when AGE_IN_DAYS_AT_TREATMENT_END is present
-    HTAN_PARTICIPANT_ID: "HTA200_0000"
   - INITIAL_DISEASE_STATUS: "Progression or Recurrence"  # Valid enum value
     TREATMENT_INTENT_TYPE: "Palliative"  # Valid enum value
     TREATMENT_TYPE: "Chemotherapy"  # Valid enum value - triggers THERAPEUTIC_AGENTS and REGIMEN requirement
