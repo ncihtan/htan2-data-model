@@ -130,6 +130,27 @@ def test_tumor_staged_enum_values(schema_view):
     assert set(enum.permissible_values.keys()) == {"Yes", "No", "Unknown"}
 
 
+def test_gleason_grade_group_enum_exists(schema_view):
+    """Test that GleasonGradeGroupEnum is present in the schema."""
+    assert "GleasonGradeGroupEnum" in schema_view.all_enums()
+
+
+def test_gleason_grade_group_slot_optional(schema_view):
+    """Test that GLEASON_GRADE_GROUP is present and optional."""
+    diagnosis_class = schema_view.get_class("Diagnosis")
+    assert "GLEASON_GRADE_GROUP" in diagnosis_class.attributes
+    assert diagnosis_class.attributes["GLEASON_GRADE_GROUP"].required is False
+
+
+def test_gleason_grade_group_enum_values(schema_view):
+    """Test GleasonGradeGroupEnum has grade groups 1-5 plus Not Applicable/Not Reported/Unknown."""
+    enum = schema_view.get_enum("GleasonGradeGroupEnum")
+    for grade in ("1", "2", "3", "4", "5"):
+        assert grade in enum.permissible_values
+    for sentinel in ("Not Applicable", "Not Reported", "Unknown"):
+        assert sentinel in enum.permissible_values
+
+
 def test_ecog_availability_enum_exists(schema_view):
     """Test that EcogAvailabilityEnum is present in the followup schema."""
     assert "EcogAvailabilityEnum" in schema_view.all_enums()

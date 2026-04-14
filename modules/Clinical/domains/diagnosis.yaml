@@ -363,6 +363,26 @@ enums:
       "Unknown":
         description: Not known, not observed, not recorded, or refused.
 
+  GleasonGradeGroupEnum:
+    title: gleason_grade_group
+    permissible_values:
+      "1":
+        description: Gleason score ≤6; only individual discrete well-formed glands. (caDSR:5918370)
+      "2":
+        description: Gleason score 3+4=7; predominantly well-formed glands with a lesser component of poorly formed, fused, or cribriform glands. (caDSR:5918370)
+      "3":
+        description: Gleason score 4+3=7; predominantly poorly formed, fused, or cribriform glands with a lesser component of well-formed glands. (caDSR:5918370)
+      "4":
+        description: Gleason score 8; only poorly formed, fused, or cribriform glands; or predominantly well-formed glands with lesser component lacking glands; or predominantly lacking glands with lesser component of well-formed glands. (caDSR:5918370)
+      "5":
+        description: Gleason score 9-10; no glandular differentiation, or predominantly with comedonecrosis, with or without poorly formed, fused, or cribriform glands. (caDSR:5918370)
+      "Not Applicable":
+        description: Determination of a value is not relevant in the current context.
+      "Not Reported":
+        description: Not provided or available.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+
   TumorStagedEnum:
     title: tumor_staged
     permissible_values:
@@ -461,6 +481,12 @@ classes:
         title: "Method of Diagnosis"
         description: Type of clinical or laboratory procedure(s) used in the determination of a disease diagnosis. (caDSR:14857681) (Aligns to CRDC Node)
         slot_uri: caDSR:14857681
+      GLEASON_GRADE_GROUP:
+        range: GleasonGradeGroupEnum
+        required: false
+        title: "Gleason Grade Group"
+        description: The Gleason grade group for prostate cancer, derived from the primary and secondary Gleason pattern scores. (caDSR:5918370)
+        slot_uri: caDSR:5918370
     slot_usage:
       AJCC_STAGING_SYSTEM_EDITION:
         required: false
