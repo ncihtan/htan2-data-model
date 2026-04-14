@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-14T17:38:06
+# Generation date: 2026-04-14T18:09:12
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -1643,23 +1643,23 @@ class GleasonGradeGroupEnum(EnumDefinitionImpl):
         setattr(cls, "1",
             PermissibleValue(
                 text="1",
-                description="Gleason score ≤6; only individual discrete well-formed glands. (caDSR:5918370)"))
+                description="Grade Group I - Only individual discrete well-formed glands."))
         setattr(cls, "2",
             PermissibleValue(
                 text="2",
-                description="""Gleason score 3+4=7; predominantly well-formed glands with a lesser component of poorly formed, fused, or cribriform glands. (caDSR:5918370)"""))
+                description="""Grade Group II - Predominantly well-formed glands with lesser component of poorly-formed/fused/cribriform glands."""))
         setattr(cls, "3",
             PermissibleValue(
                 text="3",
-                description="""Gleason score 4+3=7; predominantly poorly formed, fused, or cribriform glands with a lesser component of well-formed glands. (caDSR:5918370)"""))
+                description="""Grade Group III - Predominantly poorly formed/fused/cribriform glands with lesser component of well-formed glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at radical prostatectomy, the component of less than 5% well-formed glands is not factored into the grade."""))
         setattr(cls, "4",
             PermissibleValue(
                 text="4",
-                description="""Gleason score 8; only poorly formed, fused, or cribriform glands; or predominantly well-formed glands with lesser component lacking glands; or predominantly lacking glands with lesser component of well-formed glands. (caDSR:5918370)"""))
+                description="""Grade Group IV - Only poorly-formed/fused/cribriform glands or predominantly well-formed glands and lesser component lacking glands or predominantly lacking glands and lesser component of well-formed gland. Poorly-formed/fused/cribriform glands can be a more minor component."""))
         setattr(cls, "5",
             PermissibleValue(
                 text="5",
-                description="""Gleason score 9-10; no glandular differentiation, or predominantly with comedonecrosis, with or without poorly formed, fused, or cribriform glands. (caDSR:5918370)"""))
+                description="""Grade Group V - Lacks gland formation (or with necrosis) with or without poorly formed/fused/cribriform glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at RP, the component of less than 5% well-formed glands is not factored into the grade."""))
         setattr(cls, "Not Applicable",
             PermissibleValue(
                 text="Not Applicable",
