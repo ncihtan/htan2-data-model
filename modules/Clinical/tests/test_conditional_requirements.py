@@ -61,6 +61,15 @@ def test_family_history_conditional_requirements(test_data):
         assert clinical_data.FAMILY_HISTORY.RELATIVES_WITH_CANCER_HISTORY is not None
 
 
+def test_ecog_availability_conditional_requirements(test_data):
+    """Test ECOG_PERFORMANCE_STATUS_IS_AVAILABLE conditional: ECOG status required when available is Yes."""
+    clinical_data = yaml_loader.loads(yaml.dump(test_data), target_class=ClinicalData)
+
+    for followup in clinical_data.FOLLOW_UPS:
+        if getattr(followup, "ECOG_PERFORMANCE_STATUS_IS_AVAILABLE", None) == "Yes":
+            assert followup.ECOG_PERFORMANCE_STATUS is not None
+
+
 def test_therapy_chemotherapy_conditional_requirements(test_data):
     """Test THERAPEUTIC_AGENTS and REGIMEN are required when TREATMENT_TYPE is Chemotherapy."""
     clinical_data = yaml_loader.loads(yaml.dump(test_data), target_class=ClinicalData)

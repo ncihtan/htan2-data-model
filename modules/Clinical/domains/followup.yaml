@@ -67,6 +67,16 @@ enums:
       "Unknown":
         description: Not known, observed, recorded; or reported as unknown by the data contributor.
 
+  EcogAvailabilityEnum:
+    title: ecog_availability
+    permissible_values:
+      "No":
+        description: The non-affirmative response to a question.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+      "Yes":
+        description: The affirmative response to a question.
+
   MenopauseStatusEnum:
     title: menopause_status
     permissible_values:
@@ -139,9 +149,14 @@ classes:
         title: "Disease Response"
         description: Result of an evaluation to determine whether pathologic and/or clinical changes resulted from treatment. (caDSR:13383448) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:13383448
+      ECOG_PERFORMANCE_STATUS_IS_AVAILABLE:
+        range: EcogAvailabilityEnum
+        required: true
+        title: "ECOG Performance Status Is Available"
+        description: Indicator of whether ECOG performance status data is available for the individual.
       ECOG_PERFORMANCE_STATUS:
         range: ECOGPerformanceStatusEnum
-        required: true
+        required: false
         title: "ECOG Performance Status"
         description: ECOG functional performance status of the individual. (caDSR:88) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:88
@@ -164,6 +179,9 @@ classes:
       AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
         required: false
         description: Required when PROGRESSION_OR_RECURRENCE is "Yes"
+      ECOG_PERFORMANCE_STATUS:
+        required: false
+        description: Required when ECOG_PERFORMANCE_STATUS_IS_AVAILABLE is "Yes"
     rules:
       - description: "PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE is required when PROGRESSION_OR_RECURRENCE is Yes"
         preconditions:
@@ -200,4 +218,13 @@ classes:
         postconditions:
           slot_conditions:
             AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE:
-              required: true 
+              required: true
+      - description: "ECOG_PERFORMANCE_STATUS is required when ECOG_PERFORMANCE_STATUS_IS_AVAILABLE is Yes"
+        preconditions:
+          slot_conditions:
+            ECOG_PERFORMANCE_STATUS_IS_AVAILABLE:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            ECOG_PERFORMANCE_STATUS:
+              required: true

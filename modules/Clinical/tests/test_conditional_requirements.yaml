@@ -33,7 +33,8 @@ FOLLOW_UPS:
     EVIDENCE_OF_RECURRENCE_TYPE: "Convincing Image (i.e. CT/PET/MRI)"  # Required when PROGRESSION_OR_RECURRENCE indicates progression/recurrence
     AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE: 18000  # Required when PROGRESSION_OR_RECURRENCE indicates progression/recurrence
     DISEASE_RESPONSE: "Stable Disease"  # Valid enum value
-    ECOG_PERFORMANCE_STATUS: "0"  # Valid enum value
+    ECOG_PERFORMANCE_STATUS_IS_AVAILABLE: "Yes"  # Valid enum value - triggers conditional ECOG requirement
+    ECOG_PERFORMANCE_STATUS: "0"  # Valid enum value - required when ECOG_PERFORMANCE_STATUS_IS_AVAILABLE is "Yes"
     MENOPAUSE_STATUS: "Premenopausal"  # Valid enum value
     HTAN_PARTICIPANT_ID: "HTA200_0000"
 
