@@ -33,7 +33,8 @@ FOLLOW_UPS:
     EVIDENCE_OF_RECURRENCE_TYPE: "Convincing Image (i.e. CT/PET/MRI)"  # Required when PROGRESSION_OR_RECURRENCE indicates progression/recurrence
     AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE: 18000  # Required when PROGRESSION_OR_RECURRENCE indicates progression/recurrence
     DISEASE_RESPONSE: "Stable Disease"  # Valid enum value
-    ECOG_PERFORMANCE_STATUS: "0"  # Valid enum value
+    ECOG_PERFORMANCE_STATUS_IS_AVAILABLE: "Yes"  # Valid enum value - triggers conditional ECOG requirement
+    ECOG_PERFORMANCE_STATUS: "0"  # Valid enum value - required when ECOG_PERFORMANCE_STATUS_IS_AVAILABLE is "Yes"
     MENOPAUSE_STATUS: "Premenopausal"  # Valid enum value
     HTAN_PARTICIPANT_ID: "HTA200_0000"
 
@@ -73,7 +74,8 @@ DIAGNOSIS:
   AGE_IN_DAYS_AT_DIAGNOSIS: 18250
   TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE: "UBERON:0000310"
   TUMOR_GRADE: "G2 Intermediate Grade"  # Valid enum value
-  CLINICAL_T_STAGE: "T2"  # Valid enum value
+  TUMOR_STAGED: "Yes"  # Valid enum value - triggers conditional staging requirements
+  CLINICAL_T_STAGE: "T2"  # Valid enum value - required when TUMOR_STAGED is "Yes"
   CLINICAL_N_STAGE: "N1"  # Valid enum value
   CLINICAL_M_STAGE: "M0"  # Valid enum value
   AJCC_STAGING_SYSTEM_EDITION: "8th"  # Valid enum value
@@ -84,20 +86,18 @@ DIAGNOSIS:
   METHOD_OF_DIAGNOSIS: "Biopsy"  # Valid enum value
   HTAN_PARTICIPANT_ID: "HTA200_0000"
 
-# Valid therapy data
+# Valid therapy data - single Chemotherapy entry exercises the conditional requirements
 THERAPIES:
-  - INITIAL_DISEASE_STATUS: "Primary"  # Valid enum value
-    TREATMENT_INTENT_TYPE: "Curative"  # Valid enum value
-    TREATMENT_TYPE: "Surgical Procedure"  # Valid enum value
-    THERAPY_ANATOMIC_SITE_UBERON_CODE: "UBERON:0000002"  # Required when TREATMENT_TYPE is surgical or radiation
+  - INITIAL_DISEASE_STATUS: "Progression or Recurrence"  # Valid enum value
+    TREATMENT_INTENT_TYPE: "Palliative"  # Valid enum value
+    TREATMENT_TYPE: "Chemotherapy"  # Valid enum value - triggers THERAPEUTIC_AGENTS and REGIMEN requirement
     PHARMACOTHERAPY_TYPE: "Single Drug Therapy"  # Valid enum value
     THERAPEUTIC_AGENTS:
-      - "Doxorubicin"  # Valid NCIt Preferred Name
-      - "Cyclophosphamide"  # Valid NCIt Preferred Name
-    AGE_IN_DAYS_AT_TREATMENT_START: 18350
-    AGE_IN_DAYS_AT_TREATMENT_END: 18600
+      - "Doxorubicin"  # Valid NCIt Preferred Name - required when TREATMENT_TYPE is Chemotherapy
+    AGE_IN_DAYS_AT_TREATMENT_START: 18700
+    AGE_IN_DAYS_AT_TREATMENT_END: 18900
     OFF_TREATMENT_REASON: "Treatment Complete"  # Required when AGE_IN_DAYS_AT_TREATMENT_END is present
-    REGIMEN_OR_LINE_OF_THERAPY: "1"  # Valid enum value (numeric string)
-    NUMBER_OF_CYCLES: 4
-    RESPONSE: "Complete Response"  # Required when AGE_IN_DAYS_AT_TREATMENT_END is present
+    REGIMEN_OR_LINE_OF_THERAPY: "2"  # Required when TREATMENT_TYPE is Chemotherapy
+    NUMBER_OF_CYCLES: 3
+    RESPONSE: "Partial Response"  # Required when AGE_IN_DAYS_AT_TREATMENT_END is present
     HTAN_PARTICIPANT_ID: "HTA200_0000"
