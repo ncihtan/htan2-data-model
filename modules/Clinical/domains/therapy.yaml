@@ -224,7 +224,7 @@ classes:
         slot_uri: caDSR:12304720
       AGE_IN_DAYS_AT_TREATMENT_END:
         range: integer
-        required: true
+        required: false
         title: "Age in Days at Treatment End"
         description: The age in days of the subject at the time that this treatment was completed. Use -1 if this data point is not available. (caDSR:12304723) (Aligns to CDRC Standard CDE)
         slot_uri: caDSR:12304723
@@ -259,6 +259,9 @@ classes:
       THERAPEUTIC_AGENTS:
         required: false
         description: Required when TREATMENT_TYPE is Chemotherapy, Concurrent Chemoradiation, or Pharmacotherapy
+      AGE_IN_DAYS_AT_TREATMENT_END:
+        required: false
+        description: Required when treatment has ended; use -1 if not available
       OFF_TREATMENT_REASON:
         required: false
         description: Required when AGE_IN_DAYS_AT_TREATMENT_END is present
@@ -287,7 +290,7 @@ classes:
         preconditions:
           slot_conditions:
             AGE_IN_DAYS_AT_TREATMENT_END:
-              required: true
+              minimum_value: 0
         postconditions:
           slot_conditions:
             OFF_TREATMENT_REASON:
