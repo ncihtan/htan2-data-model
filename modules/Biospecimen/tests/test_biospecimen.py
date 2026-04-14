@@ -55,6 +55,7 @@ class TestBiospecimen:
             "TimepointEnum",
             "IcdO3MorphologyEnum",
             "Icd10DiseaseEnum",
+            "TissueSectionEnum",
         ]
 
         for enum_name in expected_enums:
@@ -103,7 +104,11 @@ class TestBiospecimen:
             "ACQUISITION_METHOD_OTHER_SPECIFY",
             "FIXATION_DURATION_IN_MINUTES",
             "ANALYTE_TYPE",
+            "IS_TISSUE_SECTION",
             "SLICING_METHOD",
+            "SECTION_THICKNESS_VALUE",
+            "SLIDE_CHARGE_TYPE",
+            "AGE_IN_DAYS_AT_SECTIONING",
             "TUMOR_CLASSIFICATION",
             "ICD_O_3_TISSUE_MORPHOLOGY",
             "ICD_10_DISEASE_CODE",
@@ -226,8 +231,21 @@ class TestBiospecimen:
         for mid in malformed_ids:
             assert compiled.fullmatch(mid) is None, f"Malformed ID should be rejected: {mid!r}"
 
+    def test_tissue_section_enum_values(self):
+        """Test TissueSectionEnum has exactly Yes/No/Unknown."""
+        sv = SchemaView("modules/Biospecimen/domains/biospecimen.yaml")
+        enum = sv.get_enum("TissueSectionEnum")
+        assert set(enum.permissible_values.keys()) == {"Yes", "No", "Unknown"}
+
+    def test_is_tissue_section_slot_optional(self):
+        """Test that IS_TISSUE_SECTION is present and optional at base level."""
+        sv = SchemaView("modules/Biospecimen/domains/biospecimen.yaml")
+        biospecimen_class = sv.get_class("BiospecimenData")
+        assert "IS_TISSUE_SECTION" in biospecimen_class.attributes
+        assert biospecimen_class.attributes["IS_TISSUE_SECTION"].required is False
+
     def test_conditional_rules(self):
-        """Test that all 8 conditional requirement rules exist; conditionally-required slots are optional at attribute level."""
+        """Test that all 13 conditional requirement rules exist; conditionally-required slots are optional at attribute level."""
         sv = SchemaView("modules/Biospecimen/domains/biospecimen.yaml")
         biospecimen_class = sv.get_class("BiospecimenData")
         rules = biospecimen_class.rules or []
@@ -259,6 +277,11 @@ class TestBiospecimen:
             ("SPECIMEN_CELLULAR_ARCHITECTURE", "Tumor", "ICD_O_3_TISSUE_MORPHOLOGY"),
             ("SPECIMEN_CELLULAR_ARCHITECTURE", "Precancerous", "ICD_10_DISEASE_CODE"),
             ("SPECIMEN_CELLULAR_ARCHITECTURE", "Precancerous", "DEGREE_OF_DYSPLASIA"),
+            ("BIOSPECIMEN_TYPE", "Tissue", "IS_TISSUE_SECTION"),
+            ("IS_TISSUE_SECTION", "Yes", "AGE_IN_DAYS_AT_SECTIONING"),
+            ("IS_TISSUE_SECTION", "Yes", "SLICING_METHOD"),
+            ("IS_TISSUE_SECTION", "Yes", "SECTION_THICKNESS_VALUE"),
+            ("IS_TISSUE_SECTION", "Yes", "SLIDE_CHARGE_TYPE"),
         }
         actual = {t for r in rules for t in [triple(r)] if t is not None}
         assert (

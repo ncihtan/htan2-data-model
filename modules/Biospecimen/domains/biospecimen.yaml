@@ -32,6 +32,17 @@ prefixes:
 
 default_prefix: htan
 
+enums:
+  TissueSectionEnum:
+    title: tissue_section
+    permissible_values:
+      "No":
+        description: The non-affirmative response to a question.
+      "Unknown":
+        description: Not known, not observed, not recorded, or refused.
+      "Yes":
+        description: The affirmative response to a question.
+
 slots:
   caDSR_id:
     description: The caDSR identifier for this element
@@ -213,6 +224,12 @@ classes:
         description: "Bulk RNA & DNA-seq specific: method used for nucleic acid isolation"
         pattern: "^.{0,100}$"
       
+      IS_TISSUE_SECTION:
+        range: TissueSectionEnum
+        required: false
+        title: "Is Tissue Section"
+        description: Indicator of whether the biospecimen is a tissue section.
+
       AGE_IN_DAYS_AT_SECTIONING:
         range: integer
         required: false
@@ -362,7 +379,22 @@ classes:
       DEGREE_OF_DYSPLASIA:
         required: false
         description: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Precancerous"
-    
+      IS_TISSUE_SECTION:
+        required: false
+        description: Required when BIOSPECIMEN_TYPE is "Tissue"
+      AGE_IN_DAYS_AT_SECTIONING:
+        required: false
+        description: Required when IS_TISSUE_SECTION is "Yes"
+      SLICING_METHOD:
+        required: false
+        description: Required when IS_TISSUE_SECTION is "Yes"
+      SECTION_THICKNESS_VALUE:
+        required: false
+        description: Required when IS_TISSUE_SECTION is "Yes"
+      SLIDE_CHARGE_TYPE:
+        required: false
+        description: Required when IS_TISSUE_SECTION is "Yes"
+
     rules:
       - description: "ACQUISITION_METHOD_OTHER_SPECIFY is required when ACQUISITION_METHOD_TYPE is Other"
         preconditions:
@@ -442,4 +474,54 @@ classes:
         postconditions:
           slot_conditions:
             DEGREE_OF_DYSPLASIA:
+              required: true
+
+      - description: "IS_TISSUE_SECTION is required when BIOSPECIMEN_TYPE is Tissue"
+        preconditions:
+          slot_conditions:
+            BIOSPECIMEN_TYPE:
+              equals_string: "Tissue"
+        postconditions:
+          slot_conditions:
+            IS_TISSUE_SECTION:
+              required: true
+
+      - description: "AGE_IN_DAYS_AT_SECTIONING is required when IS_TISSUE_SECTION is Yes"
+        preconditions:
+          slot_conditions:
+            IS_TISSUE_SECTION:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            AGE_IN_DAYS_AT_SECTIONING:
+              required: true
+
+      - description: "SLICING_METHOD is required when IS_TISSUE_SECTION is Yes"
+        preconditions:
+          slot_conditions:
+            IS_TISSUE_SECTION:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            SLICING_METHOD:
+              required: true
+
+      - description: "SECTION_THICKNESS_VALUE is required when IS_TISSUE_SECTION is Yes"
+        preconditions:
+          slot_conditions:
+            IS_TISSUE_SECTION:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            SECTION_THICKNESS_VALUE:
+              required: true
+
+      - description: "SLIDE_CHARGE_TYPE is required when IS_TISSUE_SECTION is Yes"
+        preconditions:
+          slot_conditions:
+            IS_TISSUE_SECTION:
+              equals_string: "Yes"
+        postconditions:
+          slot_conditions:
+            SLIDE_CHARGE_TYPE:
               required: true
