@@ -1,5 +1,5 @@
 # Auto generated from biospecimen.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-15T14:13:34
+# Generation date: 2026-04-15T14:31:35
 # Schema: Biospecimen
 #
 # id: https://w3id.org/htan/biospecimen
@@ -317,13 +317,10 @@ class TissueSectionEnum(EnumDefinitionImpl):
 
     No = PermissibleValue(
         text="No",
-        description="The non-affirmative response to a question.")
-    Unknown = PermissibleValue(
-        text="Unknown",
-        description="Not known, not observed, not recorded, or refused.")
+        description="The sample material is not a tissue section sliced from a tissue specimen block.")
     Yes = PermissibleValue(
         text="Yes",
-        description="The affirmative response to a question.")
+        description="The sample material is a tissue section sliced from a tissue specimen block")
 
     _defn = EnumDefinition(
         name="TissueSectionEnum",
