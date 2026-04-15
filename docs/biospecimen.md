@@ -2,6 +2,23 @@
 
 HTAN Biospecimen Data Model Schema
 
+📥 [Download attributes as CSV](csv/biospecimen.csv)
+
+## AnyValue
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+
+## extension
+
+**a tag/value pair used to add non-model information to an entry**
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `extension_tag` | uriorcurie | Yes | a tag associated with an extension |
+| `extension_value` | AnyValue | Yes | the actual annotation |
+| `extensions` | extension | No | a tag/text tuple attached to an arbitrary element |
+
 ## BiospecimenData
 
 **Container for all Biospecimen data**
@@ -9,41 +26,42 @@ HTAN Biospecimen Data Model Schema
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `HTAN_BIOSPECIMEN_ID` | string | Yes | HTAN Biospecimen ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (Participant ID or Biospecimen ID with B suffix). One or more IDs. Supports HTA200-229 for phase 2. |
-| `ADJACENT_BIOSPECIMEN_IDS` | string | No | List of HTAN Biospecimen IDs of adjacent biospecimens cut from the same sample. Each ID must match the HTAN biospecimen ID pattern. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (Participant ID or Biospecimen ID with B suffix). S... |
+| `ADJACENT_BIOSPECIMEN_IDS` | string | No | List of HTAN Identifiers (separated by commas) of adjacent biospecimens cut from the same sample |
 | `SITE_DATA_SOURCE` | string | No | Text to identify the data source for the specimen/sample from within the HTAN center |
-| `BIOSPECIMEN_TYPE` | [BiospecimenTypeEnum](#biospecimentypeenum) | Yes | Biospecimen Type |
-| `TIMEPOINT` | [TimepointEnum](#timepointenum) | No | A specific point in the time continuum, including those established relative to an event |
+| `BIOSPECIMEN_TYPE` | BiospecimenTypeEnum | Yes | Biospecimen Type |
+| `TIMEPOINT` | TimepointEnum | No | A specific point in the time continuum, including those established relative to an event |
 | `AGE_IN_DAYS_AT_SPECIMEN_COLLECTION` | integer | Yes | The age in days of the subject at the time of specimen collection |
-| `ACQUISITION_METHOD_TYPE` | [AcquisitionMethodTypeEnum](#acquisitionmethodtypeenum) | Yes | Records the method of acquisition or source for the specimen under consideration |
-| `ACQUISITION_METHOD_OTHER_SPECIFY` | string | Conditional: Required when ACQUISITION_METHOD_TYPE is "Other" | Required when ACQUISITION_METHOD_TYPE is "Other" |
-| `SITE_OF_RESECTION_OR_BIOPSY` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum) | Yes | The location within the body from where the disease of interest originated as captured in the Uberon identifier |
-| `SPECIMEN_LATERALITY` | [SpecimenLateralityEnum](#specimenlateralityenum) | Yes | For tumors in paired organs, designates the side on which the specimen was obtained |
+| `ACQUISITION_METHOD_TYPE` | AcquisitionMethodTypeEnum | Yes | Records the method of acquisition or source for the specimen under consideration |
+| `ACQUISITION_METHOD_OTHER_SPECIFY` | string | No | A custom acquisition method |
+| `SITE_OF_RESECTION_OR_BIOPSY` | tissue_or_organ_of_origin_uberon_enum | Yes | The location within the body from where the disease of interest originated as captured in the Ube... |
+| `SPECIMEN_LATERALITY` | SpecimenLateralityEnum | Yes | For tumors in paired organs, designates the side on which the specimen was obtained |
 | `AGE_IN_DAYS_AT_SPECIMEN_PROCESSING` | integer | Yes | The age in days of a subject when a specimen was processed |
 | `PROCESSING_LOCATION` | string | No | Site with an HTAN center where specimen processing occurs |
-| `PRESERVATION_METHOD` | [PreservationMethodEnum](#preservationmethodenum) | Yes | Method used to preserve the sample |
-| `PRESERVATION_MEDIUM` | [PreservationMediumEnum](#preservationmediumenum) | Yes | The kind of substance holding another substance in solution or suspension to maintain a specimen in a viable state |
-| `PRESERVATION_METHOD_TEMPERATURE` | [PreservationTemperatureEnum](#preservationtemperatureenum) | Yes | The term which describes the temperature used to maintain the specimen in a viable state |
-| `FIXATION_DURATION_IN_MINUTES` | integer | Conditional: Required when PRESERVATION_METHOD is "Fixation" | Required when PRESERVATION_METHOD is "Fixation" |
+| `PRESERVATION_METHOD` | PreservationMethodEnum | Yes | Method used to preserve the sample |
+| `PRESERVATION_MEDIUM` | PreservationMediumEnum | Yes | The kind of substance holding another substance in solution or suspension to maintain a specimen ... |
+| `PRESERVATION_METHOD_TEMPERATURE` | PreservationTemperatureEnum | Yes | The term which describes the temperature used to maintain the specimen in a viable state |
+| `FIXATION_DURATION_IN_MINUTES` | integer | No | The length of time, from beginning to end, required to process or preserve biospecimens in fixative |
 | `LONGEST_DIMENSION` | decimal | No | Numeric value that represents the longest dimension of the sample, measured in millimeters |
 | `SHORTEST_DIMENSION` | decimal | No | Numeric value that represents the shortest dimension of the sample, measured in millimeters |
-| `ANALYTE_TYPE` | [AnalyteTypeEnum](#analytetypeenum) | Conditional: Required when BIOSPECIMEN_TYPE is "DNA" or "RNA" | Required when BIOSPECIMEN_TYPE is "DNA" or "RNA" |
+| `TISSUE_SAMPLE_TYPE` | TissueSampleTypeEnum | No | The type of preserved sample material removed for testing, diagnostic, propagation, treatment or ... |
+| `ANALYTE_TYPE` | AnalyteTypeEnum | No | The sample or material being subjected to analysis |
 | `METHOD_OF_NUCLEIC_ACID_ISOLATION` | string | No | Bulk RNA & DNA-seq specific: method used for nucleic acid isolation |
 | `AGE_IN_DAYS_AT_SECTIONING` | integer | No | The age in days of a subject when a specimen tissue block was sectioned |
-| `SLICING_METHOD` | [SlicingMethodEnum](#slicingmethodenum) | No | Imaging specific: the method by which the tissue was sliced |
-| `SECTION_THICKNESS_VALUE` | decimal | No | Numeric value to describe the thickness of a slice to tissue taken from a biospecimen, measured in microns |
+| `SLICING_METHOD` | SlicingMethodEnum | No | Imaging specific: the method by which the tissue was sliced |
+| `SECTION_THICKNESS_VALUE` | decimal | No | Numeric value to describe the thickness of a slice to tissue taken from a biospecimen, measured i... |
 | `SECTION_NUMBER_IN_SEQUENCE` | integer | No | Numeric value (integer, including ranges) provided to a sample in a series of sections |
-| `SLIDE_CHARGE_TYPE` | [SlideChargeTypeEnum](#slidechargetypeenum) | No | A description of the charge on the glass slide |
-| `SPECIMEN_CELLULAR_ARCHITECTURE` | [CellularArchitectureEnum](#cellulararchitectureenum) | Yes | The architectural pattern of an abnormal, normal, or mixed cellular population in a tissue specimen |
-| `TUMOR_CLASSIFICATION` | [TumorClassificationEnum](#tumorclassificationenum) | Conditional: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Tumor" | Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Tumor" |
-| `ICD_O_3_TISSUE_MORPHOLOGY` | [IcdO3MorphologyEnum](#icdo3morphologyenum) | Conditional: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Tumor" | Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Tumor" |
-| `ICD_10_DISEASE_CODE` | [Icd10DiseaseEnum](#icd10diseaseenum) | Conditional: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Precancerous" | Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Precancerous" |
-| `DEGREE_OF_DYSPLASIA` | [DegreeOfDysplasiaEnum](#degreeofdysplasiaenum) | Conditional: Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Precancerous" | Required when SPECIMEN_CELLULAR_ARCHITECTURE is "Precancerous" |
+| `SLIDE_CHARGE_TYPE` | SlideChargeTypeEnum | No | A description of the charge on the glass slide |
+| `SPECIMEN_CELLULAR_ARCHITECTURE` | CellularArchitectureEnum | Yes | The architectural pattern of an abnormal, normal, or mixed cellular population in a tissue specimen |
+| `TUMOR_CLASSIFICATION` | TumorClassificationEnum | No | The classification of a tumor at a particular time based primarily on histopathological character... |
+| `ICD_O_3_TISSUE_MORPHOLOGY` | IcdO3MorphologyEnum | No | The microscopic anatomy of normal and abnormal cells and tissues of the specimen as captured in t... |
+| `ICD_10_DISEASE_CODE` | Icd10DiseaseEnum | No | For coding precancerous lesions: The diagnosis, in humans, as captured in the 2022 extension of I... |
+| `DEGREE_OF_DYSPLASIA` | DegreeOfDysplasiaEnum | No | Information related to the presence of cells that look abnormal under a microscope but are not ca... |
 | `PERCENT_NECROSIS` | decimal | No | Numeric value to represent the percentage of cell death in a malignant tumor sample or specimen |
-| `PERCENT_NORMAL_CELLS` | decimal | No | Numeric value to represent the percentage of normal cell content in a malignant tumor sample or specimen |
+| `PERCENT_NORMAL_CELLS` | decimal | No | Numeric value to represent the percentage of normal cell content in a malignant tumor sample or s... |
 | `PERCENT_TUMOR_CELLS` | decimal | No | Numeric value that represents the percentage of infiltration by tumor cells in a sample |
 | `PERCENT_TUMOR_NUCLEI` | decimal | No | Numeric value to represent the percentage of tumor nuclei in a malignant neoplasm sample or specimen |
-| `SHIPPING_CONDITION_TYPE` | [ShippingConditionEnum](#shippingconditionenum) | Yes | Text descriptor of the shipping environment of a biospecimen |
+| `SHIPPING_CONDITION_TYPE` | ShippingConditionEnum | Yes | Text descriptor of the shipping environment of a biospecimen |
 
 ## Enums
 
@@ -51,85 +69,85 @@ HTAN Biospecimen Data Model Schema
 
 | Value | Description |
 |-------|-------------|
-| Autopsy | Autopsy; an examination and dissection of a dead body to determine cause of death or the changes produced by disease. |
-| Biopsy | The removal of tissue specimens or fluid from the living body for microscopic examination, performed to establish a diagnosis. |
+| Autopsy | Autopsy; an examination and dissection of a dead body to determine cause of d... |
+| Biopsy | The removal of tissue specimens or fluid from the living body for microscopic... |
 | Blood draw | A small volume of blood removed for testing or storage. |
-| Core needle biopsy | The removal of a tissue sample using a needle with a relatively large diameter, for microscopic examination. |
-| Excisional Biopsy | A surgical procedure in which an entire lesion is removed for microscopic examination. |
-| Fine needle aspirate | The removal of tissue or fluid with a thin needle for examination under a microscope. |
-| Forceps Biopsy | The removal of a tissue sample using a specially-designed endoscope consisting of a slender flexible forceps with movable cup-shaped jaws. The jaws are closed around the tissue to be collected and while closed the forceps are withdrawn to capture the biopsy tissue. |
-| Incisional Biopsy | A surgical procedure in which part of a lesion is removed for microscopic examination. |
-| Lymphadenectomy (regional nodes) | Surgical removal of lymph nodes, usually done to assess the spread of cancer: A lymph node that drains lymph from a region of interest. |
+| Core needle biopsy | The removal of a tissue sample using a needle with a relatively large diamete... |
+| Excisional Biopsy | A surgical procedure in which an entire lesion is removed for microscopic exa... |
+| Fine needle aspirate | The removal of tissue or fluid with a thin needle for examination under a mic... |
+| Forceps Biopsy | The removal of a tissue sample using a specially-designed endoscope consistin... |
+| Incisional Biopsy | A surgical procedure in which part of a lesion is removed for microscopic exa... |
+| Lymphadenectomy (regional nodes) | Surgical removal of lymph nodes, usually done to assess the spread of cancer:... |
 | Not applicable | Determination of a value is not relevant in the current context. |
 | Not reported | Not provided or available. |
 | Not specified | Not stated explicitly or in detail. |
 | Other | Different than the one(s) previously specified or mentioned. |
 | Pancreaticoduodenectomy | Surgical excision of all or part of the pancreas and duodenum. |
 | Punch biopsy | Removal of a disk of skin tissue, for microscopic examination, using a punch. |
-| Re-excision | A surgical procedure to remove the remaining abnormal tissues from the body, not completely removed in an earlier attempt. |
-| Sentinel node biopsy | Surgical removal and examination of the sentinel node, the lymph node which is first in receiving the lymphatic drainage of a specified anatomic location and is most likely to be affected by the lymphatic spread of cancer. |
-| Shave biopsy | Removal skin tissue, for microscopic examination, using a blade oriented in the horizontal plane of the skin surface. |
-| Surgical Resection | The surgical removal of a lesion, often as part of a biopsy and with healthy margins. |
+| Re-excision | A surgical procedure to remove the remaining abnormal tissues from the body, ... |
+| Sentinel node biopsy | Surgical removal and examination of the sentinel node, the lymph node which i... |
+| Shave biopsy | Removal skin tissue, for microscopic examination, using a blade oriented in t... |
+| Surgical Resection | The surgical removal of a lesion, often as part of a biopsy and with healthy ... |
 | Unknown | Not known, not observed, not recorded, or refused. |
 
 ### AnalyteTypeEnum
 
 | Value | Description |
 |-------|-------------|
-| DNA | A long linear double-stranded polymer formed from nucleotides attached to a deoxyribose backbone and found in the nucleus of a cell; associated with the transmission of genetic information. |
+| DNA | A long linear double-stranded polymer formed from nucleotides attached to a d... |
 | Not Reported | Not provided or available. |
 | Nucleic RNA | A biological specimen comprised of the RNA isolated from the nuclei of cells. |
-| Protein | Any of a group of complex organic macromolecules that contain carbon, hydrogen, oxygen, nitrogen, and usually sulfur and are composed of one or more chains of amino acids. Proteins are fundamental components of all living cells and include many substances, such as enzymes, hormones, and antibodies, that are necessary for the proper functioning of an organism. |
+| Protein | Any of a group of complex organic macromolecules that contain carbon, hydroge... |
 | RNA | A biospecimen created to contain an isolated or enriched RNA sample. |
-| Total RNA | A biological sample comprised of all of the RNA collected from an experimental subject. |
+| Total RNA | A biological sample comprised of all of the RNA collected from an experimenta... |
 | Unknown | Not known, not observed, not recorded, or refused. |
-| cfDNA | DNA found in blood plasma and other bodily fluids that is not associated with cells. |
-| ctDNA | Neoplasm-derived DNA found in blood plasma and other bodily fluids that is not associated with cells. |
-| mRNA | A class of RNA molecule containing protein-coding information in its nucleotide sequence that can be translated into the amino acid sequence of a protein. |
-| miRNA | A sequence of single-stranded RNA, that is 20-25 nucleotides in length, which is transcribed from DNA but is not translated into a protein. This nucleic acid may regulate the transcription or translation of other genes. |
+| cfDNA | DNA found in blood plasma and other bodily fluids that is not associated with... |
+| ctDNA | Neoplasm-derived DNA found in blood plasma and other bodily fluids that is no... |
+| mRNA | A class of RNA molecule containing protein-coding information in its nucleoti... |
+| miRNA | A sequence of single-stranded RNA, that is 20-25 nucleotides in length, which... |
 
 ### BiospecimenTypeEnum
 
 | Value | Description |
 |-------|-------------|
-| Ascites | The accumulation of fluid in the peritoneal cavity, which may be serous, hemorrhagic, or the result of tumor metastasis to the peritoneum. |
+| Ascites | The accumulation of fluid in the peritoneal cavity, which may be serous, hemo... |
 | Blood | Blood circulating throughout the body. |
-| Body Fluid or Substance | Liquid and semi liquid substances produced by living organisms to fulfill specific functions or excreted as waste; does not include hormones or enzymes. |
-| Bone Marrow | The soft, sponge-like tissue in the center of bones that produces white blood cells, red blood cells, and platelets. |
-| Cell Line | A permanently established cell culture that will proliferate indefinitely given appropriate fresh medium and space. |
-| Cells | The smallest units of living structure capable of independent existence, composed of a membrane-enclosed mass of protoplasm and containing a nucleus or nucleoid. |
-| Central Nervous System | The main information-processing organs of the nervous system, consisting of the brain, spinal cord, and meninges. |
-| DNA | A long linear double-stranded polymer formed from nucleotides attached to a deoxyribose backbone and found in the nucleus of a cell; associated with the transmission of genetic information. |
-| Mouth Rinse | A sample consisting of biological material from the buccal cavity. A collection solution is introduced into the mouth, swished around, and then collected. |
+| Body Fluid or Substance | Liquid and semi liquid substances produced by living organisms to fulfill spe... |
+| Bone Marrow | The soft, sponge-like tissue in the center of bones that produces white blood... |
+| Cell Line | A permanently established cell culture that will proliferate indefinitely giv... |
+| Cells | The smallest units of living structure capable of independent existence, comp... |
+| Central Nervous System | The main information-processing organs of the nervous system, consisting of t... |
+| DNA | A long linear double-stranded polymer formed from nucleotides attached to a d... |
+| Mouth Rinse | A sample consisting of biological material from the buccal cavity. A collecti... |
 | Not Reported | Not provided or available. |
-| RNA | Single-stranded long chain of nucleotides containing ribose. It is the end product of DNA transcription by the enzyme RNA polymerase. It is essential in protein synthesis. |
-| Saliva | The watery fluid in the mouth made by the salivary glands. Saliva moistens food to help digestion and it helps protect the mouth against infections. |
-| Skin | An organ that constitutes the external surface of the body. It consists of the epidermis, dermis, and skin appendages. |
-| Sputum | Material containing mucus, cellular debris, microorganisms and sometimes blood or pus. It is ejected through the mouth from the lungs, bronchi, and trachea. |
-| Stool | The material discharged from the bowel during defecation. It consists of undigested food, intestinal mucus, epithelial cells, and bacteria. |
-| Tissue | An anatomical structure consisting of similarly specialized cells and intercellular matrix, aggregated according to genetically determined spatial relationships, performing a specific function. |
+| RNA | Single-stranded long chain of nucleotides containing ribose. It is the end pr... |
+| Saliva | The watery fluid in the mouth made by the salivary glands. Saliva moistens fo... |
+| Skin | An organ that constitutes the external surface of the body. It consists of th... |
+| Sputum | Material containing mucus, cellular debris, microorganisms and sometimes bloo... |
+| Stool | The material discharged from the bowel during defecation. It consists of undi... |
+| Tissue | An anatomical structure consisting of similarly specialized cells and interce... |
 | Unknown | Not known, observed, recorded; or reported as unknown by the data contributor. |
-| Urine | The fluid that is excreted by the kidneys. It is stored in the bladder and discharged through the urethra. |
-| Xenograft | The transfer of cells, tissues, or organs from a donor into a recipient of another species. |
+| Urine | The fluid that is excreted by the kidneys. It is stored in the bladder and di... |
+| Xenograft | The transfer of cells, tissues, or organs from a donor into a recipient of an... |
 
 ### CellularArchitectureEnum
 
 | Value | Description |
 |-------|-------------|
-| Mixed | A morphologic finding indicating the presence of a cellular population that consists of normal cells and neoplastic cells in a tissue sample. |
-| Normal | Tissue sample with cellular composition and architectural patterns expected for the particular anatomic site in which it belongs. There is no evidence of abnormal cellular infiltrates or tumor mass formation. |
+| Mixed | A morphologic finding indicating the presence of a cellular population that c... |
+| Normal | Tissue sample with cellular composition and architectural patterns expected f... |
 | Not Reported | Not provided or available. |
-| Precancerous | A term that refers to the presence of abnormal cells that have the potential to progress into cancer. |
-| Tumor | Tissue sample that contains an abnormal cellular infiltrate forming a solid mass. The abnormal cellular component can be benign or malignant. Tumor samples are obtained for microscopic examination and/or molecular analysis. |
+| Precancerous | A term that refers to the presence of abnormal cells that have the potential ... |
+| Tumor | Tissue sample that contains an abnormal cellular infiltrate forming a solid m... |
 | Unknown | Not known, observed, recorded; or reported as unknown by the data contributor. |
 
 ### DegreeOfDysplasiaEnum
 
 | Value | Description |
 |-------|-------------|
-| 1 | Used to describe tumor samples that exhibit well to moderately well differentiated cells. They are generally expected to be slow growing and less aggressive. |
-| 2 | A term referring to the degree of differentiation of a malignant neoplasm and indicating that it is moderately differentiated. |
-| 3 | Used to describe tumor samples that exhibit poorly differentiated or undifferentiated cells. They are generally expected to be fast growing and aggressive. |
+| 1 | Used to describe tumor samples that exhibit well to moderately well different... |
+| 2 | A term referring to the degree of differentiation of a malignant neoplasm and... |
+| 3 | Used to describe tumor samples that exhibit poorly differentiated or undiffer... |
 | 99 | Not known, not observed, not recorded, or refused. |
 
 ### Icd10DiseaseEnum
@@ -441,7 +459,7 @@ HTAN Biospecimen Data Model Schema
 | A50.07 | Bubo - Syphilitic - Congenital |
 | A50.08 | Hepatitis - Syphilitic - Congenital |
 | A50.09 | Deafmutism - Syphilitic, congenital |
-| A50.1 | Syphilis, syphilitic - Congenital - Early, or less than 2 years after birth NEC - Latent |
+| A50.1 | Syphilis, syphilitic - Congenital - Early, or less than 2 years after birth N... |
 | A50.2 | Syphilis, syphilitic - Congenital - Early, or less than 2 years after birth NEC |
 | A50.30 | Oculopathy - Syphilitic NEC - Congenital - Late |
 | A50.31 | Keratitis - In - Syphilis |
@@ -462,7 +480,7 @@ HTAN Biospecimen Data Model Schema
 | A50.56 | Anomaly, anomalous - Tibia NEC - Saber |
 | A50.57 | Anomaly, anomalous - Saddle nose, syphilitic |
 | A50.59 | Abscess - Dubois |
-| A50.6 | Syphilis, syphilitic - Congenital - Late, or 2 years or more after birth NEC - Latent |
+| A50.6 | Syphilis, syphilitic - Congenital - Late, or 2 years or more after birth NEC ... |
 | A50.7 | Syphilis, syphilitic - Congenital - Late, or 2 years or more after birth NEC |
 | A50.9 | Syphilis, syphilitic - Congenital |
 | A51.0 | Bubo - Syphilitic |
@@ -544,7 +562,7 @@ HTAN Biospecimen Data Model Schema
 | A54.89 | Adenitis - Gonorrheal NEC |
 | A54.9 | Disease, diseased - Gonococcal NOS |
 | A55 | Bubo - Climatic |
-| A56.00 | Infection, infected, infective - Chlamydia, chlamydial - Genitourinary tract - Lower |
+| A56.00 | Infection, infected, infective - Chlamydia, chlamydial - Genitourinary tract ... |
 | A56.01 | Chlamydia, chlamydial - Cystitis |
 | A56.02 | Chlamydia, chlamydial - Vulvovaginitis |
 | A56.09 | Cervicitis - Chlamydial |
@@ -565,10 +583,10 @@ HTAN Biospecimen Data Model Schema
 | A59.9 | Infection, infected, infective - Trichomonas |
 | A60.00 | Herpes, herpesvirus, herpetic - Anogenital - Urogenital tract |
 | A60.01 | Herpes, herpesvirus, herpetic - Anogenital - Urogenital tract - Penis |
-| A60.02 | Herpes, herpesvirus, herpetic - Anogenital - Urogenital tract - Male genital organ NEC |
+| A60.02 | Herpes, herpesvirus, herpetic - Anogenital - Urogenital tract - Male genital ... |
 | A60.03 | Cervicitis - Herpesviral |
 | A60.04 | Herpes, herpesvirus, herpetic - Anogenital - Urogenital tract - Vagina |
-| A60.09 | Herpes, herpesvirus, herpetic - Anogenital - Urogenital tract - Specified site NEC |
+| A60.09 | Herpes, herpesvirus, herpetic - Anogenital - Urogenital tract - Specified sit... |
 | A60.1 | Herpes, herpesvirus, herpetic - Anogenital - Perianal skin |
 | A60.9 | Herpes, herpesvirus, herpetic - Anogenital |
 | A63.0 | Condyloma |
@@ -710,7 +728,7 @@ HTAN Biospecimen Data Model Schema
 | A98.2 | Disease, diseased - Kyasanur Forest |
 | A98.3 | Disease, diseased - Marburg |
 | A98.4 | Disease, diseased - Ebola |
-| A98.5 | Disease, diseased - Hantavirus, with pulmonary manifestations - With renal manifestations |
+| A98.5 | Disease, diseased - Hantavirus, with pulmonary manifestations - With renal ma... |
 | A98.8 | Fever - Hemorrhagic - Viral - Specified NEC |
 | A99 | Fever - Hemorrhagic - Viral |
 | B00.0 | Eczema - Herpeticum |
@@ -844,10 +862,10 @@ HTAN Biospecimen Data Model Schema
 | B27.01 | Mononucleosis, infectious - Epstein-Barr - With - Polyneuropathy |
 | B27.02 | Mononucleosis, infectious - Epstein-Barr - With - Meningitis |
 | B27.09 | Adenitis - Epidemic, acute |
-| B27.10 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Mononucleosis |
-| B27.11 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Mononucleosis - With - Polyneuropathy |
-| B27.12 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Mononucleosis - With - Meningitis |
-| B27.19 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Mononucleosis - With - Complication NEC |
+| B27.10 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Mononucle... |
+| B27.11 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Mononucle... |
+| B27.12 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Mononucle... |
+| B27.19 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Mononucle... |
 | B27.80 | Mononucleosis, infectious - Specified NEC |
 | B27.81 | Mononucleosis, infectious - Specified NEC - With - Polyneuropathy |
 | B27.82 | Mononucleosis, infectious - Specified NEC - With - Meningitis |
@@ -1161,32 +1179,32 @@ HTAN Biospecimen Data Model Schema
 | B94.2 | Sequelae - Hepatitis, viral |
 | B94.8 | Sequelae - Encephalitis or encephalomyelitis - In infectious disease NEC |
 | B94.9 | Sequelae - Infectious disease |
-| B95.0 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Streptococcus - Group A |
-| B95.1 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Streptococcus - Group B |
-| B95.2 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Enterococcus |
-| B95.3 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Streptococcus - Pneumoniae |
-| B95.4 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Streptococcus - Specified NEC |
-| B95.5 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Streptococcus |
-| B95.61 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Staphylococcus - Aureus |
-| B95.62 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Staphylococcus - Aureus - Methicillin resistant |
-| B95.7 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Staphylococcus - Specified NEC |
-| B95.8 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Staphylococcus |
-| B96.0 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Mycoplasma pneumoniae [M. pneumoniae] |
-| B96.1 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Klebsiella pneumoniae [K. pneumoniae] |
+| B95.0 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B95.1 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B95.2 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B95.3 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B95.4 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B95.5 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B95.61 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B95.62 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B95.7 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B95.8 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B96.0 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B96.1 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
 | B96.20 | Bacillus - Coli infection |
 | B96.21 | Escherichia coli - O157 |
 | B96.22 | Escherichia coli - Non-O157 Shiga toxin-producing |
 | B96.23 | Escherichia coli - Shiga toxin-producing |
 | B96.29 | Escherichia coli - Non-Shiga toxin-producing |
 | B96.3 | Haemophilus |
-| B96.4 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Proteus |
-| B96.5 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Pseudomonas |
+| B96.4 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B96.5 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
 | B96.6 | Bacteroides - Fragilis, as cause of disease classified elsewhere |
 | B96.7 | Clostridium |
-| B96.81 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Helicobacter pylori [H.pylori] |
-| B96.82 | Infection, infected, infective - Bacterial NOS - As cause of disease classified elsewhere - Vibrio vulnificus |
-| B96.83 | Infection, infected, infective - Acinetobacter baumannii, as cause of disease classified elsewhere |
-| B96.89 | Bacterium, bacteria, bacterial - Agent NEC, as cause of disease classified elsewhere |
+| B96.81 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B96.82 | Infection, infected, infective - Bacterial NOS - As cause of disease classifi... |
+| B96.83 | Infection, infected, infective - Acinetobacter baumannii, as cause of disease... |
+| B96.89 | Bacterium, bacteria, bacterial - Agent NEC, as cause of disease classified el... |
 | B97.0 | Adenovirus, as cause of disease classified elsewhere |
 | B97.10 | Enterovirus, as cause of disease classified elsewhere |
 | B97.11 | Coxsackie - As cause of disease classified elsewhere |
@@ -1194,19 +1212,19 @@ HTAN Biospecimen Data Model Schema
 | B97.19 | Enterovirus, as cause of disease classified elsewhere - Other specified |
 | B97.21 | Coronavirus - SARS-associated |
 | B97.29 | Coronavirus - As cause of disease classified elsewhere |
-| B97.30 | Infection, infected, infective - Retrovirus - As cause of disease classified elsewhere |
-| B97.31 | Infection, infected, infective - Lentivirus, as cause of disease classified elsewhere |
-| B97.32 | Infection, infected, infective - Oncovirus, as cause of disease classified elsewhere |
-| B97.33 | Human - T-cell lymphotropic virus - Type-1 - As cause of disease classified elsewhere |
+| B97.30 | Infection, infected, infective - Retrovirus - As cause of disease classified ... |
+| B97.31 | Infection, infected, infective - Lentivirus, as cause of disease classified e... |
+| B97.32 | Infection, infected, infective - Oncovirus, as cause of disease classified el... |
+| B97.33 | Human - T-cell lymphotropic virus - Type-1 - As cause of disease classified e... |
 | B97.34 | Human - T-cell lymphotropic virus - Type-2 |
 | B97.35 | Human - Immunodeficiency virus - Type-2 |
-| B97.39 | Infection, infected, infective - Retrovirus - As cause of disease classified elsewhere - Specified NEC |
-| B97.4 | Infection, infected, infective - Virus, viral NOS - Respiratory syncytial - As cause of disease classified elsewhere |
-| B97.5 | Infection, infected, infective - Reovirus, as cause of disease classified elsewhere |
+| B97.39 | Infection, infected, infective - Retrovirus - As cause of disease classified ... |
+| B97.4 | Infection, infected, infective - Virus, viral NOS - Respiratory syncytial - A... |
+| B97.5 | Infection, infected, infective - Reovirus, as cause of disease classified els... |
 | B97.6 | Arthritis, arthritic - Due to or associated with - Human parvovirus |
-| B97.7 | Infection, infected, infective - Papillomavirus, as cause of disease classified elsewhere |
-| B97.81 | Infection, infected, infective - Virus, viral NOS - As cause of disease classified elsewhere - Human - Metapneumovirus |
-| B97.89 | Infection, infected, infective - Rhinovirus - As cause of disease classified elsewhere |
+| B97.7 | Infection, infected, infective - Papillomavirus, as cause of disease classifi... |
+| B97.81 | Infection, infected, infective - Virus, viral NOS - As cause of disease class... |
+| B97.89 | Infection, infected, infective - Rhinovirus - As cause of disease classified ... |
 | B99 | Arthropathy - Postinfectious NEC |
 | B99.8 | Disease, diseased - Epidemic - Specified NEC |
 | B99.9 | Disease, diseased - Epidemic |
@@ -1458,7 +1476,7 @@ HTAN Biospecimen Data Model Schema
 | C92.5- | Leukemia, leukemic - Acute myelomonocytic |
 | C92.6- | Leukemia, leukemic - Acute myeloid, NOS - With - 11q23-abnormality |
 | C92.9- | Leukemia, leukemic - Granulocytic |
-| C92.A- | Leukemia, leukemic - Acute myeloid, NOS - With - Dysplasia of remaining hematopoesis and/or myelodysplastic disease in its history |
+| C92.A- | Leukemia, leukemic - Acute myeloid, NOS - With - Dysplasia of remaining hemat... |
 | C92.Z- | Leukemia, leukemic - Myeloid - Specified NEC |
 | C93.0- | Leukemia, leukemic - Acute monoblastic |
 | C93.1- | Leukemia, leukemic - Chronic monocytic |
@@ -1706,7 +1724,7 @@ HTAN Biospecimen Data Model Schema
 | D50.8 | Achlorhydria, achlorhydric - Anemia |
 | D50.9 | Anemia - With - Koilonychia |
 | D51.0 | Addison's - Anemia |
-| D51.1 | Anemia - Deficiency - Vitamin B12 NOS - Due to - Selective vitamin B12 malabsorption with proteinuria |
+| D51.1 | Anemia - Deficiency - Vitamin B12 NOS - Due to - Selective vitamin B12 malabs... |
 | D51.2 | Anemia - Deficiency - Transcobalamin II |
 | D51.3 | Anemia - Combined system disease NEC - Due to dietary vitamin B12 deficiency |
 | D51.8 | Anemia - Deficiency - Vitamin B12 NOS - Specified type NEC |
@@ -1750,29 +1768,29 @@ HTAN Biospecimen Data Model Schema
 | D57.212 | Disease, diseased - Sickle-cell - Hb-C - With - Splenic sequestration |
 | D57.213 | Disease, diseased - Sickle-cell - Hb-C - With - Cerebral vascular involvement |
 | D57.214 | Dactylitis - Sickle-cell - Hb C |
-| D57.218 | Disease, diseased - Sickle-cell - Hb-C - With - Crisis - With - Specified complication NEC |
+| D57.218 | Disease, diseased - Sickle-cell - Hb-C - With - Crisis - With - Specified com... |
 | D57.219 | Disease, diseased - Sickle-cell - Hb-C - With - Crisis |
 | D57.3 | Disease, diseased - Hemoglobin or Hb - AS genotype |
 | D57.40 | Anemia - Microdrepanocytosis |
 | D57.411 | Disease, diseased - Sickle-cell - Thalassemia - With - Acute chest syndrome |
 | D57.412 | Disease, diseased - Sickle-cell - Thalassemia - With - Splenic sequestration |
-| D57.413 | Disease, diseased - Sickle-cell - Thalassemia - With - Cerebral vascular involvement |
+| D57.413 | Disease, diseased - Sickle-cell - Thalassemia - With - Cerebral vascular invo... |
 | D57.414 | Dactylitis - Sickle-cell - Thalassemia |
-| D57.418 | Disease, diseased - Sickle-cell - Thalassemia - With - Acute chest syndrome - With specified complication NEC |
+| D57.418 | Disease, diseased - Sickle-cell - Thalassemia - With - Acute chest syndrome -... |
 | D57.419 | Disease, diseased - Sickle-cell - Thalassemia - With - Crisis |
 | D57.42 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero |
-| D57.431 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero - With - Acute chest syndrome |
-| D57.432 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero - With - Splenic sequestration |
-| D57.433 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero - With - Cerebral vascular involvement |
+| D57.431 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero - With - Acute che... |
+| D57.432 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero - With - Splenic s... |
+| D57.433 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero - With - Cerebral ... |
 | D57.434 | Dactylitis - Sickle-cell - Beta zero |
-| D57.438 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero - With - Crisis - With - Specified complication |
+| D57.438 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero - With - Crisis - ... |
 | D57.439 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta zero - With - Crisis |
 | D57.44 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus |
-| D57.451 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus - With - Acute chest syndrome |
-| D57.452 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus - With - Splenic sequestration |
-| D57.453 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus - With - Cerebral vascular involvement |
+| D57.451 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus - With - Acute che... |
+| D57.452 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus - With - Splenic s... |
+| D57.453 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus - With - Cerebral ... |
 | D57.454 | Dactylitis - Sickle-cell - Beta plus |
-| D57.458 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus - With - Crisis - With - Specified complication |
+| D57.458 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus - With - Crisis - ... |
 | D57.459 | Disease, diseased - Hemoglobin or Hb - S or SS - Beta plus - With - Crisis |
 | D57.8- | Disease, diseased - Hemoglobin or Hb - SD |
 | D57.80 | Disease, diseased - Sickle-cell - Hb-SD |
@@ -1780,13 +1798,13 @@ HTAN Biospecimen Data Model Schema
 | D57.812 | Disease, diseased - Sickle-cell - Hb-SD - With - Splenic sequestration |
 | D57.813 | Disease, diseased - Sickle-cell - Hb-SD - With - Cerebral vascular involvement |
 | D57.814 | Dactylitis - Sickle-cell - Hb SD |
-| D57.818 | Disease, diseased - Sickle-cell - Hb-SD - With - Crisis - With - Complication specified NEC |
+| D57.818 | Disease, diseased - Sickle-cell - Hb-SD - With - Crisis - With - Complication... |
 | D57.819 | Disease, diseased - Sickle-cell - Hb-SD - With - Crisis |
 | D58.0 | Anemia - Congenital - Spherocytic |
 | D58.1 | Disease, diseased - Hemoglobin or Hb - C - Elliptocytosis |
 | D58.2 | Abnormal, abnormality, abnormalities - Hemoglobin |
 | D58.8 | Anemia - Hemolytic - Hereditary - Specified type NEC |
-| D58.9 | Abnormal, abnormality, abnormalities - Erythrocytes - Congenital, with perinatal jaundice |
+| D58.9 | Abnormal, abnormality, abnormalities - Erythrocytes - Congenital, with perina... |
 | D59.0 | Anemia - Hemolytic - Autoimmune - Drug-induced |
 | D59.10 | Anemia - Hemolytic - Autoimmune |
 | D59.11 | Anemia - Hemolytic - Autoimmune - Warm |
@@ -1837,11 +1855,11 @@ HTAN Biospecimen Data Model Schema
 | D67 | Christmas disease |
 | D68.00 | Disease, diseased - Von Willebrand |
 | D68.01 | Deficiency, deficient - Von Willebrand factor - Partial quantitative |
-| D68.020 | Defect, defective - Qualitative, of von Willebrand factor - With - Decreased platelet adhesion and selective deficiency of high-molecular-weight multimers |
-| D68.021 | Defect, defective - Qualitative, of von Willebrand factor - With - High-molecular-weight von Willebrand factor loss |
-| D68.022 | Defect, defective - Qualitative, of von Willebrand factor - With - Defective platelet adhesion with a normal size distribution of von Willebrand factor multimers |
-| D68.023 | Defect, defective - Qualitative, of von Willebrand factor - With - Defective von Willebrand factor to factor VIII binding |
-| D68.029 | Defect, defective - Qualitative, of von Willebrand factor - In von Willebrand factor function, with no further subtyping |
+| D68.020 | Defect, defective - Qualitative, of von Willebrand factor - With - Decreased ... |
+| D68.021 | Defect, defective - Qualitative, of von Willebrand factor - With - High-molec... |
+| D68.022 | Defect, defective - Qualitative, of von Willebrand factor - With - Defective ... |
+| D68.023 | Defect, defective - Qualitative, of von Willebrand factor - With - Defective ... |
+| D68.029 | Defect, defective - Qualitative, of von Willebrand factor - In von Willebrand... |
 | D68.03 | Absence - Von Willebrand factor, complete |
 | D68.04 | Disease, diseased - Von Willebrand - Acquired |
 | D68.09 | Disease, diseased - Von Willebrand - Platelet-type |
@@ -1933,16 +1951,16 @@ HTAN Biospecimen Data Model Schema
 | D76.1 | Histiocytosis - Mononuclear phagocytes NEC |
 | D76.2 | Syndrome - Hemophagocytic, infection-associated |
 | D76.3 | Granuloma - Reticulohistiocytic |
-| D78.01 | Complication - Intraoperative - Hemorrhage - Spleen - During a procedure on the spleen |
-| D78.02 | Complication - Intraoperative - Hemorrhage - Spleen - During a procedure on other organ |
-| D78.11 | Complication - Intraoperative - Puncture or laceration - Spleen - During a procedure on the spleen |
-| D78.12 | Complication - Intraoperative - Puncture or laceration - Spleen - During a procedure on other organ |
-| D78.21 | Complication - Postprocedural - Hemorrhage - Spleen - Following procedure on the spleen |
-| D78.22 | Complication - Postprocedural - Hemorrhage - Spleen - Following procedure on other organ |
-| D78.31 | Complication - Postprocedural - Hematoma - Spleen - Following procedure on the spleen |
-| D78.32 | Complication - Postprocedural - Hematoma - Spleen - Following procedure on other organ |
-| D78.33 | Complication - Postprocedural - Seroma - Spleen - Following procedure on the spleen |
-| D78.34 | Complication - Postprocedural - Seroma - Spleen - Following procedure on other organ |
+| D78.01 | Complication - Intraoperative - Hemorrhage - Spleen - During a procedure on t... |
+| D78.02 | Complication - Intraoperative - Hemorrhage - Spleen - During a procedure on o... |
+| D78.11 | Complication - Intraoperative - Puncture or laceration - Spleen - During a pr... |
+| D78.12 | Complication - Intraoperative - Puncture or laceration - Spleen - During a pr... |
+| D78.21 | Complication - Postprocedural - Hemorrhage - Spleen - Following procedure on ... |
+| D78.22 | Complication - Postprocedural - Hemorrhage - Spleen - Following procedure on ... |
+| D78.31 | Complication - Postprocedural - Hematoma - Spleen - Following procedure on th... |
+| D78.32 | Complication - Postprocedural - Hematoma - Spleen - Following procedure on ot... |
+| D78.33 | Complication - Postprocedural - Seroma - Spleen - Following procedure on the ... |
+| D78.34 | Complication - Postprocedural - Seroma - Spleen - Following procedure on othe... |
 | D78.81 | Complication - Intraoperative - Specified NEC - Spleen |
 | D78.89 | Complication - Postprocedural - Specified NEC - Spleen |
 | D80.0 | Absence - Gamma globulin in blood - Hereditary |
@@ -1959,7 +1977,7 @@ HTAN Biospecimen Data Model Schema
 | D81.1 | Immunodeficiency - Combined - Severe - With - Low T- and B-cell numbers |
 | D81.2 | Immunodeficiency - Combined - Severe - With - Low or normal B-cell numbers |
 | D81.30 | Deficiency, deficient - Adenosine deaminase |
-| D81.31 | Deficiency, deficient - Adenosine deaminase - With severe combined immunodeficiency |
+| D81.31 | Deficiency, deficient - Adenosine deaminase - With severe combined immunodefi... |
 | D81.32 | Deficiency, deficient - ADA2 |
 | D81.39 | Deficiency, deficient - Adenosine deaminase - Partial |
 | D81.4 | Nezelof's syndrome |
@@ -1967,9 +1985,9 @@ HTAN Biospecimen Data Model Schema
 | D81.6 | Deficiency, deficient - Major histocompatibility complex - Class I |
 | D81.7 | Deficiency, deficient - Major histocompatibility complex - Class II |
 | D81.810 | Deficiency, deficient - Biotinidase |
-| D81.818 | Immunodeficiency - Combined - Biotin-dependent carboxylase - Holocarboxylase synthetase |
+| D81.818 | Immunodeficiency - Combined - Biotin-dependent carboxylase - Holocarboxylase ... |
 | D81.819 | Deficiency, deficient - Biotin-dependent carboxylase |
-| D81.82 | Disease, diseased - P110d-activating mutation causing senescent T cells, lymphadenopathy, and immunodeficiency [PASLI] |
+| D81.82 | Disease, diseased - P110d-activating mutation causing senescent T cells, lymp... |
 | D81.89 | Immunodeficiency - Combined - Specified type NEC |
 | D81.9 | Agammaglobulinemia - With - Lymphopenia |
 | D82.0 | Aldrich |
@@ -1979,7 +1997,7 @@ HTAN Biospecimen Data Model Schema
 | D82.4 | Syndrome - Hyperimmunoglobulin E |
 | D82.8 | Immunodeficiency - With - Major defect - Specified type NEC |
 | D82.9 | Immunodeficiency - With - Major defect |
-| D83.0 | Immunodeficiency - Common variable - With - Abnormalities of B-cell numbers and function |
+| D83.0 | Immunodeficiency - Common variable - With - Abnormalities of B-cell numbers a... |
 | D83.1 | Immunodeficiency - Common variable - With - Immunoregulatory T-cell disorders |
 | D83.2 | Immunodeficiency - Common variable - With - Autoantibodies to B- or T-cells |
 | D83.8 | Immunodeficiency - Common variable - Specified type NEC |
@@ -2077,38 +2095,38 @@ HTAN Biospecimen Data Model Schema
 | E07.89 | Abnormal, abnormality, abnormalities - Globulin - Thyroid-binding |
 | E07.9 | Disease, diseased - Thyroid |
 | E08.00 | Diabetes, diabetic - Due to underlying condition - With - Hyperosmolarity |
-| E08.01 | Diabetes, diabetic - Due to underlying condition - With - Hyperosmolarity - With coma |
+| E08.01 | Diabetes, diabetic - Due to underlying condition - With - Hyperosmolarity - W... |
 | E08.10 | Diabetes, diabetic - Due to underlying condition - With - Ketoacidosis |
-| E08.11 | Diabetes, diabetic - Due to underlying condition - With - Ketoacidosis - With coma |
-| E08.21 | Diabetes, diabetic - Due to underlying condition - With - Glomerulonephrosis, intracapillary |
+| E08.11 | Diabetes, diabetic - Due to underlying condition - With - Ketoacidosis - With... |
+| E08.21 | Diabetes, diabetic - Due to underlying condition - With - Glomerulonephrosis,... |
 | E08.22 | Diabetes, diabetic - Due to underlying condition - With - Chronic kidney disease |
-| E08.29 | Diabetes, diabetic - Due to underlying condition - With - Kidney complications NEC |
-| E08.311 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - With macular edema |
+| E08.29 | Diabetes, diabetic - Due to underlying condition - With - Kidney complication... |
+| E08.311 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - With ... |
 | E08.319 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy |
-| E08.321 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonproliferative - With macular edema |
-| E08.329 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonproliferative |
-| E08.331 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonproliferative - Moderate - With macular edema |
-| E08.339 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonproliferative - Moderate |
-| E08.341 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonproliferative - Severe - With macular edema |
-| E08.349 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonproliferative - Severe |
-| E08.351 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proliferative - With - Macular edema |
-| E08.352 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proliferative - With - Traction retinal detachment involving the macula |
-| E08.353 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proliferative - With - Traction retinal detachment not involving the macula |
-| E08.354 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proliferative - With - Combined traction retinal detachment and rhegmatogenous retinal detachment |
-| E08.355 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proliferative - With - Stable proliferative diabetic retinopathy |
-| E08.359 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proliferative |
+| E08.321 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonpr... |
+| E08.329 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonpr... |
+| E08.331 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonpr... |
+| E08.339 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonpr... |
+| E08.341 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonpr... |
+| E08.349 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Nonpr... |
+| E08.351 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proli... |
+| E08.352 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proli... |
+| E08.353 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proli... |
+| E08.354 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proli... |
+| E08.355 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proli... |
+| E08.359 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Proli... |
 | E08.36 | Diabetes, diabetic - Due to underlying condition - With - Cataract |
-| E08.37 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Resolved following treatment |
-| E08.39 | Diabetes, diabetic - Due to underlying condition - With - Ophthalmic complication NEC |
+| E08.37 | Diabetes, diabetic - Due to underlying condition - With - Retinopathy - Resol... |
+| E08.39 | Diabetes, diabetic - Due to underlying condition - With - Ophthalmic complica... |
 | E08.40 | Diabetes, diabetic - Due to underlying condition - With - Neuropathy |
 | E08.41 | Diabetes, diabetic - Due to underlying condition - With - Mononeuropathy |
 | E08.42 | Diabetes, diabetic - Due to underlying condition - With - Neuralgia |
 | E08.43 | Diabetes, diabetic - Due to underlying condition - With - Autonomic |
 | E08.44 | Diabetes, diabetic - Due to underlying condition - With - Amyotrophy |
-| E08.49 | Diabetes, diabetic - Due to underlying condition - With - Neurologic complication NEC |
+| E08.49 | Diabetes, diabetic - Due to underlying condition - With - Neurologic complica... |
 | E08.51 | Diabetes, diabetic - Due to underlying condition - With - Peripheral angiopathy |
 | E08.52 | Diabetes, diabetic - Due to underlying condition - With - Gangrene |
-| E08.59 | Diabetes, diabetic - Due to underlying condition - With - Circulatory complication NEC |
+| E08.59 | Diabetes, diabetic - Due to underlying condition - With - Circulatory complic... |
 | E08.610 | Diabetes, diabetic - Due to underlying condition - With - Charcot's joints |
 | E08.618 | Diabetes, diabetic - Due to underlying condition - With - Arthropathy NEC |
 | E08.620 | Diabetes, diabetic - Due to underlying condition - With - Dermatitis |
@@ -2117,45 +2135,45 @@ HTAN Biospecimen Data Model Schema
 | E08.628 | Diabetes, diabetic - Due to underlying condition - With - Skin complication NEC |
 | E08.630 | Diabetes, diabetic - Due to underlying condition - With - Periodontal disease |
 | E08.638 | Diabetes, diabetic - Due to underlying condition - With - Oral complication NEC |
-| E08.641 | Diabetes, diabetic - Due to underlying condition - With - Hypoglycemia - With coma |
+| E08.641 | Diabetes, diabetic - Due to underlying condition - With - Hypoglycemia - With... |
 | E08.649 | Diabetes, diabetic - Due to underlying condition - With - Hypoglycemia |
 | E08.65 | Diabetes, diabetic - Due to underlying condition - With - Hyperglycemia |
-| E08.69 | Diabetes, diabetic - Due to underlying condition - With - Complication - Specified NEC |
+| E08.69 | Diabetes, diabetic - Due to underlying condition - With - Complication - Spec... |
 | E08.8 | Diabetes, diabetic - Due to underlying condition - With - Complication |
 | E08.9 | Diabetes, diabetic - Due to underlying condition |
 | E09.00 | Diabetes, diabetic - Due to drug or chemical - With - Hyperosmolarity |
-| E09.01 | Diabetes, diabetic - Due to drug or chemical - With - Hyperosmolarity - With coma |
+| E09.01 | Diabetes, diabetic - Due to drug or chemical - With - Hyperosmolarity - With ... |
 | E09.10 | Diabetes, diabetic - Due to drug or chemical - With - Ketoacidosis |
 | E09.11 | Diabetes, diabetic - Due to drug or chemical - With - Ketoacidosis - With coma |
-| E09.21 | Diabetes, diabetic - Due to drug or chemical - With - Glomerulonephrosis, intracapillary |
+| E09.21 | Diabetes, diabetic - Due to drug or chemical - With - Glomerulonephrosis, int... |
 | E09.22 | Diabetes, diabetic - Due to drug or chemical - With - Chronic kidney disease |
 | E09.29 | Diabetes, diabetic - Due to drug or chemical - With - Kidney complications NEC |
-| E09.311 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - With macular edema |
+| E09.311 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - With macu... |
 | E09.319 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy |
-| E09.321 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonproliferative - With macular edema |
-| E09.329 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonproliferative |
-| E09.331 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonproliferative - Moderate - With macular edema |
-| E09.339 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonproliferative - Moderate |
-| E09.341 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonproliferative - Severe - With macular edema |
-| E09.349 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonproliferative - Severe |
-| E09.351 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Proliferative - With - Macular edema |
-| E09.352 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Proliferative - With - Traction retinal detachment involving the macula |
-| E09.353 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Proliferative - With - Traction retinal detachment not involving the macula |
-| E09.354 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Proliferative - With - Combined traction retinal detachment and rhegmatogenous retinal detachment |
-| E09.355 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Proliferative - With - Stable proliferative diabetic retinopathy |
-| E09.359 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Proliferative |
+| E09.321 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonprolif... |
+| E09.329 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonprolif... |
+| E09.331 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonprolif... |
+| E09.339 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonprolif... |
+| E09.341 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonprolif... |
+| E09.349 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Nonprolif... |
+| E09.351 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Prolifera... |
+| E09.352 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Prolifera... |
+| E09.353 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Prolifera... |
+| E09.354 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Prolifera... |
+| E09.355 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Prolifera... |
+| E09.359 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Prolifera... |
 | E09.36 | Diabetes, diabetic - Due to drug or chemical - With - Cataract |
-| E09.37 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Resolved following treatment |
-| E09.39 | Diabetes, diabetic - Due to drug or chemical - With - Ophthalmic complication NEC |
+| E09.37 | Diabetes, diabetic - Due to drug or chemical - With - Retinopathy - Resolved ... |
+| E09.39 | Diabetes, diabetic - Due to drug or chemical - With - Ophthalmic complication... |
 | E09.40 | Diabetes, diabetic - Due to drug or chemical - With - Neuropathy |
 | E09.41 | Diabetes, diabetic - Due to drug or chemical - With - Mononeuropathy |
 | E09.42 | Diabetes, diabetic - Due to drug or chemical - With - Neuralgia |
 | E09.43 | Diabetes, diabetic - Due to drug or chemical - With - Autonomic |
 | E09.44 | Diabetes, diabetic - Due to drug or chemical - With - Amyotrophy |
-| E09.49 | Diabetes, diabetic - Due to drug or chemical - With - Neurologic complication NEC |
+| E09.49 | Diabetes, diabetic - Due to drug or chemical - With - Neurologic complication... |
 | E09.51 | Diabetes, diabetic - Due to drug or chemical - With - Peripheral angiopathy |
 | E09.52 | Diabetes, diabetic - Due to drug or chemical - With - Gangrene |
-| E09.59 | Diabetes, diabetic - Due to drug or chemical - With - Circulatory complication NEC |
+| E09.59 | Diabetes, diabetic - Due to drug or chemical - With - Circulatory complicatio... |
 | E09.610 | Diabetes, diabetic - Due to drug or chemical - With - Charcot's joints |
 | E09.618 | Diabetes, diabetic - Due to drug or chemical - With - Arthropathy NEC |
 | E09.620 | Diabetes, diabetic - Due to drug or chemical - With - Dermatitis |
@@ -2167,7 +2185,7 @@ HTAN Biospecimen Data Model Schema
 | E09.641 | Diabetes, diabetic - Due to drug or chemical - With - Hypoglycemia - With coma |
 | E09.649 | Diabetes, diabetic - Due to drug or chemical - With - Hypoglycemia |
 | E09.65 | Diabetes, diabetic - Due to drug or chemical - With - Hyperglycemia |
-| E09.69 | Diabetes, diabetic - Due to drug or chemical - With - Complication - Specified NEC |
+| E09.69 | Diabetes, diabetic - Due to drug or chemical - With - Complication - Specifie... |
 | E09.8 | Diabetes, diabetic - Due to drug or chemical - With - Complication |
 | E09.9 | Diabetes, diabetic - Due to drug or chemical |
 | E10.10 | Acetonemia - In Type 1 diabetes |
@@ -2177,17 +2195,17 @@ HTAN Biospecimen Data Model Schema
 | E10.29 | Diabetes, diabetic - Type 1 - With - Kidney complications NEC |
 | E10.311 | Diabetes, diabetic - Type 1 - With - Retinopathy - With macular edema |
 | E10.319 | Diabetes, diabetic - Type 1 - With - Retinopathy |
-| E10.321 | Diabetes, diabetic - Type 1 - With - Retinopathy - Nonproliferative - With macular edema |
+| E10.321 | Diabetes, diabetic - Type 1 - With - Retinopathy - Nonproliferative - With ma... |
 | E10.329 | Diabetes, diabetic - Type 1 - With - Retinopathy - Nonproliferative |
-| E10.331 | Diabetes, diabetic - Type 1 - With - Retinopathy - Nonproliferative - Moderate - With macular edema |
+| E10.331 | Diabetes, diabetic - Type 1 - With - Retinopathy - Nonproliferative - Moderat... |
 | E10.339 | Diabetes, diabetic - Type 1 - With - Retinopathy - Nonproliferative - Moderate |
-| E10.341 | Diabetes, diabetic - Type 1 - With - Retinopathy - Nonproliferative - Severe - With macular edema |
+| E10.341 | Diabetes, diabetic - Type 1 - With - Retinopathy - Nonproliferative - Severe ... |
 | E10.349 | Diabetes, diabetic - Type 1 - With - Retinopathy - Nonproliferative - Severe |
-| E10.351 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Macular edema |
-| E10.352 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Traction retinal detachment involving the macula |
-| E10.353 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Traction retinal detachment not involving the macula |
-| E10.354 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Combined traction retinal detachment and rhegmatogenous retinal detachment |
-| E10.355 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Stable proliferative diabetic retinopathy |
+| E10.351 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Mac... |
+| E10.352 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Tra... |
+| E10.353 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Tra... |
+| E10.354 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Com... |
+| E10.355 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative - With - Sta... |
 | E10.359 | Diabetes, diabetic - Type 1 - With - Retinopathy - Proliferative |
 | E10.36 | Diabetes, diabetic - Type 1 - With - Cataract |
 | E10.37 | Diabetes, diabetic - Type 1 - With - Retinopathy - Resolved following treatment |
@@ -2231,18 +2249,18 @@ HTAN Biospecimen Data Model Schema
 | E11.319 | Diabetes, diabetic - With - Retinopathy |
 | E11.321 | Diabetes, diabetic - With - Retinopathy - Nonproliferative - With macular edema |
 | E11.329 | Diabetes, diabetic - With - Retinopathy - Nonproliferative |
-| E11.331 | Diabetes, diabetic - With - Retinopathy - Nonproliferative - Moderate - With macular edema |
+| E11.331 | Diabetes, diabetic - With - Retinopathy - Nonproliferative - Moderate - With ... |
 | E11.339 | Diabetes, diabetic - With - Retinopathy - Nonproliferative - Moderate |
-| E11.341 | Diabetes, diabetic - With - Retinopathy - Nonproliferative - Severe - With macular edema |
+| E11.341 | Diabetes, diabetic - With - Retinopathy - Nonproliferative - Severe - With ma... |
 | E11.349 | Diabetes, diabetic - With - Retinopathy - Nonproliferative - Severe |
 | E11.351 | Diabetes, diabetic - With - Retinopathy - Proliferative - With - Macular edema |
-| E11.352 | Diabetes, diabetic - With - Retinopathy - Proliferative - With - Traction retinal detachment involving the macula |
-| E11.353 | Diabetes, diabetic - With - Retinopathy - Proliferative - With - Traction retinal detachment not involving the macula |
-| E11.354 | Diabetes, diabetic - With - Retinopathy - Proliferative - With - Combined traction retinal detachment and rhegmatogenous retinal detachment |
-| E11.355 | Diabetes, diabetic - With - Retinopathy - Proliferative - With - Stable proliferative diabetic retinopathy |
+| E11.352 | Diabetes, diabetic - With - Retinopathy - Proliferative - With - Traction ret... |
+| E11.353 | Diabetes, diabetic - With - Retinopathy - Proliferative - With - Traction ret... |
+| E11.354 | Diabetes, diabetic - With - Retinopathy - Proliferative - With - Combined tra... |
+| E11.355 | Diabetes, diabetic - With - Retinopathy - Proliferative - With - Stable proli... |
 | E11.359 | Diabetes, diabetic - With - Retinopathy - Proliferative |
 | E11.36 | Diabetes, diabetic - With - Cataract |
-| E11.37 | Diabetes, diabetic - With - Retinopathy - With macular edema - Resolved following treatment |
+| E11.37 | Diabetes, diabetic - With - Retinopathy - With macular edema - Resolved follo... |
 | E11.39 | Diabetes, diabetic - With - Ophthalmic complication NEC |
 | E11.40 | Diabetes, diabetic - With - Neuropathy |
 | E11.41 | Diabetes, diabetic - With - Mononeuropathy |
@@ -2272,25 +2290,25 @@ HTAN Biospecimen Data Model Schema
 | E13.01 | Diabetes, diabetic - Specified type NEC - With - Hyperosmolarity - With coma |
 | E13.10 | Diabetes, diabetic - Specified type NEC - With - Ketoacidosis |
 | E13.11 | Diabetes, diabetic - Specified type NEC - With - Ketoacidosis - With coma |
-| E13.21 | Diabetes, diabetic - Specified type NEC - With - Glomerulonephrosis, intracapillary |
+| E13.21 | Diabetes, diabetic - Specified type NEC - With - Glomerulonephrosis, intracap... |
 | E13.22 | Diabetes, diabetic - Specified type NEC - With - Chronic kidney disease |
 | E13.29 | Diabetes, diabetic - Specified type NEC - With - Kidney complications NEC |
-| E13.311 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - With macular edema |
+| E13.311 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - With macular e... |
 | E13.319 | Diabetes, diabetic - Specified type NEC - With - Retinopathy |
-| E13.321 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferative - With macular edema |
+| E13.321 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferati... |
 | E13.329 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferative |
-| E13.331 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferative - Moderate - With macular edema |
-| E13.339 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferative - Moderate |
-| E13.341 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferative - Severe - With macular edema |
-| E13.349 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferative - Severe |
-| E13.351 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative - With - Macular edema |
-| E13.352 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative - With - Traction retinal detachment involving the macula |
-| E13.353 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative - With - Traction retinal detachment not involving the macula |
-| E13.354 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative - With - Combined traction retinal detachment and rhegmatogenous retinal detachment |
-| E13.355 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative - With - Stable proliferative diabetic retinopathy |
+| E13.331 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferati... |
+| E13.339 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferati... |
+| E13.341 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferati... |
+| E13.349 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Nonproliferati... |
+| E13.351 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative ... |
+| E13.352 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative ... |
+| E13.353 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative ... |
+| E13.354 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative ... |
+| E13.355 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative ... |
 | E13.359 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Proliferative |
 | E13.36 | Diabetes, diabetic - Specified type NEC - With - Cataract |
-| E13.37 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Resolved following treatment |
+| E13.37 | Diabetes, diabetic - Specified type NEC - With - Retinopathy - Resolved follo... |
 | E13.39 | Diabetes, diabetic - Retina, hemorrhage |
 | E13.40 | Diabetes, diabetic - Specified type NEC - With - Neuropathy |
 | E13.41 | Diabetes, diabetic - Specified type NEC - With - Mononeuropathy |
@@ -2414,20 +2432,20 @@ HTAN Biospecimen Data Model Schema
 | E34.30 | Short, shortening, shortness - Stature - Due to - Endocrine disorder |
 | E34.31 | Dwarfism - Constitutional |
 | E34.321 | Dwarfism - Laron-type |
-| E34.322 | Short, shortening, shortness - Stature - Due to - Genetic causes - Genetic syndrome with resistance to insulin-like growth factor-1 |
+| E34.322 | Short, shortening, shortness - Stature - Due to - Genetic causes - Genetic sy... |
 | E34.328 | Deficiency, deficient - Short stature homeobox gene - With - Short stature |
 | E34.329 | Short, shortening, shortness - Stature - Due to - Genetic causes |
-| E34.39 | Short, shortening, shortness - Stature - Due to - Endocrine disorder - Specified type NEC, due to endocrine disorder |
+| E34.39 | Short, shortening, shortness - Stature - Due to - Endocrine disorder - Specif... |
 | E34.4 | Gigantism - Constitutional |
 | E34.50 | Androgen insensitivity syndrome |
 | E34.51 | De Quervain's - Syndrome |
 | E34.52 | Insensitivity - Androgen - Partial |
 | E34.8 | Calcification - Pineal gland |
 | E34.9 | Arthritis, arthritic - In - Endocrine disorder NEC |
-| E36.01 | Complication - Intraoperative - Hemorrhage - Endocrine system organ or structure - During procedure on endocrine system organ or structure |
-| E36.02 | Complication - Intraoperative - Hemorrhage - Endocrine system organ or structure - During procedure on other organ |
-| E36.11 | Complication - Intraoperative - Puncture or laceration - Endocrine system organ or structure - During procedure on endocrine system organ or structure |
-| E36.12 | Complication - Intraoperative - Puncture or laceration - Endocrine system organ or structure - During procedure on other organ |
+| E36.01 | Complication - Intraoperative - Hemorrhage - Endocrine system organ or struct... |
+| E36.02 | Complication - Intraoperative - Hemorrhage - Endocrine system organ or struct... |
+| E36.11 | Complication - Intraoperative - Puncture or laceration - Endocrine system org... |
+| E36.12 | Complication - Intraoperative - Puncture or laceration - Endocrine system org... |
 | E36.8 | Complication - Intraoperative - Specified NEC - Endocrine system |
 | E40 | Edema, edematous - Nutritional - With dyspigmentation, skin and hair |
 | E41 | Athrepsia |
@@ -2504,7 +2522,7 @@ HTAN Biospecimen Data Model Schema
 | E67.3 | Excess, excessive, excessively - Vitamin - D |
 | E67.8 | Hyperalimentation - Specified NEC |
 | E68 | Sequelae - Hyperalimentation |
-| E70.0 | Disorder - Metabolism NOS - Amino-acid - Aromatic - Hyperphenylalaninemia - Classical phenylketonuria |
+| E70.0 | Disorder - Metabolism NOS - Amino-acid - Aromatic - Hyperphenylalaninemia - C... |
 | E70.1 | Deficiency, deficient - Phenylalanine hydroxylase |
 | E70.20 | Disorder - Metabolism NOS - Amino-acid - Aromatic - Tyrosine |
 | E70.21 | Disorder - Metabolism NOS - Amino-acid - Aromatic - Tyrosine - Hypertyrosinemia |
@@ -2532,7 +2550,7 @@ HTAN Biospecimen Data Model Schema
 | E70.9 | Aromatic amino-acid metabolism disorder |
 | E71.0 | Disease, diseased - Maple-syrup-urine |
 | E71.110 | Acidemia - Isovaleric |
-| E71.111 | Disorder - Metabolism NOS - Amino-acid - Branched chain - 3-methylglutaconic aciduria |
+| E71.111 | Disorder - Metabolism NOS - Amino-acid - Branched chain - 3-methylglutaconic ... |
 | E71.118 | Disorder - Metabolism NOS - Amino-acid - Branched chain - Organic aciduria NEC |
 | E71.120 | Acidemia - Methylmalonic |
 | E71.121 | Acidemia - Propionic |
@@ -2733,7 +2751,7 @@ HTAN Biospecimen Data Model Schema
 | E83.81 | Hungry bone syndrome |
 | E83.820 | Calcification - Arterial - Generalized, of infancy |
 | E83.821 | Calcification - Arterial - Generalized, of infancy - With - ENPP1 deficiency |
-| E83.822 | Deficiency, deficient - ENPP1 - Causing - Autosomal recessive hypophosphatemic rickets type 2 |
+| E83.822 | Deficiency, deficient - ENPP1 - Causing - Autosomal recessive hypophosphatemi... |
 | E83.823 | Calcification - Arterial - Generalized, of infancy - With - ABCC6 deficiency |
 | E83.824 | Deficiency, deficient - ABCC6 - Pseudoxanthoma elasticum |
 | E83.825 | Deficiency, deficient - CD73 deficiency causing arterial calcification |
@@ -2802,12 +2820,12 @@ HTAN Biospecimen Data Model Schema
 | E89.41 | Complication - Endocrine - Postprocedural - Ovarian failure - Symptomatic |
 | E89.5 | Complication - Endocrine - Postprocedural - Testicular hypofunction |
 | E89.6 | Absence - Adrenal - Acquired |
-| E89.810 | Complication - Postprocedural - Hemorrhage - Endocrine system - Following endocrine system procedure |
-| E89.811 | Complication - Postprocedural - Hemorrhage - Endocrine system - Following other procedure |
-| E89.820 | Complication - Postprocedural - Hematoma - Endocrine system - Following endocrine system procedure |
-| E89.821 | Complication - Postprocedural - Hematoma - Endocrine system - Following other procedure |
-| E89.822 | Complication - Postprocedural - Seroma - Endocrine system - Following endocrine system procedure |
-| E89.823 | Complication - Postprocedural - Seroma - Endocrine system - Following other procedure |
+| E89.810 | Complication - Postprocedural - Hemorrhage - Endocrine system - Following end... |
+| E89.811 | Complication - Postprocedural - Hemorrhage - Endocrine system - Following oth... |
+| E89.820 | Complication - Postprocedural - Hematoma - Endocrine system - Following endoc... |
+| E89.821 | Complication - Postprocedural - Hematoma - Endocrine system - Following other... |
+| E89.822 | Complication - Postprocedural - Seroma - Endocrine system - Following endocri... |
+| E89.823 | Complication - Postprocedural - Seroma - Endocrine system - Following other p... |
 | E89.89 | Absence - Endocrine gland - Acquired |
 | F01.50 | Dementia - Vascular |
 | F01.511 | Dementia - Vascular - With - Aberrant motor behavior |
@@ -2841,21 +2859,21 @@ HTAN Biospecimen Data Model Schema
 | F02.83 | Dementia - In - Diseases specified elsewhere - With - Mood disturbance |
 | F02.84 | Dementia - In - Diseases specified elsewhere - With - Anxiety |
 | F02.A0 | Dementia - In - Diseases specified elsewhere - Mild |
-| F02.A11 | Dementia - In - Diseases specified elsewhere - Mild - With - Aberrant motor behavior |
-| F02.A18 | Dementia - In - Diseases specified elsewhere - Mild - With - Behavioral disturbances |
-| F02.A2 | Dementia - In - Diseases specified elsewhere - Mild - With - Psychotic disturbance |
+| F02.A11 | Dementia - In - Diseases specified elsewhere - Mild - With - Aberrant motor b... |
+| F02.A18 | Dementia - In - Diseases specified elsewhere - Mild - With - Behavioral distu... |
+| F02.A2 | Dementia - In - Diseases specified elsewhere - Mild - With - Psychotic distur... |
 | F02.A3 | Dementia - In - Diseases specified elsewhere - Mild - With - Mood disturbance |
 | F02.A4 | Dementia - In - Diseases specified elsewhere - Mild - With - Anxiety |
 | F02.B0 | Dementia - In - Diseases specified elsewhere - Moderate |
-| F02.B11 | Dementia - In - Diseases specified elsewhere - Moderate - With - Aberrant motor behavior |
-| F02.B18 | Dementia - In - Diseases specified elsewhere - Moderate - With - Behavioral disturbances |
-| F02.B2 | Dementia - In - Diseases specified elsewhere - Moderate - With - Psychotic disturbance |
-| F02.B3 | Dementia - In - Diseases specified elsewhere - Moderate - With - Mood disturbance |
+| F02.B11 | Dementia - In - Diseases specified elsewhere - Moderate - With - Aberrant mot... |
+| F02.B18 | Dementia - In - Diseases specified elsewhere - Moderate - With - Behavioral d... |
+| F02.B2 | Dementia - In - Diseases specified elsewhere - Moderate - With - Psychotic di... |
+| F02.B3 | Dementia - In - Diseases specified elsewhere - Moderate - With - Mood disturb... |
 | F02.B4 | Dementia - In - Diseases specified elsewhere - Moderate - With - Anxiety |
 | F02.C0 | Dementia - In - Diseases specified elsewhere - Severe |
-| F02.C11 | Dementia - In - Diseases specified elsewhere - Severe - With - Aberrant motor behavior |
-| F02.C18 | Dementia - In - Diseases specified elsewhere - Severe - With - Behavioral disturbances |
-| F02.C2 | Dementia - In - Diseases specified elsewhere - Severe - With - Psychotic disturbance |
+| F02.C11 | Dementia - In - Diseases specified elsewhere - Severe - With - Aberrant motor... |
+| F02.C18 | Dementia - In - Diseases specified elsewhere - Severe - With - Behavioral dis... |
+| F02.C2 | Dementia - In - Diseases specified elsewhere - Severe - With - Psychotic dist... |
 | F02.C3 | Dementia - In - Diseases specified elsewhere - Severe - With - Mood disturbance |
 | F02.C4 | Dementia - In - Diseases specified elsewhere - Severe - With - Anxiety |
 | F03 | Dementia - In - Multiple - Etiologies |
@@ -2891,13 +2909,13 @@ HTAN Biospecimen Data Model Schema
 | F06.1 | Catatonic - Disorder due to known physiologic condition |
 | F06.2 | Disorder - Organic - Delusional |
 | F06.30 | Disorder - Bipolar - Organic |
-| F06.31 | Disorder - Depressive - Due to known physiological condition - With - Depressive features |
-| F06.32 | Disorder - Depressive - Due to known physiological condition - With - Major depressive-like episode |
-| F06.33 | Disorder - Bipolar - And related due to a known physiological condition - With - Manic features |
-| F06.34 | Disorder - Bipolar - And related due to a known physiological condition - With - Mixed features |
+| F06.31 | Disorder - Depressive - Due to known physiological condition - With - Depress... |
+| F06.32 | Disorder - Depressive - Due to known physiological condition - With - Major d... |
+| F06.33 | Disorder - Bipolar - And related due to a known physiological condition - Wit... |
+| F06.34 | Disorder - Bipolar - And related due to a known physiological condition - Wit... |
 | F06.4 | Disorder - Anxiety - Due to - General medical condition |
 | F06.70 | Disorder - Mild neurocognitive - Due to known physiological condition |
-| F06.71 | Disorder - Mild neurocognitive - Due to known physiological condition - With behavioral disturbance |
+| F06.71 | Disorder - Mild neurocognitive - Due to known physiological condition - With ... |
 | F06.8 | Deterioration - Epileptic |
 | F07.0 | Change - Personality - Due to - General medical condition |
 | F07.81 | Concussion - Syndrome |
@@ -2924,8 +2942,8 @@ HTAN Biospecimen Data Model Schema
 | F10.19 | Abuse - Alcohol - With - Unspecified disorder |
 | F10.20 | Addiction - Alcohol, alcoholic |
 | F10.21 | Addiction - Alcohol, alcoholic - With remission |
-| F10.220 | Alcohol, alcoholic, alcohol-induced - Intoxication - With - Dependence - Uncomplicated |
-| F10.221 | Alcohol, alcoholic, alcohol-induced - Delirium - With intoxication - In - Dependence |
+| F10.220 | Alcohol, alcoholic, alcohol-induced - Intoxication - With - Dependence - Unco... |
+| F10.221 | Alcohol, alcoholic, alcohol-induced - Delirium - With intoxication - In - Dep... |
 | F10.229 | Alcohol, alcoholic, alcohol-induced - Intoxication - With - Dependence |
 | F10.230 | Dependence - Alcohol - With - Withdrawal - Uncomplicated |
 | F10.231 | Abstinence symptoms, syndrome - Alcohol - With delirium |
@@ -2935,7 +2953,7 @@ HTAN Biospecimen Data Model Schema
 | F10.250 | Dependence - Alcohol - With - Psychotic disorder - With - Delusions |
 | F10.251 | Alcohol, alcoholic, alcohol-induced - Hallucinosis - In - Dependence |
 | F10.259 | Dependence - Alcohol - With - Psychotic disorder |
-| F10.26 | Alcohol, alcoholic, alcohol-induced - Amnestic disorder, persisting - With dependence |
+| F10.26 | Alcohol, alcoholic, alcohol-induced - Amnestic disorder, persisting - With de... |
 | F10.27 | Alcohol, alcoholic, alcohol-induced - Brain syndrome, chronic - With dependence |
 | F10.280 | Dependence - Alcohol - With - Anxiety disorder |
 | F10.281 | Dependence - Alcohol - With - Sexual dysfunction |
@@ -2955,7 +2973,7 @@ HTAN Biospecimen Data Model Schema
 | F10.951 | Alcohol, alcoholic, alcohol-induced - Hallucinosis |
 | F10.959 | Alcohol, alcoholic, alcohol-induced - Psychotic disorder |
 | F10.96 | Alcohol, alcoholic, alcohol-induced - Amnestic disorder, persisting |
-| F10.97 | Alcohol, alcoholic, alcohol-induced - Major neurocognitive disorder, nonamnestic-confabulatory type |
+| F10.97 | Alcohol, alcoholic, alcohol-induced - Major neurocognitive disorder, nonamnes... |
 | F10.980 | Alcohol, alcoholic, alcohol-induced - Anxiety disorder |
 | F10.981 | Alcohol, alcoholic, alcohol-induced - Sexual dysfunction |
 | F10.982 | Alcohol, alcoholic, alcohol-induced - Sleep disorder |
@@ -2980,7 +2998,7 @@ HTAN Biospecimen Data Model Schema
 | F11.21 | Dependence - Drug NEC - Opioid - In remission |
 | F11.220 | Dependence - Drug NEC - Opioid - With - Intoxication - Uncomplicated |
 | F11.221 | Delirium, delirious - Due to - Opioid intoxication - In - Dependence |
-| F11.222 | Dependence - Drug NEC - Opioid - With - Intoxication - With - Perceptual disturbance |
+| F11.222 | Dependence - Drug NEC - Opioid - With - Intoxication - With - Perceptual dist... |
 | F11.229 | Dependence - Drug NEC - Opioid - With - Intoxication |
 | F11.23 | Abstinence symptoms, syndrome - Opioid - With dependence |
 | F11.24 | Dependence - Drug NEC - Opioid - With - Mood disorder |
@@ -2999,18 +3017,18 @@ HTAN Biospecimen Data Model Schema
 | F11.929 | Use - Opioid - With - Intoxication |
 | F11.93 | Abstinence symptoms, syndrome - Opioid |
 | F11.94 | Disorder - Mood - Due to - Opioid |
-| F11.950 | Disorder - Opioid use - With - Opioid-induced psychotic disorder - With - Delusions |
-| F11.951 | Disorder - Opioid use - With - Opioid-induced psychotic disorder - With - Hallucinations |
+| F11.950 | Disorder - Opioid use - With - Opioid-induced psychotic disorder - With - Del... |
+| F11.951 | Disorder - Opioid use - With - Opioid-induced psychotic disorder - With - Hal... |
 | F11.959 | Disorder - Opioid use - With - Opioid-induced psychotic disorder |
-| F11.981 | Disorder - Opioid use - Moderate or severe - With - Opioid-induced - Sexual dysfunction |
+| F11.981 | Disorder - Opioid use - Moderate or severe - With - Opioid-induced - Sexual d... |
 | F11.982 | Disorder - Sleep - Circadian rhythm - Due to - Opioid - Use |
-| F11.988 | Disorder - Opioid use - Moderate or severe - With - Opioid-induced - Anxiety disorder |
+| F11.988 | Disorder - Opioid use - Moderate or severe - With - Opioid-induced - Anxiety ... |
 | F11.99 | Use - Opioid - With - Disorder |
 | F12.10 | Abuse - Drug NEC - Cannabis |
 | F12.11 | Abuse - Drug NEC - Cannabis - In remission |
 | F12.120 | Abuse - Drug NEC - Cannabis - With - Intoxication - Uncomplicated |
 | F12.121 | Abuse - Drug NEC - Cannabis - With - Intoxication - With - Delirium |
-| F12.122 | Abuse - Drug NEC - Cannabis - With - Intoxication - With - Perceptual disturbance |
+| F12.122 | Abuse - Drug NEC - Cannabis - With - Intoxication - With - Perceptual disturb... |
 | F12.129 | Abuse - Drug NEC - Cannabis - With - Intoxication |
 | F12.13 | Abuse - Drug NEC - Cannabis - With - Withdrawal |
 | F12.150 | Abuse - Drug NEC - Cannabis - With - Psychosis - Delusions |
@@ -3023,7 +3041,7 @@ HTAN Biospecimen Data Model Schema
 | F12.21 | Dependence - Drug NEC - Cannabis - In remission |
 | F12.220 | Dependence - Drug NEC - Cannabis - With - Intoxication - Uncomplicated |
 | F12.221 | Delirium, delirious - Due to - Cannabis intoxication - In - Dependence |
-| F12.222 | Dependence - Drug NEC - Cannabis - With - Intoxication - With - Perceptual disturbance |
+| F12.222 | Dependence - Drug NEC - Cannabis - With - Intoxication - With - Perceptual di... |
 | F12.229 | Dependence - Drug NEC - Cannabis - With - Intoxication |
 | F12.23 | Dependence - Drug NEC - Cannabis - With - Withdrawal |
 | F12.250 | Dependence - Drug NEC - Cannabis - With - Psychosis - Delusions |
@@ -3047,42 +3065,42 @@ HTAN Biospecimen Data Model Schema
 | F12.99 | Use - Cannabis - With - Unspecified disorder |
 | F13.10 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic |
 | F13.11 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - In remission |
-| F13.120 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Intoxication - Uncomplicated |
-| F13.121 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Intoxication - With delirium |
+| F13.120 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Intoxication - U... |
+| F13.121 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Intoxication - W... |
 | F13.129 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Intoxication |
-| F13.130 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Withdrawal - Uncomplicated |
-| F13.131 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Withdrawal - Delirium |
-| F13.132 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Withdrawal - With - Perceptual disturbance |
+| F13.130 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Withdrawal - Unc... |
+| F13.131 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Withdrawal - Del... |
+| F13.132 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Withdrawal - Wit... |
 | F13.139 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Withdrawal |
 | F13.14 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Mood disorder |
-| F13.150 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis - Delusions |
-| F13.151 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis - Hallucinations |
+| F13.150 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis - Delu... |
+| F13.151 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis - Hall... |
 | F13.159 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis |
 | F13.180 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Anxiety disorder |
 | F13.181 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Sexual dysfunction |
 | F13.182 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Sleep disorder |
-| F13.188 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Other specified disorder |
-| F13.19 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Unspecified disorder |
+| F13.188 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Other specified ... |
+| F13.19 | Abuse - Drug NEC - Sedative, hypnotic or anxiolytic - With - Unspecified diso... |
 | F13.20 | Bromidism, bromism - Chronic |
 | F13.21 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - In remission |
-| F13.220 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Intoxication - Uncomplicated |
+| F13.220 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Intoxicatio... |
 | F13.221 | Delirium, delirious - Due to - Anxiolytic - Intoxication - In - Dependence |
 | F13.229 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Intoxication |
 | F13.230 | Abstinence symptoms, syndrome - Sedative - With - Dependence - Uncomplicated |
 | F13.231 | Abstinence symptoms, syndrome - Sedative - With - Dependence - With - Delirium |
-| F13.232 | Abstinence symptoms, syndrome - Sedative - With - Dependence - With - Perceptual disturbance |
+| F13.232 | Abstinence symptoms, syndrome - Sedative - With - Dependence - With - Percept... |
 | F13.239 | Abstinence symptoms, syndrome - Sedative - With - Dependence |
 | F13.24 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Mood disorder |
-| F13.250 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis - Delusions |
-| F13.251 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis - Hallucinations |
+| F13.250 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis -... |
+| F13.251 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis -... |
 | F13.259 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Psychosis |
 | F13.26 | Amnes - Induced by - Sedative - With dependence |
-| F13.27 | Dementia - In - Psychoactive drug - Sedatives, hypnotics or anxiolytics - With dependence |
-| F13.280 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Anxiety disorder |
-| F13.281 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Sexual dysfunction |
+| F13.27 | Dementia - In - Psychoactive drug - Sedatives, hypnotics or anxiolytics - Wit... |
+| F13.280 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Anxiety dis... |
+| F13.281 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Sexual dysf... |
 | F13.282 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Sleep disorder |
-| F13.288 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Other specified disorder |
-| F13.29 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Unspecified disorder |
+| F13.288 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Other speci... |
+| F13.29 | Dependence - Drug NEC - Sedative, hypnotic or anxiolytic - With - Unspecified... |
 | F13.90 | Use - Sedative, hypnotic, or anxiolytic |
 | F13.91 | Use - Sedative, hypnotic, or anxiolytic - In remission |
 | F13.920 | Use - Sedative, hypnotic, or anxiolytic - With - Intoxication - Uncomplicated |
@@ -3100,7 +3118,7 @@ HTAN Biospecimen Data Model Schema
 | F13.97 | Dementia - In - Psychoactive drug - Sedatives, hypnotics or anxiolytics |
 | F13.980 | Disorder - Anxiety - Due to - Anxiolytic |
 | F13.981 | Dysfunction - Sexual - Anxiolytic |
-| F13.982 | Disorder - Sleep - Circadian rhythm - Due to - Sedative, hypnotic, or anxiolytic - Use |
+| F13.982 | Disorder - Sleep - Circadian rhythm - Due to - Sedative, hypnotic, or anxioly... |
 | F13.988 | Sedative, hypnotic, or anxiolytic-induced - Mild neurocognitive disorder |
 | F13.99 | Use - Sedative, hypnotic, or anxiolytic - With - Unspecified disorder |
 | F14.10 | Abuse - Drug NEC - Cocaine |
@@ -3123,7 +3141,7 @@ HTAN Biospecimen Data Model Schema
 | F14.21 | Dependence - Drug NEC - Cocaine - In remission |
 | F14.220 | Dependence - Drug NEC - Cocaine - With - Intoxication - Uncomplicated |
 | F14.221 | Delirium, delirious - Due to - Cocaine intoxication - In - Dependence |
-| F14.222 | Dependence - Drug NEC - Cocaine - With - Intoxication - With - Perceptual disturbance |
+| F14.222 | Dependence - Drug NEC - Cocaine - With - Intoxication - With - Perceptual dis... |
 | F14.229 | Dependence - Drug NEC - Cocaine - With - Intoxication |
 | F14.23 | Abstinence symptoms, syndrome - Cocaine |
 | F14.24 | Dependence - Drug NEC - Cocaine - With - Mood disorder |
@@ -3155,7 +3173,7 @@ HTAN Biospecimen Data Model Schema
 | F15.11 | Abuse - Drug NEC - Stimulant NEC - In remission |
 | F15.120 | Abuse - Drug NEC - Stimulant NEC - With - Intoxication - Uncomplicated |
 | F15.121 | Abuse - Amphetamine - Stimulant NEC - With - Intoxication - With - Delirium |
-| F15.122 | Abuse - Amphetamine - Stimulant NEC - With - Intoxication - With - Perceptual disturbance |
+| F15.122 | Abuse - Amphetamine - Stimulant NEC - With - Intoxication - With - Perceptual... |
 | F15.129 | Abuse - Amphetamine - Stimulant NEC - With - Intoxication |
 | F15.13 | Abuse - Amphetamine - Stimulant NEC - With - Withdrawal |
 | F15.14 | Abuse - Drug NEC - Stimulant NEC - With - Mood disorder |
@@ -3171,7 +3189,7 @@ HTAN Biospecimen Data Model Schema
 | F15.21 | Dependence - Drug NEC - Stimulant NEC - In remission |
 | F15.220 | Dependence - Drug NEC - Stimulant NEC - With - Intoxication - Uncomplicated |
 | F15.221 | Delirium, delirious - Due to - Amphetamine intoxication - In - Dependence |
-| F15.222 | Dependence - Drug NEC - Stimulant NEC - With - Intoxication - With - Perceptual disturbance |
+| F15.222 | Dependence - Drug NEC - Stimulant NEC - With - Intoxication - With - Perceptu... |
 | F15.229 | Dependence - Drug NEC - Stimulant NEC - With - Intoxication |
 | F15.23 | Abstinence symptoms, syndrome - Stimulant NEC - With dependence |
 | F15.24 | Dependence - Drug NEC - Stimulant NEC - With - Mood disorder |
@@ -3203,7 +3221,7 @@ HTAN Biospecimen Data Model Schema
 | F16.11 | Abuse - Drug NEC - Hallucinogen - In remission |
 | F16.120 | Abuse - Drug NEC - Hallucinogen - With - Intoxication - Uncomplicated |
 | F16.121 | Abuse - Drug NEC - Hallucinogen - With - Intoxication - With - Delirium |
-| F16.122 | Abuse - Drug NEC - Hallucinogen - With - Intoxication - With - Perceptual disturbance |
+| F16.122 | Abuse - Drug NEC - Hallucinogen - With - Intoxication - With - Perceptual dis... |
 | F16.129 | Abuse - Drug NEC - Hallucinogen - With - Intoxication |
 | F16.14 | Abuse - Drug NEC - Hallucinogen - With - Mood disorder |
 | F16.150 | Abuse - Drug NEC - Hallucinogen - With - Psychosis - Delusions |
@@ -3247,17 +3265,17 @@ HTAN Biospecimen Data Model Schema
 | F17.210 | Dependence - Drug NEC - Nicotine - Cigarettes |
 | F17.211 | Dependence - Drug NEC - Nicotine - Cigarettes - With disorder - In remission |
 | F17.213 | Dependence - Drug NEC - Nicotine - Cigarettes - With disorder - Withdrawal |
-| F17.218 | Dependence - Drug NEC - Nicotine - Cigarettes - With disorder - Specified disorder NEC |
+| F17.218 | Dependence - Drug NEC - Nicotine - Cigarettes - With disorder - Specified dis... |
 | F17.219 | Dependence - Drug NEC - Nicotine - Cigarettes - With disorder |
 | F17.220 | Dependence - Drug NEC - Nicotine - Chewing tobacco |
-| F17.221 | Dependence - Drug NEC - Nicotine - Chewing tobacco - With disorder - In remission |
+| F17.221 | Dependence - Drug NEC - Nicotine - Chewing tobacco - With disorder - In remis... |
 | F17.223 | Dependence - Drug NEC - Nicotine - Chewing tobacco - With disorder - Withdrawal |
-| F17.228 | Dependence - Drug NEC - Nicotine - Chewing tobacco - With disorder - Specified disorder NEC |
+| F17.228 | Dependence - Drug NEC - Nicotine - Chewing tobacco - With disorder - Specifie... |
 | F17.229 | Dependence - Drug NEC - Nicotine - Chewing tobacco - With disorder |
 | F17.290 | Dependence - Drug NEC - Nicotine - Specified product NEC |
-| F17.291 | Dependence - Drug NEC - Nicotine - Specified product NEC - With disorder - Remission |
-| F17.293 | Dependence - Drug NEC - Nicotine - Specified product NEC - With disorder - Withdrawal |
-| F17.298 | Dependence - Drug NEC - Nicotine - Specified product NEC - With disorder - Specified disorder NEC |
+| F17.291 | Dependence - Drug NEC - Nicotine - Specified product NEC - With disorder - Re... |
+| F17.293 | Dependence - Drug NEC - Nicotine - Specified product NEC - With disorder - Wi... |
+| F17.298 | Dependence - Drug NEC - Nicotine - Specified product NEC - With disorder - Sp... |
 | F17.299 | Dependence - Drug NEC - Nicotine - Specified product NEC - With disorder |
 | F18.10 | Abuse - Drug NEC - Inhalant |
 | F18.11 | Abuse - Drug NEC - Inhalant - In remission |
@@ -3302,11 +3320,11 @@ HTAN Biospecimen Data Model Schema
 | F19.11 | Abuse - Drug NEC - In remission |
 | F19.120 | Abuse - Drug NEC - Psychoactive NEC - With - Intoxication - Uncomplicated |
 | F19.121 | Abuse - Drug NEC - Psychoactive NEC - With - Intoxication - With - Delirium |
-| F19.122 | Abuse - Drug NEC - Psychoactive NEC - With - Intoxication - With - Perceptual disturbance |
+| F19.122 | Abuse - Drug NEC - Psychoactive NEC - With - Intoxication - With - Perceptual... |
 | F19.129 | Abuse - Drug NEC - Psychoactive NEC - With - Intoxication |
 | F19.130 | Abuse - Drug NEC - Psychoactive NEC - With - Withdrawal - Uncomplicated |
 | F19.131 | Abuse - Drug NEC - Psychoactive NEC - With - Withdrawal - Delirium |
-| F19.132 | Abuse - Drug NEC - Psychoactive NEC - With - Withdrawal - With - Perceptual disturbance |
+| F19.132 | Abuse - Drug NEC - Psychoactive NEC - With - Withdrawal - With - Perceptual d... |
 | F19.139 | Abuse - Drug NEC - Psychoactive NEC - With - Withdrawal |
 | F19.14 | Abuse - Drug NEC - Psychoactive NEC - With - Mood disorder |
 | F19.150 | Abuse - Drug NEC - Psychoactive NEC - With - Psychosis - Delusions |
@@ -3322,12 +3340,12 @@ HTAN Biospecimen Data Model Schema
 | F19.20 | Addiction |
 | F19.21 | Dependence - With remission |
 | F19.220 | Dependence - Drug NEC - Psychoactive NEC - With - Intoxication - Uncomplicated |
-| F19.221 | Delirium, delirious - Due to - Psychoactive substance NEC intoxication - In - Dependence |
-| F19.222 | Dependence - Drug NEC - Psychoactive NEC - With - Intoxication - With - Perceptual disturbance |
+| F19.221 | Delirium, delirious - Due to - Psychoactive substance NEC intoxication - In -... |
+| F19.222 | Dependence - Drug NEC - Psychoactive NEC - With - Intoxication - With - Perce... |
 | F19.229 | Dependence - Drug NEC - Psychoactive NEC - With - Intoxication |
-| F19.230 | Abstinence symptoms, syndrome - Psychoactive NEC - With - Dependence - Uncomplicated |
-| F19.231 | Abstinence symptoms, syndrome - Psychoactive NEC - With - Dependence - With - Delirium |
-| F19.232 | Abstinence symptoms, syndrome - Psychoactive NEC - With - Dependence - With - Perceptual disturbance |
+| F19.230 | Abstinence symptoms, syndrome - Psychoactive NEC - With - Dependence - Uncomp... |
+| F19.231 | Abstinence symptoms, syndrome - Psychoactive NEC - With - Dependence - With -... |
+| F19.232 | Abstinence symptoms, syndrome - Psychoactive NEC - With - Dependence - With -... |
 | F19.239 | Abstinence symptoms, syndrome - Psychoactive NEC - With - Dependence |
 | F19.24 | Dependence - Drug NEC - Psychoactive NEC - With - Mood disorder |
 | F19.250 | Dependence - Drug NEC - Psychoactive NEC - With - Psychosis - Delusions |
@@ -3344,7 +3362,7 @@ HTAN Biospecimen Data Model Schema
 | F19.91 | Use - Psychoactive drug NEC - In remission |
 | F19.920 | Use - Psychoactive drug NEC - With - Intoxication - Uncomplicated |
 | F19.921 | Delirium, delirious - Due to - Other |
-| F19.922 | Use - Psychoactive drug NEC - With - Intoxication - With - Perceptual disturbance |
+| F19.922 | Use - Psychoactive drug NEC - With - Intoxication - With - Perceptual disturb... |
 | F19.929 | Use - Psychoactive drug NEC - With - Intoxication |
 | F19.930 | Abstinence symptoms, syndrome - Psychoactive NEC - Uncomplicated |
 | F19.931 | Abstinence symptoms, syndrome - Psychoactive NEC - With - Delirium |
@@ -3405,14 +3423,14 @@ HTAN Biospecimen Data Model Schema
 | F31.63 | Disorder - Bipolar - Current - Mixed - Severe |
 | F31.64 | Disorder - Bipolar - Current - Mixed - Severe - With psychotic features |
 | F31.70 | Disorder - Bipolar - In remission |
-| F31.71 | Disorder - Bipolar - In remission - In partial remission - Most recent episode - Hypomanic |
-| F31.72 | Disorder - Bipolar - In remission - In full remission - Most recent episode - Hypomanic |
-| F31.73 | Disorder - Bipolar - In remission - In partial remission - Most recent episode - Manic |
-| F31.74 | Disorder - Bipolar - In remission - In full remission - Most recent episode - Manic |
-| F31.75 | Disorder - Bipolar - In remission - In partial remission - Most recent episode - Depressed |
-| F31.76 | Disorder - Bipolar - In remission - In full remission - Most recent episode - Depressed |
-| F31.77 | Disorder - Bipolar - In remission - In partial remission - Most recent episode - Mixed |
-| F31.78 | Disorder - Bipolar - In remission - In full remission - Most recent episode - Mixed |
+| F31.71 | Disorder - Bipolar - In remission - In partial remission - Most recent episod... |
+| F31.72 | Disorder - Bipolar - In remission - In full remission - Most recent episode -... |
+| F31.73 | Disorder - Bipolar - In remission - In partial remission - Most recent episod... |
+| F31.74 | Disorder - Bipolar - In remission - In full remission - Most recent episode -... |
+| F31.75 | Disorder - Bipolar - In remission - In partial remission - Most recent episod... |
+| F31.76 | Disorder - Bipolar - In remission - In full remission - Most recent episode -... |
+| F31.77 | Disorder - Bipolar - In remission - In partial remission - Most recent episod... |
+| F31.78 | Disorder - Bipolar - In remission - In full remission - Most recent episode -... |
 | F31.81 | Disorder - Bipolar - II |
 | F31.89 | Disorder - Bipolar - Specified NEC |
 | F31.9 | Disorder - Bipolar |
@@ -3528,7 +3546,7 @@ HTAN Biospecimen Data Model Schema
 | F51.03 | Hypochondria, hypochondriac, hypochondriasis - Sleep |
 | F51.04 | Insomnia - Chronic |
 | F51.05 | Insomnia - Due to - Anxiety disorder |
-| F51.09 | Insomnia - Not due to a substance or known physiological condition - Specified NEC |
+| F51.09 | Insomnia - Not due to a substance or known physiological condition - Specifie... |
 | F51.11 | Hypersomnia - Nonorganic origin |
 | F51.12 | Insufficiency, insufficient - Sleep syndrome |
 | F51.13 | Hypersomnia - Due to - Mental disorder |
@@ -3580,7 +3598,7 @@ HTAN Biospecimen Data Model Schema
 | F64.0 | Disorder - Gender incongruence - In adolescents and adults |
 | F64.1 | Deviation - Sexual - Transvestism |
 | F64.2 | Crisis - Psychosexual identity |
-| F64.8 | Disorder - Gender-identity or -role - Of adolescence or adulthood - Nontranssexual |
+| F64.8 | Disorder - Gender-identity or -role - Of adolescence or adulthood - Nontranss... |
 | F64.9 | Disorder - Gender incongruence |
 | F65.0 | Deviation - Sexual - Fetishism, fetishistic |
 | F65.1 | Deviation - Sexual - Fetishism, fetishistic - Transvestism |
@@ -3595,9 +3613,9 @@ HTAN Biospecimen Data Model Schema
 | F65.9 | Deviation - Sexual |
 | F66 | Disorder - Gender-identity or -role - Effect on relationship |
 | F68.10 | Disorder - Factitious - Imposed on self |
-| F68.11 | Disorder - Factitious - Imposed on self - With predominantly - Psychological symptoms |
+| F68.11 | Disorder - Factitious - Imposed on self - With predominantly - Psychological ... |
 | F68.12 | Disorder - Factitious - Imposed on self - With predominantly - Physical symptoms |
-| F68.13 | Disorder - Factitious - Imposed on self - With predominantly - Psychological symptoms - With physical symptoms |
+| F68.13 | Disorder - Factitious - Imposed on self - With predominantly - Psychological ... |
 | F68.8 | Amok |
 | F68.A | Disorder - Factitious - By proxy |
 | F69 | Disorder - Adult personality |
@@ -3631,7 +3649,7 @@ HTAN Biospecimen Data Model Schema
 | F88 | Agnosia - Developmental |
 | F89 | Disorder - Developmental |
 | F90.0 | Disorder - Attention-deficit hyperactivity - Inattentive - Presentation |
-| F90.1 | Disorder - Attention-deficit hyperactivity - Hyperactive - Impulsive presentation |
+| F90.1 | Disorder - Attention-deficit hyperactivity - Hyperactive - Impulsive presenta... |
 | F90.2 | Disorder - Attention-deficit hyperactivity - Combined - Presentation |
 | F90.8 | Disorder - Attention-deficit hyperactivity - Specified type NEC |
 | F90.9 | Disorder - Attention-deficit hyperactivity |
@@ -3644,7 +3662,7 @@ HTAN Biospecimen Data Model Schema
 | F93.0 | Anxiety - Separation, abnormal |
 | F93.8 | Crisis - Emotional - Specific to childhood and adolescence |
 | F93.9 | Difficult, difficulty - Reading - Secondary to emotional disorders |
-| F94.0 | Disturbance - Emotions specific to childhood and adolescence - With - Elective mutism |
+| F94.0 | Disturbance - Emotions specific to childhood and adolescence - With - Electiv... |
 | F94.1 | Disorder - Attachment - Reactive |
 | F94.2 | Disorder - Attachment - Disinhibited |
 | F94.8 | Disorder - Social - Functioning in childhood - Specified NEC |
@@ -3720,11 +3738,11 @@ HTAN Biospecimen Data Model Schema
 | G12.29 | Degeneration, degenerative - Anterior cornua, spinal cord |
 | G12.8 | Atrophy, atrophic - Muscle, muscular - Spinal - Specified NEC |
 | G12.9 | Atrophy, atrophic - Muscle, muscular - Spinal |
-| G13.8 | Atrophy, atrophic - Systemic affecting central nervous system - In - Specified disease NEC |
+| G13.8 | Atrophy, atrophic - Systemic affecting central nervous system - In - Specifie... |
 | G14 | Postpolio |
 | G20.A1 | Dementia - With - Parkinson's disease |
 | G20.A2 | Disease, diseased - Parkinson's - Without dyskinesia - With - Fluctuations |
-| G20.B1 | Disease, diseased - Parkinson's - With dyskinesia - Without mention of - Fluctuations |
+| G20.B1 | Disease, diseased - Parkinson's - With dyskinesia - Without mention of - Fluc... |
 | G20.B2 | Disease, diseased - Parkinson's - With dyskinesia - With - Fluctuations |
 | G20.C | Dementia - With - Parkinsonism |
 | G21.0 | Syndrome - Malignant - Neuroleptic |
@@ -3789,10 +3807,10 @@ HTAN Biospecimen Data Model Schema
 | G32.89 | Encephalopathy - Degenerative, in specified disease NEC |
 | G35.A | Sclerosis, sclerotic - Multiple - Relapsing-remitting |
 | G35.B0 | Sclerosis, sclerotic - Multiple - Progressive - Primary |
-| G35.B1 | Sclerosis, sclerotic - Multiple - Progressive - Primary - With - Evidence of inflammatory disease activity |
+| G35.B1 | Sclerosis, sclerotic - Multiple - Progressive - Primary - With - Evidence of ... |
 | G35.B2 | Sclerosis, sclerotic - Multiple - Progressive - Primary - Non-active |
 | G35.C0 | Sclerosis, sclerotic - Multiple - Progressive - Secondary |
-| G35.C1 | Sclerosis, sclerotic - Multiple - Progressive - Secondary - With - Evidence of inflammatory disease activity |
+| G35.C1 | Sclerosis, sclerotic - Multiple - Progressive - Secondary - With - Evidence o... |
 | G35.C2 | Sclerosis, sclerotic - Multiple - Progressive - Secondary - Non-active |
 | G35.D | Dementia - In - Multiple - Sclerosis |
 | G36.0 | Demyelination, demyelinization - In optic neuritis |
@@ -3809,50 +3827,50 @@ HTAN Biospecimen Data Model Schema
 | G37.89 | Demyelination, demyelinization - Central nervous system - Specified NEC |
 | G37.9 | Degeneration, degenerative - Myelin, central nervous system |
 | G40.- | Dementia - In - Epilepsy |
-| G40.001 | Epilepsy, epileptic, epilepsia - Localization-related - Idiopathic - With seizures of localized onset - Not intractable - With status epilepticus |
+| G40.001 | Epilepsy, epileptic, epilepsia - Localization-related - Idiopathic - With sei... |
 | G40.009 | Epilepsy, epileptic, epilepsia - Localization-related - Idiopathic |
-| G40.011 | Epilepsy, epileptic, epilepsia - Localization-related - Idiopathic - With seizures of localized onset - Intractable - With status epilepticus |
-| G40.019 | Epilepsy, epileptic, epilepsia - Localization-related - Idiopathic - With seizures of localized onset - Intractable |
+| G40.011 | Epilepsy, epileptic, epilepsia - Localization-related - Idiopathic - With sei... |
+| G40.019 | Epilepsy, epileptic, epilepsia - Localization-related - Idiopathic - With sei... |
 | G40.1- | Epilepsia partialis continua |
-| G40.101 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With simple partial seizures - Not intractable - With status epilepticus |
-| G40.109 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With simple partial seizures |
-| G40.111 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With simple partial seizures - Intractable - With status epilepticus |
-| G40.119 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With simple partial seizures - Intractable |
-| G40.201 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With complex partial seizures - Not intractable - With status epilepticus |
-| G40.209 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With complex partial seizures |
-| G40.211 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With complex partial seizures - Intractable - With status epilepticus |
-| G40.219 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With complex partial seizures - Intractable |
-| G40.301 | Epilepsy, epileptic, epilepsia - Generalized - Idiopathic - Not intractable - With status epilepticus |
+| G40.101 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With si... |
+| G40.109 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With si... |
+| G40.111 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With si... |
+| G40.119 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With si... |
+| G40.201 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With co... |
+| G40.209 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With co... |
+| G40.211 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With co... |
+| G40.219 | Epilepsy, epileptic, epilepsia - Localization-related - Symptomatic - With co... |
+| G40.301 | Epilepsy, epileptic, epilepsia - Generalized - Idiopathic - Not intractable -... |
 | G40.309 | Epilepsy, epileptic, epilepsia - Generalized - Idiopathic |
-| G40.311 | Epilepsy, epileptic, epilepsia - Generalized - Idiopathic - Intractable - With status epilepticus |
+| G40.311 | Epilepsy, epileptic, epilepsia - Generalized - Idiopathic - Intractable - Wit... |
 | G40.319 | Epilepsy, epileptic, epilepsia - Generalized - Idiopathic - Intractable |
 | G40.4- | Myoclonus, myoclonic, myoclonia - Epilepsy |
-| G40.401 | Epilepsy, epileptic, epilepsia - Generalized - Specified NEC - Not intractable - With status epilepticus |
+| G40.401 | Epilepsy, epileptic, epilepsia - Generalized - Specified NEC - Not intractabl... |
 | G40.409 | Epilepsy, epileptic, epilepsia - Generalized - Specified NEC |
-| G40.411 | Epilepsy, epileptic, epilepsia - Generalized - Specified NEC - Intractable - With status epilepticus |
+| G40.411 | Epilepsy, epileptic, epilepsia - Generalized - Specified NEC - Intractable - ... |
 | G40.419 | Epilepsy, epileptic, epilepsia - Generalized - Specified NEC - Intractable |
 | G40.42 | CDKL5 |
-| G40.501 | Epilepsy, epileptic, epilepsia - Related to - Alcohol - Not intractable - With status epilepticus |
+| G40.501 | Epilepsy, epileptic, epilepsia - Related to - Alcohol - Not intractable - Wit... |
 | G40.509 | Epilepsy, epileptic, epilepsia - Related to - Alcohol |
 | G40.80- | Epilepsy, epileptic, epilepsia - Benign myoclonic in infancy |
-| G40.801 | Epilepsy, epileptic, epilepsia - Specified NEC - Not intractable - With status epilepticus |
+| G40.801 | Epilepsy, epileptic, epilepsia - Specified NEC - Not intractable - With statu... |
 | G40.802 | Epilepsy, epileptic, epilepsia - Specified NEC |
-| G40.803 | Epilepsy, epileptic, epilepsia - Specified NEC - Intractable - With status epilepticus |
+| G40.803 | Epilepsy, epileptic, epilepsia - Specified NEC - Intractable - With status ep... |
 | G40.804 | Epilepsy, epileptic, epilepsia - Specified NEC - Intractable |
 | G40.811 | Lennox-Gastaut syndrome - Not intractable - With status epilepticus |
 | G40.812 | Lennox-Gastaut syndrome |
 | G40.813 | Lennox-Gastaut syndrome - Intractable - With status epilepticus |
 | G40.814 | Lennox-Gastaut syndrome - Intractable |
-| G40.821 | Epilepsy, epileptic, epilepsia - Spasms - Not intractable - With status epilepticus |
+| G40.821 | Epilepsy, epileptic, epilepsia - Spasms - Not intractable - With status epile... |
 | G40.822 | Epilepsy, epileptic, epilepsia - Spasms |
 | G40.823 | Epilepsy, epileptic, epilepsia - Spasms - Intractable - With status epilepticus |
 | G40.824 | Epilepsy, epileptic, epilepsia - Spasms - Intractable |
 | G40.83- | Epilepsy, epileptic, epilepsia - Myoclonus, myoclonic - Severe, in infancy |
 | G40.833 | Syndrome - Dravet - With status epilepticus |
 | G40.834 | Syndrome - Dravet |
-| G40.841 | Epilepsy, epileptic, epilepsia - KCNQ2-related - Not intractable - With status epilepticus |
+| G40.841 | Epilepsy, epileptic, epilepsia - KCNQ2-related - Not intractable - With statu... |
 | G40.842 | Epilepsy, epileptic, epilepsia - KCNQ2-related |
-| G40.843 | Epilepsy, epileptic, epilepsia - KCNQ2-related - Intractable - With status epilepticus |
+| G40.843 | Epilepsy, epileptic, epilepsia - KCNQ2-related - Intractable - With status ep... |
 | G40.844 | Epilepsy, epileptic, epilepsia - KCNQ2-related - Intractable |
 | G40.89 | Seizure - Specified NEC |
 | G40.901 | Convulsions - Febrile - With status epilepticus |
@@ -3861,19 +3879,19 @@ HTAN Biospecimen Data Model Schema
 | G40.919 | Disorder - Seizure - Intractable |
 | G40.A- | Seizure - Absence |
 | G40.A0- | Seizure - Petit mal - Not intractable |
-| G40.A01 | Epilepsy, epileptic, epilepsia - Childhood - Absence - Not intractable - With status epilepticus |
+| G40.A01 | Epilepsy, epileptic, epilepsia - Childhood - Absence - Not intractable - With... |
 | G40.A09 | Epilepsy, epileptic, epilepsia - Childhood - Absence |
 | G40.A1- | Seizure - Petit mal - Intractable |
-| G40.A11 | Epilepsy, epileptic, epilepsia - Childhood - Absence - Intractable - With status epilepticus |
+| G40.A11 | Epilepsy, epileptic, epilepsia - Childhood - Absence - Intractable - With sta... |
 | G40.A19 | Epilepsy, epileptic, epilepsia - Childhood - Absence - Intractable |
-| G40.B01 | Epilepsy, epileptic, epilepsia - Juvenile myoclonic - Not intractable - With status epilepticus |
+| G40.B01 | Epilepsy, epileptic, epilepsia - Juvenile myoclonic - Not intractable - With ... |
 | G40.B09 | Epilepsy, epileptic, epilepsia - Juvenile myoclonic |
-| G40.B11 | Epilepsy, epileptic, epilepsia - Juvenile myoclonic - Intractable - With status epilepticus |
+| G40.B11 | Epilepsy, epileptic, epilepsia - Juvenile myoclonic - Intractable - With stat... |
 | G40.B19 | Epilepsy, epileptic, epilepsia - Juvenile myoclonic - Intractable |
-| G40.C01 | Epilepsy, epileptic, epilepsia - Myoclonus, myoclonic - Progressive - Lafora - Not intractable - With status epilepticus |
+| G40.C01 | Epilepsy, epileptic, epilepsia - Myoclonus, myoclonic - Progressive - Lafora ... |
 | G40.C09 | Disease, diseased - Lafora body |
-| G40.C11 | Epilepsy, epileptic, epilepsia - Myoclonus, myoclonic - Progressive - Lafora - Intractable - With status epilepticus |
-| G40.C19 | Epilepsy, epileptic, epilepsia - Myoclonus, myoclonic - Progressive - Lafora - Intractable |
+| G40.C11 | Epilepsy, epileptic, epilepsia - Myoclonus, myoclonic - Progressive - Lafora ... |
+| G40.C19 | Epilepsy, epileptic, epilepsia - Myoclonus, myoclonic - Progressive - Lafora ... |
 | G43.001 | Migraine - Without aura - Not intractable - With status migrainosus |
 | G43.009 | Migraine - Without aura |
 | G43.011 | Migraine - Without aura - With refractory migraine - With status migrainosus |
@@ -3886,17 +3904,17 @@ HTAN Biospecimen Data Model Schema
 | G43.409 | Migraine - Hemiplegic |
 | G43.411 | Migraine - Hemiplegic - With refractory migraine - With status migrainosus |
 | G43.419 | Migraine - Hemiplegic - With refractory migraine |
-| G43.501 | Migraine - With aura - Persistent - Without cerebral infarction - Not intractable - With status migrainosus |
+| G43.501 | Migraine - With aura - Persistent - Without cerebral infarction - Not intract... |
 | G43.509 | Migraine - With aura - Persistent |
-| G43.511 | Migraine - With aura - Persistent - Without cerebral infarction - With refractory migraine - With status migrainosus |
-| G43.519 | Migraine - With aura - Persistent - Without cerebral infarction - With refractory migraine |
-| G43.601 | Migraine - With aura - Persistent - With cerebral infarction - Not intractable - With status migrainosus |
+| G43.511 | Migraine - With aura - Persistent - Without cerebral infarction - With refrac... |
+| G43.519 | Migraine - With aura - Persistent - Without cerebral infarction - With refrac... |
+| G43.601 | Migraine - With aura - Persistent - With cerebral infarction - Not intractabl... |
 | G43.609 | Migraine - With aura - Persistent - With cerebral infarction |
-| G43.611 | Migraine - With aura - Persistent - With cerebral infarction - With refractory migraine - With status migrainosus |
-| G43.619 | Migraine - With aura - Persistent - With cerebral infarction - With refractory migraine |
+| G43.611 | Migraine - With aura - Persistent - With cerebral infarction - With refractor... |
+| G43.619 | Migraine - With aura - Persistent - With cerebral infarction - With refractor... |
 | G43.701 | Migraine - Without aura - Chronic - Not intractable - With status migrainosus |
 | G43.709 | Migraine - Without aura - Chronic |
-| G43.711 | Migraine - Without aura - Chronic - With refractory migraine - With status migrainosus |
+| G43.711 | Migraine - Without aura - Chronic - With refractory migraine - With status mi... |
 | G43.719 | Migraine - Without aura - Chronic - With refractory migraine |
 | G43.801 | Migraine - Specified NEC - Not intractable - With status migrainosus |
 | G43.809 | Migraine - Specified NEC |
@@ -3921,7 +3939,7 @@ HTAN Biospecimen Data Model Schema
 | G43.D1 | Migraine - Abdominal - With refractory migraine |
 | G43.E01 | Migraine - With aura - Chronic - Not intractable - With status migrainosus |
 | G43.E09 | Migraine - With aura - Chronic |
-| G43.E11 | Migraine - With aura - Chronic - With refractory migraine - With status migrainosus |
+| G43.E11 | Migraine - With aura - Chronic - With refractory migraine - With status migra... |
 | G43.E19 | Migraine - With aura - Chronic - With refractory migraine |
 | G44.001 | Cephalgia, cephalalgia - Histamine - Intractable |
 | G44.009 | Cephalgia, cephalalgia - Histamine |
@@ -3933,8 +3951,8 @@ HTAN Biospecimen Data Model Schema
 | G44.039 | Hemicrania - Paroxysmal |
 | G44.041 | Hemicrania - Paroxysmal - Chronic - Intractable |
 | G44.049 | Hemicrania - Paroxysmal - Chronic |
-| G44.051 | Headache - Neuralgiform, short lasting unilateral, with conjunctival injection and tearing - Intractable |
-| G44.059 | Headache - Neuralgiform, short lasting unilateral, with conjunctival injection and tearing |
+| G44.051 | Headache - Neuralgiform, short lasting unilateral, with conjunctival injectio... |
+| G44.059 | Headache - Neuralgiform, short lasting unilateral, with conjunctival injectio... |
 | G44.091 | Cephalgia, cephalalgia - Trigeminal autonomic - Intractable |
 | G44.099 | Cephalgia, cephalalgia - Trigeminal autonomic |
 | G44.1 | Headache - Vascular NEC |
@@ -4115,8 +4133,8 @@ HTAN Biospecimen Data Model Schema
 | G71.0342 | Dystrophy, dystrophia - Muscular - Limb-girdle - Beta-sarcoglycan-related |
 | G71.0349 | Dystrophy, dystrophia - Muscular - Limb-girdle - Delta-sarcoglycan-related |
 | G71.035 | Anoctaminopathy |
-| G71.036 | Dystrophy, dystrophia - Muscular - Limb-girdle - Due to - Fukutin related protein dysfunction |
-| G71.038 | Dystrophy, dystrophia - Leyden-Möbius - Meaning Limb girdle muscular dystrophy, specified type NEC |
+| G71.036 | Dystrophy, dystrophia - Muscular - Limb-girdle - Due to - Fukutin related pro... |
+| G71.038 | Dystrophy, dystrophia - Leyden-Möbius - Meaning Limb girdle muscular dystroph... |
 | G71.039 | Dystrophy, dystrophia - Leyden-Möbius |
 | G71.09 | Cardiomyopathy - Due to - Progressive muscular dystrophy |
 | G71.11 | Atrophy, atrophic - Muscle, muscular - Myotonic |
@@ -4258,17 +4276,17 @@ HTAN Biospecimen Data Model Schema
 | G97.0 | Complication - Lumbar puncture - Cerebrospinal fluid leak |
 | G97.1 | Complication - Lumbar puncture |
 | G97.2 | Complication - Nervous system - Postprocedural - Intracranial hypotension |
-| G97.31 | Complication - Intraoperative - Hemorrhage - Nervous system - During a nervous system procedure |
-| G97.32 | Complication - Intraoperative - Hemorrhage - Nervous system - During other procedure |
+| G97.31 | Complication - Intraoperative - Hemorrhage - Nervous system - During a nervou... |
+| G97.32 | Complication - Intraoperative - Hemorrhage - Nervous system - During other pr... |
 | G97.41 | Durotomy |
-| G97.48 | Complication - Intraoperative - Puncture or laceration - Brain - During a nervous system procedure |
-| G97.49 | Complication - Intraoperative - Puncture or laceration - Brain - During other procedure |
-| G97.51 | Complication - Postprocedural - Hemorrhage - Nervous system - Following nervous system procedure |
-| G97.52 | Complication - Postprocedural - Hemorrhage - Nervous system - Following other procedure |
-| G97.61 | Complication - Postprocedural - Hematoma - Nervous system - Following nervous system procedure |
-| G97.62 | Complication - Postprocedural - Hematoma - Nervous system - Following other procedure |
-| G97.63 | Complication - Postprocedural - Seroma - Nervous system - Following nervous system procedure |
-| G97.64 | Complication - Postprocedural - Seroma - Nervous system - Following other procedure |
+| G97.48 | Complication - Intraoperative - Puncture or laceration - Brain - During a ner... |
+| G97.49 | Complication - Intraoperative - Puncture or laceration - Brain - During other... |
+| G97.51 | Complication - Postprocedural - Hemorrhage - Nervous system - Following nervo... |
+| G97.52 | Complication - Postprocedural - Hemorrhage - Nervous system - Following other... |
+| G97.61 | Complication - Postprocedural - Hematoma - Nervous system - Following nervous... |
+| G97.62 | Complication - Postprocedural - Hematoma - Nervous system - Following other p... |
+| G97.63 | Complication - Postprocedural - Seroma - Nervous system - Following nervous s... |
+| G97.64 | Complication - Postprocedural - Seroma - Nervous system - Following other pro... |
 | G97.81 | Anoxia - Cerebral - During a procedure |
 | G97.82 | Anoxia - Cerebral - Resulting from a procedure |
 | G97.83 | Hypotension - Intracranial - Following - Lumbar cerebrospinal fluid shunting |
@@ -4900,9 +4918,9 @@ HTAN Biospecimen Data Model Schema
 | H30.03- | Inflammation, inflamed, inflammatory - Chorioretinal - Focal - Peripheral |
 | H30.04- | Inflammation, inflamed, inflammatory - Chorioretinal - Focal - Macular |
 | H30.10- | Inflammation, inflamed, inflammatory - Chorioretinal - Disseminated |
-| H30.11- | Inflammation, inflamed, inflammatory - Chorioretinal - Disseminated - Posterior pole |
+| H30.11- | Inflammation, inflamed, inflammatory - Chorioretinal - Disseminated - Posteri... |
 | H30.12- | Inflammation, inflamed, inflammatory - Chorioretinal - Disseminated - Peripheral |
-| H30.13- | Inflammation, inflamed, inflammatory - Chorioretinal - Disseminated - Generalized |
+| H30.13- | Inflammation, inflamed, inflammatory - Chorioretinal - Disseminated - General... |
 | H30.14- | Epitheliopathy, multifocal placoid pigment |
 | H30.2- | Cyclitis - Posterior |
 | H30.81- | Disease, diseased - Harada's |
@@ -4997,7 +5015,7 @@ HTAN Biospecimen Data Model Schema
 | H35.70 | Disorder - Retina - Separation of layers |
 | H35.71- | Chorioretinopathy, central serous |
 | H35.72- | Disorder - Retina - Separation of layers - Pigment epithelium detachment |
-| H35.73- | Disorder - Retina - Separation of layers - Pigment epithelium detachment - Hemorrhagic |
+| H35.73- | Disorder - Retina - Separation of layers - Pigment epithelium detachment - He... |
 | H35.81 | Congestion, congestive - Retina |
 | H35.82 | Disorder - Retina - Ischemia |
 | H35.89 | Atrophy, atrophic - Retina, retinal |
@@ -5146,20 +5164,20 @@ HTAN Biospecimen Data Model Schema
 | H50.01- | Strabismus - Convergent concomitant - Monocular |
 | H50.02- | Strabismus - Convergent concomitant - Monocular - With - A pattern |
 | H50.03- | Strabismus - Convergent concomitant - Monocular - With - V pattern |
-| H50.04- | Strabismus - Convergent concomitant - Monocular - With - Specified nonconcomitances NEC |
+| H50.04- | Strabismus - Convergent concomitant - Monocular - With - Specified nonconcomi... |
 | H50.05 | Strabismus - Convergent concomitant - Alternating |
 | H50.06 | Strabismus - Convergent concomitant - Alternating - With - A pattern |
 | H50.07 | Strabismus - Convergent concomitant - Alternating - With - V pattern |
-| H50.08 | Strabismus - Convergent concomitant - Alternating - With - Specified nonconcomitances NEC |
+| H50.08 | Strabismus - Convergent concomitant - Alternating - With - Specified nonconco... |
 | H50.10 | Strabismus - Divergent concomitant |
 | H50.11- | Strabismus - Divergent concomitant - Monocular |
 | H50.12- | Strabismus - Divergent concomitant - Monocular - With - A pattern |
 | H50.13- | Strabismus - Divergent concomitant - Monocular - With - V pattern |
-| H50.14- | Strabismus - Divergent concomitant - Monocular - With - Specified noncomitances NEC |
+| H50.14- | Strabismus - Divergent concomitant - Monocular - With - Specified noncomitanc... |
 | H50.15 | Strabismus - Divergent concomitant - Alternating |
 | H50.16 | Strabismus - Divergent concomitant - Alternating - With - A pattern |
 | H50.17 | Strabismus - Divergent concomitant - Alternating - With - V pattern |
-| H50.18 | Strabismus - Divergent concomitant - Alternating - With - Specified noncomitances NEC |
+| H50.18 | Strabismus - Divergent concomitant - Alternating - With - Specified noncomita... |
 | H50.2- | Hypertropia |
 | H50.30 | Strabismus - Heterotropia - Intermittent |
 | H50.31- | Strabismus - Convergent concomitant - Monocular - Intermittent |
@@ -5294,18 +5312,18 @@ HTAN Biospecimen Data Model Schema
 | H57.9 | Complication - Eye |
 | H59.01- | Complication - Postprocedural - Following cataract surgery - Vitreous |
 | H59.02- | Complication - Postprocedural - Following cataract surgery - Cataract |
-| H59.03- | Complication - Postprocedural - Following cataract surgery - Cystoid macular edema |
+| H59.03- | Complication - Postprocedural - Following cataract surgery - Cystoid macular ... |
 | H59.09- | Complication - Postprocedural - Following cataract surgery - Specified NEC |
-| H59.11- | Complication - Intraoperative - Hemorrhage - Eye and adnexa - During ophthalmic procedure |
-| H59.12- | Complication - Intraoperative - Hemorrhage - Eye and adnexa - During other procedure |
-| H59.21- | Complication - Intraoperative - Puncture or laceration - Eye and adnexa - During ophthalmic procedure |
-| H59.22- | Complication - Intraoperative - Puncture or laceration - Eye and adnexa - During other procedure |
-| H59.31- | Complication - Postprocedural - Hemorrhage - Eye and adnexa - Following ophthalmic procedure |
-| H59.32- | Complication - Postprocedural - Hemorrhage - Eye and adnexa - Following other procedure |
-| H59.33- | Complication - Postprocedural - Hematoma - Eye and adnexa - Following ophthalmic procedure |
-| H59.34- | Complication - Postprocedural - Hematoma - Eye and adnexa - Following other procedure |
-| H59.35- | Complication - Postprocedural - Seroma - Eye and adnexa - Following ophthalmic procedure |
-| H59.36- | Complication - Postprocedural - Seroma - Eye and adnexa - Following other procedure |
+| H59.11- | Complication - Intraoperative - Hemorrhage - Eye and adnexa - During ophthalm... |
+| H59.12- | Complication - Intraoperative - Hemorrhage - Eye and adnexa - During other pr... |
+| H59.21- | Complication - Intraoperative - Puncture or laceration - Eye and adnexa - Dur... |
+| H59.22- | Complication - Intraoperative - Puncture or laceration - Eye and adnexa - Dur... |
+| H59.31- | Complication - Postprocedural - Hemorrhage - Eye and adnexa - Following ophth... |
+| H59.32- | Complication - Postprocedural - Hemorrhage - Eye and adnexa - Following other... |
+| H59.33- | Complication - Postprocedural - Hematoma - Eye and adnexa - Following ophthal... |
+| H59.34- | Complication - Postprocedural - Hematoma - Eye and adnexa - Following other p... |
+| H59.35- | Complication - Postprocedural - Seroma - Eye and adnexa - Following ophthalmi... |
+| H59.36- | Complication - Postprocedural - Seroma - Eye and adnexa - Following other pro... |
 | H59.40 | Bleb - Inflamed |
 | H59.41 | Bleb - Inflamed - Stage 1 |
 | H59.42 | Bleb - Inflamed - Stage 2 |
@@ -5354,8 +5372,8 @@ HTAN Biospecimen Data Model Schema
 | H61.81- | Exostosis - External ear canal |
 | H61.89- | Disorder - Ear - External - Specified type NEC |
 | H61.9- | Disorder - Ear - External |
-| H62.8X- | Disorder - Ear - External - Specified type NEC - In diseases classified elsewhere |
-| H65.- | Infection, infected, infective - Virus, viral NOS - Respiratory syncytial - Otitis media |
+| H62.8X- | Disorder - Ear - External - Specified type NEC - In diseases classified elsew... |
+| H65.- | Infection, infected, infective - Virus, viral NOS - Respiratory syncytial - O... |
 | H65.0- | Otitis - Media - Nonsuppurative - Acute or subacute NEC - Serous |
 | H65.11- | Otitis - Media - Nonsuppurative - Acute or subacute NEC - Allergic |
 | H65.19- | Otitis - Media - Nonsuppurative - Acute or subacute NEC |
@@ -5383,7 +5401,7 @@ HTAN Biospecimen Data Model Schema
 | H68.02- | Salpingitis - Eustachian - Chronic |
 | H68.10- | Obstruction, obstructed, obstructive - Eustachian tube |
 | H68.11- | Obstruction, obstructed, obstructive - Eustachian tube - Osseous |
-| H68.12- | Obstruction, obstructed, obstructive - Eustachian tube - Cartilagenous - Intrinsic |
+| H68.12- | Obstruction, obstructed, obstructive - Eustachian tube - Cartilagenous - Intr... |
 | H68.13- | Obstruction, obstructed, obstructive - Eustachian tube - Cartilagenous |
 | H69.0- | Patulous - Eustachian tube |
 | H69.8- | Disorder - Eustachian tube - Specified NEC |
@@ -5437,7 +5455,7 @@ HTAN Biospecimen Data Model Schema
 | H81.39- | Vertigo - Peripheral NEC |
 | H81.4 | Nystagmus - Central positional |
 | H81.9- | Disorder - Vestibular function |
-| H82.- | Disorder - Vestibular function - Specified NEC - In diseases classified elsewhere |
+| H82.- | Disorder - Vestibular function - Specified NEC - In diseases classified elsew... |
 | H83.0 | Labyrinthitis |
 | H83.3 | Deafness - Noise-induced |
 | H83.8X- | Syndrome - Superior - Semi-circular canal dehiscence |
@@ -5451,10 +5469,10 @@ HTAN Biospecimen Data Model Schema
 | H90.6 | Deafness - Conductive - And sensorineural - Mixed - Bilateral |
 | H90.7- | Deafness - Mixed conductive and sensorineural - Unilateral |
 | H90.8 | Deafness - Conductive - And sensorineural - Mixed |
-| H90.A- | Deafness - Conductive - Unilateral - With restricted hearing on the contralateral side |
-| H90.A1- | Loss - Hearing - Conductive - Unilateral - With - Restricted hearing on the contralateral side |
-| H90.A2- | Loss - Hearing - Sensorineural NOS - Unilateral - With - Restricted hearing on the contralateral side |
-| H90.A3- | Loss - Hearing - Mixed conductive and sensorineural hearing loss - Unilateral - With - Restricted hearing on the contralateral side |
+| H90.A- | Deafness - Conductive - Unilateral - With restricted hearing on the contralat... |
+| H90.A1- | Loss - Hearing - Conductive - Unilateral - With - Restricted hearing on the c... |
+| H90.A2- | Loss - Hearing - Sensorineural NOS - Unilateral - With - Restricted hearing o... |
+| H90.A3- | Loss - Hearing - Mixed conductive and sensorineural hearing loss - Unilateral... |
 | H91.1- | Presbycusis, presbyacusia |
 | H91.2- | Deafness - Sudden |
 | H91.3 | Deaf nonspeaking NEC |
@@ -5480,15 +5498,15 @@ HTAN Biospecimen Data Model Schema
 | H95.12- | Complication - Postmastoidectomy NEC - Granulation |
 | H95.13- | Complication - Postmastoidectomy NEC - Cyst, mucosal |
 | H95.19- | Complication - Postmastoidectomy NEC |
-| H95.21 | Complication - Intraoperative - Hemorrhage - Ear - During procedure on ear and mastoid process |
-| H95.22 | Complication - Intraoperative - Hemorrhage - Ear - During procedure on other organ |
-| H95.31 | Complication - Intraoperative - Puncture or laceration - Ear - During procedure on ear and mastoid process |
-| H95.32 | Complication - Intraoperative - Puncture or laceration - Ear - During procedure on other organ |
-| H95.41 | Complication - Postprocedural - Hemorrhage - Ear - Following procedure on ear and mastoid process |
+| H95.21 | Complication - Intraoperative - Hemorrhage - Ear - During procedure on ear an... |
+| H95.22 | Complication - Intraoperative - Hemorrhage - Ear - During procedure on other ... |
+| H95.31 | Complication - Intraoperative - Puncture or laceration - Ear - During procedu... |
+| H95.32 | Complication - Intraoperative - Puncture or laceration - Ear - During procedu... |
+| H95.41 | Complication - Postprocedural - Hemorrhage - Ear - Following procedure on ear... |
 | H95.42 | Complication - Postprocedural - Hemorrhage - Ear - Following other procedure |
-| H95.51 | Complication - Postprocedural - Hematoma - Ear - Following procedure on ear and mastoid process |
+| H95.51 | Complication - Postprocedural - Hematoma - Ear - Following procedure on ear a... |
 | H95.52 | Complication - Postprocedural - Hematoma - Ear - Following other procedure |
-| H95.53 | Complication - Postprocedural - Seroma - Ear - Following procedure on ear and mastoid process |
+| H95.53 | Complication - Postprocedural - Seroma - Ear - Following procedure on ear and... |
 | H95.54 | Complication - Postprocedural - Seroma - Ear - Following other procedure |
 | H95.81- | Complication - Ear procedure - Postoperative - External ear canal stenosis |
 | H95.88 | Complication - Ear procedure - Intraoperative |
@@ -5497,7 +5515,7 @@ HTAN Biospecimen Data Model Schema
 | I01 | Fever - Rheumatic - Active with heart involvement |
 | I01.0 | Pericarditis - Acute - Rheumatic |
 | I01.1 | Endocarditis - Acute or subacute - Rheumatic |
-| I01.2 | Degeneration, degenerative - Myocardial, myocardium - With rheumatic fever - Active, acute or subacute |
+| I01.2 | Degeneration, degenerative - Myocardial, myocardium - With rheumatic fever - ... |
 | I01.8 | Arteritis - Coronary - Rheumatic |
 | I01.9 | Bouillaud's disease or syndrome |
 | I02.0 | Chorea - With - Heart involvement |
@@ -5526,7 +5544,7 @@ HTAN Biospecimen Data Model Schema
 | I09.0 | Cardiomyopathy - Rheumatic |
 | I09.1 | Endocarditis - With rheumatic fever - Inactive or quiescent |
 | I09.2 | Adherent - Pericardium - Rheumatic |
-| I09.81 | Failure, failed - Heart - Congestive - With rheumatic fever - Inactive or quiescent |
+| I09.81 | Failure, failed - Heart - Congestive - With rheumatic fever - Inactive or qui... |
 | I09.89 | Arteritis - Coronary - Rheumatic - Chronic |
 | I09.9 | Disease, diseased - Heart - With - Rheumatic fever - Inactive or quiescent |
 | I10 | Hypertension, hypertensive |
@@ -5537,7 +5555,7 @@ HTAN Biospecimen Data Model Schema
 | I12.9 | Hypertension, hypertensive - Kidney |
 | I13.0 | Hypertension, hypertensive - Cardiorenal - With heart failure |
 | I13.10 | Hypertension, hypertensive - Cardiorenal |
-| I13.11 | Hypertension, hypertensive - Cardiorenal - Without heart failure - With stage 5 or end stage renal disease |
+| I13.11 | Hypertension, hypertensive - Cardiorenal - Without heart failure - With stage... |
 | I13.2 | Failure, failed - Cardiorenal - Hypertensive |
 | I15.0 | Hypertension, hypertensive - Due to - Renal disorders NEC - Arterial |
 | I15.1 | Hypertension, hypertensive - Due to - Renal disorders NEC |
@@ -5554,30 +5572,30 @@ HTAN Biospecimen Data Model Schema
 | I20.81 | Angina - With - Coronary microvascular disease |
 | I20.89 | Angina - Equivalent |
 | I20.9 | Angina |
-| I21.01 | Infarct, infarction - Myocardium, myocardial - ST elevation - Involving - Left main coronary artery |
-| I21.02 | Infarct, infarction - Myocardium, myocardial - ST elevation - Involving - Diagonal coronary artery |
+| I21.01 | Infarct, infarction - Myocardium, myocardial - ST elevation - Involving - Lef... |
+| I21.02 | Infarct, infarction - Myocardium, myocardial - ST elevation - Involving - Dia... |
 | I21.09 | Infarct, infarction - Myocardium, myocardial - ST elevation - Anterior |
-| I21.11 | Infarct, infarction - Myocardium, myocardial - ST elevation - Inferoposterior transmural |
+| I21.11 | Infarct, infarction - Myocardium, myocardial - ST elevation - Inferoposterior... |
 | I21.19 | Infarct, infarction - Myocardium, myocardial - ST elevation - Inferior |
-| I21.21 | Infarct, infarction - Myocardium, myocardial - ST elevation - Involving - Left circumflex coronary artery |
+| I21.21 | Infarct, infarction - Myocardium, myocardial - ST elevation - Involving - Lef... |
 | I21.29 | Infarct, infarction - Myocardium, myocardial - ST elevation - Lateral |
 | I21.3 | Infarct, infarction - Myocardium, myocardial - Q wave |
 | I21.4 | Infarct, infarction - Myocardium, myocardial - Non-Q wave |
 | I21.9 | Infarct, infarction - Myocardium, myocardial |
 | I21.A1 | Infarct, infarction - Myocardium, myocardial - Due to - Demand ischemia |
-| I21.A9 | Infarct, infarction - Myocardium, myocardial - Associated with revascularization procedure |
+| I21.A9 | Infarct, infarction - Myocardium, myocardial - Associated with revascularizat... |
 | I21.B | Disease, diseased - Coronary - Microvascular - With - Myocardial infarction |
-| I22.0 | Infarct, infarction - Myocardium, myocardial - ST elevation - Anterior - Subsequent |
-| I22.1 | Infarct, infarction - Myocardium, myocardial - ST elevation - Inferior - Subsequent |
+| I22.0 | Infarct, infarction - Myocardium, myocardial - ST elevation - Anterior - Subs... |
+| I22.1 | Infarct, infarction - Myocardium, myocardial - ST elevation - Inferior - Subs... |
 | I22.2 | Infarct, infarction - Myocardium, myocardial - Non-ST elevation - Subsequent |
-| I22.8 | Infarct, infarction - Myocardium, myocardial - ST elevation - Lateral - Subsequent |
+| I22.8 | Infarct, infarction - Myocardium, myocardial - ST elevation - Lateral - Subse... |
 | I22.9 | Infarct, infarction - Myocardium, myocardial - ST elevation - Subsequent |
 | I23.0 | Complication - Following - Acute myocardial infarction NEC - Hemopericardium |
-| I23.1 | Complication - Following - Acute myocardial infarction NEC - Atrial - Septal defect |
-| I23.2 | Complication - Following - Acute myocardial infarction NEC - Defect - Septal - Ventricular |
+| I23.1 | Complication - Following - Acute myocardial infarction NEC - Atrial - Septal ... |
+| I23.2 | Complication - Following - Acute myocardial infarction NEC - Defect - Septal ... |
 | I23.3 | Complication - Following - Acute myocardial infarction NEC - Aneurysm |
-| I23.4 | Complication - Following - Acute myocardial infarction NEC - Chordae tendinae rupture |
-| I23.5 | Complication - Following - Acute myocardial infarction NEC - Papillary muscle rupture |
+| I23.4 | Complication - Following - Acute myocardial infarction NEC - Chordae tendinae... |
+| I23.5 | Complication - Following - Acute myocardial infarction NEC - Papillary muscle... |
 | I23.6 | Complication - Following - Acute myocardial infarction NEC - Atrial - Thrombosis |
 | I23.7 | Angina - Following acute myocardial infarction |
 | I23.8 | Complication - Following - Acute myocardial infarction NEC |
@@ -5587,58 +5605,58 @@ HTAN Biospecimen Data Model Schema
 | I24.89 | Disease, diseased - Heart - Ischemic - Specified form NEC - Acute |
 | I24.9 | Cyanotic heart disease |
 | I25.10 | Arteriosclerosis, arteriosclerotic - Coronary |
-| I25.110 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina pectoris - Unstable |
-| I25.111 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina pectoris - With documented spasm |
-| I25.112 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina pectoris - Refractory |
-| I25.118 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina pectoris - Specified type NEC |
-| I25.119 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina pectoris |
+| I25.110 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina... |
+| I25.111 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina... |
+| I25.112 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina... |
+| I25.118 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina... |
+| I25.119 | Arteriosclerosis, arteriosclerotic - Coronary - Native vessel - With - Angina... |
 | I25.2 | History - Personal - Myocardial infarction |
 | I25.3 | Aneurysm - Cardiac |
 | I25.41 | Aneurysm - Arteriovenous - Acquired - Coronary |
 | I25.42 | Dissection - Artery - Coronary |
 | I25.5 | Cardiomyopathy - Ischemic |
-| I25.6 | Disease, diseased - Heart - Ischemic - Diagnosed on ECG or other special investigation, but currently presenting no symptoms |
-| I25.700 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina pectoris - Unstable |
-| I25.701 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina pectoris - With documented spasm |
-| I25.702 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina pectoris - Refractory |
-| I25.708 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina pectoris - Specified type NEC |
-| I25.709 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina pectoris |
-| I25.710 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vein - With - Angina pectoris - Unstable |
-| I25.711 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vein - With - Angina pectoris - With documented spasm |
-| I25.712 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vein - With - Angina pectoris - Refractory |
-| I25.718 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vein - With - Angina pectoris - Specified type |
-| I25.719 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vein - With - Angina pectoris |
-| I25.720 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous artery - With - Angina pectoris - Unstable |
-| I25.721 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous artery - With - Angina pectoris - With documented spasm |
-| I25.722 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous artery - With - Angina pectoris - Refractory |
-| I25.728 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous artery - With - Angina pectoris - Specified type |
-| I25.729 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous artery - With - Angina pectoris |
-| I25.730 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous biological - With - Angina pectoris - Unstable |
-| I25.731 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous biological - With - Angina pectoris - With documented spasm |
-| I25.732 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous biological - With - Angina pectoris - Refractory |
-| I25.738 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous biological - With - Angina pectoris - Specified type |
-| I25.739 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous biological - With - Angina pectoris |
-| I25.750 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native coronary artery - With - Angina pectoris - Unstable |
-| I25.751 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native coronary artery - With - Angina pectoris - With documented spasm |
-| I25.752 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native coronary artery - With - Angina pectoris - Refractory |
-| I25.758 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native coronary artery - With - Angina pectoris - Specified type |
-| I25.759 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native coronary artery - With - Angina pectoris |
-| I25.760 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass graft - With - Angina pectoris - Unstable |
-| I25.761 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass graft - With - Angina pectoris - With documented spasm |
-| I25.762 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass graft - With - Angina pectoris - Refractory |
-| I25.768 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass graft - With - Angina pectoris - Specified type |
-| I25.769 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass graft - With - Angina pectoris |
-| I25.790 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type NEC - With - Angina pectoris - Unstable |
-| I25.791 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type NEC - With - Angina pectoris - With documented spasm |
-| I25.792 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type NEC - With - Angina pectoris - Refractory |
-| I25.798 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type NEC - With - Angina pectoris - Specified type |
-| I25.799 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type NEC - With - Angina pectoris |
+| I25.6 | Disease, diseased - Heart - Ischemic - Diagnosed on ECG or other special inve... |
+| I25.700 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina ... |
+| I25.701 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina ... |
+| I25.702 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina ... |
+| I25.708 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina ... |
+| I25.709 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - With - Angina ... |
+| I25.710 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vei... |
+| I25.711 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vei... |
+| I25.712 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vei... |
+| I25.718 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vei... |
+| I25.719 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous vei... |
+| I25.720 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous art... |
+| I25.721 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous art... |
+| I25.722 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous art... |
+| I25.728 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous art... |
+| I25.729 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Autologous art... |
+| I25.730 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous ... |
+| I25.731 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous ... |
+| I25.732 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous ... |
+| I25.738 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous ... |
+| I25.739 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Nonautologous ... |
+| I25.750 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native c... |
+| I25.751 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native c... |
+| I25.752 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native c... |
+| I25.758 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native c... |
+| I25.759 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Native c... |
+| I25.760 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass g... |
+| I25.761 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass g... |
+| I25.762 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass g... |
+| I25.768 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass g... |
+| I25.769 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass g... |
+| I25.790 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type... |
+| I25.791 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type... |
+| I25.792 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type... |
+| I25.798 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type... |
+| I25.799 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft - Specified type... |
 | I25.810 | Arteriosclerosis, arteriosclerotic - Coronary - Bypass graft |
 | I25.811 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart |
-| I25.812 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass graft |
+| I25.812 | Arteriosclerosis, arteriosclerotic - Coronary - Transplanted heart - Bypass g... |
 | I25.82 | Occlusion, occluded - Artery - Complete - Coronary |
 | I25.83 | Arteriosclerosis, arteriosclerotic - Coronary - Due to - Lipid rich plaque |
-| I25.84 | Arteriosclerosis, arteriosclerotic - Coronary - Due to - Calcified coronary lesion |
+| I25.84 | Arteriosclerosis, arteriosclerotic - Coronary - Due to - Calcified coronary l... |
 | I25.85 | Disease, diseased - Coronary - Microvascular - Chronic |
 | I25.89 | Aneurysm - Coronary - Vein |
 | I25.9 | Deformity - Artery - Coronary |
@@ -5777,18 +5795,18 @@ HTAN Biospecimen Data Model Schema
 | I49.8 | Arrhythmia - Sinus |
 | I49.9 | Action, heart - Disorder |
 | I50.1 | Asthma, asthmatic - Cardiobronchial |
-| I50.20 | Failure, failed - Note: heart failure stages A, B, C, and D are based on the American College of Cardiology and American Heart Association stages of heart failure, which complement and should not be confused with the New York Heart Association Classification of Heart Failure, into Class I, Class II, Class III, and Class IV - Systolic |
-| I50.21 | Failure, failed - Note: heart failure stages A, B, C, and D are based on the American College of Cardiology and American Heart Association stages of heart failure, which complement and should not be confused with the New York Heart Association Classification of Heart Failure, into Class I, Class II, Class III, and Class IV - Systolic - Acute |
-| I50.22 | Failure, failed - Note: heart failure stages A, B, C, and D are based on the American College of Cardiology and American Heart Association stages of heart failure, which complement and should not be confused with the New York Heart Association Classification of Heart Failure, into Class I, Class II, Class III, and Class IV - Systolic - Chronic |
-| I50.23 | Failure, failed - Heart - With - Decompensation - With - Reduced ejection fraction |
+| I50.20 | Failure, failed - Note: heart failure stages A, B, C, and D are based on the ... |
+| I50.21 | Failure, failed - Note: heart failure stages A, B, C, and D are based on the ... |
+| I50.22 | Failure, failed - Note: heart failure stages A, B, C, and D are based on the ... |
+| I50.23 | Failure, failed - Heart - With - Decompensation - With - Reduced ejection fra... |
 | I50.30 | Failure, failed - Heart - Diastolic |
 | I50.31 | Failure, failed - Heart - Diastolic - Acute |
 | I50.32 | Failure, failed - Heart - Diastolic - Chronic |
-| I50.33 | Failure, failed - Heart - With - Decompensation - With - Normal ejection fraction |
+| I50.33 | Failure, failed - Heart - With - Decompensation - With - Normal ejection frac... |
 | I50.40 | Failure, failed - Heart - Diastolic - Combined with systolic |
 | I50.41 | Failure, failed - Heart - Diastolic - Combined with systolic - Acute |
 | I50.42 | Failure, failed - Heart - Diastolic - Combined with systolic - Chronic |
-| I50.43 | Failure, failed - Heart - With - Decompensation - With - Reduced ejection fraction - With diastolic dysfunction |
+| I50.43 | Failure, failed - Heart - With - Decompensation - With - Reduced ejection fra... |
 | I50.810 | Ascites - Cardiac |
 | I50.811 | Failure, failed - Heart - Right - Acute |
 | I50.812 | Failure, failed - Heart - Right - Chronic |
@@ -5811,9 +5829,9 @@ HTAN Biospecimen Data Model Schema
 | I51.9 | Cardiopathy |
 | I5A | Injury - Heart - Non-traumatic |
 | I60.0- | Aneurysm - Carotid artery - Ruptured into brain |
-| I60.1- | Hemorrhage, hemorrhagic - Intracranial - Subarachnoid - Intracranial - Middle cerebral |
-| I60.2 | Hemorrhage, hemorrhagic - Intracranial - Subarachnoid - Intracranial - Anterior communicating |
-| I60.3- | Hemorrhage, hemorrhagic - Intracranial - Subarachnoid - Intracranial - Communicating - Posterior |
+| I60.1- | Hemorrhage, hemorrhagic - Intracranial - Subarachnoid - Intracranial - Middle... |
+| I60.2 | Hemorrhage, hemorrhagic - Intracranial - Subarachnoid - Intracranial - Anteri... |
+| I60.3- | Hemorrhage, hemorrhagic - Intracranial - Subarachnoid - Intracranial - Commun... |
 | I60.4 | Hemorrhage, hemorrhagic - Intracranial - Subarachnoid - Intracranial - Basilar |
 | I60.5- | Hemorrhage, hemorrhagic - Intracranial - Subarachnoid - Intracranial - Vertebral |
 | I60.6 | Aneurysm - Circle of Willis - Congenital - Ruptured |
@@ -5837,17 +5855,17 @@ HTAN Biospecimen Data Model Schema
 | I62.9 | Hemorrhage, hemorrhagic - Intracranial |
 | I63.- | Accident - Cerebrovascular - Embolic |
 | I63.0- | Infarct, infarction - Cerebral - Due to - Thrombosis - Precerebral artery |
-| I63.00 | Occlusion, occluded - Artery - Precerebral - With infarction - Due to - Thrombosis |
-| I63.01- | Occlusion, occluded - Artery - Vertebral - With - Infarction - Due to - Thrombosis |
+| I63.00 | Occlusion, occluded - Artery - Precerebral - With infarction - Due to - Throm... |
+| I63.01- | Occlusion, occluded - Artery - Vertebral - With - Infarction - Due to - Throm... |
 | I63.02 | Occlusion, occluded - Artery - Basilar - With - Infarction - Due to - Thrombosis |
 | I63.03- | Occlusion, occluded - Artery - Carotid - With - Infarction - Due to - Thrombosis |
-| I63.09 | Occlusion, occluded - Artery - Precerebral - With infarction - Due to - Thrombosis - Specified NEC |
+| I63.09 | Occlusion, occluded - Artery - Precerebral - With infarction - Due to - Throm... |
 | I63.1- | Infarct, infarction - Cerebral - Due to - Embolism - Precerebral arteries |
 | I63.10 | Occlusion, occluded - Artery - Precerebral - With infarction - Due to - Embolism |
 | I63.11- | Occlusion, occluded - Artery - Vertebral - With - Infarction - Due to - Embolism |
 | I63.12 | Occlusion, occluded - Artery - Basilar - With - Infarction - Due to - Embolism |
 | I63.13- | Occlusion, occluded - Artery - Carotid - With - Infarction - Due to - Embolism |
-| I63.19 | Occlusion, occluded - Artery - Precerebral - With infarction - Due to - Embolism - Specified NEC |
+| I63.19 | Occlusion, occluded - Artery - Precerebral - With infarction - Due to - Embol... |
 | I63.2- | Infarct, infarction - Cerebral - Due to - Occlusion NEC - Precerebral arteries |
 | I63.20 | Occlusion, occluded - Artery - Precerebral - With infarction |
 | I63.21- | Occlusion, occluded - Artery - Vertebral - With - Infarction |
@@ -5856,18 +5874,18 @@ HTAN Biospecimen Data Model Schema
 | I63.29 | Occlusion, occluded - Artery - Precerebral - With infarction - Specified NEC |
 | I63.3- | Disease, diseased - Cerebrovascular - Acute - Thrombotic |
 | I63.30 | Occlusion, occluded - Artery - Cerebral - With infarction - Due to - Thrombosis |
-| I63.31- | Occlusion, occluded - Artery - Cerebral - Middle - With infarction - Due to - Thrombosis |
-| I63.32- | Occlusion, occluded - Artery - Cerebral - Anterior - With infarction - Due to - Thrombosis |
-| I63.33- | Occlusion, occluded - Artery - Cerebral - Posterior - With infarction - Due to - Thrombosis |
-| I63.34- | Occlusion, occluded - Artery - Cerebellar - With infarction - Due to - Thrombosis |
-| I63.39 | Occlusion, occluded - Artery - Cerebral - With infarction - Due to - Thrombosis - Specified NEC |
+| I63.31- | Occlusion, occluded - Artery - Cerebral - Middle - With infarction - Due to -... |
+| I63.32- | Occlusion, occluded - Artery - Cerebral - Anterior - With infarction - Due to... |
+| I63.33- | Occlusion, occluded - Artery - Cerebral - Posterior - With infarction - Due t... |
+| I63.34- | Occlusion, occluded - Artery - Cerebellar - With infarction - Due to - Thromb... |
+| I63.39 | Occlusion, occluded - Artery - Cerebral - With infarction - Due to - Thrombos... |
 | I63.4- | Disease, diseased - Cerebrovascular - Acute - Embolic |
 | I63.40 | Occlusion, occluded - Artery - Cerebral - With infarction - Due to - Embolism |
-| I63.41- | Occlusion, occluded - Artery - Cerebral - Middle - With infarction - Due to - Embolism |
-| I63.42- | Occlusion, occluded - Artery - Cerebral - Anterior - With infarction - Due to - Embolism |
-| I63.43- | Occlusion, occluded - Artery - Cerebral - Posterior - With infarction - Due to - Embolism |
+| I63.41- | Occlusion, occluded - Artery - Cerebral - Middle - With infarction - Due to -... |
+| I63.42- | Occlusion, occluded - Artery - Cerebral - Anterior - With infarction - Due to... |
+| I63.43- | Occlusion, occluded - Artery - Cerebral - Posterior - With infarction - Due t... |
 | I63.44- | Occlusion, occluded - Artery - Cerebellar - With infarction - Due to - Embolism |
-| I63.49 | Occlusion, occluded - Artery - Cerebral - With infarction - Due to - Embolism - Specified NEC |
+| I63.49 | Occlusion, occluded - Artery - Cerebral - With infarction - Due to - Embolism... |
 | I63.5- | Infarct, infarction - Cerebral - Due to - Occlusion NEC - Cerebral arteries |
 | I63.50 | Occlusion, occluded - Artery - Cerebral - With infarction |
 | I63.51- | Occlusion, occluded - Artery - Cerebral - Middle - With infarction |
@@ -5875,7 +5893,7 @@ HTAN Biospecimen Data Model Schema
 | I63.53- | Occlusion, occluded - Artery - Cerebral - Posterior - With infarction |
 | I63.54- | Occlusion, occluded - Artery - Cerebellar - With infarction |
 | I63.59 | Occlusion, occluded - Artery - Cerebral - Specified NEC - With infarction |
-| I63.6 | Infarct, infarction - Cerebral - Due to - Cerebral venous thrombosis, nonpyogenic |
+| I63.6 | Infarct, infarction - Cerebral - Due to - Cerebral venous thrombosis, nonpyog... |
 | I63.81 | Infarct, infarction - Cerebral - Due to - Occlusion NEC - Small artery |
 | I63.89 | Infarct, infarction - Cerebral - Specified NEC |
 | I63.9 | Accident - Cerebrovascular |
@@ -5904,18 +5922,18 @@ HTAN Biospecimen Data Model Schema
 | I67.83 | PRES |
 | I67.841 | Syndrome - Call-Fleming |
 | I67.848 | Vasospasm - Cerebral |
-| I67.850 | Arteriopathy - Cerebral autosomal dominant, with subcortical infarcts and leukoencephalopathy |
+| I67.850 | Arteriopathy - Cerebral autosomal dominant, with subcortical infarcts and leu... |
 | I67.858 | Disease, diseased - Cerebrovascular - Hereditary NEC |
 | I67.89 | Anemia - Cerebral |
 | I67.9 | Angiopathia, angiopathy - Cerebral |
 | I68.2 | Arteritis - Cerebral - In - Diseases classified elsewhere |
 | I69.00 | Sequelae - Hemorrhage - Subarachnoid |
-| I69.010 | Deficit - Attention and concentration - Following - Nontraumatic - Subarachnoid hemorrhage |
+| I69.010 | Deficit - Attention and concentration - Following - Nontraumatic - Subarachno... |
 | I69.011 | Deficit - Memory - Following - Nontraumatic - Subarachnoid hemorrhage |
 | I69.012 | Deficit - Visuospatial - Following - Nontraumatic - Subarachnoid hemorrhage |
 | I69.013 | Deficit - Psychomotor - Following - Nontraumatic - Subarachnoid hemorrhage |
-| I69.014 | Deficit - Executive function - Following - Nontraumatic - Subarachnoid hemorrhage |
-| I69.015 | Deficit - Cognitive - Emotional - Following - Nontraumatic - Subarachnoid hemorrhage |
+| I69.014 | Deficit - Executive function - Following - Nontraumatic - Subarachnoid hemorr... |
+| I69.015 | Deficit - Cognitive - Emotional - Following - Nontraumatic - Subarachnoid hem... |
 | I69.018 | Deficit - Cognitive NEC - Following - Nontraumatic - Subarachnoid hemorrhage |
 | I69.019 | Deficit - Cognitive - Following - Nontraumatic - Subarachnoid hemorrhage |
 | I69.020 | Aphasia - Following - Cerebrovascular disease - Subarachnoid hemorrhage |
@@ -5923,23 +5941,23 @@ HTAN Biospecimen Data Model Schema
 | I69.022 | Dysarthria - Following - Subarachnoid hemorrhage |
 | I69.023 | Disorder - Fluency - Following - Subarachnoid hemorrhage |
 | I69.028 | Sequelae - Hemorrhage - Subarachnoid - Language deficit NEC |
-| I69.03- | Monoplegia - Following - Cerebrovascular disease - Subarachnoid hemorrhage - Upper limb |
-| I69.04- | Monoplegia - Following - Cerebrovascular disease - Subarachnoid hemorrhage - Lower limb |
+| I69.03- | Monoplegia - Following - Cerebrovascular disease - Subarachnoid hemorrhage - ... |
+| I69.04- | Monoplegia - Following - Cerebrovascular disease - Subarachnoid hemorrhage - ... |
 | I69.05- | Hemiplegia - Following - Cerebrovascular disease - Subarachnoid hemorrhage |
 | I69.06- | Sequelae - Hemorrhage - Subarachnoid - Paralytic syndrome |
 | I69.090 | Apraxia - Following - Cerebrovascular disease - Subarachnoid hemorrhage |
 | I69.091 | Dysphagia - Following - Subarachnoid hemorrhage |
 | I69.092 | Droop - Facial - Cerebrovascular disease - Subarachnoid hemorrhage |
-| I69.093 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Subarachnoid hemorrhage |
-| I69.098 | Alteration - Sensation - Following - Cerebrovascular disease - Subarachnoid hemorrhage |
+| I69.093 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Subarachnoid he... |
+| I69.098 | Alteration - Sensation - Following - Cerebrovascular disease - Subarachnoid h... |
 | I69.10 | Sequelae - Hemorrhage - Intracerebral |
 | I69.11 | Sequelae - Hemorrhage - Intracerebral - Cognitive deficits |
-| I69.110 | Deficit - Attention and concentration - Following - Nontraumatic - Intracerebral hemorrhage |
+| I69.110 | Deficit - Attention and concentration - Following - Nontraumatic - Intracereb... |
 | I69.111 | Deficit - Memory - Following - Nontraumatic - Intracerebral hemorrhage |
 | I69.112 | Deficit - Visuospatial - Following - Nontraumatic - Intracerebral hemorrhage |
 | I69.113 | Deficit - Psychomotor - Following - Nontraumatic - Intracerebral hemorrhage |
-| I69.114 | Deficit - Executive function - Following - Nontraumatic - Intracerebral hemorrhage |
-| I69.115 | Deficit - Cognitive - Emotional - Following - Nontraumatic - Intracerebral hemorrhage |
+| I69.114 | Deficit - Executive function - Following - Nontraumatic - Intracerebral hemor... |
+| I69.115 | Deficit - Cognitive - Emotional - Following - Nontraumatic - Intracerebral he... |
 | I69.118 | Deficit - Cognitive NEC - Following - Nontraumatic - Intracerebral hemorrhage |
 | I69.119 | Deficit - Cognitive - Following - Nontraumatic - Intracerebral hemorrhage |
 | I69.120 | Aphasia - Following - Cerebrovascular disease - Intracerebral hemorrhage |
@@ -5947,39 +5965,39 @@ HTAN Biospecimen Data Model Schema
 | I69.122 | Dysarthria - Following - Intracerebral hemorrhage |
 | I69.123 | Disorder - Fluency - Following - Intracerebral hemorrhage |
 | I69.128 | Sequelae - Hemorrhage - Intracerebral - Language deficit NEC |
-| I69.13- | Monoplegia - Following - Cerebrovascular disease - Intracerebral hemorrhage - Upper limb |
-| I69.14- | Monoplegia - Following - Cerebrovascular disease - Intracerebral hemorrhage - Lower limb |
+| I69.13- | Monoplegia - Following - Cerebrovascular disease - Intracerebral hemorrhage -... |
+| I69.14- | Monoplegia - Following - Cerebrovascular disease - Intracerebral hemorrhage -... |
 | I69.15- | Hemiplegia - Following - Cerebrovascular disease - Intracerebral hemorrhage |
 | I69.16- | Sequelae - Hemorrhage - Intracerebral - Paralytic syndrome |
 | I69.190 | Apraxia - Following - Cerebrovascular disease - Intracerebral hemorrhage |
 | I69.191 | Dysphagia - Following - Intracerebral hemorrhage |
 | I69.192 | Droop - Facial - Cerebrovascular disease - Intracerebral hemorrhage |
-| I69.193 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Intracerebral hemorrhage |
-| I69.198 | Alteration - Sensation - Following - Cerebrovascular disease - Intracerebral hemorrhage |
+| I69.193 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Intracerebral h... |
+| I69.198 | Alteration - Sensation - Following - Cerebrovascular disease - Intracerebral ... |
 | I69.20 | Sequelae - Hemorrhage - Intracranial, nontraumatic NEC |
 | I69.21 | Sequelae - Hemorrhage - Intracranial, nontraumatic NEC - Cognitive deficits |
-| I69.210 | Deficit - Attention and concentration - Following - Nontraumatic - Specified intracranial hemorrhage NEC |
-| I69.211 | Deficit - Memory - Following - Nontraumatic - Specified intracranial hemorrhage NEC |
-| I69.212 | Deficit - Visuospatial - Following - Nontraumatic - Specified intracranial hemorrhage NEC |
-| I69.213 | Deficit - Psychomotor - Following - Nontraumatic - Specified intracranial hemorrhage NEC |
-| I69.214 | Deficit - Executive function - Following - Nontraumatic - Specified intracranial hemorrhage NEC |
-| I69.215 | Deficit - Cognitive - Emotional - Following - Nontraumatic - Specified intracranial hemorrhage NEC |
-| I69.218 | Deficit - Cognitive NEC - Following - Nontraumatic - Specified intracranial hemorrhage NEC |
-| I69.219 | Deficit - Cognitive - Following - Nontraumatic - Specified intracranial hemorrhage NEC |
-| I69.220 | Aphasia - Following - Cerebrovascular disease - Nontraumatic intracranial hemorrhage NEC |
-| I69.221 | Dysphasia - Following - Cerebrovascular disease - Nontraumatic intracranial hemorrhage NEC |
+| I69.210 | Deficit - Attention and concentration - Following - Nontraumatic - Specified ... |
+| I69.211 | Deficit - Memory - Following - Nontraumatic - Specified intracranial hemorrha... |
+| I69.212 | Deficit - Visuospatial - Following - Nontraumatic - Specified intracranial he... |
+| I69.213 | Deficit - Psychomotor - Following - Nontraumatic - Specified intracranial hem... |
+| I69.214 | Deficit - Executive function - Following - Nontraumatic - Specified intracran... |
+| I69.215 | Deficit - Cognitive - Emotional - Following - Nontraumatic - Specified intrac... |
+| I69.218 | Deficit - Cognitive NEC - Following - Nontraumatic - Specified intracranial h... |
+| I69.219 | Deficit - Cognitive - Following - Nontraumatic - Specified intracranial hemor... |
+| I69.220 | Aphasia - Following - Cerebrovascular disease - Nontraumatic intracranial hem... |
+| I69.221 | Dysphasia - Following - Cerebrovascular disease - Nontraumatic intracranial h... |
 | I69.222 | Dysarthria - Following - Nontraumatic intracranial hemorrhage NEC |
 | I69.223 | Disorder - Fluency - Following - Nontraumatic intracranial hemorrhage NEC |
 | I69.228 | Sequelae - Hemorrhage - Intracranial, nontraumatic NEC - Language deficit NEC |
-| I69.23- | Monoplegia - Following - Cerebrovascular disease - Nontraumatic intracranial hemorrhage NEC - Upper limb |
-| I69.24- | Monoplegia - Following - Cerebrovascular disease - Nontraumatic intracranial hemorrhage NEC - Lower limb |
-| I69.25- | Hemiplegia - Following - Cerebrovascular disease - Nontraumatic intracranial hemorrhage NEC |
+| I69.23- | Monoplegia - Following - Cerebrovascular disease - Nontraumatic intracranial ... |
+| I69.24- | Monoplegia - Following - Cerebrovascular disease - Nontraumatic intracranial ... |
+| I69.25- | Hemiplegia - Following - Cerebrovascular disease - Nontraumatic intracranial ... |
 | I69.26- | Sequelae - Hemorrhage - Intracranial, nontraumatic NEC - Paralytic syndrome |
-| I69.290 | Apraxia - Following - Cerebrovascular disease - Nontraumatic intracranial hemorrhage NEC |
+| I69.290 | Apraxia - Following - Cerebrovascular disease - Nontraumatic intracranial hem... |
 | I69.291 | Dysphagia - Following - Nontraumatic intracranial hemorrhage NEC |
-| I69.292 | Droop - Facial - Cerebrovascular disease - Nontraumatic intracranial hemorrhage NEC |
-| I69.293 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Nontraumatic intracranial hemorrhage NEC |
-| I69.298 | Alteration - Sensation - Following - Cerebrovascular disease - Nontraumatic intracranial hemorrhage NEC |
+| I69.292 | Droop - Facial - Cerebrovascular disease - Nontraumatic intracranial hemorrha... |
+| I69.293 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Nontraumatic in... |
+| I69.298 | Alteration - Sensation - Following - Cerebrovascular disease - Nontraumatic i... |
 | I69.30 | Sequelae - Infarction - Cerebral |
 | I69.31 | Sequelae - Infarction - Cerebral - Cognitive deficits |
 | I69.310 | Deficit - Attention and concentration - Following - Cerebral infarction |
@@ -5995,39 +6013,39 @@ HTAN Biospecimen Data Model Schema
 | I69.322 | Dysarthria - Following - Cerebral infarction |
 | I69.323 | Disorder - Fluency - Following - Cerebral infarction |
 | I69.328 | Sequelae - Infarction - Cerebral - Language deficit NEC |
-| I69.33- | Monoplegia - Following - Cerebrovascular disease - Cerebral infarction - Upper limb |
-| I69.34- | Monoplegia - Following - Cerebrovascular disease - Cerebral infarction - Lower limb |
+| I69.33- | Monoplegia - Following - Cerebrovascular disease - Cerebral infarction - Uppe... |
+| I69.34- | Monoplegia - Following - Cerebrovascular disease - Cerebral infarction - Lowe... |
 | I69.35- | Hemiplegia - Following - Cerebrovascular disease - Cerebral infarction |
 | I69.36- | Sequelae - Infarction - Cerebral - Paralytic syndrome |
 | I69.390 | Apraxia - Following - Cerebrovascular disease - Cerebral infarction |
 | I69.391 | Dysphagia - Following - Cerebral infarction |
 | I69.392 | Droop - Facial - Cerebrovascular disease - Cerebral infarction |
-| I69.393 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Cerebral infarction |
-| I69.398 | Alteration - Sensation - Following - Cerebrovascular disease - Cerebral infarction |
+| I69.393 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Cerebral infarc... |
+| I69.398 | Alteration - Sensation - Following - Cerebrovascular disease - Cerebral infar... |
 | I69.80 | Sequelae - Disease - Cerebrovascular - Specified type NEC |
 | I69.81 | Sequelae - Disease - Cerebrovascular - Specified type NEC - Cognitive deficits |
-| I69.810 | Deficit - Attention and concentration - Following - Cerebrovascular disease - Specified disease NEC |
+| I69.810 | Deficit - Attention and concentration - Following - Cerebrovascular disease -... |
 | I69.811 | Deficit - Memory - Following - Cerebrovascular disease - Specified disease NEC |
-| I69.812 | Deficit - Visuospatial - Following - Cerebrovascular disease - Specified disease NEC |
-| I69.813 | Deficit - Psychomotor - Following - Cerebrovascular disease - Specified disease NEC |
-| I69.814 | Deficit - Executive function - Following - Cerebrovascular disease - Specified disease NEC |
-| I69.815 | Deficit - Cognitive - Emotional - Following - Cerebrovascular disease - Specified disease NEC |
-| I69.818 | Deficit - Cognitive NEC - Following - Cerebrovascular disease - Specified disease NEC |
-| I69.819 | Deficit - Cognitive - Following - Cerebrovascular disease - Specified disease NEC |
+| I69.812 | Deficit - Visuospatial - Following - Cerebrovascular disease - Specified dise... |
+| I69.813 | Deficit - Psychomotor - Following - Cerebrovascular disease - Specified disea... |
+| I69.814 | Deficit - Executive function - Following - Cerebrovascular disease - Specifie... |
+| I69.815 | Deficit - Cognitive - Emotional - Following - Cerebrovascular disease - Speci... |
+| I69.818 | Deficit - Cognitive NEC - Following - Cerebrovascular disease - Specified dis... |
+| I69.819 | Deficit - Cognitive - Following - Cerebrovascular disease - Specified disease... |
 | I69.820 | Aphasia - Following - Cerebrovascular disease - Specified disease NEC |
 | I69.821 | Dysphasia - Following - Cerebrovascular disease - Specified disease NEC |
 | I69.822 | Dysarthria - Following - Cerebrovascular disease - Specified disease NEC |
 | I69.823 | Disorder - Fluency - Following - Cerebrovascular disease - Specified disease NEC |
 | I69.828 | Sequelae - Disease - Cerebrovascular - Specified type NEC - Language deficit |
-| I69.83- | Monoplegia - Following - Cerebrovascular disease - Specified disease NEC - Upper limb |
-| I69.84- | Monoplegia - Following - Cerebrovascular disease - Specified disease NEC - Lower limb |
+| I69.83- | Monoplegia - Following - Cerebrovascular disease - Specified disease NEC - Up... |
+| I69.84- | Monoplegia - Following - Cerebrovascular disease - Specified disease NEC - Lo... |
 | I69.85- | Hemiplegia - Following - Cerebrovascular disease - Specified disease NEC |
 | I69.86- | Sequelae - Disease - Cerebrovascular - Specified type NEC - Paralytic syndrome |
 | I69.890 | Apraxia - Following - Cerebrovascular disease - Specified disease NEC |
 | I69.891 | Dysphagia - Following - Cerebrovascular disease - Specified NEC |
 | I69.892 | Droop - Facial - Cerebrovascular disease - Specified disease NEC |
-| I69.893 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Specified disease NEC |
-| I69.898 | Alteration - Sensation - Following - Cerebrovascular disease - Specified disease NEC |
+| I69.893 | Ataxia, ataxy, ataxic - Following - Cerebrovascular disease - Specified disea... |
+| I69.898 | Alteration - Sensation - Following - Cerebrovascular disease - Specified dise... |
 | I69.90 | Sequelae - Disease - Cerebrovascular |
 | I69.91 | Sequelae - Disease - Cerebrovascular - Cognitive deficits |
 | I69.910 | Deficit - Attention and concentration - Following - Cerebrovascular disease |
@@ -6060,241 +6078,241 @@ HTAN Biospecimen Data Model Schema
 | I70.203 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Bilateral |
 | I70.208 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC |
 | I70.209 | Arteriosclerosis, arteriosclerotic - Extremities |
-| I70.211 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Right - With - Intermittent claudication |
-| I70.212 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Left - With - Intermittent claudication |
-| I70.213 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Bilateral - With - Intermittent claudication |
-| I70.218 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - With - Intermittent claudication |
-| I70.219 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - With - Intermittent claudication |
+| I70.211 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Right - With - Inter... |
+| I70.212 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Left - With - Interm... |
+| I70.213 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Bilateral - With - I... |
+| I70.218 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - With ... |
+| I70.219 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - With - Intermittent ... |
 | I70.221 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Right |
 | I70.222 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Left |
-| I70.223 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Bilateral |
-| I70.228 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - With - Rest pain |
+| I70.223 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Bi... |
+| I70.228 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - With ... |
 | I70.229 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg |
-| I70.231 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Right - With - Ulceration - Thigh |
-| I70.232 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Right - With - Ulceration - Calf |
-| I70.233 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Right - With - Ulceration - Ankle |
-| I70.234 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Right - With - Ulceration - Heel |
-| I70.235 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Right - With - Ulceration - Foot site NEC |
-| I70.238 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Right - With - Ulceration - Lower leg NEC |
-| I70.239 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Right - With - Ulceration |
-| I70.241 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Left - With - Ulceration - Thigh |
-| I70.242 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Left - With - Ulceration - Calf |
-| I70.243 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Left - With - Ulceration - Ankle |
-| I70.244 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Left - With - Ulceration - Heel |
-| I70.245 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Left - With - Ulceration - Foot site NEC |
-| I70.248 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Left - With - Ulceration - Lower leg NEC |
-| I70.249 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Left - With - Ulceration |
-| I70.25 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - With - Ulceration |
-| I70.261 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Right - With - Gangrene |
-| I70.262 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Left - With - Gangrene |
-| I70.263 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Bilateral - With - Gangrene |
-| I70.268 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - With - Gangrene |
-| I70.269 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - With - Gangrene |
-| I70.291 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Right - Specified type NEC |
-| I70.292 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Left - Specified type NEC |
-| I70.293 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Bilateral - Specified type NEC |
-| I70.298 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - Specified type NEC |
+| I70.231 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Ri... |
+| I70.232 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Ri... |
+| I70.233 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Ri... |
+| I70.234 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Ri... |
+| I70.235 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Ri... |
+| I70.238 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Ri... |
+| I70.239 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Ri... |
+| I70.241 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Le... |
+| I70.242 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Le... |
+| I70.243 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Le... |
+| I70.244 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Le... |
+| I70.245 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Le... |
+| I70.248 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Le... |
+| I70.249 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Le... |
+| I70.25 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - With ... |
+| I70.261 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Ri... |
+| I70.262 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Le... |
+| I70.263 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Bi... |
+| I70.268 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - With ... |
+| I70.269 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Leg - Wi... |
+| I70.291 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Right - Specified ty... |
+| I70.292 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Left - Specified typ... |
+| I70.293 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Bilateral - Specifie... |
+| I70.298 | Arteriosclerosis, arteriosclerotic - Extremities - Specified site NEC - Speci... |
 | I70.299 | Arteriosclerosis, arteriosclerotic - Extremities - Leg - Specified type NEC |
 | I70.301 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Right |
 | I70.302 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Left |
-| I70.303 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Bilateral |
+| I70.303 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Bilat... |
 | I70.308 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified NEC |
 | I70.309 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft |
-| I70.311 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Right - With - Intermittent claudication |
-| I70.312 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Left - With - Intermittent claudication |
-| I70.313 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Bilateral - With - Intermittent claudication |
-| I70.318 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified NEC - With - Intermittent claudication |
-| I70.319 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - With - Intermittent claudication |
-| I70.321 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Right |
-| I70.322 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Left |
-| I70.323 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Bilateral |
-| I70.328 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified NEC - With - Rest pain |
-| I70.329 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft |
-| I70.331 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Right - With - Ulceration - Thigh |
-| I70.332 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Right - With - Ulceration - Calf |
-| I70.333 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Right - With - Ulceration - Ankle |
-| I70.334 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Right - With - Ulceration - Heel |
-| I70.335 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Right - With - Ulceration - Foot site NEC |
-| I70.338 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Right - With - Ulceration - Lower leg NEC |
-| I70.339 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Right - With - Ulceration |
-| I70.341 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Left - With - Ulceration - Thigh |
-| I70.342 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Left - With - Ulceration - Calf |
-| I70.343 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Left - With - Ulceration - Ankle |
-| I70.344 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Left - With - Ulceration - Heel |
-| I70.345 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Left - With - Ulceration - Foot site NEC |
-| I70.348 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Left - With - Ulceration - Lower leg NEC |
-| I70.349 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Left - With - Ulceration |
-| I70.35 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified NEC - With - Ulceration |
-| I70.361 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Right - With - Gangrene |
-| I70.362 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Left - With - Gangrene |
-| I70.363 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - Bilateral - With - Gangrene |
-| I70.368 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified NEC - With - Gangrene |
-| I70.369 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Leg - With - Gangrene |
-| I70.391 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Right - Specified type NEC |
-| I70.392 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Left - Specified type NEC |
-| I70.393 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Bilateral - Specified type NEC |
-| I70.398 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified NEC - Specified type NEC |
-| I70.399 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Specified type NEC |
-| I70.401 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Right |
-| I70.402 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Left |
-| I70.403 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Bilateral |
-| I70.408 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Specified NEC |
-| I70.409 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft |
-| I70.411 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Right - With - Intermittent claudication |
-| I70.412 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Left - With - Intermittent claudication |
-| I70.413 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Bilateral - With - Intermittent claudication |
-| I70.418 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Specified NEC - With - Intermittent claudication |
-| I70.419 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - With - Intermittent claudication |
-| I70.421 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Right |
-| I70.422 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Left |
-| I70.423 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Bilateral |
-| I70.428 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Specified NEC - With - Rest pain |
-| I70.429 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft |
-| I70.431 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Right - With - Ulceration - Thigh |
-| I70.432 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Right - With - Ulceration - Calf |
-| I70.433 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Right - With - Ulceration - Ankle |
-| I70.434 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Right - With - Ulceration - Heel |
-| I70.435 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Right - With - Ulceration - Foot site NEC |
-| I70.438 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Right - With - Ulceration - Lower leg NEC |
-| I70.439 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Right - With - Ulceration |
-| I70.441 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Left - With - Ulceration - Thigh |
-| I70.442 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Left - With - Ulceration - Calf |
-| I70.443 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Left - With - Ulceration - Ankle |
-| I70.444 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Left - With - Ulceration - Heel |
-| I70.445 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Left - With - Ulceration - Foot site NEC |
-| I70.448 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Left - With - Ulceration - Lower leg NEC |
-| I70.449 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Left - With - Ulceration |
-| I70.45 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Specified NEC - With - Ulceration |
-| I70.461 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Right - With - Gangrene |
-| I70.462 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Left - With - Gangrene |
-| I70.463 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - Bilateral - With - Gangrene |
-| I70.468 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Specified NEC - With - Gangrene |
-| I70.469 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Autologous vein graft - Leg - With - Gangrene |
-| I70.491 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Right - Specified type NEC |
-| I70.492 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Left - Specified type NEC |
-| I70.493 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Bilateral - Specified type NEC |
-| I70.498 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Specified NEC - Specified type NEC |
-| I70.499 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous vein graft - Leg - Specified type NEC |
-| I70.501 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Right |
-| I70.502 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Left |
-| I70.503 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Bilateral |
-| I70.508 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Specified NEC |
-| I70.509 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft |
-| I70.511 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Right - With - Intermittent claudication |
-| I70.512 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Left - With - Intermittent claudication |
-| I70.513 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Bilateral - With - Intermittent claudication |
-| I70.518 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Specified NEC - With - Intermittent claudication |
-| I70.519 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - With - Intermittent claudication |
-| I70.521 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Right |
-| I70.522 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Left |
-| I70.523 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Bilateral |
-| I70.528 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Specified NEC - With - Rest pain |
-| I70.529 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft |
-| I70.531 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Right - With - Ulceration - Thigh |
-| I70.532 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Right - With - Ulceration - Calf |
-| I70.533 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Right - With - Ulceration - Ankle |
-| I70.534 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Right - With - Ulceration - Heel |
-| I70.535 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Right - With - Ulceration - Foot site NEC |
-| I70.538 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Right - With - Ulceration - Lower leg NEC |
-| I70.539 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Right - With - Ulceration |
-| I70.541 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Left - With - Ulceration - Thigh |
-| I70.542 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Left - With - Ulceration - Calf |
-| I70.543 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Left - With - Ulceration - Ankle |
-| I70.544 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Left - With - Ulceration - Heel |
-| I70.545 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Left - With - Ulceration - Foot site NEC |
-| I70.548 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Left - With - Ulceration - Lower leg NEC |
-| I70.549 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Left - With - Ulceration |
-| I70.55 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Specified NEC - With - Ulceration |
-| I70.561 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Right - With - Gangrene |
-| I70.562 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Left - With - Gangrene |
-| I70.563 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - Bilateral - With - Gangrene |
-| I70.568 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Specified NEC - With - Gangrene |
-| I70.569 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonautologous biological graft - Leg - With - Gangrene |
-| I70.591 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Right - Specified type NEC |
-| I70.592 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Left - Specified type NEC |
-| I70.593 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Bilateral - Specified type NEC |
-| I70.598 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Specified NEC - Specified type NEC |
-| I70.599 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologous biological graft - Leg - Specified type NEC |
-| I70.601 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Right |
-| I70.602 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Left |
-| I70.603 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Bilateral |
-| I70.608 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Specified NEC |
-| I70.609 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft |
-| I70.611 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Right - With - Intermittent claudication |
-| I70.612 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Left - With - Intermittent claudication |
-| I70.613 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Bilateral - With - Intermittent claudication |
-| I70.618 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Specified NEC - With - Intermittent claudication |
-| I70.619 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - With - Intermittent claudication |
-| I70.621 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Right |
-| I70.622 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Left |
-| I70.623 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Bilateral |
-| I70.628 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Specified NEC - With - Rest pain |
-| I70.629 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft |
-| I70.631 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Right - With - Ulceration - Thigh |
-| I70.632 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Right - With - Ulceration - Calf |
-| I70.633 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Right - With - Ulceration - Ankle |
-| I70.634 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Right - With - Ulceration - Heel |
-| I70.635 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Right - With - Ulceration - Foot site NEC |
-| I70.638 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Right - With - Ulceration - Lower leg NEC |
-| I70.639 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Right - With - Ulceration |
-| I70.641 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Left - With - Ulceration - Thigh |
-| I70.642 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Left - With - Ulceration - Calf |
-| I70.643 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Left - With - Ulceration - Ankle |
-| I70.644 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Left - With - Ulceration - Heel |
-| I70.645 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Left - With - Ulceration - Foot site NEC |
-| I70.648 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Left - With - Ulceration - Lower leg NEC |
-| I70.649 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Left - With - Ulceration |
-| I70.65 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Specified NEC - With - Ulceration |
-| I70.661 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Right - With - Gangrene |
-| I70.662 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Left - With - Gangrene |
-| I70.663 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - Bilateral - With - Gangrene |
-| I70.668 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Specified NEC - With - Gangrene |
-| I70.669 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Nonbiological graft - Leg - With - Gangrene |
-| I70.691 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Right - Specified type NEC |
-| I70.692 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Left - Specified type NEC |
-| I70.693 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Bilateral - Specified type NEC |
-| I70.698 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Specified NEC - Specified type NEC |
-| I70.699 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiological graft - Leg - Specified type NEC |
-| I70.701 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Right |
-| I70.702 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Left |
-| I70.703 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Bilateral |
-| I70.708 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Specified NEC |
-| I70.709 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC |
-| I70.711 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Right - With - Intermittent claudication |
-| I70.712 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Left - With - Intermittent claudication |
-| I70.713 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Bilateral - With - Intermittent claudication |
-| I70.718 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Specified NEC - With - Intermittent claudication |
-| I70.719 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - With - Intermittent claudication |
-| I70.721 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Right |
-| I70.722 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Left |
-| I70.723 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Bilateral |
-| I70.728 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Specified NEC - With - Rest pain |
-| I70.729 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC |
-| I70.731 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Right - With - Ulceration - Thigh |
-| I70.732 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Right - With - Ulceration - Calf |
-| I70.733 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Right - With - Ulceration - Ankle |
-| I70.734 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Right - With - Ulceration - Heel |
-| I70.735 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Right - With - Ulceration - Foot site NEC |
-| I70.738 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Right - With - Ulceration - Lower leg NEC |
-| I70.739 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Right - With - Ulceration |
-| I70.741 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Left - With - Ulceration - Thigh |
-| I70.742 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Left - With - Ulceration - Calf |
-| I70.743 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Left - With - Ulceration - Ankle |
-| I70.744 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Left - With - Ulceration - Heel |
-| I70.745 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Left - With - Ulceration - Foot site NEC |
-| I70.748 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Left - With - Ulceration - Lower leg NEC |
-| I70.749 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Left - With - Ulceration |
-| I70.75 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Specified NEC - With - Ulceration |
-| I70.761 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Right - With - Gangrene |
-| I70.762 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Left - With - Gangrene |
-| I70.763 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - Bilateral - With - Gangrene |
-| I70.768 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Specified NEC - With - Gangrene |
-| I70.769 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass graft - Specified graft NEC - Leg - With - Gangrene |
-| I70.791 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Right - Specified type NEC |
-| I70.792 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Left - Specified type NEC |
-| I70.793 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Bilateral - Specified type NEC |
-| I70.798 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Specified NEC - Specified type NEC |
-| I70.799 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified graft NEC - Leg - Specified type NEC |
+| I70.311 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Right... |
+| I70.312 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Left ... |
+| I70.313 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Bilat... |
+| I70.318 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified N... |
+| I70.319 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - With ... |
+| I70.321 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.322 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.323 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.328 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified N... |
+| I70.329 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.331 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.332 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.333 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.334 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.335 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.338 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.339 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.341 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.342 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.343 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.344 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.345 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.348 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.349 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.35 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified N... |
+| I70.361 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.362 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.363 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.368 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified N... |
+| I70.369 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.391 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Right... |
+| I70.392 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Left ... |
+| I70.393 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Bilat... |
+| I70.398 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified N... |
+| I70.399 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Leg - Speci... |
+| I70.401 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.402 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.403 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.408 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.409 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.411 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.412 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.413 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.418 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.419 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.421 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.422 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.423 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.428 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.429 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.431 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.432 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.433 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.434 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.435 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.438 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.439 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.441 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.442 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.443 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.444 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.445 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.448 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.449 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.45 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.461 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.462 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.463 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.468 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.469 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.491 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.492 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.493 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.498 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.499 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Autologous ... |
+| I70.501 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.502 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.503 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.508 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.509 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.511 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.512 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.513 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.518 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.519 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.521 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.522 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.523 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.528 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.529 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.531 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.532 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.533 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.534 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.535 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.538 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.539 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.541 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.542 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.543 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.544 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.545 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.548 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.549 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.55 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.561 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.562 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.563 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.568 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.569 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.591 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.592 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.593 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.598 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.599 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonautologo... |
+| I70.601 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.602 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.603 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.608 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.609 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.611 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.612 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.613 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.618 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.619 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.621 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.622 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.623 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.628 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.629 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.631 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.632 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.633 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.634 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.635 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.638 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.639 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.641 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.642 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.643 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.644 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.645 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.648 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.649 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.65 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.661 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.662 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.663 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.668 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.669 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.691 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.692 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.693 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.698 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.699 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Nonbiologic... |
+| I70.701 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.702 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.703 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.708 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.709 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.711 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.712 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.713 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.718 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.719 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.721 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.722 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.723 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.728 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.729 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.731 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.732 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.733 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.734 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.735 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.738 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.739 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.741 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.742 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.743 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.744 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.745 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.748 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.749 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.75 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.761 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.762 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.763 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.768 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.769 | Arteriosclerosis, arteriosclerotic - With - Critical limb ischemia - Bypass g... |
+| I70.791 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.792 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.793 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.798 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
+| I70.799 | Arteriosclerosis, arteriosclerotic - Extremities - Bypass graft - Specified g... |
 | I70.8 | Arteriosclerosis, arteriosclerotic - Retina |
 | I70.9 | Obstruction, obstructed, obstructive - Artery |
 | I70.90 | Arteriosclerosis, arteriosclerotic |
@@ -6532,8 +6550,8 @@ HTAN Biospecimen Data Model Schema
 | I87.309 | Hypertension, hypertensive - Venous - Idiopathic |
 | I87.31- | Hypertension, hypertensive - Venous - Idiopathic - With - Ulcer |
 | I87.32- | Hypertension, hypertensive - Venous - Idiopathic - With - Inflammation |
-| I87.33- | Hypertension, hypertensive - Venous - Idiopathic - With - Inflammation - With ulcer |
-| I87.39- | Hypertension, hypertensive - Venous - Idiopathic - With - Specified complication NEC |
+| I87.33- | Hypertension, hypertensive - Venous - Idiopathic - With - Inflammation - With... |
+| I87.39- | Hypertension, hypertensive - Venous - Idiopathic - With - Specified complicat... |
 | I87.8 | Absorbent system disease |
 | I87.9 | Disease, diseased - Vein |
 | I88.0 | Abscess - Lymph, lymphatic, gland or node - Mesentery |
@@ -6552,9 +6570,9 @@ HTAN Biospecimen Data Model Schema
 | I95.89 | Hypotension - Chronic |
 | I95.9 | Hypotension |
 | I96 | Acrosphacelus |
-| I97.0 | Complication - Circulatory system - Postprocedural - Following cardiac surgery - Postcardiotomy syndrome |
+| I97.0 | Complication - Circulatory system - Postprocedural - Following cardiac surger... |
 | I97.11- | Insufficiency, insufficient - Cardiac - Due to presence of |
-| I97.110 | Complication - Postprocedural - Cardiac insufficiency - Following cardiac surgery |
+| I97.110 | Complication - Postprocedural - Cardiac insufficiency - Following cardiac sur... |
 | I97.111 | Complication - Postprocedural - Cardiac insufficiency - Following other surgery |
 | I97.12- | Arrest, arrested - Cardiac - Postprocedural |
 | I97.120 | Complication - Postprocedural - Cardiac arrest - Following cardiac surgery |
@@ -6564,32 +6582,32 @@ HTAN Biospecimen Data Model Schema
 | I97.131 | Complication - Postprocedural - Heart failure - Following other surgery |
 | I97.19- | Disturbance - Heart, functional - Due to presence of |
 | I97.190 | Complication - Circulatory system - Postprocedural - Following cardiac surgery |
-| I97.191 | Complication - Postprocedural - Cardiac functional disturbance NEC - Following other surgery |
+| I97.191 | Complication - Postprocedural - Cardiac functional disturbance NEC - Followin... |
 | I97.2 | Complication - Circulatory system - Postprocedural - Lymphedema after mastectomy |
 | I97.3 | Complication - Circulatory system - Postprocedural - Hypertension |
-| I97.410 | Complication - Intraoperative - Hemorrhage - Circulatory system organ or structure - During cardiac catheterization |
-| I97.411 | Complication - Intraoperative - Hemorrhage - Circulatory system organ or structure - During cardiac bypass |
-| I97.418 | Complication - Intraoperative - Hemorrhage - Circulatory system organ or structure - During other circulatory system procedure |
-| I97.42 | Complication - Intraoperative - Hemorrhage - Circulatory system organ or structure - During other procedure |
-| I97.51 | Complication - Intraoperative - Puncture or laceration - Circulatory system organ or structure - During circulatory system procedure |
-| I97.52 | Complication - Intraoperative - Puncture or laceration - Circulatory system organ or structure - During other procedure |
-| I97.610 | Complication - Postprocedural - Hemorrhage - Circulatory system organ or structure - Following cardiac catheterization |
-| I97.611 | Complication - Postprocedural - Hemorrhage - Circulatory system organ or structure - Following cardiac bypass |
-| I97.618 | Complication - Postprocedural - Hemorrhage - Circulatory system organ or structure - Following other circulatory system procedure |
-| I97.620 | Complication - Postprocedural - Hemorrhage - Circulatory system organ or structure - Following other procedure |
-| I97.621 | Complication - Postprocedural - Hematoma - Circulatory system organ or structure - Following other procedure |
-| I97.622 | Complication - Postprocedural - Seroma - Circulatory system organ or structure - Following other procedure |
-| I97.630 | Complication - Postprocedural - Hematoma - Circulatory system organ or structure - Following cardiac catheterization |
-| I97.631 | Complication - Postprocedural - Hematoma - Circulatory system organ or structure - Following cardiac bypass |
-| I97.638 | Complication - Postprocedural - Hematoma - Circulatory system organ or structure - Following other circulatory system procedure |
-| I97.640 | Complication - Postprocedural - Seroma - Circulatory system organ or structure - Following cardiac catheterization |
-| I97.641 | Complication - Postprocedural - Seroma - Circulatory system organ or structure - Following cardiac bypass |
-| I97.648 | Complication - Postprocedural - Seroma - Circulatory system organ or structure - Following other circulatory system procedure |
+| I97.410 | Complication - Intraoperative - Hemorrhage - Circulatory system organ or stru... |
+| I97.411 | Complication - Intraoperative - Hemorrhage - Circulatory system organ or stru... |
+| I97.418 | Complication - Intraoperative - Hemorrhage - Circulatory system organ or stru... |
+| I97.42 | Complication - Intraoperative - Hemorrhage - Circulatory system organ or stru... |
+| I97.51 | Complication - Intraoperative - Puncture or laceration - Circulatory system o... |
+| I97.52 | Complication - Intraoperative - Puncture or laceration - Circulatory system o... |
+| I97.610 | Complication - Postprocedural - Hemorrhage - Circulatory system organ or stru... |
+| I97.611 | Complication - Postprocedural - Hemorrhage - Circulatory system organ or stru... |
+| I97.618 | Complication - Postprocedural - Hemorrhage - Circulatory system organ or stru... |
+| I97.620 | Complication - Postprocedural - Hemorrhage - Circulatory system organ or stru... |
+| I97.621 | Complication - Postprocedural - Hematoma - Circulatory system organ or struct... |
+| I97.622 | Complication - Postprocedural - Seroma - Circulatory system organ or structur... |
+| I97.630 | Complication - Postprocedural - Hematoma - Circulatory system organ or struct... |
+| I97.631 | Complication - Postprocedural - Hematoma - Circulatory system organ or struct... |
+| I97.638 | Complication - Postprocedural - Hematoma - Circulatory system organ or struct... |
+| I97.640 | Complication - Postprocedural - Seroma - Circulatory system organ or structur... |
+| I97.641 | Complication - Postprocedural - Seroma - Circulatory system organ or structur... |
+| I97.648 | Complication - Postprocedural - Seroma - Circulatory system organ or structur... |
 | I97.71- | Arrest, arrested - Cardiac - Intraoperative |
 | I97.710 | Complication - Intraoperative - Cardiac arrest - During cardiac surgery |
 | I97.711 | Complication - Intraoperative - Cardiac arrest - During other surgery |
-| I97.790 | Complication - Intraoperative - Cardiac functional disturbance NEC - During cardiac surgery |
-| I97.791 | Complication - Intraoperative - Cardiac functional disturbance NEC - During other surgery |
+| I97.790 | Complication - Intraoperative - Cardiac functional disturbance NEC - During c... |
+| I97.791 | Complication - Intraoperative - Cardiac functional disturbance NEC - During o... |
 | I97.810 | Infarct, infarction - Cerebral - Intraoperative - During cardiac surgery |
 | I97.811 | Infarct, infarction - Cerebral - Intraoperative - During other surgery |
 | I97.820 | Infarct, infarction - Cerebral - Postprocedural - Following cardiac surgery |
@@ -6610,7 +6628,7 @@ HTAN Biospecimen Data Model Schema
 | J01.40 | Pansinusitis - Acute |
 | J01.41 | Pansinusitis - Acute - Recurrent |
 | J01.80 | Sinusitis - Acute - Involving more than one sinus, other than pansinusitis |
-| J01.81 | Sinusitis - Acute - Involving more than one sinus, other than pansinusitis - Recurrent |
+| J01.81 | Sinusitis - Acute - Involving more than one sinus, other than pansinusitis - ... |
 | J01.90 | Sinusitis - Acute |
 | J01.91 | Sinusitis - Acute - Recurrent |
 | J02.0 | Disease, diseased - Throat - Septic |
@@ -6635,18 +6653,18 @@ HTAN Biospecimen Data Model Schema
 | J06.9 | Disease, diseased - Respiratory - Acute or subacute NOS |
 | J09.X1 | Influenza - Due to - Identified novel influenza A virus - With - Pneumonia |
 | J09.X2 | Flu - Avian |
-| J09.X3 | Influenza - Due to - Identified novel influenza A virus - With - Digestive manifestations |
+| J09.X3 | Influenza - Due to - Identified novel influenza A virus - With - Digestive ma... |
 | J09.X9 | Influenza - Due to - Identified novel influenza A virus - With - Encephalopathy |
 | J10- | Influenza - A |
 | J10.00 | Influenza - Due to - Identified influenza virus NEC - With - Pneumonia |
-| J10.01 | Influenza - Due to - Identified influenza virus NEC - With - Pneumonia - With same identified influenza virus |
-| J10.08 | Influenza - Due to - Identified influenza virus NEC - With - Pneumonia - Specified type NEC |
+| J10.01 | Influenza - Due to - Identified influenza virus NEC - With - Pneumonia - With... |
+| J10.08 | Influenza - Due to - Identified influenza virus NEC - With - Pneumonia - Spec... |
 | J10.1 | Influenza - Due to - Identified influenza virus NEC |
-| J10.2 | Influenza - Due to - Identified influenza virus NEC - With - Digestive manifestations |
+| J10.2 | Influenza - Due to - Identified influenza virus NEC - With - Digestive manife... |
 | J10.81 | Influenza - Due to - Identified influenza virus NEC - With - Encephalopathy |
 | J10.82 | Influenza - Due to - Identified influenza virus NEC - With - Myocarditis |
 | J10.83 | Influenza - Due to - Identified influenza virus NEC - With - Otitis media |
-| J10.89 | Influenza - Due to - Identified influenza virus NEC - With - Specified manifestation NEC |
+| J10.89 | Influenza - Due to - Identified influenza virus NEC - With - Specified manife... |
 | J11.00 | Influenza - With - Pneumonia |
 | J11.08 | Influenza - With - Pneumonia - Specified type |
 | J11.1 | Influenza |
@@ -6656,7 +6674,7 @@ HTAN Biospecimen Data Model Schema
 | J11.83 | Influenza - With - Otitis media |
 | J11.89 | Influenza - With - Specified manifestation NEC |
 | J12.0 | Pneumonia - Adenoviral |
-| J12.1 | Infection, infected, infective - Virus, viral NOS - Respiratory syncytial - Bronchopneumonia |
+| J12.1 | Infection, infected, infective - Virus, viral NOS - Respiratory syncytial - B... |
 | J12.2 | Pneumonia - In - Parainfluenza virus |
 | J12.3 | Pneumonia - Human metapneumovirus |
 | J12.81 | Pneumonia - SARS-associated coronavirus |
@@ -6747,9 +6765,9 @@ HTAN Biospecimen Data Model Schema
 | J36 | Abscess - Circumtonsillar |
 | J37.0 | Angina - Exudative, chronic |
 | J37.1 | Laryngitis - Chronic - With tracheitis |
-| J38.00 | Compression - Laryngeal nerve, recurrent - With paralysis of vocal cords and larynx |
-| J38.01 | Compression - Laryngeal nerve, recurrent - With paralysis of vocal cords and larynx - Unilateral |
-| J38.02 | Compression - Laryngeal nerve, recurrent - With paralysis of vocal cords and larynx - Bilateral |
+| J38.00 | Compression - Laryngeal nerve, recurrent - With paralysis of vocal cords and ... |
+| J38.01 | Compression - Laryngeal nerve, recurrent - With paralysis of vocal cords and ... |
+| J38.02 | Compression - Laryngeal nerve, recurrent - With paralysis of vocal cords and ... |
 | J38.1 | Polyp, polypus - Larynx |
 | J38.2 | Chorditis |
 | J38.3 | Abscess - Vocal cord |
@@ -6760,7 +6778,7 @@ HTAN Biospecimen Data Model Schema
 | J39.0 | Abscess - Parapharyngeal |
 | J39.1 | Abscess - Bursa - Pharyngeal |
 | J39.2 | Atrophy, atrophic - Pharynx |
-| J39.3 | Hypersensitive, hypersensitiveness, hypersensitivity - Reaction - Upper respiratory tract NEC |
+| J39.3 | Hypersensitive, hypersensitiveness, hypersensitivity - Reaction - Upper respi... |
 | J39.8 | Abscess - Trachea |
 | J39.9 | Disease, diseased - Respiratory - Upper |
 | J40 | Bronchitis |
@@ -6774,7 +6792,7 @@ HTAN Biospecimen Data Model Schema
 | J43.2 | Emphysema - Centrilobular |
 | J43.8 | Emphysema - Specified NEC |
 | J43.9 | Bleb - Emphysematous |
-| J44.0 | Asthma, asthmatic - With - Chronic obstructive bronchitis - With - Acute lower respiratory infection |
+| J44.0 | Asthma, asthmatic - With - Chronic obstructive bronchitis - With - Acute lowe... |
 | J44.1 | Asthma, asthmatic - With - Chronic obstructive bronchitis - With - Exacerbation |
 | J44.81 | Bronchiolitis - Chronic - Obliterative |
 | J44.89 | Asthma, asthmatic - With - Chronic obstructive bronchitis |
@@ -6820,7 +6838,7 @@ HTAN Biospecimen Data Model Schema
 | J66.0 | Byssinosis |
 | J66.1 | Disease, diseased - Flax-dresser's |
 | J66.2 | Cannabinosis |
-| J66.8 | Disease, diseased - Airway - Obstructive, chronic - Due to - Specific organic dusts NEC |
+| J66.8 | Disease, diseased - Airway - Obstructive, chronic - Due to - Specific organic... |
 | J67.0 | Disease, diseased - Moldy hay |
 | J67.1 | Bagasse disease or pneumonitis |
 | J67.2 | Bird - Fancier's disease or lung |
@@ -6833,7 +6851,7 @@ HTAN Biospecimen Data Model Schema
 | J67.9 | Allergy, allergic - Alveolitis |
 | J68.0 | Bronchiolitis - Chemical - Acute |
 | J68.1 | Disease, diseased - Silo-filler's - Pulmonary edema |
-| J68.2 | Inflammation, inflamed, inflammatory - Respiratory, upper - Due to - Chemicals, gases, fumes or vapors |
+| J68.2 | Inflammation, inflamed, inflammatory - Respiratory, upper - Due to - Chemical... |
 | J68.3 | Asthma, asthmatic - Due to - Inhalation of fumes |
 | J68.4 | Bronchiolitis - Chemical |
 | J68.8 | Disease, diseased - Silo-filler's |
@@ -6846,9 +6864,9 @@ HTAN Biospecimen Data Model Schema
 | J70.2 | Disorder - Lung, interstitial, drug-induced - Acute |
 | J70.3 | Disorder - Lung, interstitial, drug-induced - Chronic |
 | J70.4 | Disorder - Lung, interstitial, drug-induced |
-| J70.5 | Disease, diseased - Respiratory - Acute or subacute NOS - Due to - Smoke inhalation |
-| J70.8 | Disease, diseased - Respiratory - Acute or subacute NOS - Due to - External agent - Specified NEC |
-| J70.9 | Disease, diseased - Respiratory - Acute or subacute NOS - Due to - External agent |
+| J70.5 | Disease, diseased - Respiratory - Acute or subacute NOS - Due to - Smoke inha... |
+| J70.8 | Disease, diseased - Respiratory - Acute or subacute NOS - Due to - External a... |
+| J70.9 | Disease, diseased - Respiratory - Acute or subacute NOS - Due to - External a... |
 | J80 | Disease, diseased - Hyaline - Membrane - Adult |
 | J81.0 | Edema, edematous - Lung - Acute |
 | J81.1 | Edema, edematous - Lung |
@@ -6868,7 +6886,7 @@ HTAN Biospecimen Data Model Schema
 | J84.115 | Bronchiolitis - Respiratory, interstitial lung disease |
 | J84.116 | Pneumonia - Cryptogenic organizing |
 | J84.117 | Pneumonia - Desquamative interstitial |
-| J84.170 | Disease, diseased - Lung - Interstitial - With progressive fibrotic phenotype, in diseases classified elsewhere |
+| J84.170 | Disease, diseased - Lung - Interstitial - With progressive fibrotic phenotype... |
 | J84.178 | Pneumonia - Interstitial - Due to - Collagen vascular disease |
 | J84.2 | Pneumonia - Interstitial - Lymphoid |
 | J84.81 | Lymphangioleiomyomatosis |
@@ -6888,7 +6906,7 @@ HTAN Biospecimen Data Model Schema
 | J86.9 | Abscess - Chest |
 | J90 | Effusion - Pleura, pleurisy, pleuritic, pleuropericardial |
 | J91.0 | Effusion - Malignant pleural |
-| J91.8 | Effusion - Pleura, pleurisy, pleuritic, pleuropericardial - In conditions classified elsewhere |
+| J91.8 | Effusion - Pleura, pleurisy, pleuritic, pleuropericardial - In conditions cla... |
 | J92.0 | Plaque - Pleural - With asbestos |
 | J92.9 | Plaque - Pleural |
 | J93.0 | Pneumothorax NOS - Spontaneous NOS - Tension |
@@ -6909,29 +6927,29 @@ HTAN Biospecimen Data Model Schema
 | J95.03 | Complication - Tracheostomy - Malfunction |
 | J95.04 | Complication - Tracheostomy - Tracheo-esophageal fistula |
 | J95.09 | Complication - Tracheostomy - Granuloma |
-| J95.1 | Complication - Respiratory system - Postoperative - Pulmonary insufficiency - Following thoracic surgery |
+| J95.1 | Complication - Respiratory system - Postoperative - Pulmonary insufficiency -... |
 | J95.2 | Complication - Respiratory system - Postoperative - Pulmonary insufficiency |
-| J95.3 | Complication - Respiratory system - Postoperative - Pulmonary insufficiency - Chronic |
+| J95.3 | Complication - Respiratory system - Postoperative - Pulmonary insufficiency -... |
 | J95.4 | Complication - Respiratory system - Postoperative - Mendelson's syndrome |
 | J95.5 | Complication - Respiratory system - Postoperative - Subglottic stenosis |
-| J95.61 | Complication - Intraoperative - Hemorrhage - Respiratory system - During procedure on respiratory system organ or structure |
-| J95.62 | Complication - Intraoperative - Hemorrhage - Respiratory system - During other procedure |
-| J95.71 | Complication - Intraoperative - Puncture or laceration - Respiratory system - During procedure on respiratory system organ or structure |
-| J95.72 | Complication - Intraoperative - Puncture or laceration - Respiratory system - During other procedure |
+| J95.61 | Complication - Intraoperative - Hemorrhage - Respiratory system - During proc... |
+| J95.62 | Complication - Intraoperative - Hemorrhage - Respiratory system - During othe... |
+| J95.71 | Complication - Intraoperative - Puncture or laceration - Respiratory system -... |
+| J95.72 | Complication - Intraoperative - Puncture or laceration - Respiratory system -... |
 | J95.811 | Complication - Respiratory system - Postoperative - Pneumothorax |
 | J95.812 | Complication - Respiratory system - Postoperative - Air leak |
 | J95.821 | Complication - Respiratory system - Postoperative - Respiratory failure |
-| J95.822 | Complication - Respiratory system - Postoperative - Respiratory failure - Acute and chronic |
-| J95.830 | Complication - Postprocedural - Hemorrhage - Respiratory system - Following procedure on respiratory system organ or structure |
-| J95.831 | Complication - Postprocedural - Hemorrhage - Respiratory system - Following other procedure |
+| J95.822 | Complication - Respiratory system - Postoperative - Respiratory failure - Acu... |
+| J95.830 | Complication - Postprocedural - Hemorrhage - Respiratory system - Following p... |
+| J95.831 | Complication - Postprocedural - Hemorrhage - Respiratory system - Following o... |
 | J95.84 | Injury - Lung - Transfusion-related |
 | J95.850 | Breakdown - Respirator |
 | J95.851 | Pneumonia - Ventilator associated |
 | J95.859 | Breakdown - Respirator - Specified NEC |
-| J95.860 | Complication - Postprocedural - Hematoma - Respiratory system - Following procedure on respiratory system organ or structure |
-| J95.861 | Complication - Postprocedural - Hematoma - Respiratory system - Following other procedure |
-| J95.862 | Complication - Postprocedural - Seroma - Respiratory system - Following procedure on respiratory system organ or structure |
-| J95.863 | Complication - Postprocedural - Seroma - Respiratory system - Following other procedure |
+| J95.860 | Complication - Postprocedural - Hematoma - Respiratory system - Following pro... |
+| J95.861 | Complication - Postprocedural - Hematoma - Respiratory system - Following oth... |
+| J95.862 | Complication - Postprocedural - Seroma - Respiratory system - Following proce... |
+| J95.863 | Complication - Postprocedural - Seroma - Respiratory system - Following other... |
 | J95.87 | Dyspnea - Transfusion-associated [TAD] |
 | J95.88 | Complication - Intraoperative - Specified NEC - Respiratory system |
 | J95.89 | Complication - Postprocedural - Specified NEC - Respiratory system |
@@ -7086,10 +7104,10 @@ HTAN Biospecimen Data Model Schema
 | K08.413 | Absence - Teeth, tooth - Acquired - Partial - Due to - Trauma - Class III |
 | K08.414 | Absence - Teeth, tooth - Acquired - Partial - Due to - Trauma - Class IV |
 | K08.419 | Absence - Teeth, tooth - Acquired - Partial - Due to - Trauma |
-| K08.421 | Absence - Teeth, tooth - Acquired - Partial - Due to - Periodontal disease - Class I |
-| K08.422 | Absence - Teeth, tooth - Acquired - Partial - Due to - Periodontal disease - Class II |
-| K08.423 | Absence - Teeth, tooth - Acquired - Partial - Due to - Periodontal disease - Class III |
-| K08.424 | Absence - Teeth, tooth - Acquired - Partial - Due to - Periodontal disease - Class IV |
+| K08.421 | Absence - Teeth, tooth - Acquired - Partial - Due to - Periodontal disease - ... |
+| K08.422 | Absence - Teeth, tooth - Acquired - Partial - Due to - Periodontal disease - ... |
+| K08.423 | Absence - Teeth, tooth - Acquired - Partial - Due to - Periodontal disease - ... |
+| K08.424 | Absence - Teeth, tooth - Acquired - Partial - Due to - Periodontal disease - ... |
 | K08.429 | Absence - Teeth, tooth - Acquired - Partial - Due to - Periodontal disease |
 | K08.431 | Absence - Teeth, tooth - Acquired - Partial - Due to - Caries - Class I |
 | K08.432 | Absence - Teeth, tooth - Acquired - Partial - Due to - Caries - Class II |
@@ -7168,7 +7186,7 @@ HTAN Biospecimen Data Model Schema
 | K20.90 | Esophagitis |
 | K20.91 | Esophagitis - With bleeding |
 | K21.00 | Allergy, allergic - Milk protein - Gastroesophageal reflux - With esophagitis |
-| K21.01 | Allergy, allergic - Milk protein - Gastroesophageal reflux - With esophagitis - With bleeding |
+| K21.01 | Allergy, allergic - Milk protein - Gastroesophageal reflux - With esophagitis... |
 | K21.9 | Allergy, allergic - Milk protein - Gastroesophageal reflux |
 | K22.0 | Achalasia |
 | K22.10 | Barrett's - Ulcer |
@@ -7188,39 +7206,39 @@ HTAN Biospecimen Data Model Schema
 | K22.89 | Ampulla - Lower esophagus |
 | K22.9 | Disease, diseased - Esophagus |
 | K25.0 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Dieulafoy's |
-| K25.1 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - Acute - With - Perforation |
-| K25.2 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - Acute - With - Hemorrhage - And perforation |
+| K25.1 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - Acute - With... |
+| K25.2 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - Acute - With... |
 | K25.3 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - Acute |
-| K25.4 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - With - Hemorrhage |
-| K25.5 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - With - Perforation |
-| K25.6 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - With - Hemorrhage - And perforation |
+| K25.4 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - With - Hemor... |
+| K25.5 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - With - Perfo... |
+| K25.6 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - With - Hemor... |
 | K25.7 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach - Chronic |
 | K25.9 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Stomach |
-| K26.0 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - Acute - With - Hemorrhage |
-| K26.1 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - Acute - With - Perforation |
-| K26.2 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - Acute - With - Hemorrhage - And perforation |
-| K26.3 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - Acute |
-| K26.4 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - With - Hemorrhage |
-| K26.5 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - With - Perforation |
-| K26.6 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - With - Hemorrhage - And perforation |
-| K26.7 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - Chronic |
+| K26.0 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - A... |
+| K26.1 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - A... |
+| K26.2 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - A... |
+| K26.3 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - A... |
+| K26.4 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - W... |
+| K26.5 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - W... |
+| K26.6 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - W... |
+| K26.7 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal - C... |
 | K26.9 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Duodenum, duodenal |
-| K27.0 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - Acute - With - Hemorrhage |
-| K27.1 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - Acute - With - Perforation |
-| K27.2 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - Acute - With - Hemorrhage - And perforation |
+| K27.0 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - Acute - With ... |
+| K27.1 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - Acute - With ... |
+| K27.2 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - Acute - With ... |
 | K27.3 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - Acute |
 | K27.4 | Hematemesis - With ulcer - code by site under Ulcer, with hemorrhage |
-| K27.5 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - With - Perforation |
-| K27.6 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - With - Hemorrhage - And perforation |
+| K27.5 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - With - Perfor... |
+| K27.6 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - With - Hemorr... |
 | K27.7 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Peptic - Chronic |
 | K27.9 | Lesion - Peptic |
-| K28.0 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - Acute - With - Hemorrhage |
-| K28.1 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - Acute - With - Perforation |
-| K28.2 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - Acute - With - Hemorrhage - And perforation |
+| K28.0 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - Acute ... |
+| K28.1 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - Acute ... |
+| K28.2 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - Acute ... |
 | K28.3 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - Acute |
-| K28.4 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - With - Hemorrhage |
-| K28.5 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - With - Perforation |
-| K28.6 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - With - Hemorrhage - And perforation |
+| K28.4 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - With -... |
+| K28.5 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - With -... |
+| K28.6 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - With -... |
 | K28.7 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal - Chronic |
 | K28.9 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Gastrojejunal |
 | K29.00 | Gastritis - Acute |
@@ -7267,11 +7285,11 @@ HTAN Biospecimen Data Model Schema
 | K31.A21 | Metaplasia - Gastric intestinal - With dysplasia - Low grade |
 | K31.A22 | Metaplasia - Gastric intestinal - With dysplasia - High grade |
 | K31.A29 | Metaplasia - Gastric intestinal - With dysplasia |
-| K35.200 | Appendicitis - With - Peritonitis NEC - Generalized - Without rupture or perforation of appendix |
-| K35.201 | Appendicitis - With - Peritonitis NEC - Generalized - With - Perforation or rupture |
+| K35.200 | Appendicitis - With - Peritonitis NEC - Generalized - Without rupture or perf... |
+| K35.201 | Appendicitis - With - Peritonitis NEC - Generalized - With - Perforation or r... |
 | K35.209 | Appendicitis - With - Peritonitis NEC - Generalized |
-| K35.210 | Appendicitis - With - Peritonitis NEC - Generalized - With - Abscess - Without perforation or rupture |
-| K35.211 | Appendicitis - With - Peritonitis NEC - Generalized - With - Abscess - With perforation or rupture |
+| K35.210 | Appendicitis - With - Peritonitis NEC - Generalized - With - Abscess - Withou... |
+| K35.211 | Appendicitis - With - Peritonitis NEC - Generalized - With - Abscess - With p... |
 | K35.219 | Appendicitis - With - Peritonitis NEC - Generalized - With - Abscess |
 | K35.30 | Appendicitis - With - Peritonitis NEC - Localized |
 | K35.31 | Appendicitis - With - Gangrene - With localized peritonitis |
@@ -7335,25 +7353,25 @@ HTAN Biospecimen Data Model Schema
 | K46.9 | Hernia, hernial |
 | K50.00 | Enteritis - Regional - Small intestine |
 | K50.011 | Enteritis - Regional - Small intestine - With - Complication - Rectal bleeding |
-| K50.012 | Enteritis - Regional - Small intestine - With - Complication - Intestinal obstruction |
+| K50.012 | Enteritis - Regional - Small intestine - With - Complication - Intestinal obs... |
 | K50.013 | Enteritis - Regional - Small intestine - With - Complication - Fistula |
 | K50.014 | Enteritis - Regional - Small intestine - With - Complication - Abscess |
-| K50.018 | Enteritis - Regional - Small intestine - With - Complication - Specified complication NEC |
+| K50.018 | Enteritis - Regional - Small intestine - With - Complication - Specified comp... |
 | K50.019 | Enteritis - Regional - Small intestine - With - Complication |
 | K50.10 | Enteritis - Regional - Large intestine |
 | K50.111 | Enteritis - Regional - Large intestine - With - Complication - Rectal bleeding |
-| K50.112 | Enteritis - Regional - Large intestine - With - Complication - Intestinal obstruction |
+| K50.112 | Enteritis - Regional - Large intestine - With - Complication - Intestinal obs... |
 | K50.113 | Enteritis - Regional - Large intestine - With - Complication - Fistula |
 | K50.114 | Enteritis - Regional - Large intestine - With - Complication - Abscess |
-| K50.118 | Enteritis - Regional - Large intestine - With - Complication - Specified complication NEC |
+| K50.118 | Enteritis - Regional - Large intestine - With - Complication - Specified comp... |
 | K50.119 | Enteritis - Regional - Large intestine - With - Complication |
 | K50.80 | Enteritis - Regional - Large intestine - With - Complication - Small intestine |
-| K50.811 | Enteritis - Regional - Large intestine - With - Complication - Small intestine - With - Complication - Rectal bleeding |
-| K50.812 | Enteritis - Regional - Large intestine - With - Complication - Small intestine - With - Complication - Intestinal obstruction |
-| K50.813 | Enteritis - Regional - Large intestine - With - Complication - Small intestine - With - Complication - Fistula |
-| K50.814 | Enteritis - Regional - Large intestine - With - Complication - Small intestine - With - Complication - Abscess |
-| K50.818 | Enteritis - Regional - Large intestine - With - Complication - Small intestine - With - Complication - Specified complication NEC |
-| K50.819 | Enteritis - Regional - Large intestine - With - Complication - Small intestine - With - Complication |
+| K50.811 | Enteritis - Regional - Large intestine - With - Complication - Small intestin... |
+| K50.812 | Enteritis - Regional - Large intestine - With - Complication - Small intestin... |
+| K50.813 | Enteritis - Regional - Large intestine - With - Complication - Small intestin... |
+| K50.814 | Enteritis - Regional - Large intestine - With - Complication - Small intestin... |
+| K50.818 | Enteritis - Regional - Large intestine - With - Complication - Small intestin... |
+| K50.819 | Enteritis - Regional - Large intestine - With - Complication - Small intestin... |
 | K50.90 | Enteritis - Regional |
 | K50.911 | Enteritis - Regional - With - Complication - Rectal bleeding |
 | K50.912 | Enteritis - Regional - With - Complication - Intestinal obstruction |
@@ -7398,11 +7416,11 @@ HTAN Biospecimen Data Model Schema
 | K51.518 | Colitis - Left sided - With - Complication - Specified NEC |
 | K51.519 | Colitis - Left sided - With - Complication |
 | K51.80 | Colitis - Ulcerative - Specified type NEC |
-| K51.811 | Colitis - Ulcerative - Specified type NEC - With - Complication - Rectal bleeding |
+| K51.811 | Colitis - Ulcerative - Specified type NEC - With - Complication - Rectal blee... |
 | K51.812 | Colitis - Ulcerative - Specified type NEC - With - Complication - Obstruction |
 | K51.813 | Colitis - Ulcerative - Specified type NEC - With - Complication - Fistula |
 | K51.814 | Colitis - Ulcerative - Specified type NEC - With - Complication - Abscess |
-| K51.818 | Colitis - Ulcerative - Specified type NEC - With - Complication - Specified complication NEC |
+| K51.818 | Colitis - Ulcerative - Specified type NEC - With - Complication - Specified c... |
 | K51.819 | Colitis - Ulcerative - Specified type NEC - With - Complication |
 | K51.90 | Arthropathy - In - Ulcerative colitis NEC |
 | K51.911 | Colitis - Ulcerative - With - Complication - Rectal bleeding |
@@ -7482,7 +7500,7 @@ HTAN Biospecimen Data Model Schema
 | K57.32 | Diverticulitis - Intestine - Large |
 | K57.33 | Diverticulitis - Intestine - Large - With - Bleeding |
 | K57.40 | Abscess - With - Diverticular disease - Large intestine - With - Small intestine |
-| K57.41 | Abscess - With - Diverticular disease - Large intestine - With - Small intestine - With bleeding |
+| K57.41 | Abscess - With - Diverticular disease - Large intestine - With - Small intest... |
 | K57.50 | Diverticulosis - Large intestine - With - Small intestine |
 | K57.51 | Diverticulosis - Large intestine - With - Small intestine - With bleeding |
 | K57.52 | Diverticulitis - Intestine - Large - With - Small intestine |
@@ -7672,41 +7690,41 @@ HTAN Biospecimen Data Model Schema
 | K76.89 | Cholestasis NEC - Due to total parenteral nutrition |
 | K76.9 | Damage - Liver |
 | K80.00 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Acute |
-| K80.01 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Acute - With - Obstruction |
+| K80.01 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Acute - W... |
 | K80.10 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis |
-| K80.11 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - With obstruction |
-| K80.12 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Acute - With - Chronic cholecystitis |
-| K80.13 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Acute - With - Chronic cholecystitis - With obstruction |
-| K80.18 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Specified NEC |
-| K80.19 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Specified NEC - With obstruction |
+| K80.11 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - With obst... |
+| K80.12 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Acute - W... |
+| K80.13 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Acute - W... |
+| K80.18 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Specified... |
+| K80.19 | Calculus, calculi, calculous - Gallbladder - With - Cholecystitis - Specified... |
 | K80.20 | Calculus, calculi, calculous - Gallbladder |
 | K80.21 | Calculus, calculi, calculous - Gallbladder - With - Obstruction |
 | K80.30 | Calculus, calculi, calculous - Bile duct - With - Cholangitis |
-| K80.31 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - With - Obstruction |
+| K80.31 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - With - Obstru... |
 | K80.32 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Acute |
-| K80.33 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Acute - With - Obstruction |
+| K80.33 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Acute - With ... |
 | K80.34 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Chronic |
-| K80.35 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Chronic - With - Obstruction |
-| K80.36 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Acute - With - Chronic cholangitis |
-| K80.37 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Acute - With - Chronic cholangitis - With obstruction |
+| K80.35 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Chronic - Wit... |
+| K80.36 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Acute - With ... |
+| K80.37 | Calculus, calculi, calculous - Bile duct - With - Cholangitis - Acute - With ... |
 | K80.40 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis |
-| K80.41 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - With obstruction |
+| K80.41 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - With obstru... |
 | K80.42 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Acute |
-| K80.43 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Acute - With - Obstruction |
+| K80.43 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Acute - Wit... |
 | K80.44 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Chronic |
-| K80.45 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Chronic - With - Obstruction |
-| K80.46 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Acute - With - Chronic cholecystitis |
-| K80.47 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Acute - With - Chronic cholecystitis - With obstruction |
+| K80.45 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Chronic - W... |
+| K80.46 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Acute - Wit... |
+| K80.47 | Calculus, calculi, calculous - Bile duct - With - Cholecystitis - Acute - Wit... |
 | K80.50 | Calculus, calculi, calculous - Bile duct |
 | K80.51 | Calculus, calculi, calculous - Bile duct - With - Obstruction |
 | K80.60 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystitis |
-| K80.61 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystitis - With obstruction |
-| K80.62 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystitis - Acute |
-| K80.63 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystitis - Acute - With - Obstruction |
-| K80.64 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystitis - Chronic |
-| K80.65 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystitis - Chronic - With - Obstruction |
-| K80.66 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystitis - Acute - With - Chronic cholecystitis |
-| K80.67 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystitis - Acute - With - Chronic cholecystitis - With obstruction |
+| K80.61 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystit... |
+| K80.62 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystit... |
+| K80.63 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystit... |
+| K80.64 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystit... |
+| K80.65 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystit... |
+| K80.66 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystit... |
+| K80.67 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Cholecystit... |
 | K80.70 | Calculus, calculi, calculous - Gallbladder and bile duct |
 | K80.71 | Calculus, calculi, calculous - Gallbladder and bile duct - With - Obstruction |
 | K80.80 | Calculus, calculi, calculous - Biliary - Specified NEC |
@@ -7752,13 +7770,13 @@ HTAN Biospecimen Data Model Schema
 | K85.91 | Pancreatitis - With necrosis |
 | K85.92 | Pancreatitis - With necrosis - Infected |
 | K86.0 | Pancreatitis - Chronic - Alcohol-induced |
-| K86.1 | Hypertension, hypertensive - Pancreatic duct - code to underlying condition - With chronic pancreatitis |
+| K86.1 | Hypertension, hypertensive - Pancreatic duct - code to underlying condition -... |
 | K86.2 | Cyst - Pancreas, pancreatic |
 | K86.3 | Cyst - Pancreas, pancreatic - False |
 | K86.81 | Insufficiency, insufficient - Pancreatic - Exocrine |
 | K86.89 | Atrophy, atrophic - Pancreas |
 | K86.9 | Disease, diseased - Pancreas |
-| K87 | Disorder - Gallbladder, biliary tract and pancreas in diseases classified elsewhere |
+| K87 | Disorder - Gallbladder, biliary tract and pancreas in diseases classified els... |
 | K90.0 | Ataxia, ataxy, ataxic - Gluten - With celiac disease |
 | K90.1 | Cochin-China diarrhea |
 | K90.2 | Blind - Loop syndrome |
@@ -7779,22 +7797,22 @@ HTAN Biospecimen Data Model Schema
 | K91.31 | Obstruction, obstructed, obstructive - Intestine - Postoperative - Incomplete |
 | K91.32 | Obstruction, obstructed, obstructive - Intestine - Postoperative - Complete |
 | K91.5 | Complication - Gastrointestinal - Postoperative - Postcholecystectomy syndrome |
-| K91.61 | Complication - Intraoperative - Hemorrhage - Digestive system organ - During procedure on digestive system |
-| K91.62 | Complication - Intraoperative - Hemorrhage - Digestive system organ - During procedure on other organ |
-| K91.71 | Complication - Intraoperative - Puncture or laceration - Digestive system - During procedure on digestive system |
-| K91.72 | Complication - Intraoperative - Puncture or laceration - Digestive system - During procedure on other organ |
+| K91.61 | Complication - Intraoperative - Hemorrhage - Digestive system organ - During ... |
+| K91.62 | Complication - Intraoperative - Hemorrhage - Digestive system organ - During ... |
+| K91.71 | Complication - Intraoperative - Puncture or laceration - Digestive system - D... |
+| K91.72 | Complication - Intraoperative - Puncture or laceration - Digestive system - D... |
 | K91.81 | Complication - Intraoperative - Specified NEC - Digestive system |
 | K91.82 | Complication - Surgical procedure - Hepatic failure |
 | K91.83 | Syndrome - Hepatorenal - Postoperative or postprocedural |
 | K91.840 | Bleeding - Tooth socket |
-| K91.841 | Complication - Postprocedural - Hemorrhage - Digestive system - Following procedure on other organ |
+| K91.841 | Complication - Postprocedural - Hemorrhage - Digestive system - Following pro... |
 | K91.850 | Inflammation, inflamed, inflammatory - Ileoanal |
 | K91.858 | Complication - Intestinal pouch NEC |
 | K91.86 | Retained - Cholelithiasis following cholecystectomy |
-| K91.870 | Complication - Postprocedural - Hematoma - Digestive system - Following procedure on digestive system |
-| K91.871 | Complication - Postprocedural - Hematoma - Digestive system - Following procedure on other organ |
-| K91.872 | Complication - Postprocedural - Seroma - Digestive system - Following procedure on digestive system |
-| K91.873 | Complication - Postprocedural - Seroma - Digestive system - Following procedure on other organ |
+| K91.870 | Complication - Postprocedural - Hematoma - Digestive system - Following proce... |
+| K91.871 | Complication - Postprocedural - Hematoma - Digestive system - Following proce... |
+| K91.872 | Complication - Postprocedural - Seroma - Digestive system - Following procedu... |
+| K91.873 | Complication - Postprocedural - Seroma - Digestive system - Following procedu... |
 | K91.89 | Anastomosis - Intestinal - Complicated NEC |
 | K92.0 | Hematemesis |
 | K92.1 | Abnormal, abnormality, abnormalities - Stool - Bloody |
@@ -8069,16 +8087,16 @@ HTAN Biospecimen Data Model Schema
 | L44.8 | Disorder - Papulosquamous - Specified NEC |
 | L44.9 | Disorder - Papulosquamous |
 | L45 | Disorder - Papulosquamous - In diseases classified elsewhere |
-| L49.0 | Exfoliation - Due to erythematous conditions according to extent of body surface involved |
-| L49.1 | Exfoliation - Due to erythematous conditions according to extent of body surface involved - 10-19 percent of body surface |
-| L49.2 | Exfoliation - Due to erythematous conditions according to extent of body surface involved - 20-29 percent of body surface |
-| L49.3 | Exfoliation - Due to erythematous conditions according to extent of body surface involved - 30-39 percent of body surface |
-| L49.4 | Exfoliation - Due to erythematous conditions according to extent of body surface involved - 40-49 percent of body surface |
-| L49.5 | Exfoliation - Due to erythematous conditions according to extent of body surface involved - 50-59 percent of body surface |
-| L49.6 | Exfoliation - Due to erythematous conditions according to extent of body surface involved - 60-69 percent of body surface |
-| L49.7 | Exfoliation - Due to erythematous conditions according to extent of body surface involved - 70-79 percent of body surface |
-| L49.8 | Exfoliation - Due to erythematous conditions according to extent of body surface involved - 80-89 percent of body surface |
-| L49.9 | Exfoliation - Due to erythematous conditions according to extent of body surface involved - 90-99 percent of body surface |
+| L49.0 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
+| L49.1 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
+| L49.2 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
+| L49.3 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
+| L49.4 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
+| L49.5 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
+| L49.6 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
+| L49.7 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
+| L49.8 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
+| L49.9 | Exfoliation - Due to erythematous conditions according to extent of body surf... |
 | L50.0 | Allergy, allergic - Urticaria |
 | L50.1 | Urticaria - Idiopathic |
 | L50.2 | Urticaria - Cold, familial |
@@ -8213,16 +8231,16 @@ HTAN Biospecimen Data Model Schema
 | L75.2 | Disease, diseased - Fordyce-Fox |
 | L75.8 | Abscess - Sudoriparous |
 | L75.9 | Disorder - Sweat gland - Apocrine |
-| L76.01 | Complication - Intraoperative - Hemorrhage - Skin and subcutaneous tissue - During a dermatologic procedure |
-| L76.02 | Complication - Intraoperative - Hemorrhage - Skin and subcutaneous tissue - During a procedure on other organ |
-| L76.11 | Complication - Intraoperative - Puncture or laceration - Skin and subcutaneous tissue - During a dermatologic procedure |
-| L76.12 | Complication - Intraoperative - Puncture or laceration - Skin and subcutaneous tissue - During a procedure on other organ |
-| L76.21 | Complication - Postprocedural - Hemorrhage - Skin and subcutaneous tissue - Following dermatologic procedure |
-| L76.22 | Complication - Postprocedural - Hemorrhage - Skin and subcutaneous tissue - Following a procedure on other organ |
-| L76.31 | Complication - Postprocedural - Hematoma - Skin and subcutaneous tissue - Following dermatologic procedure |
-| L76.32 | Complication - Postprocedural - Hematoma - Skin and subcutaneous tissue - Following procedure on other organ |
-| L76.33 | Complication - Postprocedural - Seroma - Skin and subcutaneous tissue - Following dermatologic procedure |
-| L76.34 | Complication - Postprocedural - Seroma - Skin and subcutaneous tissue - Following procedure on other organ |
+| L76.01 | Complication - Intraoperative - Hemorrhage - Skin and subcutaneous tissue - D... |
+| L76.02 | Complication - Intraoperative - Hemorrhage - Skin and subcutaneous tissue - D... |
+| L76.11 | Complication - Intraoperative - Puncture or laceration - Skin and subcutaneou... |
+| L76.12 | Complication - Intraoperative - Puncture or laceration - Skin and subcutaneou... |
+| L76.21 | Complication - Postprocedural - Hemorrhage - Skin and subcutaneous tissue - F... |
+| L76.22 | Complication - Postprocedural - Hemorrhage - Skin and subcutaneous tissue - F... |
+| L76.31 | Complication - Postprocedural - Hematoma - Skin and subcutaneous tissue - Fol... |
+| L76.32 | Complication - Postprocedural - Hematoma - Skin and subcutaneous tissue - Fol... |
+| L76.33 | Complication - Postprocedural - Seroma - Skin and subcutaneous tissue - Follo... |
+| L76.34 | Complication - Postprocedural - Seroma - Skin and subcutaneous tissue - Follo... |
 | L76.81 | Complication - Intraoperative - Specified NEC - Skin and subcutaneous tissue |
 | L76.82 | Complication - Postprocedural - Specified NEC - Skin and subcutaneous tissue |
 | L80 | Achroma, cutis |
@@ -8258,11 +8276,11 @@ HTAN Biospecimen Data Model Schema
 | L89.15- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Coccyx |
 | L89.2- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Hip |
 | L89.3- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Buttock |
-| L89.4- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Contiguous site of back, buttock, hip |
+| L89.4- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Contiguous ... |
 | L89.5- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Ankle |
 | L89.6- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Heel |
 | L89.81- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Face |
-| L89.89- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Specified site NEC |
+| L89.89- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure - Specified s... |
 | L89.9- | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Pressure |
 | L90.0 | Disease, diseased - White-spot, meaning lichen sclerosus et atrophicus |
 | L90.1 | Anetoderma - Schweninger-Buzzi |
@@ -8298,318 +8316,318 @@ HTAN Biospecimen Data Model Schema
 | L95.1 | Bury's disease |
 | L95.8 | Vasculitis - Nodular |
 | L95.9 | Vasculitis - Skin |
-| L97.101 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - With - Skin breakdown only |
-| L97.102 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - With - Exposed fat layer |
-| L97.103 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - With - Muscle necrosis |
-| L97.104 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - With - Bone necrosis |
-| L97.105 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - With - Muscle involvement without evidence of necrosis |
-| L97.106 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - With - Bone involvement without evidence of necrosis |
-| L97.108 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - With - Specified severity NEC |
+| L97.101 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - W... |
+| L97.102 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - W... |
+| L97.103 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - W... |
+| L97.104 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - W... |
+| L97.105 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - W... |
+| L97.106 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - W... |
+| L97.108 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - W... |
 | L97.109 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh |
-| L97.111 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Right - With - Skin breakdown only |
-| L97.112 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Right - With - Exposed fat layer |
-| L97.113 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Right - With - Muscle necrosis |
-| L97.114 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Right - With - Bone necrosis |
-| L97.115 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Right - With - Muscle involvement without evidence of necrosis |
-| L97.116 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Right - With - Bone involvement without evidence of necrosis |
-| L97.118 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Right - With - Specified severity NEC |
-| L97.119 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Right |
-| L97.121 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Left - With - Skin breakdown only |
-| L97.122 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Left - With - Exposed fat layer |
-| L97.123 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Left - With - Muscle necrosis |
-| L97.124 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Left - With - Bone necrosis |
-| L97.125 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Left - With - Muscle involvement without evidence of necrosis |
-| L97.126 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Left - With - Bone involvement without evidence of necrosis |
-| L97.128 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Left - With - Specified severity NEC |
+| L97.111 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - R... |
+| L97.112 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - R... |
+| L97.113 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - R... |
+| L97.114 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - R... |
+| L97.115 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - R... |
+| L97.116 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - R... |
+| L97.118 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - R... |
+| L97.119 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - R... |
+| L97.121 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - L... |
+| L97.122 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - L... |
+| L97.123 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - L... |
+| L97.124 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - L... |
+| L97.125 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - L... |
+| L97.126 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - L... |
+| L97.128 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - L... |
 | L97.129 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Thigh - Left |
-| L97.201 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - With - Skin breakdown only |
-| L97.202 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - With - Exposed fat layer |
-| L97.203 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - With - Muscle necrosis |
-| L97.204 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - With - Bone necrosis |
-| L97.205 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - With - Muscle involvement without evidence of necrosis |
-| L97.206 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - With - Bone involvement without evidence of necrosis |
-| L97.208 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - With - Specified severity NEC |
+| L97.201 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Wi... |
+| L97.202 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Wi... |
+| L97.203 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Wi... |
+| L97.204 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Wi... |
+| L97.205 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Wi... |
+| L97.206 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Wi... |
+| L97.208 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Wi... |
 | L97.209 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf |
-| L97.211 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Right - With - Skin breakdown only |
-| L97.212 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Right - With - Exposed fat layer |
-| L97.213 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Right - With - Muscle necrosis |
-| L97.214 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Right - With - Bone necrosis |
-| L97.215 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Right - With - Muscle involvement without evidence of necrosis |
-| L97.216 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Right - With - Bone involvement without evidence of necrosis |
-| L97.218 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Right - With - Specified severity NEC |
+| L97.211 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Ri... |
+| L97.212 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Ri... |
+| L97.213 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Ri... |
+| L97.214 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Ri... |
+| L97.215 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Ri... |
+| L97.216 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Ri... |
+| L97.218 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Ri... |
 | L97.219 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Right |
-| L97.221 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Left - With - Skin breakdown only |
-| L97.222 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Left - With - Exposed fat layer |
-| L97.223 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Left - With - Muscle necrosis |
-| L97.224 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Left - With - Bone necrosis |
-| L97.225 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Left - With - Muscle involvement without evidence of necrosis |
-| L97.226 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Left - With - Bone involvement without evidence of necrosis |
-| L97.228 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Left - With - Specified severity NEC |
+| L97.221 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Le... |
+| L97.222 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Le... |
+| L97.223 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Le... |
+| L97.224 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Le... |
+| L97.225 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Le... |
+| L97.226 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Le... |
+| L97.228 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Le... |
 | L97.229 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Calf - Left |
-| L97.301 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - With - Skin breakdown only |
-| L97.302 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - With - Exposed fat layer |
-| L97.303 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - With - Muscle necrosis |
-| L97.304 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - With - Bone necrosis |
-| L97.305 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - With - Muscle involvement without evidence of necrosis |
-| L97.306 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - With - Bone involvement without evidence of necrosis |
-| L97.308 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - With - Specified severity NEC |
+| L97.301 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - W... |
+| L97.302 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - W... |
+| L97.303 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - W... |
+| L97.304 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - W... |
+| L97.305 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - W... |
+| L97.306 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - W... |
+| L97.308 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - W... |
 | L97.309 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle |
-| L97.311 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Right - With - Skin breakdown only |
-| L97.312 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Right - With - Exposed fat layer |
-| L97.313 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Right - With - Muscle necrosis |
-| L97.314 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Right - With - Bone necrosis |
-| L97.315 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Right - With - Muscle involvement without evidence of necrosis |
-| L97.316 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Right - With - Bone involvement without evidence of necrosis |
-| L97.318 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Right - With - Specified severity NEC |
-| L97.319 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Right |
-| L97.321 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Left - With - Skin breakdown only |
-| L97.322 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Left - With - Exposed fat layer |
-| L97.323 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Left - With - Muscle necrosis |
-| L97.324 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Left - With - Bone necrosis |
-| L97.325 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Left - With - Muscle involvement without evidence of necrosis |
-| L97.326 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Left - With - Bone involvement without evidence of necrosis |
-| L97.328 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Left - With - Specified severity NEC |
+| L97.311 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - R... |
+| L97.312 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - R... |
+| L97.313 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - R... |
+| L97.314 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - R... |
+| L97.315 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - R... |
+| L97.316 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - R... |
+| L97.318 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - R... |
+| L97.319 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - R... |
+| L97.321 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - L... |
+| L97.322 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - L... |
+| L97.323 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - L... |
+| L97.324 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - L... |
+| L97.325 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - L... |
+| L97.326 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - L... |
+| L97.328 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - L... |
 | L97.329 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Ankle - Left |
-| L97.401 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - With - Skin breakdown only |
-| L97.402 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - With - Exposed fat layer |
-| L97.403 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - With - Muscle necrosis |
-| L97.404 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - With - Bone necrosis |
-| L97.405 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - With - Muscle involvement without evidence of necrosis |
-| L97.406 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - With - Bone involvement without evidence of necrosis |
-| L97.408 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - With - Specified severity NEC |
+| L97.401 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Wi... |
+| L97.402 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Wi... |
+| L97.403 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Wi... |
+| L97.404 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Wi... |
+| L97.405 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Wi... |
+| L97.406 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Wi... |
+| L97.408 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Wi... |
 | L97.409 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel |
-| L97.411 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Right - With - Skin breakdown only |
-| L97.412 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Right - With - Exposed fat layer |
-| L97.413 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Right - With - Muscle necrosis |
-| L97.414 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Right - With - Bone necrosis |
-| L97.415 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Right - With - Muscle involvement without evidence of necrosis |
-| L97.416 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Right - With - Bone involvement without evidence of necrosis |
-| L97.418 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Right - With - Specified severity NEC |
+| L97.411 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Ri... |
+| L97.412 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Ri... |
+| L97.413 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Ri... |
+| L97.414 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Ri... |
+| L97.415 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Ri... |
+| L97.416 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Ri... |
+| L97.418 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Ri... |
 | L97.419 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Right |
-| L97.421 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Left - With - Skin breakdown only |
-| L97.422 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Left - With - Exposed fat layer |
-| L97.423 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Left - With - Muscle necrosis |
-| L97.424 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Left - With - Bone necrosis |
-| L97.425 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Left - With - Muscle involvement without evidence of necrosis |
-| L97.426 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Left - With - Bone involvement without evidence of necrosis |
-| L97.428 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Left - With - Specified severity NEC |
+| L97.421 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Le... |
+| L97.422 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Le... |
+| L97.423 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Le... |
+| L97.424 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Le... |
+| L97.425 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Le... |
+| L97.426 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Le... |
+| L97.428 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Le... |
 | L97.429 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Heel - Left |
-| L97.501 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - With - Skin breakdown only |
-| L97.502 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - With - Exposed fat layer |
-| L97.503 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - With - Muscle necrosis |
-| L97.504 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - With - Bone necrosis |
-| L97.505 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - With - Muscle involvement without evidence of necrosis |
-| L97.506 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - With - Bone involvement without evidence of necrosis |
-| L97.508 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - With - Specified severity NEC |
-| L97.509 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC |
-| L97.511 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Right - With - Skin breakdown only |
-| L97.512 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Right - With - Exposed fat layer |
-| L97.513 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Right - With - Muscle necrosis |
-| L97.514 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Right - With - Bone necrosis |
-| L97.515 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Right - With - Muscle involvement without evidence of necrosis |
-| L97.516 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Right - With - Bone involvement without evidence of necrosis |
-| L97.518 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Right - With - Specified severity NEC |
-| L97.519 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Right |
-| L97.521 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Left - With - Skin breakdown only |
-| L97.522 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Left - With - Exposed fat layer |
-| L97.523 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Left - With - Muscle necrosis |
-| L97.524 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Left - With - Bone necrosis |
-| L97.525 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Left - With - Muscle involvement without evidence of necrosis |
-| L97.526 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Left - With - Bone involvement without evidence of necrosis |
-| L97.528 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Left - With - Specified severity NEC |
-| L97.529 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot specified NEC - Left |
-| L97.801 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - With - Skin breakdown only |
-| L97.802 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - With - Exposed fat layer |
-| L97.803 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - With - Muscle necrosis |
-| L97.804 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - With - Bone necrosis |
-| L97.805 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - With - Muscle involvement without evidence of necrosis |
-| L97.806 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - With - Bone involvement without evidence of necrosis |
-| L97.808 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - With - Specified severity NEC |
-| L97.809 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC |
-| L97.811 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Right - With - Skin breakdown only |
-| L97.812 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Right - With - Exposed fat layer |
-| L97.813 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Right - With - Muscle necrosis |
-| L97.814 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Right - With - Bone necrosis |
-| L97.815 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Right - With - Muscle involvement without evidence of necrosis |
-| L97.816 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Right - With - Bone involvement without evidence of necrosis |
-| L97.818 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Right - With - Specified severity NEC |
-| L97.819 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Right |
-| L97.821 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Left - With - Skin breakdown only |
-| L97.822 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Left - With - Exposed fat layer |
-| L97.823 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Left - With - Muscle necrosis |
-| L97.824 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Left - With - Bone necrosis |
-| L97.825 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Left - With - Muscle involvement without evidence of necrosis |
-| L97.826 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Left - With - Bone involvement without evidence of necrosis |
-| L97.828 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Left - With - Specified severity NEC |
-| L97.829 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Specified site NEC - Left |
-| L97.901 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Skin breakdown only |
-| L97.902 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Exposed fat layer |
-| L97.903 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Muscle necrosis |
-| L97.904 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Bone necrosis |
-| L97.905 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Muscle involvement without evidence of necrosis |
-| L97.906 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Bone involvement without evidence of necrosis |
-| L97.908 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Specified severity NEC |
+| L97.501 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.502 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.503 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.504 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.505 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.506 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.508 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.509 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.511 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.512 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.513 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.514 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.515 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.516 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.518 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.519 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.521 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.522 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.523 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.524 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.525 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.526 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.528 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.529 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Foot spec... |
+| L97.801 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.802 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.803 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.804 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.805 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.806 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.808 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.809 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.811 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.812 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.813 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.814 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.815 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.816 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.818 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.819 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.821 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.822 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.823 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.824 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.825 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.826 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.828 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.829 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.901 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Sk... |
+| L97.902 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Ex... |
+| L97.903 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Mu... |
+| L97.904 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Bo... |
+| L97.905 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Mu... |
+| L97.906 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Bo... |
+| L97.908 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - With - Sp... |
 | L97.909 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb |
-| L97.911 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Right - With - Skin breakdown only |
-| L97.912 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Right - With - Exposed fat layer |
-| L97.913 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Right - With - Muscle necrosis |
-| L97.914 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Right - With - Bone necrosis |
-| L97.915 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Right - With - Muscle involvement without evidence of necrosis |
-| L97.916 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Right - With - Bone involvement without evidence of necrosis |
-| L97.918 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Right - With - Specified severity NEC |
-| L97.919 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg NOS - Right |
-| L97.921 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - With - Skin breakdown only |
-| L97.922 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - With - Exposed fat layer |
-| L97.923 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - With - Muscle necrosis |
-| L97.924 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - With - Bone necrosis |
-| L97.925 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - With - Muscle involvement without evidence of necrosis |
-| L97.926 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - With - Bone involvement without evidence of necrosis |
-| L97.928 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - With - Specified severity NEC |
+| L97.911 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.912 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.913 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.914 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.915 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.916 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.918 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.919 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Lower leg... |
+| L97.921 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - Wi... |
+| L97.922 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - Wi... |
+| L97.923 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - Wi... |
+| L97.924 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - Wi... |
+| L97.925 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - Wi... |
+| L97.926 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - Wi... |
+| L97.928 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left - Wi... |
 | L97.929 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Lower limb - Left |
 | L98.0 | Granuloma - Abdomen - Pyogenicum |
 | L98.1 | Dermatitis - Artefacta |
 | L98.2 | Dermatosis - Febrile neutrophilic |
 | L98.3 | Cellulitis - Eosinophilic |
-| L98.411 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Skin breakdown only |
-| L98.412 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Exposed fat layer |
-| L98.413 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Muscle necrosis |
-| L98.414 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Bone necrosis |
-| L98.415 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Muscle involvement without evidence of necrosis |
-| L98.416 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Bone involvement without evidence of necrosis |
-| L98.418 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Specified severity NEC |
+| L98.411 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Skin ... |
+| L98.412 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Expos... |
+| L98.413 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Muscl... |
+| L98.414 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Bone ... |
+| L98.415 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Muscl... |
+| L98.416 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Bone ... |
+| L98.418 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock - With - Speci... |
 | L98.419 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Buttock |
-| L98.421 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Skin breakdown only |
-| L98.422 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Exposed fat layer |
-| L98.423 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Muscle necrosis |
-| L98.424 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Bone necrosis |
-| L98.425 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Muscle involvement without evidence of necrosis |
-| L98.426 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Bone involvement without evidence of necrosis |
-| L98.428 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Specified severity NEC |
+| L98.421 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Skin bre... |
+| L98.422 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Exposed ... |
+| L98.423 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Muscle n... |
+| L98.424 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Bone nec... |
+| L98.425 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Muscle i... |
+| L98.426 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Bone inv... |
+| L98.428 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back - With - Specifie... |
 | L98.429 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Back |
-| L98.431 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Skin breakdown only |
-| L98.432 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Exposed fat layer |
-| L98.433 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Muscle necrosis |
-| L98.434 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Bone necrosis |
-| L98.435 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Muscle involvement without evidence of necrosis |
-| L98.436 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Bone involvement without evidence of necrosis |
-| L98.438 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Specified severity NEC |
+| L98.431 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Skin ... |
+| L98.432 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Expos... |
+| L98.433 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Muscl... |
+| L98.434 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Bone ... |
+| L98.435 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Muscl... |
+| L98.436 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Bone ... |
+| L98.438 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen - With - Speci... |
 | L98.439 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Abdomen |
-| L98.441 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Skin breakdown only |
-| L98.442 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Exposed fat layer |
-| L98.443 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Muscle necrosis |
-| L98.444 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Bone necrosis |
-| L98.445 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Muscle involvement without evidence of necrosis |
-| L98.446 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Bone involvement without evidence of necrosis |
-| L98.448 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Specified severity NEC |
+| L98.441 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Skin br... |
+| L98.442 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Exposed... |
+| L98.443 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Muscle ... |
+| L98.444 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Bone ne... |
+| L98.445 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Muscle ... |
+| L98.446 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Bone in... |
+| L98.448 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest - With - Specifi... |
 | L98.449 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Chest |
-| L98.451 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Skin breakdown only |
-| L98.452 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Exposed fat layer |
-| L98.453 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Muscle necrosis |
-| L98.454 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Bone necrosis |
-| L98.455 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Muscle involvement without evidence of necrosis |
-| L98.456 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Bone involvement without evidence of necrosis |
-| L98.458 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Specified severity NEC |
+| L98.451 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Skin bre... |
+| L98.452 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Exposed ... |
+| L98.453 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Muscle n... |
+| L98.454 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Bone nec... |
+| L98.455 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Muscle i... |
+| L98.456 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Bone inv... |
+| L98.458 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck - With - Specifie... |
 | L98.459 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Neck |
-| L98.461 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Skin breakdown only |
-| L98.462 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Exposed fat layer |
-| L98.463 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Muscle necrosis |
-| L98.464 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Bone necrosis |
-| L98.465 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Muscle involvement without evidence of necrosis |
-| L98.466 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Bone involvement without evidence of necrosis |
-| L98.468 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Specified severity NEC |
+| L98.461 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Skin bre... |
+| L98.462 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Exposed ... |
+| L98.463 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Muscle n... |
+| L98.464 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Bone nec... |
+| L98.465 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Muscle i... |
+| L98.466 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Bone inv... |
+| L98.468 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face - With - Specifie... |
 | L98.469 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Face |
-| L98.471 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Skin breakdown only |
-| L98.472 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Exposed fat layer |
-| L98.473 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Muscle necrosis |
-| L98.474 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Bone necrosis |
-| L98.475 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Muscle involvement without evidence of necrosis |
-| L98.476 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Bone involvement without evidence of necrosis |
-| L98.478 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Specified severity NEC |
+| L98.471 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Skin br... |
+| L98.472 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Exposed... |
+| L98.473 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Muscle ... |
+| L98.474 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Bone ne... |
+| L98.475 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Muscle ... |
+| L98.476 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Bone in... |
+| L98.478 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin - With - Specifi... |
 | L98.479 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Groin |
-| L98.491 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site NEC - With - Skin breakdown only |
-| L98.492 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site NEC - With - Exposed fat layer |
-| L98.493 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site NEC - With - Muscle necrosis |
-| L98.494 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site NEC - With - Bone necrosis |
-| L98.495 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site NEC - With - Muscle involvement without evidence of necrosis |
-| L98.496 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site NEC - With - Bone involvement without evidence of necrosis |
-| L98.498 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site NEC - With - Specified severity NEC |
+| L98.491 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site ... |
+| L98.492 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site ... |
+| L98.493 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site ... |
+| L98.494 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site ... |
+| L98.495 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site ... |
+| L98.496 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site ... |
+| L98.498 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin - Specified site ... |
 | L98.499 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Skin |
 | L98.5 | Lichen - Myxedematosus |
 | L98.6 | Disorder - Skin - Infiltrative NEC |
 | L98.7 | Excess, excessive, excessively - Skin |
 | L98.8 | Degeneration, degenerative - Cutis |
 | L98.9 | Dermatosis |
-| L98.A111 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Right - With - Skin breakdown only |
-| L98.A112 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Right - With - Exposed fat layer |
-| L98.A113 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Right - With - Muscle necrosis |
-| L98.A114 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Right - With - Bone necrosis |
-| L98.A115 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Right - With - Muscle involvement without evidence of necrosis |
-| L98.A116 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Right - With - Bone involvement without evidence of necrosis |
-| L98.A118 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Right - With - Specified severity NEC |
-| L98.A119 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Right |
-| L98.A121 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Left - With - Skin breakdown only |
-| L98.A122 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Left - With - Exposed fat layer |
-| L98.A123 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Left - With - Muscle necrosis |
-| L98.A124 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Left - With - Bone necrosis |
-| L98.A125 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Left - With - Muscle involvement without evidence of necrosis |
-| L98.A126 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Left - With - Bone involvement without evidence of necrosis |
-| L98.A128 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Left - With - Specified severity NEC |
-| L98.A129 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - Left |
-| L98.A191 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - With - Skin breakdown only |
-| L98.A192 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - With - Exposed fat layer |
-| L98.A193 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - With - Muscle necrosis |
-| L98.A194 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - With - Bone necrosis |
-| L98.A195 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - With - Muscle involvement without evidence of necrosis |
-| L98.A196 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - With - Bone involvement without evidence of necrosis |
-| L98.A198 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm - With - Specified severity NEC |
+| L98.A111 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A112 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A113 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A114 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A115 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A116 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A118 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A119 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A121 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A122 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A123 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A124 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A125 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A126 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A128 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A129 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A191 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A192 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A193 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A194 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A195 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A196 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
+| L98.A198 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm... |
 | L98.A199 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Upper limb - Upper arm |
-| L98.A211 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With - Skin breakdown only |
-| L98.A212 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With - Exposed fat layer |
-| L98.A213 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With - Muscle necrosis |
-| L98.A214 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With - Bone necrosis |
-| L98.A215 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With - Muscle involvement without evidence of necrosis |
-| L98.A216 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With - Bone involvement without evidence of necrosis |
-| L98.A218 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With - Specified severity NEC |
+| L98.A211 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With... |
+| L98.A212 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With... |
+| L98.A213 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With... |
+| L98.A214 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With... |
+| L98.A215 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With... |
+| L98.A216 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With... |
+| L98.A218 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right - With... |
 | L98.A219 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Right |
-| L98.A221 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With - Skin breakdown only |
-| L98.A222 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With - Exposed fat layer |
-| L98.A223 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With - Muscle necrosis |
-| L98.A224 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With - Bone necrosis |
-| L98.A225 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With - Muscle involvement without evidence of necrosis |
-| L98.A226 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With - Bone involvement without evidence of necrosis |
-| L98.A228 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With - Specified severity NEC |
+| L98.A221 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With ... |
+| L98.A222 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With ... |
+| L98.A223 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With ... |
+| L98.A224 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With ... |
+| L98.A225 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With ... |
+| L98.A226 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With ... |
+| L98.A228 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left - With ... |
 | L98.A229 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - Left |
-| L98.A291 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Skin breakdown only |
-| L98.A292 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Exposed fat layer |
-| L98.A293 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Muscle necrosis |
-| L98.A294 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Bone necrosis |
-| L98.A295 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Muscle involvement without evidence of necrosis |
-| L98.A296 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Bone involvement without evidence of necrosis |
-| L98.A298 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Specified severity NEC |
+| L98.A291 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Skin ... |
+| L98.A292 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Expos... |
+| L98.A293 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Muscl... |
+| L98.A294 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Bone ... |
+| L98.A295 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Muscl... |
+| L98.A296 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Bone ... |
+| L98.A298 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm - With - Speci... |
 | L98.A299 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Forearm |
-| L98.A311 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - Skin breakdown only |
-| L98.A312 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - Exposed fat layer |
-| L98.A313 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - Muscle necrosis |
-| L98.A314 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - Bone necrosis |
-| L98.A315 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - Muscle involvement without evidence of necrosis |
-| L98.A316 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - Bone involvement without evidence of necrosis |
-| L98.A318 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - Specified severity NEC |
+| L98.A311 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - ... |
+| L98.A312 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - ... |
+| L98.A313 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - ... |
+| L98.A314 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - ... |
+| L98.A315 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - ... |
+| L98.A316 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - ... |
+| L98.A318 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right - With - ... |
 | L98.A319 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Right |
-| L98.A321 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - Skin breakdown only |
-| L98.A322 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - Exposed fat layer |
-| L98.A323 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - Muscle necrosis |
-| L98.A324 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - Bone necrosis |
-| L98.A325 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - Muscle involvement without evidence of necrosis |
-| L98.A326 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - Bone involvement without evidence of necrosis |
-| L98.A328 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - Specified severity NEC |
+| L98.A321 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - S... |
+| L98.A322 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - E... |
+| L98.A323 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - M... |
+| L98.A324 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - B... |
+| L98.A325 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - M... |
+| L98.A326 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - B... |
+| L98.A328 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left - With - S... |
 | L98.A329 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - Left |
-| L98.A391 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Skin breakdown only |
-| L98.A392 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Exposed fat layer |
-| L98.A393 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Muscle necrosis |
-| L98.A394 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Bone necrosis |
-| L98.A395 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Muscle involvement without evidence of necrosis |
-| L98.A396 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Bone involvement without evidence of necrosis |
-| L98.A398 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Specified severity NEC |
+| L98.A391 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Skin bre... |
+| L98.A392 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Exposed ... |
+| L98.A393 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Muscle n... |
+| L98.A394 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Bone nec... |
+| L98.A395 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Muscle i... |
+| L98.A396 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Bone inv... |
+| L98.A398 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand - With - Specifie... |
 | L98.A399 | Ulcer, ulcerated, ulcerating, ulceration, ulcerative - Hand |
 | M00.00 | Arthritis, arthritic - Staphylococcal |
 | M00.01- | Arthritis, arthritic - Staphylococcal - Shoulder |
@@ -8772,15 +8790,15 @@ HTAN Biospecimen Data Model Schema
 | M05.67- | Rheumatoid - Arthritis - With involvement of organs NEC - Ankle |
 | M05.69 | Rheumatoid - Arthritis - With involvement of organs NEC - Multiple site |
 | M05.70 | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement |
-| M05.71- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement - Shoulder |
-| M05.72- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement - Elbow |
-| M05.73- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement - Wrist |
-| M05.74- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement - Hand joint |
-| M05.75- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement - Hip |
-| M05.76- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement - Knee |
-| M05.77- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement - Ankle |
-| M05.79 | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement - Multiple sites |
-| M05.7A | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement - Specified site NEC |
+| M05.71- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement ... |
+| M05.72- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement ... |
+| M05.73- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement ... |
+| M05.74- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement ... |
+| M05.75- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement ... |
+| M05.76- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement ... |
+| M05.77- | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement ... |
+| M05.79 | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement ... |
+| M05.7A | Arthritis, arthritic - Rheumatoid - Seropositive - Without organ involvement ... |
 | M05.80 | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC |
 | M05.81- | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC - Shoulder |
 | M05.82- | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC - Elbow |
@@ -8789,10 +8807,10 @@ HTAN Biospecimen Data Model Schema
 | M05.85- | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC - Hip |
 | M05.86- | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC - Knee |
 | M05.87- | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC - Ankle |
-| M05.89 | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC - Multiple sites |
-| M05.8A | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC - Specified site NEC |
+| M05.89 | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC - Multiple s... |
+| M05.8A | Arthritis, arthritic - Rheumatoid - Seropositive - Specified NEC - Specified ... |
 | M05.9 | Arthritis, arthritic - Rheumatoid - Seropositive |
-| M05.A | Abnormal, abnormality, abnormalities - Rheumatoid factor and anti-citrullinated protein antibody - With rheumatoid arthritis |
+| M05.A | Abnormal, abnormality, abnormalities - Rheumatoid factor and anti-citrullinat... |
 | M06.00 | Arthritis, arthritic - Rheumatoid - Seronegative |
 | M06.01- | Arthritis, arthritic - Rheumatoid - Seronegative - Shoulder |
 | M06.02- | Arthritis, arthritic - Rheumatoid - Seronegative - Elbow |
@@ -9126,9 +9144,9 @@ HTAN Biospecimen Data Model Schema
 | M17.9 | Osteoarthritis - Knee |
 | M18.0 | Osteoarthritis - Primary - Hand joint - First carpometacarpal joint - Bilateral |
 | M18.1- | Osteoarthritis - Primary - Hand joint - First carpometacarpal joint |
-| M18.2 | Osteoarthritis - Post-traumatic NEC - Hand joint - First carpometacarpal joint - Bilateral |
+| M18.2 | Osteoarthritis - Post-traumatic NEC - Hand joint - First carpometacarpal join... |
 | M18.3- | Osteoarthritis - Post-traumatic NEC - Hand joint - First carpometacarpal joint |
-| M18.4 | Osteoarthritis - Secondary - Hand joint - First carpometacarpal joint - Bilateral |
+| M18.4 | Osteoarthritis - Secondary - Hand joint - First carpometacarpal joint - Bilat... |
 | M18.5- | Osteoarthritis - Secondary - Hand joint - First carpometacarpal joint |
 | M18.9 | Osteoarthritis - Hand joint - First carpometacarpal joint |
 | M19.01- | Osteoarthritis - Primary - Shoulder |
@@ -9277,12 +9295,12 @@ HTAN Biospecimen Data Model Schema
 | M23.05- | Derangement - Knee - Meniscus - Cystic - Lateral - Posterior horn |
 | M23.06- | Derangement - Knee - Meniscus - Cystic - Lateral - Specified NEC |
 | M23.20- | Derangement - Knee - Meniscus - Due to old tear or injury |
-| M23.21- | Derangement - Knee - Meniscus - Due to old tear or injury - Medial - Anterior horn |
-| M23.22- | Derangement - Knee - Meniscus - Due to old tear or injury - Medial - Posterior horn |
-| M23.23- | Derangement - Knee - Meniscus - Due to old tear or injury - Medial - Specified NEC |
-| M23.24- | Derangement - Knee - Meniscus - Due to old tear or injury - Lateral - Anterior horn |
-| M23.25- | Derangement - Knee - Meniscus - Due to old tear or injury - Lateral - Posterior horn |
-| M23.26- | Derangement - Knee - Meniscus - Due to old tear or injury - Lateral - Specified NEC |
+| M23.21- | Derangement - Knee - Meniscus - Due to old tear or injury - Medial - Anterior... |
+| M23.22- | Derangement - Knee - Meniscus - Due to old tear or injury - Medial - Posterio... |
+| M23.23- | Derangement - Knee - Meniscus - Due to old tear or injury - Medial - Specifie... |
+| M23.24- | Derangement - Knee - Meniscus - Due to old tear or injury - Lateral - Anterio... |
+| M23.25- | Derangement - Knee - Meniscus - Due to old tear or injury - Lateral - Posteri... |
+| M23.26- | Derangement - Knee - Meniscus - Due to old tear or injury - Lateral - Specifi... |
 | M23.30- | Derangement - Knee - Meniscus |
 | M23.31- | Derangement - Knee - Meniscus - Specified NEC - Medial - Anterior horn |
 | M23.32- | Derangement - Knee - Meniscus - Specified NEC - Medial - Posterior horn |
@@ -9464,9 +9482,9 @@ HTAN Biospecimen Data Model Schema
 | M26.07 | Excess, excessive, excessively - Tuberosity of jaw |
 | M26.09 | Agenesis - Jaw |
 | M26.10 | Anomaly, anomalous - Dentofacial - Jaw-cranial base relationship |
-| M26.11 | Anomaly, anomalous - Dentofacial - Jaw-cranial base relationship - Asymmetry - Maxillary |
+| M26.11 | Anomaly, anomalous - Dentofacial - Jaw-cranial base relationship - Asymmetry ... |
 | M26.12 | Anomaly, anomalous - Dentofacial - Jaw-cranial base relationship - Asymmetry |
-| M26.19 | Anomaly, anomalous - Dentofacial - Jaw-cranial base relationship - Specified type NEC |
+| M26.19 | Anomaly, anomalous - Dentofacial - Jaw-cranial base relationship - Specified ... |
 | M26.20 | Anomaly, anomalous - Dental - Arch relationship |
 | M26.211 | Malocclusion - Angle's - Class I |
 | M26.212 | Disto-occlusion |
@@ -9485,7 +9503,7 @@ HTAN Biospecimen Data Model Schema
 | M26.34 | Displacement, displaced - Tooth, teeth, fully erupted - Vertical |
 | M26.35 | Rotation - Tooth, teeth, fully erupted |
 | M26.36 | Insufficiency, insufficient - Interocclusal distance of fully erupted teeth |
-| M26.37 | Excess, excessive, excessively - Intermaxillary vertical dimension of fully erupted teeth |
+| M26.37 | Excess, excessive, excessively - Intermaxillary vertical dimension of fully e... |
 | M26.39 | Anomaly, anomalous - Dentofacial - Tooth position, fully erupted - Specified NEC |
 | M26.4 | Anomaly, anomalous - Dentofacial - Malocclusion |
 | M26.50 | Anomaly, anomalous - Dentofacial - Functional |
@@ -9553,7 +9571,7 @@ HTAN Biospecimen Data Model Schema
 | M32.0 | Lupus - Erythematosus - Systemic - Drug-induced |
 | M32.10 | Lupus - Erythematosus - Systemic - With organ or system involvement |
 | M32.11 | Endocarditis - Atypical verrucous |
-| M32.12 | Lupus - Erythematosus - Systemic - With organ or system involvement - Pericarditis |
+| M32.12 | Lupus - Erythematosus - Systemic - With organ or system involvement - Pericar... |
 | M32.13 | Disease, diseased - Lung - In - Systemic - Lupus erythematosus |
 | M32.14 | Disease, diseased - Renal - Lupus |
 | M32.15 | Disorder - Tubulo-interstitial - Systemic lupus erythematosus |
@@ -9580,7 +9598,7 @@ HTAN Biospecimen Data Model Schema
 | M33.93 | Dermatopolymyositis - Amyopathic |
 | M33.99 | Dermatopolymyositis - With - Specified organ involvement NEC |
 | M34.0 | Sclerosis, sclerotic - Progressive, systemic |
-| M34.1 | Calcinosis - With Raynaud's phenomenon, esophageal dysfunction, sclerodactyly, telangiectasia |
+| M34.1 | Calcinosis - With Raynaud's phenomenon, esophageal dysfunction, sclerodactyly... |
 | M34.2 | Sclerosis, sclerotic - Systemic - Drug-induced |
 | M34.81 | Disease, diseased - Lung - In - Systemic - Sclerosis |
 | M34.82 | Myopathy - In - Scleroderma |
@@ -9797,14 +9815,14 @@ HTAN Biospecimen Data Model Schema
 | M46.27 | Osteomyelitis - Vertebra - Lumbosacral region |
 | M46.28 | Abscess - Sacrum - Nontuberculous |
 | M46.30 | Infection, infected, infective - Intervertebral disc, pyogenic |
-| M46.31 | Infection, infected, infective - Intervertebral disc, pyogenic - Occipito-atlanto-axial region |
+| M46.31 | Infection, infected, infective - Intervertebral disc, pyogenic - Occipito-atl... |
 | M46.32 | Infection, infected, infective - Intervertebral disc, pyogenic - Cervical region |
-| M46.33 | Infection, infected, infective - Intervertebral disc, pyogenic - Cervicothoracic region |
+| M46.33 | Infection, infected, infective - Intervertebral disc, pyogenic - Cervicothora... |
 | M46.34 | Infection, infected, infective - Intervertebral disc, pyogenic - Thoracic region |
-| M46.35 | Infection, infected, infective - Intervertebral disc, pyogenic - Thoracolumbar region |
+| M46.35 | Infection, infected, infective - Intervertebral disc, pyogenic - Thoracolumba... |
 | M46.36 | Infection, infected, infective - Intervertebral disc, pyogenic - Lumbar region |
-| M46.37 | Infection, infected, infective - Intervertebral disc, pyogenic - Lumbosacral region |
-| M46.38 | Infection, infected, infective - Intervertebral disc, pyogenic - Sacrococcygeal region |
+| M46.37 | Infection, infected, infective - Intervertebral disc, pyogenic - Lumbosacral ... |
+| M46.38 | Infection, infected, infective - Intervertebral disc, pyogenic - Sacrococcyge... |
 | M46.39 | Infection, infected, infective - Intervertebral disc, pyogenic - Multiple sites |
 | M46.40 | Discitis, diskitis |
 | M46.41 | Discitis, diskitis - Occipito-atlanto-axial region |
@@ -9827,7 +9845,7 @@ HTAN Biospecimen Data Model Schema
 | M46.58 | Spondylopathy - Infective NEC - Sacrococcygeal region |
 | M46.59 | Spondylopathy - Infective NEC - Multiple sites |
 | M46.80 | Spondylopathy - Inflammatory - Specified type NEC |
-| M46.81 | Spondylopathy - Inflammatory - Specified type NEC - Occipito-atlanto-axial region |
+| M46.81 | Spondylopathy - Inflammatory - Specified type NEC - Occipito-atlanto-axial re... |
 | M46.82 | Spondylopathy - Inflammatory - Specified type NEC - Cervical region |
 | M46.83 | Spondylopathy - Inflammatory - Specified type NEC - Cervicothoracic region |
 | M46.84 | Spondylopathy - Inflammatory - Specified type NEC - Thoracic region |
@@ -9846,7 +9864,7 @@ HTAN Biospecimen Data Model Schema
 | M46.97 | Spondylopathy - Inflammatory - Lumbosacral region |
 | M46.98 | Spondylopathy - Inflammatory - Sacrococcygeal region |
 | M46.99 | Spondylopathy - Inflammatory - Multiple sites |
-| M47.011 | Syndrome - Anterior - Spinal artery - Compression - Occipito-atlanto-axial region |
+| M47.011 | Syndrome - Anterior - Spinal artery - Compression - Occipito-atlanto-axial re... |
 | M47.012 | Syndrome - Anterior - Spinal artery - Compression - Cervical region |
 | M47.013 | Syndrome - Anterior - Spinal artery - Compression - Cervicothoracic region |
 | M47.014 | Syndrome - Anterior - Spinal artery - Compression - Thoracic region |
@@ -9872,7 +9890,7 @@ HTAN Biospecimen Data Model Schema
 | M47.26 | Spondylosis - With - Radiculopathy - Lumbar region |
 | M47.27 | Spondylosis - With - Radiculopathy - Lumbosacral region |
 | M47.28 | Spondylosis - With - Radiculopathy - Sacrococcygeal region |
-| M47.811 | Spondylosis - Without myelopathy or radiculopathy - Occipito-atlanto-axial region |
+| M47.811 | Spondylosis - Without myelopathy or radiculopathy - Occipito-atlanto-axial re... |
 | M47.812 | Spondylosis - Without myelopathy or radiculopathy - Cervical region |
 | M47.813 | Spondylosis - Without myelopathy or radiculopathy - Cervicothoracic region |
 | M47.814 | Spondylosis - Without myelopathy or radiculopathy - Thoracic region |
@@ -9958,9 +9976,9 @@ HTAN Biospecimen Data Model Schema
 | M50.10 | Disorder - Disc - With - Radiculopathy - Cervical region |
 | M50.11 | Disorder - Disc - With - Radiculopathy - High cervical region |
 | M50.120 | Disorder - Disc - With - Radiculopathy - Mid-cervical region |
-| M50.121 | Disorder - Disc - Cervical - With - Neuritis, radiculitis or radiculopathy - C4-C5 |
-| M50.122 | Disorder - Disc - Cervical - With - Neuritis, radiculitis or radiculopathy - C5-C6 |
-| M50.123 | Disorder - Disc - Cervical - With - Neuritis, radiculitis or radiculopathy - C6-C7 |
+| M50.121 | Disorder - Disc - Cervical - With - Neuritis, radiculitis or radiculopathy - ... |
+| M50.122 | Disorder - Disc - Cervical - With - Neuritis, radiculitis or radiculopathy - ... |
+| M50.123 | Disorder - Disc - Cervical - With - Neuritis, radiculitis or radiculopathy - ... |
 | M50.13 | Disorder - Disc - With - Radiculopathy - Cervicothoracic region |
 | M50.20 | Disorder - Disc - Cervical - Displacement |
 | M50.21 | Disorder - Disc - Cervical - Displacement - C2-C3 |
@@ -9990,13 +10008,13 @@ HTAN Biospecimen Data Model Schema
 | M50.922 | Disorder - Disc - Cervical - C5-C6 |
 | M50.923 | Disorder - Disc - Cervical - C6-C7 |
 | M50.93 | Disorder - Disc - Cervical - C7-T1 |
-| M51.04 | Degeneration, degenerative - Intervertebral disc - Thoracic region - With - Myelopathy |
-| M51.05 | Degeneration, degenerative - Intervertebral disc - Thoracolumbar region - With - Myelopathy |
-| M51.06 | Degeneration, degenerative - Intervertebral disc - Lumbar region - With - Myelopathy |
-| M51.14 | Degeneration, degenerative - Intervertebral disc - Thoracic region - With - Neuritis, radiculitis, radiculopathy |
-| M51.15 | Degeneration, degenerative - Intervertebral disc - Thoracolumbar region - With - Neuritis, radiculitis, radiculopathy |
-| M51.16 | Degeneration, degenerative - Intervertebral disc - Lumbar region - With - Neuritis, radiculitis, radiculopathy or sciatica |
-| M51.17 | Degeneration, degenerative - Intervertebral disc - Lumbosacral region - With - Neuritis, radiculitis, radiculopathy or sciatica |
+| M51.04 | Degeneration, degenerative - Intervertebral disc - Thoracic region - With - M... |
+| M51.05 | Degeneration, degenerative - Intervertebral disc - Thoracolumbar region - Wit... |
+| M51.06 | Degeneration, degenerative - Intervertebral disc - Lumbar region - With - Mye... |
+| M51.14 | Degeneration, degenerative - Intervertebral disc - Thoracic region - With - N... |
+| M51.15 | Degeneration, degenerative - Intervertebral disc - Thoracolumbar region - Wit... |
+| M51.16 | Degeneration, degenerative - Intervertebral disc - Lumbar region - With - Neu... |
+| M51.17 | Degeneration, degenerative - Intervertebral disc - Lumbosacral region - With ... |
 | M51.24 | Displacement, displaced - Intervertebral disc NEC - Thoracic region |
 | M51.25 | Displacement, displaced - Intervertebral disc NEC - Thoracolumbar region |
 | M51.26 | Displacement, displaced - Intervertebral disc NEC - Lumbar region |
@@ -10130,15 +10148,15 @@ HTAN Biospecimen Data Model Schema
 | M61.18 | Myositis - Ossificans or ossifying - Progressiva - Specified site NEC |
 | M61.19 | Myositis - Ossificans or ossifying - Progressiva - Multiple sites |
 | M61.20 | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia |
-| M61.21- | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Shoulder region |
+| M61.21- | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Should... |
 | M61.22- | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Upper arm |
 | M61.23- | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Forearm |
 | M61.24- | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Hand |
-| M61.25- | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Pelvic region |
+| M61.25- | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Pelvic... |
 | M61.26- | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Lower leg |
 | M61.27- | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Ankle |
-| M61.28 | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Specified site NEC |
-| M61.29 | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Multiple sites |
+| M61.28 | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Specif... |
+| M61.29 | Myositis - Ossificans or ossifying - In - Quadriplegia or paraplegia - Multip... |
 | M61.30 | Myositis - Ossificans or ossifying - In - Burns |
 | M61.31- | Myositis - Ossificans or ossifying - In - Burns - Shoulder region |
 | M61.32- | Myositis - Ossificans or ossifying - In - Burns - Upper arm |
@@ -10389,15 +10407,15 @@ HTAN Biospecimen Data Model Schema
 | M70.7- | Bursitis - Hip NEC |
 | M70.8- | Overuse, muscle NEC |
 | M70.80 | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC |
-| M70.81- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC - Shoulder region |
-| M70.82- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC - Upper arm |
-| M70.83- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC - Forearm |
-| M70.84- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC - Hand |
-| M70.85- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC - Pelvic region |
-| M70.86- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC - Lower leg |
-| M70.87- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC - Ankle |
-| M70.88 | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC - Specified site NEC |
-| M70.89 | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NEC - Multiple sites |
+| M70.81- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NE... |
+| M70.82- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NE... |
+| M70.83- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NE... |
+| M70.84- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NE... |
+| M70.85- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NE... |
+| M70.86- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NE... |
+| M70.87- | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NE... |
+| M70.88 | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NE... |
+| M70.89 | Disorder - Soft tissue - Due to use, overuse and pressure - Specified type NE... |
 | M70.90 | Disorder - Soft tissue - Due to use, overuse and pressure |
 | M70.91- | Disorder - Soft tissue - Due to use, overuse and pressure - Shoulder region |
 | M70.92- | Disorder - Soft tissue - Due to use, overuse and pressure - Upper arm |
@@ -10610,8 +10628,8 @@ HTAN Biospecimen Data Model Schema
 | M84.751 | Fracture, nontraumatic, NEC - Atypical - Femur - Incomplete - Right side |
 | M84.752 | Fracture, nontraumatic, NEC - Atypical - Femur - Incomplete - Left side |
 | M84.753 | Fracture, nontraumatic, NEC - Atypical - Femur - Incomplete |
-| M84.754 | Fracture, nontraumatic, NEC - Atypical - Femur - Complete - Transverse - Right side |
-| M84.755 | Fracture, nontraumatic, NEC - Atypical - Femur - Complete - Transverse - Left side |
+| M84.754 | Fracture, nontraumatic, NEC - Atypical - Femur - Complete - Transverse - Righ... |
+| M84.755 | Fracture, nontraumatic, NEC - Atypical - Femur - Complete - Transverse - Left... |
 | M84.756 | Fracture, nontraumatic, NEC - Atypical - Femur - Complete - Transverse |
 | M84.757 | Fracture, nontraumatic, NEC - Atypical - Femur - Complete - Oblique - Right side |
 | M84.758 | Fracture, nontraumatic, NEC - Atypical - Femur - Complete - Oblique - Left side |
@@ -11011,33 +11029,33 @@ HTAN Biospecimen Data Model Schema
 | M95.8 | Defect, defective - Osteochondral NEC |
 | M95.9 | Deformity - Acquired |
 | M96.0 | Complication - Musculoskeletal system - Postoperative - Pseudarthrosis |
-| M96.1 | Complication - Musculoskeletal system - Postoperative - Postlaminectomy syndrome NEC |
+| M96.1 | Complication - Musculoskeletal system - Postoperative - Postlaminectomy syndr... |
 | M96.2 | Complication - Musculoskeletal system - Post radiation - Kyphosis |
-| M96.3 | Complication - Musculoskeletal system - Postoperative - Postlaminectomy syndrome NEC - Kyphosis |
+| M96.3 | Complication - Musculoskeletal system - Postoperative - Postlaminectomy syndr... |
 | M96.4 | Complication - Musculoskeletal system - Postoperative - Lordosis |
 | M96.5 | Complication - Musculoskeletal system - Post radiation - Scoliosis |
 | M96.62- | Fracture, traumatic - Following insertion - Humerus |
 | M96.63- | Fracture, traumatic - Following insertion - Radius |
 | M96.65 | Fracture, traumatic - Following insertion - Pelvis |
-| M96.66- | Fracture, traumatic - Femur, femoral - Following insertion of implant, prosthesis or plate |
-| M96.67- | Fracture, traumatic - Fibula - Following insertion of implant, prosthesis or plate |
+| M96.66- | Fracture, traumatic - Femur, femoral - Following insertion of implant, prosth... |
+| M96.67- | Fracture, traumatic - Fibula - Following insertion of implant, prosthesis or ... |
 | M96.69 | Fracture, traumatic - Following insertion |
-| M96.810 | Complication - Intraoperative - Hemorrhage - Musculoskeletal structure - During musculoskeletal surgery |
-| M96.811 | Complication - Intraoperative - Hemorrhage - Musculoskeletal structure - During non-orthopedic surgery |
-| M96.820 | Complication - Intraoperative - Puncture or laceration - Musculoskeletal structure - During musculoskeletal surgery |
-| M96.821 | Complication - Intraoperative - Puncture or laceration - Musculoskeletal structure - During non-orthopedic surgery |
-| M96.830 | Complication - Postprocedural - Hemorrhage - Musculoskeletal structure - Following musculoskeletal surgery |
-| M96.831 | Complication - Postprocedural - Hemorrhage - Musculoskeletal structure - Following non-orthopedic surgery |
-| M96.840 | Complication - Postprocedural - Hematoma - Musculoskeletal structure - Following musculoskeletal surgery |
-| M96.841 | Complication - Postprocedural - Hematoma - Musculoskeletal structure - Following non-orthopedic surgery |
-| M96.842 | Complication - Postprocedural - Seroma - Musculoskeletal structure - Following musculoskeletal surgery |
-| M96.843 | Complication - Postprocedural - Seroma - Musculoskeletal structure - Following non-orthopedic surgery |
+| M96.810 | Complication - Intraoperative - Hemorrhage - Musculoskeletal structure - Duri... |
+| M96.811 | Complication - Intraoperative - Hemorrhage - Musculoskeletal structure - Duri... |
+| M96.820 | Complication - Intraoperative - Puncture or laceration - Musculoskeletal stru... |
+| M96.821 | Complication - Intraoperative - Puncture or laceration - Musculoskeletal stru... |
+| M96.830 | Complication - Postprocedural - Hemorrhage - Musculoskeletal structure - Foll... |
+| M96.831 | Complication - Postprocedural - Hemorrhage - Musculoskeletal structure - Foll... |
+| M96.840 | Complication - Postprocedural - Hematoma - Musculoskeletal structure - Follow... |
+| M96.841 | Complication - Postprocedural - Hematoma - Musculoskeletal structure - Follow... |
+| M96.842 | Complication - Postprocedural - Seroma - Musculoskeletal structure - Followin... |
+| M96.843 | Complication - Postprocedural - Seroma - Musculoskeletal structure - Followin... |
 | M96.89 | Complication - Intraoperative - Specified NEC - Musculoskeletal structure |
-| M96.A1 | Fracture, traumatic - Sternum - Associated with chest compression and cardiopulmonary resuscitation |
-| M96.A2 | Fracture, traumatic - Rib - Associated with chest compression and cardiopulmonary resuscitation |
-| M96.A3 | Fracture, traumatic - Rib - Multiple - Associated with chest compression and cardiopulmonary resuscitation |
-| M96.A4 | Flail - Chest - Associated with chest compression and cardiopulmonary resuscitation |
-| M96.A9 | Fracture, traumatic - Associated with chest compression and cardiopulmonary resuscitation |
+| M96.A1 | Fracture, traumatic - Sternum - Associated with chest compression and cardiop... |
+| M96.A2 | Fracture, traumatic - Rib - Associated with chest compression and cardiopulmo... |
+| M96.A3 | Fracture, traumatic - Rib - Multiple - Associated with chest compression and ... |
+| M96.A4 | Flail - Chest - Associated with chest compression and cardiopulmonary resusci... |
+| M96.A9 | Fracture, traumatic - Associated with chest compression and cardiopulmonary r... |
 | M97.0- | Fracture, pathological - Periprosthetic - Hip |
 | M97.1- | Fracture, pathological - Periprosthetic - Knee |
 | M97.2- | Fracture, pathological - Periprosthetic - Ankle |
@@ -11116,8 +11134,8 @@ HTAN Biospecimen Data Model Schema
 | M99.68 | Stenosis, stenotic - Intervertebral foramina - Osseous - Rib cage |
 | M99.69 | Stenosis, stenotic - Intervertebral foramina - Osseous |
 | M99.70 | Stenosis, stenotic - Intervertebral foramina - Connective tissue - Head region |
-| M99.71 | Stenosis, stenotic - Intervertebral foramina - Connective tissue - Cervical region |
-| M99.72 | Stenosis, stenotic - Intervertebral foramina - Connective tissue - Thoracic region |
+| M99.71 | Stenosis, stenotic - Intervertebral foramina - Connective tissue - Cervical r... |
+| M99.72 | Stenosis, stenotic - Intervertebral foramina - Connective tissue - Thoracic r... |
 | M99.73 | Stenosis, stenotic - Intervertebral foramina - Connective tissue - Lumbar region |
 | M99.74 | Stenosis, stenotic - Intervertebral foramina - Connective tissue - Sacral region |
 | M99.75 | Stenosis, stenotic - Intervertebral foramina - Disc - Pelvic |
@@ -11139,34 +11157,34 @@ HTAN Biospecimen Data Model Schema
 | N00.0 | Nephritis, nephritic - Acute - With - Minor glomerular abnormality |
 | N00.1 | Nephritis, nephritic - Acute - With - Focal and segmental glomerular lesions |
 | N00.2 | Nephritis, nephritic - Acute - With - Diffuse - Membranous glomerulonephritis |
-| N00.3 | Nephritis, nephritic - Acute - With - Diffuse - Mesangial proliferative glomerulonephritis |
-| N00.4 | Nephritis, nephritic - Acute - With - Diffuse - Endocapillary proliferative glomerulonephritis |
-| N00.5 | Nephritis, nephritic - Acute - With - Diffuse - Mesangiocapillary glomerulonephritis |
-| N00.6 | Nephritis, nephritic - Acute - With - C3 - Glomerulopathy - With dense deposit disease |
+| N00.3 | Nephritis, nephritic - Acute - With - Diffuse - Mesangial proliferative glome... |
+| N00.4 | Nephritis, nephritic - Acute - With - Diffuse - Endocapillary proliferative g... |
+| N00.5 | Nephritis, nephritic - Acute - With - Diffuse - Mesangiocapillary glomerulone... |
+| N00.6 | Nephritis, nephritic - Acute - With - C3 - Glomerulopathy - With dense deposi... |
 | N00.7 | Nephritis, nephritic - Acute - With - Diffuse - Crescentic glomerulonephritis |
 | N00.8 | Nephritis, nephritic - Acute - With - Specified morphological changes NEC |
 | N00.9 | Glomerulonephritis - Acute |
 | N00.A | Nephritis, nephritic - Acute - With - C3 - Glomerulonephritis |
-| N00.B1 | Nephritis, nephritic - Acute - With - Idiopathic immune membranoproliferative glomerulonephritis |
-| N00.B2 | Nephritis, nephritic - Acute - With - Secondary immune complex membranoproliferative glomerulonephritis |
+| N00.B1 | Nephritis, nephritic - Acute - With - Idiopathic immune membranoproliferative... |
+| N00.B2 | Nephritis, nephritic - Acute - With - Secondary immune complex membranoprolif... |
 | N01.0 | Nephritis, nephritic - Rapidly progressive - With - Minor glomerular abnormality |
-| N01.1 | Nephritis, nephritic - Rapidly progressive - With - Focal and segmental glomerular lesions |
-| N01.2 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Membranous glomerulonephritis |
-| N01.3 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Mesangial proliferative glomerulonephritis |
-| N01.4 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Endocapillary proliferative glomerulonephritis |
-| N01.5 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Mesangiocapillary glomerulonephritis |
-| N01.6 | Nephritis, nephritic - Rapidly progressive - With - C3 - Glomerulopathy - With dense deposit disease |
-| N01.7 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Crescentic glomerulonephritis |
-| N01.8 | Nephritis, nephritic - Rapidly progressive - With - Specified morphological changes NEC |
+| N01.1 | Nephritis, nephritic - Rapidly progressive - With - Focal and segmental glome... |
+| N01.2 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Membranous glom... |
+| N01.3 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Mesangial proli... |
+| N01.4 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Endocapillary p... |
+| N01.5 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Mesangiocapilla... |
+| N01.6 | Nephritis, nephritic - Rapidly progressive - With - C3 - Glomerulopathy - Wit... |
+| N01.7 | Nephritis, nephritic - Rapidly progressive - With - Diffuse - Crescentic glom... |
+| N01.8 | Nephritis, nephritic - Rapidly progressive - With - Specified morphological c... |
 | N01.9 | Disease, diseased - Glomerular - Rapidly progressive |
 | N01.A | Nephritis, nephritic - Rapidly progressive - With - C3 - Glomerulonephritis |
 | N02.0 | Hematuria - Idiopathic - With glomerular lesion - Minor abnormality |
-| N02.1 | Hematuria - Idiopathic - With glomerular lesion - Focal and segmental hyalinosis or sclerosis |
+| N02.1 | Hematuria - Idiopathic - With glomerular lesion - Focal and segmental hyalino... |
 | N02.2 | Hematuria - Idiopathic - With glomerular lesion - Membranous |
 | N02.3 | Hematuria - Idiopathic - With glomerular lesion - Mesangial proliferative |
-| N02.4 | Hematuria - Idiopathic - With glomerular lesion - Endocapillary proliferative glomerulonephritis |
+| N02.4 | Hematuria - Idiopathic - With glomerular lesion - Endocapillary proliferative... |
 | N02.5 | Hematuria - Idiopathic - With glomerular lesion - Membranoproliferative |
-| N02.6 | Hematuria - Idiopathic - With glomerular lesion - C3 - Glomerulopathy - With dense deposit disease |
+| N02.6 | Hematuria - Idiopathic - With glomerular lesion - C3 - Glomerulopathy - With ... |
 | N02.7 | Hematuria - Idiopathic - With glomerular lesion - Crescentic |
 | N02.8 | Hematuria - Idiopathic - With glomerular lesion - Proliferative NEC |
 | N02.9 | Hematuria - Idiopathic |
@@ -11182,10 +11200,10 @@ HTAN Biospecimen Data Model Schema
 | N03.0 | Nephritis, nephritic - Chronic - With - Minor glomerular abnormality |
 | N03.1 | Nephritis, nephritic - Chronic - With - Focal and segmental glomerular lesions |
 | N03.2 | Nephritis, nephritic - Chronic - With - Diffuse - Membranous glomerulonephritis |
-| N03.3 | Nephritis, nephritic - Chronic - With - Diffuse - Mesangial proliferative glomerulonephritis |
-| N03.4 | Nephritis, nephritic - Chronic - With - Diffuse - Endocapillary proliferative glomerulonephritis |
-| N03.5 | Nephritis, nephritic - Chronic - With - Diffuse - Mesangiocapillary glomerulonephritis |
-| N03.6 | Nephritis, nephritic - Chronic - With - C3 - Glomerulopathy - With dense deposit disease |
+| N03.3 | Nephritis, nephritic - Chronic - With - Diffuse - Mesangial proliferative glo... |
+| N03.4 | Nephritis, nephritic - Chronic - With - Diffuse - Endocapillary proliferative... |
+| N03.5 | Nephritis, nephritic - Chronic - With - Diffuse - Mesangiocapillary glomerulo... |
+| N03.6 | Nephritis, nephritic - Chronic - With - C3 - Glomerulopathy - With dense depo... |
 | N03.7 | Nephritis, nephritic - Chronic - With - Diffuse - Crescentic glomerulonephritis |
 | N03.8 | Nephritis, nephritic - Chronic - With - Specified morphological changes NEC |
 | N03.9 | Glomerulonephritis - Chronic |
@@ -11195,17 +11213,17 @@ HTAN Biospecimen Data Model Schema
 | N04.20 | Nephropathy - Membranous - With - Nephrotic syndrome |
 | N04.21 | Nephropathy - Membranous - With - Nephrotic syndrome - Primary |
 | N04.22 | Nephropathy - Membranous - With - Nephrotic syndrome - Secondary |
-| N04.29 | Syndrome - Nephrotic - Specified type NEC with diffuse membranous glomerulonephritis |
-| N04.3 | Syndrome - Nephrotic - With - Diffuse - Mesangial proliferative glomerulonephritis |
-| N04.4 | Syndrome - Nephrotic - With - Diffuse - Endocapillary proliferative glomerulonephritis |
+| N04.29 | Syndrome - Nephrotic - Specified type NEC with diffuse membranous glomerulone... |
+| N04.3 | Syndrome - Nephrotic - With - Diffuse - Mesangial proliferative glomeruloneph... |
+| N04.4 | Syndrome - Nephrotic - With - Diffuse - Endocapillary proliferative glomerulo... |
 | N04.5 | Nephrosis, nephrotic - With - Hypocomplementemic |
 | N04.6 | Syndrome - Nephrotic - With - C3 - Glomerulopathy - With dense deposit disease |
 | N04.7 | Syndrome - Nephrotic - With - Diffuse - Crescentic glomerulonephritis |
 | N04.8 | Syndrome - Nephrotic - With - Specified morphological changes NEC |
 | N04.9 | Anasarca - Renal |
 | N04.A | Syndrome - Nephrotic - With - C3 - Glomerulonephritis |
-| N04.B1 | Nephritis, nephritic - With - Glomerular lesion - Idiopathic immune membranoproliferative glomerulonephritis |
-| N04.B2 | Nephritis, nephritic - With - Glomerular lesion - Secondary immune complex membranoproliferative glomerulonephritis |
+| N04.B1 | Nephritis, nephritic - With - Glomerular lesion - Idiopathic immune membranop... |
+| N04.B2 | Nephritis, nephritic - With - Glomerular lesion - Secondary immune complex me... |
 | N05.- | Disease, diseased - Klebs' |
 | N05.0 | Abnormal, abnormality, abnormalities - Glomerular, minor |
 | N05.1 | Glomerulonephritis - Focal |
@@ -11219,40 +11237,40 @@ HTAN Biospecimen Data Model Schema
 | N05.9 | Disorder - Glomerular |
 | N05.A | Glomerulonephritis - With - C3 - Glomerulonephritis |
 | N06.0 | Proteinuria - Isolated - With glomerular lesion - Minimal change |
-| N06.1 | Proteinuria - Isolated - With glomerular lesion - Focal and segmental hyalinosis or sclerosis |
+| N06.1 | Proteinuria - Isolated - With glomerular lesion - Focal and segmental hyalino... |
 | N06.20 | Nephropathy - Membranous |
 | N06.21 | Nephropathy - Membranous - Primary |
 | N06.22 | Nephropathy - Membranous - Secondary |
-| N06.29 | Proteinuria - Isolated - With glomerular lesion - Membranous - With diffuse membranous glomerulonephritis |
+| N06.29 | Proteinuria - Isolated - With glomerular lesion - Membranous - With diffuse m... |
 | N06.3 | Proteinuria - Isolated - With glomerular lesion - Mesangial proliferative |
-| N06.4 | Proteinuria - Isolated - With glomerular lesion - Diffuse - Endocapillary proliferative glomerulonephritis |
-| N06.5 | Proteinuria - Isolated - With glomerular lesion - Diffuse - Mesangiocapillary glomerulonephritis |
-| N06.6 | Proteinuria - Isolated - With glomerular lesion - C3 - Glomerulopathy - With dense deposit disease |
-| N06.7 | Proteinuria - Isolated - With glomerular lesion - Diffuse - Crescentic glomerulonephritis |
+| N06.4 | Proteinuria - Isolated - With glomerular lesion - Diffuse - Endocapillary pro... |
+| N06.5 | Proteinuria - Isolated - With glomerular lesion - Diffuse - Mesangiocapillary... |
+| N06.6 | Proteinuria - Isolated - With glomerular lesion - C3 - Glomerulopathy - With ... |
+| N06.7 | Proteinuria - Isolated - With glomerular lesion - Diffuse - Crescentic glomer... |
 | N06.8 | Proteinuria - Isolated - With glomerular lesion - Specified pathology NEC |
 | N06.9 | Proteinuria - Isolated - With glomerular lesion |
 | N06.A | Proteinuria - Isolated - With glomerular lesion - C3 - Glomerulonephritis |
 | N07.0 | Nephropathy - Hereditary NEC - With - Minor glomerular abnormality |
 | N07.1 | Nephropathy - Hereditary NEC - With - Focal and segmental glomerular lesions |
 | N07.2 | Nephropathy - Hereditary NEC - With - Diffuse - Membranous glomerulonephritis |
-| N07.3 | Nephropathy - Hereditary NEC - With - Diffuse - Mesangial proliferative glomerulonephritis |
-| N07.4 | Nephropathy - Hereditary NEC - With - Diffuse - Endocapillary proliferative glomerulonephritis |
-| N07.5 | Nephropathy - Hereditary NEC - With - Diffuse - Mesangiocapillary glomerulonephritis |
-| N07.6 | Nephropathy - Hereditary NEC - With - C3 - Glomerulopathy - With dense deposit disease |
+| N07.3 | Nephropathy - Hereditary NEC - With - Diffuse - Mesangial proliferative glome... |
+| N07.4 | Nephropathy - Hereditary NEC - With - Diffuse - Endocapillary proliferative g... |
+| N07.5 | Nephropathy - Hereditary NEC - With - Diffuse - Mesangiocapillary glomerulone... |
+| N07.6 | Nephropathy - Hereditary NEC - With - C3 - Glomerulopathy - With dense deposi... |
 | N07.7 | Nephropathy - Hereditary NEC - With - Diffuse - Crescentic glomerulonephritis |
 | N07.8 | Nephropathy - Hereditary NEC - With - Specified morphological changes NEC |
 | N07.9 | Nephropathy - Hereditary NEC |
 | N07.A | Nephropathy - Hereditary NEC - With - C3 - Glomerulonephritis |
 | N07.B | AMKD |
 | N10 | Nephritis, nephritic - Tubulo-interstitial - Acute |
-| N11.0 | Nephritis, nephritic - Tubulo-interstitial - Chronic - Nonobstructive - Reflux-associated |
+| N11.0 | Nephritis, nephritic - Tubulo-interstitial - Chronic - Nonobstructive - Reflu... |
 | N11.1 | Kink, kinking - Ureter - With - Pyelonephritis |
 | N11.8 | Nephritis, nephritic - Tubulo-interstitial - Chronic - Nonobstructive |
 | N11.9 | Nephritis, nephritic - Tubulo-interstitial - Chronic |
-| N12 | Disease, diseased - Antiglomerular basement membrane - Tubulo-interstitial nephritis |
+| N12 | Disease, diseased - Antiglomerular basement membrane - Tubulo-interstitial ne... |
 | N13.0 | Hydronephrosis - With - Obstruction - Ureteropelvic junction - Acquired |
 | N13.1 | Hydronephrosis - With - Obstruction - Ureteral NEC |
-| N13.2 | Calculus, calculi, calculous - Kidney - With calculus, ureter - With hydronephrosis |
+| N13.2 | Calculus, calculi, calculous - Kidney - With calculus, ureter - With hydronep... |
 | N13.30 | Hydronephrosis |
 | N13.39 | Hydronephrosis - Specified type NEC |
 | N13.4 | Dilatation - Ureter - Due to obstruction |
@@ -11459,7 +11477,7 @@ HTAN Biospecimen Data Model Schema
 | N46.11 | Infertility - Male - Oligospermia |
 | N46.121 | Infertility - Male - Oligospermia - Extratesticular cause - Drug therapy |
 | N46.122 | Infertility - Male - Oligospermia - Extratesticular cause - Infection |
-| N46.123 | Infertility - Male - Oligospermia - Extratesticular cause - Efferent duct obstruction |
+| N46.123 | Infertility - Male - Oligospermia - Extratesticular cause - Efferent duct obs... |
 | N46.124 | Infertility - Male - Oligospermia - Extratesticular cause - Radiation |
 | N46.125 | Infertility - Male - Oligospermia - Extratesticular cause - Systemic disease |
 | N46.129 | Infertility - Male - Oligospermia - Extratesticular cause |
@@ -11506,15 +11524,15 @@ HTAN Biospecimen Data Model Schema
 | N50.9 | Anesthesia, anesthetic - Testicular |
 | N52.01 | Dysfunction - Sexual - Male - Erectile - Vasculogenic - Arterial insufficiency |
 | N52.02 | Dysfunction - Sexual - Male - Erectile - Vasculogenic - Corporo-venous occlusive |
-| N52.03 | Dysfunction - Sexual - Male - Erectile - Vasculogenic - Arterial insufficiency - With corporo-venous occlusive |
+| N52.03 | Dysfunction - Sexual - Male - Erectile - Vasculogenic - Arterial insufficienc... |
 | N52.1 | Dysfunction - Sexual - Male - Erectile - Due to - Disease classified elsewhere |
 | N52.2 | Dysfunction - Sexual - Male - Erectile - Drug induced |
-| N52.31 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Prostatectomy - Radical |
-| N52.32 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Radical cystectomy |
-| N52.33 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Urethral surgery |
-| N52.34 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Prostatectomy |
-| N52.35 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Radiation therapy |
-| N52.36 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Interstitial seed therapy |
+| N52.31 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Prostate... |
+| N52.32 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Radical ... |
+| N52.33 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Urethral... |
+| N52.34 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Prostate... |
+| N52.35 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Radiatio... |
+| N52.36 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Intersti... |
 | N52.37 | Dysfunction - Sexual - Male - Erectile - Postoperative - Following - Cryotherapy |
 | N52.39 | Dysfunction - Sexual - Male - Erectile - Postoperative |
 | N52.8 | Dysfunction - Sexual - Male - Erectile - Specified cause NEC |
@@ -11833,9 +11851,9 @@ HTAN Biospecimen Data Model Schema
 | N97.8 | Infertility - Female - Age-related |
 | N97.9 | Infertility - Female |
 | N98.0 | Complication - Artificial - Fertilization or insemination - Infection |
-| N98.1 | Complication - Artificial - Fertilization or insemination - Hyperstimulation of ovaries |
-| N98.2 | Complication - Artificial - Fertilization or insemination - Attempted introduction - Ovum following in vitro fertilization |
-| N98.3 | Complication - Artificial - Fertilization or insemination - Attempted introduction - Embryo in embryo transfer |
+| N98.1 | Complication - Artificial - Fertilization or insemination - Hyperstimulation ... |
+| N98.2 | Complication - Artificial - Fertilization or insemination - Attempted introdu... |
+| N98.3 | Complication - Artificial - Fertilization or insemination - Attempted introdu... |
 | N98.8 | Complication - Artificial - Fertilization or insemination - Specified NEC |
 | N98.9 | Complication - Artificial - Fertilization or insemination |
 | N99.0 | Anuria - Postprocedural |
@@ -11866,18 +11884,18 @@ HTAN Biospecimen Data Model Schema
 | N99.533 | Complication - Stoma - Urinary tract - Continent - Herniation |
 | N99.534 | Complication - Stoma - Urinary tract - Continent - Stenosis |
 | N99.538 | Complication - Stoma - Urinary tract - Continent |
-| N99.61 | Complication - Intraoperative - Hemorrhage - Genitourinary organ or structure - During procedure on genitourinary organ or structure |
-| N99.62 | Complication - Intraoperative - Hemorrhage - Genitourinary organ or structure - During procedure on other organ |
-| N99.71 | Complication - Intraoperative - Puncture or laceration - Genitourinary organ or structure - During procedure on genitourinary organ or structure |
-| N99.72 | Complication - Intraoperative - Puncture or laceration - Genitourinary organ or structure - During procedure on other organ |
+| N99.61 | Complication - Intraoperative - Hemorrhage - Genitourinary organ or structure... |
+| N99.62 | Complication - Intraoperative - Hemorrhage - Genitourinary organ or structure... |
+| N99.71 | Complication - Intraoperative - Puncture or laceration - Genitourinary organ ... |
+| N99.72 | Complication - Intraoperative - Puncture or laceration - Genitourinary organ ... |
 | N99.81 | Complication - Intraoperative - Specified NEC - Genitourinary system |
-| N99.820 | Complication - Postprocedural - Hemorrhage - Genitourinary organ or structure - Following procedure on genitourinary organ or structure |
-| N99.821 | Complication - Postprocedural - Hemorrhage - Genitourinary organ or structure - Following procedure on other organ |
+| N99.820 | Complication - Postprocedural - Hemorrhage - Genitourinary organ or structure... |
+| N99.821 | Complication - Postprocedural - Hemorrhage - Genitourinary organ or structure... |
 | N99.83 | Residual - Ovary syndrome |
-| N99.840 | Complication - Postprocedural - Hematoma - Genitourinary organ or structure - Following procedure on genitourinary organ or structure |
-| N99.841 | Complication - Postprocedural - Hematoma - Genitourinary organ or structure - Following procedure on other organ |
-| N99.842 | Complication - Postprocedural - Seroma - Genitourinary organ or structure - Following procedure on genitourinary organ or structure |
-| N99.843 | Complication - Postprocedural - Seroma - Genitourinary organ or structure - Following procedure on other organ |
+| N99.840 | Complication - Postprocedural - Hematoma - Genitourinary organ or structure -... |
+| N99.841 | Complication - Postprocedural - Hematoma - Genitourinary organ or structure -... |
+| N99.842 | Complication - Postprocedural - Seroma - Genitourinary organ or structure - F... |
+| N99.843 | Complication - Postprocedural - Seroma - Genitourinary organ or structure - F... |
 | N99.85 | Syndrome - Post endometrial ablation |
 | N99.89 | Anastomosis - Intestinal - Complicated NEC - Involving urinary tract |
 | O00.00 | Pregnancy - Abdominal |
@@ -11897,7 +11915,7 @@ HTAN Biospecimen Data Model Schema
 | O02.0 | Blighted ovum |
 | O02.1 | Abortion - Missed |
 | O02.81 | Inappropriate - Change in quantitative human chorionic gonadotropin |
-| O02.89 | Abnormal, abnormality, abnormalities - Product of conception - Specified type NEC |
+| O02.89 | Abnormal, abnormality, abnormalities - Product of conception - Specified type... |
 | O02.9 | Abnormal, abnormality, abnormalities - Product of conception |
 | O03.0 | Abortion - Incomplete - Complicated - Endometritis |
 | O03.1 | Abortion - Incomplete - Complicated - Afibrinogenemia |
@@ -11980,29 +11998,29 @@ HTAN Biospecimen Data Model Schema
 | O09.62- | Pregnancy - Complicated by - Young mother - Multigravida |
 | O09.7- | Pregnancy - Complicated by - Social problem |
 | O09.81- | Pregnancy - Supervision of - High-risk - Due to - In vitro fertilization |
-| O09.82- | Pregnancy - Complicated by - History of in utero procedure during previous pregnancy |
+| O09.82- | Pregnancy - Complicated by - History of in utero procedure during previous pr... |
 | O09.89- | Pregnancy - Supervision of - High-risk - Due to - Specified NEC |
 | O09.9- | Observation - Pregnancy - High risk |
 | O09.A- | Pregnancy - Supervision of - High-risk - Due to - Molar pregnancy |
 | O10.01- | Hypertension, hypertensive - Complicating - Pregnancy - Pre-existing - Essential |
-| O10.02 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - Essential |
-| O10.03 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-existing - Essential |
-| O10.11- | Hypertension, hypertensive - Complicating - Pregnancy - Pre-existing - With - Heart disease |
-| O10.12 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - With - Heart disease |
-| O10.13 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-existing - With - Heart disease |
-| O10.21- | Hypertension, hypertensive - Complicating - Pregnancy - Pre-existing - With - Renal disease |
-| O10.22 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - With - Renal disease |
-| O10.23 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-existing - With - Renal disease |
-| O10.31- | Hypertension, hypertensive - Complicating - Pregnancy - Pre-existing - With - Heart disease - With renal disease |
-| O10.32 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - With - Heart disease - With renal disease |
-| O10.33 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-existing - With - Heart disease - With renal disease |
+| O10.02 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - Essen... |
+| O10.03 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-ex... |
+| O10.11- | Hypertension, hypertensive - Complicating - Pregnancy - Pre-existing - With -... |
+| O10.12 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - With ... |
+| O10.13 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-ex... |
+| O10.21- | Hypertension, hypertensive - Complicating - Pregnancy - Pre-existing - With -... |
+| O10.22 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - With ... |
+| O10.23 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-ex... |
+| O10.31- | Hypertension, hypertensive - Complicating - Pregnancy - Pre-existing - With -... |
+| O10.32 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - With ... |
+| O10.33 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-ex... |
 | O10.41- | Hypertension, hypertensive - Complicating - Pregnancy - Pre-existing - Secondary |
 | O10.42 | Hypertension, hypertensive - Complicating - Childbirth - Secondary |
 | O10.43 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Secondary |
 | O10.91- | Hypertension, hypertensive - Complicating - Pregnancy - Pre-existing |
 | O10.92 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing |
-| O11.4 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - With - Pre-eclampsia |
-| O11.5 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-existing - With - Pre-eclampsia |
+| O11.4 | Hypertension, hypertensive - Complicating - Childbirth - Pre-existing - With ... |
+| O11.5 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pre-ex... |
 | O12.0- | Pregnancy - Complicated by - Edema |
 | O12.04 | Delivery - Complicated - By - Gestational - Edema |
 | O12.05 | Puerperal, puerperium - Gestational - Edema |
@@ -12015,15 +12033,15 @@ HTAN Biospecimen Data Model Schema
 | O13.- | Hypertension, hypertensive - Complicating - Pregnancy - Gestational |
 | O13.4 | Hypertension, hypertensive - Gestational - Complicating - Delivery |
 | O13.5 | Hypertension, hypertensive - Gestational - Complicating - Puerperium |
-| O13.9 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pregnancy-induced |
-| O14.0- | Hypertension, hypertensive - Complicating - Pregnancy - Gestational - With proteinuria - Mild pre-eclampsia |
+| O13.9 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing - Pregna... |
+| O14.0- | Hypertension, hypertensive - Complicating - Pregnancy - Gestational - With pr... |
 | O14.04 | Delivery - Cesarean - Pre-eclampsia - Mild |
 | O14.05 | Pre-eclampsia - Mild - Complicating - Puerperium |
-| O14.1- | Hypertension, hypertensive - Complicating - Pregnancy - Gestational - With proteinuria - Severe pre-eclampsia |
+| O14.1- | Hypertension, hypertensive - Complicating - Pregnancy - Gestational - With pr... |
 | O14.14 | Delivery - Cesarean - Pre-eclampsia - Severe |
 | O14.15 | Pre-eclampsia - Severe - Complicating - Puerperium |
 | O14.2- | HELLP syndrome |
-| O14.24 | Delivery - Cesarean - Pre-eclampsia - Severe - With hemolysis, elevated liver enzymes and low platelet count |
+| O14.24 | Delivery - Cesarean - Pre-eclampsia - Severe - With hemolysis, elevated liver... |
 | O14.25 | HELLP syndrome - Complicating - Puerperium |
 | O14.9- | Hypertension, hypertensive - Complicating - Pregnancy - With edema |
 | O14.94 | Delivery - Cesarean - Pre-eclampsia |
@@ -12038,7 +12056,7 @@ HTAN Biospecimen Data Model Schema
 | O16.4 | Hypertension, hypertensive - Complicating - Childbirth |
 | O16.5 | Hypertension, hypertensive - Complicating - Puerperium, pre-existing |
 | O20.0 | Abortion - Spontaneous - Threatened |
-| O20.8 | Hemorrhage, hemorrhagic - Antepartum - Before 20 weeks gestation - Specified type NEC |
+| O20.8 | Hemorrhage, hemorrhagic - Antepartum - Before 20 weeks gestation - Specified ... |
 | O20.9 | Hemorrhage, hemorrhagic - Antepartum - Before 20 weeks gestation |
 | O21.0 | Hyperemesis - Gravidarum |
 | O21.0- | Pregnancy - Complicated by - Hyperemesis |
@@ -12058,7 +12076,7 @@ HTAN Biospecimen Data Model Schema
 | O23.0- | Pregnancy - Complicated by - Infection - Kidney |
 | O23.1- | Pregnancy - Complicated by - Abscess or cellulitis - Bladder |
 | O23.2- | Pregnancy - Complicated by - Infection - Urethra |
-| O23.3- | Infection, infected, infective - Urinary - Complicating - Pregnancy - Specified type NEC |
+| O23.3- | Infection, infected, infective - Urinary - Complicating - Pregnancy - Specifi... |
 | O23.4- | Infection, infected, infective - Urinary - Complicating - Pregnancy |
 | O23.51- | Pregnancy - Complicated by - Cervicitis |
 | O23.52- | Pregnancy - Complicated by - Oophoritis |
@@ -12117,14 +12135,14 @@ HTAN Biospecimen Data Model Schema
 | O26.89 | Pregnancy - Complicated by - Insulin resistance |
 | O26.89- | Hysteralgia, pregnant uterus |
 | O26.9- | Pregnancy - Complicated NOS |
-| O28.0 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of mother - Hematological |
-| O28.1 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of mother - Biochemical |
-| O28.2 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of mother - Cytological |
-| O28.3 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of mother - Ultrasonic |
-| O28.4 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of mother - Radiological |
-| O28.5 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of mother - Chromosomal |
-| O28.8 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of mother - Specified NEC |
-| O28.9 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of mother |
+| O28.0 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of ... |
+| O28.1 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of ... |
+| O28.2 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of ... |
+| O28.3 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of ... |
+| O28.4 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of ... |
+| O28.5 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of ... |
+| O28.8 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of ... |
+| O28.9 | Findings, abnormal, inconclusive, without diagnosis - Antenatal screening of ... |
 | O29.01- | Inhalation - Stomach contents or secretions - Due to anesthesia - In pregnancy |
 | O29.02- | Collapse - Lung - Pressure due to anesthesia - In pregnancy |
 | O29.09- | Complication - Anesthesia, anesthetic - Pulmonary - In - Pregnancy NEC |
@@ -12137,9 +12155,9 @@ HTAN Biospecimen Data Model Schema
 | O29.3X | Pregnancy - Complicated by - Adverse effect anesthesia - Local, toxic reaction |
 | O29.3X- | Reaction - Toxic, to local anesthesia - In pregnancy |
 | O29.4- | Headache - Spinal and epidural anesthesia - induced - In pregnancy |
-| O29.5X | Pregnancy - Complicated by - Adverse effect anesthesia - Spinal and epidural type NEC |
+| O29.5X | Pregnancy - Complicated by - Adverse effect anesthesia - Spinal and epidural ... |
 | O29.5X- | Complication - Anesthesia, anesthetic - Spinal and epidural - In - Pregnancy NEC |
-| O29.6- | Complication - Anesthesia, anesthetic - Difficult or failed intubation - In pregnancy |
+| O29.6- | Complication - Anesthesia, anesthetic - Difficult or failed intubation - In p... |
 | O29.8X- | Pregnancy - Complicated by - Adverse effect anesthesia - Specified NEC |
 | O29.9- | Pregnancy - Complicated by - Adverse effect anesthesia |
 | O30.00- | Pregnancy - Twin |
@@ -12147,34 +12165,34 @@ HTAN Biospecimen Data Model Schema
 | O30.02- | Pregnancy - Complicated by - Conjoined twins |
 | O30.03- | Pregnancy - Twin - Monochorionic/diamniotic |
 | O30.04- | Pregnancy - Twin - Dichorionic/diamniotic |
-| O30.09- | Pregnancy - Twin - Unable to determine number of placenta and number of amniotic sacs |
+| O30.09- | Pregnancy - Twin - Unable to determine number of placenta and number of amnio... |
 | O30.10- | Pregnancy - Triplet |
 | O30.11- | Pregnancy - Triplet - With - Two or more monochorionic fetuses |
 | O30.12- | Pregnancy - Triplet - With - Two or more monoamniotic fetuses |
 | O30.13- | Pregnancy - Triplet - Trichorionic/triamniotic |
-| O30.19- | Pregnancy - Triplet - Unable to determine number of placenta and number of amniotic sacs |
+| O30.19- | Pregnancy - Triplet - Unable to determine number of placenta and number of am... |
 | O30.20- | Pregnancy - Quadruplet |
 | O30.21- | Pregnancy - Quadruplet - With - Two or more monochorionic fetuses |
 | O30.22- | Pregnancy - Quadruplet - With - Two or more monoamniotic fetuses |
 | O30.23- | Pregnancy - Quadruplet - Quadrachorionic/quadra-amniotic |
-| O30.29- | Pregnancy - Quadruplet - Unable to determine number of placenta and number of amniotic sacs |
+| O30.29- | Pregnancy - Quadruplet - Unable to determine number of placenta and number of... |
 | O30.80- | Pregnancy - Multiple - Specified NEC |
 | O30.81- | Pregnancy - Multiple - Specified NEC - With - Two or more monochorionic fetuses |
 | O30.82- | Pregnancy - Multiple - Specified NEC - With - Two or more monoamniotic fetuses |
 | O30.83- | Pregnancy - Heptachorionic, hepta-amniotic |
-| O30.89- | Pregnancy - Multiple - Specified NEC - Unable to determine number of placenta and number of amniotic sacs |
+| O30.89- | Pregnancy - Multiple - Specified NEC - Unable to determine number of placenta... |
 | O30.9- | Gestation - Multiple |
 | O31.0- | Fetus, fetal - Compressus |
 | O31.1- | Pregnancy - Continuing following - Spontaneous abortion of one or more fetus |
-| O31.2- | Pregnancy - Complicated by - Death of fetus - Of one fetus or more in multiple gestation |
+| O31.2- | Pregnancy - Complicated by - Death of fetus - Of one fetus or more in multipl... |
 | O31.3- | Pregnancy - Complicated by - Fetal - Reduction |
 | O31.8X- | Pregnancy - Complicated by - Multiple gestations - Specified complication NEC |
-| O32.0 | Delivery - Complicated - By - Malposition, malpresentation - Without obstruction - Unstable lie |
+| O32.0 | Delivery - Complicated - By - Malposition, malpresentation - Without obstruct... |
 | O32.1 | Breech presentation |
 | O32.2 | Delivery - Cesarean - Acromion presentation |
 | O32.3 | Delivery - Cesarean - Brow presentation |
 | O32.4 | Delivery - Cesarean - High head at term |
-| O32.6 | Delivery - Complicated - By - Malposition, malpresentation - Without obstruction - Compound |
+| O32.6 | Delivery - Complicated - By - Malposition, malpresentation - Without obstruct... |
 | O32.8 | Breech presentation - Footling |
 | O32.9 | Delivery - Cesarean - Abnormal - Presentation or position |
 | O33.0 | Anthropoid pelvis - With disproportion |
@@ -12190,11 +12208,11 @@ HTAN Biospecimen Data Model Schema
 | O34.0- | Double - Uterus - In pregnancy or childbirth |
 | O34.00 | Bicornate or bicornis uterus - In pregnancy or childbirth |
 | O34.1- | Fibroid - In pregnancy or childbirth |
-| O34.211 | Cesarean delivery, previous, affecting management of pregnancy - Low transverse scar |
+| O34.211 | Cesarean delivery, previous, affecting management of pregnancy - Low transver... |
 | O34.212 | Cesarean delivery, previous, affecting management of pregnancy - Classical |
-| O34.218 | Cesarean delivery, previous, affecting management of pregnancy - Mid-transverse T incision |
+| O34.218 | Cesarean delivery, previous, affecting management of pregnancy - Mid-transver... |
 | O34.219 | Cesarean delivery, previous, affecting management of pregnancy |
-| O34.22 | Cesarean delivery, previous, affecting management of pregnancy - Isthmocele - Maternal care for |
+| O34.22 | Cesarean delivery, previous, affecting management of pregnancy - Isthmocele -... |
 | O34.29 | Delivery - Cesarean - Previous - Surgery - Uterus |
 | O34.3- | Delivery - Cesarean - Cerclage |
 | O34.4- | Delivery - Cesarean - Cicatrix of cervix |
@@ -12206,7 +12224,7 @@ HTAN Biospecimen Data Model Schema
 | O34.7- | Delivery - Cesarean - Previous - Surgery - Rectum |
 | O34.8- | Cyst - Ovary, ovarian - In pregnancy or childbirth |
 | O34.9- | Pregnancy - Complicated by - Abnormal, abnormality - Pelvic organs |
-| O35.00 | Pregnancy - Complicated by - Fetal - Central nervous system malformation or damage |
+| O35.00 | Pregnancy - Complicated by - Fetal - Central nervous system malformation or d... |
 | O35.01 | Pregnancy - Complicated by - Fetal - Agenesis of corpus callosum |
 | O35.02 | Pregnancy - Complicated by - Fetal - Anencephaly |
 | O35.03 | Pregnancy - Complicated by - Fetal - Choroid plexus cysts |
@@ -12215,7 +12233,7 @@ HTAN Biospecimen Data Model Schema
 | O35.06 | Pregnancy - Complicated by - Fetal - Hydrocephalus |
 | O35.07 | Pregnancy - Complicated by - Fetal - Microcephaly |
 | O35.08 | Pregnancy - Complicated by - Fetal - Spina bifida |
-| O35.09 | Pregnancy - Complicated by - Fetal - Central nervous system malformation or damage - Specified type NEC |
+| O35.09 | Pregnancy - Complicated by - Fetal - Central nervous system malformation or d... |
 | O35.10 | Pregnancy - Complicated by - Fetal - Chromosomal abnormality |
 | O35.11 | Pregnancy - Complicated by - Fetal - Chromosomal abnormality - Trisomy 13 |
 | O35.12 | Pregnancy - Complicated by - Fetal - Chromosomal abnormality - Trisomy 18 |
@@ -12224,7 +12242,7 @@ HTAN Biospecimen Data Model Schema
 | O35.15 | Pregnancy - Complicated by - Fetal - Chromosomal abnormality - Sex chromosome |
 | O35.19 | Pregnancy - Complicated by - Fetal - Chromosomal abnormality - Specified NEC |
 | O35.2 | Pregnancy - Complicated by - Fetal - Hereditary disease |
-| O35.3 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Maternal, maternal care for |
+| O35.3 | Infection, infected, infective - Cytomegalovirus, cytomegaloviral - Maternal,... |
 | O35.4 | Pregnancy - Complicated by - Fetal - Damage from - Maternal - Alcohol addiction |
 | O35.5 | Pregnancy - Complicated by - Fetal - Damage from - Drug addiction |
 | O35.6 | Pregnancy - Complicated by - Fetal - Damage from - Radiation |
@@ -12237,9 +12255,9 @@ HTAN Biospecimen Data Model Schema
 | O35.D | Pregnancy - Complicated by - Fetal - Gastrointestinal anomalies |
 | O35.E | Pregnancy - Complicated by - Fetal - Genitourinary anomalies |
 | O35.F | Pregnancy - Complicated by - Fetal - Musculoskeletal anomalies - Trunk |
-| O35.G | Pregnancy - Complicated by - Fetal - Musculoskeletal anomalies - Upper extremities |
-| O35.H | Pregnancy - Complicated by - Fetal - Musculoskeletal anomalies - Lower extremities |
-| O36.01- | Immunization - Rh factor - Affecting management of pregnancy NEC - Anti-D antibody |
+| O35.G | Pregnancy - Complicated by - Fetal - Musculoskeletal anomalies - Upper extrem... |
+| O35.H | Pregnancy - Complicated by - Fetal - Musculoskeletal anomalies - Lower extrem... |
+| O36.01- | Immunization - Rh factor - Affecting management of pregnancy NEC - Anti-D ant... |
 | O36.09- | Immunization - Rh factor - Affecting management of pregnancy NEC |
 | O36.11- | Incompatibility - ABO - Affecting management of pregnancy |
 | O36.19- | Incompatibility - ABO - Affecting management of pregnancy - Anti-B sensitization |
@@ -12265,16 +12283,16 @@ HTAN Biospecimen Data Model Schema
 | O41.8X- | Cyst - Amnion, amniotic |
 | O41.9- | Pregnancy - Complicated by - Disorders of - Amniotic fluid and membranes |
 | O42- | Pregnancy - Complicated by - Rupture - Amnion |
-| O42.- | Pregnancy - Complicated by - Oligohydramnios - With premature rupture of membranes |
-| O42.00 | Pregnancy - Complicated by - Premature rupture of membranes - With onset of labor - Within 24 hours |
-| O42.01- | Pregnancy - Complicated by - Premature rupture of membranes - With onset of labor - Within 24 hours - Pre-term |
-| O42.02 | Pregnancy - Complicated by - Premature rupture of membranes - With onset of labor - Within 24 hours - At or after 37 weeks gestation, onset of labor within 24 hours of rupture |
-| O42.10 | Pregnancy - Complicated by - Premature rupture of membranes - With onset of labor - After 24 hours |
-| O42.11- | Pregnancy - Complicated by - Premature rupture of membranes - With onset of labor - After 24 hours - Pre-term |
-| O42.12 | Pregnancy - Complicated by - Premature rupture of membranes - With onset of labor - After 24 hours - At or after 37 weeks gestation, onset of labor more than 24 hours following rupture |
+| O42.- | Pregnancy - Complicated by - Oligohydramnios - With premature rupture of memb... |
+| O42.00 | Pregnancy - Complicated by - Premature rupture of membranes - With onset of l... |
+| O42.01- | Pregnancy - Complicated by - Premature rupture of membranes - With onset of l... |
+| O42.02 | Pregnancy - Complicated by - Premature rupture of membranes - With onset of l... |
+| O42.10 | Pregnancy - Complicated by - Premature rupture of membranes - With onset of l... |
+| O42.11- | Pregnancy - Complicated by - Premature rupture of membranes - With onset of l... |
+| O42.12 | Pregnancy - Complicated by - Premature rupture of membranes - With onset of l... |
 | O42.90 | Delivery - Complicated - By - Premature rupture, membranes |
 | O42.91- | Pregnancy - Complicated by - Premature rupture of membranes - Pre-term |
-| O42.92 | Pregnancy - Complicated by - Premature rupture of membranes - Full-term, unspecified as to length of time between rupture and onset of labor |
+| O42.92 | Pregnancy - Complicated by - Premature rupture of membranes - Full-term, unsp... |
 | O43.01- | Delivery - Cesarean - Fetal-maternal hemorrhage |
 | O43.02- | Pregnancy - Complicated by - Placental transfusion syndromes - Fetus to fetus |
 | O43.10- | Delivery - Complicated - By - Placenta, placental - Malformation |
@@ -12302,8 +12320,8 @@ HTAN Biospecimen Data Model Schema
 | O45.9- | Abruptio placentae |
 | O46.00- | Hemorrhage, hemorrhagic - Antepartum - With coagulation defect |
 | O46.01- | Hemorrhage, hemorrhagic - Antepartum - With coagulation defect - Afibrinogenemia |
-| O46.02- | Hemorrhage, hemorrhagic - Antepartum - With coagulation defect - Disseminated intravascular coagulation |
-| O46.09- | Hemorrhage, hemorrhagic - Antepartum - With coagulation defect - Specified defect NEC |
+| O46.02- | Hemorrhage, hemorrhagic - Antepartum - With coagulation defect - Disseminated... |
+| O46.09- | Hemorrhage, hemorrhagic - Antepartum - With coagulation defect - Specified de... |
 | O46.8X- | Pregnancy - Complicated by - Antepartum hemorrhage - Specified NEC |
 | O46.9- | Pregnancy - Complicated by - Antepartum hemorrhage |
 | O46.90 | Hemorrhage, hemorrhagic - Antepartum |
@@ -12316,12 +12334,12 @@ HTAN Biospecimen Data Model Schema
 | O60.02 | Pregnancy - Complicated by - Preterm labor - Second trimester - Without delivery |
 | O60.03 | Pregnancy - Complicated by - Preterm labor - Third trimester - Without delivery |
 | O60.10 | Delivery - Preterm |
-| O60.12 | Pregnancy - Complicated by - Preterm labor - Second trimester - With preterm delivery - Second trimester |
-| O60.13 | Pregnancy - Complicated by - Preterm labor - Second trimester - With preterm delivery - Third trimester |
-| O60.14 | Pregnancy - Complicated by - Preterm labor - Third trimester - With third trimester preterm delivery |
+| O60.12 | Pregnancy - Complicated by - Preterm labor - Second trimester - With preterm ... |
+| O60.13 | Pregnancy - Complicated by - Preterm labor - Second trimester - With preterm ... |
+| O60.14 | Pregnancy - Complicated by - Preterm labor - Third trimester - With third tri... |
 | O60.20 | Pregnancy - Complicated by - Preterm labor - With delivery - Term |
-| O60.22 | Pregnancy - Complicated by - Preterm labor - Second trimester - With term delivery |
-| O60.23 | Pregnancy - Complicated by - Preterm labor - Third trimester - With term delivery |
+| O60.22 | Pregnancy - Complicated by - Preterm labor - Second trimester - With term del... |
+| O60.23 | Pregnancy - Complicated by - Preterm labor - Third trimester - With term deli... |
 | O61.0 | Delivery - Cesarean - Failed - Induction of labor - Medical |
 | O61.1 | Delivery - Cesarean - Failed - Induction of labor - Instrumental |
 | O61.8 | Delivery - Cesarean - Failed - Induction of labor - Specified NEC |
@@ -12331,7 +12349,7 @@ HTAN Biospecimen Data Model Schema
 | O62.2 | Atonia, atony, atonic - Uterus |
 | O62.3 | Delivery - Complicated - By - Precipitate labor |
 | O62.4 | Bandl's ring |
-| O62.8 | Delivery - Complicated - By - Abnormal, abnormality - Forces of labor - Specified type NEC |
+| O62.8 | Delivery - Complicated - By - Abnormal, abnormality - Forces of labor - Speci... |
 | O62.9 | Contraction - Uterus - Abnormal NEC |
 | O63.0 | Delivery - Complicated - By - Prolonged labor - First stage |
 | O63.1 | Delivery - Complicated - By - Prolonged labor - Second stage |
@@ -12347,18 +12365,18 @@ HTAN Biospecimen Data Model Schema
 | O64.9 | Delivery - Complicated - By - Obstructed labor - Due to - Malposition |
 | O65.0 | Cretin, cretinism - Pelvis - With disproportion - Causing obstructed labor |
 | O65.1 | Borderline - Pelvis, with obstruction during labor |
-| O65.2 | Delivery - Complicated - By - Obstructed labor - Due to - Pelvic - Contraction - Inlet |
+| O65.2 | Delivery - Complicated - By - Obstructed labor - Due to - Pelvic - Contractio... |
 | O65.3 | Android pelvis - With disproportion - Causing obstructed labor |
-| O65.4 | Delivery - Complicated - By - Obstructed labor - Due to - Fetopelvic disproportion |
-| O65.5 | Atresia, atretic - Cervix - In pregnancy or childbirth - Causing obstructed labor |
-| O65.8 | Delivery - Complicated - By - Obstructed labor - Due to - Pelvic - Abnormality - Specified NEC |
+| O65.4 | Delivery - Complicated - By - Obstructed labor - Due to - Fetopelvic dispropo... |
+| O65.5 | Atresia, atretic - Cervix - In pregnancy or childbirth - Causing obstructed l... |
+| O65.8 | Delivery - Complicated - By - Obstructed labor - Due to - Pelvic - Abnormalit... |
 | O65.9 | Delivery - Complicated - By - Obstructed labor - Due to - Pelvic - Abnormality |
 | O66.0 | Delivery - Complicated - By - Obstructed labor - Due to - Dystocia - Shoulder |
 | O66.1 | Delivery - Complicated - By - Obstructed labor - Due to - Locked twins |
 | O66.2 | Delivery - Complicated - By - Obstructed labor - Due to - Large fetus |
 | O66.3 | Deformity - Fetal - Causing obstructed labor |
 | O66.40 | Delivery - Cesarean - Failed - Trial of labor NOS |
-| O66.41 | Delivery - Cesarean - Failed - Trial of labor NOS - Following previous cesarean delivery |
+| O66.41 | Delivery - Cesarean - Failed - Trial of labor NOS - Following previous cesare... |
 | O66.5 | Delivery - Cesarean - Failed - Forceps |
 | O66.6 | Delivery - Complicated - By - Obstructed labor - Due to - Multiple fetuses NEC |
 | O66.8 | Delivery - Complicated - By - Dilatation - Bladder |
@@ -12380,10 +12398,10 @@ HTAN Biospecimen Data Model Schema
 | O70.0 | Delivery - Complicated - By - Laceration - Fourchette |
 | O70.1 | Delivery - Complicated - By - Laceration - Pelvic - Floor |
 | O70.20 | Delivery - Complicated - By - Laceration - Anus - With third degree laceration |
-| O70.21 | Delivery - Complicated - By - Laceration - Perineum, perineal - Third degree - With - Less than 50% of external anal sphincter |
-| O70.22 | Delivery - Complicated - By - Laceration - Perineum, perineal - Third degree - With - More than 50% external anal sphincter |
-| O70.23 | Delivery - Complicated - By - Laceration - Perineum, perineal - Third degree - With - Both external anal sphincter |
-| O70.3 | Delivery - Complicated - By - Laceration - Anus - With third degree laceration - With mucosa |
+| O70.21 | Delivery - Complicated - By - Laceration - Perineum, perineal - Third degree ... |
+| O70.22 | Delivery - Complicated - By - Laceration - Perineum, perineal - Third degree ... |
+| O70.23 | Delivery - Complicated - By - Laceration - Perineum, perineal - Third degree ... |
+| O70.3 | Delivery - Complicated - By - Laceration - Anus - With third degree laceratio... |
 | O70.4 | Delivery - Complicated - By - Laceration - Anus |
 | O70.9 | Delivery - Complicated - By - Laceration |
 | O71.0- | Delivery - Complicated - By - Rupture - Uterus - Before labor |
@@ -12403,14 +12421,14 @@ HTAN Biospecimen Data Model Schema
 | O72.2 | Bleeding - Capillary - Puerperal |
 | O72.3 | Afibrinogenemia - Puerperal |
 | O73.0 | Adherent - Placenta - Without hemorrhage |
-| O73.1 | Delivery - Complicated - By - Retained membranes or portions of placenta - Without hemorrhage |
-| O74.0 | Inhalation - Stomach contents or secretions - Due to anesthesia - In labor and delivery |
+| O73.1 | Delivery - Complicated - By - Retained membranes or portions of placenta - Wi... |
+| O74.0 | Inhalation - Stomach contents or secretions - Due to anesthesia - In labor an... |
 | O74.1 | Collapse - Lung - Pressure due to anesthesia - During labor and delivery |
 | O74.2 | Arrest, arrested - Cardiac - Complicating - Anesthesia - In labor and delivery |
 | O74.3 | Anoxia - Cerebral - Complicating - Anesthesia - In labor and delivery |
 | O74.4 | Effect, adverse - Anesthesia - Local, toxic - In labor and delivery |
-| O74.5 | Complication - Anesthesia, anesthetic - Spinal and epidural - In - Labor and delivery NEC - Headache |
-| O74.6 | Complication - Anesthesia, anesthetic - Spinal and epidural - In - Labor and delivery NEC |
+| O74.5 | Complication - Anesthesia, anesthetic - Spinal and epidural - In - Labor and ... |
+| O74.6 | Complication - Anesthesia, anesthetic - Spinal and epidural - In - Labor and ... |
 | O74.7 | Failure, failed - Intubation during anesthesia - Labor and delivery |
 | O74.8 | Delivery - Complicated - By - Anesthetic death |
 | O74.9 | Complication - Sedation during labor and delivery |
@@ -12421,7 +12439,7 @@ HTAN Biospecimen Data Model Schema
 | O75.4 | Anoxia - Cerebral - Complicating - Delivery |
 | O75.5 | Delivery - Delayed NOS - Following rupture of membranes - Artificial |
 | O75.81 | Exhaustion, exhaustive - Maternal, complicating delivery |
-| O75.82 | Delivery - Cesarean - Occurring after 37 completed weeks of gestation but before 39 completed weeks gestation due to |
+| O75.82 | Delivery - Cesarean - Occurring after 37 completed weeks of gestation but bef... |
 | O75.89 | Atonia, atony, atonic - Uterus - Postpartum - Without hemorrhage |
 | O75.9 | Complication - Delivery |
 | O76 | Delivery - Complicated - By - Depressed fetal heart tones |
@@ -12472,13 +12490,13 @@ HTAN Biospecimen Data Model Schema
 | O88.81- | Embolism - Obstetric - Pregnancy - Fat |
 | O88.82 | Embolism - Obstetric - Childbirth - Fat |
 | O88.83 | Embolism - Obstetric - Puerperal - Fat |
-| O89.01 | Inhalation - Stomach contents or secretions - Due to anesthesia - Postpartum, puerperal |
+| O89.01 | Inhalation - Stomach contents or secretions - Due to anesthesia - Postpartum,... |
 | O89.09 | Collapse - Lung - Pressure due to anesthesia - Postpartum, puerperal |
 | O89.1 | Arrest, arrested - Cardiac - Complicating - Anesthesia - Postpartum, puerperal |
 | O89.2 | Anoxia - Cerebral - Complicating - Anesthesia - Postpartum, puerperal |
 | O89.3 | Effect, adverse - Anesthesia - Local, toxic - Postpartum, puerperal |
-| O89.4 | Complication - Anesthesia, anesthetic - Spinal and epidural - Postpartum, puerperal NEC - Headache |
-| O89.5 | Complication - Anesthesia, anesthetic - Spinal and epidural - Postpartum, puerperal NEC |
+| O89.4 | Complication - Anesthesia, anesthetic - Spinal and epidural - Postpartum, pue... |
+| O89.5 | Complication - Anesthesia, anesthetic - Spinal and epidural - Postpartum, pue... |
 | O89.6 | Failure, failed - Intubation during anesthesia - Postpartum, puerperal |
 | O89.8 | Effect, adverse - Anesthesia - Specified NEC - Postpartum, puerperal |
 | O89.9 | Effect, adverse - Anesthesia - Postpartum, puerperal |
@@ -12543,9 +12561,9 @@ HTAN Biospecimen Data Model Schema
 | O98.71- | Pregnancy - Complicated by - HIV |
 | O98.72 | Delivery - Complicated - By - Infection - Human immunodeficiency virus |
 | O98.73 | Puerperal, puerperium - Infection - Maternal - Human immunodeficiency virus |
-| O98.81- | Infection, infected, infective - Streptococcal NEC - B genitourinary complicating - Pregnancy |
+| O98.81- | Infection, infected, infective - Streptococcal NEC - B genitourinary complica... |
 | O98.82 | Delivery - Complicated - By - Infection - Specified NEC |
-| O98.83 | Infection, infected, infective - Streptococcal NEC - B genitourinary complicating - Puerperium |
+| O98.83 | Infection, infected, infective - Streptococcal NEC - B genitourinary complica... |
 | O98.91- | Pregnancy - Complicated by - Infection |
 | O98.92 | Delivery - Complicated - By - Infection |
 | O98.93 | Puerperal, puerperium - Infection - Maternal |
@@ -12591,7 +12609,7 @@ HTAN Biospecimen Data Model Schema
 | O99.810 | Pregnancy - Complicated by - Abnormal, abnormality - Glucose |
 | O99.814 | Delivery - Complicated - By - Abnormal, abnormality - Glucose |
 | O99.815 | Puerperal, puerperium - Abnormal glucose |
-| O99.82- | Carrier - Bacterial disease NEC - Streptococcal - Group B - Complicating pregnancy or delivery |
+| O99.82- | Carrier - Bacterial disease NEC - Streptococcal - Group B - Complicating preg... |
 | O99.820 | Pregnancy - Complicated by - Infection - Carrier state NEC - Streptococcus B |
 | O99.824 | Delivery - Cesarean - Streptococcus group B |
 | O99.825 | Puerperal, puerperium - Infection - Maternal - Streptococcus group B |
@@ -12667,7 +12685,7 @@ HTAN Biospecimen Data Model Schema
 | P03.82 | Passage - Meconium |
 | P03.89 | Newborn - Affected by - Complications of labor and delivery - Specified NEC |
 | P03.9 | Newborn - Affected by - Complications of labor and delivery |
-| P04.0 | Absorption - Chemical - Through placenta - Obstetric anesthetic or analgesic drug |
+| P04.0 | Absorption - Chemical - Through placenta - Obstetric anesthetic or analgesic ... |
 | P04.11 | Newborn - Affected by - Chemotherapy agents |
 | P04.12 | Newborn - Affected by - Maternal - Cytotoxic drugs |
 | P04.13 | Newborn - Affected by - Maternal - Anticonvulsants |
@@ -12687,7 +12705,7 @@ HTAN Biospecimen Data Model Schema
 | P04.5 | Absorption - Chemical - Through placenta - Nutritional substance |
 | P04.6 | Absorption - Chemical - Through placenta - Environmental substance |
 | P04.81 | Newborn - Affected by - Maternal - Cannabis |
-| P04.89 | Newborn - Affected by - Noxious substances transmitted via placenta or breast milk - Specified NEC |
+| P04.89 | Newborn - Affected by - Noxious substances transmitted via placenta or breast... |
 | P04.9 | Absorption - Chemical - Through placenta |
 | P05.0- | Weight - Below but length above 10th percentile for gestational age |
 | P05.00 | Light-for-dates |
@@ -12711,7 +12729,7 @@ HTAN Biospecimen Data Model Schema
 | P05.17 | Small-for-dates - With weight of - 1750-1999 grams |
 | P05.18 | Small-for-dates - With weight of - 2000-2499 grams |
 | P05.19 | Small-for-dates - With weight of - 2500 grams and over |
-| P05.2 | Newborn - Affected by - Fetal - Malnutrition not light or small for gestational age |
+| P05.2 | Newborn - Affected by - Fetal - Malnutrition not light or small for gestation... |
 | P05.9 | Newborn - Affected by - Fetal - Growth retardation |
 | P07.00 | Low - Birthweight - Extreme |
 | P07.01 | Low - Birthweight - Extreme - With weight of - 499 grams or less |
@@ -12744,11 +12762,11 @@ HTAN Biospecimen Data Model Schema
 | P08.1 | Birth - Weight - 4000 grams to 4499 grams |
 | P08.21 | Newborn - Post-term |
 | P08.22 | Newborn - Prolonged gestation |
-| P09.1 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Inborn errors of metabolism |
-| P09.2 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Congenital adrenal hyperplasia |
-| P09.3 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Congenital hematologic disorders |
-| P09.4 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Cystic fibrosis |
-| P09.5 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Critical congenital heart disease |
+| P09.1 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Inborn erro... |
+| P09.2 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Congenital ... |
+| P09.3 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Congenital ... |
+| P09.4 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Cystic fibr... |
+| P09.5 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Critical co... |
 | P09.6 | Abnormal, abnormality, abnormalities - Neonatal screening - Hearing |
 | P09.8 | Abnormal, abnormality, abnormalities - Neonatal screening - For - Specified NEC |
 | P09.9 | Abnormal, abnormality, abnormalities - Neonatal screening |
@@ -12871,11 +12889,11 @@ HTAN Biospecimen Data Model Schema
 | P35.2 | Herpes, herpesvirus, herpetic - Simplex - Congenital |
 | P35.3 | Hepatitis - Viral, virus - Congenital |
 | P35.4 | Disease, diseased - Zika virus - Congenital |
-| P35.8 | Disease, diseased - Infectious, infective - Congenital - Viral - Specified type NEC |
+| P35.8 | Disease, diseased - Infectious, infective - Congenital - Viral - Specified ty... |
 | P35.9 | Disease, diseased - Infectious, infective - Congenital - Viral |
-| P36.0 | Infection, infected, infective - Streptococcal NEC - Congenital - Sepsis - Group B |
+| P36.0 | Infection, infected, infective - Streptococcal NEC - Congenital - Sepsis - Gr... |
 | P36.10 | Infection, infected, infective - Streptococcal NEC - Congenital - Sepsis |
-| P36.19 | Infection, infected, infective - Streptococcal NEC - Congenital - Sepsis - Specified NEC |
+| P36.19 | Infection, infected, infective - Streptococcal NEC - Congenital - Sepsis - Sp... |
 | P36.2 | Newborn - Sepsis - Due to - Staphylococcus - Aureus |
 | P36.30 | Newborn - Sepsis - Due to - Staphylococcus |
 | P36.39 | Newborn - Sepsis - Due to - Staphylococcus - Specified NEC |
@@ -12904,7 +12922,7 @@ HTAN Biospecimen Data Model Schema
 | P50.1 | Newborn - Affected by - Intrauterine - Due to - Ruptured cord blood |
 | P50.2 | Newborn - Affected by - Intrauterine - Due to - Placenta |
 | P50.3 | Newborn - Affected by - Intrauterine - Due to - Hemorrhage into - Co-twin |
-| P50.4 | Newborn - Affected by - Intrauterine - Due to - Hemorrhage into - Maternal circulation |
+| P50.4 | Newborn - Affected by - Intrauterine - Due to - Hemorrhage into - Maternal ci... |
 | P50.5 | Newborn - Affected by - Intrauterine - Due to - Cut end of co-twin cord |
 | P50.8 | Newborn - Affected by - Intrauterine - Specified NEC |
 | P50.9 | Newborn - Affected by - Intrauterine |
@@ -12943,11 +12961,11 @@ HTAN Biospecimen Data Model Schema
 | P57.9 | Encephalopathia hyperbilirubinemica, newborn |
 | P58.0 | Jaundice - Newborn - Due to or associated with - Bruising |
 | P58.1 | Jaundice - Newborn - Due to or associated with - Bleeding |
-| P58.2 | Jaundice - Newborn - Due to or associated with - Excessive hemolysis - Due to - Infection |
-| P58.3 | Jaundice - Newborn - Due to or associated with - Excessive hemolysis - Due to - Polycythemia |
-| P58.41 | Jaundice - Newborn - Due to or associated with - Drugs or toxins - Transmitted from mother |
-| P58.42 | Jaundice - Newborn - Due to or associated with - Drugs or toxins - Given to newborn |
-| P58.5 | Jaundice - Newborn - Due to or associated with - Excessive hemolysis - Due to - Swallowed maternal blood |
+| P58.2 | Jaundice - Newborn - Due to or associated with - Excessive hemolysis - Due to... |
+| P58.3 | Jaundice - Newborn - Due to or associated with - Excessive hemolysis - Due to... |
+| P58.41 | Jaundice - Newborn - Due to or associated with - Drugs or toxins - Transmitte... |
+| P58.42 | Jaundice - Newborn - Due to or associated with - Drugs or toxins - Given to n... |
+| P58.5 | Jaundice - Newborn - Due to or associated with - Excessive hemolysis - Due to... |
 | P58.8 | Hemolysis - Neonatal - Specified NEC |
 | P58.9 | Hemolysis - Neonatal |
 | P59.0 | Jaundice - Due to or associated with - Delayed conjugation - Associated with |
@@ -12972,14 +12990,14 @@ HTAN Biospecimen Data Model Schema
 | P70.2 | Diabetes, diabetic - Neonatal |
 | P70.3 | Hypoglycemia - Neonatal - Iatrogenic |
 | P70.4 | Hypoglycemia - Neonatal |
-| P70.8 | Disturbance - Metabolism - Neonatal, transitory - Carbohydrate metabolism - Specified type NEC |
+| P70.8 | Disturbance - Metabolism - Neonatal, transitory - Carbohydrate metabolism - S... |
 | P70.9 | Disturbance - Metabolism - Neonatal, transitory - Carbohydrate metabolism |
 | P71.0 | Hypocalcemia - Neonatal - Due to cow's milk |
 | P71.1 | Hypocalcemia - Neonatal |
 | P71.2 | Hypomagnesemia - Neonatal |
 | P71.3 | Tetany - Neonatal |
 | P71.4 | Hypoparathyroidism - Neonatal, transitory |
-| P71.8 | Disturbance - Metabolism - Neonatal, transitory - Calcium and magnesium - Specified type NEC |
+| P71.8 | Disturbance - Metabolism - Neonatal, transitory - Calcium and magnesium - Spe... |
 | P71.9 | Disturbance - Metabolism - Neonatal, transitory - Calcium and magnesium |
 | P72.0 | Goiter - Congenital - Transitory, with normal functioning |
 | P72.1 | Hyperthyroidism - Neonatal, transitory |
@@ -12990,8 +13008,8 @@ HTAN Biospecimen Data Model Schema
 | P74.1 | Dehydration - Newborn |
 | P74.21 | Disturbance - Electrolyte - Newborn, transitory - Sodium balance - Hypernatremia |
 | P74.22 | Disturbance - Electrolyte - Newborn, transitory - Sodium balance - Hyponatremia |
-| P74.31 | Disturbance - Electrolyte - Newborn, transitory - Potassium balance - Hyperkalemia |
-| P74.32 | Disturbance - Electrolyte - Newborn, transitory - Potassium balance - Hypokalemia |
+| P74.31 | Disturbance - Electrolyte - Newborn, transitory - Potassium balance - Hyperka... |
+| P74.32 | Disturbance - Electrolyte - Newborn, transitory - Potassium balance - Hypokal... |
 | P74.41 | Alkalosis - Metabolic - Of newborn |
 | P74.421 | Acidosis - Metabolic NEC - Hyperchloremic, of newborn |
 | P74.422 | Disturbance - Electrolyte - Newborn, transitory - Hypochloremia |
@@ -13002,7 +13020,7 @@ HTAN Biospecimen Data Model Schema
 | P74.9 | Disturbance - Metabolism - Neonatal, transitory |
 | P76.0 | Delay, delayed - Passage of meconium |
 | P76.1 | Ileus - Newborn - Transitory |
-| P76.2 | Obstruction, obstructed, obstructive - Intestine - Newborn - Due to - Inspissated milk |
+| P76.2 | Obstruction, obstructed, obstructive - Intestine - Newborn - Due to - Inspiss... |
 | P76.8 | Fecalith - Congenital |
 | P76.9 | Obstruction, obstructed, obstructive - Intestine - Newborn |
 | P77.1 | Enterocolitis - Necrotizing - In newborn - Stage 1 |
@@ -13124,9 +13142,9 @@ HTAN Biospecimen Data Model Schema
 | Q07.00 | Arnold-Chiari disease, obstruction or syndrome |
 | Q07.01 | Arnold-Chiari disease, obstruction or syndrome - With - Spina bifida |
 | Q07.02 | Arnold-Chiari disease, obstruction or syndrome - With - Hydrocephalus |
-| Q07.03 | Arnold-Chiari disease, obstruction or syndrome - With - Hydrocephalus - With spina bifida |
+| Q07.03 | Arnold-Chiari disease, obstruction or syndrome - With - Hydrocephalus - With ... |
 | Q07.8 | Accessory - Nervous system, part NEC |
-| Q07.9 | Abnormal, abnormality, abnormalities - Development, developmental - Central nervous system |
+| Q07.9 | Abnormal, abnormality, abnormalities - Development, developmental - Central n... |
 | Q10.0 | Anomaly, anomalous - Eye - Ptosis |
 | Q10.1 | Ectropion - Congenital |
 | Q10.2 | Entropion - Congenital |
@@ -13211,7 +13229,7 @@ HTAN Biospecimen Data Model Schema
 | Q21.21 | Canal - Atrioventricular - Incomplete |
 | Q21.22 | Canal - Atrioventricular - Intermediate |
 | Q21.23 | Canal - Atrioventricular - Common |
-| Q21.3 | Anomaly, anomalous - Heart - Septum - Interventricular - With pulmonary stenosis or atresia, dextraposition of aorta and hypertrophy of right ventricle |
+| Q21.3 | Anomaly, anomalous - Heart - Septum - Interventricular - With pulmonary steno... |
 | Q21.4 | Absence - Septum - Between aorta and pulmonary artery |
 | Q21.8 | Anomaly, anomalous - Cardiac - Septal closure - Specified NEC |
 | Q21.9 | Anomaly, anomalous - Bulbus cordis |
@@ -13228,7 +13246,7 @@ HTAN Biospecimen Data Model Schema
 | Q23.1 | Anomaly, anomalous - Heart - Valve NEC - Aortic - Insufficiency |
 | Q23.2 | Anomaly, anomalous - Heart - Valve NEC - Mitral - Stenosis |
 | Q23.3 | Anomaly, anomalous - Heart - Valve NEC - Mitral - Insufficiency |
-| Q23.4 | Atresia, atretic - Aortic - Congenital with hypoplasia of ascending aorta and defective development of left ventricle |
+| Q23.4 | Atresia, atretic - Aortic - Congenital with hypoplasia of ascending aorta and... |
 | Q23.81 | Anomaly, anomalous - Heart - Valve NEC - Aortic - Bicuspid valve |
 | Q23.82 | Anomaly, anomalous - Mitral - Cleft |
 | Q23.88 | Anomaly, anomalous - Mitral - Specified NEC |
@@ -13501,9 +13519,9 @@ HTAN Biospecimen Data Model Schema
 | Q61.00 | Cyst - Congenital NEC - Kidney |
 | Q61.01 | Cyst - Congenital NEC - Kidney - Solitary |
 | Q61.02 | Cyst - Congenital NEC - Kidney - More than one |
-| Q61.11 | Cyst - Congenital NEC - Kidney - More than one - Specified as polycystic - Infantile type NEC - Collecting duct dilation |
-| Q61.19 | Cyst - Congenital NEC - Kidney - More than one - Specified as polycystic - Infantile type NEC |
-| Q61.2 | Cyst - Congenital NEC - Kidney - More than one - Specified as polycystic - Adult type |
+| Q61.11 | Cyst - Congenital NEC - Kidney - More than one - Specified as polycystic - In... |
+| Q61.19 | Cyst - Congenital NEC - Kidney - More than one - Specified as polycystic - In... |
+| Q61.2 | Cyst - Congenital NEC - Kidney - More than one - Specified as polycystic - Ad... |
 | Q61.3 | Cyst - Congenital NEC - Kidney - More than one - Specified as polycystic |
 | Q61.4 | Disease, diseased - Kidney - Multicystic |
 | Q61.5 | Cystic - Kidney - Medullary |
@@ -13816,11 +13834,11 @@ HTAN Biospecimen Data Model Schema
 | Q92.61 | Extra - Marker chromosomes |
 | Q92.62 | Extra - Marker chromosomes - In abnormal individual |
 | Q92.7 | Polyploidy |
-| Q92.8 | Accessory - Chromosome - With complex rearrangements NEC - Seen only at prometaphase |
+| Q92.8 | Accessory - Chromosome - With complex rearrangements NEC - Seen only at prome... |
 | Q92.9 | Accessory - Chromosome |
 | Q93.0 | Monosomy - Whole chromosome - Meiotic nondisjunction |
 | Q93.1 | Monosomy - Whole chromosome - Mitotic nondisjunction |
-| Q93.2 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Dicentric replacement |
+| Q93.2 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Dicentric re... |
 | Q93.3 | Deletion - Chromosome - Short arm - 4 |
 | Q93.4 | Cat - Cry syndrome |
 | Q93.51 | Angelman syndrome |
@@ -13835,7 +13853,7 @@ HTAN Biospecimen Data Model Schema
 | Q95.0 | Translocation - Balanced autosomal - In normal individual |
 | Q95.1 | Inversion - Chromosome in normal individual |
 | Q95.2 | Rearrangement - Chromosomal - Balanced - Abnormal individual |
-| Q95.3 | Rearrangement - Chromosomal - Balanced - Abnormal individual - Sex/non-sex chromosomes |
+| Q95.3 | Rearrangement - Chromosomal - Balanced - Abnormal individual - Sex/non-sex ch... |
 | Q95.5 | Abnormal, abnormality, abnormalities - Autosomes - Fragile site |
 | Q95.8 | Rearrangement - Chromosomal - Balanced - Specified NEC |
 | Q95.9 | Rearrangement - Chromosomal - Balanced |
@@ -13847,20 +13865,20 @@ HTAN Biospecimen Data Model Schema
 | Q96.8 | Turner's - Syndrome - Specified NEC |
 | Q96.9 | Anomaly, anomalous - Chromosomes, chromosomal - Sex - Turner's |
 | Q97.0 | Karyotype - 47,XXX |
-| Q97.1 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - With more than three X chromosomes, female |
+| Q97.1 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - With more th... |
 | Q97.2 | Mosaicism, mosaic - Sex chromosome - Lines with various numbers of X chromosomes |
 | Q97.3 | Karyotype - 46,XY - Female |
-| Q97.8 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Female phenotype - Specified NEC |
-| Q97.9 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Female phenotype |
+| Q97.8 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Female... |
+| Q97.9 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Female... |
 | Q98.0 | Karyotype - 47,XXY |
 | Q98.1 | Klinefelter's syndrome - Male with more than two X chromosomes |
 | Q98.3 | Karyotype - 46,XX |
 | Q98.4 | Anomaly, anomalous - Chromosomes, chromosomal - Sex - Klinefelter's |
 | Q98.5 | Karyotype - 47,XYY |
-| Q98.6 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Structural male |
+| Q98.6 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Struct... |
 | Q98.7 | Mosaicism, mosaic - Sex chromosome - Male |
-| Q98.8 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Male phenotype - Specified NEC |
-| Q98.9 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Male phenotype |
+| Q98.8 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Male p... |
+| Q98.9 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Sex - Male p... |
 | Q99.0 | Chimera 46,XX/46,XY |
 | Q99.1 | Anomaly, anomalous - Chromosomes, chromosomal - Sex - Gonadal dysgenesis |
 | Q99.2 | Fragile, fragility - X chromosome |
@@ -13877,13 +13895,13 @@ HTAN Biospecimen Data Model Schema
 | QA0.011 | Disorder - Neurodevelopmental - GRIN1-related |
 | QA0.012 | Disorder - Neurodevelopmental - Other - Receptor gene related |
 | QA0.0131 | Deficiency, deficient - GABA transporter 1 |
-| QA0.0139 | Disorder - Neurodevelopmental - Other - Transporter or solute carrier gene related |
+| QA0.0139 | Disorder - Neurodevelopmental - Other - Transporter or solute carrier gene re... |
 | QA0.0141 | Disorder - Neurodevelopmental - STXBP1-related |
 | QA0.0142 | Disorder - Neurodevelopmental - DLG4-related synaptopathy |
 | QA0.0149 | Disorder - Neurodevelopmental - Other - Synapse related gene |
 | QA0.0151 | Disorder - FOXG1-related |
-| QA0.0159 | Disorder - Neurodevelopmental - Other - Related to other genes associated with transcription and gene expression |
-| QA0.8 | Disorder - Neurodevelopmental - Specified NEC - Related to pathogenic variants in specific genes NEC |
+| QA0.0159 | Disorder - Neurodevelopmental - Other - Related to other genes associated wit... |
+| QA0.8 | Disorder - Neurodevelopmental - Specified NEC - Related to pathogenic variant... |
 | R00.0 | Fast pulse |
 | R00.1 | Brachycardia |
 | R00.2 | Abnormal, abnormality, abnormalities - Pulsations in neck |
@@ -14065,7 +14083,7 @@ HTAN Biospecimen Data Model Schema
 | R25.1 | Abnormal, abnormality, abnormalities - Movement - Involuntary - Tremor |
 | R25.2 | Abnormal, abnormality, abnormalities - Movement - Involuntary - Spasm |
 | R25.3 | Abnormal, abnormality, abnormalities - Movement - Involuntary - Fasciculation |
-| R25.8 | Abnormal, abnormality, abnormalities - Movement - Involuntary - Specified type NEC |
+| R25.8 | Abnormal, abnormality, abnormalities - Movement - Involuntary - Specified typ... |
 | R25.9 | Abnormal, abnormality, abnormalities - Movement - Involuntary |
 | R26.0 | Ataxia, ataxy, ataxic - Gait |
 | R26.1 | Gait abnormality - Paralytic |
@@ -14123,7 +14141,7 @@ HTAN Biospecimen Data Model Schema
 | R39.192 | Difficult, difficulty - Micturition - Position dependent |
 | R39.198 | Abnormal, abnormality, abnormalities - Urination NEC |
 | R39.2 | Retention - Nitrogen, extrarenal |
-| R39.81 | Incontinence - Urine - Due to cognitive impairment, or severe physical disability or immobility |
+| R39.81 | Incontinence - Urine - Due to cognitive impairment, or severe physical disabi... |
 | R39.82 | Pain - Bladder - Chronic |
 | R39.83 | Non-palpable testicle - Unilateral |
 | R39.84 | Non-palpable testicle - Bilateral |
@@ -14146,7 +14164,7 @@ HTAN Biospecimen Data Model Schema
 | R40.224 | Coma - With - Verbal response - Confused conversation |
 | R40.225 | Coma - With - Verbal response - Cooing or babbling or crying appropriately |
 | R40.231 | Coma - With - Motor response |
-| R40.232 | Coma - With - Motor response - Abnormal extensor posturing to pain or noxious stimuli |
+| R40.232 | Coma - With - Motor response - Abnormal extensor posturing to pain or noxious... |
 | R40.233 | Coma - With - Motor response - Abnormal |
 | R40.234 | Coma - With - Motor response - Flexion withdrawal |
 | R40.235 | Coma - With - Motor response - Localizes pain |
@@ -14154,7 +14172,7 @@ HTAN Biospecimen Data Model Schema
 | R40.241 | Glasgow coma scale - Total score - 13-15 |
 | R40.242 | Glasgow coma scale - Total score - 9-12 |
 | R40.243 | Glasgow coma scale - Total score - 3-8 |
-| R40.244 | Coma - Specified NEC, without documented Glasgow coma scale score, or with partial Glasgow coma scale score reported |
+| R40.244 | Coma - Specified NEC, without documented Glasgow coma scale score, or with pa... |
 | R40.2A | Coma - Nontraumatic, due to underlying condition |
 | R40.3 | Coma - Persistent vegetative state |
 | R40.4 | Alteration - Awareness - Transient |
@@ -14317,9 +14335,9 @@ HTAN Biospecimen Data Model Schema
 | R75 | HIV - Laboratory evidence |
 | R76.0 | Antibody - Anticardiolipin |
 | R76.11 | Abnormal, abnormality, abnormalities - Mantoux test |
-| R76.12 | Reaction - Nonspecific - To - Cell mediated immunity measurement of gamma interferon antigen response without active tuberculosis |
-| R76.81 | Abnormal, abnormality, abnormalities - Anti-cyclic citrullinated protein antibody and rheumatoid factor |
-| R76.89 | Abnormal, abnormality, abnormalities - Immunological findings - In serum - Specified NEC |
+| R76.12 | Reaction - Nonspecific - To - Cell mediated immunity measurement of gamma int... |
+| R76.81 | Abnormal, abnormality, abnormalities - Anti-cyclic citrullinated protein anti... |
+| R76.89 | Abnormal, abnormality, abnormalities - Immunological findings - In serum - Sp... |
 | R76.9 | Abnormal, abnormality, abnormalities - Immunological findings - In serum |
 | R77.0 | Abnormal, abnormality, abnormalities - Albumin |
 | R77.1 | Abnormal, abnormality, abnormalities - Globulin |
@@ -14330,8 +14348,8 @@ HTAN Biospecimen Data Model Schema
 | R78.1 | Findings, abnormal, inconclusive, without diagnosis - In blood - Opiate drug |
 | R78.2 | Findings, abnormal, inconclusive, without diagnosis - In blood - Cocaine |
 | R78.3 | Findings, abnormal, inconclusive, without diagnosis - In blood - Hallucinogen |
-| R78.4 | Findings, abnormal, inconclusive, without diagnosis - In blood - Addictive drug NEC |
-| R78.5 | Findings, abnormal, inconclusive, without diagnosis - In blood - Psychotropic drug |
+| R78.4 | Findings, abnormal, inconclusive, without diagnosis - In blood - Addictive dr... |
+| R78.5 | Findings, abnormal, inconclusive, without diagnosis - In blood - Psychotropic... |
 | R78.6 | Findings, abnormal, inconclusive, without diagnosis - In blood - Steroid agent |
 | R78.71 | Findings, abnormal, inconclusive, without diagnosis - In blood - Lead |
 | R78.79 | Findings, abnormal, inconclusive, without diagnosis - In blood - Heavy metals |
@@ -14364,7 +14382,7 @@ HTAN Biospecimen Data Model Schema
 | R82.81 | Pyuria |
 | R82.89 | Abnormal, abnormality, abnormalities - Urine - Cytological examination |
 | R82.90 | Abnormal, abnormality, abnormalities - Urine |
-| R82.91 | Abnormal, abnormality, abnormalities - Urine - Specified substance NEC - Chromoabnormality NEC |
+| R82.91 | Abnormal, abnormality, abnormalities - Urine - Specified substance NEC - Chro... |
 | R82.991 | Hypocitraturia |
 | R82.992 | Disorder - Glycine metabolism - Hyperoxaluria |
 | R82.993 | Hyperuricosuria |
@@ -14379,99 +14397,99 @@ HTAN Biospecimen Data Model Schema
 | R83.6 | Abnormal, abnormality, abnormalities - Cerebrospinal fluid - Cytology |
 | R83.8 | Abnormal, abnormality, abnormalities - Cerebrospinal fluid - Specified type NEC |
 | R83.9 | Abnormal, abnormality, abnormalities - Cerebrospinal fluid |
-| R84.0 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Enzyme level |
+| R84.0 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Enzyme... |
 | R84.1 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Hormones |
-| R84.2 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Drug level |
-| R84.3 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Nonmedicinal level |
-| R84.4 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Immunology |
-| R84.5 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Microbiology |
+| R84.2 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Drug l... |
+| R84.3 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Nonmed... |
+| R84.4 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Immuno... |
+| R84.5 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Microb... |
 | R84.6 | Abnormal, abnormality, abnormalities - Papanicolaou - Bronchial washings |
 | R84.7 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs - Histology |
-| R84.8 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Analysis result - Bronchial washings |
+| R84.8 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Analysis res... |
 | R84.9 | Abnormal, abnormality, abnormalities - Specimen - Respiratory organs |
-| R85.0 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Enzyme level |
+| R85.0 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Enzyme l... |
 | R85.1 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Hormones |
 | R85.2 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Drug level |
-| R85.3 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Nonmedicinal level |
+| R85.3 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Nonmedic... |
 | R85.4 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Immunology |
-| R85.5 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Microbiology |
-| R85.610 | Abnormal, abnormality, abnormalities - Cytology - Anus - Atypical squamous cells of undetermined significance |
-| R85.611 | Abnormal, abnormality, abnormalities - Cytology - Anus - Atypical squamous cells cannot exclude high grade squamous intraepithelial lesion |
-| R85.612 | Abnormal, abnormality, abnormalities - Cytology - Anus - Low grade squamous intraepithelial lesion |
-| R85.613 | Abnormal, abnormality, abnormalities - Cytology - Anus - High grade squamous intraepithelial lesion |
-| R85.614 | Abnormal, abnormality, abnormalities - Cytology - Anus - Cytologic evidence of malignancy |
+| R85.5 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Microbio... |
+| R85.610 | Abnormal, abnormality, abnormalities - Cytology - Anus - Atypical squamous ce... |
+| R85.611 | Abnormal, abnormality, abnormalities - Cytology - Anus - Atypical squamous ce... |
+| R85.612 | Abnormal, abnormality, abnormalities - Cytology - Anus - Low grade squamous i... |
+| R85.613 | Abnormal, abnormality, abnormalities - Cytology - Anus - High grade squamous ... |
+| R85.614 | Abnormal, abnormality, abnormalities - Cytology - Anus - Cytologic evidence o... |
 | R85.615 | Abnormal, abnormality, abnormalities - Cytology - Anus - Inadequate smear |
-| R85.616 | Abnormal, abnormality, abnormalities - Cytology - Anus - Satisfactory anal smear but lacking transformation zone |
+| R85.616 | Abnormal, abnormality, abnormalities - Cytology - Anus - Satisfactory anal sm... |
 | R85.618 | Abnormal, abnormality, abnormalities - Cytology - Anus - Specified NEC |
 | R85.619 | Abnormal, abnormality, abnormalities - Cytology - Anus |
 | R85.69 | Abnormal, abnormality, abnormalities - Papanicolaou - Peritoneal fluid |
 | R85.7 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs - Histology |
-| R85.81 | Abnormal, abnormality, abnormalities - Cytology - Anus - Human papillomavirus - High risk positive |
-| R85.82 | Abnormal, abnormality, abnormalities - Cytology - Anus - Human papillomavirus - Low risk positive |
-| R85.89 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Analysis result - Peritoneal fluid |
+| R85.81 | Abnormal, abnormality, abnormalities - Cytology - Anus - Human papillomavirus... |
+| R85.82 | Abnormal, abnormality, abnormalities - Cytology - Anus - Human papillomavirus... |
+| R85.89 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Analysis res... |
 | R85.9 | Abnormal, abnormality, abnormalities - Specimen - Digestive organs |
-| R86.0 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Enzyme level |
+| R86.0 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Enzym... |
 | R86.1 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Hormones |
-| R86.2 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Drug level |
-| R86.3 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Nonmedicinal level |
-| R86.4 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Immunology |
-| R86.5 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Microbiology |
+| R86.2 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Drug ... |
+| R86.3 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Nonme... |
+| R86.4 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Immun... |
+| R86.5 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Micro... |
 | R86.6 | Abnormal, abnormality, abnormalities - Papanicolaou - Prostatic secretions |
-| R86.7 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Histological |
-| R86.8 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Analysis result - Prostatic secretions |
+| R86.7 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs - Histo... |
+| R86.8 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Analysis res... |
 | R86.9 | Abnormal, abnormality, abnormalities - Specimen - Male genital organs |
-| R87.0 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Enzyme level |
-| R87.1 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Hormones |
-| R87.2 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Drug level |
-| R87.3 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Nonmedicinal level |
-| R87.4 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Immunology |
-| R87.5 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Microbiology |
-| R87.610 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Atypical squamous cells of undetermined significance |
-| R87.611 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Atypical squamous cells cannot exclude high grade squamous intraepithelial lesion |
-| R87.612 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Low grade squamous intraepithelial lesion |
-| R87.613 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - High grade squamous intraepithelial lesion |
-| R87.614 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Cytologic evidence of malignancy |
+| R87.0 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Enz... |
+| R87.1 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Hor... |
+| R87.2 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Dru... |
+| R87.3 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Non... |
+| R87.4 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Imm... |
+| R87.5 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Mic... |
+| R87.610 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Atypical squam... |
+| R87.611 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Atypical squam... |
+| R87.612 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Low grade squa... |
+| R87.613 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - High grade squ... |
+| R87.614 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Cytologic evid... |
 | R87.615 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Inadequate smear |
-| R87.616 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Satisfactory cervical smear but lacking transformation zone |
-| R87.618 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Non-atypical endometrial cells |
+| R87.616 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Satisfactory c... |
+| R87.618 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix - Non-atypical e... |
 | R87.619 | Abnormal, abnormality, abnormalities - Papanicolaou - Cervix |
-| R87.620 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Atypical squamous cells of undetermined significance |
-| R87.621 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Atypical squamous cells cannot exclude high grade squamous intraepithelial lesion |
-| R87.622 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Low grade squamous intraepithelial lesion |
-| R87.623 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - High grade squamous intraepithelial lesion |
-| R87.624 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Cytologic evidence of malignancy |
+| R87.620 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Atypical squam... |
+| R87.621 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Atypical squam... |
+| R87.622 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Low grade squa... |
+| R87.623 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - High grade squ... |
+| R87.624 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Cytologic evid... |
 | R87.625 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Inadequate smear |
 | R87.628 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina - Specified NEC |
 | R87.629 | Abnormal, abnormality, abnormalities - Papanicolaou - Vagina |
 | R87.69 | Abnormal, abnormality, abnormalities - Papanicolaou - Vulva |
-| R87.7 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Histological |
-| R87.810 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Cytology - Cervix - Human papillomavirus - High risk positive |
-| R87.811 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Cytology - Vagina - Human papillomavirus - High risk positive |
-| R87.820 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Cytology - Cervix - Human papillomavirus - Low risk positive |
-| R87.821 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Cytology - Vagina - Human papillomavirus - Low risk positive |
-| R87.89 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Analysis result - Cervix uteri NEC |
+| R87.7 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - His... |
+| R87.810 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Cyt... |
+| R87.811 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Cyt... |
+| R87.820 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Cyt... |
+| R87.821 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs - Cyt... |
+| R87.89 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Analysis res... |
 | R87.9 | Abnormal, abnormality, abnormalities - Specimen - Female genital organs |
 | R88.0 | Findings, abnormal, inconclusive, without diagnosis - Cloudy - Dialysis effluent |
-| R88.8 | Findings, abnormal, inconclusive, without diagnosis - Body fluid or substance, specified NEC |
-| R89.0 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and tissue NOS - Enzyme level |
-| R89.1 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and tissue NOS - Hormones |
-| R89.2 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and tissue NOS - Drug level |
-| R89.3 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and tissue NOS - Nonmedicinal level |
+| R88.8 | Findings, abnormal, inconclusive, without diagnosis - Body fluid or substance... |
+| R89.0 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and... |
+| R89.1 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and... |
+| R89.2 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and... |
+| R89.3 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and... |
 | R89.4 | Abnormal, abnormality, abnormalities - Immunological findings |
-| R89.5 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and tissue NOS - Microbiology |
+| R89.5 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and... |
 | R89.6 | Abnormal, abnormality, abnormalities - Papanicolaou - Nipple discharge |
 | R89.7 | Abnormal, abnormality, abnormalities - Histology NEC |
 | R89.8 | Abnormal, abnormality, abnormalities - Chromosome, chromosomal - Analysis result |
-| R89.9 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and tissue NOS |
+| R89.9 | Abnormal, abnormality, abnormalities - Specimen - Specified organ, system and... |
 | R90.0 | Lesion - Intracranial, space-occupying |
 | R90.81 | Abnormal, abnormality, abnormalities - Echoencephalogram |
 | R90.82 | Disease, diseased - White matter |
-| R90.89 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Central nervous system NEC |
+| R90.89 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Central nervous s... |
 | R91.1 | Lesion - Coin, lung |
 | R91.8 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Lung |
 | R92.0 | Abnormal, abnormality, abnormalities - Mammogram NEC - Microcalcification |
 | R92.1 | Abnormal, abnormality, abnormalities - Mammogram NEC - Calcification |
-| R92.2 | Findings, abnormal, inconclusive, without diagnosis - Mammogram NEC - Inconclusive result |
+| R92.2 | Findings, abnormal, inconclusive, without diagnosis - Mammogram NEC - Inconcl... |
 | R92.3- | Breast - Dense |
 | R92.30 | Dense breasts |
 | R92.31- | Breast - Imaging Reporting and Data System |
@@ -14485,13 +14503,13 @@ HTAN Biospecimen Data Model Schema
 | R93.3 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Digestive tract NEC |
 | R93.41 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Bladder |
 | R93.42- | Abnormal, abnormality, abnormalities - Diagnostic imaging - Kidney |
-| R93.49 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Urinary organs specified NEC |
-| R93.5 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Abdomen, abdominal region NEC |
+| R93.49 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Urinary organs sp... |
+| R93.5 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Abdomen, abdomina... |
 | R93.6 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Limbs |
-| R93.7 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Musculoskeletal system NEC |
+| R93.7 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Musculoskeletal s... |
 | R93.81- | Abnormal, abnormality, abnormalities - Diagnostic imaging - Testis |
 | R93.89 | Abnormal, abnormality, abnormalities - Diagnostic imaging - Genitourinary organs |
-| R93.9 | Findings, abnormal, inconclusive, without diagnosis - Radiologic - Inconclusive due to excess body fat of patient |
+| R93.9 | Findings, abnormal, inconclusive, without diagnosis - Radiologic - Inconclusi... |
 | R94.01 | Abnormal, abnormality, abnormalities - Electroencephalogram [EEG] |
 | R94.02 | Abnormal, abnormality, abnormalities - Brain scan |
 | R94.09 | Abnormal, abnormality, abnormalities - Function studies - Brain |
@@ -14665,8 +14683,8 @@ HTAN Biospecimen Data Model Schema
 | S02.11D | Fracture, traumatic - Skull - Base - Occiput - Condyle - Type II - Left side |
 | S02.11E | Fracture, traumatic - Skull - Base - Occiput - Condyle - Type III - Right side |
 | S02.11F | Fracture, traumatic - Skull - Base - Occiput - Condyle - Type III - Left side |
-| S02.11G | Fracture, traumatic - Skull - Base - Occiput - Condyle - Specified NEC - Right side |
-| S02.11H | Fracture, traumatic - Skull - Base - Occiput - Condyle - Specified NEC - Left side |
+| S02.11G | Fracture, traumatic - Skull - Base - Occiput - Condyle - Specified NEC - Righ... |
+| S02.11H | Fracture, traumatic - Skull - Base - Occiput - Condyle - Specified NEC - Left... |
 | S02.12- | Fracture, traumatic - Orbit, orbital - Roof |
 | S02.19 | Fracture, traumatic - Fossa |
 | S02.2 | Broken - Nose |
@@ -14856,70 +14874,70 @@ HTAN Biospecimen Data Model Schema
 | S12.01 | Fracture, traumatic - Neck - Cervical vertebra - First - Burst |
 | S12.02 | Fracture, traumatic - Neck - Cervical vertebra - First - Burst - Unstable |
 | S12.030 | Fracture, traumatic - Neck - Cervical vertebra - First - Posterior arch |
-| S12.031 | Fracture, traumatic - Neck - Cervical vertebra - First - Posterior arch - Nondisplaced |
+| S12.031 | Fracture, traumatic - Neck - Cervical vertebra - First - Posterior arch - Non... |
 | S12.040 | Fracture, traumatic - Neck - Cervical vertebra - First - Lateral mass |
-| S12.041 | Fracture, traumatic - Neck - Cervical vertebra - First - Lateral mass - Nondisplaced |
+| S12.041 | Fracture, traumatic - Neck - Cervical vertebra - First - Lateral mass - Nondi... |
 | S12.090 | Fracture, traumatic - Neck - Cervical vertebra - First - Specified type NEC |
-| S12.091 | Fracture, traumatic - Neck - Cervical vertebra - First - Specified type NEC - Nondisplaced |
+| S12.091 | Fracture, traumatic - Neck - Cervical vertebra - First - Specified type NEC -... |
 | S12.100 | Fracture, traumatic - Neck - Cervical vertebra - Second |
 | S12.101 | Fracture, traumatic - Neck - Cervical vertebra - Second - Nondisplaced |
 | S12.110 | Fracture, traumatic - Neck - Cervical vertebra - Second - Dens |
 | S12.111 | Fracture, traumatic - Neck - Cervical vertebra - Second - Dens - Posterior |
 | S12.112 | Fracture, traumatic - Neck - Cervical vertebra - Second - Dens - Nondisplaced |
-| S12.120 | Fracture, traumatic - Neck - Cervical vertebra - Second - Dens - Specified type NEC |
-| S12.121 | Fracture, traumatic - Neck - Cervical vertebra - Second - Dens - Specified type NEC - Nondisplaced |
+| S12.120 | Fracture, traumatic - Neck - Cervical vertebra - Second - Dens - Specified ty... |
+| S12.121 | Fracture, traumatic - Neck - Cervical vertebra - Second - Dens - Specified ty... |
 | S12.130 | Spondylolisthesis - Traumatic - Acute - Second cervical |
 | S12.131 | Spondylolisthesis - Traumatic - Acute - Second cervical - Nondisplaced |
 | S12.14 | Spondylolisthesis - Traumatic - Acute - Second cervical - Type III |
 | S12.150 | Spondylolisthesis - Traumatic - Acute - Second cervical - Specified type NEC |
-| S12.151 | Spondylolisthesis - Traumatic - Acute - Second cervical - Specified type NEC - Nondisplaced |
+| S12.151 | Spondylolisthesis - Traumatic - Acute - Second cervical - Specified type NEC ... |
 | S12.190 | Fracture, traumatic - Neck - Cervical vertebra - Second - Specified type NEC |
-| S12.191 | Fracture, traumatic - Neck - Cervical vertebra - Second - Specified type NEC - Nondisplaced |
+| S12.191 | Fracture, traumatic - Neck - Cervical vertebra - Second - Specified type NEC ... |
 | S12.200 | Fracture, traumatic - Neck - Cervical vertebra - Third |
 | S12.201 | Fracture, traumatic - Neck - Cervical vertebra - Third - Nondisplaced |
 | S12.230 | Spondylolisthesis - Traumatic - Acute - Third cervical |
 | S12.231 | Spondylolisthesis - Traumatic - Acute - Third cervical - Nondisplaced |
 | S12.24 | Spondylolisthesis - Traumatic - Acute - Third cervical - Type III |
 | S12.250 | Spondylolisthesis - Traumatic - Acute - Third cervical - Specified type NEC |
-| S12.251 | Spondylolisthesis - Traumatic - Acute - Third cervical - Specified type NEC - Nondisplaced |
+| S12.251 | Spondylolisthesis - Traumatic - Acute - Third cervical - Specified type NEC -... |
 | S12.290 | Fracture, traumatic - Neck - Cervical vertebra - Third - Specified type NEC |
-| S12.291 | Fracture, traumatic - Neck - Cervical vertebra - Third - Specified type NEC - Nondisplaced |
+| S12.291 | Fracture, traumatic - Neck - Cervical vertebra - Third - Specified type NEC -... |
 | S12.300 | Fracture, traumatic - Neck - Cervical vertebra - Fourth |
 | S12.301 | Fracture, traumatic - Neck - Cervical vertebra - Fourth - Nondisplaced |
 | S12.330 | Spondylolisthesis - Traumatic - Acute - Fourth cervical |
 | S12.331 | Spondylolisthesis - Traumatic - Acute - Fourth cervical - Nondisplaced |
 | S12.34 | Spondylolisthesis - Traumatic - Acute - Fourth cervical - Type III |
 | S12.350 | Spondylolisthesis - Traumatic - Acute - Fourth cervical - Specified type NEC |
-| S12.351 | Spondylolisthesis - Traumatic - Acute - Fourth cervical - Specified type NEC - Nondisplaced |
+| S12.351 | Spondylolisthesis - Traumatic - Acute - Fourth cervical - Specified type NEC ... |
 | S12.390 | Fracture, traumatic - Neck - Cervical vertebra - Fourth - Specified type NEC |
-| S12.391 | Fracture, traumatic - Neck - Cervical vertebra - Fourth - Specified type NEC - Nondisplaced |
+| S12.391 | Fracture, traumatic - Neck - Cervical vertebra - Fourth - Specified type NEC ... |
 | S12.400 | Fracture, traumatic - Neck - Cervical vertebra - Fifth |
 | S12.401 | Fracture, traumatic - Neck - Cervical vertebra - Fifth - Nondisplaced |
 | S12.430 | Spondylolisthesis - Traumatic - Acute - Fifth cervical |
 | S12.431 | Spondylolisthesis - Traumatic - Acute - Fifth cervical - Nondisplaced |
 | S12.44 | Spondylolisthesis - Traumatic - Acute - Fifth cervical - Type III |
 | S12.450 | Spondylolisthesis - Traumatic - Acute - Fifth cervical - Specified type NEC |
-| S12.451 | Spondylolisthesis - Traumatic - Acute - Fifth cervical - Specified type NEC - Nondisplaced |
+| S12.451 | Spondylolisthesis - Traumatic - Acute - Fifth cervical - Specified type NEC -... |
 | S12.490 | Fracture, traumatic - Neck - Cervical vertebra - Fifth - Specified type NEC |
-| S12.491 | Fracture, traumatic - Neck - Cervical vertebra - Fifth - Specified type NEC - Nondisplaced |
+| S12.491 | Fracture, traumatic - Neck - Cervical vertebra - Fifth - Specified type NEC -... |
 | S12.500 | Fracture, traumatic - Neck - Cervical vertebra - Sixth |
 | S12.501 | Fracture, traumatic - Neck - Cervical vertebra - Sixth - Nondisplaced |
 | S12.530 | Spondylolisthesis - Traumatic - Acute - Sixth cervical |
 | S12.531 | Spondylolisthesis - Traumatic - Acute - Sixth cervical - Nondisplaced |
 | S12.54 | Spondylolisthesis - Traumatic - Acute - Sixth cervical - Type III |
 | S12.550 | Spondylolisthesis - Traumatic - Acute - Sixth cervical - Specified type NEC |
-| S12.551 | Spondylolisthesis - Traumatic - Acute - Sixth cervical - Specified type NEC - Nondisplaced |
+| S12.551 | Spondylolisthesis - Traumatic - Acute - Sixth cervical - Specified type NEC -... |
 | S12.590 | Fracture, traumatic - Neck - Cervical vertebra - Sixth - Specified type NEC |
-| S12.591 | Fracture, traumatic - Neck - Cervical vertebra - Sixth - Specified type NEC - Nondisplaced |
+| S12.591 | Fracture, traumatic - Neck - Cervical vertebra - Sixth - Specified type NEC -... |
 | S12.600 | Fracture, traumatic - Neck - Cervical vertebra - Seventh |
 | S12.601 | Fracture, traumatic - Neck - Cervical vertebra - Seventh - Nondisplaced |
 | S12.630 | Spondylolisthesis - Traumatic - Acute - Seventh cervical |
 | S12.631 | Spondylolisthesis - Traumatic - Acute - Seventh cervical - Nondisplaced |
 | S12.64 | Spondylolisthesis - Traumatic - Acute - Seventh cervical - Type III |
 | S12.650 | Spondylolisthesis - Traumatic - Acute - Seventh cervical - Specified type NEC |
-| S12.651 | Spondylolisthesis - Traumatic - Acute - Seventh cervical - Specified type NEC - Nondisplaced |
+| S12.651 | Spondylolisthesis - Traumatic - Acute - Seventh cervical - Specified type NEC... |
 | S12.690 | Fracture, traumatic - Neck - Cervical vertebra - Seventh - Specified type NEC |
-| S12.691 | Fracture, traumatic - Neck - Cervical vertebra - Seventh - Specified type NEC - Nondisplaced |
+| S12.691 | Fracture, traumatic - Neck - Cervical vertebra - Seventh - Specified type NEC... |
 | S12.8 | Fracture, traumatic - Cricoid cartilage |
 | S12.9 | Fracture, traumatic - Neck |
 | S13.0 | Rupture, ruptured - Traumatic - Intervertebral disc - Cervical |
@@ -15107,13 +15125,13 @@ HTAN Biospecimen Data Model Schema
 | S21.25- | Bite - Thorax, thoracic - Back |
 | S21.30 | Wound, open - Thorax, thoracic - Front - With penetration |
 | S21.31- | Laceration - Thorax, thoracic - Front - With - Penetration into thoracic cavity |
-| S21.32- | Laceration - Thorax, thoracic - With foreign body - Front - With penetration into thoracic cavity |
+| S21.32- | Laceration - Thorax, thoracic - With foreign body - Front - With penetration ... |
 | S21.33 | Puncture - Thorax, thoracic - Front - With - Penetration |
 | S21.34 | Puncture - Thorax, thoracic - Front - With - Foreign body - With penetration |
 | S21.35- | Bite - Thorax, thoracic - Front - With penetration into thoracic cavity |
 | S21.40 | Wound, open - Thorax, thoracic - Back - With penetration |
 | S21.41- | Laceration - Thorax, thoracic - Back - With - Penetration into thoracic cavity |
-| S21.42- | Laceration - Thorax, thoracic - With foreign body - Back - With penetration into thoracic cavity |
+| S21.42- | Laceration - Thorax, thoracic - With foreign body - Back - With penetration i... |
 | S21.43 | Puncture - Thorax, thoracic - Back - With - Penetration |
 | S21.44 | Puncture - Thorax, thoracic - Back - With - Foreign body - With penetration |
 | S21.45- | Bite - Thorax, thoracic - Back - With penetration into thoracic cavity |
@@ -15401,7 +15419,7 @@ HTAN Biospecimen Data Model Schema
 | S30.853 | Foreign body - Superficial, without open wound - Epididymis |
 | S30.854 | Foreign body - Superficial, without open wound - Clitoris |
 | S30.855 | Foreign body - Superficial, without open wound - Genital organs, external - Male |
-| S30.856 | Foreign body - Superficial, without open wound - Genital organs, external - Female |
+| S30.856 | Foreign body - Superficial, without open wound - Genital organs, external - F... |
 | S30.857 | Foreign body - Superficial, without open wound - Anus |
 | S30.85A | Foreign body - Superficial, without open wound - Flank |
 | S30.860 | Bite - Back - Lower - Superficial NEC - Insect |
@@ -15436,11 +15454,11 @@ HTAN Biospecimen Data Model Schema
 | S31.010 | Laceration - Back - Lower |
 | S31.011 | Laceration - Back - Lower - With - Penetration into retroperitoneal space |
 | S31.020 | Laceration - Back - Lower - With - Foreign body |
-| S31.021 | Laceration - Back - Lower - With - Foreign body - With penetration into retroperitoneal space |
+| S31.021 | Laceration - Back - Lower - With - Foreign body - With penetration into retro... |
 | S31.030 | Perforation, perforated - Pelvic - Floor |
-| S31.031 | Perforation, perforated - Pelvic - Floor - With - Penetration into retroperitoneal space |
+| S31.031 | Perforation, perforated - Pelvic - Floor - With - Penetration into retroperit... |
 | S31.040 | Perforation, perforated - Pelvic - Floor - With - Retained foreign body |
-| S31.041 | Perforation, perforated - Pelvic - Floor - With - Retained foreign body - With penetration into retroperitoneal space |
+| S31.041 | Perforation, perforated - Pelvic - Floor - With - Retained foreign body - Wit... |
 | S31.050 | Bite - Back - Lower |
 | S31.051 | Bite - Back - Lower - With penetration into retroperitoneal space |
 | S31.100 | Wound, open - Abdomen, abdominal - Wall - Right - Upper quadrant |
@@ -15463,12 +15481,12 @@ HTAN Biospecimen Data Model Schema
 | S31.117 | Laceration - Flank - Left |
 | S31.119 | Laceration - Abdomen, abdominal - Wall |
 | S31.11A | Laceration - Flank |
-| S31.120 | Laceration - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Foreign body |
-| S31.121 | Laceration - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Foreign body |
+| S31.120 | Laceration - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Fore... |
+| S31.121 | Laceration - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Forei... |
 | S31.122 | Laceration - Abdomen, abdominal - Wall - Epigastric region - With - Foreign body |
-| S31.123 | Laceration - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Foreign body |
-| S31.124 | Laceration - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Foreign body |
-| S31.125 | Laceration - Abdomen, abdominal - Wall - Periumbilic region - With - Foreign body |
+| S31.123 | Laceration - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Fore... |
+| S31.124 | Laceration - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Forei... |
+| S31.125 | Laceration - Abdomen, abdominal - Wall - Periumbilic region - With - Foreign ... |
 | S31.126 | Laceration - Flank - Right - With - Foreign body |
 | S31.127 | Laceration - Flank - Left - With - Foreign body |
 | S31.129 | Laceration - Abdomen, abdominal - Wall - With - Foreign body |
@@ -15483,11 +15501,11 @@ HTAN Biospecimen Data Model Schema
 | S31.137 | Puncture - Flank - Left |
 | S31.139 | Puncture - Abdomen, abdominal - Wall |
 | S31.13A | Puncture - Flank |
-| S31.140 | Puncture - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Foreign body |
-| S31.141 | Puncture - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Foreign body |
+| S31.140 | Puncture - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Foreig... |
+| S31.141 | Puncture - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Foreign... |
 | S31.142 | Puncture - Abdomen, abdominal - Wall - Epigastric region - With - Foreign body |
-| S31.143 | Puncture - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Foreign body |
-| S31.144 | Puncture - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Foreign body |
+| S31.143 | Puncture - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Foreig... |
+| S31.144 | Puncture - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Foreign... |
 | S31.145 | Puncture - Abdomen, abdominal - Wall - Periumbilic region - With - Foreign body |
 | S31.146 | Puncture - Flank - Right - With - Foreign body |
 | S31.147 | Puncture - Flank - Left - With - Foreign body |
@@ -15533,62 +15551,62 @@ HTAN Biospecimen Data Model Schema
 | S31.542 | Puncture - Genital organs, external - Female - With foreign body |
 | S31.551 | Bite - Genital organs, external - Male |
 | S31.552 | Bite - Genital organs, external - Female |
-| S31.600 | Wound, open - Abdomen, abdominal - Wall - Right - Upper quadrant - With penetration into peritoneal cavity |
-| S31.601 | Wound, open - Abdomen, abdominal - Wall - Left - Upper quadrant - With penetration into peritoneal cavity |
-| S31.602 | Wound, open - Abdomen, abdominal - Wall - Epigastric region - With penetration into peritoneal cavity |
-| S31.603 | Wound, open - Abdomen, abdominal - Wall - Right - Lower quadrant - With penetration into peritoneal cavity |
-| S31.604 | Wound, open - Abdomen, abdominal - Wall - Left - Lower quadrant - With penetration into peritoneal cavity |
-| S31.605 | Wound, open - Abdomen, abdominal - Wall - Periumbilic region - With penetration into peritoneal cavity |
+| S31.600 | Wound, open - Abdomen, abdominal - Wall - Right - Upper quadrant - With penet... |
+| S31.601 | Wound, open - Abdomen, abdominal - Wall - Left - Upper quadrant - With penetr... |
+| S31.602 | Wound, open - Abdomen, abdominal - Wall - Epigastric region - With penetratio... |
+| S31.603 | Wound, open - Abdomen, abdominal - Wall - Right - Lower quadrant - With penet... |
+| S31.604 | Wound, open - Abdomen, abdominal - Wall - Left - Lower quadrant - With penetr... |
+| S31.605 | Wound, open - Abdomen, abdominal - Wall - Periumbilic region - With penetrati... |
 | S31.606 | Wound, open - Flank - Right - With penetration into peritoneal cavity |
 | S31.607 | Wound, open - Flank - Left - With penetration into peritoneal cavity |
-| S31.609 | Wound, open - Abdomen, abdominal - Wall - With penetration into peritoneal cavity |
+| S31.609 | Wound, open - Abdomen, abdominal - Wall - With penetration into peritoneal ca... |
 | S31.60A | Wound, open - Flank - With penetration into peritoneal cavity |
-| S31.610 | Laceration - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Penetration into peritoneal cavity |
-| S31.611 | Laceration - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Penetration into peritoneal cavity |
-| S31.612 | Laceration - Abdomen, abdominal - Wall - Epigastric region - With - Penetration into peritoneal cavity |
-| S31.613 | Laceration - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Penetration into peritoneal cavity |
-| S31.614 | Laceration - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Penetration into peritoneal cavity |
-| S31.615 | Laceration - Abdomen, abdominal - Wall - Periumbilic region - With - Penetration into peritoneal cavity |
+| S31.610 | Laceration - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Pene... |
+| S31.611 | Laceration - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Penet... |
+| S31.612 | Laceration - Abdomen, abdominal - Wall - Epigastric region - With - Penetrati... |
+| S31.613 | Laceration - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Pene... |
+| S31.614 | Laceration - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Penet... |
+| S31.615 | Laceration - Abdomen, abdominal - Wall - Periumbilic region - With - Penetrat... |
 | S31.616 | Laceration - Flank - Right - With - Penetration into peritoneal cavity |
 | S31.617 | Laceration - Flank - Left - With - Penetration into peritoneal cavity |
-| S31.619 | Laceration - Abdomen, abdominal - Wall - With - Penetration into peritoneal cavity |
+| S31.619 | Laceration - Abdomen, abdominal - Wall - With - Penetration into peritoneal c... |
 | S31.61A | Laceration - Flank - With - Penetration into peritoneal cavity |
-| S31.620 | Laceration - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Penetration into peritoneal cavity - With foreign body |
-| S31.621 | Laceration - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Penetration into peritoneal cavity - With foreign body |
-| S31.622 | Laceration - Abdomen, abdominal - Wall - Epigastric region - With - Penetration into peritoneal cavity - With foreign body |
-| S31.623 | Laceration - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Penetration into peritoneal cavity - With foreign body |
-| S31.624 | Laceration - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Penetration into peritoneal cavity - With foreign body |
-| S31.625 | Laceration - Abdomen, abdominal - Wall - Periumbilic region - With - Penetration into peritoneal cavity - With foreign body |
-| S31.626 | Laceration - Flank - Right - With - Penetration into peritoneal cavity - With foreign body |
-| S31.627 | Laceration - Flank - Left - With - Penetration into peritoneal cavity - With foreign body |
-| S31.629 | Laceration - Abdomen, abdominal - Wall - With - Penetration into peritoneal cavity - With foreign body |
-| S31.62A | Laceration - Flank - With - Penetration into peritoneal cavity - With foreign body |
-| S31.630 | Puncture - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Penetration into peritoneal cavity |
-| S31.631 | Puncture - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Penetration into peritoneal cavity |
-| S31.632 | Puncture - Abdomen, abdominal - Wall - Epigastric region - With - Penetration into peritoneal cavity |
-| S31.633 | Puncture - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Penetration into peritoneal cavity |
-| S31.634 | Puncture - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Penetration into peritoneal cavity |
-| S31.635 | Puncture - Abdomen, abdominal - Wall - Periumbilic region - With - Penetration into peritoneal cavity |
+| S31.620 | Laceration - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Pene... |
+| S31.621 | Laceration - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Penet... |
+| S31.622 | Laceration - Abdomen, abdominal - Wall - Epigastric region - With - Penetrati... |
+| S31.623 | Laceration - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Pene... |
+| S31.624 | Laceration - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Penet... |
+| S31.625 | Laceration - Abdomen, abdominal - Wall - Periumbilic region - With - Penetrat... |
+| S31.626 | Laceration - Flank - Right - With - Penetration into peritoneal cavity - With... |
+| S31.627 | Laceration - Flank - Left - With - Penetration into peritoneal cavity - With ... |
+| S31.629 | Laceration - Abdomen, abdominal - Wall - With - Penetration into peritoneal c... |
+| S31.62A | Laceration - Flank - With - Penetration into peritoneal cavity - With foreign... |
+| S31.630 | Puncture - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Penetr... |
+| S31.631 | Puncture - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Penetra... |
+| S31.632 | Puncture - Abdomen, abdominal - Wall - Epigastric region - With - Penetration... |
+| S31.633 | Puncture - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Penetr... |
+| S31.634 | Puncture - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Penetra... |
+| S31.635 | Puncture - Abdomen, abdominal - Wall - Periumbilic region - With - Penetratio... |
 | S31.636 | Puncture - Flank - Right - With - Penetration into peritoneal cavity |
 | S31.637 | Puncture - Flank - Left - With - Penetration into peritoneal cavity |
 | S31.639 | Puncture - Abdomen, abdominal - Wall - With - Penetration into peritoneal cavity |
 | S31.63A | Puncture - Flank - With - Penetration into peritoneal cavity |
-| S31.640 | Puncture - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Penetration into peritoneal cavity - With foreign body |
-| S31.641 | Puncture - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Penetration into peritoneal cavity - With foreign body |
-| S31.642 | Puncture - Abdomen, abdominal - Wall - Epigastric region - With - Penetration into peritoneal cavity - With foreign body |
-| S31.643 | Puncture - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Penetration into peritoneal cavity - With foreign body |
-| S31.644 | Puncture - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Penetration into peritoneal cavity - With foreign body |
-| S31.645 | Puncture - Abdomen, abdominal - Wall - Periumbilic region - With - Penetration into peritoneal cavity - With foreign body |
-| S31.646 | Puncture - Flank - Right - With - Penetration into peritoneal cavity - With foreign body |
-| S31.647 | Puncture - Flank - Left - With - Penetration into peritoneal cavity - With foreign body |
-| S31.649 | Puncture - Abdomen, abdominal - Wall - With - Penetration into peritoneal cavity - With foreign body |
+| S31.640 | Puncture - Abdomen, abdominal - Wall - Right - Upper quadrant - With - Penetr... |
+| S31.641 | Puncture - Abdomen, abdominal - Wall - Left - Upper quadrant - With - Penetra... |
+| S31.642 | Puncture - Abdomen, abdominal - Wall - Epigastric region - With - Penetration... |
+| S31.643 | Puncture - Abdomen, abdominal - Wall - Right - Lower quadrant - With - Penetr... |
+| S31.644 | Puncture - Abdomen, abdominal - Wall - Left - Lower quadrant - With - Penetra... |
+| S31.645 | Puncture - Abdomen, abdominal - Wall - Periumbilic region - With - Penetratio... |
+| S31.646 | Puncture - Flank - Right - With - Penetration into peritoneal cavity - With f... |
+| S31.647 | Puncture - Flank - Left - With - Penetration into peritoneal cavity - With fo... |
+| S31.649 | Puncture - Abdomen, abdominal - Wall - With - Penetration into peritoneal cav... |
 | S31.64A | Puncture - Flank - With - Penetration into peritoneal cavity - With foreign body |
-| S31.650 | Bite - Abdomen, abdominal - Wall - Right - Upper quadrant - With penetration into peritoneal cavity |
-| S31.651 | Bite - Abdomen, abdominal - Wall - Left - Upper quadrant - With penetration into peritoneal cavity |
-| S31.652 | Bite - Abdomen, abdominal - Wall - Epigastric region - With penetration into peritoneal cavity |
-| S31.653 | Bite - Abdomen, abdominal - Wall - Right - Lower quadrant - With penetration into peritoneal cavity |
-| S31.654 | Bite - Abdomen, abdominal - Wall - Left - Lower quadrant - With penetration into peritoneal cavity |
-| S31.655 | Bite - Abdomen, abdominal - Wall - Periumbilic region - With penetration into peritoneal cavity |
+| S31.650 | Bite - Abdomen, abdominal - Wall - Right - Upper quadrant - With penetration ... |
+| S31.651 | Bite - Abdomen, abdominal - Wall - Left - Upper quadrant - With penetration i... |
+| S31.652 | Bite - Abdomen, abdominal - Wall - Epigastric region - With penetration into ... |
+| S31.653 | Bite - Abdomen, abdominal - Wall - Right - Lower quadrant - With penetration ... |
+| S31.654 | Bite - Abdomen, abdominal - Wall - Left - Lower quadrant - With penetration i... |
+| S31.655 | Bite - Abdomen, abdominal - Wall - Periumbilic region - With penetration into... |
 | S31.656 | Bite - Flank - Right - With penetration into peritoneal cavity |
 | S31.657 | Bite - Flank - Left - With penetration into peritoneal cavity |
 | S31.659 | Bite - Abdomen, abdominal - Wall - With penetration into peritoneal cavity |
@@ -15677,7 +15695,7 @@ HTAN Biospecimen Data Model Schema
 | S32.44- | Fracture, traumatic - Acetabulum - Column - Posterior - Nondisplaced |
 | S32.443 | Fracture, traumatic - Acetabulum - Column - Posterior |
 | S32.45- | Fracture, traumatic - Acetabulum - Transverse |
-| S32.46- | Fracture, traumatic - Acetabulum - Transverse - With associated posterior wall fracture |
+| S32.46- | Fracture, traumatic - Acetabulum - Transverse - With associated posterior wal... |
 | S32.47- | Fracture, traumatic - Acetabulum - Wall - Medial |
 | S32.48 | Fracture, traumatic - Acetabulum - Dome - Nondisplaced |
 | S32.48- | Fracture, traumatic - Acetabulum - Dome |
@@ -15690,7 +15708,7 @@ HTAN Biospecimen Data Model Schema
 | S32.69- | Fracture, traumatic - Ischium - Specified NEC |
 | S32.810 | Disruption - Pelvic ring |
 | S32.811 | Disruption - Pelvic ring - Unstable |
-| S32.82 | Fracture, traumatic - Pelvis, pelvic - Multiple - Without disruption of pelvic ring |
+| S32.82 | Fracture, traumatic - Pelvis, pelvic - Multiple - Without disruption of pelvi... |
 | S32.89 | Fracture, traumatic - Pelvis, pelvic - Specified site NEC |
 | S32.9 | Fracture, traumatic - Lumbosacral spine |
 | S33.0 | Rupture, ruptured - Traumatic - Intervertebral disc - Lumbar |
@@ -16223,7 +16241,7 @@ HTAN Biospecimen Data Model Schema
 | S52.00- | Fracture, traumatic - Ulna - Upper end |
 | S52.01- | Fracture, traumatic - Ulna - Upper end - Torus |
 | S52.02- | Fracture, traumatic - Ulna - Upper end - Olecranon process |
-| S52.03- | Fracture, traumatic - Ulna - Upper end - Olecranon process - With intraarticular extension |
+| S52.03- | Fracture, traumatic - Ulna - Upper end - Olecranon process - With intraarticu... |
 | S52.04- | Fracture, traumatic - Ulna - Upper end - Coronoid process |
 | S52.09- | Fracture, traumatic - Ulna - Upper end - Specified NEC |
 | S52.10- | Fracture, traumatic - Radius - Upper end |
@@ -16530,14 +16548,14 @@ HTAN Biospecimen Data Model Schema
 | S61.317 | Laceration - Finger - Little - Left - With - Damage to nail |
 | S61.318 | Laceration - Finger - Index - With - Damage to nail |
 | S61.319 | Laceration - Finger - With - Damage to nail |
-| S61.320 | Laceration - Finger - Index - Right - With - Damage to nail - With - Foreign body |
+| S61.320 | Laceration - Finger - Index - Right - With - Damage to nail - With - Foreign ... |
 | S61.321 | Laceration - Finger - Index - Left - With - Damage to nail - With - Foreign body |
-| S61.322 | Laceration - Finger - Middle - Right - With - Damage to nail - With - Foreign body |
-| S61.323 | Laceration - Finger - Middle - Left - With - Damage to nail - With - Foreign body |
+| S61.322 | Laceration - Finger - Middle - Right - With - Damage to nail - With - Foreign... |
+| S61.323 | Laceration - Finger - Middle - Left - With - Damage to nail - With - Foreign ... |
 | S61.324 | Laceration - Finger - Ring - Right - With - Damage to nail - With - Foreign body |
 | S61.325 | Laceration - Finger - Ring - Left - With - Damage to nail - With - Foreign body |
-| S61.326 | Laceration - Finger - Little - Right - With - Damage to nail - With - Foreign body |
-| S61.327 | Laceration - Finger - Little - Left - With - Damage to nail - With - Foreign body |
+| S61.326 | Laceration - Finger - Little - Right - With - Damage to nail - With - Foreign... |
+| S61.327 | Laceration - Finger - Little - Left - With - Damage to nail - With - Foreign ... |
 | S61.328 | Laceration - Finger - Index - With - Damage to nail - With - Foreign body |
 | S61.329 | Laceration - Finger - With - Damage to nail - With - Foreign body |
 | S61.330 | Puncture - Finger - Index - Right - With - Damage to nail |
@@ -16852,7 +16870,7 @@ HTAN Biospecimen Data Model Schema
 | S72.43- | Fracture, traumatic - Femur, femoral - Lower end - Condyle - Medial |
 | S72.44- | Fracture, traumatic - Femur, femoral - Lower end - Epiphysis |
 | S72.45- | Fracture, traumatic - Femur, femoral - Lower end - Supracondylar |
-| S72.46- | Fracture, traumatic - Femur, femoral - Lower end - Supracondylar - With intracondylar extension |
+| S72.46- | Fracture, traumatic - Femur, femoral - Lower end - Supracondylar - With intra... |
 | S72.47- | Fracture, traumatic - Femur, femoral - Lower end - Torus |
 | S72.49- | Fracture, traumatic - Femur, femoral - Lower end - Specified NEC |
 | S72.9- | Fracture, traumatic - Femur, femoral |
@@ -16924,10 +16942,10 @@ HTAN Biospecimen Data Model Schema
 | S79.01- | Fracture, traumatic - Femur, femoral - Capital epiphyseal |
 | S79.09- | Fracture, traumatic - Femur, femoral - Upper end - Physeal - Specified NEC |
 | S79.10- | Fracture, traumatic - Femur, femoral - Lower end - Physeal |
-| S79.11- | Fracture, traumatic - Femur, femoral - Lower end - Physeal - Salter-Harris - Type I |
-| S79.12- | Fracture, traumatic - Femur, femoral - Lower end - Physeal - Salter-Harris - Type II |
-| S79.13- | Fracture, traumatic - Femur, femoral - Lower end - Physeal - Salter-Harris - Type III |
-| S79.14- | Fracture, traumatic - Femur, femoral - Lower end - Physeal - Salter-Harris - Type IV |
+| S79.11- | Fracture, traumatic - Femur, femoral - Lower end - Physeal - Salter-Harris - ... |
+| S79.12- | Fracture, traumatic - Femur, femoral - Lower end - Physeal - Salter-Harris - ... |
+| S79.13- | Fracture, traumatic - Femur, femoral - Lower end - Physeal - Salter-Harris - ... |
+| S79.14- | Fracture, traumatic - Femur, femoral - Lower end - Physeal - Salter-Harris - ... |
 | S79.19- | Fracture, traumatic - Femur, femoral - Lower end - Physeal - Specified NEC |
 | S79.81- | Injury - Hip - Specified NEC |
 | S79.82- | Injury - Thigh - Specified NEC |
@@ -17384,9 +17402,9 @@ HTAN Biospecimen Data Model Schema
 | S98.92- | Amputation - Traumatic - Foot - Partial |
 | S99.00- | Fracture, traumatic - Tarsal bone - Calcaneus - Physeal |
 | S99.01- | Fracture, traumatic - Tarsal bone - Calcaneus - Physeal - Salter-Harris - Type I |
-| S99.02- | Fracture, traumatic - Tarsal bone - Calcaneus - Physeal - Salter-Harris - Type II |
-| S99.03- | Fracture, traumatic - Tarsal bone - Calcaneus - Physeal - Salter-Harris - Type III |
-| S99.04- | Fracture, traumatic - Tarsal bone - Calcaneus - Physeal - Salter-Harris - Type IV |
+| S99.02- | Fracture, traumatic - Tarsal bone - Calcaneus - Physeal - Salter-Harris - Typ... |
+| S99.03- | Fracture, traumatic - Tarsal bone - Calcaneus - Physeal - Salter-Harris - Typ... |
+| S99.04- | Fracture, traumatic - Tarsal bone - Calcaneus - Physeal - Salter-Harris - Typ... |
 | S99.09- | Fracture, traumatic - Tarsal bone - Calcaneus - Physeal - Specified NEC |
 | S99.10- | Fracture, traumatic - Metatarsal bone - Physeal |
 | S99.11- | Fracture, traumatic - Metatarsal bone - Physeal - Salter-Harris - Type I |
@@ -17450,12 +17468,12 @@ HTAN Biospecimen Data Model Schema
 | T17.598 | Foreign body - Bronchus - Causing - Injury NEC - Specified type NEC |
 | T17.800 | Foreign body - Respiratory tract - Specified site NEC - Causing - Asphyxiation |
 | T17.808 | Foreign body - Respiratory tract - Specified site NEC |
-| T17.810 | Foreign body - Respiratory tract - Specified site NEC - Causing - Asphyxiation - Gastric contents |
-| T17.818 | Foreign body - Respiratory tract - Specified site NEC - Causing - Injury NEC - Gastric contents |
-| T17.820 | Foreign body - Respiratory tract - Specified site NEC - Causing - Asphyxiation - Food |
-| T17.828 | Foreign body - Respiratory tract - Specified site NEC - Causing - Injury NEC - Food |
-| T17.890 | Foreign body - Respiratory tract - Specified site NEC - Causing - Asphyxiation - Specified type NEC |
-| T17.898 | Foreign body - Respiratory tract - Specified site NEC - Causing - Injury NEC - Specified type NEC |
+| T17.810 | Foreign body - Respiratory tract - Specified site NEC - Causing - Asphyxiatio... |
+| T17.818 | Foreign body - Respiratory tract - Specified site NEC - Causing - Injury NEC ... |
+| T17.820 | Foreign body - Respiratory tract - Specified site NEC - Causing - Asphyxiatio... |
+| T17.828 | Foreign body - Respiratory tract - Specified site NEC - Causing - Injury NEC ... |
+| T17.890 | Foreign body - Respiratory tract - Specified site NEC - Causing - Asphyxiatio... |
+| T17.898 | Foreign body - Respiratory tract - Specified site NEC - Causing - Injury NEC ... |
 | T17.900 | Foreign body - Respiratory tract - Causing - Asphyxiation |
 | T17.908 | Foreign body - Respiratory tract |
 | T17.910 | Foreign body - Respiratory tract - Causing - Asphyxiation - Gastric contents |
@@ -18049,8 +18067,8 @@ HTAN Biospecimen Data Model Schema
 | T24.131 | Burn - Calf - Right - First degree |
 | T24.132 | Burn - Calf - Left - First degree |
 | T24.139 | Burn - Calf - First degree |
-| T24.191 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Right - First degree |
-| T24.192 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Left - First degree |
+| T24.191 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Right - First d... |
+| T24.192 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Left - First de... |
 | T24.199 | Burn - Lower - Limb - Multiple sites, except ankle and foot - First degree |
 | T24.201 | Burn - Lower - Limb - Right - Second degree |
 | T24.202 | Burn - Lower - Limb - Left - Second degree |
@@ -18064,8 +18082,8 @@ HTAN Biospecimen Data Model Schema
 | T24.231 | Burn - Calf - Right - Second degree |
 | T24.232 | Burn - Calf - Left - Second degree |
 | T24.239 | Burn - Calf - Second degree |
-| T24.291 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Right - Second degree |
-| T24.292 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Left - Second degree |
+| T24.291 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Right - Second ... |
+| T24.292 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Left - Second d... |
 | T24.299 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Second degree |
 | T24.301 | Burn - Lower - Limb - Right - Third degree |
 | T24.302 | Burn - Lower - Limb - Left - Third degree |
@@ -18079,8 +18097,8 @@ HTAN Biospecimen Data Model Schema
 | T24.331 | Burn - Calf - Right - Third degree |
 | T24.332 | Burn - Calf - Left - Third degree |
 | T24.339 | Burn - Calf - Third degree |
-| T24.391 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Right - Third degree |
-| T24.392 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Left - Third degree |
+| T24.391 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Right - Third d... |
+| T24.392 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Left - Third de... |
 | T24.399 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Third degree |
 | T24.401 | Corrosion - Lower - Limb - Right |
 | T24.402 | Corrosion - Lower - Limb - Left |
@@ -18109,8 +18127,8 @@ HTAN Biospecimen Data Model Schema
 | T24.531 | Corrosion - Calf - Right - First degree |
 | T24.532 | Corrosion - Calf - Left - First degree |
 | T24.539 | Corrosion - Calf - First degree |
-| T24.591 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Right - First degree |
-| T24.592 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Left - First degree |
+| T24.591 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Right - Fi... |
+| T24.592 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Left - Fir... |
 | T24.599 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - First degree |
 | T24.601 | Corrosion - Lower - Limb - Right - Second degree |
 | T24.602 | Corrosion - Lower - Limb - Left - Second degree |
@@ -18124,8 +18142,8 @@ HTAN Biospecimen Data Model Schema
 | T24.631 | Corrosion - Calf - Right - Second degree |
 | T24.632 | Corrosion - Calf - Left - Second degree |
 | T24.639 | Corrosion - Calf - Second degree |
-| T24.691 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Right - Second degree |
-| T24.692 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Left - Second degree |
+| T24.691 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Right - Se... |
+| T24.692 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Left - Sec... |
 | T24.699 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Second degree |
 | T24.701 | Corrosion - Lower - Limb - Right - Third degree |
 | T24.702 | Corrosion - Lower - Limb - Left - Third degree |
@@ -18139,8 +18157,8 @@ HTAN Biospecimen Data Model Schema
 | T24.731 | Corrosion - Calf - Right - Third degree |
 | T24.732 | Corrosion - Calf - Left - Third degree |
 | T24.739 | Corrosion - Calf - Third degree |
-| T24.791 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Right - Third degree |
-| T24.792 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Left - Third degree |
+| T24.791 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Right - Th... |
+| T24.792 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Left - Thi... |
 | T24.799 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Third degree |
 | T25.011 | Burn - Ankle - Right |
 | T25.012 | Burn - Ankle - Left |
@@ -18151,8 +18169,8 @@ HTAN Biospecimen Data Model Schema
 | T25.031 | Burn - Toe - Right |
 | T25.032 | Burn - Toe - Left |
 | T25.039 | Burn - Toe |
-| T25.091 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Right |
-| T25.092 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Left |
+| T25.091 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
+| T25.092 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
 | T25.099 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot |
 | T25.111 | Burn - Ankle - Right - First degree |
 | T25.112 | Burn - Ankle - Left - First degree |
@@ -18163,9 +18181,9 @@ HTAN Biospecimen Data Model Schema
 | T25.131 | Burn - Toe - Right - First degree |
 | T25.132 | Burn - Toe - Left - First degree |
 | T25.139 | Burn - Toe - First degree |
-| T25.191 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Right - First degree |
-| T25.192 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Left - First degree |
-| T25.199 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - First degree |
+| T25.191 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
+| T25.192 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
+| T25.199 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
 | T25.211 | Burn - Ankle - Right - Second degree |
 | T25.212 | Burn - Ankle - Left - Second degree |
 | T25.219 | Burn - Ankle - Second degree |
@@ -18175,9 +18193,9 @@ HTAN Biospecimen Data Model Schema
 | T25.231 | Burn - Toe - Right - Second degree |
 | T25.232 | Burn - Toe - Left - Second degree |
 | T25.239 | Burn - Toe - Second degree |
-| T25.291 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Right - Second degree |
-| T25.292 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Left - Second degree |
-| T25.299 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Second degree |
+| T25.291 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
+| T25.292 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
+| T25.299 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
 | T25.311 | Burn - Ankle - Right - Third degree |
 | T25.312 | Burn - Ankle - Left - Third degree |
 | T25.319 | Burn - Ankle - Third degree |
@@ -18187,9 +18205,9 @@ HTAN Biospecimen Data Model Schema
 | T25.331 | Burn - Toe - Right - Third degree |
 | T25.332 | Burn - Toe - Left - Third degree |
 | T25.339 | Burn - Toe - Third degree |
-| T25.391 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Right - Third degree |
-| T25.392 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Left - Third degree |
-| T25.399 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Third degree |
+| T25.391 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
+| T25.392 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
+| T25.399 | Burn - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot ... |
 | T25.411 | Corrosion - Ankle - Right |
 | T25.412 | Corrosion - Ankle - Left |
 | T25.419 | Corrosion - Ankle |
@@ -18199,9 +18217,9 @@ HTAN Biospecimen Data Model Schema
 | T25.431 | Corrosion - Toe - Right |
 | T25.432 | Corrosion - Toe - Left |
 | T25.439 | Corrosion - Toe |
-| T25.491 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Right |
-| T25.492 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Left |
-| T25.499 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot |
+| T25.491 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
+| T25.492 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
+| T25.499 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
 | T25.511 | Corrosion - Ankle - Right - First degree |
 | T25.512 | Corrosion - Ankle - Left - First degree |
 | T25.519 | Corrosion - Ankle - First degree |
@@ -18211,9 +18229,9 @@ HTAN Biospecimen Data Model Schema
 | T25.531 | Corrosion - Toe - Right - First degree |
 | T25.532 | Corrosion - Toe - Left - First degree |
 | T25.539 | Corrosion - Toe - First degree |
-| T25.591 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Right - First degree |
-| T25.592 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Left - First degree |
-| T25.599 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - First degree |
+| T25.591 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
+| T25.592 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
+| T25.599 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
 | T25.611 | Corrosion - Ankle - Right - Second degree |
 | T25.612 | Corrosion - Ankle - Left - Second degree |
 | T25.619 | Corrosion - Ankle - Second degree |
@@ -18223,9 +18241,9 @@ HTAN Biospecimen Data Model Schema
 | T25.631 | Corrosion - Toe - Right - Second degree |
 | T25.632 | Corrosion - Toe - Left - Second degree |
 | T25.639 | Corrosion - Toe - Second degree |
-| T25.691 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Right - Second degree |
-| T25.692 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Left - Second degree |
-| T25.699 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Second degree |
+| T25.691 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
+| T25.692 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
+| T25.699 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
 | T25.711 | Corrosion - Ankle - Right - Third degree |
 | T25.712 | Corrosion - Ankle - Left - Third degree |
 | T25.719 | Corrosion - Ankle - Third degree |
@@ -18235,9 +18253,9 @@ HTAN Biospecimen Data Model Schema
 | T25.731 | Corrosion - Toe - Right - Third degree |
 | T25.732 | Corrosion - Toe - Left - Third degree |
 | T25.739 | Corrosion - Toe - Third degree |
-| T25.791 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Right - Third degree |
-| T25.792 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Left - Third degree |
-| T25.799 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and foot - Third degree |
+| T25.791 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
+| T25.792 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
+| T25.799 | Corrosion - Lower - Limb - Multiple sites, except ankle and foot - Ankle and ... |
 | T26.0- | Burn - Eyelid |
 | T26.1- | Burn - Cornea |
 | T26.2- | Burn - Eye - With resulting rupture and destruction of eyeball |
@@ -18265,7 +18283,7 @@ HTAN Biospecimen Data Model Schema
 | T28.49 | Burn - Internal organ - Specified organ NEC |
 | T28.5 | Corrosion - Internal organ - Mouth |
 | T28.6 | Corrosion - Esophagus |
-| T28.7 | Burn - Gastrointestinal tract NEC - From swallowing caustic or corrosive substance |
+| T28.7 | Burn - Gastrointestinal tract NEC - From swallowing caustic or corrosive subs... |
 | T28.8 | Burn - Genital organs - Internal - From caustic or corrosive substance |
 | T28.90 | Corrosion - Internal organ |
 | T28.91 | Corrosion - Ear - Drum |
@@ -18463,44 +18481,44 @@ HTAN Biospecimen Data Model Schema
 | T70.4 | Effect, adverse - High pressure fluids |
 | T70.8 | Blast - Injury - Syndrome NEC |
 | T70.9 | Effect, adverse - Air pressure |
-| T71.111 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - Under - Pillow |
-| T71.112 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - Under - Pillow - Done with intent to harm by - Self |
-| T71.113 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - Under - Pillow - Done with intent to harm by - Another person |
-| T71.114 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - Under - Pillow - Circumstances undetermined |
-| T71.121 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Plastic bag |
-| T71.122 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Plastic bag - Done with intent to harm by - Self |
-| T71.123 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Plastic bag - Done with intent to harm by - Another person |
-| T71.124 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Plastic bag - Circumstances undetermined |
-| T71.131 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Trapped in bed clothes |
-| T71.132 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Trapped in bed clothes - Done with intent to harm by - Self |
-| T71.133 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Trapped in bed clothes - Done with intent to harm by - Another person |
-| T71.134 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Trapped in bed clothes - Circumstances undetermined |
-| T71.141 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - Under - Another person's body |
-| T71.143 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - Under - Another person's body - Done with intent to harm |
-| T71.144 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - Under - Another person's body - Circumstances undetermined |
-| T71.151 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - In furniture |
-| T71.152 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - In furniture - Done with intent to harm by - Self |
-| T71.153 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - In furniture - Done with intent to harm by - Another person |
-| T71.154 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Smothering - In furniture - Circumstances undetermined |
-| T71.161 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Hanging |
-| T71.162 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Hanging - Done with intent to harm by - Self |
-| T71.163 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Hanging - Done with intent to harm by - Another person |
-| T71.164 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Hanging - Circumstances undetermined |
+| T71.111 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.112 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.113 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.114 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.121 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.122 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.123 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.124 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.131 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.132 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.133 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.134 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.141 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.143 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.144 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.151 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.152 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.153 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.154 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.161 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.162 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.163 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.164 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
 | T71.191 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing |
-| T71.192 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Done with intent to harm by - Self |
-| T71.193 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Done with intent to harm by - Another person |
-| T71.194 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing - Circumstances undetermined |
+| T71.192 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.193 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
+| T71.194 | Asphyxia, asphyxiation - Traumatic - Due to - Mechanical threat to breathing ... |
 | T71.20 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air |
-| T71.21 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Cave-in |
-| T71.221 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Being trapped in - Low oxygen environment - In car trunk |
-| T71.222 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Being trapped in - Low oxygen environment - In car trunk - Done with intent to harm by - Self |
-| T71.223 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Being trapped in - Low oxygen environment - In car trunk - Done with intent to harm by - Another person |
-| T71.224 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Being trapped in - Low oxygen environment - In car trunk - Circumstances undetermined |
-| T71.231 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Being trapped in - Low oxygen environment - In refrigerator |
-| T71.232 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Being trapped in - Low oxygen environment - In refrigerator - Done with intent to harm by - Self |
-| T71.233 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Being trapped in - Low oxygen environment - In refrigerator - Done with intent to harm by - Another person |
-| T71.234 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Being trapped in - Low oxygen environment - In refrigerator - Circumstances undetermined |
-| T71.29 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient air - Due to - Being trapped in - Low oxygen environment |
+| T71.21 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
+| T71.221 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
+| T71.222 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
+| T71.223 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
+| T71.224 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
+| T71.231 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
+| T71.232 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
+| T71.233 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
+| T71.234 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
+| T71.29 | Asphyxia, asphyxiation - Traumatic - Due to - Low oxygen content of ambient a... |
 | T71.9 | Asphyxia, asphyxiation - Traumatic |
 | T73.0 | Deprivation - Food |
 | T73.1 | Deprivation - Water |
@@ -18564,11 +18582,11 @@ HTAN Biospecimen Data Model Schema
 | T78.04 | Shock - Anaphylactic - Due to food - Fruit |
 | T78.05 | Shock - Anaphylactic - Due to food - Nuts |
 | T78.06 | Shock - Anaphylactic - Due to food - Additives |
-| T78.070 | Allergy, allergic - Dairy products - Anaphylactic reaction - With - Tolerance to baked milk |
-| T78.071 | Allergy, allergic - Dairy products - Anaphylactic reaction - With - Reactivity to baked milk |
+| T78.070 | Allergy, allergic - Dairy products - Anaphylactic reaction - With - Tolerance... |
+| T78.071 | Allergy, allergic - Dairy products - Anaphylactic reaction - With - Reactivit... |
 | T78.079 | Allergy, allergic - Dairy products - Anaphylactic reaction |
 | T78.080 | Allergy, allergic - Eggs - Anaphylactic reaction - With - Tolerance to baked egg |
-| T78.081 | Allergy, allergic - Eggs - Anaphylactic reaction - With - Reactivity to baked egg |
+| T78.081 | Allergy, allergic - Eggs - Anaphylactic reaction - With - Reactivity to baked... |
 | T78.089 | Allergy, allergic - Eggs - Anaphylactic reaction |
 | T78.09 | Shock - Anaphylactic - Due to food - Specified type NEC |
 | T78.110 | Allergy, allergic - Dairy products - With - Tolerance to baked milk |
@@ -18586,7 +18604,7 @@ HTAN Biospecimen Data Model Schema
 | T78.8 | Effect, adverse - Specified NEC |
 | T79.0 | Air - Embolism |
 | T79.1 | Embolism - Fat |
-| T79.2 | Hemorrhage, hemorrhagic - Recurring, following initial hemorrhage at time of injury |
+| T79.2 | Hemorrhage, hemorrhagic - Recurring, following initial hemorrhage at time of ... |
 | T79.4 | Blood - Pressure - Decreased, due to shock following injury |
 | T79.5 | Anuria - Traumatic |
 | T79.6 | Contraction - Muscle - Ischemic |
@@ -18599,27 +18617,27 @@ HTAN Biospecimen Data Model Schema
 | T79.A3 | Compartment syndrome - Abdomen |
 | T79.A9 | Compartment syndrome - Specified site NEC |
 | T80.0 | Air - Embolism - Following - Infusion, therapeutic injection or transfusion |
-| T80.1 | Complication - Vascular - Following infusion, therapeutic injection or transfusion |
+| T80.1 | Complication - Vascular - Following infusion, therapeutic injection or transf... |
 | T80.211 | Infection, infected, infective - Catheter-related bloodstream |
-| T80.212 | Infection, infected, infective - Due to or resulting from - Central venous catheter - Exit or insertion site |
+| T80.212 | Infection, infected, infective - Due to or resulting from - Central venous ca... |
 | T80.218 | Infection, infected, infective - Central line-associated - Specified NEC |
 | T80.219 | Infection, infected, infective - Central line-associated |
 | T80.22 | Complication - Transfusion - Infection - Acute |
 | T80.29 | Complication - Infusion - Infection |
 | T80.30 | Complication - Transfusion - Incompatibility reaction - ABO |
-| T80.310 | Complication - Transfusion - Incompatibility reaction - ABO - Hemolytic transfusion reaction - Acute |
-| T80.311 | Complication - Transfusion - Incompatibility reaction - ABO - Hemolytic transfusion reaction - Delayed |
-| T80.319 | Complication - Transfusion - Incompatibility reaction - ABO - Hemolytic transfusion reaction |
+| T80.310 | Complication - Transfusion - Incompatibility reaction - ABO - Hemolytic trans... |
+| T80.311 | Complication - Transfusion - Incompatibility reaction - ABO - Hemolytic trans... |
+| T80.319 | Complication - Transfusion - Incompatibility reaction - ABO - Hemolytic trans... |
 | T80.39 | Complication - Transfusion - Incompatibility reaction - ABO - Delayed serologic |
 | T80.40 | Complication - Transfusion - Incompatibility reaction - Rh |
-| T80.410 | Complication - Transfusion - Incompatibility reaction - Rh - Hemolytic transfusion reaction - Acute |
-| T80.411 | Complication - Transfusion - Incompatibility reaction - Rh - Hemolytic transfusion reaction - Delayed |
-| T80.419 | Complication - Transfusion - Incompatibility reaction - Rh - Hemolytic transfusion reaction |
+| T80.410 | Complication - Transfusion - Incompatibility reaction - Rh - Hemolytic transf... |
+| T80.411 | Complication - Transfusion - Incompatibility reaction - Rh - Hemolytic transf... |
+| T80.419 | Complication - Transfusion - Incompatibility reaction - Rh - Hemolytic transf... |
 | T80.49 | Complication - Transfusion - Incompatibility reaction - Rh - Delayed serologic |
 | T80.51 | Allergy, allergic - Shock - Due to - Administration of blood and blood products |
 | T80.52 | Allergy, allergic - Shock - Due to - Immunization |
 | T80.59 | Allergy, allergic - Serum - Anaphylactic shock |
-| T80.61 | Reaction - Serum - Specified reaction NEC - Due to - Administration of blood and blood products |
+| T80.61 | Reaction - Serum - Specified reaction NEC - Due to - Administration of blood ... |
 | T80.62 | Complication - Vaccination - Protein sickness |
 | T80.69 | Allergy, allergic - Serum |
 | T80.810 | Extravasation - Vesicant agent - Antineoplastic chemotherapy |
@@ -18632,10 +18650,10 @@ HTAN Biospecimen Data Model Schema
 | T80.919 | Complication - Transfusion - Hemolytic reaction |
 | T80.92 | Complication - Transfusion |
 | T80.A0 | Complication - Transfusion - Incompatibility reaction - Non-ABO |
-| T80.A10 | Complication - Transfusion - Incompatibility reaction - Non-ABO - Hemolytic transfusion reaction - Acute |
-| T80.A11 | Complication - Transfusion - Incompatibility reaction - Non-ABO - Hemolytic transfusion reaction - Delayed |
-| T80.A19 | Complication - Transfusion - Incompatibility reaction - Non-ABO - Hemolytic transfusion reaction |
-| T80.A9 | Complication - Transfusion - Incompatibility reaction - Non-ABO - Delayed serologic |
+| T80.A10 | Complication - Transfusion - Incompatibility reaction - Non-ABO - Hemolytic t... |
+| T80.A11 | Complication - Transfusion - Incompatibility reaction - Non-ABO - Hemolytic t... |
+| T80.A19 | Complication - Transfusion - Incompatibility reaction - Non-ABO - Hemolytic t... |
+| T80.A9 | Complication - Transfusion - Incompatibility reaction - Non-ABO - Delayed ser... |
 | T81.10 | Collapse - During or - Resulting from a procedure, not elsewhere classified |
 | T81.11 | Shock - Postprocedural - Cardiogenic |
 | T81.12 | Shock - Endotoxic - Postprocedural |
@@ -18643,7 +18661,7 @@ HTAN Biospecimen Data Model Schema
 | T81.30 | Dehiscence - Wound |
 | T81.31 | Burst stitches or sutures |
 | T81.320 | Dehiscence - Closure of - Gastrointestinal tract anastomosis, repair, or closure |
-| T81.321 | Burst stitches or sutures - Internal operation wound - Abdominal wall muscle or fascia |
+| T81.321 | Burst stitches or sutures - Internal operation wound - Abdominal wall muscle ... |
 | T81.328 | Burst stitches or sutures - Internal operation wound |
 | T81.329 | Dehiscence - Operation wound NEC - Deep |
 | T81.33 | Dehiscence - Closure of - Laceration |
@@ -18663,49 +18681,49 @@ HTAN Biospecimen Data Model Schema
 | T81.507 | Foreign body - Accidentally left following a procedure - Packing removal |
 | T81.508 | Foreign body - Accidentally left following a procedure - Specified procedure NEC |
 | T81.509 | Foreign body - Accidentally left following a procedure |
-| T81.510 | Foreign body - Accidentally left following a procedure - Surgical operation - Resulting in - Adhesions |
-| T81.511 | Foreign body - Accidentally left following a procedure - Infusion - Resulting in - Adhesions |
-| T81.512 | Foreign body - Accidentally left following a procedure - Kidney dialysis - Resulting in - Adhesions |
-| T81.513 | Foreign body - Accidentally left following a procedure - Immunization - Resulting in - Adhesions |
-| T81.514 | Foreign body - Accidentally left following a procedure - Endoscopy - Resulting in - Adhesions |
-| T81.515 | Foreign body - Accidentally left following a procedure - Cardiac catheterization - Resulting in - Adhesions |
-| T81.516 | Foreign body - Accidentally left following a procedure - Aspiration - Resulting in - Adhesions |
-| T81.517 | Foreign body - Accidentally left following a procedure - Packing removal - Resulting in - Adhesions |
-| T81.518 | Foreign body - Accidentally left following a procedure - Specified procedure NEC - Resulting in - Adhesions |
+| T81.510 | Foreign body - Accidentally left following a procedure - Surgical operation -... |
+| T81.511 | Foreign body - Accidentally left following a procedure - Infusion - Resulting... |
+| T81.512 | Foreign body - Accidentally left following a procedure - Kidney dialysis - Re... |
+| T81.513 | Foreign body - Accidentally left following a procedure - Immunization - Resul... |
+| T81.514 | Foreign body - Accidentally left following a procedure - Endoscopy - Resultin... |
+| T81.515 | Foreign body - Accidentally left following a procedure - Cardiac catheterizat... |
+| T81.516 | Foreign body - Accidentally left following a procedure - Aspiration - Resulti... |
+| T81.517 | Foreign body - Accidentally left following a procedure - Packing removal - Re... |
+| T81.518 | Foreign body - Accidentally left following a procedure - Specified procedure ... |
 | T81.519 | Foreign body - Accidentally left following a procedure - Causing - Adhesions |
-| T81.520 | Foreign body - Accidentally left following a procedure - Surgical operation - Resulting in - Obstruction |
-| T81.521 | Foreign body - Accidentally left following a procedure - Infusion - Resulting in - Obstruction |
-| T81.522 | Foreign body - Accidentally left following a procedure - Kidney dialysis - Resulting in - Obstruction |
-| T81.523 | Foreign body - Accidentally left following a procedure - Immunization - Resulting in - Obstruction |
-| T81.524 | Foreign body - Accidentally left following a procedure - Endoscopy - Resulting in - Obstruction |
-| T81.525 | Foreign body - Accidentally left following a procedure - Cardiac catheterization - Resulting in - Obstruction |
-| T81.526 | Foreign body - Accidentally left following a procedure - Aspiration - Resulting in - Obstruction |
-| T81.527 | Foreign body - Accidentally left following a procedure - Packing removal - Resulting in - Obstruction |
-| T81.528 | Foreign body - Accidentally left following a procedure - Specified procedure NEC - Resulting in - Obstruction |
+| T81.520 | Foreign body - Accidentally left following a procedure - Surgical operation -... |
+| T81.521 | Foreign body - Accidentally left following a procedure - Infusion - Resulting... |
+| T81.522 | Foreign body - Accidentally left following a procedure - Kidney dialysis - Re... |
+| T81.523 | Foreign body - Accidentally left following a procedure - Immunization - Resul... |
+| T81.524 | Foreign body - Accidentally left following a procedure - Endoscopy - Resultin... |
+| T81.525 | Foreign body - Accidentally left following a procedure - Cardiac catheterizat... |
+| T81.526 | Foreign body - Accidentally left following a procedure - Aspiration - Resulti... |
+| T81.527 | Foreign body - Accidentally left following a procedure - Packing removal - Re... |
+| T81.528 | Foreign body - Accidentally left following a procedure - Specified procedure ... |
 | T81.529 | Foreign body - Accidentally left following a procedure - Causing - Obstruction |
-| T81.530 | Foreign body - Accidentally left following a procedure - Surgical operation - Resulting in - Perforation |
-| T81.531 | Foreign body - Accidentally left following a procedure - Infusion - Resulting in - Perforation |
-| T81.532 | Foreign body - Accidentally left following a procedure - Kidney dialysis - Resulting in - Perforation |
-| T81.533 | Foreign body - Accidentally left following a procedure - Immunization - Resulting in - Perforation |
-| T81.534 | Foreign body - Accidentally left following a procedure - Endoscopy - Resulting in - Perforation |
-| T81.535 | Foreign body - Accidentally left following a procedure - Cardiac catheterization - Resulting in - Perforation |
-| T81.536 | Foreign body - Accidentally left following a procedure - Aspiration - Resulting in - Perforation |
-| T81.537 | Foreign body - Accidentally left following a procedure - Packing removal - Resulting in - Perforation |
-| T81.538 | Foreign body - Accidentally left following a procedure - Specified procedure NEC - Resulting in - Perforation |
+| T81.530 | Foreign body - Accidentally left following a procedure - Surgical operation -... |
+| T81.531 | Foreign body - Accidentally left following a procedure - Infusion - Resulting... |
+| T81.532 | Foreign body - Accidentally left following a procedure - Kidney dialysis - Re... |
+| T81.533 | Foreign body - Accidentally left following a procedure - Immunization - Resul... |
+| T81.534 | Foreign body - Accidentally left following a procedure - Endoscopy - Resultin... |
+| T81.535 | Foreign body - Accidentally left following a procedure - Cardiac catheterizat... |
+| T81.536 | Foreign body - Accidentally left following a procedure - Aspiration - Resulti... |
+| T81.537 | Foreign body - Accidentally left following a procedure - Packing removal - Re... |
+| T81.538 | Foreign body - Accidentally left following a procedure - Specified procedure ... |
 | T81.539 | Foreign body - Accidentally left following a procedure - Causing - Perforation |
-| T81.590 | Foreign body - Accidentally left following a procedure - Surgical operation - Resulting in - Specified complication NEC |
-| T81.591 | Foreign body - Accidentally left following a procedure - Infusion - Resulting in - Specified complication NEC |
-| T81.592 | Foreign body - Accidentally left following a procedure - Kidney dialysis - Resulting in - Specified complication NEC |
-| T81.593 | Foreign body - Accidentally left following a procedure - Immunization - Resulting in - Specified complication NEC |
-| T81.594 | Foreign body - Accidentally left following a procedure - Endoscopy - Resulting in - Specified complication NEC |
-| T81.595 | Foreign body - Accidentally left following a procedure - Cardiac catheterization - Resulting in - Specified complication NEC |
-| T81.596 | Foreign body - Accidentally left following a procedure - Aspiration - Resulting in - Specified complication NEC |
-| T81.597 | Foreign body - Accidentally left following a procedure - Packing removal - Resulting in - Specified complication NEC |
-| T81.598 | Foreign body - Accidentally left following a procedure - Specified procedure NEC - Resulting in - Specified complication NEC |
-| T81.599 | Foreign body - Accidentally left following a procedure - Causing - Specified complication NEC |
-| T81.60 | Foreign body - Accidentally left following a procedure - Cardiac catheterization - Resulting in - Acute reaction |
-| T81.61 | Foreign body - Accidentally left following a procedure - Cardiac catheterization - Resulting in - Acute reaction - Aseptic peritonitis |
-| T81.69 | Foreign body - Accidentally left following a procedure - Cardiac catheterization - Resulting in - Acute reaction - Specified NEC |
+| T81.590 | Foreign body - Accidentally left following a procedure - Surgical operation -... |
+| T81.591 | Foreign body - Accidentally left following a procedure - Infusion - Resulting... |
+| T81.592 | Foreign body - Accidentally left following a procedure - Kidney dialysis - Re... |
+| T81.593 | Foreign body - Accidentally left following a procedure - Immunization - Resul... |
+| T81.594 | Foreign body - Accidentally left following a procedure - Endoscopy - Resultin... |
+| T81.595 | Foreign body - Accidentally left following a procedure - Cardiac catheterizat... |
+| T81.596 | Foreign body - Accidentally left following a procedure - Aspiration - Resulti... |
+| T81.597 | Foreign body - Accidentally left following a procedure - Packing removal - Re... |
+| T81.598 | Foreign body - Accidentally left following a procedure - Specified procedure ... |
+| T81.599 | Foreign body - Accidentally left following a procedure - Causing - Specified ... |
+| T81.60 | Foreign body - Accidentally left following a procedure - Cardiac catheterizat... |
+| T81.61 | Foreign body - Accidentally left following a procedure - Cardiac catheterizat... |
+| T81.69 | Foreign body - Accidentally left following a procedure - Cardiac catheterizat... |
 | T81.710 | Complication - Surgical procedure - Vascular - Artery - Mesenteric |
 | T81.711 | Complication - Surgical procedure - Vascular - Artery - Renal |
 | T81.718 | Complication - Surgical procedure - Vascular - Artery - Specified NEC |
@@ -18724,14 +18742,14 @@ HTAN Biospecimen Data Model Schema
 | T82.111 | Breakdown - Device, graft or implant - Electronic - Cardiac - Pulse generator |
 | T82.118 | Breakdown - Device, graft or implant - Electronic - Cardiac - Specified type NEC |
 | T82.119 | Breakdown - Device, graft or implant - Electronic - Cardiac |
-| T82.120 | Complication - Cardiovascular device, graft or implant - Electronic - Electrode - Mechanical - Displacement |
-| T82.121 | Complication - Cardiovascular device, graft or implant - Electronic - Pulse generator - Mechanical - Displacement |
-| T82.128 | Complication - Cardiovascular device, graft or implant - Electronic - Specified device NEC - Mechanical - Displacement |
-| T82.129 | Complication - Cardiovascular device, graft or implant - Electronic - Mechanical - Displacement |
-| T82.190 | Complication - Cardiovascular device, graft or implant - Electronic - Electrode - Mechanical - Leakage |
-| T82.191 | Complication - Cardiovascular device, graft or implant - Electronic - Pulse generator - Mechanical - Leakage |
-| T82.198 | Complication - Cardiovascular device, graft or implant - Electronic - Specified device NEC - Mechanical - Leakage |
-| T82.199 | Complication - Cardiovascular device, graft or implant - Electronic - Mechanical - Leakage |
+| T82.120 | Complication - Cardiovascular device, graft or implant - Electronic - Electro... |
+| T82.121 | Complication - Cardiovascular device, graft or implant - Electronic - Pulse g... |
+| T82.128 | Complication - Cardiovascular device, graft or implant - Electronic - Specifi... |
+| T82.129 | Complication - Cardiovascular device, graft or implant - Electronic - Mechani... |
+| T82.190 | Complication - Cardiovascular device, graft or implant - Electronic - Electro... |
+| T82.191 | Complication - Cardiovascular device, graft or implant - Electronic - Pulse g... |
+| T82.198 | Complication - Cardiovascular device, graft or implant - Electronic - Specifi... |
+| T82.199 | Complication - Cardiovascular device, graft or implant - Electronic - Mechani... |
 | T82.211 | Complication - Coronary artery - Mechanical - Breakdown |
 | T82.212 | Complication - Coronary artery - Mechanical - Displacement |
 | T82.213 | Complication - Coronary artery - Mechanical - Leakage |
@@ -18764,40 +18782,40 @@ HTAN Biospecimen Data Model Schema
 | T82.42 | Complication - Catheter - Dialysis - Mechanical - Displacement |
 | T82.43 | Complication - Catheter - Dialysis - Mechanical - Leakage |
 | T82.49 | Complication - Catheter - Dialysis - Mechanical - Obstruction |
-| T82.510 | Complication - Arteriovenous - Fistula, surgically created - Mechanical - Breakdown |
-| T82.511 | Complication - Arteriovenous - Shunt, surgically created - Mechanical - Breakdown |
+| T82.510 | Complication - Arteriovenous - Fistula, surgically created - Mechanical - Bre... |
+| T82.511 | Complication - Arteriovenous - Shunt, surgically created - Mechanical - Break... |
 | T82.512 | Complication - Artificial - Heart - Mechanical - Breakdown |
 | T82.513 | Complication - Balloon implant or device - Vascular - Mechanical - Breakdown |
 | T82.514 | Breakdown - Device, graft or implant - Catheter NEC - Infusion NEC |
 | T82.515 | Complication - Umbrella device, vascular - Mechanical - Breakdown |
-| T82.518 | Complication - Cardiac - Device, implant or graft - Mechanical - Breakdown - Specified device NEC |
+| T82.518 | Complication - Cardiac - Device, implant or graft - Mechanical - Breakdown - ... |
 | T82.519 | Complication - Cardiac - Device, implant or graft - Mechanical - Breakdown |
-| T82.520 | Complication - Arteriovenous - Fistula, surgically created - Mechanical - Displacement |
-| T82.521 | Complication - Arteriovenous - Shunt, surgically created - Mechanical - Displacement |
+| T82.520 | Complication - Arteriovenous - Fistula, surgically created - Mechanical - Dis... |
+| T82.521 | Complication - Arteriovenous - Shunt, surgically created - Mechanical - Displ... |
 | T82.522 | Complication - Artificial - Heart - Mechanical - Displacement |
 | T82.523 | Complication - Balloon implant or device - Vascular - Mechanical - Displacement |
 | T82.524 | Complication - Catheter - Intravenous infusion - Mechanical - Displacement |
 | T82.525 | Complication - Umbrella device, vascular - Mechanical - Displacement |
-| T82.528 | Complication - Cardiac - Device, implant or graft - Mechanical - Displacement - Specified device NEC |
+| T82.528 | Complication - Cardiac - Device, implant or graft - Mechanical - Displacement... |
 | T82.529 | Complication - Cardiac - Device, implant or graft - Mechanical - Displacement |
-| T82.530 | Complication - Arteriovenous - Fistula, surgically created - Mechanical - Leakage |
+| T82.530 | Complication - Arteriovenous - Fistula, surgically created - Mechanical - Lea... |
 | T82.531 | Complication - Arteriovenous - Shunt, surgically created - Mechanical - Leakage |
 | T82.532 | Complication - Artificial - Heart - Mechanical - Leakage |
 | T82.533 | Complication - Balloon implant or device - Vascular - Mechanical - Leakage |
 | T82.534 | Complication - Catheter - Intravenous infusion - Mechanical - Leakage |
 | T82.535 | Complication - Umbrella device, vascular - Mechanical - Leakage |
-| T82.538 | Complication - Cardiac - Device, implant or graft - Mechanical - Leakage - Specified device NEC |
+| T82.538 | Complication - Cardiac - Device, implant or graft - Mechanical - Leakage - Sp... |
 | T82.539 | Complication - Cardiac - Device, implant or graft - Mechanical - Leakage |
-| T82.590 | Complication - Arteriovenous - Fistula, surgically created - Mechanical - Obstruction |
-| T82.591 | Complication - Arteriovenous - Shunt, surgically created - Mechanical - Obstruction |
+| T82.590 | Complication - Arteriovenous - Fistula, surgically created - Mechanical - Obs... |
+| T82.591 | Complication - Arteriovenous - Shunt, surgically created - Mechanical - Obstr... |
 | T82.592 | Complication - Artificial - Heart - Mechanical - Obstruction |
 | T82.593 | Complication - Balloon implant or device - Vascular - Mechanical - Obstruction |
 | T82.594 | Complication - Catheter - Intravenous infusion - Mechanical - Obstruction |
 | T82.595 | Complication - Umbrella device, vascular - Mechanical - Obstruction |
-| T82.598 | Complication - Cardiac - Device, implant or graft - Mechanical - Obstruction - Specified device NEC |
+| T82.598 | Complication - Cardiac - Device, implant or graft - Mechanical - Obstruction ... |
 | T82.599 | Complication - Cardiac - Device, implant or graft - Mechanical - Obstruction |
-| T82.6 | Complication - Cardiac - Device, implant or graft - Infection or inflammation - Valve prosthesis |
-| T82.7 | Complication - Arteriovenous - Fistula, surgically created - Infection or inflammation |
+| T82.6 | Complication - Cardiac - Device, implant or graft - Infection or inflammation... |
+| T82.7 | Complication - Arteriovenous - Fistula, surgically created - Infection or inf... |
 | T82.817 | Complication - Artificial - Heart - Embolism |
 | T82.818 | Complication - Arteriovenous - Fistula, surgically created - Embolism |
 | T82.827 | Complication - Artificial - Heart - Fibrosis |
@@ -18822,7 +18840,7 @@ HTAN Biospecimen Data Model Schema
 | T83.018 | Breakdown - Device, graft or implant - Catheter NEC - Hopkins |
 | T83.020 | Complication - Catheter - Cystostomy - Mechanical - Displacement |
 | T83.021 | Complication - Catheter - Urethral - Indwelling - Displacement |
-| T83.022 | Displacement, displaced - Device, implant or graft - Catheter NEC - Urinary - Nephrostomy |
+| T83.022 | Displacement, displaced - Device, implant or graft - Catheter NEC - Urinary -... |
 | T83.028 | Complication - Catheter - Urethral - Displacement |
 | T83.030 | Complication - Catheter - Cystostomy - Mechanical - Leakage |
 | T83.031 | Complication - Catheter - Urethral - Indwelling - Leakage |
@@ -18830,53 +18848,53 @@ HTAN Biospecimen Data Model Schema
 | T83.038 | Complication - Catheter - Urethral - Leakage |
 | T83.090 | Complication - Catheter - Cystostomy - Mechanical - Obstruction |
 | T83.091 | Complication - Catheter - Urethral - Indwelling - Specified complication NEC |
-| T83.092 | Obstruction, obstructed, obstructive - Device, implant or graft - Catheter NEC - Nephrostomy |
+| T83.092 | Obstruction, obstructed, obstructive - Device, implant or graft - Catheter NE... |
 | T83.098 | Complication - Catheter - Urinary NEC - Specified complication NEC |
 | T83.110 | Complication - Electronic stimulator device - Urinary - Mechanical - Breakdown |
 | T83.111 | Breakdown - Device, graft or implant - Urinary NEC - Sphincter, implanted |
 | T83.112 | Breakdown - Device, graft or implant - Urinary NEC - Stent - Ureteral indwelling |
 | T83.113 | Breakdown - Device, graft or implant - Urinary NEC - Stent |
 | T83.118 | Breakdown - Device, graft or implant - Urinary NEC |
-| T83.120 | Complication - Electronic stimulator device - Urinary - Mechanical - Displacement |
+| T83.120 | Complication - Electronic stimulator device - Urinary - Mechanical - Displace... |
 | T83.121 | Complication - Implant - Urinary sphincter - Mechanical - Displacement |
 | T83.122 | Complication - Stent - Ureteral indwelling - Displacement |
 | T83.123 | Complication - Stent - Urinary NEC - Mechanical - Displacement |
-| T83.128 | Complication - Genitourinary - Device or implant - Urinary system - Specified type NEC - Mechanical - Displacement |
+| T83.128 | Complication - Genitourinary - Device or implant - Urinary system - Specified... |
 | T83.190 | Complication - Electronic stimulator device - Urinary - Mechanical - Perforation |
-| T83.191 | Complication - Genitourinary - Device or implant - Urinary system - Sphincter, implanted |
-| T83.192 | Complication - Genitourinary - Device or implant - Urinary system - Stent - Ureteral indwelling |
+| T83.191 | Complication - Genitourinary - Device or implant - Urinary system - Sphincter... |
+| T83.192 | Complication - Genitourinary - Device or implant - Urinary system - Stent - U... |
 | T83.193 | Complication - Genitourinary - Device or implant - Urinary system - Stent |
-| T83.198 | Complication - Genitourinary - Device or implant - Urinary system - Specified type NEC - Mechanical |
+| T83.198 | Complication - Genitourinary - Device or implant - Urinary system - Specified... |
 | T83.21 | Breakdown - Device, graft or implant - Urinary NEC - Graft |
 | T83.22 | Complication - Graft - Urinary organ - Mechanical - Displacement |
 | T83.23 | Complication - Graft - Urinary organ - Mechanical - Leakage |
 | T83.24 | Complication - Graft - Urinary organ - Mechanical - Erosion |
 | T83.25 | Complication - Graft - Urinary organ - Mechanical - Exposure |
 | T83.29 | Complication - Graft - Urinary organ - Mechanical - Obstruction |
-| T83.31 | Breakdown - Device, graft or implant - Genital NEC - Intrauterine contraceptive device |
+| T83.31 | Breakdown - Device, graft or implant - Genital NEC - Intrauterine contracepti... |
 | T83.32 | Complication - Intrauterine - Contraceptive device - Mechanical - Displacement |
 | T83.39 | Complication - Intrauterine - Contraceptive device - Mechanical - Obstruction |
 | T83.410 | Breakdown - Device, graft or implant - Genital NEC - Penile prosthesis |
 | T83.411 | Breakdown - Device, graft or implant - Genital NEC - Testicular prosthesis |
 | T83.418 | Breakdown - Device, graft or implant - Genital NEC |
 | T83.420 | Complication - Prosthetic device or implant - Penile - Mechanical - Displacement |
-| T83.421 | Displacement, displaced - Device, implant or graft - Genital NEC - Testicular prosthesis |
+| T83.421 | Displacement, displaced - Device, implant or graft - Genital NEC - Testicular... |
 | T83.428 | Displacement, displaced - Device, implant or graft - Genital NEC |
 | T83.490 | Complication - Prosthetic device or implant - Penile - Mechanical - Leakage |
 | T83.491 | Leak, leakage - Device, implant or graft - Genital NEC - Testicular prosthesis |
 | T83.498 | Leak, leakage - Device, implant or graft - Genital NEC |
 | T83.510 | Complication - Catheter - Cystostomy - Infection and inflammation |
 | T83.511 | Complication - Catheter - Urethral - Indwelling - Infection and inflammation |
-| T83.512 | Infection, infected, infective - Due to or resulting from - Device, implant or graft - Catheter NEC - Urinary - Nephrostomy |
+| T83.512 | Infection, infected, infective - Due to or resulting from - Device, implant o... |
 | T83.518 | Complication - Catheter - Urinary NEC - Infection and inflammation |
-| T83.590 | Infection, infected, infective - Due to or resulting from - Device, implant or graft - Electronic - Urinary |
+| T83.590 | Infection, infected, infective - Due to or resulting from - Device, implant o... |
 | T83.591 | Complication - Implant - Urinary sphincter - Infection and inflammation |
-| T83.592 | Infection, infected, infective - Due to or resulting from - Device, implant or graft - Urinary NEC - Indwelling ureteral stent |
+| T83.592 | Infection, infected, infective - Due to or resulting from - Device, implant o... |
 | T83.593 | Complication - Stent - Urinary NEC - Infection and inflammation |
-| T83.598 | Complication - Electronic stimulator device - Urinary - Infection and inflammation |
-| T83.61 | Complication - Prosthetic device or implant - Penile - Infection and inflammation |
-| T83.62 | Infection, infected, infective - Due to or resulting from - Device, implant or graft - Testicular |
-| T83.69 | Complication - Genitourinary - Device or implant - Genital tract - Infection or inflammation |
+| T83.598 | Complication - Electronic stimulator device - Urinary - Infection and inflamm... |
+| T83.61 | Complication - Prosthetic device or implant - Penile - Infection and inflamma... |
+| T83.62 | Infection, infected, infective - Due to or resulting from - Device, implant o... |
+| T83.69 | Complication - Genitourinary - Device or implant - Genital tract - Infection ... |
 | T83.711 | Complication - Prosthetic device or implant - Mesh - Erosion - Vaginal |
 | T83.712 | Complication - Prosthetic device or implant - Mesh - Erosion - Urethral |
 | T83.713 | Complication - Prosthetic device or implant - Bulking agent - Urethral - Erosion |
@@ -18884,10 +18902,10 @@ HTAN Biospecimen Data Model Schema
 | T83.718 | Complication - Prosthetic device or implant - Mesh - Erosion |
 | T83.721 | Complication - Prosthetic device or implant - Mesh - Exposure - Vaginal |
 | T83.722 | Complication - Prosthetic device or implant - Mesh - Exposure - Urethral |
-| T83.723 | Complication - Prosthetic device or implant - Bulking agent - Urethral - Exposure |
-| T83.724 | Complication - Prosthetic device or implant - Bulking agent - Ureteral - Exposure |
+| T83.723 | Complication - Prosthetic device or implant - Bulking agent - Urethral - Expo... |
+| T83.724 | Complication - Prosthetic device or implant - Bulking agent - Ureteral - Expo... |
 | T83.728 | Complication - Prosthetic device or implant - Mesh - Exposure |
-| T83.79 | Complication - Prosthetic device or implant - Genital organ or tract - Specified NEC |
+| T83.79 | Complication - Prosthetic device or implant - Genital organ or tract - Specif... |
 | T83.81 | Complication - Catheter - Cystostomy - Embolism |
 | T83.82 | Complication - Catheter - Cystostomy - Fibrosis |
 | T83.83 | Complication - Catheter - Cystostomy - Hemorrhage |
@@ -18899,35 +18917,35 @@ HTAN Biospecimen Data Model Schema
 | T84.01- | Complication - Joint prosthesis, internal - Breakage |
 | T84.02- | Complication - Joint prosthesis, internal - Dislocation |
 | T84.03- | Complication - Joint prosthesis, internal - Mechanical - Loosening - Hip |
-| T84.038 | Complication - Joint prosthesis, internal - Mechanical - Loosening - Specified joint NEC |
+| T84.038 | Complication - Joint prosthesis, internal - Mechanical - Loosening - Specifie... |
 | T84.039 | Complication - Joint prosthesis, internal - Mechanical - Loosening |
 | T84.05- | Complication - Joint prosthesis, internal - Mechanical - Osteolysis - Hip |
-| T84.058 | Complication - Joint prosthesis, internal - Mechanical - Perforation - Osteolysis - Other specified joint |
+| T84.058 | Complication - Joint prosthesis, internal - Mechanical - Perforation - Osteol... |
 | T84.059 | Complication - Joint prosthesis, internal - Mechanical - Osteolysis |
-| T84.06- | Complication - Joint prosthesis, internal - Mechanical - Wear of articular bearing surface - Hip |
-| T84.068 | Complication - Joint prosthesis, internal - Mechanical - Wear of articular bearing surface - Other specified joint |
-| T84.069 | Complication - Joint prosthesis, internal - Mechanical - Wear of articular bearing surface |
-| T84.09- | Complication - Joint prosthesis, internal - Mechanical - Specified complication NEC - Hip |
-| T84.098 | Complication - Joint prosthesis, internal - Mechanical - Specified complication NEC - Other specified joint |
-| T84.099 | Complication - Joint prosthesis, internal - Mechanical - Specified complication NEC |
+| T84.06- | Complication - Joint prosthesis, internal - Mechanical - Wear of articular be... |
+| T84.068 | Complication - Joint prosthesis, internal - Mechanical - Wear of articular be... |
+| T84.069 | Complication - Joint prosthesis, internal - Mechanical - Wear of articular be... |
+| T84.09- | Complication - Joint prosthesis, internal - Mechanical - Specified complicati... |
+| T84.098 | Complication - Joint prosthesis, internal - Mechanical - Specified complicati... |
+| T84.099 | Complication - Joint prosthesis, internal - Mechanical - Specified complicati... |
 | T84.11- | Complication - Fixation device, internal - Mechanical - Breakdown - Limb - Femur |
 | T84.119 | Complication - Fixation device, internal - Mechanical - Breakdown - Limb |
-| T84.12- | Complication - Fixation device, internal - Mechanical - Displacement - Limb - Femur |
+| T84.12- | Complication - Fixation device, internal - Mechanical - Displacement - Limb -... |
 | T84.129 | Complication - Fixation device, internal - Mechanical - Displacement - Limb |
-| T84.19- | Complication - Fixation device, internal - Mechanical - Specified type NEC - Limb - Femur |
-| T84.199 | Complication - Fixation device, internal - Mechanical - Specified type NEC - Limb |
-| T84.210 | Complication - Fixation device, internal - Mechanical - Breakdown - Limb - Carpal |
-| T84.213 | Complication - Fixation device, internal - Mechanical - Breakdown - Limb - Metatarsal |
+| T84.19- | Complication - Fixation device, internal - Mechanical - Specified type NEC - ... |
+| T84.199 | Complication - Fixation device, internal - Mechanical - Specified type NEC - ... |
+| T84.210 | Complication - Fixation device, internal - Mechanical - Breakdown - Limb - Ca... |
+| T84.213 | Complication - Fixation device, internal - Mechanical - Breakdown - Limb - Me... |
 | T84.216 | Complication - Fixation device, internal - Mechanical - Breakdown - Spine |
-| T84.218 | Complication - Fixation device, internal - Mechanical - Breakdown - Specified bone NEC |
-| T84.220 | Complication - Fixation device, internal - Mechanical - Displacement - Limb - Carpal |
-| T84.223 | Complication - Fixation device, internal - Mechanical - Displacement - Limb - Metatarsal |
+| T84.218 | Complication - Fixation device, internal - Mechanical - Breakdown - Specified... |
+| T84.220 | Complication - Fixation device, internal - Mechanical - Displacement - Limb -... |
+| T84.223 | Complication - Fixation device, internal - Mechanical - Displacement - Limb -... |
 | T84.226 | Complication - Fixation device, internal - Mechanical - Displacement - Spine |
-| T84.228 | Complication - Fixation device, internal - Mechanical - Displacement - Specified bone NEC |
-| T84.290 | Complication - Fixation device, internal - Mechanical - Specified type NEC - Limb - Carpal |
-| T84.293 | Complication - Fixation device, internal - Mechanical - Specified type NEC - Limb - Metatarsal |
-| T84.296 | Complication - Fixation device, internal - Mechanical - Specified type NEC - Vertebra |
-| T84.298 | Complication - Fixation device, internal - Mechanical - Specified type NEC - Specified bone NEC |
+| T84.228 | Complication - Fixation device, internal - Mechanical - Displacement - Specif... |
+| T84.290 | Complication - Fixation device, internal - Mechanical - Specified type NEC - ... |
+| T84.293 | Complication - Fixation device, internal - Mechanical - Specified type NEC - ... |
+| T84.296 | Complication - Fixation device, internal - Mechanical - Specified type NEC - ... |
+| T84.298 | Complication - Fixation device, internal - Mechanical - Specified type NEC - ... |
 | T84.310 | Breakdown - Device, graft or implant - Electronic - Bone |
 | T84.318 | Complication - Bone - Device NEC - Mechanical - Breakdown |
 | T84.320 | Complication - Electronic stimulator device - Bone - Displacement |
@@ -18946,13 +18964,13 @@ HTAN Biospecimen Data Model Schema
 | T84.52 | Infection, infected, infective - Hip - Due to internal joint prosthesis - Left |
 | T84.53 | Infection, infected, infective - Knee - Due to internal joint prosthesis - Right |
 | T84.54 | Infection, infected, infective - Knee - Due to internal joint prosthesis - Left |
-| T84.59 | Complication - Joint prosthesis, internal - Infection or inflammation - Specified joint NEC |
+| T84.59 | Complication - Joint prosthesis, internal - Infection or inflammation - Speci... |
 | T84.60 | Complication - Fixation device, internal - Infection and inflammation |
 | T84.61- | Complication - Fixation device, internal - Infection and inflammation - Arm |
-| T84.62- | Complication - Fixation device, internal - Infection and inflammation - Leg - Femur |
+| T84.62- | Complication - Fixation device, internal - Infection and inflammation - Leg -... |
 | T84.629 | Complication - Fixation device, internal - Infection and inflammation - Leg |
 | T84.63 | Complication - Fixation device, internal - Infection and inflammation - Spine |
-| T84.69 | Complication - Fixation device, internal - Infection and inflammation - Specified site NEC |
+| T84.69 | Complication - Fixation device, internal - Infection and inflammation - Speci... |
 | T84.7 | Complication - Bone - Device NEC - Infection or inflammation |
 | T84.81 | Complication - Bone - Device NEC - Embolism |
 | T84.82 | Complication - Bone - Device NEC - Fibrosis |
@@ -18963,24 +18981,24 @@ HTAN Biospecimen Data Model Schema
 | T84.89 | Complication - Bone - Device NEC - Specified type NEC |
 | T84.9 | Complication - Bone - Device NEC |
 | T85.01 | Breakdown - Device, graft or implant - Ventricular intracranial shunt |
-| T85.02 | Complication - Prosthetic device or implant - Mechanical NEC - Ventricular shunt - Displacement |
-| T85.03 | Complication - Prosthetic device or implant - Mechanical NEC - Ventricular shunt - Leakage |
-| T85.09 | Complication - Prosthetic device or implant - Mechanical NEC - Ventricular shunt - Obstruction |
+| T85.02 | Complication - Prosthetic device or implant - Mechanical NEC - Ventricular sh... |
+| T85.03 | Complication - Prosthetic device or implant - Mechanical NEC - Ventricular sh... |
+| T85.09 | Complication - Prosthetic device or implant - Mechanical NEC - Ventricular sh... |
 | T85.110 | Complication - Electronic stimulator device - Brain - Mechanical - Breakdown |
-| T85.111 | Complication - Electronic stimulator device - Peripheral nerve - Mechanical - Breakdown |
-| T85.112 | Complication - Electronic stimulator device - Spinal cord - Mechanical - Breakdown |
+| T85.111 | Complication - Electronic stimulator device - Peripheral nerve - Mechanical -... |
+| T85.112 | Complication - Electronic stimulator device - Spinal cord - Mechanical - Brea... |
 | T85.113 | Complication - Electronic stimulator device - Generator - Breakdown |
-| T85.118 | Complication - Electronic stimulator device - Nervous system - Mechanical - Breakdown |
+| T85.118 | Complication - Electronic stimulator device - Nervous system - Mechanical - B... |
 | T85.120 | Complication - Electronic stimulator device - Brain - Mechanical - Displacement |
-| T85.121 | Complication - Electronic stimulator device - Peripheral nerve - Mechanical - Displacement |
-| T85.122 | Complication - Electronic stimulator device - Spinal cord - Mechanical - Displacement |
+| T85.121 | Complication - Electronic stimulator device - Peripheral nerve - Mechanical -... |
+| T85.122 | Complication - Electronic stimulator device - Spinal cord - Mechanical - Disp... |
 | T85.123 | Complication - Electronic stimulator device - Generator - Displacement |
-| T85.128 | Complication - Electronic stimulator device - Nervous system - Mechanical - Displacement |
+| T85.128 | Complication - Electronic stimulator device - Nervous system - Mechanical - D... |
 | T85.190 | Complication - Electronic stimulator device - Brain - Mechanical - Leakage |
-| T85.191 | Complication - Electronic stimulator device - Peripheral nerve - Mechanical - Leakage |
+| T85.191 | Complication - Electronic stimulator device - Peripheral nerve - Mechanical -... |
 | T85.192 | Complication - Electronic stimulator device - Spinal cord - Mechanical - Leakage |
 | T85.193 | Complication - Electronic stimulator device - Generator - Leakage |
-| T85.199 | Complication - Electronic stimulator device - Nervous system - Mechanical - Leakage |
+| T85.199 | Complication - Electronic stimulator device - Nervous system - Mechanical - L... |
 | T85.21 | Complication - Intraocular lens - Mechanical - Breakdown |
 | T85.22 | Complication - Intraocular lens - Mechanical - Displacement |
 | T85.29 | Complication - Intraocular lens - Mechanical - Obstruction |
@@ -18997,36 +19015,36 @@ HTAN Biospecimen Data Model Schema
 | T85.49 | Complication - Breast implant - Mechanical - Obstruction |
 | T85.510 | Complication - Bile duct implant - Mechanical - Breakdown |
 | T85.511 | Complication - Esophageal anti-reflux device - Mechanical - Breakdown |
-| T85.518 | Complication - Gastrointestinal - Prosthetic device or implant - Specified type NEC - Mechanical - Breakdown |
+| T85.518 | Complication - Gastrointestinal - Prosthetic device or implant - Specified ty... |
 | T85.520 | Complication - Bile duct implant - Mechanical - Displacement |
 | T85.521 | Complication - Esophageal anti-reflux device - Mechanical - Displacement |
-| T85.528 | Complication - Gastrointestinal - Prosthetic device or implant - Specified type NEC - Mechanical - Displacement |
+| T85.528 | Complication - Gastrointestinal - Prosthetic device or implant - Specified ty... |
 | T85.590 | Complication - Bile duct implant - Mechanical - Obstruction |
 | T85.591 | Complication - Esophageal anti-reflux device - Mechanical - Obstruction |
-| T85.598 | Complication - Gastrointestinal - Prosthetic device or implant - Specified type NEC - Mechanical - Obstruction |
+| T85.598 | Complication - Gastrointestinal - Prosthetic device or implant - Specified ty... |
 | T85.610 | Breakdown - Device, graft or implant - Catheter NEC - Infusion NEC - Cranial |
 | T85.611 | Breakdown - Device, graft or implant - Catheter NEC - Dialysis - Intraperitoneal |
 | T85.612 | Breakdown - Device, graft or implant - Sutures, permanent |
-| T85.613 | Complication - Prosthetic device or implant - Skin graft - Artificial skin or decellularized allodermis - Mechanical - Breakdown |
+| T85.613 | Complication - Prosthetic device or implant - Skin graft - Artificial skin or... |
 | T85.614 | Complication - Insulin pump - Mechanical - Breakdown |
 | T85.615 | Breakdown - Device, graft or implant - Intrathecal infusion pump |
 | T85.618 | Breakdown - Device, graft or implant |
 | T85.620 | Complication - Catheter - Cranial infusion - Mechanical - Displacement |
 | T85.621 | Complication - Catheter - Intraperitoneal dialysis - Mechanical - Displacement |
 | T85.622 | Complication - Suture, permanent - Mechanical - Displacement |
-| T85.623 | Complication - Prosthetic device or implant - Skin graft - Artificial skin or decellularized allodermis - Mechanical - Displacement |
+| T85.623 | Complication - Prosthetic device or implant - Skin graft - Artificial skin or... |
 | T85.624 | Complication - Insulin pump - Mechanical - Displacement |
 | T85.625 | Complication - Intrathecal infusion pump - Mechanical - Displacement |
-| T85.628 | Complication - Prosthetic device or implant - Specified NEC - Mechanical - Displacement |
+| T85.628 | Complication - Prosthetic device or implant - Specified NEC - Mechanical - Di... |
 | T85.630 | Complication - Catheter - Cranial infusion - Mechanical - Leakage |
 | T85.631 | Complication - Catheter - Intraperitoneal dialysis - Mechanical - Leakage |
 | T85.633 | Complication - Insulin pump - Mechanical - Leakage |
 | T85.635 | Complication - Intrathecal infusion pump - Mechanical - Leakage |
-| T85.638 | Complication - Prosthetic device or implant - Specified NEC - Mechanical - Leakage |
+| T85.638 | Complication - Prosthetic device or implant - Specified NEC - Mechanical - Le... |
 | T85.690 | Complication - Catheter - Cranial infusion - Mechanical - Malfunction |
 | T85.691 | Complication - Catheter - Intraperitoneal dialysis - Mechanical - Obstruction |
 | T85.692 | Complication - Prosthetic device or implant - Mechanical NEC - Suture, permanent |
-| T85.693 | Complication - Prosthetic device or implant - Skin graft - Artificial skin or decellularized allodermis - Mechanical - Obstruction |
+| T85.693 | Complication - Prosthetic device or implant - Skin graft - Artificial skin or... |
 | T85.694 | Complication - Insulin pump - Mechanical - Obstruction |
 | T85.695 | Complication - Intrathecal infusion pump - Mechanical - Malfunction |
 | T85.698 | Complication - Prosthetic device or implant - Mechanical NEC |
@@ -19034,12 +19052,12 @@ HTAN Biospecimen Data Model Schema
 | T85.72 | Complication - Insulin pump - Infection and inflammation |
 | T85.730 | Complication - Ventricular - Infection and inflammation |
 | T85.731 | Complication - Electronic stimulator device - Brain - Infection and inflammation |
-| T85.732 | Complication - Electronic stimulator device - Peripheral nerve - Infection and inflammation |
-| T85.733 | Complication - Electronic stimulator device - Spinal cord - Infection and inflammation |
-| T85.734 | Infection, infected, infective - Due to or resulting from - Device, implant or graft - Electronic - Nervous system - Generator pocket |
+| T85.732 | Complication - Electronic stimulator device - Peripheral nerve - Infection an... |
+| T85.733 | Complication - Electronic stimulator device - Spinal cord - Infection and inf... |
+| T85.734 | Infection, infected, infective - Due to or resulting from - Device, implant o... |
 | T85.735 | Complication - Catheter - Cranial infusion - Infection and inflammation |
-| T85.738 | Complication - Electronic stimulator device - Nervous system - Infection and inflammation |
-| T85.79 | Complication - Balloon implant or device - Gastrointestinal - Infection and inflammation |
+| T85.738 | Complication - Electronic stimulator device - Nervous system - Infection and ... |
+| T85.79 | Complication - Balloon implant or device - Gastrointestinal - Infection and i... |
 | T85.810 | Complication - Catheter - Epidural infusion - Embolism |
 | T85.818 | Complication - Balloon implant or device - Gastrointestinal - Embolism |
 | T85.820 | Complication - Catheter - Epidural infusion - Fibrosis |
@@ -19052,7 +19070,7 @@ HTAN Biospecimen Data Model Schema
 | T85.858 | Complication - Balloon implant or device - Gastrointestinal - Stenosis |
 | T85.860 | Complication - Catheter - Epidural infusion - Thrombosis |
 | T85.868 | Complication - Balloon implant or device - Gastrointestinal - Thrombosis |
-| T85.890 | Breakdown - Device, graft or implant - Subcutaneous device pocket - Nervous system prosthetic device, implant, or graft |
+| T85.890 | Breakdown - Device, graft or implant - Subcutaneous device pocket - Nervous s... |
 | T85.898 | Adhesions, adhesive - Iris - To corneal graft |
 | T85.9 | Complication - Balloon implant or device - Gastrointestinal |
 | T86.00 | Complication - Transplant - Bone marrow |
@@ -19075,21 +19093,21 @@ HTAN Biospecimen Data Model Schema
 | T86.31 | Complication - Transplant - Heart - Cardiac allograft vasculopathy - Rejection |
 | T86.32 | Complication - Transplant - Heart - Cardiac allograft vasculopathy - Failure |
 | T86.33 | Complication - Transplant - Heart - Cardiac allograft vasculopathy - Infection |
-| T86.39 | Complication - Transplant - Heart - Cardiac allograft vasculopathy - Specified type NEC |
+| T86.39 | Complication - Transplant - Heart - Cardiac allograft vasculopathy - Specifie... |
 | T86.40 | Complication - Transplant - Liver |
 | T86.41 | Complication - Transplant - Liver - Rejection |
 | T86.42 | Complication - Transplant - Liver - Failure |
-| T86.43 | Complication - Prosthetic device or implant - Infection or inflammation - Liver transplant |
+| T86.43 | Complication - Prosthetic device or implant - Infection or inflammation - Liv... |
 | T86.49 | Complication - Transplant - Liver - Specified type NEC |
 | T86.5 | Complication - Transplant - Peripheral blood stem cells |
 | T86.810 | Complication - Transplant - Lung - Rejection |
 | T86.811 | Complication - Transplant - Lung - Failure |
-| T86.812 | Complication - Prosthetic device or implant - Infection or inflammation - Lung transplant |
+| T86.812 | Complication - Prosthetic device or implant - Infection or inflammation - Lun... |
 | T86.818 | Complication - Transplant - Lung - Specified type NEC |
 | T86.819 | Complication - Transplant - Lung |
 | T86.820 | Complication - Prosthetic device or implant - Skin graft - Rejection |
 | T86.821 | Complication - Prosthetic device or implant - Skin graft - Failure |
-| T86.822 | Complication - Prosthetic device or implant - Infection or inflammation - Skin graft |
+| T86.822 | Complication - Prosthetic device or implant - Infection or inflammation - Ski... |
 | T86.828 | Complication - Prosthetic device or implant - Skin graft - Specified NEC |
 | T86.829 | Complication - Prosthetic device or implant - Skin graft |
 | T86.830 | Complication - Graft - Bone - Rejection |
@@ -19104,12 +19122,12 @@ HTAN Biospecimen Data Model Schema
 | T86.849- | Complication - Graft - Cornea |
 | T86.850 | Complication - Transplant - Intestine - Rejection |
 | T86.851 | Complication - Transplant - Intestine - Failure |
-| T86.852 | Complication - Prosthetic device or implant - Infection or inflammation - Intestine transplant |
+| T86.852 | Complication - Prosthetic device or implant - Infection or inflammation - Int... |
 | T86.858 | Complication - Transplant - Intestine - Specified type NEC |
 | T86.859 | Complication - Transplant - Intestine |
 | T86.890 | Complication - Transplant - Pancreas - Rejection |
 | T86.891 | Complication - Transplant - Pancreas - Failure |
-| T86.892 | Complication - Prosthetic device or implant - Infection or inflammation - Pancreas transplant |
+| T86.892 | Complication - Prosthetic device or implant - Infection or inflammation - Pan... |
 | T86.898 | Complication - Transplant - Pancreas - Specified type NEC |
 | T86.899 | Complication - Transplant - Pancreas |
 | T86.90 | Complication - Transplant |
@@ -19136,9 +19154,9 @@ HTAN Biospecimen Data Model Schema
 | T88.4 | Complication - Anesthesia, anesthetic - Difficult or failed intubation |
 | T88.51 | Complication - Anesthesia, anesthetic - Hypothermia |
 | T88.52 | Complication - Anesthesia, anesthetic - Failed sedation |
-| T88.53 | Anesthesia, anesthetic - Complication or reaction NEC - Unintended awareness under general anesthesia during procedure |
+| T88.53 | Anesthesia, anesthetic - Complication or reaction NEC - Unintended awareness ... |
 | T88.59 | Anesthesia, anesthetic - Complication or reaction NEC |
-| T88.6 | Allergy, allergic - Shock - Due to - Adverse effect of correct medicinal substance properly administered |
+| T88.6 | Allergy, allergic - Shock - Due to - Adverse effect of correct medicinal subs... |
 | T88.7 | Complication - Chemotherapy |
 | T88.8 | Complication - Electroshock therapy - Specified NEC |
 | T88.9 | Complication - Electroshock therapy |
@@ -19149,30 +19167,30 @@ HTAN Biospecimen Data Model Schema
 | Z00.01 | Admission - Examination at health care facility - With abnormal findings |
 | Z00.110 | Newborn - Examination - Under 8 days old |
 | Z00.111 | Newborn - Examination - 8 to 28 days old |
-| Z00.121 | Admission - Examination at health care facility - Hearing - Infant or child - With abnormal findings |
+| Z00.121 | Admission - Examination at health care facility - Hearing - Infant or child -... |
 | Z00.129 | Admission - Examination at health care facility - Hearing - Infant or child |
 | Z00.2 | Childhood - Period of rapid growth |
 | Z00.3 | Evaluation - Development state - Adolescent |
 | Z00.5 | Admission - Examination at health care facility - Donor |
 | Z00.6 | Admission - Clinical research investigation |
 | Z00.70 | Evaluation - Development state - Period of - Delayed growth in childhood |
-| Z00.71 | Evaluation - Development state - Period of - Delayed growth in childhood - With abnormal findings |
+| Z00.71 | Evaluation - Development state - Period of - Delayed growth in childhood - Wi... |
 | Z00.8 | Admission - Examination at health care facility - General, specified reason NEC |
 | Z01.00 | Admission - Examination at health care facility - Eye |
 | Z01.01 | Admission - Examination at health care facility - Eye - With abnormal findings |
-| Z01.020 | Admission - Examination at health care facility - Eye - Following failed vision screening |
-| Z01.021 | Admission - Examination at health care facility - Eye - Following failed vision screening - With abnormal findings |
+| Z01.020 | Admission - Examination at health care facility - Eye - Following failed visi... |
+| Z01.021 | Admission - Examination at health care facility - Eye - Following failed visi... |
 | Z01.10 | Admission - Examination at health care facility - Ear |
 | Z01.110 | Examination - Hearing - Following failed hearing screening |
-| Z01.118 | Admission - Examination at health care facility - Ear - With abnormal findings NEC |
+| Z01.118 | Admission - Examination at health care facility - Ear - With abnormal finding... |
 | Z01.12 | Encounter - Hearing conservation and treatment |
 | Z01.20 | Admission - Examination at health care facility - Dental |
-| Z01.21 | Admission - Examination at health care facility - Dental - With abnormal findings |
+| Z01.21 | Admission - Examination at health care facility - Dental - With abnormal find... |
 | Z01.30 | Blood - Pressure - Examination only |
 | Z01.31 | Examination - Blood pressure - With abnormal findings |
 | Z01.411 | Examination - Annual - Gynecological - With abnormal findings |
 | Z01.419 | Examination - Annual - Gynecological |
-| Z01.42 | Encounter - Repeat cervical smear to confirm findings of recent normal smear following initial abnormal smear |
+| Z01.42 | Encounter - Repeat cervical smear to confirm findings of recent normal smear ... |
 | Z01.810 | Examination - Medical - Pre-procedural - Cardiovascular |
 | Z01.811 | Examination - Medical - Pre-procedural - Respiratory |
 | Z01.812 | Examination - Laboratory - Preprocedural |
@@ -19183,13 +19201,13 @@ HTAN Biospecimen Data Model Schema
 | Z01.89 | Examination - Special |
 | Z02.0 | Encounter - Administrative purpose only - Examination for - School admission |
 | Z02.1 | Encounter - Administrative purpose only - Examination for - Employment |
-| Z02.2 | Encounter - Administrative purpose only - Examination for - Residential institution admission |
+| Z02.2 | Encounter - Administrative purpose only - Examination for - Residential insti... |
 | Z02.3 | Encounter - Administrative purpose only - Examination for - Armed forces |
 | Z02.4 | Encounter - Administrative purpose only - Examination for - Driving license |
 | Z02.5 | Encounter - Administrative purpose only - Examination for - Sports |
 | Z02.6 | Encounter - Administrative purpose only - Examination for - Insurance |
-| Z02.71 | Encounter - Administrative purpose only - Examination for - Disability determination |
-| Z02.79 | Encounter - Administrative purpose only - Examination for - Medical certificate NEC |
+| Z02.71 | Encounter - Administrative purpose only - Examination for - Disability determ... |
+| Z02.79 | Encounter - Administrative purpose only - Examination for - Medical certifica... |
 | Z02.81 | Encounter - Administrative purpose only - Examination for - Paternity testing |
 | Z02.82 | Encounter - Administrative purpose only - Examination for - Adoption |
 | Z02.83 | Examination - Medical - Blood alcohol or drug level |
@@ -19215,28 +19233,28 @@ HTAN Biospecimen Data Model Schema
 | Z04.3 | Examination - Following - Accident NEC |
 | Z04.41 | Examination - Alleged rape or sexual assault - Adult |
 | Z04.42 | Examination - Alleged rape or sexual assault - Child |
-| Z04.6 | Admission - Examination at health care facility - Psychiatric - Requested by authority |
+| Z04.6 | Admission - Examination at health care facility - Psychiatric - Requested by ... |
 | Z04.71 | Examination - Abuse, physical - Adult |
 | Z04.72 | Examination - Abuse, physical - Child |
 | Z04.81 | Examination - Forced sexual exploitation |
 | Z04.82 | Examination - Forced labor exploitation |
 | Z04.89 | Examination - Medical - Medicolegal reasons NEC |
 | Z04.9 | Investigation |
-| Z05.0 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Cardiac |
-| Z05.1 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Infectious |
-| Z05.2 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Neurological |
-| Z05.3 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Respiratory |
-| Z05.41 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Genetic |
-| Z05.42 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Metabolic |
-| Z05.43 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Immunologic |
-| Z05.5 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Gastrointestinal |
-| Z05.6 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Genitourinary |
-| Z05.71 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Skin and subcutaneous tissue |
-| Z05.72 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Musculoskeletal |
-| Z05.73 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Connective tissue |
-| Z05.81 | Encounter - Observation - Condition suspected related to home physiologic monitoring device - Newborn |
-| Z05.89 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out - Specified condition NEC |
-| Z05.9 | Observation - Newborn - Suspected condition, related to exposure from the mother or birth process - Ruled out |
+| Z05.0 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.1 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.2 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.3 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.41 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.42 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.43 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.5 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.6 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.71 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.72 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.73 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.81 | Encounter - Observation - Condition suspected related to home physiologic mon... |
+| Z05.89 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
+| Z05.9 | Observation - Newborn - Suspected condition, related to exposure from the mot... |
 | Z08 | Examination - Following - Treatment - Combined NEC - Malignant neoplasm |
 | Z09 | Admission - Follow-up examination |
 | Z11.0 | Screening - Cholera |
@@ -19324,7 +19342,7 @@ HTAN Biospecimen Data Model Schema
 | Z16.11 | Resistance, resistant - Organism - To - Drug - Amoxicillin |
 | Z16.12 | Resistance, resistant - Organism - To - Drug - Extended beta lactamase |
 | Z16.13 | Resistance, resistant - Organism - To - Drug - Carbapenem |
-| Z16.19 | Resistance, resistant - Organism - To - Drug - Beta lactam antibiotics - Specified NEC |
+| Z16.19 | Resistance, resistant - Organism - To - Drug - Beta lactam antibiotics - Spec... |
 | Z16.20 | Resistance, resistant - Organism - To - Drug - Antibiotic |
 | Z16.21 | Resistance, resistant - Organism - To - Drug - Vancomycin |
 | Z16.22 | Resistance, resistant - Organism - To - Drug - Vancomycin - Related antibiotics |
@@ -19345,10 +19363,10 @@ HTAN Biospecimen Data Model Schema
 | Z17.22 | Status - Progesterone receptor - Negative |
 | Z17.31 | Status - Human epidermal growth factor 2 receptor - Positive |
 | Z17.32 | Status - Human epidermal growth factor 2 receptor - Negative |
-| Z17.410 | Status - Combined receptor - Positive - Hormone receptor positive with human epidermal growth factor receptor 2 positive |
-| Z17.411 | Status - Combined receptor - Positive - Hormone receptor positive with human epidermal growth factor receptor 2 negative |
-| Z17.420 | Status - Combined receptor - Negative - Hormone receptor negative with human epidermal growth factor receptor 2 positive |
-| Z17.421 | Status - Combined receptor - Negative - Hormone receptor negative with human epidermal growth factor receptor 2 negative |
+| Z17.410 | Status - Combined receptor - Positive - Hormone receptor positive with human ... |
+| Z17.411 | Status - Combined receptor - Positive - Hormone receptor positive with human ... |
+| Z17.420 | Status - Combined receptor - Negative - Hormone receptor negative with human ... |
+| Z17.421 | Status - Combined receptor - Negative - Hormone receptor negative with human ... |
 | Z18.01 | Retained - Foreign body fragments - Depleted uranium |
 | Z18.09 | Retained - Foreign body fragments - Depleted isotope |
 | Z18.10 | Retained - Foreign body fragments - Metal |
@@ -19424,7 +19442,7 @@ HTAN Biospecimen Data Model Schema
 | Z28.83 | Immunization - Not done - Because - Delay in delivery of vaccine |
 | Z28.89 | Immunization - Not done - Because - Specified reason NEC |
 | Z28.9 | Delay, delayed - Vaccination |
-| Z29.11 | Encounter - Prophylactic measures - Immunotherapy for respiratory syncytial virus |
+| Z29.11 | Encounter - Prophylactic measures - Immunotherapy for respiratory syncytial v... |
 | Z29.12 | Encounter - Prophylactic measures - Antivenin |
 | Z29.13 | Encounter - Prophylactic measures - Rho |
 | Z29.14 | Encounter - Prophylactic measures - Rabies immune globin |
@@ -19460,10 +19478,10 @@ HTAN Biospecimen Data Model Schema
 | Z31.0 | Admission - Poststerilization |
 | Z31.41 | Fallopian - Insufflation |
 | Z31.42 | Admission - Poststerilization - Aftercare |
-| Z31.430 | Test, tests, testing - Genetic - Disease carrier status for procreative management - Female |
+| Z31.430 | Test, tests, testing - Genetic - Disease carrier status for procreative manag... |
 | Z31.438 | Test, tests, testing - Genetic - Procreative management NEC - Female |
-| Z31.440 | Test, tests, testing - Genetic - Disease carrier status for procreative management - Male |
-| Z31.441 | Test, tests, testing - Genetic - Male partner of patient with recurrent pregnancy loss |
+| Z31.440 | Test, tests, testing - Genetic - Disease carrier status for procreative manag... |
+| Z31.441 | Test, tests, testing - Genetic - Male partner of patient with recurrent pregn... |
 | Z31.448 | Test, tests, testing - Genetic - Procreative management NEC - Male |
 | Z31.49 | Test, tests, testing - Procreative |
 | Z31.5 | Counseling - Genetic - Procreative NEC |
@@ -19589,8 +19607,8 @@ HTAN Biospecimen Data Model Schema
 | Z40.02 | Admission - Prophylactic - Organ removal - Ovary |
 | Z40.03 | Admission - Prophylactic - Organ removal - Fallopian tube |
 | Z40.09 | Admission - Prophylactic - Organ removal - Specified organ NEC |
-| Z40.81 | Admission - Prophylactic - Oophorectomy for persons without known genetic/ familial risk factors |
-| Z40.82 | Admission - Prophylactic - Organ removal - Fallopian tube - For persons without known genetic/familial risk factors |
+| Z40.81 | Admission - Prophylactic - Oophorectomy for persons without known genetic/ fa... |
+| Z40.82 | Admission - Prophylactic - Organ removal - Fallopian tube - For persons witho... |
 | Z40.89 | Prophylactic - Surgery - Specified NEC |
 | Z40.9 | Prophylactic - Surgery |
 | Z41.1 | Admission - Breast augmentation or reduction |
@@ -19599,7 +19617,7 @@ HTAN Biospecimen Data Model Schema
 | Z41.8 | Procedure - For purpose other than remedying health state - Specified NEC |
 | Z41.9 | Procedure - For purpose other than remedying health state |
 | Z42.1 | Admission - Breast reconstruction following mastectomy |
-| Z42.8 | Admission - Plastic and reconstructive surgery following medical procedure or healed injury NEC |
+| Z42.8 | Admission - Plastic and reconstructive surgery following medical procedure or... |
 | Z43.0 | Admission - Attention to artificial opening - Tracheostomy |
 | Z43.1 | Admission - Attention to artificial opening - Gastrostomy |
 | Z43.2 | Admission - Attention to artificial opening - Ileostomy |
@@ -19621,14 +19639,14 @@ HTAN Biospecimen Data Model Schema
 | Z44.3- | Encounter - Removal - External - Prosthesis, prosthetic device - Breast |
 | Z44.8 | Admission - Adjustment - Device NEC - Prosthetic - Specified type NEC |
 | Z44.9 | Admission - Adjustment - Device NEC - Prosthetic |
-| Z45.010 | Admission - Adjustment - Device NEC - Implanted - Cardiac - Pacemaker - Pulse generator |
+| Z45.010 | Admission - Adjustment - Device NEC - Implanted - Cardiac - Pacemaker - Pulse... |
 | Z45.018 | Admission - Adjustment - Device NEC - Implanted - Cardiac - Pacemaker |
 | Z45.02 | Admission - Adjustment - Device NEC - Implanted - Cardiac - Defibrillator |
 | Z45.09 | Admission - Adjustment - Device NEC - Implanted - Cardiac |
 | Z45.1 | Admission - Adjustment - Device NEC - Implanted - Infusion pump |
 | Z45.2 | Admission - Adjustment - Device NEC - Implanted - Vascular access |
-| Z45.31 | Admission - Adjustment - Device NEC - Implanted - Nervous system - Visual substitution |
-| Z45.320 | Admission - Adjustment - Device NEC - Implanted - Hearing device - Bone conduction |
+| Z45.31 | Admission - Adjustment - Device NEC - Implanted - Nervous system - Visual sub... |
+| Z45.320 | Admission - Adjustment - Device NEC - Implanted - Hearing device - Bone condu... |
 | Z45.321 | Admission - Adjustment - Device NEC - Implanted - Hearing device - Cochlear |
 | Z45.328 | Admission - Adjustment - Device NEC - Implanted - Hearing device |
 | Z45.41 | Admission - Adjustment - Device NEC - Implanted - Nervous system - CSF drainage |
@@ -19722,7 +19740,7 @@ HTAN Biospecimen Data Model Schema
 | Z52.9 | Donor |
 | Z53.01 | Canceled procedure - Because of - Contraindication - Smoking |
 | Z53.09 | Canceled procedure - Because of - Contraindication |
-| Z53.1 | Canceled procedure - Because of - Patient's decision - For reasons of belief or group pressure |
+| Z53.1 | Canceled procedure - Because of - Patient's decision - For reasons of belief ... |
 | Z53.20 | Canceled procedure - Because of - Patient's decision |
 | Z53.21 | Procedure - Not done - Because of - Patient's decision - Left without being seen |
 | Z53.29 | Canceled procedure - Because of - Left against medical advice |
@@ -19811,7 +19829,7 @@ HTAN Biospecimen Data Model Schema
 | Z62.810 | History - Personal - Abuse - Childhood - Physical |
 | Z62.811 | History - Personal - Abuse - Childhood - Psychological |
 | Z62.812 | History - Personal - Neglect - Childhood |
-| Z62.813 | History - Personal - Abuse - Childhood - Forced labor or sexual exploitation in childhood |
+| Z62.813 | History - Personal - Abuse - Childhood - Forced labor or sexual exploitation ... |
 | Z62.814 | History - Personal - Abuse - Childhood - Financial |
 | Z62.815 | History - Personal - Abuse - Childhood - Intimate partner |
 | Z62.819 | History - Personal - Abuse - Childhood |
@@ -19829,7 +19847,7 @@ HTAN Biospecimen Data Model Schema
 | Z62.9 | Atypical, atypism - Parenting situation |
 | Z63.0 | Abuse - Adult - As reason for - Couple seeking advice |
 | Z63.1 | Discord - In-laws |
-| Z63.31 | Disruption - Family - Due to - Absence of family member due to military deployment |
+| Z63.31 | Disruption - Family - Due to - Absence of family member due to military deplo... |
 | Z63.32 | Absence - Family member |
 | Z63.4 | Bereavement |
 | Z63.5 | Conflict - Marital - Involving divorce or estrangement |
@@ -19893,11 +19911,11 @@ HTAN Biospecimen Data Model Schema
 | Z68.44 | Body, bodies - Mass index - Adult - 60.0-69.9 |
 | Z68.45 | Body, bodies - Mass index - Adult - 70 and over |
 | Z68.51 | Body, bodies - Mass index - Pediatric - Less than fifth percentile for age |
-| Z68.52 | Body, bodies - Mass index - Pediatric - 5th percentile to less than 85th percentile for age |
-| Z68.53 | Body, bodies - Mass index - Pediatric - 85th percentile to less than 95th percentile for age |
-| Z68.54 | Body, bodies - Mass index - Pediatric - 95th percentile for age to less than 120% of the 95th percentile for age |
-| Z68.55 | Body, bodies - Mass index - Pediatric - 120% of the 95th percentile for age to less than 140% of the 95th percentile for age |
-| Z68.56 | Body, bodies - Mass index - Pediatric - Greater than or equal to 140% of the 95th percentile for age |
+| Z68.52 | Body, bodies - Mass index - Pediatric - 5th percentile to less than 85th perc... |
+| Z68.53 | Body, bodies - Mass index - Pediatric - 85th percentile to less than 95th per... |
+| Z68.54 | Body, bodies - Mass index - Pediatric - 95th percentile for age to less than ... |
+| Z68.55 | Body, bodies - Mass index - Pediatric - 120% of the 95th percentile for age t... |
+| Z68.56 | Body, bodies - Mass index - Pediatric - Greater than or equal to 140% of the ... |
 | Z69.010 | Counseling - Child abuse - Parental - Victim |
 | Z69.011 | Counseling - Child abuse - Parental - Perpetrator |
 | Z69.020 | Counseling - Child abuse - Nonparental - Victim |
@@ -19908,7 +19926,7 @@ HTAN Biospecimen Data Model Schema
 | Z69.82 | Counseling - Abuse NEC - Perpetrator |
 | Z70.0 | Counseling - Sex, sexual - Attitude |
 | Z70.1 | Counseling - Impotence |
-| Z70.2 | Counseling - For non-attending third party - Related to sexual behavior or orientation |
+| Z70.2 | Counseling - For non-attending third party - Related to sexual behavior or or... |
 | Z70.3 | Counseling - Sex, sexual - Combined concerns |
 | Z70.8 | Counseling - Sex, sexual - Specified reason NEC |
 | Z70.9 | Counseling - Sex, sexual |
@@ -19917,7 +19935,7 @@ HTAN Biospecimen Data Model Schema
 | Z71.2 | Explanation of - Investigation finding |
 | Z71.3 | Admission - Counseling - Dietary |
 | Z71.41 | Abuse - Alcohol - Counseling and surveillance |
-| Z71.42 | Alcohol, alcoholic, alcohol-induced - Counseling and surveillance - Family member |
+| Z71.42 | Alcohol, alcoholic, alcohol-induced - Counseling and surveillance - Family me... |
 | Z71.51 | Abuse - Drug NEC - Counseling and surveillance |
 | Z71.52 | Counseling - Drug abuser - Family member |
 | Z71.6 | Counseling - Substance abuse - Tobacco |
@@ -20187,7 +20205,7 @@ HTAN Biospecimen Data Model Schema
 | Z86.11 | History - Personal - Disease or disorder - Infectious - Tuberculosis |
 | Z86.12 | History - Personal - Disease or disorder - Infectious - Poliomyelitis |
 | Z86.13 | History - Personal - Disease or disorder - Infectious - Malaria |
-| Z86.14 | History - Personal - Disease or disorder - Infectious - Methicillin resistant Staphylococcus aureus |
+| Z86.14 | History - Personal - Disease or disorder - Infectious - Methicillin resistant... |
 | Z86.15 | History - Personal - Infection NEC - Latent tuberculosis |
 | Z86.16 | COVID-19 - History of |
 | Z86.19 | Hepatitis - History of - B |
@@ -20207,7 +20225,7 @@ HTAN Biospecimen Data Model Schema
 | Z86.79 | History - Personal - Disease or disorder - Circulatory system |
 | Z87.01 | History - Personal - Pneumonia |
 | Z87.09 | History - Personal - Disease or disorder - Respiratory system NEC |
-| Z87.11 | History - Personal - Disease or disorder - Digestive system - Peptic ulcer disease |
+| Z87.11 | History - Personal - Disease or disorder - Digestive system - Peptic ulcer di... |
 | Z87.19 | History - Personal - Disease or disorder - Digestive system |
 | Z87.2 | History - Personal - Disease or disorder - Skin |
 | Z87.310 | History - Personal - Collapsed vertebra - Due to osteoporosis |
@@ -20262,7 +20280,7 @@ HTAN Biospecimen Data Model Schema
 | Z88.5 | History - Personal - Allergy - Narcotic agent NEC |
 | Z88.6 | History - Personal - Allergy - Analgesic agent NEC |
 | Z88.7 | History - Personal - Allergy - Serum |
-| Z88.8 | History - Personal - Allergy - Drugs, medicaments and biological substances - Specified NEC |
+| Z88.8 | History - Personal - Allergy - Drugs, medicaments and biological substances -... |
 | Z88.9 | History - Personal - Allergy |
 | Z89.01- | Absence - Thumb |
 | Z89.02- | Absence - Finger |
@@ -20303,8 +20321,8 @@ HTAN Biospecimen Data Model Schema
 | Z90.89 | Absence - Organ - Or site, congenital NEC - Acquired NEC |
 | Z91.010 | Allergy, allergic - Food - Status - Peanuts |
 | Z91.0110 | Allergy, allergic - Food - Status - Milk products |
-| Z91.0111 | Allergy, allergic - Food - Status - Milk products - With - Tolerance to baked milk |
-| Z91.0112 | Allergy, allergic - Food - Status - Milk products - With - Reactivity to baked milk |
+| Z91.0111 | Allergy, allergic - Food - Status - Milk products - With - Tolerance to baked... |
+| Z91.0112 | Allergy, allergic - Food - Status - Milk products - With - Reactivity to bake... |
 | Z91.0120 | Allergy, allergic - Food - Status - Eggs |
 | Z91.0121 | Allergy, allergic - Food - Status - Eggs - With - Tolerance to baked egg |
 | Z91.0122 | Allergy, allergic - Food - Status - Eggs - With - Reactivity to baked egg |
@@ -20321,9 +20339,9 @@ HTAN Biospecimen Data Model Schema
 | Z91.110 | Noncompliance - With - Dietary regimen - Due to - Financial hardship |
 | Z91.118 | Inability to - Comply with dietary regimen |
 | Z91.119 | Noncompliance - With - Dietary regimen |
-| Z91.120 | Noncompliance - With - Medication regimen NEC - Underdosing - Intentional NEC - Due to financial hardship of patient |
+| Z91.120 | Noncompliance - With - Medication regimen NEC - Underdosing - Intentional NEC... |
 | Z91.128 | Noncompliance - With - Medication regimen NEC - Underdosing - Intentional NEC |
-| Z91.130 | Noncompliance - With - Medication regimen NEC - Underdosing - Unintentional NEC - Due to patient's age related debility |
+| Z91.130 | Noncompliance - With - Medication regimen NEC - Underdosing - Unintentional N... |
 | Z91.138 | Noncompliance - With - Medication regimen NEC - Underdosing - Unintentional NEC |
 | Z91.14 | Underdosing |
 | Z91.141 | Noncompliance - With - Medication regimen NEC - Due to financial hardship |
@@ -20352,17 +20370,17 @@ HTAN Biospecimen Data Model Schema
 | Z91.849 | At risk - For - Dental caries |
 | Z91.85 | History - Personal - Military service |
 | Z91.89 | At risk - For - Social isolation |
-| Z91.A10 | Noncompliance - Caregiver - With patient's - Dietary regimen - Due to - Financial hardship |
-| Z91.A18 | Noncompliance - Caregiver - With patient's - Dietary regimen - Due to - Specified reason NEC |
-| Z91.A20 | Noncompliance - With - Medication regimen NEC - Underdosing - Intentional NEC - By caregiver - Due to - Financial hardship |
-| Z91.A28 | Noncompliance - With - Medication regimen NEC - Underdosing - Intentional NEC - By caregiver - Due to - Specified reason NEC |
-| Z91.A3 | Noncompliance - With - Medication regimen NEC - Underdosing - Unintentional NEC - By caregiver |
-| Z91.A41 | Noncompliance - Caregiver - With patient's - Medication regimen - Due to financial hardship |
-| Z91.A48 | Noncompliance - Caregiver - With patient's - Medication regimen - Specified reason NEC |
-| Z91.A51 | Noncompliance - Caregiver - With patient's - Renal dialysis - Due to financial hardship |
-| Z91.A58 | Noncompliance - Caregiver - With patient's - Renal dialysis - Specified reason NEC |
-| Z91.A91 | Noncompliance - Caregiver - With patient's - Medical treatment and regimen - Due to financial hardship |
-| Z91.A98 | Noncompliance - Caregiver - With patient's - Medical treatment and regimen - Specified reason NEC |
+| Z91.A10 | Noncompliance - Caregiver - With patient's - Dietary regimen - Due to - Finan... |
+| Z91.A18 | Noncompliance - Caregiver - With patient's - Dietary regimen - Due to - Speci... |
+| Z91.A20 | Noncompliance - With - Medication regimen NEC - Underdosing - Intentional NEC... |
+| Z91.A28 | Noncompliance - With - Medication regimen NEC - Underdosing - Intentional NEC... |
+| Z91.A3 | Noncompliance - With - Medication regimen NEC - Underdosing - Unintentional N... |
+| Z91.A41 | Noncompliance - Caregiver - With patient's - Medication regimen - Due to fina... |
+| Z91.A48 | Noncompliance - Caregiver - With patient's - Medication regimen - Specified r... |
+| Z91.A51 | Noncompliance - Caregiver - With patient's - Renal dialysis - Due to financia... |
+| Z91.A58 | Noncompliance - Caregiver - With patient's - Renal dialysis - Specified reaso... |
+| Z91.A91 | Noncompliance - Caregiver - With patient's - Medical treatment and regimen - ... |
+| Z91.A98 | Noncompliance - Caregiver - With patient's - Medical treatment and regimen - ... |
 | Z91.B | DES - Child |
 | Z92.0 | History - Personal - Contraception |
 | Z92.21 | History - Personal - Chemotherapy for neoplastic condition |
@@ -20377,7 +20395,7 @@ HTAN Biospecimen Data Model Schema
 | Z92.81 | History - Personal - Extracorporeal membrane oxygenation |
 | Z92.82 | Administration of tPA |
 | Z92.83 | Failure, failed - Sedation - History of |
-| Z92.84 | Anesthesia, anesthetic - Complication or reaction NEC - Unintended awareness under general anesthesia during procedure - Personal history of |
+| Z92.84 | Anesthesia, anesthetic - Complication or reaction NEC - Unintended awareness ... |
 | Z92.850 | History - Personal - CAR-T |
 | Z92.858 | History - Personal - Cellular therapy - Specified NEC |
 | Z92.859 | History - Personal - Cellular therapy |
@@ -20488,69 +20506,69 @@ HTAN Biospecimen Data Model Schema
 
 | Value | Description |
 |-------|-------------|
-| 9715/3 | ALK-negative anaplastic large cell lymphoma (ALK-ALCL), for cases diagnosed 2021 and later |
-| 9737/3 | ALK-positive large B-cell lymphoma (ALK+ LBCL), for cases diagnosed 2010 and later |
+| 9715/3 | ALK-negative anaplastic large cell lymphoma (ALK-ALCL), for cases diagnosed 2... |
+| 9737/3 | ALK-positive large B-cell lymphoma (ALK+ LBCL), for cases diagnosed 2010 and ... |
 | 9870/3 | Acute basophilic leukemia, for cases diagnosed 1978 and later |
 | 9805/3 | Acute biphenotypic leukemia, for cases diagnosed 2001 - 2009 |
 | 9910/3 | Acute megakaryoblastic leukemia (AMKL), for cases diagnosed 1978 and later |
-| 9911/3 | Acute megakaryoblastic leukemia with RBMI5::MRTFA, for cases diagnosed 2010 and later |
+| 9911/3 | Acute megakaryoblastic leukemia with RBMI5::MRTFA, for cases diagnosed 2010 a... |
 | 9891/3 | Acute monoblastic and monocytic leukemia, for cases diagnosed 1978 and later |
 | 9861/3 | Acute myeloid leukemia (AML), NOS, for cases diagnosed 1978 and later |
 | 9912/3 | Acute myeloid leukemia with BCR::ABL1 fusion |
-| 9871/3 | Acute myeloid leukemia with CBFB::MYH11 fusion, for cases diagnosed 2001 and later |
+| 9871/3 | Acute myeloid leukemia with CBFB::MYH11 fusion, for cases diagnosed 2001 and ... |
 | 9878/3 | Acute myeloid leukemia with CEBPA mutation |
-| 9865/3 | Acute myeloid leukemia with DEK::NUP214 fusion, for cases diagnosed 2010 and later |
-| 9897/3 | Acute myeloid leukemia with KMT2a rearrangement, for cases diagnosed 1978 and later |
-| 9869/3 | Acute myeloid leukemia with MECOM rearrangement, for cases diagnosed 2010 and later |
+| 9865/3 | Acute myeloid leukemia with DEK::NUP214 fusion, for cases diagnosed 2010 and ... |
+| 9897/3 | Acute myeloid leukemia with KMT2a rearrangement, for cases diagnosed 1978 and... |
+| 9869/3 | Acute myeloid leukemia with MECOM rearrangement, for cases diagnosed 2010 and... |
 | 9896/3 | Acute myeloid leukemia with RUNX1::RUNX1T1, for cases diagnosed 2001 and later |
-| 9874/3 | Acute myeloid leukemia with maturation, for cases diagnosed 1978 - 1991, 1995 and later |
-| 9872/3 | Acute myeloid leukemia with minimal differentiation, for cases diagnosed 1978 - 1991, 1995 and later |
+| 9874/3 | Acute myeloid leukemia with maturation, for cases diagnosed 1978 - 1991, 1995... |
+| 9872/3 | Acute myeloid leukemia with minimal differentiation, for cases diagnosed 1978... |
 | 9877/3 | Acute myeloid leukemia with mutated NPM1 |
 | 9879/3 | Acute myeloid leukemia with mutated RUNX1 |
-| 9895/3 | Acute myeloid leukemia with myelodysplasia-related changes (AML-MRC), for cases diagnosed 2001 and later |
+| 9895/3 | Acute myeloid leukemia with myelodysplasia-related changes (AML-MRC), for cas... |
 | 9873/3 | Acute myeloid leukemia without maturation, for cases diagnosed 2001 and later |
 | 9867/3 | Acute myelomonocytic leukemia (AMML), for cases diagnosed 1978 and later |
 | 9931/3 | Acute panmyelosis with myelofibrosis (APMF), for cases diagnosed 1992 and later |
-| 9866/3 | Acute promyelocytic leukemia with PML::RARA fusion (APL with PML-RARA), for cases diagnosed 1978 and later |
+| 9866/3 | Acute promyelocytic leukemia with PML::RARA fusion (APL with PML-RARA), for c... |
 | 9801/3 | Acute undifferentiated leukemia, for cases diagnosed 1978 and later |
 | 9827/3 | Adult T-cell leukemia/lymphoma (AITL), for cases diagnosed 1992 and later |
 | 9948/3 | Aggressive NK-cell leukemia (ANKL), for cases diagnosed 2001 and later |
 | 9714/3 | Anaplastic large cell lymphoma, NOS, for cases diagnosed 1992 and later |
 | 9705/3 | Angioimmunoblastic T-cell lymphoma (AITL), for cases diagnosed 1992 and later |
 | 9767/1 | Angioimmunoblastic lymphadenopathy (AIL), This neoplasm is not reportable |
-| 9876/3 | Atypical chronic myeloid (aCML) leukemia, BCR/ABL1-negative, for cases diagnosed 1978 and later |
-| 9813/3 | B lymphoblastic leukemia/lymphoma with KMT2A rearrangement, for cases diagnosed 2010 and later |
-| 9596/3 | B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and classic Hodgkin lymphoma, for cases diagnosed 2001 and later |
+| 9876/3 | Atypical chronic myeloid (aCML) leukemia, BCR/ABL1-negative, for cases diagno... |
+| 9813/3 | B lymphoblastic leukemia/lymphoma with KMT2A rearrangement, for cases diagnos... |
+| 9596/3 | B-cell lymphoma, unclassifiable, with features intermediate between diffuse l... |
 | 9833/3 | B-cell prolymphocytic leukemia (B-PLL), for cases diagnosed 2001 and later |
-| 9812/3 | B-lymphoblastic leukemia/lymphoma with BCR::ABL1 fusion, for cases diagnosed 2010 and later |
+| 9812/3 | B-lymphoblastic leukemia/lymphoma with BCR::ABL1 fusion, for cases diagnosed ... |
 | 9819/3 | B-lymphoblastic leukemia/lymphoma with BCR::ABL1 like (Ph-like) features |
-| 9814/3 | B-lymphoblastic leukemia/lymphoma with ETV6::RUNX1 fusion, for cases diagnosed 2010 and later |
-| 9815/3 | B-lymphoblastic leukemia/lymphoma with High-hyperdiploidy, for cases diagnosed 2010 and later |
-| 9817/3 | B-lymphoblastic leukemia/lymphoma with IGH::IL3 fusion, for cases diagnosed 2010 and later |
-| 9818/3 | B-lymphoblastic leukemia/lymphoma with TCF3::PBX1, for cases diagnosed 2010 and later |
-| 9816/3 | B-lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL), for cases diagnosed 2010 and later |
+| 9814/3 | B-lymphoblastic leukemia/lymphoma with ETV6::RUNX1 fusion, for cases diagnose... |
+| 9815/3 | B-lymphoblastic leukemia/lymphoma with High-hyperdiploidy, for cases diagnose... |
+| 9817/3 | B-lymphoblastic leukemia/lymphoma with IGH::IL3 fusion, for cases diagnosed 2... |
+| 9818/3 | B-lymphoblastic leukemia/lymphoma with TCF3::PBX1, for cases diagnosed 2010 a... |
+| 9816/3 | B-lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL), for ca... |
 | 9811/3 | B-lymphoblastic leukemia/lymphoma, NOS, for cases diagnosed 2010 and later |
-| 9727/3 | Blastic plasmacytoid dendritic cell neoplasm (BPDC), for cases diagnosed 2001 and later |
+| 9727/3 | Blastic plasmacytoid dendritic cell neoplasm (BPDC), for cases diagnosed 2001... |
 | 9826/3 | Burkitt cell leukemia, for cases diagnosed 1992 - 2020 |
 | 9687/3 | Burkitt lymphoma (BL), (NOS), for cases diagnosed 1978 and later |
 | 9964/3 | Chronic eosinophilic leukemia (CEL), for cases diagnosed 1978 and later |
-| 9823/3 | Chronic lymphocytic leukemia/small lymphocytic lymphoma (CLL/SLL), for cases diagnosed 1978 and later |
+| 9823/3 | Chronic lymphocytic leukemia/small lymphocytic lymphoma (CLL/SLL), for cases ... |
 | 9875/3 | Chronic myeloid leukemia (CML), BCR::ABL1, for cases diagnosed 1978 and later |
 | 9863/3 | Chronic myeloid leukemia (CML), NOS, for cases diagnosed 1978 and later |
 | 9945/3 | Chronic myelomonocytic leukemia (CMML), NOS, for cases diagnosed 1978 and later |
 | 9963/3 | Chronic neutrophilic leukemia (CNL), for cases diagnosed 1978 and later |
 | 9650/3 | Classic Hodgkin lymphoma (CHL), NOS, for cases diagnosed 1978 and later |
-| 9653/3 | Classic Hodgkin lymphoma, lymphocyte depletion (LD-cHL), for cases diagnosed 1978 and later |
-| 9651/3 | Classic Hodgkin lymphoma, lymphocyte-rich (LR-cHL), for cases diagnosed 1978 and later |
-| 9652/3 | Classic Hodgkin lymphoma, mixed cellularity (MC-cHL), for cases diagnosed 1978 and later |
-| 9663/3 | Classic Hodgkin lymphoma, nodular sclerosis, NOS (NS-cHL), for cases diagnosed 1978 and later |
+| 9653/3 | Classic Hodgkin lymphoma, lymphocyte depletion (LD-cHL), for cases diagnosed ... |
+| 9651/3 | Classic Hodgkin lymphoma, lymphocyte-rich (LR-cHL), for cases diagnosed 1978 ... |
+| 9652/3 | Classic Hodgkin lymphoma, mixed cellularity (MC-cHL), for cases diagnosed 197... |
+| 9663/3 | Classic Hodgkin lymphoma, nodular sclerosis, NOS (NS-cHL), for cases diagnose... |
 | 9680/3 | Diffuse large B-cell lymphoma, NOS (DLBCL), for cases diagnosed 1978 and later |
 | 9680/1 | EBV-positive mucocutaneous ulcer (EBVMCU), This neoplasm is not reportable |
-| 9717/3 | Enteropathy-associated (type) T-cell lymphoma (EATL), for cases diagnosed 2001 and later |
+| 9717/3 | Enteropathy-associated (type) T-cell lymphoma (EATL), for cases diagnosed 200... |
 | 9749/3 | Erdheim-Chester disease (ECD) |
 | 9962/3 | Essential thrombocythemia (ET), for cases diagnosed 2001 and later |
 | 9719/3 | Extranodal NK-/T-cell lymphoma (ENKTL), for cases diagnosed 2001 and later |
-| 9699/3 | Extranodal marginal zone lymphoma of mucosa-associated lymphoid tissue (MALT lymphoma), for cases diagnosed 1992 and later |
+| 9699/3 | Extranodal marginal zone lymphoma of mucosa-associated lymphoid tissue (MALT ... |
 | 9759/3 | Fibroblastic reticular cell tumor, for cases diagnosed 2010 and later |
 | 9758/3 | Follicular dendritic cell sarcoma (FDCS), for cases diagnosed 2001 and later |
 | 9690/3 | Follicular lymphoma (FL), NOS, for cases diagnosed 1978 and later |
@@ -20558,28 +20576,28 @@ HTAN Biospecimen Data Model Schema
 | 9691/3 | Follicular lymphoma, grade 2, for cases diagnosed 1992 and later |
 | 9698/3 | Follicular lymphoma, grade 3, for cases diagnosed 1978 and later |
 | 9738/3 | HHV8-positive diffuse large B-cell lymphoma, for cases diagnosed 2010 and later |
-| 9738/1 | HHV8-positive germinotropic lymphoproliferative disorder (GLPD), This neoplasm is not reportable |
+| 9738/1 | HHV8-positive germinotropic lymphoproliferative disorder (GLPD), This neoplas... |
 | 9940/3 | Hairy cell leukemia (HCL), for cases diagnosed 1978 and later |
 | 9762/3 | Heavy chain desposition disease, for cases diagnosed 1992 and later |
 | 9716/3 | Hepatosplenic T-cell lymphoma (HSTCL), for cases diagnosed 2001 and later |
 | 9755/3 | Histiocytic sarcoma, for cases diagnosed 1992 and later |
 | 9661/3 | Hodgkin granuloma, for cases diagnosed 2001 - 2009 |
-| 9654/3 | Hodgkin lymphoma, lymphocyte depletion, diffuse fibrosis [OBS], for cases diagnosed 1978 - 2009 |
-| 9655/3 | Hodgkin lymphoma, lymphocyte depletion, reticular, for cases diagnosed 1978 and later |
-| 9664/3 | Hodgkin lymphoma, nodular sclerosis, cellular phase, for cases diagnosed 1978 - 2009 |
+| 9654/3 | Hodgkin lymphoma, lymphocyte depletion, diffuse fibrosis [OBS], for cases dia... |
+| 9655/3 | Hodgkin lymphoma, lymphocyte depletion, reticular, for cases diagnosed 1978 a... |
+| 9664/3 | Hodgkin lymphoma, nodular sclerosis, cellular phase, for cases diagnosed 1978... |
 | 9665/3 | Hodgkin lymphoma, nodular sclerosis, grade 1, for cases diagnosed 1992 - 2009 |
 | 9667/3 | Hodgkin lymphoma, nodular sclerosis, grade 2, for cases diagnosed 1978 - 2009 |
 | 9662/3 | Hodgkin sarcoma, for cases diagnosed 2001 - 2009 |
-| 9725/1 | Hydroa vacciniforme like lymphoproliferative disorder, This neoplasm is not reportable |
-| 9725/3 | Hydroa vaccinoforme-like lymphoproliferative disorder (HV-LPD), for cases diagnosed 2010 - 2020 |
-| 9761/1 | IgM monoclonal gammopathy of undetermined significance (MGUS), This neoplasm is not reportable |
+| 9725/1 | Hydroa vacciniforme like lymphoproliferative disorder, This neoplasm is not r... |
+| 9725/3 | Hydroa vaccinoforme-like lymphoproliferative disorder (HV-LPD), for cases dia... |
+| 9761/1 | IgM monoclonal gammopathy of undetermined significance (MGUS), This neoplasm ... |
 | 9760/3 | Immunoproliferative disease, NOS, for cases diagnosed 1992 - 2009 |
 | 9764/3 | Immunoproliferative small intestinal disease, for cases diagnosed 1992 - 2009 |
 | 9695/1 | In situ follicular neoplasia (ISFN), This neoplasm is not reportable |
 | 9673/1 | In situ mantle cell neoplasia (ISMCN), This neoplasm is not reportable |
-| 9702/1 | Indolent T-cell lymphoproliferative disorder of the gastrointestinal tract (iTCL-GI), This neoplasm is not reportable |
+| 9702/1 | Indolent T-cell lymphoproliferative disorder of the gastrointestinal tract (i... |
 | 9741/1 | Indolent systemic mastocytosis (ISM), This neoplasm is not reportable |
-| 9757/3 | Interdigitating dendritic cell sarcoma (IDCS), for cases diagnosed 2001 and later |
+| 9757/3 | Interdigitating dendritic cell sarcoma (IDCS), for cases diagnosed 2001 and l... |
 | 9712/3 | Intravascular large B-cell lymphoma (IVLBCL), for cases diagnosed 2010 and later |
 | 9946/3 | Juvenile myelomonocytic leukemia (JMML), for cases diagnosed 1978 and later |
 | 9749/1 | Juvenile xanthogranuloma (JXG), This neoplasm is not reportable |
@@ -20598,40 +20616,40 @@ HTAN Biospecimen Data Model Schema
 | 9970/1 | Lymphoproliferative disorder, NOS, This neoplasm is not reportable |
 | 9750/3 | Malignant histiocytosis, for cases diagnosed 1978 - 2009 |
 | 9590/3 | Malignant lymphoma, NOS, for cases diagnosed 1978 and later |
-| 9684/3 | Malignant lymphoma, large B-cell, diffuse, immunoblastic, NOS, for cases diagnosed 1992 - 2009 |
-| 9675/3 | Malignant lymphoma, mixed small and large cell, diffuse, for cases diagnosed 1992 - 2009 |
+| 9684/3 | Malignant lymphoma, large B-cell, diffuse, immunoblastic, NOS, for cases diag... |
+| 9675/3 | Malignant lymphoma, mixed small and large cell, diffuse, for cases diagnosed ... |
 | 9670/3 | Malignant lymphoma, small B lymphocytic, NOS, for cases diagnosed 1978 - 2009 |
 | 9673/3 | Mantle cell lymphoma (MCL), for cases diagnosed 1992 and later |
 | 9742/3 | Mast cell leukemia (MCL), for cases diagnosed 1978 and later |
 | 9740/3 | Mast cell sarcoma (MSC), for cases diagnosed 1978 and later |
 | 9740/1 | Mastocytoma (NOS), This neoplasm is not reportable |
 | 9679/3 | Mediastinal large B-cell lymphoma (PMBCL), for cases diagnosed 2001 and later |
-| 9806/3 | Mixed-phenotype acute leukemia (MPAL) with t(9;22)(q34.1;q11.2); BCR-ABL1, for cases diagnosed 2010 and later |
-| 9807/3 | Mixed-phenotype acute leukemia (MPAL) with t(v;11q23.3); KMT2A-rearranged, for cases diagnosed 2010 and later |
-| 9808/3 | Mixed-phenotype acute leukemia (MPAL), B/myeloid, not otherwise specified, for cases diagnosed 2010 and later |
-| 9809/3 | Mixed-phenotype acute leukemia, T/myeloid, not otherwise specified, for cases diagnosed 2010 and later |
-| 9823/1 | Monoclonal B-cell lymphocytosis, CLL-type (MBL, CLL-type), This neoplasm is not reportable |
-| 9591/1 | Monoclonal B-cell lymphocytosis, non-chronic lymphocytic leukemia (CLL)-type, This neoplasm is not reportable |
-| 9765/1 | Monoclonal gammopathy of undetermined significance (NOS) (MGUS), This neoplasm is not reportable |
-| 9769/1 | Monoclonal immunoglobulin deposition disease (MIDD), This neoplasm is not reportable |
+| 9806/3 | Mixed-phenotype acute leukemia (MPAL) with t(9;22)(q34.1;q11.2); BCR-ABL1, fo... |
+| 9807/3 | Mixed-phenotype acute leukemia (MPAL) with t(v;11q23.3); KMT2A-rearranged, fo... |
+| 9808/3 | Mixed-phenotype acute leukemia (MPAL), B/myeloid, not otherwise specified, fo... |
+| 9809/3 | Mixed-phenotype acute leukemia, T/myeloid, not otherwise specified, for cases... |
+| 9823/1 | Monoclonal B-cell lymphocytosis, CLL-type (MBL, CLL-type), This neoplasm is n... |
+| 9591/1 | Monoclonal B-cell lymphocytosis, non-chronic lymphocytic leukemia (CLL)-type,... |
+| 9765/1 | Monoclonal gammopathy of undetermined significance (NOS) (MGUS), This neoplas... |
+| 9769/1 | Monoclonal immunoglobulin deposition disease (MIDD), This neoplasm is not rep... |
 | 9700/3 | Mycosis fungoides (MF), for cases diagnosed 1978 and later |
-| 9986/3 | Myelodysplastic syndrome associated with isolated del(5q), for cases diagnosed 2001 and later |
-| 9983/3 | Myelodysplastic syndrome with increased blasts (MDS-IB), for cases diagnosed 2001 and later |
-| 9985/3 | Myelodysplastic syndrome with multilineage dysplasia (MDS-MLD), for cases diagnosed 2001 and later |
-| 9993/3 | Myelodysplastic syndrome with ring sideroblasts and multilineage dysplasia (MDS-RD-MLD) |
-| 9982/3 | Myelodysplastic syndrome with ring sideroblasts and single lineage dysplasia (MDS-RS-SLD), for cases diagnosed 2001 and later |
-| 9980/3 | Myelodysplastic syndrome with single lineage dysplasia (MDS-SLD), for cases diagnosed 2001 and later |
-| 9989/3 | Myelodysplastic syndrome, unclassifiable (MDS-U), for cases diagnosed 2001 and later |
-| 9975/3 | Myelodysplastic/myeloproliferative neoplasm, unclassifiable, for cases diagnosed 2010 and later |
-| 9898/3 | Myeloid leukemia associated with Down Syndrome, for cases diagnosed 2010 and later |
+| 9986/3 | Myelodysplastic syndrome associated with isolated del(5q), for cases diagnose... |
+| 9983/3 | Myelodysplastic syndrome with increased blasts (MDS-IB), for cases diagnosed ... |
+| 9985/3 | Myelodysplastic syndrome with multilineage dysplasia (MDS-MLD), for cases dia... |
+| 9993/3 | Myelodysplastic syndrome with ring sideroblasts and multilineage dysplasia (M... |
+| 9982/3 | Myelodysplastic syndrome with ring sideroblasts and single lineage dysplasia ... |
+| 9980/3 | Myelodysplastic syndrome with single lineage dysplasia (MDS-SLD), for cases d... |
+| 9989/3 | Myelodysplastic syndrome, unclassifiable (MDS-U), for cases diagnosed 2001 an... |
+| 9975/3 | Myelodysplastic/myeloproliferative neoplasm, unclassifiable, for cases diagno... |
+| 9898/3 | Myeloid leukemia associated with Down Syndrome, for cases diagnosed 2010 and ... |
 | 9860/3 | Myeloid leukemia, NOS, for cases diagnosed 1978 and later |
 | 9930/3 | Myeloid sarcoma, for cases diagnosed 1978 and later |
-| 9967/3 | Myeloid/lymphoid neoplasms with FGFR1 rearrangement, for cases diagnosed 2010 and later |
+| 9967/3 | Myeloid/lymphoid neoplasms with FGFR1 rearrangement, for cases diagnosed 2010... |
 | 9968/3 | Myeloid/lymphoid neoplasms with PCM1-JAK2 |
-| 9965/3 | Myeloid/lymphoid neoplasms with PDGFRA rearrangement, for cases diagnosed 2010 and later |
-| 9966/3 | Myeloid/lymphoid neoplasms with PDGFRB rearrangement, for cases diagnosed 2010 and later |
+| 9965/3 | Myeloid/lymphoid neoplasms with PDGFRA rearrangement, for cases diagnosed 201... |
+| 9966/3 | Myeloid/lymphoid neoplasms with PDGFRB rearrangement, for cases diagnosed 201... |
 | 9960/3 | Myeloproliferative neoplasm, NOS, for cases diagnosed 2001 - 2009 |
-| 9659/3 | Nodular lymphocyte predominant Hodgkin lymphoma (NLPHL), for cases diagnosed 1992 and later |
+| 9659/3 | Nodular lymphocyte predominant Hodgkin lymphoma (NLPHL), for cases diagnosed ... |
 | 9591/3 | Non-Hodgkin lymphoma (NHL), NOS, for cases diagnosed 1978 and later |
 | 9702/3 | Peripheral T-cell lymphoma (PTCL), NOS, for cases diagnosed 1992 and later |
 | 9733/3 | Plasma cell leukemia (PCL), for cases diagnosed 1978 - 2009 |
@@ -20639,36 +20657,36 @@ HTAN Biospecimen Data Model Schema
 | 9735/3 | Plasmablastic lymphoma (PBL), for cases diagnosed 2010 and later |
 | 9734/3 | Plasmacytoma, extramedullary, for cases diagnosed 1978 and later |
 | 9950/3 | Polycythemia vera (PV), for cases diagnosed 2001 and later |
-| 9971/1 | Polymorphic transplant lymphoproliferative disorder (PTLD), This neoplasm is not reportable |
-| 9971/3 | Polymorphic transplant lymphoproliferative disorder, NOS (PTLD, NOS), for cases diagnosed 2010 and later |
+| 9971/1 | Polymorphic transplant lymphoproliferative disorder (PTLD), This neoplasm is ... |
+| 9971/3 | Polymorphic transplant lymphoproliferative disorder, NOS (PTLD, NOS), for cas... |
 | 9836/3 | Precursor B-cell lymphoblastic leukemia, for cases diagnosed 2001 - 2009 |
 | 9728/3 | Precursor B-cell lymphoblastic lymphoma, for cases diagnosed 2001 - 2009 |
-| 9729/3 | Precursor T-cell lymphoblastic lymphoma, NOS (T-LBL), for cases diagnosed 1992 - 2009 |
+| 9729/3 | Precursor T-cell lymphoblastic lymphoma, NOS (T-LBL), for cases diagnosed 199... |
 | 9835/3 | Precursor cell lymphoblastic leukemia, NOS, for cases diagnosed 1978 - 2009 |
-| 9709/1 | Primary cutaneous CD4+ small or medium T-cell lymphoproliferative disorder (PCSM-LPD), This neoplasm is not reportable |
-| 9718/3 | Primary cutaneous anaplastic large cell lymphoma (C-ALCL), for cases diagnosed 2001 and later |
-| 9597/3 | Primary cutaneous follicle centre lymphoma (PCFCL), for cases diagnosed 2010 and later |
-| 9726/3 | Primary cutaneous gamma-delta T-cell lymphoma (PCGD-TCL), for cases diagnosed 2010 and later |
-| 9709/3 | Primary cutaneous peripheral T-cell lymphoma (pcPTCL), NOS, for cases diagnosed 1992 and later |
+| 9709/1 | Primary cutaneous CD4+ small or medium T-cell lymphoproliferative disorder (P... |
+| 9718/3 | Primary cutaneous anaplastic large cell lymphoma (C-ALCL), for cases diagnose... |
+| 9597/3 | Primary cutaneous follicle centre lymphoma (PCFCL), for cases diagnosed 2010 ... |
+| 9726/3 | Primary cutaneous gamma-delta T-cell lymphoma (PCGD-TCL), for cases diagnosed... |
+| 9709/3 | Primary cutaneous peripheral T-cell lymphoma (pcPTCL), NOS, for cases diagnos... |
 | 9678/3 | Primary effusion lymphoma (PEL), for cases diagnosed 2001 and later |
 | 9961/3 | Primary myelofibrosis (PMF), for cases diagnosed 1978 - 1991, 2001 and later |
 | 9832/3 | Prolymphocytic leukemia (PLL), NOS, for cases diagnosed 1978 and later |
 | 9840/3 | Pure erythroid leukemia, for cases diagnosed 1978 and later |
-| 9984/3 | Refractory anemia with excess blasts in transformation (RAEB-T) [OBS], for cases diagnosed 2001 - 2009 |
+| 9984/3 | Refractory anemia with excess blasts in transformation (RAEB-T) [OBS], for ca... |
 | 9991/3 | Refractory neutropenia, for cases diagnosed 2010 - 2020 |
 | 9992/3 | Refractory thrombocytopenia, for cases diagnosed 2010 - 2020 |
 | 9701/3 | Sezary syndrome (SS), for cases diagnosed 1978 and later |
-| 9731/3 | Solitary (osseous, medullary) plasmacytoma of bone, for cases diagnosed 1978 and later |
+| 9731/3 | Solitary (osseous, medullary) plasmacytoma of bone, for cases diagnosed 1978 ... |
 | 9689/3 | Splenic marginal zone lymphoma (SMZL), for cases diagnosed 2001 and later |
-| 9708/3 | Subcutaneous panniculitis-like T-cell lymphoma (SPTCL), for cases diagnosed 2001 and later |
-| 9724/3 | Systemic EBV-positive T-cell lymphoma of childhood (SEBVTCL), for cases diagnosed 2010 and later |
-| 9741/3 | Systemic mastocytosis with an associated hematological neoplasm (SM-AHN), for cases diagnosed 1978 and later |
-| 9831/3 | T-cell large granular lymphocytic leukemia (T-LGL), for cases diagnosed 2010 and later |
+| 9708/3 | Subcutaneous panniculitis-like T-cell lymphoma (SPTCL), for cases diagnosed 2... |
+| 9724/3 | Systemic EBV-positive T-cell lymphoma of childhood (SEBVTCL), for cases diagn... |
+| 9741/3 | Systemic mastocytosis with an associated hematological neoplasm (SM-AHN), for... |
+| 9831/3 | T-cell large granular lymphocytic leukemia (T-LGL), for cases diagnosed 2010 ... |
 | 9834/3 | T-cell prolymphocytic leukemia (T-PLL), for cases diagnosed 2001 and later |
-| 9688/3 | T-cell/histiocyte-rich large B-cell lymphoma (THRLBCL), for cases diagnosed 2010 and later |
+| 9688/3 | T-cell/histiocyte-rich large B-cell lymphoma (THRLBCL), for cases diagnosed 2... |
 | 9768/1 | T-gamma lymphoproliferative disorder, This neoplasm is not reportable |
-| 9837/3 | T-lymphoblastic leukemia/lymphoma, NOS (T-ALL), for cases diagnosed 2001 and later |
-| 9987/3 | Therapy-related myelodysplastic syndrome (t-MDS), NOS, for cases diagnosed 2001 - 2009 |
+| 9837/3 | T-lymphoblastic leukemia/lymphoma, NOS (T-ALL), for cases diagnosed 2001 and ... |
+| 9987/3 | Therapy-related myelodysplastic syndrome (t-MDS), NOS, for cases diagnosed 20... |
 | 9920/3 | Therapy-related myeloid neoplasms, for cases diagnosed 2001 and later |
 | 9898/1 | Transient abnormal myelopoiesis (TAM), This neoplasm is not reportable |
 | 9761/3 | Waldenstrom macroglobulinemia (WM), for cases diagnosed 1992 and later |
@@ -20678,38 +20696,38 @@ HTAN Biospecimen Data Model Schema
 | Value | Description |
 |-------|-------------|
 | Desiccant | A material that absorbs moisture from its surrounding environment. |
-| EDTA | The acid form of edetate, a chelating agent with anti-hypercalcemic and anticoagulant properties. Edetic acid binds calcium and heavy metal ions, forming soluble stable complexes which are readily excreted by the kidneys. This results in a decrease in serum calcium levels. This agent is also used as an anticoagulant for blood specimens and is applied as a treatment of lead poisoning. |
-| FFPE | Refers to samples that have been preserved with formalin and then embedded into a paraffin block for sectioning. |
+| EDTA | The acid form of edetate, a chelating agent with anti-hypercalcemic and antic... |
+| FFPE | Refers to samples that have been preserved with formalin and then embedded in... |
 | Formalin Fixed - Buffered | The use of buffered formalin for preservation of tissue samples. |
 | Formalin Fixed - Unbuffered | The use of unbuffered formalin for preservation of tissue samples. |
 | Formalin Fixed Tissue | A tissue sample that has been fixed with formalin. |
-| Glutaraldehyde | A water-soluble oily liquid, C5H8O2, containing two aldehyde groups, used as a disinfectant and as a fixative for biological tissues. |
+| Glutaraldehyde | A water-soluble oily liquid, C5H8O2, containing two aldehyde groups, used as ... |
 | Isopentane | An organic, branched-chain alkane with five carbon atoms. |
-| Liquid Nitrogen | Nitrogen in a liquid state, having been super-cooled to about -200 degrees Celsius. |
+| Liquid Nitrogen | Nitrogen in a liquid state, having been super-cooled to about -200 degrees Ce... |
 | Liquid Nitrogen Vapor | The gaseous state of liquid nitrogen with a temperature of -167 degrees Celsius. |
 | Not Applicable | Determination of a value is not relevant in the current context. |
 | Not Reported | Not provided or available. |
-| OCT | Optimal Cutting Temperature Compound - A solution of water soluble glycols and resins that provide a specimen support matrix for cryostat sectioning at temperatures of -10 degrees C and below. |
+| OCT | Optimal Cutting Temperature Compound - A solution of water soluble glycols an... |
 | Paraffin Block | Tissue that is preserved and embedded in paraffin. |
-| RNALater | Trade name for an aqueous, non-toxic tissue storage reagent that rapidly permeates tissues to stabilize and protect cellular RNA. |
-| TRIzol | A ready-to-use reagent for the isolation of high-quality total RNA or the simultaneous isolation of RNA, DNA, and protein from biological samples. It is a monophasic solution of phenol and guanidine isothiocyanate. |
+| RNALater | Trade name for an aqueous, non-toxic tissue storage reagent that rapidly perm... |
+| TRIzol | A ready-to-use reagent for the isolation of high-quality total RNA or the sim... |
 | Unknown | Not known, observed, recorded; or reported as unknown by the data contributor. |
 
 ### PreservationMethodEnum
 
 | Value | Description |
 |-------|-------------|
-| Cryopreserved | Preservation of cells, tissues, organs, or embryos by storage at low temperatures. |
-| Cytospin Slide | A microscope slide prepared by depositing cells directly onto a slide by centrifugation. The cytocentrifuge spins at an angle, at low speeds, allowing the cells to adhere to the slide in a monolayer format. |
-| Fixation | The chemical preservation of a substance to maintain structural and/or molecular features of that substance as they exist in the living entity. |
+| Cryopreserved | Preservation of cells, tissues, organs, or embryos by storage at low temperat... |
+| Cytospin Slide | A microscope slide prepared by depositing cells directly onto a slide by cent... |
+| Fixation | The chemical preservation of a substance to maintain structural and/or molecu... |
 | Fresh | Tissue which has not been exposed to a fixative solution. |
-| Fresh Dissociated | A tissue preparation process that takes fresh tissue and dissociates it into single cell suspensions. |
-| Fresh Dissociated and Single Cell Sorted | A tissue preparation process that separates fresh dissociated tissue cells into cell populations by single cell sorting. |
-| Fresh Dissociated and Single Cell Sorted into Plates | A tissue preparation process that takes dissociated, sorted cells and distributes them into cell propagation plates. |
+| Fresh Dissociated | A tissue preparation process that takes fresh tissue and dissociates it into ... |
+| Fresh Dissociated and Single Cell Sorted | A tissue preparation process that separates fresh dissociated tissue cells in... |
+| Fresh Dissociated and Single Cell Sorted into Plates | A tissue preparation process that takes dissociated, sorted cells and distrib... |
 | Frozen | A specimen that has been subjected to and immobilized by severe cold. |
 | Not Applicable | Determination of a value is not relevant in the current context. |
 | Not Reported | Not provided or available. |
-| Refrigerated | A specimen that has been kept or preserved at a low temperature in a refrigerator. |
+| Refrigerated | A specimen that has been kept or preserved at a low temperature in a refriger... |
 | Refrigerated Vacuum Chamber | A device designed to maintain a vacuum at a below-ambient temperature. |
 | Snap Frozen | To freeze rapidly so as to preserve structure and prevent ice crystal formation. |
 | Unknown | Not known, not observed, not recorded, or refused. |
@@ -20724,7 +20742,7 @@ HTAN Biospecimen Data Model Schema
 | -80 Degrees C | A temperature of minus 80 celsius. |
 | 25 Degrees C | A temperature of 25 celsius. |
 | 4 Degrees C | A temperature of 4 celsius. |
-| Ambient Temperature | A specimen that has been subjected to and adjusted to the average ambient temperature of a room, usually considered to be around 20 degrees C (68 degrees F). |
+| Ambient Temperature | A specimen that has been subjected to and adjusted to the average ambient tem... |
 | Not Applicable | Determination of a value is not relevant in the current context. |
 | Not Reported | Not provided or available. |
 | Unknown | Not known, observed, recorded; or reported as unknown by the data contributor. |
@@ -20733,15 +20751,15 @@ HTAN Biospecimen Data Model Schema
 
 | Value | Description |
 |-------|-------------|
-| Ambient Pack | In or of the immediately surrounding area; relating to the immediate surroundings of something: Performance of the packaging part of the manufacturing process. |
-| Cold Pack | Having less heat energy than the object against which it is compared; the absence of heat: Performance of the packaging part of the manufacturing process. |
-| Dry Ice | A solid form of carbon dioxide used as a refrigerant. At temperatures above -78.5 degrees C and ambient pressure, it changes directly to a gas as it absorbs heat. |
-| Ice Pack | A container filled with frozen material that retains its temperature for an extended period. |
-| Liquid Nitrogen | Nitrogen in a liquid state, having been super-cooled to about -200 degrees Celsius. |
+| Ambient Pack | In or of the immediately surrounding area; relating to the immediate surround... |
+| Cold Pack | Having less heat energy than the object against which it is compared; the abs... |
+| Dry Ice | A solid form of carbon dioxide used as a refrigerant. At temperatures above -... |
+| Ice Pack | A container filled with frozen material that retains its temperature for an e... |
+| Liquid Nitrogen | Nitrogen in a liquid state, having been super-cooled to about -200 degrees Ce... |
 | Not recorded | The information was not captured or stored. |
-| Not shipped | An operation in which a term denies or inverts the meaning of another term or construction: The act or business of transporting goods. |
-| Other shipping environment | Different than the one(s) previously specified or mentioned: The act or business of transporting goods: The totality of surrounding conditions. |
-| Specimen at Room Temperature | A specimen that has been subjected to and adjusted to the average ambient temperature of a room, usually considered to be around 20 degrees C (68 degrees F). |
+| Not shipped | An operation in which a term denies or inverts the meaning of another term or... |
+| Other shipping environment | Different than the one(s) previously specified or mentioned: The act or busin... |
+| Specimen at Room Temperature | A specimen that has been subjected to and adjusted to the average ambient tem... |
 | Unknown | Not known, not observed, not recorded, or refused. |
 
 ### SlicingMethodEnum
@@ -20752,7 +20770,7 @@ HTAN Biospecimen Data Model Schema
 | Cryosectioning | The process of cutting frozen tissue into thin sections using a cryostat. |
 | Tissue molds | The use of molds to shape tissue specimens for sectioning. |
 | Sliding microtome | A microtome that uses a sliding mechanism to cut tissue sections. |
-| Sectioning | The general process of cutting tissue into thin sections for microscopic examination. |
+| Sectioning | The general process of cutting tissue into thin sections for microscopic exam... |
 | Other | Different than the one(s) previously specified or mentioned. |
 | Unknown | Not known, not observed, not recorded, or refused. |
 | Not Reported | Not provided or available. |
@@ -20761,11 +20779,11 @@ HTAN Biospecimen Data Model Schema
 
 | Value | Description |
 |-------|-------------|
-| Charged | The quantity of unbalanced electricity in a body (either positive or negative) and construed as an excess or deficiency of electrons. |
+| Charged | The quantity of unbalanced electricity in a body (either positive or negative... |
 | Not applicable | Determination of a value is not relevant in the current context. |
 | Not recorded | The information was not captured or stored. |
 | Other (specify) | Different than the one(s) previously specified or mentioned. |
-| Uncharged | An operation in which a term denies or inverts the meaning of another term or construction: The quantity of unbalanced electricity in a body (either positive or negative) and construed as an excess or deficiency of electrons. |
+| Uncharged | An operation in which a term denies or inverts the meaning of another term or... |
 | Unknown | Not known, not observed, not recorded, or refused. |
 
 ### SpecimenLateralityEnum
@@ -20773,47 +20791,47 @@ HTAN Biospecimen Data Model Schema
 | Value | Description |
 |-------|-------------|
 | Bilateral | Affecting both the right and left sides of the body. |
-| Left | Left; being or located on or directed toward the side of the body to the west when facing north. |
-| Midline | A medial line, especially the medial line or medial plane of the body (or some part of the body). |
+| Left | Left; being or located on or directed toward the side of the body to the west... |
+| Midline | A medial line, especially the medial line or medial plane of the body (or som... |
 | Not Applicable | Determination of a value is not relevant in the current context. |
 | Not Reported | Not provided or available. |
 | Not Specified | Not stated explicitly or in detail. |
-| Right | Right; being or located on or directed toward the side of the body to the east when facing north. |
+| Right | Right; being or located on or directed toward the side of the body to the eas... |
 | Unknown | Not known, not observed, not recorded, or refused. |
 
 ### TimepointEnum
 
 | Value | Description |
 |-------|-------------|
-| 0-6 hr | The difference between the lowest and highest numerical values; the limits or scale of variation.: A number with no fractional part, including the negative and positive numbers as well as zero.::0-6: A unit measure of time equal to 3,600 seconds or 60 minutes. It is approximately 1/24 of a median day. |
-| 0.5 hour (during infusion) | A number with no fractional part, including the negative and positive numbers as well as zero.::0.5: A unit measure of time equal to 3,600 seconds or 60 minutes. It is approximately 1/24 of a median day. |
+| 0-6 hr | The difference between the lowest and highest numerical values; the limits or... |
+| 0.5 hour (during infusion) | A number with no fractional part, including the negative and positive numbers... |
 | 0.5 hr post dose | 0.5 hr post dose |
-| 1 | The smallest natural number and quantity it denotes: a single entity, unit, or object. |
-| 1 Month After Starting Study Agent | The smallest natural number and quantity it denotes: a single entity, unit, or object._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._A medical product, practice, or application that is tested in a clinical trial._Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins. |
-| 1 Month After Visit 1 | The smallest natural number and quantity it denotes: a single entity, unit, or object._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._The smallest natural number and quantity it denotes: a single entity, unit, or object. |
-| 1 Month After Visit 2 | The smallest natural number and quantity it denotes: a single entity, unit, or object._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one. |
-| 1 Week After Starting Study Agent | The smallest natural number and quantity it denotes: a single entity, unit, or object._Any period of seven consecutive days._Happening at a time subsequent to a reference time; later in time or order._A medical product, practice, or application that is tested in a clinical trial._Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins. |
-| 1 hour (during infusion) | The smallest natural number and quantity it denotes: a single entity, unit, or object.: A unit measure of time equal to 3,600 seconds or 60 minutes. It is approximately 1/24 of a median day. |
+| 1 | The smallest natural number and quantity it denotes: a single entity, unit, o... |
+| 1 Month After Starting Study Agent | The smallest natural number and quantity it denotes: a single entity, unit, o... |
+| 1 Month After Visit 1 | The smallest natural number and quantity it denotes: a single entity, unit, o... |
+| 1 Month After Visit 2 | The smallest natural number and quantity it denotes: a single entity, unit, o... |
+| 1 Week After Starting Study Agent | The smallest natural number and quantity it denotes: a single entity, unit, o... |
+| 1 hour (during infusion) | The smallest natural number and quantity it denotes: a single entity, unit, o... |
 | 1 hour after infusion start | 1 hour after infusion start |
 | 1 hour post start of Triapine (3AP) infusion (IV) | 1 hour post start of Triapine (3AP) infusion (IV) |
 | 1 month post RT Completion | 1 month post RT Completion |
-| 1 year | The smallest natural number and quantity it denotes: a single entity, unit, or object.: A period of time that it takes for Earth to make a complete revolution around the sun, approximately 365 days; a specific one year period. |
+| 1 year | The smallest natural number and quantity it denotes: a single entity, unit, o... |
 | 1 year from start of treatment | 1 year from start of treatment |
 | 1 year post RT Completion | 1 year post RT Completion |
 | 1.5 h (during infusion) | 1.5 h (during infusion) |
 | 1.5 hr post dose | 1.5 hr post dose |
 | 10 hours post dose | 10 hours post dose |
-| 10 months | A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 10 weeks | A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: Any period of seven consecutive days. |
-| 10 years | A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: A period of time that it takes for Earth to make a complete revolution around the sun, approximately 365 days; a specific one year period. |
+| 10 months | A natural number greater than 9 and less than 11 and the quantity that it den... |
+| 10 weeks | A natural number greater than 9 and less than 11 and the quantity that it den... |
+| 10 years | A natural number greater than 9 and less than 11 and the quantity that it den... |
 | 10-Week Post-Treatment FU | 10-Week Post-Treatment FU |
 | 104 weeks | 104 weeks |
-| 108 weeks | A natural number greater than 107 and less than 109 and the quantity that it denotes._Any period of seven consecutive days. |
-| 11 weeks | A natural number greater than 10 and less than 12 and the quantity that it denotes.: Any period of seven consecutive days. |
+| 108 weeks | A natural number greater than 107 and less than 109 and the quantity that it ... |
+| 11 weeks | A natural number greater than 10 and less than 12 and the quantity that it de... |
 | 116 weeks | 116 weeks |
-| 12 | A natural number greater than 11 and less than 13 and the quantity that it denotes.: A specific point in the time continuum, including those established relative to an event. |
+| 12 | A natural number greater than 11 and less than 13 and the quantity that it de... |
 | 12 hours post dose | 12 hours post dose |
-| 12 months | A natural number greater than 11 and less than 13 and the quantity that it denotes.: One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 12 months | A natural number greater than 11 and less than 13 and the quantity that it de... |
 | 12 months after RT | 12 months after radiation therapy |
 | 12 months after randomization | 12 months after randomization |
 | 12 months after study entry | 12 months after study entry |
@@ -20823,15 +20841,15 @@ HTAN Biospecimen Data Model Schema
 | 12 months from start of treatment | 12 months from start of treatment |
 | 12 months post randomization | 12 Months Post Randomization |
 | 12 months post-LITT | 12 months post Laser Interstitial Thermal Therapy |
-| 12 weeks | A natural number greater than 11 and less than 13 and the quantity that it denotes.: Any period of seven consecutive days. |
+| 12 weeks | A natural number greater than 11 and less than 13 and the quantity that it de... |
 | 12 weeks after your first study visit | 12 weeks after your first study visit |
 | 12-20 hr | 12-20 hr |
 | 12-Month Follow-up | 12-Month Follow-up |
-| 12-month visit | A natural number greater than 11 and less than 13 and the quantity that it denotes.: One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks.: The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement. |
-| 120 weeks | A natural number greater than 119 and less than 121 and the quantity that it denotes._Any period of seven consecutive days. |
+| 12-month visit | A natural number greater than 11 and less than 13 and the quantity that it de... |
+| 120 weeks | A natural number greater than 119 and less than 121 and the quantity that it ... |
 | 128 weeks | 128 weeks |
-| 13 Week | A natural number greater than 12 and less than 14 and the quantity that it denotes._Any period of seven consecutive days. |
-| 13 months | A natural number greater than 12 and less than 14 and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 13 Week | A natural number greater than 12 and less than 14 and the quantity that it de... |
+| 13 months | A natural number greater than 12 and less than 14 and the quantity that it de... |
 | 13 weeks following randomization | 13 weeks following randomization |
 | 13 weeks post randomization | 13 weeks post randomization |
 | 13-20 hr | 13-20 hr |
@@ -20839,47 +20857,47 @@ HTAN Biospecimen Data Model Schema
 | 14 hours post dose | 14 hours post dose |
 | 140 weeks | 140 weeks |
 | 144 weeks | 144 weeks |
-| 15 minutes | A natural number greater than 14 and less than 16 and the quantity that it denotes.: A unit measure of time equal to 60 seconds. |
+| 15 minutes | A natural number greater than 14 and less than 16 and the quantity that it de... |
 | 15 months | 15 months post therapeutic procedure |
 | 152 weeks | 152 weeks |
 | 156 weeks | 156 weeks |
 | 16 +/- 2 weeks following initiation of treatment | 16 +/- 2 weeks following initiation of treatment |
 | 16 hours post dose | 16 hours post dose |
-| 16 months | A natural number greater than 15 and less than 17 and the quantity that it denotes.: One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 16 months | A natural number greater than 15 and less than 17 and the quantity that it de... |
 | 164 weeks | 164 weeks |
 | 176 weeks | 176 weeks |
 | 178 weeks | 178 weeks |
 | 18 Months Post Randomization | 18 Months Post Randomization |
 | 18 hours post dose | 18 hours post dose |
-| 18 months | A natural number greater than seventeen and less than nineteen and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 18 months | A natural number greater than seventeen and less than nineteen and the quanti... |
 | 18 months after randomization | 18 months after randomization |
 | 18 months after study entry | 18 months after study entry |
 | 18 months after surgery | 18 months after surgery |
 | 18 months following randomization | 18 months following randomization |
 | 18 months from start of treatment | 18 months from start of treatment |
 | 18 months post-LITT | 18 months post Laser Interstitial Thermal Therapy |
-| 18 weeks | A natural number greater than seventeen and less than nineteen and the quantity that it denotes._Any period of seven consecutive days. |
+| 18 weeks | A natural number greater than seventeen and less than nineteen and the quanti... |
 | 18-Month Follow-up | 18-Month Follow-up |
 | 188 weeks | 188 weeks |
-| 19 months | A natural number greater than eighteen and less than twenty and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 19 months | A natural number greater than eighteen and less than twenty and the quantity ... |
 | 190 weeks | 190 weeks |
 | 1st Followup | 1st Followup |
-| 2 8 weeks post RT | A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one.: Used as a function word to indicate direction, purpose, or movement.: A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one.: Any period of seven consecutive days.: Happening at a time subsequent to a reference time; later in time or order.: Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation. |
-| 2 Months After Starting Study Agent | A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._A medical product, practice, or application that is tested in a clinical trial._Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins. |
-| 2 Months After Visit 1 | A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._The smallest natural number and quantity it denotes: a single entity, unit, or object. |
-| 2 Months After Visit 2 | A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one. |
+| 2 8 weeks post RT | A natural number greater than 1 and less than 3 and the quantity that it deno... |
+| 2 Months After Starting Study Agent | A natural number greater than 1 and less than 3 and the quantity that it deno... |
+| 2 Months After Visit 1 | A natural number greater than 1 and less than 3 and the quantity that it deno... |
+| 2 Months After Visit 2 | A natural number greater than 1 and less than 3 and the quantity that it deno... |
 | 2 days prior to registration | 2 days prior to registration |
 | 2 h (during infusion) | 2 h (during infusion) |
 | 2 hours after infusion start | 2 hours after infusion start |
 | 2 hours post dose | 2 hours post dose |
 | 2 months post-LITT | 4 months post Laser Interstitial Thermal Therapy |
-| 2 weeks | A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one.: Any period of seven consecutive days. |
-| 2 year | A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one._A period of time that it takes for Earth to make a complete revolution around the sun, approximately 365 days; a specific one year period. |
+| 2 weeks | A natural number greater than 1 and less than 3 and the quantity that it deno... |
+| 2 year | A natural number greater than 1 and less than 3 and the quantity that it deno... |
 | 2 years from start of treatment | 2 years from start of treatment |
 | 2 years post RT Completion | 2 years post RT Completion |
 | 2.5 h (during infusion) | 2.5 h (during infusion) |
 | 20 hours post dose | 20 hours post dose |
-| 20 months | A natural number greater than nineteen and less than twenty-one and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 20 months | A natural number greater than nineteen and less than twenty-one and the quant... |
 | 20 weeks | 20 weeks |
 | 20-24 hr | 20-24 hr |
 | 200 weeks | 200 weeks |
@@ -20889,44 +20907,44 @@ HTAN Biospecimen Data Model Schema
 | 212 weeks | 212 weeks |
 | 214 weeks | 214 weeks |
 | 22 hours post dose | 22 hours post dose |
-| 22 months | A natural number greater than twenty-one and less than twenty-three and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 22 months | A natural number greater than twenty-one and less than twenty-three and the q... |
 | 224 weeks | 224 weeks |
 | 226 weeks | 226 weeks |
 | 236 weeks | 236 weeks |
 | 238 weeks | 238 weeks |
-| 24 | A natural number greater than twenty-three and less than twenty-five and the quantity that it denotes. |
+| 24 | A natural number greater than twenty-three and less than twenty-five and the ... |
 | 24 hours post dose | 24 hours post dose |
 | 24 hours post start of T infusion | 24 hours post start of T infusion |
 | 24 hours post start of Triapine (3AP) infusion (IV) | 24 hours post start of Triapine (3AP) infusion (IV) |
-| 24 months | A natural number greater than twenty-three and less than twenty-five and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 24 months | A natural number greater than twenty-three and less than twenty-five and the ... |
 | 24 months after randomization | 24 months after randomization |
 | 24 months after surgery | 24 months after surgery |
 | 24 months following randomization | 24 months following randomization |
 | 24 months from end of treatment | 24 months from end of treatment |
 | 24 months from start of ARM 1 or ARM 2 therapy | 24 months from start of ARM 1 or ARM 2 therapy |
-| 24 months post randomization | A period of time of twenty-four months._Happening at a time subsequent to a reference time; later in time or order._The allocation of individuals to groups by chance, especially in order to control the variables in an experiment. |
+| 24 months post randomization | A period of time of twenty-four months._Happening at a time subsequent to a r... |
 | 24 months post-LITT | 24 months post Laser Interstitial Thermal Therapy |
 | 24 months post-treatment initiation (+/- 2 weeks) | 24 months post-treatment initiation (+/- 2 weeks) |
-| 24 weeks | A natural number greater than twenty-three and less than twenty-five and the quantity that it denotes._Any period of seven consecutive days. |
+| 24 weeks | A natural number greater than twenty-three and less than twenty-five and the ... |
 | 24 weeks after your first study visit | 24 weeks after your first study visit |
 | 24-Month Follow-up | 24-Month Follow-up |
-| 24-month visit | A natural number greater than twenty-three and less than twenty-five and the quantity that it denotes.: One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks.: The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement. |
-| 240 minutes (4 hours) | A natural number greater than 3 and less than 5 and the quantity that it denotes: the sum of three and one.: A unit measure of time equal to 3,600 seconds or 60 minutes. It is approximately 1/24 of a median day. |
-| 25 months | A natural number greater than twenty-four and less than twenty-six and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 24-month visit | A natural number greater than twenty-three and less than twenty-five and the ... |
+| 240 minutes (4 hours) | A natural number greater than 3 and less than 5 and the quantity that it deno... |
+| 25 months | A natural number greater than twenty-four and less than twenty-six and the qu... |
 | 25 weeks post randomization | 25 weeks post randomization |
 | 250 weeks | 250 weeks |
-| 26 Week | A natural number greater than twenty-five and less than twenty-seven and the quantity that it denotes._Any period of seven consecutive days. |
+| 26 Week | A natural number greater than twenty-five and less than twenty-seven and the ... |
 | 262 weeks | 262 weeks |
 | 27 months | 27 months post therapeutic procedure |
 | 274 weeks | 274 weeks |
-| 28 months | A natural number greater than twenty-seven and less than twenty-nine and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 28 months | A natural number greater than twenty-seven and less than twenty-nine and the ... |
 | 286 weeks | 286 weeks |
 | 298 weeks | 298 weeks |
-| 2nd Follow Up | Coming next after the first in position in space or time or degree or magnitude.: The process by which information about the health status of an individual is obtained after a study has officially closed; an activity that continues something that has already begun or that repeats something that has already been done. |
-| 3 | A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one. |
-| 3 Months After Starting Study Agent | A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._A medical product, practice, or application that is tested in a clinical trial._Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins. |
-| 3 Months After Visit 1 | A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._The smallest natural number and quantity it denotes: a single entity, unit, or object. |
-| 3 Months After Visit 2 | A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one. |
+| 2nd Follow Up | Coming next after the first in position in space or time or degree or magnitu... |
+| 3 | A natural number greater than 2 and less than 4 and the quantity that it deno... |
+| 3 Months After Starting Study Agent | A natural number greater than 2 and less than 4 and the quantity that it deno... |
+| 3 Months After Visit 1 | A natural number greater than 2 and less than 4 and the quantity that it deno... |
+| 3 Months After Visit 2 | A natural number greater than 2 and less than 4 and the quantity that it deno... |
 | 3 Months Post Randomization | 3 Months Post Randomization |
 | 3 h (during infusion) | 3 h (during infusion) |
 | 3 hours post start of Triapine (3AP) infusion (IV) | 3 hours post start of Triapine (3AP) infusion (IV) |
@@ -20935,10 +20953,10 @@ HTAN Biospecimen Data Model Schema
 | 3 months after RT | 3 months after RT |
 | 3 months after cross-over | 3 months after cross-over |
 | 3 months after randomization | 3 months after randomization |
-| 3 months after surgery | A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one.: One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks.: Happening at a time subsequent to a reference time; later in time or order.: A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery. |
+| 3 months after surgery | A natural number greater than 2 and less than 4 and the quantity that it deno... |
 | 3 months from end of treatment | 3 months from end of treatment |
 | 3 months from start of treatment | 3 months from start of treatment |
-| 3 months post chemoradiation | A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one.: One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks.: Happening at a time subsequent to a reference time; later in time or order.: Treatment that combines chemotherapy with radiation therapy. |
+| 3 months post chemoradiation | A natural number greater than 2 and less than 4 and the quantity that it deno... |
 | 3 weeks after the start of RT | 3 weeks after the start of RT |
 | 3 year | 3 year |
 | 3 years | 3 Years |
@@ -20947,7 +20965,7 @@ HTAN Biospecimen Data Model Schema
 | 3-5 weeks after surgery | 3-5 weeks after surgery |
 | 3-Month Follow-up | 3-Month Follow-up |
 | 3.5 h (during infusion) | 3.5 h (during infusion) |
-| 30 minutes | A natural number greater than twenty-nine and less than thirty-one and the quantity that it denotes.: A unit measure of time equal to 60 seconds. |
+| 30 minutes | A natural number greater than twenty-nine and less than thirty-one and the qu... |
 | 30 minutes post dose | 30 minutes post dose |
 | 30 months | 30 MONTHS |
 | 30 months after surgery | 30 months after surgery |
@@ -20955,71 +20973,71 @@ HTAN Biospecimen Data Model Schema
 | 30 months post-treatment initiation (+ 6 months) | 30 months post-treatment initiation (+ 6 months) |
 | 30 months post-treatment initiation (+/- 6 months) | 30 months post-treatment initiation (+/- 6 months) |
 | 30-Month Follow-up | 30-Month Follow-up |
-| 31 months | A natural number greater than thirty and less than thirty-two and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 31 months | A natural number greater than thirty and less than thirty-two and the quantit... |
 | 310 weeks | 310 weeks |
-| 32 months | The natural number greater than thirty-one and less than thirty-three and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 32 months | The natural number greater than thirty-one and less than thirty-three and the... |
 | 32 weeks | 32 weeks |
 | 33 months | 33 months post therapeutic procedure |
-| 34 months | The natural number greater than thirty-three and less than thirty-five and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 36 | The natural number greater than thirty-five and less than thirty-seven and the quantity that it denotes. |
+| 34 months | The natural number greater than thirty-three and less than thirty-five and th... |
+| 36 | The natural number greater than thirty-five and less than thirty-seven and th... |
 | 36 months | 36 MONTHS |
 | 36 months after surgery | 36 months after surgery |
 | 36 months following randomization | 36 months following randomization |
 | 36 months post randomization | 36 Months Post Randomization |
-| 36 weeks | The natural number greater than thirty-five and less than thirty-seven and the quantity that it denotes._Any period of seven consecutive days. |
+| 36 weeks | The natural number greater than thirty-five and less than thirty-seven and th... |
 | 36-Month Follow-up | 36-Month Follow-up |
 | 36-month visit (Clinical Follow-Up) | 36-month visit (Clinical Follow-Up) |
-| 37 months | The natural number greater than thirty-six and less than thirty-eight and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 37 months | The natural number greater than thirty-six and less than thirty-eight and the... |
 | 39 Week | 39 Week |
 | 39 months | 39 months post therapeutic procedure |
-| 4 Months After Starting Study Agent | A natural number greater than 3 and less than 5 and the quantity that it denotes: the sum of three and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._A medical product, practice, or application that is tested in a clinical trial._Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins. |
-| 4 Months After Visit 1 | A natural number greater than 3 and less than 5 and the quantity that it denotes: the sum of three and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._The smallest natural number and quantity it denotes: a single entity, unit, or object. |
-| 4 Months After Visit 2 | A natural number greater than 3 and less than 5 and the quantity that it denotes: the sum of three and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one. |
+| 4 Months After Starting Study Agent | A natural number greater than 3 and less than 5 and the quantity that it deno... |
+| 4 Months After Visit 1 | A natural number greater than 3 and less than 5 and the quantity that it deno... |
+| 4 Months After Visit 2 | A natural number greater than 3 and less than 5 and the quantity that it deno... |
 | 4 h (during infusion) | 4 h (during infusion) |
 | 4 hours post dose | 4 hours post dose |
-| 4 months | A natural number greater than 3 and less than 5 and the quantity that it denotes: the sum of three and one.: One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 4 months | A natural number greater than 3 and less than 5 and the quantity that it deno... |
 | 4 months post-LITT | 4 months post Laser Interstitial Thermal Therapy |
-| 4 weeks | A natural number greater than 3 and less than 5 and the quantity that it denotes: the sum of three and one.: Any period of seven consecutive days. |
+| 4 weeks | A natural number greater than 3 and less than 5 and the quantity that it deno... |
 | 4 weeks post-surgery | 4 weeks post-surgery |
-| 4 years after surgery | A natural number greater than 3 and less than 5 and the quantity that it denotes: the sum of three and one.: A period of time that it takes for Earth to make a complete revolution around the sun, approximately 365 days; a specific one year period.: Happening at a time subsequent to a reference time; later in time or order.: A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery. |
+| 4 years after surgery | A natural number greater than 3 and less than 5 and the quantity that it deno... |
 | 4-5 Years | 4-5 years |
 | 4-6 weeks after surgery | 4-6 weeks after surgery |
 | 4-6 weeks post RT | 4-6 weeks post RT |
 | 4-6 weeks post chemoradiation | 4-6 weeks post chemoradiation |
-| 40 months | A natural number greater than thirty-nine and less than forty-one and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 42 months | The natural number greater than forrty-one and less than forty-three and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 43 months | A natural number greater than forty-two and less than forty-four and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 40 months | A natural number greater than thirty-nine and less than forty-one and the qua... |
+| 42 months | The natural number greater than forrty-one and less than forty-three and the ... |
+| 43 months | A natural number greater than forty-two and less than forty-four and the quan... |
 | 44 weeks | 44 weeks |
 | 45 months | 45 months post therapeutic procedure |
-| 46 months | A natural number greater than forty five and less than forty seven and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 48 months | A number with no fractional part, including the negative and positive numbers as well as zero.::48: One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 46 months | A natural number greater than forty five and less than forty seven and the qu... |
+| 48 months | A number with no fractional part, including the negative and positive numbers... |
 | 48 months following randomization | 48 months following randomization |
 | 48 months post randomization | 48 Months Post Randomization |
-| 48 weeks | The natural number greater than forty-seven and less than forty-nine and the quantity that it denotes._Any period of seven consecutive days. |
+| 48 weeks | The natural number greater than forty-seven and less than forty-nine and the ... |
 | 48 weeks (+/- 4 weeks) following initiation of protocol therapy | 48 weeks (+/- 4 weeks) following initiation of protocol therapy |
 | 48-month visit (Clinical Follow-up) | 48-month visit (Clinical Follow-up) |
-| 49 months | A natural number greater than forty-eight and less than fifty and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 49 months | A natural number greater than forty-eight and less than fifty and the quantit... |
 | 49 weeks post randomization | 49 weeks post randomization |
-| 5 Months After Starting Study Agent | A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._A medical product, practice, or application that is tested in a clinical trial._Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins. |
-| 5 Months After Visit 1 | A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._The smallest natural number and quantity it denotes: a single entity, unit, or object. |
-| 5 Months After Visit 2 | A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one. |
+| 5 Months After Starting Study Agent | A natural number greater than 4 and less than 6 and the quantity that it deno... |
+| 5 Months After Visit 1 | A natural number greater than 4 and less than 6 and the quantity that it deno... |
+| 5 Months After Visit 2 | A natural number greater than 4 and less than 6 and the quantity that it deno... |
 | 5 hours post start of Triapine (3AP) infusion (IV) | 5 hours post start of Triapine (3AP) infusion (IV) |
 | 5 hr post dose | 5 hr post dose |
-| 5 minutes | A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one.: A unit measure of time equal to 60 seconds. |
-| 5 weeks | A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one.: Any period of seven consecutive days. |
+| 5 minutes | A natural number greater than 4 and less than 6 and the quantity that it deno... |
+| 5 weeks | A natural number greater than 4 and less than 6 and the quantity that it deno... |
 | 5 weeks after the start of RT | 5 weeks after the start of RT |
-| 5 years | A number with no fractional part, including the negative and positive numbers as well as zero.::5: A period of time that it takes for Earth to make a complete revolution around the sun, approximately 365 days; a specific one year period. |
-| 5 years after surgery | A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one.: A period of time that it takes for Earth to make a complete revolution around the sun, approximately 365 days; a specific one year period.: Happening at a time subsequent to a reference time; later in time or order.: A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery. |
+| 5 years | A number with no fractional part, including the negative and positive numbers... |
+| 5 years after surgery | A natural number greater than 4 and less than 6 and the quantity that it deno... |
 | 51 months | 51 months post therapeutic procedure |
 | 52 Week | 52 Week |
-| 54 months | The natural number greater than fifty-three and less than fifty-five and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 54 months | The natural number greater than fifty-three and less than fifty-five and the ... |
 | 55 weeks following randomization | 55 weeks following randomization |
 | 56 weeks | 56 weeks |
 | 57 months | 57 months post therapeutic procedure |
-| 6 | A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one. |
-| 6 Months After Starting Study Agent | A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._A medical product, practice, or application that is tested in a clinical trial._Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins. |
-| 6 Months After Visit 1 | A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._The smallest natural number and quantity it denotes: a single entity, unit, or object. |
-| 6 Months After Visit 2 | A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks._Happening at a time subsequent to a reference time; later in time or order._The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement._A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one. |
+| 6 | A natural number greater than 5 and less than 7 and the quantity that it deno... |
+| 6 Months After Starting Study Agent | A natural number greater than 5 and less than 7 and the quantity that it deno... |
+| 6 Months After Visit 1 | A natural number greater than 5 and less than 7 and the quantity that it deno... |
+| 6 Months After Visit 2 | A natural number greater than 5 and less than 7 and the quantity that it deno... |
 | 6 Months Post Randomization | 6 Months Post Randomization |
 | 6 hours post dose | 6 hours post dose |
 | 6 hours post start of Triapine (3AP) infusion (IV) | 6 hours post start of Triapine (3AP) infusion (IV) |
@@ -21032,33 +21050,33 @@ HTAN Biospecimen Data Model Schema
 | 6 months post RT Completion | 6 months post RT Completion |
 | 6 months post-LITT | 6 months post Laser Interstitial Thermal Therapy |
 | 6 weeks after start of study therapy | 6 weeks after start of study therapy |
-| 6 weeks after surgery | A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one.: Any period of seven consecutive days.: Happening at a time subsequent to a reference time; later in time or order.: A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery. |
+| 6 weeks after surgery | A natural number greater than 5 and less than 7 and the quantity that it deno... |
 | 6 weeks after your first study visit | 6 weeks after your first study visit |
 | 6-12 hr | 6-12 hr |
 | 6-8 weeks post chemo/RT | 6-8 weeks post chemo/RT |
 | 6-Month Follow-up | 6-Month Follow-up |
-| 60 minutes (1 hour) | A natural number greater than fifty-nine and less than sixty-one and the quantity that it denotes.: A unit measure of time equal to 60 seconds. |
-| 60 months | A number with no fractional part, including the negative and positive numbers as well as zero.::60: One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
+| 60 minutes (1 hour) | A natural number greater than fifty-nine and less than sixty-one and the quan... |
+| 60 months | A number with no fractional part, including the negative and positive numbers... |
 | 60 months after RT | 60 months after radiation therapy |
 | 60 months following randomization | 60 months following randomization |
 | 60 months post randomization | 60 Months Post Randomization |
 | 60 months post-treatment initiation (+/- 12 months) | 60 months post-treatment initiation (+/- 12 months) |
-| 60 weeks | A natural number greater than fifty-nine and less than sixty-one and the quantity that it denotes._Any period of seven consecutive days. |
+| 60 weeks | A natural number greater than fifty-nine and less than sixty-one and the quan... |
 | 68 weeks | 68 weeks |
 | 69 months | 69 months post therapeutic procedure |
 | 7 hours post start of Triapine (3AP) infusion (IV) | 7 hours post start of Triapine (3AP) infusion (IV) |
-| 7 months | A natural number greater than 6 and less than 8 and the quantity that it denotes: the sum of six and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 7 weeks | A natural number greater than 6 and less than 8 and the quantity that it denotes: the sum of six and one.: Any period of seven consecutive days. |
+| 7 months | A natural number greater than 6 and less than 8 and the quantity that it deno... |
+| 7 weeks | A natural number greater than 6 and less than 8 and the quantity that it deno... |
 | 7-12 hr | 7-12 hr |
-| 72 months | The natural number greater than seventy-one and less than seventy-three and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 72 weeks | The natural number greater than seventy-one and less than seventy-three and the quantity that it denotes._Any period of seven consecutive days. |
+| 72 months | The natural number greater than seventy-one and less than seventy-three and t... |
+| 72 weeks | The natural number greater than seventy-one and less than seventy-three and t... |
 | 8 +/- 1 weeks following initiation of treatment | 8 +/- 1 weeks following initiation of treatment |
 | 8 hours post dose | 8 hours post dose |
-| 8 months | A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 8 weeks | A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one.: Any period of seven consecutive days. |
+| 8 months | A natural number greater than 7 and less than 9 and the quantity that it deno... |
+| 8 weeks | A natural number greater than 7 and less than 9 and the quantity that it deno... |
 | 80 weeks | 80 weeks |
-| 84 months | The natural number greater than eighty-three and less than eighty-five and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 84 weeks | The natural number greater than eighty-three and less than eighty-five and the quantity that it denotes._Any period of seven consecutive days. |
+| 84 months | The natural number greater than eighty-three and less than eighty-five and th... |
+| 84 weeks | The natural number greater than eighty-three and less than eighty-five and th... |
 | 9 - 12 months post-treatment initiation | 9 - 12 months post-treatment initiation |
 | 9 months | 9 MONTHS |
 | 9 months after cross-over | 9 months after cross-over |
@@ -21066,19 +21084,19 @@ HTAN Biospecimen Data Model Schema
 | 9 months from baseline | 9 MONTHS FROM BASELINE |
 | 9 months from start of ARM 1 or ARM 2 therapy | 9 months from start of ARM 1 or ARM 2 therapy |
 | 9 months post-treatment initiation (+/- 3 months) | 9 months post-treatment initiation (+/- 3 months) |
-| 9 weeks | A natural number greater than 8 and less than 10 and the quantity that it denotes: the sum of nine and one.: Any period of seven consecutive days. |
+| 9 weeks | A natural number greater than 8 and less than 10 and the quantity that it den... |
 | 92 weeks | 92 weeks |
-| 96 months | A natural number greater than ninety-five and less than ninety-seven and the quantity that it denotes._One of the 12 divisions of a year as determined by a calendar. It corresponds to the unit of time of approximately to one cycle of the moon's phases, about 30 days or 4 weeks. |
-| 96 weeks | A natural number greater than ninety-five and less than ninety-seven and the quantity that it denotes._Any period of seven consecutive days. |
+| 96 months | A natural number greater than ninety-five and less than ninety-seven and the ... |
+| 96 weeks | A natural number greater than ninety-five and less than ninety-seven and the ... |
 | A | 10 - 21 days after the last dose of AC |
 | A-R | Repeat LVEF assessment 6 weeks after Time Point A |
 | Active Treatment, Current Cycle | Active Treatment, Current Cycle |
 | Active Treatment, Every 3 Months | Active Treatment, Every 3 Months |
-| Adjuvant | An agent that enhances the activity or therapeutic effect of another pharmacologic substance without having much, if any, therapeutic impact by itself. |
-| Adjuvant Chemotherapy | Chemotherapy that is administered subsequent to the main treatment plan to minimize or prevent disease recurrence. |
-| Adjuvant Radiation Therapy | Radiation therapy that is administered subsequent to the main treatment plan to minimize or prevent disease recurrence. |
-| After 1st dose escalation | Happening at a time subsequent to a reference time; later in time or order._Preceding all others in time or space or degree._A stepwise increase in the amount of a therapeutic or investigational agent given to an individual. |
-| After 2nd dose escalation | Happening at a time subsequent to a reference time; later in time or order._Coming next after the first in position in space or time or degree or magnitude._A stepwise increase in the amount of a therapeutic or investigational agent given to an individual. |
+| Adjuvant | An agent that enhances the activity or therapeutic effect of another pharmaco... |
+| Adjuvant Chemotherapy | Chemotherapy that is administered subsequent to the main treatment plan to mi... |
+| Adjuvant Radiation Therapy | Radiation therapy that is administered subsequent to the main treatment plan ... |
+| After 1st dose escalation | Happening at a time subsequent to a reference time; later in time or order._P... |
+| After 2nd dose escalation | Happening at a time subsequent to a reference time; later in time or order._C... |
 | After 4 post-operative doses of bevacizumab | After 4 post-operative doses of bevacizumab |
 | After 6 weeks of treatment | After 6 weeks of treatment |
 | After AC therapy | After AC therapy |
@@ -21096,31 +21114,31 @@ HTAN Biospecimen Data Model Schema
 | At completion of chemoradiation | At completion of chemoradiation |
 | At completion of planned preoperative systemic therapy | At completion of planned preoperative systemic therapy |
 | At end of RT | At end of RT |
-| At the time progressive disease is determined | Used to indicate position, location, or state._The establishment of a state or result._A clinical, pathologic, and/or molecular finding indicating that the course of a disease is worsening in terms of extent or severity. |
-| At time of first image | Preceding all others in time or space or degree.: Any record of an imaging event whether physical or electronic. |
+| At the time progressive disease is determined | Used to indicate position, location, or state._The establishment of a state o... |
+| At time of first image | Preceding all others in time or space or degree.: Any record of an imaging ev... |
 | At time patient discontinues treatment | At time patient discontinues treatment |
 | B | 3 months following randomization |
 | B-R | Repeat LVEF assessment 3 weeks after Time Point B |
 | Baseline (within 30 days prior to surgery) | Baseline (within 30 days prior to surgery) |
 | Baseline/PreRT | Baseline/PreRT |
 | Baseline: post-surgery and pre-radiation | Baseline: post-surgery and pre-radiation |
-| Before 1st dose escalation | Earlier in time or order._Preceding all others in time or space or degree._A stepwise increase in the amount of a therapeutic or investigational agent given to an individual. |
-| Before 2nd dose escalation | Earlier in time or order._Coming next after the first in position in space or time or degree or magnitude._A stepwise increase in the amount of a therapeutic or investigational agent given to an individual. |
-| Before Surgery | Earlier in time or order._A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery. |
+| Before 1st dose escalation | Earlier in time or order._Preceding all others in time or space or degree._A ... |
+| Before 2nd dose escalation | Earlier in time or order._Coming next after the first in position in space or... |
+| Before Surgery | Earlier in time or order._A diagnostic or treatment procedure performed by ma... |
 | Before preoperative systemic therapy | Before preoperative systemic therapy |
-| Best response | Having the most positive qualities.: The pathologic and/or clinical changes that result from treatment. The changes may include eradication of detectable disease, stabilization of disease, or disease progression. |
+| Best response | Having the most positive qualities.: The pathologic and/or clinical changes t... |
 | Breast cancer recurrence | Breast cancer recurrence |
 | C | 6 months following randomization |
 | C-R | Repeat LVEF assessment 3 weeks after Time Point C |
-| C1D1 2hr | Cycle 1, Day, 1 (for Arm A patients)  OR  First dose of axitinib given (For Arm C cross-over patients), 2hr after AM dose of axitinib |
-| C1D1 4 hr | Cycle 1, Day, 1 (for Arm A patients)  OR  First dose of axitinib given (For Arm C cross-over patients), 4hr after AM dose of axitinib |
-| C1D1 6hr | Cycle 1, Day, 1 (for Arm A patients)  OR  First dose of axitinib given (For Arm C cross-over patients), 6hr after AM dose of axitinib |
-| C2D1 | Cycle 2, Day 1 (pre-dose) (for crossover patients, this refers to Cycle 2, Day 1 of combination therapy) |
-| C3D1 | Cycle 3, Day 1 (pre-dose) (for crossover patients, this refers to Cycle 3, Day 1 of combination therapy) |
-| Chemotherapy | The use of synthetic or naturally-occurring chemicals for the treatment of diseases.  Although this term may be used to describe any therapy involving the use of chemical-based agents, it is most commonly used to refer to the variety of chemical-based agents employed to treat cancer.  Cancer chemotherapy works by arresting or killing the growth and spread of cancer cells.  Because cancer cells usually divide much faster than normal cells, they are often very sensitive to the inhibitory actions of chemotherapeutic agents.  Chemotherapy may also include agents that enhance immune function or alter hormonal activity. (NCI04) |
-| Complication | Any disease or disorder that occurs during the course of, or because of, another disease, treatment, or procedure. |
-| Confirmation of Response | Any act or phenomena, or behavior, constituting a reply or reaction of a living organism or its part to some foregoing stimulus or agent.: Having been established or verified. |
-| Cycle 1 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: The smallest natural number and quantity it denotes: a single entity, unit, or object. |
+| C1D1 2hr | Cycle 1, Day, 1 (for Arm A patients)  OR  First dose of axitinib given (For A... |
+| C1D1 4 hr | Cycle 1, Day, 1 (for Arm A patients)  OR  First dose of axitinib given (For A... |
+| C1D1 6hr | Cycle 1, Day, 1 (for Arm A patients)  OR  First dose of axitinib given (For A... |
+| C2D1 | Cycle 2, Day 1 (pre-dose) (for crossover patients, this refers to Cycle 2, Da... |
+| C3D1 | Cycle 3, Day 1 (pre-dose) (for crossover patients, this refers to Cycle 3, Da... |
+| Chemotherapy | The use of synthetic or naturally-occurring chemicals for the treatment of di... |
+| Complication | Any disease or disorder that occurs during the course of, or because of, anot... |
+| Confirmation of Response | Any act or phenomena, or behavior, constituting a reply or reaction of a livi... |
+| Cycle 1 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 1 Day 16 | Cycle 1 Day 16 |
 | Cycle 1 Day 2 | Cycle 1 Day 2 |
 | Cycle 1 Day 21 | Cycle 1 Day 21 |
@@ -21135,28 +21153,28 @@ HTAN Biospecimen Data Model Schema
 | Cycle 1, Day 1, (2 hr after AM dose of axitinib) | Cycle 1, Day 1, 2 hr after AM dose of axitinib) |
 | Cycle 1, Day 1, (4 hr after AM dose of axitinib | Cycle 1, Day 1, 4 hr after AM dose of axitinib |
 | Cycle 1, Day 1, (6 hr after AM dose of axitinib) | Cycle 1, Day 1, 6 hr after AM dose of axitinib) |
-| Cycle 1, Day 6 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: The smallest natural number and quantity it denotes: a single entity, unit, or object.: The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day.: A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one. |
-| Cycle 10 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one. |
-| Cycle 11 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 10 and less than 12 and the quantity that it denotes. |
-| Cycle 12 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 11 and less than 13 and the quantity that it denotes. |
+| Cycle 1, Day 6 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 10 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 11 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 12 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 12 or 12 months | Cycle 12 or 12 months |
-| Cycle 13 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 12 and less than 14 and the quantity that it denotes. |
-| Cycle 14 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 13 and less than 15 and the quantity that it denotes. |
-| Cycle 15 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 14 and less than 16 and the quantity that it denotes. |
-| Cycle 16 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 15 and less than 17 and the quantity that it denotes. |
-| Cycle 17 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 16 and less than 18 and the quantity that it denotes. |
-| Cycle 18 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than seventeen and less than nineteen and the quantity that it denotes. |
+| Cycle 13 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 14 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 15 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 16 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 17 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 18 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 18 Day 1 (+/- 2 weeks) | Cycle 18 Day 1 (+/- 2 weeks) |
-| Cycle 19 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than eighteen and less than twenty and the quantity that it denotes. |
-| Cycle 2 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one. |
+| Cycle 19 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 2 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 2 Day 1 | Cycle 2 Day 1 |
 | Cycle 2 Day 15 | Cycle 2 Day 15 |
 | Cycle 2 Day 16 | Cycle 2 Day 16 |
 | Cycle 2 Day 2 | Cycle 2 Day 2 |
 | Cycle 2 Day 8 | Cycle 2 Day 8 |
 | Cycle 2 Day 9 | Cycle 2 Day 9 |
-| Cycle 2, Day 1 (pre-dose) (for crossover patients, this refers to the second axitinib-containing cycle) | Cycle 2, Day 1 (pre-dose) (for crossover patients, this refers to the second axitinib-containing cycle) |
-| Cycle 20 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than nineteen and less than twenty-one and the quantity that it denotes. |
+| Cycle 2, Day 1 (pre-dose) (for crossover patients, this refers to the second axitinib-containing cycle) | Cycle 2, Day 1 (pre-dose) (for crossover patients, this refers to the second ... |
+| Cycle 20 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 21 | Cycle 21 |
 | Cycle 22 | Cycle 22 |
 | Cycle 23 | Cycle 23 |
@@ -21166,7 +21184,7 @@ HTAN Biospecimen Data Model Schema
 | Cycle 27 | Cycle 27 |
 | Cycle 28 | Cycle 28 |
 | Cycle 29 | Cycle 29 |
-| Cycle 3 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one. |
+| Cycle 3 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 3 Day 1 | Cycle 3 Day 1 |
 | Cycle 3 Day 15 | Cycle 3 Day 15 |
 | Cycle 3 Day 16 | Cycle 3 Day 16 |
@@ -21174,28 +21192,28 @@ HTAN Biospecimen Data Model Schema
 | Cycle 3 Day 8 | Cycle 3 Day 8 |
 | Cycle 3 Day 9 | Cycle 3 Day 9 |
 | Cycle 3 or 3 months | Cycle 3 or 3 months |
-| Cycle 3, Day 1 (pre-dose) (for crossover patients, this refers to the third axitinib-containing cycle) | Cycle 3, Day 1 (pre-dose) (for crossover patients, this refers to the third axitinib-containing cycle) |
+| Cycle 3, Day 1 (pre-dose) (for crossover patients, this refers to the third axitinib-containing cycle) | Cycle 3, Day 1 (pre-dose) (for crossover patients, this refers to the third a... |
 | Cycle 30 | Cycle 30 |
 | Cycle 31 | Cycle 31 |
 | Cycle 32 | Cycle 32 |
 | Cycle 33 | Cycle 33 |
 | Cycle 34 | Cycle 34 |
 | Cycle 35 | Cycle 35 |
-| Cycle 4 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 3 and less than 5 and the quantity that it denotes: the sum of three and one. |
+| Cycle 4 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 4 Day 1 | Cycle 4 Day 1 |
 | Cycle 4 Day 15 | Cycle 4 Day 15 |
 | Cycle 4 Day 16 | Cycle 4 Day 16 |
 | Cycle 4 Day 2 | Cycle 4 Day 2 |
 | Cycle 4 Day 8 | Cycle 4 Day 8 |
 | Cycle 4 Day 9 | Cycle 4 Day 9 |
-| Cycle 5 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one. |
-| Cycle 5 Day 1 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one.: The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day.: The smallest natural number and quantity it denotes: a single entity, unit, or object. |
+| Cycle 5 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 5 Day 1 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 5 Day 15 | Cycle 5 Day 15 |
 | Cycle 5 Day 16 | Cycle 5 Day 16 |
 | Cycle 5 Day 2 | Cycle 5 Day 2 |
 | Cycle 5 Day 8 | Cycle 5 Day 8 |
 | Cycle 5 Day 9 | Cycle 5 Day 9 |
-| Cycle 6 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one. |
+| Cycle 6 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 6 Day 1 | Cycle 6 Day 1 |
 | Cycle 6 Day 15 | Cycle 6 Day 15 |
 | Cycle 6 Day 16 | Cycle 6 Day 16 |
@@ -21203,10 +21221,10 @@ HTAN Biospecimen Data Model Schema
 | Cycle 6 Day 8 | Cycle 6 Day 8 |
 | Cycle 6 Day 9 | Cycle 6 Day 9 |
 | Cycle 6 or 6 months | Cycle 6 or 6 months |
-| Cycle 7 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 6 and less than 8 and the quantity that it denotes: the sum of six and one. |
+| Cycle 7 | An event or sequence of events that constitute a round or succession of obser... |
 | Cycle 7 Day 1 (+/- 2 weeks) | Cycle 7 Day 1 (+/- 2 weeks) |
-| Cycle 8 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one. |
-| Cycle 9 | An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: A natural number greater than 8 and less than 10 and the quantity that it denotes: the sum of nine and one. |
+| Cycle 8 | An event or sequence of events that constitute a round or succession of obser... |
+| Cycle 9 | An event or sequence of events that constitute a round or succession of obser... |
 | D | 9 months following randomization |
 | D-R | Repeat LVEF assessment 3 weeks after Time Point D |
 | Day +100 +/-20 | Day +100 +/-20 |
@@ -21215,7 +21233,7 @@ HTAN Biospecimen Data Model Schema
 | Day +60 +/-14 | Day +60 +/-14 |
 | Day 0 | Day 0 |
 | Day 0 - Day 20 | Day 0 - Day 20 |
-| Day 1 | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day._The smallest natural number and quantity it denotes: a single entity, unit, or object. |
+| Day 1 | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
 | Day 1 +12 hrs | Day 1 +12 hrs |
 | Day 1 +2 hrs | Day 1 +2 hrs |
 | Day 1 +20 hrs | Day 1 +20 hrs |
@@ -21239,14 +21257,14 @@ HTAN Biospecimen Data Model Schema
 | Day 1 of each course | Day 1 of each course |
 | Day 1, Dose 1 | Day 1, Dose 1 |
 | Day 1, Dose 2 | Day 1, Dose 2 |
-| Day 10 | A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day. |
-| Day 100 - 180 Post-HCT | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day.: A natural number greater than ninety-nine and less than one hundred-one and the quantity that it denotes.: Used as a function word to indicate direction, purpose, or movement.: A number with no fractional part, including the negative and positive numbers as well as zero.::180: Happening at a time subsequent to a reference time; later in time or order.: A therapeutic procedure that involves the transplantation of hematopoietic stem cells, either with the patient as their own donor or from a donor to a patient. This can be used for treatment of malignant and non-malignant diseases. |
+| Day 10 | A natural number greater than 9 and less than 11 and the quantity that it den... |
+| Day 100 - 180 Post-HCT | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
 | Day 105 | Day 105 |
-| Day 11 | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day.: A number with no fractional part, including the negative and positive numbers as well as zero. |
+| Day 11 | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
 | Day 113 | Day 113 |
-| Day 12 | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day._A natural number greater than 11 and less than 13 and the quantity that it denotes. |
+| Day 12 | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
 | Day 126 | Day 126 |
-| Day 13 | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day._A natural number greater than 12 and less than 14 and the quantity that it denotes. |
+| Day 13 | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
 | Day 14 | Day 14 |
 | Day 14 of Midostaurin/placebo | Day 14 of Midostaurin/placebo |
 | Day 15 | Day 15 |
@@ -21254,14 +21272,14 @@ HTAN Biospecimen Data Model Schema
 | Day 15 - 30 min after starting dose | Day 15 - 30 min after starting dose |
 | Day 15 - End of infusion | Day 15 - End of infusion |
 | Day 15 - Predose | Day 15 - Predose |
-| Day 18 | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day.: A number with no fractional part, including the negative and positive numbers as well as zero. |
+| Day 18 | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
 | Day 180 - 270 Post-HCT | Day 180 - 270 Post-HCT |
 | Day 2 | Day 2 |
-| Day 21 | A number with no fractional part, including the negative and positive numbers as well as zero.::21: The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day. |
+| Day 21 | A number with no fractional part, including the negative and positive numbers... |
 | Day 21 - Day 41 | Day 21 - Day 41 |
 | Day 22 | Day 22 |
-| Day 23 | A number with no fractional part, including the negative and positive numbers as well as zero.::23: The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day. |
-| Day 25 | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day.: A number with no fractional part, including the negative and positive numbers as well as zero. |
+| Day 23 | A number with no fractional part, including the negative and positive numbers... |
+| Day 25 | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
 | Day 270 - 365 Post-HCT | Day 270 - 365 Post-HCT |
 | Day 29 | Day 29 |
 | Day 3 | Day 3 |
@@ -21270,7 +21288,7 @@ HTAN Biospecimen Data Model Schema
 | Day 3, Dose 2 | Day 3, Dose 2 |
 | Day 30 | Day 30 Timepoint |
 | Day 31 | Day 31 |
-| Day 32 | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day.: A number with no fractional part, including the negative and positive numbers as well as zero. |
+| Day 32 | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
 | Day 36 +12 hrs | Day 36 +12 hrs |
 | Day 36 +2 hrs | Day 36 +2 hrs |
 | Day 36 +20 hrs | Day 36 +20 hrs |
@@ -21293,7 +21311,7 @@ HTAN Biospecimen Data Model Schema
 | Day 52 | Day 52 |
 | Day 57 | Day 57 |
 | Day 6 | Day 6 |
-| Day 6, Cycle 1 | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day.: A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one.: An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence.: The smallest natural number and quantity it denotes: a single entity, unit, or object. |
+| Day 6, Cycle 1 | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
 | Day 63 | Day 63 |
 | Day 7 | Day 7 Timepoint |
 | Day 8 | Day 8 |
@@ -21302,16 +21320,16 @@ HTAN Biospecimen Data Model Schema
 | Day 8 - End of infusion | Day 8 - End of infusion |
 | Day 8 - Predose | Day 8 - Predose |
 | Day 84 | Day 84 |
-| Day 9 | The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day._A natural number greater than 8 and less than 10 and the quantity that it denotes: the sum of nine and one. |
-| Day before surgery | A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery.: Earlier in time or order.: The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day. |
+| Day 9 | The time for Earth to make a complete rotation on its axis; ordinarily divide... |
+| Day before surgery | A diagnostic or treatment procedure performed by manual and/or instrumental m... |
 | Days 8-36 | Days 8-36 |
 | Death | At the time of death |
-| Diagnosis | The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms; also, the scientific determination of any kind; the concise results of such an investigation. |
+| Diagnosis | The investigation, analysis and recognition of the presence and nature of dis... |
 | During preoperative systemic therapy | During preoperative systemic therapy |
 | E | 12 months following randomization |
 | Early Termination | Early Termination |
 | End Induction | End Induction |
-| End of Chemoradiation | The point or place at which something terminates in time, space, or extent.: Treatment that combines chemotherapy with radiation therapy. |
+| End of Chemoradiation | The point or place at which something terminates in time, space, or extent.: ... |
 | End of Consolidation | End of Consolidation (prior to start of Post-Consolidation therapy) |
 | End of Consolidation (prior to start of Post-Consolidation therapy) | End of Consolidation (prior to start of Post-Consolidation therapy) |
 | End of Consolidation I | End of Consolidation I |
@@ -21331,23 +21349,23 @@ HTAN Biospecimen Data Model Schema
 | Every 12 weeks after the previous exam | Every 12 weeks after the previous exam |
 | Every 8 weeks | Every eight weeks. |
 | Every 8 weeks after the previous exam | Every 8 weeks after the previous exam |
-| Extra Prescribed Dose | Exceeding the normal or usual number.: A doctor's order for medicine or another intervention.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time. |
-| F | Any time through 10 years following randomization when a non-protocol specified LVEF assessment has been performed because the patient has signs or symptoms of CHF |
+| Extra Prescribed Dose | Exceeding the normal or usual number.: A doctor's order for medicine or anoth... |
+| F | Any time through 10 years following randomization when a non-protocol specifi... |
 | Final | Conclusive in a process or progression. |
-| Final Visit | Conclusive in a process or progression.: The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement. |
-| First dose of axitinib given, 2 hr after AM dose of axitinib (Arm C cross-over pt only) | First dose of axitinib given, 2 hr after AM dose of axitinib (Arm C cross-over pt only) |
-| First dose of axitinib given, 4 hr after AM dose of axitinib (Arm C cross-over pt only) | First dose of axitinib given, 4 hr after AM dose of axitinib (Arm C cross-over pt only) |
-| First dose of axitinib given, 6 hr after AM dose of axitinib (Arm C cross-over pt only) | First dose of axitinib given, 6 hr after AM dose of axitinib (Arm C cross-over pt only) |
-| First intravitreal injection | Preceding all others in time or space or degree._The administration of a drug within the vitreous body of the eye. |
+| Final Visit | Conclusive in a process or progression.: The act of going to see some person ... |
+| First dose of axitinib given, 2 hr after AM dose of axitinib (Arm C cross-over pt only) | First dose of axitinib given, 2 hr after AM dose of axitinib (Arm C cross-ove... |
+| First dose of axitinib given, 4 hr after AM dose of axitinib (Arm C cross-over pt only) | First dose of axitinib given, 4 hr after AM dose of axitinib (Arm C cross-ove... |
+| First dose of axitinib given, 6 hr after AM dose of axitinib (Arm C cross-over pt only) | First dose of axitinib given, 6 hr after AM dose of axitinib (Arm C cross-ove... |
+| First intravitreal injection | Preceding all others in time or space or degree._The administration of a drug... |
 | Five year follow-up | Five year follow-up |
 | Follow up | Follow up |
-| Follow up safety | The state of being certain that adverse effects will not be caused by some agent under defined conditions.: The process by which information about the health status of an individual is obtained after a study has officially closed; an activity that continues something that has already begun or that repeats something that has already been done. |
+| Follow up safety | The state of being certain that adverse effects will not be caused by some ag... |
 | Follow up safety #1 | Follow up safety #1 |
 | Follow up safety #2 | Follow up safety #2 |
-| Follow-up | The process by which information about the health status of an individual is obtained after a study has officially closed; an activity that continues something that has already begun or that repeats something that has already been done. |
-| Follow-up 1 | The process by which information about the health status of an individual is obtained after a study has officially closed.: The smallest natural number and quantity it denotes: a single entity, unit, or object. |
-| Follow-up 2 | The process by which information about the health status of an individual is obtained after a study has officially closed; an activity that continues something that has already begun or that repeats something that has already been done.: A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one. |
-| Follow-up 3 | The process by which information about the health status of an individual is obtained after a study has officially closed; an activity that continues something that has already begun or that repeats something that has already been done.: A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one. |
+| Follow-up | The process by which information about the health status of an individual is ... |
+| Follow-up 1 | The process by which information about the health status of an individual is ... |
+| Follow-up 2 | The process by which information about the health status of an individual is ... |
+| Follow-up 3 | The process by which information about the health status of an individual is ... |
 | G | During Cardiac Report Follow-up if Time Points A, B, C, D, or E do not apply |
 | Hour 1 | Hour 1 |
 | Hour 3 | Hour 3 |
@@ -21360,8 +21378,8 @@ HTAN Biospecimen Data Model Schema
 | Last week of RT | Last week of radiation therapy |
 | Lead In - Day 7 | Lead In - Day 7 |
 | Less than or equal to 3 weeks prior to registration | Less than or equal to 3 weeks prior to registration |
-| MRI Scan 1 | Preceding all others in time or space or degree.: Imaging that uses radiofrequency waves and a strong magnetic field rather than x-rays to provide amazingly clear and detailed pictures of internal organs and tissues. The technique is valuable for the diagnosis of many pathologic conditions, including cancer, heart and vascular disease, stroke, and joint and musculoskeletal disorders. : The data or image obtained by gathering information with a sensing device. |
-| MRI Scan 2 | Coming next after the first in position in space or time or degree or magnitude.: Imaging that uses radiofrequency waves and a strong magnetic field rather than x-rays to provide amazingly clear and detailed pictures of internal organs and tissues. The technique is valuable for the diagnosis of many pathologic conditions, including cancer, heart and vascular disease, stroke, and joint and musculoskeletal disorders. : The data or image obtained by gathering information with a sensing device. |
+| MRI Scan 1 | Preceding all others in time or space or degree.: Imaging that uses radiofreq... |
+| MRI Scan 2 | Coming next after the first in position in space or time or degree or magnitu... |
 | Maintenance #1 | Maintenance #1 |
 | Maintenance #10 | Maintenance #10 |
 | Maintenance #11 | Maintenance #11 |
@@ -21383,16 +21401,16 @@ HTAN Biospecimen Data Model Schema
 | Maintenance #8 | Maintenance #8 |
 | Maintenance #9 | Maintenance #9 |
 | Mastectomy | Surgical removal of the breast. |
-| Metastatic site resection | A term referring to the clinical or pathologic observation of a tumor extension from its original site of growth to another anatomic site._A position in relation to its surroundings._The surgical removal of an organ or a part of an organ. |
+| Metastatic site resection | A term referring to the clinical or pathologic observation of a tumor extensi... |
 | Month 12 | Month 12 |
 | Month 18 | Month 18 |
 | Month 24 | Month 24 |
 | Month 3 | Month 3 |
 | Month 6 | Month 6 |
 | Month 9 | Month 9 |
-| Morning of surgery | A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery.: The time period between dawn and noon. |
+| Morning of surgery | A diagnostic or treatment procedure performed by manual and/or instrumental m... |
 | Nadir | Nadir |
-| Neoadjuvant | Treatment given as a first step to shrink a tumor before the main treatment, which is usually surgery, is given. Examples of neoadjuvant therapy include chemotherapy, radiation therapy, and hormone therapy. It is a type of induction therapy. |
+| Neoadjuvant | Treatment given as a first step to shrink a tumor before the main treatment, ... |
 | Observation | Observation; watching something and taking note of what happens. |
 | Off Study | Off Study |
 | One year follow-up | One year follow-up |
@@ -21405,7 +21423,7 @@ HTAN Biospecimen Data Model Schema
 | POST-TEXT 4 | POST-TEXT 4 |
 | POST-TEXT 5 | POST-TEXT 5 |
 | PRETEXT | PRETEXT |
-| Post 6 hours | Happening at a time subsequent to a reference time; later in time or order._A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one._A unit measure of time equal to 3,600 seconds or 60 minutes. It is approximately 1/24 of a median day. |
+| Post 6 hours | Happening at a time subsequent to a reference time; later in time or order._A... |
 | Post ARM 1 or ARM 2 systemic therapy | Post ARM 1 or ARM 2 systemic therapy |
 | Post Nadir 1 | Post Nadir 1 |
 | Post Nadir 2 | Post Nadir 2 |
@@ -21414,11 +21432,11 @@ HTAN Biospecimen Data Model Schema
 | Post infusion 2 hours | Post infusion 2 hours |
 | Post infusion 30 mins | Post infusion 30 mins |
 | Post infusion 60 mins | Post infusion 60 mins |
-| Post neoadjuvant chemotherapy | Post; occuring after.: Treatment designed to be used as a first step toward shrinking the cancer and in evaluating response to drugs and other agents. Induction therapy is followed by additional therapy to eliminate whatever cancer remains. |
+| Post neoadjuvant chemotherapy | Post; occuring after.: Treatment designed to be used as a first step toward s... |
 | Post operative (week 4-6) | Post operative (week 4-6) |
-| Post scan | Happening at a time subsequent to a reference time; later in time or order.: The data or image obtained by gathering information with a sensing device. |
-| Post treatment | Happening at a time subsequent to a reference time; later in time or order.: An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process. |
-| Post-IO Scan at progression (1) | Happening at a time subsequent to a reference time; later in time or order.: Immunotherapy that focuses on mobilizing the patient's own immune cells to recognize and eliminate cancer cells.: Any technology or method that aids in the visualization of any biological process, cell, tissue or organ for use in screening, diagnosis, surgical procedures or therapy.: The data or image obtained by gathering information with a sensing device.: Used to indicate position, location, or state.: The worsening of a disease over time. |
+| Post scan | Happening at a time subsequent to a reference time; later in time or order.: ... |
+| Post treatment | Happening at a time subsequent to a reference time; later in time or order.: ... |
+| Post-IO Scan at progression (1) | Happening at a time subsequent to a reference time; later in time or order.: ... |
 | Post-Intervention | Post-Intervention |
 | Post-MIBG Therapy (Arm B or C) | Post-MIBG Therapy (Arm B or C) |
 | Post-adjuvant cycle 6 | Post-adjuvant cycle 6 |
@@ -21428,14 +21446,14 @@ HTAN Biospecimen Data Model Schema
 | Post-transplant (Patients with > 5 MIBG positive metastatic sites) | Post-transplant (Patients with > 5 MIBG positive metastatic sites) |
 | Post-transplant (Patients with > 5 PET sites) | Post-transplant (Patients with > 5 PET positive metastatic sites) |
 | Post-transplant/pre-radiation (Patients with > 5 MIBG positive metastatic sites) | Post-transplant/pre-radiation (Patients with > 5 MIBG positive metastatic sites) |
-| Post-treatment (immediately after LITT) | Occurring after a therapeutic procedure._Happening at a time subsequent to a reference time; later in time or order._A thermal ablation therapy in which neoplasms are heated with prolonged and moderate temperature elevations.  It results in coagulative necrosis in the heated tissue. |
+| Post-treatment (immediately after LITT) | Occurring after a therapeutic procedure._Happening at a time subsequent to a ... |
 | Post-treatment follow-up | Post-treatment follow-up |
 | Post-week 9 | After week 9 |
 | Postoperative Bevacizumab | Postoperative Bevacizumab |
-| Pre scan | Earlier in time or order.: The data or image obtained by gathering information with a sensing device. |
-| Pre-IO most recent Scan (-1) | Earlier in time or order.: Immunotherapy that focuses on mobilizing the patient's own immune cells to recognize and eliminate cancer cells.: Greatest in amount, extent, or degree; constituting a majority.: Near to or not long before the present.: Any technology or method that aids in the visualization of any biological process, cell, tissue or organ for use in screening, diagnosis, surgical procedures or therapy.: The data or image obtained by gathering information with a sensing device. |
-| Pre-IO second most recent Scan (-2) | Earlier in time or order.: Immunotherapy that focuses on mobilizing the patient's own immune cells to recognize and eliminate cancer cells.: A suffix denoting the second person having the same complete name (first, middle, and family names).: Greatest in amount, extent, or degree; constituting a majority.: Near to or not long before the present.: Any technology or method that aids in the visualization of any biological process, cell, tissue or organ for use in screening, diagnosis, surgical procedures or therapy.: The data or image obtained by gathering information with a sensing device. |
-| Pre-Infusion | Earlier in time or order.: A method of putting fluids, including drugs, into the bloodstream. |
+| Pre scan | Earlier in time or order.: The data or image obtained by gathering informatio... |
+| Pre-IO most recent Scan (-1) | Earlier in time or order.: Immunotherapy that focuses on mobilizing the patie... |
+| Pre-IO second most recent Scan (-2) | Earlier in time or order.: Immunotherapy that focuses on mobilizing the patie... |
+| Pre-Infusion | Earlier in time or order.: A method of putting fluids, including drugs, into ... |
 | Pre-Intervention | Pre-intervention |
 | Pre-Treatment (within 4 weeks prior to starting therapy) | Pre-Treatment (within 4 weeks prior to starting therapy) |
 | Pre-adjuvant cycle 1 | Pre-adjuvant cycle 1 |
@@ -21448,47 +21466,47 @@ HTAN Biospecimen Data Model Schema
 | Pre-maintenance cycle 4 | Pre-maintenance cycle 4 |
 | Pre-maintenance cycle 5 | Pre-maintenance cycle 5 |
 | Pre-maintenance cycle 6 | Pre-maintenance cycle 6 |
-| Pre-radiation | Earlier in time or order.: Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation. |
+| Pre-radiation | Earlier in time or order.: Treatment of a disease by means of exposure of the... |
 | Pre-surgery | PRE-SURGERY |
 | Pre-treatment | Occurring before a therapeutic procedure. |
 | Preliminary progression | Preliminary progression |
 | Preoperative Bevacizumab | Preoperative Bevacizumab |
 | Pretreatment | Predating the onset of protocol treatment or intervention. |
-| Pretreatment-Baseline | The time prior to the treatment of interest.: Baseline; an imaginary standard by which things are measured or compared. |
+| Pretreatment-Baseline | The time prior to the treatment of interest.: Baseline; an imaginary standard... |
 | Prior to Cycle 1 Continuation | Prior to Cycle 1 Continuation |
-| Prior to Cycle 12 | Earlier in time or order._Used as a function word to indicate direction, purpose, or movement._An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence._A natural number greater than 11 and less than 13 and the quantity that it denotes. |
-| Prior to Cycle 3 | Earlier in time or order._Used as a function word to indicate direction, purpose, or movement._An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence._A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one. |
-| Prior to Cycle 5 | Earlier in time or order._Used as a function word to indicate direction, purpose, or movement._An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence._A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one. |
+| Prior to Cycle 12 | Earlier in time or order._Used as a function word to indicate direction, purp... |
+| Prior to Cycle 3 | Earlier in time or order._Used as a function word to indicate direction, purp... |
+| Prior to Cycle 5 | Earlier in time or order._Used as a function word to indicate direction, purp... |
 | Prior to Cycle 7 Continuation | Prior to Cycle 7 Continuation |
-| Prior to Cycle 8 | Earlier in time or order._Used as a function word to indicate direction, purpose, or movement._An event or sequence of events that constitute a round or succession of observable phenomena, recurring usually at regular or approximately regular time intervals and in the same sequence._A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one. |
-| Prior to best response | Earlier in time or order._Used as a function word to indicate direction, purpose, or movement._Having the most positive qualities._The pathologic and/or clinical changes that result from treatment. The changes may include eradication of detectable disease, stabilization of disease, or disease progression. |
+| Prior to Cycle 8 | Earlier in time or order._Used as a function word to indicate direction, purp... |
+| Prior to best response | Earlier in time or order._Used as a function word to indicate direction, purp... |
 | Prior to cycle 4 | Prior to cycle 4 |
-| Prior to neoadjuvant chemotherapy | Earlier in time or order.: Used as a function word to indicate direction, purpose, or movement.: Treatment given as a first step to shrink a tumor before the main treatment, which is usually surgery, is given. Examples of neoadjuvant therapy include chemotherapy, radiation therapy, and hormone therapy. It is a type of induction therapy. : The use of synthetic or naturally-occurring chemicals for the treatment of diseases.  Although this term may be used to describe any therapy involving the use of chemical-based agents, it is most commonly used to refer to the variety of chemical-based agents employed to treat cancer.  Cancer chemotherapy works by arresting or killing the growth and spread of cancer cells.  Because cancer cells usually divide much faster than normal cells, they are often very sensitive to the inhibitory actions of chemotherapeutic agents.  Chemotherapy may also include agents that enhance immune function or alter hormonal activity. (NCI04) |
+| Prior to neoadjuvant chemotherapy | Earlier in time or order.: Used as a function word to indicate direction, pur... |
 | Prior to post-Consolidation, Cycle 1 | Prior to post-Consolidation, Cycle 1 |
-| Prior to radiation | Earlier in time or order._Used as a function word to indicate direction, purpose, or movement._Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation. |
-| Prior to randomization | Protocol timepoint before patient information is submitted for random assignment to a treatment arm |
+| Prior to radiation | Earlier in time or order._Used as a function word to indicate direction, purp... |
+| Prior to randomization | Protocol timepoint before patient information is submitted for random assignm... |
 | Prior to randomization (Baseline) | Prior to randomization (Baseline) |
 | Prior to start of Triapine (3AP) infusion (IV) | Prior to start of Triapine (3AP) infusion (IV) |
 | Prior to start of study therapy | Prior to start of study therapy |
 | Prior to start of triapine (T) infusion | Prior to start of triapine (T) infusion |
-| Prior to surgery | Earlier in time or order._A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery. |
+| Prior to surgery | Earlier in time or order._A diagnostic or treatment procedure performed by ma... |
 | Prior to the start of protocol therapy | Prior to the start of protocol therapy |
 | Prior to treatment (between pre-registration and start of cycle 1) | Prior to treatment (between pre-registration and start of cycle 1) |
-| Prior to when progressive disease is determined | Earlier in time or order._Used as a function word to indicate direction, purpose, or movement._The establishment of a state or result._A clinical, pathologic, and/or molecular finding indicating that the course of a disease is worsening in terms of extent or severity. |
+| Prior to when progressive disease is determined | Earlier in time or order._Used as a function word to indicate direction, purp... |
 | Progression | Progression |
 | Progression or 2 years | Progression or 2 years |
 | Progression prior to cross-over | Progression prior to cross-over |
 | Progression/End of active treatment | Progression/End of active treatment |
-| Radiation Therapy | Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation. |
+| Radiation Therapy | Treatment of a disease by means of exposure of the target or the whole body t... |
 | Reconstruction | Surgical restoration of function or form of a part. |
 | Recurrence/Progression | To come back or to return.: advancement in extent or severity. |
 | Registration | Registration; the act of enrolling. |
 | Registration: post-radiation | Registration: post-radiation |
 | Relapse | The return of a disease after a period of remission. |
-| Relapse in Follow-up | The process by which information about the health status of an individual is obtained after a study has officially closed; an activity that continues something that has already begun or that repeats something that has already been done.: The return of a disease after a period of remission. |
+| Relapse in Follow-up | The process by which information about the health status of an individual is ... |
 | Relapse/Progression | Relapse/Progression |
-| Repeat MRI Scan 1 | Make or do or perform again.: Preceding all others in time or space or degree.: Imaging that uses radiofrequency waves and a strong magnetic field rather than x-rays to provide amazingly clear and detailed pictures of internal organs and tissues. The technique is valuable for the diagnosis of many pathologic conditions, including cancer, heart and vascular disease, stroke, and joint and musculoskeletal disorders. : The data or image obtained by gathering information with a sensing device. |
-| Repeat MRI Scan 2 | Make or do or perform again.: Coming next after the first in position in space or time or degree or magnitude.: Imaging that uses radiofrequency waves and a strong magnetic field rather than x-rays to provide amazingly clear and detailed pictures of internal organs and tissues. The technique is valuable for the diagnosis of many pathologic conditions, including cancer, heart and vascular disease, stroke, and joint and musculoskeletal disorders. : The data or image obtained by gathering information with a sensing device. |
+| Repeat MRI Scan 1 | Make or do or perform again.: Preceding all others in time or space or degree... |
+| Repeat MRI Scan 2 | Make or do or perform again.: Coming next after the first in position in spac... |
 | Retreat Cycle 1 | Retreat Cycle 1 |
 | Retreat Cycle 10 | Retreat Cycle 10 |
 | Retreat Cycle 11 | Retreat Cycle 11 |
@@ -21509,91 +21527,91 @@ HTAN Biospecimen Data Model Schema
 | Retreat Cycle 7 | Retreat Cycle 7 |
 | Retreat Cycle 8 | Retreat Cycle 8 |
 | Retreat Cycle 9 | Retreat Cycle 9 |
-| Rinse completed | A liquid used to cleanse by flushing.: To possess every necessary or normal part or component or step; having come or been brought to a conclusion. |
-| Safety follow up | The state of being certain that adverse effects will not be caused by some agent under defined conditions.: The process by which information about the health status of an individual is obtained after a study has officially closed; an activity that continues something that has already begun or that repeats something that has already been done. |
+| Rinse completed | A liquid used to cleanse by flushing.: To possess every necessary or normal p... |
+| Safety follow up | The state of being certain that adverse effects will not be caused by some ag... |
 | Screening | A systematic examination or assessment. |
 | Start of Post-Consolidation | Start of Post-Consolidation |
 | Steroid Prephase | Steroid Prephase |
 | Study entry (+/- 2 weeks) | Study entry (+/- 2 weeks) |
 | Study entry (+/- 4 weeks) | Study entry (+/- 4 weeks) |
-| Surgery | A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery. |
-| Telephone Contact | A channel for communication between groups.: Electronic equipment that converts sound into electrical signals that can be transmitted over distances and then converts received signals back into sounds. |
+| Surgery | A diagnostic or treatment procedure performed by manual and/or instrumental m... |
+| Telephone Contact | A channel for communication between groups.: Electronic equipment that conver... |
 | Third week of RT | Third week of radiation therapy |
 | Three months from baseline | Three months from baseline |
 | Time 0 prior to infusion | Time 0 prior to infusion |
-| Time of evidence of metastatic disease | Used to indicate position, location, or state._Knowledge on which to base belief._A tumor arising at a location distant to the primary lesion. |
-| Time of randomization | The allocation of individuals to groups by chance, especially in order to control the variables in an experiment. |
-| Time of surgery | A specialty in which manual or operative procedures are used in the treatment of disease, injuries, or deformities. |
-| Trastuzumab | A humanized recombinant monoclonal antibody directed against the HER2- receptor protein.  Trastuzumab binds to the extracellular domain of the growth factor protein HER2, thereby inhibiting proliferation of HER2 overexpressing tumor cells.  Binding with HER2 protein also initiates an antibody-dependent cell cytotoxicity.(NCI) |
+| Time of evidence of metastatic disease | Used to indicate position, location, or state._Knowledge on which to base bel... |
+| Time of randomization | The allocation of individuals to groups by chance, especially in order to con... |
+| Time of surgery | A specialty in which manual or operative procedures are used in the treatment... |
+| Trastuzumab | A humanized recombinant monoclonal antibody directed against the HER2- recept... |
 | Treatment | Treatment |
-| Treatment beyond progression | An action or administration of therapeutic agents to produce an effect that is intended to alter or stop a pathologic process.: Happening at a time subsequent to a reference time; later in time or order.: The worsening of a disease over time. |
-| Treatment monitoring | Subject to a process with the aim of readying for some purpose, improving, or remedying a condition.: The act of observing something (and sometimes keeping a record of it). |
+| Treatment beyond progression | An action or administration of therapeutic agents to produce an effect that i... |
+| Treatment monitoring | Subject to a process with the aim of readying for some purpose, improving, or... |
 | Twelve months from baseline | Twelve months from baseline |
 | Twenty-four months from baseline | Twenty-four months from baseline |
 | Unequivocal progression | Unequivocal progression |
 | Unscheduled | Unscheduled |
-| Visit 1 | A number with no fractional part.::1: A visit by a patient or study participant to a medical professional. |
-| Visit 1 During dose infusion | A visit by a patient or study participant to a medical professional.: A number with no fractional part, including the negative and positive numbers as well as zero.::1: At some point in a given period of time.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: Any form of treatment that is introduced into the body via a blood vessel, a muscle, or the spinal cord. |
-| Visit 1 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::1: A visit by a patient or study participant to a medical professional. |
-| Visit 1 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::1: A visit by a patient or study participant to a medical professional. |
-| Visit 10 | A number with no fractional part.::10: A visit by a patient or study participant to a medical professional. |
-| Visit 11 | A number with no fractional part.::11: A visit by a patient or study participant to a medical professional. |
-| Visit 2 | A number with no fractional part.::2: A visit by a patient or study participant to a medical professional. |
-| Visit 2 During dose infusion | A visit by a patient or study participant to a medical professional.: A number with no fractional part, including the negative and positive numbers as well as zero.::2: At some point in a given period of time.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: Any form of treatment that is introduced into the body via a blood vessel, a muscle, or the spinal cord. |
-| Visit 2 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::2: A visit by a patient or study participant to a medical professional. |
-| Visit 2 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::2: A visit by a patient or study participant to a medical professional. |
-| Visit 3 | A number with no fractional part, including the negative and positive numbers as well as zero.::3: A visit by a patient or study participant to a medical professional. |
-| Visit 3 During dose infusion | A visit by a patient or study participant to a medical professional.: A number with no fractional part, including the negative and positive numbers as well as zero.::3: At some point in a given period of time.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: Any form of treatment that is introduced into the body via a blood vessel, a muscle, or the spinal cord. |
-| Visit 3 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::3: A visit by a patient or study participant to a medical professional. |
-| Visit 3 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::3: A visit by a patient or study participant to a medical professional. |
-| Visit 4 | A number with no fractional part, including the negative and positive numbers as well as zero.::4: A visit by a patient or study participant to a medical professional. |
-| Visit 5 | A number with no fractional part, including the negative and positive numbers as well as zero.::5: A visit by a patient or study participant to a medical professional. |
-| Visit 6 | A number with no fractional part, including the negative and positive numbers as well as zero.::6: A visit by a patient or study participant to a medical professional. |
-| Visit 6 During dose infusion | A visit by a patient or study participant to a medical professional.: A number with no fractional part, including the negative and positive numbers as well as zero.::6: At some point in a given period of time.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: Any form of treatment that is introduced into the body via a blood vessel, a muscle, or the spinal cord. |
-| Visit 6 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::6: A visit by a patient or study participant to a medical professional. |
-| Visit 6 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::6: A visit by a patient or study participant to a medical professional. |
-| Visit 7 | A number with no fractional part, including the negative and positive numbers as well as zero.::7: A visit by a patient or study participant to a medical professional. |
-| Visit 8 | A number with no fractional part, including the negative and positive numbers as well as zero.::8: A visit by a patient or study participant to a medical professional. |
-| Visit 9 | A number with no fractional part, including the negative and positive numbers as well as zero.::9: A visit by a patient or study participant to a medical professional. |
-| Visit 9 During dose infusion | A visit by a patient or study participant to a medical professional.: A number with no fractional part, including the negative and positive numbers as well as zero.::9: At some point in a given period of time.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: Any form of treatment that is introduced into the body via a blood vessel, a muscle, or the spinal cord. |
-| Visit 9 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::9: A visit by a patient or study participant to a medical professional. |
-| Visit 9 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects receive therapeutic treatment.: A quantity of an agent (such as substance or energy) administered, taken, or absorbed at one time.: A number with no fractional part, including the negative and positive numbers as well as zero.::9: A visit by a patient or study participant to a medical professional. |
-| Week 0 | A mathematical element that when added to another number yields the same number; the cardinal number meaning one less than one.: Any period of seven consecutive days. |
-| Week 10 | A natural number greater than 9 and less than 11 and the quantity that it denotes: the sum of nine and one.: Any period of seven consecutive days. |
+| Visit 1 | A number with no fractional part.::1: A visit by a patient or study participa... |
+| Visit 1 During dose infusion | A visit by a patient or study participant to a medical professional.: A numbe... |
+| Visit 1 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: ... |
+| Visit 1 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects... |
+| Visit 10 | A number with no fractional part.::10: A visit by a patient or study particip... |
+| Visit 11 | A number with no fractional part.::11: A visit by a patient or study particip... |
+| Visit 2 | A number with no fractional part.::2: A visit by a patient or study participa... |
+| Visit 2 During dose infusion | A visit by a patient or study participant to a medical professional.: A numbe... |
+| Visit 2 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: ... |
+| Visit 2 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects... |
+| Visit 3 | A number with no fractional part, including the negative and positive numbers... |
+| Visit 3 During dose infusion | A visit by a patient or study participant to a medical professional.: A numbe... |
+| Visit 3 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: ... |
+| Visit 3 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects... |
+| Visit 4 | A number with no fractional part, including the negative and positive numbers... |
+| Visit 5 | A number with no fractional part, including the negative and positive numbers... |
+| Visit 6 | A number with no fractional part, including the negative and positive numbers... |
+| Visit 6 During dose infusion | A visit by a patient or study participant to a medical professional.: A numbe... |
+| Visit 6 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: ... |
+| Visit 6 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects... |
+| Visit 7 | A number with no fractional part, including the negative and positive numbers... |
+| Visit 8 | A number with no fractional part, including the negative and positive numbers... |
+| Visit 9 | A number with no fractional part, including the negative and positive numbers... |
+| Visit 9 During dose infusion | A visit by a patient or study participant to a medical professional.: A numbe... |
+| Visit 9 Post-dose | Happening at a time subsequent to a reference time; later in time or order.: ... |
+| Visit 9 Pre-dose | Earlier in time or order.: A period in a clinical study during which subjects... |
+| Week 0 | A mathematical element that when added to another number yields the same numb... |
+| Week 10 | A natural number greater than 9 and less than 11 and the quantity that it den... |
 | Week 102 | Week 102 |
 | Week 103 | Week 103 |
-| Week 11 | A natural number greater than 10 and less than 12 and the quantity that it denotes.: Any period of seven consecutive days. |
+| Week 11 | A natural number greater than 10 and less than 12 and the quantity that it de... |
 | Week 114 | Week 114 |
-| Week 12 | A natural number greater than 11 and less than 13 and the quantity that it denotes.: Any period of seven consecutive days. |
+| Week 12 | A natural number greater than 11 and less than 13 and the quantity that it de... |
 | Week 12 (Cycle 3) | Week 12 (Cycle 3) |
 | Week 126 | Week 126 |
-| Week 13 | A natural number greater than 12 and less than 14 and the quantity that it denotes.: Any period of seven consecutive days. |
-| Week 14 | A natural number greater than 13 and less than 15 and the quantity that it denotes.: Any period of seven consecutive days. |
-| Week 15 | A natural number greater than 14 and less than 16 and the quantity that it denotes.: Any period of seven consecutive days. |
+| Week 13 | A natural number greater than 12 and less than 14 and the quantity that it de... |
+| Week 14 | A natural number greater than 13 and less than 15 and the quantity that it de... |
+| Week 15 | A natural number greater than 14 and less than 16 and the quantity that it de... |
 | Week 156 or early termination | Week 156 or early termination |
-| Week 16 | Any period of seven consecutive days._A natural number greater than 15 and less than 17 and the quantity that it denotes. |
+| Week 16 | Any period of seven consecutive days._A natural number greater than 15 and le... |
 | Week 16 (Cycle 4) | Week 16 (Cycle 4) |
-| Week 17 | A natural number greater than 16 and less than 18 and the quantity that it denotes.: Any period of seven consecutive days. |
-| Week 18 | A natural number greater than seventeen and less than nineteen and the quantity that it denotes.: Any period of seven consecutive days. |
-| Week 19 | A natural number greater than eighteen and less than twenty and the quantity that it denotes.: Any period of seven consecutive days. |
-| Week 2 | A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one.: Any period of seven consecutive days. |
-| Week 20 | Any period of seven consecutive days._A natural number greater than nineteen and less than twenty-one and the quantity that it denotes. |
-| Week 20 (Cycle 5) | A natural number greater than nineteen and less than twenty-one and the quantity that it denotes.: Any period of seven consecutive days. |
-| Week 21 | A natural number greater than twenty and less than twenty-two and the quantity that it denotes.: Any period of seven consecutive days. |
+| Week 17 | A natural number greater than 16 and less than 18 and the quantity that it de... |
+| Week 18 | A natural number greater than seventeen and less than nineteen and the quanti... |
+| Week 19 | A natural number greater than eighteen and less than twenty and the quantity ... |
+| Week 2 | A natural number greater than 1 and less than 3 and the quantity that it deno... |
+| Week 20 | Any period of seven consecutive days._A natural number greater than nineteen ... |
+| Week 20 (Cycle 5) | A natural number greater than nineteen and less than twenty-one and the quant... |
+| Week 21 | A natural number greater than twenty and less than twenty-two and the quantit... |
 | Week 22 | Twenty-second week |
 | Week 23 | Week 23 |
-| Week 24 | Any period of seven consecutive days._A natural number greater than twenty-three and less than twenty-five and the quantity that it denotes. |
+| Week 24 | Any period of seven consecutive days._A natural number greater than twenty-th... |
 | Week 24 (Cycle 6) | Week 24 (Cycle 6) |
-| Week 25 | A natural number greater than twenty-four and less than twenty-six and the quantity that it denotes.: Any period of seven consecutive days. |
+| Week 25 | A natural number greater than twenty-four and less than twenty-six and the qu... |
 | Week 26 | Week 26 |
 | Week 27 | Week 27 |
 | Week 28 | Week 28 |
 | Week 28 (Cycle 7) | Week 28 (Cycle 7) |
-| Week 29 | A natural number greater than twenty-eight and less than thirty and the quantity that it denotes.: Any period of seven consecutive days. |
-| Week 3 | Any period of seven consecutive days._A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one. |
-| Week 30 | A natural number greater than twenty-nine and less than thirty-one and the quantity that it denotes.: Any period of seven consecutive days. |
+| Week 29 | A natural number greater than twenty-eight and less than thirty and the quant... |
+| Week 3 | Any period of seven consecutive days._A natural number greater than 2 and les... |
+| Week 30 | A natural number greater than twenty-nine and less than thirty-one and the qu... |
 | Week 31 | Week 31 |
-| Week 32 | Any period of seven consecutive days._The natural number greater than thirty-one and less than thirty-three and the quantity that it denotes. |
+| Week 32 | Any period of seven consecutive days._The natural number greater than thirty-... |
 | Week 32 (Cycle 8) | Week 32 (Cycle 8) |
 | Week 33 | Week 33 |
 | Week 34 | Thirty-fourth week |
@@ -21601,17 +21619,17 @@ HTAN Biospecimen Data Model Schema
 | Week 36 | Week 36 |
 | Week 37 | Week 37 |
 | Week 38 | Week 38 |
-| Week 39 | A natural number greater than thirty-eight and less than forty and the quantity that it denotes.: Any period of seven consecutive days. |
+| Week 39 | A natural number greater than thirty-eight and less than forty and the quanti... |
 | Week 4 | Week 4 |
 | Week 4 (Cycle 1) | Week 4 (Cycle 1) |
-| Week 40 | A natural number greater than thirty-nine and less than forty-one and the quantity that it denotes.: Any period of seven consecutive days. |
+| Week 40 | A natural number greater than thirty-nine and less than forty-one and the qua... |
 | Week 41 | Week 41 |
 | Week 42 | Week 42 |
-| Week 44 | Any period of seven consecutive days._A natural number greater than forty three and less than forty five and the quantity that it denotes. |
+| Week 44 | Any period of seven consecutive days._A natural number greater than forty thr... |
 | Week 46 | Fourty-sixth week |
 | Week 48 | Week 48 |
 | Week 49 | Week 49 |
-| Week 5 | A natural number greater than 4 and less than 6 and the quantity that it denotes: the sum of four and one.: Any period of seven consecutive days. |
+| Week 5 | A natural number greater than 4 and less than 6 and the quantity that it deno... |
 | Week 52 | Fifty-second week |
 | Week 53 (booster) | Week 53 (booster) |
 | Week 54 | Week 54 |
@@ -21621,20 +21639,20 @@ HTAN Biospecimen Data Model Schema
 | Week 61 | Week 61 |
 | Week 62 | Fourty-sixth week |
 | Week 66 | Week 66 |
-| Week 7 | A natural number greater than 6 and less than 8 and the quantity that it denotes: the sum of six and one.: Any period of seven consecutive days. |
+| Week 7 | A natural number greater than 6 and less than 8 and the quantity that it deno... |
 | Week 73 | Week 73 |
 | Week 78 | Week 78 |
-| Week 8 | A natural number greater than 7 and less than 9 and the quantity that it denotes: the sum of seven and one.: Any period of seven consecutive days. |
+| Week 8 | A natural number greater than 7 and less than 9 and the quantity that it deno... |
 | Week 8 (Cycle 2) | Week 8 (Cycle 2) |
 | Week 85 | Week 85 |
-| Week 9 | A natural number greater than 8 and less than 10 and the quantity that it denotes: the sum of nine and one.: Any period of seven consecutive days. |
+| Week 9 | A natural number greater than 8 and less than 10 and the quantity that it den... |
 | Week 90 | Week 90 |
 | Week 97 | Week 97 |
 | Weeks 1-4 | Weeks 1-4 |
 | Weeks 5-8 | Weeks 5-8 |
 | Weeks 9-12 | Weeks 9-12 |
 | Within 2 weeks prior to randomization | Within 2 weeks prior to randomization |
-| Within 3 days of starting agent | On the inside; contained in._A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one._The time for Earth to make a complete rotation on its axis; ordinarily divided into twenty-four hours, equal to 86 400 seconds. This also refers to a specific day._Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins._An active power or cause (as principle, substance, physical or biological factor, etc.) that produces a specific effect. |
+| Within 3 days of starting agent | On the inside; contained in._A natural number greater than 2 and less than 4 ... |
 | Within 5 days prior to Visit 1 Baseline | Within 5 days prior to Visit 1 Baseline |
 | Within 5 days prior to Visit 2 | Within 5 days prior to Visit 2 |
 | Within 5 days prior to Visit 3 | Within 5 days prior to Visit 3 |
@@ -21642,9 +21660,9 @@ HTAN Biospecimen Data Model Schema
 | Within 5 days prior to Visit 5 | Within 5 days prior to Visit 5 |
 | Within 5 days prior to Visit 6 | Within 5 days prior to Visit 6 |
 | Within 72-hours post-LITT | Within 72-hours post Laser Interstitial Thermal Therapy |
-| Wk1 | Any period of seven consecutive days._The smallest natural number and quantity it denotes: a single entity, unit, or object. |
-| Wk2 | A natural number greater than 1 and less than 3 and the quantity that it denotes: the sum of one and one.: Any period of seven consecutive days. |
-| Wk3 | Any period of seven consecutive days._A natural number greater than 2 and less than 4 and the quantity that it denotes: the sum of two and one. |
+| Wk1 | Any period of seven consecutive days._The smallest natural number and quantit... |
+| Wk2 | A natural number greater than 1 and less than 3 and the quantity that it deno... |
+| Wk3 | Any period of seven consecutive days._A natural number greater than 2 and les... |
 | Year 1 | Year 1 |
 | Year 1-Month 12 | Year 1-Month 12 |
 | Year 1-Month 6 | Year 1 - Month 6 |
@@ -21661,30 +21679,37 @@ HTAN Biospecimen Data Model Schema
 | Year 5 | Year 5 |
 | Year 5-Year 9 | Year 5-Year 9 |
 | Year 6 | Year 6 |
-| Yr 1 | The smallest natural number and quantity it denotes: a single entity, unit, or object.: A period of time that it takes for Earth to make a complete revolution around the sun, approximately 365 days; a specific one year period. |
+| Yr 1 | The smallest natural number and quantity it denotes: a single entity, unit, o... |
 | Yr 10 | 10 YEARS |
 | Yr 15 | 180 Months (15 Years) Post Registration |
 | Yr 4 | 4 YEARS |
 | Yr 7 | 7 YEARS |
 | baseline | A starting point to which things may be compared. |
 | week 16 (arm A), week 15 (arm B) | WEEK 16 (ARM A), WEEK 15 (ARM B) |
-| week 6 | A natural number greater than 5 and less than 7 and the quantity that it denotes: the sum of five and one.: Any period of seven consecutive days. |
+| week 6 | A natural number greater than 5 and less than 7 and the quantity that it deno... |
+
+### TissueSampleTypeEnum
+
+| Value | Description |
+|-------|-------------|
+| Tissue Block | Refers to preserved specimens embedded in support material. These are typical... |
+| Tissue Section | A thin slice of tissue, usually for examination by microscopy. |
 
 ### TumorClassificationEnum
 
 | Value | Description |
 |-------|-------------|
-| Metastatic | A tumor that has spread from its original (primary) site of growth to another site, close to or distant from the primary site. Metastasis is characteristic of advanced malignancies, but in rare instances can be seen in neoplasms lacking malignant morphology. -- 2004 |
+| Metastatic | A tumor that has spread from its original (primary) site of growth to another... |
 | Not Applicable | Determination of a value is not relevant in the current context. |
 | Not Reported | Not provided or available. |
-| Premalignant | A neoplasm that is composed of dysplastic cells and there is no morphologic evidence of infiltration of the surrounding tissues. |
+| Premalignant | A neoplasm that is composed of dysplastic cells and there is no morphologic e... |
 | Primary | A tumor at the original site of origin. |
 | Prior Primary | Recurrence of symptoms of a disease at the original site. |
-| Progression | A clinical, pathologic, and/or molecular finding indicating that the course of a disease is worsening in terms of extent or severity. |
+| Progression | A clinical, pathologic, and/or molecular finding indicating that the course o... |
 | Recurrent | The reemergence of neoplasm after a period of remission |
 | Synchronous Primary | A malignant neoplasm arising in multiple primary sites. |
 | Unknown | Not known, not observed, not recorded, or refused. |
-| Xenograft | The transfer of cells, tissues, or organs from a donor into a recipient of another species. |
+| Xenograft | The transfer of cells, tissues, or organs from a donor into a recipient of an... |
 
 ### tissue_or_organ_of_origin_uberon_enum
 
@@ -29400,13 +29425,13 @@ UBERON codes for tissues and organs of origin
 | UBERON:0014592 | anterior nucleus of hypothalamus dorsal part |
 | UBERON:0014593 | tuberomammillary nucleus dorsal part |
 | UBERON:0014594 | tuberomammillary nucleus ventral part |
-| UBERON:0014595 | paraventricular nucleus of the hypothalamus descending division - medial parvocellular part, ventral zone |
-| UBERON:0014596 | paraventricular nucleus of the hypothalamus descending division - dorsal parvocellular part |
-| UBERON:0014597 | paraventricular nucleus of the hypothalamus descending division - lateral parvocellular part |
+| UBERON:0014595 | paraventricular nucleus of the hypothalamus descending division - medial parv... |
+| UBERON:0014596 | paraventricular nucleus of the hypothalamus descending division - dorsal parv... |
+| UBERON:0014597 | paraventricular nucleus of the hypothalamus descending division - lateral par... |
 | UBERON:0014598 | paraventricular nucleus of the hypothalamus descending division - forniceal part |
-| UBERON:0014599 | paraventricular nucleus of the hypothalamus magnocellular division - anterior magnocellular part |
-| UBERON:0014600 | paraventricular nucleus of the hypothalamus magnocellular division - medial magnocellular part |
-| UBERON:0014601 | paraventricular nucleus of the hypothalamus magnocellular division - posterior magnocellular part |
+| UBERON:0014599 | paraventricular nucleus of the hypothalamus magnocellular division - anterior... |
+| UBERON:0014600 | paraventricular nucleus of the hypothalamus magnocellular division - medial m... |
+| UBERON:0014601 | paraventricular nucleus of the hypothalamus magnocellular division - posterio... |
 | UBERON:0014602 | paraventricular nucleus of the hypothalamus descending division |
 | UBERON:0014603 | paraventricular nucleus of the hypothalamus magnocellular division |
 | UBERON:0014604 | paraventricular nucleus of the hypothalamus parvocellular division |
@@ -30278,8 +30303,8 @@ UBERON codes for tissues and organs of origin
 | UBERON:0022716 | lateral orbital frontal cortex |
 | UBERON:0022730 | transverse frontopolar gyri complex |
 | UBERON:0022776 | composite part spanning multiple base regional parts of brain |
-| UBERON:0022783 | paraventricular nucleus of the hypothalamus magnocellular division - posterior magnocellular part medial zone |
-| UBERON:0022791 | paraventricular nucleus of the hypothalamus magnocellular division - posterior magnocellular part lateral zone |
+| UBERON:0022783 | paraventricular nucleus of the hypothalamus magnocellular division - posterio... |
+| UBERON:0022791 | paraventricular nucleus of the hypothalamus magnocellular division - posterio... |
 | UBERON:0022941 | dorsal nerve root of sacral spinal cord |
 | UBERON:0022943 | reticulospinal tract |
 | UBERON:0023094 | posterodorsal nucleus of medial geniculate body |

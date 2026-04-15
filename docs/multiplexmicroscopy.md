@@ -2,16 +2,31 @@
 
 HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 
+## AnyValue
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+
+## extension
+
+**a tag/value pair used to add non-model information to an entry**
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `extension_tag` | uriorcurie | Yes | a tag associated with an extension |
+| `extension_value` | AnyValue | Yes | the actual annotation |
+| `extensions` | extension | No | a tag/text tuple attached to an arbitrary element |
+
 ## CoreFileAttributes
 
 **Universal attributes that apply to all file-based data in HTAN**
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILENAME` | string | Yes | Name of the file |
-| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
+| `FILENAME` | string | No |  |
+| `FILE_FORMAT` | string | No |  |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
 
 ## BaseImagingAttributes
 
@@ -19,32 +34,32 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES` | [ExperimentalStrategyAndDataSubtypes](#experimentalstrategyanddatasubtypes) | Yes | What is the experimental strategy used for the study (or what type of data subtypes exist in the study)? Per RFC, the only valid value for imaging data types is "Pathological". |
-| `DE_IDENTIFICATION_METHOD_TYPE` | [DeIdentificationMethodType](#deidentificationmethodtype) | Yes | De-identification Method Type |
-| `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | Conditional: Required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable' | Required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable' |
+| `EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES` | ExperimentalStrategyAndDataSubtypes | Yes | What is the experimental strategy used for the study (or what type of data subtypes exist in the ... |
+| `DE_IDENTIFICATION_METHOD_TYPE` | DeIdentificationMethodType | Yes | De-identification Method Type |
+| `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | No | Description of the process of removing potentially identifying data or data elements to render da... |
 | `DE_IDENTIFICATION_SOFTWARE` | string | No | Software that was used to de-identify the images (if used) |
-| `LICENSE` | [License](#license) | Yes | Official or legal permission to do or own a specified thing. Per RFC, the only valid value is "CC BY 4.0". |
-| `IMAGE_MODALITY` | [ImageModality](#imagemodality) | Yes | The method in which the images are generated. |
+| `LICENSE` | License | Yes | Official or legal permission to do or own a specified thing. Per RFC, the only valid value is "CC... |
+| `IMAGE_MODALITY` | ImageModality | Yes | The method in which the images are generated. |
 | `IMAGING_EQUIPMENT_MANUFACTURER` | string | Yes | Producer of the imaging equipment that was used to generate the digital image |
-| `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging experiment |
+| `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging expe... |
 | `IMAGING_SOFTWARE` | string | No | The name of the software package that was used to capture, generate, and process the image |
-| `CITATION_OR_DOI` | string | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https). |
-| `IMAGING_PROTOCOL` | string | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https). |
-| `STAINING_METHOD` | [StainingMethod](#stainingmethod) | Yes | Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination |
-| `OBJECTIVE` | string | Yes | The manufacturer and or model number for the optical element that gathers light from an object being observed and focuses the light rays from it to produce a real image of the object |
-| `NOMINAL_MAGNIFICATION` | integer | Yes | The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer value >= 0 (no units) |
-| `IMMERSION` | [ImmersionMedium](#immersionmedium) | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on the objective. The main types of immersion media are air, oil, and water. |
+| `CITATION_OR_DOI` | string | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier... |
+| `IMAGING_PROTOCOL` | string | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/op... |
+| `STAINING_METHOD` | StainingMethod | Yes | Any of the various methods that use a dye, reagent, or other material for producing coloration in... |
+| `OBJECTIVE` | string | Yes | The manufacturer and or model number for the optical element that gathers light from an object be... |
+| `NOMINAL_MAGNIFICATION` | integer | Yes | The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer... |
+| `IMMERSION` | ImmersionMedium | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on ... |
 | `LENS_NUMERICAL_APERTURE` | float | No | The numerical aperture of the lens. Floating point value > 0. |
 | `PASSED_QC` | boolean | Yes | Confirm that the image has passed internal quality control checks |
 | `QC_COMMENT` | string | Yes | Comments related to quality control checks |
-| `SPECIES` | [Species](#species) | Yes | NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)". |
+| `SPECIES` | Species | Yes | NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)". |
 | `HAS_SLIDE_LABEL` | boolean | Yes | Does the image contain a slide label |
-| `SLIDE_LABEL_REDACTED` | boolean | Conditional: Required when HAS_SLIDE_LABEL is true | Required when HAS_SLIDE_LABEL is true |
-| `DE_IDENTIFIED` | boolean | Yes | Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI |
-| `FILENAME` | string | Yes | Name of the file |
-| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
+| `SLIDE_LABEL_REDACTED` | boolean | No | Have identifiers including dates been masked in the label image |
+| `DE_IDENTIFIED` | boolean | Yes | Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and th... |
+| `FILENAME` | string | No |  |
+| `FILE_FORMAT` | string | No |  |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
 
 ## MultiplexMicroscopyLevel2
 
@@ -52,10 +67,10 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILE_FORMAT` | string | Yes | Format of the imaging file. Must be compatible with Bio-Formats or OpenSlide Python. OME-TIFF files use extensions .ome.tif, .ome.tiff, .ome.tf2, .ome.tf8, or .ome.btf |
-| `FILENAME` | string | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.ome.tif, .ome.tiff, .ome.tf2, .ome.tf8, .ome.btf for ome-tiff; .tiff or .tif for tiff; .qptiff for qptiff; .svs for svs) |
-| `WORKING_DISTANCE` | string | No | The working distance of the lens, expressed as a floating point number. Floating point > 0. Size needs to be specified in microns (um) |
-| `IMAGING_ASSAY_TYPE` | [ImagingAssayType](#imagingassaytype) | Yes | Type of imaging assay |
+| `FILE_FORMAT` | string | No |  |
+| `FILENAME` | string | No |  |
+| `WORKING_DISTANCE` | string | No | The working distance of the lens, expressed as a floating point number. Floating point > 0. Size ... |
+| `IMAGING_ASSAY_TYPE` | ImagingAssayType | Yes | Type of imaging assay |
 | `PYRAMID` | boolean | No | The data file contains an image pyramid |
 | `PHYSICAL_SIZE_X` | float | Yes | Physical size of a single pixel in the x dimension. In microns. |
 | `PHYSICAL_SIZE_Y` | float | Yes | Physical size of a single pixel in the y dimension. In microns. |
@@ -66,30 +81,30 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 | `SIZE_Y` | integer | Yes | The number of pixels in the y dimension at the highest resolution available |
 | `SIZE_Z` | integer | Yes | The number of pixels in the z dimension at the highest resolution available |
 | `CHANNEL_METADATA_ID` | string | Yes | Unique identifier specifying the location of the required channel metadata (Synapse ID) |
-| `EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES` | [ExperimentalStrategyAndDataSubtypes](#experimentalstrategyanddatasubtypes) | Yes | What is the experimental strategy used for the study (or what type of data subtypes exist in the study)? Per RFC, the only valid value for imaging data types is "Pathological". |
-| `DE_IDENTIFICATION_METHOD_TYPE` | [DeIdentificationMethodType](#deidentificationmethodtype) | Yes | De-identification Method Type |
-| `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | No | Required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable' |
+| `EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES` | ExperimentalStrategyAndDataSubtypes | Yes | What is the experimental strategy used for the study (or what type of data subtypes exist in the ... |
+| `DE_IDENTIFICATION_METHOD_TYPE` | DeIdentificationMethodType | Yes | De-identification Method Type |
+| `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | No | Description of the process of removing potentially identifying data or data elements to render da... |
 | `DE_IDENTIFICATION_SOFTWARE` | string | No | Software that was used to de-identify the images (if used) |
-| `LICENSE` | [License](#license) | Yes | Official or legal permission to do or own a specified thing. Per RFC, the only valid value is "CC BY 4.0". |
-| `IMAGE_MODALITY` | [ImageModality](#imagemodality) | Yes | The method in which the images are generated. |
+| `LICENSE` | License | Yes | Official or legal permission to do or own a specified thing. Per RFC, the only valid value is "CC... |
+| `IMAGE_MODALITY` | ImageModality | Yes | The method in which the images are generated. |
 | `IMAGING_EQUIPMENT_MANUFACTURER` | string | Yes | Producer of the imaging equipment that was used to generate the digital image |
-| `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging experiment |
+| `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging expe... |
 | `IMAGING_SOFTWARE` | string | No | The name of the software package that was used to capture, generate, and process the image |
-| `CITATION_OR_DOI` | string | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https). |
-| `IMAGING_PROTOCOL` | string | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https). |
-| `STAINING_METHOD` | [StainingMethod](#stainingmethod) | Yes | Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination |
-| `OBJECTIVE` | string | Yes | The manufacturer and or model number for the optical element that gathers light from an object being observed and focuses the light rays from it to produce a real image of the object |
-| `NOMINAL_MAGNIFICATION` | integer | Yes | The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer value >= 0 (no units) |
-| `IMMERSION` | [ImmersionMedium](#immersionmedium) | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on the objective. The main types of immersion media are air, oil, and water. |
+| `CITATION_OR_DOI` | string | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier... |
+| `IMAGING_PROTOCOL` | string | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/op... |
+| `STAINING_METHOD` | StainingMethod | Yes | Any of the various methods that use a dye, reagent, or other material for producing coloration in... |
+| `OBJECTIVE` | string | Yes | The manufacturer and or model number for the optical element that gathers light from an object be... |
+| `NOMINAL_MAGNIFICATION` | integer | Yes | The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer... |
+| `IMMERSION` | ImmersionMedium | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on ... |
 | `LENS_NUMERICAL_APERTURE` | float | No | The numerical aperture of the lens. Floating point value > 0. |
 | `PASSED_QC` | boolean | Yes | Confirm that the image has passed internal quality control checks |
 | `QC_COMMENT` | string | Yes | Comments related to quality control checks |
-| `SPECIES` | [Species](#species) | Yes | NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)". |
+| `SPECIES` | Species | Yes | NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)". |
 | `HAS_SLIDE_LABEL` | boolean | Yes | Does the image contain a slide label |
-| `SLIDE_LABEL_REDACTED` | boolean | No | Required when HAS_SLIDE_LABEL is true |
-| `DE_IDENTIFIED` | boolean | Yes | Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI |
+| `SLIDE_LABEL_REDACTED` | boolean | No | Have identifiers including dates been masked in the label image |
+| `DE_IDENTIFIED` | boolean | Yes | Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and th... |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
 
 ## MultiplexMicroscopyLevel3
 
@@ -103,32 +118,32 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 | `SEGMENTATION_METHOD` | string | Yes | Method used for segmentation (e.g., CellPose, StarDist, Ilastik, manual annotation) |
 | `SEGMENTATION_PARAMETERS` | string | No | Parameters used for segmentation (e.g., model name, threshold values, preprocessing steps) |
 | `SEGMENTATION_ANNOTATION_TYPE` | string | No | Type of objects segmented (e.g., Cell, Nucleus, Tissue, ROI) |
-| `FILE_FORMAT` | string | Yes | Format of the segmentation mask file (should be ome-tiff for Level 3). OME-TIFF files use extensions .ome.tif, .ome.tiff, .ome.tf2, .ome.tf8, or .ome.btf |
-| `FILENAME` | string | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.ome.tif, .ome.tiff, .ome.tf2, .ome.tf8, .ome.btf for ome-tiff; .tiff or .tif for tiff/tif) |
-| `EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES` | [ExperimentalStrategyAndDataSubtypes](#experimentalstrategyanddatasubtypes) | Yes | What is the experimental strategy used for the study (or what type of data subtypes exist in the study)? Per RFC, the only valid value for imaging data types is "Pathological". |
-| `DE_IDENTIFICATION_METHOD_TYPE` | [DeIdentificationMethodType](#deidentificationmethodtype) | Yes | De-identification Method Type |
-| `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | No | Required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable' |
+| `FILE_FORMAT` | string | No |  |
+| `FILENAME` | string | No |  |
+| `EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES` | ExperimentalStrategyAndDataSubtypes | Yes | What is the experimental strategy used for the study (or what type of data subtypes exist in the ... |
+| `DE_IDENTIFICATION_METHOD_TYPE` | DeIdentificationMethodType | Yes | De-identification Method Type |
+| `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | No | Description of the process of removing potentially identifying data or data elements to render da... |
 | `DE_IDENTIFICATION_SOFTWARE` | string | No | Software that was used to de-identify the images (if used) |
-| `LICENSE` | [License](#license) | Yes | Official or legal permission to do or own a specified thing. Per RFC, the only valid value is "CC BY 4.0". |
-| `IMAGE_MODALITY` | [ImageModality](#imagemodality) | Yes | The method in which the images are generated. |
+| `LICENSE` | License | Yes | Official or legal permission to do or own a specified thing. Per RFC, the only valid value is "CC... |
+| `IMAGE_MODALITY` | ImageModality | Yes | The method in which the images are generated. |
 | `IMAGING_EQUIPMENT_MANUFACTURER` | string | Yes | Producer of the imaging equipment that was used to generate the digital image |
-| `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging experiment |
+| `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging expe... |
 | `IMAGING_SOFTWARE` | string | No | The name of the software package that was used to capture, generate, and process the image |
-| `CITATION_OR_DOI` | string | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https). |
-| `IMAGING_PROTOCOL` | string | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https). |
-| `STAINING_METHOD` | [StainingMethod](#stainingmethod) | Yes | Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination |
-| `OBJECTIVE` | string | Yes | The manufacturer and or model number for the optical element that gathers light from an object being observed and focuses the light rays from it to produce a real image of the object |
-| `NOMINAL_MAGNIFICATION` | integer | Yes | The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer value >= 0 (no units) |
-| `IMMERSION` | [ImmersionMedium](#immersionmedium) | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on the objective. The main types of immersion media are air, oil, and water. |
+| `CITATION_OR_DOI` | string | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier... |
+| `IMAGING_PROTOCOL` | string | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/op... |
+| `STAINING_METHOD` | StainingMethod | Yes | Any of the various methods that use a dye, reagent, or other material for producing coloration in... |
+| `OBJECTIVE` | string | Yes | The manufacturer and or model number for the optical element that gathers light from an object be... |
+| `NOMINAL_MAGNIFICATION` | integer | Yes | The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer... |
+| `IMMERSION` | ImmersionMedium | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on ... |
 | `LENS_NUMERICAL_APERTURE` | float | No | The numerical aperture of the lens. Floating point value > 0. |
 | `PASSED_QC` | boolean | Yes | Confirm that the image has passed internal quality control checks |
 | `QC_COMMENT` | string | Yes | Comments related to quality control checks |
-| `SPECIES` | [Species](#species) | Yes | NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)". |
+| `SPECIES` | Species | Yes | NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)". |
 | `HAS_SLIDE_LABEL` | boolean | Yes | Does the image contain a slide label |
-| `SLIDE_LABEL_REDACTED` | boolean | No | Required when HAS_SLIDE_LABEL is true |
-| `DE_IDENTIFIED` | boolean | Yes | Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI |
+| `SLIDE_LABEL_REDACTED` | boolean | No | Have identifiers including dates been masked in the label image |
+| `DE_IDENTIFIED` | boolean | Yes | Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and th... |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
 
 ## MultiplexMicroscopyLevel4
 
@@ -139,65 +154,37 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 | `FEATURE_EXTRACTION_WORKFLOW_TYPE` | string | Yes | Type of workflow used to extract features from segmented objects |
 | `FEATURE_EXTRACTION_WORKFLOW_URL` | string | No | URL or link to the feature extraction workflow used |
 | `FEATURE_EXTRACTION_WORKFLOW_VERSION` | string | No | Version of the feature extraction workflow |
-| `MATRIX_TYPE` | [MatrixTypeEnum](#matrixtypeenum) | Yes | Type of feature matrix (raw counts, normalized, etc.) |
-| `FEATURE_EXTRACTION_METHOD` | string | Yes | Method used for feature extraction (e.g., mean intensity, median intensity, total intensity, texture features) |
-| `FEATURE_EXTRACTION_PARAMETERS` | string | No | Parameters used for feature extraction (e.g., channel names, measurement types, normalization methods) |
+| `MATRIX_TYPE` | MatrixTypeEnum | Yes | Type of feature matrix (raw counts, normalized, etc.) |
+| `FEATURE_EXTRACTION_METHOD` | string | Yes | Method used for feature extraction (e.g., mean intensity, median intensity, total intensity, text... |
+| `FEATURE_EXTRACTION_PARAMETERS` | string | No | Parameters used for feature extraction (e.g., channel names, measurement types, normalization met... |
 | `NUMBER_OF_FEATURES` | integer | No | Number of features (markers/channels) in the feature matrix |
 | `NUMBER_OF_OBJECTS` | integer | No | Number of segmented objects (cells, nuclei, etc.) in the feature matrix |
-| `FILE_FORMAT` | string | Yes | Format of the feature table file (csv or h5ad for Level 4) |
-| `FILENAME` | string | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.csv for csv; .h5ad for h5ad) |
-| `EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES` | [ExperimentalStrategyAndDataSubtypes](#experimentalstrategyanddatasubtypes) | Yes | What is the experimental strategy used for the study (or what type of data subtypes exist in the study)? Per RFC, the only valid value for imaging data types is "Pathological". |
-| `DE_IDENTIFICATION_METHOD_TYPE` | [DeIdentificationMethodType](#deidentificationmethodtype) | Yes | De-identification Method Type |
-| `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | No | Required when DE_IDENTIFICATION_METHOD_TYPE is not 'Not Applicable' |
+| `FILE_FORMAT` | string | No |  |
+| `FILENAME` | string | No |  |
+| `EXPERIMENTAL_STRATEGY_AND_DATA_SUBTYPES` | ExperimentalStrategyAndDataSubtypes | Yes | What is the experimental strategy used for the study (or what type of data subtypes exist in the ... |
+| `DE_IDENTIFICATION_METHOD_TYPE` | DeIdentificationMethodType | Yes | De-identification Method Type |
+| `DE_IDENTIFICATION_METHOD_DESCRIPTION` | string | No | Description of the process of removing potentially identifying data or data elements to render da... |
 | `DE_IDENTIFICATION_SOFTWARE` | string | No | Software that was used to de-identify the images (if used) |
-| `LICENSE` | [License](#license) | Yes | Official or legal permission to do or own a specified thing. Per RFC, the only valid value is "CC BY 4.0". |
-| `IMAGE_MODALITY` | [ImageModality](#imagemodality) | Yes | The method in which the images are generated. |
+| `LICENSE` | License | Yes | Official or legal permission to do or own a specified thing. Per RFC, the only valid value is "CC... |
+| `IMAGE_MODALITY` | ImageModality | Yes | The method in which the images are generated. |
 | `IMAGING_EQUIPMENT_MANUFACTURER` | string | Yes | Producer of the imaging equipment that was used to generate the digital image |
-| `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging experiment |
+| `IMAGING_EQUIPMENT_MODEL` | string | No | The words used to describe the specific model of the instrument used to carry out an imaging expe... |
 | `IMAGING_SOFTWARE` | string | No | The name of the software package that was used to capture, generate, and process the image |
-| `CITATION_OR_DOI` | string | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier of the publication for open access studies. Must be a valid URL (http or https). |
-| `IMAGING_PROTOCOL` | string | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/open protocol resource describing in detail the assay protocol. Must be a valid URL (http or https). |
-| `STAINING_METHOD` | [StainingMethod](#stainingmethod) | Yes | Any of the various methods that use a dye, reagent, or other material for producing coloration in tissues or microorganisms for microscopic examination |
-| `OBJECTIVE` | string | Yes | The manufacturer and or model number for the optical element that gathers light from an object being observed and focuses the light rays from it to produce a real image of the object |
-| `NOMINAL_MAGNIFICATION` | integer | Yes | The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer value >= 0 (no units) |
-| `IMMERSION` | [ImmersionMedium](#immersionmedium) | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on the objective. The main types of immersion media are air, oil, and water. |
+| `CITATION_OR_DOI` | string | Yes | Raw Data Protocol or Digital Object Identifier Text; Publication and/or digital object identifier... |
+| `IMAGING_PROTOCOL` | string | No | A rule which guides how an activity should be performed. Protocols.io ID or DOI link to a free/op... |
+| `STAINING_METHOD` | StainingMethod | Yes | Any of the various methods that use a dye, reagent, or other material for producing coloration in... |
+| `OBJECTIVE` | string | Yes | The manufacturer and or model number for the optical element that gathers light from an object be... |
+| `NOMINAL_MAGNIFICATION` | integer | Yes | The magnification of the lens as specified by the manufacturer - i.e. '60' is a 60X lens. Integer... |
+| `IMMERSION` | ImmersionMedium | No | Immersion medium. Each objective is designed for a specific immersion medium, which is marked on ... |
 | `LENS_NUMERICAL_APERTURE` | float | No | The numerical aperture of the lens. Floating point value > 0. |
 | `PASSED_QC` | boolean | Yes | Confirm that the image has passed internal quality control checks |
 | `QC_COMMENT` | string | Yes | Comments related to quality control checks |
-| `SPECIES` | [Species](#species) | Yes | NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)". |
+| `SPECIES` | Species | Yes | NCBI Taxonomy ID. Per RFC, the only valid value is "9606 (Homo sapiens)". |
 | `HAS_SLIDE_LABEL` | boolean | Yes | Does the image contain a slide label |
-| `SLIDE_LABEL_REDACTED` | boolean | No | Required when HAS_SLIDE_LABEL is true |
-| `DE_IDENTIFIED` | boolean | Yes | Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and that any dates or strings present in internal metadata does not represent PHI |
+| `SLIDE_LABEL_REDACTED` | boolean | No | Have identifiers including dates been masked in the label image |
+| `DE_IDENTIFIED` | boolean | Yes | Confirm that any HIPAA identifiers are redacted, masked, or not present in the slide label and th... |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
-
-## ChannelMetadata
-
-**Metadata for each channel in multiplex microscopy imaging**
-
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `CHANNEL_ID` | string | Yes | The unique channel identifier for each channel in this image must match the corresponding field in the imaging file submitted |
-| `CHANNEL_NAME` | string | Yes | Channel label for each channel in this image must match the corresponding field in the imaging file submitted |
-| `CYCLE_NUMBER` | integer | No | The cycle |
-| `SUB_CYCLE_NUMBER` | integer | No | Sub-cycle |
-| `TARGET_NAME` | string | No | Short descriptive name (abbreviation) for this target (antigen) |
-| `ANTIBODY_NAME` | string | No | Short descriptive name for this antibody |
-| `RRID_IDENTIFIER` | string | No | Research Resource Identifier |
-| `FLUOROPHORE` | string | No | Fluorescent dye label |
-| `CLONE` | string | No | Unique clone identifier |
-| `LOT` | string | No | Lot number from vendor |
-| `CATALOG_NUMBER` | string | No | Catalog number from vendor |
-| `EXCITATION_WAVELENGTH` | float | No | Center/peak of the excitation spectrum (nm) |
-| `EMISSION_WAVELENGTH` | float | No | Center/peak of the emission spectrum (nm) |
-| `EXCITATION_BANDWIDTH` | float | No | Nominal width of excitation spectrum (nm) |
-| `EMISSION_BANDWIDTH` | float | No | Nominal width of emission spectrum (nm) |
-| `METAL_ISOTOPE_ELEMENT_ABBREVIATION` | [MetalIsotopeElement](#metalisotopeelement) | No | Element abbreviation |
-| `METAL_ISOTOPE_ELEMENT_MASS` | integer | No | Element mass number |
-| `OLIGO_BARCODE_UPPER_STRAND` | string | No | DNA barcode used for labeling |
-| `OLIGO_BARCODE_LOWER_STRAND` | string | No | DNA barcode used for labeling |
-| `DILUTION` | string | No | Final dilution ratio used in experiment |
-| `CONCENTRATION` | string | No | Final concentration used in experiment |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
 
 ## MultiplexMicroscopyData
 
@@ -208,7 +195,6 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 | `LEVEL_2_DATA` | MultiplexMicroscopyLevel2 | No | Level 2 Multiplex Microscopy data (imaging data with channel metadata) |
 | `LEVEL_3_DATA` | MultiplexMicroscopyLevel3 | No | Level 3 Multiplex Microscopy data (segmentation masks) |
 | `LEVEL_4_DATA` | MultiplexMicroscopyLevel4 | No | Level 4 Multiplex Microscopy data (cell-by-feature tables) |
-| `CHANNEL_METADATA` | ChannelMetadata | No | Channel metadata records for multiplex microscopy imaging |
 
 ## Enums
 
@@ -278,127 +264,6 @@ HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 | Log Normalized | Log normalized counts |
 | Z-Score Normalized | Z-score normalized values |
 | Other | Other normalization method |
-
-### MetalIsotopeElement
-
-| Value | Description |
-|-------|-------------|
-| H | Hydrogen |
-| He | Helium |
-| Li | Lithium |
-| Be | Beryllium |
-| B | Boron |
-| C | Carbon |
-| N | Nitrogen |
-| O | Oxygen |
-| F | Fluorine |
-| Ne | Neon |
-| Na | Sodium |
-| Mg | Magnesium |
-| Al | Aluminum |
-| Si | Silicon |
-| P | Phosphorus |
-| S | Sulfur |
-| Cl | Chlorine |
-| Ar | Argon |
-| K | Potassium |
-| Ca | Calcium |
-| Sc | Scandium |
-| Ti | Titanium |
-| V | Vanadium |
-| Cr | Chromium |
-| Mn | Manganese |
-| Fe | Iron |
-| Co | Cobalt |
-| Ni | Nickel |
-| Cu | Copper |
-| Zn | Zinc |
-| Ga | Gallium |
-| Ge | Germanium |
-| As | Arsenic |
-| Se | Selenium |
-| Br | Bromine |
-| Kr | Krypton |
-| Rb | Rubidium |
-| Sr | Strontium |
-| Y | Yttrium |
-| Zr | Zirconium |
-| Nb | Niobium |
-| Mo | Molybdenum |
-| Tc | Technetium |
-| Ru | Ruthenium |
-| Rh | Rhodium |
-| Pd | Palladium |
-| Ag | Silver |
-| Cd | Cadmium |
-| In | Indium |
-| Sn | Tin |
-| Sb | Antimony |
-| Te | Tellurium |
-| I | Iodine |
-| Xe | Xenon |
-| Cs | Cesium |
-| Ba | Barium |
-| La | Lanthanum |
-| Ce | Cerium |
-| Pr | Praseodymium |
-| Nd | Neodymium |
-| Pm | Promethium |
-| Sm | Samarium |
-| Eu | Europium |
-| Gd | Gadolinium |
-| Tb | Terbium |
-| Dy | Dysprosium |
-| Ho | Holmium |
-| Er | Erbium |
-| Tm | Thulium |
-| Yb | Ytterbium |
-| Lu | Lutetium |
-| Hf | Hafnium |
-| Ta | Tantalum |
-| W | Tungsten |
-| Re | Rhenium |
-| Os | Osmium |
-| Ir | Iridium |
-| Pt | Platinum |
-| Au | Gold |
-| Hg | Mercury |
-| Tl | Thallium |
-| Pb | Lead |
-| Bi | Bismuth |
-| Po | Polonium |
-| At | Astatine |
-| Rn | Radon |
-| Fr | Francium |
-| Ra | Radium |
-| Ac | Actinium |
-| Th | Thorium |
-| Pa | Protactinium |
-| U | Uranium |
-| Np | Neptunium |
-| Pu | Plutonium |
-| Am | Americium |
-| Cm | Curium |
-| Bk | Berkelium |
-| Cf | Californium |
-| Es | Einsteinium |
-| Fm | Fermium |
-| Md | Mendelevium |
-| No | Nobelium |
-| Lr | Lawrencium |
-| Rf | Rutherfordium |
-| Db | Dubnium |
-| Sg | Seaborgium |
-| Bh | Bohrium |
-| Hs | Hassium |
-| Mt | Meitnerium |
-| Ds | Darmstadtium |
-| Rg | Roentgenium |
-| Cn | Copernicium |
-| Fl | Flerovium |
-| Lv | Livermorium |
-| Ts | Tennessine |
-| Og | Oganesson |
 
 ### Species
 

@@ -2,92 +2,54 @@
 
 HTAN Whole Exome Sequencing Data Model Schema
 
+## AnyValue
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+
+## extension
+
+**a tag/value pair used to add non-model information to an entry**
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `extension_tag` | uriorcurie | Yes | a tag associated with an extension |
+| `extension_value` | AnyValue | Yes | the actual annotation |
+| `extensions` | extension | No | a tag/text tuple attached to an arbitrary element |
+
 ## CoreFileAttributes
 
 **Universal attributes that apply to all file-based data in HTAN**
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILENAME` | string | Yes | Name of the file |
-| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
+| `FILENAME` | string | No |  |
+| `FILE_FORMAT` | string | No |  |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
 
 ## BaseSequencingAttributes
 
-**Minimal base attributes shared across all sequencing types**
+**Base attributes shared across all sequencing types**
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `CHECKSUM` | string | No | Checksum for data integrity verification |
-| `FILENAME` | string | Yes | Name of the file |
-| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
-| `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
-
-## BaseSequencingLevel1Attributes
-
-**Level 1 attributes - sequencing run and library (raw data)**
-
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum) | Yes | Library layout (paired-end or single-end) |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum) | Yes | Sequencing platform used |
 | `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
-| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable') |
+| `LIBRARY_LAYOUT` | LibraryLayoutEnum | Yes | Library layout (paired-end or single-end) |
+| `SEQUENCING_PLATFORM` | SequencingPlatformEnum | Yes | Sequencing platform used |
+| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | string | No |  |
 | `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
 | `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
+| `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
+| `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
+| `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
+| `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
+| `GENOME_ANNOTATION_URL` | string | No | URL to genome annotation |
 | `CHECKSUM` | string | No | Checksum for data integrity verification |
-| `FILENAME` | string | Yes | Name of the file |
-| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
+| `FILENAME` | string | No |  |
+| `FILE_FORMAT` | string | No |  |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
-
-## BaseSequencingLevel2Attributes
-
-**Level 2 attributes - alignment and alignment workflow**
-
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `GENOMIC_REFERENCE` | [GenomicReferenceEnum](#genomicreferenceenum) | Yes | Genomic or transcriptomic reference assembly used for alignment. If your genome reference is not among the valid values, please contact your data liaison. |
-| `GENOMIC_REFERENCE_URL` | string | Yes | URL to genomic or transcriptomic reference |
-| `GENOME_ANNOTATION_URL` | string | Yes | URL to genome or transcriptome annotation |
-| `WORKFLOW_VERSION` | string | Yes | Major version of the workflow, or 'Not applicable' when no workflow version applies. |
-| `WORKFLOW_LINK` | string | Yes | Link to workflow or command. DockStore.org recommended |
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum) | Yes | Library layout (paired-end or single-end) |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum) | Yes | Sequencing platform used |
-| `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
-| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable') |
-| `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
-| `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
-| `CHECKSUM` | string | No | Checksum for data integrity verification |
-| `FILENAME` | string | Yes | Name of the file |
-| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
-| `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
-
-## BaseSequencingLevel3Attributes
-
-**Level 3+ attributes - inherits alignment and workflow; used for processed/analysis levels**
-
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `GENOMIC_REFERENCE` | [GenomicReferenceEnum](#genomicreferenceenum) | Yes | Genomic or transcriptomic reference assembly used for alignment. If your genome reference is not among the valid values, please contact your data liaison. |
-| `GENOMIC_REFERENCE_URL` | string | Yes | URL to genomic or transcriptomic reference |
-| `GENOME_ANNOTATION_URL` | string | Yes | URL to genome or transcriptome annotation |
-| `WORKFLOW_VERSION` | string | Yes | Major version of the workflow, or 'Not applicable' when no workflow version applies. |
-| `WORKFLOW_LINK` | string | Yes | Link to workflow or command. DockStore.org recommended |
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum) | Yes | Library layout (paired-end or single-end) |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum) | Yes | Sequencing platform used |
-| `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
-| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable') |
-| `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
-| `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
-| `CHECKSUM` | string | No | Checksum for data integrity verification |
-| `FILENAME` | string | Yes | Name of the file |
-| `FILE_FORMAT` | string | Yes | Format of the file (e.g., fastq, bam, vcf, h5ad) |
-| `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
 
 ## BulkWESLevel1
 
@@ -95,10 +57,10 @@ HTAN Whole Exome Sequencing Data Model Schema
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILE_FORMAT` | string | Yes | Format of the raw sequencing file (fastq or fastq.gz) |
-| `FILENAME` | string | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz) |
+| `FILE_FORMAT` | string | No |  |
+| `FILENAME` | string | No |  |
 | `READ_INDICATOR` | string | No | Read indicator |
-| `LIBRARY_SELECTION_METHOD` | [LibrarySelectionMethodEnum](#libraryselectionmethodenum) | Yes | Method used for library selection |
+| `LIBRARY_SELECTION_METHOD` | LibrarySelectionMethodEnum | Yes | Method used for library selection |
 | `READ_LENGTH` | integer | Yes | Read length in base pairs |
 | `TARGET_CAPTURE_KIT` | string | No | Target capture kit used |
 | `LIBRARY_PREPARATION_KIT_NAME` | string | No | Name of the library preparation kit |
@@ -115,18 +77,23 @@ HTAN Whole Exome Sequencing Data Model Schema
 | `FRAGMENT_STANDARD_DEVIATION_LENGTH` | integer | No | Standard deviation of fragment length |
 | `LANE_NUMBER` | integer | No | Lane number |
 | `MULTIPLEX_BARCODE` | string | No | Multiplex barcode |
-| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Days from index for library preparation |
+| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | string | No |  |
 | `SIZE_SELECTION_RANGE` | string | No | Size selection range |
 | `TARGET_DEPTH` | integer | No | Target sequencing depth |
 | `TO_TRIM_ADAPTER_SEQUENCE` | boolean | No | Whether to trim adapter sequence |
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum) | Yes | Library layout (paired-end or single-end) |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum) | Yes | Sequencing platform used |
 | `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
+| `LIBRARY_LAYOUT` | LibraryLayoutEnum | Yes | Library layout (paired-end or single-end) |
+| `SEQUENCING_PLATFORM` | SequencingPlatformEnum | Yes | Sequencing platform used |
 | `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
 | `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
+| `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
+| `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
+| `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
+| `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
+| `GENOME_ANNOTATION_URL` | string | No | URL to genome annotation |
 | `CHECKSUM` | string | No | Checksum for data integrity verification |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
 
 ## BulkWESLevel2
 
@@ -134,8 +101,8 @@ HTAN Whole Exome Sequencing Data Model Schema
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILE_FORMAT` | string | Yes | Format of the aligned file (bam or cram) |
-| `FILENAME` | string | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.bam for bam; .cram for cram) |
+| `FILE_FORMAT` | string | No |  |
+| `FILENAME` | string | No |  |
 | `ALIGNMENT_WORKFLOW_TYPE` | string | Yes | Type of alignment workflow used |
 | `INDEX_FILE_NAME` | string | No | Name of the index file |
 | `AVERAGE_BASE_QUALITY` | float | No | Average base quality |
@@ -172,20 +139,20 @@ HTAN Whole Exome Sequencing Data Model Schema
 | `PROPORTION_COVERAGE_10X` | float | No | Proportion of coverage at 10x |
 | `PROPORTION_COVERAGE_30X` | float | No | Proportion of coverage at 30x |
 | `IS_LOWEST_LEVEL` | boolean | No | Whether this is the lowest level |
-| `GENOMIC_REFERENCE` | [GenomicReferenceEnum](#genomicreferenceenum) | Yes | Genomic or transcriptomic reference assembly used for alignment. If your genome reference is not among the valid values, please contact your data liaison. |
-| `GENOMIC_REFERENCE_URL` | string | Yes | URL to genomic or transcriptomic reference |
-| `GENOME_ANNOTATION_URL` | string | Yes | URL to genome or transcriptome annotation |
-| `WORKFLOW_VERSION` | string | Yes | Major version of the workflow, or 'Not applicable' when no workflow version applies. |
-| `WORKFLOW_LINK` | string | Yes | Link to workflow or command. DockStore.org recommended |
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum) | Yes | Library layout (paired-end or single-end) |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum) | Yes | Sequencing platform used |
 | `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
-| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable') |
+| `LIBRARY_LAYOUT` | LibraryLayoutEnum | Yes | Library layout (paired-end or single-end) |
+| `SEQUENCING_PLATFORM` | SequencingPlatformEnum | Yes | Sequencing platform used |
+| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | string | No |  |
 | `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
 | `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
+| `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
+| `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
+| `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
+| `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
+| `GENOME_ANNOTATION_URL` | string | No | URL to genome annotation |
 | `CHECKSUM` | string | No | Checksum for data integrity verification |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
 
 ## BulkWESLevel3
 
@@ -193,48 +160,44 @@ HTAN Whole Exome Sequencing Data Model Schema
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `FILE_FORMAT` | string | Yes | Format of the variant file (vcf or vcf.gz) |
-| `FILENAME` | string | Yes | Name of the file. Must end with an extension matching the FILE_FORMAT (.vcf for vcf; .vcf.gz for vcf.gz) |
+| `FILE_FORMAT` | string | No |  |
+| `FILENAME` | string | No |  |
 | `GERMLINE_VARIANTS_WORKFLOW_URL` | string | No | URL to the germline variants workflow |
 | `GERMLINE_VARIANTS_WORKFLOW_TYPE` | string | No | Type of germline variants workflow |
 | `SOMATIC_VARIANTS_WORKFLOW_URL` | string | No | URL to the somatic variants workflow |
 | `SOMATIC_VARIANTS_WORKFLOW_TYPE` | string | No | Type of somatic variants workflow |
-| `SOMATIC_VARIANTS_SAMPLE_TYPE` | [SomaticVariantsSampleTypeEnum](#somaticvariantssampletypeenum) | No | Type of sample for somatic variants |
+| `SOMATIC_VARIANTS_SAMPLE_TYPE` | SomaticVariantsSampleTypeEnum | No | Type of sample for somatic variants |
 | `STRUCTURAL_VARIANT_WORKFLOW_URL` | string | No | URL to the structural variant workflow |
 | `STRUCTURAL_VARIANT_WORKFLOW_TYPE` | string | No | Type of structural variant workflow |
 | `MSI_WORKFLOW_LINK` | string | No | Link to MSI workflow |
 | `MSI_SCORE` | float | No | MSI score |
-| `MSI_STATUS` | [MSIStatusEnum](#msistatusenum) | No | MSI status |
-| `GENOMIC_REFERENCE` | [GenomicReferenceEnum](#genomicreferenceenum) | Yes | Genomic or transcriptomic reference assembly used for alignment. If your genome reference is not among the valid values, please contact your data liaison. |
-| `GENOMIC_REFERENCE_URL` | string | Yes | URL to genomic or transcriptomic reference |
-| `GENOME_ANNOTATION_URL` | string | Yes | URL to genome or transcriptome annotation |
-| `WORKFLOW_VERSION` | string | Yes | Major version of the workflow, or 'Not applicable' when no workflow version applies. |
-| `WORKFLOW_LINK` | string | Yes | Link to workflow or command. DockStore.org recommended |
-| `LIBRARY_LAYOUT` | [LibraryLayoutEnum](#librarylayoutenum) | Yes | Library layout (paired-end or single-end) |
-| `SEQUENCING_PLATFORM` | [SequencingPlatformEnum](#sequencingplatformenum) | Yes | Sequencing platform used |
+| `MSI_STATUS` | MSIStatusEnum | No | MSI status |
 | `SEQUENCING_BATCH_ID` | string | No | Sequencing batch identifier |
-| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | integer | No | Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable') |
+| `LIBRARY_LAYOUT` | LibraryLayoutEnum | Yes | Library layout (paired-end or single-end) |
+| `SEQUENCING_PLATFORM` | SequencingPlatformEnum | Yes | Sequencing platform used |
+| `LIBRARY_PREPARATION_DAYS_FROM_INDEX` | string | No |  |
 | `TECHNICAL_REPLICATE_GROUP` | string | No | Technical replicate group identifier |
 | `PROTOCOL_LINK` | string | No | Link to sequencing protocol |
+| `WORKFLOW_VERSION` | string | Yes | Major version of the workflow |
+| `WORKFLOW_LINK` | string | No | Link to workflow or command. DockStore.org recommended |
+| `GENOMIC_REFERENCE` | string | Yes | Genomic reference used for alignment |
+| `GENOMIC_REFERENCE_URL` | string | No | URL to genomic reference |
+| `GENOME_ANNOTATION_URL` | string | No | URL to genome annotation |
 | `CHECKSUM` | string | No | Checksum for data integrity verification |
 | `HTAN_DATA_FILE_ID` | string | Yes | HTAN Data File ID (Primary Key) |
-| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2. |
+| `HTAN_PARENT_ID` | string | Yes | HTAN Parent ID - Foreign Key to parent entity (B for Biospecimen, D for data file). Must have B o... |
+
+## WESData
+
+**Container for all WES data**
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `LEVEL_1_DATA` | BulkWESLevel1 | No | Level 1 WES data (raw files) |
+| `LEVEL_2_DATA` | BulkWESLevel2 | No | Level 2 WES data (aligned files and QC) |
+| `LEVEL_3_DATA` | BulkWESLevel3 | No | Level 3 WES data (called variants) |
 
 ## Enums
-
-### GenomicReferenceEnum
-
-Genomic or transcriptomic reference assembly used for alignment
-
-| Value | Description |
-|-------|-------------|
-| GRCh37 | Genome Reference Consortium human build 37 |
-| GRCh37.p13 | GRCh37 patch release 13 |
-| GRCh38 | Genome Reference Consortium human build 38 |
-| GRCh38.p13 | GRCh38 patch release 13 |
-| GRCh38.p14 | GRCh38 patch release 14 |
-| hg19 | UCSC human genome reference hg19 |
-| hg38 | UCSC human genome reference hg38 |
 
 ### LibraryLayoutEnum
 
