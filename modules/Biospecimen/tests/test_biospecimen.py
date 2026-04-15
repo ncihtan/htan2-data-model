@@ -232,10 +232,10 @@ class TestBiospecimen:
             assert compiled.fullmatch(mid) is None, f"Malformed ID should be rejected: {mid!r}"
 
     def test_tissue_section_enum_values(self):
-        """Test TissueSectionEnum has exactly Yes/No/Unknown."""
+        """Test TissueSectionEnum has exactly Yes/No."""
         sv = SchemaView("modules/Biospecimen/domains/biospecimen.yaml")
         enum = sv.get_enum("TissueSectionEnum")
-        assert set(enum.permissible_values.keys()) == {"Yes", "No", "Unknown"}
+        assert set(enum.permissible_values.keys()) == {"Yes", "No"}
 
     def test_is_tissue_section_slot_optional(self):
         """Test that IS_TISSUE_SECTION is present and optional at base level."""
