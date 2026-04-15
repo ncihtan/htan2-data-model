@@ -1,0 +1,201 @@
+{
+  "$id": "https://w3id.org/htan/clinical",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "SMOKING_HISTORY": {
+            "const": "Current smoker"
+          }
+        },
+        "required": [
+          "SMOKING_HISTORY"
+        ]
+      },
+      "then": {
+        "properties": {
+          "PACK_YEARS_SMOKED": {},
+          "YEARS_SMOKED": {}
+        },
+        "required": [
+          "YEARS_SMOKED",
+          "PACK_YEARS_SMOKED"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SMOKING_HISTORY": {
+            "const": "Current Every-Day Smoker"
+          }
+        },
+        "required": [
+          "SMOKING_HISTORY"
+        ]
+      },
+      "then": {
+        "properties": {
+          "PACK_YEARS_SMOKED": {},
+          "YEARS_SMOKED": {}
+        },
+        "required": [
+          "YEARS_SMOKED",
+          "PACK_YEARS_SMOKED"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SMOKING_HISTORY": {
+            "const": "Current Some-Day Smoker"
+          }
+        },
+        "required": [
+          "SMOKING_HISTORY"
+        ]
+      },
+      "then": {
+        "properties": {
+          "PACK_YEARS_SMOKED": {},
+          "YEARS_SMOKED": {}
+        },
+        "required": [
+          "YEARS_SMOKED",
+          "PACK_YEARS_SMOKED"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SMOKING_HISTORY": {
+            "const": "Former Smoker"
+          }
+        },
+        "required": [
+          "SMOKING_HISTORY"
+        ]
+      },
+      "then": {
+        "properties": {
+          "PACK_YEARS_SMOKED": {},
+          "YEARS_SMOKED": {}
+        },
+        "required": [
+          "YEARS_SMOKED",
+          "PACK_YEARS_SMOKED"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "ENVIRONMENTAL_EXPOSURE": {
+            "const": "Yes"
+          }
+        },
+        "required": [
+          "ENVIRONMENTAL_EXPOSURE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "ENVIRONMENTAL_EXPOSURE_TYPE": {}
+        },
+        "required": [
+          "ENVIRONMENTAL_EXPOSURE_TYPE"
+        ]
+      }
+    }
+  ],
+  "description": "Information about the exposure",
+  "properties": {
+    "ALCOHOL_HISTORY_INDICATOR": {
+      "description": "Response indicating whether or not an individual has ever consumed alcohol. (caDSR:7537144) (No CRDC Standard Available)",
+      "enum": [
+        "Data not available",
+        "No",
+        "Not applicable",
+        "Not reported",
+        "Pending",
+        "Refused",
+        "Unknown",
+        "Yes"
+      ],
+      "title": "AlcoholHistoryIndicatorEnum",
+      "type": "string"
+    },
+    "ENVIRONMENTAL_EXPOSURE": {
+      "description": "Response indicating whether or not an individual was exposed to potentially harmful environmental agents (caDSR:15753166) (Aligns to CRDC Node)",
+      "enum": [
+        "No",
+        "Not Reported",
+        "Unknown",
+        "Yes"
+      ],
+      "title": "EnvironmentalExposureEnum",
+      "type": "string"
+    },
+    "ENVIRONMENTAL_EXPOSURE_TYPE": {
+      "description": "Required when ENVIRONMENTAL_EXPOSURE is Yes",
+      "items": {
+        "description": "",
+        "enum": [
+          "Asbestos Exposure",
+          "Chemical Exposure",
+          "Marijuana Smoke Exposure",
+          "Radiation Exposure",
+          "Radon Exposure",
+          "Respirable Crystalline Silica Exposure",
+          "Smoke Exposure",
+          "Smokeless Tobacco Exposure",
+          "Tobacco Related Exposure",
+          "Wood Dust Exposure"
+        ],
+        "title": "EnvironmentalExposureTypeEnum",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "HTAN_PARTICIPANT_ID": {
+      "description": "HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$",
+      "type": "string"
+    },
+    "PACK_YEARS_SMOKED": {
+      "description": "Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker",
+      "type": "integer"
+    },
+    "SMOKING_HISTORY": {
+      "description": "Current or past smoking status. (caDSR:3626148) (Aligns to CRDC Node)",
+      "enum": [
+        "Current Every-Day Smoker",
+        "Current Some-Day Smoker",
+        "Current smoker",
+        "Former Smoker",
+        "Never Smoker",
+        "Non-smoker",
+        "Not reported",
+        "Unknown"
+      ],
+      "title": "SmokingHistoryEnum",
+      "type": "string"
+    },
+    "YEARS_SMOKED": {
+      "description": "Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "SMOKING_HISTORY",
+    "ALCOHOL_HISTORY_INDICATOR",
+    "ENVIRONMENTAL_EXPOSURE",
+    "HTAN_PARTICIPANT_ID"
+  ],
+  "title": "Clinical",
+  "type": "object"
+}
