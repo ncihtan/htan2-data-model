@@ -1,5 +1,5 @@
 # Auto generated from wes.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-14T19:55:47
+# Generation date: 2026-04-15T14:13:32
 # Schema: WES
 #
 # id: https://w3id.org/htan/wes
