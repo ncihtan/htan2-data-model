@@ -228,7 +228,7 @@ classes:
         range: TissueSectionEnum
         required: false
         title: "Is Tissue Section"
-        description: Indicator of whether the biospecimen is a tissue section.
+        description: Indicator that the type of preserved sample material removed for testing, diagnostic, propagation, treatment or research purposes is a tissue section sliced from a tissue specimen block (Yes/No).
 
       AGE_IN_DAYS_AT_SECTIONING:
         range: integer
