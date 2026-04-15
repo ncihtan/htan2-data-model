@@ -288,7 +288,7 @@ classes:
         preconditions:
           slot_conditions:
             AGE_IN_DAYS_AT_TREATMENT_END:
-              minimum_value: 0
+              value_presence: PRESENT
         postconditions:
           slot_conditions:
             OFF_TREATMENT_REASON:
