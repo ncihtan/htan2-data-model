@@ -162,3 +162,64 @@ def test_ecog_score_performed_slot_required(schema_view):
     assert "ECOG_SCORE_PERFORMED" in followup_class.attributes
     assert followup_class.attributes["ECOG_SCORE_PERFORMED"].required is True
     assert followup_class.attributes["ECOG_PERFORMANCE_STATUS"].required is False
+
+
+def test_tumor_staged_invalid_enum_value():
+    """Test that an invalid TumorStagedEnum value raises ValueError."""
+    test_data = {
+        "HTAN_PARTICIPANT_ID": "HTA200_0000",
+        "DIAGNOSIS": {"HTAN_PARTICIPANT_ID": "HTA200_0000", "TUMOR_STAGED": "InvalidValue"},
+    }
+    with pytest.raises(ValueError):
+        ClinicalData(**test_data)
+
+
+def test_gleason_grade_group_invalid_enum_value():
+    """Test that an invalid GleasonGradeGroupEnum value raises ValueError."""
+    test_data = {
+        "HTAN_PARTICIPANT_ID": "HTA200_0000",
+        "DIAGNOSIS": {"HTAN_PARTICIPANT_ID": "HTA200_0000", "GLEASON_GRADE_GROUP": "InvalidValue"},
+    }
+    with pytest.raises(ValueError):
+        ClinicalData(**test_data)
+
+
+def test_ecog_score_performed_invalid_enum_value():
+    """Test that an invalid EcogScorePerformedEnum value raises ValueError."""
+    test_data = {
+        "HTAN_PARTICIPANT_ID": "HTA200_0000",
+        "FOLLOW_UPS": [{
+            "HTAN_PARTICIPANT_ID": "HTA200_0000",
+            "AGE_IN_DAYS_AT_FOLLOWUP": 1000,
+            "PROGRESSION_OR_RECURRENCE": "No",
+            "DISEASE_RESPONSE": "Stable Disease",
+            "ECOG_SCORE_PERFORMED": "InvalidValue",
+        }],
+    }
+    with pytest.raises(ValueError):
+        ClinicalData(**test_data)
+
+
+def test_tumor_staged_missing_raises():
+    """Test that a Diagnosis instance missing required TUMOR_STAGED raises ValueError."""
+    test_data = {
+        "HTAN_PARTICIPANT_ID": "HTA200_0000",
+        "DIAGNOSIS": {"HTAN_PARTICIPANT_ID": "HTA200_0000"},
+    }
+    with pytest.raises(ValueError):
+        ClinicalData(**test_data)
+
+
+def test_ecog_score_performed_missing_raises():
+    """Test that a FollowUp instance missing required ECOG_SCORE_PERFORMED raises ValueError."""
+    test_data = {
+        "HTAN_PARTICIPANT_ID": "HTA200_0000",
+        "FOLLOW_UPS": [{
+            "HTAN_PARTICIPANT_ID": "HTA200_0000",
+            "AGE_IN_DAYS_AT_FOLLOWUP": 1000,
+            "PROGRESSION_OR_RECURRENCE": "No",
+            "DISEASE_RESPONSE": "Stable Disease",
+        }],
+    }
+    with pytest.raises(ValueError):
+        ClinicalData(**test_data)
