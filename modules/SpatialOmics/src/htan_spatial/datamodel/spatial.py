@@ -1,5 +1,5 @@
 # Auto generated from spatial.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-18T15:03:18
+# Generation date: 2026-04-15T14:13:54
 # Schema: SpatialOmics
 #
 # id: https://w3id.org/htan/spatial
