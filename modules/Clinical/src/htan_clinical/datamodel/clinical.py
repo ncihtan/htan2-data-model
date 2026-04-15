@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-18T14:59:49
+# Generation date: 2026-04-15T14:28:41
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -267,15 +267,17 @@ class Diagnosis(ClinicalRecordAttributes):
     AGE_IN_DAYS_AT_DIAGNOSIS: int = None
     TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE: Union[str, "TissueOrOrganOfOriginUberonEnum"] = None
     TUMOR_GRADE: Union[str, "TumorGradeEnum"] = None
-    CLINICAL_T_STAGE: Union[str, "ClinicalTStageEnum"] = None
-    CLINICAL_N_STAGE: Union[str, "ClinicalNStageEnum"] = None
-    CLINICAL_M_STAGE: Union[str, "ClinicalMStageEnum"] = None
-    AJCC_STAGING_SYSTEM_EDITION: Union[str, "AJCCStagingSystemEditionEnum"] = None
+    TUMOR_STAGED: Union[str, "TumorStagedEnum"] = None
     AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS: int = None
     LAST_KNOWN_DISEASE_STATUS: Union[str, "LastKnownDiseaseStatusEnum"] = None
     TUMOR_CLASSIFICATION_CATEGORY: Union[str, "TumorClassificationCategoryEnum"] = None
     METASTASIS_AT_DIAGNOSIS: Union[str, "MetastasisAtDiagnosisEnum"] = None
     METHOD_OF_DIAGNOSIS: Union[str, "MethodOfDiagnosisEnum"] = None
+    CLINICAL_T_STAGE: Optional[Union[str, "ClinicalTStageEnum"]] = None
+    CLINICAL_N_STAGE: Optional[Union[str, "ClinicalNStageEnum"]] = None
+    CLINICAL_M_STAGE: Optional[Union[str, "ClinicalMStageEnum"]] = None
+    AJCC_STAGING_SYSTEM_EDITION: Optional[Union[str, "AJCCStagingSystemEditionEnum"]] = None
+    GLEASON_GRADE_GROUP: Optional[Union[str, "GleasonGradeGroupEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_PARTICIPANT_ID):
@@ -303,25 +305,10 @@ class Diagnosis(ClinicalRecordAttributes):
         if not isinstance(self.TUMOR_GRADE, TumorGradeEnum):
             self.TUMOR_GRADE = TumorGradeEnum(self.TUMOR_GRADE)
 
-        if self._is_empty(self.CLINICAL_T_STAGE):
-            self.MissingRequiredField("CLINICAL_T_STAGE")
-        if not isinstance(self.CLINICAL_T_STAGE, ClinicalTStageEnum):
-            self.CLINICAL_T_STAGE = ClinicalTStageEnum(self.CLINICAL_T_STAGE)
-
-        if self._is_empty(self.CLINICAL_N_STAGE):
-            self.MissingRequiredField("CLINICAL_N_STAGE")
-        if not isinstance(self.CLINICAL_N_STAGE, ClinicalNStageEnum):
-            self.CLINICAL_N_STAGE = ClinicalNStageEnum(self.CLINICAL_N_STAGE)
-
-        if self._is_empty(self.CLINICAL_M_STAGE):
-            self.MissingRequiredField("CLINICAL_M_STAGE")
-        if not isinstance(self.CLINICAL_M_STAGE, ClinicalMStageEnum):
-            self.CLINICAL_M_STAGE = ClinicalMStageEnum(self.CLINICAL_M_STAGE)
-
-        if self._is_empty(self.AJCC_STAGING_SYSTEM_EDITION):
-            self.MissingRequiredField("AJCC_STAGING_SYSTEM_EDITION")
-        if not isinstance(self.AJCC_STAGING_SYSTEM_EDITION, AJCCStagingSystemEditionEnum):
-            self.AJCC_STAGING_SYSTEM_EDITION = AJCCStagingSystemEditionEnum(self.AJCC_STAGING_SYSTEM_EDITION)
+        if self._is_empty(self.TUMOR_STAGED):
+            self.MissingRequiredField("TUMOR_STAGED")
+        if not isinstance(self.TUMOR_STAGED, TumorStagedEnum):
+            self.TUMOR_STAGED = TumorStagedEnum(self.TUMOR_STAGED)
 
         if self._is_empty(self.AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS):
             self.MissingRequiredField("AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS")
@@ -347,6 +334,33 @@ class Diagnosis(ClinicalRecordAttributes):
             self.MissingRequiredField("METHOD_OF_DIAGNOSIS")
         if not isinstance(self.METHOD_OF_DIAGNOSIS, MethodOfDiagnosisEnum):
             self.METHOD_OF_DIAGNOSIS = MethodOfDiagnosisEnum(self.METHOD_OF_DIAGNOSIS)
+
+        if self.CLINICAL_T_STAGE is not None and not isinstance(self.CLINICAL_T_STAGE, ClinicalTStageEnum):
+            self.CLINICAL_T_STAGE = ClinicalTStageEnum(self.CLINICAL_T_STAGE)
+
+        if self.CLINICAL_N_STAGE is not None and not isinstance(self.CLINICAL_N_STAGE, ClinicalNStageEnum):
+            self.CLINICAL_N_STAGE = ClinicalNStageEnum(self.CLINICAL_N_STAGE)
+
+        if self.CLINICAL_M_STAGE is not None and not isinstance(self.CLINICAL_M_STAGE, ClinicalMStageEnum):
+            self.CLINICAL_M_STAGE = ClinicalMStageEnum(self.CLINICAL_M_STAGE)
+
+        if self.AJCC_STAGING_SYSTEM_EDITION is not None and not isinstance(self.AJCC_STAGING_SYSTEM_EDITION, AJCCStagingSystemEditionEnum):
+            self.AJCC_STAGING_SYSTEM_EDITION = AJCCStagingSystemEditionEnum(self.AJCC_STAGING_SYSTEM_EDITION)
+
+        if self.GLEASON_GRADE_GROUP is not None and not isinstance(self.GLEASON_GRADE_GROUP, GleasonGradeGroupEnum):
+            self.GLEASON_GRADE_GROUP = GleasonGradeGroupEnum(self.GLEASON_GRADE_GROUP)
+
+        if self.AJCC_STAGING_SYSTEM_EDITION is not None and not isinstance(self.AJCC_STAGING_SYSTEM_EDITION, str):
+            self.AJCC_STAGING_SYSTEM_EDITION = str(self.AJCC_STAGING_SYSTEM_EDITION)
+
+        if self.CLINICAL_M_STAGE is not None and not isinstance(self.CLINICAL_M_STAGE, str):
+            self.CLINICAL_M_STAGE = str(self.CLINICAL_M_STAGE)
+
+        if self.CLINICAL_N_STAGE is not None and not isinstance(self.CLINICAL_N_STAGE, str):
+            self.CLINICAL_N_STAGE = str(self.CLINICAL_N_STAGE)
+
+        if self.CLINICAL_T_STAGE is not None and not isinstance(self.CLINICAL_T_STAGE, str):
+            self.CLINICAL_T_STAGE = str(self.CLINICAL_T_STAGE)
 
         super().__post_init__(**kwargs)
 
@@ -463,12 +477,13 @@ class FollowUp(ClinicalRecordAttributes):
     AGE_IN_DAYS_AT_FOLLOWUP: int = None
     PROGRESSION_OR_RECURRENCE: Union[str, "ProgressionOrRecurrenceEnum"] = None
     DISEASE_RESPONSE: Union[str, "DiseaseResponseEnum"] = None
-    ECOG_PERFORMANCE_STATUS: Union[str, "ECOGPerformanceStatusEnum"] = None
-    MENOPAUSE_STATUS: Union[str, "MenopauseStatusEnum"] = None
+    ECOG_SCORE_PERFORMED: Union[str, "EcogScorePerformedEnum"] = None
     PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE: Optional[Union[Union[str, "TissueOrOrganOfOriginUberonEnum"], List[Union[str, "TissueOrOrganOfOriginUberonEnum"]]]] = empty_list()
     PROGRESSION_OR_RECURRENCE_TYPE: Optional[Union[str, "ProgressionTypeEnum"]] = None
     EVIDENCE_OF_RECURRENCE_TYPE: Optional[Union[str, "EvidenceOfRecurrenceTypeEnum"]] = None
     AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE: Optional[int] = None
+    ECOG_PERFORMANCE_STATUS: Optional[Union[str, "ECOGPerformanceStatusEnum"]] = None
+    MENOPAUSE_STATUS: Optional[Union[str, "MenopauseStatusEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_PARTICIPANT_ID):
@@ -491,15 +506,10 @@ class FollowUp(ClinicalRecordAttributes):
         if not isinstance(self.DISEASE_RESPONSE, DiseaseResponseEnum):
             self.DISEASE_RESPONSE = DiseaseResponseEnum(self.DISEASE_RESPONSE)
 
-        if self._is_empty(self.ECOG_PERFORMANCE_STATUS):
-            self.MissingRequiredField("ECOG_PERFORMANCE_STATUS")
-        if not isinstance(self.ECOG_PERFORMANCE_STATUS, ECOGPerformanceStatusEnum):
-            self.ECOG_PERFORMANCE_STATUS = ECOGPerformanceStatusEnum(self.ECOG_PERFORMANCE_STATUS)
-
-        if self._is_empty(self.MENOPAUSE_STATUS):
-            self.MissingRequiredField("MENOPAUSE_STATUS")
-        if not isinstance(self.MENOPAUSE_STATUS, MenopauseStatusEnum):
-            self.MENOPAUSE_STATUS = MenopauseStatusEnum(self.MENOPAUSE_STATUS)
+        if self._is_empty(self.ECOG_SCORE_PERFORMED):
+            self.MissingRequiredField("ECOG_SCORE_PERFORMED")
+        if not isinstance(self.ECOG_SCORE_PERFORMED, EcogScorePerformedEnum):
+            self.ECOG_SCORE_PERFORMED = EcogScorePerformedEnum(self.ECOG_SCORE_PERFORMED)
 
         if not isinstance(self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE, list):
             self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE = [self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE] if self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE is not None else []
@@ -514,6 +524,12 @@ class FollowUp(ClinicalRecordAttributes):
         if self.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE is not None and not isinstance(self.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, int):
             self.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE = int(self.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE)
 
+        if self.ECOG_PERFORMANCE_STATUS is not None and not isinstance(self.ECOG_PERFORMANCE_STATUS, ECOGPerformanceStatusEnum):
+            self.ECOG_PERFORMANCE_STATUS = ECOGPerformanceStatusEnum(self.ECOG_PERFORMANCE_STATUS)
+
+        if self.MENOPAUSE_STATUS is not None and not isinstance(self.MENOPAUSE_STATUS, MenopauseStatusEnum):
+            self.MENOPAUSE_STATUS = MenopauseStatusEnum(self.MENOPAUSE_STATUS)
+
         if self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE is not None and not isinstance(self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE, str):
             self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE = str(self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE)
 
@@ -525,6 +541,9 @@ class FollowUp(ClinicalRecordAttributes):
 
         if self.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE is not None and not isinstance(self.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, str):
             self.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE = str(self.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE)
+
+        if self.ECOG_PERFORMANCE_STATUS is not None and not isinstance(self.ECOG_PERFORMANCE_STATUS, str):
+            self.ECOG_PERFORMANCE_STATUS = str(self.ECOG_PERFORMANCE_STATUS)
 
         super().__post_init__(**kwargs)
 
@@ -647,14 +666,14 @@ class Therapy(ClinicalRecordAttributes):
     TREATMENT_INTENT_TYPE: Union[str, "TreatmentIntentTypeEnum"] = None
     TREATMENT_TYPE: Union[Union[str, "TreatmentTypeEnum"], List[Union[str, "TreatmentTypeEnum"]]] = None
     PHARMACOTHERAPY_TYPE: Union[str, "PharmacotherapyTypeEnum"] = None
-    THERAPEUTIC_AGENTS: Union[Union[str, "AntineoplasticAgentEnum"], List[Union[str, "AntineoplasticAgentEnum"]]] = None
     AGE_IN_DAYS_AT_TREATMENT_START: int = None
-    AGE_IN_DAYS_AT_TREATMENT_END: int = None
-    OFF_TREATMENT_REASON: Union[str, "OffTreatmentReasonEnum"] = None
-    REGIMEN_OR_LINE_OF_THERAPY: Union[str, "RegimenOrLineOfTherapyEnum"] = None
-    NUMBER_OF_CYCLES: int = None
-    RESPONSE: Union[str, "DiseaseResponseEnum"] = None
+    THERAPEUTIC_AGENTS: Optional[Union[Union[str, "AntineoplasticAgentEnum"], List[Union[str, "AntineoplasticAgentEnum"]]]] = empty_list()
     THERAPY_ANATOMIC_SITE_UBERON_CODE: Optional[Union[str, "TissueOrOrganOfOriginUberonEnum"]] = None
+    AGE_IN_DAYS_AT_TREATMENT_END: Optional[int] = None
+    OFF_TREATMENT_REASON: Optional[Union[str, "OffTreatmentReasonEnum"]] = None
+    REGIMEN_OR_LINE_OF_THERAPY: Optional[Union[str, "RegimenOrLineOfTherapyEnum"]] = None
+    NUMBER_OF_CYCLES: Optional[int] = None
+    RESPONSE: Optional[Union[str, "DiseaseResponseEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_PARTICIPANT_ID):
@@ -683,47 +702,41 @@ class Therapy(ClinicalRecordAttributes):
         if not isinstance(self.PHARMACOTHERAPY_TYPE, PharmacotherapyTypeEnum):
             self.PHARMACOTHERAPY_TYPE = PharmacotherapyTypeEnum(self.PHARMACOTHERAPY_TYPE)
 
-        if self._is_empty(self.THERAPEUTIC_AGENTS):
-            self.MissingRequiredField("THERAPEUTIC_AGENTS")
-        if not isinstance(self.THERAPEUTIC_AGENTS, list):
-            self.THERAPEUTIC_AGENTS = [self.THERAPEUTIC_AGENTS] if self.THERAPEUTIC_AGENTS is not None else []
-        self.THERAPEUTIC_AGENTS = [v if isinstance(v, AntineoplasticAgentEnum) else AntineoplasticAgentEnum(v) for v in self.THERAPEUTIC_AGENTS]
-
         if self._is_empty(self.AGE_IN_DAYS_AT_TREATMENT_START):
             self.MissingRequiredField("AGE_IN_DAYS_AT_TREATMENT_START")
         if not isinstance(self.AGE_IN_DAYS_AT_TREATMENT_START, int):
             self.AGE_IN_DAYS_AT_TREATMENT_START = int(self.AGE_IN_DAYS_AT_TREATMENT_START)
 
-        if self._is_empty(self.AGE_IN_DAYS_AT_TREATMENT_END):
-            self.MissingRequiredField("AGE_IN_DAYS_AT_TREATMENT_END")
-        if not isinstance(self.AGE_IN_DAYS_AT_TREATMENT_END, int):
-            self.AGE_IN_DAYS_AT_TREATMENT_END = int(self.AGE_IN_DAYS_AT_TREATMENT_END)
-
-        if self._is_empty(self.OFF_TREATMENT_REASON):
-            self.MissingRequiredField("OFF_TREATMENT_REASON")
-        if not isinstance(self.OFF_TREATMENT_REASON, OffTreatmentReasonEnum):
-            self.OFF_TREATMENT_REASON = OffTreatmentReasonEnum(self.OFF_TREATMENT_REASON)
-
-        if self._is_empty(self.REGIMEN_OR_LINE_OF_THERAPY):
-            self.MissingRequiredField("REGIMEN_OR_LINE_OF_THERAPY")
-        if not isinstance(self.REGIMEN_OR_LINE_OF_THERAPY, RegimenOrLineOfTherapyEnum):
-            self.REGIMEN_OR_LINE_OF_THERAPY = RegimenOrLineOfTherapyEnum(self.REGIMEN_OR_LINE_OF_THERAPY)
-
-        if self._is_empty(self.NUMBER_OF_CYCLES):
-            self.MissingRequiredField("NUMBER_OF_CYCLES")
-        if not isinstance(self.NUMBER_OF_CYCLES, int):
-            self.NUMBER_OF_CYCLES = int(self.NUMBER_OF_CYCLES)
-
-        if self._is_empty(self.RESPONSE):
-            self.MissingRequiredField("RESPONSE")
-        if not isinstance(self.RESPONSE, DiseaseResponseEnum):
-            self.RESPONSE = DiseaseResponseEnum(self.RESPONSE)
+        if not isinstance(self.THERAPEUTIC_AGENTS, list):
+            self.THERAPEUTIC_AGENTS = [self.THERAPEUTIC_AGENTS] if self.THERAPEUTIC_AGENTS is not None else []
+        self.THERAPEUTIC_AGENTS = [v if isinstance(v, AntineoplasticAgentEnum) else AntineoplasticAgentEnum(v) for v in self.THERAPEUTIC_AGENTS]
 
         if self.THERAPY_ANATOMIC_SITE_UBERON_CODE is not None and not isinstance(self.THERAPY_ANATOMIC_SITE_UBERON_CODE, TissueOrOrganOfOriginUberonEnum):
             self.THERAPY_ANATOMIC_SITE_UBERON_CODE = TissueOrOrganOfOriginUberonEnum(self.THERAPY_ANATOMIC_SITE_UBERON_CODE)
 
+        if self.AGE_IN_DAYS_AT_TREATMENT_END is not None and not isinstance(self.AGE_IN_DAYS_AT_TREATMENT_END, int):
+            self.AGE_IN_DAYS_AT_TREATMENT_END = int(self.AGE_IN_DAYS_AT_TREATMENT_END)
+
+        if self.OFF_TREATMENT_REASON is not None and not isinstance(self.OFF_TREATMENT_REASON, OffTreatmentReasonEnum):
+            self.OFF_TREATMENT_REASON = OffTreatmentReasonEnum(self.OFF_TREATMENT_REASON)
+
+        if self.REGIMEN_OR_LINE_OF_THERAPY is not None and not isinstance(self.REGIMEN_OR_LINE_OF_THERAPY, RegimenOrLineOfTherapyEnum):
+            self.REGIMEN_OR_LINE_OF_THERAPY = RegimenOrLineOfTherapyEnum(self.REGIMEN_OR_LINE_OF_THERAPY)
+
+        if self.NUMBER_OF_CYCLES is not None and not isinstance(self.NUMBER_OF_CYCLES, int):
+            self.NUMBER_OF_CYCLES = int(self.NUMBER_OF_CYCLES)
+
+        if self.RESPONSE is not None and not isinstance(self.RESPONSE, DiseaseResponseEnum):
+            self.RESPONSE = DiseaseResponseEnum(self.RESPONSE)
+
         if self.THERAPY_ANATOMIC_SITE_UBERON_CODE is not None and not isinstance(self.THERAPY_ANATOMIC_SITE_UBERON_CODE, str):
             self.THERAPY_ANATOMIC_SITE_UBERON_CODE = str(self.THERAPY_ANATOMIC_SITE_UBERON_CODE)
+
+        if self.THERAPEUTIC_AGENTS is not None and not isinstance(self.THERAPEUTIC_AGENTS, str):
+            self.THERAPEUTIC_AGENTS = str(self.THERAPEUTIC_AGENTS)
+
+        if self.AGE_IN_DAYS_AT_TREATMENT_END is not None and not isinstance(self.AGE_IN_DAYS_AT_TREATMENT_END, str):
+            self.AGE_IN_DAYS_AT_TREATMENT_END = str(self.AGE_IN_DAYS_AT_TREATMENT_END)
 
         if self.OFF_TREATMENT_REASON is not None and not isinstance(self.OFF_TREATMENT_REASON, str):
             self.OFF_TREATMENT_REASON = str(self.OFF_TREATMENT_REASON)
@@ -1606,6 +1619,63 @@ class MethodOfDiagnosisEnum(EnumDefinitionImpl):
                 text="Ultrasound Imaging",
                 description="""A technique in which high-frequency sound waves are bounced off internal organs and the echo pattern is converted into a 2 dimensional picture of the structures beneath the transducer."""))
 
+class GleasonGradeGroupEnum(EnumDefinitionImpl):
+
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded, or refused.")
+
+    _defn = EnumDefinition(
+        name="GleasonGradeGroupEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "1",
+            PermissibleValue(
+                text="1",
+                description="Grade Group I - Only individual discrete well-formed glands."))
+        setattr(cls, "2",
+            PermissibleValue(
+                text="2",
+                description="""Grade Group II - Predominantly well-formed glands with lesser component of poorly-formed/fused/cribriform glands."""))
+        setattr(cls, "3",
+            PermissibleValue(
+                text="3",
+                description="""Grade Group III - Predominantly poorly formed/fused/cribriform glands with lesser component of well-formed glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at radical prostatectomy, the component of less than 5% well-formed glands is not factored into the grade."""))
+        setattr(cls, "4",
+            PermissibleValue(
+                text="4",
+                description="""Grade Group IV - Only poorly-formed/fused/cribriform glands or predominantly well-formed glands and lesser component lacking glands or predominantly lacking glands and lesser component of well-formed gland. Poorly-formed/fused/cribriform glands can be a more minor component."""))
+        setattr(cls, "5",
+            PermissibleValue(
+                text="5",
+                description="""Grade Group V - Lacks gland formation (or with necrosis) with or without poorly formed/fused/cribriform glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at RP, the component of less than 5% well-formed glands is not factored into the grade."""))
+        setattr(cls, "Not Applicable",
+            PermissibleValue(
+                text="Not Applicable",
+                description="Determination of a value is not relevant in the current context."))
+        setattr(cls, "Not Reported",
+            PermissibleValue(
+                text="Not Reported",
+                description="Not provided or available."))
+
+class TumorStagedEnum(EnumDefinitionImpl):
+
+    No = PermissibleValue(
+        text="No",
+        description="The non-affirmative response to a question.")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded, or refused.")
+    Yes = PermissibleValue(
+        text="Yes",
+        description="The affirmative response to a question.")
+
+    _defn = EnumDefinition(
+        name="TumorStagedEnum",
+    )
+
 class AlcoholHistoryIndicatorEnum(EnumDefinitionImpl):
 
     No = PermissibleValue(
@@ -1921,6 +1991,19 @@ class ProgressionTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Not Reported",
                 description="Not provided or available."))
+
+class EcogScorePerformedEnum(EnumDefinitionImpl):
+
+    Known = PermissibleValue(
+        text="Known",
+        description="The ECOG performance status score was obtained and is available.")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Not known, not observed, not recorded, or refused.")
+
+    _defn = EnumDefinition(
+        name="EcogScorePerformedEnum",
+    )
 
 class MenopauseStatusEnum(EnumDefinitionImpl):
 
@@ -309302,17 +309385,20 @@ slots.diagnosis__TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE = Slot(uri=CADSR['1488304
 slots.diagnosis__TUMOR_GRADE = Slot(uri=CADSR['11325685'], name="diagnosis__TUMOR_GRADE", curie=CADSR.curie('11325685'),
                    model_uri=HTAN.diagnosis__TUMOR_GRADE, domain=None, range=Union[str, "TumorGradeEnum"])
 
+slots.diagnosis__TUMOR_STAGED = Slot(uri=HTAN['clinical/diagnosis/TUMOR_STAGED'], name="diagnosis__TUMOR_STAGED", curie=HTAN.curie('clinical/diagnosis/TUMOR_STAGED'),
+                   model_uri=HTAN.diagnosis__TUMOR_STAGED, domain=None, range=Union[str, "TumorStagedEnum"])
+
 slots.diagnosis__CLINICAL_T_STAGE = Slot(uri=CADSR['3440328'], name="diagnosis__CLINICAL_T_STAGE", curie=CADSR.curie('3440328'),
-                   model_uri=HTAN.diagnosis__CLINICAL_T_STAGE, domain=None, range=Union[str, "ClinicalTStageEnum"])
+                   model_uri=HTAN.diagnosis__CLINICAL_T_STAGE, domain=None, range=Optional[Union[str, "ClinicalTStageEnum"]])
 
 slots.diagnosis__CLINICAL_N_STAGE = Slot(uri=CADSR['3440330'], name="diagnosis__CLINICAL_N_STAGE", curie=CADSR.curie('3440330'),
-                   model_uri=HTAN.diagnosis__CLINICAL_N_STAGE, domain=None, range=Union[str, "ClinicalNStageEnum"])
+                   model_uri=HTAN.diagnosis__CLINICAL_N_STAGE, domain=None, range=Optional[Union[str, "ClinicalNStageEnum"]])
 
 slots.diagnosis__CLINICAL_M_STAGE = Slot(uri=CADSR['3440331'], name="diagnosis__CLINICAL_M_STAGE", curie=CADSR.curie('3440331'),
-                   model_uri=HTAN.diagnosis__CLINICAL_M_STAGE, domain=None, range=Union[str, "ClinicalMStageEnum"])
+                   model_uri=HTAN.diagnosis__CLINICAL_M_STAGE, domain=None, range=Optional[Union[str, "ClinicalMStageEnum"]])
 
 slots.diagnosis__AJCC_STAGING_SYSTEM_EDITION = Slot(uri=CADSR['2722309'], name="diagnosis__AJCC_STAGING_SYSTEM_EDITION", curie=CADSR.curie('2722309'),
-                   model_uri=HTAN.diagnosis__AJCC_STAGING_SYSTEM_EDITION, domain=None, range=Union[str, "AJCCStagingSystemEditionEnum"])
+                   model_uri=HTAN.diagnosis__AJCC_STAGING_SYSTEM_EDITION, domain=None, range=Optional[Union[str, "AJCCStagingSystemEditionEnum"]])
 
 slots.diagnosis__AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS = Slot(uri=CADSR['14589579'], name="diagnosis__AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS", curie=CADSR.curie('14589579'),
                    model_uri=HTAN.diagnosis__AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS, domain=None, range=int)
@@ -309328,6 +309414,9 @@ slots.diagnosis__METASTASIS_AT_DIAGNOSIS = Slot(uri=CADSR['3438571'], name="diag
 
 slots.diagnosis__METHOD_OF_DIAGNOSIS = Slot(uri=CADSR['14857681'], name="diagnosis__METHOD_OF_DIAGNOSIS", curie=CADSR.curie('14857681'),
                    model_uri=HTAN.diagnosis__METHOD_OF_DIAGNOSIS, domain=None, range=Union[str, "MethodOfDiagnosisEnum"])
+
+slots.diagnosis__GLEASON_GRADE_GROUP = Slot(uri=CADSR['5918370'], name="diagnosis__GLEASON_GRADE_GROUP", curie=CADSR.curie('5918370'),
+                   model_uri=HTAN.diagnosis__GLEASON_GRADE_GROUP, domain=None, range=Optional[Union[str, "GleasonGradeGroupEnum"]])
 
 slots.exposure__SMOKING_HISTORY = Slot(uri=CADSR['3626148'], name="exposure__SMOKING_HISTORY", curie=CADSR.curie('3626148'),
                    model_uri=HTAN.exposure__SMOKING_HISTORY, domain=None, range=Union[str, "SmokingHistoryEnum"])
@@ -309374,11 +309463,14 @@ slots.followUp__AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE = Slot(uri=CADSR['15748
 slots.followUp__DISEASE_RESPONSE = Slot(uri=CADSR['13383448'], name="followUp__DISEASE_RESPONSE", curie=CADSR.curie('13383448'),
                    model_uri=HTAN.followUp__DISEASE_RESPONSE, domain=None, range=Union[str, "DiseaseResponseEnum"])
 
+slots.followUp__ECOG_SCORE_PERFORMED = Slot(uri=CADSR['5943795'], name="followUp__ECOG_SCORE_PERFORMED", curie=CADSR.curie('5943795'),
+                   model_uri=HTAN.followUp__ECOG_SCORE_PERFORMED, domain=None, range=Union[str, "EcogScorePerformedEnum"])
+
 slots.followUp__ECOG_PERFORMANCE_STATUS = Slot(uri=CADSR['88'], name="followUp__ECOG_PERFORMANCE_STATUS", curie=CADSR.curie('88'),
-                   model_uri=HTAN.followUp__ECOG_PERFORMANCE_STATUS, domain=None, range=Union[str, "ECOGPerformanceStatusEnum"])
+                   model_uri=HTAN.followUp__ECOG_PERFORMANCE_STATUS, domain=None, range=Optional[Union[str, "ECOGPerformanceStatusEnum"]])
 
 slots.followUp__MENOPAUSE_STATUS = Slot(uri=CADSR['2434914'], name="followUp__MENOPAUSE_STATUS", curie=CADSR.curie('2434914'),
-                   model_uri=HTAN.followUp__MENOPAUSE_STATUS, domain=None, range=Union[str, "MenopauseStatusEnum"])
+                   model_uri=HTAN.followUp__MENOPAUSE_STATUS, domain=None, range=Optional[Union[str, "MenopauseStatusEnum"]])
 
 slots.molecularTest__TIMEPOINT_LABEL = Slot(uri=CADSR['8031077'], name="molecularTest__TIMEPOINT_LABEL", curie=CADSR.curie('8031077'),
                    model_uri=HTAN.molecularTest__TIMEPOINT_LABEL, domain=None, range=Optional[str])
@@ -309438,15 +309530,13 @@ slots.therapy__TREATMENT_INTENT_TYPE = Slot(uri=CADSR['15157467'], name="therapy
                    model_uri=HTAN.therapy__TREATMENT_INTENT_TYPE, domain=None, range=Union[str, "TreatmentIntentTypeEnum"])
 
 slots.therapy__TREATMENT_TYPE = Slot(uri=CADSR['14737565'], name="therapy__TREATMENT_TYPE", curie=CADSR.curie('14737565'),
-                   model_uri=HTAN.therapy__TREATMENT_TYPE, domain=None, range=Union[Union[str, "TreatmentTypeEnum"], List[Union[str, "TreatmentTypeEnum"]]],
-                   pattern=re.compile(r'^[^|]+(\|[^|]+)*$'))
+                   model_uri=HTAN.therapy__TREATMENT_TYPE, domain=None, range=Union[Union[str, "TreatmentTypeEnum"], List[Union[str, "TreatmentTypeEnum"]]])
 
 slots.therapy__PHARMACOTHERAPY_TYPE = Slot(uri=CADSR['15743233'], name="therapy__PHARMACOTHERAPY_TYPE", curie=CADSR.curie('15743233'),
                    model_uri=HTAN.therapy__PHARMACOTHERAPY_TYPE, domain=None, range=Union[str, "PharmacotherapyTypeEnum"])
 
 slots.therapy__THERAPEUTIC_AGENTS = Slot(uri=CADSR['14913015'], name="therapy__THERAPEUTIC_AGENTS", curie=CADSR.curie('14913015'),
-                   model_uri=HTAN.therapy__THERAPEUTIC_AGENTS, domain=None, range=Union[Union[str, "AntineoplasticAgentEnum"], List[Union[str, "AntineoplasticAgentEnum"]]],
-                   pattern=re.compile(r'^[^|]+(\|[^|]+)*$'))
+                   model_uri=HTAN.therapy__THERAPEUTIC_AGENTS, domain=None, range=Optional[Union[Union[str, "AntineoplasticAgentEnum"], List[Union[str, "AntineoplasticAgentEnum"]]]])
 
 slots.therapy__THERAPY_ANATOMIC_SITE_UBERON_CODE = Slot(uri=CADSR['14461856'], name="therapy__THERAPY_ANATOMIC_SITE_UBERON_CODE", curie=CADSR.curie('14461856'),
                    model_uri=HTAN.therapy__THERAPY_ANATOMIC_SITE_UBERON_CODE, domain=None, range=Optional[Union[str, "TissueOrOrganOfOriginUberonEnum"]])
@@ -309455,19 +309545,19 @@ slots.therapy__AGE_IN_DAYS_AT_TREATMENT_START = Slot(uri=CADSR['12304720'], name
                    model_uri=HTAN.therapy__AGE_IN_DAYS_AT_TREATMENT_START, domain=None, range=int)
 
 slots.therapy__AGE_IN_DAYS_AT_TREATMENT_END = Slot(uri=CADSR['12304723'], name="therapy__AGE_IN_DAYS_AT_TREATMENT_END", curie=CADSR.curie('12304723'),
-                   model_uri=HTAN.therapy__AGE_IN_DAYS_AT_TREATMENT_END, domain=None, range=int)
+                   model_uri=HTAN.therapy__AGE_IN_DAYS_AT_TREATMENT_END, domain=None, range=Optional[int])
 
 slots.therapy__OFF_TREATMENT_REASON = Slot(uri=CADSR['15743249'], name="therapy__OFF_TREATMENT_REASON", curie=CADSR.curie('15743249'),
-                   model_uri=HTAN.therapy__OFF_TREATMENT_REASON, domain=None, range=Union[str, "OffTreatmentReasonEnum"])
+                   model_uri=HTAN.therapy__OFF_TREATMENT_REASON, domain=None, range=Optional[Union[str, "OffTreatmentReasonEnum"]])
 
 slots.therapy__REGIMEN_OR_LINE_OF_THERAPY = Slot(uri=CADSR['15915841'], name="therapy__REGIMEN_OR_LINE_OF_THERAPY", curie=CADSR.curie('15915841'),
-                   model_uri=HTAN.therapy__REGIMEN_OR_LINE_OF_THERAPY, domain=None, range=Union[str, "RegimenOrLineOfTherapyEnum"])
+                   model_uri=HTAN.therapy__REGIMEN_OR_LINE_OF_THERAPY, domain=None, range=Optional[Union[str, "RegimenOrLineOfTherapyEnum"]])
 
 slots.therapy__NUMBER_OF_CYCLES = Slot(uri=CADSR['3060718'], name="therapy__NUMBER_OF_CYCLES", curie=CADSR.curie('3060718'),
-                   model_uri=HTAN.therapy__NUMBER_OF_CYCLES, domain=None, range=int)
+                   model_uri=HTAN.therapy__NUMBER_OF_CYCLES, domain=None, range=Optional[int])
 
 slots.therapy__RESPONSE = Slot(uri=CADSR['13383448'], name="therapy__RESPONSE", curie=CADSR.curie('13383448'),
-                   model_uri=HTAN.therapy__RESPONSE, domain=None, range=Union[str, "DiseaseResponseEnum"])
+                   model_uri=HTAN.therapy__RESPONSE, domain=None, range=Optional[Union[str, "DiseaseResponseEnum"]])
 
 slots.vitalStatus__VITAL_STATUS = Slot(uri=CADSR['2847330'], name="vitalStatus__VITAL_STATUS", curie=CADSR.curie('2847330'),
                    model_uri=HTAN.vitalStatus__VITAL_STATUS, domain=None, range=Union[str, "VitalStatusEnum"])
@@ -309483,6 +309573,18 @@ slots.vitalStatus__CAUSE_OF_DEATH = Slot(uri=CADSR['4783274'], name="vitalStatus
 
 slots.vitalStatus__CAUSE_OF_DEATH_SOURCE = Slot(uri=CADSR['2390921'], name="vitalStatus__CAUSE_OF_DEATH_SOURCE", curie=CADSR.curie('2390921'),
                    model_uri=HTAN.vitalStatus__CAUSE_OF_DEATH_SOURCE, domain=None, range=Optional[Union[str, "CauseOfDeathSourceEnum"]])
+
+slots.AJCC_STAGING_SYSTEM_EDITION = Slot(uri=HTAN.AJCC_STAGING_SYSTEM_EDITION, name="AJCC_STAGING_SYSTEM_EDITION", curie=HTAN.curie('AJCC_STAGING_SYSTEM_EDITION'),
+                   model_uri=HTAN.AJCC_STAGING_SYSTEM_EDITION, domain=None, range=Optional[str])
+
+slots.CLINICAL_M_STAGE = Slot(uri=HTAN.CLINICAL_M_STAGE, name="CLINICAL_M_STAGE", curie=HTAN.curie('CLINICAL_M_STAGE'),
+                   model_uri=HTAN.CLINICAL_M_STAGE, domain=None, range=Optional[str])
+
+slots.CLINICAL_N_STAGE = Slot(uri=HTAN.CLINICAL_N_STAGE, name="CLINICAL_N_STAGE", curie=HTAN.curie('CLINICAL_N_STAGE'),
+                   model_uri=HTAN.CLINICAL_N_STAGE, domain=None, range=Optional[str])
+
+slots.CLINICAL_T_STAGE = Slot(uri=HTAN.CLINICAL_T_STAGE, name="CLINICAL_T_STAGE", curie=HTAN.curie('CLINICAL_T_STAGE'),
+                   model_uri=HTAN.CLINICAL_T_STAGE, domain=None, range=Optional[str])
 
 slots.YEARS_SMOKED = Slot(uri=HTAN.YEARS_SMOKED, name="YEARS_SMOKED", curie=HTAN.curie('YEARS_SMOKED'),
                    model_uri=HTAN.YEARS_SMOKED, domain=None, range=Optional[str])
@@ -309505,8 +309607,17 @@ slots.EVIDENCE_OF_RECURRENCE_TYPE = Slot(uri=HTAN.EVIDENCE_OF_RECURRENCE_TYPE, n
 slots.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE = Slot(uri=HTAN.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, name="AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE", curie=HTAN.curie('AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE'),
                    model_uri=HTAN.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, domain=None, range=Optional[str])
 
+slots.ECOG_PERFORMANCE_STATUS = Slot(uri=HTAN.ECOG_PERFORMANCE_STATUS, name="ECOG_PERFORMANCE_STATUS", curie=HTAN.curie('ECOG_PERFORMANCE_STATUS'),
+                   model_uri=HTAN.ECOG_PERFORMANCE_STATUS, domain=None, range=Optional[str])
+
 slots.THERAPY_ANATOMIC_SITE_UBERON_CODE = Slot(uri=HTAN.THERAPY_ANATOMIC_SITE_UBERON_CODE, name="THERAPY_ANATOMIC_SITE_UBERON_CODE", curie=HTAN.curie('THERAPY_ANATOMIC_SITE_UBERON_CODE'),
                    model_uri=HTAN.THERAPY_ANATOMIC_SITE_UBERON_CODE, domain=None, range=Optional[str])
+
+slots.THERAPEUTIC_AGENTS = Slot(uri=HTAN.THERAPEUTIC_AGENTS, name="THERAPEUTIC_AGENTS", curie=HTAN.curie('THERAPEUTIC_AGENTS'),
+                   model_uri=HTAN.THERAPEUTIC_AGENTS, domain=None, range=Optional[str])
+
+slots.AGE_IN_DAYS_AT_TREATMENT_END = Slot(uri=HTAN.AGE_IN_DAYS_AT_TREATMENT_END, name="AGE_IN_DAYS_AT_TREATMENT_END", curie=HTAN.curie('AGE_IN_DAYS_AT_TREATMENT_END'),
+                   model_uri=HTAN.AGE_IN_DAYS_AT_TREATMENT_END, domain=None, range=Optional[str])
 
 slots.OFF_TREATMENT_REASON = Slot(uri=HTAN.OFF_TREATMENT_REASON, name="OFF_TREATMENT_REASON", curie=HTAN.curie('OFF_TREATMENT_REASON'),
                    model_uri=HTAN.OFF_TREATMENT_REASON, domain=None, range=Optional[str])
@@ -309529,6 +309640,18 @@ slots.CAUSE_OF_DEATH = Slot(uri=HTAN.CAUSE_OF_DEATH, name="CAUSE_OF_DEATH", curi
 slots.CAUSE_OF_DEATH_SOURCE = Slot(uri=HTAN.CAUSE_OF_DEATH_SOURCE, name="CAUSE_OF_DEATH_SOURCE", curie=HTAN.curie('CAUSE_OF_DEATH_SOURCE'),
                    model_uri=HTAN.CAUSE_OF_DEATH_SOURCE, domain=None, range=Optional[str])
 
+slots.Diagnosis_AJCC_STAGING_SYSTEM_EDITION = Slot(uri=HTAN.AJCC_STAGING_SYSTEM_EDITION, name="Diagnosis_AJCC_STAGING_SYSTEM_EDITION", curie=HTAN.curie('AJCC_STAGING_SYSTEM_EDITION'),
+                   model_uri=HTAN.Diagnosis_AJCC_STAGING_SYSTEM_EDITION, domain=Diagnosis, range=Optional[str])
+
+slots.Diagnosis_CLINICAL_M_STAGE = Slot(uri=HTAN.CLINICAL_M_STAGE, name="Diagnosis_CLINICAL_M_STAGE", curie=HTAN.curie('CLINICAL_M_STAGE'),
+                   model_uri=HTAN.Diagnosis_CLINICAL_M_STAGE, domain=Diagnosis, range=Optional[str])
+
+slots.Diagnosis_CLINICAL_N_STAGE = Slot(uri=HTAN.CLINICAL_N_STAGE, name="Diagnosis_CLINICAL_N_STAGE", curie=HTAN.curie('CLINICAL_N_STAGE'),
+                   model_uri=HTAN.Diagnosis_CLINICAL_N_STAGE, domain=Diagnosis, range=Optional[str])
+
+slots.Diagnosis_CLINICAL_T_STAGE = Slot(uri=HTAN.CLINICAL_T_STAGE, name="Diagnosis_CLINICAL_T_STAGE", curie=HTAN.curie('CLINICAL_T_STAGE'),
+                   model_uri=HTAN.Diagnosis_CLINICAL_T_STAGE, domain=Diagnosis, range=Optional[str])
+
 slots.Exposure_YEARS_SMOKED = Slot(uri=HTAN.YEARS_SMOKED, name="Exposure_YEARS_SMOKED", curie=HTAN.curie('YEARS_SMOKED'),
                    model_uri=HTAN.Exposure_YEARS_SMOKED, domain=Exposure, range=Optional[str])
 
@@ -309550,8 +309673,17 @@ slots.FollowUp_EVIDENCE_OF_RECURRENCE_TYPE = Slot(uri=HTAN.EVIDENCE_OF_RECURRENC
 slots.FollowUp_AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE = Slot(uri=HTAN.AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, name="FollowUp_AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE", curie=HTAN.curie('AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE'),
                    model_uri=HTAN.FollowUp_AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE, domain=FollowUp, range=Optional[str])
 
+slots.FollowUp_ECOG_PERFORMANCE_STATUS = Slot(uri=HTAN.ECOG_PERFORMANCE_STATUS, name="FollowUp_ECOG_PERFORMANCE_STATUS", curie=HTAN.curie('ECOG_PERFORMANCE_STATUS'),
+                   model_uri=HTAN.FollowUp_ECOG_PERFORMANCE_STATUS, domain=FollowUp, range=Optional[str])
+
 slots.Therapy_THERAPY_ANATOMIC_SITE_UBERON_CODE = Slot(uri=HTAN.THERAPY_ANATOMIC_SITE_UBERON_CODE, name="Therapy_THERAPY_ANATOMIC_SITE_UBERON_CODE", curie=HTAN.curie('THERAPY_ANATOMIC_SITE_UBERON_CODE'),
                    model_uri=HTAN.Therapy_THERAPY_ANATOMIC_SITE_UBERON_CODE, domain=Therapy, range=Optional[str])
+
+slots.Therapy_THERAPEUTIC_AGENTS = Slot(uri=HTAN.THERAPEUTIC_AGENTS, name="Therapy_THERAPEUTIC_AGENTS", curie=HTAN.curie('THERAPEUTIC_AGENTS'),
+                   model_uri=HTAN.Therapy_THERAPEUTIC_AGENTS, domain=Therapy, range=Optional[str])
+
+slots.Therapy_AGE_IN_DAYS_AT_TREATMENT_END = Slot(uri=HTAN.AGE_IN_DAYS_AT_TREATMENT_END, name="Therapy_AGE_IN_DAYS_AT_TREATMENT_END", curie=HTAN.curie('AGE_IN_DAYS_AT_TREATMENT_END'),
+                   model_uri=HTAN.Therapy_AGE_IN_DAYS_AT_TREATMENT_END, domain=Therapy, range=Optional[str])
 
 slots.Therapy_OFF_TREATMENT_REASON = Slot(uri=HTAN.OFF_TREATMENT_REASON, name="Therapy_OFF_TREATMENT_REASON", curie=HTAN.curie('OFF_TREATMENT_REASON'),
                    model_uri=HTAN.Therapy_OFF_TREATMENT_REASON, domain=Therapy, range=Optional[str])

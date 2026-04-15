@@ -1,5 +1,5 @@
 # Auto generated from biospecimen.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-18T15:02:54
+# Generation date: 2026-04-15T14:31:35
 # Schema: Biospecimen
 #
 # id: https://w3id.org/htan/biospecimen
@@ -116,9 +116,9 @@ class BiospecimenData(YAMLRoot):
     FIXATION_DURATION_IN_MINUTES: Optional[int] = None
     LONGEST_DIMENSION: Optional[Decimal] = None
     SHORTEST_DIMENSION: Optional[Decimal] = None
-    TISSUE_SAMPLE_TYPE: Optional[Union[str, "TissueSampleTypeEnum"]] = None
     ANALYTE_TYPE: Optional[Union[str, "AnalyteTypeEnum"]] = None
     METHOD_OF_NUCLEIC_ACID_ISOLATION: Optional[str] = None
+    IS_TISSUE_SECTION: Optional[Union[str, "TissueSectionEnum"]] = None
     AGE_IN_DAYS_AT_SECTIONING: Optional[int] = None
     SLICING_METHOD: Optional[Union[str, "SlicingMethodEnum"]] = None
     SECTION_THICKNESS_VALUE: Optional[Decimal] = None
@@ -225,14 +225,14 @@ class BiospecimenData(YAMLRoot):
         if self.SHORTEST_DIMENSION is not None and not isinstance(self.SHORTEST_DIMENSION, Decimal):
             self.SHORTEST_DIMENSION = Decimal(self.SHORTEST_DIMENSION)
 
-        if self.TISSUE_SAMPLE_TYPE is not None and not isinstance(self.TISSUE_SAMPLE_TYPE, TissueSampleTypeEnum):
-            self.TISSUE_SAMPLE_TYPE = TissueSampleTypeEnum(self.TISSUE_SAMPLE_TYPE)
-
         if self.ANALYTE_TYPE is not None and not isinstance(self.ANALYTE_TYPE, AnalyteTypeEnum):
             self.ANALYTE_TYPE = AnalyteTypeEnum(self.ANALYTE_TYPE)
 
         if self.METHOD_OF_NUCLEIC_ACID_ISOLATION is not None and not isinstance(self.METHOD_OF_NUCLEIC_ACID_ISOLATION, str):
             self.METHOD_OF_NUCLEIC_ACID_ISOLATION = str(self.METHOD_OF_NUCLEIC_ACID_ISOLATION)
+
+        if self.IS_TISSUE_SECTION is not None and not isinstance(self.IS_TISSUE_SECTION, TissueSectionEnum):
+            self.IS_TISSUE_SECTION = TissueSectionEnum(self.IS_TISSUE_SECTION)
 
         if self.AGE_IN_DAYS_AT_SECTIONING is not None and not isinstance(self.AGE_IN_DAYS_AT_SECTIONING, int):
             self.AGE_IN_DAYS_AT_SECTIONING = int(self.AGE_IN_DAYS_AT_SECTIONING)
@@ -279,23 +279,8 @@ class BiospecimenData(YAMLRoot):
         if self.FIXATION_DURATION_IN_MINUTES is not None and not isinstance(self.FIXATION_DURATION_IN_MINUTES, str):
             self.FIXATION_DURATION_IN_MINUTES = str(self.FIXATION_DURATION_IN_MINUTES)
 
-        if self.TISSUE_SAMPLE_TYPE is not None and not isinstance(self.TISSUE_SAMPLE_TYPE, str):
-            self.TISSUE_SAMPLE_TYPE = str(self.TISSUE_SAMPLE_TYPE)
-
         if self.ANALYTE_TYPE is not None and not isinstance(self.ANALYTE_TYPE, str):
             self.ANALYTE_TYPE = str(self.ANALYTE_TYPE)
-
-        if self.AGE_IN_DAYS_AT_SECTIONING is not None and not isinstance(self.AGE_IN_DAYS_AT_SECTIONING, str):
-            self.AGE_IN_DAYS_AT_SECTIONING = str(self.AGE_IN_DAYS_AT_SECTIONING)
-
-        if self.SLICING_METHOD is not None and not isinstance(self.SLICING_METHOD, str):
-            self.SLICING_METHOD = str(self.SLICING_METHOD)
-
-        if self.SECTION_THICKNESS_VALUE is not None and not isinstance(self.SECTION_THICKNESS_VALUE, str):
-            self.SECTION_THICKNESS_VALUE = str(self.SECTION_THICKNESS_VALUE)
-
-        if self.SLIDE_CHARGE_TYPE is not None and not isinstance(self.SLIDE_CHARGE_TYPE, str):
-            self.SLIDE_CHARGE_TYPE = str(self.SLIDE_CHARGE_TYPE)
 
         if self.TUMOR_CLASSIFICATION is not None and not isinstance(self.TUMOR_CLASSIFICATION, str):
             self.TUMOR_CLASSIFICATION = str(self.TUMOR_CLASSIFICATION)
@@ -309,10 +294,38 @@ class BiospecimenData(YAMLRoot):
         if self.DEGREE_OF_DYSPLASIA is not None and not isinstance(self.DEGREE_OF_DYSPLASIA, str):
             self.DEGREE_OF_DYSPLASIA = str(self.DEGREE_OF_DYSPLASIA)
 
+        if self.IS_TISSUE_SECTION is not None and not isinstance(self.IS_TISSUE_SECTION, str):
+            self.IS_TISSUE_SECTION = str(self.IS_TISSUE_SECTION)
+
+        if self.AGE_IN_DAYS_AT_SECTIONING is not None and not isinstance(self.AGE_IN_DAYS_AT_SECTIONING, str):
+            self.AGE_IN_DAYS_AT_SECTIONING = str(self.AGE_IN_DAYS_AT_SECTIONING)
+
+        if self.SLICING_METHOD is not None and not isinstance(self.SLICING_METHOD, str):
+            self.SLICING_METHOD = str(self.SLICING_METHOD)
+
+        if self.SECTION_THICKNESS_VALUE is not None and not isinstance(self.SECTION_THICKNESS_VALUE, str):
+            self.SECTION_THICKNESS_VALUE = str(self.SECTION_THICKNESS_VALUE)
+
+        if self.SLIDE_CHARGE_TYPE is not None and not isinstance(self.SLIDE_CHARGE_TYPE, str):
+            self.SLIDE_CHARGE_TYPE = str(self.SLIDE_CHARGE_TYPE)
+
         super().__post_init__(**kwargs)
 
 
 # Enumerations
+class TissueSectionEnum(EnumDefinitionImpl):
+
+    No = PermissibleValue(
+        text="No",
+        description="The sample material is not a tissue section sliced from a tissue specimen block.")
+    Yes = PermissibleValue(
+        text="Yes",
+        description="The sample material is a tissue section sliced from a tissue specimen block")
+
+    _defn = EnumDefinition(
+        name="TissueSectionEnum",
+    )
+
 class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
     """
     UBERON codes for tissues and organs of origin
@@ -49330,23 +49343,6 @@ class PreservationTemperatureEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Not Reported",
                 description="Not provided or available."))
-
-class TissueSampleTypeEnum(EnumDefinitionImpl):
-
-    _defn = EnumDefinition(
-        name="TissueSampleTypeEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Tissue Block",
-            PermissibleValue(
-                text="Tissue Block",
-                description="""Refers to preserved specimens embedded in support material. These are typically cut into thin slices for microscopic examination, with or without an enhancement such as staining."""))
-        setattr(cls, "Tissue Section",
-            PermissibleValue(
-                text="Tissue Section",
-                description="A thin slice of tissue, usually for examination by microscopy."))
 
 class AnalyteTypeEnum(EnumDefinitionImpl):
 
@@ -131647,15 +131643,15 @@ slots.biospecimenData__LONGEST_DIMENSION = Slot(uri=HTAN.LONGEST_DIMENSION, name
 slots.biospecimenData__SHORTEST_DIMENSION = Slot(uri=HTAN.SHORTEST_DIMENSION, name="biospecimenData__SHORTEST_DIMENSION", curie=HTAN.curie('SHORTEST_DIMENSION'),
                    model_uri=HTAN.biospecimenData__SHORTEST_DIMENSION, domain=None, range=Optional[Decimal])
 
-slots.biospecimenData__TISSUE_SAMPLE_TYPE = Slot(uri=HTAN.TISSUE_SAMPLE_TYPE, name="biospecimenData__TISSUE_SAMPLE_TYPE", curie=HTAN.curie('TISSUE_SAMPLE_TYPE'),
-                   model_uri=HTAN.biospecimenData__TISSUE_SAMPLE_TYPE, domain=None, range=Optional[Union[str, "TissueSampleTypeEnum"]])
-
 slots.biospecimenData__ANALYTE_TYPE = Slot(uri=HTAN.ANALYTE_TYPE, name="biospecimenData__ANALYTE_TYPE", curie=HTAN.curie('ANALYTE_TYPE'),
                    model_uri=HTAN.biospecimenData__ANALYTE_TYPE, domain=None, range=Optional[Union[str, "AnalyteTypeEnum"]])
 
 slots.biospecimenData__METHOD_OF_NUCLEIC_ACID_ISOLATION = Slot(uri=HTAN.METHOD_OF_NUCLEIC_ACID_ISOLATION, name="biospecimenData__METHOD_OF_NUCLEIC_ACID_ISOLATION", curie=HTAN.curie('METHOD_OF_NUCLEIC_ACID_ISOLATION'),
                    model_uri=HTAN.biospecimenData__METHOD_OF_NUCLEIC_ACID_ISOLATION, domain=None, range=Optional[str],
                    pattern=re.compile(r'^.{0,100}$'))
+
+slots.biospecimenData__IS_TISSUE_SECTION = Slot(uri=HTAN.IS_TISSUE_SECTION, name="biospecimenData__IS_TISSUE_SECTION", curie=HTAN.curie('IS_TISSUE_SECTION'),
+                   model_uri=HTAN.biospecimenData__IS_TISSUE_SECTION, domain=None, range=Optional[Union[str, "TissueSectionEnum"]])
 
 slots.biospecimenData__AGE_IN_DAYS_AT_SECTIONING = Slot(uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, name="biospecimenData__AGE_IN_DAYS_AT_SECTIONING", curie=HTAN.curie('AGE_IN_DAYS_AT_SECTIONING'),
                    model_uri=HTAN.biospecimenData__AGE_IN_DAYS_AT_SECTIONING, domain=None, range=Optional[int])
@@ -131708,23 +131704,8 @@ slots.ACQUISITION_METHOD_OTHER_SPECIFY = Slot(uri=HTAN.ACQUISITION_METHOD_OTHER_
 slots.FIXATION_DURATION_IN_MINUTES = Slot(uri=HTAN.FIXATION_DURATION_IN_MINUTES, name="FIXATION_DURATION_IN_MINUTES", curie=HTAN.curie('FIXATION_DURATION_IN_MINUTES'),
                    model_uri=HTAN.FIXATION_DURATION_IN_MINUTES, domain=None, range=Optional[str])
 
-slots.TISSUE_SAMPLE_TYPE = Slot(uri=HTAN.TISSUE_SAMPLE_TYPE, name="TISSUE_SAMPLE_TYPE", curie=HTAN.curie('TISSUE_SAMPLE_TYPE'),
-                   model_uri=HTAN.TISSUE_SAMPLE_TYPE, domain=None, range=Optional[str])
-
 slots.ANALYTE_TYPE = Slot(uri=HTAN.ANALYTE_TYPE, name="ANALYTE_TYPE", curie=HTAN.curie('ANALYTE_TYPE'),
                    model_uri=HTAN.ANALYTE_TYPE, domain=None, range=Optional[str])
-
-slots.AGE_IN_DAYS_AT_SECTIONING = Slot(uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, name="AGE_IN_DAYS_AT_SECTIONING", curie=HTAN.curie('AGE_IN_DAYS_AT_SECTIONING'),
-                   model_uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, domain=None, range=Optional[str])
-
-slots.SLICING_METHOD = Slot(uri=HTAN.SLICING_METHOD, name="SLICING_METHOD", curie=HTAN.curie('SLICING_METHOD'),
-                   model_uri=HTAN.SLICING_METHOD, domain=None, range=Optional[str])
-
-slots.SECTION_THICKNESS_VALUE = Slot(uri=HTAN.SECTION_THICKNESS_VALUE, name="SECTION_THICKNESS_VALUE", curie=HTAN.curie('SECTION_THICKNESS_VALUE'),
-                   model_uri=HTAN.SECTION_THICKNESS_VALUE, domain=None, range=Optional[str])
-
-slots.SLIDE_CHARGE_TYPE = Slot(uri=HTAN.SLIDE_CHARGE_TYPE, name="SLIDE_CHARGE_TYPE", curie=HTAN.curie('SLIDE_CHARGE_TYPE'),
-                   model_uri=HTAN.SLIDE_CHARGE_TYPE, domain=None, range=Optional[str])
 
 slots.TUMOR_CLASSIFICATION = Slot(uri=HTAN.TUMOR_CLASSIFICATION, name="TUMOR_CLASSIFICATION", curie=HTAN.curie('TUMOR_CLASSIFICATION'),
                    model_uri=HTAN.TUMOR_CLASSIFICATION, domain=None, range=Optional[str])
@@ -131738,29 +131719,29 @@ slots.ICD_10_DISEASE_CODE = Slot(uri=HTAN.ICD_10_DISEASE_CODE, name="ICD_10_DISE
 slots.DEGREE_OF_DYSPLASIA = Slot(uri=HTAN.DEGREE_OF_DYSPLASIA, name="DEGREE_OF_DYSPLASIA", curie=HTAN.curie('DEGREE_OF_DYSPLASIA'),
                    model_uri=HTAN.DEGREE_OF_DYSPLASIA, domain=None, range=Optional[str])
 
+slots.IS_TISSUE_SECTION = Slot(uri=HTAN.IS_TISSUE_SECTION, name="IS_TISSUE_SECTION", curie=HTAN.curie('IS_TISSUE_SECTION'),
+                   model_uri=HTAN.IS_TISSUE_SECTION, domain=None, range=Optional[str])
+
+slots.AGE_IN_DAYS_AT_SECTIONING = Slot(uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, name="AGE_IN_DAYS_AT_SECTIONING", curie=HTAN.curie('AGE_IN_DAYS_AT_SECTIONING'),
+                   model_uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, domain=None, range=Optional[str])
+
+slots.SLICING_METHOD = Slot(uri=HTAN.SLICING_METHOD, name="SLICING_METHOD", curie=HTAN.curie('SLICING_METHOD'),
+                   model_uri=HTAN.SLICING_METHOD, domain=None, range=Optional[str])
+
+slots.SECTION_THICKNESS_VALUE = Slot(uri=HTAN.SECTION_THICKNESS_VALUE, name="SECTION_THICKNESS_VALUE", curie=HTAN.curie('SECTION_THICKNESS_VALUE'),
+                   model_uri=HTAN.SECTION_THICKNESS_VALUE, domain=None, range=Optional[str])
+
+slots.SLIDE_CHARGE_TYPE = Slot(uri=HTAN.SLIDE_CHARGE_TYPE, name="SLIDE_CHARGE_TYPE", curie=HTAN.curie('SLIDE_CHARGE_TYPE'),
+                   model_uri=HTAN.SLIDE_CHARGE_TYPE, domain=None, range=Optional[str])
+
 slots.BiospecimenData_ACQUISITION_METHOD_OTHER_SPECIFY = Slot(uri=HTAN.ACQUISITION_METHOD_OTHER_SPECIFY, name="BiospecimenData_ACQUISITION_METHOD_OTHER_SPECIFY", curie=HTAN.curie('ACQUISITION_METHOD_OTHER_SPECIFY'),
                    model_uri=HTAN.BiospecimenData_ACQUISITION_METHOD_OTHER_SPECIFY, domain=BiospecimenData, range=Optional[str])
 
 slots.BiospecimenData_FIXATION_DURATION_IN_MINUTES = Slot(uri=HTAN.FIXATION_DURATION_IN_MINUTES, name="BiospecimenData_FIXATION_DURATION_IN_MINUTES", curie=HTAN.curie('FIXATION_DURATION_IN_MINUTES'),
                    model_uri=HTAN.BiospecimenData_FIXATION_DURATION_IN_MINUTES, domain=BiospecimenData, range=Optional[str])
 
-slots.BiospecimenData_TISSUE_SAMPLE_TYPE = Slot(uri=HTAN.TISSUE_SAMPLE_TYPE, name="BiospecimenData_TISSUE_SAMPLE_TYPE", curie=HTAN.curie('TISSUE_SAMPLE_TYPE'),
-                   model_uri=HTAN.BiospecimenData_TISSUE_SAMPLE_TYPE, domain=BiospecimenData, range=Optional[str])
-
 slots.BiospecimenData_ANALYTE_TYPE = Slot(uri=HTAN.ANALYTE_TYPE, name="BiospecimenData_ANALYTE_TYPE", curie=HTAN.curie('ANALYTE_TYPE'),
                    model_uri=HTAN.BiospecimenData_ANALYTE_TYPE, domain=BiospecimenData, range=Optional[str])
-
-slots.BiospecimenData_AGE_IN_DAYS_AT_SECTIONING = Slot(uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, name="BiospecimenData_AGE_IN_DAYS_AT_SECTIONING", curie=HTAN.curie('AGE_IN_DAYS_AT_SECTIONING'),
-                   model_uri=HTAN.BiospecimenData_AGE_IN_DAYS_AT_SECTIONING, domain=BiospecimenData, range=Optional[str])
-
-slots.BiospecimenData_SLICING_METHOD = Slot(uri=HTAN.SLICING_METHOD, name="BiospecimenData_SLICING_METHOD", curie=HTAN.curie('SLICING_METHOD'),
-                   model_uri=HTAN.BiospecimenData_SLICING_METHOD, domain=BiospecimenData, range=Optional[str])
-
-slots.BiospecimenData_SECTION_THICKNESS_VALUE = Slot(uri=HTAN.SECTION_THICKNESS_VALUE, name="BiospecimenData_SECTION_THICKNESS_VALUE", curie=HTAN.curie('SECTION_THICKNESS_VALUE'),
-                   model_uri=HTAN.BiospecimenData_SECTION_THICKNESS_VALUE, domain=BiospecimenData, range=Optional[str])
-
-slots.BiospecimenData_SLIDE_CHARGE_TYPE = Slot(uri=HTAN.SLIDE_CHARGE_TYPE, name="BiospecimenData_SLIDE_CHARGE_TYPE", curie=HTAN.curie('SLIDE_CHARGE_TYPE'),
-                   model_uri=HTAN.BiospecimenData_SLIDE_CHARGE_TYPE, domain=BiospecimenData, range=Optional[str])
 
 slots.BiospecimenData_TUMOR_CLASSIFICATION = Slot(uri=HTAN.TUMOR_CLASSIFICATION, name="BiospecimenData_TUMOR_CLASSIFICATION", curie=HTAN.curie('TUMOR_CLASSIFICATION'),
                    model_uri=HTAN.BiospecimenData_TUMOR_CLASSIFICATION, domain=BiospecimenData, range=Optional[str])
@@ -131773,3 +131754,18 @@ slots.BiospecimenData_ICD_10_DISEASE_CODE = Slot(uri=HTAN.ICD_10_DISEASE_CODE, n
 
 slots.BiospecimenData_DEGREE_OF_DYSPLASIA = Slot(uri=HTAN.DEGREE_OF_DYSPLASIA, name="BiospecimenData_DEGREE_OF_DYSPLASIA", curie=HTAN.curie('DEGREE_OF_DYSPLASIA'),
                    model_uri=HTAN.BiospecimenData_DEGREE_OF_DYSPLASIA, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_IS_TISSUE_SECTION = Slot(uri=HTAN.IS_TISSUE_SECTION, name="BiospecimenData_IS_TISSUE_SECTION", curie=HTAN.curie('IS_TISSUE_SECTION'),
+                   model_uri=HTAN.BiospecimenData_IS_TISSUE_SECTION, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_AGE_IN_DAYS_AT_SECTIONING = Slot(uri=HTAN.AGE_IN_DAYS_AT_SECTIONING, name="BiospecimenData_AGE_IN_DAYS_AT_SECTIONING", curie=HTAN.curie('AGE_IN_DAYS_AT_SECTIONING'),
+                   model_uri=HTAN.BiospecimenData_AGE_IN_DAYS_AT_SECTIONING, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_SLICING_METHOD = Slot(uri=HTAN.SLICING_METHOD, name="BiospecimenData_SLICING_METHOD", curie=HTAN.curie('SLICING_METHOD'),
+                   model_uri=HTAN.BiospecimenData_SLICING_METHOD, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_SECTION_THICKNESS_VALUE = Slot(uri=HTAN.SECTION_THICKNESS_VALUE, name="BiospecimenData_SECTION_THICKNESS_VALUE", curie=HTAN.curie('SECTION_THICKNESS_VALUE'),
+                   model_uri=HTAN.BiospecimenData_SECTION_THICKNESS_VALUE, domain=BiospecimenData, range=Optional[str])
+
+slots.BiospecimenData_SLIDE_CHARGE_TYPE = Slot(uri=HTAN.SLIDE_CHARGE_TYPE, name="BiospecimenData_SLIDE_CHARGE_TYPE", curie=HTAN.curie('SLIDE_CHARGE_TYPE'),
+                   model_uri=HTAN.BiospecimenData_SLIDE_CHARGE_TYPE, domain=BiospecimenData, range=Optional[str])
