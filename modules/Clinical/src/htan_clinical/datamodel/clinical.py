@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-14T19:06:07
+# Generation date: 2026-04-14T19:53:09
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -477,7 +477,7 @@ class FollowUp(ClinicalRecordAttributes):
     AGE_IN_DAYS_AT_FOLLOWUP: int = None
     PROGRESSION_OR_RECURRENCE: Union[str, "ProgressionOrRecurrenceEnum"] = None
     DISEASE_RESPONSE: Union[str, "DiseaseResponseEnum"] = None
-    ECOG_PERFORMANCE_STATUS_IS_AVAILABLE: Union[str, "EcogAvailabilityEnum"] = None
+    ECOG_SCORE_PERFORMED: Union[str, "EcogScorePerformedEnum"] = None
     PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE: Optional[Union[Union[str, "TissueOrOrganOfOriginUberonEnum"], List[Union[str, "TissueOrOrganOfOriginUberonEnum"]]]] = empty_list()
     PROGRESSION_OR_RECURRENCE_TYPE: Optional[Union[str, "ProgressionTypeEnum"]] = None
     EVIDENCE_OF_RECURRENCE_TYPE: Optional[Union[str, "EvidenceOfRecurrenceTypeEnum"]] = None
@@ -506,10 +506,10 @@ class FollowUp(ClinicalRecordAttributes):
         if not isinstance(self.DISEASE_RESPONSE, DiseaseResponseEnum):
             self.DISEASE_RESPONSE = DiseaseResponseEnum(self.DISEASE_RESPONSE)
 
-        if self._is_empty(self.ECOG_PERFORMANCE_STATUS_IS_AVAILABLE):
-            self.MissingRequiredField("ECOG_PERFORMANCE_STATUS_IS_AVAILABLE")
-        if not isinstance(self.ECOG_PERFORMANCE_STATUS_IS_AVAILABLE, EcogAvailabilityEnum):
-            self.ECOG_PERFORMANCE_STATUS_IS_AVAILABLE = EcogAvailabilityEnum(self.ECOG_PERFORMANCE_STATUS_IS_AVAILABLE)
+        if self._is_empty(self.ECOG_SCORE_PERFORMED):
+            self.MissingRequiredField("ECOG_SCORE_PERFORMED")
+        if not isinstance(self.ECOG_SCORE_PERFORMED, EcogScorePerformedEnum):
+            self.ECOG_SCORE_PERFORMED = EcogScorePerformedEnum(self.ECOG_SCORE_PERFORMED)
 
         if not isinstance(self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE, list):
             self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE = [self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE] if self.PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE is not None else []
@@ -1992,20 +1992,17 @@ class ProgressionTypeEnum(EnumDefinitionImpl):
                 text="Not Reported",
                 description="Not provided or available."))
 
-class EcogAvailabilityEnum(EnumDefinitionImpl):
+class EcogScorePerformedEnum(EnumDefinitionImpl):
 
-    No = PermissibleValue(
-        text="No",
-        description="The non-affirmative response to a question.")
+    Known = PermissibleValue(
+        text="Known",
+        description="The ECOG performance status score was obtained and is available.")
     Unknown = PermissibleValue(
         text="Unknown",
         description="Not known, not observed, not recorded, or refused.")
-    Yes = PermissibleValue(
-        text="Yes",
-        description="The affirmative response to a question.")
 
     _defn = EnumDefinition(
-        name="EcogAvailabilityEnum",
+        name="EcogScorePerformedEnum",
     )
 
 class MenopauseStatusEnum(EnumDefinitionImpl):
@@ -309466,8 +309463,8 @@ slots.followUp__AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE = Slot(uri=CADSR['15748
 slots.followUp__DISEASE_RESPONSE = Slot(uri=CADSR['13383448'], name="followUp__DISEASE_RESPONSE", curie=CADSR.curie('13383448'),
                    model_uri=HTAN.followUp__DISEASE_RESPONSE, domain=None, range=Union[str, "DiseaseResponseEnum"])
 
-slots.followUp__ECOG_PERFORMANCE_STATUS_IS_AVAILABLE = Slot(uri=HTAN['clinical/followup/ECOG_PERFORMANCE_STATUS_IS_AVAILABLE'], name="followUp__ECOG_PERFORMANCE_STATUS_IS_AVAILABLE", curie=HTAN.curie('clinical/followup/ECOG_PERFORMANCE_STATUS_IS_AVAILABLE'),
-                   model_uri=HTAN.followUp__ECOG_PERFORMANCE_STATUS_IS_AVAILABLE, domain=None, range=Union[str, "EcogAvailabilityEnum"])
+slots.followUp__ECOG_SCORE_PERFORMED = Slot(uri=CADSR['5943795'], name="followUp__ECOG_SCORE_PERFORMED", curie=CADSR.curie('5943795'),
+                   model_uri=HTAN.followUp__ECOG_SCORE_PERFORMED, domain=None, range=Union[str, "EcogScorePerformedEnum"])
 
 slots.followUp__ECOG_PERFORMANCE_STATUS = Slot(uri=CADSR['88'], name="followUp__ECOG_PERFORMANCE_STATUS", curie=CADSR.curie('88'),
                    model_uri=HTAN.followUp__ECOG_PERFORMANCE_STATUS, domain=None, range=Optional[Union[str, "ECOGPerformanceStatusEnum"]])
