@@ -1,0 +1,52 @@
+{
+  "$id": "https://w3id.org/htan/clinical",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "A class to capture information about the cancer history of family members.",
+  "if": {
+    "properties": {
+      "FAMILY_MEMBER_CANCER_HISTORY": {
+        "const": "Yes"
+      }
+    },
+    "required": [
+      "FAMILY_MEMBER_CANCER_HISTORY"
+    ]
+  },
+  "properties": {
+    "FAMILY_MEMBER_CANCER_HISTORY": {
+      "description": "Response to indicate if any relative has a medical history that includes cancer. (caDSR:13309936) (No CRDC Standard Available)",
+      "enum": [
+        "No",
+        "Not Reported",
+        "Unknown",
+        "Yes"
+      ],
+      "title": "FamilyMemberCancerHistoryEnum",
+      "type": "string"
+    },
+    "HTAN_PARTICIPANT_ID": {
+      "description": "HTAN ID associated with a patient based on HTAN ID SOP (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})$",
+      "type": "string"
+    },
+    "RELATIVES_WITH_CANCER_HISTORY": {
+      "description": "Number of relatives the individual has with a known history of cancer. Use -1 if this data point is not available. (caDSR:15907364) (No CRDC Standard Available)",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "FAMILY_MEMBER_CANCER_HISTORY",
+    "HTAN_PARTICIPANT_ID"
+  ],
+  "then": {
+    "properties": {
+      "RELATIVES_WITH_CANCER_HISTORY": {}
+    },
+    "required": [
+      "RELATIVES_WITH_CANCER_HISTORY"
+    ]
+  },
+  "title": "Clinical",
+  "type": "object"
+}
