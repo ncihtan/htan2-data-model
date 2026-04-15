@@ -1,0 +1,218 @@
+{
+  "$id": "https://w3id.org/htan/multiplex_microscopy/channel_metadata",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Metadata for each channel in multiplex microscopy imaging",
+  "properties": {
+    "ANTIBODY_NAME": {
+      "description": "Short descriptive name for this antibody",
+      "type": "string"
+    },
+    "CATALOG_NUMBER": {
+      "description": "Catalog number from vendor",
+      "type": "string"
+    },
+    "CHANNEL_ID": {
+      "description": "The unique channel identifier for each channel in this image must match the corresponding field in the imaging file submitted",
+      "type": "string"
+    },
+    "CHANNEL_NAME": {
+      "description": "Channel label for each channel in this image must match the corresponding field in the imaging file submitted",
+      "type": "string"
+    },
+    "CLONE": {
+      "description": "Unique clone identifier",
+      "type": "string"
+    },
+    "CONCENTRATION": {
+      "description": "Final concentration used in experiment",
+      "type": "string"
+    },
+    "CYCLE_NUMBER": {
+      "description": "The cycle",
+      "type": "integer"
+    },
+    "DILUTION": {
+      "description": "Final dilution ratio used in experiment",
+      "type": "string"
+    },
+    "EMISSION_BANDWIDTH": {
+      "description": "Nominal width of emission spectrum (nm)",
+      "type": "number"
+    },
+    "EMISSION_WAVELENGTH": {
+      "description": "Center/peak of the emission spectrum (nm)",
+      "type": "number"
+    },
+    "EXCITATION_BANDWIDTH": {
+      "description": "Nominal width of excitation spectrum (nm)",
+      "type": "number"
+    },
+    "EXCITATION_WAVELENGTH": {
+      "description": "Center/peak of the excitation spectrum (nm)",
+      "type": "number"
+    },
+    "FLUOROPHORE": {
+      "description": "Fluorescent dye label",
+      "type": "string"
+    },
+    "LOT": {
+      "description": "Lot number from vendor",
+      "type": "string"
+    },
+    "METAL_ISOTOPE_ELEMENT_ABBREVIATION": {
+      "description": "Element abbreviation",
+      "enum": [
+        "H",
+        "He",
+        "Li",
+        "Be",
+        "B",
+        "C",
+        "N",
+        "O",
+        "F",
+        "Ne",
+        "Na",
+        "Mg",
+        "Al",
+        "Si",
+        "P",
+        "S",
+        "Cl",
+        "Ar",
+        "K",
+        "Ca",
+        "Sc",
+        "Ti",
+        "V",
+        "Cr",
+        "Mn",
+        "Fe",
+        "Co",
+        "Ni",
+        "Cu",
+        "Zn",
+        "Ga",
+        "Ge",
+        "As",
+        "Se",
+        "Br",
+        "Kr",
+        "Rb",
+        "Sr",
+        "Y",
+        "Zr",
+        "Nb",
+        "Mo",
+        "Tc",
+        "Ru",
+        "Rh",
+        "Pd",
+        "Ag",
+        "Cd",
+        "In",
+        "Sn",
+        "Sb",
+        "Te",
+        "I",
+        "Xe",
+        "Cs",
+        "Ba",
+        "La",
+        "Ce",
+        "Pr",
+        "Nd",
+        "Pm",
+        "Sm",
+        "Eu",
+        "Gd",
+        "Tb",
+        "Dy",
+        "Ho",
+        "Er",
+        "Tm",
+        "Yb",
+        "Lu",
+        "Hf",
+        "Ta",
+        "W",
+        "Re",
+        "Os",
+        "Ir",
+        "Pt",
+        "Au",
+        "Hg",
+        "Tl",
+        "Pb",
+        "Bi",
+        "Po",
+        "At",
+        "Rn",
+        "Fr",
+        "Ra",
+        "Ac",
+        "Th",
+        "Pa",
+        "U",
+        "Np",
+        "Pu",
+        "Am",
+        "Cm",
+        "Bk",
+        "Cf",
+        "Es",
+        "Fm",
+        "Md",
+        "No",
+        "Lr",
+        "Rf",
+        "Db",
+        "Sg",
+        "Bh",
+        "Hs",
+        "Mt",
+        "Ds",
+        "Rg",
+        "Cn",
+        "Fl",
+        "Lv",
+        "Ts",
+        "Og"
+      ],
+      "title": "MetalIsotopeElement",
+      "type": "string"
+    },
+    "METAL_ISOTOPE_ELEMENT_MASS": {
+      "description": "Element mass number",
+      "type": "integer"
+    },
+    "OLIGO_BARCODE_LOWER_STRAND": {
+      "description": "DNA barcode used for labeling",
+      "type": "string"
+    },
+    "OLIGO_BARCODE_UPPER_STRAND": {
+      "description": "DNA barcode used for labeling",
+      "type": "string"
+    },
+    "RRID_IDENTIFIER": {
+      "description": "Research Resource Identifier",
+      "pattern": "^RRID:AB_\\d+$",
+      "type": "string"
+    },
+    "SUB_CYCLE_NUMBER": {
+      "description": "Sub-cycle",
+      "type": "integer"
+    },
+    "TARGET_NAME": {
+      "description": "Short descriptive name (abbreviation) for this target (antigen)",
+      "type": "string"
+    }
+  },
+  "required": [
+    "CHANNEL_ID",
+    "CHANNEL_NAME"
+  ],
+  "title": "MultiplexMicroscopyChannelMetadata",
+  "type": "object"
+}
