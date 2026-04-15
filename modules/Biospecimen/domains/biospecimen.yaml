@@ -37,11 +37,9 @@ enums:
     title: tissue_section
     permissible_values:
       "No":
-        description: The non-affirmative response to a question.
-      "Unknown":
-        description: Not known, not observed, not recorded, or refused.
+        description: The sample material is not a tissue section sliced from a tissue specimen block.
       "Yes":
-        description: The affirmative response to a question.
+        description: The sample material is a tissue section sliced from a tissue specimen block
 
 slots:
   caDSR_id:
