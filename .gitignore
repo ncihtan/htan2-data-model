@@ -40,6 +40,9 @@ htmlcov/
 # MkDocs build output
 site/
 
+# Sphinx build output
+_build/
+
 # Documentation
 # First ignore everything in docs
 docs/*
