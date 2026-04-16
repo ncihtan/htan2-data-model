@@ -2,23 +2,6 @@
 
 HTAN Clinical Data Model Schema
 
-📥 [Download attributes as CSV](csv/clinical.csv)
-
-## AnyValue
-
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-
-## extension
-
-**a tag/value pair used to add non-model information to an entry**
-
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `extension_tag` | uriorcurie | Yes | a tag associated with an extension |
-| `extension_value` | AnyValue | Yes | the actual annotation |
-| `extensions` | extension | No | a tag/text tuple attached to an arbitrary element |
-
 ## Demographics
 
 **Information about the demographics**
@@ -29,6 +12,7 @@ HTAN Clinical Data Model Schema
 | `GENDER_IDENTITY` | [GenderIdentityEnum](#genderidentityenum) | Yes | Gender identity of the participant |
 | `SEX` | [SexEnum](#sexenum) | Yes | Sex of the participant |
 | `RACE` | [RaceEnum](#raceenum) | Yes | Race of the participant (caDSR:2192199) (Aligns to CDRC Standard CDE) |
+| `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 
 ## Diagnosis
 
@@ -38,17 +22,20 @@ HTAN Clinical Data Model Schema
 |-----------|------|----------|-------------|
 | `PRIMARY_DIAGNOSIS_NCI_THESAURUS_ID` | [PrimaryDiagnosisNCIThesaurusIDEnum](#primarydiagnosisncithesaurusidenum) | Yes | NCI Thesaurus concept identifier for primary diagnosis. Note that NCI Thesaurus offers very broad and very granular cancer types. Please select the most granular disease term most relevant to your research atlas. For example, for Ovarian Cancer, use: C4908: Ovarian Carcinoma, and not a more specific code such as: C139964: Stage I Ovarian Cancer AJCC v8. (caDSR:14905532) (Aligns to CDRC Standard CDE) |
 | `AGE_IN_DAYS_AT_DIAGNOSIS` | integer | Yes | Age at the time of diagnosis expressed in number of days since birth. Use -1 if this data point is not available. (caDSR:15019300) (No CRDC Standard Available) |
-| `TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue_or_organ_of_origin_uberon_enum) | Yes | UBERON identifier indicating the tissue or organ where the disease of interest originated, e.g. UBERON:0000002. (caDSR:14883047) (Aligns to CDRC Standard CDE) |
+| `TISSUE_OR_ORGAN_OF_ORIGIN_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum) | Yes | UBERON identifier indicating the tissue or organ where the disease of interest originated, e.g. UBERON:0000002. (caDSR:14883047) (Aligns to CDRC Standard CDE) |
 | `TUMOR_GRADE` | [TumorGradeEnum](#tumorgradeenum) | Yes | Degree of abnormality of cancer cells as a measure of differentiation and aggressiveness. (caDSR:11325685) (Aligns to CDRC Standard CDE) |
-| `CLINICAL_T_STAGE` | [ClinicalTStageEnum](#clinicaltstageenum) | Yes | Extent of spread of the primary cancer based on evidence obtained from clinical assessment parameters determined prior to treatment. (caDSR:3440328) (Aligns to CRDC Node) |
-| `CLINICAL_N_STAGE` | [ClinicalNStageEnum](#clinicalnstageenum) | Yes | Extent of the regional lymph node involvement for the cancer based on evidence obtained from clinical assessment parameters determined prior to treatment. (caDSR:3440330) (Aligns to CRDC Node) |
-| `CLINICAL_M_STAGE` | [ClinicalMStageEnum](#clinicalmstageenum) | Yes | Extent of the distant metastasis for the cancer based on evidence obtained from clinical assessment parameters determined prior to treatment. (caDSR:3440331) (Aligns to CRDC Node) |
-| `AJCC_STAGING_SYSTEM_EDITION` | [AJCCStagingSystemEditionEnum](#ajccstagingsystemeditionenum) | Yes | Version or edition of the American Joint Committee on Cancer Cancer Staging Handbooks used to guide TMN clinical staging in CLINICAL_T_STAGE, CLINICAL_M_STAGE and CLINICAL_N_STAGE fields. (caDSR:2722309) (Aligns to CRDC Node) |
+| `TUMOR_STAGED` | [TumorStagedEnum](#tumorstagedenum) | Yes | Indicator of whether the tumor was staged using the AJCC classification system. |
+| `CLINICAL_T_STAGE` | [ClinicalTStageEnum](#clinicaltstageenum) | Conditional: Required when TUMOR_STAGED is "Yes" | Required when TUMOR_STAGED is "Yes" |
+| `CLINICAL_N_STAGE` | [ClinicalNStageEnum](#clinicalnstageenum) | Conditional: Required when TUMOR_STAGED is "Yes" | Required when TUMOR_STAGED is "Yes" |
+| `CLINICAL_M_STAGE` | [ClinicalMStageEnum](#clinicalmstageenum) | Conditional: Required when TUMOR_STAGED is "Yes" | Required when TUMOR_STAGED is "Yes" |
+| `AJCC_STAGING_SYSTEM_EDITION` | [AJCCStagingSystemEditionEnum](#ajccstagingsystemeditionenum) | Conditional: Required when TUMOR_STAGED is "Yes" | Required when TUMOR_STAGED is "Yes" |
 | `AGE_IN_DAYS_AT_LAST_KNOWN_DISEASE_STATUS` | integer | Yes | Age in days of subject at the time of their last known disease status. Use -1 if this data point is not available. (caDSR:14589579) (No CRDC Standard Available) |
 | `LAST_KNOWN_DISEASE_STATUS` | [LastKnownDiseaseStatusEnum](#lastknowndiseasestatusenum) | Yes | Most recently documented condition or state of an individual's disease. (caDSR:12447172) (Aligns to CDRC Standard CDE) |
 | `TUMOR_CLASSIFICATION_CATEGORY` | [TumorClassificationCategoryEnum](#tumorclassificationcategoryenum) | Yes | Classification of a tumor at a particular time based primarily on histopathological characteristics. (caDSR:12922545) (Aligns to CDRC Standard CDE) |
 | `METASTASIS_AT_DIAGNOSIS` | [MetastasisAtDiagnosisEnum](#metastasisatdiagnosisenum) | Yes | State of metastatic disease at the time of primary tumor diagnosis. (caDSR:3438571) (Aligns to CDRC Standard CDE) |
 | `METHOD_OF_DIAGNOSIS` | [MethodOfDiagnosisEnum](#methodofdiagnosisenum) | Yes | Type of clinical or laboratory procedure(s) used in the determination of a disease diagnosis. (caDSR:14857681) (Aligns to CRDC Node) |
+| `GLEASON_GRADE_GROUP` | [GleasonGradeGroupEnum](#gleasongradegroupenum) | No | The Gleason grade group for prostate cancer, derived from the primary and secondary Gleason pattern scores. (caDSR:5918370) |
+| `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 
 ## Exposure
 
@@ -57,11 +44,12 @@ HTAN Clinical Data Model Schema
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `SMOKING_HISTORY` | [SmokingHistoryEnum](#smokinghistoryenum) | Yes | Current or past smoking status. (caDSR:3626148) (Aligns to CRDC Node) |
-| `YEARS_SMOKED` | integer | No | Number of years a person has been smoking. Use -1 if this data point is not available. (caDSR:3137957) (No CRDC Standard Available) |
-| `PACK_YEARS_SMOKED` | integer | No | Numeric computed value to represent lifetime tobacco exposure defined as number of cigarettes smoked per day x number of years smoked divided by 20. Use -1 if this data point is not available. (caDSR:2955385) (No CRDC Standard Available) |
+| `YEARS_SMOKED` | integer | Conditional: Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker | Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker |
+| `PACK_YEARS_SMOKED` | integer | Conditional: Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker | Required when SMOKING_HISTORY is Current smoker, Current Every-Day Smoker, Current Some-Day Smoker, or Former Smoker |
 | `ALCOHOL_HISTORY_INDICATOR` | [AlcoholHistoryIndicatorEnum](#alcoholhistoryindicatorenum) | Yes | Response indicating whether or not an individual has ever consumed alcohol. (caDSR:7537144) (No CRDC Standard Available) |
 | `ENVIRONMENTAL_EXPOSURE` | [EnvironmentalExposureEnum](#environmentalexposureenum) | Yes | Response indicating whether or not an individual was exposed to potentially harmful environmental agents (caDSR:15753166) (Aligns to CRDC Node) |
-| `ENVIRONMENTAL_EXPOSURE_TYPE` | [EnvironmentalExposureTypeEnum](#environmentalexposuretypeenum) | No | Type of potentially harmful environmental agents to which an individual was exposed. (caDSR:15753203) (Aligns to CDRC Standard CDE) |
+| `ENVIRONMENTAL_EXPOSURE_TYPE` | [EnvironmentalExposureTypeEnum](#environmentalexposuretypeenum) | Conditional: Required when ENVIRONMENTAL_EXPOSURE is Yes | Required when ENVIRONMENTAL_EXPOSURE is Yes |
+| `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 
 ## FamilyHistory
 
@@ -70,7 +58,8 @@ HTAN Clinical Data Model Schema
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `FAMILY_MEMBER_CANCER_HISTORY` | [FamilyMemberCancerHistoryEnum](#familymembercancerhistoryenum) | Yes | Response to indicate if any relative has a medical history that includes cancer. (caDSR:13309936) (No CRDC Standard Available) |
-| `RELATIVES_WITH_CANCER_HISTORY` | integer | No | Number of relatives the individual has with a known history of cancer. Use -1 if this data point is not available. (caDSR:15907364) (No CRDC Standard Available) |
+| `RELATIVES_WITH_CANCER_HISTORY` | integer | Conditional: If FAMILY_MEMBER_CANCER_HISTORY is "Yes", then RELATIVES_WITH_CANCER_HISTORY becomes required  | Number of relatives the individual has with a known history of cancer. Use -1 if this data point is not available. (caDSR:15907364) (No CRDC Standard Available) |
+| `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 
 ## FollowUp
 
@@ -80,13 +69,15 @@ HTAN Clinical Data Model Schema
 |-----------|------|----------|-------------|
 | `AGE_IN_DAYS_AT_FOLLOWUP` | integer | Yes | Age in days of the subject at the the time of follow-up. Use -1 if this data point is not available. (caDSR:15748634) (No CRDC Standard Available) |
 | `PROGRESSION_OR_RECURRENCE` | [ProgressionOrRecurrenceEnum](#progressionorrecurrenceenum) | Yes | Response indicating whether or not a subject has a progressive disease or a recurrent disease. (caDSR:13529783) (Aligns to CDRC Standard CDE) |
-| `PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue_or_organ_of_origin_uberon_enum) | No | UBERON identifier indicating where in the body a disease has progressed or recurred, e.g. UBERON:0000002. (caDSR:14883061) (Aligns to CDRC Standard CDE) |
-| `PROGRESSION_OR_RECURRENCE_TYPE` | [ProgressionTypeEnum](#progressiontypeenum) | No | Type of worsening or reemergence of disease over time. (caDSR:14742451) (Aligns to CDRC Standard CDE) |
-| `EVIDENCE_OF_RECURRENCE_TYPE` | [EvidenceOfRecurrenceTypeEnum](#evidenceofrecurrencetypeenum) | No | Type of evidence used to determine whether the individual's disease has recurred. (caDSR:7668166) (No CRDC Standard Available) |
-| `AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE` | integer | No | Age of an individual, in days, when a diagnosis of disease progression or recurrence was made. Use -1 if this data point is not available. (caDSR:15748659) (No CRDC Standard Available) |
+| `PROGRESSION_OR_RECURRENCE_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum) | Conditional: Required when PROGRESSION_OR_RECURRENCE is "Yes" | Required when PROGRESSION_OR_RECURRENCE is "Yes" |
+| `PROGRESSION_OR_RECURRENCE_TYPE` | [ProgressionTypeEnum](#progressiontypeenum) | Conditional: Required when PROGRESSION_OR_RECURRENCE is "Yes" | Required when PROGRESSION_OR_RECURRENCE is "Yes" |
+| `EVIDENCE_OF_RECURRENCE_TYPE` | [EvidenceOfRecurrenceTypeEnum](#evidenceofrecurrencetypeenum) | Conditional: Required when PROGRESSION_OR_RECURRENCE is "Yes" | Required when PROGRESSION_OR_RECURRENCE is "Yes" |
+| `AGE_IN_DAYS_AT_PROGRESSION_OR_RECURRENCE` | integer | Conditional: Required when PROGRESSION_OR_RECURRENCE is "Yes" | Required when PROGRESSION_OR_RECURRENCE is "Yes" |
 | `DISEASE_RESPONSE` | [DiseaseResponseEnum](#diseaseresponseenum) | Yes | Result of an evaluation to determine whether pathologic and/or clinical changes resulted from treatment. (caDSR:13383448) (Aligns to CDRC Standard CDE) |
-| `ECOG_PERFORMANCE_STATUS` | [ECOGPerformanceStatusEnum](#ecogperformancestatusenum) | Yes | ECOG functional performance status of the individual. (caDSR:88) (Aligns to CDRC Standard CDE) |
-| `MENOPAUSE_STATUS` | [MenopauseStatusEnum](#menopausestatusenum) | Yes | Menopausal status of the individual. (caDSR:2434914) (No CRDC Standard Available) |
+| `ECOG_SCORE_PERFORMED` | [EcogScorePerformedEnum](#ecogscoreperformedenum) | Yes | Indicator of whether an ECOG performance status score was obtained for the individual. (caDSR:5943795) (Aligns to CRDC Standard CDE) |
+| `ECOG_PERFORMANCE_STATUS` | [ECOGPerformanceStatusEnum](#ecogperformancestatusenum) | Conditional: Required when ECOG_SCORE_PERFORMED is "Known" | Required when ECOG_SCORE_PERFORMED is "Known" |
+| `MENOPAUSE_STATUS` | [MenopauseStatusEnum](#menopausestatusenum) | No | Menopausal status of the individual. (caDSR:2434914) (No CRDC Standard Available) |
+| `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 
 ## MolecularTest
 
@@ -97,7 +88,7 @@ HTAN Clinical Data Model Schema
 | `TIMEPOINT_LABEL` | string | No | Label to identify the time point at which the clinical data or biospecimen was obtained (e.g. Baseline, End of Treatment, Overall survival, Final). NO PHI/PII INFORMATION IS ALLOWED. (caDSR:8031077) (No CRDC Standard Available) |
 | `AGE_IN_DAYS_AT_MOLECULAR_TEST_START` | integer | Yes | Age in days of the subject at the start of a molecular analysis. Use -1 if this data point is not available. (caDSR:15879017) (No CRDC Standard Available) |
 | `AGE_IN_DAYS_AT_MOLECULAR_TEST_STOP` | integer | No | Age in days of the subject at the end of a molecular analysis. (caDSR:15879662) (No CRDC Standard Available) |
-| `GENE_SYMBOL` | [gene_symbol_enum](#gene_symbol_enum) | Yes | Gene symbol of the gene targeted or included in molecular analysis. (caDSR:11280318) (No CRDC Standard Available) |
+| `GENE_SYMBOL` | [gene_symbol_enum](#gene-symbol-enum) | Yes | Gene symbol of the gene targeted or included in molecular analysis. (caDSR:11280318) (No CRDC Standard Available) |
 | `MOLECULAR_ANALYSIS_METHOD` | [MolecularAnalysisMethodEnum](#molecularanalysismethodenum) | Yes | Description of the method used for clinical molecular analysis. (caDSR:6142401) (No CRDC Standard Available) |
 | `MOLECULAR_ANALYSIS_RESULT` | [MolecularAnalysisResultEnum](#molecularanalysisresultenum) | Yes | Description of the result of clinical molecular analysis. (caDSR:6142397) (No CRDC Standard Available) |
 | `AA_CHANGE` | string | No | Alphanumeric value used to describe the amino acid change for a specific genetic variant, e.g., R116Q, as determined by clinical testing. (caDSR:6142508) (No CRDC Standard Available) |
@@ -111,6 +102,7 @@ HTAN Clinical Data Model Schema
 | `TEST_RESULT` | string | No | Specific result of a clinical molecular test. Use this field only if one of the permissible values in MOLECULAR_ANALYSIS_RESULT isn't relevant. Please provide TEST_UNITS if applicable. (caDSR:2230153) (No CRDC Standard Available) |
 | `VARIANT_ORIGIN` | [VariantOriginEnum](#variantoriginenum) | No | Biological origin of a specific genetic variant identified by a clinical test. (caDSR:14473382) (No CRDC Standard Available) |
 | `VARIANT_TYPE` | [VariantTypeEnum](#varianttypeenum) | No | Description of the type of genetic variation. (caDSR:6142402) (No CRDC Standard Available) |
+| `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 
 ## Therapy
 
@@ -122,14 +114,15 @@ HTAN Clinical Data Model Schema
 | `TREATMENT_INTENT_TYPE` | [TreatmentIntentTypeEnum](#treatmentintenttypeenum) | Yes | Anticipated outcome for therapy. (caDSR:15157467) (Aligns to CDRC Standard CDE) |
 | `TREATMENT_TYPE` | [TreatmentTypeEnum](#treatmenttypeenum) | Yes | Type of treatment administered. (caDSR:14737565) (Aligns to CDRC Standard CDE) |
 | `PHARMACOTHERAPY_TYPE` | [PharmacotherapyTypeEnum](#pharmacotherapytypeenum) | Yes | Whether single or combination pharmacotherapy was used. (caDSR:15743233) (Aligns to CDRC Standard CDE) |
-| `THERAPEUTIC_AGENTS` | [AntineoplasticAgentEnum](#antineoplasticagentenum) | Yes | The NCit Preferred Name(s) of the Therapeutic agent(s), as dervied from https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Drug_or_Substance/Antineoplastic_Agent.xls (caDSR:14913015) (Aligns to CDRC Standard CDE) |
-| `THERAPY_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue_or_organ_of_origin_uberon_enum) | No | UBERON identifier for the location within the body targeted by a therapeutic procedure, e.g. UBERON:0000002. (caDSR:14461856) (Aligns to CDRC Standard CDE) |
+| `THERAPEUTIC_AGENTS` | [AntineoplasticAgentEnum](#antineoplasticagentenum) | Conditional: Required when TREATMENT_TYPE is Chemotherapy, Concurrent Chemoradiation, or Pharmacotherapy | Required when TREATMENT_TYPE is Chemotherapy, Concurrent Chemoradiation, or Pharmacotherapy |
+| `THERAPY_ANATOMIC_SITE_UBERON_CODE` | [tissue_or_organ_of_origin_uberon_enum](#tissue-or-organ-of-origin-uberon-enum) | Conditional: Required when TREATMENT_TYPE is a surgical or radiation therapy | Required when TREATMENT_TYPE is a surgical or radiation therapy |
 | `AGE_IN_DAYS_AT_TREATMENT_START` | integer | Yes | The age in days of the subject at the time that this treatment was started. Use -1 if this data point is not available. (caDSR:12304720) (Aligns to CDRC Standard CDE) |
-| `AGE_IN_DAYS_AT_TREATMENT_END` | integer | Yes | The age in days of the subject at the time that this treatment was completed. Use -1 if this data point is not available. (caDSR:12304723) (Aligns to CDRC Standard CDE) |
-| `OFF_TREATMENT_REASON` | [OffTreatmentReasonEnum](#offtreatmentreasonenum) | Yes | Reason that an individual did not receive treatment. (caDSR:15743249) (Aligns to CDRC Standard CDE) |
-| `REGIMEN_OR_LINE_OF_THERAPY` | [RegimenOrLineOfTherapyEnum](#regimenorlineoftherapyenum) | Yes | Description of the treatment regimen or line of therapy. (caDSR:15915841) (Aligns to CDRC Standard CDE) |
-| `NUMBER_OF_CYCLES` | integer | Yes | Number of cycles of the administered therapeutic procedure. Use -1 if this data point is not available. (caDSR:3060718) (Aligns to CDRC Standard CDE) |
-| `RESPONSE` | [DiseaseResponseEnum](#diseaseresponseenum) | Yes | The result of an evaluation to determine whether pathologic and/or clinical changes resulted from treatment. (caDSR:13383448) (Aligns to CDRC Standard CDE) |
+| `AGE_IN_DAYS_AT_TREATMENT_END` | integer | Conditional: Required when treatment has ended; use -1 if not available | Required when treatment has ended; use -1 if not available |
+| `OFF_TREATMENT_REASON` | [OffTreatmentReasonEnum](#offtreatmentreasonenum) | Conditional: Required when AGE_IN_DAYS_AT_TREATMENT_END is present | Required when AGE_IN_DAYS_AT_TREATMENT_END is present |
+| `REGIMEN_OR_LINE_OF_THERAPY` | [RegimenOrLineOfTherapyEnum](#regimenorlineoftherapyenum) | Conditional: Required when TREATMENT_TYPE is Chemotherapy, Concurrent Chemoradiation, or Pharmacotherapy | Required when TREATMENT_TYPE is Chemotherapy, Concurrent Chemoradiation, or Pharmacotherapy |
+| `NUMBER_OF_CYCLES` | integer | Conditional: Required when TREATMENT_TYPE is pharmacotherapy | Required when TREATMENT_TYPE is pharmacotherapy |
+| `RESPONSE` | [DiseaseResponseEnum](#diseaseresponseenum) | Conditional: Required when AGE_IN_DAYS_AT_TREATMENT_END is present | Required when AGE_IN_DAYS_AT_TREATMENT_END is present |
+| `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 
 ## VitalStatus
 
@@ -137,27 +130,20 @@ HTAN Clinical Data Model Schema
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `VITAL_STATUS` | string | No |  |
+| `VITAL_STATUS` | [VitalStatusEnum](#vitalstatusenum) | Yes | Survival status for individual. (caDSR:2847330) (Aligns to CDRC Standard CDE) |
 | `AGE_IN_DAYS_AT_LAST_KNOWN_SURVIVAL_STATUS` | integer | Yes | Age in days when the last known survival status of the subject was captured. Use -1 if this data point is not available. (caDSR:12305768) (Aligns to CDRC Standard CDE) |
-| `AGE_IN_DAYS_AT_DEATH` | integer | No | Age in days of the subject at which death occurred. Use -1 if this data point is not available. (caDSR:15748633) (Aligns to CDRC Standard CDE) |
-| `CAUSE_OF_DEATH` | [CauseOfDeathEnum](#causeofdeathenum) | No | Circumstance or condition of greatest importance that resulted in the death. (caDSR:4783274) (Aligns to CDRC Standard CDE) |
-| `CAUSE_OF_DEATH_SOURCE` | [CauseOfDeathSourceEnum](#causeofdeathsourceenum) | No | Source of information used in describing the death of an individual. (caDSR:2390921) (Aligns to CDRC Standard CDE) |
+| `AGE_IN_DAYS_AT_DEATH` | integer | Conditional: Required when VITAL_STATUS is Dead | Required when VITAL_STATUS is Dead |
+| `CAUSE_OF_DEATH` | [CauseOfDeathEnum](#causeofdeathenum) | Conditional: Required when VITAL_STATUS is Dead | Required when VITAL_STATUS is Dead |
+| `CAUSE_OF_DEATH_SOURCE` | [CauseOfDeathSourceEnum](#causeofdeathsourceenum) | Conditional: Required when VITAL_STATUS is Dead | Required when VITAL_STATUS is Dead |
+| `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
 
-## ClinicalData
+## ClinicalRecordAttributes
 
-**Container for all clinical data**
+**Base attributes shared by all clinical record types**
 
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `HTAN_PARTICIPANT_ID` | string | Yes | HTAN ID associated with a patient based on HTAN ID SOP (Primary Key) |
-| `DEMOGRAPHICS` | Demographics | Yes | Demographic information |
-| `VITAL_STATUS` | string | No |  |
-| `DIAGNOSIS` | Diagnosis | Yes | Primary diagnosis information |
-| `EXPOSURES` | Exposure | Yes | Exposure history |
-| `FAMILY_HISTORY` | FamilyHistory | Yes | Family history of cancer |
-| `FOLLOW_UPS` | FollowUp | No | Follow-up observations |
-| `MOLECULAR_TESTS` | MolecularTest | No | Molecular test results |
-| `THERAPIES` | Therapy | No | Therapy information |
 
 ## Enums
 
@@ -7357,6 +7343,13 @@ NCI Thesaurus Preferred Name for antineoplastic agents, as derived from https://
 | 4 | Completely disabled. Cannot carry on any selfcare. Totally confined to bed or chair. |
 | 5 | Dead. |
 
+### EcogScorePerformedEnum
+
+| Value | Description |
+|-------|-------------|
+| Known | The ECOG performance status score was obtained and is available. |
+| Unknown | Not known, not observed, not recorded, or refused. |
+
 ### EnvironmentalExposureEnum
 
 | Value | Description |
@@ -7417,6 +7410,19 @@ NCI Thesaurus Preferred Name for antineoplastic agents, as derived from https://
 | Other | Other |
 | Unknown | Unknown |
 | Not Reported | Not provided or available |
+
+### GleasonGradeGroupEnum
+
+| Value | Description |
+|-------|-------------|
+| 1 | Grade Group I - Only individual discrete well-formed glands. |
+| 2 | Grade Group II - Predominantly well-formed glands with lesser component of poorly-formed/fused/cribriform glands. |
+| 3 | Grade Group III - Predominantly poorly formed/fused/cribriform glands with lesser component of well-formed glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at radical prostatectomy, the component of less than 5% well-formed glands is not factored into the grade. |
+| 4 | Grade Group IV - Only poorly-formed/fused/cribriform glands or predominantly well-formed glands and lesser component lacking glands or predominantly lacking glands and lesser component of well-formed gland. Poorly-formed/fused/cribriform glands can be a more minor component. |
+| 5 | Grade Group V - Lacks gland formation (or with necrosis) with or without poorly formed/fused/cribriform glands. For cases with greater than 95% poorly formed/fused/cribriform glands or lack of glands on a core or at RP, the component of less than 5% well-formed glands is not factored into the grade. |
+| Not Applicable | Determination of a value is not relevant in the current context. |
+| Not Reported | Not provided or available. |
+| Unknown | Not known, not observed, not recorded, or refused. |
 
 ### InitialDiseaseStatusEnum
 
@@ -29418,6 +29424,14 @@ NCI Thesaurus concept identifier for primary diagnosis. Note that NCI Thesaurus 
 | Stage IVC | Stage IVC |
 | Not Reported | Not provided or available |
 | Unknown | Not known, not observed, not recorded, or refused |
+
+### TumorStagedEnum
+
+| Value | Description |
+|-------|-------------|
+| No | The non-affirmative response to a question. |
+| Unknown | Not known, not observed, not recorded, or refused. |
+| Yes | The affirmative response to a question. |
 
 ### VariantOriginEnum
 
