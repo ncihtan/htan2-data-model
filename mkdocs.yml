@@ -1,0 +1,58 @@
+site_name: HTAN Data Model
+site_description: LinkML schemas for the Human Tumor Atlas Network
+repo_url: https://github.com/ncihtan/htan2-data-model
+repo_name: ncihtan/htan2-data-model
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: light-blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: light-blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.annotate
+
+plugins:
+  - search
+  - mermaid2
+
+nav:
+  - Home: index.md
+  - Modules:
+    - Clinical: clinical.md
+    - Biospecimen: biospecimen.md
+    - WES: wes.md
+    - scRNA-seq: scrna-seq.md
+    - Spatial Omics: spatialomics.md
+    - Multiplex Microscopy: multiplexmicroscopy.md
+    - Digital Pathology: digitalpathology.md
+    - Imaging: imaging.md
+  - Vocabulary (Enums): enums.md
+  - Slot Index: slots.md
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
+  - tables
+  - toc:
+      permalink: true

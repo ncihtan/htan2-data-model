@@ -7,9 +7,4 @@ build:
   commands:
     - pip install -r requirements.txt
     - python scripts/generate_table_docs.py
-    - rm -rf _build _readthedocs
-    - python -m sphinx -b html -d "${READTHEDOCS_OUTPUT}/.doctrees" . "${READTHEDOCS_OUTPUT}/html"
-
-python:
-  install:
-    - requirements: requirements.txt
+    - mkdocs build --site-dir ${READTHEDOCS_OUTPUT}/html

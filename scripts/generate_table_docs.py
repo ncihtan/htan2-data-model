@@ -3,6 +3,7 @@
 Simplified doc generator using LinkML SchemaView.
 ~120 lines vs the original 800-line script.
 """
+import re
 from pathlib import Path
 from linkml_runtime import SchemaView
 
@@ -14,7 +15,7 @@ MODULES = {
     "scRNA-seq": "modules/scRNA-seq/domains/scrna_seq.yaml",
     "SpatialOmics": "modules/SpatialOmics/domains/spatial.yaml",
     "MultiplexMicroscopy": "modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml",
-    "DigitalPathology": "modules/DigitalPathology/domains/digitalpathology.yaml",
+    "DigitalPathology": "modules/DigitalPathology/domains/digital_pathology.yaml",
     "Imaging": "modules/Imaging/domains/imaging.yaml",
 }
 
@@ -95,13 +96,13 @@ def generate_class_table(sv: SchemaView, class_name: str, enum_names: set) -> st
         if slot:
             slot_range = slot.range or "string"
             # Link to enum if the type is an enum.
-            # Sphinx/MyST slugifies heading IDs: lowercase + non-alphanumeric → dash.
-            # Use the same transformation so the anchor matches the generated heading ID.
+            # Match Python-Markdown toc slugify: lowercase, keep word chars/spaces/-,
+            # replace spaces with -.  Underscores are preserved (word chars).
             if slot_range in enum_names:
-                slug = "".join(
-                    c if c.isalnum() else "-" for c in slot_range.lower()
-                ).strip("-")
-                type_display = f"[{slot_range}](#{slug})"
+                slug = re.sub(r"[^\w\s-]", "", slot_range.lower()).strip().replace(
+                    " ", "-"
+                )
+                type_display = f"[{slot_range}](enums.md#{slug})"
             else:
                 type_display = slot_range
 
@@ -140,6 +141,48 @@ def generate_enum_table(sv: SchemaView, enum_name: str) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _inheritance_level(sv: SchemaView, class_name: str) -> str | None:
+    """Return a short level label (e.g. 'Level 1') from the class name or is_a chain."""
+    m = re.search(r"[Ll]evel\s*(\d)", class_name)
+    if m:
+        return f"Level {m.group(1)}"
+    cls = sv.get_class(class_name)
+    if cls and cls.is_a:
+        return _inheritance_level(sv, cls.is_a)
+    return None
+
+
+def generate_class_cards(sv: SchemaView) -> str:
+    """Generate a Material grid card block for all concrete classes in the schema."""
+    cards = []
+    for class_name in sorted(sv.all_classes()):
+        if class_name in EXCLUDED_CLASSES:
+            continue
+        cls = sv.get_class(class_name)
+        if not cls or cls.mixin or cls.abstract:
+            continue
+
+        desc = (cls.description or "").replace("\n", " ")
+        if len(desc) > 120:
+            desc = desc[:117] + "..."
+
+        level = _inheritance_level(sv, class_name)
+        level_tag = f"_{level}_ &nbsp; " if level else ""
+
+        anchor = class_name.lower()
+        cards.append(
+            f"-   **[{class_name}](#{anchor})**\n"
+            f"    ---\n"
+            f"    {level_tag}{desc}"
+        )
+
+    if not cards:
+        return ""
+
+    inner = "\n\n".join(cards)
+    return f'<div class="grid cards" markdown>\n\n{inner}\n\n</div>\n'
+
+
 def generate_module_docs(name: str, schema_path: str, output_path: str):
     """Generate docs for a module."""
     sv = SchemaView(schema_path)
@@ -147,6 +190,11 @@ def generate_module_docs(name: str, schema_path: str, output_path: str):
     lines = [f"# {name}\n"]
     if sv.schema.description:
         lines.append(f"{sv.schema.description}\n")
+
+    # Class cards overview
+    cards = generate_class_cards(sv)
+    if cards:
+        lines.append(cards)
 
     enum_names = set(sv.all_enums())
 
@@ -166,6 +214,81 @@ def generate_module_docs(name: str, schema_path: str, output_path: str):
 
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     Path(output_path).write_text("\n".join(lines))
+    print(f"✓ {output_path}")
+
+
+def generate_enums_page(base_dir: Path, output_path: str):
+    """Generate a combined vocabulary/enums page across all modules."""
+    lines = [
+        "# Vocabulary (Enums)\n",
+        "All controlled vocabulary terms used across HTAN modules. "
+        "Use your browser's search (`Ctrl+F` / `⌘F`) or the site search "
+        "to find a specific value.\n",
+    ]
+
+    for name, schema_path in MODULES.items():
+        full_path = base_dir / schema_path
+        if not full_path.exists():
+            continue
+        sv = SchemaView(str(full_path))
+        enums = sorted(sv.all_enums())
+        if not enums:
+            continue
+
+        lines.append(f"## {name}\n")
+        for enum_name in enums:
+            table = generate_enum_table(sv, enum_name)
+            if table:
+                lines.append(table)
+
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(output_path).write_text("\n".join(lines))
+    print(f"✓ {output_path}")
+
+
+def generate_slots_index(base_dir: Path, output_path: str):
+    """Generate a cross-module slot index page."""
+    # slot_name -> {"range", "description", "modules": set, "required": bool}
+    slot_data: dict[str, dict] = {}
+
+    for module_name, schema_path in MODULES.items():
+        full_path = base_dir / schema_path
+        if not full_path.exists():
+            continue
+        sv = SchemaView(str(full_path))
+        for slot_name, slot in sv.all_slots().items():
+            if slot_name not in slot_data:
+                slot_data[slot_name] = {
+                    "range": slot.range or "string",
+                    "description": (slot.description or "")
+                    .replace("\n", " ")
+                    .replace("|", "\\|"),
+                    "modules": set(),
+                    "required": bool(slot.required),
+                }
+            slot_data[slot_name]["modules"].add(module_name)
+
+    lines = [
+        "# Slot Index\n",
+        "Every metadata field defined across all HTAN modules, sorted alphabetically. "
+        "Fields shared between modules are listed once with all modules noted.\n",
+        "| Slot | Module(s) | Type | Required | Description |",
+        "|------|-----------|------|----------|-------------|",
+    ]
+
+    for slot_name in sorted(slot_data.keys()):
+        d = slot_data[slot_name]
+        modules_str = ", ".join(sorted(d["modules"]))
+        required = "Yes" if d["required"] else "No"
+        desc = d["description"]
+        if len(desc) > 150:
+            desc = desc[:147] + "..."
+        lines.append(
+            f"| `{slot_name}` | {modules_str} | {d['range']} | {required} | {desc} |"
+        )
+
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(output_path).write_text("\n".join(lines) + "\n")
     print(f"✓ {output_path}")
 
 
@@ -193,6 +316,9 @@ def main():
             generate_module_docs(name, str(full_path), str(output_path))
         else:
             print(f"⚠ {name}: schema not found")
+
+    generate_enums_page(base_dir, str(base_dir / "docs" / "enums.md"))
+    generate_slots_index(base_dir, str(base_dir / "docs" / "slots.md"))
 
     print("\nDone!")
 

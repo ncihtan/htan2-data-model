@@ -37,6 +37,9 @@ Thumbs.db
 .coverage
 htmlcov/
 
+# MkDocs build output
+site/
+
 # Documentation
 # First ignore everything in docs
 docs/*

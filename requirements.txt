@@ -1,6 +1,5 @@
-# Requirements for Read the Docs
-sphinx>=5.0.0
-sphinx-rtd-theme>=1.0.0
-myst-parser>=0.18.0
+# Requirements for Read the Docs and local docs builds
+mkdocs-material>=8.2.8
+mkdocs-mermaid2-plugin>=1.1.1
 linkml-runtime>=1.1.24
-pyyaml>=6.0.1
+PyYAML>=6.0.1
