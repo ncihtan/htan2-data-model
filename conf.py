@@ -6,18 +6,35 @@ release = "0.1.0"
 
 extensions = [
     "myst_parser",
+    "sphinx_design",
 ]
 
 templates_path = ["_templates"]
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+exclude_patterns = [
+    "_build",
+    ".venv",
+    ".pytest_cache",
+    "Thumbs.db",
+    ".DS_Store",
+    "modules",
+    "archive",
+    "site",
+    "README.md",
+    "CONTRIBUTING.md",
+    "IDENTIFIER_PATTERNS.md",
+    "CLAUDE.md",
+    # Old per-level gen-doc subdirectories (replaced by our module pages)
+    "docs/multiplexmicroscopy",
+    "docs/scrna-seq",
+    "docs/spatialomics",
+    "docs/wes",
+    ".claude",
+]
 
-html_theme = "sphinx_rtd_theme"
-html_theme_options = {
-    "body_max_width": "none",  # Remove max-width constraint
-}
-html_static_path = ["_static", "modules/CoreFile"]
+html_theme = "furo"
+html_static_path = ["_static"]
 html_css_files = ["custom.css"]
 
 source_suffix = [".md", ".rst"]
-myst_enable_extensions = ["colon_fence", "deflist"]
-myst_heading_anchors = 2
+myst_enable_extensions = ["colon_fence", "deflist", "attrs_block"]
+myst_heading_anchors = 3

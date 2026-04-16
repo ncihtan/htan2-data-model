@@ -1,38 +1,50 @@
-/* Custom CSS to increase content width for HTAN documentation */
+/* Custom CSS for HTAN documentation (furo theme) */
 
-/* Remove max-width constraint from main content area */
-.wy-nav-content {
-    max-width: none !important;
+/* Widen the main content area */
+.content-icon-container {
+    display: none;
 }
 
-/* Also target the content wrapper */
-.wy-nav-content-wrap {
-    max-width: none !important;
-}
-
-/* Ensure the body content uses full width */
-.rst-content {
+article[role="main"] {
     max-width: 100% !important;
 }
 
-/* For very wide screens, set a reasonable max-width to maintain readability */
-@media screen and (min-width: 1400px) {
-    .wy-nav-content {
-        max-width: 1400px !important;
-        margin: 0 auto;
-    }
-}
-
-/* Ensure tables can use the full width */
-.rst-content table.docutils,
-.rst-content table {
+/* Full-width, horizontally scrollable tables */
+article table {
     width: 100%;
     max-width: 100%;
+    display: block;
+    overflow-x: auto;
+    font-size: 0.875rem;
 }
 
-/* Make sure code blocks don't overflow */
-.rst-content pre {
+/* Zebra-stripe table rows for readability */
+article table tbody tr:nth-child(odd) {
+    background-color: var(--color-background-secondary);
+}
+
+/* Tighten cell padding */
+article table th,
+article table td {
+    padding: 0.4rem 0.75rem;
+    vertical-align: top;
+}
+
+/* Wrap long description cells rather than stretching */
+article table td:last-child {
+    white-space: normal;
+    word-break: break-word;
+    min-width: 200px;
+}
+
+/* Slightly smaller code spans inside tables */
+article table code {
+    font-size: 0.82rem;
+    padding: 0.1em 0.3em;
+}
+
+/* Prevent code blocks from overflowing */
+article pre {
     overflow-x: auto;
     max-width: 100%;
 }
-

@@ -2,17 +2,12 @@
 
 HTAN Base Imaging Data Model - Common attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)
 
-<div class="grid cards" markdown>
+## Classes in This Module
 
--   **[BaseImagingAttributes](#baseimagingattributes)**
-    ---
-    Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)
-
--   **[CoreFileAttributes](#corefileattributes)**
-    ---
-    Universal attributes that apply to all file-based data in HTAN
-
-</div>
+| Class | Level | Description |
+|-------|-------|-------------|
+| [BaseImagingAttributes](#baseimagingattributes) | — | Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.) |
+| [CoreFileAttributes](#corefileattributes) | — | Universal attributes that apply to all file-based data in HTAN |
 
 ## CoreFileAttributes
 

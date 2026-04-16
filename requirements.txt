@@ -1,5 +1,7 @@
 # Requirements for Read the Docs and local docs builds
-mkdocs-material>=8.2.8
-mkdocs-mermaid2-plugin>=1.1.1
+sphinx>=7.0.0
+furo>=2024.1.29
+myst-parser>=2.0.0
+sphinx-design>=0.5.0
 linkml-runtime>=1.1.24
 PyYAML>=6.0.1

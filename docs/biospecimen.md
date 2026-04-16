@@ -2,13 +2,11 @@
 
 HTAN Biospecimen Data Model Schema
 
-<div class="grid cards" markdown>
+## Classes in This Module
 
--   **[BiospecimenData](#biospecimendata)**
-    ---
-    Container for all Biospecimen data
-
-</div>
+| Class | Level | Description |
+|-------|-------|-------------|
+| [BiospecimenData](#biospecimendata) | — | Container for all Biospecimen data |
 
 ## BiospecimenData
 

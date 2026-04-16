@@ -2,41 +2,18 @@
 
 HTAN scRNA-seq Data Model - Single-cell RNA sequencing data
 
-<div class="grid cards" markdown>
+## Classes in This Module
 
--   **[BaseSequencingAttributes](#basesequencingattributes)**
-    ---
-    Minimal base attributes shared across all sequencing types
-
--   **[BaseSequencingLevel1Attributes](#basesequencinglevel1attributes)**
-    ---
-    _Level 1_ &nbsp; Level 1 attributes - sequencing run and library (raw data)
-
--   **[BaseSequencingLevel2Attributes](#basesequencinglevel2attributes)**
-    ---
-    _Level 2_ &nbsp; Level 2 attributes - alignment and alignment workflow
-
--   **[BaseSequencingLevel3Attributes](#basesequencinglevel3attributes)**
-    ---
-    _Level 3_ &nbsp; Level 3+ attributes - inherits alignment and workflow; used for processed/analysis levels
-
--   **[CoreFileAttributes](#corefileattributes)**
-    ---
-    Universal attributes that apply to all file-based data in HTAN
-
--   **[scRNALevel1](#scrnalevel1)**
-    ---
-    _Level 1_ &nbsp; scRNA-seq Level 1 data - Raw sequencing files and metadata
-
--   **[scRNALevel2](#scrnalevel2)**
-    ---
-    _Level 2_ &nbsp; scRNA-seq Level 2 data - Workflow and processing metadata
-
--   **[scRNALevel3and4](#scrnalevel3and4)**
-    ---
-    _Level 3_ &nbsp; Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
-
-</div>
+| Class | Level | Description |
+|-------|-------|-------------|
+| [BaseSequencingAttributes](#basesequencingattributes) | — | Minimal base attributes shared across all sequencing types |
+| [BaseSequencingLevel1Attributes](#basesequencinglevel1attributes) | Level 1 | Level 1 attributes - sequencing run and library (raw data) |
+| [BaseSequencingLevel2Attributes](#basesequencinglevel2attributes) | Level 2 | Level 2 attributes - alignment and alignment workflow |
+| [BaseSequencingLevel3Attributes](#basesequencinglevel3attributes) | Level 3 | Level 3+ attributes - inherits alignment and workflow; used for processed/analysis levels |
+| [CoreFileAttributes](#corefileattributes) | — | Universal attributes that apply to all file-based data in HTAN |
+| [scRNALevel1](#scrnalevel1) | Level 1 | scRNA-seq Level 1 data - Raw sequencing files and metadata |
+| [scRNALevel2](#scrnalevel2) | Level 2 | scRNA-seq Level 2 data - Workflow and processing metadata |
+| [scRNALevel3and4](#scrnalevel3and4) | Level 3 | Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships |
 
 ## BaseSequencingAttributes
 

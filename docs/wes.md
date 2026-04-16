@@ -2,41 +2,18 @@
 
 HTAN Whole Exome Sequencing Data Model Schema
 
-<div class="grid cards" markdown>
+## Classes in This Module
 
--   **[BaseSequencingAttributes](#basesequencingattributes)**
-    ---
-    Minimal base attributes shared across all sequencing types
-
--   **[BaseSequencingLevel1Attributes](#basesequencinglevel1attributes)**
-    ---
-    _Level 1_ &nbsp; Level 1 attributes - sequencing run and library (raw data)
-
--   **[BaseSequencingLevel2Attributes](#basesequencinglevel2attributes)**
-    ---
-    _Level 2_ &nbsp; Level 2 attributes - alignment and alignment workflow
-
--   **[BaseSequencingLevel3Attributes](#basesequencinglevel3attributes)**
-    ---
-    _Level 3_ &nbsp; Level 3+ attributes - inherits alignment and workflow; used for processed/analysis levels
-
--   **[BulkWESLevel1](#bulkweslevel1)**
-    ---
-    _Level 1_ &nbsp; Bulk Whole Exome Sequencing Level 1 - Raw files
-
--   **[BulkWESLevel2](#bulkweslevel2)**
-    ---
-    _Level 2_ &nbsp; Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC
-
--   **[BulkWESLevel3](#bulkweslevel3)**
-    ---
-    _Level 3_ &nbsp; Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis
-
--   **[CoreFileAttributes](#corefileattributes)**
-    ---
-    Universal attributes that apply to all file-based data in HTAN
-
-</div>
+| Class | Level | Description |
+|-------|-------|-------------|
+| [BaseSequencingAttributes](#basesequencingattributes) | — | Minimal base attributes shared across all sequencing types |
+| [BaseSequencingLevel1Attributes](#basesequencinglevel1attributes) | Level 1 | Level 1 attributes - sequencing run and library (raw data) |
+| [BaseSequencingLevel2Attributes](#basesequencinglevel2attributes) | Level 2 | Level 2 attributes - alignment and alignment workflow |
+| [BaseSequencingLevel3Attributes](#basesequencinglevel3attributes) | Level 3 | Level 3+ attributes - inherits alignment and workflow; used for processed/analysis levels |
+| [BulkWESLevel1](#bulkweslevel1) | Level 1 | Bulk Whole Exome Sequencing Level 1 - Raw files |
+| [BulkWESLevel2](#bulkweslevel2) | Level 2 | Bulk Whole Exome Sequencing Level 2 - Reads mapped to the genome and alignment QC |
+| [BulkWESLevel3](#bulkweslevel3) | Level 3 | Bulk Whole Exome Sequencing Level 3 - Called variants and MSI analysis |
+| [CoreFileAttributes](#corefileattributes) | — | Universal attributes that apply to all file-based data in HTAN |
 
 ## CoreFileAttributes
 

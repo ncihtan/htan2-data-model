@@ -2,21 +2,13 @@
 
 HTAN Digital Pathology Data Model Schema for Phase 2
 
-<div class="grid cards" markdown>
+## Classes in This Module
 
--   **[BaseImagingAttributes](#baseimagingattributes)**
-    ---
-    Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)
-
--   **[CoreFileAttributes](#corefileattributes)**
-    ---
-    Universal attributes that apply to all file-based data in HTAN
-
--   **[DigitalPathologyData](#digitalpathologydata)**
-    ---
-    Container for digital pathology imaging data
-
-</div>
+| Class | Level | Description |
+|-------|-------|-------------|
+| [BaseImagingAttributes](#baseimagingattributes) | — | Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.) |
+| [CoreFileAttributes](#corefileattributes) | — | Universal attributes that apply to all file-based data in HTAN |
+| [DigitalPathologyData](#digitalpathologydata) | — | Container for digital pathology imaging data |
 
 ## CoreFileAttributes
 

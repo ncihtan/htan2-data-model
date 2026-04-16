@@ -7,7 +7,9 @@ All HTAN Centers are required to encode their data and metadata in a common HTAN
 
 This documentation describes the HTAN data model, including required metadata attributes for each assay type. To annotate metadata or submit data, use `Curator <https://docs.synapse.org/synapse-docs/managing-metadata-with-curator>`_.
 
-This documentation provides comprehensive information about each module in the HTAN Phase 2 Data Model. Each module page lists **all attributes you need to fill out**, including inherited attributes from base modules.
+Each module page is self-contained and lists all attributes you need to fill out, including inherited attributes from base modules.
+
+---
 
 Getting Started
 ---------------
@@ -16,34 +18,81 @@ First, determine whether your data is **file-based** or **record-based**:
 
 **Record-Based Data**
    If you have clinical or biospecimen data (patient records, sample metadata), use:
-   
-   - :doc:`Clinical <docs/clinical>` - Clinical and demographic data
-   - :doc:`Biospecimen <docs/biospecimen>` - Biospecimen metadata and classification
+
+   - :doc:`Clinical <docs/clinical>` — Clinical and demographic data
+   - :doc:`Biospecimen <docs/biospecimen>` — Biospecimen metadata and classification
 
 **File-Based Data**
-   If you have sequencing, imaging, or other file-based data, use one of the following modules. Each module page shows **all required attributes** including inherited core attributes:
-   
-   - :doc:`WES <docs/wes>` - Bulk Whole Exome Sequencing (includes Core File + Base Sequencing + WES attributes)
-   - :doc:`scRNA-seq <docs/scrna-seq>` - Single-cell RNA sequencing (includes Core File + Base Sequencing + scRNA-seq attributes)
-   - :doc:`Digital Pathology <docs/digitalpathology>` - Whole-slide imaging (includes Core File + Base Imaging + Digital Pathology attributes)
-   - :doc:`Multiplex Microscopy <docs/multiplexmicroscopy>` - Multiplexed tissue imaging (includes Core File + Base Imaging + Multiplex Microscopy attributes)
-   - :doc:`SpatialOmics <docs/spatialomics>` - Spatial omics assays (includes Core File + SpatialOmics attributes)
+   If you have sequencing, imaging, or other file-based assay data, each module page shows
+   **all required attributes** including inherited core attributes:
 
-Each module page is self-contained and lists all attributes you need to fill out, so you don't need to navigate between multiple pages.
+   - :doc:`WES <docs/wes>` — Bulk Whole Exome Sequencing
+   - :doc:`scRNA-seq <docs/scrna-seq>` — Single-cell RNA sequencing
+   - :doc:`Digital Pathology <docs/digitalpathology>` — Whole-slide imaging
+   - :doc:`Multiplex Microscopy <docs/multiplexmicroscopy>` — Multiplexed tissue imaging
+   - :doc:`Spatial Omics <docs/spatialomics>` — Spatial omics assays
+   - :doc:`Imaging <docs/imaging>` — Radiological and other imaging modalities
 
-Reference
-----------
-
-.. toctree::
-   :maxdepth: 1
-
-   :self:
+---
 
 Modules
 -------
 
+.. grid:: 2 2 3 3
+   :gutter: 3
+
+   .. grid-item-card:: 🏥 Clinical
+      :link: docs/clinical
+      :link-type: doc
+
+      Demographics, diagnoses, treatments, follow-up, and molecular tests.
+
+   .. grid-item-card:: 🧪 Biospecimen
+      :link: docs/biospecimen
+      :link-type: doc
+
+      Tissue collection, biospecimen processing, and aliquot metadata.
+
+   .. grid-item-card:: 🧬 WES
+      :link: docs/wes
+      :link-type: doc
+
+      Bulk whole exome sequencing — raw reads through somatic variant calls.
+
+   .. grid-item-card:: 🔬 scRNA-seq
+      :link: docs/scrna-seq
+      :link-type: doc
+
+      Single-cell RNA sequencing data files and quality metrics.
+
+   .. grid-item-card:: 📍 Spatial Omics
+      :link: docs/spatialomics
+      :link-type: doc
+
+      Spatially resolved transcriptomics and proteomics assay metadata.
+
+   .. grid-item-card:: 🔵 Multiplex Microscopy
+      :link: docs/multiplexmicroscopy
+      :link-type: doc
+
+      Cyclic immunofluorescence and multiplexed imaging protocols.
+
+   .. grid-item-card:: 🖼 Digital Pathology
+      :link: docs/digitalpathology
+      :link-type: doc
+
+      Whole slide imaging and digital pathology file metadata.
+
+   .. grid-item-card:: 📷 Imaging
+      :link: docs/imaging
+      :link-type: doc
+
+      Radiological and other non-pathology imaging modalities.
+
 .. toctree::
    :maxdepth: 2
+   :hidden:
+   :caption: Modules
 
    docs/clinical
    docs/biospecimen
@@ -52,4 +101,32 @@ Modules
    docs/digitalpathology
    docs/multiplexmicroscopy
    docs/spatialomics
+   docs/imaging
 
+---
+
+Reference
+---------
+
+.. grid:: 1 1 2 2
+   :gutter: 3
+
+   .. grid-item-card:: 📖 Vocabulary (Enums)
+      :link: docs/enums
+      :link-type: doc
+
+      All controlled vocabulary terms used across HTAN modules.
+
+   .. grid-item-card:: 📋 Slot Index
+      :link: docs/slots
+      :link-type: doc
+
+      Every metadata field across all modules in one searchable table.
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Reference
+
+   docs/enums
+   docs/slots

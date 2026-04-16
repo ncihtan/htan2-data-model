@@ -152,9 +152,9 @@ def _inheritance_level(sv: SchemaView, class_name: str) -> str | None:
     return None
 
 
-def generate_class_cards(sv: SchemaView) -> str:
-    """Generate a Material grid card block for all concrete classes in the schema."""
-    cards = []
+def generate_class_overview_table(sv: SchemaView) -> str:
+    """Generate a class overview table for all concrete classes in the schema."""
+    rows = []
     for class_name in sorted(sv.all_classes()):
         if class_name in EXCLUDED_CLASSES:
             continue
@@ -167,20 +167,19 @@ def generate_class_cards(sv: SchemaView) -> str:
             desc = desc[:117] + "..."
 
         level = _inheritance_level(sv, class_name)
-        level_tag = f"_{level}_ &nbsp; " if level else ""
-
+        level_str = level if level else "—"
         anchor = class_name.lower()
-        cards.append(
-            f"-   **[{class_name}](#{anchor})**\n"
-            f"    ---\n"
-            f"    {level_tag}{desc}"
-        )
+        rows.append(f"| [{class_name}](#{anchor}) | {level_str} | {desc} |")
 
-    if not cards:
+    if not rows:
         return ""
 
-    inner = "\n\n".join(cards)
-    return f'<div class="grid cards" markdown>\n\n{inner}\n\n</div>\n'
+    lines = [
+        "## Classes in This Module\n",
+        "| Class | Level | Description |",
+        "|-------|-------|-------------|",
+    ] + rows
+    return "\n".join(lines) + "\n"
 
 
 def generate_module_docs(name: str, schema_path: str, output_path: str):
@@ -191,10 +190,10 @@ def generate_module_docs(name: str, schema_path: str, output_path: str):
     if sv.schema.description:
         lines.append(f"{sv.schema.description}\n")
 
-    # Class cards overview
-    cards = generate_class_cards(sv)
-    if cards:
-        lines.append(cards)
+    # Class overview table
+    overview = generate_class_overview_table(sv)
+    if overview:
+        lines.append(overview)
 
     enum_names = set(sv.all_enums())
 

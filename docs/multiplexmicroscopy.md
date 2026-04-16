@@ -2,37 +2,17 @@
 
 HTAN Multiplex Microscopy Data Model Schema for Phase 2 - All Levels
 
-<div class="grid cards" markdown>
+## Classes in This Module
 
--   **[BaseImagingAttributes](#baseimagingattributes)**
-    ---
-    Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.)
-
--   **[ChannelMetadata](#channelmetadata)**
-    ---
-    Metadata for each channel in multiplex microscopy imaging
-
--   **[CoreFileAttributes](#corefileattributes)**
-    ---
-    Universal attributes that apply to all file-based data in HTAN
-
--   **[MultiplexMicroscopyData](#multiplexmicroscopydata)**
-    ---
-    Container for all Multiplex Microscopy data levels
-
--   **[MultiplexMicroscopyLevel2](#multiplexmicroscopylevel2)**
-    ---
-    _Level 2_ &nbsp; Multiplex Microscopy Level 2 - Imaging data compiled into a single file format (preferably tiled and pyramidal OME-TI...
-
--   **[MultiplexMicroscopyLevel3](#multiplexmicroscopylevel3)**
-    ---
-    _Level 3_ &nbsp; Multiplex Microscopy Level 3 - Segmentation mask. Structured mask data following existing HTAN segmentation templates...
-
--   **[MultiplexMicroscopyLevel4](#multiplexmicroscopylevel4)**
-    ---
-    _Level 4_ &nbsp; Multiplex Microscopy Level 4 - Cell-by-feature table (typically cell-by-marker) generated from the segmentation mask ...
-
-</div>
+| Class | Level | Description |
+|-------|-------|-------------|
+| [BaseImagingAttributes](#baseimagingattributes) | — | Base attributes shared across all imaging modules (Digital Pathology, Multiplex Microscopy, etc.) |
+| [ChannelMetadata](#channelmetadata) | — | Metadata for each channel in multiplex microscopy imaging |
+| [CoreFileAttributes](#corefileattributes) | — | Universal attributes that apply to all file-based data in HTAN |
+| [MultiplexMicroscopyData](#multiplexmicroscopydata) | — | Container for all Multiplex Microscopy data levels |
+| [MultiplexMicroscopyLevel2](#multiplexmicroscopylevel2) | Level 2 | Multiplex Microscopy Level 2 - Imaging data compiled into a single file format (preferably tiled and pyramidal OME-TI... |
+| [MultiplexMicroscopyLevel3](#multiplexmicroscopylevel3) | Level 3 | Multiplex Microscopy Level 3 - Segmentation mask. Structured mask data following existing HTAN segmentation templates... |
+| [MultiplexMicroscopyLevel4](#multiplexmicroscopylevel4) | Level 4 | Multiplex Microscopy Level 4 - Cell-by-feature table (typically cell-by-marker) generated from the segmentation mask ... |
 
 ## CoreFileAttributes
 

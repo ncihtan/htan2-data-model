@@ -2,45 +2,19 @@
 
 HTAN Clinical Data Model Schema
 
-<div class="grid cards" markdown>
+## Classes in This Module
 
--   **[ClinicalRecordAttributes](#clinicalrecordattributes)**
-    ---
-    Base attributes shared by all clinical record types
-
--   **[Demographics](#demographics)**
-    ---
-    Information about the demographics
-
--   **[Diagnosis](#diagnosis)**
-    ---
-    Information about the diagnosis
-
--   **[Exposure](#exposure)**
-    ---
-    Information about the exposure
-
--   **[FamilyHistory](#familyhistory)**
-    ---
-    A class to capture information about the cancer history of family members.
-
--   **[FollowUp](#followup)**
-    ---
-    Clinical follow-up information
-
--   **[MolecularTest](#moleculartest)**
-    ---
-    Information about the molecular test
-
--   **[Therapy](#therapy)**
-    ---
-    Information about therapeutic interventions
-
--   **[VitalStatus](#vitalstatus)**
-    ---
-    Information about the vital status
-
-</div>
+| Class | Level | Description |
+|-------|-------|-------------|
+| [ClinicalRecordAttributes](#clinicalrecordattributes) | — | Base attributes shared by all clinical record types |
+| [Demographics](#demographics) | — | Information about the demographics |
+| [Diagnosis](#diagnosis) | — | Information about the diagnosis |
+| [Exposure](#exposure) | — | Information about the exposure |
+| [FamilyHistory](#familyhistory) | — | A class to capture information about the cancer history of family members. |
+| [FollowUp](#followup) | — | Clinical follow-up information |
+| [MolecularTest](#moleculartest) | — | Information about the molecular test |
+| [Therapy](#therapy) | — | Information about therapeutic interventions |
+| [VitalStatus](#vitalstatus) | — | Information about the vital status |
 
 ## Demographics
 

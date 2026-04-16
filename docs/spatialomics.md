@@ -2,29 +2,15 @@
 
 HTAN Spatial Omics Data Model Schema for Phase 2 - All Levels
 
-<div class="grid cards" markdown>
+## Classes in This Module
 
--   **[CoreFileAttributes](#corefileattributes)**
-    ---
-    Universal attributes that apply to all file-based data in HTAN
-
--   **[SpatialLevel1](#spatiallevel1)**
-    ---
-    _Level 1_ &nbsp; Level 1 raw spatial data bundle (optional) - Contains raw sequencing data, images, and registration files
-
--   **[SpatialLevel3](#spatiallevel3)**
-    ---
-    _Level 3_ &nbsp; Level 3 processed spatial assay output bundle - Contains platform-specific output files, segmentation, matrices, and ...
-
--   **[SpatialLevel4](#spatiallevel4)**
-    ---
-    _Level 4_ &nbsp; Level 4 interoperable spatial omics file (optional) - Harmonized h5ad, RDS, or Zarr file for downstream analysis
-
--   **[SpatialPanel](#spatialpanel)**
-    ---
-    Spatial omics panel information for targeted sequencing or protein panels
-
-</div>
+| Class | Level | Description |
+|-------|-------|-------------|
+| [CoreFileAttributes](#corefileattributes) | — | Universal attributes that apply to all file-based data in HTAN |
+| [SpatialLevel1](#spatiallevel1) | Level 1 | Level 1 raw spatial data bundle (optional) - Contains raw sequencing data, images, and registration files |
+| [SpatialLevel3](#spatiallevel3) | Level 3 | Level 3 processed spatial assay output bundle - Contains platform-specific output files, segmentation, matrices, and ... |
+| [SpatialLevel4](#spatiallevel4) | Level 4 | Level 4 interoperable spatial omics file (optional) - Harmonized h5ad, RDS, or Zarr file for downstream analysis |
+| [SpatialPanel](#spatialpanel) | — | Spatial omics panel information for targeted sequencing or protein panels |
 
 ## CoreFileAttributes
 
