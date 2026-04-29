@@ -221,6 +221,26 @@ class TestMultiplexMicroscopy:
         assert filename_regex.match("data.h5ad")
 
 
+    def test_physical_size_z_conditional(self):
+        """Test that PHYSICAL_SIZE_Z is optional at the class level but conditionally required via rules."""
+        sv = SchemaView("modules/MultiplexMicroscopy/domains/level_2.yaml")
+        level2_class = sv.get_class("MultiplexMicroscopyLevel2")
+
+        pz = level2_class.attributes.get("PHYSICAL_SIZE_Z")
+        assert pz is not None
+        assert pz.required is False, "PHYSICAL_SIZE_Z should not be unconditionally required"
+
+        assert len(level2_class.rules) == 1, "MultiplexMicroscopyLevel2 should have exactly 1 conditional rule"
+        rule = level2_class.rules[0]
+        size_z_condition = rule.preconditions.slot_conditions.get("SIZE_Z")
+        assert size_z_condition is not None
+        assert size_z_condition.minimum_value == 2
+
+        pz_postcondition = rule.postconditions.slot_conditions.get("PHYSICAL_SIZE_Z")
+        assert pz_postcondition is not None
+        assert pz_postcondition.required is True
+
+
 class TestChannelMetadata:
     """Test cases for the ChannelMetadata class and CHANNEL_METADATA slot."""
 
