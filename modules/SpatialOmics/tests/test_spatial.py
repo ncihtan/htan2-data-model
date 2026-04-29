@@ -154,22 +154,33 @@ class TestSpatial:
         # Get all slots
         all_slots = sv.class_slots("SpatialPanel")
 
-        # Check required attributes
-        required_attrs = [
-            "HTAN_PANEL_ID",
-            "GENE_SYMBOL",
-            "HGNC_VERSION",
-            "GENE_ID",
-        ]
-
-        for attr in required_attrs:
+        # HTAN_PANEL_ID and TARGET_TYPE are unconditionally required
+        for attr in ["HTAN_PANEL_ID", "TARGET_TYPE"]:
             assert attr in all_slots, f"Required attribute {attr} not found"
-            # Check class-specific slot definition (SpatialPanel doesn't inherit, so all are class-specific)
             class_slot = panel_class.attributes.get(attr)
-            assert (
-                class_slot is not None
-            ), f"Attribute {attr} should be defined in SpatialPanel"
+            assert class_slot is not None, f"Attribute {attr} should be defined in SpatialPanel"
             assert class_slot.required is True, f"Attribute {attr} should be required"
+
+        # GENE_SYMBOL, HGNC_VERSION, GENE_ID are conditionally required via rules
+        for attr in ["GENE_SYMBOL", "HGNC_VERSION", "GENE_ID"]:
+            assert attr in all_slots, f"Attribute {attr} not found"
+            class_slot = panel_class.attributes.get(attr)
+            assert class_slot is not None, f"Attribute {attr} should be defined in SpatialPanel"
+            assert class_slot.required is False, f"Attribute {attr} should be conditionally required (not unconditionally)"
+
+        # OTHER_TARGET_TYPE and USER_GENE_NAME exist and are conditionally required via rules
+        for attr in ["OTHER_TARGET_TYPE", "USER_GENE_NAME"]:
+            assert attr in all_slots, f"Attribute {attr} not found"
+
+        # Two conditional rules must be defined
+        assert len(panel_class.rules) == 2, "SpatialPanel should have exactly 2 conditional rules"
+
+        # TargetTypeEnum must exist with the expected values
+        target_type_enum = sv.get_enum("TargetTypeEnum")
+        assert target_type_enum is not None
+        assert "Human Gene" in target_type_enum.permissible_values
+        assert "Human Transcript" in target_type_enum.permissible_values
+        assert "Other" in target_type_enum.permissible_values
 
     def test_enum_values(self):
         """Test that enum values are properly defined."""
