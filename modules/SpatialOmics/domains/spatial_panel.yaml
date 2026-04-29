@@ -13,6 +13,16 @@ prefixes:
 
 default_prefix: htan
 
+enums:
+  TargetTypeEnum:
+    permissible_values:
+      Human Gene:
+        description: A probe targeting a human gene
+      Human Transcript:
+        description: A probe targeting a human transcript
+      Other:
+        description: A probe targeting a non-human gene or other target (e.g., microbiome, viral)
+
 classes:
   SpatialPanel:
     description: Spatial omics panel information for targeted sequencing or protein panels
@@ -24,27 +34,61 @@ classes:
         title: "HTAN Panel ID"
         description: Unique identifier for the panel
         pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$"
+      TARGET_TYPE:
+        range: TargetTypeEnum
+        required: true
+        title: "Target Type"
+        description: Type of probe target. Determines which identifier fields are required
       GENE_SYMBOL:
         range: string
-        required: true
+        required: false
         title: "Gene Symbol"
-        description: HGNC-approved Gene symbol (e.g., MYC, PIK3C)
+        description: HGNC-approved Gene symbol (e.g., MYC, PIK3C). Required when TARGET_TYPE is Human Gene or Human Transcript
         pattern: "^[A-Za-z0-9_\\-]+(@)?$"
       HGNC_VERSION:
         range: string
-        required: true
+        required: false
         title: "HGNC Version"
-        description: Version of the HGNC used, indicated with the date of the HGNC reference (e.g., 2025-08-01)
+        description: Version of the HGNC used, indicated with the date of the HGNC reference (e.g., 2025-08-01). Required when TARGET_TYPE is Human Gene or Human Transcript
         pattern: "^\\d{4}-\\d{2}-\\d{2}$"
       GENE_ID:
         range: string
-        required: true
+        required: false
         title: "Gene ID"
-        description: Stable Ensembl gene identifier (e.g., ENSG00000214114, ENSG00000121879). String matching ENSG\\d+ or digits
+        description: Stable Ensembl gene identifier (e.g., ENSG00000214114, ENSG00000121879). Required when TARGET_TYPE is Human Gene or Human Transcript
         pattern: "^(ENSG\\d+|\\d+)$"
       USER_GENE_NAME:
         range: string
         required: false
         title: "User Gene Name"
-        description: Optional user-defined name for the Gene
-
+        description: User-defined name for the target. Optional when TARGET_TYPE is Human Gene or Human Transcript; required when TARGET_TYPE is Other
+      OTHER_TARGET_TYPE:
+        range: string
+        required: false
+        title: "Other Target Type"
+        description: Free-text description of the non-human target (e.g., microbiome species, viral gene). Required when TARGET_TYPE is Other
+    rules:
+      - preconditions:
+          slot_conditions:
+            TARGET_TYPE:
+              any_of:
+                - equals_string: "Human Gene"
+                - equals_string: "Human Transcript"
+        postconditions:
+          slot_conditions:
+            GENE_SYMBOL:
+              required: true
+            HGNC_VERSION:
+              required: true
+            GENE_ID:
+              required: true
+      - preconditions:
+          slot_conditions:
+            TARGET_TYPE:
+              equals_string: "Other"
+        postconditions:
+          slot_conditions:
+            USER_GENE_NAME:
+              required: true
+            OTHER_TARGET_TYPE:
+              required: true
