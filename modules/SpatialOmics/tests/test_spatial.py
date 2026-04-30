@@ -151,36 +151,34 @@ class TestSpatial:
         panel_class = sv.get_class("SpatialPanel")
         assert panel_class is not None
 
-        # Get all slots
         all_slots = sv.class_slots("SpatialPanel")
 
-        # HTAN_PANEL_ID and TARGET_TYPE are unconditionally required
-        for attr in ["HTAN_PANEL_ID", "TARGET_TYPE"]:
+        # Unconditionally required slots
+        for attr in ["HTAN_PANEL_ID", "TARGET_TYPE", "TARGET_NAME"]:
             assert attr in all_slots, f"Required attribute {attr} not found"
             class_slot = panel_class.attributes.get(attr)
             assert class_slot is not None, f"Attribute {attr} should be defined in SpatialPanel"
             assert class_slot.required is True, f"Attribute {attr} should be required"
 
-        # GENE_SYMBOL, HGNC_VERSION, GENE_ID are conditionally required via rules
-        for attr in ["GENE_SYMBOL", "HGNC_VERSION", "GENE_ID"]:
+        # Conditionally required slots — not unconditionally required at class level
+        for attr in ["ENSEMBL_ID", "HGNC_VERSION", "OTHER_TARGET_DESCRIPTION"]:
             assert attr in all_slots, f"Attribute {attr} not found"
             class_slot = panel_class.attributes.get(attr)
             assert class_slot is not None, f"Attribute {attr} should be defined in SpatialPanel"
             assert class_slot.required is False, f"Attribute {attr} should be conditionally required (not unconditionally)"
 
-        # OTHER_TARGET_TYPE and USER_GENE_NAME exist and are conditionally required via rules
-        for attr in ["OTHER_TARGET_TYPE", "USER_GENE_NAME"]:
-            assert attr in all_slots, f"Attribute {attr} not found"
+        # Dropped fields must not appear
+        for attr in ["GENE_SYMBOL", "GENE_ID", "USER_GENE_NAME", "OTHER_TARGET_TYPE"]:
+            assert attr not in all_slots, f"Removed attribute {attr} should not exist"
 
-        # Two conditional rules must be defined
-        assert len(panel_class.rules) == 2, "SpatialPanel should have exactly 2 conditional rules"
+        # Three conditional rules: Human Gene, Human Transcript, Other
+        assert len(panel_class.rules) == 3, "SpatialPanel should have exactly 3 conditional rules"
 
-        # TargetTypeEnum must exist with the expected values
+        # TargetTypeEnum must exist with all expected values
         target_type_enum = sv.get_enum("TargetTypeEnum")
         assert target_type_enum is not None
-        assert "Human Gene" in target_type_enum.permissible_values
-        assert "Human Transcript" in target_type_enum.permissible_values
-        assert "Other" in target_type_enum.permissible_values
+        for value in ["Bacterial", "Control Probe", "Human Gene", "Human Protein", "Human Transcript", "Other", "Viral"]:
+            assert value in target_type_enum.permissible_values, f"TargetTypeEnum missing value: {value}"
 
     def test_enum_values(self):
         """Test that enum values are properly defined."""
@@ -220,20 +218,15 @@ class TestSpatial:
         assert panel_synapse_id_slot is not None
         assert panel_synapse_id_slot.pattern == "^syn\\d+$"
 
-        # Test Gene ID pattern for GENE_ID
-        gene_id_slot = sv.get_slot("GENE_ID")
-        assert gene_id_slot is not None
-        assert gene_id_slot.pattern == "^(ENSG\\d+|\\d+)$"
+        # Test Ensembl ID pattern (ENSG for genes, ENST for transcripts)
+        ensembl_id_slot = sv.get_slot("ENSEMBL_ID")
+        assert ensembl_id_slot is not None
+        assert ensembl_id_slot.pattern == "^(ENSG\\d+|ENST\\d+)$"
 
         # Test HGNC Version pattern
         hgnc_version_slot = sv.get_slot("HGNC_VERSION")
         assert hgnc_version_slot is not None
         assert hgnc_version_slot.pattern == "^\\d{4}-\\d{2}-\\d{2}$"
-
-        # Test Gene Symbol pattern for GENE_SYMBOL
-        gene_symbol_slot = sv.get_slot("GENE_SYMBOL")
-        assert gene_symbol_slot is not None
-        assert gene_symbol_slot.pattern == "^[A-Za-z0-9_\\-]+(@)?$"
 
     def test_minimum_values(self):
         """Test that minimum value constraints are properly defined."""
