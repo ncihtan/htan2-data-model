@@ -1,5 +1,6 @@
 name: MultiplexMicroscopyChannelMetadata
 id: https://w3id.org/htan/multiplex_microscopy/channel_metadata
+version: "1.5.0"
 description: HTAN Multiplex Microscopy Channel Metadata - Channel-specific attributes for multiplex imaging
 
 imports:
@@ -253,6 +254,13 @@ classes:
   ChannelMetadata:
     description: Metadata for each channel in multiplex microscopy imaging
     attributes:
+      HTAN_PANEL_ID:
+        range: string
+        required: true
+        title: "HTAN Panel ID"
+        description: Unique HTAN identifier for the antibody/reagent panel used in this imaging experiment. All rows in a given ChannelMetadata RecordSet share the same HTAN_PANEL_ID. Follows the HTAN identifier format with a P-prefix segment (e.g., HTA201_1_P1).
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$"
+
       CHANNEL_ID:
         range: string
         required: true
