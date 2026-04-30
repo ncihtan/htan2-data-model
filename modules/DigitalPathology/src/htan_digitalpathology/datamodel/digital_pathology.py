@@ -1,5 +1,5 @@
 # Auto generated from digital_pathology.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-29T17:34:41
+# Generation date: 2026-04-30T16:35:12
 # Schema: DigitalPathology
 #
 # id: https://w3id.org/htan/digital_pathology
