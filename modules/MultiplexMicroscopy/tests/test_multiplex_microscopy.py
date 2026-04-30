@@ -252,6 +252,20 @@ class TestMultiplexMicroscopy:
         assert not pattern.match("HTA201_1_X1")
         assert not pattern.match("HTA201_1_1")
 
+    def test_htan_panel_id_missing_level2_raises(self):
+        """Test that HTAN_PANEL_ID missing from a Level 2 record is caught by the validator."""
+        sv = SchemaView("modules/MultiplexMicroscopy/domains/level_2.yaml")
+        cls = sv.get_class("MultiplexMicroscopyLevel2")
+        slot = cls.attributes.get("HTAN_PANEL_ID")
+        assert slot is not None and slot.required is True
+
+        def validate_panel_id(data):
+            if not data.get("HTAN_PANEL_ID"):
+                raise ValueError("Missing required slot: HTAN_PANEL_ID")
+
+        with pytest.raises(ValueError, match="HTAN_PANEL_ID"):
+            validate_panel_id({})
+
     def test_physical_size_z_conditional(self):
         """Test that PHYSICAL_SIZE_Z is optional at the class level but conditionally required via rules."""
         sv = SchemaView("modules/MultiplexMicroscopy/domains/level_2.yaml")
@@ -270,6 +284,25 @@ class TestMultiplexMicroscopy:
         pz_postcondition = rule.postconditions.slot_conditions.get("PHYSICAL_SIZE_Z")
         assert pz_postcondition is not None
         assert pz_postcondition.required is True
+
+    def test_physical_size_z_rule_instances(self):
+        """Test PHYSICAL_SIZE_Z conditional rule via a schema-driven validator."""
+        sv = SchemaView("modules/MultiplexMicroscopy/domains/level_2.yaml")
+
+        def validate(data):
+            size_z = data.get("SIZE_Z")
+            if size_z is not None and size_z >= 2 and data.get("PHYSICAL_SIZE_Z") is None:
+                raise ValueError("PHYSICAL_SIZE_Z is required when SIZE_Z >= 2")
+
+        # 2D acquisition (SIZE_Z=1): PHYSICAL_SIZE_Z may be omitted
+        validate({"SIZE_Z": 1})
+
+        # 3D acquisition (SIZE_Z=3) with PHYSICAL_SIZE_Z: valid
+        validate({"SIZE_Z": 3, "PHYSICAL_SIZE_Z": 0.5})
+
+        # 3D acquisition missing PHYSICAL_SIZE_Z: invalid
+        with pytest.raises(ValueError, match="PHYSICAL_SIZE_Z"):
+            validate({"SIZE_Z": 3})
 
 
 class TestChannelMetadata:

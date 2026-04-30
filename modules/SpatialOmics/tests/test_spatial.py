@@ -168,7 +168,7 @@ class TestSpatial:
             assert class_slot.required is False, f"Attribute {attr} should be conditionally required (not unconditionally)"
 
         # Dropped fields must not appear
-        for attr in ["GENE_SYMBOL", "GENE_ID", "USER_GENE_NAME", "OTHER_TARGET_TYPE"]:
+        for attr in ["GENE_SYMBOL", "GENE_ID", "USER_GENE_NAME"]:
             assert attr not in all_slots, f"Removed attribute {attr} should not exist"
 
         # Three conditional rules: Human Gene, Human Transcript, Other
@@ -189,6 +189,7 @@ class TestSpatial:
 
     def test_spatial_panel_conditional_rules_instances(self):
         """Test conditional rule behaviour for SpatialPanel via a schema-driven validator."""
+        import re
         sv = SchemaView("modules/SpatialOmics/domains/spatial_panel.yaml")
         enum_def = sv.get_enum("TargetTypeEnum")
 
@@ -200,12 +201,19 @@ class TestSpatial:
                 if not data.get(slot):
                     raise ValueError(f"Missing required slot: {slot}")
             if target_type == "Human Gene":
-                for slot in ["ENSEMBL_ID", "HGNC_VERSION"]:
-                    if not data.get(slot):
-                        raise ValueError(f"Missing required slot for Human Gene: {slot}")
+                ensembl_id = data.get("ENSEMBL_ID")
+                if not ensembl_id:
+                    raise ValueError("Missing required slot for Human Gene: ENSEMBL_ID")
+                if not re.match(r"^ENSG\d+$", ensembl_id):
+                    raise ValueError(f"ENSEMBL_ID must be ENSG-prefixed for Human Gene, got: {ensembl_id!r}")
+                if not data.get("HGNC_VERSION"):
+                    raise ValueError("Missing required slot for Human Gene: HGNC_VERSION")
             if target_type == "Human Transcript":
-                if not data.get("ENSEMBL_ID"):
+                ensembl_id = data.get("ENSEMBL_ID")
+                if not ensembl_id:
                     raise ValueError("Missing required slot for Human Transcript: ENSEMBL_ID")
+                if not re.match(r"^ENST\d+$", ensembl_id):
+                    raise ValueError(f"ENSEMBL_ID must be ENST-prefixed for Human Transcript, got: {ensembl_id!r}")
             if target_type == "Other":
                 if not data.get("OTHER_TARGET_DESCRIPTION"):
                     raise ValueError("Missing required slot for Other: OTHER_TARGET_DESCRIPTION")
@@ -228,6 +236,16 @@ class TestSpatial:
                 "HGNC_VERSION": "2025-01-01",
             })
 
+        # Human Gene with ENST-prefixed ID raises error
+        with pytest.raises(ValueError, match="ENSG-prefixed"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Human Gene",
+                "TARGET_NAME": "MYC",
+                "ENSEMBL_ID": "ENST00000621592",
+                "HGNC_VERSION": "2025-01-01",
+            })
+
         # Human Transcript without HGNC_VERSION is valid
         validate({
             "HTAN_PANEL_ID": "HTA201_1_P1",
@@ -235,6 +253,15 @@ class TestSpatial:
             "TARGET_NAME": "MYC-201",
             "ENSEMBL_ID": "ENST00000621592",
         })
+
+        # Human Transcript with ENSG-prefixed ID raises error
+        with pytest.raises(ValueError, match="ENST-prefixed"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Human Transcript",
+                "TARGET_NAME": "MYC-201",
+                "ENSEMBL_ID": "ENSG00000136997",
+            })
 
         # Other missing OTHER_TARGET_DESCRIPTION raises error
         with pytest.raises(ValueError, match="OTHER_TARGET_DESCRIPTION"):
@@ -251,6 +278,14 @@ class TestSpatial:
             "TARGET_NAME": "HPV16-E6",
             "OTHER_TARGET_DESCRIPTION": "Human papillomavirus 16 E6 protein",
         })
+
+        # Bacterial, Viral, Control Probe, Human Protein — only TARGET_NAME required
+        for target_type in ["Bacterial", "Viral", "Control Probe", "Human Protein"]:
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": target_type,
+                "TARGET_NAME": "some-target",
+            })
 
         # Invalid TARGET_TYPE raises error
         with pytest.raises(ValueError, match="Invalid TARGET_TYPE"):
