@@ -1,5 +1,6 @@
 name: SpatialPanel
 id: https://w3id.org/htan/spatial/panel
+version: "2.0.0"
 description: HTAN Spatial Omics Panel Information - Metadata for targeted sequencing or protein panels
 
 imports:
@@ -17,19 +18,19 @@ enums:
   TargetTypeEnum:
     permissible_values:
       Bacterial:
-        description: A probe targeting a bacterial gene or sequence
+        description: A probe targeting a bacterial gene or sequence. Only TARGET_NAME is required; no standardised identifier is currently mandated
       Control Probe:
-        description: A control probe used for normalization or quality control
+        description: A control probe used for normalization or quality control. Only TARGET_NAME is required
       Human Gene:
-        description: A probe targeting a human gene
+        description: A probe targeting a human gene. Requires ENSEMBL_ID (ENSG-prefixed) and HGNC_VERSION
       Human Protein:
-        description: A probe targeting a human protein
+        description: A probe targeting a human protein. Only TARGET_NAME is required; protein identifier requirements are deferred pending model design
       Human Transcript:
-        description: A probe targeting a human transcript
+        description: A probe targeting a human transcript. Requires ENSEMBL_ID (ENST-prefixed); HGNC_VERSION is not required as transcript versioning is handled via Ensembl version suffixes
       Other:
-        description: A probe targeting a target not covered by other categories
+        description: A probe targeting a target not covered by other categories. Requires OTHER_TARGET_DESCRIPTION
       Viral:
-        description: A probe targeting a viral gene or sequence
+        description: A probe targeting a viral gene or sequence. Only TARGET_NAME is required; no standardised identifier is currently mandated
 
 classes:
   SpatialPanel:
@@ -56,7 +57,7 @@ classes:
         range: string
         required: false
         title: "Ensembl ID"
-        description: Stable Ensembl identifier for the target. Use ENSG-prefixed IDs for human genes and ENST-prefixed IDs for human transcripts. Required when TARGET_TYPE is Human Gene or Human Transcript
+        description: Stable Ensembl identifier for the target. Use ENSG-prefixed IDs when TARGET_TYPE is Human Gene; use ENST-prefixed IDs when TARGET_TYPE is Human Transcript. Required when TARGET_TYPE is Human Gene or Human Transcript
         pattern: "^(ENSG\\d+|ENST\\d+)$"
       HGNC_VERSION:
         range: string

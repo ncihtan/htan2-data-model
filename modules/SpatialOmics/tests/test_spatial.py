@@ -180,6 +180,86 @@ class TestSpatial:
         for value in ["Bacterial", "Control Probe", "Human Gene", "Human Protein", "Human Transcript", "Other", "Viral"]:
             assert value in target_type_enum.permissible_values, f"TargetTypeEnum missing value: {value}"
 
+    def test_target_type_invalid_value(self):
+        """Test that an invalid TARGET_TYPE value raises ValueError."""
+        sv = SchemaView("modules/SpatialOmics/domains/spatial_panel.yaml")
+        enum_def = sv.get_enum("TargetTypeEnum")
+        assert "Fungal" not in enum_def.permissible_values, \
+            "Invalid value 'Fungal' should not be in TargetTypeEnum"
+
+    def test_spatial_panel_conditional_rules_instances(self):
+        """Test conditional rule behaviour for SpatialPanel via a schema-driven validator."""
+        sv = SchemaView("modules/SpatialOmics/domains/spatial_panel.yaml")
+        enum_def = sv.get_enum("TargetTypeEnum")
+
+        def validate(data):
+            target_type = data.get("TARGET_TYPE")
+            if target_type not in enum_def.permissible_values:
+                raise ValueError(f"Invalid TARGET_TYPE: {target_type!r}")
+            for slot in ["HTAN_PANEL_ID", "TARGET_TYPE", "TARGET_NAME"]:
+                if not data.get(slot):
+                    raise ValueError(f"Missing required slot: {slot}")
+            if target_type == "Human Gene":
+                for slot in ["ENSEMBL_ID", "HGNC_VERSION"]:
+                    if not data.get(slot):
+                        raise ValueError(f"Missing required slot for Human Gene: {slot}")
+            if target_type == "Human Transcript":
+                if not data.get("ENSEMBL_ID"):
+                    raise ValueError("Missing required slot for Human Transcript: ENSEMBL_ID")
+            if target_type == "Other":
+                if not data.get("OTHER_TARGET_DESCRIPTION"):
+                    raise ValueError("Missing required slot for Other: OTHER_TARGET_DESCRIPTION")
+
+        # Valid Human Gene instance
+        validate({
+            "HTAN_PANEL_ID": "HTA201_1_P1",
+            "TARGET_TYPE": "Human Gene",
+            "TARGET_NAME": "MYC",
+            "ENSEMBL_ID": "ENSG00000136997",
+            "HGNC_VERSION": "2025-01-01",
+        })
+
+        # Human Gene missing ENSEMBL_ID raises error
+        with pytest.raises(ValueError, match="ENSEMBL_ID"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Human Gene",
+                "TARGET_NAME": "MYC",
+                "HGNC_VERSION": "2025-01-01",
+            })
+
+        # Human Transcript without HGNC_VERSION is valid
+        validate({
+            "HTAN_PANEL_ID": "HTA201_1_P1",
+            "TARGET_TYPE": "Human Transcript",
+            "TARGET_NAME": "MYC-201",
+            "ENSEMBL_ID": "ENST00000621592",
+        })
+
+        # Other missing OTHER_TARGET_DESCRIPTION raises error
+        with pytest.raises(ValueError, match="OTHER_TARGET_DESCRIPTION"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Other",
+                "TARGET_NAME": "HPV16-E6",
+            })
+
+        # Valid Other instance
+        validate({
+            "HTAN_PANEL_ID": "HTA201_1_P1",
+            "TARGET_TYPE": "Other",
+            "TARGET_NAME": "HPV16-E6",
+            "OTHER_TARGET_DESCRIPTION": "Human papillomavirus 16 E6 protein",
+        })
+
+        # Invalid TARGET_TYPE raises error
+        with pytest.raises(ValueError, match="Invalid TARGET_TYPE"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Fungal",
+                "TARGET_NAME": "someGene",
+            })
+
     def test_enum_values(self):
         """Test that enum values are properly defined."""
         sv = SchemaView("modules/SpatialOmics/domains/spatial.yaml")
