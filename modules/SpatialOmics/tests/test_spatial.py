@@ -151,25 +151,149 @@ class TestSpatial:
         panel_class = sv.get_class("SpatialPanel")
         assert panel_class is not None
 
-        # Get all slots
         all_slots = sv.class_slots("SpatialPanel")
 
-        # Check required attributes
-        required_attrs = [
-            "HTAN_PANEL_ID",
-            "GENE_SYMBOL",
-            "HGNC_VERSION",
-            "GENE_ID",
-        ]
-
-        for attr in required_attrs:
+        # Unconditionally required slots
+        for attr in ["HTAN_PANEL_ID", "TARGET_TYPE", "TARGET_NAME"]:
             assert attr in all_slots, f"Required attribute {attr} not found"
-            # Check class-specific slot definition (SpatialPanel doesn't inherit, so all are class-specific)
             class_slot = panel_class.attributes.get(attr)
-            assert (
-                class_slot is not None
-            ), f"Attribute {attr} should be defined in SpatialPanel"
+            assert class_slot is not None, f"Attribute {attr} should be defined in SpatialPanel"
             assert class_slot.required is True, f"Attribute {attr} should be required"
+
+        # Conditionally required slots — not unconditionally required at class level
+        for attr in ["ENSEMBL_ID", "HGNC_VERSION", "OTHER_TARGET_DESCRIPTION"]:
+            assert attr in all_slots, f"Attribute {attr} not found"
+            class_slot = panel_class.attributes.get(attr)
+            assert class_slot is not None, f"Attribute {attr} should be defined in SpatialPanel"
+            assert class_slot.required is False, f"Attribute {attr} should be conditionally required (not unconditionally)"
+
+        # Dropped fields must not appear
+        for attr in ["GENE_SYMBOL", "GENE_ID", "USER_GENE_NAME"]:
+            assert attr not in all_slots, f"Removed attribute {attr} should not exist"
+
+        # Three conditional rules: Human Gene, Human Transcript, Other
+        assert len(panel_class.rules) == 3, "SpatialPanel should have exactly 3 conditional rules"
+
+        # TargetTypeEnum must exist with all expected values
+        target_type_enum = sv.get_enum("TargetTypeEnum")
+        assert target_type_enum is not None
+        for value in ["Bacterial", "Control Probe", "Human Gene", "Human Protein", "Human Transcript", "Other", "Viral"]:
+            assert value in target_type_enum.permissible_values, f"TargetTypeEnum missing value: {value}"
+
+    def test_target_type_invalid_value(self):
+        """Test that an invalid TARGET_TYPE value raises ValueError."""
+        sv = SchemaView("modules/SpatialOmics/domains/spatial_panel.yaml")
+        enum_def = sv.get_enum("TargetTypeEnum")
+        assert "Fungal" not in enum_def.permissible_values, \
+            "Invalid value 'Fungal' should not be in TargetTypeEnum"
+
+    def test_spatial_panel_conditional_rules_instances(self):
+        """Test conditional rule behaviour for SpatialPanel via a schema-driven validator."""
+        import re
+        sv = SchemaView("modules/SpatialOmics/domains/spatial_panel.yaml")
+        enum_def = sv.get_enum("TargetTypeEnum")
+
+        def validate(data):
+            target_type = data.get("TARGET_TYPE")
+            if target_type not in enum_def.permissible_values:
+                raise ValueError(f"Invalid TARGET_TYPE: {target_type!r}")
+            for slot in ["HTAN_PANEL_ID", "TARGET_TYPE", "TARGET_NAME"]:
+                if not data.get(slot):
+                    raise ValueError(f"Missing required slot: {slot}")
+            if target_type == "Human Gene":
+                ensembl_id = data.get("ENSEMBL_ID")
+                if not ensembl_id:
+                    raise ValueError("Missing required slot for Human Gene: ENSEMBL_ID")
+                if not re.match(r"^ENSG\d+$", ensembl_id):
+                    raise ValueError(f"ENSEMBL_ID must be ENSG-prefixed for Human Gene, got: {ensembl_id!r}")
+                if not data.get("HGNC_VERSION"):
+                    raise ValueError("Missing required slot for Human Gene: HGNC_VERSION")
+            if target_type == "Human Transcript":
+                ensembl_id = data.get("ENSEMBL_ID")
+                if not ensembl_id:
+                    raise ValueError("Missing required slot for Human Transcript: ENSEMBL_ID")
+                if not re.match(r"^ENST\d+$", ensembl_id):
+                    raise ValueError(f"ENSEMBL_ID must be ENST-prefixed for Human Transcript, got: {ensembl_id!r}")
+            if target_type == "Other":
+                if not data.get("OTHER_TARGET_DESCRIPTION"):
+                    raise ValueError("Missing required slot for Other: OTHER_TARGET_DESCRIPTION")
+
+        # Valid Human Gene instance
+        validate({
+            "HTAN_PANEL_ID": "HTA201_1_P1",
+            "TARGET_TYPE": "Human Gene",
+            "TARGET_NAME": "MYC",
+            "ENSEMBL_ID": "ENSG00000136997",
+            "HGNC_VERSION": "2025-01-01",
+        })
+
+        # Human Gene missing ENSEMBL_ID raises error
+        with pytest.raises(ValueError, match="ENSEMBL_ID"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Human Gene",
+                "TARGET_NAME": "MYC",
+                "HGNC_VERSION": "2025-01-01",
+            })
+
+        # Human Gene with ENST-prefixed ID raises error
+        with pytest.raises(ValueError, match="ENSG-prefixed"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Human Gene",
+                "TARGET_NAME": "MYC",
+                "ENSEMBL_ID": "ENST00000621592",
+                "HGNC_VERSION": "2025-01-01",
+            })
+
+        # Human Transcript without HGNC_VERSION is valid
+        validate({
+            "HTAN_PANEL_ID": "HTA201_1_P1",
+            "TARGET_TYPE": "Human Transcript",
+            "TARGET_NAME": "MYC-201",
+            "ENSEMBL_ID": "ENST00000621592",
+        })
+
+        # Human Transcript with ENSG-prefixed ID raises error
+        with pytest.raises(ValueError, match="ENST-prefixed"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Human Transcript",
+                "TARGET_NAME": "MYC-201",
+                "ENSEMBL_ID": "ENSG00000136997",
+            })
+
+        # Other missing OTHER_TARGET_DESCRIPTION raises error
+        with pytest.raises(ValueError, match="OTHER_TARGET_DESCRIPTION"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Other",
+                "TARGET_NAME": "HPV16-E6",
+            })
+
+        # Valid Other instance
+        validate({
+            "HTAN_PANEL_ID": "HTA201_1_P1",
+            "TARGET_TYPE": "Other",
+            "TARGET_NAME": "HPV16-E6",
+            "OTHER_TARGET_DESCRIPTION": "Human papillomavirus 16 E6 protein",
+        })
+
+        # Bacterial, Viral, Control Probe, Human Protein — only TARGET_NAME required
+        for target_type in ["Bacterial", "Viral", "Control Probe", "Human Protein"]:
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": target_type,
+                "TARGET_NAME": "some-target",
+            })
+
+        # Invalid TARGET_TYPE raises error
+        with pytest.raises(ValueError, match="Invalid TARGET_TYPE"):
+            validate({
+                "HTAN_PANEL_ID": "HTA201_1_P1",
+                "TARGET_TYPE": "Fungal",
+                "TARGET_NAME": "someGene",
+            })
 
     def test_enum_values(self):
         """Test that enum values are properly defined."""
@@ -209,20 +333,15 @@ class TestSpatial:
         assert panel_synapse_id_slot is not None
         assert panel_synapse_id_slot.pattern == "^syn\\d+$"
 
-        # Test Gene ID pattern for GENE_ID
-        gene_id_slot = sv.get_slot("GENE_ID")
-        assert gene_id_slot is not None
-        assert gene_id_slot.pattern == "^(ENSG\\d+|\\d+)$"
+        # Test Ensembl ID pattern (ENSG for genes, ENST for transcripts)
+        ensembl_id_slot = sv.get_slot("ENSEMBL_ID")
+        assert ensembl_id_slot is not None
+        assert ensembl_id_slot.pattern == "^(ENSG\\d+|ENST\\d+)$"
 
         # Test HGNC Version pattern
         hgnc_version_slot = sv.get_slot("HGNC_VERSION")
         assert hgnc_version_slot is not None
         assert hgnc_version_slot.pattern == "^\\d{4}-\\d{2}-\\d{2}$"
-
-        # Test Gene Symbol pattern for GENE_SYMBOL
-        gene_symbol_slot = sv.get_slot("GENE_SYMBOL")
-        assert gene_symbol_slot is not None
-        assert gene_symbol_slot.pattern == "^[A-Za-z0-9_\\-]+(@)?$"
 
     def test_minimum_values(self):
         """Test that minimum value constraints are properly defined."""
