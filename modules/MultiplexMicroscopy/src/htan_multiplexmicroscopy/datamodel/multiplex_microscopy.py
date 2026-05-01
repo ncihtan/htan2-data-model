@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-30T17:14:48
+# Generation date: 2026-05-01T16:23:42
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -471,7 +471,6 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
     SIZE_Y: int = None
     SIZE_Z: int = None
     HTAN_PANEL_ID: str = None
-    CHANNEL_METADATA_ID: str = None
     WORKING_DISTANCE: Optional[str] = None
     PYRAMID: Optional[Union[bool, Bool]] = None
     PHYSICAL_SIZE_Z: Optional[float] = None
@@ -536,11 +535,6 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
             self.MissingRequiredField("HTAN_PANEL_ID")
         if not isinstance(self.HTAN_PANEL_ID, str):
             self.HTAN_PANEL_ID = str(self.HTAN_PANEL_ID)
-
-        if self._is_empty(self.CHANNEL_METADATA_ID):
-            self.MissingRequiredField("CHANNEL_METADATA_ID")
-        if not isinstance(self.CHANNEL_METADATA_ID, str):
-            self.CHANNEL_METADATA_ID = str(self.CHANNEL_METADATA_ID)
 
         if self.WORKING_DISTANCE is not None and not isinstance(self.WORKING_DISTANCE, str):
             self.WORKING_DISTANCE = str(self.WORKING_DISTANCE)
@@ -1391,10 +1385,6 @@ slots.multiplexMicroscopyLevel2__SIZE_Z = Slot(uri=HTAN.SIZE_Z, name="multiplexM
 slots.multiplexMicroscopyLevel2__HTAN_PANEL_ID = Slot(uri=HTAN.HTAN_PANEL_ID, name="multiplexMicroscopyLevel2__HTAN_PANEL_ID", curie=HTAN.curie('HTAN_PANEL_ID'),
                    model_uri=HTAN.multiplexMicroscopyLevel2__HTAN_PANEL_ID, domain=None, range=str,
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$'))
-
-slots.multiplexMicroscopyLevel2__CHANNEL_METADATA_ID = Slot(uri=HTAN.CHANNEL_METADATA_ID, name="multiplexMicroscopyLevel2__CHANNEL_METADATA_ID", curie=HTAN.curie('CHANNEL_METADATA_ID'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__CHANNEL_METADATA_ID, domain=None, range=str,
-                   pattern=re.compile(r'^syn\d+$'))
 
 slots.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE = Slot(uri=HTAN.SEGMENTATION_WORKFLOW_TYPE, name="multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE", curie=HTAN.curie('SEGMENTATION_WORKFLOW_TYPE'),
                    model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE, domain=None, range=str)
