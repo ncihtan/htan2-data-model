@@ -328,10 +328,11 @@ class TestSpatial:
         """Test that validation patterns are properly defined."""
         sv = SchemaView("modules/SpatialOmics/domains/spatial.yaml")
 
-        # Test Synapse ID pattern for PANEL_SYNAPSE_ID
-        panel_synapse_id_slot = sv.get_slot("PANEL_SYNAPSE_ID")
-        assert panel_synapse_id_slot is not None
-        assert panel_synapse_id_slot.pattern == "^syn\\d+$"
+        # Test HTAN Panel ID pattern for HTAN_PANEL_ID in SpatialLevel3
+        level3_class = sv.get_class("SpatialLevel3")
+        htan_panel_id_attr = level3_class.attributes.get("HTAN_PANEL_ID")
+        assert htan_panel_id_attr is not None
+        assert htan_panel_id_attr.pattern == "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$"
 
         # Test Ensembl ID pattern (ENSG for genes, ENST for transcripts)
         ensembl_id_slot = sv.get_slot("ENSEMBL_ID")
