@@ -13,6 +13,24 @@ prefixes:
 
 default_prefix: htan
 
+enums:
+  TargetTypeEnum:
+    permissible_values:
+      Bacterial:
+        description: A probe targeting a bacterial gene or sequence
+      Control Probe:
+        description: A control probe used for normalization or quality control
+      Human Gene:
+        description: A probe targeting a human gene
+      Human Protein:
+        description: A probe targeting a human protein
+      Human Transcript:
+        description: A probe targeting a human transcript
+      Other:
+        description: A probe targeting a target not covered by other categories
+      Viral:
+        description: A probe targeting a viral gene or sequence
+
 classes:
   SpatialPanel:
     description: Spatial omics panel information for targeted sequencing or protein panels
@@ -24,27 +42,59 @@ classes:
         title: "HTAN Panel ID"
         description: Unique identifier for the panel
         pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$"
-      GENE_SYMBOL:
+      TARGET_TYPE:
+        range: TargetTypeEnum
+        required: true
+        title: "Target Type"
+        description: Type of probe target. Determines which identifier fields are required
+      TARGET_NAME:
         range: string
         required: true
-        title: "Gene Symbol"
-        description: HGNC-approved Gene symbol (e.g., MYC, PIK3C)
-        pattern: "^[A-Za-z0-9_\\-]+(@)?$"
-      HGNC_VERSION:
-        range: string
-        required: true
-        title: "HGNC Version"
-        description: Version of the HGNC used, indicated with the date of the HGNC reference (e.g., 2025-08-01)
-        pattern: "^\\d{4}-\\d{2}-\\d{2}$"
-      GENE_ID:
-        range: string
-        required: true
-        title: "Gene ID"
-        description: Stable Ensembl gene identifier (e.g., ENSG00000214114, ENSG00000121879). String matching ENSG\\d+ or digits
-        pattern: "^(ENSG\\d+|\\d+)$"
-      USER_GENE_NAME:
+        title: "Target Name"
+        description: Name of the probe target. For human genes use the HGNC-approved gene symbol (e.g., MYC, PIK3CA); for all other target types use the most appropriate available name (e.g., HPV16-E6 for a viral target)
+      ENSEMBL_ID:
         range: string
         required: false
-        title: "User Gene Name"
-        description: Optional user-defined name for the Gene
-
+        title: "Ensembl ID"
+        description: Stable Ensembl identifier for the target. Use ENSG-prefixed IDs when TARGET_TYPE is Human Gene (e.g., ENSG00000136997 or ENSG00000136997.20 for MYC); use ENST-prefixed IDs when TARGET_TYPE is Human Transcript (e.g., ENST00000621592 or ENST00000621592.7). Required when TARGET_TYPE is Human Gene or Human Transcript
+        pattern: "^(ENSG|ENST)\\d+(\\.\\d+)?$"
+      HGNC_VERSION:
+        range: string
+        required: false
+        title: "HGNC Version"
+        description: Version of the HGNC used for gene naming, indicated with the date of the HGNC reference (e.g., 2025-08-01). Required when TARGET_TYPE is Human Gene
+        pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+      OTHER_TARGET_DESCRIPTION:
+        range: string
+        required: false
+        title: "Other Target Description"
+        description: Free-text description of the target. Required when TARGET_TYPE is Other (e.g., microbiome species, viral gene name)
+    rules:
+      - preconditions:
+          slot_conditions:
+            TARGET_TYPE:
+              equals_string: "Human Gene"
+        postconditions:
+          slot_conditions:
+            ENSEMBL_ID:
+              required: true
+              pattern: "^ENSG\\d+(\\.\\d+)?$"
+            HGNC_VERSION:
+              required: true
+      - preconditions:
+          slot_conditions:
+            TARGET_TYPE:
+              equals_string: "Human Transcript"
+        postconditions:
+          slot_conditions:
+            ENSEMBL_ID:
+              required: true
+              pattern: "^ENST\\d+(\\.\\d+)?$"
+      - preconditions:
+          slot_conditions:
+            TARGET_TYPE:
+              equals_string: "Other"
+        postconditions:
+          slot_conditions:
+            OTHER_TARGET_DESCRIPTION:
+              required: true
