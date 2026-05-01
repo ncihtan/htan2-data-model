@@ -1,5 +1,5 @@
 # Auto generated from spatial.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-15T14:31:58
+# Generation date: 2026-05-01T18:50:56
 # Schema: SpatialOmics
 #
 # id: https://w3id.org/htan/spatial
@@ -295,7 +295,7 @@ class SpatialLevel3(CoreFileAttributes):
     PROTOCOL_LINK: Optional[str] = None
     TRANSCRIPTOME_TYPE: Optional[Union[str, "TranscriptomeType"]] = None
     PANEL_NAME: Optional[str] = None
-    PANEL_SYNAPSE_ID: Optional[str] = None
+    HTAN_PANEL_ID: Optional[str] = None
     SAME_SECTION_IMAGING_ID: Optional[Union[str, List[str]]] = empty_list()
     SAME_SECTION_IMAGING_MODALITY: Optional[Union[str, "SameSectionImagingModality"]] = None
     SAME_SECTION_IMAGING_CHANNELS: Optional[Union[str, List[str]]] = empty_list()
@@ -418,8 +418,8 @@ class SpatialLevel3(CoreFileAttributes):
         if self.PANEL_NAME is not None and not isinstance(self.PANEL_NAME, str):
             self.PANEL_NAME = str(self.PANEL_NAME)
 
-        if self.PANEL_SYNAPSE_ID is not None and not isinstance(self.PANEL_SYNAPSE_ID, str):
-            self.PANEL_SYNAPSE_ID = str(self.PANEL_SYNAPSE_ID)
+        if self.HTAN_PANEL_ID is not None and not isinstance(self.HTAN_PANEL_ID, str):
+            self.HTAN_PANEL_ID = str(self.HTAN_PANEL_ID)
 
         if not isinstance(self.SAME_SECTION_IMAGING_ID, list):
             self.SAME_SECTION_IMAGING_ID = [self.SAME_SECTION_IMAGING_ID] if self.SAME_SECTION_IMAGING_ID is not None else []
@@ -614,10 +614,11 @@ class SpatialPanel(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = HTAN.SpatialPanel
 
     HTAN_PANEL_ID: Union[str, SpatialPanelHTANPANELID] = None
-    GENE_SYMBOL: str = None
-    HGNC_VERSION: str = None
-    GENE_ID: str = None
-    USER_GENE_NAME: Optional[str] = None
+    TARGET_TYPE: Union[str, "TargetTypeEnum"] = None
+    TARGET_NAME: str = None
+    ENSEMBL_ID: Optional[str] = None
+    HGNC_VERSION: Optional[str] = None
+    OTHER_TARGET_DESCRIPTION: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_PANEL_ID):
@@ -625,23 +626,24 @@ class SpatialPanel(YAMLRoot):
         if not isinstance(self.HTAN_PANEL_ID, SpatialPanelHTANPANELID):
             self.HTAN_PANEL_ID = SpatialPanelHTANPANELID(self.HTAN_PANEL_ID)
 
-        if self._is_empty(self.GENE_SYMBOL):
-            self.MissingRequiredField("GENE_SYMBOL")
-        if not isinstance(self.GENE_SYMBOL, str):
-            self.GENE_SYMBOL = str(self.GENE_SYMBOL)
+        if self._is_empty(self.TARGET_TYPE):
+            self.MissingRequiredField("TARGET_TYPE")
+        if not isinstance(self.TARGET_TYPE, TargetTypeEnum):
+            self.TARGET_TYPE = TargetTypeEnum(self.TARGET_TYPE)
 
-        if self._is_empty(self.HGNC_VERSION):
-            self.MissingRequiredField("HGNC_VERSION")
-        if not isinstance(self.HGNC_VERSION, str):
+        if self._is_empty(self.TARGET_NAME):
+            self.MissingRequiredField("TARGET_NAME")
+        if not isinstance(self.TARGET_NAME, str):
+            self.TARGET_NAME = str(self.TARGET_NAME)
+
+        if self.ENSEMBL_ID is not None and not isinstance(self.ENSEMBL_ID, str):
+            self.ENSEMBL_ID = str(self.ENSEMBL_ID)
+
+        if self.HGNC_VERSION is not None and not isinstance(self.HGNC_VERSION, str):
             self.HGNC_VERSION = str(self.HGNC_VERSION)
 
-        if self._is_empty(self.GENE_ID):
-            self.MissingRequiredField("GENE_ID")
-        if not isinstance(self.GENE_ID, str):
-            self.GENE_ID = str(self.GENE_ID)
-
-        if self.USER_GENE_NAME is not None and not isinstance(self.USER_GENE_NAME, str):
-            self.USER_GENE_NAME = str(self.USER_GENE_NAME)
+        if self.OTHER_TARGET_DESCRIPTION is not None and not isinstance(self.OTHER_TARGET_DESCRIPTION, str):
+            self.OTHER_TARGET_DESCRIPTION = str(self.OTHER_TARGET_DESCRIPTION)
 
         super().__post_init__(**kwargs)
 
@@ -1049,6 +1051,41 @@ class ImageTypeLevel4(EnumDefinitionImpl):
         name="ImageTypeLevel4",
     )
 
+class TargetTypeEnum(EnumDefinitionImpl):
+
+    Bacterial = PermissibleValue(
+        text="Bacterial",
+        description="A probe targeting a bacterial gene or sequence")
+    Other = PermissibleValue(
+        text="Other",
+        description="A probe targeting a target not covered by other categories")
+    Viral = PermissibleValue(
+        text="Viral",
+        description="A probe targeting a viral gene or sequence")
+
+    _defn = EnumDefinition(
+        name="TargetTypeEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Control Probe",
+            PermissibleValue(
+                text="Control Probe",
+                description="A control probe used for normalization or quality control"))
+        setattr(cls, "Human Gene",
+            PermissibleValue(
+                text="Human Gene",
+                description="A probe targeting a human gene"))
+        setattr(cls, "Human Protein",
+            PermissibleValue(
+                text="Human Protein",
+                description="A probe targeting a human protein"))
+        setattr(cls, "Human Transcript",
+            PermissibleValue(
+                text="Human Transcript",
+                description="A probe targeting a human transcript"))
+
 # Slots
 class slots:
     pass
@@ -1147,9 +1184,9 @@ slots.spatialLevel3__PANEL_SIZE_TOTAL_TARGETS = Slot(uri=HTAN.PANEL_SIZE_TOTAL_T
 slots.spatialLevel3__PANEL_NAME = Slot(uri=HTAN.PANEL_NAME, name="spatialLevel3__PANEL_NAME", curie=HTAN.curie('PANEL_NAME'),
                    model_uri=HTAN.spatialLevel3__PANEL_NAME, domain=None, range=Optional[str])
 
-slots.spatialLevel3__PANEL_SYNAPSE_ID = Slot(uri=HTAN.PANEL_SYNAPSE_ID, name="spatialLevel3__PANEL_SYNAPSE_ID", curie=HTAN.curie('PANEL_SYNAPSE_ID'),
-                   model_uri=HTAN.spatialLevel3__PANEL_SYNAPSE_ID, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^syn\d+$'))
+slots.spatialLevel3__HTAN_PANEL_ID = Slot(uri=HTAN.HTAN_PANEL_ID, name="spatialLevel3__HTAN_PANEL_ID", curie=HTAN.curie('HTAN_PANEL_ID'),
+                   model_uri=HTAN.spatialLevel3__HTAN_PANEL_ID, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$'))
 
 slots.spatialLevel3__SAME_SECTION_IMAGING_ID = Slot(uri=HTAN.SAME_SECTION_IMAGING_ID, name="spatialLevel3__SAME_SECTION_IMAGING_ID", curie=HTAN.curie('SAME_SECTION_IMAGING_ID'),
                    model_uri=HTAN.spatialLevel3__SAME_SECTION_IMAGING_ID, domain=None, range=Optional[Union[str, List[str]]],
@@ -1295,20 +1332,22 @@ slots.spatialPanel__HTAN_PANEL_ID = Slot(uri=HTAN.HTAN_PANEL_ID, name="spatialPa
                    model_uri=HTAN.spatialPanel__HTAN_PANEL_ID, domain=None, range=URIRef,
                    pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$'))
 
-slots.spatialPanel__GENE_SYMBOL = Slot(uri=HTAN.GENE_SYMBOL, name="spatialPanel__GENE_SYMBOL", curie=HTAN.curie('GENE_SYMBOL'),
-                   model_uri=HTAN.spatialPanel__GENE_SYMBOL, domain=None, range=str,
-                   pattern=re.compile(r'^[A-Za-z0-9_\-]+(@)?$'))
+slots.spatialPanel__TARGET_TYPE = Slot(uri=HTAN.TARGET_TYPE, name="spatialPanel__TARGET_TYPE", curie=HTAN.curie('TARGET_TYPE'),
+                   model_uri=HTAN.spatialPanel__TARGET_TYPE, domain=None, range=Union[str, "TargetTypeEnum"])
+
+slots.spatialPanel__TARGET_NAME = Slot(uri=HTAN.TARGET_NAME, name="spatialPanel__TARGET_NAME", curie=HTAN.curie('TARGET_NAME'),
+                   model_uri=HTAN.spatialPanel__TARGET_NAME, domain=None, range=str)
+
+slots.spatialPanel__ENSEMBL_ID = Slot(uri=HTAN.ENSEMBL_ID, name="spatialPanel__ENSEMBL_ID", curie=HTAN.curie('ENSEMBL_ID'),
+                   model_uri=HTAN.spatialPanel__ENSEMBL_ID, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(ENSG|ENST)\d+(\.\d+)?$'))
 
 slots.spatialPanel__HGNC_VERSION = Slot(uri=HTAN.HGNC_VERSION, name="spatialPanel__HGNC_VERSION", curie=HTAN.curie('HGNC_VERSION'),
-                   model_uri=HTAN.spatialPanel__HGNC_VERSION, domain=None, range=str,
+                   model_uri=HTAN.spatialPanel__HGNC_VERSION, domain=None, range=Optional[str],
                    pattern=re.compile(r'^\d{4}-\d{2}-\d{2}$'))
 
-slots.spatialPanel__GENE_ID = Slot(uri=HTAN.GENE_ID, name="spatialPanel__GENE_ID", curie=HTAN.curie('GENE_ID'),
-                   model_uri=HTAN.spatialPanel__GENE_ID, domain=None, range=str,
-                   pattern=re.compile(r'^(ENSG\d+|\d+)$'))
-
-slots.spatialPanel__USER_GENE_NAME = Slot(uri=HTAN.USER_GENE_NAME, name="spatialPanel__USER_GENE_NAME", curie=HTAN.curie('USER_GENE_NAME'),
-                   model_uri=HTAN.spatialPanel__USER_GENE_NAME, domain=None, range=Optional[str])
+slots.spatialPanel__OTHER_TARGET_DESCRIPTION = Slot(uri=HTAN.OTHER_TARGET_DESCRIPTION, name="spatialPanel__OTHER_TARGET_DESCRIPTION", curie=HTAN.curie('OTHER_TARGET_DESCRIPTION'),
+                   model_uri=HTAN.spatialPanel__OTHER_TARGET_DESCRIPTION, domain=None, range=Optional[str])
 
 slots.SpatialLevel3_FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="SpatialLevel3_FILE_FORMAT", curie=HTAN.curie('FILE_FORMAT'),
                    model_uri=HTAN.SpatialLevel3_FILE_FORMAT, domain=SpatialLevel3, range=str,
