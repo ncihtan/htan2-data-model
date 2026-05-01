@@ -1,11 +1,7 @@
 name: SpatialPanel
 id: https://w3id.org/htan/spatial/panel
 version: "2.0.0"
-description: >-
-  HTAN Spatial Omics Panel Information - Metadata for targeted sequencing or protein panels.
-  Breaking change from v1: GENE_SYMBOL, GENE_ID, and USER_GENE_NAME have been removed.
-  Replacements: GENE_SYMBOL and USER_GENE_NAME -> TARGET_NAME (required for all rows);
-  GENE_ID -> ENSEMBL_ID (accepts ENSG and ENST identifiers).
+description: HTAN Spatial Omics Panel Information - Metadata for targeted sequencing or protein panels
 
 imports:
   - linkml:types
