@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-04-15T14:31:56
+# Generation date: 2026-05-01T16:40:03
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy
@@ -184,6 +184,7 @@ class ChannelMetadata(YAMLRoot):
     class_name: ClassVar[str] = "ChannelMetadata"
     class_model_uri: ClassVar[URIRef] = HTAN.ChannelMetadata
 
+    HTAN_PANEL_ID: str = None
     CHANNEL_ID: str = None
     CHANNEL_NAME: str = None
     CYCLE_NUMBER: Optional[int] = None
@@ -207,6 +208,11 @@ class ChannelMetadata(YAMLRoot):
     CONCENTRATION: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_PANEL_ID):
+            self.MissingRequiredField("HTAN_PANEL_ID")
+        if not isinstance(self.HTAN_PANEL_ID, str):
+            self.HTAN_PANEL_ID = str(self.HTAN_PANEL_ID)
+
         if self._is_empty(self.CHANNEL_ID):
             self.MissingRequiredField("CHANNEL_ID")
         if not isinstance(self.CHANNEL_ID, str):
@@ -459,15 +465,15 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
     IMAGING_ASSAY_TYPE: Union[str, "ImagingAssayType"] = None
     PHYSICAL_SIZE_X: float = None
     PHYSICAL_SIZE_Y: float = None
-    PHYSICAL_SIZE_Z: float = None
     SIZE_C: int = None
     SIZE_T: int = None
     SIZE_X: int = None
     SIZE_Y: int = None
     SIZE_Z: int = None
-    CHANNEL_METADATA_ID: str = None
+    HTAN_PANEL_ID: str = None
     WORKING_DISTANCE: Optional[str] = None
     PYRAMID: Optional[Union[bool, Bool]] = None
+    PHYSICAL_SIZE_Z: Optional[float] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
@@ -500,11 +506,6 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
         if not isinstance(self.PHYSICAL_SIZE_Y, float):
             self.PHYSICAL_SIZE_Y = float(self.PHYSICAL_SIZE_Y)
 
-        if self._is_empty(self.PHYSICAL_SIZE_Z):
-            self.MissingRequiredField("PHYSICAL_SIZE_Z")
-        if not isinstance(self.PHYSICAL_SIZE_Z, float):
-            self.PHYSICAL_SIZE_Z = float(self.PHYSICAL_SIZE_Z)
-
         if self._is_empty(self.SIZE_C):
             self.MissingRequiredField("SIZE_C")
         if not isinstance(self.SIZE_C, int):
@@ -530,16 +531,19 @@ class MultiplexMicroscopyLevel2(BaseImagingAttributes):
         if not isinstance(self.SIZE_Z, int):
             self.SIZE_Z = int(self.SIZE_Z)
 
-        if self._is_empty(self.CHANNEL_METADATA_ID):
-            self.MissingRequiredField("CHANNEL_METADATA_ID")
-        if not isinstance(self.CHANNEL_METADATA_ID, str):
-            self.CHANNEL_METADATA_ID = str(self.CHANNEL_METADATA_ID)
+        if self._is_empty(self.HTAN_PANEL_ID):
+            self.MissingRequiredField("HTAN_PANEL_ID")
+        if not isinstance(self.HTAN_PANEL_ID, str):
+            self.HTAN_PANEL_ID = str(self.HTAN_PANEL_ID)
 
         if self.WORKING_DISTANCE is not None and not isinstance(self.WORKING_DISTANCE, str):
             self.WORKING_DISTANCE = str(self.WORKING_DISTANCE)
 
         if self.PYRAMID is not None and not isinstance(self.PYRAMID, Bool):
             self.PYRAMID = Bool(self.PYRAMID)
+
+        if self.PHYSICAL_SIZE_Z is not None and not isinstance(self.PHYSICAL_SIZE_Z, float):
+            self.PHYSICAL_SIZE_Z = float(self.PHYSICAL_SIZE_Z)
 
         super().__post_init__(**kwargs)
 
@@ -1361,7 +1365,7 @@ slots.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Y = Slot(uri=HTAN.PHYSICAL_SIZE_Y
                    model_uri=HTAN.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Y, domain=None, range=float)
 
 slots.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Z = Slot(uri=HTAN.PHYSICAL_SIZE_Z, name="multiplexMicroscopyLevel2__PHYSICAL_SIZE_Z", curie=HTAN.curie('PHYSICAL_SIZE_Z'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Z, domain=None, range=float)
+                   model_uri=HTAN.multiplexMicroscopyLevel2__PHYSICAL_SIZE_Z, domain=None, range=Optional[float])
 
 slots.multiplexMicroscopyLevel2__SIZE_C = Slot(uri=HTAN.SIZE_C, name="multiplexMicroscopyLevel2__SIZE_C", curie=HTAN.curie('SIZE_C'),
                    model_uri=HTAN.multiplexMicroscopyLevel2__SIZE_C, domain=None, range=int)
@@ -1378,9 +1382,9 @@ slots.multiplexMicroscopyLevel2__SIZE_Y = Slot(uri=HTAN.SIZE_Y, name="multiplexM
 slots.multiplexMicroscopyLevel2__SIZE_Z = Slot(uri=HTAN.SIZE_Z, name="multiplexMicroscopyLevel2__SIZE_Z", curie=HTAN.curie('SIZE_Z'),
                    model_uri=HTAN.multiplexMicroscopyLevel2__SIZE_Z, domain=None, range=int)
 
-slots.multiplexMicroscopyLevel2__CHANNEL_METADATA_ID = Slot(uri=HTAN.CHANNEL_METADATA_ID, name="multiplexMicroscopyLevel2__CHANNEL_METADATA_ID", curie=HTAN.curie('CHANNEL_METADATA_ID'),
-                   model_uri=HTAN.multiplexMicroscopyLevel2__CHANNEL_METADATA_ID, domain=None, range=str,
-                   pattern=re.compile(r'^syn\d+$'))
+slots.multiplexMicroscopyLevel2__HTAN_PANEL_ID = Slot(uri=HTAN.HTAN_PANEL_ID, name="multiplexMicroscopyLevel2__HTAN_PANEL_ID", curie=HTAN.curie('HTAN_PANEL_ID'),
+                   model_uri=HTAN.multiplexMicroscopyLevel2__HTAN_PANEL_ID, domain=None, range=str,
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$'))
 
 slots.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE = Slot(uri=HTAN.SEGMENTATION_WORKFLOW_TYPE, name="multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE", curie=HTAN.curie('SEGMENTATION_WORKFLOW_TYPE'),
                    model_uri=HTAN.multiplexMicroscopyLevel3__SEGMENTATION_WORKFLOW_TYPE, domain=None, range=str)
@@ -1439,6 +1443,10 @@ slots.multiplexMicroscopyLevel4__FILE_FORMAT = Slot(uri=HTAN.FILE_FORMAT, name="
 slots.multiplexMicroscopyLevel4__FILENAME = Slot(uri=HTAN.FILENAME, name="multiplexMicroscopyLevel4__FILENAME", curie=HTAN.curie('FILENAME'),
                    model_uri=HTAN.multiplexMicroscopyLevel4__FILENAME, domain=None, range=str,
                    pattern=re.compile(r'^.+\.(csv|h5ad)$'))
+
+slots.channelMetadata__HTAN_PANEL_ID = Slot(uri=HTAN.HTAN_PANEL_ID, name="channelMetadata__HTAN_PANEL_ID", curie=HTAN.curie('HTAN_PANEL_ID'),
+                   model_uri=HTAN.channelMetadata__HTAN_PANEL_ID, domain=None, range=str,
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$'))
 
 slots.channelMetadata__CHANNEL_ID = Slot(uri=HTAN.CHANNEL_ID, name="channelMetadata__CHANNEL_ID", curie=HTAN.curie('CHANNEL_ID'),
                    model_uri=HTAN.channelMetadata__CHANNEL_ID, domain=None, range=str)

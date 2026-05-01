@@ -168,13 +168,13 @@ classes:
         range: string
         required: false
         title: "Panel Name"
-        description: Number of genes/proteins in panel
-      PANEL_SYNAPSE_ID:
+        description: Name of the panel used in this experiment
+      HTAN_PANEL_ID:
         range: string
         required: false
-        title: "Panel Synapse ID"
-        description: Synapse ID of the completed spatial_omics_panel template
-        pattern: "^syn\\d+$"
+        title: "HTAN Panel ID"
+        description: Unique HTAN identifier for the panel used in this experiment. Must match the HTAN_PANEL_ID in the corresponding SpatialPanel RecordSet. Follows the HTAN identifier format with a P-prefix segment (e.g., HTA201_1_P1).
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$"
       SAME_SECTION_IMAGING_ID:
         range: string
         multivalued: true
@@ -349,7 +349,7 @@ classes:
           slot_conditions:
             PANEL_NAME:
               required: true
-      - description: "PANEL_SYNAPSE_ID is required when TRANSCRIPTOME_TYPE is Targeted OR PROTEIN_MEASURED is true"
+      - description: "HTAN_PANEL_ID is required when TRANSCRIPTOME_TYPE is Targeted OR PROTEIN_MEASURED is true"
         preconditions:
           any_of:
             - slot_conditions:
@@ -360,7 +360,7 @@ classes:
                   pattern: "^true$"
         postconditions:
           slot_conditions:
-            PANEL_SYNAPSE_ID:
+            HTAN_PANEL_ID:
               required: true
       - description: "SAME_SECTION_IMAGING_CHANNELS is required when SAME_SECTION_IMAGING_MODALITY is fluorescence"
         preconditions:
