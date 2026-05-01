@@ -1,5 +1,5 @@
 # Auto generated from spatial.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-01T16:23:44
+# Generation date: 2026-05-01T16:40:05
 # Schema: SpatialOmics
 #
 # id: https://w3id.org/htan/spatial
@@ -1055,13 +1055,13 @@ class TargetTypeEnum(EnumDefinitionImpl):
 
     Bacterial = PermissibleValue(
         text="Bacterial",
-        description="""A probe targeting a bacterial gene or sequence. Only TARGET_NAME is required; no standardised identifier is currently mandated""")
+        description="A probe targeting a bacterial gene or sequence")
     Other = PermissibleValue(
         text="Other",
-        description="A probe targeting a target not covered by other categories. Requires OTHER_TARGET_DESCRIPTION")
+        description="A probe targeting a target not covered by other categories")
     Viral = PermissibleValue(
         text="Viral",
-        description="""A probe targeting a viral gene or sequence. Only TARGET_NAME is required; no standardised identifier is currently mandated""")
+        description="A probe targeting a viral gene or sequence")
 
     _defn = EnumDefinition(
         name="TargetTypeEnum",
@@ -1072,19 +1072,19 @@ class TargetTypeEnum(EnumDefinitionImpl):
         setattr(cls, "Control Probe",
             PermissibleValue(
                 text="Control Probe",
-                description="""A control probe used for normalization or quality control. Only TARGET_NAME is required"""))
+                description="A control probe used for normalization or quality control"))
         setattr(cls, "Human Gene",
             PermissibleValue(
                 text="Human Gene",
-                description="A probe targeting a human gene. Requires ENSEMBL_ID (ENSG-prefixed) and HGNC_VERSION"))
+                description="A probe targeting a human gene"))
         setattr(cls, "Human Protein",
             PermissibleValue(
                 text="Human Protein",
-                description="""A probe targeting a human protein. Only TARGET_NAME is required; protein identifier requirements are deferred pending model design"""))
+                description="A probe targeting a human protein"))
         setattr(cls, "Human Transcript",
             PermissibleValue(
                 text="Human Transcript",
-                description="""A probe targeting a human transcript. Requires ENSEMBL_ID (ENST-prefixed); HGNC_VERSION is not required as transcript versioning is handled via Ensembl version suffixes"""))
+                description="A probe targeting a human transcript"))
 
 # Slots
 class slots:
@@ -1340,7 +1340,7 @@ slots.spatialPanel__TARGET_NAME = Slot(uri=HTAN.TARGET_NAME, name="spatialPanel_
 
 slots.spatialPanel__ENSEMBL_ID = Slot(uri=HTAN.ENSEMBL_ID, name="spatialPanel__ENSEMBL_ID", curie=HTAN.curie('ENSEMBL_ID'),
                    model_uri=HTAN.spatialPanel__ENSEMBL_ID, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(ENSG\d+|ENST\d+)$'))
+                   pattern=re.compile(r'^(ENSG|ENST)\d+(\.\d+)?$'))
 
 slots.spatialPanel__HGNC_VERSION = Slot(uri=HTAN.HGNC_VERSION, name="spatialPanel__HGNC_VERSION", curie=HTAN.curie('HGNC_VERSION'),
                    model_uri=HTAN.spatialPanel__HGNC_VERSION, domain=None, range=Optional[str],
