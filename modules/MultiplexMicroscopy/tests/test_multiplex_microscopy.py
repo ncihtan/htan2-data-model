@@ -47,6 +47,11 @@ class TestMultiplexMicroscopy:
             slot = sv.get_slot(attr)
             assert slot.required is True, f"Attribute {attr} should be required"
 
+        # HTAN_PANEL_ID is class-local (not a module-level slot), check via class attributes
+        level2_class = sv.get_class("MultiplexMicroscopyLevel2")
+        panel_id = level2_class.attributes.get("HTAN_PANEL_ID")
+        assert panel_id is not None and panel_id.required is True
+
     def test_level3_class(self):
         """Test that Level 3 class is properly defined."""
         sv = SchemaView("modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml")
@@ -366,3 +371,10 @@ class TestChannelMetadata:
 
         with pytest.raises(ValueError):
             ChannelMetadata(CHANNEL_ID="ch1")
+
+    def test_invalid_channel_metadata_missing_htan_panel_id(self):
+        """Test that a ChannelMetadata instance missing HTAN_PANEL_ID raises ValueError."""
+        from htan_multiplexmicroscopy.datamodel.multiplex_microscopy import ChannelMetadata
+
+        with pytest.raises(ValueError):
+            ChannelMetadata(CHANNEL_ID="ch1", CHANNEL_NAME="DAPI")

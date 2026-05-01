@@ -204,7 +204,7 @@ class TestSpatial:
                 ensembl_id = data.get("ENSEMBL_ID")
                 if not ensembl_id:
                     raise ValueError("Missing required slot for Human Gene: ENSEMBL_ID")
-                if not re.match(r"^ENSG\d+$", ensembl_id):
+                if not re.match(r"^ENSG\d+(\.\d+)?$", ensembl_id):
                     raise ValueError(f"ENSEMBL_ID must be ENSG-prefixed for Human Gene, got: {ensembl_id!r}")
                 if not data.get("HGNC_VERSION"):
                     raise ValueError("Missing required slot for Human Gene: HGNC_VERSION")
@@ -212,7 +212,7 @@ class TestSpatial:
                 ensembl_id = data.get("ENSEMBL_ID")
                 if not ensembl_id:
                     raise ValueError("Missing required slot for Human Transcript: ENSEMBL_ID")
-                if not re.match(r"^ENST\d+$", ensembl_id):
+                if not re.match(r"^ENST\d+(\.\d+)?$", ensembl_id):
                     raise ValueError(f"ENSEMBL_ID must be ENST-prefixed for Human Transcript, got: {ensembl_id!r}")
             if target_type == "Other":
                 if not data.get("OTHER_TARGET_DESCRIPTION"):
@@ -336,7 +336,7 @@ class TestSpatial:
         # Test Ensembl ID pattern (ENSG for genes, ENST for transcripts)
         ensembl_id_slot = sv.get_slot("ENSEMBL_ID")
         assert ensembl_id_slot is not None
-        assert ensembl_id_slot.pattern == "^(ENSG\\d+|ENST\\d+)$"
+        assert ensembl_id_slot.pattern == "^(ENSG|ENST)\\d+(\\.\\d+)?$"
 
         # Test HGNC Version pattern
         hgnc_version_slot = sv.get_slot("HGNC_VERSION")

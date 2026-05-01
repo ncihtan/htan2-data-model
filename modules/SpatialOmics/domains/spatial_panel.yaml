@@ -17,19 +17,19 @@ enums:
   TargetTypeEnum:
     permissible_values:
       Bacterial:
-        description: A probe targeting a bacterial gene or sequence. Only TARGET_NAME is required; no standardised identifier is currently mandated
+        description: A probe targeting a bacterial gene or sequence
       Control Probe:
-        description: A control probe used for normalization or quality control. Only TARGET_NAME is required
+        description: A control probe used for normalization or quality control
       Human Gene:
-        description: A probe targeting a human gene. Requires ENSEMBL_ID (ENSG-prefixed) and HGNC_VERSION
+        description: A probe targeting a human gene
       Human Protein:
-        description: A probe targeting a human protein. Only TARGET_NAME is required; protein identifier requirements are deferred pending model design
+        description: A probe targeting a human protein
       Human Transcript:
-        description: A probe targeting a human transcript. Requires ENSEMBL_ID (ENST-prefixed); HGNC_VERSION is not required as transcript versioning is handled via Ensembl version suffixes
+        description: A probe targeting a human transcript
       Other:
-        description: A probe targeting a target not covered by other categories. Requires OTHER_TARGET_DESCRIPTION
+        description: A probe targeting a target not covered by other categories
       Viral:
-        description: A probe targeting a viral gene or sequence. Only TARGET_NAME is required; no standardised identifier is currently mandated
+        description: A probe targeting a viral gene or sequence
 
 classes:
   SpatialPanel:
@@ -56,8 +56,8 @@ classes:
         range: string
         required: false
         title: "Ensembl ID"
-        description: Stable Ensembl identifier for the target. Use ENSG-prefixed IDs when TARGET_TYPE is Human Gene (e.g., ENSG00000136997 for MYC); use ENST-prefixed IDs when TARGET_TYPE is Human Transcript (e.g., ENST00000621592 for MYC-201). Required when TARGET_TYPE is Human Gene or Human Transcript
-        pattern: "^(ENSG\\d+|ENST\\d+)$"
+        description: Stable Ensembl identifier for the target. Use ENSG-prefixed IDs when TARGET_TYPE is Human Gene (e.g., ENSG00000136997 or ENSG00000136997.20 for MYC); use ENST-prefixed IDs when TARGET_TYPE is Human Transcript (e.g., ENST00000621592 or ENST00000621592.7). Required when TARGET_TYPE is Human Gene or Human Transcript
+        pattern: "^(ENSG|ENST)\\d+(\\.\\d+)?$"
       HGNC_VERSION:
         range: string
         required: false
@@ -78,7 +78,7 @@ classes:
           slot_conditions:
             ENSEMBL_ID:
               required: true
-              pattern: "^ENSG\\d+$"
+              pattern: "^ENSG\\d+(\\.\\d+)?$"
             HGNC_VERSION:
               required: true
       - preconditions:
@@ -89,7 +89,7 @@ classes:
           slot_conditions:
             ENSEMBL_ID:
               required: true
-              pattern: "^ENST\\d+$"
+              pattern: "^ENST\\d+(\\.\\d+)?$"
       - preconditions:
           slot_conditions:
             TARGET_TYPE:
