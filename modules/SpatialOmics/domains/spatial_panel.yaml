@@ -46,7 +46,7 @@ classes:
         range: TargetTypeEnum
         required: true
         title: "Target Type"
-        description: Type of probe target. Determines which identifier fields are required
+        description: Type of probe target. Determines which identifier fields are required.
       TARGET_NAME:
         range: string
         required: true
@@ -68,7 +68,7 @@ classes:
         range: string
         required: false
         title: "Other Target Description"
-        description: Free-text description of the target. Required when TARGET_TYPE is Other (e.g., microbiome species, viral gene name)
+        description: Free-text description of the target. Required when TARGET_TYPE is Other (e.g., microbiome species, synthetic spike-in)
     rules:
       - preconditions:
           slot_conditions:
