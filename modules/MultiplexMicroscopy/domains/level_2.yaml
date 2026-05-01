@@ -148,12 +148,6 @@ classes:
         description: Unique HTAN identifier for the antibody/reagent panel used to acquire this image. Must match the HTAN_PANEL_ID in the corresponding ChannelMetadata RecordSet. Follows the HTAN identifier format with a P-prefix segment (e.g., HTA201_1_P1).
         pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$"
 
-      CHANNEL_METADATA_ID:
-        range: string
-        required: true
-        title: "Channel Metadata ID"
-        description: Unique identifier specifying the location of the required channel metadata (Synapse ID)
-        pattern: "^syn\\d+$"
     rules:
       - preconditions:
           slot_conditions:

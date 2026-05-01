@@ -40,7 +40,6 @@ class TestMultiplexMicroscopy:
             "SIZE_X",  # MultiplexMicroscopy specific
             "SIZE_Y",  # MultiplexMicroscopy specific
             "SIZE_T",  # MultiplexMicroscopy specific
-            "CHANNEL_METADATA_ID",  # MultiplexMicroscopy specific
         ]
 
         for attr in required_attrs:
@@ -128,11 +127,6 @@ class TestMultiplexMicroscopy:
 
         # Note: ORGAN_OR_TISSUE is a biospecimen attribute, not an imaging attribute
         # It should be retrieved from the Biospecimen record via HTAN_PARENT_ID
-
-        # Test Synapse ID pattern for CHANNEL_METADATA_ID
-        channel_metadata_id_slot = sv.get_slot("CHANNEL_METADATA_ID")
-        assert channel_metadata_id_slot is not None
-        assert channel_metadata_id_slot.pattern == "^syn\\d+$"
 
     def test_minimum_values(self):
         """Test that minimum value constraints are properly defined."""
