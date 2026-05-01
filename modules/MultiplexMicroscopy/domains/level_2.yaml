@@ -100,10 +100,10 @@ classes:
 
       PHYSICAL_SIZE_Z:
         range: float
-        required: true
+        required: false
         minimum_value: 0.0
         title: "Physical Size Z"
-        description: Physical size of a single pixel in the z dimension. In microns.
+        description: Physical size of a single pixel in the z dimension. In microns. Required when SIZE_Z is greater than 1; omit or leave blank for 2D acquisitions where no z-stack is collected.
 
       SIZE_C:
         range: integer
@@ -140,10 +140,20 @@ classes:
         title: "Size Z"
         description: The number of pixels in the z dimension at the highest resolution available
 
-      CHANNEL_METADATA_ID:
+      HTAN_PANEL_ID:
         range: string
         required: true
-        title: "Channel Metadata ID"
-        description: Unique identifier specifying the location of the required channel metadata (Synapse ID)
-        pattern: "^syn\\d+$"
+        title: "HTAN Panel ID"
+        description: Unique HTAN identifier for the antibody/reagent panel used to acquire this image. Must match the HTAN_PANEL_ID in the corresponding ChannelMetadata RecordSet. Follows the HTAN identifier format with a P-prefix segment (e.g., HTA201_1_P1).
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$"
+
+    rules:
+      - preconditions:
+          slot_conditions:
+            SIZE_Z:
+              minimum_value: 2
+        postconditions:
+          slot_conditions:
+            PHYSICAL_SIZE_Z:
+              required: true
 
