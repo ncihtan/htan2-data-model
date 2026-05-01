@@ -1,5 +1,5 @@
 # Auto generated from multiplex_microscopy.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-01T16:40:03
+# Generation date: 2026-05-01T18:40:46
 # Schema: MultiplexMicroscopy
 #
 # id: https://w3id.org/htan/multiplex_microscopy

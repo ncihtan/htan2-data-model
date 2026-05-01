@@ -1,5 +1,5 @@
 # Auto generated from spatial.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-01T16:40:05
+# Generation date: 2026-05-01T18:40:48
 # Schema: SpatialOmics
 #
 # id: https://w3id.org/htan/spatial
@@ -295,7 +295,7 @@ class SpatialLevel3(CoreFileAttributes):
     PROTOCOL_LINK: Optional[str] = None
     TRANSCRIPTOME_TYPE: Optional[Union[str, "TranscriptomeType"]] = None
     PANEL_NAME: Optional[str] = None
-    PANEL_SYNAPSE_ID: Optional[str] = None
+    HTAN_PANEL_ID: Optional[str] = None
     SAME_SECTION_IMAGING_ID: Optional[Union[str, List[str]]] = empty_list()
     SAME_SECTION_IMAGING_MODALITY: Optional[Union[str, "SameSectionImagingModality"]] = None
     SAME_SECTION_IMAGING_CHANNELS: Optional[Union[str, List[str]]] = empty_list()
@@ -418,8 +418,8 @@ class SpatialLevel3(CoreFileAttributes):
         if self.PANEL_NAME is not None and not isinstance(self.PANEL_NAME, str):
             self.PANEL_NAME = str(self.PANEL_NAME)
 
-        if self.PANEL_SYNAPSE_ID is not None and not isinstance(self.PANEL_SYNAPSE_ID, str):
-            self.PANEL_SYNAPSE_ID = str(self.PANEL_SYNAPSE_ID)
+        if self.HTAN_PANEL_ID is not None and not isinstance(self.HTAN_PANEL_ID, str):
+            self.HTAN_PANEL_ID = str(self.HTAN_PANEL_ID)
 
         if not isinstance(self.SAME_SECTION_IMAGING_ID, list):
             self.SAME_SECTION_IMAGING_ID = [self.SAME_SECTION_IMAGING_ID] if self.SAME_SECTION_IMAGING_ID is not None else []
@@ -1184,9 +1184,9 @@ slots.spatialLevel3__PANEL_SIZE_TOTAL_TARGETS = Slot(uri=HTAN.PANEL_SIZE_TOTAL_T
 slots.spatialLevel3__PANEL_NAME = Slot(uri=HTAN.PANEL_NAME, name="spatialLevel3__PANEL_NAME", curie=HTAN.curie('PANEL_NAME'),
                    model_uri=HTAN.spatialLevel3__PANEL_NAME, domain=None, range=Optional[str])
 
-slots.spatialLevel3__PANEL_SYNAPSE_ID = Slot(uri=HTAN.PANEL_SYNAPSE_ID, name="spatialLevel3__PANEL_SYNAPSE_ID", curie=HTAN.curie('PANEL_SYNAPSE_ID'),
-                   model_uri=HTAN.spatialLevel3__PANEL_SYNAPSE_ID, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^syn\d+$'))
+slots.spatialLevel3__HTAN_PANEL_ID = Slot(uri=HTAN.HTAN_PANEL_ID, name="spatialLevel3__HTAN_PANEL_ID", curie=HTAN.curie('HTAN_PANEL_ID'),
+                   model_uri=HTAN.spatialLevel3__HTAN_PANEL_ID, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$'))
 
 slots.spatialLevel3__SAME_SECTION_IMAGING_ID = Slot(uri=HTAN.SAME_SECTION_IMAGING_ID, name="spatialLevel3__SAME_SECTION_IMAGING_ID", curie=HTAN.curie('SAME_SECTION_IMAGING_ID'),
                    model_uri=HTAN.spatialLevel3__SAME_SECTION_IMAGING_ID, domain=None, range=Optional[Union[str, List[str]]],
