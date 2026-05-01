@@ -1,6 +1,5 @@
 name: MultiplexMicroscopyLevel2
 id: https://w3id.org/htan/multiplex_microscopy/level_2
-version: "1.1.0"
 description: HTAN Multiplex Microscopy Level 2 - Imaging data with channel metadata
 
 imports:

@@ -1,6 +1,5 @@
 name: MultiplexMicroscopyChannelMetadata
 id: https://w3id.org/htan/multiplex_microscopy/channel_metadata
-version: "1.5.0"
 description: HTAN Multiplex Microscopy Channel Metadata - Channel-specific attributes for multiplex imaging
 
 imports:
