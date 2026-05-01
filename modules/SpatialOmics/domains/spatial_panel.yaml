@@ -56,12 +56,12 @@ classes:
         range: string
         required: true
         title: "Target Name"
-        description: Name of the probe target. For human genes use the HGNC-approved gene symbol; for all other target types use the most appropriate available name (e.g., viral gene name, bacterial gene name)
+        description: Name of the probe target. For human genes use the HGNC-approved gene symbol (e.g., MYC, PIK3CA); for all other target types use the most appropriate available name (e.g., HPV16-E6 for a viral target)
       ENSEMBL_ID:
         range: string
         required: false
         title: "Ensembl ID"
-        description: Stable Ensembl identifier for the target. Use ENSG-prefixed IDs when TARGET_TYPE is Human Gene; use ENST-prefixed IDs when TARGET_TYPE is Human Transcript. Required when TARGET_TYPE is Human Gene or Human Transcript
+        description: Stable Ensembl identifier for the target. Use ENSG-prefixed IDs when TARGET_TYPE is Human Gene (e.g., ENSG00000136997 for MYC); use ENST-prefixed IDs when TARGET_TYPE is Human Transcript (e.g., ENST00000621592 for MYC-201). Required when TARGET_TYPE is Human Gene or Human Transcript
         pattern: "^(ENSG\\d+|ENST\\d+)$"
       HGNC_VERSION:
         range: string
