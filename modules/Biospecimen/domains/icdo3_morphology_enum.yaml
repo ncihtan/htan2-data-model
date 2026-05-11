@@ -1,6 +1,6 @@
 name: IcdO3MorphologyEnum
 id: https://w3id.org/htan/icdo3_morphology_enum
-description: ICD-O-3 morphology codes for tissue classification based on HTAN Phase 2 specification
+description: ICD-O-3 morphology codes sourced from the NAACCR Histology table (Histology3 v26, 2025-09-03)
 
 prefixes:
   htan: https://w3id.org/htan/
@@ -13,371 +13,2425 @@ enums:
   IcdO3MorphologyEnum:
     title: icdo3_morphology
     permissible_values:
-      "9715/3":
-        description: "ALK-negative anaplastic large cell lymphoma (ALK-ALCL), for cases diagnosed 2021 and later"
-      "9737/3":
-        description: "ALK-positive large B-cell lymphoma (ALK+ LBCL), for cases diagnosed 2010 and later"
-      "9870/3":
-        description: "Acute basophilic leukemia, for cases diagnosed 1978 and later"
-      "9805/3":
-        description: "Acute biphenotypic leukemia, for cases diagnosed 2001 - 2009"
-      "9910/3":
-        description: "Acute megakaryoblastic leukemia (AMKL), for cases diagnosed 1978 and later"
-      "9911/3":
-        description: "Acute megakaryoblastic leukemia with RBMI5::MRTFA, for cases diagnosed 2010 and later"
-      "9891/3":
-        description: "Acute monoblastic and monocytic leukemia, for cases diagnosed 1978 and later"
-      "9861/3":
-        description: "Acute myeloid leukemia (AML), NOS, for cases diagnosed 1978 and later"
-      "9912/3":
-        description: "Acute myeloid leukemia with BCR::ABL1 fusion"
-      "9871/3":
-        description: "Acute myeloid leukemia with CBFB::MYH11 fusion, for cases diagnosed 2001 and later"
-      "9878/3":
-        description: "Acute myeloid leukemia with CEBPA mutation"
-      "9865/3":
-        description: "Acute myeloid leukemia with DEK::NUP214 fusion, for cases diagnosed 2010 and later"
-      "9897/3":
-        description: "Acute myeloid leukemia with KMT2a rearrangement, for cases diagnosed 1978 and later"
-      "9869/3":
-        description: "Acute myeloid leukemia with MECOM rearrangement, for cases diagnosed 2010 and later"
-      "9896/3":
-        description: "Acute myeloid leukemia with RUNX1::RUNX1T1, for cases diagnosed 2001 and later"
-      "9874/3":
-        description: "Acute myeloid leukemia with maturation, for cases diagnosed 1978 - 1991, 1995 and later"
-      "9872/3":
-        description: "Acute myeloid leukemia with minimal differentiation, for cases diagnosed 1978 - 1991, 1995 and later"
-      "9877/3":
-        description: "Acute myeloid leukemia with mutated NPM1"
-      "9879/3":
-        description: "Acute myeloid leukemia with mutated RUNX1"
-      "9895/3":
-        description: "Acute myeloid leukemia with myelodysplasia-related changes (AML-MRC), for cases diagnosed 2001 and later"
-      "9873/3":
-        description: "Acute myeloid leukemia without maturation, for cases diagnosed 2001 and later"
-      "9867/3":
-        description: "Acute myelomonocytic leukemia (AMML), for cases diagnosed 1978 and later"
-      "9931/3":
-        description: "Acute panmyelosis with myelofibrosis (APMF), for cases diagnosed 1992 and later"
-      "9866/3":
-        description: "Acute promyelocytic leukemia with PML::RARA fusion (APL with PML-RARA), for cases diagnosed 1978 and later"
-      "9801/3":
-        description: "Acute undifferentiated leukemia, for cases diagnosed 1978 and later"
-      "9827/3":
-        description: "Adult T-cell leukemia/lymphoma (AITL), for cases diagnosed 1992 and later"
-      "9948/3":
-        description: "Aggressive NK-cell leukemia (ANKL), for cases diagnosed 2001 and later"
-      "9714/3":
-        description: "Anaplastic large cell lymphoma, NOS, for cases diagnosed 1992 and later"
-      "9705/3":
-        description: "Angioimmunoblastic T-cell lymphoma (AITL), for cases diagnosed 1992 and later"
-      "9767/1":
-        description: "Angioimmunoblastic lymphadenopathy (AIL), This neoplasm is not reportable"
-      "9876/3":
-        description: "Atypical chronic myeloid (aCML) leukemia, BCR/ABL1-negative, for cases diagnosed 1978 and later"
-      "9813/3":
-        description: "B lymphoblastic leukemia/lymphoma with KMT2A rearrangement, for cases diagnosed 2010 and later"
-      "9596/3":
-        description: "B-cell lymphoma, unclassifiable, with features intermediate between diffuse large B-cell lymphoma and classic Hodgkin lymphoma, for cases diagnosed 2001 and later"
-      "9833/3":
-        description: "B-cell prolymphocytic leukemia (B-PLL), for cases diagnosed 2001 and later"
-      "9812/3":
-        description: "B-lymphoblastic leukemia/lymphoma with BCR::ABL1 fusion, for cases diagnosed 2010 and later"
-      "9819/3":
-        description: "B-lymphoblastic leukemia/lymphoma with BCR::ABL1 like (Ph-like) features"
-      "9814/3":
-        description: "B-lymphoblastic leukemia/lymphoma with ETV6::RUNX1 fusion, for cases diagnosed 2010 and later"
-      "9815/3":
-        description: "B-lymphoblastic leukemia/lymphoma with High-hyperdiploidy, for cases diagnosed 2010 and later"
-      "9817/3":
-        description: "B-lymphoblastic leukemia/lymphoma with IGH::IL3 fusion, for cases diagnosed 2010 and later"
-      "9818/3":
-        description: "B-lymphoblastic leukemia/lymphoma with TCF3::PBX1, for cases diagnosed 2010 and later"
-      "9816/3":
-        description: "B-lymphoblastic leukemia/lymphoma with hypodiploidy (Hypodiploid ALL), for cases diagnosed 2010 and later"
-      "9811/3":
-        description: "B-lymphoblastic leukemia/lymphoma, NOS, for cases diagnosed 2010 and later"
-      "9727/3":
-        description: "Blastic plasmacytoid dendritic cell neoplasm (BPDC), for cases diagnosed 2001 and later"
-      "9826/3":
-        description: "Burkitt cell leukemia, for cases diagnosed 1992 - 2020"
-      "9687/3":
-        description: "Burkitt lymphoma (BL), (NOS), for cases diagnosed 1978 and later"
-      "9964/3":
-        description: "Chronic eosinophilic leukemia (CEL), for cases diagnosed 1978 and later"
-      "9823/3":
-        description: "Chronic lymphocytic leukemia/small lymphocytic lymphoma (CLL/SLL), for cases diagnosed 1978 and later"
-      "9875/3":
-        description: "Chronic myeloid leukemia (CML), BCR::ABL1, for cases diagnosed 1978 and later"
-      "9863/3":
-        description: "Chronic myeloid leukemia (CML), NOS, for cases diagnosed 1978 and later"
-      "9945/3":
-        description: "Chronic myelomonocytic leukemia (CMML), NOS, for cases diagnosed 1978 and later"
-      "9963/3":
-        description: "Chronic neutrophilic leukemia (CNL), for cases diagnosed 1978 and later"
-      "9650/3":
-        description: "Classic Hodgkin lymphoma (CHL), NOS, for cases diagnosed 1978 and later"
-      "9653/3":
-        description: "Classic Hodgkin lymphoma, lymphocyte depletion (LD-cHL), for cases diagnosed 1978 and later"
-      "9651/3":
-        description: "Classic Hodgkin lymphoma, lymphocyte-rich (LR-cHL), for cases diagnosed 1978 and later"
-      "9652/3":
-        description: "Classic Hodgkin lymphoma, mixed cellularity (MC-cHL), for cases diagnosed 1978 and later"
-      "9663/3":
-        description: "Classic Hodgkin lymphoma, nodular sclerosis, NOS (NS-cHL), for cases diagnosed 1978 and later"
-      "9680/3":
-        description: "Diffuse large B-cell lymphoma, NOS (DLBCL), for cases diagnosed 1978 and later"
-      "9680/1":
-        description: "EBV-positive mucocutaneous ulcer (EBVMCU), This neoplasm is not reportable"
-      "9717/3":
-        description: "Enteropathy-associated (type) T-cell lymphoma (EATL), for cases diagnosed 2001 and later"
-      "9749/3":
-        description: "Erdheim-Chester disease (ECD)"
-      "9962/3":
-        description: "Essential thrombocythemia (ET), for cases diagnosed 2001 and later"
-      "9719/3":
-        description: "Extranodal NK-/T-cell lymphoma (ENKTL), for cases diagnosed 2001 and later"
-      "9699/3":
-        description: "Extranodal marginal zone lymphoma of mucosa-associated lymphoid tissue (MALT lymphoma), for cases diagnosed 1992 and later"
-      "9759/3":
-        description: "Fibroblastic reticular cell tumor, for cases diagnosed 2010 and later"
-      "9758/3":
-        description: "Follicular dendritic cell sarcoma (FDCS), for cases diagnosed 2001 and later"
-      "9690/3":
-        description: "Follicular lymphoma (FL), NOS, for cases diagnosed 1978 and later"
-      "9695/3":
-        description: "Follicular lymphoma, grade 1, for cases diagnosed 1978 and later"
-      "9691/3":
-        description: "Follicular lymphoma, grade 2, for cases diagnosed 1992 and later"
-      "9698/3":
-        description: "Follicular lymphoma, grade 3, for cases diagnosed 1978 and later"
-      "9738/3":
-        description: "HHV8-positive diffuse large B-cell lymphoma, for cases diagnosed 2010 and later"
-      "9738/1":
-        description: "HHV8-positive germinotropic lymphoproliferative disorder (GLPD), This neoplasm is not reportable"
-      "9940/3":
-        description: "Hairy cell leukemia (HCL), for cases diagnosed 1978 and later"
-      "9762/3":
-        description: "Heavy chain desposition disease, for cases diagnosed 1992 and later"
-      "9716/3":
-        description: "Hepatosplenic T-cell lymphoma (HSTCL), for cases diagnosed 2001 and later"
-      "9755/3":
-        description: "Histiocytic sarcoma, for cases diagnosed 1992 and later"
-      "9661/3":
-        description: "Hodgkin granuloma, for cases diagnosed 2001 - 2009"
-      "9654/3":
-        description: "Hodgkin lymphoma, lymphocyte depletion, diffuse fibrosis [OBS], for cases diagnosed 1978 - 2009"
-      "9655/3":
-        description: "Hodgkin lymphoma, lymphocyte depletion, reticular, for cases diagnosed 1978 and later"
-      "9664/3":
-        description: "Hodgkin lymphoma, nodular sclerosis, cellular phase, for cases diagnosed 1978 - 2009"
-      "9665/3":
-        description: "Hodgkin lymphoma, nodular sclerosis, grade 1, for cases diagnosed 1992 - 2009"
-      "9667/3":
-        description: "Hodgkin lymphoma, nodular sclerosis, grade 2, for cases diagnosed 1978 - 2009"
-      "9662/3":
-        description: "Hodgkin sarcoma, for cases diagnosed 2001 - 2009"
-      "9725/1":
-        description: "Hydroa vacciniforme like lymphoproliferative disorder, This neoplasm is not reportable"
-      "9725/3":
-        description: "Hydroa vaccinoforme-like lymphoproliferative disorder (HV-LPD), for cases diagnosed 2010 - 2020"
-      "9761/1":
-        description: "IgM monoclonal gammopathy of undetermined significance (MGUS), This neoplasm is not reportable"
-      "9760/3":
-        description: "Immunoproliferative disease, NOS, for cases diagnosed 1992 - 2009"
-      "9764/3":
-        description: "Immunoproliferative small intestinal disease, for cases diagnosed 1992 - 2009"
-      "9695/1":
-        description: "In situ follicular neoplasia (ISFN), This neoplasm is not reportable"
-      "9673/1":
-        description: "In situ mantle cell neoplasia (ISMCN), This neoplasm is not reportable"
-      "9702/1":
-        description: "Indolent T-cell lymphoproliferative disorder of the gastrointestinal tract (iTCL-GI), This neoplasm is not reportable"
-      "9741/1":
-        description: "Indolent systemic mastocytosis (ISM), This neoplasm is not reportable"
-      "9757/3":
-        description: "Interdigitating dendritic cell sarcoma (IDCS), for cases diagnosed 2001 and later"
-      "9712/3":
-        description: "Intravascular large B-cell lymphoma (IVLBCL), for cases diagnosed 2010 and later"
-      "9946/3":
-        description: "Juvenile myelomonocytic leukemia (JMML), for cases diagnosed 1978 and later"
-      "9749/1":
-        description: "Juvenile xanthogranuloma (JXG), This neoplasm is not reportable"
-      "9751/1":
-        description: "LCH, NOS, This neoplasm is not reportable"
-      "9751/3":
-        description: "LCH, disseminated, for cases diagnosed 1978 - 2000, 2010 and later"
-      "9754/3":
-        description: "Langerhans cell histiocytosis, disseminated, for cases diagnosed 1978 - 2009"
-      "9753/1":
-        description: "Langerhans cell histiocytosis, multifocal, This neoplasm is not reportable"
-      "9752/1":
-        description: "Langerhans cell histiocytosis, unifocal, This neoplasm is not reportable"
-      "9756/3":
-        description: "Langerhans cell sarcoma (LCS), for cases diagnosed 2001 and later"
-      "9800/3":
-        description: "Leukemia, NOS, for cases diagnosed 1978 and later"
-      "9820/3":
-        description: "Lymphoid leukemia, NOS, for cases diagnosed 1978 and later"
-      "9766/3":
-        description: "Lymphomatoid granulomatosis grade (LYG) 3"
-      "9766/1":
-        description: "Lymphomatoid granulomatosis, NOS (LYG), This neoplasm is not reportable"
-      "9718/1":
-        description: "Lymphomatoid papulosis (LyP), This neoplasm is not reportable"
-      "9671/3":
-        description: "Lymphoplasmacytic lymphoma (LPL), for cases diagnosed 1978 and later"
-      "9970/1":
-        description: "Lymphoproliferative disorder, NOS, This neoplasm is not reportable"
-      "9750/3":
-        description: "Malignant histiocytosis, for cases diagnosed 1978 - 2009"
+      "8000/0":
+        description: "Neoplasm, benign"
+      "8000/1":
+        description: "Neoplasm, uncertain whether benign or malignant"
+      "8000/3":
+        description: "Neoplasm, malignant"
+      "8000/6":
+        description: "Neoplasm, metastatic"
+      "8000/9":
+        description: "Neoplasm, malignant, uncertain whether primary or metastatic"
+      "8001/0":
+        description: "Tumor cells, benign"
+      "8001/1":
+        description: "Tumor cells, uncertain whether benign or malignant"
+      "8001/3":
+        description: "Tumor cells, malignant"
+      "8002/3":
+        description: "Malignant tumor, small cell type"
+      "8003/3":
+        description: "Malignant tumor, giant cell type"
+      "8004/3":
+        description: "Malignant tumor, spindle cell type"
+      "8005/0":
+        description: "Clear cell tumor, NOS"
+      "8005/3":
+        description: "Malignant tumor, clear cell type"
+      "8010/0":
+        description: "Epithelial tumor, benign"
+      "8010/2":
+        description: "Carcinoma in situ, NOS"
+      "8010/3":
+        description: "Carcinoma, NOS"
+      "8010/6":
+        description: "Carcinoma, metastatic, NOS"
+      "8010/9":
+        description: "Carcinomatosis"
+      "8011/0":
+        description: "Epithelioma, benign"
+      "8011/3":
+        description: "Epithelioma, malignant"
+      "8012/3":
+        description: "Large cell carcinoma, NOS"
+      "8013/3":
+        description: "Large cell neuroendocrine carcinoma"
+      "8014/3":
+        description: "Large cell carcinoma with rhabdoid phenotype"
+      "8015/3":
+        description: "Glassy cell carcinoma"
+      "8020/3":
+        description: "Carcinoma, undifferentiated, NOS"
+      "8021/3":
+        description: "Carcinoma, anaplastic, NOS"
+      "8022/3":
+        description: "Pleomorphic carcinoma"
+      "8023/3":
+        description: "Nuclear protein in testis (NUT)-associated carcinoma"
+      "8030/3":
+        description: "Giant cell and spindle cell carcinoma"
+      "8031/3":
+        description: "Giant cell carcinoma"
+      "8032/3":
+        description: "Spindle cell carcinoma, NOS"
+      "8033/3":
+        description: "Pseudosarcomatous carcinoma"
+      "8034/3":
+        description: "Polygonal cell carcinoma"
+      "8035/3":
+        description: "Carcinoma with osteoclast-like giant cells"
+      "8040/0":
+        description: "Tumorlet, benign"
+      "8040/1":
+        description: "Tumorlet, NOS"
+      "8041/3":
+        description: "Small cell carcinoma, NOS"
+      "8042/3":
+        description: "Oat cell carcinoma (C34._)"
+      "8043/3":
+        description: "Small cell carcinoma, fusiform cell"
+      "8044/3":
+        description: "Small cell carcinoma, intermediate cell"
+      "8045/3":
+        description: "Combined small cell carcinoma"
+      "8046/3":
+        description: "Non-small cell carcinoma (C34._)"
+      "8050/0":
+        description: "Papilloma, NOS (except papilloma of bladder M-8120/1)"
+      "8050/2":
+        description: "Papillary carcinoma in situ"
+      "8050/3":
+        description: "Papillary carcinoma, NOS"
+      "8051/0":
+        description: "Verrucous papilloma"
+      "8051/3":
+        description: "Warty carcinoma [2018+ CASES FOR C60._, USE 8054/3. ALL OTHER SITES USE 8051/3 FOR ALL YEARS]"
+      "8052/0":
+        description: "Squamous cell papilloma, NOS"
+      "8052/2":
+        description: "Papillary squamous cell carcinoma, non-invasive"
+      "8052/3":
+        description: "Papillary squamous cell carcinoma"
+      "8053/0":
+        description: "Squamous cell papilloma, inverted"
+      "8054/3":
+        description: "Warty carcinoma (C60.0-C60.2, C60.9) [2018+. PRE-2018 CASES FOR C60, USE 8051/3.  ALL OTHER SITES USE 8051/3 FOR ALL YEARS]"
+      "8060/0":
+        description: "Squamous papillomatosis"
+      "8070/0":
+        description: "Low-grade squamous intraepithelial lesion [2026+. REPLACES GRADE 2/II NEOPLASMS]"
+      "8070/2":
+        description: "Squamous cell carcinoma in situ, NOS"
+      "8070/3":
+        description: "Squamous cell carcinoma, NOS"
+      "8070/6":
+        description: "Squamous cell carcinoma, metastatic, NOS"
+      "8071/2":
+        description: "Differentiated penile [or vulvar] intraepithelial neoplasia (C60._  [or C51._]) [2018+ CASES ONLY]"
+      "8071/3":
+        description: "Squamous cell carcinoma, keratinizing, NOS"
+      "8072/3":
+        description: "Squamous cell carcinoma, large cell, nonkeratinizing, NOS"
+      "8073/3":
+        description: "Squamous cell carcinoma, small cell, nonkeratinizing"
+      "8074/3":
+        description: "Squamous cell carcinoma, spindle cell"
+      "8075/3":
+        description: "Squamous cell carcinoma, adenoid"
+      "8076/2":
+        description: "Squamous cell carcinoma in situ with questionable stromal invasion"
+      "8076/3":
+        description: "Squamous cell carcinoma, microinvasive"
+      "8077/2":
+        description: "Squamous intraepithelial neoplasia, grade III [SEE STANDARD SETTER REQUIREMENTS FOR REPORTABLE SITES]"
+      "8078/3":
+        description: "Squamous cell carcinoma with horn formation"
+      "8080/2":
+        description: "Queyrat erythroplasia (C60._)"
+      "8081/2":
+        description: "Bowen disease (C44._)"
+      "8082/3":
+        description: "Lymphoepithelial carcinoma"
+      "8083/3":
+        description: "Basaloid squamous cell carcinoma"
+      "8084/3":
+        description: "Squamous cell carcinoma, clear cell type"
+      "8085/0":
+        description: "HPV-associated oral epithelial dysplasia, low grade [2026+]"
+      "8085/2":
+        description: "HPV-associated oral epithelial dysplasia, high grade (C02._, C03._, C04._, C05._, C06._) [2026+]"
+      "8085/3":
+        description: "Squamous cell carcinoma, HPV-positive (C01.9, C09.9, C10.2, C10.3, C10.8, C10.9, C31.0–C31.3, C31.9) [2018+]"
+      "8086/3":
+        description: "Squamous cell carcinoma, HPV-negative (C01.9, C09.9, C10.2, C10.3, C10.8, C10.9, C31.0–C31.3, C31.9) [2018+]"
+      "8090/1":
+        description: "Basal cell tumor (C44._)"
+      "8090/3":
+        description: "Basal cell carcinoma, NOS (C44._)"
+      "8091/3":
+        description: "Superficial basal cell carcinoma (C44._)"
+      "8092/3":
+        description: "Infiltrating basal cell carcinoma, NOS (C44._)"
+      "8093/3":
+        description: "Basal cell carcinoma, fibroepithelial (C44._)"
+      "8094/3":
+        description: "Basosquamous carcinoma (C44._)"
+      "8095/3":
+        description: "Metatypical carcinoma (C44._)"
+      "8096/0":
+        description: "Intraepidermal epithelioma of Jadassohn (C44._)"
+      "8097/3":
+        description: "Basal cell carcinoma, nodular (C44._)"
+      "8098/3":
+        description: "Adenoid basal carcinoma (C53._)"
+      "8100/0":
+        description: "Trichoepithelioma (C44._)"
+      "8100/3":
+        description: "Trichoblastic carcinoma (C44._) [2022+]"
+      "8101/0":
+        description: "Trichofolliculoma (C44._)"
+      "8102/0":
+        description: "Trichilemmoma (C44._)"
+      "8102/3":
+        description: "Trichilemmocarcinoma (C44._)"
+      "8103/0":
+        description: "Pilar tumor (C44._)"
+      "8104/0":
+        description: "Pilar sheath acanthoma (C44._) [2021+]"
+      "8110/0":
+        description: "Pilomatrixoma, NOS (C44._)"
+      "8110/3":
+        description: "Pilomatrical carcinoma (C44._)"
+      "8120/0":
+        description: "Transitional cell papilloma, benign"
+      "8120/1":
+        description: "Urothelial papilloma, NOS"
+      "8120/2":
+        description: "Transitional cell carcinoma in situ"
+      "8120/3":
+        description: "Transitional cell carcinoma, NOS"
+      "8121/0":
+        description: "Schneiderian papilloma, NOS (C30.0, C31._)"
+      "8121/1":
+        description: "Transitional cell papilloma, inverted, NOS"
+      "8121/3":
+        description: "Schneiderian carcinoma (C30.0, C31._)"
+      "8122/3":
+        description: "Urothelial carcinoma, sarcomatoid"
+      "8123/3":
+        description: "Basaloid carcinoma"
+      "8124/3":
+        description: "Cloacogenic carcinoma (C21.2)"
+      "8130/1":
+        description: "Papillary urothelial neoplasm of low malignant potential (C67._)"
+      "8130/2":
+        description: "Papillary transitional cell carcinoma, non-invasive (C67._)"
+      "8130/3":
+        description: "Papillary transitional cell carcinoma (C67._)"
+      "8131/3":
+        description: "Urothelial carcinoma, micropapillary (C67._)"
+      "8140/0":
+        description: "Adenoma, NOS"
+      "8140/1":
+        description: "Atypical adenoma"
+      "8140/2":
+        description: "Adenocarcinoma in situ, NOS"
+      "8140/3":
+        description: "Adenocarcinoma, NOS"
+      "8140/6":
+        description: "Adenocarcinoma, metastatic, NOS"
+      "8141/3":
+        description: "Scirrhous adenocarcinoma"
+      "8142/3":
+        description: "Linitis plastica (C16._)"
+      "8143/3":
+        description: "Superficial spreading adenocarcinoma"
+      "8144/2":
+        description: "Intestinal-type adenoma, high grade (C16._, C17._) [REPORTABLE 2022+ FOR STOMACH AND SMALL INTESTINE ONLY; SEE STANDARD SETTER REQUIREMENTS FOR REPORTABILITY.]"
+      "8144/3":
+        description: "Adenocarcinoma, intestinal type (C16._)"
+      "8145/3":
+        description: "Carcinoma, diffuse type (C16._)"
+      "8146/0":
+        description: "Monomorphic adenoma"
+      "8147/0":
+        description: "Basal cell adenoma"
+      "8147/3":
+        description: "Basal cell adenocarcinoma"
+      "8148/2":
+        description: "Glandular intraepithelial neoplasia, grade III"
+      "8149/0":
+        description: "Canalicular adenoma"
+      "8150/0":
+        description: "Pancreatic neuroendocrine microadenoma (C25._)"
+      "8150/1":
+        description: "Pancreatic endocrine tumor, NOS (C25._) [PRE-2021 ONLY. FOR 2021+ USE CODE 8150/3.]"
+      "8150/3":
+        description: "Pancreatic neuroendocrine tumor, nonfunctioning (C25._) [REPORTABLE 2021+.]"
+      "8151/0":
+        description: "Insulinoma, NOS (C25._) [PRE-2021 ONLY. FOR 2021+ USE CODE 8151/3.]"
+      "8151/3":
+        description: "Insulinoma, NOS (C25._) [REPORTABLE 2021+. FOR PRE-2021, USE CODE 8151/0]"
+      "8152/1":
+        description: "Glucagonoma, NOS (C25._) [PRE-2021 ONLY. FOR 2021+ USE CODE 8152/3.]"
+      "8152/3":
+        description: "Glucagonoma, NOS (C25._) [REPORTABLE 2021+. FOR PRE-2021, USE CODE 8152/1]"
+      "8153/1":
+        description: "Gastrinoma, NOS [PRE-2021 ONLY. FOR 2021+ USE CODE 8153/3.]"
+      "8153/3":
+        description: "Gastrinoma, NOS [REPORTABLE 2021+. FOR PRE-2021, USE CODE 8153/1]"
+      "8154/3":
+        description: "Mixed pancreatic endocrine and exocrine tumor, malignant (C25._)"
+      "8155/1":
+        description: "Vipoma, NOS [PRE-2021 ONLY. FOR 2021+ USE CODE 8155/3.]"
+      "8155/3":
+        description: "Vipoma, NOS [REPORTABLE 2021+. FOR PRE-2021, USE CODE 8155/1.]"
+      "8156/1":
+        description: "Somatostatinoma, NOS [PRE-2021 ONLY. FOR 2021+ USE CODE 8156/3.]"
+      "8156/3":
+        description: "Somatostatinoma, NOS [REPORTABLE 2021+. FOR PRE-2021, USE CODE 8156/1.]"
+      "8157/1":
+        description: "Enteroglucagonoma, NOS [obs] [FOR 2014-2020, USE CODE 8152/1; FOR 2021+, USE CODE 8152/3.]"
+      "8157/3":
+        description: "Enteroglucagonoma, malignant [obs] [FOR 2014+, USE CODE 8152/3.]"
+      "8158/1":
+        description: "ACTH-producing tumor [2018-2020 ONLY. FOR 2021+ USE CODE 8158/3.]"
+      "8158/3":
+        description: "ACTH-producing tumor [REPORTABLE 2021+. FOR PRE-2021, USE CODE 8158/1.]"
+      "8160/0":
+        description: "Bile duct adenoma (C22.1, C24.0)"
+      "8160/3":
+        description: "Cholangiocarcinoma (C22.1, C24.0)"
+      "8161/0":
+        description: "Bile duct cystadenoma (C22.1, C24.0)"
+      "8161/3":
+        description: "Bile duct cystadenocarcinoma (C22.1, C24.0)"
+      "8162/3":
+        description: "Klatskin tumor (C22.1, C24.0)"
+      "8163/2":
+        description: "Papillary neoplasm, pancreatobiliary type, with high grade intraepithelial neoplasia (C24.1) [2022+]"
+      "8163/3":
+        description: "Pancreatobiliary-type carcinoma (C24.1) [2018+. FOR 2015-2017, USE 8255/3]"
+      "8170/0":
+        description: "Liver cell adenoma (C22.0)"
+      "8170/3":
+        description: "Hepatocellular carcinoma, NOS (C22.0)"
+      "8171/3":
+        description: "Hepatocellular carcinoma, fibrolamellar (C22.0)"
+      "8172/3":
+        description: "Hepatocellular carcinoma, scirrhous (C22.0)"
+      "8173/3":
+        description: "Hepatocellular carcinoma, spindle cell variant (C22.0)"
+      "8174/3":
+        description: "Hepatocellular carcinoma, clear cell type (C22.0)"
+      "8175/3":
+        description: "Hepatocellular carcinoma, pleomorphic type (C22.0)"
+      "8180/3":
+        description: "Combined hepatocellular carcinoma and cholangiocarcinoma (C22.0)"
+      "8190/0":
+        description: "Trabecular adenoma"
+      "8190/3":
+        description: "Trabecular adenocarcinoma"
+      "8191/0":
+        description: "Embryonal adenoma"
+      "8200/0":
+        description: "Eccrine dermal cylindroma (C44._)"
+      "8200/3":
+        description: "Adenoid cystic carcinoma"
+      "8201/2":
+        description: "Cribriform carcinoma in situ (C50._)"
+      "8201/3":
+        description: "Cribriform carcinoma, NOS"
+      "8202/0":
+        description: "Microcystic adenoma (C25._)"
+      "8204/0":
+        description: "Lactating adenoma (C50._)"
+      "8210/0":
+        description: "Adenomatous polyp, NOS"
+      "8210/2":
+        description: "Adenocarcinoma in situ in adenomatous polyp"
+      "8210/3":
+        description: "Adenocarcinoma in adenomatous polyp"
+      "8211/0":
+        description: "Tubular adenoma, NOS"
+      "8211/2":
+        description: "Tubular adenoma, high grade [2022+; NOT REPORTABLE; SEE STANDARD SETTER REQUIREMENTS FOR REPORTABILITY.]"
+      "8211/3":
+        description: "Tubular adenocarcinoma"
+      "8212/0":
+        description: "Flat adenoma"
+      "8213/0":
+        description: "Serrated adenoma (C18._)"
+      "8213/2":
+        description: "Serrated dysplasia, high grade (C16._, C17._) [REPORTABLE 2022+ FOR STOMACH AND SMALL INTESTINE ONLY; SEE STANDARD SETTER REQUIREMENTS FOR REPORTABILITY.]"
+      "8213/3":
+        description: "Serrated adenocarcinoma (C18.0, C18.2, C18.9, C19.9, C20.9) [CODE FOR USE IN 2015+]"
+      "8214/3":
+        description: "Parietal cell carcinoma (C16._)"
+      "8215/3":
+        description: "Adenocarcinoma of anal glands (C21.1)"
+      "8220/0":
+        description: "Adenomatous polyposis coli (C18._)"
+      "8220/3":
+        description: "Adenocarcinoma in adenomatous polyposis coli (C18._)"
+      "8221/0":
+        description: "Multiple adenomatous polyps"
+      "8221/3":
+        description: "Adenocarcinoma in multiple adenomatous polyps"
+      "8230/2":
+        description: "Ductal carcinoma in situ, solid type (C50._)"
+      "8230/3":
+        description: "Solid carcinoma, NOS"
+      "8231/3":
+        description: "Carcinoma simplex"
+      "8240/1":
+        description: "Carcinoid tumor of uncertain malignant potential"
+      "8240/3":
+        description: "Carcinoid tumor, NOS [including of appendix]"
+      "8241/3":
+        description: "Enterochromaffin cell carcinoid"
+      "8242/1":
+        description: "Enterochromaffin-like cell carcinoid, NOS"
+      "8242/3":
+        description: "Enterochromaffin-like cell tumor, malignant"
+      "8243/3":
+        description: "Goblet cell adenocarcinoma [2022+]"
+      "8244/3":
+        description: "Mixed adenoneuroendocrine carcinoma"
+      "8245/1":
+        description: "Tubular carcinoid"
+      "8245/3":
+        description: "Adenocarcinoid tumor"
+      "8246/3":
+        description: "Neuroendocrine carcinoma, NOS"
+      "8247/3":
+        description: "Merkel cell carcinoma (C44._)"
+      "8248/1":
+        description: "Apudoma"
+      "8249/3":
+        description: "Neuroendocrine tumor, grade 2"
+      "8250/1":
+        description: "Pulmonary adenomatosis (C34._)"
+      "8250/2":
+        description: "Adenocarcinoma in situ, non-mucinous (C34._)"
+      "8250/3":
+        description: "Lepidic adenocarcinoma (C34._)"
+      "8251/0":
+        description: "Alveolar adenoma (C34._)"
+      "8251/3":
+        description: "Alveolar adenocarcinoma (C34._)"
+      "8252/3":
+        description: "Bronchiolo-alveolar carcinoma, non-mucinous (C34._)"
+      "8253/2":
+        description: "Adenocarcinoma in situ, mucinous (C34._) [LUNG ONLY, 2018+, DO NOT USE 8480]"
+      "8253/3":
+        description: "Invasive mucinous adenocarcinoma (C34._) [LUNG ONLY, 2018+, DO NOT USE 8480]"
+      "8254/3":
+        description: "Mixed invasive mucinous and non-mucinous adenocarcinoma (C34._)"
+      "8255/3":
+        description: "Adenocarcinoma with mixed subtypes"
+      "8256/3":
+        description: "Minimally invasive adenocarcinoma, non-mucinous (C34._) [2018+]"
+      "8257/3":
+        description: "Minimally invasive adenocarcinoma, mucinous (C34._) [2018+]"
+      "8260/0":
+        description: "Papillary adenoma, NOS"
+      "8260/3":
+        description: "Papillary adenocarcinoma, NOS"
+      "8261/0":
+        description: "Villous adenoma, NOS"
+      "8261/2":
+        description: "Adenocarcinoma in situ in villous adenoma"
+      "8261/3":
+        description: "Adenocarcinoma in villous adenoma"
+      "8262/3":
+        description: "Villous adenocarcinoma"
+      "8263/0":
+        description: "Tubulovillous adenoma, NOS"
+      "8263/2":
+        description: "Adenocarcinoma in situ in tubulovillous adenoma"
+      "8263/3":
+        description: "Adenocarcinoma in tubulovillous adenoma"
+      "8264/0":
+        description: "Papillomatosis, glandular"
+      "8265/3":
+        description: "Micropapillary carcinoma, NOS (C18._, C19.9, C20.9, C34._) [2018+ ONLY. FOR PRE-2018, USE 8507/3. FOR BREAST ALL YEARS, USE 8507/3.]"
+      "8270/0":
+        description: "Chromophobe adenoma (C75.1)"
+      "8270/3":
+        description: "Chromophobe carcinoma (C75.1)"
+      "8271/0":
+        description: "Prolactinoma (C75.1)"
+      "8272/0":
+        description: "Pituitary adenoma, NOS (C75.1)"
+      "8272/3":
+        description: "Pituitary carcinoma, NOS (C75.1)"
+      "8273/3":
+        description: "Pituitary blastoma (C75.1) [REPORTABLE 2021+]"
+      "8280/0":
+        description: "Acidophil adenoma (C75.1)"
+      "8280/3":
+        description: "Acidophil carcinoma (C75.1)"
+      "8281/0":
+        description: "Mixed acidophil-basophil adenoma (C75.1)"
+      "8281/3":
+        description: "Mixed acidophil-basophil carcinoma (C75.1)"
+      "8290/0":
+        description: "Oxyphilic adenoma"
+      "8290/3":
+        description: "Oxyphilic adenocarcinoma"
+      "8300/0":
+        description: "Basophil adenoma (C75.1)"
+      "8300/3":
+        description: "Basophil carcinoma (C75.1)"
+      "8310/0":
+        description: "Clear cell adenoma"
+      "8310/3":
+        description: "Clear cell adenocarcinoma, NOS"
+      "8311/1":
+        description: "Hypernephroid tumor [obs]"
+      "8311/3":
+        description: "Hereditary leiomyomatosis and renal cell carcinoma (RCC- associated renal cell carcinoma) (C64.9) [2018+]"
+      "8312/3":
+        description: "Renal cell carcinoma, NOS (C64.9)"
+      "8313/0":
+        description: "Clear cell adenofibroma (C56.9)"
+      "8313/1":
+        description: "Clear cell borderline tumor (C56.9)"
+      "8313/3":
+        description: "Clear cell adenocarcinofibroma (C56.9)"
+      "8314/3":
+        description: "Lipid-rich carcinoma (C50._)"
+      "8315/3":
+        description: "Glycogen-rich carcinoma (C50._)"
+      "8316/3":
+        description: "Cyst-associated renal cell carcinoma (C64.9)"
+      "8317/3":
+        description: "Renal cell carcinoma, chromophobe type (C64.9)"
+      "8318/3":
+        description: "Renal cell carcinoma, sarcomatoid (C64.9)"
+      "8319/3":
+        description: "Collecting duct carcinoma (C64.9)"
+      "8320/3":
+        description: "Granular cell carcinoma"
+      "8321/0":
+        description: "Chief cell adenoma (C75.0)"
+      "8322/0":
+        description: "Water-clear cell adenoma (C75.0)"
+      "8322/3":
+        description: "Water-clear cell adenocarcinoma (C75.0)"
+      "8323/0":
+        description: "Mixed cell adenoma"
+      "8323/3":
+        description: "Mixed cell adenocarcinoma"
+      "8324/0":
+        description: "Lipoadenoma"
+      "8325/0":
+        description: "Metanephric adenoma (C64.9)"
+      "8330/0":
+        description: "Follicular adenoma, NOS (C73.9)"
+      "8330/1":
+        description: "Atypical follicular adenoma (C73.9)"
+      "8330/3":
+        description: "Follicular carcinoma, NOS (C73.9)"
+      "8331/3":
+        description: "Follicular adenocarcinoma, well differentiated (C73.9)"
+      "8332/3":
+        description: "Follicular adenocarcinoma, trabecular (C73.9)"
+      "8333/0":
+        description: "Microfollicular adenoma, NOS (C73.9)"
+      "8333/3":
+        description: "Fetal adenocarcinoma (C73.9)"
+      "8334/0":
+        description: "Macrofollicular adenoma (C73.9)"
+      "8335/1":
+        description: "Follicular tumor of uncertain malignant potential (C73.9)"
+      "8335/3":
+        description: "Follicular carcinoma, minimally invasive (C73.9)"
+      "8336/1":
+        description: "Hyalinizing trabecular adenoma (C73.9)"
+      "8337/3":
+        description: "Poorly differentiated thyroid carcinoma (C73.9) [2021+]"
+      "8339/3":
+        description: "Follicular thyroid carcinoma (FTC), encapsulated angioinvasive (C73.9) [2018+]"
+      "8340/3":
+        description: "Papillary carcinoma, follicular variant (C73.9)"
+      "8341/3":
+        description: "Papillary microcarcinoma (C73.9)"
+      "8342/3":
+        description: "Papillary carcinoma, oncocytic variant (C73.9) [2021+]"
+      "8343/2":
+        description: "Non-invasive follicular thyroid neoplasm with papillary-like nuclear features (NIFTP) (C73.9) [REPORTABLE 2017-2020 ONLY. FOR 2021+ USE CODE 8349/1.]"
+      "8343/3":
+        description: "Papillary carcinoma, encapsulated (C73.9)"
+      "8344/3":
+        description: "Papillary carcinoma, columnar cell (C73.9)"
+      "8345/3":
+        description: "Medullary carcinoma (C73.9) [FOR THYROID 2018+. FOR BREAST FOR ALL YEARS USE 8510.]"
+      "8346/3":
+        description: "Mixed medullary-follicular carcinoma (C73.9)"
+      "8347/3":
+        description: "Mixed medullary-papillary carcinoma (C73.9)"
+      "8348/1":
+        description: "Well differentiated tumor of uncertain malignant potential (C73.9) [2021+]"
+      "8349/1":
+        description: "Non-invasive follicular thyroid neoplasm with papillary-like nuclear features (NIFTP) (C73.9) [2021+ NOT REPORTABLE. FOR 2017-2020, USE CODE 8343/2]"
+      "8350/3":
+        description: "Nonencapsulated sclerosing carcinoma (C73.9)"
+      "8360/1":
+        description: "Multiple endocrine adenomas"
+      "8361/0":
+        description: "Juxtaglomerular tumor (C64.9)"
+      "8361/1":
+        description: "Non-functioning juxtaglomerular cell tumor [2024+; NOT REPORTABLE]"
+      "8370/0":
+        description: "Adrenal cortical adenoma, NOS (C74.0)"
+      "8370/3":
+        description: "Adrenal cortical carcinoma (C74.0)"
+      "8371/0":
+        description: "Adrenal cortical adenoma, compact cell (C74.0)"
+      "8372/0":
+        description: "Adrenal cortical adenoma, pigmented (C74.0)"
+      "8373/0":
+        description: "Adrenal cortical adenoma, clear cell (C74.0)"
+      "8374/0":
+        description: "Adrenal cortical adenoma, glomerulosa cell (C74.0)"
+      "8375/0":
+        description: "Adrenal cortical adenoma, mixed cell (C74.0)"
+      "8380/0":
+        description: "Endometrioid adenoma, NOS"
+      "8380/1":
+        description: "Endometrioid adenoma, borderline malignancy"
+      "8380/2":
+        description: "Endometrioid intraepithelial neoplasia (C54._) [2018+; REPORTABLE 2021+]"
+      "8380/3":
+        description: "Endometrioid adenocarcinoma, NOS"
+      "8381/0":
+        description: "Endometrioid adenofibroma, NOS"
+      "8381/1":
+        description: "Endometrioid adenofibroma, borderline malignancy"
+      "8381/3":
+        description: "Endometrioid adenofibroma, malignant"
+      "8382/3":
+        description: "Endometrioid adenocarcinoma, secretory variant"
+      "8383/3":
+        description: "Endometrioid adenocarcinoma, ciliated cell variant"
+      "8384/3":
+        description: "Adenocarcinoma, endocervical type"
+      "8390/0":
+        description: "Skin appendage adenoma (C44._)"
+      "8390/3":
+        description: "Adnexal adenocarcinoma (C44. _)"
+      "8391/0":
+        description: "Follicular fibroma (C44._)"
+      "8392/0":
+        description: "Syringofibroadenoma (C44._)"
+      "8400/0":
+        description: "Sweat gland adenoma (C44._)"
+      "8400/1":
+        description: "Sweat gland tumor, NOS (C44._)"
+      "8400/3":
+        description: "Sweat gland adenocarcinoma (C44._)"
+      "8401/0":
+        description: "Apocrine adenoma"
+      "8401/3":
+        description: "Apocrine adenocarcinoma"
+      "8402/0":
+        description: "Nodular hidradenoma (C44._)"
+      "8402/3":
+        description: "Hidradenocarcinoma (C44. _)"
+      "8403/0":
+        description: "Eccrine spiradenoma (C44._)"
+      "8403/3":
+        description: "Malignant eccrine spiradenoma (C44._)"
+      "8404/0":
+        description: "Hidrocystoma (C44._)"
+      "8405/0":
+        description: "Papillary hidradenoma"
+      "8406/0":
+        description: "Papillary syringadenoma (C44._)"
+      "8406/3":
+        description: "Syringocystadenocarcinoma papilliferum [2022+]"
+      "8407/0":
+        description: "Syringoma, NOS (C44._)"
+      "8407/3":
+        description: "Microcystic adnexal carcinoma (C44. _)"
+      "8408/0":
+        description: "Eccrine papillary adenoma (C44._)"
+      "8408/1":
+        description: "Aggressive digital papillary adenoma (C44._) [PRE-2021 NOT REPORTABLE; FOR 2021+ USE CODE 8408/3.]"
+      "8408/3":
+        description: "Digital papillary adenocarcinoma (C44. _)"
+      "8409/0":
+        description: "Eccrine poroma (C44._)"
+      "8409/2":
+        description: "Porocarcinoma in situ [2022+]"
+      "8409/3":
+        description: "Porocarcinoma (C44._)"
+      "8410/0":
+        description: "Sebaceous adenoma (C44._)"
+      "8410/3":
+        description: "Sebaceous carcinoma (C44._)"
+      "8413/3":
+        description: "Eccrine adenocarcinoma (C44._)"
+      "8420/0":
+        description: "Ceruminous adenoma (C44.2)"
+      "8420/3":
+        description: "Ceruminous adenocarcinoma (C44.2)"
+      "8430/1":
+        description: "Mucoepidermoid tumor [obs]"
+      "8430/3":
+        description: "Mucoepidermoid carcinoma"
+      "8440/0":
+        description: "Cystadenoma, NOS"
+      "8440/3":
+        description: "Cystadenocarcinoma, NOS"
+      "8441/0":
+        description: "Serous cystadenoma, NOS"
+      "8441/2":
+        description: "Serous endometrial [tubal] intraepithelial carcinoma (C54._, C55.9 [C57.0])"
+      "8441/3":
+        description: "Serous carcinoma, NOS"
+      "8442/1":
+        description: "Serous cystadenoma, borderline malignancy (C56.9)"
+      "8443/0":
+        description: "Clear cell cystadenoma (C56.9)"
+      "8444/1":
+        description: "Clear cell cystic tumor of borderline malignancy (C56.9) [obs] [PRE-2021 ONLY. FOR 2021+ USE CODE 8313/1.]"
+      "8450/0":
+        description: "Papillary cystadenoma, NOS (C56.9)"
+      "8450/3":
+        description: "Papillary cystadenocarcinoma, NOS (C56.9)"
+      "8451/1":
+        description: "Papillary cystadenoma, borderline malignancy (C56.9)"
+      "8452/1":
+        description: "Solid pseudopapillary tumor of ovary (C56.9)"
+      "8452/3":
+        description: "Solid pseudopapillary neoplasm of the pancreas (C25._) [REPORTABLE 2021+]"
+      "8453/0":
+        description: "Intraductal papillary-mucinous adenoma (C25._)"
+      "8453/2":
+        description: "Intraductal papillary-mucinous carcinoma, non-invasive (C25._)"
+      "8453/3":
+        description: "Intraductal papillary-mucinous carcinoma, invasive (C25._)"
+      "8454/0":
+        description: "Cystic tumor of atrio-ventricular node (C38.0)"
+      "8455/2":
+        description: "Intraductal oncocytic papillary neoplasm, NOS (C25._) [2022+]"
+      "8455/3":
+        description: "Intraductal oncocytic papillary neoplasm with associated invasive carcinoma (C25._) [2022+]"
+      "8460/0":
+        description: "Papillary serous cystadenoma, NOS (C56.9)"
+      "8460/2":
+        description: "Non-invasive low grade serous carcinoma (C56.9)"
+      "8460/3":
+        description: "Low-grade serous carcinoma (C56.9, C48._, C57.0, C57.1–C57.3)"
+      "8461/0":
+        description: "Serous surface papilloma (C56.9)"
+      "8461/3":
+        description: "High-grade serous carcinoma (C48._, C56.9, C57.0, C57.1–C57.3)"
+      "8462/1":
+        description: "Serous papillary cystic tumor of borderline malignancy (C56.9)"
+      "8463/1":
+        description: "Serous surface papillary tumor of borderline malignancy (C56.9)"
+      "8470/0":
+        description: "Mucinous cystadenoma, NOS (C56.9)"
+      "8470/2":
+        description: "Mucinous cystic neoplasm with high grade dysplasia (C25. _)"
+      "8470/3":
+        description: "Mucinous cystadenocarcinoma, NOS (C56.9)"
+      "8471/0":
+        description: "Papillary mucinous cystadenoma, NOS (C56.9)"
+      "8471/3":
+        description: "Papillary mucinous cystadenocarcinoma (C56.9) [PRE-2021 ONLY. FOR 2021+ USE CODE 8470/3.]"
+      "8472/1":
+        description: "Mucinous cystic tumor of borderline malignancy(C56.9)"
+      "8473/1":
+        description: "Papillary mucinous cystadenoma, borderline malignancy (C56.9) [obs] [PRE-2021 ONLY. FOR 2021+, USE CODE 8472/1]"
+      "8474/3":
+        description: "Seromucinous carcinoma (C56.9) [2018+]"
+      "8480/0":
+        description: "Mucinous adenoma"
+      "8480/1":
+        description: "Low grade appendiceal mucinous neoplasm (LAMN) (C18.1) [2018-2021 NOT REPORTABLE; 2022+ USE 8480/2 PER STANDARD SETTERS SINCE TERM AND CORRESPONDING CODE NOT INCLUDED IN ICD-O-3.2; SEE STANDARD SETTER REQUIREMENTS FOR REPORTABILITY]"
+      "8480/2":
+        description: "High grade appendiceal mucinous neoplasm (HAMN) (C181) [2022+]"
+      "8480/3":
+        description: "Mucinous adenocarcinoma [2018+: USE 8253 FOR LUNG ONLY]"
+      "8480/6":
+        description: "Pseudomyxoma peritonei"
+      "8481/3":
+        description: "Mucin-producing adenocarcinoma"
+      "8482/3":
+        description: "Mucinous carcinoma, gastric type"
+      "8483/2":
+        description: "Adenocarcinoma in situ, HPV-associated (C53._) [2022+; NOT REPORTABLE]"
+      "8483/3":
+        description: "Adenocarcinoma, HPV-associated (C53._) [2021+]"
+      "8484/2":
+        description: "Adenocarcinoma in situ, HPV-independent, NOS (C53._) [2022+; NOT REPORTABLE]"
+      "8484/3":
+        description: "Adenocarcinoma, HPV-independent, NOS (C53._) [2021+]"
+      "8490/3":
+        description: "Signet ring cell carcinoma"
+      "8490/6":
+        description: "Metastatic signet ring cell carcinoma"
+      "8500/2":
+        description: "Intraductal carcinoma, noninfiltrating, NOS"
+      "8500/3":
+        description: "Invasive carcinoma of no special type (C50._) [BREAST ONLY]"
+      "8501/2":
+        description: "Comedocarcinoma, noninfiltrating (C50._)"
+      "8501/3":
+        description: "Comedocarcinoma, NOS (C50._)"
+      "8502/3":
+        description: "Secretory carcinoma of breast (C50._)"
+      "8503/0":
+        description: "Intraductal papilloma"
+      "8503/2":
+        description: "Ductal carcinoma in situ, papillary (C50._)"
+      "8503/3":
+        description: "Intraductal papillary adenocarcinoma with invasion (C50._)"
+      "8504/0":
+        description: "Intracystic papillary adenoma"
+      "8504/2":
+        description: "Encapsulated papillary carcinoma C50._)"
+      "8504/3":
+        description: "Encapsulated papillary carcinoma with invasion (C50._)"
+      "8505/0":
+        description: "Intraductal papillomatosis, NOS"
+      "8506/0":
+        description: "Adenoma of nipple (C50.0)"
+      "8507/2":
+        description: "Intraductal micropapillary carcinoma (C50._)"
+      "8507/3":
+        description: "Invasive micropapillary carcinoma (C50._) [USE FOR C50._ FOR ALL YEARS. FOR ALL OTHER SITES USE 8265/3 FOR 2018+ AND USE 8507/3 FOR PRE-2018.]"
+      "8508/3":
+        description: "Cystic hypersecretory carcinoma (C50._) [PRE-2021 ONLY. FOR 2021+ USE CODE 8500/2.]"
+      "8509/2":
+        description: "Solid papillary carcinoma in situ (C50._) [2018+]"
+      "8509/3":
+        description: "Tall cell carcinoma with reversed polarity [2022+]"
+      "8510/3":
+        description: "Medullary carcinoma, NOS [DO NOT USE FOR THYROID 2018+, USE 8345/3.]"
+      "8512/3":
+        description: "Medullary carcinoma with lymphoid stroma"
+      "8513/3":
+        description: "Atypical medullary carcinoma (C50._)"
+      "8514/3":
+        description: "Duct carcinoma, desmoplastic type"
+      "8519/2":
+        description: "Pleomorphic lobular carcinoma in situ (C50._) [2018+. IF INVASIVE USE CODE 8520/3]"
+      "8520/2":
+        description: "Lobular carcinoma in situ, NOS (C50._)"
+      "8520/3":
+        description: "Lobular carcinoma, NOS (C50._)"
+      "8521/3":
+        description: "Infiltrating ductular carcinoma (C50._)"
+      "8522/2":
+        description: "Intraductal carcinoma and lobular carcinoma in situ (C50._)"
+      "8522/3":
+        description: "Infiltrating duct and lobular carcinoma (C50._)"
+      "8523/3":
+        description: "Infiltrating duct mixed with other types of carcinoma (C50._)"
+      "8524/3":
+        description: "Infiltrating lobular mixed with other types of carcinoma (C50._)"
+      "8525/3":
+        description: "Polymorphous low grade adenocarcinoma"
+      "8530/3":
+        description: "Inflammatory carcinoma (C50._)"
+      "8540/3":
+        description: "Paget disease, mammary (C50._)"
+      "8541/3":
+        description: "Paget disease and infiltrating duct carcinoma of breast (C50._)"
+      "8542/3":
+        description: "Paget disease, extramammary (except Paget disease of bone)"
+      "8543/3":
+        description: "Paget disease and intraductal carcinoma of breast (C50._)"
+      "8550/0":
+        description: "Acinar cell adenoma"
+      "8550/1":
+        description: "Acinar cell tumor [obs]"
+      "8550/3":
+        description: "Acinar cell carcinoma [EXCLUDES C61.9, USE 8140/3 FOR PROSTATE]"
+      "8551/3":
+        description: "Acinar cell cystadenocarcinoma"
+      "8552/3":
+        description: "Mixed acinar ductal carcinoma [2018+. FOR PRE-2018, USE CODE 8523/3]"
+      "8560/0":
+        description: "Mixed squamous cell and glandular papilloma"
+      "8560/3":
+        description: "Adenosquamous carcinoma"
+      "8561/0":
+        description: "Adenolymphoma (C07._, C08._)"
+      "8562/3":
+        description: "Epithelial-myoepithelial carcinoma"
+      "8563/0":
+        description: "Lymphadenoma [2021+]"
+      "8570/3":
+        description: "Adenocarcinoma with squamous metaplasia"
+      "8571/3":
+        description: "Adenocarcinoma with cartilaginous and osseous metaplasia"
+      "8572/3":
+        description: "Adenocarcinoma with spindle cell metaplasia"
+      "8573/3":
+        description: "Adenocarcinoma with apocrine metaplasia"
+      "8574/3":
+        description: "Adenocarcinoma with neuroendocrine differentiation"
+      "8575/3":
+        description: "Metaplastic carcinoma, NOS"
+      "8576/3":
+        description: "Hepatoid adenocarcinoma"
+      "8580/0":
+        description: "Thymoma, benign (C37.9)"
+      "8580/1":
+        description: "Thymoma, NOS (C37.9) [PRE-2021 ONLY. FOR 2021+ USE CODE 8580/3.]"
+      "8580/3":
+        description: "Thymoma, NOS (C37.9) [2021+]"
+      "8581/1":
+        description: "Thymoma, type A, NOS (C37.9) [PRE-2021 ONLY. FOR 2021+ USE CODE 8581/3.]"
+      "8581/3":
+        description: "Thymoma, type A, NOS (C37.9) [2021+]"
+      "8582/1":
+        description: "Thymoma, type AB, NOS (C37.9) [PRE-2021 ONLY. FOR 2021+ USE CODE 8582/3.]"
+      "8582/3":
+        description: "Thymoma, type AB, NOS (C37.9) [2021+]"
+      "8583/1":
+        description: "Thymoma, type B1, NOS (C37.9) [PRE-2021 ONLY. FOR 2021+ USE CODE 8583/3.]"
+      "8583/3":
+        description: "Thymoma, type B1, NOS (C37.9) [2021+]"
+      "8584/1":
+        description: "Thymoma, type B2, NOS (C37.9) [PRE-2021 ONLY. FOR 2021+ USE CODE 8584/3.]"
+      "8584/3":
+        description: "Thymoma, type B2, NOS (C37.9) [2021+]"
+      "8585/1":
+        description: "Thymoma, type B3, NOS (C37.9) [PRE-2021 ONLY. FOR 2021+ USE CODE 8585/3.]"
+      "8585/3":
+        description: "Thymoma, type B3, NOS (C37.9) [2021+]"
+      "8586/3":
+        description: "Thymic carcinoma, NOS (C37.9)"
+      "8587/0":
+        description: "Ectopic hamartomatous thymoma"
+      "8588/3":
+        description: "Spindle epithelial tumor with thymus-like element"
+      "8589/3":
+        description: "Intrathyroid thymic carcinoma (C73.9) [2021+]"
+      "8590/0":
+        description: "Myoid gonadal stromal tumor [2024+; NOT REPORTABLE]"
+      "8590/1":
+        description: "Sex cord-gonadal stromal tumor, NOS"
+      "8591/1":
+        description: "Sex cord-gonadal stromal tumor, incompletely differentiated"
+      "8592/1":
+        description: "Sex cord-gonadal stromal tumor, mixed forms"
+      "8593/1":
+        description: "Stromal tumor with minor sex cord elements (C56.9)"
+      "8594/1":
+        description: "Mixed germ cell sex cord-stromal tumor, unclassified (C48.2, C56.9, C57.9)"
+      "8600/0":
+        description: "Thecoma, NOS (C56.9)"
+      "8600/3":
+        description: "Thecoma, malignant (C56.9)"
+      "8601/0":
+        description: "Thecoma, luteinized (C56.9)"
+      "8602/0":
+        description: "Sclerosing stromal tumor (C56.9)"
+      "8610/0":
+        description: "Luteoma, NOS (C56.9)"
+      "8620/1":
+        description: "Granulosa cell tumor, adult type (C56.9) [PRE-2021 ONLY. FOR 2021+ USE CODE 8620/3.]"
+      "8620/3":
+        description: "Adult granulosa cell tumor (C56.9 ONLY) [2018+ CASES ONLY; NOT REPORTABLE. REPORTABLE 2021+]"
+      "8621/1":
+        description: "Granulosa cell-theca cell tumor (C56.9)"
+      "8622/1":
+        description: "Granulosa cell tumor, juvenile (C56.9)"
+      "8623/1":
+        description: "Sex cord tumor with annular tubules (C56.9)"
+      "8630/0":
+        description: "Androblastoma, benign"
+      "8630/1":
+        description: "Androblastoma, NOS"
+      "8630/3":
+        description: "Androblastoma, malignant"
+      "8631/0":
+        description: "Sertoli-Leydig cell tumor, well differentiated"
+      "8631/1":
+        description: "Sertoli-Leydig cell tumor of intermediate differentiation"
+      "8631/3":
+        description: "Sertoli-Leydig cell tumor, poorly differentiated"
+      "8632/1":
+        description: "Gynandroblastoma (C56.9)"
+      "8633/1":
+        description: "Sertoli-Leydig cell tumor, retiform"
+      "8634/1":
+        description: "Sertoli-Leydig cell tumor, intermediate differentiation, with heterologous elements"
+      "8634/3":
+        description: "Sertoli-Leydig cell tumor, poorly differentiated, with heterologous elements"
+      "8640/1":
+        description: "Sertoli cell tumor, NOS"
+      "8640/3":
+        description: "Sertoli cell carcinoma (C62._)"
+      "8641/0":
+        description: "Sertoli cell tumor with lipid storage"
+      "8642/1":
+        description: "Large cell calcifying Sertoli cell tumor"
+      "8643/1":
+        description: "Intratubular large cell hyalinizing Sertoli cell neoplasia [2021+]"
+      "8650/0":
+        description: "Leydig cell tumor, benign (C62._)"
+      "8650/1":
+        description: "Leydig cell tumor, NOS (C62._)"
+      "8650/3":
+        description: "Leydig cell tumor, malignant (C62._)"
+      "8660/0":
+        description: "Hilus cell tumor (C56.9)"
+      "8670/0":
+        description: "Lipid cell tumor of ovary (C56.9)"
+      "8670/3":
+        description: "Steroid cell tumor, malignant"
+      "8671/0":
+        description: "Adrenal rest tumor"
+      "8680/0":
+        description: "Paraganglioma, benign"
+      "8680/1":
+        description: "Paraganglioma, NOS [PRE-2021 ONLY. FOR 2021+ USE CODE 8680/3.]"
+      "8680/3":
+        description: "Paraganglioma, NOS [REPORTABLE 2021+]"
+      "8681/1":
+        description: "Sympathetic paraganglioma [PRE-2021 ONLY. FOR 2021+ USE CODE 8681/3.]"
+      "8681/3":
+        description: "Sympathetic paraganglioma [REPORTABLE 2021+]"
+      "8682/1":
+        description: "Parasympathetic paraganglioma [PRE-2021 ONLY. FOR 2021+ USE CODE 8682/3.]"
+      "8682/3":
+        description: "Parasympathetic paraganglioma [REPORTABLE 2021+]"
+      "8683/0":
+        description: "Gangliocytic paraganglioma (C17.0)"
+      "8690/1":
+        description: "Glomus jugulare tumor, NOS (C75.5) [PRE-2021 ONLY. FOR 2021+ USE CODE 8690/3.]"
+      "8690/3":
+        description: "Middle ear paraganglioma (C30.1, C75.5) [REPORTABLE 2021+]"
+      "8691/1":
+        description: "Aortic body tumor (C75.5) [PRE-2021 ONLY. FOR 2021+ USE CODE 8691/3.]"
+      "8691/3":
+        description: "Aortic body tumor (C75.5) [REPORTABLE 2021+]"
+      "8692/1":
+        description: "Carotid body tumor (C75.4) [PRE-2021 ONLY. FOR 2021+ USE CODE 8692/3.]"
+      "8692/3":
+        description: "Carotid body paraganglioma (C75.4) [REPORTABLE 2021+]"
+      "8693/1":
+        description: "Extra-adrenal paraganglioma, NOS [PRE-2021 ONLY. FOR 2021+ USE CODE 8693/3.]"
+      "8693/3":
+        description: "Extra-adrenal paraganglioma, NOS [REPORTABLE 2021+]"
+      "8700/0":
+        description: "Pheochromocytoma, NOS (C74.1) [PRE-2021 ONLY. FOR 2021+ USE CODE 8700/3.]"
+      "8700/3":
+        description: "Pheochromocytoma, NOS (C74.1) [REPORTABLE 2021+]"
+      "8710/3":
+        description: "Glomangiosarcoma"
+      "8711/0":
+        description: "Glomus tumor, NOS"
+      "8711/3":
+        description: "Glomus tumor, malignant"
+      "8712/0":
+        description: "Glomangioma"
+      "8713/0":
+        description: "Glomangiomyoma"
+      "8714/3":
+        description: "PEComa, malignant [2018+]"
+      "8720/0":
+        description: "Pigmented nevus, NOS (C44._)"
+      "8720/2":
+        description: "Melanoma in situ"
+      "8720/3":
+        description: "Malignant melanoma, NOS (except juvenile melanoma M-8770/0)"
+      "8721/3":
+        description: "Nodular melanoma (C44._)"
+      "8722/0":
+        description: "Balloon cell nevus (C44._)"
+      "8722/3":
+        description: "Balloon cell melanoma (C44._)"
+      "8723/0":
+        description: "Halo nevus (C44._)"
+      "8723/3":
+        description: "Malignant melanoma, regressing (C44._)"
+      "8725/0":
+        description: "Neuronevus (C44._)"
+      "8726/0":
+        description: "Magnocellular nevus (C69.4)"
+      "8727/0":
+        description: "Dysplastic nevus (C44._)"
+      "8728/0":
+        description: "Diffuse melanocytosis (C70.9)"
+      "8728/1":
+        description: "Meningeal melanocytoma (C70.9)"
+      "8728/3":
+        description: "Meningeal melanomatosis (C70.9)"
+      "8730/0":
+        description: "Nonpigmented nevus (C44._)"
+      "8730/3":
+        description: "Amelanotic melanoma (C44._)"
+      "8740/0":
+        description: "Junctional nevus, NOS (C44._)"
+      "8740/3":
+        description: "Malignant melanoma in junctional nevus (C44._)"
+      "8741/2":
+        description: "Precancerous melanosis, NOS (C44._)"
+      "8741/3":
+        description: "Malignant melanoma in precancerous melanosis (C44._)"
+      "8742/0":
+        description: "Lentiginous melanocytic nevus (C44._) [2021+]"
+      "8742/2":
+        description: "Lentigo maligna (C44._)"
+      "8742/3":
+        description: "Lentigo maligna melanoma (C44._)"
+      "8743/3":
+        description: "Low cumulative sun damaged melanoma (C44. _) [2021+]"
+      "8744/3":
+        description: "Acral melanoma (C44. _)"
+      "8745/3":
+        description: "Desmoplastic melanoma, malignant (C44._)"
+      "8746/3":
+        description: "Mucosal lentiginous melanoma"
+      "8750/0":
+        description: "Intradermal nevus (C44._)"
+      "8760/0":
+        description: "Compound nevus (C44._)"
+      "8761/0":
+        description: "Small congenital nevus (C44._)"
+      "8761/1":
+        description: "Giant pigmented nevus, NOS (C44._)"
+      "8761/3":
+        description: "Malignant melanoma arising in giant congenital nevus (C44. _) [2021+]"
+      "8762/1":
+        description: "Proliferative dermal lesion in congenital nevus (C44._)"
+      "8770/0":
+        description: "Epithelioid and spindle cell nevus (C44._)"
+      "8770/3":
+        description: "Malignant Spitz tumor (C44. _) [2021+]"
+      "8771/0":
+        description: "Epithelioid cell nevus (C44._)"
+      "8771/3":
+        description: "Epithelioid cell melanoma"
+      "8772/0":
+        description: "Spindle cell nevus, NOS (C44._)"
+      "8772/3":
+        description: "Spindle cell melanoma, NOS"
+      "8773/3":
+        description: "Spindle cell melanoma, type A (C69._)"
+      "8774/3":
+        description: "Spindle cell melanoma, type B (C69._)"
+      "8780/0":
+        description: "Blue nevus, NOS (C44._)"
+      "8780/3":
+        description: "Blue nevus, malignant (C44._)"
+      "8790/0":
+        description: "Cellular blue nevus (C44._)"
+      "8800/0":
+        description: "Soft tissue tumor, benign"
+      "8800/3":
+        description: "Sarcoma, NOS"
+      "8800/9":
+        description: "Sarcomatosis, NOS"
+      "8801/3":
+        description: "Spindle cell sarcoma"
+      "8802/3":
+        description: "Giant cell sarcoma (except of bone M-9250/3)"
+      "8803/3":
+        description: "Small cell sarcoma"
+      "8804/3":
+        description: "Epithelioid sarcoma"
+      "8805/3":
+        description: "Undifferentiated sarcoma"
+      "8806/3":
+        description: "Desmoplastic small round cell tumor"
+      "8810/0":
+        description: "Fibroma, NOS"
+      "8810/1":
+        description: "Cellular fibroma (C56.9)"
+      "8810/3":
+        description: "Fibrosarcoma, NOS"
+      "8811/0":
+        description: "Fibromyxoma"
+      "8811/1":
+        description: "Myxoinflammatory fibroblastic sarcoma (MIFS) (C49._) [NOT REPORTABLE]"
+      "8811/3":
+        description: "Myxofibrosarcoma"
+      "8812/0":
+        description: "Periosteal fibroma (C40._, C41._)"
+      "8812/3":
+        description: "Periosteal fibrosarcoma (C40._, C41._)"
+      "8813/0":
+        description: "Fascial fibroma"
+      "8813/3":
+        description: "Fascial fibrosarcoma"
+      "8814/3":
+        description: "Infantile fibrosarcoma"
+      "8815/0":
+        description: "Solitary fibrous tumor"
+      "8815/1":
+        description: "Solitary fibrous tumor/hemangiopericytoma Grade 2 (CNS) (C71._) [2018+] [REPORTABLE FOR CNS]"
+      "8815/3":
+        description: "Solitary fibrous tumor, malignant"
+      "8816/0":
+        description: "Calcifying aponeurotic fibroma [2021+]"
+      "8817/0":
+        description: "Calcifying fibrous tumor [2021+]"
+      "8818/0":
+        description: "Fibrous dysplasia [2021+]"
+      "8820/0":
+        description: "Elastofibroma"
+      "8821/1":
+        description: "Aggressive fibromatosis"
+      "8822/1":
+        description: "Abdominal fibromatosis"
+      "8823/0":
+        description: "Desmoplastic fibroma"
+      "8824/0":
+        description: "Myofibroma"
+      "8824/1":
+        description: "Myofibromatosis"
+      "8825/0":
+        description: "Myofibroblastoma"
+      "8825/1":
+        description: "Myofibroblastic tumor, NOS"
+      "8825/3":
+        description: "Myofibroblastic sarcoma"
+      "8826/0":
+        description: "Angiomyofibroblastoma"
+      "8827/1":
+        description: "Myofibroblastic tumor, peribronchial (C34._)"
+      "8828/0":
+        description: "Nodular fasciitis [2021+]"
+      "8830/0":
+        description: "Benign fibrous histiocytoma"
+      "8830/1":
+        description: "Atypical fibrous histiocytoma"
+      "8830/3":
+        description: "Malignant fibrous histiocytoma"
+      "8831/0":
+        description: "Histiocytoma, NOS"
+      "8832/0":
+        description: "Dermatofibroma, NOS (C44._)"
+      "8832/1":
+        description: "Dermatofibrosarcoma protuberans, NOS (C44._) [2021+, NOT REPORTABLE. FOR PRE-2021 USE CODE 8832/3.]"
+      "8832/3":
+        description: "Dermatofibrosarcoma protuberans, fibrosarcomatous"
+      "8833/1":
+        description: "Pigmented dermatofibrosarcoma protuberans (C44._) [2021+, NOT REPORTABLE. FOR PRE-2021 USE CODE 8833/3.]"
+      "8833/3":
+        description: "Pigmented dermatofibrosarcoma protuberans (C44._) [REPORTABLE PRE-2021 ONLY. FOR 2021+ USE CODE 8833/1.]"
+      "8834/1":
+        description: "Giant cell fibroblastoma"
+      "8835/1":
+        description: "Plexiform fibrohistiocytic tumor"
+      "8836/1":
+        description: "Angiomatoid fibrous histiocytoma"
+      "8840/0":
+        description: "Myxoma, NOS"
+      "8840/3":
+        description: "Myxosarcoma"
+      "8841/0":
+        description: "Angiomyxoma"
+      "8842/0":
+        description: "Ossifying fibromyxoid tumor"
+      "8842/3":
+        description: "Ossifying fibromyxoid tumor, malignant (C49._)"
+      "8850/0":
+        description: "Lipoma, NOS"
+      "8850/1":
+        description: "Atypical lipoma"
+      "8850/3":
+        description: "Liposarcoma, NOS"
+      "8851/0":
+        description: "Fibrolipoma"
+      "8851/3":
+        description: "Liposarcoma, well differentiated"
+      "8852/0":
+        description: "Fibromyxolipoma"
+      "8852/3":
+        description: "Myxoid liposarcoma"
+      "8853/3":
+        description: "Round cell liposarcoma"
+      "8854/0":
+        description: "Pleomorphic lipoma"
+      "8854/3":
+        description: "Pleomorphic liposarcoma"
+      "8855/3":
+        description: "Mixed liposarcoma"
+      "8856/0":
+        description: "Intramuscular lipoma"
+      "8857/0":
+        description: "Spindle cell lipoma"
+      "8857/3":
+        description: "Fibroblastic liposarcoma"
+      "8858/3":
+        description: "Dedifferentiated liposarcoma"
+      "8859/3":
+        description: "Myxoid pleomorphic liposarcoma [2022+]"
+      "8860/0":
+        description: "Angiomyolipoma"
+      "8861/0":
+        description: "Angiolipoma, NOS"
+      "8862/0":
+        description: "Chondroid lipoma"
+      "8870/0":
+        description: "Myelolipoma"
+      "8880/0":
+        description: "Hibernoma"
+      "8881/0":
+        description: "Lipoblastomatosis"
+      "8890/0":
+        description: "Leiomyoma, NOS"
+      "8890/1":
+        description: "Leiomyomatosis, NOS"
+      "8890/3":
+        description: "Leiomyosarcoma, NOS"
+      "8891/0":
+        description: "Epithelioid leiomyoma"
+      "8891/3":
+        description: "Epithelioid leiomyosarcoma"
+      "8892/0":
+        description: "Cellular leiomyoma"
+      "8893/0":
+        description: "Bizarre leiomyoma"
+      "8894/0":
+        description: "Angiomyoma"
+      "8894/3":
+        description: "Angiomyosarcoma"
+      "8895/0":
+        description: "Myoma"
+      "8895/3":
+        description: "Myosarcoma"
+      "8896/3":
+        description: "Myxoid leiomyosarcoma"
+      "8897/1":
+        description: "Smooth muscle tumor of uncertain malignant potential"
+      "8898/1":
+        description: "Metastasizing leiomyoma"
+      "8900/0":
+        description: "Rhabdomyoma, NOS"
+      "8900/3":
+        description: "Rhabdomyosarcoma, NOS"
+      "8901/3":
+        description: "Pleomorphic rhabdomyosarcoma, adult type"
+      "8902/3":
+        description: "Mixed type rhabdomyosarcoma"
+      "8903/0":
+        description: "Fetal rhabdomyoma"
+      "8904/0":
+        description: "Adult rhabdomyoma"
+      "8905/0":
+        description: "Genital rhabdomyoma (C51._, C52.9)"
+      "8910/3":
+        description: "Embryonal rhabdomyosarcoma, NOS"
+      "8912/3":
+        description: "Spindle cell rhabdomyosarcoma"
+      "8920/3":
+        description: "Alveolar rhabdomyosarcoma"
+      "8921/3":
+        description: "Ectomesenchymoma"
+      "8930/0":
+        description: "Endometrial stromal nodule (C54.1)"
+      "8930/3":
+        description: "Endometrial stromal sarcoma, NOS (C54.1)"
+      "8931/3":
+        description: "Endometrial stromal sarcoma, low grade (C54.1)"
+      "8932/0":
+        description: "Adenomyoma"
+      "8933/3":
+        description: "Adenosarcoma"
+      "8934/3":
+        description: "Carcinofibroma"
+      "8935/0":
+        description: "Stromal tumor, benign"
+      "8935/1":
+        description: "Stromal tumor, NOS"
+      "8935/3":
+        description: "Stromal sarcoma, NOS"
+      "8936/0":
+        description: "Gastrointestinal stromal tumor, benign"
+      "8936/1":
+        description: "Gastrointestinal stromal tumor, NOS [PRE-2021 ONLY. FOR 2021+ USE CODE 8936/3.]"
+      "8936/3":
+        description: "Gastrointestinal stromal tumor, NOS [REPORTABLE 2021+]"
+      "8940/0":
+        description: "Pleomorphic adenoma"
+      "8940/3":
+        description: "Mixed tumor, malignant, NOS"
+      "8941/3":
+        description: "Carcinoma in pleomorphic adenoma (C07._, C08._)"
+      "8950/3":
+        description: "Mullerian mixed tumor (C54._)"
+      "8951/3":
+        description: "Mesodermal mixed tumor"
+      "8959/0":
+        description: "Benign cystic nephroma (C64.9)"
+      "8959/1":
+        description: "Cystic partially differentiated nephroblastoma (C64.9)"
+      "8959/3":
+        description: "Malignant cystic nephroma (C64.9)"
+      "8960/1":
+        description: "Mesoblastic nephroma"
+      "8960/3":
+        description: "Nephroblastoma, NOS (C64.9)"
+      "8963/3":
+        description: "Rhabdoid tumor, NOS"
+      "8964/3":
+        description: "Clear cell sarcoma of kidney (C64.9)"
+      "8965/0":
+        description: "Nephrogenic adenofibroma (C64.9) [obs] [PRE-2021 ONLY. FOR 2021+, USE CODE 9013/0.]"
+      "8966/0":
+        description: "Renomedullary interstitial cell tumor (C64.9)"
+      "8967/0":
+        description: "Ossifying renal tumor (C64.9)"
+      "8970/3":
+        description: "Hepatoblastoma (C22.0)"
+      "8971/3":
+        description: "Pancreatoblastoma (C25._)"
+      "8972/3":
+        description: "Pulmonary blastoma (C34._)"
+      "8973/3":
+        description: "Pleuropulmonary blastoma"
+      "8974/1":
+        description: "Sialoblastoma"
+      "8975/1":
+        description: "Calcifying nested epithelial stromal tumor (C22.0)"
+      "8976/3":
+        description: "Gastroblastoma (C16._) [2022+)"
+      "8980/3":
+        description: "Carcinosarcoma, NOS"
+      "8981/3":
+        description: "Carcinosarcoma, embryonal"
+      "8982/0":
+        description: "Myoepithelioma"
+      "8982/3":
+        description: "Myoepithelial carcinoma"
+      "8983/0":
+        description: "Adenomyoepithelioma (C50._)"
+      "8983/3":
+        description: "Adenomyoepithelioma with carcinoma (C50._)"
+      "8990/0":
+        description: "Mesenchymoma, benign"
+      "8990/1":
+        description: "Mesenchymoma, NOS"
+      "8990/3":
+        description: "Mesenchymoma, malignant"
+      "8991/3":
+        description: "Embryonal sarcoma"
+      "8992/0":
+        description: "Pulmonary hamartoma (C34._) [2021+]"
+      "9000/0":
+        description: "Brenner tumor, NOS (C56.9)"
+      "9000/1":
+        description: "Brenner tumor, borderline malignancy (C56.9)"
+      "9000/3":
+        description: "Brenner tumor, malignant (C56.9)"
+      "9010/0":
+        description: "Fibroadenoma, NOS (C50._)"
+      "9011/0":
+        description: "Intracanalicular fibroadenoma (C50._)"
+      "9012/0":
+        description: "Pericanalicular fibroadenoma (C50._)"
+      "9013/0":
+        description: "Adenofibroma, NOS"
+      "9014/0":
+        description: "Serous adenofibroma, NOS"
+      "9014/1":
+        description: "Serous adenofibroma of borderline malignancy"
+      "9014/3":
+        description: "Serous adenocarcinofibroma"
+      "9015/0":
+        description: "Mucinous adenofibroma, NOS"
+      "9015/1":
+        description: "Mucinous adenofibroma of borderline malignancy"
+      "9015/3":
+        description: "Mucinous adenocarcinofibroma"
+      "9016/0":
+        description: "Giant fibroadenoma (C50._)"
+      "9020/0":
+        description: "Phyllodes tumor, benign (C50._)"
+      "9020/1":
+        description: "Phyllodes tumor, borderline (C50._)"
+      "9020/3":
+        description: "Phyllodes tumor, malignant (C50._)"
+      "9030/0":
+        description: "Juvenile fibroadenoma (C50._)"
+      "9040/0":
+        description: "Synovioma, benign"
+      "9040/3":
+        description: "Synovial sarcoma, NOS"
+      "9041/3":
+        description: "Synovial sarcoma, spindle cell"
+      "9042/3":
+        description: "Synovial sarcoma, epithelioid cell"
+      "9043/3":
+        description: "Synovial sarcoma, biphasic"
+      "9044/3":
+        description: "Clear cell sarcoma (except of kidney M-8964/3)"
+      "9045/3":
+        description: "Biphenotypic sinonasal sarcoma (C30.0, C31.0-C31.3, C31.8, C31.9) [2018+]"
+      "9050/0":
+        description: "Mesothelioma, benign"
+      "9050/2":
+        description: "Mesothelioma in situ [REPORTABLE 2023+]"
+      "9050/3":
+        description: "Mesothelioma, malignant"
+      "9051/0":
+        description: "Fibrous mesothelioma, benign"
+      "9051/3":
+        description: "Fibrous mesothelioma, malignant"
+      "9052/0":
+        description: "Epithelioid mesothelioma, benign"
+      "9052/3":
+        description: "Epithelioid mesothelioma, malignant"
+      "9053/3":
+        description: "Mesothelioma, biphasic, malignant"
+      "9054/0":
+        description: "Adenomatoid tumor, NOS"
+      "9055/0":
+        description: "Multicystic mesothelioma, benign"
+      "9055/1":
+        description: "Cystic mesothelioma, NOS (C48._)"
+      "9060/3":
+        description: "Dysgerminoma"
+      "9061/2":
+        description: "Intratubular seminoma (C62._) [2024+]"
+      "9061/3":
+        description: "Seminoma, NOS (C62._)"
+      "9062/3":
+        description: "Seminoma, anaplastic (C62._)"
+      "9063/3":
+        description: "Spermatocytic seminoma (C62._)"
+      "9064/2":
+        description: "Intratubular malignant germ cells (C62._)"
+      "9064/3":
+        description: "Germinoma"
+      "9065/3":
+        description: "Germ cell tumor, nonseminomatous (C62._)"
+      "9070/2":
+        description: "Intratubular embryonal carcinoma [2024+]"
+      "9070/3":
+        description: "Embryonal carcinoma, NOS"
+      "9071/2":
+        description: "Intratubular yolk sac tumor [2024+]"
+      "9071/3":
+        description: "Yolk sac tumor"
+      "9072/3":
+        description: "Polyembryoma"
+      "9073/1":
+        description: "Gonadoblastoma"
+      "9080/0":
+        description: "Teratoma, benign"
+      "9080/1":
+        description: "Teratoma, NOS"
+      "9080/2":
+        description: "Intratubular teratoma [2024+]"
+      "9080/3":
+        description: "Teratoma, postpubertal-type [2024+]"
+      "9081/3":
+        description: "Teratocarcinoma"
+      "9082/3":
+        description: "Malignant teratoma, undifferentiated"
+      "9083/3":
+        description: "Malignant teratoma, intermediate"
+      "9084/0":
+        description: "Dermoid cyst, NOS"
+      "9084/3":
+        description: "Teratoma with malignant transformation"
+      "9085/3":
+        description: "Mixed germ cell tumor"
+      "9086/3":
+        description: "Germ cell tumors with associated hematological malignancy (C37.9) [2018+]"
+      "9090/0":
+        description: "Struma ovarii, NOS (C56.9)"
+      "9090/3":
+        description: "Struma ovarii, malignant (C56.9)"
+      "9091/1":
+        description: "Strumal carcinoid (C56.9)"
+      "9100/0":
+        description: "Hydatidiform mole, NOS (C58.9)"
+      "9100/1":
+        description: "Invasive hydatidiform mole (C58.9)"
+      "9100/3":
+        description: "Choriocarcinoma, NOS"
+      "9101/3":
+        description: "Choriocarcinoma combined with other germ cell elements"
+      "9102/3":
+        description: "Malignant teratoma, trophoblastic"
+      "9103/0":
+        description: "Partial hydatidiform mole (C58.9)"
+      "9104/1":
+        description: "Placental site trophoblastic tumor (C58.9)"
+      "9104/3":
+        description: "Placental site trophoblastic tumor of testis (C62._) [REPORTABLE FOR C62._ ONLY 2024+]"
+      "9105/3":
+        description: "Trophoblastic tumor, epithelioid"
+      "9110/0":
+        description: "Mesonephroma, benign"
+      "9110/1":
+        description: "Mesonephric tumor, NOS"
+      "9110/3":
+        description: "Adenocarcinoma, HPV-independent, mesonephric type [2022+]"
+      "9111/3":
+        description: "Mesonephric-like adenocarcinoma (C54._, C56.9) [2022+]"
+      "9120/0":
+        description: "Hemangioma, NOS"
+      "9120/3":
+        description: "Hemangiosarcoma"
+      "9121/0":
+        description: "Cavernous hemangioma"
+      "9122/0":
+        description: "Venous hemangioma"
+      "9123/0":
+        description: "Racemose hemangioma"
+      "9124/3":
+        description: "Kupffer cell sarcoma (C22.0)"
+      "9125/0":
+        description: "Epithelioid hemangioma"
+      "9126/0":
+        description: "Atypical vascular lesion [2021+]"
+      "9130/0":
+        description: "Hemangioendothelioma, benign"
+      "9130/1":
+        description: "Hemangioendothelioma, NOS"
+      "9130/3":
+        description: "Hemangioendothelioma, malignant"
+      "9131/0":
+        description: "Capillary hemangioma"
+      "9132/0":
+        description: "Intramuscular hemangioma"
+      "9133/1":
+        description: "Epithelioid hemangioendothelioma, NOS"
+      "9133/3":
+        description: "Epithelioid hemangioendothelioma"
+      "9135/1":
+        description: "Endovascular papillary angioendothelioma"
+      "9136/1":
+        description: "Spindle cell hemangioendothelioma"
+      "9137/3":
+        description: "Intimal sarcoma [2018+]"
+      "9138/1":
+        description: "Pseudomyogenic (epithelioid sarcoma-like) hemangioendothelioma [2021+]"
+      "9140/3":
+        description: "Kaposi sarcoma"
+      "9141/0":
+        description: "Angiokeratoma"
+      "9142/0":
+        description: "Verrucous keratotic hemangioma"
+      "9150/0":
+        description: "Hemangiopericytoma, benign"
+      "9150/1":
+        description: "Hemangiopericytoma, NOS"
+      "9150/3":
+        description: "Hemangiopericytoma, malignant [PRE-2021 ONLY. FOR 2021+, USE CODE 8815/3]"
+      "9160/0":
+        description: "Angiofibroma, NOS"
+      "9161/0":
+        description: "Acquired tufted hemangioma"
+      "9161/1":
+        description: "Hemangioblastoma"
+      "9170/0":
+        description: "Lymphangioma, NOS"
+      "9170/3":
+        description: "Lymphangiosarcoma"
+      "9171/0":
+        description: "Capillary lymphangioma"
+      "9172/0":
+        description: "Cavernous lymphangioma"
+      "9173/0":
+        description: "Cystic lymphangioma"
+      "9174/0":
+        description: "Lymphangiomyoma"
+      "9174/1":
+        description: "Lymphangiomyomatosis [PRE-2023, NOT REPORTABLE. FOR 2023+ USE CODE 9174/3]"
+      "9174/3":
+        description: "Lymphangioleiomyomatosis [REPORTABLE 2023+. FOR PRE-2023, USE CODE 9174/1]"
+      "9175/0":
+        description: "Hemolymphangioma"
+      "9180/0":
+        description: "Osteoma, NOS (C40._, C41._)"
+      "9180/3":
+        description: "Osteosarcoma, NOS (C40._, C41._)"
+      "9181/3":
+        description: "Chondroblastic osteosarcoma (C40._, C41._)"
+      "9182/3":
+        description: "Fibroblastic osteosarcoma (C40._, C41._)"
+      "9183/3":
+        description: "Telangiectatic osteosarcoma (C40._, C41._)"
+      "9184/3":
+        description: "Osteosarcoma in Paget disease of bone (C40._, C41._)"
+      "9185/3":
+        description: "Small cell osteosarcoma (C40._, C41._)"
+      "9186/3":
+        description: "Central osteosarcoma (C40._, C41._)"
+      "9187/3":
+        description: "Intraosseous well differentiated osteosarcoma (C40._, C41._)"
+      "9191/0":
+        description: "Osteoid osteoma, NOS (C40._, C41._)"
+      "9192/3":
+        description: "Parosteal osteosarcoma (C40._, C41._)"
+      "9193/3":
+        description: "Periosteal osteosarcoma (C40._, C41._)"
+      "9194/3":
+        description: "High grade surface osteosarcoma (C40._, C41._)"
+      "9195/3":
+        description: "Intracortical osteosarcoma (C40._, C41._)"
+      "9200/0":
+        description: "Osteoblastoma, NOS (C40._, C41._) [PRE-2022 ONLY. FOR 2022+ USE CODE 9200/1; NOT REPORTABLE]"
+      "9200/1":
+        description: "Osteoblastoma, NOS (C40._, C41._) [2022+. FOR PRE-2022, USE CODE 9200/0; NOT REPORTABLE]"
+      "9210/0":
+        description: "Osteochondroma (C40._, C41._)"
+      "9210/1":
+        description: "Osteochondromatosis, NOS (C40._, C41._)"
+      "9211/0":
+        description: "Osteochondromyxoma [2021+]"
+      "9212/0":
+        description: "Bizarre parosteal osteochondromatous proliferation [2021+]"
+      "9213/0":
+        description: "Subungual exostosis [2021+]"
+      "9220/0":
+        description: "Chondroma, NOS (C40._, C41._)"
+      "9220/1":
+        description: "Chondromatosis, NOS"
+      "9220/3":
+        description: "Chondrosarcoma, NOS (C40._, C41._)"
+      "9221/0":
+        description: "Juxtacortical chondroma (C40._, C41._)"
+      "9221/3":
+        description: "Juxtacortical chondrosarcoma (C40._, C41._)"
+      "9222/1":
+        description: "Atypical cartilaginous tumor [2021+]"
+      "9222/3":
+        description: "Chondrosarcoma, grade 1 (C40._, C41._) [REPORTABLE 2022+. FOR PRE-2022 USE CODE 9222/1]"
+      "9230/0":
+        description: "Chondroblastoma, NOS (C40._, C41._)"
+      "9230/3":
+        description: "Chondroblastoma, malignant (C40._, C41._)"
+      "9231/3":
+        description: "Myxoid chondrosarcoma"
+      "9240/3":
+        description: "Mesenchymal chondrosarcoma"
+      "9241/0":
+        description: "Chondromyxoid fibroma (C40._, C41._)"
+      "9242/3":
+        description: "Clear cell chondrosarcoma (C40._, C41._)"
+      "9243/3":
+        description: "Dedifferentiated chondrosarcoma (C40._, C41._)"
+      "9250/1":
+        description: "Giant cell tumor of bone, NOS (C40._, C41._)"
+      "9250/3":
+        description: "Giant cell tumor of bone, malignant (C40._, C41._)"
+      "9251/1":
+        description: "Giant cell tumor of soft parts, NOS"
+      "9251/3":
+        description: "Malignant giant cell tumor of soft parts"
+      "9252/0":
+        description: "Tenosynovial giant cell tumor (C49._)"
+      "9252/3":
+        description: "Malignant tenosynovial giant cell tumor (C49._)"
+      "9260/3":
+        description: "Ewing sarcoma (C40._, C41._) [USE FOR PRE-2021. FOR 2021+ USE 9364/3]"
+      "9261/1":
+        description: "Osteofibrous dysplasia-like adamantinoma [2022+; NOT REPORTABLE]"
+      "9261/3":
+        description: "Adamantinoma of long bones (C40._)"
+      "9262/0":
+        description: "Ossifying fibroma (C40._, C41._)"
+      "9270/0":
+        description: "Odontogenic tumor, benign (C41._)"
+      "9270/1":
+        description: "Odontogenic tumor, NOS (C41._)"
+      "9270/3":
+        description: "Odontogenic tumor, malignant (C41._)"
+      "9271/0":
+        description: "Ameloblastic fibrodentinoma (C41._)"
+      "9272/0":
+        description: "Cementoma, NOS (C41._)"
+      "9273/0":
+        description: "Cementoblastoma, benign (C41._)"
+      "9274/0":
+        description: "Cementifying fibroma (C41._)"
+      "9275/0":
+        description: "Gigantiform cementoma (C41._)"
+      "9280/0":
+        description: "Odontoma, NOS (C41._)"
+      "9281/0":
+        description: "Compound odontoma (C41._)"
+      "9282/0":
+        description: "Complex odontoma (C41._)"
+      "9290/0":
+        description: "Ameloblastic fibro-odontoma (C41._)"
+      "9290/3":
+        description: "Ameloblastic odontosarcoma (C41._)"
+      "9300/0":
+        description: "Adenomatoid odontogenic tumor (C41._)"
+      "9301/0":
+        description: "Calcifying odontogenic cyst (C41._)"
+      "9302/0":
+        description: "Odontogenic ghost cell tumor (C41._)"
+      "9302/3":
+        description: "Ghost cell odontogenic carcinoma (C41.0, C41.1)"
+      "9310/0":
+        description: "Ameloblastoma, NOS (C41._)"
+      "9310/3":
+        description: "Ameloblastoma, metastasizing [2021+]"
+      "9311/0":
+        description: "Odontoameloblastoma (C41._)"
+      "9312/0":
+        description: "Squamous odontogenic tumor (C41._)"
+      "9320/0":
+        description: "Odontogenic myxoma (C41._)"
+      "9321/0":
+        description: "Central odontogenic fibroma (C41._)"
+      "9322/0":
+        description: "Peripheral odontogenic fibroma (C41._)"
+      "9330/0":
+        description: "Ameloblastic fibroma (C41._)"
+      "9330/3":
+        description: "Ameloblastic fibrosarcoma (C41._)"
+      "9340/0":
+        description: "Calcifying epithelial odontogenic tumor (C41._)"
+      "9341/1":
+        description: "Clear cell odontogenic tumor (C41._)"
+      "9341/3":
+        description: "Clear cell odontogenic carcinoma (C41.0, C41.1)"
+      "9342/3":
+        description: "Odontogenic carcinosarcoma (C41._)"
+      "9350/1":
+        description: "Craniopharyngioma (C75.2)"
+      "9351/1":
+        description: "Craniopharyngioma, adamantinomatous (C75.2)"
+      "9352/1":
+        description: "Craniopharyngioma, papillary (C75.2)"
+      "9360/1":
+        description: "Pinealoma, NOS (C75.3)"
+      "9361/1":
+        description: "Pineocytoma (C75.3)"
+      "9361/3":
+        description: "Papillary tumor of the pineal region [USE FOR 2015-2017. FOR 2018+ USE 9395/3]"
+      "9362/3":
+        description: "Pineoblastoma (C75.3)"
+      "9363/0":
+        description: "Melanotic neuroectodermal tumor"
+      "9364/3":
+        description: "Ewing sarcoma (C40._, C41._) [2021+. FOR PRE-2021 USE 9260/3]"
+      "9365/3":
+        description: "Askin tumor"
+      "9366/3":
+        description: "Round cell sarcoma with EWSR1-non-ETS fusions [2022+]"
+      "9367/3":
+        description: "CIC-rearranged sarcoma [2022+]"
+      "9368/3":
+        description: "Sarcoma with BCOR genetic alterations [2022+]"
+      "9370/3":
+        description: "Chordoma, NOS"
+      "9371/3":
+        description: "Chondroid chordoma"
+      "9372/3":
+        description: "Dedifferentiated chordoma"
+      "9373/0":
+        description: "Parachordoma"
+      "9380/1":
+        description: "Angiocentric glioma [USE FOR 2015-2017. FOR 2018+ USE 9431/1]"
+      "9380/3":
+        description: "Glioma, malignant (C71._)"
+      "9381/3":
+        description: "Gliomatosis cerebri (C71._)"
+      "9382/3":
+        description: "Mixed glioma (C71._)"
+      "9383/1":
+        description: "Subependymoma (C71._)"
+      "9384/1":
+        description: "Subependymal giant cell astrocytoma (C71._)"
+      "9385/3":
+        description: "Diffuse midline glioma, H3 K27M-mutant (C71._) [2018+]"
+      "9390/0":
+        description: "Choroid plexus papilloma, NOS (C71.5)"
+      "9390/1":
+        description: "Atypical choroid plexus papilloma (C71.5)"
+      "9390/3":
+        description: "Choroid plexus carcinoma (C71.5)"
+      "9391/3":
+        description: "Sellar ependymoma (C75.1) [2021+]"
+      "9392/3":
+        description: "Ependymoma, anaplastic (C71._)"
+      "9393/3":
+        description: "Papillary ependymoma (C71._)"
+      "9394/1":
+        description: "Myxopapillary ependymoma (C72.0)"
+      "9395/3":
+        description: "Papillary tumor of pineal region (C75.3)  [2018 +. FOR PRE-2018 USE 9361/3]"
+      "9396/3":
+        description: "Ependymoma, RELA fusion-positive (C71._) [2018+]"
+      "9400/3":
+        description: "Astrocytoma, NOS (C71._)"
+      "9401/3":
+        description: "Astrocytoma, anaplastic (C71._)"
+      "9410/3":
+        description: "Protoplasmic astrocytoma (C71._)"
+      "9411/3":
+        description: "Gemistocytic astrocytoma (C71._)"
+      "9412/1":
+        description: "Desmoplastic infantile astrocytoma (C71._)"
+      "9413/0":
+        description: "Dysembryoplastic neuroepithelial tumor"
+      "9420/3":
+        description: "Fibrillary astrocytoma (C71._)"
+      "9421/1":
+        description: "Diffuse astrocytoma, MYB- or MYBL1-altered (C71._) [2023+]"
+      "9421/3":
+        description: "High-grade astrocytoma with piloid features (HGAP) (C71._) [2023+]"
+      "9423/3":
+        description: "Polar spongioblastoma (C71._)"
+      "9424/3":
+        description: "Pleomorphic xanthoastrocytoma (C71._)"
+      "9425/3":
+        description: "Pilomyxoid astrocytoma (C71._) [2018+. FOR PRE-2018 USE 9421/3]"
+      "9430/3":
+        description: "Astroblastoma (C71._)"
+      "9431/1":
+        description: "Angiocentric glioma  [2018+. FOR PRE-2018 USE 9380/1]"
+      "9432/1":
+        description: "Pituicytoma (C75.1) [2018+. FOR PRE-2018 USE 9380/1]"
+      "9440/3":
+        description: "Glioblastoma, NOS (C71._)"
+      "9441/3":
+        description: "Giant cell glioblastoma (C71._)"
+      "9442/1":
+        description: "Gliofibroma (C71._)"
+      "9442/3":
+        description: "Gliosarcoma (C71._)"
+      "9444/1":
+        description: "Chordoid glioma (C71._)"
+      "9445/3":
+        description: "Glioblastoma, IDH-mutant (C71._) [2018+]"
+      "9450/3":
+        description: "Oligodendroglioma, NOS (C71._)"
+      "9451/3":
+        description: "Oligodendroglioma, anaplastic (C71._)"
+      "9460/3":
+        description: "Oligodendroblastoma (C71._) [obs]"
+      "9470/3":
+        description: "Medulloblastoma, NOS (C71.6)"
+      "9471/3":
+        description: "Desmoplastic nodular medulloblastoma (C71.6)"
+      "9472/3":
+        description: "Medullomyoblastoma (C71.6)"
+      "9473/3":
+        description: "Central primitive neuroectodermal tumor, NOS (C71._)"
+      "9474/3":
+        description: "Large cell medulloblastoma (C71.6)"
+      "9475/3":
+        description: "Medulloblastoma, WNT-activated (C71._) [2018+]"
+      "9476/3":
+        description: "Medulloblastoma, SHH-activated and TP53 mutant (C71._) [2018+]"
+      "9477/3":
+        description: "Medulloblastoma, non-WNT/non-SHH (C71._) [2018+]"
+      "9478/3":
+        description: "Embryonal tumor with multilayered rosettes, NOS (C71._) [2018+]"
+      "9480/3":
+        description: "Cerebellar sarcoma, NOS (C71.6) [obs]"
+      "9490/0":
+        description: "Ganglioneuroma"
+      "9490/3":
+        description: "Ganglioneuroblastoma"
+      "9491/0":
+        description: "Ganglioneuromatosis"
+      "9492/0":
+        description: "Gangliocytoma"
+      "9493/0":
+        description: "Dysplastic gangliocytoma of cerebellum (Lhermitte-Duclos) (C71.6)"
+      "9500/3":
+        description: "Neuroblastoma, NOS"
+      "9501/0":
+        description: "Medulloepithelioma, benign (C69.4)"
+      "9501/3":
+        description: "Medulloepithelioma, NOS"
+      "9502/0":
+        description: "Teratoid medulloepithelioma, benign (C69.4)"
+      "9502/3":
+        description: "Teratoid medulloepithelioma (C69.4)"
+      "9503/3":
+        description: "Neuroepithelioma, NOS"
+      "9504/3":
+        description: "Spongioneuroblastoma"
+      "9505/0":
+        description: "Multinodular and vacuolating neuronal tumor (MVNT) (C71.2) [FOR USE 2021-2022. FOR 2023+ USE 9509/0]"
+      "9505/1":
+        description: "Ganglioglioma, NOS"
+      "9505/3":
+        description: "Ganglioglioma, anaplastic"
+      "9506/1":
+        description: "Central neurocytoma"
+      "9507/0":
+        description: "Pacinian tumor"
+      "9508/3":
+        description: "Embryonal tumor with rhabdoid features (C71._)"
+      "9509/0":
+        description: "Multinodular and vacuolating neuronal tumor (MVNT) (C71.2) [2023+. FOR PRE-2023 USE 9505/0]"
+      "9509/1":
+        description: "Papillary glioneuronal tumor (C71._) [2018+. FOR PRE-2018 USE 9505/1]"
+      "9509/3":
+        description: "Diffuse leptomeningeal glioneuronal tumor (C71._) [2023+]"
+      "9510/0":
+        description: "Retinocytoma (C69.2)"
+      "9510/3":
+        description: "Retinoblastoma, NOS (C69.2)"
+      "9511/3":
+        description: "Retinoblastoma, differentiated (C69.2)"
+      "9512/3":
+        description: "Retinoblastoma, undifferentiated (C69.2)"
+      "9513/3":
+        description: "Retinoblastoma, diffuse (C69.2)"
+      "9514/1":
+        description: "Retinoblastoma, spontaneously regressed (C69.2)"
+      "9520/3":
+        description: "Olfactory neurogenic tumor"
+      "9521/3":
+        description: "Olfactory neurocytoma (C30.0)"
+      "9522/3":
+        description: "Olfactory neuroblastoma (C30.0)"
+      "9523/3":
+        description: "Olfactory neuroepithelioma (C30.0)"
+      "9530/0":
+        description: "Meningioma, NOS (C70._)"
+      "9530/1":
+        description: "Meningiomatosis, NOS (C70._)"
+      "9530/3":
+        description: "Meningioma, malignant (C70._)"
+      "9531/0":
+        description: "Meningothelial meningioma (C70._)"
+      "9532/0":
+        description: "Fibrous meningioma (C70._)"
+      "9533/0":
+        description: "Psammomatous meningioma (C70._)"
+      "9534/0":
+        description: "Angiomatous meningioma (C70._)"
+      "9535/0":
+        description: "Hemangioblastic meningioma (C70._) [obs]"
+      "9537/0":
+        description: "Transitional meningioma (C70._)"
+      "9538/1":
+        description: "Clear cell meningioma (C70._)"
+      "9538/3":
+        description: "Papillary meningioma (C70._)"
+      "9539/1":
+        description: "Atypical meningioma (C70._)"
+      "9539/3":
+        description: "Meningeal sarcomatosis (C70._)"
+      "9540/0":
+        description: "Neurofibroma, NOS"
+      "9540/1":
+        description: "Neurofibromatosis, NOS [REMOVED FROM ICD-O-3.2; NOT REPORTABLE 2018+]"
+      "9540/3":
+        description: "Malignant peripheral nerve sheath tumor"
+      "9541/0":
+        description: "Melanotic neurofibroma"
+      "9542/3":
+        description: "Epithelioid malignant peripheral nerve sheath tumor  (C47.0-C47.6, C47.8, C47.9) [2018+]"
+      "9550/0":
+        description: "Plexiform neurofibroma"
+      "9560/0":
+        description: "Neurilemoma, NOS"
+      "9560/1":
+        description: "Neurinomatosis"
+      "9560/3":
+        description: "Neurilemoma, malignant [obs]"
+      "9561/3":
+        description: "Malignant peripheral nerve sheath tumor with rhabdomyoblastic differentiation"
+      "9562/0":
+        description: "Neurothekeoma"
+      "9563/0":
+        description: "Nerve sheath tumor, NOS [2021+]"
+      "9570/0":
+        description: "Neuroma, NOS"
+      "9571/0":
+        description: "Perineurioma, NOS"
+      "9571/3":
+        description: "Perineurioma, malignant"
+      "9580/0":
+        description: "Granular cell tumor, NOS"
+      "9580/3":
+        description: "Granular cell tumor, malignant"
+      "9581/3":
+        description: "Alveolar soft part sarcoma"
+      "9582/0":
+        description: "Granular cell tumor of the sellar region (C75.1)"
       "9590/3":
-        description: "Malignant lymphoma, NOS, for cases diagnosed 1978 and later"
-      "9684/3":
-        description: "Malignant lymphoma, large B-cell, diffuse, immunoblastic, NOS, for cases diagnosed 1992 - 2009"
-      "9675/3":
-        description: "Malignant lymphoma, mixed small and large cell, diffuse, for cases diagnosed 1992 - 2009"
-      "9670/3":
-        description: "Malignant lymphoma, small B lymphocytic, NOS, for cases diagnosed 1978 - 2009"
-      "9673/3":
-        description: "Mantle cell lymphoma (MCL), for cases diagnosed 1992 and later"
-      "9742/3":
-        description: "Mast cell leukemia (MCL), for cases diagnosed 1978 and later"
-      "9740/3":
-        description: "Mast cell sarcoma (MSC), for cases diagnosed 1978 and later"
-      "9740/1":
-        description: "Mastocytoma (NOS), This neoplasm is not reportable"
-      "9679/3":
-        description: "Mediastinal large B-cell lymphoma (PMBCL), for cases diagnosed 2001 and later"
-      "9806/3":
-        description: "Mixed-phenotype acute leukemia (MPAL) with t(9;22)(q34.1;q11.2); BCR-ABL1, for cases diagnosed 2010 and later"
-      "9807/3":
-        description: "Mixed-phenotype acute leukemia (MPAL) with t(v;11q23.3); KMT2A-rearranged, for cases diagnosed 2010 and later"
-      "9808/3":
-        description: "Mixed-phenotype acute leukemia (MPAL), B/myeloid, not otherwise specified, for cases diagnosed 2010 and later"
-      "9809/3":
-        description: "Mixed-phenotype acute leukemia, T/myeloid, not otherwise specified, for cases diagnosed 2010 and later"
-      "9823/1":
-        description: "Monoclonal B-cell lymphocytosis, CLL-type (MBL, CLL-type), This neoplasm is not reportable"
+        description: "Malignant lymphoma, NOS [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
       "9591/1":
-        description: "Monoclonal B-cell lymphocytosis, non-chronic lymphocytic leukemia (CLL)-type, This neoplasm is not reportable"
-      "9765/1":
-        description: "Monoclonal gammopathy of undetermined significance (NOS) (MGUS), This neoplasm is not reportable"
-      "9769/1":
-        description: "Monoclonal immunoglobulin deposition disease (MIDD), This neoplasm is not reportable"
-      "9700/3":
-        description: "Mycosis fungoides (MF), for cases diagnosed 1978 and later"
-      "9986/3":
-        description: "Myelodysplastic syndrome associated with isolated del(5q), for cases diagnosed 2001 and later"
-      "9983/3":
-        description: "Myelodysplastic syndrome with increased blasts (MDS-IB), for cases diagnosed 2001 and later"
-      "9985/3":
-        description: "Myelodysplastic syndrome with multilineage dysplasia (MDS-MLD), for cases diagnosed 2001 and later"
-      "9993/3":
-        description: "Myelodysplastic syndrome with ring sideroblasts and multilineage dysplasia (MDS-RD-MLD)"
-      "9982/3":
-        description: "Myelodysplastic syndrome with ring sideroblasts and single lineage dysplasia (MDS-RS-SLD), for cases diagnosed 2001 and later"
-      "9980/3":
-        description: "Myelodysplastic syndrome with single lineage dysplasia (MDS-SLD), for cases diagnosed 2001 and later"
-      "9989/3":
-        description: "Myelodysplastic syndrome, unclassifiable (MDS-U), for cases diagnosed 2001 and later"
-      "9975/3":
-        description: "Myelodysplastic/myeloproliferative neoplasm, unclassifiable, for cases diagnosed 2010 and later"
-      "9898/3":
-        description: "Myeloid leukemia associated with Down Syndrome, for cases diagnosed 2010 and later"
-      "9860/3":
-        description: "Myeloid leukemia, NOS, for cases diagnosed 1978 and later"
-      "9930/3":
-        description: "Myeloid sarcoma, for cases diagnosed 1978 and later"
-      "9967/3":
-        description: "Myeloid/lymphoid neoplasms with FGFR1 rearrangement, for cases diagnosed 2010 and later"
-      "9968/3":
-        description: "Myeloid/lymphoid neoplasms with PCM1-JAK2"
-      "9965/3":
-        description: "Myeloid/lymphoid neoplasms with PDGFRA rearrangement, for cases diagnosed 2010 and later"
-      "9966/3":
-        description: "Myeloid/lymphoid neoplasms with PDGFRB rearrangement, for cases diagnosed 2010 and later"
-      "9960/3":
-        description: "Myeloproliferative neoplasm, NOS, for cases diagnosed 2001 - 2009"
-      "9659/3":
-        description: "Nodular lymphocyte predominant Hodgkin lymphoma (NLPHL), for cases diagnosed 1992 and later"
+        description: "Monoclonal B-cell lymphocytosis, NOS [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
       "9591/3":
-        description: "Non-Hodgkin lymphoma (NHL), NOS, for cases diagnosed 1978 and later"
-      "9702/3":
-        description: "Peripheral T-cell lymphoma (PTCL), NOS, for cases diagnosed 1992 and later"
-      "9733/3":
-        description: "Plasma cell leukemia (PCL), for cases diagnosed 1978 - 2009"
-      "9732/3":
-        description: "Plasma cell myeloma (PCM), for cases diagnosed 1978 and later"
-      "9735/3":
-        description: "Plasmablastic lymphoma (PBL), for cases diagnosed 2010 and later"
-      "9734/3":
-        description: "Plasmacytoma, extramedullary, for cases diagnosed 1978 and later"
-      "9950/3":
-        description: "Polycythemia vera (PV), for cases diagnosed 2001 and later"
-      "9971/1":
-        description: "Polymorphic transplant lymphoproliferative disorder (PTLD), This neoplasm is not reportable"
-      "9971/3":
-        description: "Polymorphic transplant lymphoproliferative disorder, NOS (PTLD, NOS), for cases diagnosed 2010 and later"
-      "9836/3":
-        description: "Precursor B-cell lymphoblastic leukemia, for cases diagnosed 2001 - 2009"
-      "9728/3":
-        description: "Precursor B-cell lymphoblastic lymphoma, for cases diagnosed 2001 - 2009"
-      "9729/3":
-        description: "Precursor T-cell lymphoblastic lymphoma, NOS (T-LBL), for cases diagnosed 1992 - 2009"
-      "9835/3":
-        description: "Precursor cell lymphoblastic leukemia, NOS, for cases diagnosed 1978 - 2009"
-      "9709/1":
-        description: "Primary cutaneous CD4+ small or medium T-cell lymphoproliferative disorder (PCSM-LPD), This neoplasm is not reportable"
-      "9718/3":
-        description: "Primary cutaneous anaplastic large cell lymphoma (C-ALCL), for cases diagnosed 2001 and later"
+        description: "Malignant lymphoma, non-Hodgkin, NOS [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9596/3":
+        description: "Composite Hodgkin and non-Hodgkin lymphoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
       "9597/3":
-        description: "Primary cutaneous follicle centre lymphoma (PCFCL), for cases diagnosed 2010 and later"
-      "9726/3":
-        description: "Primary cutaneous gamma-delta T-cell lymphoma (PCGD-TCL), for cases diagnosed 2010 and later"
-      "9709/3":
-        description: "Primary cutaneous peripheral T-cell lymphoma (pcPTCL), NOS, for cases diagnosed 1992 and later"
+        description: "Primary cutaneous follicle centre lymphoma [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9650/3":
+        description: "Classical Hodgkin lymphoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9651/3":
+        description: "Hodgkin lymphoma, lymphocyte-rich [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9652/3":
+        description: "Hodgkin lymphoma, mixed cellularity, NOS [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9653/3":
+        description: "Hodgkin lymphoma, lymphocyte depletion, NOS  [2010+. FOR PRE-2010 USE CODE 9654/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9654/3":
+        description: "Hodgkin lymphoma, lymphocyte depletion, diffuse fibrosis [obs] [PRE-2010 ONLY. FOR 2010+ USE CODE 9653/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9655/3":
+        description: "Hodgkin lymphoma, lymphocyte depletion, reticular [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9659/3":
+        description: "Hodgkin lymphoma, nodular lymphocyte predominance [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9661/3":
+        description: "Hodgkin granuloma [obs] [PRE-2010 ONLY. FOR 2010+ USE CODE 9650/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9662/3":
+        description: "Hodgkin sarcoma [obs] [PRE-2010 ONLY. FOR 2010+ USE CODE 9650/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9663/3":
+        description: "Nodular sclerosis classical Hodgkin lymphoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9664/3":
+        description: "Hodgkin lymphoma, nodular sclerosis, cellular phase [PRE-2010 ONLY. FOR 2010+ USE CODE 9663/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9665/3":
+        description: "Hodgkin lymphoma, nodular sclerosis, grade 1 [PRE-2010 ONLY. FOR 2010+ USE CODE 9663/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9667/3":
+        description: "Hodgkin lymphoma, nodular sclerosis, grade 2 [PRE-2010 ONLY. FOR 2010+ USE CODE 9663/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9670/3":
+        description: "Malignant lymphoma, small B lymphocytic, NOS [PRE-2010 ONLY. FOR 2010+ USE CODE 9823/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9671/3":
+        description: "Malignant lymphoma, lymphoplasmacytic (see also M-9761/3) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9673/1":
+        description: "In situ mantle cell neoplasia [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9673/3":
+        description: "Mantle cell lymphoma (includes all variants: blastic, pleomorphic, small cell) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9675/3":
+        description: "Malignant lymphoma, mixed small and large cell, diffuse [PRE-2010 ONLY. FOR 2010+ USE CODE 9690/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
       "9678/3":
-        description: "Primary effusion lymphoma (PEL), for cases diagnosed 2001 and later"
-      "9961/3":
-        description: "Primary myelofibrosis (PMF), for cases diagnosed 1978 - 1991, 2001 and later"
-      "9832/3":
-        description: "Prolymphocytic leukemia (PLL), NOS, for cases diagnosed 1978 and later"
-      "9840/3":
-        description: "Pure erythroid leukemia, for cases diagnosed 1978 and later"
-      "9984/3":
-        description: "Refractory anemia with excess blasts in transformation (RAEB-T) [OBS], for cases diagnosed 2001 - 2009"
-      "9991/3":
-        description: "Refractory neutropenia, for cases diagnosed 2010 - 2020"
-      "9992/3":
-        description: "Refractory thrombocytopenia, for cases diagnosed 2010 - 2020"
-      "9701/3":
-        description: "Sezary syndrome (SS), for cases diagnosed 1978 and later"
-      "9731/3":
-        description: "Solitary (osseous, medullary) plasmacytoma of bone, for cases diagnosed 1978 and later"
-      "9689/3":
-        description: "Splenic marginal zone lymphoma (SMZL), for cases diagnosed 2001 and later"
-      "9708/3":
-        description: "Subcutaneous panniculitis-like T-cell lymphoma (SPTCL), for cases diagnosed 2001 and later"
-      "9724/3":
-        description: "Systemic EBV-positive T-cell lymphoma of childhood (SEBVTCL), for cases diagnosed 2010 and later"
-      "9741/3":
-        description: "Systemic mastocytosis with an associated hematological neoplasm (SM-AHN), for cases diagnosed 1978 and later"
-      "9831/3":
-        description: "T-cell large granular lymphocytic leukemia (T-LGL), for cases diagnosed 2010 and later"
-      "9834/3":
-        description: "T-cell prolymphocytic leukemia (T-PLL), for cases diagnosed 2001 and later"
+        description: "Primary effusion lymphoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9679/3":
+        description: "Mediastinal large B-cell lymphoma (C38.3) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9680/1":
+        description: "EBV positive mucocutaneous ulcer [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9680/3":
+        description: "Diffuse large B-cell lymphoma, NOS [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9684/3":
+        description: "Malignant lymphoma, large B-cell, diffuse, immunoblastic, NOS D5425 [PRE-2010 ONLY. FOR 2010+ USE CODE 9680/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9687/3":
+        description: "Burkitt lymphoma, NOS (includes all variants) (see also M-9826/3) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
       "9688/3":
-        description: "T-cell/histiocyte-rich large B-cell lymphoma (THRLBCL), for cases diagnosed 2010 and later"
-      "9768/1":
-        description: "T-gamma lymphoproliferative disorder, This neoplasm is not reportable"
-      "9837/3":
-        description: "T-lymphoblastic leukemia/lymphoma, NOS (T-ALL), for cases diagnosed 2001 and later"
-      "9987/3":
-        description: "Therapy-related myelodysplastic syndrome (t-MDS), NOS, for cases diagnosed 2001 - 2009"
-      "9920/3":
-        description: "Therapy-related myeloid neoplasms, for cases diagnosed 2001 and later"
-      "9898/1":
-        description: "Transient abnormal myelopoiesis (TAM), This neoplasm is not reportable"
+        description: "T cell/histiocyte rich large B-cell lymphoma [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9689/3":
+        description: "Splenic marginal zone B-cell lymphoma (C42.2) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9690/3":
+        description: "Follicular lymphoma, NOS [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9691/3":
+        description: "Follicular lymphoma, grade 2 [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9695/1":
+        description: "In situ follicular neoplasia [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9695/3":
+        description: "Follicular lymphoma, grade 1 [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9698/3":
+        description: "Follicular lymphoma, grade 3 [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9699/3":
+        description: "Marginal zone B-cell lymphoma, NOS [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9700/3":
+        description: "Mycosis fungoides (C44._) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9701/3":
+        description: "Sezary syndrome [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9702/1":
+        description: "Indolent T-cell lymphoproliferative disorder of the gastrointestinal tract [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9702/3":
+        description: "Mature T-cell lymphoma, NOS [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9705/3":
+        description: "Angioimmunoblastic T-cell lymphoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9708/3":
+        description: "Subcutaneous panniculitis-like T-cell lymphoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9709/1":
+        description: "Primary cutaneous CD4-positive small/medium T-cell lymphoproliferative disorder (C44._) [2021+ NOT REPORTABLE; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9709/3":
+        description: "Cutaneous T-cell lymphoma, NOS (C44._) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9712/3":
+        description: "Intravascular large B-cell lymphoma [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9714/3":
+        description: "Anaplastic large cell lymphoma, T-cell and Null cell type [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9715/3":
+        description: "Anaplastic large cell lymphoma, ALK negative [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9716/3":
+        description: "Hepatosplenic gamma-delta cell lymphoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9717/3":
+        description: "Intestinal T-cell lymphoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9718/1":
+        description: "Primary cutaneous CD30+ T-cell lymphoproliferative disorder (C44._) [2021+ NOT REPORTABLE; FOR PRE-2021 USE CODE 9718/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9718/3":
+        description: "Primary cutaneous anaplastic large cell lymphoma (C44._) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9719/3":
+        description: "NK/T-cell lymphoma, nasal and nasal-type [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9724/3":
+        description: "Systemic EBV-positive T-cell lymphoproliferative disease of childhood [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9725/1":
+        description: "Hydroa vacciniforme-like lymphoproliferative disorder [2021 AND LATER NOT REPORTABLE. FOR PRE-2010 USE CODE 9725/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9725/3":
+        description: "Hydroa vacciniforme-like lymphoproliferative disorder [REPORTABLE 2010 - 2020 ONLY. FOR 2021+ USE CODE 9725/1; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9726/3":
+        description: "Primary cutaneous gamma delta T-cell lymphoma [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9727/1":
+        description: "Mature plasmacytoid dendritic cell proliferation [2026+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9727/3":
+        description: "Precursor cell lymphoblastic lymphoma, NOS (see also M-9835/3) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9728/3":
+        description: "Precursor B-cell lymphoblastic lymphoma [PRE-2010 ONLY. FOR 2010+ USE CODE 9811/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9729/3":
+        description: "Precursor T-cell lymphoblastic lymphoma, NOS B lymphoblastic  [PRE-2010 ONLY. FOR 2010+ USE CODE 9837/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9731/3":
+        description: "Plasmacytoma, NOS [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9732/3":
+        description: "Plasma cell myeloma [2010+. FOR PRE-2010 USE CODE 9733/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9733/3":
+        description: "Plasma cell leukemia [PRE-2010 ONLY. FOR 2010+ USE CODE 9832/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9734/3":
+        description: "Plasmacytoma, extramedullary (not occurring in bone) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9735/3":
+        description: "Plasmablastic lymphoma [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9737/3":
+        description: "ALK-positive large B-cell lymphoma [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9738/1":
+        description: "HHV8-positive germinotropic-lymphoproliferative disorder [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9738/3":
+        description: "HHV8-positive diffuse large B-cell lymphoma [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9740/1":
+        description: "Mastocytoma, NOS [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9740/3":
+        description: "Mast cell sarcoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9741/1":
+        description: "Indolent systemic mastocytosis [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9741/3":
+        description: "Malignant mastocytosis [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9742/3":
+        description: "Mast cell leukemia (C42.1; SEE HEMATOPOIETIC DATABASE FOR REPORTING)"
+      "9749/1":
+        description: "Juvenile xanthogranuloma (C71.5) [2023+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9749/3":
+        description: "Erdheim-Chester disease [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9750/3":
+        description: "Malignant histiocytosis [PRE-2010 ONLY. FOR 2010+ USE CODE 9651/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9751/1":
+        description: "Langerhans cell histiocytosis, NOS [NOT REPORTABLE 2021+. FOR 2010 - 2020 USE CODE 9751/3. FOR PRE-2010 USE CODE 9750/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9751/3":
+        description: "Langerhans cell histiocytosis, disseminated [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9752/1":
+        description: "Langerhans cell histiocytosis, unifocal [obs] [PRE-2010 NOT REPORTABLE. FOR 2010+ USE CODE 9751/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9753/1":
+        description: "Langerhans cell histiocytosis, multifocal [obs] [PRE-2010 NOT REPORTABLE. FOR 2010+ USE CODE 9751/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9754/3":
+        description: "Langerhans cell histiocytosis, disseminated [obs] [FOR 1978-2009 ONLY. FOR 2010+ USE CODE 9751/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9755/3":
+        description: "Histiocytic sarcoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9756/3":
+        description: "Langerhans cell sarcoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9757/3":
+        description: "Interdigitating dendritic cell sarcoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9758/3":
+        description: "Follicular dendritic cell sarcoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9759/3":
+        description: "Fibroblastic reticular cell tumor [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9760/1":
+        description: "Cold agglutinin disease [2026+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9760/3":
+        description: "Immunoproliferative disease, NOS [PRE-2010 ONLY. FOR 2010+ SEE CODES 9761/3 AND 9762/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9761/1":
+        description: "IgM monoclonal gammopathy of undetermined significance [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
       "9761/3":
-        description: "Waldenstrom macroglobulinemia (WM), for cases diagnosed 1992 and later"
+        description: "Waldenstrom macroglobulinemia [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9762/3":
+        description: "Heavy chain disease [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9764/3":
+        description: "Immunoproliferative small intestinal disease (C17._) [PRE-2010 ONLY. FOR 2010+ USE CODE 9762/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9765/1":
+        description: "Monoclonal gammopathy of undetermined significance [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9766/1":
+        description: "Angiocentric immunoproliferative lesion [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9766/3":
+        description: "Lymphomatoid granulomatosis, grade 3 [2021+; FOR PRE-2021 USE CODE 9680/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9767/1":
+        description: "Angioimmunoblastic lymphadenopathy (AIL) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9768/1":
+        description: "T-gamma lymphoproliferative disease [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9769/1":
+        description: "Immunoglobulin deposition disease [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9800/3":
+        description: "Leukemia, NOS (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9801/3":
+        description: "Acute leukemia, NOS (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9805/3":
+        description: "Acute biphenotypic leukemia (C42.1) [PRE 2010 ONLY. FOR 2010+ USE CODES 9806 - 9809; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9806/3":
+        description: "Mixed phenotype acute leukemia with t(9;22)(q34;q11.2); BCR-ABL1 [2010 AND LATER ONL. FOR PRE 2010 USE CODE 9805/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9807/3":
+        description: "Mixed phenotype acute leukemia with t(v;11q23); MLL rearranged [2010+. FOR PRE 2010 USE CODE 9805/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9808/3":
+        description: "Mixed phenotype acute leukemia, B/myeloid, NOS [2010+. FOR PRE 2010 USE CODE 9805/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9809/3":
+        description: "Mixed phenotype acute leukemia, T/myeloid, NOS [2010+. FOR PRE 2010 USE CODE 9805/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9810/3":
+        description: "Compound leukemia [obs] [FOR 1978-1991 ONLY. FOR 1992+ USE CODE 9800/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9811/3":
+        description: "B lymphoblastic leukemia/lymphoma, NOS [2010+. FOR PRE 2010 USE CODE 9728/3, 9835/3, OR 9836/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9812/3":
+        description: "B lymphoblastic leukemia/lymphoma with t(9;22)(q34;q11.2); BCR-ABL1 [2010+. FOR PRE 2010 USE CODE 9835/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9813/3":
+        description: "B lymphoblastic leukemia/lymphoma with t(v;11q23); MLL rearranged [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9814/3":
+        description: "B lymphoblastic  leukemia/lymphoma with t(12;21)(p13;q22);TEL-AML1 (ETV6-RUNX1) [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9815/3":
+        description: "B lymphoblastic leukemia/lymphoma with hyperdiploidy [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9816/3":
+        description: "B lymphoblastic leukemia/lymphoma with hypodiploidy (hypodiploid ALL) [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9817/3":
+        description: "B lymphoblastic leukemia/lymphoma with t(5;14)(q31;q32); IL3-IGH [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9818/3":
+        description: "B lymphoblastic leukemia/lymphoma with t(1;19)(q23;p13.3); E2A PBX1 (TCF3 PBX1) [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9819/3":
+        description: "B lymphoblastic leukemia/lymphoma, BCR-ABL1–like [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9820/3":
+        description: "Lymphoid leukemia, NOS (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9823/1":
+        description: "Monoclonal B-cell lymphocytosis, CLL-type [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9823/3":
+        description: "Chronic lymphocytic leukemia/small lymphocytic lymphoma [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9826/3":
+        description: "Burkitt cell leukemia (C42.1) [PRE-2021 ONLY. 2021+, USE CODE 9687/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9827/3":
+        description: "Adult T-cell leukemia/lymphoma (HTLV-1 positive) (includes all variants) (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9831/3":
+        description: "T-cell large granular lymphocytic leukemia (C42.1) [REPORTABLE 2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9832/3":
+        description: "Prolymphocytic leukemia, NOS (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9833/3":
+        description: "Prolymphocytic leukemia, B-cell type (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9834/3":
+        description: "Prolymphocytic leukemia, T-cell type (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9835/3":
+        description: "Precursor cell lymphoblastic leukemia, NOS (C42.1) [PRE-2010 ONLY. FOR 2010+ USE CODE 9811/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9836/3":
+        description: "Precursor B-cell lymphoblastic leukemia (C42.1) [PRE-2010 ONLY. FOR 2010+ USE CODE 9811/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9837/3":
+        description: "T lymphoblastic leukemia/lymphoma  [2010+. FOR PRE 2010 USE CODE 9729/3; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9840/3":
+        description: "Acute erythroid leukemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9860/0":
+        description: "Clonal hematopoiesis (CH) [2026+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9860/3":
+        description: "Myeloid leukemia, NOS (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9861/3":
+        description: "Acute myeloid leukemia, NOS (FAB or WHO type not specified) (see also M-9930/3) (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9863/3":
+        description: "Chronic myeloid leukemia, NOS (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9865/3":
+        description: "Acute myeloid leukemia with t(6;9)(p23;q34); DEK-NUP214 [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9866/3":
+        description: "Acute promyelocytic leukemia, t(15;17)(q22;q11-12) (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9867/3":
+        description: "Acute myelomonocytic leukemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9869/3":
+        description: "Acute myeloid leukemia with inv(3)(q21;q26.2) or t(3;3)(q21p26.2); RPN1-EVI1 [2010+. SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9870/3":
+        description: "Acute basophilic leukemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9871/3":
+        description: "Acute myeloid leukemia with abnormal marrow eosinophils (includes all variants) (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9872/3":
+        description: "Acute myeloid leukemia, minimal differentiation (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9873/3":
+        description: "Acute myeloid leukemia without maturation (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9874/3":
+        description: "Acute myeloid leukemia with maturation (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9875/3":
+        description: "Chronic myelogenous leukemia, BCR/ABL positive (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9876/3":
+        description: "Atypical chronic myeloid leukemia, BCR/ABL negative (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9877/3":
+        description: "Acute myeloid leukemia with mutated NPM1 [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9878/3":
+        description: "Acute myeloid leukemia with biallelic mutation of CEBPA [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9879/3":
+        description: "Acute myeloid leukemia with mutated RUNX1 [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9891/3":
+        description: "Acute monocytic leukemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9895/3":
+        description: "Acute myeloid leukemia with multilineage dysplasia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9896/3":
+        description: "Acute myeloid leukemia, t(8;21)(q22;q22) (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9897/3":
+        description: "Acute myeloid leukemia, 11q23 abnormalities (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9898/3":
+        description: "Myeloid leukemia associated with Down Syndrome [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9910/3":
+        description: "Acute megakaryoblastic leukemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9911/3":
+        description: "Acute myeloid leukemia (megakaryoblastic) with t(1;22)(p13;q13); RBM15-MKL1 [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9912/3":
+        description: "Acute myeloid leukemia with BCR-ABL1 [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9920/3":
+        description: "Therapy-related myeloid neoplasm (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9930/3":
+        description: "Myeloid sarcoma (see also M-9861/3) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9931/3":
+        description: "Acute panmyelosis with myelofibrosis (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9940/3":
+        description: "Hairy cell leukemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9945/3":
+        description: "Chronic myelomonocytic leukemia, NOS (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9946/3":
+        description: "Juvenile myelomonocytic leukemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9948/3":
+        description: "Aggressive NK-cell leukemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9950/3":
+        description: "Polycythemia vera (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9960/3":
+        description: "Chronic myeloproliferative disease, NOS (C42.1) [PRE-2010 ONLY. FOR 2010+ USE CODE 9975/3. SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9961/3":
+        description: "Myelosclerosis with myeloid metaplasia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9962/3":
+        description: "Essential thrombocythemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9963/3":
+        description: "Chronic neutrophilic leukemia (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9964/3":
+        description: "Hypereosinophilic syndrome (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9965/3":
+        description: "Myeloid and lymphoid neoplasms with PDGFRA rearrangement [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9966/3":
+        description: "Myeloid neoplasms with PDGFRB rearrangement [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9967/3":
+        description: "Myeloid and lymphoid neoplasm with FGFR1 abnormalities [2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9968/3":
+        description: "Myeloid or lymphoid neoplasm with PCM1-JAK2 [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9970/1":
+        description: "Lymphoproliferative disorder, NOS (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9971/1":
+        description: "Post Transplant Lymphoproliferative Disorder, NOS (PTLD) [2021+ NOT REPORTABLE. SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9971/3":
+        description: "Polymorphic Post Transplant Lymphoproliferative Disorder (PTLD) [REPORTABLE 2010 - 2020 ONLY. SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9975/3":
+        description: "Myelodysplastic/Myeloproliferative neoplasm, unclassifiable [REPORTABLE 2010+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9980/3":
+        description: "Myelodysplastic syndrome with single lineage dysplasia [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9982/3":
+        description: "Myelodysplastic syndrome with ring sideroblasts and single lineage dysplasia [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9983/3":
+        description: "Myelodysplastic syndrome with excess blasts [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9984/3":
+        description: "Refractory anemia with excess blasts in transformation (C42.1) [obs] [FOR PRE-2010 ONLY. FOR 2010+ USE CODE 9983/3. SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9985/3":
+        description: "Myelodysplastic syndrome with multilineage dysplasia [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9986/3":
+        description: "Myelodysplastic syndrome with isolated del (5q) [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9987/3":
+        description: "Therapy-related myelodysplastic syndrome, NOS (C42.1) [FOR PRE-2010 ONLY. FOR 2010+ USE CODE 9920/3. SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9989/3":
+        description: "Myelodysplastic syndrome, NOS (C42.1) [SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9991/3":
+        description: "Refractory neutropenia [FOR 2010 - 2020 ONLY. 2021+, USE CODE 9980/3. SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9992/3":
+        description: "Refractory thrombocytopenia [FOR 2010 - 2020 ONLY. 2021+, USE CODE 9980/3. SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
+      "9993/3":
+        description: "Myelodysplastic syndrome with ring sideroblasts and multilineage dysplasia [2021+; SEE HEMATOPOIETIC DATABASE FOR REPORTING]"
