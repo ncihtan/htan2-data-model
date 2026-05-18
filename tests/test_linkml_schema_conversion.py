@@ -16,6 +16,7 @@ from scripts.linkml_to_flat_synapse_jsonschema import (
     _fix_schema_version_logic,
     remove_unsupported_fields,
     fix_additional_properties,
+    fix_boolean_patterns,
 )
 
 
@@ -360,6 +361,123 @@ class TestRunGenJsonSchema:
             assert mock_instance.top_class == "TestClass"
         finally:
             Path(temp_file).unlink()
+
+
+class TestFixBooleanPatterns:
+    """Test boolean pattern -> const rewriting under `if` clauses."""
+
+    def _schema_with_if(self, if_clause):
+        return {
+            "type": "object",
+            "properties": {
+                "RNA_MEASURED": {"type": "boolean"},
+                "PROTEIN_MEASURED": {"type": "boolean"},
+                "TRANSCRIPTOME_TYPE": {"type": "string"},
+                "PANEL_NAME": {"type": "string"},
+            },
+            "allOf": [
+                {
+                    "if": if_clause,
+                    "then": {"required": ["PANEL_NAME"]},
+                }
+            ],
+        }
+
+    def test_direct_if_properties_boolean_true(self):
+        """pattern: ^true$ on a boolean field directly under if.properties is rewritten to const: True."""
+        schema = self._schema_with_if(
+            {
+                "properties": {"RNA_MEASURED": {"pattern": "^true$"}},
+                "required": ["RNA_MEASURED"],
+            }
+        )
+        result = fix_boolean_patterns(schema)
+        rule = result["allOf"][0]["if"]["properties"]["RNA_MEASURED"]
+        assert rule == {"const": True}
+
+    def test_direct_if_properties_boolean_false(self):
+        """pattern: ^false$ on a boolean field is rewritten to const: False."""
+        schema = self._schema_with_if(
+            {
+                "properties": {"RNA_MEASURED": {"pattern": "^false$"}},
+                "required": ["RNA_MEASURED"],
+            }
+        )
+        result = fix_boolean_patterns(schema)
+        rule = result["allOf"][0]["if"]["properties"]["RNA_MEASURED"]
+        assert rule == {"const": False}
+
+    def test_anyof_inside_if_rewrites_nested_boolean_pattern(self):
+        """pattern: ^true$ on a boolean field nested under if.anyOf[].properties is rewritten."""
+        schema = self._schema_with_if(
+            {
+                "anyOf": [
+                    {
+                        "properties": {"TRANSCRIPTOME_TYPE": {"const": "Targeted"}},
+                        "required": ["TRANSCRIPTOME_TYPE"],
+                    },
+                    {
+                        "properties": {"PROTEIN_MEASURED": {"pattern": "^true$"}},
+                        "required": ["PROTEIN_MEASURED"],
+                    },
+                ]
+            }
+        )
+        result = fix_boolean_patterns(schema)
+        anyof = result["allOf"][0]["if"]["anyOf"]
+        # String const branch is untouched
+        assert anyof[0]["properties"]["TRANSCRIPTOME_TYPE"] == {"const": "Targeted"}
+        # Boolean pattern branch is rewritten
+        assert anyof[1]["properties"]["PROTEIN_MEASURED"] == {"const": True}
+
+    def test_oneof_inside_if_rewrites_nested_boolean_pattern(self):
+        """oneOf branches inside if are also rewritten."""
+        schema = self._schema_with_if(
+            {
+                "oneOf": [
+                    {
+                        "properties": {"RNA_MEASURED": {"pattern": "^true$"}},
+                        "required": ["RNA_MEASURED"],
+                    },
+                ]
+            }
+        )
+        result = fix_boolean_patterns(schema)
+        assert result["allOf"][0]["if"]["oneOf"][0]["properties"]["RNA_MEASURED"] == {
+            "const": True
+        }
+
+    def test_not_inside_if_rewrites_nested_boolean_pattern(self):
+        """`not` branch inside if is rewritten."""
+        schema = self._schema_with_if(
+            {
+                "not": {
+                    "properties": {"RNA_MEASURED": {"pattern": "^false$"}},
+                    "required": ["RNA_MEASURED"],
+                }
+            }
+        )
+        result = fix_boolean_patterns(schema)
+        assert result["allOf"][0]["if"]["not"]["properties"]["RNA_MEASURED"] == {
+            "const": False
+        }
+
+    def test_string_pattern_under_anyof_left_alone(self):
+        """Patterns on non-boolean fields are not touched, even under anyOf inside if."""
+        schema = self._schema_with_if(
+            {
+                "anyOf": [
+                    {
+                        "properties": {"TRANSCRIPTOME_TYPE": {"pattern": "^Targeted$"}},
+                        "required": ["TRANSCRIPTOME_TYPE"],
+                    },
+                ]
+            }
+        )
+        result = fix_boolean_patterns(schema)
+        assert result["allOf"][0]["if"]["anyOf"][0]["properties"][
+            "TRANSCRIPTOME_TYPE"
+        ] == {"pattern": "^Targeted$"}
 
 
 if __name__ == "__main__":

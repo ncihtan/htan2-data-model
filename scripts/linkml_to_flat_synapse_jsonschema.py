@@ -19,6 +19,7 @@ to const: true or const: false because JSON Schema's pattern keyword only applie
 to strings, not booleans. This ensures conditional requirements work correctly
 for boolean fields in the generated JSON Schema.
 """
+
 from pathlib import Path
 from typing import Any, Union
 import argparse
@@ -275,11 +276,56 @@ def fix_boolean_patterns(schema_data: dict) -> dict:
     - Before: {"HAS_SLIDE_LABEL": {"pattern": "^true$"}}
     - After:  {"HAS_SLIDE_LABEL": {"const": true}}
 
-    Only affects properties with type: "boolean" in the schema.
+    The rewrite is applied to any `properties` map nested anywhere inside an
+    `if` clause, including under `anyOf`, `oneOf`, `allOf`, and `not`. This
+    matters because LinkML emits boolean rules of the form
+    `if: { anyOf: [{properties: {X: {pattern: "^true$"}}}, ...] }`, and the
+    rewrite must descend into those branches — otherwise `pattern` is left in
+    place against a boolean field and silently never matches.
+
+    Only affects properties with type: "boolean" in the top-level schema.
     String fields with patterns are left unchanged.
     """
-    # Get property types from the schema
     properties = schema_data.get("properties", {})
+
+    def rewrite_properties_map(props_map: dict) -> None:
+        """Rewrite pattern -> const for any boolean-typed property in a properties map."""
+        if not isinstance(props_map, dict):
+            return
+        for prop_name, prop_schema in props_map.items():
+            if not isinstance(prop_schema, dict):
+                continue
+            if properties.get(prop_name, {}).get("type") != "boolean":
+                continue
+            pattern = prop_schema.get("pattern")
+            if pattern == "^true$":
+                prop_schema["const"] = True
+                del prop_schema["pattern"]
+            elif pattern == "^false$":
+                prop_schema["const"] = False
+                del prop_schema["pattern"]
+
+    def walk_if_subschema(node, visited):
+        """Walk every subschema reachable inside an `if` clause and rewrite boolean patterns."""
+        node_id = id(node)
+        if node_id in visited:
+            return
+        visited.add(node_id)
+        if isinstance(node, dict):
+            if isinstance(node.get("properties"), dict):
+                rewrite_properties_map(node["properties"])
+            for key in ("anyOf", "oneOf", "allOf"):
+                branches = node.get(key)
+                if isinstance(branches, list):
+                    for item in branches:
+                        walk_if_subschema(item, visited)
+            for key in ("not", "if", "then", "else"):
+                child = node.get(key)
+                if isinstance(child, dict):
+                    walk_if_subschema(child, visited)
+        elif isinstance(node, list):
+            for item in node:
+                walk_if_subschema(item, visited)
 
     def fix_boolean_patterns_in_obj(obj, visited=None):
         if visited is None:
@@ -292,30 +338,13 @@ def fix_boolean_patterns(schema_data: dict) -> dict:
 
         try:
             if isinstance(obj, dict):
-                # Check if this is an "if" clause with properties
-                if "if" in obj and isinstance(obj["if"], dict):
-                    if_clause = obj["if"]
-                    if "properties" in if_clause:
-                        for prop_name, prop_schema in if_clause["properties"].items():
-                            # Check if this property is a boolean type
-                            prop_def = properties.get(prop_name, {})
-                            if prop_def.get("type") == "boolean":
-                                # Convert pattern to const for boolean fields
-                                if "pattern" in prop_schema:
-                                    pattern = prop_schema["pattern"]
-                                    if pattern == "^true$":
-                                        prop_schema["const"] = True
-                                        del prop_schema["pattern"]
-                                    elif pattern == "^false$":
-                                        prop_schema["const"] = False
-                                        del prop_schema["pattern"]
+                if isinstance(obj.get("if"), dict):
+                    walk_if_subschema(obj["if"], set())
 
-                # Recursively process allOf arrays (where rules are typically stored)
-                if "allOf" in obj and isinstance(obj["allOf"], list):
+                if isinstance(obj.get("allOf"), list):
                     for item in obj["allOf"]:
                         fix_boolean_patterns_in_obj(item, visited)
 
-                # Recursively process nested objects
                 for value in obj.values():
                     fix_boolean_patterns_in_obj(value, visited)
             elif isinstance(obj, list):
