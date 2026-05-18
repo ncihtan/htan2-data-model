@@ -16,6 +16,7 @@ from scripts.linkml_to_flat_synapse_jsonschema import (
     _fix_schema_version_logic,
     remove_unsupported_fields,
     fix_additional_properties,
+    fix_multivalued_member_constraints,
 )
 
 
@@ -360,6 +361,214 @@ class TestRunGenJsonSchema:
             assert mock_instance.top_class == "TestClass"
         finally:
             Path(temp_file).unlink()
+
+
+class TestFixMultivaluedMemberConstraints:
+    """Tests for the rule-precondition rewrite that translates LinkML ``has_member``
+    on multivalued slots into JSON Schema ``contains``.
+
+    Each test writes a tiny LinkML schema to a temp file, hand-builds the empty
+    if/then JSON that LinkML emits for rule preconditions on multivalued slots,
+    runs the post-processor, and asserts the rewrite.
+    """
+
+    @staticmethod
+    def _write_schema(yaml_text: str) -> str:
+        tmp = tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False)
+        tmp.write(yaml_text)
+        tmp.close()
+        return tmp.name
+
+    def test_equals_string_rewrites_to_contains_const(self):
+        yaml_text = """
+id: https://example.org/test
+name: test
+prefixes:
+  linkml: https://w3id.org/linkml/
+imports:
+  - linkml:types
+default_range: string
+classes:
+  Sample:
+    attributes:
+      KIND:
+        multivalued: true
+        required: true
+      TARGET:
+        required: false
+    rules:
+      - preconditions:
+          slot_conditions:
+            KIND:
+              has_member:
+                equals_string: "Pharmacotherapy"
+        postconditions:
+          slot_conditions:
+            TARGET:
+              required: true
+"""
+        yaml_path = self._write_schema(yaml_text)
+        try:
+            schema_data = {
+                "if": {
+                    "properties": {"KIND": {}},
+                    "required": ["KIND"],
+                },
+                "then": {"required": ["TARGET"]},
+            }
+            fix_multivalued_member_constraints(schema_data, yaml_path, "Sample")
+            assert schema_data["if"]["properties"]["KIND"] == {
+                "contains": {"const": "Pharmacotherapy"}
+            }
+        finally:
+            Path(yaml_path).unlink()
+
+    def test_equals_string_in_rewrites_to_contains_enum(self):
+        yaml_text = """
+id: https://example.org/test
+name: test
+prefixes:
+  linkml: https://w3id.org/linkml/
+imports:
+  - linkml:types
+default_range: string
+classes:
+  Sample:
+    attributes:
+      KIND:
+        multivalued: true
+        required: true
+      TARGET:
+        required: false
+    rules:
+      - preconditions:
+          slot_conditions:
+            KIND:
+              has_member:
+                equals_string_in:
+                  - "Chemotherapy"
+                  - "Concurrent Chemoradiation"
+        postconditions:
+          slot_conditions:
+            TARGET:
+              required: true
+"""
+        yaml_path = self._write_schema(yaml_text)
+        try:
+            schema_data = {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {"KIND": {}},
+                            "required": ["KIND"],
+                        },
+                        "then": {"required": ["TARGET"]},
+                    }
+                ]
+            }
+            fix_multivalued_member_constraints(schema_data, yaml_path, "Sample")
+            assert schema_data["allOf"][0]["if"]["properties"]["KIND"] == {
+                "contains": {"enum": ["Chemotherapy", "Concurrent Chemoradiation"]}
+            }
+        finally:
+            Path(yaml_path).unlink()
+
+    def test_any_of_has_member_rewrites_to_anyof_contains(self):
+        yaml_text = """
+id: https://example.org/test
+name: test
+prefixes:
+  linkml: https://w3id.org/linkml/
+imports:
+  - linkml:types
+default_range: string
+classes:
+  Sample:
+    attributes:
+      KIND:
+        multivalued: true
+        required: true
+      TARGET:
+        required: false
+    rules:
+      - preconditions:
+          slot_conditions:
+            KIND:
+              any_of:
+                - has_member:
+                    equals_string: "A"
+                - has_member:
+                    equals_string: "B"
+        postconditions:
+          slot_conditions:
+            TARGET:
+              required: true
+"""
+        yaml_path = self._write_schema(yaml_text)
+        try:
+            schema_data = {
+                "if": {
+                    "properties": {"KIND": {"anyOf": [{}, {}]}},
+                    "required": ["KIND"],
+                },
+                "then": {"required": ["TARGET"]},
+            }
+            fix_multivalued_member_constraints(schema_data, yaml_path, "Sample")
+            assert schema_data["if"]["properties"]["KIND"] == {
+                "anyOf": [
+                    {"contains": {"const": "A"}},
+                    {"contains": {"const": "B"}},
+                ]
+            }
+        finally:
+            Path(yaml_path).unlink()
+
+    def test_scalar_slot_left_unchanged(self):
+        yaml_text = """
+id: https://example.org/test
+name: test
+prefixes:
+  linkml: https://w3id.org/linkml/
+imports:
+  - linkml:types
+default_range: string
+classes:
+  Sample:
+    attributes:
+      KIND:
+        required: true
+      TARGET:
+        required: false
+    rules:
+      - preconditions:
+          slot_conditions:
+            KIND:
+              equals_string: "X"
+        postconditions:
+          slot_conditions:
+            TARGET:
+              required: true
+"""
+        yaml_path = self._write_schema(yaml_text)
+        try:
+            schema_data = {
+                "if": {
+                    "properties": {"KIND": {"const": "X"}},
+                    "required": ["KIND"],
+                },
+                "then": {"required": ["TARGET"]},
+            }
+            original = json.loads(json.dumps(schema_data))
+            fix_multivalued_member_constraints(schema_data, yaml_path, "Sample")
+            assert schema_data == original
+        finally:
+            Path(yaml_path).unlink()
+
+    def test_missing_class_name_skips(self):
+        schema_data = {"if": {"properties": {"KIND": {}}}}
+        original = json.loads(json.dumps(schema_data))
+        fix_multivalued_member_constraints(schema_data, "ignored.yaml", "")
+        assert schema_data == original
 
 
 if __name__ == "__main__":
