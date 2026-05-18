@@ -330,6 +330,129 @@ def fix_boolean_patterns(schema_data: dict) -> dict:
     return schema_data
 
 
+def _build_contains_from_anon_slot(anon_slot) -> Union[dict, None]:
+    """Translate a LinkML AnonymousSlotExpression into a JSON Schema fragment
+    expressing "the multivalued slot contains a member matching this constraint."
+
+    Handles two shapes that appear in HTAN rule preconditions:
+    - Direct: ``has_member: { equals_string: "X" }`` -> ``{contains: {const: "X"}}``
+    - any_of of branches, each carrying a ``has_member`` block
+      -> ``{anyOf: [{contains: ...}, ...]}``
+
+    Returns None when the slot expression has no translatable member constraint
+    so the caller can leave the existing JSON fragment untouched.
+    """
+    if anon_slot is None:
+        return None
+
+    any_of = getattr(anon_slot, "any_of", None)
+    if any_of:
+        branches = []
+        for sub in any_of:
+            sub_fragment = _build_contains_from_anon_slot(sub)
+            if sub_fragment:
+                branches.append(sub_fragment)
+        if branches:
+            return {"anyOf": branches}
+        return None
+
+    has_member = getattr(anon_slot, "has_member", None)
+    if not has_member:
+        return None
+
+    contains: dict = {}
+    if getattr(has_member, "equals_string", None):
+        contains["const"] = has_member.equals_string
+    elif getattr(has_member, "equals_string_in", None):
+        contains["enum"] = list(has_member.equals_string_in)
+    elif getattr(has_member, "pattern", None):
+        contains["pattern"] = has_member.pattern
+    else:
+        return None
+    return {"contains": contains}
+
+
+def fix_multivalued_member_constraints(
+    schema_data: dict, linkml_yaml: str, class_name: str
+) -> dict:
+    """Rewrite rule preconditions on multivalued slots to use JSON Schema ``contains``.
+
+    LinkML's ``JsonSchemaGenerator`` processes rule preconditions with
+    ``omit_type=True``, which short-circuits the array-aware code path that
+    translates ``has_member`` into ``contains``. The result is an empty ``{}``
+    constraint on the multivalued slot inside the ``if`` clause, which means the
+    ``if`` is vacuously satisfied for every record and the ``then`` requirements
+    fire unconditionally (HTAN-859).
+
+    This function walks the source LinkML schema to recover the original
+    ``has_member`` expressions for each rule's precondition slots and replaces
+    the empty fragments in the generated JSON with proper ``contains`` clauses.
+    Matching is positional: rules from the class and its ancestors are zipped
+    against the JSON output's ``allOf`` (or top-level ``if``), mirroring how
+    ``JsonSchemaGenerator`` emits them.
+
+    Only runs when ``class_name`` is set so the SchemaView can resolve which
+    slots are multivalued in the context of the target class.
+    """
+    if not class_name:
+        return schema_data
+
+    sv = SchemaView(linkml_yaml)
+    try:
+        ancestor_names = sv.class_ancestors(class_name)
+    except Exception:
+        return schema_data
+
+    rules = []
+    for ancestor_name in ancestor_names:
+        cls = sv.get_class(ancestor_name)
+        if cls and getattr(cls, "rules", None):
+            rules.extend(cls.rules)
+
+    if not rules:
+        return schema_data
+
+    if_then_blocks: list[dict] = []
+    if isinstance(schema_data.get("allOf"), list):
+        if_then_blocks = [item for item in schema_data["allOf"] if isinstance(item, dict) and "if" in item]
+    elif "if" in schema_data:
+        if_then_blocks = [schema_data]
+
+    if len(rules) != len(if_then_blocks):
+        print(
+            f"Warning: rule count ({len(rules)}) does not match if/then block count "
+            f"({len(if_then_blocks)}); skipping multivalued precondition fix"
+        )
+        return schema_data
+
+    fixed = 0
+    for rule, block in zip(rules, if_then_blocks):
+        preconditions = getattr(rule, "preconditions", None)
+        if not preconditions:
+            continue
+        slot_conditions = getattr(preconditions, "slot_conditions", None) or {}
+        if_props = block.get("if", {}).get("properties", {})
+        for slot_name, anon_slot in slot_conditions.items():
+            if slot_name not in if_props:
+                continue
+            try:
+                induced = sv.induced_slot(slot_name, class_name)
+            except Exception:
+                continue
+            if not getattr(induced, "multivalued", False):
+                continue
+            replacement = _build_contains_from_anon_slot(anon_slot)
+            if not replacement:
+                continue
+            if_props[slot_name].clear()
+            if_props[slot_name].update(replacement)
+            fixed += 1
+
+    if fixed:
+        print(f"Fixed {fixed} multivalued precondition constraint(s) using `contains`")
+    return schema_data
+
+
 def backfill_descriptions_from_linkml(
     schema_data: dict, linkml_yaml: str, class_name: str
 ) -> dict:
@@ -431,6 +554,9 @@ def main():
     schema_data = fix_additional_properties(schema_data)
     schema_data = clean_union_types(schema_data)
     schema_data = fix_boolean_patterns(schema_data)
+    schema_data = fix_multivalued_member_constraints(
+        schema_data, args.linkml_yaml, args.class_name
+    )
     schema_data = remove_unsupported_fields(schema_data)
 
     # 4. Write final result to output file
