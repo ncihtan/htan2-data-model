@@ -278,8 +278,18 @@ classes:
           slot_conditions:
             TREATMENT_TYPE:
               any_of:
-                - pattern: ".*Surgical.*"
-                - pattern: ".*Radiation.*"
+                - has_member:
+                    equals_string: "Surgical Procedure"
+                - has_member:
+                    equals_string_in:
+                      - "3-Dimensional Conformal Radiation Therapy"
+                      - "Electron Beam Radiation Therapy"
+                      - "External Beam Radiation Therapy"
+                      - "Intensity-Modulated Radiation Therapy"
+                      - "Photon Beam Radiation Therapy"
+                      - "Proton Beam Radiation Therapy"
+                      - "Radiation Therapy"
+                      - "Stereotactic Body Radiation Therapy"
         postconditions:
           slot_conditions:
             THERAPY_ANATOMIC_SITE_UBERON_CODE:
@@ -299,9 +309,10 @@ classes:
         preconditions:
           slot_conditions:
             TREATMENT_TYPE:
-              any_of:
-                - pattern: ".*Chemotherapy.*"
-                - pattern: ".*Concurrent Chemoradiation.*"
+              has_member:
+                equals_string_in:
+                  - "Chemotherapy"
+                  - "Concurrent Chemoradiation"
         postconditions:
           slot_conditions:
             THERAPEUTIC_AGENTS:
@@ -312,8 +323,8 @@ classes:
         preconditions:
           slot_conditions:
             TREATMENT_TYPE:
-              any_of:
-                - pattern: ".*Pharmacotherapy.*"
+              has_member:
+                equals_string: "Pharmacotherapy"
         postconditions:
           slot_conditions:
             THERAPEUTIC_AGENTS:
