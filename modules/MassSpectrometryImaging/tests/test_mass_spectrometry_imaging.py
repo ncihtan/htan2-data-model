@@ -21,12 +21,13 @@ def sv():
 
 
 class TestSchema:
+    """Schema loading and container wiring."""
+
     def test_schema_loads(self, sv):
         assert sv is not None
 
     def test_container_class(self, sv):
         assert "MassSpectrometryImagingData" in sv.all_classes()
-        container = sv.get_class("MassSpectrometryImagingData")
         slots = sv.class_slots("MassSpectrometryImagingData")
         for s in ["LEVEL_1_DATA", "LEVEL_2_DATA", "LEVEL_3_DATA", "LEVEL_4_DATA", "MOLECULAR_ASSIGNMENTS"]:
             assert s in slots, f"{s} missing from container"
@@ -39,6 +40,8 @@ class TestSchema:
 
 
 class TestInheritance:
+    """Level classes inherit CoreFileAttributes; the RecordSet row class does not."""
+
     @pytest.mark.parametrize("cls", LEVEL_CLASSES)
     def test_levels_inherit_core(self, sv, cls):
         assert cls in sv.all_classes()
@@ -58,6 +61,8 @@ class TestInheritance:
 
 
 class TestLevel1:
+    """Level 1 required/optional slots, multivalued analyte class, and MALDI rule."""
+
     def test_required_slots(self, sv):
         cls = "MassSpectrometryImagingLevel1"
         required = [
@@ -109,6 +114,8 @@ class TestLevel1:
 
 
 class TestEnums:
+    """Enum presence, alphabetical ordering, descriptions, and MULTI_CLASS removal."""
+
     def test_enums_present(self, sv):
         expected = [
             "MsIonizationTechniqueEnum", "MassAnalyzerTypeEnum", "MassAnalysisPolarityEnum",
@@ -140,6 +147,8 @@ class TestEnums:
 
 
 class TestMolecularAssignments:
+    """Molecular Assignments RecordSet columns, bounds, and CONFIDENCE_LEVEL-gated rules."""
+
     def test_required_columns(self, sv):
         cls = "MolecularAssignment"
         required = ["HTAN_DATA_FILE_ID", "CHANNEL_INDEX", "MZ_OBSERVED", "MOLECULAR_NAME",
@@ -176,6 +185,8 @@ class TestMolecularAssignments:
 
 
 class TestPatterns:
+    """Identifier pattern validation on RecordSet foreign keys."""
+
     def test_data_file_id_pattern_in_recordset(self, sv):
         slot = sv.induced_slot("HTAN_DATA_FILE_ID", "MolecularAssignment")
         assert slot.pattern
