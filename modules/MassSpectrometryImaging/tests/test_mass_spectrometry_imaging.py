@@ -14,6 +14,28 @@ LEVEL_CLASSES = [
     "MassSpectrometryImagingLevel4",
 ]
 
+# Required / optional slot expectations for Levels 2-4 (Level 1 is covered in TestLevel1).
+LEVEL_REQUIRED = {
+    "MassSpectrometryImagingLevel2": [
+        "SOFTWARE_AND_VERSION", "BASELINE_CORRECTION_METHOD", "PEAK_PICKING_METHOD",
+        "PEAK_PICKING_SNR_THRESHOLD", "NORMALIZATION_METHOD", "MASS_ALIGNMENT_METHOD",
+        "MASS_TOLERANCE_PPM", "MEDIAN_TIC", "TIC_CV", "MASS_ACCURACY_PPM",
+        "PIXEL_COMPLETION_RATE", "NUM_DETECTED_PEAKS", "PASSED_QC",
+    ],
+    "MassSpectrometryImagingLevel3": [
+        "NUM_ANNOTATED_CHANNELS", "NUM_UNKNOWN_CHANNELS", "SOFTWARE_AND_VERSION", "PASSED_QC",
+    ],
+    "MassSpectrometryImagingLevel4": [
+        "SEGMENTATION_METHOD", "SEGMENTATION_CLASS_COUNT", "SEGMENTATION_REFERENCE_MODALITY",
+        "PASSED_QC",
+    ],
+}
+LEVEL_OPTIONAL = {
+    "MassSpectrometryImagingLevel2": ["SMOOTHING_METHOD", "PROTOCOL_LINK", "QC_COMMENT"],
+    "MassSpectrometryImagingLevel3": ["PROTOCOL_LINK", "QC_COMMENT"],
+    "MassSpectrometryImagingLevel4": ["QC_COMMENT"],
+}
+
 
 @pytest.fixture(scope="module")
 def sv():
@@ -111,6 +133,33 @@ class TestLevel1:
                 post_slots.update(r.postconditions.slot_conditions.keys())
         assert "PREPARATION_MATRIX" in post_slots
         assert "MATRIX_DEPOSITION_METHOD" in post_slots
+
+
+class TestLevels234:
+    """Required/optional slot coverage for Levels 2-4 (mirrors TestLevel1)."""
+
+    @pytest.mark.parametrize(
+        "cls,slot", [(c, s) for c, ss in LEVEL_REQUIRED.items() for s in ss]
+    )
+    def test_required(self, sv, cls, slot):
+        assert sv.induced_slot(slot, cls).required is True, f"{slot} should be required in {cls}"
+
+    @pytest.mark.parametrize(
+        "cls,slot", [(c, s) for c, ss in LEVEL_OPTIONAL.items() for s in ss]
+    )
+    def test_optional(self, sv, cls, slot):
+        assert not sv.induced_slot(slot, cls).required, f"{slot} should be optional in {cls}"
+
+
+class TestSlotCompleteness:
+    """Every attribute on every level class carries a title and description."""
+
+    @pytest.mark.parametrize("cls", LEVEL_CLASSES + ["MolecularAssignment"])
+    def test_title_and_description(self, sv, cls):
+        klass = sv.get_class(cls)
+        for name, attr in klass.attributes.items():
+            assert attr.title, f"{cls}.{name} missing title"
+            assert attr.description, f"{cls}.{name} missing description"
 
 
 class TestEnums:
