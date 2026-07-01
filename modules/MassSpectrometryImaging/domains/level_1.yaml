@@ -266,7 +266,8 @@ classes:
         range: string
         required: true
         title: "Calibrant Masses"
-        description: Comma-separated list of calibrant m/z values used.
+        description: Comma-separated list of calibrant m/z values used (e.g., "622.0290, 922.0098").
+        pattern: "^[0-9]+(\\.[0-9]+)?(, ?[0-9]+(\\.[0-9]+)?)*$"
       TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE:
         range: integer
         required: true

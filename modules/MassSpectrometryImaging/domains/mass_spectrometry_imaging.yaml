@@ -19,32 +19,33 @@ prefixes:
 
 default_prefix: htan
 
-slots:
-  caDSR_id:
-    description: The caDSR identifier for this element
-    range: string
-    multivalued: false
-    required: false
-
 classes:
   MassSpectrometryImagingData:
     description: Container for all Mass Spectrometry Imaging data levels and the Molecular Assignments RecordSet
     attributes:
       LEVEL_1_DATA:
         range: MassSpectrometryImagingLevel1
+        inlined: true
         required: false
+        title: "Level 1 Data"
         description: Level 1 MSI data (raw continuous/profile imzML), required for MSI submissions
       LEVEL_2_DATA:
         range: MassSpectrometryImagingLevel2
+        inlined: true
         required: false
+        title: "Level 2 Data"
         description: Level 2 MSI data (processed centroided imzML), required for MSI submissions
       LEVEL_3_DATA:
         range: MassSpectrometryImagingLevel3
+        inlined: true
         required: false
+        title: "Level 3 Data"
         description: Level 3 MSI data (annotation-filtered OME-TIFF), required for MSI submissions
       LEVEL_4_DATA:
         range: MassSpectrometryImagingLevel4
+        inlined: true
         required: false
+        title: "Level 4 Data"
         description: Level 4 MSI data (segmentation mask / region quantification), optional
       MOLECULAR_ASSIGNMENTS:
         range: MolecularAssignment

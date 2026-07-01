@@ -162,6 +162,7 @@ classes:
         preconditions:
           slot_conditions:
             CONFIDENCE_LEVEL:
+              minimum_value: 1
               maximum_value: 3
         postconditions:
           slot_conditions:
@@ -175,6 +176,7 @@ classes:
         preconditions:
           slot_conditions:
             CONFIDENCE_LEVEL:
+              minimum_value: 1
               maximum_value: 2
         postconditions:
           slot_conditions:
