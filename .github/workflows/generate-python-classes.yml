@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
     inputs:
       modules:
-        description: 'Modules to regenerate (comma-separated: biospecimen,clinical,wes,sequencing,imaging,scrna-seq,digitalpathology,multiplexmicroscopy,spatialomics,all). Leave empty or "all" to generate all modules.'
+        description: 'Modules to regenerate (comma-separated: biospecimen,clinical,wes,sequencing,imaging,scrna-seq,digitalpathology,multiplexmicroscopy,spatialomics,massspectrometryimaging,all). Leave empty or "all" to generate all modules.'
         required: false
         default: 'all'
         type: choice
@@ -30,6 +30,7 @@ on:
           - digitalpathology
           - multiplexmicroscopy
           - spatialomics
+          - massspectrometryimaging
           - biospecimen,clinical
           - biospecimen,wes
           - clinical,wes
@@ -229,7 +230,20 @@ jobs:
         else
           echo "⏭️ Skipping SpatialOmics (not in selected modules)"
         fi
-    
+
+    - name: Generate Python Classes for MassSpectrometryImaging
+      if: steps.set-modules.outputs.modules != 'all'
+      run: |
+        MODULES="${{ steps.set-modules.outputs.modules }}"
+        if echo "$MODULES" | grep -q "massspectrometryimaging"; then
+          echo "🔄 Generating Python classes for MassSpectrometryImaging module..."
+          cd modules/MassSpectrometryImaging
+          make gen-schema
+          echo "✅ MassSpectrometryImaging Python classes generated"
+        else
+          echo "⏭️ Skipping MassSpectrometryImaging (not in selected modules)"
+        fi
+
     - name: Check for Changes
       if: steps.run-tests.outcome == 'success' || (github.event_name == 'pull_request' && steps.run-tests.outcome == 'skipped')
       id: check-changes
