@@ -1,5 +1,5 @@
 # Auto generated from mass_spectrometry_imaging.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-01T14:24:40
+# Generation date: 2026-07-01T14:40:50
 # Schema: MassSpectrometryImaging
 #
 # id: https://w3id.org/htan/mass_spectrometry_imaging
@@ -108,24 +108,24 @@ class MassSpectrometryImagingData(YAMLRoot):
     class_name: ClassVar[str] = "MassSpectrometryImagingData"
     class_model_uri: ClassVar[URIRef] = HTAN.MassSpectrometryImagingData
 
-    LEVEL_1_DATA: Optional[Union[str, MassSpectrometryImagingLevel1HTANDATAFILEID]] = None
-    LEVEL_2_DATA: Optional[Union[str, MassSpectrometryImagingLevel2HTANDATAFILEID]] = None
-    LEVEL_3_DATA: Optional[Union[str, MassSpectrometryImagingLevel3HTANDATAFILEID]] = None
-    LEVEL_4_DATA: Optional[Union[str, MassSpectrometryImagingLevel4HTANDATAFILEID]] = None
+    LEVEL_1_DATA: Optional[Union[dict, "MassSpectrometryImagingLevel1"]] = None
+    LEVEL_2_DATA: Optional[Union[dict, "MassSpectrometryImagingLevel2"]] = None
+    LEVEL_3_DATA: Optional[Union[dict, "MassSpectrometryImagingLevel3"]] = None
+    LEVEL_4_DATA: Optional[Union[dict, "MassSpectrometryImagingLevel4"]] = None
     MOLECULAR_ASSIGNMENTS: Optional[Union[Union[dict, "MolecularAssignment"], List[Union[dict, "MolecularAssignment"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.LEVEL_1_DATA is not None and not isinstance(self.LEVEL_1_DATA, MassSpectrometryImagingLevel1HTANDATAFILEID):
-            self.LEVEL_1_DATA = MassSpectrometryImagingLevel1HTANDATAFILEID(self.LEVEL_1_DATA)
+        if self.LEVEL_1_DATA is not None and not isinstance(self.LEVEL_1_DATA, MassSpectrometryImagingLevel1):
+            self.LEVEL_1_DATA = MassSpectrometryImagingLevel1(**as_dict(self.LEVEL_1_DATA))
 
-        if self.LEVEL_2_DATA is not None and not isinstance(self.LEVEL_2_DATA, MassSpectrometryImagingLevel2HTANDATAFILEID):
-            self.LEVEL_2_DATA = MassSpectrometryImagingLevel2HTANDATAFILEID(self.LEVEL_2_DATA)
+        if self.LEVEL_2_DATA is not None and not isinstance(self.LEVEL_2_DATA, MassSpectrometryImagingLevel2):
+            self.LEVEL_2_DATA = MassSpectrometryImagingLevel2(**as_dict(self.LEVEL_2_DATA))
 
-        if self.LEVEL_3_DATA is not None and not isinstance(self.LEVEL_3_DATA, MassSpectrometryImagingLevel3HTANDATAFILEID):
-            self.LEVEL_3_DATA = MassSpectrometryImagingLevel3HTANDATAFILEID(self.LEVEL_3_DATA)
+        if self.LEVEL_3_DATA is not None and not isinstance(self.LEVEL_3_DATA, MassSpectrometryImagingLevel3):
+            self.LEVEL_3_DATA = MassSpectrometryImagingLevel3(**as_dict(self.LEVEL_3_DATA))
 
-        if self.LEVEL_4_DATA is not None and not isinstance(self.LEVEL_4_DATA, MassSpectrometryImagingLevel4HTANDATAFILEID):
-            self.LEVEL_4_DATA = MassSpectrometryImagingLevel4HTANDATAFILEID(self.LEVEL_4_DATA)
+        if self.LEVEL_4_DATA is not None and not isinstance(self.LEVEL_4_DATA, MassSpectrometryImagingLevel4):
+            self.LEVEL_4_DATA = MassSpectrometryImagingLevel4(**as_dict(self.LEVEL_4_DATA))
 
         if not isinstance(self.MOLECULAR_ASSIGNMENTS, list):
             self.MOLECULAR_ASSIGNMENTS = [self.MOLECULAR_ASSIGNMENTS] if self.MOLECULAR_ASSIGNMENTS is not None else []
@@ -1161,20 +1161,17 @@ class EvidenceTypeEnum(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.caDSR_id = Slot(uri=HTAN.caDSR_id, name="caDSR_id", curie=HTAN.curie('caDSR_id'),
-                   model_uri=HTAN.caDSR_id, domain=None, range=Optional[str])
-
 slots.massSpectrometryImagingData__LEVEL_1_DATA = Slot(uri=HTAN.LEVEL_1_DATA, name="massSpectrometryImagingData__LEVEL_1_DATA", curie=HTAN.curie('LEVEL_1_DATA'),
-                   model_uri=HTAN.massSpectrometryImagingData__LEVEL_1_DATA, domain=None, range=Optional[Union[str, MassSpectrometryImagingLevel1HTANDATAFILEID]])
+                   model_uri=HTAN.massSpectrometryImagingData__LEVEL_1_DATA, domain=None, range=Optional[Union[dict, MassSpectrometryImagingLevel1]])
 
 slots.massSpectrometryImagingData__LEVEL_2_DATA = Slot(uri=HTAN.LEVEL_2_DATA, name="massSpectrometryImagingData__LEVEL_2_DATA", curie=HTAN.curie('LEVEL_2_DATA'),
-                   model_uri=HTAN.massSpectrometryImagingData__LEVEL_2_DATA, domain=None, range=Optional[Union[str, MassSpectrometryImagingLevel2HTANDATAFILEID]])
+                   model_uri=HTAN.massSpectrometryImagingData__LEVEL_2_DATA, domain=None, range=Optional[Union[dict, MassSpectrometryImagingLevel2]])
 
 slots.massSpectrometryImagingData__LEVEL_3_DATA = Slot(uri=HTAN.LEVEL_3_DATA, name="massSpectrometryImagingData__LEVEL_3_DATA", curie=HTAN.curie('LEVEL_3_DATA'),
-                   model_uri=HTAN.massSpectrometryImagingData__LEVEL_3_DATA, domain=None, range=Optional[Union[str, MassSpectrometryImagingLevel3HTANDATAFILEID]])
+                   model_uri=HTAN.massSpectrometryImagingData__LEVEL_3_DATA, domain=None, range=Optional[Union[dict, MassSpectrometryImagingLevel3]])
 
 slots.massSpectrometryImagingData__LEVEL_4_DATA = Slot(uri=HTAN.LEVEL_4_DATA, name="massSpectrometryImagingData__LEVEL_4_DATA", curie=HTAN.curie('LEVEL_4_DATA'),
-                   model_uri=HTAN.massSpectrometryImagingData__LEVEL_4_DATA, domain=None, range=Optional[Union[str, MassSpectrometryImagingLevel4HTANDATAFILEID]])
+                   model_uri=HTAN.massSpectrometryImagingData__LEVEL_4_DATA, domain=None, range=Optional[Union[dict, MassSpectrometryImagingLevel4]])
 
 slots.massSpectrometryImagingData__MOLECULAR_ASSIGNMENTS = Slot(uri=HTAN.MOLECULAR_ASSIGNMENTS, name="massSpectrometryImagingData__MOLECULAR_ASSIGNMENTS", curie=HTAN.curie('MOLECULAR_ASSIGNMENTS'),
                    model_uri=HTAN.massSpectrometryImagingData__MOLECULAR_ASSIGNMENTS, domain=None, range=Optional[Union[Union[dict, MolecularAssignment], List[Union[dict, MolecularAssignment]]]])
@@ -1253,7 +1250,8 @@ slots.massSpectrometryImagingLevel1__CALIBRATION_TYPE = Slot(uri=HTAN.CALIBRATIO
                    model_uri=HTAN.massSpectrometryImagingLevel1__CALIBRATION_TYPE, domain=None, range=Union[str, "CalibrationTypeEnum"])
 
 slots.massSpectrometryImagingLevel1__CALIBRANT_MASSES = Slot(uri=HTAN.CALIBRANT_MASSES, name="massSpectrometryImagingLevel1__CALIBRANT_MASSES", curie=HTAN.curie('CALIBRANT_MASSES'),
-                   model_uri=HTAN.massSpectrometryImagingLevel1__CALIBRANT_MASSES, domain=None, range=str)
+                   model_uri=HTAN.massSpectrometryImagingLevel1__CALIBRANT_MASSES, domain=None, range=str,
+                   pattern=re.compile(r'^[0-9]+(\.[0-9]+)?(, ?[0-9]+(\.[0-9]+)?)*$'))
 
 slots.massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE = Slot(uri=HTAN.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE, name="massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE", curie=HTAN.curie('TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE'),
                    model_uri=HTAN.massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE, domain=None, range=int)
