@@ -1,0 +1,214 @@
+name: scATACLevel3and4
+id: https://w3id.org/htan/scatac_seq/level_3_4
+description: HTAN scATAC-seq Level 3 and 4 - Peak-by-cell matrices, fragment files, and chromatin accessibility metrics
+imports:
+  - linkml:types
+  - ../../Sequencing/domains/sequencing
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+
+default_prefix: htan
+
+enums:
+  ATACGeneActivityWorkflowTypeEnum:
+    description: Generic name for the workflow used to analyze a single-cell ATAC-seq dataset
+    permissible_values:
+      "ArchR":
+        description: ArchR single-cell ATAC-seq analysis workflow
+      "Cell Ranger ATAC":
+        description: 10x Genomics Cell Ranger ATAC workflow
+      "Cicero":
+        description: Cicero chromatin accessibility and co-accessibility analysis workflow
+      "MAESTRO":
+        description: MAESTRO single-cell ATAC-seq and multi-omics analysis workflow
+      "Other":
+        description: Other workflow type
+      "Signac":
+        description: Signac single-cell chromatin accessibility analysis workflow
+      "SnapATAC2":
+        description: SnapATAC2 single-cell ATAC-seq analysis workflow
+
+classes:
+  scATACLevel3and4:
+    is_a: BaseSequencingLevel3Attributes
+    description: scATAC-seq Level 3 and 4 - Peak-by-cell matrices, fragment files, and chromatin accessibility metrics
+    attributes:
+      # File format restriction for Level 3/4 files
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the file (h5ad for peak by cell matrix and fragments information; bed for peak file)
+        pattern: "^(h5ad|bed)$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with an extension matching the FILE_FORMAT (.h5ad for h5ad, .bed for bed)
+        pattern: "^.+\\.(h5ad|bed)$"
+
+      # Peak and fragment metrics
+      N_COUNT_PEAKS:
+        range: integer
+        required: true
+        title: "Total Fragments in Peaks"
+        description: Total number of fragments in peaks
+        minimum_value: 0
+      N_FEATURE_PEAKS:
+        range: integer
+        required: true
+        title: "Number of Detected Peaks"
+        description: Number of peaks with at least one read
+        minimum_value: 0
+      TSS_FRAGMENTS:
+        range: integer
+        required: false
+        title: "TSS Fragments"
+        description: Number of fragments overlapping with TSS regions
+        minimum_value: 0
+      TSS_ENRICHMENT:
+        range: float
+        required: false
+        title: "TSS Enrichment"
+        description: Transcription start site (TSS) enrichment score
+        minimum_value: 0.0
+        maximum_value: 100.0
+      TSS_PERCENTILE:
+        range: float
+        required: false
+        title: "TSS Percentile"
+        description: Percentile rank of TSS score
+        minimum_value: 0.0
+        maximum_value: 100.0
+      DNASE_SENSITIVE_REGION_FRAGMENTS:
+        range: integer
+        required: false
+        title: "DNAse Sensitive Region Fragments"
+        description: Number of fragments overlapping with known DNaseI hypersensitive sites (DHS).
+        minimum_value: 0
+      ENHANCER_REGION_FRAGMENTS:
+        range: integer
+        required: false
+        title: "Enhancer Region Fragments"
+        description: Number of fragments overlapping enhancer regions
+        minimum_value: 0
+      PROMOTER_REGION_FRAGMENTS:
+        range: integer
+        required: false
+        title: "Promoter Region Fragments"
+        description: Number of fragments overlapping promoter regions
+        minimum_value: 0
+      ON_TARGET_FRAGMENTS:
+        range: integer
+        required: false
+        title: "On Target Fragments"
+        description: Number of fragments overlapping any of TSS, enhancer, promoter and DNase hypersensitivity sites (counted with multiplicity). Sanity check - must be <= PASSED_FILTERS (Level 2).
+        minimum_value: 0
+      BLACKLIST_REGION_FRAGMENTS:
+        range: integer
+        required: false
+        title: "Blacklist Region Fragments"
+        description: Number of fragments overlapping blacklisted regions
+        minimum_value: 0
+      BLACKLIST_RATIO:
+        range: float
+        required: false
+        title: "Blacklist Ratio"
+        description: Ratio of reads in blacklist regions
+        minimum_value: 0.0
+        maximum_value: 1.0
+      PEAK_REGION_FRAGMENTS:
+        range: integer
+        required: false
+        title: "Peak Region Fragments"
+        description: Number of fragments overlapping peaks. Sanity check - must be <= PASSED_FILTERS (Level 2).
+        minimum_value: 0
+      PEAK_REGION_CUTSITES:
+        range: integer
+        required: false
+        title: "Peak Region Cutsites"
+        description: Total number of Tn5 insertion cutsites falling within peak regions (equal to 2 x PEAK_REGION_FRAGMENTS for paired-end sequencing).
+        minimum_value: 0
+      NUCLEOSOME_SIGNAL:
+        range: float
+        required: false
+        title: "Nucleosome Signal"
+        description: Nucleosome signal score (strength of the nucleosome signal per cell, computed as the ratio of fragments between 147 bp and 294 bp (mononucleosome) to fragments < 147 bp (nucleosome-free))
+        minimum_value: 0.0
+        maximum_value: 100.0
+      NUCLEOSOME_PERCENTILE:
+        range: float
+        required: false
+        title: "Nucleosome Percentile"
+        description: Percentile rank of nucleosome score
+        minimum_value: 0.0
+        maximum_value: 100.0
+      PERCENTAGE_READS_IN_PEAKS:
+        range: float
+        required: true
+        title: "Percentage of Reads in Peaks"
+        description: Percentage of reads in peaks
+        minimum_value: 0.0
+        maximum_value: 100.0
+      SEURAT_CLUSTERS:
+        range: string
+        multivalued: true
+        required: false
+        title: "Seurat Clusters"
+        description: Clusters of cells by a shared nearest neighbor (SNN) modularity optimization based clustering algorithm
+      N_COUNT_RNA:
+        range: integer
+        required: false
+        title: "RNA Fragment Count"
+        description: Total number of fragments in genes
+        minimum_value: 0
+      N_FEATURE_RNA:
+        range: integer
+        required: false
+        title: "RNA Feature Count"
+        description: Number of genes detected in cell
+        minimum_value: 0
+      PEAKS_CALLING_SOFTWARE:
+        range: string
+        required: true
+        title: "Peaks Calling Software"
+        description: Generic name of peaks calling tool
+      MEDIAN_FRACTION_OF_READS_IN_PEAKS:
+        range: float
+        required: true
+        title: "Median Fraction of Reads in Peaks"
+        description: Median fraction of reads in peaks (FRIP)
+        minimum_value: 0.0
+        maximum_value: 1.0
+      ATAC_GENE_ACTIVITY_WORKFLOW_TYPE:
+        range: ATACGeneActivityWorkflowTypeEnum
+        required: true
+        title: "ATAC Workflow Type"
+        description: Generic name for the workflow used to analyze a data set
+      ATAC_GENE_ACTIVITY_WORKFLOW_PARAMETERS_DESCRIPTION:
+        range: string
+        required: true
+        title: "ATAC Workflow Parameters Description"
+        description: Parameters used to run the scATAC-seq workflow.
+      CELL_TOTAL:
+        range: integer
+        required: true
+        title: "Cell Total"
+        description: Number of sequenced cells
+        minimum_value: 0
+
+      # AnnData 0.1 schema compliance (shared with scRNA-seq)
+      ANNDATA_SCHEMA_VERSION:
+        range: string
+        required: true
+        title: "AnnData Schema Version"
+        description: Version of AnnData schema (must be 0.1 for CellxGene compliance)
+        pattern: "^0\\.1$"
+      ANNDATA_STRUCTURE_VALIDATED:
+        range: boolean
+        required: true
+        title: "AnnData Structure Validated"
+        description: Whether the h5ad file structure has been validated against AnnData 0.1 schema
