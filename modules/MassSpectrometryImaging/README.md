@@ -39,7 +39,8 @@ with `multivalued: true` + `inlined_as_list: true`.
   required for matrix-based (MALDI-family) techniques: `MALDI`, `MALDI_2`, `IR_MALDESI`.
   IR-MALDESI uses `OTHER` for `PREPARATION_MATRIX` (ice/endogenous-water matrix).
 - `ANALYTE_CLASS` is multivalued.
-- `SPECTRUM_TYPE` is fixed to `PROFILE` at Level 1.
+- `SPECTRUM_TYPE` is constrained to `PROFILE` at Level 1 via a single-value enum, so it
+  is enforced at both the dataclass and JSON-schema layers (not via an unenforced rule).
 - The Molecular Assignments columns are gated on `CONFIDENCE_LEVEL` (1–4) via rules.
 - Fixed-unit slots encode the unit in the name (`_UM` = micrometers, `_PPM` = parts-per-million)
   and are self-documenting; a companion `_UNIT` slot is used only where the unit genuinely

@@ -75,10 +75,8 @@ enums:
 
   SpectrumTypeEnum:
     permissible_values:
-      "CENTROID":
-        description: Peak-picked spectrum; discrete m/z-intensity pairs. Required at Level 2.
       "PROFILE":
-        description: Continuous spectrum; full peak shapes preserved. Required at Level 1.
+        description: Continuous spectrum; full peak shapes preserved. Level 1 is always profile/continuous imzML (Level 2 is centroided, but does not re-record SPECTRUM_TYPE).
 
   MsScanModeEnum:
     permissible_values:
@@ -240,7 +238,7 @@ classes:
         range: SpectrumTypeEnum
         required: true
         title: "Spectrum Type"
-        description: Spectral representation type. Must be PROFILE at Level 1.
+        description: Spectral representation type. Level 1 is always PROFILE (continuous/profile imzML); the range enum permits only PROFILE, so this is enforced at the schema level.
       MASS_RESOLVING_POWER:
         range: integer
         required: true
@@ -336,11 +334,6 @@ classes:
         title: "QC Comment"
         description: Free-text quality-control comment for Level 1.
     rules:
-      - description: "SPECTRUM_TYPE must be PROFILE at Level 1 (continuous/profile imzML)"
-        postconditions:
-          slot_conditions:
-            SPECTRUM_TYPE:
-              equals_string: "PROFILE"
       - description: "Matrix preparation attributes are required for matrix-based (MALDI-family) ionization techniques (MALDI, MALDI_2, IR_MALDESI)"
         preconditions:
           slot_conditions:

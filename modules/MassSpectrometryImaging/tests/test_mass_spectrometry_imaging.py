@@ -188,6 +188,10 @@ class TestEnums:
         for e in expected:
             assert e in all_enums, f"{e} missing"
 
+    def test_spectrum_type_profile_only(self, sv):
+        """SPECTRUM_TYPE is constrained to PROFILE via the enum (enforceable), not an inert rule."""
+        assert set(sv.get_enum("SpectrumTypeEnum").permissible_values) == {"PROFILE"}
+
     def test_multi_class_removed(self, sv):
         pv = sv.get_enum("AnalyteClassEnum").permissible_values
         assert "MULTI_CLASS" not in pv
