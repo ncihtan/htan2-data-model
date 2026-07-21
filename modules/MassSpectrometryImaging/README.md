@@ -41,6 +41,9 @@ with `multivalued: true` + `inlined_as_list: true`.
 - `ANALYTE_CLASS` is multivalued.
 - `SPECTRUM_TYPE` is fixed to `PROFILE` at Level 1.
 - The Molecular Assignments columns are gated on `CONFIDENCE_LEVEL` (1–4) via rules.
+- Fixed-unit slots encode the unit in the name (`_UM` = micrometers, `_PPM` = parts-per-million)
+  and are self-documenting; a companion `_UNIT` slot is used only where the unit genuinely
+  varies (e.g. `TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE` / `_UNIT`, hours vs days).
 
 Cross-row constraints (channel count = RecordSet row count; `(HTAN_DATA_FILE_ID,
 CHANNEL_INDEX)` uniqueness; imzML continuous@L1 / centroided@L2) are enforced by the
