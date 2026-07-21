@@ -98,7 +98,7 @@ classes:
         required: true
         title: "m/z Observed"
         description: Observed mass-to-charge ratio (greater than 0; 4 decimal places minimum).
-        minimum_value: 0.0
+        minimum_value: 0.0001
       MZ_THEORETICAL:
         range: float
         required: false

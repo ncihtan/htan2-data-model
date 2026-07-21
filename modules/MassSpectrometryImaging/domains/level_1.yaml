@@ -212,25 +212,25 @@ classes:
         required: true
         title: "Pixel Size X (um)"
         description: Pixel pitch in the X dimension (micrometers); corresponds to PSI-MS CV MS:1000042.
-        minimum_value: 0.0
+        minimum_value: 0.0001
       PIXEL_SIZE_Y_UM:
         range: float
         required: true
         title: "Pixel Size Y (um)"
         description: Pixel pitch in the Y dimension (micrometers); corresponds to PSI-MS CV MS:1000043.
-        minimum_value: 0.0
+        minimum_value: 0.0001
       MASS_TO_CHARGE_RANGE_LOW_VALUE:
         range: float
         required: true
         title: "Mass-to-Charge Range Low Value"
         description: Lower m/z boundary of the acquisition range.
-        minimum_value: 0.0
+        minimum_value: 0.0001
       MASS_TO_CHARGE_RANGE_HIGH_VALUE:
         range: float
         required: true
         title: "Mass-to-Charge Range High Value"
         description: Upper m/z boundary of the acquisition range.
-        minimum_value: 0.0
+        minimum_value: 0.0001
       ION_MOBILITY:
         range: boolean
         required: true
