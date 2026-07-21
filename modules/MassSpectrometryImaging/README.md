@@ -56,11 +56,11 @@ cd modules/MassSpectrometryImaging
 make test
 ```
 
-The suite is schema-introspection only (via `SchemaView`): it covers class structure,
-inheritance, required/optional slots per level, enum ordering/descriptions, and the
-conditional rules. **Valid/invalid instance tests are intentionally deferred** to the
-downstream `make modules-gen` PR, because instantiating classes and exercising bad
-enum values requires the generated Python dataclasses (not produced in the schema PR).
+The suite covers both **schema introspection** (via `SchemaView`: class structure,
+inheritance, required/optional slots per level, enum ordering/descriptions, conditional
+rules) and **instance-level behaviour** against the generated dataclasses — one valid
+instance that loads plus missing-required and bad-enum instances that raise `ValueError`,
+per class.
 
 ## Schema generation
 

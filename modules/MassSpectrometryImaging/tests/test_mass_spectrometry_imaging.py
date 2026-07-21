@@ -1,9 +1,13 @@
 """Tests for the HTAN Mass Spectrometry Imaging (MSI) module."""
 
 import re
+import sys
 
 import pytest
 from linkml_runtime.utils.schemaview import SchemaView
+
+# Generated dataclasses live under the module's src/ (used by the instance tests below).
+sys.path.insert(0, "modules/MassSpectrometryImaging/src")
 
 SCHEMA = "modules/MassSpectrometryImaging/domains/mass_spectrometry_imaging.yaml"
 
@@ -248,3 +252,88 @@ class TestPatterns:
         rx = re.compile(slot.pattern)
         assert rx.match("HTA200_1234_D003")
         assert not rx.match("HTA200_1234_B002")  # biospecimen id should not match
+
+
+# ---------------------------------------------------------------------------
+# Instance-level tests against the generated dataclasses: one valid load and one
+# invalid rejection per class (satisfies the coverage rules' valid/invalid instance ask).
+# ---------------------------------------------------------------------------
+_CORE = dict(HTAN_DATA_FILE_ID="HTA200_1234_D001", HTAN_PARENT_ID=["HTA200_1234_B002"])
+
+VALID_INSTANCES = {
+    "MassSpectrometryImagingLevel1": dict(
+        **_CORE, FILENAME="sample.imzML", FILE_FORMAT="imzML",
+        MS_IONIZATION_TECHNIQUE="DESI", MASS_ANALYZER_TYPE="TOF", MASS_ANALYSIS_POLARITY="POS",
+        ANALYTE_CLASS=["LIPIDS"], IS_TARGETED=False, ACQUISITION_INSTRUMENT_VENDOR="Bruker",
+        ACQUISITION_INSTRUMENT_MODEL="timsTOF Flex", PIXEL_SIZE_X_UM=10.0, PIXEL_SIZE_Y_UM=10.0,
+        MASS_TO_CHARGE_RANGE_LOW_VALUE=100.0, MASS_TO_CHARGE_RANGE_HIGH_VALUE=1000.0,
+        ION_MOBILITY=False, SPECTRUM_TYPE="PROFILE", MASS_RESOLVING_POWER=40000,
+        MS_SCAN_MODE="REFLECTRON", CALIBRATION_TYPE="LOCK_MASS",
+        CALIBRANT_MASSES="622.0290, 922.0098",
+        TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE=2,
+        TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT="HOURS",
+        SOFTWARE_AND_VERSION="timsControl 5.1", IBD_FILE_UUID="uuid-1234", PASSED_QC=True,
+    ),
+    "MassSpectrometryImagingLevel2": dict(
+        **_CORE, FILENAME="sample_processed.imzML", FILE_FORMAT="imzML",
+        SOFTWARE_AND_VERSION="SCiLS Lab 2024", BASELINE_CORRECTION_METHOD="TOP_HAT",
+        PEAK_PICKING_METHOD="centroid", PEAK_PICKING_SNR_THRESHOLD=3.0,
+        NORMALIZATION_METHOD="TIC", MASS_ALIGNMENT_METHOD="lock-mass", MASS_TOLERANCE_PPM=5.0,
+        MEDIAN_TIC=1000.0, TIC_CV=12.5, MASS_ACCURACY_PPM=2.0, PIXEL_COMPLETION_RATE=99.5,
+        NUM_DETECTED_PEAKS=1500, PASSED_QC=True,
+    ),
+    "MassSpectrometryImagingLevel3": dict(
+        **_CORE, FILENAME="sample_annotated.ome.tiff", FILE_FORMAT="ome.tiff",
+        NUM_ANNOTATED_CHANNELS=50, NUM_UNKNOWN_CHANNELS=10,
+        SOFTWARE_AND_VERSION="Metaspace 2024", PASSED_QC=True,
+    ),
+    "MassSpectrometryImagingLevel4": dict(
+        **_CORE, FILENAME="seg.ome.tiff", FILE_FORMAT="ome.tiff",
+        SEGMENTATION_METHOD="K-means on TIC image", SEGMENTATION_CLASS_COUNT=5,
+        SEGMENTATION_REFERENCE_MODALITY="MSI_NATIVE", PASSED_QC=True,
+    ),
+    "MolecularAssignment": dict(
+        HTAN_DATA_FILE_ID="HTA200_1234_D003", CHANNEL_INDEX=1, MZ_OBSERVED=885.5498,
+        MOLECULAR_NAME="PI(18:0/20:4)", SOFTWARE_AND_VERSION="Metabascape 5.0",
+        CONFIDENCE_LEVEL=2, EVIDENCE_TYPE=["ACCURATE_MASS"],
+    ),
+}
+
+# A required field to drop from each class to trigger a missing-required error.
+_DROP_REQUIRED = {
+    "MassSpectrometryImagingLevel1": "MS_IONIZATION_TECHNIQUE",
+    "MassSpectrometryImagingLevel2": "BASELINE_CORRECTION_METHOD",
+    "MassSpectrometryImagingLevel3": "NUM_ANNOTATED_CHANNELS",
+    "MassSpectrometryImagingLevel4": "SEGMENTATION_METHOD",
+    "MolecularAssignment": "MOLECULAR_NAME",
+}
+
+
+@pytest.fixture(scope="module")
+def dm():
+    """The generated dataclass module (auto-generated on the branch by CI)."""
+    from htan_massspectrometryimaging.datamodel import mass_spectrometry_imaging as module
+
+    return module
+
+
+class TestInstances:
+    """Valid instances load; missing-required and bad-enum instances raise ValueError."""
+
+    @pytest.mark.parametrize("cls_name,kwargs", list(VALID_INSTANCES.items()))
+    def test_valid_instance_loads(self, dm, cls_name, kwargs):
+        obj = getattr(dm, cls_name)(**kwargs)
+        assert obj is not None
+
+    @pytest.mark.parametrize("cls_name", list(VALID_INSTANCES))
+    def test_missing_required_raises(self, dm, cls_name):
+        kwargs = dict(VALID_INSTANCES[cls_name])
+        kwargs.pop(_DROP_REQUIRED[cls_name])
+        with pytest.raises(ValueError):
+            getattr(dm, cls_name)(**kwargs)
+
+    def test_bad_enum_value_raises(self, dm):
+        kwargs = dict(VALID_INSTANCES["MolecularAssignment"])
+        kwargs["EVIDENCE_TYPE"] = ["NOT_A_REAL_VALUE"]
+        with pytest.raises(ValueError):
+            dm.MolecularAssignment(**kwargs)
