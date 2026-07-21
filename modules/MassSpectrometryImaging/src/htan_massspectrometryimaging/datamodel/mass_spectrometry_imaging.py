@@ -1,5 +1,5 @@
 # Auto generated from mass_spectrometry_imaging.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-21T18:55:42
+# Generation date: 2026-07-21T19:03:19
 # Schema: MassSpectrometryImaging
 #
 # id: https://w3id.org/htan/mass_spectrometry_imaging
@@ -206,11 +206,11 @@ class MassSpectrometryImagingLevel1(CoreFileAttributes):
     MASS_TO_CHARGE_RANGE_HIGH_VALUE: float = None
     ION_MOBILITY: Union[bool, Bool] = None
     SPECTRUM_TYPE: Union[str, "SpectrumTypeEnum"] = None
-    MASS_RESOLVING_POWER: int = None
+    MASS_RESOLVING_POWER: float = None
     MS_SCAN_MODE: Union[str, "MsScanModeEnum"] = None
     CALIBRATION_TYPE: Union[str, "CalibrationTypeEnum"] = None
     CALIBRANT_MASSES: str = None
-    TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE: int = None
+    TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE: float = None
     TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT: Union[str, "TimeUnitEnum"] = None
     SOFTWARE_AND_VERSION: str = None
     IBD_FILE_UUID: str = None
@@ -309,8 +309,8 @@ class MassSpectrometryImagingLevel1(CoreFileAttributes):
 
         if self._is_empty(self.MASS_RESOLVING_POWER):
             self.MissingRequiredField("MASS_RESOLVING_POWER")
-        if not isinstance(self.MASS_RESOLVING_POWER, int):
-            self.MASS_RESOLVING_POWER = int(self.MASS_RESOLVING_POWER)
+        if not isinstance(self.MASS_RESOLVING_POWER, float):
+            self.MASS_RESOLVING_POWER = float(self.MASS_RESOLVING_POWER)
 
         if self._is_empty(self.MS_SCAN_MODE):
             self.MissingRequiredField("MS_SCAN_MODE")
@@ -329,8 +329,8 @@ class MassSpectrometryImagingLevel1(CoreFileAttributes):
 
         if self._is_empty(self.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE):
             self.MissingRequiredField("TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE")
-        if not isinstance(self.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE, int):
-            self.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE = int(self.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE)
+        if not isinstance(self.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE, float):
+            self.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE = float(self.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE)
 
         if self._is_empty(self.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT):
             self.MissingRequiredField("TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT")
@@ -832,12 +832,9 @@ class AnalyteClassEnum(EnumDefinitionImpl):
 
 class SpectrumTypeEnum(EnumDefinitionImpl):
 
-    CENTROID = PermissibleValue(
-        text="CENTROID",
-        description="Peak-picked spectrum; discrete m/z-intensity pairs. Required at Level 2.")
     PROFILE = PermissibleValue(
         text="PROFILE",
-        description="Continuous spectrum; full peak shapes preserved. Required at Level 1.")
+        description="""Continuous spectrum; full peak shapes preserved. Level 1 is always profile/continuous imzML (Level 2 is centroided, but does not re-record SPECTRUM_TYPE).""")
 
     _defn = EnumDefinition(
         name="SpectrumTypeEnum",
@@ -1139,13 +1136,13 @@ class EvidenceTypeEnum(EnumDefinitionImpl):
         description="Annotation supported by accurate mass match within tolerance")
     DATABASE_SPECTRAL_MATCH = PermissibleValue(
         text="DATABASE_SPECTRAL_MATCH",
-        description="Matched to a spectral library entry in a public database")
+        description="""Match to a spectral library entry in a public spectral database (e.g., MassBank, mzCloud, Metaspace) - as distinct from MSMS_MATCH (an in-house/experimentally acquired reference spectrum)""")
     ISOTOPE_PATTERN = PermissibleValue(
         text="ISOTOPE_PATTERN",
         description="Annotation supported by isotope pattern matching")
     MSMS_MATCH = PermissibleValue(
         text="MSMS_MATCH",
-        description="Annotation supported by MS/MS fragmentation spectrum match")
+        description="""Annotation supported by MS/MS fragmentation matched to an in-house or experimentally acquired reference spectrum (use DATABASE_SPECTRAL_MATCH for matches to a public spectral library)""")
     REFERENCE_STANDARD = PermissibleValue(
         text="REFERENCE_STANDARD",
         description="Confirmed by comparison to an authenticated in-house reference standard")
@@ -1238,7 +1235,7 @@ slots.massSpectrometryImagingLevel1__SPECTRUM_TYPE = Slot(uri=HTAN.SPECTRUM_TYPE
                    model_uri=HTAN.massSpectrometryImagingLevel1__SPECTRUM_TYPE, domain=None, range=Union[str, "SpectrumTypeEnum"])
 
 slots.massSpectrometryImagingLevel1__MASS_RESOLVING_POWER = Slot(uri=HTAN.MASS_RESOLVING_POWER, name="massSpectrometryImagingLevel1__MASS_RESOLVING_POWER", curie=HTAN.curie('MASS_RESOLVING_POWER'),
-                   model_uri=HTAN.massSpectrometryImagingLevel1__MASS_RESOLVING_POWER, domain=None, range=int)
+                   model_uri=HTAN.massSpectrometryImagingLevel1__MASS_RESOLVING_POWER, domain=None, range=float)
 
 slots.massSpectrometryImagingLevel1__MASS_TO_CHARGE_RESOLVING_POWER = Slot(uri=HTAN.MASS_TO_CHARGE_RESOLVING_POWER, name="massSpectrometryImagingLevel1__MASS_TO_CHARGE_RESOLVING_POWER", curie=HTAN.curie('MASS_TO_CHARGE_RESOLVING_POWER'),
                    model_uri=HTAN.massSpectrometryImagingLevel1__MASS_TO_CHARGE_RESOLVING_POWER, domain=None, range=Optional[float])
@@ -1254,7 +1251,7 @@ slots.massSpectrometryImagingLevel1__CALIBRANT_MASSES = Slot(uri=HTAN.CALIBRANT_
                    pattern=re.compile(r'^[0-9]+(\.[0-9]+)?(, ?[0-9]+(\.[0-9]+)?)*$'))
 
 slots.massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE = Slot(uri=HTAN.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE, name="massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE", curie=HTAN.curie('TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE'),
-                   model_uri=HTAN.massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE, domain=None, range=int)
+                   model_uri=HTAN.massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE, domain=None, range=float)
 
 slots.massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT = Slot(uri=HTAN.TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT, name="massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT", curie=HTAN.curie('TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT'),
                    model_uri=HTAN.massSpectrometryImagingLevel1__TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT, domain=None, range=Union[str, "TimeUnitEnum"])
@@ -1266,7 +1263,8 @@ slots.massSpectrometryImagingLevel1__PROTOCOL_LINK = Slot(uri=HTAN.PROTOCOL_LINK
                    model_uri=HTAN.massSpectrometryImagingLevel1__PROTOCOL_LINK, domain=None, range=Optional[str])
 
 slots.massSpectrometryImagingLevel1__IBD_FILE_UUID = Slot(uri=HTAN.IBD_FILE_UUID, name="massSpectrometryImagingLevel1__IBD_FILE_UUID", curie=HTAN.curie('IBD_FILE_UUID'),
-                   model_uri=HTAN.massSpectrometryImagingLevel1__IBD_FILE_UUID, domain=None, range=str)
+                   model_uri=HTAN.massSpectrometryImagingLevel1__IBD_FILE_UUID, domain=None, range=str,
+                   pattern=re.compile(r'^\{?[0-9a-fA-F]{8}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{12}\}?$'))
 
 slots.massSpectrometryImagingLevel1__PREPARATION_MATRIX = Slot(uri=HTAN.PREPARATION_MATRIX, name="massSpectrometryImagingLevel1__PREPARATION_MATRIX", curie=HTAN.curie('PREPARATION_MATRIX'),
                    model_uri=HTAN.massSpectrometryImagingLevel1__PREPARATION_MATRIX, domain=None, range=Optional[Union[str, "PreparationMatrixEnum"]])
