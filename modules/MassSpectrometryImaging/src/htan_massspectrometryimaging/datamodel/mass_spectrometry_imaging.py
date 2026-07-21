@@ -1,5 +1,5 @@
 # Auto generated from mass_spectrometry_imaging.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-21T17:59:01
+# Generation date: 2026-07-21T18:55:42
 # Schema: MassSpectrometryImaging
 #
 # id: https://w3id.org/htan/mass_spectrometry_imaging
@@ -907,10 +907,10 @@ class PreparationMatrixEnum(EnumDefinitionImpl):
         description="2,5-Dihydroxybenzoic acid; used for lipids, oligosaccharides, and metabolites")
     NOT_APPLICABLE = PermissibleValue(
         text="NOT_APPLICABLE",
-        description="Ionization modality does not use a matrix (DESI, SIMS, IR-MALDESI)")
+        description="Ionization modality does not use a matrix (DESI, SIMS)")
     OTHER = PermissibleValue(
         text="OTHER",
-        description="Matrix compound not listed; specify in PROTOCOL_LINK")
+        description="""Matrix compound not listed; specify in PROTOCOL_LINK. Use for IR-MALDESI (ice/endogenous-water matrix)""")
     SA = PermissibleValue(
         text="SA",
         description="Sinapinic acid; used for intact proteins >10 kDa")
