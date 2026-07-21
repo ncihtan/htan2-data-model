@@ -1,0 +1,157 @@
+name: MassSpectrometryImagingLevel2
+id: https://w3id.org/htan/mass_spectrometry_imaging/level_2
+description: HTAN Mass Spectrometry Imaging Level 2 - Processed spectral data (centroided imzML) processing and QC annotations
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  BaselineCorrectionMethodEnum:
+    permissible_values:
+      "NONE":
+        description: No baseline correction applied
+      "OTHER":
+        description: Algorithm not listed; specify in SOFTWARE_AND_VERSION or PROTOCOL_LINK
+      "SNIP":
+        description: Statistics-sensitive Non-linear Iterative Peak-clipping algorithm
+      "TOP_HAT":
+        description: Top-hat morphological filter for baseline estimation
+
+  NormalizationMethodEnum:
+    permissible_values:
+      "MEDIAN":
+        description: Median spectrum intensity normalization
+      "NONE":
+        description: No normalization applied
+      "OTHER":
+        description: Method not listed; specify in PROTOCOL_LINK
+      "REFERENCE_PEAK":
+        description: Normalization to a single reference m/z peak of known abundance
+      "RMS":
+        description: Root Mean Square normalization
+      "TIC":
+        description: Total Ion Current normalization - divide each spectrum by its TIC
+
+  SmoothingMethodEnum:
+    permissible_values:
+      "GAUSSIAN":
+        description: Gaussian kernel smoothing
+      "NONE":
+        description: No spectral smoothing applied
+      "OTHER":
+        description: Method not listed; specify in PROTOCOL_LINK
+      "SAVITZKY_GOLAY":
+        description: Savitzky-Golay polynomial smoothing filter
+
+classes:
+  MassSpectrometryImagingLevel2:
+    is_a: CoreFileAttributes
+    description: Level 2 processed spectral data - centroided imzML after baseline correction, peak picking, mass alignment, and normalization. The paired .ibd binary is an unannotated companion.
+    attributes:
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the file; processed (centroided) imzML at Level 2
+        pattern: "^imzML$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with .imzML
+        pattern: "^.+\\.imzML$"
+      SOFTWARE_AND_VERSION:
+        range: string
+        required: true
+        title: "Software and Version"
+        description: Name and version of the spectral processing software used at this level (e.g., SCiLS Lab 2024, Cardinal 3.4). Re-specified at each level; not propagated from L1.
+      BASELINE_CORRECTION_METHOD:
+        range: BaselineCorrectionMethodEnum
+        required: true
+        title: "Baseline Correction Method"
+        description: Baseline correction algorithm applied prior to peak picking.
+      PEAK_PICKING_METHOD:
+        range: string
+        required: true
+        title: "Peak Picking Method"
+        description: Peak detection algorithm used (e.g., centroid, continuous wavelet transform).
+      PEAK_PICKING_SNR_THRESHOLD:
+        range: float
+        required: true
+        title: "Peak Picking SNR Threshold"
+        description: Signal-to-noise ratio threshold applied during peak picking.
+        minimum_value: 0.0
+      NORMALIZATION_METHOD:
+        range: NormalizationMethodEnum
+        required: true
+        title: "Normalization Method"
+        description: Spectral intensity normalization method applied.
+      MASS_ALIGNMENT_METHOD:
+        range: string
+        required: true
+        title: "Mass Alignment Method"
+        description: Algorithm used to align m/z peaks across all pixels (e.g., lock-mass, landmark-based).
+      MASS_TOLERANCE_PPM:
+        range: float
+        required: true
+        title: "Mass Tolerance (ppm)"
+        description: Mass tolerance (ppm) applied during peak binning and alignment.
+      SMOOTHING_METHOD:
+        range: SmoothingMethodEnum
+        required: false
+        title: "Smoothing Method"
+        description: Spectral smoothing algorithm applied; NONE if no smoothing.
+      PROTOCOL_LINK:
+        range: string
+        required: false
+        title: "Protocol Link"
+        description: URL or DOI of the data processing and analysis protocol for this level. Recommended. Re-specified at each level; not propagated from L1.
+      MEDIAN_TIC:
+        range: float
+        required: true
+        title: "Median TIC"
+        description: Median total ion current across all pixels after normalization.
+      TIC_CV:
+        range: float
+        required: true
+        title: "TIC CV"
+        description: Coefficient of variation (%) of the total ion current across pixels; acceptance threshold <30%.
+        minimum_value: 0.0
+      MASS_ACCURACY_PPM:
+        range: float
+        required: true
+        title: "Mass Accuracy (ppm)"
+        description: Mean absolute mass error (ppm) measured against calibrant peaks.
+        minimum_value: 0.0
+      PIXEL_COMPLETION_RATE:
+        range: float
+        required: true
+        title: "Pixel Completion Rate"
+        description: Fraction (0-100%) of expected raster pixels successfully acquired.
+        minimum_value: 0.0
+        maximum_value: 100.0
+      NUM_DETECTED_PEAKS:
+        range: integer
+        required: true
+        title: "Number of Detected Peaks"
+        description: Total number of unique m/z features detected after peak picking across the dataset.
+        minimum_value: 0
+      PASSED_QC:
+        range: boolean
+        required: true
+        title: "Passed QC"
+        description: Whether the file passed processing-stage quality control at Level 2.
+      QC_COMMENT:
+        range: string
+        required: false
+        title: "QC Comment"
+        description: Free-text quality-control comment for Level 2.

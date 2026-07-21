@@ -1,0 +1,65 @@
+name: MassSpectrometryImagingLevel3
+id: https://w3id.org/htan/mass_spectrometry_imaging/level_3
+description: HTAN Mass Spectrometry Imaging Level 3 - Annotation-filtered OME-TIFF summary annotations (per-channel detail lives in the Molecular Assignments RecordSet)
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+classes:
+  MassSpectrometryImagingLevel3:
+    is_a: CoreFileAttributes
+    description: Level 3 annotation-filtered OME-TIFF. Channels include only annotated m/z values plus biologically relevant unknowns. Per-channel molecular detail is carried by the companion Molecular Assignments RecordSet.
+    attributes:
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the file; OME-TIFF at Level 3
+        pattern: "^ome\\.tiff?$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with .ome.tif or .ome.tiff
+        pattern: "^.+\\.ome\\.tiff?$"
+      NUM_ANNOTATED_CHANNELS:
+        range: integer
+        required: true
+        title: "Number of Annotated Channels"
+        description: Number of OME-TIFF channels with a confirmed molecular assignment (confidence levels 1-3).
+        minimum_value: 0
+      NUM_UNKNOWN_CHANNELS:
+        range: integer
+        required: true
+        title: "Number of Unknown Channels"
+        description: Number of OME-TIFF channels retained as biologically relevant unknowns (confidence level 4).
+        minimum_value: 0
+      SOFTWARE_AND_VERSION:
+        range: string
+        required: true
+        title: "Software and Version"
+        description: Name and version of the annotation software used at this level. Re-specified at each level; not propagated.
+      PROTOCOL_LINK:
+        range: string
+        required: false
+        title: "Protocol Link"
+        description: URL or DOI of the molecular annotation protocol for this level. Recommended; documents the annotation method per RFC section 4.3.
+      PASSED_QC:
+        range: boolean
+        required: true
+        title: "Passed QC"
+        description: Whether the file passed quality control at Level 3.
+      QC_COMMENT:
+        range: string
+        required: false
+        title: "QC Comment"
+        description: Free-text quality-control comment for Level 3.

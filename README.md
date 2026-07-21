@@ -83,6 +83,12 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 - **Structure**: Four data levels (Level 1: raw data bundle optional, Level 3: processed bundle required, Level 4: interoperable file optional, Panel: panel information)
 - **Features**: Platform flexibility, bundle-level metadata, panel information, QC metrics, conditional requirements
 
+### **Mass Spectrometry Imaging Module**
+- **Purpose**: Spatial mass spectrometry imaging (MALDI, DESI, SIMS, etc.) for label-free detection of lipids, metabolites, peptides, and proteins
+- **Location**: `modules/MassSpectrometryImaging/`
+- **Structure**: Four data levels (Level 1: continuous imzML, Level 2: centroided imzML, Level 3: annotation-filtered OME-TIFF, Level 4: segmentation optional) plus a Molecular Assignments RecordSet
+- **Features**: Inherits from CoreFileAttributes, MALDI-conditional matrix attributes, multivalued analyte class, confidence-level-gated molecular annotations, HuBMAP crosswalk
+
 ## 📁 Project Structure
 
 ```
@@ -97,7 +103,8 @@ htan2-data-model/
 │   ├── scRNA-seq/             # Single-cell RNA sequencing
 │   ├── DigitalPathology/      # Digital Pathology imaging
 │   ├── MultiplexMicroscopy/   # Multiplex Microscopy imaging
-│   └── SpatialOmics/          # Spatial Omics assays
+│   ├── SpatialOmics/          # Spatial Omics assays
+│   └── MassSpectrometryImaging/ # Mass Spectrometry Imaging (MSI)
 ├── config/                    # LinkML configuration
 ├── scripts/                   # Utility scripts
 ├── tests/                     # Root-level tests
@@ -164,6 +171,7 @@ Each module contains detailed documentation:
 - **Digital Pathology Module**: See `modules/DigitalPathology/README.md` for digital pathology imaging
 - **Multiplex Microscopy Module**: See `modules/MultiplexMicroscopy/README.md` for multiplex microscopy imaging
 - **Spatial Omics Module**: See `modules/SpatialOmics/README.md` for spatial omics assays
+- **Mass Spectrometry Imaging Module**: See `modules/MassSpectrometryImaging/README.md` for mass spectrometry imaging
 
 ## 🤝 Contributing
 

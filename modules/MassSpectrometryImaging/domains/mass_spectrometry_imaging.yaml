@@ -1,0 +1,56 @@
+name: MassSpectrometryImaging
+id: https://w3id.org/htan/mass_spectrometry_imaging
+description: HTAN Mass Spectrometry Imaging (MSI) Data Model Schema for Phase 2 - All Levels
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+  - level_1
+  - level_2
+  - level_3
+  - level_4
+  - molecular_assignments
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+classes:
+  MassSpectrometryImagingData:
+    description: Container for all Mass Spectrometry Imaging data levels and the Molecular Assignments RecordSet
+    attributes:
+      LEVEL_1_DATA:
+        range: MassSpectrometryImagingLevel1
+        inlined: true
+        required: false
+        title: "Level 1 Data"
+        description: Level 1 MSI data (raw continuous/profile imzML), required for MSI submissions
+      LEVEL_2_DATA:
+        range: MassSpectrometryImagingLevel2
+        inlined: true
+        required: false
+        title: "Level 2 Data"
+        description: Level 2 MSI data (processed centroided imzML), required for MSI submissions
+      LEVEL_3_DATA:
+        range: MassSpectrometryImagingLevel3
+        inlined: true
+        required: false
+        title: "Level 3 Data"
+        description: Level 3 MSI data (annotation-filtered OME-TIFF), required for MSI submissions
+      LEVEL_4_DATA:
+        range: MassSpectrometryImagingLevel4
+        inlined: true
+        required: false
+        title: "Level 4 Data"
+        description: Level 4 MSI data (segmentation mask / region quantification), optional
+      MOLECULAR_ASSIGNMENTS:
+        range: MolecularAssignment
+        multivalued: true
+        inlined_as_list: true
+        required: false
+        title: "Molecular Assignments"
+        description: Molecular Assignments RecordSet - one row per Level 3 OME-TIFF channel
