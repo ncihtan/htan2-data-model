@@ -120,9 +120,9 @@ enums:
       "DHB":
         description: 2,5-Dihydroxybenzoic acid; used for lipids, oligosaccharides, and metabolites
       "NOT_APPLICABLE":
-        description: Ionization modality does not use a matrix (DESI, SIMS, IR-MALDESI)
+        description: Ionization modality does not use a matrix (DESI, SIMS)
       "OTHER":
-        description: Matrix compound not listed; specify in PROTOCOL_LINK
+        description: Matrix compound not listed; specify in PROTOCOL_LINK. Use for IR-MALDESI (ice/endogenous-water matrix)
       "SA":
         description: Sinapinic acid; used for intact proteins >10 kDa
 

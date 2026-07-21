@@ -34,9 +34,10 @@ with `multivalued: true` + `inlined_as_list: true`.
 
 ## Validation highlights
 
-- `PREPARATION_MATRIX` and `MATRIX_DEPOSITION_METHOD` are conditionally required when
-  `MS_IONIZATION_TECHNIQUE` is a MALDI technique (`MALDI` / `MALDI_2`); the matrix
-  *instrument* fields are optional.
+- The four matrix-prep fields (`PREPARATION_MATRIX`, `MATRIX_DEPOSITION_METHOD`,
+  `PREPARATION_INSTRUMENT_VENDOR`, `PREPARATION_INSTRUMENT_MODEL`) are conditionally
+  required for matrix-based (MALDI-family) techniques: `MALDI`, `MALDI_2`, `IR_MALDESI`.
+  IR-MALDESI uses `OTHER` for `PREPARATION_MATRIX` (ice/endogenous-water matrix).
 - `ANALYTE_CLASS` is multivalued.
 - `SPECTRUM_TYPE` is fixed to `PROFILE` at Level 1.
 - The Molecular Assignments columns are gated on `CONFIDENCE_LEVEL` (1–4) via rules.
