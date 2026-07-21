@@ -298,22 +298,22 @@ classes:
         range: PreparationMatrixEnum
         required: false
         title: "Preparation Matrix"
-        description: MALDI matrix compound applied to the tissue section. Conditionally required when MS_IONIZATION_TECHNIQUE is MALDI or MALDI_2; set NOT_APPLICABLE for non-MALDI modalities.
+        description: Matrix compound applied to the tissue section. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI); use OTHER for IR-MALDESI (ice/endogenous-water matrix). Set NOT_APPLICABLE for non-matrix modalities (DESI, SIMS).
       MATRIX_DEPOSITION_METHOD:
         range: MatrixDepositionMethodEnum
         required: false
         title: "Matrix Deposition Method"
-        description: Method used to apply the MALDI matrix to tissue. Conditionally required when MS_IONIZATION_TECHNIQUE is MALDI or MALDI_2.
+        description: Method used to apply the matrix to tissue. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI).
       PREPARATION_INSTRUMENT_VENDOR:
         range: string
         required: false
         title: "Preparation Instrument Vendor"
-        description: Manufacturer of the matrix deposition instrument. Optional.
+        description: Manufacturer of the matrix deposition instrument. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI).
       PREPARATION_INSTRUMENT_MODEL:
         range: string
         required: false
         title: "Preparation Instrument Model"
-        description: Model of the matrix deposition instrument. Optional.
+        description: Model of the matrix deposition instrument. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI).
       ANALYTE_ACQUISITION_ORDER:
         range: integer
         required: false
@@ -341,16 +341,21 @@ classes:
           slot_conditions:
             SPECTRUM_TYPE:
               equals_string: "PROFILE"
-      - description: "PREPARATION_MATRIX and MATRIX_DEPOSITION_METHOD are required when MS_IONIZATION_TECHNIQUE is a MALDI technique (MALDI or MALDI_2)"
+      - description: "Matrix preparation attributes are required for matrix-based (MALDI-family) ionization techniques (MALDI, MALDI_2, IR_MALDESI)"
         preconditions:
           slot_conditions:
             MS_IONIZATION_TECHNIQUE:
               any_of:
                 - equals_string: "MALDI"
                 - equals_string: "MALDI_2"
+                - equals_string: "IR_MALDESI"
         postconditions:
           slot_conditions:
             PREPARATION_MATRIX:
               required: true
             MATRIX_DEPOSITION_METHOD:
+              required: true
+            PREPARATION_INSTRUMENT_VENDOR:
+              required: true
+            PREPARATION_INSTRUMENT_MODEL:
               required: true

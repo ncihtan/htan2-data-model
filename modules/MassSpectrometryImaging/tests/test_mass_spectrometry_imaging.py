@@ -124,15 +124,19 @@ class TestLevel1:
 
     def test_maldi_conditional_rule_present(self, sv):
         cls = sv.get_class("MassSpectrometryImagingLevel1")
-        rule_text = " ".join(r.description or "" for r in (cls.rules or []))
-        assert "MALDI" in rule_text
-        # the rule makes PREPARATION_MATRIX / MATRIX_DEPOSITION_METHOD required on MALDI
-        post_slots = set()
+        # the rule gates all four matrix-prep fields on the MALDI-family techniques
+        post_slots, pre_values = set(), set()
         for r in cls.rules or []:
             if r.postconditions and r.postconditions.slot_conditions:
                 post_slots.update(r.postconditions.slot_conditions.keys())
-        assert "PREPARATION_MATRIX" in post_slots
-        assert "MATRIX_DEPOSITION_METHOD" in post_slots
+            pre = (r.preconditions.slot_conditions or {}) if r.preconditions else {}
+            mit = pre.get("MS_IONIZATION_TECHNIQUE")
+            if mit and mit.any_of:
+                pre_values.update(c.equals_string for c in mit.any_of)
+        for slot in ["PREPARATION_MATRIX", "MATRIX_DEPOSITION_METHOD",
+                     "PREPARATION_INSTRUMENT_VENDOR", "PREPARATION_INSTRUMENT_MODEL"]:
+            assert slot in post_slots, f"{slot} not gated by the MALDI rule"
+        assert {"MALDI", "MALDI_2", "IR_MALDESI"} == pre_values
 
 
 class TestLevels234:
