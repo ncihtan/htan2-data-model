@@ -1,0 +1,71 @@
+name: MassSpectrometryImagingLevel4
+id: https://w3id.org/htan/mass_spectrometry_imaging/level_4
+description: HTAN Mass Spectrometry Imaging Level 4 - Segmented and region/cell-type quantified output (optional level)
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  SegmentationReferenceModalityEnum:
+    permissible_values:
+      "H_AND_E":
+        description: Segmentation derived from H&E staining and projected onto MSI pixels
+      "IF":
+        description: Segmentation derived from immunofluorescence
+      "MSI_NATIVE":
+        description: Segmentation derived directly from MSI spectral clustering (no external reference)
+      "OTHER":
+        description: Reference modality not listed
+
+classes:
+  MassSpectrometryImagingLevel4:
+    is_a: CoreFileAttributes
+    description: Level 4 segmented and region/cell-type quantified output (optional). Includes a segmentation mask OME-TIFF and/or a region quantification table.
+    attributes:
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the file; OME-TIFF segmentation mask or CSV quantification table
+        pattern: "^(ome\\.tiff?|csv)$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with .ome.tif, .ome.tiff, or .csv
+        pattern: "^.+\\.(ome\\.tiff?|csv)$"
+      SEGMENTATION_METHOD:
+        range: string
+        required: true
+        title: "Segmentation Method"
+        description: Algorithm or tool used for tissue or cell-type segmentation (e.g., K-means on TIC image, H&E-guided).
+      SEGMENTATION_CLASS_COUNT:
+        range: integer
+        required: true
+        title: "Segmentation Class Count"
+        description: Number of distinct tissue regions or cell types identified by the segmentation.
+        minimum_value: 1
+      SEGMENTATION_REFERENCE_MODALITY:
+        range: SegmentationReferenceModalityEnum
+        required: true
+        title: "Segmentation Reference Modality"
+        description: Modality whose segmentation output was projected onto the MSI image.
+      PASSED_QC:
+        range: boolean
+        required: true
+        title: "Passed QC"
+        description: Whether the file passed quality control at Level 4.
+      QC_COMMENT:
+        range: string
+        required: false
+        title: "QC Comment"
+        description: Free-text quality-control comment for Level 4.

@@ -217,7 +217,38 @@ jobs:
           "modules/DigitalPathology/domains/digital_pathology.yaml" \
           --class-name "DigitalPathologyData" \
           --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.DigitalPathologyData-${{ steps.version.outputs.version }}-schema.json"
-    
+
+        # MassSpectrometryImaging Level 1
+        echo "Generating MassSpectrometryImaging schemas..."
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/MassSpectrometryImaging/domains/level_1.yaml" \
+          --class-name "MassSpectrometryImagingLevel1" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MassSpectrometryImagingLevel1-${{ steps.version.outputs.version }}-schema.json"
+
+        # MassSpectrometryImaging Level 2
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/MassSpectrometryImaging/domains/level_2.yaml" \
+          --class-name "MassSpectrometryImagingLevel2" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MassSpectrometryImagingLevel2-${{ steps.version.outputs.version }}-schema.json"
+
+        # MassSpectrometryImaging Level 3
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/MassSpectrometryImaging/domains/level_3.yaml" \
+          --class-name "MassSpectrometryImagingLevel3" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MassSpectrometryImagingLevel3-${{ steps.version.outputs.version }}-schema.json"
+
+        # MassSpectrometryImaging Level 4
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/MassSpectrometryImaging/domains/level_4.yaml" \
+          --class-name "MassSpectrometryImagingLevel4" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MassSpectrometryImagingLevel4-${{ steps.version.outputs.version }}-schema.json"
+
+        # MassSpectrometryImaging Molecular Assignments RecordSet
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/MassSpectrometryImaging/domains/molecular_assignments.yaml" \
+          --class-name "MolecularAssignment" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.MolecularAssignment-${{ steps.version.outputs.version }}-schema.json"
+
     - name: Register schemas in Synapse
       env:
         SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}

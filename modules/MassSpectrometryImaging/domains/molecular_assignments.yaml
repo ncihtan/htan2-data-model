@@ -1,0 +1,215 @@
+name: MassSpectrometryImagingMolecularAssignments
+id: https://w3id.org/htan/mass_spectrometry_imaging/molecular_assignments
+description: HTAN Mass Spectrometry Imaging Molecular Assignments RecordSet - per-channel molecular detail companion to the Level 3 OME-TIFF (one row per OME-TIFF channel)
+
+imports:
+  - linkml:types
+  - linkml:extensions
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  AdductEnum:
+    permissible_values:
+      "M_MINUS_H":
+        description: "[M-H]- deprotonated molecule, most common negative mode adduct"
+      "M_PLUS_CL":
+        description: "[M+Cl]- chloride adduct"
+      "M_PLUS_H":
+        description: "[M+H]+ protonated molecule, most common positive mode adduct"
+      "M_PLUS_K":
+        description: "[M+K]+ potassium adduct"
+      "M_PLUS_NA":
+        description: "[M+Na]+ sodium adduct, common for lipids and carbohydrates"
+      "M_PLUS_NH4":
+        description: "[M+NH4]+ ammonium adduct"
+      "M_RADICAL_MINUS":
+        description: "[M]- radical anion"
+      "M_RADICAL_PLUS":
+        description: "[M]+ radical cation (SIMS, some MALDI applications)"
+      "NOT_APPLICABLE":
+        description: No adduct applicable (confidence level 4 unknowns)
+      "OTHER":
+        description: Adduct not listed; specify in MOLECULAR_NAME or annotation protocol
+
+  DatabaseSourceEnum:
+    permissible_values:
+      "CHEBI":
+        description: Chemical Entities of Biological Interest (https://ebi.ac.uk/chebi)
+      "CUSTOM":
+        description: In-house or custom reference database; describe in PROTOCOL_LINK
+      "GLYCONNECT":
+        description: GlyConnect glycan database (https://glyconnect.expasy.org)
+      "GLYTOUCAN":
+        description: GlyTouCan glycan repository (https://glytoucan.org)
+      "HMDB":
+        description: Human Metabolome Database (https://hmdb.ca)
+      "LIPID_MAPS":
+        description: LIPID MAPS Structure Database (https://lipidmaps.org)
+      "MASSBANK":
+        description: MassBank spectral database (https://massbank.eu)
+      "METLIN":
+        description: METLIN metabolite and chemical database (https://metlin.scripps.edu)
+      "NOT_APPLICABLE":
+        description: No database assignment applicable (confidence level 4 unknowns)
+      "PUBCHEM":
+        description: PubChem compound database (https://pubchem.ncbi.nlm.nih.gov)
+      "UNIPROT":
+        description: Universal Protein Resource for protein identifications (https://uniprot.org)
+
+  EvidenceTypeEnum:
+    permissible_values:
+      "ACCURATE_MASS":
+        description: Annotation supported by accurate mass match within tolerance
+      "DATABASE_SPECTRAL_MATCH":
+        description: Matched to a spectral library entry in a public database
+      "ISOTOPE_PATTERN":
+        description: Annotation supported by isotope pattern matching
+      "MSMS_MATCH":
+        description: Annotation supported by MS/MS fragmentation spectrum match
+      "REFERENCE_STANDARD":
+        description: Confirmed by comparison to an authenticated in-house reference standard
+      "SPATIAL_PATTERN_ONLY":
+        description: Retained for biological relevance based on spatial distribution; no structural assignment
+
+classes:
+  MolecularAssignment:
+    description: A single molecular assignment row corresponding to one OME-TIFF channel in a Level 3 file. The unique row key is (HTAN_DATA_FILE_ID, CHANNEL_INDEX). Channel count must equal RecordSet row count (enforced by the DCC validator).
+    attributes:
+      HTAN_DATA_FILE_ID:
+        range: string
+        required: true
+        title: "HTAN Data File ID"
+        description: Foreign key to the parent Level 3 OME-TIFF file ID (same value for all rows in a RecordSet). Follows the HTAN data file ID pattern (D-suffix).
+        pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$"
+      CHANNEL_INDEX:
+        range: integer
+        required: true
+        title: "Channel Index"
+        description: 1-based channel number matching OME-TIFF channel order; must be unique per file.
+        minimum_value: 1
+      MZ_OBSERVED:
+        range: float
+        required: true
+        title: "m/z Observed"
+        description: Observed mass-to-charge ratio (greater than 0; 4 decimal places minimum).
+        minimum_value: 0.0001
+      MZ_THEORETICAL:
+        range: float
+        required: false
+        title: "m/z Theoretical"
+        description: Theoretical mass-to-charge ratio of the assigned molecule. Required if CONFIDENCE_LEVEL is 1, 2, or 3; absent if CONFIDENCE_LEVEL is 4.
+      MASS_ERROR_PPM:
+        range: float
+        required: false
+        title: "Mass Error (ppm)"
+        description: Mass error in ppm between observed and theoretical m/z. Required if MZ_THEORETICAL is present (typical range -50 to +50).
+      MOLECULAR_FORMULA:
+        range: string
+        required: false
+        title: "Molecular Formula"
+        description: Molecular formula in Hill notation (e.g., C47H81O13P). Required if CONFIDENCE_LEVEL is 1 or 2.
+      MOLECULAR_NAME:
+        range: string
+        required: true
+        title: "Molecular Name"
+        description: Free-text molecular name or "unknown"; must match the channel name in the OME-TIFF.
+      ADDUCT:
+        range: AdductEnum
+        required: false
+        title: "Adduct"
+        description: Ion adduct form for this assignment. Required if CONFIDENCE_LEVEL is 1, 2, or 3.
+      DATABASE_SOURCE:
+        range: DatabaseSourceEnum
+        required: false
+        title: "Database Source"
+        description: Reference database used for the molecular assignment. Required if CONFIDENCE_LEVEL is 1, 2, or 3.
+      DATABASE_ID:
+        range: string
+        required: false
+        title: "Database ID"
+        description: Identifier of the assigned molecule in the named database. Required if DATABASE_SOURCE is not NOT_APPLICABLE.
+      DATABASE_VERSION:
+        range: string
+        required: false
+        title: "Database Version"
+        description: Version/release of the named database (YYYY-MM preferred). Required if DATABASE_SOURCE is not NOT_APPLICABLE.
+      SOFTWARE_AND_VERSION:
+        range: string
+        required: true
+        title: "Software and Version"
+        description: Name and version of the annotation software (e.g., Metabascape 5.0, Metaspace 2024, Cardinal 3.4).
+      CONFIDENCE_LEVEL:
+        range: integer
+        required: true
+        title: "Confidence Level"
+        description: MSI molecular-identification confidence tier. 1 = identified; 2 = putatively annotated; 3 = compound class; 4 = unknown.
+        minimum_value: 1
+        maximum_value: 4
+      EVIDENCE_TYPE:
+        range: EvidenceTypeEnum
+        multivalued: true
+        required: true
+        title: "Evidence Type"
+        description: One or more evidence types supporting the annotation (pipe-separated in the TSV). At least one value required.
+    rules:
+      - description: "MZ_THEORETICAL, ADDUCT, and DATABASE_SOURCE are required when CONFIDENCE_LEVEL is 1, 2, or 3"
+        preconditions:
+          slot_conditions:
+            CONFIDENCE_LEVEL:
+              minimum_value: 1
+              maximum_value: 3
+        postconditions:
+          slot_conditions:
+            MZ_THEORETICAL:
+              required: true
+            ADDUCT:
+              required: true
+            DATABASE_SOURCE:
+              required: true
+      - description: "MOLECULAR_FORMULA is required when CONFIDENCE_LEVEL is 1 or 2"
+        preconditions:
+          slot_conditions:
+            CONFIDENCE_LEVEL:
+              minimum_value: 1
+              maximum_value: 2
+        postconditions:
+          slot_conditions:
+            MOLECULAR_FORMULA:
+              required: true
+      - description: "MZ_THEORETICAL must be absent when CONFIDENCE_LEVEL is 4 (unknown)"
+        preconditions:
+          slot_conditions:
+            CONFIDENCE_LEVEL:
+              minimum_value: 4
+        postconditions:
+          slot_conditions:
+            MZ_THEORETICAL:
+              value_presence: ABSENT
+      - description: "MASS_ERROR_PPM is required when MZ_THEORETICAL is present"
+        preconditions:
+          slot_conditions:
+            MZ_THEORETICAL:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            MASS_ERROR_PPM:
+              required: true
+      - description: "DATABASE_ID and DATABASE_VERSION are required when DATABASE_SOURCE is a real database (not NOT_APPLICABLE)"
+        preconditions:
+          slot_conditions:
+            DATABASE_SOURCE:
+              value_presence: PRESENT
+              none_of:
+                - equals_string: "NOT_APPLICABLE"
+        postconditions:
+          slot_conditions:
+            DATABASE_ID:
+              required: true
+            DATABASE_VERSION:
+              required: true
