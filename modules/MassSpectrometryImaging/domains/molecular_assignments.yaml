@@ -67,11 +67,11 @@ enums:
       "ACCURATE_MASS":
         description: Annotation supported by accurate mass match within tolerance
       "DATABASE_SPECTRAL_MATCH":
-        description: Matched to a spectral library entry in a public database
+        description: Match to a spectral library entry in a public spectral database (e.g., MassBank, mzCloud, Metaspace) - as distinct from MSMS_MATCH (an in-house/experimentally acquired reference spectrum)
       "ISOTOPE_PATTERN":
         description: Annotation supported by isotope pattern matching
       "MSMS_MATCH":
-        description: Annotation supported by MS/MS fragmentation spectrum match
+        description: Annotation supported by MS/MS fragmentation matched to an in-house or experimentally acquired reference spectrum (use DATABASE_SPECTRAL_MATCH for matches to a public spectral library)
       "REFERENCE_STANDARD":
         description: Confirmed by comparison to an authenticated in-house reference standard
       "SPATIAL_PATTERN_ONLY":
@@ -85,7 +85,7 @@ classes:
         range: string
         required: true
         title: "HTAN Data File ID"
-        description: Foreign key to the parent Level 3 OME-TIFF file ID (same value for all rows in a RecordSet). Follows the HTAN data file ID pattern (D-suffix).
+        description: Foreign key to the parent Level 3 OME-TIFF file ID (same value for all rows in a RecordSet). This is the sole provenance anchor for the RecordSet - biospecimen provenance is resolved indirectly via the parent Level 3 file's HTAN_PARENT_ID chain (mirrors the ChannelMetadata pattern in Multiplex Microscopy, which also has no direct HTAN_PARENT_ID). Follows the HTAN data file ID pattern (D-suffix).
         pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$"
       CHANNEL_INDEX:
         range: integer

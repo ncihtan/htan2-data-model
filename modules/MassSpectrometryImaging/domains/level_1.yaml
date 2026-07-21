@@ -240,11 +240,11 @@ classes:
         title: "Spectrum Type"
         description: Spectral representation type. Level 1 is always PROFILE (continuous/profile imzML); the range enum permits only PROFILE, so this is enforced at the schema level.
       MASS_RESOLVING_POWER:
-        range: integer
+        range: float
         required: true
         title: "Mass Resolving Power"
-        description: Mass resolving power (m/delta-m) of the instrument.
-        minimum_value: 0
+        description: Mass resolving power (m/delta-m) of the instrument. May be non-integer (e.g., 140000.5) and can exceed 1e6 on FTICR/Orbitrap.
+        minimum_value: 0.0
       MASS_TO_CHARGE_RESOLVING_POWER:
         range: float
         required: false
@@ -267,11 +267,11 @@ classes:
         description: Comma-separated list of calibrant m/z values used (e.g., "622.0290, 922.0098").
         pattern: "^[0-9]+(\\.[0-9]+)?(, ?[0-9]+(\\.[0-9]+)?)*$"
       TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE:
-        range: integer
+        range: float
         required: true
         title: "Time Since Acquisition Instrument Calibration Value"
-        description: Elapsed time since the last instrument mass calibration.
-        minimum_value: 0
+        description: Elapsed time since the last instrument mass calibration. May be fractional (e.g., 1.5 hours); pair with TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT.
+        minimum_value: 0.0
       TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT:
         range: TimeUnitEnum
         required: true
@@ -291,7 +291,8 @@ classes:
         range: string
         required: true
         title: "IBD File UUID"
-        description: UUID embedded in the .imzML XML linking to the paired .ibd binary file.
+        description: UUID embedded in the .imzML XML linking to the paired .ibd binary file. Accepts canonical hyphenated or 32-hex form, case-insensitive, with optional enclosing braces.
+        pattern: "^\\{?[0-9a-fA-F]{8}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{12}\\}?$"
       PREPARATION_MATRIX:
         range: PreparationMatrixEnum
         required: false

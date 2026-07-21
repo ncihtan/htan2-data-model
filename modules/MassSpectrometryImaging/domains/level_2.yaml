@@ -131,6 +131,7 @@ classes:
         required: true
         title: "Mass Accuracy (ppm)"
         description: Mean absolute mass error (ppm) measured against calibrant peaks.
+        minimum_value: 0.0
       PIXEL_COMPLETION_RATE:
         range: float
         required: true
