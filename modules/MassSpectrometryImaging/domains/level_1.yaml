@@ -1,0 +1,361 @@
+name: MassSpectrometryImagingLevel1
+id: https://w3id.org/htan/mass_spectrometry_imaging/level_1
+description: HTAN Mass Spectrometry Imaging Level 1 - Raw spectral data (continuous/profile imzML) acquisition annotations
+
+imports:
+  - linkml:types
+  - linkml:extensions
+  - ../../CoreFile/domains/core
+
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: htan
+
+enums:
+  MsIonizationTechniqueEnum:
+    permissible_values:
+      "DESI":
+        description: Desorption Electrospray Ionization - ambient spray ionization
+      "IR_MALDESI":
+        description: Infrared MALDESI - IR laser ablation coupled with electrospray
+      "MALDI":
+        description: Matrix-Assisted Laser Desorption/Ionization
+      "MALDI_2":
+        description: MALDI with secondary post-ionization laser for enhanced sensitivity (Bruker timsTOF Flex MALDI-2 mode)
+      "OTHER":
+        description: Ionization technique not listed; describe in PROTOCOL_LINK
+      "SIMS":
+        description: Secondary Ion Mass Spectrometry - ion beam sputtering for sub-micron resolution
+
+  MassAnalyzerTypeEnum:
+    permissible_values:
+      "FTICR":
+        description: Fourier-Transform Ion Cyclotron Resonance
+      "ION_TRAP":
+        description: Ion trap (linear or 3D)
+      "ORBITRAP":
+        description: Orbitrap electrostatic trap (Thermo)
+      "OTHER":
+        description: Analyser type not listed
+      "Q_TOF":
+        description: Quadrupole Time-of-Flight hybrid
+      "TOF":
+        description: Time-of-Flight mass analyser
+      "TRIPLE_QUADRUPOLE":
+        description: Triple-quadrupole (tandem MS)
+
+  MassAnalysisPolarityEnum:
+    permissible_values:
+      "BOTH":
+        description: Dataset contains both positive and negative mode acquisitions (HTAN extension - not present in HuBMAP)
+      "NEG":
+        description: Negative ionisation mode
+      "POS":
+        description: Positive ionisation mode
+
+  AnalyteClassEnum:
+    permissible_values:
+      "GLYCANS":
+        description: N-linked or O-linked glycans (e.g., PNGaseF-released)
+      "LIPIDS":
+        description: Lipids and fatty acids
+      "METABOLITES":
+        description: Small-molecule metabolites (non-lipid)
+      "NUCLEIC_ACIDS":
+        description: Oligonucleotides or nucleic acid species
+      "PEPTIDES":
+        description: Tryptic or enzymatically generated peptides
+      "PHARMACEUTICALS":
+        description: Drug compounds or their metabolites
+      "PROTEINS":
+        description: Intact or top-down proteins
+
+  SpectrumTypeEnum:
+    permissible_values:
+      "CENTROID":
+        description: Peak-picked spectrum; discrete m/z-intensity pairs. Required at Level 2.
+      "PROFILE":
+        description: Continuous spectrum; full peak shapes preserved. Required at Level 1.
+
+  MsScanModeEnum:
+    permissible_values:
+      "LINEAR":
+        description: Linear TOF mode; higher sensitivity for large molecules
+      "NOT_APPLICABLE":
+        description: Analyser does not use a TOF scan mode (e.g., Orbitrap, FTICR, Q-TOF hybrid)
+      "OTHER":
+        description: Scan mode not listed
+      "REFLECTRON":
+        description: Reflectron TOF mode; improved mass resolution via ion reflection
+
+  CalibrationTypeEnum:
+    permissible_values:
+      "EXTERNAL":
+        description: Calibration performed on a separate reference spot prior to acquisition
+      "INTERNAL":
+        description: Calibrant ions co-present in each spectrum during acquisition
+      "LOCK_MASS":
+        description: Real-time calibration correction using a reference ion of known m/z
+
+  TimeUnitEnum:
+    permissible_values:
+      "DAYS":
+        description: Time expressed in days
+      "HOURS":
+        description: Time expressed in hours
+
+  PreparationMatrixEnum:
+    permissible_values:
+      "9_AA":
+        description: 9-Aminoacridine; used for lipids and metabolites in negative mode
+      "CHCA":
+        description: alpha-Cyano-4-hydroxycinnamic acid; used for peptides and small proteins
+      "DAN":
+        description: 1,5-Diaminonaphthalene; used for lipids and metabolites in negative mode
+      "DHA":
+        description: 2,6-Dihydroxyacetophenone; used for oligonucleotides and acidic lipids
+      "DHB":
+        description: 2,5-Dihydroxybenzoic acid; used for lipids, oligosaccharides, and metabolites
+      "NOT_APPLICABLE":
+        description: Ionization modality does not use a matrix (DESI, SIMS, IR-MALDESI)
+      "OTHER":
+        description: Matrix compound not listed; specify in PROTOCOL_LINK
+      "SA":
+        description: Sinapinic acid; used for intact proteins >10 kDa
+
+  MatrixDepositionMethodEnum:
+    permissible_values:
+      "ELECTROSPRAY":
+        description: Electrospray-based matrix deposition
+      "NOT_APPLICABLE":
+        description: Ionization modality does not use a matrix
+      "PNEUMATIC_SPRAYER":
+        description: Automated pneumatic spray coater (e.g., HTX TM-Sprayer)
+      "ROBOTIC_SPOTTER":
+        description: Robotic micro-dispensing of discrete matrix spots
+      "SPRAY":
+        description: Pneumatic or manual aerosol spray application
+      "SUBLIMATION":
+        description: Thermal sublimation deposition for uniform crystal layer
+
+  PreAcquisitionTreatmentEnum:
+    permissible_values:
+      "NONE":
+        description: No enzymatic or chemical treatment applied before this acquisition run
+      "OTHER":
+        description: Treatment not listed; describe in PROTOCOL_LINK
+      "PNGASEF":
+        description: PNGase F enzyme applied to release N-linked glycans from glycoproteins
+      "PNGASEF_THEN_TRYPSIN":
+        description: Sequential PNGase F followed by trypsin digestion
+      "TRYPSIN":
+        description: Trypsin applied for in-tissue proteolytic digestion to generate peptides
+
+classes:
+  MassSpectrometryImagingLevel1:
+    is_a: CoreFileAttributes
+    description: Level 1 raw spectral data - continuous (profile) imzML acquisition annotations. The paired .ibd binary is an unannotated companion carrying only CoreFileAttributes.
+    attributes:
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the file; imzML (continuous/profile) at Level 1
+        pattern: "^imzML$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with .imzML
+        pattern: "^.+\\.imzML$"
+      MS_IONIZATION_TECHNIQUE:
+        range: MsIonizationTechniqueEnum
+        required: true
+        title: "MS Ionization Technique"
+        description: Ionization technique used. For timsTOF Flex, distinguish MALDI from MALDI_2.
+      MASS_ANALYZER_TYPE:
+        range: MassAnalyzerTypeEnum
+        required: true
+        title: "Mass Analyzer Type"
+        description: Type of mass analyzer.
+      MASS_ANALYSIS_POLARITY:
+        range: MassAnalysisPolarityEnum
+        required: true
+        title: "Mass Analysis Polarity"
+        description: Ion polarity mode for acquisition.
+      ANALYTE_CLASS:
+        range: AnalyteClassEnum
+        multivalued: true
+        required: true
+        title: "Analyte Class"
+        description: Molecular class(es) targeted by the acquisition. One or more values may be specified (e.g., a sequential metabolites/glycans/peptides workflow records each class).
+      IS_TARGETED:
+        range: boolean
+        required: true
+        title: "Is Targeted"
+        description: Whether acquisition targets a pre-specified set of molecules (true) or is untargeted (false).
+      ACQUISITION_INSTRUMENT_VENDOR:
+        range: string
+        required: true
+        title: "Acquisition Instrument Vendor"
+        description: Manufacturer of the mass spectrometer (e.g., Bruker, Waters, Thermo).
+      ACQUISITION_INSTRUMENT_MODEL:
+        range: string
+        required: true
+        title: "Acquisition Instrument Model"
+        description: Specific instrument model (e.g., timsTOF Flex, Q Exactive).
+      PIXEL_SIZE_X_UM:
+        range: float
+        required: true
+        title: "Pixel Size X (um)"
+        description: Pixel pitch in the X dimension (micrometers); corresponds to PSI-MS CV MS:1000042.
+        minimum_value: 0.0
+      PIXEL_SIZE_Y_UM:
+        range: float
+        required: true
+        title: "Pixel Size Y (um)"
+        description: Pixel pitch in the Y dimension (micrometers); corresponds to PSI-MS CV MS:1000043.
+        minimum_value: 0.0
+      MASS_TO_CHARGE_RANGE_LOW_VALUE:
+        range: float
+        required: true
+        title: "Mass-to-Charge Range Low Value"
+        description: Lower m/z boundary of the acquisition range.
+        minimum_value: 0.0
+      MASS_TO_CHARGE_RANGE_HIGH_VALUE:
+        range: float
+        required: true
+        title: "Mass-to-Charge Range High Value"
+        description: Upper m/z boundary of the acquisition range.
+        minimum_value: 0.0
+      ION_MOBILITY:
+        range: boolean
+        required: true
+        title: "Ion Mobility"
+        description: Whether ion mobility separation was applied during acquisition.
+      SPECTRUM_TYPE:
+        range: SpectrumTypeEnum
+        required: true
+        title: "Spectrum Type"
+        description: Spectral representation type. Must be PROFILE at Level 1.
+      MASS_RESOLVING_POWER:
+        range: integer
+        required: true
+        title: "Mass Resolving Power"
+        description: Mass resolving power (m/delta-m) of the instrument.
+        minimum_value: 0
+      MASS_TO_CHARGE_RESOLVING_POWER:
+        range: float
+        required: false
+        title: "Mass-to-Charge Resolving Power"
+        description: m/z value at which MASS_RESOLVING_POWER is specified. Recommended.
+      MS_SCAN_MODE:
+        range: MsScanModeEnum
+        required: true
+        title: "MS Scan Mode"
+        description: Scan mode of the mass analyser (TOF-specific; NOT_APPLICABLE for non-TOF analysers).
+      CALIBRATION_TYPE:
+        range: CalibrationTypeEnum
+        required: true
+        title: "Calibration Type"
+        description: Type of mass calibration applied.
+      CALIBRANT_MASSES:
+        range: string
+        required: true
+        title: "Calibrant Masses"
+        description: Comma-separated list of calibrant m/z values used (e.g., "622.0290, 922.0098").
+        pattern: "^[0-9]+(\\.[0-9]+)?(, ?[0-9]+(\\.[0-9]+)?)*$"
+      TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE:
+        range: integer
+        required: true
+        title: "Time Since Acquisition Instrument Calibration Value"
+        description: Elapsed time since the last instrument mass calibration.
+        minimum_value: 0
+      TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT:
+        range: TimeUnitEnum
+        required: true
+        title: "Time Since Acquisition Instrument Calibration Unit"
+        description: Unit for TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE.
+      SOFTWARE_AND_VERSION:
+        range: string
+        required: true
+        title: "Software and Version"
+        description: Name and version of the acquisition software used to collect data (e.g., flexImaging 7.0, timsControl 5.1). Re-specified at each level.
+      PROTOCOL_LINK:
+        range: string
+        required: false
+        title: "Protocol Link"
+        description: URL or DOI of the tissue preparation and matrix deposition protocol (e.g., protocols.io link). Recommended. Re-specified at each level.
+      IBD_FILE_UUID:
+        range: string
+        required: true
+        title: "IBD File UUID"
+        description: UUID embedded in the .imzML XML linking to the paired .ibd binary file.
+      PREPARATION_MATRIX:
+        range: PreparationMatrixEnum
+        required: false
+        title: "Preparation Matrix"
+        description: Matrix compound applied to the tissue section. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI); use OTHER for IR-MALDESI (ice/endogenous-water matrix). Set NOT_APPLICABLE for non-matrix modalities (DESI, SIMS).
+      MATRIX_DEPOSITION_METHOD:
+        range: MatrixDepositionMethodEnum
+        required: false
+        title: "Matrix Deposition Method"
+        description: Method used to apply the matrix to tissue. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI).
+      PREPARATION_INSTRUMENT_VENDOR:
+        range: string
+        required: false
+        title: "Preparation Instrument Vendor"
+        description: Manufacturer of the matrix deposition instrument. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI).
+      PREPARATION_INSTRUMENT_MODEL:
+        range: string
+        required: false
+        title: "Preparation Instrument Model"
+        description: Model of the matrix deposition instrument. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI).
+      ANALYTE_ACQUISITION_ORDER:
+        range: integer
+        required: false
+        title: "Analyte Acquisition Order"
+        description: 1-based order of this run within a sequential multi-analyte session on the same tissue section. Recommended; required when multiple analyte classes are acquired from one section.
+        minimum_value: 1
+      PRE_ACQUISITION_TREATMENT:
+        range: PreAcquisitionTreatmentEnum
+        required: false
+        title: "Pre-Acquisition Treatment"
+        description: Enzymatic or chemical treatment applied to the section prior to this acquisition run. Recommended.
+      PASSED_QC:
+        range: boolean
+        required: true
+        title: "Passed QC"
+        description: Whether the file passed post-acquisition quality control at Level 1.
+      QC_COMMENT:
+        range: string
+        required: false
+        title: "QC Comment"
+        description: Free-text quality-control comment for Level 1.
+    rules:
+      - description: "SPECTRUM_TYPE must be PROFILE at Level 1 (continuous/profile imzML)"
+        postconditions:
+          slot_conditions:
+            SPECTRUM_TYPE:
+              equals_string: "PROFILE"
+      - description: "Matrix preparation attributes are required for matrix-based (MALDI-family) ionization techniques (MALDI, MALDI_2, IR_MALDESI)"
+        preconditions:
+          slot_conditions:
+            MS_IONIZATION_TECHNIQUE:
+              any_of:
+                - equals_string: "MALDI"
+                - equals_string: "MALDI_2"
+                - equals_string: "IR_MALDESI"
+        postconditions:
+          slot_conditions:
+            PREPARATION_MATRIX:
+              required: true
+            MATRIX_DEPOSITION_METHOD:
+              required: true
+            PREPARATION_INSTRUMENT_VENDOR:
+              required: true
+            PREPARATION_INSTRUMENT_MODEL:
+              required: true

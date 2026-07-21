@@ -1,0 +1,1 @@
+"""HTAN MassSpectrometryImaging data model."""
