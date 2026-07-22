@@ -11,81 +11,7 @@ prefixes:
 default_prefix: htan
 
 enums:
-  # Single-cell / single-nucleus preparation enums (shared concepts with scRNA-seq,
-  # defined locally to keep this assay module self-contained)
-  DissociationMethodEnum:
-    permissible_values:
-      "Enzymatic":
-        description: Enzymatic dissociation method
-      "Mechanical":
-        description: Mechanical dissociation method
-      "Other":
-        description: Other dissociation method
-      "Unknown":
-        description: Unknown dissociation method
-
-  LibraryConstructionMethodEnum:
-    permissible_values:
-      "10X Genomics":
-        description: 10X Genomics library construction method
-      "Drop-seq":
-        description: Drop-seq library construction method
-      "Fluidigm C1":
-        description: Fluidigm C1 library construction method
-      "InDrop":
-        description: InDrop library construction method
-      "Other":
-        description: Other library construction method
-      "Smart-seq":
-        description: Smart-seq library construction method
-      "Unknown":
-        description: Unknown library construction method
-
-  NucleicAcidSourceEnum:
-    permissible_values:
-      "DNA":
-        description: DNA nucleic acid source
-      "RNA":
-        description: RNA nucleic acid source
-      "Unknown":
-        description: Unknown nucleic acid source
-
-  ReverseTranscriptionPrimerEnum:
-    permissible_values:
-      "Oligo-dT":
-        description: Oligo-dT reverse transcription primer
-      "Random Hexamer":
-        description: Random hexamer reverse transcription primer
-      "Unknown":
-        description: Unknown reverse transcription primer
-
-  SingleCellIsolationMethodEnum:
-    permissible_values:
-      "Cell Sorting":
-        description: Cell sorting isolation method
-      "Droplet-based":
-        description: Droplet-based isolation method
-      "Manual Picking":
-        description: Manual picking isolation method
-      "Microfluidics":
-        description: Microfluidics isolation method
-      "Other":
-        description: Other isolation method
-      "Unknown":
-        description: Unknown isolation method
-
-  SpikeInEnum:
-    permissible_values:
-      "ERCC":
-        description: ERCC spike-in
-      "None":
-        description: No spike-in
-      "Other":
-        description: Other spike-in
-      "Unknown":
-        description: Unknown spike-in
-
-  # scATAC-seq-specific enums
+  # scATAC-seq-specific enums (shared single-cell prep enums are imported from the Sequencing base)
   SequencingReadEnum:
     description: Content type of a single-cell ATAC-seq sequencing read
     permissible_values:
@@ -132,7 +58,7 @@ enums:
 
 classes:
   scATACLevel1:
-    is_a: BaseSequencingLevel1Attributes
+    is_a: SingleCellLevel1Attributes
     description: scATAC-seq Level 1 data - Raw sequencing files and metadata
     attributes:
       # File format restriction for Level 1 raw sequencing files
@@ -149,32 +75,8 @@ classes:
         description: Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz)
         pattern: "^.+\\.(fastq|fq)(\\.gz)?$"
 
-      # Single-cell / single-nucleus preparation attributes (shared with scRNA-seq)
-      SINGLE_CELL_ISOLATION_METHOD:
-        range: SingleCellIsolationMethodEnum
-        required: true
-        title: "Single Cell Isolation Method"
-        description: Method used to isolate single cells
-      DISSOCIATION_METHOD:
-        range: DissociationMethodEnum
-        required: true
-        title: "Dissociation Method"
-        description: Method used to dissociate tissue into single cells
-      CRYOPRESERVED_CELLS_IN_SAMPLE:
-        range: boolean
-        required: false
-        title: "Cryopreserved Cells in Sample"
-        description: Whether cells were cryopreserved in the sample
-      NUCLEIC_ACID_SOURCE:
-        range: NucleicAcidSourceEnum
-        required: true
-        title: "Nucleic Acid Source"
-        description: Type of nucleic acid used for sequencing
-      LIBRARY_CONSTRUCTION_METHOD:
-        range: LibraryConstructionMethodEnum
-        required: true
-        title: "Library Construction Method"
-        description: Method used to construct the sequencing library
+      # RNA-workflow attributes (enums shared via the Sequencing base); retained per the scATAC-seq
+      # RFC. Their biological applicability to ATAC is under review with the community.
       REVERSE_TRANSCRIPTION_PRIMER:
         range: ReverseTranscriptionPrimerEnum
         required: true

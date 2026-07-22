@@ -16,9 +16,10 @@ LEVEL3_4 = "modules/scATAC-seq/domains/level_3_4.yaml"
 
 LEVEL_CLASSES = ["scATACLevel1", "scATACLevel2", "scATACLevel3and4"]
 
-# Level-specific base class expectations (CLAUDE.md inheritance rules).
+# Level-specific base class expectations. Level 1 inherits the shared single-cell
+# layer (SingleCellLevel1Attributes), which in turn is_a BaseSequencingLevel1Attributes.
 EXPECTED_BASE = {
-    "scATACLevel1": "BaseSequencingLevel1Attributes",
+    "scATACLevel1": "SingleCellLevel1Attributes",
     "scATACLevel2": "BaseSequencingLevel2Attributes",
     "scATACLevel3and4": "BaseSequencingLevel3Attributes",
 }
@@ -109,6 +110,15 @@ class TestInheritance:
     def test_level_base_class(self, sv, cls, base):
         assert cls in sv.all_classes()
         assert sv.get_class(cls).is_a == base, f"{cls} should inherit {base}"
+
+    def test_single_cell_layer_chains_to_sequencing(self, sv):
+        """The shared single-cell layer must sit under the sequencing Level 1 base."""
+        sc = sv.get_class("SingleCellLevel1Attributes")
+        assert sc is not None
+        assert sc.is_a == "BaseSequencingLevel1Attributes"
+
+    def test_anndata_mixin_applied(self, sv):
+        assert "AnnDataComplianceMixin" in (sv.get_class("scATACLevel3and4").mixins or [])
 
     @pytest.mark.parametrize("cls", LEVEL_CLASSES)
     def test_levels_inherit_core_identifiers(self, sv, cls):
@@ -210,7 +220,8 @@ class TestPatterns:
         assert not fn.match("matrix.txt")
 
     def test_anndata_schema_version_pattern(self, sv):
-        slot = sv.get_class("scATACLevel3and4").attributes["ANNDATA_SCHEMA_VERSION"]
+        # Contributed by AnnDataComplianceMixin, so read the induced (merged) slot.
+        slot = sv.induced_slot("ANNDATA_SCHEMA_VERSION", "scATACLevel3and4")
         assert slot.pattern == "^0\\.1$"
 
 

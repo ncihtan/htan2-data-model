@@ -34,6 +34,8 @@ enums:
 classes:
   scATACLevel3and4:
     is_a: BaseSequencingLevel3Attributes
+    mixins:
+      - AnnDataComplianceMixin
     description: scATAC-seq Level 3 and 4 - Peak-by-cell matrices, fragment files, and chromatin accessibility metrics
     attributes:
       # File format restriction for Level 3/4 files
@@ -199,16 +201,4 @@ classes:
         title: "Cell Total"
         description: Number of sequenced cells
         minimum_value: 0
-
-      # AnnData 0.1 schema compliance (shared with scRNA-seq)
-      ANNDATA_SCHEMA_VERSION:
-        range: string
-        required: true
-        title: "AnnData Schema Version"
-        description: Version of AnnData schema (must be 0.1 for CellxGene compliance)
-        pattern: "^0\\.1$"
-      ANNDATA_STRUCTURE_VALIDATED:
-        range: boolean
-        required: true
-        title: "AnnData Structure Validated"
-        description: Whether the h5ad file structure has been validated against AnnData 0.1 schema
+      # AnnData 0.1 / CellxGene compliance is contributed by AnnDataComplianceMixin (Sequencing base module)
