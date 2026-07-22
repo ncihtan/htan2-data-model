@@ -69,6 +69,8 @@ enums:
 classes:
   scRNALevel3and4:
     is_a: BaseSequencingLevel3Attributes
+    mixins:
+      - AnnDataComplianceMixin
     description: Single-cell RNA-seq Level 3 and 4 - Gene expression files and cell relationships
     attributes:
       # File format validation - only h5ad files accepted
@@ -131,16 +133,5 @@ classes:
         title: "Cell Total"
         description: Number of sequenced cells. Applies to raw counts matrix only
       
-      # AnnData 0.1 schema compliance
-      ANNDATA_SCHEMA_VERSION:
-        range: string
-        required: true
-        title: "AnnData Schema Version"
-        description: Version of AnnData schema (must be 0.1 for CellxGene compliance)
-        pattern: "^0\\.1$"
-      ANNDATA_STRUCTURE_VALIDATED:
-        range: boolean
-        required: true
-        title: "AnnData Structure Validated"
-        description: Whether the h5ad file structure has been validated against AnnData 0.1 schema
+      # AnnData 0.1 / CellxGene compliance is contributed by AnnDataComplianceMixin (Sequencing base module)
 

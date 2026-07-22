@@ -1,5 +1,5 @@
 # Auto generated from wes.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-21T19:02:18
+# Generation date: 2026-07-22T16:08:41
 # Schema: WES
 #
 # id: https://w3id.org/htan/wes
@@ -107,6 +107,10 @@ class BaseSequencingLevel3AttributesHTANDATAFILEID(BaseSequencingLevel2Attribute
 
 
 class BulkWESLevel3HTANDATAFILEID(BaseSequencingLevel3AttributesHTANDATAFILEID):
+    pass
+
+
+class SingleCellLevel1AttributesHTANDATAFILEID(BaseSequencingLevel1AttributesHTANDATAFILEID):
     pass
 
 
@@ -768,6 +772,93 @@ class BulkWESLevel3(BaseSequencingLevel3Attributes):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
+class SingleCellLevel1Attributes(BaseSequencingLevel1Attributes):
+    """
+    Shared upstream single-cell / single-nucleus preparation attributes for single-cell sequencing Level 1
+    (tissue-to-cell/nucleus steps common to scRNA-seq and scATAC-seq)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["SingleCellLevel1Attributes"]
+    class_class_curie: ClassVar[str] = "htan:SingleCellLevel1Attributes"
+    class_name: ClassVar[str] = "SingleCellLevel1Attributes"
+    class_model_uri: ClassVar[URIRef] = HTAN.SingleCellLevel1Attributes
+
+    HTAN_DATA_FILE_ID: Union[str, SingleCellLevel1AttributesHTANDATAFILEID] = None
+    FILENAME: str = None
+    FILE_FORMAT: str = None
+    HTAN_PARENT_ID: Union[str, List[str]] = None
+    LIBRARY_LAYOUT: Union[str, "LibraryLayoutEnum"] = None
+    SEQUENCING_PLATFORM: Union[str, "SequencingPlatformEnum"] = None
+    SINGLE_CELL_ISOLATION_METHOD: Union[str, "SingleCellIsolationMethodEnum"] = None
+    DISSOCIATION_METHOD: Union[str, "DissociationMethodEnum"] = None
+    NUCLEIC_ACID_SOURCE: Union[str, "NucleicAcidSourceEnum"] = None
+    LIBRARY_CONSTRUCTION_METHOD: Union[str, "LibraryConstructionMethodEnum"] = None
+    CRYOPRESERVED_CELLS_IN_SAMPLE: Optional[Union[bool, Bool]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.HTAN_DATA_FILE_ID):
+            self.MissingRequiredField("HTAN_DATA_FILE_ID")
+        if not isinstance(self.HTAN_DATA_FILE_ID, SingleCellLevel1AttributesHTANDATAFILEID):
+            self.HTAN_DATA_FILE_ID = SingleCellLevel1AttributesHTANDATAFILEID(self.HTAN_DATA_FILE_ID)
+
+        if self._is_empty(self.SINGLE_CELL_ISOLATION_METHOD):
+            self.MissingRequiredField("SINGLE_CELL_ISOLATION_METHOD")
+        if not isinstance(self.SINGLE_CELL_ISOLATION_METHOD, SingleCellIsolationMethodEnum):
+            self.SINGLE_CELL_ISOLATION_METHOD = SingleCellIsolationMethodEnum(self.SINGLE_CELL_ISOLATION_METHOD)
+
+        if self._is_empty(self.DISSOCIATION_METHOD):
+            self.MissingRequiredField("DISSOCIATION_METHOD")
+        if not isinstance(self.DISSOCIATION_METHOD, DissociationMethodEnum):
+            self.DISSOCIATION_METHOD = DissociationMethodEnum(self.DISSOCIATION_METHOD)
+
+        if self._is_empty(self.NUCLEIC_ACID_SOURCE):
+            self.MissingRequiredField("NUCLEIC_ACID_SOURCE")
+        if not isinstance(self.NUCLEIC_ACID_SOURCE, NucleicAcidSourceEnum):
+            self.NUCLEIC_ACID_SOURCE = NucleicAcidSourceEnum(self.NUCLEIC_ACID_SOURCE)
+
+        if self._is_empty(self.LIBRARY_CONSTRUCTION_METHOD):
+            self.MissingRequiredField("LIBRARY_CONSTRUCTION_METHOD")
+        if not isinstance(self.LIBRARY_CONSTRUCTION_METHOD, LibraryConstructionMethodEnum):
+            self.LIBRARY_CONSTRUCTION_METHOD = LibraryConstructionMethodEnum(self.LIBRARY_CONSTRUCTION_METHOD)
+
+        if self.CRYOPRESERVED_CELLS_IN_SAMPLE is not None and not isinstance(self.CRYOPRESERVED_CELLS_IN_SAMPLE, Bool):
+            self.CRYOPRESERVED_CELLS_IN_SAMPLE = Bool(self.CRYOPRESERVED_CELLS_IN_SAMPLE)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AnnDataComplianceMixin(YAMLRoot):
+    """
+    AnnData 0.1 / CellxGene compliance attributes for single-cell h5ad outputs, shared across single-cell modalities
+    that emit h5ad matrices
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HTAN["AnnDataComplianceMixin"]
+    class_class_curie: ClassVar[str] = "htan:AnnDataComplianceMixin"
+    class_name: ClassVar[str] = "AnnDataComplianceMixin"
+    class_model_uri: ClassVar[URIRef] = HTAN.AnnDataComplianceMixin
+
+    ANNDATA_SCHEMA_VERSION: str = None
+    ANNDATA_STRUCTURE_VALIDATED: Union[bool, Bool] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.ANNDATA_SCHEMA_VERSION):
+            self.MissingRequiredField("ANNDATA_SCHEMA_VERSION")
+        if not isinstance(self.ANNDATA_SCHEMA_VERSION, str):
+            self.ANNDATA_SCHEMA_VERSION = str(self.ANNDATA_SCHEMA_VERSION)
+
+        if self._is_empty(self.ANNDATA_STRUCTURE_VALIDATED):
+            self.MissingRequiredField("ANNDATA_STRUCTURE_VALIDATED")
+        if not isinstance(self.ANNDATA_STRUCTURE_VALIDATED, Bool):
+            self.ANNDATA_STRUCTURE_VALIDATED = Bool(self.ANNDATA_STRUCTURE_VALIDATED)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 class LibrarySelectionMethodEnum(EnumDefinitionImpl):
 
@@ -928,6 +1019,151 @@ class GenomicReferenceEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="GRCh38.p14",
                 description="GRCh38 patch release 14"))
+
+class DissociationMethodEnum(EnumDefinitionImpl):
+
+    Enzymatic = PermissibleValue(
+        text="Enzymatic",
+        description="Enzymatic dissociation method")
+    Mechanical = PermissibleValue(
+        text="Mechanical",
+        description="Mechanical dissociation method")
+    Other = PermissibleValue(
+        text="Other",
+        description="Other dissociation method")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Unknown dissociation method")
+
+    _defn = EnumDefinition(
+        name="DissociationMethodEnum",
+    )
+
+class LibraryConstructionMethodEnum(EnumDefinitionImpl):
+
+    InDrop = PermissibleValue(
+        text="InDrop",
+        description="InDrop library construction method")
+    Other = PermissibleValue(
+        text="Other",
+        description="Other library construction method")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Unknown library construction method")
+
+    _defn = EnumDefinition(
+        name="LibraryConstructionMethodEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "10X Genomics",
+            PermissibleValue(
+                text="10X Genomics",
+                description="10X Genomics library construction method"))
+        setattr(cls, "Drop-seq",
+            PermissibleValue(
+                text="Drop-seq",
+                description="Drop-seq library construction method"))
+        setattr(cls, "Fluidigm C1",
+            PermissibleValue(
+                text="Fluidigm C1",
+                description="Fluidigm C1 library construction method"))
+        setattr(cls, "Smart-seq",
+            PermissibleValue(
+                text="Smart-seq",
+                description="Smart-seq library construction method"))
+
+class NucleicAcidSourceEnum(EnumDefinitionImpl):
+
+    DNA = PermissibleValue(
+        text="DNA",
+        description="DNA nucleic acid source")
+    RNA = PermissibleValue(
+        text="RNA",
+        description="RNA nucleic acid source")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Unknown nucleic acid source")
+
+    _defn = EnumDefinition(
+        name="NucleicAcidSourceEnum",
+    )
+
+class SingleCellIsolationMethodEnum(EnumDefinitionImpl):
+
+    Microfluidics = PermissibleValue(
+        text="Microfluidics",
+        description="Microfluidics isolation method")
+    Other = PermissibleValue(
+        text="Other",
+        description="Other isolation method")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Unknown isolation method")
+
+    _defn = EnumDefinition(
+        name="SingleCellIsolationMethodEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Cell Sorting",
+            PermissibleValue(
+                text="Cell Sorting",
+                description="Cell sorting isolation method"))
+        setattr(cls, "Droplet-based",
+            PermissibleValue(
+                text="Droplet-based",
+                description="Droplet-based isolation method"))
+        setattr(cls, "Manual Picking",
+            PermissibleValue(
+                text="Manual Picking",
+                description="Manual picking isolation method"))
+
+class ReverseTranscriptionPrimerEnum(EnumDefinitionImpl):
+
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Unknown reverse transcription primer")
+
+    _defn = EnumDefinition(
+        name="ReverseTranscriptionPrimerEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Oligo-dT",
+            PermissibleValue(
+                text="Oligo-dT",
+                description="Oligo-dT reverse transcription primer"))
+        setattr(cls, "Random Hexamer",
+            PermissibleValue(
+                text="Random Hexamer",
+                description="Random hexamer reverse transcription primer"))
+
+class SpikeInEnum(EnumDefinitionImpl):
+
+    ERCC = PermissibleValue(
+        text="ERCC",
+        description="ERCC spike-in")
+    Other = PermissibleValue(
+        text="Other",
+        description="Other spike-in")
+    Unknown = PermissibleValue(
+        text="Unknown",
+        description="Unknown spike-in")
+
+    _defn = EnumDefinition(
+        name="SpikeInEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "None",
+            PermissibleValue(
+                text="None",
+                description="No spike-in"))
 
 # Slots
 class slots:
@@ -1222,3 +1458,25 @@ slots.baseSequencingLevel2Attributes__WORKFLOW_VERSION = Slot(uri=HTAN.WORKFLOW_
 
 slots.baseSequencingLevel2Attributes__WORKFLOW_LINK = Slot(uri=HTAN.WORKFLOW_LINK, name="baseSequencingLevel2Attributes__WORKFLOW_LINK", curie=HTAN.curie('WORKFLOW_LINK'),
                    model_uri=HTAN.baseSequencingLevel2Attributes__WORKFLOW_LINK, domain=None, range=str)
+
+slots.singleCellLevel1Attributes__SINGLE_CELL_ISOLATION_METHOD = Slot(uri=HTAN.SINGLE_CELL_ISOLATION_METHOD, name="singleCellLevel1Attributes__SINGLE_CELL_ISOLATION_METHOD", curie=HTAN.curie('SINGLE_CELL_ISOLATION_METHOD'),
+                   model_uri=HTAN.singleCellLevel1Attributes__SINGLE_CELL_ISOLATION_METHOD, domain=None, range=Union[str, "SingleCellIsolationMethodEnum"])
+
+slots.singleCellLevel1Attributes__DISSOCIATION_METHOD = Slot(uri=HTAN.DISSOCIATION_METHOD, name="singleCellLevel1Attributes__DISSOCIATION_METHOD", curie=HTAN.curie('DISSOCIATION_METHOD'),
+                   model_uri=HTAN.singleCellLevel1Attributes__DISSOCIATION_METHOD, domain=None, range=Union[str, "DissociationMethodEnum"])
+
+slots.singleCellLevel1Attributes__CRYOPRESERVED_CELLS_IN_SAMPLE = Slot(uri=HTAN.CRYOPRESERVED_CELLS_IN_SAMPLE, name="singleCellLevel1Attributes__CRYOPRESERVED_CELLS_IN_SAMPLE", curie=HTAN.curie('CRYOPRESERVED_CELLS_IN_SAMPLE'),
+                   model_uri=HTAN.singleCellLevel1Attributes__CRYOPRESERVED_CELLS_IN_SAMPLE, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.singleCellLevel1Attributes__NUCLEIC_ACID_SOURCE = Slot(uri=HTAN.NUCLEIC_ACID_SOURCE, name="singleCellLevel1Attributes__NUCLEIC_ACID_SOURCE", curie=HTAN.curie('NUCLEIC_ACID_SOURCE'),
+                   model_uri=HTAN.singleCellLevel1Attributes__NUCLEIC_ACID_SOURCE, domain=None, range=Union[str, "NucleicAcidSourceEnum"])
+
+slots.singleCellLevel1Attributes__LIBRARY_CONSTRUCTION_METHOD = Slot(uri=HTAN.LIBRARY_CONSTRUCTION_METHOD, name="singleCellLevel1Attributes__LIBRARY_CONSTRUCTION_METHOD", curie=HTAN.curie('LIBRARY_CONSTRUCTION_METHOD'),
+                   model_uri=HTAN.singleCellLevel1Attributes__LIBRARY_CONSTRUCTION_METHOD, domain=None, range=Union[str, "LibraryConstructionMethodEnum"])
+
+slots.annDataComplianceMixin__ANNDATA_SCHEMA_VERSION = Slot(uri=HTAN.ANNDATA_SCHEMA_VERSION, name="annDataComplianceMixin__ANNDATA_SCHEMA_VERSION", curie=HTAN.curie('ANNDATA_SCHEMA_VERSION'),
+                   model_uri=HTAN.annDataComplianceMixin__ANNDATA_SCHEMA_VERSION, domain=None, range=str,
+                   pattern=re.compile(r'^0\.1$'))
+
+slots.annDataComplianceMixin__ANNDATA_STRUCTURE_VALIDATED = Slot(uri=HTAN.ANNDATA_STRUCTURE_VALIDATED, name="annDataComplianceMixin__ANNDATA_STRUCTURE_VALIDATED", curie=HTAN.curie('ANNDATA_STRUCTURE_VALIDATED'),
+                   model_uri=HTAN.annDataComplianceMixin__ANNDATA_STRUCTURE_VALIDATED, domain=None, range=Union[bool, Bool])
