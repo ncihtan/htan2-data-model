@@ -315,10 +315,17 @@ _GENERATED_NAME = {
 
 @pytest.fixture(scope="module")
 def dm():
-    """The generated dataclass module (auto-generated on the branch by CI)."""
-    from htan_scatac_seq.datamodel import scatac_seq as module
+    """The generated dataclass module (auto-generated on the branch by CI).
 
-    return module
+    Skipped cleanly (rather than erroring) if the generated classes are absent,
+    e.g. a fresh checkout before ``make modules-gen``. The import lives in the
+    fixture, so only the instance tests below depend on it; the schema-level
+    tests run regardless.
+    """
+    return pytest.importorskip(
+        "htan_scatac_seq.datamodel.scatac_seq",
+        reason="generated dataclasses not present; run `make modules-gen`",
+    )
 
 
 class TestInstances:
