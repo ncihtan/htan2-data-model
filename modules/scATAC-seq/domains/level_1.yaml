@@ -75,16 +75,17 @@ classes:
         description: Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz)
         pattern: "^.+\\.(fastq|fq)(\\.gz)?$"
 
-      # RNA-workflow attributes (enums shared via the Sequencing base); retained per the scATAC-seq
-      # RFC. Their biological applicability to ATAC is under review with the community.
+      # RNA-workflow attributes (enums shared via the Sequencing base). Optional for
+      # scATAC-seq: ATAC has no reverse-transcription step and no standard spike-in, so
+      # these apply only to multiome / hybrid protocols (per review, ykatariy).
       REVERSE_TRANSCRIPTION_PRIMER:
         range: ReverseTranscriptionPrimerEnum
-        required: true
+        required: false
         title: "Reverse Transcription Primer"
         description: Primer used for reverse transcription
       SPIKE_IN:
         range: SpikeInEnum
-        required: true
+        required: false
         title: "Spike-in"
         description: Type of spike-in used, if any
 

@@ -147,9 +147,9 @@ classes:
         minimum_value: 0.0
       MEDIAN_GENES_PER_CELL:
         range: float
-        required: true
+        required: false
         title: "Median Number of Genes per Cell"
-        description: Median number of genes with detected gene expression per cell across all cells in the dataset.
+        description: Median number of genes with detected gene expression per cell across all cells in the dataset. Optional - typically only available for multiome; regular scATAC-seq does not report it (per review, ykatariy).
         minimum_value: 0.0
       NUMBER_OF_CELLS:
         range: integer
@@ -196,9 +196,9 @@ classes:
         minimum_value: 0
       MITOCHONDRIAL_READ_PAIRS:
         range: integer
-        required: true
+        required: false
         title: "Mitochondrial Read Pairs"
-        description: Number of read-pairs mapping to mitochondria and non-nuclear contigs
+        description: Number of read-pairs mapping to mitochondria and non-nuclear contigs. Optional - sparsely reported for snATAC submissions (per review, ykatariy).
         minimum_value: 0
       PASSED_FILTERS:
         range: integer
