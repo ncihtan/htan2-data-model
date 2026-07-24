@@ -1,0 +1,162 @@
+name: scATACLevel1
+id: https://w3id.org/htan/scatac_seq_level1
+description: HTAN scATAC-seq Level 1 Data Model - Raw sequencing files and metadata
+imports:
+  - linkml:types
+  - ../../Sequencing/domains/sequencing
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: htan
+
+enums:
+  # scATAC-seq-specific enums (shared single-cell prep enums are imported from the Sequencing base)
+  SequencingReadEnum:
+    description: Content type of a single-cell ATAC-seq sequencing read
+    permissible_values:
+      "Cell Barcode":
+        description: Sequencing read containing the cellular barcode sequence used to identify individual nuclei or cells
+      "Cell Barcode and DNA Insert":
+        description: Sequencing read containing both the cellular barcode sequence and the captured DNA insert sequence
+      "DNA Insert":
+        description: Sequencing read containing the genomic DNA fragment captured during the transposition reaction
+      "Sample Index":
+        description: Sequencing read containing the sample index (i7/i5 index) sequence used for sample identification and multiplexing
+      "Sample Index and DNA Insert":
+        description: Sequencing read containing both the sample index sequence and the captured genomic DNA insert sequence
+
+  SingleNucleusBufferEnum:
+    description: Buffer used for single-nucleus preparation prior to transposition
+    permissible_values:
+      "10x":
+        description: Single-nucleus preparation buffer used in the 10x Genomics single-cell ATAC-seq or multiome workflow
+      "NIB":
+        description: Nuclei isolation buffer used for preparation of isolated nuclei prior to single-cell chromatin accessibility profiling
+      "Omni":
+        description: Omni assay buffer used for single-nucleus chromatin accessibility profiling workflows
+      "TST":
+        description: TST buffer used for single-nucleus preparation and transposition-based chromatin accessibility assays
+
+  TranspositionReactionEnum:
+    description: Transposase chemistry used in the transposition reaction
+    permissible_values:
+      "Diagenode-loaded Apex-Bio":
+        description: Transposition reaction performed using Diagenode-loaded Tn5 transposase supplied by Apex-Bio
+      "Diagenode-unloaded Apex-Bio":
+        description: Transposition reaction performed using Diagenode Tn5 transposase with user-loaded adapters supplied by Apex-Bio
+      "EZ-Tn5":
+        description: Transposition reaction performed using EZ-Tn5 transposase-based chemistry
+      "In-House":
+        description: Custom transposition reaction developed or performed using an internally established protocol
+      "Nextera Tn5":
+        description: Transposition reaction performed using Nextera Tn5 transposase chemistry from Illumina
+      "Tn5":
+        description: Transposition reaction performed using Tn5 transposase-based chromatin accessibility assay chemistry
+      "Tn5-059":
+        description: Transposition reaction performed using Tn5-059 transposase variant chemistry
+
+classes:
+  scATACLevel1:
+    is_a: SingleCellLevel1Attributes
+    description: scATAC-seq Level 1 data - Raw sequencing files and metadata
+    attributes:
+      # File format restriction for Level 1 raw sequencing files
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the raw sequencing file (fastq or fastq.gz)
+        pattern: "^(fastq|fastq\\.gz)$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz)
+        pattern: "^.+\\.(fastq|fq)(\\.gz)?$"
+
+      # RNA-workflow attributes (enums shared via the Sequencing base). Optional for
+      # scATAC-seq: ATAC has no reverse-transcription step and no standard spike-in, so
+      # these apply only to multiome / hybrid protocols (per review, ykatariy).
+      REVERSE_TRANSCRIPTION_PRIMER:
+        range: ReverseTranscriptionPrimerEnum
+        required: false
+        title: "Reverse Transcription Primer"
+        description: Primer used for reverse transcription
+      SPIKE_IN:
+        range: SpikeInEnum
+        required: false
+        title: "Spike-in"
+        description: Type of spike-in used, if any
+
+      # scATAC-seq-specific attributes
+      NUCLEUS_IDENTIFIER:
+        range: string
+        required: true
+        title: "Nucleus Identifier"
+        description: Unique nuclei barcode; added at transposition step. Determines which nucleus the reads originated from
+      NUCLEI_BARCODE:
+        range: string
+        required: false
+        title: "Nuclei Barcode"
+        description: Nuclei barcode sequence used to demultiplex reads to individual nuclei
+      NUCLEI_BARCODE_READ:
+        range: string
+        required: true
+        title: "Nuclei Barcode Read"
+        description: Sequencing read that contains the nuclei barcode sequence
+      NUCLEI_BARCODE_LENGTH:
+        range: integer
+        required: true
+        title: "Nuclei Barcode Length"
+        description: Length, in base pairs, of the nuclei barcode sequence
+        minimum_value: 1
+      SCATAC_SEQ_READ_1:
+        range: SequencingReadEnum
+        required: true
+        title: "scATAC-seq Read 1"
+        description: Read 1 content description
+      SCATAC_SEQ_READ_2:
+        range: SequencingReadEnum
+        required: true
+        title: "scATAC-seq Read 2"
+        description: Read 2 content description
+      SCATAC_SEQ_READ_3:
+        range: SequencingReadEnum
+        required: false
+        title: "scATAC-seq Read 3"
+        description: Read 3 content description
+      TOTAL_NUMBER_OF_PASSING_NUCLEI:
+        range: integer
+        required: true
+        title: "Total Number of Passing Nuclei"
+        description: Number of nuclei sequenced
+        minimum_value: 0
+      SINGLE_NUCLEUS_BUFFER:
+        range: SingleNucleusBufferEnum
+        required: true
+        title: "Single Nucleus Buffer"
+        description: Nuclei isolation buffer
+      TRANSPOSITION_REACTION:
+        range: TranspositionReactionEnum
+        required: true
+        title: "Transposition Reaction"
+        description: Name of the transposase, transposon sequences
+      TOTAL_READS:
+        range: integer
+        required: true
+        title: "Total Reads"
+        description: Total number of reads collected from samtools.
+        minimum_value: 0
+      MAP_Q_30:
+        range: float
+        required: true
+        title: "MapQ30"
+        description: Number of reads with Quality >= 30.
+        minimum_value: 0.0
+      TOTAL_READ_PAIRS:
+        range: integer
+        required: true
+        title: "Total Read Pairs"
+        description: Total read-pairs
+        minimum_value: 0
