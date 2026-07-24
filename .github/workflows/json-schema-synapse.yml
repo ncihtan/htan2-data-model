@@ -160,7 +160,26 @@ jobs:
           "modules/scRNA-seq/domains/level_3_4.yaml" \
           --class-name "scRNALevel3and4" \
           --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.scRNALevel3and4-${{ steps.version.outputs.version }}-schema.json"
-        
+
+        # scATAC-seq Level 1
+        echo "Generating scATAC-seq schemas..."
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/scATAC-seq/domains/level_1.yaml" \
+          --class-name "scATACLevel1" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.scATACLevel1-${{ steps.version.outputs.version }}-schema.json"
+
+        # scATAC-seq Level 2
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/scATAC-seq/domains/level_2.yaml" \
+          --class-name "scATACLevel2" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.scATACLevel2-${{ steps.version.outputs.version }}-schema.json"
+
+        # scATAC-seq Level 3/4
+        poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
+          "modules/scATAC-seq/domains/level_3_4.yaml" \
+          --class-name "scATACLevel3and4" \
+          --output "JSON_Schemas/${{ steps.version.outputs.version }}/HTAN.scATACLevel3and4-${{ steps.version.outputs.version }}-schema.json"
+
         # SpatialOmics Level 1
         echo "Generating SpatialOmics schemas..."
         poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
@@ -367,7 +386,12 @@ jobs:
         - scRNALevel1 Schema
         - scRNALevel2 Schema
         - scRNALevel3and4 Schema
-        
+
+        **scATAC-seq Module:**
+        - scATACLevel1 Schema
+        - scATACLevel2 Schema
+        - scATACLevel3and4 Schema
+
         **SpatialOmics Module:**
         - SpatialLevel1 Schema
         - SpatialLevel3 Schema
