@@ -1,0 +1,298 @@
+{
+  "$id": "https://w3id.org/htan/scatac_seq_level2",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "scATAC-seq Level 2 data - Aligned data and alignment QC metrics",
+  "if": {
+    "properties": {
+      "LIBRARY_LAYOUT": {
+        "const": "Paired-end"
+      }
+    },
+    "required": [
+      "LIBRARY_LAYOUT"
+    ]
+  },
+  "properties": {
+    "AVERAGE_BASE_QUALITY": {
+      "description": "Average base quality collected.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "AVERAGE_INSERT_SIZE": {
+      "description": "Average insert size collected. Required when LIBRARY_LAYOUT is Paired-end.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "AVERAGE_READ_LENGTH": {
+      "description": "Average read length collected.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "CHECKSUM": {
+      "description": "Checksum for data integrity verification",
+      "type": "string"
+    },
+    "CHIMERIC_READ_PAIRS": {
+      "description": "Number of chimerically mapped read-pairs. Sanity check - must be <= TOTAL_READ_PAIRS (Level 1).",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "CONTAMINATION": {
+      "description": "Fraction of reads coming from cross-sample contamination collected from GATK4.",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "CONTAMINATION_ERROR": {
+      "description": "Estimation error of cross-sample contamination collected from GATK4.",
+      "type": "number"
+    },
+    "DUPLICATE_READ_PAIRS": {
+      "description": "Number of duplicate read-pairs. Sanity check - must be <= TOTAL_READ_PAIRS (Level 1).",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "FILENAME": {
+      "description": "Name of the file. Must end with an extension matching the FILE_FORMAT (.bam for bam; .cram for cram)",
+      "pattern": "^.+\\.(bam|cram)$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the aligned file (bam or cram)",
+      "pattern": "^(bam|cram)$",
+      "type": "string"
+    },
+    "GENOME_ANNOTATION_URL": {
+      "description": "URL to genome or transcriptome annotation",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE": {
+      "description": "Genomic or transcriptomic reference assembly used for alignment. If your genome reference is not among the valid values, please contact your data liaison.",
+      "enum": [
+        "GRCh37",
+        "GRCh37.p13",
+        "GRCh38",
+        "GRCh38.p13",
+        "GRCh38.p14",
+        "hg19",
+        "hg38"
+      ],
+      "title": "GenomicReferenceEnum",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE_URL": {
+      "description": "URL to genomic or transcriptomic reference",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "items": {
+        "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "LIBRARY_LAYOUT": {
+      "description": "Library layout (paired-end or single-end)",
+      "enum": [
+        "Paired-end",
+        "Single-end"
+      ],
+      "title": "LibraryLayoutEnum",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+      "description": "Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable')",
+      "type": "integer"
+    },
+    "LOW_MAP_Q": {
+      "description": "Number of read-pairs with <30 mapq on at least one end",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "MEAN_COVERAGE": {
+      "description": "Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "MEDIAN_FRAGMENTS_PER_CELL": {
+      "description": "Median number of sequencing fragments detected per cell across all cells in the dataset.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "MEDIAN_GENES_PER_CELL": {
+      "description": "Median number of genes with detected gene expression per cell across all cells in the dataset. Optional - typically only available for multiome; regular scATAC-seq does not report it (per review, ykatariy).",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "MEDIAN_PASSING_READS_PERCENTAGE": {
+      "description": "Non-PCR duplicate nuclear genomic sequence reads not aligning to unanchored contigs out of total reads assigned to the nucleus barcode",
+      "maximum": 100.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "MITOCHONDRIAL_READ_PAIRS": {
+      "description": "Number of read-pairs mapping to mitochondria and non-nuclear contigs. Optional - sparsely reported for snATAC submissions (per review, ykatariy).",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "NUMBER_OF_CELLS": {
+      "description": "Total number of cells or nuclei retained in the dataset after filtering.",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "PAIRS_ON_DIFF_CHR": {
+      "description": "Pairs on different chromosomes collected from samtools.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "PASSED_FILTERS": {
+      "description": "Number of non-duplicate, usable read-pairs (fragments) that aligned to the reference genome.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "PROPORTION_BASE_MISMATCH": {
+      "description": "Proportion of mismatched bases collected from samtools.",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PROPORTION_COVERAGE_10X": {
+      "description": "Proportion of all reference bases for whole genome sequencing, or targeted bases for whole exome and targeted sequencing, that achieves 10X or greater coverage from Picard Tools.",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PROPORTION_COVERAGE_30X": {
+      "description": "Proportion of all reference bases for whole genome sequencing, or targeted bases for whole exome and targeted sequencing, that achieves 30X or greater coverage from Picard Tools.",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PROPORTION_MITOCHONDRIAL_READS": {
+      "description": "Proportion of reads mapping to mitochondria",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PROPORTION_READS_DUPLICATED": {
+      "description": "Proportion of duplicated reads collected from samtools.",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PROPORTION_READS_MAPPED": {
+      "description": "Proportion of mapped reads collected from samtools.",
+      "maximum": 100.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PROPORTION_TARGETS_NO_MATCH": {
+      "description": "Proportion of targets that did not reach 1X coverage over any base from Picard Tools.",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PROTOCOL_LINK": {
+      "description": "Link to sequencing protocol",
+      "type": "string"
+    },
+    "SEQUENCING_BATCH_ID": {
+      "description": "Sequencing batch identifier",
+      "type": "string"
+    },
+    "SEQUENCING_PLATFORM": {
+      "description": "Sequencing platform used",
+      "enum": [
+        "ABI_SOLID",
+        "BGISEQ",
+        "CAPILLARY",
+        "COMPLETE_GENOMICS",
+        "HELICOS",
+        "ILLUMINA",
+        "ION_TORRENT",
+        "LS454",
+        "OXFORD_NANOPORE",
+        "PACBIO_SMRT"
+      ],
+      "title": "SequencingPlatformEnum",
+      "type": "string"
+    },
+    "SHORT_READS": {
+      "description": "Number of reads that were too short",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "TECHNICAL_REPLICATE_GROUP": {
+      "description": "Technical replicate group identifier",
+      "type": "string"
+    },
+    "THRESHOLD_FOR_MINIMUM_PASSING_READS": {
+      "description": "Minimum number of passing reads used as the threshold for calling a barcode a cell.",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "TOTAL_UNIQUELY_MAPPED": {
+      "description": "Number of reads that map to genome.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "TOTAL_UNMAPPED_READS": {
+      "description": "Number of reads that did not map to genome",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "UNMAPPED_READ_PAIRS": {
+      "description": "Number of read-pairs with at least one end not mapped. Sanity check - must be <= TOTAL_READ_PAIRS (Level 1).",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "WORKFLOW_LINK": {
+      "description": "Link to workflow or command. DockStore.org recommended",
+      "type": "string"
+    },
+    "WORKFLOW_VERSION": {
+      "description": "Major version of the workflow, or 'Not applicable' when no workflow version applies.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "FILENAME",
+    "TOTAL_UNIQUELY_MAPPED",
+    "TOTAL_UNMAPPED_READS",
+    "MEDIAN_FRAGMENTS_PER_CELL",
+    "NUMBER_OF_CELLS",
+    "MEDIAN_PASSING_READS_PERCENTAGE",
+    "DUPLICATE_READ_PAIRS",
+    "CHIMERIC_READ_PAIRS",
+    "UNMAPPED_READ_PAIRS",
+    "LOW_MAP_Q",
+    "PASSED_FILTERS",
+    "GENOMIC_REFERENCE",
+    "GENOMIC_REFERENCE_URL",
+    "GENOME_ANNOTATION_URL",
+    "WORKFLOW_VERSION",
+    "WORKFLOW_LINK",
+    "LIBRARY_LAYOUT",
+    "SEQUENCING_PLATFORM",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "then": {
+    "properties": {
+      "AVERAGE_INSERT_SIZE": {}
+    },
+    "required": [
+      "AVERAGE_INSERT_SIZE"
+    ]
+  },
+  "title": "scATACLevel2",
+  "type": "object"
+}

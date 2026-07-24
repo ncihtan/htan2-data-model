@@ -1,0 +1,145 @@
+{
+  "$id": "https://w3id.org/htan/mass_spectrometry_imaging/level_2",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Level 2 processed spectral data - centroided imzML after baseline correction, peak picking, mass alignment, and normalization. The paired .ibd binary is an unannotated companion.",
+  "properties": {
+    "BASELINE_CORRECTION_METHOD": {
+      "description": "Baseline correction algorithm applied prior to peak picking.",
+      "enum": [
+        "NONE",
+        "OTHER",
+        "SNIP",
+        "TOP_HAT"
+      ],
+      "title": "BaselineCorrectionMethodEnum",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file. Must end with .imzML",
+      "pattern": "^.+\\.imzML$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the file; processed (centroided) imzML at Level 2",
+      "pattern": "^imzML$",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "items": {
+        "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "MASS_ACCURACY_PPM": {
+      "description": "Mean absolute mass error (ppm) measured against calibrant peaks.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "MASS_ALIGNMENT_METHOD": {
+      "description": "Algorithm used to align m/z peaks across all pixels (e.g., lock-mass, landmark-based).",
+      "type": "string"
+    },
+    "MASS_TOLERANCE_PPM": {
+      "description": "Mass tolerance (ppm) applied during peak binning and alignment.",
+      "type": "number"
+    },
+    "MEDIAN_TIC": {
+      "description": "Median total ion current across all pixels after normalization.",
+      "type": "number"
+    },
+    "NORMALIZATION_METHOD": {
+      "description": "Spectral intensity normalization method applied.",
+      "enum": [
+        "MEDIAN",
+        "NONE",
+        "OTHER",
+        "REFERENCE_PEAK",
+        "RMS",
+        "TIC"
+      ],
+      "title": "NormalizationMethodEnum",
+      "type": "string"
+    },
+    "NUM_DETECTED_PEAKS": {
+      "description": "Total number of unique m/z features detected after peak picking across the dataset.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "PASSED_QC": {
+      "description": "Whether the file passed processing-stage quality control at Level 2.",
+      "type": "boolean"
+    },
+    "PEAK_PICKING_METHOD": {
+      "description": "Peak detection algorithm used (e.g., centroid, continuous wavelet transform).",
+      "type": "string"
+    },
+    "PEAK_PICKING_SNR_THRESHOLD": {
+      "description": "Signal-to-noise ratio threshold applied during peak picking.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PIXEL_COMPLETION_RATE": {
+      "description": "Fraction (0-100%) of expected raster pixels successfully acquired.",
+      "maximum": 100.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "PROTOCOL_LINK": {
+      "description": "URL or DOI of the data processing and analysis protocol for this level. Recommended. Re-specified at each level; not propagated from L1.",
+      "type": "string"
+    },
+    "QC_COMMENT": {
+      "description": "Free-text quality-control comment for Level 2.",
+      "type": "string"
+    },
+    "SMOOTHING_METHOD": {
+      "description": "Spectral smoothing algorithm applied; NONE if no smoothing.",
+      "enum": [
+        "GAUSSIAN",
+        "NONE",
+        "OTHER",
+        "SAVITZKY_GOLAY"
+      ],
+      "title": "SmoothingMethodEnum",
+      "type": "string"
+    },
+    "SOFTWARE_AND_VERSION": {
+      "description": "Name and version of the spectral processing software used at this level (e.g., SCiLS Lab 2024, Cardinal 3.4). Re-specified at each level; not propagated from L1.",
+      "type": "string"
+    },
+    "TIC_CV": {
+      "description": "Coefficient of variation (%) of the total ion current across pixels; acceptance threshold <30%.",
+      "minimum": 0.0,
+      "type": "number"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "FILENAME",
+    "SOFTWARE_AND_VERSION",
+    "BASELINE_CORRECTION_METHOD",
+    "PEAK_PICKING_METHOD",
+    "PEAK_PICKING_SNR_THRESHOLD",
+    "NORMALIZATION_METHOD",
+    "MASS_ALIGNMENT_METHOD",
+    "MASS_TOLERANCE_PPM",
+    "MEDIAN_TIC",
+    "TIC_CV",
+    "MASS_ACCURACY_PPM",
+    "PIXEL_COMPLETION_RATE",
+    "NUM_DETECTED_PEAKS",
+    "PASSED_QC",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "MassSpectrometryImagingLevel2",
+  "type": "object"
+}

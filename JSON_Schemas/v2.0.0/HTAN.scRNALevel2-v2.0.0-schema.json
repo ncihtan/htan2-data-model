@@ -1,0 +1,149 @@
+{
+  "$id": "https://w3id.org/htan/scrna_seq_level2",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "scRNA-seq Level 2 data - Workflow and processing metadata",
+  "properties": {
+    "CELL_BARCODE_TAG": {
+      "description": "Tag used for cell barcodes",
+      "type": "string"
+    },
+    "CHECKSUM": {
+      "description": "Checksum for data integrity verification",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file. Must end with an extension matching the FILE_FORMAT (.bam for bam; .cram for cram)",
+      "pattern": "^.+\\.(bam|cram)$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the aligned file (bam or cram)",
+      "pattern": "^(bam|cram)$",
+      "type": "string"
+    },
+    "GENOME_ANNOTATION_URL": {
+      "description": "URL to genome or transcriptome annotation",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE": {
+      "description": "Genomic or transcriptomic reference assembly used for alignment. If your genome reference is not among the valid values, please contact your data liaison.",
+      "enum": [
+        "GRCh37",
+        "GRCh37.p13",
+        "GRCh38",
+        "GRCh38.p13",
+        "GRCh38.p14",
+        "hg19",
+        "hg38"
+      ],
+      "title": "GenomicReferenceEnum",
+      "type": "string"
+    },
+    "GENOMIC_REFERENCE_URL": {
+      "description": "URL to genomic or transcriptomic reference",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "items": {
+        "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "LIBRARY_LAYOUT": {
+      "description": "Library layout (paired-end or single-end)",
+      "enum": [
+        "Paired-end",
+        "Single-end"
+      ],
+      "title": "LibraryLayoutEnum",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+      "description": "Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable')",
+      "type": "integer"
+    },
+    "PROTOCOL_LINK": {
+      "description": "Link to sequencing protocol",
+      "type": "string"
+    },
+    "SCRNASEQ_WORKFLOW_TYPE": {
+      "description": "Generic name for the workflow used to analyze the dataset",
+      "enum": [
+        "CellRanger",
+        "HCA Optimus",
+        "Other",
+        "SEQC",
+        "STARsolo",
+        "Unknown",
+        "dropEST"
+      ],
+      "title": "ScRNAseqWorkflowTypeEnumLevel2",
+      "type": "string"
+    },
+    "SEQUENCING_BATCH_ID": {
+      "description": "Sequencing batch identifier",
+      "type": "string"
+    },
+    "SEQUENCING_PLATFORM": {
+      "description": "Sequencing platform used",
+      "enum": [
+        "ABI_SOLID",
+        "BGISEQ",
+        "CAPILLARY",
+        "COMPLETE_GENOMICS",
+        "HELICOS",
+        "ILLUMINA",
+        "ION_TORRENT",
+        "LS454",
+        "OXFORD_NANOPORE",
+        "PACBIO_SMRT"
+      ],
+      "title": "SequencingPlatformEnum",
+      "type": "string"
+    },
+    "TECHNICAL_REPLICATE_GROUP": {
+      "description": "Technical replicate group identifier",
+      "type": "string"
+    },
+    "UMI_TAG": {
+      "description": "Tag used for UMIs",
+      "type": "string"
+    },
+    "WHITELIST_CELL_BARCODE_FILE_LINK": {
+      "description": "Link to whitelist cell barcode file",
+      "type": "string"
+    },
+    "WORKFLOW_LINK": {
+      "description": "Link to workflow or command. DockStore.org recommended",
+      "type": "string"
+    },
+    "WORKFLOW_VERSION": {
+      "description": "Major version of the workflow, or 'Not applicable' when no workflow version applies.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "FILENAME",
+    "SCRNASEQ_WORKFLOW_TYPE",
+    "GENOMIC_REFERENCE",
+    "GENOMIC_REFERENCE_URL",
+    "GENOME_ANNOTATION_URL",
+    "WORKFLOW_VERSION",
+    "WORKFLOW_LINK",
+    "LIBRARY_LAYOUT",
+    "SEQUENCING_PLATFORM",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "scRNALevel2",
+  "type": "object"
+}

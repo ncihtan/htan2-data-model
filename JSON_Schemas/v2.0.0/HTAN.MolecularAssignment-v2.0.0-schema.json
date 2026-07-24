@@ -1,0 +1,236 @@
+{
+  "$id": "https://w3id.org/htan/mass_spectrometry_imaging/molecular_assignments",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "CONFIDENCE_LEVEL": {
+            "maximum": 3,
+            "minimum": 1
+          }
+        },
+        "required": [
+          "CONFIDENCE_LEVEL"
+        ]
+      },
+      "then": {
+        "properties": {
+          "ADDUCT": {},
+          "DATABASE_SOURCE": {},
+          "MZ_THEORETICAL": {}
+        },
+        "required": [
+          "MZ_THEORETICAL",
+          "ADDUCT",
+          "DATABASE_SOURCE"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "CONFIDENCE_LEVEL": {
+            "maximum": 2,
+            "minimum": 1
+          }
+        },
+        "required": [
+          "CONFIDENCE_LEVEL"
+        ]
+      },
+      "then": {
+        "properties": {
+          "MOLECULAR_FORMULA": {}
+        },
+        "required": [
+          "MOLECULAR_FORMULA"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "CONFIDENCE_LEVEL": {
+            "minimum": 4
+          }
+        },
+        "required": [
+          "CONFIDENCE_LEVEL"
+        ]
+      },
+      "then": {
+        "not": {
+          "required": [
+            "MZ_THEORETICAL"
+          ]
+        },
+        "properties": {
+          "MZ_THEORETICAL": {}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "MZ_THEORETICAL": {}
+        },
+        "required": [
+          "MZ_THEORETICAL"
+        ]
+      },
+      "then": {
+        "properties": {
+          "MASS_ERROR_PPM": {}
+        },
+        "required": [
+          "MASS_ERROR_PPM"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "DATABASE_SOURCE": {
+            "not": {
+              "anyOf": [
+                {
+                  "const": "NOT_APPLICABLE"
+                }
+              ]
+            }
+          }
+        },
+        "required": [
+          "DATABASE_SOURCE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "DATABASE_ID": {},
+          "DATABASE_VERSION": {}
+        },
+        "required": [
+          "DATABASE_ID",
+          "DATABASE_VERSION"
+        ]
+      }
+    }
+  ],
+  "description": "A single molecular assignment row corresponding to one OME-TIFF channel in a Level 3 file. The unique row key is (HTAN_DATA_FILE_ID, CHANNEL_INDEX). Channel count must equal RecordSet row count (enforced by the DCC validator).",
+  "properties": {
+    "ADDUCT": {
+      "description": "Ion adduct form for this assignment. Required if CONFIDENCE_LEVEL is 1, 2, or 3.",
+      "enum": [
+        "M_MINUS_H",
+        "M_PLUS_CL",
+        "M_PLUS_H",
+        "M_PLUS_K",
+        "M_PLUS_NA",
+        "M_PLUS_NH4",
+        "M_RADICAL_MINUS",
+        "M_RADICAL_PLUS",
+        "NOT_APPLICABLE",
+        "OTHER"
+      ],
+      "title": "AdductEnum",
+      "type": "string"
+    },
+    "CHANNEL_INDEX": {
+      "description": "1-based channel number matching OME-TIFF channel order; must be unique per file.",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "CONFIDENCE_LEVEL": {
+      "description": "MSI molecular-identification confidence tier. 1 = identified; 2 = putatively annotated; 3 = compound class; 4 = unknown.",
+      "maximum": 4,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "DATABASE_ID": {
+      "description": "Identifier of the assigned molecule in the named database. Required if DATABASE_SOURCE is not NOT_APPLICABLE.",
+      "type": "string"
+    },
+    "DATABASE_SOURCE": {
+      "description": "Reference database used for the molecular assignment. Required if CONFIDENCE_LEVEL is 1, 2, or 3.",
+      "enum": [
+        "CHEBI",
+        "CUSTOM",
+        "GLYCONNECT",
+        "GLYTOUCAN",
+        "HMDB",
+        "LIPID_MAPS",
+        "MASSBANK",
+        "METLIN",
+        "NOT_APPLICABLE",
+        "PUBCHEM",
+        "UNIPROT"
+      ],
+      "title": "DatabaseSourceEnum",
+      "type": "string"
+    },
+    "DATABASE_VERSION": {
+      "description": "Version/release of the named database (YYYY-MM preferred). Required if DATABASE_SOURCE is not NOT_APPLICABLE.",
+      "type": "string"
+    },
+    "EVIDENCE_TYPE": {
+      "description": "One or more evidence types supporting the annotation (pipe-separated in the TSV). At least one value required.",
+      "items": {
+        "description": "",
+        "enum": [
+          "ACCURATE_MASS",
+          "DATABASE_SPECTRAL_MATCH",
+          "ISOTOPE_PATTERN",
+          "MSMS_MATCH",
+          "REFERENCE_STANDARD",
+          "SPATIAL_PATTERN_ONLY"
+        ],
+        "title": "EvidenceTypeEnum",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "Foreign key to the parent Level 3 OME-TIFF file ID (same value for all rows in a RecordSet). This is the sole provenance anchor for the RecordSet - biospecimen provenance is resolved indirectly via the parent Level 3 file's HTAN_PARENT_ID chain (mirrors the ChannelMetadata pattern in Multiplex Microscopy, which also has no direct HTAN_PARENT_ID). Follows the HTAN data file ID pattern (D-suffix).",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "MASS_ERROR_PPM": {
+      "description": "Mass error in ppm between observed and theoretical m/z. Required if MZ_THEORETICAL is present (typical range -50 to +50).",
+      "type": "number"
+    },
+    "MOLECULAR_FORMULA": {
+      "description": "Molecular formula in Hill notation (e.g., C47H81O13P). Required if CONFIDENCE_LEVEL is 1 or 2.",
+      "type": "string"
+    },
+    "MOLECULAR_NAME": {
+      "description": "Free-text molecular name or \"unknown\"; must match the channel name in the OME-TIFF.",
+      "type": "string"
+    },
+    "MZ_OBSERVED": {
+      "description": "Observed mass-to-charge ratio (greater than 0; 4 decimal places minimum).",
+      "minimum": 0.0001,
+      "type": "number"
+    },
+    "MZ_THEORETICAL": {
+      "description": "Theoretical mass-to-charge ratio of the assigned molecule. Required if CONFIDENCE_LEVEL is 1, 2, or 3; absent if CONFIDENCE_LEVEL is 4.",
+      "type": "number"
+    },
+    "SOFTWARE_AND_VERSION": {
+      "description": "Name and version of the annotation software (e.g., Metabascape 5.0, Metaspace 2024, Cardinal 3.4).",
+      "type": "string"
+    }
+  },
+  "required": [
+    "HTAN_DATA_FILE_ID",
+    "CHANNEL_INDEX",
+    "MZ_OBSERVED",
+    "MOLECULAR_NAME",
+    "SOFTWARE_AND_VERSION",
+    "CONFIDENCE_LEVEL",
+    "EVIDENCE_TYPE"
+  ],
+  "title": "MassSpectrometryImagingMolecularAssignments",
+  "type": "object"
+}

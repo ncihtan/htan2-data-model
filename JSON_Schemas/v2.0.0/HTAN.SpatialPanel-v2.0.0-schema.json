@@ -1,0 +1,120 @@
+{
+  "$id": "https://w3id.org/htan/spatial/panel",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "TARGET_TYPE": {
+            "const": "Human Gene"
+          }
+        },
+        "required": [
+          "TARGET_TYPE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "ENSEMBL_ID": {
+            "pattern": "^ENSG\\d+(\\.\\d+)?$"
+          },
+          "HGNC_VERSION": {}
+        },
+        "required": [
+          "ENSEMBL_ID",
+          "HGNC_VERSION"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "TARGET_TYPE": {
+            "const": "Human Transcript"
+          }
+        },
+        "required": [
+          "TARGET_TYPE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "ENSEMBL_ID": {
+            "pattern": "^ENST\\d+(\\.\\d+)?$"
+          }
+        },
+        "required": [
+          "ENSEMBL_ID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "TARGET_TYPE": {
+            "const": "Other"
+          }
+        },
+        "required": [
+          "TARGET_TYPE"
+        ]
+      },
+      "then": {
+        "properties": {
+          "OTHER_TARGET_DESCRIPTION": {}
+        },
+        "required": [
+          "OTHER_TARGET_DESCRIPTION"
+        ]
+      }
+    }
+  ],
+  "description": "Spatial omics panel information for targeted sequencing or protein panels",
+  "properties": {
+    "ENSEMBL_ID": {
+      "description": "Stable Ensembl identifier for the target. Use ENSG-prefixed IDs when TARGET_TYPE is Human Gene (e.g., ENSG00000136997 or ENSG00000136997.20 for MYC); use ENST-prefixed IDs when TARGET_TYPE is Human Transcript (e.g., ENST00000621592 or ENST00000621592.7). Required when TARGET_TYPE is Human Gene or Human Transcript",
+      "pattern": "^(ENSG|ENST)\\d+(\\.\\d+)?$",
+      "type": "string"
+    },
+    "HGNC_VERSION": {
+      "description": "Version of the HGNC used for gene naming, indicated with the date of the HGNC reference (e.g., 2025-08-01). Required when TARGET_TYPE is Human Gene",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "type": "string"
+    },
+    "HTAN_PANEL_ID": {
+      "description": "Unique HTAN identifier for the panel. Follows the HTAN identifier format with a P-prefix segment (e.g., HTA201_1_P1), and carries the same requirements as the HTAN_PANEL_ID used in the corresponding ChannelMetadata RecordSet.",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$",
+      "type": "string"
+    },
+    "OTHER_TARGET_DESCRIPTION": {
+      "description": "Free-text description of the target. Required when TARGET_TYPE is Other (e.g., microbiome species, synthetic spike-in)",
+      "type": "string"
+    },
+    "TARGET_NAME": {
+      "description": "Name of the probe target. For human genes use the HGNC-approved gene symbol (e.g., MYC, PIK3CA); for all other target types use the most appropriate available name (e.g., HPV16-E6 for a viral target)",
+      "type": "string"
+    },
+    "TARGET_TYPE": {
+      "description": "Type of probe target. Determines which identifier fields are required.",
+      "enum": [
+        "Bacterial",
+        "Control Probe",
+        "Human Gene",
+        "Human Protein",
+        "Human Transcript",
+        "Other",
+        "Viral"
+      ],
+      "title": "TargetTypeEnum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "HTAN_PANEL_ID",
+    "TARGET_TYPE",
+    "TARGET_NAME"
+  ],
+  "title": "SpatialPanel",
+  "type": "object"
+}

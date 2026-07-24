@@ -1,0 +1,178 @@
+{
+  "$id": "https://w3id.org/htan/scrna_seq_level1",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "scRNA-seq Level 1 data - Raw sequencing files and metadata",
+  "properties": {
+    "CHECKSUM": {
+      "description": "Checksum for data integrity verification",
+      "type": "string"
+    },
+    "CRYOPRESERVED_CELLS_IN_SAMPLE": {
+      "description": "Whether cells were cryopreserved in the sample",
+      "type": "boolean"
+    },
+    "DISSOCIATION_METHOD": {
+      "description": "Method used to dissociate tissue into single cells",
+      "enum": [
+        "Enzymatic",
+        "Mechanical",
+        "Other",
+        "Unknown"
+      ],
+      "title": "DissociationMethodEnum",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz)",
+      "pattern": "^.+\\.(fastq|fq)(\\.gz)?$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the raw sequencing file (fastq or fastq.gz)",
+      "pattern": "^(fastq|fastq\\.gz)$",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "items": {
+        "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "LIBRARY_CONSTRUCTION_METHOD": {
+      "description": "Method used to construct the sequencing library",
+      "enum": [
+        "10X Genomics",
+        "Drop-seq",
+        "Fluidigm C1",
+        "InDrop",
+        "Other",
+        "Smart-seq",
+        "Unknown"
+      ],
+      "title": "LibraryConstructionMethodEnum",
+      "type": "string"
+    },
+    "LIBRARY_LAYOUT": {
+      "description": "Library layout (paired-end or single-end)",
+      "enum": [
+        "Paired-end",
+        "Single-end"
+      ],
+      "title": "LibraryLayoutEnum",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+      "description": "Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable')",
+      "type": "integer"
+    },
+    "NUCLEIC_ACID_SOURCE": {
+      "description": "Type of nucleic acid used for sequencing",
+      "enum": [
+        "DNA",
+        "RNA",
+        "Unknown"
+      ],
+      "title": "NucleicAcidSourceEnum",
+      "type": "string"
+    },
+    "PROTOCOL_LINK": {
+      "description": "Link to sequencing protocol",
+      "type": "string"
+    },
+    "READ_INDICATOR": {
+      "description": "Type of read (forward, reverse, index)",
+      "enum": [
+        "Forward",
+        "Index",
+        "Reverse",
+        "Unknown"
+      ],
+      "title": "ReadIndicatorEnum",
+      "type": "string"
+    },
+    "REVERSE_TRANSCRIPTION_PRIMER": {
+      "description": "Primer used for reverse transcription",
+      "enum": [
+        "Oligo-dT",
+        "Random Hexamer",
+        "Unknown"
+      ],
+      "title": "ReverseTranscriptionPrimerEnum",
+      "type": "string"
+    },
+    "SEQUENCING_BATCH_ID": {
+      "description": "Sequencing batch identifier",
+      "type": "string"
+    },
+    "SEQUENCING_PLATFORM": {
+      "description": "Sequencing platform used",
+      "enum": [
+        "ABI_SOLID",
+        "BGISEQ",
+        "CAPILLARY",
+        "COMPLETE_GENOMICS",
+        "HELICOS",
+        "ILLUMINA",
+        "ION_TORRENT",
+        "LS454",
+        "OXFORD_NANOPORE",
+        "PACBIO_SMRT"
+      ],
+      "title": "SequencingPlatformEnum",
+      "type": "string"
+    },
+    "SINGLE_CELL_ISOLATION_METHOD": {
+      "description": "Method used to isolate single cells",
+      "enum": [
+        "Cell Sorting",
+        "Droplet-based",
+        "Manual Picking",
+        "Microfluidics",
+        "Other",
+        "Unknown"
+      ],
+      "title": "SingleCellIsolationMethodEnum",
+      "type": "string"
+    },
+    "SPIKE_IN": {
+      "description": "Type of spike-in used, if any",
+      "enum": [
+        "ERCC",
+        "None",
+        "Other",
+        "Unknown"
+      ],
+      "title": "SpikeInEnum",
+      "type": "string"
+    },
+    "TECHNICAL_REPLICATE_GROUP": {
+      "description": "Technical replicate group identifier",
+      "type": "string"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "FILENAME",
+    "REVERSE_TRANSCRIPTION_PRIMER",
+    "SPIKE_IN",
+    "READ_INDICATOR",
+    "SINGLE_CELL_ISOLATION_METHOD",
+    "DISSOCIATION_METHOD",
+    "NUCLEIC_ACID_SOURCE",
+    "LIBRARY_CONSTRUCTION_METHOD",
+    "LIBRARY_LAYOUT",
+    "SEQUENCING_PLATFORM",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "scRNALevel1",
+  "type": "object"
+}

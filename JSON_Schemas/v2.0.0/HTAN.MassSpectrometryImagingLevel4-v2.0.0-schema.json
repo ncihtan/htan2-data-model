@@ -1,0 +1,71 @@
+{
+  "$id": "https://w3id.org/htan/mass_spectrometry_imaging/level_4",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Level 4 segmented and region/cell-type quantified output (optional). Includes a segmentation mask OME-TIFF and/or a region quantification table.",
+  "properties": {
+    "FILENAME": {
+      "description": "Name of the file. Must end with .ome.tif, .ome.tiff, or .csv",
+      "pattern": "^.+\\.(ome\\.tiff?|csv)$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the file; OME-TIFF segmentation mask or CSV quantification table",
+      "pattern": "^(ome\\.tiff?|csv)$",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "items": {
+        "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "PASSED_QC": {
+      "description": "Whether the file passed quality control at Level 4.",
+      "type": "boolean"
+    },
+    "QC_COMMENT": {
+      "description": "Free-text quality-control comment for Level 4.",
+      "type": "string"
+    },
+    "SEGMENTATION_CLASS_COUNT": {
+      "description": "Number of distinct tissue regions or cell types identified by the segmentation.",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "SEGMENTATION_METHOD": {
+      "description": "Algorithm or tool used for tissue or cell-type segmentation (e.g., K-means on TIC image, H&E-guided).",
+      "type": "string"
+    },
+    "SEGMENTATION_REFERENCE_MODALITY": {
+      "description": "Modality whose segmentation output was projected onto the MSI image.",
+      "enum": [
+        "H_AND_E",
+        "IF",
+        "MSI_NATIVE",
+        "OTHER"
+      ],
+      "title": "SegmentationReferenceModalityEnum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "FILENAME",
+    "SEGMENTATION_METHOD",
+    "SEGMENTATION_CLASS_COUNT",
+    "SEGMENTATION_REFERENCE_MODALITY",
+    "PASSED_QC",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "MassSpectrometryImagingLevel4",
+  "type": "object"
+}

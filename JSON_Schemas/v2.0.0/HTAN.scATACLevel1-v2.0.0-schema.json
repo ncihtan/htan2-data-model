@@ -1,0 +1,273 @@
+{
+  "$id": "https://w3id.org/htan/scatac_seq_level1",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "scATAC-seq Level 1 data - Raw sequencing files and metadata",
+  "properties": {
+    "CHECKSUM": {
+      "description": "Checksum for data integrity verification",
+      "type": "string"
+    },
+    "CRYOPRESERVED_CELLS_IN_SAMPLE": {
+      "description": "Whether cells were cryopreserved in the sample",
+      "type": "boolean"
+    },
+    "DISSOCIATION_METHOD": {
+      "description": "Method used to dissociate tissue into single cells",
+      "enum": [
+        "Enzymatic",
+        "Mechanical",
+        "Other",
+        "Unknown"
+      ],
+      "title": "DissociationMethodEnum",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file. Must end with an extension matching the FILE_FORMAT (.fastq for fastq; .fastq.gz or .fq.gz for fastq.gz)",
+      "pattern": "^.+\\.(fastq|fq)(\\.gz)?$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the raw sequencing file (fastq or fastq.gz)",
+      "pattern": "^(fastq|fastq\\.gz)$",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "items": {
+        "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "LIBRARY_CONSTRUCTION_METHOD": {
+      "description": "Method used to construct the sequencing library",
+      "enum": [
+        "10X Genomics",
+        "Drop-seq",
+        "Fluidigm C1",
+        "InDrop",
+        "Other",
+        "Smart-seq",
+        "Unknown"
+      ],
+      "title": "LibraryConstructionMethodEnum",
+      "type": "string"
+    },
+    "LIBRARY_LAYOUT": {
+      "description": "Library layout (paired-end or single-end)",
+      "enum": [
+        "Paired-end",
+        "Single-end"
+      ],
+      "title": "LibraryLayoutEnum",
+      "type": "string"
+    },
+    "LIBRARY_PREPARATION_DAYS_FROM_INDEX": {
+      "description": "Number of days between when the sample for assay was received in the lab and the libraries were prepared for sequencing. If not applicable please enter 'Not Applicable')",
+      "type": "integer"
+    },
+    "MAP_Q_30": {
+      "description": "Number of reads with Quality >= 30.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "NUCLEIC_ACID_SOURCE": {
+      "description": "Type of nucleic acid used for sequencing",
+      "enum": [
+        "DNA",
+        "RNA",
+        "Unknown"
+      ],
+      "title": "NucleicAcidSourceEnum",
+      "type": "string"
+    },
+    "NUCLEI_BARCODE": {
+      "description": "Nuclei barcode sequence used to demultiplex reads to individual nuclei",
+      "type": "string"
+    },
+    "NUCLEI_BARCODE_LENGTH": {
+      "description": "Length, in base pairs, of the nuclei barcode sequence",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "NUCLEI_BARCODE_READ": {
+      "description": "Sequencing read that contains the nuclei barcode sequence",
+      "type": "string"
+    },
+    "NUCLEUS_IDENTIFIER": {
+      "description": "Unique nuclei barcode; added at transposition step. Determines which nucleus the reads originated from",
+      "type": "string"
+    },
+    "PROTOCOL_LINK": {
+      "description": "Link to sequencing protocol",
+      "type": "string"
+    },
+    "REVERSE_TRANSCRIPTION_PRIMER": {
+      "description": "Primer used for reverse transcription. Applicable only to multiome / hybrid RNA+ATAC protocols; standard scATAC-seq has no reverse-transcription step and should leave this blank.",
+      "enum": [
+        "Oligo-dT",
+        "Random Hexamer",
+        "Unknown"
+      ],
+      "title": "ReverseTranscriptionPrimerEnum",
+      "type": "string"
+    },
+    "SCATAC_SEQ_READ_1": {
+      "description": "Read 1 content description",
+      "enum": [
+        "Cell Barcode",
+        "Cell Barcode and DNA Insert",
+        "DNA Insert",
+        "Sample Index",
+        "Sample Index and DNA Insert"
+      ],
+      "title": "SequencingReadEnum",
+      "type": "string"
+    },
+    "SCATAC_SEQ_READ_2": {
+      "description": "Read 2 content description",
+      "enum": [
+        "Cell Barcode",
+        "Cell Barcode and DNA Insert",
+        "DNA Insert",
+        "Sample Index",
+        "Sample Index and DNA Insert"
+      ],
+      "title": "SequencingReadEnum",
+      "type": "string"
+    },
+    "SCATAC_SEQ_READ_3": {
+      "description": "Read 3 content description",
+      "enum": [
+        "Cell Barcode",
+        "Cell Barcode and DNA Insert",
+        "DNA Insert",
+        "Sample Index",
+        "Sample Index and DNA Insert"
+      ],
+      "title": "SequencingReadEnum",
+      "type": "string"
+    },
+    "SEQUENCING_BATCH_ID": {
+      "description": "Sequencing batch identifier",
+      "type": "string"
+    },
+    "SEQUENCING_PLATFORM": {
+      "description": "Sequencing platform used",
+      "enum": [
+        "ABI_SOLID",
+        "BGISEQ",
+        "CAPILLARY",
+        "COMPLETE_GENOMICS",
+        "HELICOS",
+        "ILLUMINA",
+        "ION_TORRENT",
+        "LS454",
+        "OXFORD_NANOPORE",
+        "PACBIO_SMRT"
+      ],
+      "title": "SequencingPlatformEnum",
+      "type": "string"
+    },
+    "SINGLE_CELL_ISOLATION_METHOD": {
+      "description": "Method used to isolate single cells",
+      "enum": [
+        "Cell Sorting",
+        "Droplet-based",
+        "Manual Picking",
+        "Microfluidics",
+        "Other",
+        "Unknown"
+      ],
+      "title": "SingleCellIsolationMethodEnum",
+      "type": "string"
+    },
+    "SINGLE_NUCLEUS_BUFFER": {
+      "description": "Nuclei isolation buffer",
+      "enum": [
+        "10x",
+        "NIB",
+        "Omni",
+        "TST"
+      ],
+      "title": "SingleNucleusBufferEnum",
+      "type": "string"
+    },
+    "SPIKE_IN": {
+      "description": "Type of spike-in used, if any. Applicable only to multiome / hybrid RNA+ATAC protocols; standard scATAC-seq has no RNA spike-in and should leave this blank.",
+      "enum": [
+        "ERCC",
+        "None",
+        "Other",
+        "Unknown"
+      ],
+      "title": "SpikeInEnum",
+      "type": "string"
+    },
+    "TECHNICAL_REPLICATE_GROUP": {
+      "description": "Technical replicate group identifier",
+      "type": "string"
+    },
+    "TOTAL_NUMBER_OF_PASSING_NUCLEI": {
+      "description": "Number of nuclei sequenced",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "TOTAL_READS": {
+      "description": "Total number of reads collected from samtools.",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "TOTAL_READ_PAIRS": {
+      "description": "Total read-pairs",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "TRANSPOSITION_REACTION": {
+      "description": "Name of the transposase, transposon sequences",
+      "enum": [
+        "Diagenode-loaded Apex-Bio",
+        "Diagenode-unloaded Apex-Bio",
+        "EZ-Tn5",
+        "In-House",
+        "Nextera Tn5",
+        "Tn5",
+        "Tn5-059"
+      ],
+      "title": "TranspositionReactionEnum",
+      "type": "string"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "FILENAME",
+    "NUCLEUS_IDENTIFIER",
+    "NUCLEI_BARCODE_READ",
+    "NUCLEI_BARCODE_LENGTH",
+    "SCATAC_SEQ_READ_1",
+    "SCATAC_SEQ_READ_2",
+    "TOTAL_NUMBER_OF_PASSING_NUCLEI",
+    "SINGLE_NUCLEUS_BUFFER",
+    "TRANSPOSITION_REACTION",
+    "TOTAL_READS",
+    "MAP_Q_30",
+    "TOTAL_READ_PAIRS",
+    "SINGLE_CELL_ISOLATION_METHOD",
+    "DISSOCIATION_METHOD",
+    "NUCLEIC_ACID_SOURCE",
+    "LIBRARY_CONSTRUCTION_METHOD",
+    "LIBRARY_LAYOUT",
+    "SEQUENCING_PLATFORM",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "scATACLevel1",
+  "type": "object"
+}
