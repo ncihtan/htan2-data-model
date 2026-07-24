@@ -40,7 +40,7 @@ classes:
         required: true
         identifier: true
         title: "HTAN Panel ID"
-        description: Unique identifier for the panel
+        description: Unique HTAN identifier for the panel. Follows the HTAN identifier format with a P-prefix segment (e.g., HTA201_1_P1), and carries the same requirements as the HTAN_PANEL_ID used in the corresponding ChannelMetadata RecordSet.
         pattern: "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(P[0-9]{1,20})$"
       TARGET_TYPE:
         range: TargetTypeEnum
