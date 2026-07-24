@@ -390,6 +390,58 @@ def backfill_descriptions_from_linkml(
     return schema_data
 
 
+def _base_attribute_description(sv, class_name, prop_name):
+    """Return an attribute's canonical description, ignoring any slot_usage override.
+
+    Walks the class and its ancestors and returns the first description declared on the
+    attribute definition itself (class ``attributes``), not the induced/slot_usage value.
+    In this repo, slot_usage descriptions are conditional-requirement notes (e.g.
+    "Required when X is Y"); those belong to the ``rules`` constraints, not the property
+    description, so the attribute-level description is the canonical one.
+    """
+    try:
+        ancestors = sv.class_ancestors(class_name, reflexive=True)
+    except Exception:
+        ancestors = [class_name]
+    for cname in ancestors:
+        cls = sv.get_class(cname)
+        attrs = getattr(cls, "attributes", None) or {}
+        attr = attrs.get(prop_name)
+        if attr is not None and getattr(attr, "description", None):
+            return attr.description
+    return None
+
+
+def restore_base_attribute_descriptions(
+    schema_data: dict, linkml_yaml: str, class_name: str
+) -> dict:
+    """Override property descriptions clobbered by slot_usage with the attribute's own.
+
+    LinkML's JsonSchemaGenerator emits induced-slot descriptions, so a class ``slot_usage``
+    that carries a "Required when ..." note replaces the real attribute description in the
+    output (see issue #191). This restores the canonical attribute-level description. The
+    conditional requirement itself remains enforced by the generated ``rules`` (if/then)
+    constraints, so only the human-readable description changes.
+    """
+    if not class_name:
+        return schema_data
+    sv = SchemaView(linkml_yaml)
+    props = schema_data.get("properties", {})
+    restored = 0
+    for prop_name, prop_val in props.items():
+        if not isinstance(prop_val, dict):
+            continue
+        base = _base_attribute_description(sv, class_name, prop_name)
+        if base and prop_val.get("description") != base:
+            prop_val["description"] = base
+            restored += 1
+    if restored:
+        print(
+            f"Restored {restored} attribute description(s) over slot_usage overrides"
+        )
+    return schema_data
+
+
 def get_args():
     """Set up command-line interface and get arguments."""
     parser = argparse.ArgumentParser(
@@ -455,6 +507,9 @@ def main():
     schema_data = flatten_json_schema(schema_data)
     schema_data = fix_schema_version(schema_data)
     schema_data = backfill_descriptions_from_linkml(
+        schema_data, args.linkml_yaml, args.class_name
+    )
+    schema_data = restore_base_attribute_descriptions(
         schema_data, args.linkml_yaml, args.class_name
     )
     schema_data = fix_additional_properties(schema_data)
