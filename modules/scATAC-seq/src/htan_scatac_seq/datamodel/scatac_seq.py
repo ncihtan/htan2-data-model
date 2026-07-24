@@ -1,5 +1,5 @@
 # Auto generated from scatac_seq.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-22T16:17:50
+# Generation date: 2026-07-24T14:41:43
 # Schema: scATAC-seq
 #
 # id: https://w3id.org/htan/scatac_seq
@@ -381,14 +381,12 @@ class ScATACLevel2(BaseSequencingLevel2Attributes):
     TOTAL_UNIQUELY_MAPPED: int = None
     TOTAL_UNMAPPED_READS: int = None
     MEDIAN_FRAGMENTS_PER_CELL: float = None
-    MEDIAN_GENES_PER_CELL: float = None
     NUMBER_OF_CELLS: int = None
     MEDIAN_PASSING_READS_PERCENTAGE: float = None
     DUPLICATE_READ_PAIRS: int = None
     CHIMERIC_READ_PAIRS: int = None
     UNMAPPED_READ_PAIRS: int = None
     LOW_MAP_Q: int = None
-    MITOCHONDRIAL_READ_PAIRS: int = None
     PASSED_FILTERS: int = None
     AVERAGE_BASE_QUALITY: Optional[float] = None
     AVERAGE_INSERT_SIZE: Optional[float] = None
@@ -405,7 +403,9 @@ class ScATACLevel2(BaseSequencingLevel2Attributes):
     PROPORTION_MITOCHONDRIAL_READS: Optional[float] = None
     CONTAMINATION: Optional[float] = None
     CONTAMINATION_ERROR: Optional[float] = None
+    MEDIAN_GENES_PER_CELL: Optional[float] = None
     THRESHOLD_FOR_MINIMUM_PASSING_READS: Optional[int] = None
+    MITOCHONDRIAL_READ_PAIRS: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.HTAN_DATA_FILE_ID):
@@ -438,11 +438,6 @@ class ScATACLevel2(BaseSequencingLevel2Attributes):
         if not isinstance(self.MEDIAN_FRAGMENTS_PER_CELL, float):
             self.MEDIAN_FRAGMENTS_PER_CELL = float(self.MEDIAN_FRAGMENTS_PER_CELL)
 
-        if self._is_empty(self.MEDIAN_GENES_PER_CELL):
-            self.MissingRequiredField("MEDIAN_GENES_PER_CELL")
-        if not isinstance(self.MEDIAN_GENES_PER_CELL, float):
-            self.MEDIAN_GENES_PER_CELL = float(self.MEDIAN_GENES_PER_CELL)
-
         if self._is_empty(self.NUMBER_OF_CELLS):
             self.MissingRequiredField("NUMBER_OF_CELLS")
         if not isinstance(self.NUMBER_OF_CELLS, int):
@@ -472,11 +467,6 @@ class ScATACLevel2(BaseSequencingLevel2Attributes):
             self.MissingRequiredField("LOW_MAP_Q")
         if not isinstance(self.LOW_MAP_Q, int):
             self.LOW_MAP_Q = int(self.LOW_MAP_Q)
-
-        if self._is_empty(self.MITOCHONDRIAL_READ_PAIRS):
-            self.MissingRequiredField("MITOCHONDRIAL_READ_PAIRS")
-        if not isinstance(self.MITOCHONDRIAL_READ_PAIRS, int):
-            self.MITOCHONDRIAL_READ_PAIRS = int(self.MITOCHONDRIAL_READ_PAIRS)
 
         if self._is_empty(self.PASSED_FILTERS):
             self.MissingRequiredField("PASSED_FILTERS")
@@ -528,8 +518,14 @@ class ScATACLevel2(BaseSequencingLevel2Attributes):
         if self.CONTAMINATION_ERROR is not None and not isinstance(self.CONTAMINATION_ERROR, float):
             self.CONTAMINATION_ERROR = float(self.CONTAMINATION_ERROR)
 
+        if self.MEDIAN_GENES_PER_CELL is not None and not isinstance(self.MEDIAN_GENES_PER_CELL, float):
+            self.MEDIAN_GENES_PER_CELL = float(self.MEDIAN_GENES_PER_CELL)
+
         if self.THRESHOLD_FOR_MINIMUM_PASSING_READS is not None and not isinstance(self.THRESHOLD_FOR_MINIMUM_PASSING_READS, int):
             self.THRESHOLD_FOR_MINIMUM_PASSING_READS = int(self.THRESHOLD_FOR_MINIMUM_PASSING_READS)
+
+        if self.MITOCHONDRIAL_READ_PAIRS is not None and not isinstance(self.MITOCHONDRIAL_READ_PAIRS, int):
+            self.MITOCHONDRIAL_READ_PAIRS = int(self.MITOCHONDRIAL_READ_PAIRS)
 
         super().__post_init__(**kwargs)
 
@@ -814,8 +810,6 @@ class ScATACLevel1(SingleCellLevel1Attributes):
     LIBRARY_CONSTRUCTION_METHOD: Union[str, "LibraryConstructionMethodEnum"] = None
     FILE_FORMAT: str = None
     FILENAME: str = None
-    REVERSE_TRANSCRIPTION_PRIMER: Union[str, "ReverseTranscriptionPrimerEnum"] = None
-    SPIKE_IN: Union[str, "SpikeInEnum"] = None
     NUCLEUS_IDENTIFIER: str = None
     NUCLEI_BARCODE_READ: str = None
     NUCLEI_BARCODE_LENGTH: int = None
@@ -827,6 +821,8 @@ class ScATACLevel1(SingleCellLevel1Attributes):
     TOTAL_READS: int = None
     MAP_Q_30: float = None
     TOTAL_READ_PAIRS: int = None
+    REVERSE_TRANSCRIPTION_PRIMER: Optional[Union[str, "ReverseTranscriptionPrimerEnum"]] = None
+    SPIKE_IN: Optional[Union[str, "SpikeInEnum"]] = None
     NUCLEI_BARCODE: Optional[str] = None
     SCATAC_SEQ_READ_3: Optional[Union[str, "SequencingReadEnum"]] = None
 
@@ -845,16 +841,6 @@ class ScATACLevel1(SingleCellLevel1Attributes):
             self.MissingRequiredField("FILENAME")
         if not isinstance(self.FILENAME, str):
             self.FILENAME = str(self.FILENAME)
-
-        if self._is_empty(self.REVERSE_TRANSCRIPTION_PRIMER):
-            self.MissingRequiredField("REVERSE_TRANSCRIPTION_PRIMER")
-        if not isinstance(self.REVERSE_TRANSCRIPTION_PRIMER, ReverseTranscriptionPrimerEnum):
-            self.REVERSE_TRANSCRIPTION_PRIMER = ReverseTranscriptionPrimerEnum(self.REVERSE_TRANSCRIPTION_PRIMER)
-
-        if self._is_empty(self.SPIKE_IN):
-            self.MissingRequiredField("SPIKE_IN")
-        if not isinstance(self.SPIKE_IN, SpikeInEnum):
-            self.SPIKE_IN = SpikeInEnum(self.SPIKE_IN)
 
         if self._is_empty(self.NUCLEUS_IDENTIFIER):
             self.MissingRequiredField("NUCLEUS_IDENTIFIER")
@@ -910,6 +896,12 @@ class ScATACLevel1(SingleCellLevel1Attributes):
             self.MissingRequiredField("TOTAL_READ_PAIRS")
         if not isinstance(self.TOTAL_READ_PAIRS, int):
             self.TOTAL_READ_PAIRS = int(self.TOTAL_READ_PAIRS)
+
+        if self.REVERSE_TRANSCRIPTION_PRIMER is not None and not isinstance(self.REVERSE_TRANSCRIPTION_PRIMER, ReverseTranscriptionPrimerEnum):
+            self.REVERSE_TRANSCRIPTION_PRIMER = ReverseTranscriptionPrimerEnum(self.REVERSE_TRANSCRIPTION_PRIMER)
+
+        if self.SPIKE_IN is not None and not isinstance(self.SPIKE_IN, SpikeInEnum):
+            self.SPIKE_IN = SpikeInEnum(self.SPIKE_IN)
 
         if self.NUCLEI_BARCODE is not None and not isinstance(self.NUCLEI_BARCODE, str):
             self.NUCLEI_BARCODE = str(self.NUCLEI_BARCODE)
@@ -1312,10 +1304,10 @@ slots.scATACLevel1__FILENAME = Slot(uri=HTAN.FILENAME, name="scATACLevel1__FILEN
                    pattern=re.compile(r'^.+\.(fastq|fq)(\.gz)?$'))
 
 slots.scATACLevel1__REVERSE_TRANSCRIPTION_PRIMER = Slot(uri=HTAN.REVERSE_TRANSCRIPTION_PRIMER, name="scATACLevel1__REVERSE_TRANSCRIPTION_PRIMER", curie=HTAN.curie('REVERSE_TRANSCRIPTION_PRIMER'),
-                   model_uri=HTAN.scATACLevel1__REVERSE_TRANSCRIPTION_PRIMER, domain=None, range=Union[str, "ReverseTranscriptionPrimerEnum"])
+                   model_uri=HTAN.scATACLevel1__REVERSE_TRANSCRIPTION_PRIMER, domain=None, range=Optional[Union[str, "ReverseTranscriptionPrimerEnum"]])
 
 slots.scATACLevel1__SPIKE_IN = Slot(uri=HTAN.SPIKE_IN, name="scATACLevel1__SPIKE_IN", curie=HTAN.curie('SPIKE_IN'),
-                   model_uri=HTAN.scATACLevel1__SPIKE_IN, domain=None, range=Union[str, "SpikeInEnum"])
+                   model_uri=HTAN.scATACLevel1__SPIKE_IN, domain=None, range=Optional[Union[str, "SpikeInEnum"]])
 
 slots.scATACLevel1__NUCLEUS_IDENTIFIER = Slot(uri=HTAN.NUCLEUS_IDENTIFIER, name="scATACLevel1__NUCLEUS_IDENTIFIER", curie=HTAN.curie('NUCLEUS_IDENTIFIER'),
                    model_uri=HTAN.scATACLevel1__NUCLEUS_IDENTIFIER, domain=None, range=str)
@@ -1419,7 +1411,7 @@ slots.scATACLevel2__MEDIAN_FRAGMENTS_PER_CELL = Slot(uri=HTAN.MEDIAN_FRAGMENTS_P
                    model_uri=HTAN.scATACLevel2__MEDIAN_FRAGMENTS_PER_CELL, domain=None, range=float)
 
 slots.scATACLevel2__MEDIAN_GENES_PER_CELL = Slot(uri=HTAN.MEDIAN_GENES_PER_CELL, name="scATACLevel2__MEDIAN_GENES_PER_CELL", curie=HTAN.curie('MEDIAN_GENES_PER_CELL'),
-                   model_uri=HTAN.scATACLevel2__MEDIAN_GENES_PER_CELL, domain=None, range=float)
+                   model_uri=HTAN.scATACLevel2__MEDIAN_GENES_PER_CELL, domain=None, range=Optional[float])
 
 slots.scATACLevel2__NUMBER_OF_CELLS = Slot(uri=HTAN.NUMBER_OF_CELLS, name="scATACLevel2__NUMBER_OF_CELLS", curie=HTAN.curie('NUMBER_OF_CELLS'),
                    model_uri=HTAN.scATACLevel2__NUMBER_OF_CELLS, domain=None, range=int)
@@ -1443,7 +1435,7 @@ slots.scATACLevel2__LOW_MAP_Q = Slot(uri=HTAN.LOW_MAP_Q, name="scATACLevel2__LOW
                    model_uri=HTAN.scATACLevel2__LOW_MAP_Q, domain=None, range=int)
 
 slots.scATACLevel2__MITOCHONDRIAL_READ_PAIRS = Slot(uri=HTAN.MITOCHONDRIAL_READ_PAIRS, name="scATACLevel2__MITOCHONDRIAL_READ_PAIRS", curie=HTAN.curie('MITOCHONDRIAL_READ_PAIRS'),
-                   model_uri=HTAN.scATACLevel2__MITOCHONDRIAL_READ_PAIRS, domain=None, range=int)
+                   model_uri=HTAN.scATACLevel2__MITOCHONDRIAL_READ_PAIRS, domain=None, range=Optional[int])
 
 slots.scATACLevel2__PASSED_FILTERS = Slot(uri=HTAN.PASSED_FILTERS, name="scATACLevel2__PASSED_FILTERS", curie=HTAN.curie('PASSED_FILTERS'),
                    model_uri=HTAN.scATACLevel2__PASSED_FILTERS, domain=None, range=int)
