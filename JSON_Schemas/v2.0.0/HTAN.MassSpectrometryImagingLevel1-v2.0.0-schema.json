@@ -1,0 +1,317 @@
+{
+  "$id": "https://w3id.org/htan/mass_spectrometry_imaging/level_1",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Level 1 raw spectral data - continuous (profile) imzML acquisition annotations. The paired .ibd binary is an unannotated companion carrying only CoreFileAttributes.",
+  "if": {
+    "properties": {
+      "MS_IONIZATION_TECHNIQUE": {
+        "anyOf": [
+          {
+            "const": "MALDI"
+          },
+          {
+            "const": "MALDI_2"
+          },
+          {
+            "const": "IR_MALDESI"
+          }
+        ]
+      }
+    },
+    "required": [
+      "MS_IONIZATION_TECHNIQUE"
+    ]
+  },
+  "properties": {
+    "ACQUISITION_INSTRUMENT_MODEL": {
+      "description": "Specific instrument model (e.g., timsTOF Flex, Q Exactive).",
+      "type": "string"
+    },
+    "ACQUISITION_INSTRUMENT_VENDOR": {
+      "description": "Manufacturer of the mass spectrometer (e.g., Bruker, Waters, Thermo).",
+      "type": "string"
+    },
+    "ANALYTE_ACQUISITION_ORDER": {
+      "description": "1-based order of this run within a sequential multi-analyte session on the same tissue section. Recommended; required when multiple analyte classes are acquired from one section.",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "ANALYTE_CLASS": {
+      "description": "Molecular class(es) targeted by the acquisition. One or more values may be specified (e.g., a sequential metabolites/glycans/peptides workflow records each class).",
+      "items": {
+        "description": "",
+        "enum": [
+          "GLYCANS",
+          "LIPIDS",
+          "METABOLITES",
+          "NUCLEIC_ACIDS",
+          "PEPTIDES",
+          "PHARMACEUTICALS",
+          "PROTEINS"
+        ],
+        "title": "AnalyteClassEnum",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "CALIBRANT_MASSES": {
+      "description": "Comma-separated list of calibrant m/z values used (e.g., \"622.0290, 922.0098\").",
+      "pattern": "^[0-9]+(\\.[0-9]+)?(, ?[0-9]+(\\.[0-9]+)?)*$",
+      "type": "string"
+    },
+    "CALIBRATION_TYPE": {
+      "description": "Type of mass calibration applied.",
+      "enum": [
+        "EXTERNAL",
+        "INTERNAL",
+        "LOCK_MASS"
+      ],
+      "title": "CalibrationTypeEnum",
+      "type": "string"
+    },
+    "FILENAME": {
+      "description": "Name of the file. Must end with .imzML",
+      "pattern": "^.+\\.imzML$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the file; imzML (continuous/profile) at Level 1",
+      "pattern": "^imzML$",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "items": {
+        "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "IBD_FILE_UUID": {
+      "description": "UUID embedded in the .imzML XML linking to the paired .ibd binary file. Accepts canonical hyphenated or 32-hex form, case-insensitive, with optional enclosing braces.",
+      "pattern": "^\\{?[0-9a-fA-F]{8}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{12}\\}?$",
+      "type": "string"
+    },
+    "ION_MOBILITY": {
+      "description": "Whether ion mobility separation was applied during acquisition.",
+      "type": "boolean"
+    },
+    "IS_TARGETED": {
+      "description": "Whether acquisition targets a pre-specified set of molecules (true) or is untargeted (false).",
+      "type": "boolean"
+    },
+    "MASS_ANALYSIS_POLARITY": {
+      "description": "Ion polarity mode for acquisition.",
+      "enum": [
+        "BOTH",
+        "NEG",
+        "POS"
+      ],
+      "title": "MassAnalysisPolarityEnum",
+      "type": "string"
+    },
+    "MASS_ANALYZER_TYPE": {
+      "description": "Type of mass analyzer.",
+      "enum": [
+        "FTICR",
+        "ION_TRAP",
+        "ORBITRAP",
+        "OTHER",
+        "Q_TOF",
+        "TOF",
+        "TRIPLE_QUADRUPOLE"
+      ],
+      "title": "MassAnalyzerTypeEnum",
+      "type": "string"
+    },
+    "MASS_RESOLVING_POWER": {
+      "description": "Mass resolving power (m/delta-m) of the instrument. May be non-integer (e.g., 140000.5) and can exceed 1e6 on FTICR/Orbitrap.",
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "MASS_TO_CHARGE_RANGE_HIGH_VALUE": {
+      "description": "Upper m/z boundary of the acquisition range.",
+      "minimum": 0.0001,
+      "type": "number"
+    },
+    "MASS_TO_CHARGE_RANGE_LOW_VALUE": {
+      "description": "Lower m/z boundary of the acquisition range.",
+      "minimum": 0.0001,
+      "type": "number"
+    },
+    "MASS_TO_CHARGE_RESOLVING_POWER": {
+      "description": "m/z value at which MASS_RESOLVING_POWER is specified. Recommended.",
+      "type": "number"
+    },
+    "MATRIX_DEPOSITION_METHOD": {
+      "description": "Method used to apply the matrix to tissue. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI).",
+      "enum": [
+        "ELECTROSPRAY",
+        "NOT_APPLICABLE",
+        "PNEUMATIC_SPRAYER",
+        "ROBOTIC_SPOTTER",
+        "SPRAY",
+        "SUBLIMATION"
+      ],
+      "title": "MatrixDepositionMethodEnum",
+      "type": "string"
+    },
+    "MS_IONIZATION_TECHNIQUE": {
+      "description": "Ionization technique used. For timsTOF Flex, distinguish MALDI from MALDI_2.",
+      "enum": [
+        "DESI",
+        "IR_MALDESI",
+        "MALDI",
+        "MALDI_2",
+        "OTHER",
+        "SIMS"
+      ],
+      "title": "MsIonizationTechniqueEnum",
+      "type": "string"
+    },
+    "MS_SCAN_MODE": {
+      "description": "Scan mode of the mass analyser (TOF-specific; NOT_APPLICABLE for non-TOF analysers).",
+      "enum": [
+        "LINEAR",
+        "NOT_APPLICABLE",
+        "OTHER",
+        "REFLECTRON"
+      ],
+      "title": "MsScanModeEnum",
+      "type": "string"
+    },
+    "PASSED_QC": {
+      "description": "Whether the file passed post-acquisition quality control at Level 1.",
+      "type": "boolean"
+    },
+    "PIXEL_SIZE_X_UM": {
+      "description": "Pixel pitch in the X dimension (micrometers); corresponds to PSI-MS CV MS:1000042.",
+      "minimum": 0.0001,
+      "type": "number"
+    },
+    "PIXEL_SIZE_Y_UM": {
+      "description": "Pixel pitch in the Y dimension (micrometers); corresponds to PSI-MS CV MS:1000043.",
+      "minimum": 0.0001,
+      "type": "number"
+    },
+    "PREPARATION_INSTRUMENT_MODEL": {
+      "description": "Model of the matrix deposition instrument. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI).",
+      "type": "string"
+    },
+    "PREPARATION_INSTRUMENT_VENDOR": {
+      "description": "Manufacturer of the matrix deposition instrument. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI).",
+      "type": "string"
+    },
+    "PREPARATION_MATRIX": {
+      "description": "Matrix compound applied to the tissue section. Conditionally required for MALDI-family techniques (MALDI, MALDI_2, IR_MALDESI); use OTHER for IR-MALDESI (ice/endogenous-water matrix). Set NOT_APPLICABLE for non-matrix modalities (DESI, SIMS).",
+      "enum": [
+        "9_AA",
+        "CHCA",
+        "DAN",
+        "DHA",
+        "DHB",
+        "NOT_APPLICABLE",
+        "OTHER",
+        "SA"
+      ],
+      "title": "PreparationMatrixEnum",
+      "type": "string"
+    },
+    "PRE_ACQUISITION_TREATMENT": {
+      "description": "Enzymatic or chemical treatment applied to the section prior to this acquisition run. Recommended.",
+      "enum": [
+        "NONE",
+        "OTHER",
+        "PNGASEF",
+        "PNGASEF_THEN_TRYPSIN",
+        "TRYPSIN"
+      ],
+      "title": "PreAcquisitionTreatmentEnum",
+      "type": "string"
+    },
+    "PROTOCOL_LINK": {
+      "description": "URL or DOI of the tissue preparation and matrix deposition protocol (e.g., protocols.io link). Recommended. Re-specified at each level.",
+      "type": "string"
+    },
+    "QC_COMMENT": {
+      "description": "Free-text quality-control comment for Level 1.",
+      "type": "string"
+    },
+    "SOFTWARE_AND_VERSION": {
+      "description": "Name and version of the acquisition software used to collect data (e.g., flexImaging 7.0, timsControl 5.1). Re-specified at each level.",
+      "type": "string"
+    },
+    "SPECTRUM_TYPE": {
+      "description": "Spectral representation type. Level 1 is always PROFILE (continuous/profile imzML); the range enum permits only PROFILE, so this is enforced at the schema level.",
+      "enum": [
+        "PROFILE"
+      ],
+      "title": "SpectrumTypeEnum",
+      "type": "string"
+    },
+    "TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT": {
+      "description": "Unit for TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE.",
+      "enum": [
+        "DAYS",
+        "HOURS"
+      ],
+      "title": "TimeUnitEnum",
+      "type": "string"
+    },
+    "TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE": {
+      "description": "Elapsed time since the last instrument mass calibration. May be fractional (e.g., 1.5 hours); pair with TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT.",
+      "minimum": 0.0,
+      "type": "number"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "FILENAME",
+    "MS_IONIZATION_TECHNIQUE",
+    "MASS_ANALYZER_TYPE",
+    "MASS_ANALYSIS_POLARITY",
+    "ANALYTE_CLASS",
+    "IS_TARGETED",
+    "ACQUISITION_INSTRUMENT_VENDOR",
+    "ACQUISITION_INSTRUMENT_MODEL",
+    "PIXEL_SIZE_X_UM",
+    "PIXEL_SIZE_Y_UM",
+    "MASS_TO_CHARGE_RANGE_LOW_VALUE",
+    "MASS_TO_CHARGE_RANGE_HIGH_VALUE",
+    "ION_MOBILITY",
+    "SPECTRUM_TYPE",
+    "MASS_RESOLVING_POWER",
+    "MS_SCAN_MODE",
+    "CALIBRATION_TYPE",
+    "CALIBRANT_MASSES",
+    "TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_VALUE",
+    "TIME_SINCE_ACQUISITION_INSTRUMENT_CALIBRATION_UNIT",
+    "SOFTWARE_AND_VERSION",
+    "IBD_FILE_UUID",
+    "PASSED_QC",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "then": {
+    "properties": {
+      "MATRIX_DEPOSITION_METHOD": {},
+      "PREPARATION_INSTRUMENT_MODEL": {},
+      "PREPARATION_INSTRUMENT_VENDOR": {},
+      "PREPARATION_MATRIX": {}
+    },
+    "required": [
+      "PREPARATION_MATRIX",
+      "MATRIX_DEPOSITION_METHOD",
+      "PREPARATION_INSTRUMENT_VENDOR",
+      "PREPARATION_INSTRUMENT_MODEL"
+    ]
+  },
+  "title": "MassSpectrometryImagingLevel1",
+  "type": "object"
+}

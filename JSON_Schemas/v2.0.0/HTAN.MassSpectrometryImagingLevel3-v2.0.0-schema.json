@@ -1,0 +1,69 @@
+{
+  "$id": "https://w3id.org/htan/mass_spectrometry_imaging/level_3",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "additionalProperties": {},
+  "description": "Level 3 annotation-filtered OME-TIFF. Channels include only annotated m/z values plus biologically relevant unknowns. Per-channel molecular detail is carried by the companion Molecular Assignments RecordSet.",
+  "properties": {
+    "FILENAME": {
+      "description": "Name of the file. Must end with .ome.tif or .ome.tiff",
+      "pattern": "^.+\\.ome\\.tiff?$",
+      "type": "string"
+    },
+    "FILE_FORMAT": {
+      "description": "Format of the file; OME-TIFF at Level 3",
+      "pattern": "^ome\\.tiff?$",
+      "type": "string"
+    },
+    "HTAN_DATA_FILE_ID": {
+      "description": "HTAN Data File ID (Primary Key)",
+      "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_(D[0-9]{1,20})$",
+      "type": "string"
+    },
+    "HTAN_PARENT_ID": {
+      "description": "HTAN Parent ID(s) - Foreign key(s) to parent entity (B for Biospecimen, D for data file). One or more IDs; for aggregated files provide multiple. Each ID must have B or D suffix. Supports HTA200-229 for phase 2.",
+      "items": {
+        "pattern": "^(?=.{1,50}$)(HTA2[0-2][0-9])_(0000|EXT[0-9]{1,18}|[0-9]{1,21})_([BD][0-9]{1,20})$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "NUM_ANNOTATED_CHANNELS": {
+      "description": "Number of OME-TIFF channels with a confirmed molecular assignment (confidence levels 1-3).",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "NUM_UNKNOWN_CHANNELS": {
+      "description": "Number of OME-TIFF channels retained as biologically relevant unknowns (confidence level 4).",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "PASSED_QC": {
+      "description": "Whether the file passed quality control at Level 3.",
+      "type": "boolean"
+    },
+    "PROTOCOL_LINK": {
+      "description": "URL or DOI of the molecular annotation protocol for this level. Recommended; documents the annotation method per RFC section 4.3.",
+      "type": "string"
+    },
+    "QC_COMMENT": {
+      "description": "Free-text quality-control comment for Level 3.",
+      "type": "string"
+    },
+    "SOFTWARE_AND_VERSION": {
+      "description": "Name and version of the annotation software used at this level. Re-specified at each level; not propagated.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "FILE_FORMAT",
+    "FILENAME",
+    "NUM_ANNOTATED_CHANNELS",
+    "NUM_UNKNOWN_CHANNELS",
+    "SOFTWARE_AND_VERSION",
+    "PASSED_QC",
+    "HTAN_DATA_FILE_ID",
+    "HTAN_PARENT_ID"
+  ],
+  "title": "MassSpectrometryImagingLevel3",
+  "type": "object"
+}
