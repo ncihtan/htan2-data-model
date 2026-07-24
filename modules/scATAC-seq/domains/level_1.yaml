@@ -82,12 +82,12 @@ classes:
         range: ReverseTranscriptionPrimerEnum
         required: false
         title: "Reverse Transcription Primer"
-        description: Primer used for reverse transcription
+        description: Primer used for reverse transcription. Applicable only to multiome / hybrid RNA+ATAC protocols; standard scATAC-seq has no reverse-transcription step and should leave this blank.
       SPIKE_IN:
         range: SpikeInEnum
         required: false
         title: "Spike-in"
-        description: Type of spike-in used, if any
+        description: Type of spike-in used, if any. Applicable only to multiome / hybrid RNA+ATAC protocols; standard scATAC-seq has no RNA spike-in and should leave this blank.
 
       # scATAC-seq-specific attributes
       NUCLEUS_IDENTIFIER:
