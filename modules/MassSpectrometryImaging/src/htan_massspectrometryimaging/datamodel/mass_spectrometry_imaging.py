@@ -1,5 +1,5 @@
 # Auto generated from mass_spectrometry_imaging.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-21T19:03:19
+# Generation date: 2026-07-24T15:11:33
 # Schema: MassSpectrometryImaging
 #
 # id: https://w3id.org/htan/mass_spectrometry_imaging

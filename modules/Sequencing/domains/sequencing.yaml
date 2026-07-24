@@ -59,6 +59,85 @@ enums:
       "hg38":
         description: UCSC human genome reference hg38
 
+  # ---------------------------------------------------------------------------
+  # Shared single-cell / single-nucleus vocabularies (consumed by scRNA-seq,
+  # scATAC-seq via SingleCellLevel1Attributes / AnnDataComplianceMixin below).
+  # ---------------------------------------------------------------------------
+  DissociationMethodEnum:
+    permissible_values:
+      "Enzymatic":
+        description: Enzymatic dissociation method
+      "Mechanical":
+        description: Mechanical dissociation method
+      "Other":
+        description: Other dissociation method
+      "Unknown":
+        description: Unknown dissociation method
+
+  LibraryConstructionMethodEnum:
+    permissible_values:
+      "10X Genomics":
+        description: 10X Genomics library construction method
+      "Drop-seq":
+        description: Drop-seq library construction method
+      "Fluidigm C1":
+        description: Fluidigm C1 library construction method
+      "InDrop":
+        description: InDrop library construction method
+      "Other":
+        description: Other library construction method
+      "Smart-seq":
+        description: Smart-seq library construction method
+      "Unknown":
+        description: Unknown library construction method
+
+  NucleicAcidSourceEnum:
+    permissible_values:
+      "DNA":
+        description: DNA nucleic acid source
+      "RNA":
+        description: RNA nucleic acid source
+      "Unknown":
+        description: Unknown nucleic acid source
+
+  SingleCellIsolationMethodEnum:
+    permissible_values:
+      "Cell Sorting":
+        description: Cell sorting isolation method
+      "Droplet-based":
+        description: Droplet-based isolation method
+      "Manual Picking":
+        description: Manual picking isolation method
+      "Microfluidics":
+        description: Microfluidics isolation method
+      "Other":
+        description: Other isolation method
+      "Unknown":
+        description: Unknown isolation method
+
+  # RNA-workflow vocabularies. Centralized here to avoid duplication across assays;
+  # the corresponding slots are declared per-assay (not on SingleCellLevel1Attributes)
+  # because reverse transcription and spike-ins are RNA-workflow concepts.
+  ReverseTranscriptionPrimerEnum:
+    permissible_values:
+      "Oligo-dT":
+        description: Oligo-dT reverse transcription primer
+      "Random Hexamer":
+        description: Random hexamer reverse transcription primer
+      "Unknown":
+        description: Unknown reverse transcription primer
+
+  SpikeInEnum:
+    permissible_values:
+      "ERCC":
+        description: ERCC spike-in
+      "None":
+        description: No spike-in
+      "Other":
+        description: Other spike-in
+      "Unknown":
+        description: Unknown spike-in
+
 classes:
   BaseSequencingAttributes:
     is_a: CoreFileAttributes
@@ -138,3 +217,53 @@ classes:
   BaseSequencingLevel3Attributes:
     is_a: BaseSequencingLevel2Attributes
     description: Level 3+ attributes - inherits alignment and workflow; used for processed/analysis levels
+
+  # ---------------------------------------------------------------------------
+  # Shared single-cell layer. Consumed by scRNA-seq and scATAC-seq so common
+  # single-cell attributes are defined once rather than duplicated per assay.
+  # ---------------------------------------------------------------------------
+  SingleCellLevel1Attributes:
+    is_a: BaseSequencingLevel1Attributes
+    description: Shared upstream single-cell / single-nucleus preparation attributes for single-cell sequencing Level 1 (tissue-to-cell/nucleus steps common to scRNA-seq and scATAC-seq)
+    attributes:
+      SINGLE_CELL_ISOLATION_METHOD:
+        range: SingleCellIsolationMethodEnum
+        required: true
+        title: "Single Cell Isolation Method"
+        description: Method used to isolate single cells
+      DISSOCIATION_METHOD:
+        range: DissociationMethodEnum
+        required: true
+        title: "Dissociation Method"
+        description: Method used to dissociate tissue into single cells
+      CRYOPRESERVED_CELLS_IN_SAMPLE:
+        range: boolean
+        required: false
+        title: "Cryopreserved Cells in Sample"
+        description: Whether cells were cryopreserved in the sample
+      NUCLEIC_ACID_SOURCE:
+        range: NucleicAcidSourceEnum
+        required: true
+        title: "Nucleic Acid Source"
+        description: Type of nucleic acid used for sequencing
+      LIBRARY_CONSTRUCTION_METHOD:
+        range: LibraryConstructionMethodEnum
+        required: true
+        title: "Library Construction Method"
+        description: Method used to construct the sequencing library
+
+  AnnDataComplianceMixin:
+    mixin: true
+    description: AnnData 0.1 / CellxGene compliance attributes for single-cell h5ad outputs, shared across single-cell modalities that emit h5ad matrices
+    attributes:
+      ANNDATA_SCHEMA_VERSION:
+        range: string
+        required: true
+        title: "AnnData Schema Version"
+        description: Version of AnnData schema (must be 0.1 for CellxGene compliance)
+        pattern: "^0\\.1$"
+      ANNDATA_STRUCTURE_VALIDATED:
+        range: boolean
+        required: true
+        title: "AnnData Structure Validated"
+        description: Whether the h5ad file structure has been validated against AnnData 0.1 schema
