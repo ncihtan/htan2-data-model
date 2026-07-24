@@ -17,6 +17,7 @@ from scripts.linkml_to_flat_synapse_jsonschema import (
     remove_unsupported_fields,
     fix_additional_properties,
     fix_boolean_patterns,
+    restore_base_attribute_descriptions,
 )
 
 
@@ -478,6 +479,65 @@ class TestFixBooleanPatterns:
         assert result["allOf"][0]["if"]["anyOf"][0]["properties"][
             "TRANSCRIPTOME_TYPE"
         ] == {"pattern": "^Targeted$"}
+
+
+class TestRestoreBaseAttributeDescriptions:
+    """Issue #191/#190: slot_usage 'Required when ...' notes must not overwrite the
+    canonical attribute description in the generated JSON schema."""
+
+    LINKML = """\
+id: https://example.org/test
+name: test_slot_usage
+prefixes:
+  linkml: https://w3id.org/linkml/
+default_range: string
+imports:
+  - linkml:types
+classes:
+  Sample:
+    attributes:
+      THICKNESS:
+        description: Numeric thickness measured in microns
+      OTHER_SPECIFY:
+        description: A custom method
+    slot_usage:
+      THICKNESS:
+        description: Required when IS_SECTION is "Yes"
+      OTHER_SPECIFY:
+        description: Required when METHOD is "Other"
+"""
+
+    def _write(self, tmp_path):
+        p = tmp_path / "sample.yaml"
+        p.write_text(self.LINKML)
+        return str(p)
+
+    def test_slot_usage_note_replaced_by_attribute_description(self, tmp_path):
+        yaml_path = self._write(tmp_path)
+        schema_data = {
+            "properties": {
+                "THICKNESS": {"description": 'Required when IS_SECTION is "Yes"'},
+                "OTHER_SPECIFY": {"description": 'Required when METHOD is "Other"'},
+            }
+        }
+        out = restore_base_attribute_descriptions(schema_data, yaml_path, "Sample")
+        assert (
+            out["properties"]["THICKNESS"]["description"]
+            == "Numeric thickness measured in microns"
+        )
+        assert out["properties"]["OTHER_SPECIFY"]["description"] == "A custom method"
+
+    def test_property_without_attribute_definition_is_untouched(self, tmp_path):
+        yaml_path = self._write(tmp_path)
+        schema_data = {"properties": {"UNKNOWN": {"description": "keep me"}}}
+        out = restore_base_attribute_descriptions(schema_data, yaml_path, "Sample")
+        assert out["properties"]["UNKNOWN"]["description"] == "keep me"
+
+    def test_empty_class_name_is_noop(self, tmp_path):
+        yaml_path = self._write(tmp_path)
+        schema_data = {"properties": {"THICKNESS": {"description": "Required when ..."}}}
+        out = restore_base_attribute_descriptions(schema_data, yaml_path, "")
+        assert out["properties"]["THICKNESS"]["description"] == "Required when ..."
 
 
 if __name__ == "__main__":

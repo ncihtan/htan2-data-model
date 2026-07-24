@@ -197,14 +197,18 @@ def test_none_types_analysis():
         stats["total_none_values"] > 0
     ), "Should find at least some 'none' values in the data model"
 
-    # Check that the percentage is reasonable (not too high, not too low)
+    # 'none' values should not dominate the vocabulary. Only an upper bound is
+    # meaningful: the model now includes large external controlled vocabularies
+    # (ICD-O-3 morphology, ICD-10, antineoplastic agents) that are almost entirely
+    # non-'none', so any fixed lower percentage bound is invalid. The presence of
+    # 'none' handling is already asserted above via total_none_values > 0.
     if stats["total_permissible_values"] > 0:
         none_percentage = (
             stats["total_none_values"] / stats["total_permissible_values"]
         ) * 100
         assert (
-            0.1 <= none_percentage <= 10
-        ), f"None types percentage ({none_percentage:.2f}%) should be between 0.1% and 10%"
+            none_percentage <= 10
+        ), f"None types percentage ({none_percentage:.2f}%) should not exceed 10%"
 
     print(f"\n✅ All assertions passed!")
     print("=" * 80)
