@@ -69,6 +69,25 @@ CoreFileAttributes
 No level may skip its parent (e.g., Level3 directly inheriting BaseSequencingAttributes
 is invalid). New assay modules must follow the same pattern.
 
+### Shared single-cell layer
+
+Single-cell sequencing assays (scRNA-seq, scATAC-seq) share upstream preparation
+attributes via classes defined in the `Sequencing` base module rather than duplicating
+them:
+
+```
+BaseSequencingLevel1Attributes
+  └─ SingleCellLevel1Attributes      (Sequencing base; shared prep attrs + enums)
+       └─ scRNALevel1                (is_a: SingleCellLevel1Attributes)
+       └─ scATACLevel1               (is_a: SingleCellLevel1Attributes)
+```
+
+`SingleCellLevel1Attributes is_a BaseSequencingLevel1Attributes`, so the level chain is
+preserved — a single-cell Level 1 class inheriting `SingleCellLevel1Attributes` is
+correct, not a skipped level. AnnData 0.1 / CellxGene compliance is provided by the
+`AnnDataComplianceMixin` mixin (also in the `Sequencing` base module), applied to the
+Level 3/4 classes via `mixins:`.
+
 ---
 
 ## Key Commands
@@ -121,7 +140,9 @@ These must be resolved before merge.
 
 #### Inheritance correctness
 - Every `BulkWESLevel<N>` must inherit `BaseSequencingLevel<N>Attributes`
-- Every `scRNALevel<N>` must inherit `BaseSequencingLevel<N>Attributes`
+- Every `scRNALevel<N>` / `scATACLevel<N>` must inherit `BaseSequencingLevel<N>Attributes`,
+  except Level 1, which inherits `SingleCellLevel1Attributes` (itself
+  `is_a BaseSequencingLevel1Attributes` — the chain is preserved, do not flag it)
 - `BaseSequencingLevel1Attributes` is_a `BaseSequencingAttributes`
 - `BaseSequencingLevel2Attributes` is_a `BaseSequencingLevel1Attributes`
 - `BaseSequencingLevel3Attributes` is_a `BaseSequencingLevel2Attributes`

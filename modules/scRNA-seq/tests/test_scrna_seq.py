@@ -33,8 +33,9 @@ class TestScRNAseqSchema:
         # Check class exists
         assert "scRNALevel1" in sv.all_classes()
 
-        # Check required attributes (base attributes come from inheritance)
-        level1_class = sv.get_class("scRNALevel1")
+        # Required attributes. The shared single-cell prep attrs are now inherited from
+        # SingleCellLevel1Attributes (SingleCell module), so use induced slots rather
+        # than the class's own attributes.
         required_attrs = [
             "SINGLE_CELL_ISOLATION_METHOD",
             "DISSOCIATION_METHOD",
@@ -46,8 +47,9 @@ class TestScRNAseqSchema:
         ]
 
         for attr in required_attrs:
-            assert attr in level1_class.attributes
-            assert level1_class.attributes[attr].required
+            slot = sv.induced_slot(attr, "scRNALevel1")
+            assert slot is not None
+            assert slot.required
 
     def test_level2_schema(self):
         """Test Level 2 schema structure."""
@@ -163,17 +165,15 @@ class TestScRNAseqSchema:
         assert filename_regex.match("file.cram")
 
     def test_ann_data_schema_compliance(self):
-        """Test AnnData schema compliance validation."""
+        """Test AnnData schema compliance validation (now via AnnDataComplianceMixin)."""
         sv = SchemaView(LEVEL3_4_PATH)
 
-        level3_4_class = sv.get_class("scRNALevel3and4")
+        # AnnData attributes are contributed by AnnDataComplianceMixin (SingleCell module),
+        # so use induced slots rather than the class's own attributes.
+        schema_version_slot = sv.induced_slot("ANNDATA_SCHEMA_VERSION", "scRNALevel3and4")
+        assert schema_version_slot.pattern == "^0\\.1$"
 
-        # Check AnnData schema version pattern
-        schema_version_attr = level3_4_class.attributes["ANNDATA_SCHEMA_VERSION"]
-        assert schema_version_attr.pattern == "^0\\.1$"
-
-        # Check structure validation attribute exists
-        assert "ANNDATA_STRUCTURE_VALIDATED" in level3_4_class.attributes
+        assert "ANNDATA_STRUCTURE_VALIDATED" in sv.class_slots("scRNALevel3and4")
 
     def test_enum_alphabetical_ordering(self):
         """Test that enum values are in alphabetical order."""
@@ -230,13 +230,18 @@ class TestScRNAseqSchema:
         sv = SchemaView(SCHEMA_PATH)
 
         expected_base = {
-            "scRNALevel1": "BaseSequencingLevel1Attributes",
+            # Level 1 now inherits the shared single-cell layer, which itself is_a
+            # BaseSequencingLevel1Attributes (chain preserved).
+            "scRNALevel1": "SingleCellLevel1Attributes",
             "scRNALevel2": "BaseSequencingLevel2Attributes",
             "scRNALevel3and4": "BaseSequencingLevel3Attributes",
         }
         for level_class, base in expected_base.items():
             class_def = sv.get_class(level_class)
             assert class_def.is_a == base, f"{level_class} should inherit from {base}"
+
+        # The single-cell layer must remain anchored to the sequencing Level 1 base.
+        assert sv.get_class("SingleCellLevel1Attributes").is_a == "BaseSequencingLevel1Attributes"
 
 
 class TestScRNAseqDataValidation:

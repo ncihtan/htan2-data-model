@@ -1,0 +1,33 @@
+name: scATAC-seq
+id: https://w3id.org/htan/scatac_seq
+description: HTAN scATAC-seq Data Model - Single-cell ATAC sequencing data
+imports:
+  - linkml:types
+  - level_1
+  - level_2
+  - level_3_4
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: htan
+
+classes:
+  scATACseqData:
+    description: Root class for scATAC-seq data
+    attributes:
+      level1_data:
+        range: scATACLevel1
+        inlined: true
+        title: "Level 1 Data"
+        description: Level 1 scATAC-seq data
+      level2_data:
+        range: scATACLevel2
+        inlined: true
+        title: "Level 2 Data"
+        description: Level 2 scATAC-seq data
+      level3_4_data:
+        range: scATACLevel3and4
+        inlined: true
+        title: "Level 3/4 Data"
+        description: Level 3/4 scATAC-seq data
