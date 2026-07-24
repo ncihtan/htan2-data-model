@@ -1,0 +1,218 @@
+name: scATACLevel2
+id: https://w3id.org/htan/scatac_seq_level2
+description: HTAN scATAC-seq Level 2 Data Model - Aligned data and alignment QC metrics
+imports:
+  - linkml:types
+  - ../../Sequencing/domains/sequencing
+prefixes:
+  htan: https://w3id.org/htan/
+  linkml: https://w3id.org/linkml/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: htan
+
+classes:
+  scATACLevel2:
+    is_a: BaseSequencingLevel2Attributes
+    description: scATAC-seq Level 2 data - Aligned data and alignment QC metrics
+    attributes:
+      # File format restriction for Level 2 aligned files
+      FILE_FORMAT:
+        range: string
+        required: true
+        title: "File Format"
+        description: Format of the aligned file (bam or cram)
+        pattern: "^(bam|cram)$"
+      FILENAME:
+        range: string
+        required: true
+        title: "File Name"
+        description: Name of the file. Must end with an extension matching the FILE_FORMAT (.bam for bam; .cram for cram)
+        pattern: "^.+\\.(bam|cram)$"
+
+      # Alignment QC metrics
+      AVERAGE_BASE_QUALITY:
+        range: float
+        required: false
+        title: "Average Base Quality"
+        description: Average base quality collected.
+        minimum_value: 0.0
+      AVERAGE_INSERT_SIZE:
+        range: float
+        required: false
+        title: "Average Insert Size"
+        description: Average insert size collected. Required when LIBRARY_LAYOUT is Paired-end.
+        minimum_value: 0.0
+      AVERAGE_READ_LENGTH:
+        range: float
+        required: false
+        title: "Average Read Length"
+        description: Average read length collected.
+        minimum_value: 0.0
+      MEAN_COVERAGE:
+        range: float
+        required: false
+        title: "Mean Coverage"
+        description: Mean coverage for whole genome sequencing, or mean target coverage for whole exome and targeted sequencing
+        minimum_value: 0.0
+      PAIRS_ON_DIFF_CHR:
+        range: integer
+        required: false
+        title: "Pairs on Different Chromosomes"
+        description: Pairs on different chromosomes collected from samtools.
+        minimum_value: 0
+      PROPORTION_READS_MAPPED:
+        range: float
+        required: false
+        title: "Proportion of Reads Mapped"
+        description: Proportion of mapped reads collected from samtools.
+        minimum_value: 0.0
+        maximum_value: 100.0
+      TOTAL_UNIQUELY_MAPPED:
+        range: integer
+        required: true
+        title: "Total of Reads Uniquely Mapped"
+        description: Number of reads that map to genome.
+        minimum_value: 0
+      TOTAL_UNMAPPED_READS:
+        range: integer
+        required: true
+        title: "Total Unmapped Reads"
+        description: Number of reads that did not map to genome
+        minimum_value: 0
+      PROPORTION_READS_DUPLICATED:
+        range: float
+        required: false
+        title: "Proportion of Reads Duplicated"
+        description: Proportion of duplicated reads collected from samtools.
+        minimum_value: 0.0
+        maximum_value: 1.0
+      SHORT_READS:
+        range: integer
+        required: false
+        title: "Short Reads"
+        description: Number of reads that were too short
+        minimum_value: 0
+      PROPORTION_COVERAGE_10X:
+        range: float
+        required: false
+        title: "Proportion Coverage 10X"
+        description: Proportion of all reference bases for whole genome sequencing, or targeted bases for whole exome and targeted sequencing, that achieves 10X or greater coverage from Picard Tools.
+        minimum_value: 0.0
+        maximum_value: 1.0
+      PROPORTION_COVERAGE_30X:
+        range: float
+        required: false
+        title: "Proportion Coverage 30X"
+        description: Proportion of all reference bases for whole genome sequencing, or targeted bases for whole exome and targeted sequencing, that achieves 30X or greater coverage from Picard Tools.
+        minimum_value: 0.0
+        maximum_value: 1.0
+      PROPORTION_TARGETS_NO_MATCH:
+        range: float
+        required: false
+        title: "Proportion of Targets with No Match"
+        description: Proportion of targets that did not reach 1X coverage over any base from Picard Tools.
+        minimum_value: 0.0
+        maximum_value: 1.0
+      PROPORTION_BASE_MISMATCH:
+        range: float
+        required: false
+        title: "Proportion Base Mismatch"
+        description: Proportion of mismatched bases collected from samtools.
+        minimum_value: 0.0
+        maximum_value: 1.0
+      PROPORTION_MITOCHONDRIAL_READS:
+        range: float
+        required: false
+        title: "Proportion of Mitochondrial Reads"
+        description: Proportion of reads mapping to mitochondria
+        minimum_value: 0.0
+        maximum_value: 1.0
+      CONTAMINATION:
+        range: float
+        required: false
+        title: "Contamination"
+        description: Fraction of reads coming from cross-sample contamination collected from GATK4.
+        minimum_value: 0.0
+        maximum_value: 1.0
+      CONTAMINATION_ERROR:
+        range: float
+        required: false
+        title: "Contamination Error"
+        description: Estimation error of cross-sample contamination collected from GATK4.
+      MEDIAN_FRAGMENTS_PER_CELL:
+        range: float
+        required: true
+        title: "Median Number of Fragments per Cell"
+        description: Median number of sequencing fragments detected per cell across all cells in the dataset.
+        minimum_value: 0.0
+      MEDIAN_GENES_PER_CELL:
+        range: float
+        required: false
+        title: "Median Number of Genes per Cell"
+        description: Median number of genes with detected gene expression per cell across all cells in the dataset. Optional - typically only available for multiome; regular scATAC-seq does not report it (per review, ykatariy).
+        minimum_value: 0.0
+      NUMBER_OF_CELLS:
+        range: integer
+        required: true
+        title: "Total Number of Cells"
+        description: Total number of cells or nuclei retained in the dataset after filtering.
+        minimum_value: 1
+      THRESHOLD_FOR_MINIMUM_PASSING_READS:
+        range: integer
+        required: false
+        title: "Threshold for Minimum Passing Reads"
+        description: Minimum number of passing reads used as the threshold for calling a barcode a cell.
+        minimum_value: 1
+      MEDIAN_PASSING_READS_PERCENTAGE:
+        range: float
+        required: true
+        title: "Median Passing Reads Percentage"
+        description: Non-PCR duplicate nuclear genomic sequence reads not aligning to unanchored contigs out of total reads assigned to the nucleus barcode
+        minimum_value: 0.0
+        maximum_value: 100.0
+      DUPLICATE_READ_PAIRS:
+        range: integer
+        required: true
+        title: "Duplicate Read Pairs"
+        description: Number of duplicate read-pairs. Sanity check - must be <= TOTAL_READ_PAIRS (Level 1).
+        minimum_value: 0
+      CHIMERIC_READ_PAIRS:
+        range: integer
+        required: true
+        title: "Chimeric Read Pairs"
+        description: Number of chimerically mapped read-pairs. Sanity check - must be <= TOTAL_READ_PAIRS (Level 1).
+        minimum_value: 0
+      UNMAPPED_READ_PAIRS:
+        range: integer
+        required: true
+        title: "Unmapped Read Pairs"
+        description: Number of read-pairs with at least one end not mapped. Sanity check - must be <= TOTAL_READ_PAIRS (Level 1).
+        minimum_value: 0
+      LOW_MAP_Q:
+        range: integer
+        required: true
+        title: "Low MapQ Read Pairs"
+        description: Number of read-pairs with <30 mapq on at least one end
+        minimum_value: 0
+      MITOCHONDRIAL_READ_PAIRS:
+        range: integer
+        required: false
+        title: "Mitochondrial Read Pairs"
+        description: Number of read-pairs mapping to mitochondria and non-nuclear contigs. Optional - sparsely reported for snATAC submissions (per review, ykatariy).
+        minimum_value: 0
+      PASSED_FILTERS:
+        range: integer
+        required: true
+        title: "Passed Filters"
+        description: Number of non-duplicate, usable read-pairs (fragments) that aligned to the reference genome.
+        minimum_value: 0
+    rules:
+      - description: "Average insert size is required for paired-end libraries"
+        preconditions:
+          slot_conditions:
+            LIBRARY_LAYOUT:
+              equals_string: "Paired-end"
+        postconditions:
+          slot_conditions:
+            AVERAGE_INSERT_SIZE:
+              required: true

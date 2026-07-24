@@ -52,6 +52,24 @@ The main class that defines common attributes shared across all sequencing types
 - `OXFORD_NANOPORE`: Oxford Nanopore sequencing platform
 - `PACBIO_SMRT`: PacBio SMRT sequencing platform
 
+### Shared Single-Cell Layer
+
+To avoid duplicating attributes across single-cell assays, this module also defines a
+shared single-cell layer consumed by scRNA-seq and scATAC-seq:
+
+- **`SingleCellLevel1Attributes`** (`is_a BaseSequencingLevel1Attributes`) — upstream
+  tissue-to-cell/nucleus preparation shared at Level 1: `SINGLE_CELL_ISOLATION_METHOD`,
+  `DISSOCIATION_METHOD`, `CRYOPRESERVED_CELLS_IN_SAMPLE`, `NUCLEIC_ACID_SOURCE`,
+  `LIBRARY_CONSTRUCTION_METHOD`. Single-cell Level 1 classes inherit this, so the level
+  chain is preserved.
+- **`AnnDataComplianceMixin`** (mixin) — `ANNDATA_SCHEMA_VERSION` /
+  `ANNDATA_STRUCTURE_VALIDATED` for single-cell h5ad outputs, applied to Level 3/4 classes
+  via `mixins:`.
+- Shared enums: `SingleCellIsolationMethodEnum`, `DissociationMethodEnum`,
+  `NucleicAcidSourceEnum`, `LibraryConstructionMethodEnum`, plus the RNA-workflow
+  vocabularies `ReverseTranscriptionPrimerEnum` / `SpikeInEnum` (whose slots are declared
+  per-assay, not on the shared base class).
+
 ## Architecture
 
 The `BaseSequencingAttributes` class uses a clean inheritance chain:

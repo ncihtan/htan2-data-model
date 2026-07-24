@@ -44,8 +44,8 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 ### **Sequencing Module**
 - **Purpose**: Base sequencing attributes shared across all sequencing types
 - **Location**: `modules/Sequencing/`
-- **Structure**: BaseSequencingAttributes class with common sequencing metadata
-- **Features**: Library layout enums, sequencing platform enums, workflow metadata
+- **Structure**: BaseSequencingAttributes class with common sequencing metadata; also hosts the shared **single-cell layer** (`SingleCellLevel1Attributes` + `AnnDataComplianceMixin`) inherited by scRNA-seq and scATAC-seq
+- **Features**: Library layout enums, sequencing platform enums, workflow metadata, shared single-cell prep vocabularies
 
 ### **WES Module**
 - **Purpose**: Bulk Whole Exome Sequencing data
@@ -56,8 +56,14 @@ The diagram above illustrates the separation between **Record-Based Modules** (C
 ### **scRNA-seq Module**
 - **Purpose**: Single-cell RNA sequencing data
 - **Location**: `modules/scRNA-seq/`
-- **Structure**: Three data levels (Level 1, 2, 3/4) with h5ad format validation
+- **Structure**: Three data levels (Level 1, 2, 3/4) with h5ad format validation; Level 1 inherits the shared `SingleCellLevel1Attributes`, Level 3/4 mixes in `AnnDataComplianceMixin`
 - **Features**: Single-cell isolation methods, workflow types, AnnData schema compliance
+
+### **scATAC-seq Module**
+- **Purpose**: Single-cell ATAC sequencing data (genome-wide chromatin accessibility via Tn5 transposition)
+- **Location**: `modules/scATAC-seq/`
+- **Structure**: Three data levels (Level 1, 2, 3/4); Level 1 inherits the shared `SingleCellLevel1Attributes`, Level 3/4 mixes in `AnnDataComplianceMixin`
+- **Features**: Single-nucleus prep buffers, transposition reactions, peak/fragment metrics, AnnData schema compliance
 
 ### **Imaging Module**
 - **Purpose**: Base imaging attributes shared across all imaging modules
@@ -101,6 +107,7 @@ htan2-data-model/
 │   ├── Imaging/               # Base imaging attributes
 │   ├── WES/                   # Whole Exome Sequencing
 │   ├── scRNA-seq/             # Single-cell RNA sequencing
+│   ├── scATAC-seq/            # Single-cell ATAC sequencing
 │   ├── DigitalPathology/      # Digital Pathology imaging
 │   ├── MultiplexMicroscopy/   # Multiplex Microscopy imaging
 │   ├── SpatialOmics/          # Spatial Omics assays
