@@ -14,8 +14,10 @@ MODULES = {
     "scRNA-seq": "modules/scRNA-seq/domains/scrna_seq.yaml",
     "SpatialOmics": "modules/SpatialOmics/domains/spatial.yaml",
     "MultiplexMicroscopy": "modules/MultiplexMicroscopy/domains/multiplex_microscopy.yaml",
-    "DigitalPathology": "modules/DigitalPathology/domains/digitalpathology.yaml",
+    "DigitalPathology": "modules/DigitalPathology/domains/digital_pathology.yaml",
     "Imaging": "modules/Imaging/domains/imaging.yaml",
+    "scATAC-seq": "modules/scATAC-seq/domains/scatac_seq.yaml",
+    "MassSpectrometryImaging": "modules/MassSpectrometryImaging/domains/mass_spectrometry_imaging.yaml",
 }
 
 # LinkML built-in classes and container classes to exclude from documentation
@@ -29,6 +31,9 @@ EXCLUDED_CLASSES = {
     "WESData",
     "scRNAseqData",
     "SpatialData",
+    "scATACseqData",
+    "MassSpectrometryImagingData",
+    "MultiplexMicroscopyData",
 }
 
 
@@ -182,6 +187,8 @@ def main():
         "MultiplexMicroscopy": "multiplexmicroscopy",
         "DigitalPathology": "digitalpathology",
         "Imaging": "imaging",
+        "scATAC-seq": "scatac-seq",
+        "MassSpectrometryImaging": "massspectrometryimaging",
     }
 
     print("Generating documentation from LinkML schemas...\n")
