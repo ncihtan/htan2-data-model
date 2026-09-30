@@ -34,8 +34,6 @@ EXCLUDED_CLASSES = {
     "scATACseqData",
     "MassSpectrometryImagingData",
     "MultiplexMicroscopyData",
-    "DigitalPathologyData",
-    "BiospecimenData",
 }
 
 
