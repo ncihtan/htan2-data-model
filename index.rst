@@ -25,9 +25,11 @@ First, determine whether your data is **file-based** or **record-based**:
    
    - :doc:`WES <docs/wes>` - Bulk Whole Exome Sequencing (includes Core File + Base Sequencing + WES attributes)
    - :doc:`scRNA-seq <docs/scrna-seq>` - Single-cell RNA sequencing (includes Core File + Base Sequencing + scRNA-seq attributes)
+   - :doc:`scATAC-seq <docs/scatac-seq>` - Single-cell ATAC sequencing (includes Core File + Base Sequencing + scATAC-seq attributes)
    - :doc:`Digital Pathology <docs/digitalpathology>` - Whole-slide imaging (includes Core File + Base Imaging + Digital Pathology attributes)
    - :doc:`Multiplex Microscopy <docs/multiplexmicroscopy>` - Multiplexed tissue imaging (includes Core File + Base Imaging + Multiplex Microscopy attributes)
    - :doc:`SpatialOmics <docs/spatialomics>` - Spatial omics assays (includes Core File + SpatialOmics attributes)
+   - :doc:`Mass Spectrometry Imaging <docs/massspectrometryimaging>` - Mass spectrometry imaging (includes Core File + Mass Spectrometry Imaging attributes)
 
 Each module page is self-contained and lists all attributes you need to fill out, so you don't need to navigate between multiple pages.
 
@@ -49,7 +51,9 @@ Modules
    docs/biospecimen
    docs/wes
    docs/scrna-seq
+   docs/scatac-seq
    docs/digitalpathology
    docs/multiplexmicroscopy
    docs/spatialomics
+   docs/massspectrometryimaging
 
