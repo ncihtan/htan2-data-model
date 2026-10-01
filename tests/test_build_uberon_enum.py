@@ -1,0 +1,125 @@
+"""Tests for scripts/build_uberon_enum.py using a small offline OBO fixture."""
+
+import subprocess
+import sys
+from pathlib import Path
+
+import yaml
+
+sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+import build_uberon_enum as b  # noqa: E402
+
+SCRIPT = Path(__file__).parent.parent / "scripts/build_uberon_enum.py"
+
+OBO = """\
+format-version: 1.2
+data-version: uberon/releases/2026-10-01/uberon-basic.owl
+
+[Term]
+id: UBERON:0000001
+name: anatomical structure
+
+[Term]
+id: UBERON:0000310
+name: breast
+is_a: UBERON:0000001 ! anatomical structure
+
+[Term]
+id: UBERON:0000000
+name: obsolete processual entity
+is_obsolete: true
+
+[Term]
+id: UBERON:0000099
+name: old breast term
+is_obsolete: true
+replaced_by: UBERON:0000310
+
+[Term]
+id: UBERON:0000022
+name: feather
+is_a: UBERON:0000001 ! anatomical structure
+relationship: never_in_taxon NCBITaxon:314146
+
+[Term]
+id: UBERON:0008291
+name: down feather
+is_a: UBERON:0000022 ! feather
+
+[Term]
+id: UBERON:0008294
+name: feather barb
+relationship: part_of UBERON:0000022 ! feather
+
+[Term]
+id: UBERON:0000151
+name: pectoral fin
+relationship: never_in_taxon NCBITaxon:32523
+
+[Term]
+id: UBERON:0003101
+name: male organism
+relationship: never_in_taxon NCBITaxon:10090
+
+[Typedef]
+id: part_of
+name: part of
+"""
+
+
+def test_select_terms_drops_obsolete_and_non_human():
+    codes = b.select_terms(b.parse_terms(OBO), keep_non_human=False)
+    assert set(codes) == {"UBERON:0000001", "UBERON:0000310", "UBERON:0003101"}
+    assert codes["UBERON:0000310"] == "breast"
+
+
+def test_non_human_exclusion_propagates_via_is_a_and_part_of():
+    excluded = b.non_human_terms(b.parse_terms(OBO))
+    assert {"UBERON:0000022", "UBERON:0008291", "UBERON:0008294"} <= excluded
+    # never_in mouse only does not exclude a term from the human enum
+    assert "UBERON:0003101" not in excluded
+
+
+def test_keep_non_human_retains_taxon_restricted_terms():
+    codes = b.select_terms(b.parse_terms(OBO), keep_non_human=True)
+    assert "UBERON:0000022" in codes
+    assert "UBERON:0000000" not in codes
+
+
+def test_script_writes_valid_enum_yaml_with_release(tmp_path):
+    obo = tmp_path / "uberon-basic.obo"
+    obo.write_text(OBO)
+    out = tmp_path / "uberon_tissues.yaml"
+    subprocess.run(
+        [sys.executable, str(SCRIPT), "--obo-file", str(obo), "--output", str(out)],
+        check=True,
+    )
+    schema = yaml.safe_load(out.read_text())
+    assert schema["version"] == "2026-10-01"
+    assert "v2026-10-01" in schema["source"]
+    pvs = schema["enums"]["tissue_or_organ_of_origin_uberon_enum"]["permissible_values"]
+    assert list(pvs) == sorted(pvs)
+    assert pvs["UBERON:0000310"]["description"] == "breast"
+    assert b.existing_codes(out) == set(pvs)
+
+
+def test_release_tag_overrides_obo_data_version(tmp_path):
+    # GitHub tag v2026-06-23 ships data-version 2026-06-19; the tag wins.
+    obo = tmp_path / "uberon-basic.obo"
+    obo.write_text(OBO)
+    out = tmp_path / "out.yaml"
+    subprocess.run(
+        [sys.executable, str(SCRIPT), "--obo-file", str(obo), "--release", "2026-06-23",
+         "--output", str(out)],
+        check=True,
+    )
+    assert yaml.safe_load(out.read_text())["version"] == "2026-06-23"
+
+
+def test_if_missing_leaves_existing_file_untouched(tmp_path):
+    out = tmp_path / "uberon_tissues.yaml"
+    out.write_text("sentinel\n")
+    subprocess.run(
+        [sys.executable, str(SCRIPT), "--if-missing", "--output", str(out)], check=True
+    )
+    assert out.read_text() == "sentinel\n"

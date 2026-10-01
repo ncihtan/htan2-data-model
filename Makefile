@@ -25,7 +25,7 @@ GEN_DOC_ARGS = --no-mergeimports
 # List of modules (add new modules here)
 MODULES = Clinical WES CoreFile Biospecimen Sequencing Imaging scRNA-seq scATAC-seq DigitalPathology MultiplexMicroscopy SpatialOmics MassSpectrometryImaging
 
-.PHONY: all clean setup gen-project gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format
+.PHONY: all clean setup gen-project gendoc git-init-add git-init git-add git-commit git-status help install test modules-gen modules-test format uberon-enum
 
 help: status
 	@echo ""
@@ -33,6 +33,7 @@ help: status
 	@echo "make site -- makes site locally"
 	@echo "make install -- install dependencies"
 	@echo "make test -- runs all tests"
+	@echo "make uberon-enum -- rebuild the UBERON enum from Uberon (latest, or \$$UBERON_RELEASE)"
 	@echo "make modules-gen -- generate schema classes for all modules"
 	@echo "make modules-test -- run tests for all modules"
 	@echo "make format -- format code with Black"
@@ -53,8 +54,13 @@ install:
 	poetry install
 .PHONY: install
 
+# Rebuild modules/Clinical/domains/uberon_tissues.yaml from Uberon (issue #198).
+# Uses the latest Uberon release unless UBERON_RELEASE=YYYY-MM-DD is set.
+uberon-enum:
+	$(RUN) python scripts/build_uberon_enum.py
+
 # Generate schema classes for all modules
-modules-gen:
+modules-gen: uberon-enum
 	@for module in $(MODULES); do \
 		if [ -f $(MODULES_DIR)/$$module/Makefile ]; then \
 		echo "Generating schema classes for $$module module..."; \

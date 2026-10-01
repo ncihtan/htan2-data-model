@@ -126,3 +126,6 @@ tmp/
 
 # OS files
 Thumbs.db
+# Generated from Uberon at build time by scripts/build_uberon_enum.py (issue #198)
+modules/Clinical/domains/uberon_tissues.yaml
+modules/Clinical/domains/uberon_tissues.yaml.tmp
