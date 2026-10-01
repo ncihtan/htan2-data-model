@@ -4,6 +4,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
 import yaml
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
@@ -150,3 +151,34 @@ def test_diff_codes_obsolete_without_replacement():
     terms = b.parse_terms(OBO)
     _, removed = b.diff_codes({"UBERON:0000000"}, {}, terms)
     assert removed == [("UBERON:0000000", "obsolete processual entity", "obsolete")]
+
+
+class _FakeResponse:
+    def __init__(self, url: str):
+        self._url = url
+
+    def geturl(self) -> str:
+        return self._url
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+
+def test_resolve_latest_release_follows_redirect(monkeypatch):
+    url = "https://github.com/obophenotype/uberon/releases/tag/v2026-10-01"
+    monkeypatch.setattr(b, "_open", lambda _url: _FakeResponse(url))
+    assert b.resolve_latest_release() == "2026-10-01"
+
+
+def test_resolve_latest_release_rejects_unexpected_url(monkeypatch):
+    url = "https://github.com/obophenotype/uberon/releases"
+    monkeypatch.setattr(b, "_open", lambda _url: _FakeResponse(url))
+    with pytest.raises(SystemExit):
+        b.resolve_latest_release()
+
+
+def test_existing_codes_missing_file_is_empty(tmp_path):
+    assert b.existing_codes(tmp_path / "missing.yaml") == set()
