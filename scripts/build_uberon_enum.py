@@ -217,22 +217,32 @@ def existing_codes(path: Path) -> set:
         return {m.group(1) for line in fh if (m := CODE_RE.match(line.rstrip("\n")))}
 
 
+def _removal_reason(tags) -> str:
+    if tags is None:
+        return "not in this release"
+    if tags.get("is_obsolete") == ["true"]:
+        repl = tags.get("replaced_by", []) + tags.get("consider", [])
+        return "obsolete" + (f" -> {', '.join(repl)}" if repl else "")
+    return "never in Homo sapiens"
+
+
+def diff_codes(old: set, new: dict, terms: dict):
+    """Return (added codes, [(code, name, reason)] for removed codes), both sorted."""
+    added = sorted(set(new) - old)
+    removed = []
+    for code in sorted(old - set(new)):
+        tags = terms.get(code)
+        name = tags["name"][0] if tags and tags.get("name") else ""
+        removed.append((code, name, _removal_reason(tags)))
+    return added, removed
+
+
 def report_diff(old: set, new: dict, terms: dict) -> None:
     if not old:
         return
-    added = sorted(set(new) - old)
-    removed = sorted(old - set(new))
+    added, removed = diff_codes(old, new, terms)
     print(f"  +{len(added)} added, -{len(removed)} removed vs existing YAML")
-    for code in removed:
-        tags = terms.get(code)
-        if tags is None:
-            reason = "not in this release"
-        elif tags.get("is_obsolete") == ["true"]:
-            repl = tags.get("replaced_by", []) + tags.get("consider", [])
-            reason = "obsolete" + (f" -> {', '.join(repl)}" if repl else "")
-        else:
-            reason = "never in Homo sapiens"
-        name = tags["name"][0] if tags and tags.get("name") else ""
+    for code, name, reason in removed:
         print(f"    - {code}  {name}  ({reason})")
 
 

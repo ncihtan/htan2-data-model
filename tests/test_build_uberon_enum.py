@@ -131,3 +131,22 @@ def test_if_missing_leaves_existing_file_untouched(tmp_path):
         [sys.executable, str(SCRIPT), "--if-missing", "--output", str(out)], check=True
     )
     assert out.read_text() == "sentinel\n"
+
+
+def test_diff_codes_reports_added_and_removal_reasons():
+    terms = b.parse_terms(OBO)
+    new = b.select_terms(terms, keep_non_human=False)
+    old = {"UBERON:0000001", "UBERON:0000099", "UBERON:0000022", "UBERON:9999999"}
+    added, removed = b.diff_codes(old, new, terms)
+    assert added == ["UBERON:0000310", "UBERON:0003101"]
+    assert removed == [
+        ("UBERON:0000022", "feather", "never in Homo sapiens"),
+        ("UBERON:0000099", "old breast term", "obsolete -> UBERON:0000310"),
+        ("UBERON:9999999", "", "not in this release"),
+    ]
+
+
+def test_diff_codes_obsolete_without_replacement():
+    terms = b.parse_terms(OBO)
+    _, removed = b.diff_codes({"UBERON:0000000"}, {}, terms)
+    assert removed == [("UBERON:0000000", "obsolete processual entity", "obsolete")]
