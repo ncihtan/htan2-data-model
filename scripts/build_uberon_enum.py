@@ -38,7 +38,10 @@ Usage:
 
 Pass `--keep-non-human` to skip the taxon filter.
 """
+from __future__ import annotations
+
 import argparse
+import http.client
 import os
 import re
 import time
@@ -60,39 +63,10 @@ DEFAULT_OUTPUT = (
 HUMAN_LINEAGE = {
     f"NCBITaxon:{t}"
     for t in (
-        1,
-        131567,
-        2759,
-        33154,
-        33208,
-        6072,
-        33213,
-        33511,
-        7711,
-        89593,
-        7742,
-        7776,
-        117570,
-        117571,
-        8287,
-        1338369,
-        32523,
-        32524,
-        40674,
-        32525,
-        9347,
-        1437010,
-        314146,
-        9443,
-        376913,
-        314293,
-        9526,
-        314295,
-        9604,
-        207598,
-        9605,
-        9606,
-    )
+        "1 131567 2759 33154 33208 6072 33213 33511 7711 89593 7742 7776 117570 "
+        "117571 8287 1338369 32523 32524 40674 32525 9347 1437010 314146 9443 "
+        "376913 314293 9526 314295 9604 207598 9605 9606"
+    ).split()
 }
 
 HEADER = """\
@@ -114,26 +88,41 @@ enums:
 CODE_RE = re.compile(r"^      (UBERON:\d+):$")
 RELEASE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
+# {term id: {OBO tag: [values]}}, e.g. {"UBERON:0000310": {"name": ["breast"], ...}}
+Terms = dict[str, dict[str, list[str]]]
+
 
 def escape_yaml_double_quoted(s: str) -> str:
+    """Escape backslashes and double quotes for a YAML double-quoted scalar."""
     return s.replace("\\", "\\\\").replace('"', '\\"')
 
 
-def _open(url: str, attempts: int = 3):
+def _open(url: str, attempts: int = 3) -> http.client.HTTPResponse:
+    """Open a URL, retrying transient network errors with a linear backoff."""
     req = urllib.request.Request(
         url, headers={"User-Agent": "htan2-data-model-build-uberon-enum/1.0"}
     )
-    for i in range(attempts):
+    for i in range(attempts - 1):
         try:
             return urllib.request.urlopen(req, timeout=120)
         except OSError:
-            if i == attempts - 1:
-                raise
             time.sleep(5 * (i + 1))
+    return urllib.request.urlopen(req, timeout=120)
 
 
 def resolve_latest_release() -> str:
-    """Follow the GitHub /releases/latest redirect to get the tag date."""
+    """Find the latest Uberon release by following GitHub's /releases/latest redirect.
+
+    Returns
+    -------
+    str
+        The release date tag without the leading "v", e.g. "2026-10-01".
+
+    Raises
+    ------
+    SystemExit
+        If the redirect does not end in a vYYYY-MM-DD release tag.
+    """
     with _open(LATEST_URL) as resp:
         tag = resp.geturl().rstrip("/").rsplit("/", 1)[-1]
     release = tag.lstrip("v")
@@ -143,16 +132,39 @@ def resolve_latest_release() -> str:
 
 
 def fetch_obo_text(release: str) -> str:
+    """Download uberon-basic.obo for a release.
+
+    Parameters
+    ----------
+    release : str
+        Uberon release date tag, e.g. "2026-10-01".
+
+    Returns
+    -------
+    str
+        The OBO file contents.
+    """
     url = RELEASE_URL.format(release=release)
     print(f"Downloading {url}")
     with _open(url) as resp:
         return resp.read().decode("utf-8")
 
 
-def parse_terms(text: str) -> dict:
-    """Return {id: {tag: [values]}} for every UBERON [Term] stanza."""
-    terms = {}
-    cur = None
+def parse_terms(text: str) -> Terms:
+    """Parse the UBERON [Term] stanzas of an OBO file.
+
+    Parameters
+    ----------
+    text : str
+        OBO file contents.
+
+    Returns
+    -------
+    Terms
+        Each UBERON term id mapped to its tags, e.g. {"name": ["breast"], ...}.
+    """
+    terms: Terms = {}
+    cur: defaultdict[str, list[str]] | None = None
     for line in text.splitlines():
         if line.startswith("["):
             cur = defaultdict(list) if line == "[Term]" else None
@@ -167,14 +179,28 @@ def parse_terms(text: str) -> dict:
 
 
 def _target(value: str) -> str:
-    """'part_of UBERON:0000001 ! foo' -> 'UBERON:0000001'; 'UBERON:x ! foo' -> 'UBERON:x'."""
+    """Get the target id from an OBO value, e.g. 'part_of UBERON:0000001 ! foo'."""
     return value.split(" ! ")[0].split()[-1]
 
 
-def non_human_terms(terms: dict) -> set:
-    """Terms with a never_in_taxon constraint covering humans, plus all descendants."""
-    children = defaultdict(set)
-    seeds = set()
+def non_human_terms(terms: Terms) -> set[str]:
+    """Find terms that never occur in Homo sapiens.
+
+    A term is excluded if it has a never_in_taxon constraint on Homo sapiens or any of
+    its ancestor taxa, or if it is an is_a / part_of descendant of such a term.
+
+    Parameters
+    ----------
+    terms : Terms
+        Parsed terms from parse_terms().
+
+    Returns
+    -------
+    set[str]
+        Ids of the excluded terms.
+    """
+    children: defaultdict[str, set[str]] = defaultdict(set)
+    seeds: set[str] = set()
     for tid, tags in terms.items():
         for parent in tags.get("is_a", []):
             children[_target(parent)].add(tid)
@@ -184,7 +210,7 @@ def non_human_terms(terms: dict) -> set:
                 children[parts[1]].add(tid)
             elif parts[0] == "never_in_taxon" and parts[1] in HUMAN_LINEAGE:
                 seeds.add(tid)
-    excluded = set()
+    excluded: set[str] = set()
     stack = list(seeds)
     while stack:
         tid = stack.pop()
@@ -195,8 +221,21 @@ def non_human_terms(terms: dict) -> set:
     return excluded
 
 
-def select_terms(terms: dict, keep_non_human: bool) -> dict:
-    """Return {code: name} for terms that belong in the enum."""
+def select_terms(terms: Terms, keep_non_human: bool) -> dict[str, str]:
+    """Pick the terms that belong in the enum: named, non-obsolete, and human.
+
+    Parameters
+    ----------
+    terms : Terms
+        Parsed terms from parse_terms().
+    keep_non_human : bool
+        Skip the never-in-Homo-sapiens filter.
+
+    Returns
+    -------
+    dict[str, str]
+        Each selected code mapped to its term name.
+    """
     obsolete = {t for t, tags in terms.items() if tags.get("is_obsolete") == ["true"]}
     excluded = set() if keep_non_human else non_human_terms(terms)
     print(
@@ -210,14 +249,27 @@ def select_terms(terms: dict, keep_non_human: bool) -> dict:
     }
 
 
-def existing_codes(path: Path) -> set:
+def existing_codes(path: Path) -> set[str]:
+    """Read the codes from a previously generated enum YAML.
+
+    Parameters
+    ----------
+    path : Path
+        Enum YAML written by write_enum().
+
+    Returns
+    -------
+    set[str]
+        The codes in the file, or an empty set if it does not exist.
+    """
     if not path.exists():
         return set()
     with path.open(encoding="utf-8") as fh:
         return {m.group(1) for line in fh if (m := CODE_RE.match(line.rstrip("\n")))}
 
 
-def _removal_reason(tags) -> str:
+def _removal_reason(tags: dict[str, list[str]] | None) -> str:
+    """Explain why a code is not in the new enum, given its tags (None if absent)."""
     if tags is None:
         return "not in this release"
     if tags.get("is_obsolete") == ["true"]:
@@ -226,10 +278,30 @@ def _removal_reason(tags) -> str:
     return "never in Homo sapiens"
 
 
-def diff_codes(old: set, new: dict, terms: dict):
-    """Return (added codes, [(code, name, reason)] for removed codes), both sorted."""
+def diff_codes(
+    old: set[str], new: dict[str, str], terms: Terms
+) -> tuple[list[str], list[tuple[str, str, str]]]:
+    """Compare a new enum against the previous build.
+
+    Parameters
+    ----------
+    old : set[str]
+        Codes in the previous enum YAML.
+    new : dict[str, str]
+        Selected codes from select_terms().
+    terms : Terms
+        Parsed terms from parse_terms(), used to explain removals.
+
+    Returns
+    -------
+    added : list[str]
+        Sorted codes that are new in this build.
+    removed : list[tuple[str, str, str]]
+        Sorted (code, name, reason) for each dropped code, e.g.
+        ("UBERON:0000099", "old term", "obsolete -> UBERON:0000310").
+    """
     added = sorted(set(new) - old)
-    removed = []
+    removed: list[tuple[str, str, str]] = []
     for code in sorted(old - set(new)):
         tags = terms.get(code)
         name = tags["name"][0] if tags and tags.get("name") else ""
@@ -237,7 +309,8 @@ def diff_codes(old: set, new: dict, terms: dict):
     return added, removed
 
 
-def report_diff(old: set, new: dict, terms: dict) -> None:
+def report_diff(old: set[str], new: dict[str, str], terms: Terms) -> None:
+    """Print the added / removed summary and each removed code with its reason."""
     if not old:
         return
     added, removed = diff_codes(old, new, terms)
@@ -246,7 +319,25 @@ def report_diff(old: set, new: dict, terms: dict) -> None:
         print(f"    - {code}  {name}  ({reason})")
 
 
-def write_enum(codes: dict, output: Path, release: str, url: str) -> int:
+def write_enum(codes: dict[str, str], output: Path, release: str, url: str) -> int:
+    """Write the enum YAML, sorted by code, with the Uberon release in the header.
+
+    Parameters
+    ----------
+    codes : dict[str, str]
+        Each code mapped to its term name.
+    output : Path
+        Path of the YAML to write.
+    release : str
+        Uberon release date tag recorded as the schema version.
+    url : str
+        Source OBO URL recorded in the schema header.
+
+    Returns
+    -------
+    int
+        The number of permissible values written.
+    """
     # Write to a temp file first so an interrupted build never leaves a
     # truncated YAML behind for --if-missing to accept.
     tmp = output.with_suffix(output.suffix + ".tmp")
@@ -261,7 +352,28 @@ def write_enum(codes: dict, output: Path, release: str, url: str) -> int:
     return len(codes)
 
 
-def _load_obo(release, obo_file):
+def _load_obo(release: str | None, obo_file: Path | None) -> tuple[str, str]:
+    """Read or download the OBO and work out which release it is.
+
+    Parameters
+    ----------
+    release : str or None
+        Release date tag, or None for the latest (or the file's data-version).
+    obo_file : Path or None
+        Local OBO to read instead of downloading.
+
+    Returns
+    -------
+    text : str
+        The OBO file contents.
+    release : str
+        The release date tag.
+
+    Raises
+    ------
+    SystemExit
+        If the OBO has no Uberon data-version header.
+    """
     if obo_file:
         text = obo_file.read_text(encoding="utf-8")
     else:
@@ -279,7 +391,8 @@ def _load_obo(release, obo_file):
     return text, release or m.group(1)
 
 
-def main():
+def main() -> None:
+    """Build the UBERON enum YAML from the command line."""
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument(
         "--release",
