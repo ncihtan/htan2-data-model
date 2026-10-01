@@ -1,5 +1,5 @@
 # Auto generated from scatac_seq.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-01T18:20:15
+# Generation date: 2026-10-01T18:41:36
 # Schema: scATAC-seq
 #
 # id: https://w3id.org/htan/scatac_seq
