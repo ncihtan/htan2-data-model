@@ -35,6 +35,7 @@ a `src/` directory with generated code. Only edit files under `domains/`.
 | `modules/*/domains/*.yaml` | You (source of truth) |
 | `modules/*/src/*/datamodel/*.py` | `make modules-gen` |
 | `JSON_Schemas/*.json` | `make modules-gen` |
+| `modules/Clinical/domains/uberon_tissues.yaml` (gitignored) | `make uberon-enum` — built from the latest Uberon release, or `$UBERON_RELEASE` |
 
 Generated artifacts are produced in a separate downstream PR — never commit them
 alongside YAML changes.

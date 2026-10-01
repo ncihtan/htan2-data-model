@@ -50,6 +50,9 @@ jobs:
     
     - name: Install project
       run: poetry install --no-interaction
+
+    - name: Build UBERON enum from Uberon
+      run: poetry run python scripts/build_uberon_enum.py
     
     - name: Generate Python Classes for Biospecimen
       if: contains(github.event.inputs.modules, 'biospecimen') || github.event.inputs.modules == 'all'

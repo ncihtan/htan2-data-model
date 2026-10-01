@@ -10,6 +10,10 @@ on:
         description: 'Version to release (e.g., 1.0.0)'
         required: true
         default: '0.1.0'
+      uberon_release:
+        description: 'Uberon release to build the UBERON enum from (YYYY-MM-DD). Leave empty for the latest.'
+        required: false
+        default: ''
 
 env:
   PYTHON_VERSION: '3.11'
@@ -60,6 +64,16 @@ jobs:
         fi
         echo "Version: ${{ steps.version.outputs.version }}"
     
+    - name: Build UBERON enum from Uberon
+      id: uberon
+      env:
+        UBERON_RELEASE: ${{ github.event.inputs.uberon_release }}
+      run: |
+        poetry run python scripts/build_uberon_enum.py
+        RELEASE=$(sed -n 's/^version: "\(.*\)"$/\1/p' modules/Clinical/domains/uberon_tissues.yaml)
+        echo "release=$RELEASE" >> $GITHUB_OUTPUT
+        echo "Built UBERON enum from Uberon release $RELEASE"
+
     - name: Generate JSON Schemas
       run: |
         # Create versioned output directory
@@ -358,6 +372,8 @@ jobs:
           --notes "## JSON Schema Release ${{ steps.version.outputs.version }}
         
         This release includes updated JSON schemas for the HTAN2 data model.
+
+        UBERON codes built from Uberon release [${{ steps.uberon.outputs.release }}](https://github.com/obophenotype/uberon/releases/tag/v${{ steps.uberon.outputs.release }}).
         
         ### Schema Organization:
         All schemas are organized in versioned directories: \`JSON_Schemas/${{ steps.version.outputs.version }}/\`
