@@ -109,8 +109,16 @@ def test_release_tag_overrides_obo_data_version(tmp_path):
     obo.write_text(OBO)
     out = tmp_path / "out.yaml"
     subprocess.run(
-        [sys.executable, str(SCRIPT), "--obo-file", str(obo), "--release", "2026-06-23",
-         "--output", str(out)],
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--obo-file",
+            str(obo),
+            "--release",
+            "2026-06-23",
+            "--output",
+            str(out),
+        ],
         check=True,
     )
     assert yaml.safe_load(out.read_text())["version"] == "2026-06-23"
