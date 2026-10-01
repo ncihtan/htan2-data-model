@@ -1,6 +1,6 @@
 # Clinical Module Makefile
 
-.PHONY: all clean test gen-schema gen-synapse-schema docs
+.PHONY: all clean test gen-schema gen-synapse-schema docs uberon-enum
 
 # Environment variables
 SCHEMA_NAME = htan_clinical
@@ -11,8 +11,12 @@ DOCS_DIR = docs
 
 all: gen-schema test docs
 
+# Build the UBERON enum from Uberon if it has not been generated yet (issue #198)
+uberon-enum:
+	cd ../../ && poetry run python scripts/build_uberon_enum.py --if-missing
+
 # Generate schema classes
-gen-schema:
+gen-schema: uberon-enum
 	mkdir -p $(BUILD_DIR)
 	mkdir -p $(DATAMODEL_DIR)
 	poetry run gen-project --config-file ../../config/config.yaml --exclude owl --exclude rdf -d $(BUILD_DIR) $(SOURCE_SCHEMA_PATH)
@@ -22,7 +26,7 @@ gen-schema:
 # Note: Clinical module has multiple domain schemas (demographics, diagnosis, etc.)
 # This generates the main clinical.yaml schema. Individual domain schemas are
 # generated in the json-schema-synapse.yml workflow.
-gen-synapse-schema:
+gen-synapse-schema: uberon-enum
 	mkdir -p $(BUILD_DIR)
 	cd ../../ && poetry run python scripts/linkml_to_flat_synapse_jsonschema.py \
 		modules/Clinical/$(SOURCE_SCHEMA_PATH) \
@@ -31,12 +35,12 @@ gen-synapse-schema:
 	@echo "✅ Synapse-compatible schema generated: $(BUILD_DIR)/clinical.flat.schema.json"
 
 # Generate documentation
-docs:
+docs: uberon-enum
 	mkdir -p $(DOCS_DIR)
 	poetry run gen-doc --no-mergeimports $(SOURCE_SCHEMA_PATH) -d $(DOCS_DIR)
 
 # Run module-specific tests
-test:
+test: uberon-enum
 	cd ../../ && PYTHONPATH=modules/Clinical/src:. poetry run pytest modules/Clinical/tests/ -v
 
 # Clean build artifacts
