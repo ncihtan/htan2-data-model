@@ -1,5 +1,5 @@
 # Auto generated from clinical.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-24T17:24:21
+# Generation date: 2026-10-01T18:37:55
 # Schema: Clinical
 #
 # id: https://w3id.org/htan/clinical
@@ -3851,19 +3851,19 @@ class VitalStatusEnum(EnumDefinitionImpl):
 
 class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
     """
-    UBERON codes for tissues and organs of origin
+    UBERON codes for tissues and organs of origin (Uberon release 2026-10-01)
     """
     _defn = EnumDefinition(
         name="TissueOrOrganOfOriginUberonEnum",
-        description="UBERON codes for tissues and organs of origin",
+        description="UBERON codes for tissues and organs of origin (Uberon release 2026-10-01)",
     )
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "UBERON:0000000",
+        setattr(cls, "UBERON:0000001",
             PermissibleValue(
-                text="UBERON:0000000",
-                description="processual entity"))
+                text="UBERON:0000001",
+                description="gross anatomical part"))
         setattr(cls, "UBERON:0000002",
             PermissibleValue(
                 text="UBERON:0000002",
@@ -3924,10 +3924,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000017",
                 description="exocrine pancreas"))
-        setattr(cls, "UBERON:0000018",
-            PermissibleValue(
-                text="UBERON:0000018",
-                description="compound eye"))
         setattr(cls, "UBERON:0000019",
             PermissibleValue(
                 text="UBERON:0000019",
@@ -3940,14 +3936,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000021",
                 description="cutaneous appendage"))
-        setattr(cls, "UBERON:0000022",
+        setattr(cls, "UBERON:0000025",
             PermissibleValue(
-                text="UBERON:0000022",
-                description="feather"))
-        setattr(cls, "UBERON:0000023",
-            PermissibleValue(
-                text="UBERON:0000023",
-                description="wing"))
+                text="UBERON:0000025",
+                description="tube"))
         setattr(cls, "UBERON:0000026",
             PermissibleValue(
                 text="UBERON:0000026",
@@ -3988,6 +3980,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000039",
                 description="follicular antrum"))
+        setattr(cls, "UBERON:0000040",
+            PermissibleValue(
+                text="UBERON:0000040",
+                description="Leydig's organ"))
         setattr(cls, "UBERON:0000041",
             PermissibleValue(
                 text="UBERON:0000041",
@@ -4008,10 +4004,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000045",
                 description="ganglion"))
-        setattr(cls, "UBERON:0000046",
-            PermissibleValue(
-                text="UBERON:0000046",
-                description="stemma"))
         setattr(cls, "UBERON:0000047",
             PermissibleValue(
                 text="UBERON:0000047",
@@ -4020,6 +4012,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000048",
                 description="pinhole eye"))
+        setattr(cls, "UBERON:0000049",
+            PermissibleValue(
+                text="UBERON:0000049",
+                description="spherical lensed eye"))
         setattr(cls, "UBERON:0000051",
             PermissibleValue(
                 text="UBERON:0000051",
@@ -4036,6 +4032,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000054",
                 description="macula"))
+        setattr(cls, "UBERON:0000055",
+            PermissibleValue(
+                text="UBERON:0000055",
+                description="vessel"))
         setattr(cls, "UBERON:0000056",
             PermissibleValue(
                 text="UBERON:0000056",
@@ -4084,10 +4084,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000068",
                 description="embryo stage"))
-        setattr(cls, "UBERON:0000069",
-            PermissibleValue(
-                text="UBERON:0000069",
-                description="larval stage"))
         setattr(cls, "UBERON:0000070",
             PermissibleValue(
                 text="UBERON:0000070",
@@ -4116,6 +4112,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000076",
                 description="external ectoderm"))
+        setattr(cls, "UBERON:0000077",
+            PermissibleValue(
+                text="UBERON:0000077",
+                description="mixed endoderm/mesoderm-derived structure"))
+        setattr(cls, "UBERON:0000078",
+            PermissibleValue(
+                text="UBERON:0000078",
+                description="mixed ectoderm/mesoderm/endoderm-derived structure"))
         setattr(cls, "UBERON:0000079",
             PermissibleValue(
                 text="UBERON:0000079",
@@ -4172,6 +4176,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000092",
                 description="post-embryonic stage"))
+        setattr(cls, "UBERON:0000093",
+            PermissibleValue(
+                text="UBERON:0000093",
+                description="sulcus"))
         setattr(cls, "UBERON:0000094",
             PermissibleValue(
                 text="UBERON:0000094",
@@ -4240,6 +4248,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000115",
                 description="lung epithelium"))
+        setattr(cls, "UBERON:0000116",
+            PermissibleValue(
+                text="UBERON:0000116",
+                description="lung saccule"))
         setattr(cls, "UBERON:0000117",
             PermissibleValue(
                 text="UBERON:0000117",
@@ -4296,14 +4308,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000144",
                 description="trochlea of humerus"))
-        setattr(cls, "UBERON:0000151",
+        setattr(cls, "UBERON:0000153",
             PermissibleValue(
-                text="UBERON:0000151",
-                description="pectoral fin"))
-        setattr(cls, "UBERON:0000152",
+                text="UBERON:0000153",
+                description="anterior region of body"))
+        setattr(cls, "UBERON:0000154",
             PermissibleValue(
-                text="UBERON:0000152",
-                description="pelvic fin"))
+                text="UBERON:0000154",
+                description="posterior region of body"))
         setattr(cls, "UBERON:0000155",
             PermissibleValue(
                 text="UBERON:0000155",
@@ -4428,14 +4440,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000204",
                 description="ventral part of telencephalon"))
-        setattr(cls, "UBERON:0000205",
-            PermissibleValue(
-                text="UBERON:0000205",
-                description="papula"))
-        setattr(cls, "UBERON:0000207",
-            PermissibleValue(
-                text="UBERON:0000207",
-                description="compound eye corneal lens"))
         setattr(cls, "UBERON:0000209",
             PermissibleValue(
                 text="UBERON:0000209",
@@ -4448,6 +4452,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000211",
                 description="ligament"))
+        setattr(cls, "UBERON:0000212",
+            PermissibleValue(
+                text="UBERON:0000212",
+                description="toilet claw"))
         setattr(cls, "UBERON:0000218",
             PermissibleValue(
                 text="UBERON:0000218",
@@ -4600,10 +4608,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000358",
                 description="blastocyst"))
-        setattr(cls, "UBERON:0000359",
-            PermissibleValue(
-                text="UBERON:0000359",
-                description="preputial gland"))
         setattr(cls, "UBERON:0000361",
             PermissibleValue(
                 text="UBERON:0000361",
@@ -4616,10 +4620,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000363",
                 description="reticuloendothelial system"))
-        setattr(cls, "UBERON:0000364",
-            PermissibleValue(
-                text="UBERON:0000364",
-                description="obsolete rootlet"))
         setattr(cls, "UBERON:0000365",
             PermissibleValue(
                 text="UBERON:0000365",
@@ -4672,10 +4672,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000379",
                 description="tracheal mucosa"))
-        setattr(cls, "UBERON:0000380",
-            PermissibleValue(
-                text="UBERON:0000380",
-                description="obsolete tuber"))
         setattr(cls, "UBERON:0000381",
             PermissibleValue(
                 text="UBERON:0000381",
@@ -4688,10 +4684,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000383",
                 description="musculature of body"))
-        setattr(cls, "UBERON:0000385",
-            PermissibleValue(
-                text="UBERON:0000385",
-                description="obsolete labial gland"))
         setattr(cls, "UBERON:0000387",
             PermissibleValue(
                 text="UBERON:0000387",
@@ -4868,10 +4860,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000446",
                 description="septum of telencephalon"))
-        setattr(cls, "UBERON:0000449",
-            PermissibleValue(
-                text="UBERON:0000449",
-                description="obsolete decidual cell"))
         setattr(cls, "UBERON:0000450",
             PermissibleValue(
                 text="UBERON:0000450",
@@ -5064,18 +5052,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000916",
                 description="abdomen"))
-        setattr(cls, "UBERON:0000918",
-            PermissibleValue(
-                text="UBERON:0000918",
-                description="obsolete yolk"))
         setattr(cls, "UBERON:0000920",
             PermissibleValue(
                 text="UBERON:0000920",
                 description="egg chorion"))
-        setattr(cls, "UBERON:0000921",
-            PermissibleValue(
-                text="UBERON:0000921",
-                description="obsolete pronucleus"))
         setattr(cls, "UBERON:0000922",
             PermissibleValue(
                 text="UBERON:0000922",
@@ -5116,10 +5096,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000933",
                 description="chordate pharyngeal muscle"))
-        setattr(cls, "UBERON:0000934",
-            PermissibleValue(
-                text="UBERON:0000934",
-                description="ventral nerve cord"))
         setattr(cls, "UBERON:0000935",
             PermissibleValue(
                 text="UBERON:0000935",
@@ -5168,10 +5144,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000951",
                 description="rotator muscle of the vertebral column"))
-        setattr(cls, "UBERON:0000953",
-            PermissibleValue(
-                text="UBERON:0000953",
-                description="obsolete visceral muscle"))
         setattr(cls, "UBERON:0000955",
             PermissibleValue(
                 text="UBERON:0000955",
@@ -5192,10 +5164,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000959",
                 description="optic chiasma"))
-        setattr(cls, "UBERON:0000960",
-            PermissibleValue(
-                text="UBERON:0000960",
-                description="obsolete pharyngeal nerve"))
         setattr(cls, "UBERON:0000961",
             PermissibleValue(
                 text="UBERON:0000961",
@@ -5224,10 +5192,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000970",
                 description="eye"))
-        setattr(cls, "UBERON:0000971",
-            PermissibleValue(
-                text="UBERON:0000971",
-                description="ommatidium"))
         setattr(cls, "UBERON:0000972",
             PermissibleValue(
                 text="UBERON:0000972",
@@ -5272,10 +5236,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000983",
                 description="metatarsus region"))
-        setattr(cls, "UBERON:0000984",
-            PermissibleValue(
-                text="UBERON:0000984",
-                description="imaginal disc-derived wing"))
         setattr(cls, "UBERON:0000985",
             PermissibleValue(
                 text="UBERON:0000985",
@@ -5308,10 +5268,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0000993",
                 description="oviduct"))
-        setattr(cls, "UBERON:0000994",
-            PermissibleValue(
-                text="UBERON:0000994",
-                description="spermathecum"))
         setattr(cls, "UBERON:0000995",
             PermissibleValue(
                 text="UBERON:0000995",
@@ -5356,10 +5312,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0001005",
                 description="respiratory airway"))
-        setattr(cls, "UBERON:0001006",
-            PermissibleValue(
-                text="UBERON:0001006",
-                description="obsolete spiracle"))
         setattr(cls, "UBERON:0001007",
             PermissibleValue(
                 text="UBERON:0001007",
@@ -5376,10 +5328,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0001010",
                 description="diaphysis of ulna"))
-        setattr(cls, "UBERON:0001011",
-            PermissibleValue(
-                text="UBERON:0001011",
-                description="hemolymph"))
         setattr(cls, "UBERON:0001012",
             PermissibleValue(
                 text="UBERON:0001012",
@@ -5416,22 +5364,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0001021",
                 description="nerve"))
-        setattr(cls, "UBERON:0001023",
-            PermissibleValue(
-                text="UBERON:0001023",
-                description="obsolete dendrite"))
-        setattr(cls, "UBERON:0001024",
-            PermissibleValue(
-                text="UBERON:0001024",
-                description="obsolete neurite"))
-        setattr(cls, "UBERON:0001025",
-            PermissibleValue(
-                text="UBERON:0001025",
-                description="obsolete synapse"))
-        setattr(cls, "UBERON:0001026",
-            PermissibleValue(
-                text="UBERON:0001026",
-                description="obsolete motor nerve"))
         setattr(cls, "UBERON:0001027",
             PermissibleValue(
                 text="UBERON:0001027",
@@ -5440,10 +5372,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0001028",
                 description="diaphysis of radius"))
-        setattr(cls, "UBERON:0001029",
-            PermissibleValue(
-                text="UBERON:0001029",
-                description="obsolete neuromuscular junction"))
         setattr(cls, "UBERON:0001031",
             PermissibleValue(
                 text="UBERON:0001031",
@@ -5456,10 +5384,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0001033",
                 description="gustatory system"))
-        setattr(cls, "UBERON:0001034",
-            PermissibleValue(
-                text="UBERON:0001034",
-                description="obsolete photoreceptor"))
         setattr(cls, "UBERON:0001035",
             PermissibleValue(
                 text="UBERON:0001035",
@@ -6664,10 +6588,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0001344",
                 description="epithelium of vagina"))
-        setattr(cls, "UBERON:0001345",
-            PermissibleValue(
-                text="UBERON:0001345",
-                description="obsolete fornix"))
         setattr(cls, "UBERON:0001346",
             PermissibleValue(
                 text="UBERON:0001346",
@@ -8080,10 +8000,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0001703",
                 description="neurocranium"))
-        setattr(cls, "UBERON:0001704",
-            PermissibleValue(
-                text="UBERON:0001704",
-                description="obsolete viscerocranium"))
         setattr(cls, "UBERON:0001705",
             PermissibleValue(
                 text="UBERON:0001705",
@@ -10432,10 +10348,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0002299",
                 description="alveolus of lung"))
-        setattr(cls, "UBERON:0002300",
-            PermissibleValue(
-                text="UBERON:0002300",
-                description="obsolete ventricle"))
         setattr(cls, "UBERON:0002301",
             PermissibleValue(
                 text="UBERON:0002301",
@@ -10603,7 +10515,7 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
         setattr(cls, "UBERON:0002346",
             PermissibleValue(
                 text="UBERON:0002346",
-                description="neurectoderm"))
+                description="neuroectoderm"))
         setattr(cls, "UBERON:0002347",
             PermissibleValue(
                 text="UBERON:0002347",
@@ -10872,10 +10784,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0002414",
                 description="lumbar vertebra"))
-        setattr(cls, "UBERON:0002415",
-            PermissibleValue(
-                text="UBERON:0002415",
-                description="tail"))
         setattr(cls, "UBERON:0002416",
             PermissibleValue(
                 text="UBERON:0002416",
@@ -11336,14 +11244,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0002533",
                 description="post-anal tail bud"))
-        setattr(cls, "UBERON:0002534",
-            PermissibleValue(
-                text="UBERON:0002534",
-                description="paired fin"))
-        setattr(cls, "UBERON:0002535",
-            PermissibleValue(
-                text="UBERON:0002535",
-                description="gill"))
         setattr(cls, "UBERON:0002536",
             PermissibleValue(
                 text="UBERON:0002536",
@@ -11360,26 +11260,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0002539",
                 description="pharyngeal arch"))
-        setattr(cls, "UBERON:0002540",
-            PermissibleValue(
-                text="UBERON:0002540",
-                description="lateral line system"))
         setattr(cls, "UBERON:0002541",
             PermissibleValue(
                 text="UBERON:0002541",
                 description="germ ring"))
-        setattr(cls, "UBERON:0002542",
-            PermissibleValue(
-                text="UBERON:0002542",
-                description="scale"))
         setattr(cls, "UBERON:0002544",
             PermissibleValue(
                 text="UBERON:0002544",
                 description="digit"))
-        setattr(cls, "UBERON:0002545",
-            PermissibleValue(
-                text="UBERON:0002545",
-                description="obsolete body ganglion"))
         setattr(cls, "UBERON:0002546",
             PermissibleValue(
                 text="UBERON:0002546",
@@ -11624,10 +11512,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0002610",
                 description="cochlear nuclear complex"))
-        setattr(cls, "UBERON:0002611",
-            PermissibleValue(
-                text="UBERON:0002611",
-                description="obsolete node of ranvier"))
         setattr(cls, "UBERON:0002612",
             PermissibleValue(
                 text="UBERON:0002612",
@@ -13028,10 +12912,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0002985",
                 description="ventral nucleus of medial geniculate body"))
-        setattr(cls, "UBERON:0002986",
-            PermissibleValue(
-                text="UBERON:0002986",
-                description="obsolete neurofilament"))
         setattr(cls, "UBERON:0002987",
             PermissibleValue(
                 text="UBERON:0002987",
@@ -13080,10 +12960,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0002999",
                 description="oral pontine reticular nucleus"))
-        setattr(cls, "UBERON:0003000",
-            PermissibleValue(
-                text="UBERON:0003000",
-                description="obsolete intermediate filament"))
         setattr(cls, "UBERON:0003001",
             PermissibleValue(
                 text="UBERON:0003001",
@@ -13092,10 +12968,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003002",
                 description="medial lemniscus"))
-        setattr(cls, "UBERON:0003003",
-            PermissibleValue(
-                text="UBERON:0003003",
-                description="obsolete microfilament"))
         setattr(cls, "UBERON:0003004",
             PermissibleValue(
                 text="UBERON:0003004",
@@ -13396,26 +13268,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003085",
                 description="ventral aorta"))
-        setattr(cls, "UBERON:0003086",
-            PermissibleValue(
-                text="UBERON:0003086",
-                description="caudal artery"))
         setattr(cls, "UBERON:0003087",
             PermissibleValue(
                 text="UBERON:0003087",
                 description="anterior cardinal vein"))
-        setattr(cls, "UBERON:0003088",
-            PermissibleValue(
-                text="UBERON:0003088",
-                description="caudal vein"))
         setattr(cls, "UBERON:0003089",
             PermissibleValue(
                 text="UBERON:0003089",
                 description="sclerotome"))
-        setattr(cls, "UBERON:0003090",
-            PermissibleValue(
-                text="UBERON:0003090",
-                description="supraorbital lateral line"))
         setattr(cls, "UBERON:0003091",
             PermissibleValue(
                 text="UBERON:0003091",
@@ -13424,26 +13284,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003092",
                 description="ultimobranchial body"))
-        setattr(cls, "UBERON:0003093",
-            PermissibleValue(
-                text="UBERON:0003093",
-                description="occipital lateral line"))
-        setattr(cls, "UBERON:0003094",
-            PermissibleValue(
-                text="UBERON:0003094",
-                description="infraorbital lateral line"))
-        setattr(cls, "UBERON:0003095",
-            PermissibleValue(
-                text="UBERON:0003095",
-                description="dorsal lateral line"))
-        setattr(cls, "UBERON:0003096",
-            PermissibleValue(
-                text="UBERON:0003096",
-                description="middle lateral line"))
-        setattr(cls, "UBERON:0003097",
-            PermissibleValue(
-                text="UBERON:0003097",
-                description="dorsal fin"))
         setattr(cls, "UBERON:0003098",
             PermissibleValue(
                 text="UBERON:0003098",
@@ -13484,10 +13324,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003107",
                 description="Meckel's cartilage"))
-        setattr(cls, "UBERON:0003108",
-            PermissibleValue(
-                text="UBERON:0003108",
-                description="suspensorium"))
         setattr(cls, "UBERON:0003109",
             PermissibleValue(
                 text="UBERON:0003109",
@@ -13600,10 +13436,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003143",
                 description="pupa"))
-        setattr(cls, "UBERON:0003148",
-            PermissibleValue(
-                text="UBERON:0003148",
-                description="obsolete sclerite"))
         setattr(cls, "UBERON:0003153",
             PermissibleValue(
                 text="UBERON:0003153",
@@ -13620,10 +13452,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003162",
                 description="lateral ocellus"))
-        setattr(cls, "UBERON:0003194",
-            PermissibleValue(
-                text="UBERON:0003194",
-                description="imaginal disc-derived wing vein"))
         setattr(cls, "UBERON:0003199",
             PermissibleValue(
                 text="UBERON:0003199",
@@ -13636,14 +13464,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003202",
                 description="endocuticle"))
-        setattr(cls, "UBERON:0003207",
-            PermissibleValue(
-                text="UBERON:0003207",
-                description="obsolete arthropod appendage segment"))
         setattr(cls, "UBERON:0003209",
             PermissibleValue(
                 text="UBERON:0003209",
                 description="blood nerve barrier"))
+        setattr(cls, "UBERON:0003210",
+            PermissibleValue(
+                text="UBERON:0003210",
+                description="blood-cerebrospinal fluid barrier"))
         setattr(cls, "UBERON:0003211",
             PermissibleValue(
                 text="UBERON:0003211",
@@ -13668,6 +13496,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003217",
                 description="neural lobe of neurohypophysis"))
+        setattr(cls, "UBERON:0003218",
+            PermissibleValue(
+                text="UBERON:0003218",
+                description="ovary septum"))
         setattr(cls, "UBERON:0003220",
             PermissibleValue(
                 text="UBERON:0003220",
@@ -13784,14 +13616,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003254",
                 description="amniotic ectoderm"))
-        setattr(cls, "UBERON:0003255",
-            PermissibleValue(
-                text="UBERON:0003255",
-                description="obsolete ectoderm of embryo"))
-        setattr(cls, "UBERON:0003256",
-            PermissibleValue(
-                text="UBERON:0003256",
-                description="obsolete endoderm of embryo"))
         setattr(cls, "UBERON:0003257",
             PermissibleValue(
                 text="UBERON:0003257",
@@ -14424,10 +14248,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003448",
                 description="manus nerve"))
-        setattr(cls, "UBERON:0003449",
-            PermissibleValue(
-                text="UBERON:0003449",
-                description="tail intervertebral disc"))
         setattr(cls, "UBERON:0003450",
             PermissibleValue(
                 text="UBERON:0003450",
@@ -14488,10 +14308,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003464",
                 description="hindlimb bone"))
-        setattr(cls, "UBERON:0003465",
-            PermissibleValue(
-                text="UBERON:0003465",
-                description="obsolete chondrocranium bone"))
         setattr(cls, "UBERON:0003466",
             PermissibleValue(
                 text="UBERON:0003466",
@@ -14552,10 +14368,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003480",
                 description="vein of clitoris"))
-        setattr(cls, "UBERON:0003481",
-            PermissibleValue(
-                text="UBERON:0003481",
-                description="tail vein"))
         setattr(cls, "UBERON:0003482",
             PermissibleValue(
                 text="UBERON:0003482",
@@ -14716,10 +14528,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003523",
                 description="manus blood vessel"))
-        setattr(cls, "UBERON:0003524",
-            PermissibleValue(
-                text="UBERON:0003524",
-                description="tail blood vessel"))
         setattr(cls, "UBERON:0003526",
             PermissibleValue(
                 text="UBERON:0003526",
@@ -14752,10 +14560,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003533",
                 description="manual digit skin"))
-        setattr(cls, "UBERON:0003534",
-            PermissibleValue(
-                text="UBERON:0003534",
-                description="tail skin"))
         setattr(cls, "UBERON:0003535",
             PermissibleValue(
                 text="UBERON:0003535",
@@ -15008,10 +14812,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003598",
                 description="manus connective tissue"))
-        setattr(cls, "UBERON:0003599",
-            PermissibleValue(
-                text="UBERON:0003599",
-                description="tail connective tissue"))
         setattr(cls, "UBERON:0003601",
             PermissibleValue(
                 text="UBERON:0003601",
@@ -15688,6 +15488,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003868",
                 description="proximal phalanx of pes"))
+        setattr(cls, "UBERON:0003869",
+            PermissibleValue(
+                text="UBERON:0003869",
+                description="presumptive ganglion"))
         setattr(cls, "UBERON:0003876",
             PermissibleValue(
                 text="UBERON:0003876",
@@ -15712,6 +15516,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003885",
                 description="mesometrium"))
+        setattr(cls, "UBERON:0003886",
+            PermissibleValue(
+                text="UBERON:0003886",
+                description="future coelemic cavity lumen"))
         setattr(cls, "UBERON:0003887",
             PermissibleValue(
                 text="UBERON:0003887",
@@ -15768,6 +15576,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003903",
                 description="bursa of Fabricius"))
+        setattr(cls, "UBERON:0003904",
+            PermissibleValue(
+                text="UBERON:0003904",
+                description="bursal plica"))
+        setattr(cls, "UBERON:0003905",
+            PermissibleValue(
+                text="UBERON:0003905",
+                description="bursal follicle"))
         setattr(cls, "UBERON:0003906",
             PermissibleValue(
                 text="UBERON:0003906",
@@ -15792,6 +15608,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003911",
                 description="choroid plexus epithelium"))
+        setattr(cls, "UBERON:0003912",
+            PermissibleValue(
+                text="UBERON:0003912",
+                description="chitinous tooth"))
         setattr(cls, "UBERON:0003913",
             PermissibleValue(
                 text="UBERON:0003913",
@@ -15800,6 +15620,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003914",
                 description="epithelial tube"))
+        setattr(cls, "UBERON:0003915",
+            PermissibleValue(
+                text="UBERON:0003915",
+                description="endothelial tube"))
         setattr(cls, "UBERON:0003916",
             PermissibleValue(
                 text="UBERON:0003916",
@@ -15808,6 +15632,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003917",
                 description="arthropod fat body"))
+        setattr(cls, "UBERON:0003918",
+            PermissibleValue(
+                text="UBERON:0003918",
+                description="kidney mesenchyme"))
         setattr(cls, "UBERON:0003920",
             PermissibleValue(
                 text="UBERON:0003920",
@@ -15860,14 +15688,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003933",
                 description="cranial cartilage"))
-        setattr(cls, "UBERON:0003934",
-            PermissibleValue(
-                text="UBERON:0003934",
-                description="mesenchyme pectoral fin"))
-        setattr(cls, "UBERON:0003935",
-            PermissibleValue(
-                text="UBERON:0003935",
-                description="mesenchyme pelvic fin"))
         setattr(cls, "UBERON:0003936",
             PermissibleValue(
                 text="UBERON:0003936",
@@ -15876,6 +15696,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003937",
                 description="reproductive gland"))
+        setattr(cls, "UBERON:0003938",
+            PermissibleValue(
+                text="UBERON:0003938",
+                description="sensory dissociation area"))
         setattr(cls, "UBERON:0003939",
             PermissibleValue(
                 text="UBERON:0003939",
@@ -15896,6 +15720,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003945",
                 description="somatic motor system"))
+        setattr(cls, "UBERON:0003947",
+            PermissibleValue(
+                text="UBERON:0003947",
+                description="brain ventricle/choroid plexus"))
         setattr(cls, "UBERON:0003948",
             PermissibleValue(
                 text="UBERON:0003948",
@@ -15980,6 +15808,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003968",
                 description="peripheral lymph node"))
+        setattr(cls, "UBERON:0003971",
+            PermissibleValue(
+                text="UBERON:0003971",
+                description="interfrontal bone"))
+        setattr(cls, "UBERON:0003972",
+            PermissibleValue(
+                text="UBERON:0003972",
+                description="placenta junctional zone"))
         setattr(cls, "UBERON:0003973",
             PermissibleValue(
                 text="UBERON:0003973",
@@ -16004,6 +15840,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003978",
                 description="valve"))
+        setattr(cls, "UBERON:0003979",
+            PermissibleValue(
+                text="UBERON:0003979",
+                description="utricle valve"))
         setattr(cls, "UBERON:0003980",
             PermissibleValue(
                 text="UBERON:0003980",
@@ -16044,6 +15884,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0003989",
                 description="medulla oblongata anterior median fissure"))
+        setattr(cls, "UBERON:0003990",
+            PermissibleValue(
+                text="UBERON:0003990",
+                description="spinal cord motor column"))
         setattr(cls, "UBERON:0003991",
             PermissibleValue(
                 text="UBERON:0003991",
@@ -16112,6 +15956,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004009",
                 description="cerebellum posterior vermis"))
+        setattr(cls, "UBERON:0004010",
+            PermissibleValue(
+                text="UBERON:0004010",
+                description="primary muscle spindle"))
+        setattr(cls, "UBERON:0004011",
+            PermissibleValue(
+                text="UBERON:0004011",
+                description="secondary muscle spindle"))
         setattr(cls, "UBERON:0004012",
             PermissibleValue(
                 text="UBERON:0004012",
@@ -16124,6 +15976,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004014",
                 description="labium minora"))
+        setattr(cls, "UBERON:0004015",
+            PermissibleValue(
+                text="UBERON:0004015",
+                description="embryonic-extraembryonic boundary"))
         setattr(cls, "UBERON:0004016",
             PermissibleValue(
                 text="UBERON:0004016",
@@ -16140,6 +15996,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004021",
                 description="spongiotrophoblast layer"))
+        setattr(cls, "UBERON:0004022",
+            PermissibleValue(
+                text="UBERON:0004022",
+                description="germinal neuroepithelium"))
         setattr(cls, "UBERON:0004023",
             PermissibleValue(
                 text="UBERON:0004023",
@@ -16172,6 +16032,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004031",
                 description="head ectomesenchyme"))
+        setattr(cls, "UBERON:0004032",
+            PermissibleValue(
+                text="UBERON:0004032",
+                description="podocyte slit diaphragm"))
+        setattr(cls, "UBERON:0004033",
+            PermissibleValue(
+                text="UBERON:0004033",
+                description="podocyte slit junction"))
+        setattr(cls, "UBERON:0004034",
+            PermissibleValue(
+                text="UBERON:0004034",
+                description="cutaneous microfibril"))
         setattr(cls, "UBERON:0004035",
             PermissibleValue(
                 text="UBERON:0004035",
@@ -16200,6 +16072,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004045",
                 description="tailgut"))
+        setattr(cls, "UBERON:0004046",
+            PermissibleValue(
+                text="UBERON:0004046",
+                description="anterior definitive endoderm"))
         setattr(cls, "UBERON:0004047",
             PermissibleValue(
                 text="UBERON:0004047",
@@ -16240,10 +16116,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004056",
                 description="primitive groove"))
+        setattr(cls, "UBERON:0004057",
+            PermissibleValue(
+                text="UBERON:0004057",
+                description="skeletal muscle fiber triad"))
         setattr(cls, "UBERON:0004058",
             PermissibleValue(
                 text="UBERON:0004058",
                 description="biliary ductule"))
+        setattr(cls, "UBERON:0004059",
+            PermissibleValue(
+                text="UBERON:0004059",
+                description="spinal cord medial motor column"))
         setattr(cls, "UBERON:0004060",
             PermissibleValue(
                 text="UBERON:0004060",
@@ -16356,10 +16240,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004090",
                 description="periorbital region"))
+        setattr(cls, "UBERON:0004092",
+            PermissibleValue(
+                text="UBERON:0004092",
+                description="hypothalamus-pituitary axis"))
         setattr(cls, "UBERON:0004096",
             PermissibleValue(
                 text="UBERON:0004096",
                 description="odontoid process of cervical vertebra 2"))
+        setattr(cls, "UBERON:0004098",
+            PermissibleValue(
+                text="UBERON:0004098",
+                description="tibial plateaux"))
         setattr(cls, "UBERON:0004099",
             PermissibleValue(
                 text="UBERON:0004099",
@@ -16368,6 +16260,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004100",
                 description="renal collecting system"))
+        setattr(cls, "UBERON:0004101",
+            PermissibleValue(
+                text="UBERON:0004101",
+                description="nasolabial region"))
         setattr(cls, "UBERON:0004103",
             PermissibleValue(
                 text="UBERON:0004103",
@@ -16376,6 +16272,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004104",
                 description="hairline"))
+        setattr(cls, "UBERON:0004105",
+            PermissibleValue(
+                text="UBERON:0004105",
+                description="subungual region"))
         setattr(cls, "UBERON:0004106",
             PermissibleValue(
                 text="UBERON:0004106",
@@ -16420,6 +16320,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004118",
                 description="vasculature of iris"))
+        setattr(cls, "UBERON:0004119",
+            PermissibleValue(
+                text="UBERON:0004119",
+                description="endoderm-derived structure"))
+        setattr(cls, "UBERON:0004120",
+            PermissibleValue(
+                text="UBERON:0004120",
+                description="mesoderm-derived structure"))
+        setattr(cls, "UBERON:0004121",
+            PermissibleValue(
+                text="UBERON:0004121",
+                description="ectoderm-derived structure"))
         setattr(cls, "UBERON:0004122",
             PermissibleValue(
                 text="UBERON:0004122",
@@ -16448,6 +16360,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004128",
                 description="optic vesicle"))
+        setattr(cls, "UBERON:0004129",
+            PermissibleValue(
+                text="UBERON:0004129",
+                description="growth plate cartilage"))
         setattr(cls, "UBERON:0004130",
             PermissibleValue(
                 text="UBERON:0004130",
@@ -16456,6 +16372,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004132",
                 description="trigeminal sensory nucleus"))
+        setattr(cls, "UBERON:0004133",
+            PermissibleValue(
+                text="UBERON:0004133",
+                description="salivatory nucleus"))
         setattr(cls, "UBERON:0004134",
             PermissibleValue(
                 text="UBERON:0004134",
@@ -16468,6 +16388,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004136",
                 description="intermediate tubule"))
+        setattr(cls, "UBERON:0004138",
+            PermissibleValue(
+                text="UBERON:0004138",
+                description="somitomeric trunk muscle"))
         setattr(cls, "UBERON:0004139",
             PermissibleValue(
                 text="UBERON:0004139",
@@ -16488,6 +16412,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004145",
                 description="outflow tract"))
+        setattr(cls, "UBERON:0004146",
+            PermissibleValue(
+                text="UBERON:0004146",
+                description="His-Purkinje system"))
         setattr(cls, "UBERON:0004148",
             PermissibleValue(
                 text="UBERON:0004148",
@@ -16520,6 +16448,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004155",
                 description="atrial septum secundum"))
+        setattr(cls, "UBERON:0004159",
+            PermissibleValue(
+                text="UBERON:0004159",
+                description="atrial septum intermedium"))
         setattr(cls, "UBERON:0004160",
             PermissibleValue(
                 text="UBERON:0004160",
@@ -16528,10 +16460,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004161",
                 description="septum transversum"))
+        setattr(cls, "UBERON:0004162",
+            PermissibleValue(
+                text="UBERON:0004162",
+                description="pulmonary myocardium"))
+        setattr(cls, "UBERON:0004163",
+            PermissibleValue(
+                text="UBERON:0004163",
+                description="anterior ectodermal midgut"))
         setattr(cls, "UBERON:0004164",
             PermissibleValue(
                 text="UBERON:0004164",
                 description="branchiomeric muscle"))
+        setattr(cls, "UBERON:0004166",
+            PermissibleValue(
+                text="UBERON:0004166",
+                description="superior reticular formation"))
         setattr(cls, "UBERON:0004167",
             PermissibleValue(
                 text="UBERON:0004167",
@@ -16576,6 +16520,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004180",
                 description="mammary gland fat"))
+        setattr(cls, "UBERON:0004182",
+            PermissibleValue(
+                text="UBERON:0004182",
+                description="mammary gland cord"))
         setattr(cls, "UBERON:0004184",
             PermissibleValue(
                 text="UBERON:0004184",
@@ -16588,10 +16536,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004186",
                 description="olfactory bulb mitral cell layer"))
-        setattr(cls, "UBERON:0004187",
-            PermissibleValue(
-                text="UBERON:0004187",
-                description="Harderian gland"))
         setattr(cls, "UBERON:0004188",
             PermissibleValue(
                 text="UBERON:0004188",
@@ -16600,6 +16544,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004189",
                 description="glomerular endothelium"))
+        setattr(cls, "UBERON:0004190",
+            PermissibleValue(
+                text="UBERON:0004190",
+                description="renal glomerulus vasculature"))
         setattr(cls, "UBERON:0004193",
             PermissibleValue(
                 text="UBERON:0004193",
@@ -16652,6 +16600,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004205",
                 description="inner medullary collecting duct"))
+        setattr(cls, "UBERON:0004206",
+            PermissibleValue(
+                text="UBERON:0004206",
+                description="long descending thin limb bend"))
+        setattr(cls, "UBERON:0004207",
+            PermissibleValue(
+                text="UBERON:0004207",
+                description="prebend segment of loop of Henle"))
+        setattr(cls, "UBERON:0004208",
+            PermissibleValue(
+                text="UBERON:0004208",
+                description="nephrogenic mesenchyme"))
+        setattr(cls, "UBERON:0004209",
+            PermissibleValue(
+                text="UBERON:0004209",
+                description="renal vesicle"))
+        setattr(cls, "UBERON:0004211",
+            PermissibleValue(
+                text="UBERON:0004211",
+                description="nephron epithelium"))
         setattr(cls, "UBERON:0004212",
             PermissibleValue(
                 text="UBERON:0004212",
@@ -17172,6 +17140,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004374",
                 description="vitelline vasculature"))
+        setattr(cls, "UBERON:0004375",
+            PermissibleValue(
+                text="UBERON:0004375",
+                description="bone of free limb or fin"))
         setattr(cls, "UBERON:0004377",
             PermissibleValue(
                 text="UBERON:0004377",
@@ -17452,6 +17424,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004446",
                 description="epiphysis of phalanx"))
+        setattr(cls, "UBERON:0004447",
+            PermissibleValue(
+                text="UBERON:0004447",
+                description="proximal epiphysis of phalanx"))
         setattr(cls, "UBERON:0004448",
             PermissibleValue(
                 text="UBERON:0004448",
@@ -18216,10 +18192,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004693",
                 description="Peyer's patch epithelium"))
-        setattr(cls, "UBERON:0004694",
-            PermissibleValue(
-                text="UBERON:0004694",
-                description="Harderian gland epithelium"))
         setattr(cls, "UBERON:0004695",
             PermissibleValue(
                 text="UBERON:0004695",
@@ -18260,6 +18232,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004704",
                 description="bone fossa"))
+        setattr(cls, "UBERON:0004705",
+            PermissibleValue(
+                text="UBERON:0004705",
+                description="fenestra"))
         setattr(cls, "UBERON:0004706",
             PermissibleValue(
                 text="UBERON:0004706",
@@ -18344,18 +18320,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004727",
                 description="cochlear nerve"))
-        setattr(cls, "UBERON:0004729",
-            PermissibleValue(
-                text="UBERON:0004729",
-                description="nematode larval stage"))
-        setattr(cls, "UBERON:0004730",
-            PermissibleValue(
-                text="UBERON:0004730",
-                description="instar larval stage"))
         setattr(cls, "UBERON:0004731",
             PermissibleValue(
                 text="UBERON:0004731",
                 description="neuromere"))
+        setattr(cls, "UBERON:0004732",
+            PermissibleValue(
+                text="UBERON:0004732",
+                description="segmental subdivision of nervous system"))
         setattr(cls, "UBERON:0004733",
             PermissibleValue(
                 text="UBERON:0004733",
@@ -18376,6 +18348,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004737",
                 description="metanephric collecting duct"))
+        setattr(cls, "UBERON:0004738",
+            PermissibleValue(
+                text="UBERON:0004738",
+                description="metanephric juxtaglomerular apparatus"))
         setattr(cls, "UBERON:0004739",
             PermissibleValue(
                 text="UBERON:0004739",
@@ -18384,18 +18360,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004740",
                 description="basibranchial bone"))
-        setattr(cls, "UBERON:0004741",
-            PermissibleValue(
-                text="UBERON:0004741",
-                description="cleithrum"))
         setattr(cls, "UBERON:0004742",
             PermissibleValue(
                 text="UBERON:0004742",
                 description="dentary"))
-        setattr(cls, "UBERON:0004743",
-            PermissibleValue(
-                text="UBERON:0004743",
-                description="coracoid bone"))
         setattr(cls, "UBERON:0004744",
             PermissibleValue(
                 text="UBERON:0004744",
@@ -18424,10 +18392,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004751",
                 description="hypohyal bone"))
-        setattr(cls, "UBERON:0004752",
-            PermissibleValue(
-                text="UBERON:0004752",
-                description="palatoquadrate cartilage"))
         setattr(cls, "UBERON:0004753",
             PermissibleValue(
                 text="UBERON:0004753",
@@ -18440,14 +18404,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004755",
                 description="skeletal tissue"))
-        setattr(cls, "UBERON:0004757",
+        setattr(cls, "UBERON:0004756",
             PermissibleValue(
-                text="UBERON:0004757",
-                description="rectal salt gland"))
-        setattr(cls, "UBERON:0004758",
-            PermissibleValue(
-                text="UBERON:0004758",
-                description="salt gland"))
+                text="UBERON:0004756",
+                description="dermal skeletal element"))
         setattr(cls, "UBERON:0004760",
             PermissibleValue(
                 text="UBERON:0004760",
@@ -18476,6 +18436,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004767",
                 description="vomerine tooth"))
+        setattr(cls, "UBERON:0004768",
+            PermissibleValue(
+                text="UBERON:0004768",
+                description="bone of lower jaw"))
         setattr(cls, "UBERON:0004769",
             PermissibleValue(
                 text="UBERON:0004769",
@@ -18796,14 +18760,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004867",
                 description="orbital cavity"))
-        setattr(cls, "UBERON:0004868",
-            PermissibleValue(
-                text="UBERON:0004868",
-                description="tapetum lucidum of camera-type eye"))
-        setattr(cls, "UBERON:0004869",
-            PermissibleValue(
-                text="UBERON:0004869",
-                description="parietal organ"))
         setattr(cls, "UBERON:0004870",
             PermissibleValue(
                 text="UBERON:0004870",
@@ -18836,6 +18792,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004877",
                 description="visceral endoderm"))
+        setattr(cls, "UBERON:0004878",
+            PermissibleValue(
+                text="UBERON:0004878",
+                description="distal visceral endoderm"))
         setattr(cls, "UBERON:0004879",
             PermissibleValue(
                 text="UBERON:0004879",
@@ -18872,10 +18832,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004888",
                 description="right lung hilus"))
+        setattr(cls, "UBERON:0004889",
+            PermissibleValue(
+                text="UBERON:0004889",
+                description="lobar bronchus vasculature"))
         setattr(cls, "UBERON:0004890",
             PermissibleValue(
                 text="UBERON:0004890",
                 description="right lung accessory lobe"))
+        setattr(cls, "UBERON:0004892",
+            PermissibleValue(
+                text="UBERON:0004892",
+                description="lobar bronchus alveolar system"))
         setattr(cls, "UBERON:0004893",
             PermissibleValue(
                 text="UBERON:0004893",
@@ -18924,6 +18892,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0004905",
                 description="articulation"))
+        setattr(cls, "UBERON:0004906",
+            PermissibleValue(
+                text="UBERON:0004906",
+                description="ectodermal part of digestive tract"))
         setattr(cls, "UBERON:0004907",
             PermissibleValue(
                 text="UBERON:0004907",
@@ -19408,6 +19380,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005056",
                 description="external female genitalia"))
+        setattr(cls, "UBERON:0005057",
+            PermissibleValue(
+                text="UBERON:0005057",
+                description="immune organ"))
         setattr(cls, "UBERON:0005058",
             PermissibleValue(
                 text="UBERON:0005058",
@@ -19420,6 +19396,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005062",
                 description="neural fold"))
+        setattr(cls, "UBERON:0005063",
+            PermissibleValue(
+                text="UBERON:0005063",
+                description="left ventricular compact myocardium"))
+        setattr(cls, "UBERON:0005064",
+            PermissibleValue(
+                text="UBERON:0005064",
+                description="left ventricular trabecular myocardium"))
+        setattr(cls, "UBERON:0005065",
+            PermissibleValue(
+                text="UBERON:0005065",
+                description="right ventricular compact myocardium"))
+        setattr(cls, "UBERON:0005066",
+            PermissibleValue(
+                text="UBERON:0005066",
+                description="right ventricular trabecular myocardium"))
         setattr(cls, "UBERON:0005067",
             PermissibleValue(
                 text="UBERON:0005067",
@@ -19428,6 +19420,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005068",
                 description="neural rod"))
+        setattr(cls, "UBERON:0005069",
+            PermissibleValue(
+                text="UBERON:0005069",
+                description="neural fold hinge point"))
         setattr(cls, "UBERON:0005070",
             PermissibleValue(
                 text="UBERON:0005070",
@@ -19440,6 +19436,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005075",
                 description="forebrain-midbrain boundary"))
+        setattr(cls, "UBERON:0005076",
+            PermissibleValue(
+                text="UBERON:0005076",
+                description="hindbrain-spinal cord boundary"))
         setattr(cls, "UBERON:0005077",
             PermissibleValue(
                 text="UBERON:0005077",
@@ -19448,14 +19448,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005078",
                 description="lamina terminalis of neural tube"))
-        setattr(cls, "UBERON:0005079",
+        setattr(cls, "UBERON:0005080",
             PermissibleValue(
-                text="UBERON:0005079",
-                description="eggshell"))
+                text="UBERON:0005080",
+                description="metanephric ureteric bud"))
+        setattr(cls, "UBERON:0005081",
+            PermissibleValue(
+                text="UBERON:0005081",
+                description="ureter ureteric bud"))
         setattr(cls, "UBERON:0005082",
             PermissibleValue(
                 text="UBERON:0005082",
                 description="tube lumen"))
+        setattr(cls, "UBERON:0005083",
+            PermissibleValue(
+                text="UBERON:0005083",
+                description="nipple sheath"))
         setattr(cls, "UBERON:0005085",
             PermissibleValue(
                 text="UBERON:0005085",
@@ -19468,6 +19476,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005087",
                 description="tooth placode"))
+        setattr(cls, "UBERON:0005088",
+            PermissibleValue(
+                text="UBERON:0005088",
+                description="sebaceous gland placode"))
+        setattr(cls, "UBERON:0005089",
+            PermissibleValue(
+                text="UBERON:0005089",
+                description="sweat gland placode"))
         setattr(cls, "UBERON:0005090",
             PermissibleValue(
                 text="UBERON:0005090",
@@ -19488,6 +19504,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005094",
                 description="beak"))
+        setattr(cls, "UBERON:0005095",
+            PermissibleValue(
+                text="UBERON:0005095",
+                description="kidney rudiment"))
         setattr(cls, "UBERON:0005096",
             PermissibleValue(
                 text="UBERON:0005096",
@@ -19496,6 +19516,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005097",
                 description="renal connecting tubule"))
+        setattr(cls, "UBERON:0005099",
+            PermissibleValue(
+                text="UBERON:0005099",
+                description="short descending thin limb"))
+        setattr(cls, "UBERON:0005100",
+            PermissibleValue(
+                text="UBERON:0005100",
+                description="long descending thin limb"))
+        setattr(cls, "UBERON:0005101",
+            PermissibleValue(
+                text="UBERON:0005101",
+                description="early distal convoluted tubule"))
+        setattr(cls, "UBERON:0005102",
+            PermissibleValue(
+                text="UBERON:0005102",
+                description="late distal convoluted tubule"))
+        setattr(cls, "UBERON:0005103",
+            PermissibleValue(
+                text="UBERON:0005103",
+                description="mesonephric epithelium"))
         setattr(cls, "UBERON:0005104",
             PermissibleValue(
                 text="UBERON:0005104",
@@ -19512,26 +19552,154 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005107",
                 description="metanephric cap"))
+        setattr(cls, "UBERON:0005108",
+            PermissibleValue(
+                text="UBERON:0005108",
+                description="metanephric epithelium"))
+        setattr(cls, "UBERON:0005109",
+            PermissibleValue(
+                text="UBERON:0005109",
+                description="metanephric smooth muscle tissue"))
         setattr(cls, "UBERON:0005110",
             PermissibleValue(
                 text="UBERON:0005110",
                 description="metanephric nephron"))
+        setattr(cls, "UBERON:0005111",
+            PermissibleValue(
+                text="UBERON:0005111",
+                description="metanephric pyramid"))
         setattr(cls, "UBERON:0005113",
             PermissibleValue(
                 text="UBERON:0005113",
                 description="metanephric cortex mesenchyme"))
+        setattr(cls, "UBERON:0005114",
+            PermissibleValue(
+                text="UBERON:0005114",
+                description="metanephric ascending thin limb"))
+        setattr(cls, "UBERON:0005115",
+            PermissibleValue(
+                text="UBERON:0005115",
+                description="metanephric cortical collecting duct"))
+        setattr(cls, "UBERON:0005116",
+            PermissibleValue(
+                text="UBERON:0005116",
+                description="metanephric descending thin limb"))
         setattr(cls, "UBERON:0005117",
             PermissibleValue(
                 text="UBERON:0005117",
                 description="metanephric distal convoluted tubule"))
+        setattr(cls, "UBERON:0005118",
+            PermissibleValue(
+                text="UBERON:0005118",
+                description="metanephric early distal convoluted tubule"))
+        setattr(cls, "UBERON:0005119",
+            PermissibleValue(
+                text="UBERON:0005119",
+                description="metanephric glomerular mesangium"))
+        setattr(cls, "UBERON:0005120",
+            PermissibleValue(
+                text="UBERON:0005120",
+                description="metanephric late distal convoluted tubule"))
+        setattr(cls, "UBERON:0005121",
+            PermissibleValue(
+                text="UBERON:0005121",
+                description="metanephric long descending thin limb bend"))
+        setattr(cls, "UBERON:0005122",
+            PermissibleValue(
+                text="UBERON:0005122",
+                description="metanephric macula densa"))
+        setattr(cls, "UBERON:0005123",
+            PermissibleValue(
+                text="UBERON:0005123",
+                description="metanephric prebend segment"))
         setattr(cls, "UBERON:0005124",
             PermissibleValue(
                 text="UBERON:0005124",
                 description="metanephric proximal convoluted tubule"))
+        setattr(cls, "UBERON:0005125",
+            PermissibleValue(
+                text="UBERON:0005125",
+                description="metanephric proximal straight tubule"))
+        setattr(cls, "UBERON:0005126",
+            PermissibleValue(
+                text="UBERON:0005126",
+                description="metanephric S1"))
+        setattr(cls, "UBERON:0005127",
+            PermissibleValue(
+                text="UBERON:0005127",
+                description="metanephric thick ascending limb"))
+        setattr(cls, "UBERON:0005129",
+            PermissibleValue(
+                text="UBERON:0005129",
+                description="metanephric distal tubule"))
+        setattr(cls, "UBERON:0005130",
+            PermissibleValue(
+                text="UBERON:0005130",
+                description="metanephric loop of Henle"))
+        setattr(cls, "UBERON:0005132",
+            PermissibleValue(
+                text="UBERON:0005132",
+                description="metanephric long nephron"))
+        setattr(cls, "UBERON:0005133",
+            PermissibleValue(
+                text="UBERON:0005133",
+                description="metanephric glomerulus vasculature"))
+        setattr(cls, "UBERON:0005134",
+            PermissibleValue(
+                text="UBERON:0005134",
+                description="metanephric nephron epithelium"))
+        setattr(cls, "UBERON:0005135",
+            PermissibleValue(
+                text="UBERON:0005135",
+                description="metanephric glomerular epithelium"))
+        setattr(cls, "UBERON:0005136",
+            PermissibleValue(
+                text="UBERON:0005136",
+                description="metanephric glomerular endothelium"))
+        setattr(cls, "UBERON:0005137",
+            PermissibleValue(
+                text="UBERON:0005137",
+                description="metanephric capsule"))
+        setattr(cls, "UBERON:0005139",
+            PermissibleValue(
+                text="UBERON:0005139",
+                description="metanephric long descending thin limb"))
+        setattr(cls, "UBERON:0005140",
+            PermissibleValue(
+                text="UBERON:0005140",
+                description="metanephric short nephron"))
+        setattr(cls, "UBERON:0005141",
+            PermissibleValue(
+                text="UBERON:0005141",
+                description="metanephric short descending thin limb"))
+        setattr(cls, "UBERON:0005144",
+            PermissibleValue(
+                text="UBERON:0005144",
+                description="metanephric glomerular capillary"))
+        setattr(cls, "UBERON:0005145",
+            PermissibleValue(
+                text="UBERON:0005145",
+                description="metanephric comma-shaped body"))
+        setattr(cls, "UBERON:0005146",
+            PermissibleValue(
+                text="UBERON:0005146",
+                description="metanephric nephron tubule"))
         setattr(cls, "UBERON:0005147",
             PermissibleValue(
                 text="UBERON:0005147",
                 description="metanephric renal vesicle"))
+        setattr(cls, "UBERON:0005148",
+            PermissibleValue(
+                text="UBERON:0005148",
+                description="metanephric S-shaped body"))
+        setattr(cls, "UBERON:0005149",
+            PermissibleValue(
+                text="UBERON:0005149",
+                description="metanephric connecting tubule"))
+        setattr(cls, "UBERON:0005151",
+            PermissibleValue(
+                text="UBERON:0005151",
+                description="metanephric proximal tubule"))
         setattr(cls, "UBERON:0005153",
             PermissibleValue(
                 text="UBERON:0005153",
@@ -19544,6 +19712,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005155",
                 description="open tracheal system"))
+        setattr(cls, "UBERON:0005156",
+            PermissibleValue(
+                text="UBERON:0005156",
+                description="reproductive structure"))
+        setattr(cls, "UBERON:0005157",
+            PermissibleValue(
+                text="UBERON:0005157",
+                description="epithelial fold"))
+        setattr(cls, "UBERON:0005158",
+            PermissibleValue(
+                text="UBERON:0005158",
+                description="parenchyma of central nervous system"))
         setattr(cls, "UBERON:0005159",
             PermissibleValue(
                 text="UBERON:0005159",
@@ -19880,6 +20060,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005274",
                 description="proximal nail bed"))
+        setattr(cls, "UBERON:0005275",
+            PermissibleValue(
+                text="UBERON:0005275",
+                description="dorsal skin of digit"))
         setattr(cls, "UBERON:0005276",
             PermissibleValue(
                 text="UBERON:0005276",
@@ -19928,6 +20112,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005290",
                 description="myelencephalon"))
+        setattr(cls, "UBERON:0005291",
+            PermissibleValue(
+                text="UBERON:0005291",
+                description="embryonic tissue"))
         setattr(cls, "UBERON:0005292",
             PermissibleValue(
                 text="UBERON:0005292",
@@ -19960,14 +20148,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005299",
                 description="prepuce of clitoris"))
-        setattr(cls, "UBERON:0005301",
-            PermissibleValue(
-                text="UBERON:0005301",
-                description="male preputial gland"))
-        setattr(cls, "UBERON:0005302",
-            PermissibleValue(
-                text="UBERON:0005302",
-                description="female preputial gland"))
         setattr(cls, "UBERON:0005303",
             PermissibleValue(
                 text="UBERON:0005303",
@@ -20000,10 +20180,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005311",
                 description="mammary placode"))
+        setattr(cls, "UBERON:0005312",
+            PermissibleValue(
+                text="UBERON:0005312",
+                description="primary ureteric bud"))
         setattr(cls, "UBERON:0005313",
             PermissibleValue(
                 text="UBERON:0005313",
                 description="mammary duct terminal end bud"))
+        setattr(cls, "UBERON:0005314",
+            PermissibleValue(
+                text="UBERON:0005314",
+                description="alveolar primary septum"))
+        setattr(cls, "UBERON:0005315",
+            PermissibleValue(
+                text="UBERON:0005315",
+                description="alveolar secondary septum"))
         setattr(cls, "UBERON:0005316",
             PermissibleValue(
                 text="UBERON:0005316",
@@ -20016,6 +20208,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005319",
                 description="mesonephric collecting duct"))
+        setattr(cls, "UBERON:0005320",
+            PermissibleValue(
+                text="UBERON:0005320",
+                description="mesonephric juxtaglomerular apparatus"))
+        setattr(cls, "UBERON:0005321",
+            PermissibleValue(
+                text="UBERON:0005321",
+                description="mesonephric smooth muscle tissue"))
         setattr(cls, "UBERON:0005322",
             PermissibleValue(
                 text="UBERON:0005322",
@@ -20024,14 +20224,42 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005323",
                 description="mesonephric mesenchyme"))
+        setattr(cls, "UBERON:0005324",
+            PermissibleValue(
+                text="UBERON:0005324",
+                description="mesonephric macula densa"))
         setattr(cls, "UBERON:0005325",
             PermissibleValue(
                 text="UBERON:0005325",
                 description="mesonephric glomerulus"))
+        setattr(cls, "UBERON:0005326",
+            PermissibleValue(
+                text="UBERON:0005326",
+                description="mesonephric glomerulus vasculature"))
+        setattr(cls, "UBERON:0005327",
+            PermissibleValue(
+                text="UBERON:0005327",
+                description="mesonephric glomerular epithelium"))
+        setattr(cls, "UBERON:0005328",
+            PermissibleValue(
+                text="UBERON:0005328",
+                description="mesonephric comma-shaped body"))
+        setattr(cls, "UBERON:0005329",
+            PermissibleValue(
+                text="UBERON:0005329",
+                description="mesonephric nephron tubule"))
+        setattr(cls, "UBERON:0005330",
+            PermissibleValue(
+                text="UBERON:0005330",
+                description="mesonephric nephron epithelium"))
         setattr(cls, "UBERON:0005331",
             PermissibleValue(
                 text="UBERON:0005331",
                 description="mesonephric renal vesicle"))
+        setattr(cls, "UBERON:0005332",
+            PermissibleValue(
+                text="UBERON:0005332",
+                description="mesonephric S-shaped body"))
         setattr(cls, "UBERON:0005333",
             PermissibleValue(
                 text="UBERON:0005333",
@@ -20088,10 +20316,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005346",
                 description="cerebellum vermis lobule VIIB"))
-        setattr(cls, "UBERON:0005347",
-            PermissibleValue(
-                text="UBERON:0005347",
-                description="copula pyramidis"))
         setattr(cls, "UBERON:0005348",
             PermissibleValue(
                 text="UBERON:0005348",
@@ -20112,6 +20336,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005352",
                 description="spermatic cord"))
+        setattr(cls, "UBERON:0005353",
+            PermissibleValue(
+                text="UBERON:0005353",
+                description="spleen perifollicular zone"))
+        setattr(cls, "UBERON:0005354",
+            PermissibleValue(
+                text="UBERON:0005354",
+                description="malleus processus brevis"))
         setattr(cls, "UBERON:0005355",
             PermissibleValue(
                 text="UBERON:0005355",
@@ -20240,6 +20472,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005388",
                 description="photoreceptor array"))
+        setattr(cls, "UBERON:0005389",
+            PermissibleValue(
+                text="UBERON:0005389",
+                description="transparent eye structure"))
         setattr(cls, "UBERON:0005390",
             PermissibleValue(
                 text="UBERON:0005390",
@@ -21236,10 +21472,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005721",
                 description="pronephric mesoderm"))
-        setattr(cls, "UBERON:0005722",
-            PermissibleValue(
-                text="UBERON:0005722",
-                description="obsolete nephrotome"))
         setattr(cls, "UBERON:0005723",
             PermissibleValue(
                 text="UBERON:0005723",
@@ -21256,10 +21488,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005726",
                 description="chemosensory system"))
-        setattr(cls, "UBERON:0005727",
-            PermissibleValue(
-                text="UBERON:0005727",
-                description="obsolete somitomere"))
         setattr(cls, "UBERON:0005728",
             PermissibleValue(
                 text="UBERON:0005728",
@@ -21272,6 +21500,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005730",
                 description="pelvic appendage field"))
+        setattr(cls, "UBERON:0005731",
+            PermissibleValue(
+                text="UBERON:0005731",
+                description="fin field"))
+        setattr(cls, "UBERON:0005732",
+            PermissibleValue(
+                text="UBERON:0005732",
+                description="paired limb/fin field"))
+        setattr(cls, "UBERON:0005733",
+            PermissibleValue(
+                text="UBERON:0005733",
+                description="limb field"))
         setattr(cls, "UBERON:0005734",
             PermissibleValue(
                 text="UBERON:0005734",
@@ -21316,6 +21556,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005751",
                 description="glomerular visceral epithelium"))
+        setattr(cls, "UBERON:0005753",
+            PermissibleValue(
+                text="UBERON:0005753",
+                description="caudal part of nephrogenic cord"))
+        setattr(cls, "UBERON:0005754",
+            PermissibleValue(
+                text="UBERON:0005754",
+                description="rostral part of nephrogenic cord"))
         setattr(cls, "UBERON:0005760",
             PermissibleValue(
                 text="UBERON:0005760",
@@ -21352,6 +21600,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005795",
                 description="embryonic uterus"))
+        setattr(cls, "UBERON:0005796",
+            PermissibleValue(
+                text="UBERON:0005796",
+                description="duplex uterus"))
+        setattr(cls, "UBERON:0005797",
+            PermissibleValue(
+                text="UBERON:0005797",
+                description="bipartite uterus"))
+        setattr(cls, "UBERON:0005798",
+            PermissibleValue(
+                text="UBERON:0005798",
+                description="bicornuate uterus"))
+        setattr(cls, "UBERON:0005799",
+            PermissibleValue(
+                text="UBERON:0005799",
+                description="simplex uterus"))
         setattr(cls, "UBERON:0005800",
             PermissibleValue(
                 text="UBERON:0005800",
@@ -21372,6 +21636,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005808",
                 description="bone tissue of long bone"))
+        setattr(cls, "UBERON:0005809",
+            PermissibleValue(
+                text="UBERON:0005809",
+                description="cortex of manus bone"))
         setattr(cls, "UBERON:0005810",
             PermissibleValue(
                 text="UBERON:0005810",
@@ -21552,6 +21820,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005879",
                 description="pharyngeal cleft"))
+        setattr(cls, "UBERON:0005880",
+            PermissibleValue(
+                text="UBERON:0005880",
+                description="prepollex"))
+        setattr(cls, "UBERON:0005881",
+            PermissibleValue(
+                text="UBERON:0005881",
+                description="autopodial extension"))
         setattr(cls, "UBERON:0005882",
             PermissibleValue(
                 text="UBERON:0005882",
@@ -21584,10 +21860,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005893",
                 description="leg bone"))
-        setattr(cls, "UBERON:0005895",
-            PermissibleValue(
-                text="UBERON:0005895",
-                description="insect leg"))
         setattr(cls, "UBERON:0005897",
             PermissibleValue(
                 text="UBERON:0005897",
@@ -21604,6 +21876,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005903",
                 description="duct of seminal vesicle"))
+        setattr(cls, "UBERON:0005904",
+            PermissibleValue(
+                text="UBERON:0005904",
+                description="duct of male reproductive system"))
         setattr(cls, "UBERON:0005905",
             PermissibleValue(
                 text="UBERON:0005905",
@@ -21728,6 +22004,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005972",
                 description="tunnel of Corti"))
+        setattr(cls, "UBERON:0005973",
+            PermissibleValue(
+                text="UBERON:0005973",
+                description="blood-inner ear barrier"))
         setattr(cls, "UBERON:0005974",
             PermissibleValue(
                 text="UBERON:0005974",
@@ -21764,6 +22044,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005982",
                 description="Bachmann's bundle"))
+        setattr(cls, "UBERON:0005983",
+            PermissibleValue(
+                text="UBERON:0005983",
+                description="heart layer"))
         setattr(cls, "UBERON:0005984",
             PermissibleValue(
                 text="UBERON:0005984",
@@ -21812,6 +22096,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0005995",
                 description="mitral valve anulus"))
+        setattr(cls, "UBERON:0005996",
+            PermissibleValue(
+                text="UBERON:0005996",
+                description="mitral valve cusp"))
         setattr(cls, "UBERON:0005997",
             PermissibleValue(
                 text="UBERON:0005997",
@@ -21876,6 +22164,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006015",
                 description="webbed interdigital region"))
+        setattr(cls, "UBERON:0006016",
+            PermissibleValue(
+                text="UBERON:0006016",
+                description="interdigital region between digits 1 and 2"))
+        setattr(cls, "UBERON:0006019",
+            PermissibleValue(
+                text="UBERON:0006019",
+                description="interdigital region between digits 2 and 3"))
+        setattr(cls, "UBERON:0006022",
+            PermissibleValue(
+                text="UBERON:0006022",
+                description="interdigital region between digits 3 and 4"))
+        setattr(cls, "UBERON:0006025",
+            PermissibleValue(
+                text="UBERON:0006025",
+                description="interdigital region between digits 4 and 5"))
         setattr(cls, "UBERON:0006026",
             PermissibleValue(
                 text="UBERON:0006026",
@@ -21932,6 +22236,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006054",
                 description="surface of occiput"))
+        setattr(cls, "UBERON:0006056",
+            PermissibleValue(
+                text="UBERON:0006056",
+                description="posterior surface of head"))
+        setattr(cls, "UBERON:0006058",
+            PermissibleValue(
+                text="UBERON:0006058",
+                description="multi-limb segment region"))
         setattr(cls, "UBERON:0006059",
             PermissibleValue(
                 text="UBERON:0006059",
@@ -21952,18 +22264,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006063",
                 description="cartilaginous neural arch"))
-        setattr(cls, "UBERON:0006065",
-            PermissibleValue(
-                text="UBERON:0006065",
-                description="hemal arch"))
         setattr(cls, "UBERON:0006067",
             PermissibleValue(
                 text="UBERON:0006067",
                 description="musculature of hindlimb zeugopod"))
-        setattr(cls, "UBERON:0006068",
-            PermissibleValue(
-                text="UBERON:0006068",
-                description="bone of tail"))
         setattr(cls, "UBERON:0006071",
             PermissibleValue(
                 text="UBERON:0006071",
@@ -21992,6 +22296,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006077",
                 description="subdivision of vertebral column"))
+        setattr(cls, "UBERON:0006078",
+            PermissibleValue(
+                text="UBERON:0006078",
+                description="subdivision of spinal cord lateral column"))
         setattr(cls, "UBERON:0006079",
             PermissibleValue(
                 text="UBERON:0006079",
@@ -22172,6 +22480,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006140",
                 description="palmar digital vein"))
+        setattr(cls, "UBERON:0006141",
+            PermissibleValue(
+                text="UBERON:0006141",
+                description="palmar digital artery"))
         setattr(cls, "UBERON:0006142",
             PermissibleValue(
                 text="UBERON:0006142",
@@ -22220,6 +22532,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006169",
                 description="hindlimb proper dorsal digital arteries"))
+        setattr(cls, "UBERON:0006170",
+            PermissibleValue(
+                text="UBERON:0006170",
+                description="mesonephric capsule"))
         setattr(cls, "UBERON:0006171",
             PermissibleValue(
                 text="UBERON:0006171",
@@ -22228,10 +22544,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006172",
                 description="rectal diverticulum"))
+        setattr(cls, "UBERON:0006173",
+            PermissibleValue(
+                text="UBERON:0006173",
+                description="pronephric proximal tubule"))
         setattr(cls, "UBERON:0006174",
             PermissibleValue(
                 text="UBERON:0006174",
                 description="pronephric sinus"))
+        setattr(cls, "UBERON:0006175",
+            PermissibleValue(
+                text="UBERON:0006175",
+                description="pronephric distal tubule"))
+        setattr(cls, "UBERON:0006182",
+            PermissibleValue(
+                text="UBERON:0006182",
+                description="mesonephric glomerular mesangium"))
+        setattr(cls, "UBERON:0006183",
+            PermissibleValue(
+                text="UBERON:0006183",
+                description="mesonephric glomerular capillary"))
+        setattr(cls, "UBERON:0006189",
+            PermissibleValue(
+                text="UBERON:0006189",
+                description="mesonephric connecting tubule"))
+        setattr(cls, "UBERON:0006190",
+            PermissibleValue(
+                text="UBERON:0006190",
+                description="mesonephric distal tubule"))
+        setattr(cls, "UBERON:0006192",
+            PermissibleValue(
+                text="UBERON:0006192",
+                description="mesonephric proximal tubule"))
         setattr(cls, "UBERON:0006194",
             PermissibleValue(
                 text="UBERON:0006194",
@@ -22712,14 +23056,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006332",
                 description="nasal capsule"))
-        setattr(cls, "UBERON:0006333",
-            PermissibleValue(
-                text="UBERON:0006333",
-                description="snout"))
-        setattr(cls, "UBERON:0006334",
-            PermissibleValue(
-                text="UBERON:0006334",
-                description="posterior lateral line"))
         setattr(cls, "UBERON:0006337",
             PermissibleValue(
                 text="UBERON:0006337",
@@ -22808,10 +23144,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006377",
                 description="remnant of Rathke's pouch"))
-        setattr(cls, "UBERON:0006378",
-            PermissibleValue(
-                text="UBERON:0006378",
-                description="strand of vibrissa hair"))
         setattr(cls, "UBERON:0006428",
             PermissibleValue(
                 text="UBERON:0006428",
@@ -22824,10 +23156,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006431",
                 description="xiphoid process bone"))
-        setattr(cls, "UBERON:0006435",
-            PermissibleValue(
-                text="UBERON:0006435",
-                description="os penis"))
         setattr(cls, "UBERON:0006436",
             PermissibleValue(
                 text="UBERON:0006436",
@@ -22836,14 +23164,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006438",
                 description="principal artery to hindlimb"))
-        setattr(cls, "UBERON:0006440",
-            PermissibleValue(
-                text="UBERON:0006440",
-                description="os clitoris"))
         setattr(cls, "UBERON:0006442",
             PermissibleValue(
                 text="UBERON:0006442",
                 description="subhepatic recess"))
+        setattr(cls, "UBERON:0006443",
+            PermissibleValue(
+                text="UBERON:0006443",
+                description="prinicipal vein of limb"))
         setattr(cls, "UBERON:0006444",
             PermissibleValue(
                 text="UBERON:0006444",
@@ -23160,6 +23488,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006553",
                 description="renal duct"))
+        setattr(cls, "UBERON:0006555",
+            PermissibleValue(
+                text="UBERON:0006555",
+                description="excretory tube"))
         setattr(cls, "UBERON:0006558",
             PermissibleValue(
                 text="UBERON:0006558",
@@ -23224,10 +23556,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006581",
                 description="mantle muscle"))
-        setattr(cls, "UBERON:0006583",
-            PermissibleValue(
-                text="UBERON:0006583",
-                description="statocyst"))
         setattr(cls, "UBERON:0006585",
             PermissibleValue(
                 text="UBERON:0006585",
@@ -23272,10 +23600,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006596",
                 description="presumptive blood"))
-        setattr(cls, "UBERON:0006597",
-            PermissibleValue(
-                text="UBERON:0006597",
-                description="quadrate bone"))
         setattr(cls, "UBERON:0006598",
             PermissibleValue(
                 text="UBERON:0006598",
@@ -23324,14 +23648,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006610",
                 description="tunica albuginea"))
-        setattr(cls, "UBERON:0006611",
-            PermissibleValue(
-                text="UBERON:0006611",
-                description="exoskeleton"))
-        setattr(cls, "UBERON:0006612",
-            PermissibleValue(
-                text="UBERON:0006612",
-                description="shell"))
         setattr(cls, "UBERON:0006614",
             PermissibleValue(
                 text="UBERON:0006614",
@@ -23608,10 +23924,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006694",
                 description="cerebellum vasculature"))
+        setattr(cls, "UBERON:0006695",
+            PermissibleValue(
+                text="UBERON:0006695",
+                description="mammillary axonal complex"))
         setattr(cls, "UBERON:0006696",
             PermissibleValue(
                 text="UBERON:0006696",
                 description="mammillothalamic axonal tract"))
+        setattr(cls, "UBERON:0006697",
+            PermissibleValue(
+                text="UBERON:0006697",
+                description="mammillotectal axonal tract"))
         setattr(cls, "UBERON:0006698",
             PermissibleValue(
                 text="UBERON:0006698",
@@ -23728,10 +24052,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006764",
                 description="anterior communicating artery"))
-        setattr(cls, "UBERON:0006765",
-            PermissibleValue(
-                text="UBERON:0006765",
-                description="left anterior vena cava"))
         setattr(cls, "UBERON:0006766",
             PermissibleValue(
                 text="UBERON:0006766",
@@ -23756,6 +24076,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006772",
                 description="long bone epiphyseal plate hypertrophic zone"))
+        setattr(cls, "UBERON:0006773",
+            PermissibleValue(
+                text="UBERON:0006773",
+                description="long bone epiphyseal plate ossification zone"))
+        setattr(cls, "UBERON:0006775",
+            PermissibleValue(
+                text="UBERON:0006775",
+                description="zone of epiphyseal plate"))
         setattr(cls, "UBERON:0006776",
             PermissibleValue(
                 text="UBERON:0006776",
@@ -23816,10 +24144,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006793",
                 description="deep layer of superior colliculus"))
+        setattr(cls, "UBERON:0006794",
+            PermissibleValue(
+                text="UBERON:0006794",
+                description="visual processing part of nervous system"))
         setattr(cls, "UBERON:0006795",
             PermissibleValue(
                 text="UBERON:0006795",
                 description="arthropod optic lobe"))
+        setattr(cls, "UBERON:0006796",
+            PermissibleValue(
+                text="UBERON:0006796",
+                description="cephalopod optic lobe"))
         setattr(cls, "UBERON:0006798",
             PermissibleValue(
                 text="UBERON:0006798",
@@ -23892,6 +24228,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006822",
                 description="proximal epiphysis of ulna"))
+        setattr(cls, "UBERON:0006828",
+            PermissibleValue(
+                text="UBERON:0006828",
+                description="trabecula carnea of atrium"))
         setattr(cls, "UBERON:0006829",
             PermissibleValue(
                 text="UBERON:0006829",
@@ -23992,6 +24332,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006857",
                 description="interrenal primordium"))
+        setattr(cls, "UBERON:0006858",
+            PermissibleValue(
+                text="UBERON:0006858",
+                description="adrenal/interrenal gland"))
         setattr(cls, "UBERON:0006859",
             PermissibleValue(
                 text="UBERON:0006859",
@@ -24036,10 +24380,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006869",
                 description="electric organ"))
-        setattr(cls, "UBERON:0006870",
-            PermissibleValue(
-                text="UBERON:0006870",
-                description="endostyle"))
         setattr(cls, "UBERON:0006871",
             PermissibleValue(
                 text="UBERON:0006871",
@@ -24252,10 +24592,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0006966",
                 description="coronary capillary"))
-        setattr(cls, "UBERON:0006967",
+        setattr(cls, "UBERON:0006969",
             PermissibleValue(
-                text="UBERON:0006967",
-                description="horn"))
+                text="UBERON:0006969",
+                description="cranial appendage"))
         setattr(cls, "UBERON:0006971",
             PermissibleValue(
                 text="UBERON:0006971",
@@ -24288,10 +24628,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007005",
                 description="cardiogenic splanchnic mesoderm"))
-        setattr(cls, "UBERON:0007006",
-            PermissibleValue(
-                text="UBERON:0007006",
-                description="obsolete blastomere"))
         setattr(cls, "UBERON:0007010",
             PermissibleValue(
                 text="UBERON:0007010",
@@ -24352,10 +24688,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007111",
                 description="Douglas' pouch"))
-        setattr(cls, "UBERON:0007113",
-            PermissibleValue(
-                text="UBERON:0007113",
-                description="venom"))
         setattr(cls, "UBERON:0007115",
             PermissibleValue(
                 text="UBERON:0007115",
@@ -24648,6 +24980,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007198",
                 description="hermaphrodite anatomical structure"))
+        setattr(cls, "UBERON:0007204",
+            PermissibleValue(
+                text="UBERON:0007204",
+                description="brachiocephalic vasculature"))
         setattr(cls, "UBERON:0007213",
             PermissibleValue(
                 text="UBERON:0007213",
@@ -24828,6 +25164,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007272",
                 description="pectoral appendage skeleton"))
+        setattr(cls, "UBERON:0007273",
+            PermissibleValue(
+                text="UBERON:0007273",
+                description="pelvic appendage skeleton"))
         setattr(cls, "UBERON:0007274",
             PermissibleValue(
                 text="UBERON:0007274",
@@ -25008,6 +25348,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007329",
                 description="pancreatic duct"))
+        setattr(cls, "UBERON:0007330",
+            PermissibleValue(
+                text="UBERON:0007330",
+                description="rhamphotheca"))
+        setattr(cls, "UBERON:0007331",
+            PermissibleValue(
+                text="UBERON:0007331",
+                description="maxillary rhamphotheca"))
+        setattr(cls, "UBERON:0007332",
+            PermissibleValue(
+                text="UBERON:0007332",
+                description="mandibular rhamphotheca"))
         setattr(cls, "UBERON:0007334",
             PermissibleValue(
                 text="UBERON:0007334",
@@ -25028,6 +25380,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007351",
                 description="nucleus isthmo-opticus"))
+        setattr(cls, "UBERON:0007352",
+            PermissibleValue(
+                text="UBERON:0007352",
+                description="stria vascularis vasculature"))
         setattr(cls, "UBERON:0007354",
             PermissibleValue(
                 text="UBERON:0007354",
@@ -25100,22 +25456,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007377",
                 description="stratum compactum of dermis"))
-        setattr(cls, "UBERON:0007378",
-            PermissibleValue(
-                text="UBERON:0007378",
-                description="egg yolk"))
-        setattr(cls, "UBERON:0007379",
-            PermissibleValue(
-                text="UBERON:0007379",
-                description="shelled egg"))
-        setattr(cls, "UBERON:0007380",
-            PermissibleValue(
-                text="UBERON:0007380",
-                description="dermal scale"))
-        setattr(cls, "UBERON:0007381",
-            PermissibleValue(
-                text="UBERON:0007381",
-                description="epidermal scale"))
         setattr(cls, "UBERON:0007383",
             PermissibleValue(
                 text="UBERON:0007383",
@@ -25128,6 +25468,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007385",
                 description="pectoral appendage lymph vessel"))
+        setattr(cls, "UBERON:0007386",
+            PermissibleValue(
+                text="UBERON:0007386",
+                description="pelvic appendage lymph vessel"))
         setattr(cls, "UBERON:0007389",
             PermissibleValue(
                 text="UBERON:0007389",
@@ -25196,10 +25540,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007491",
                 description="chitin-based acellular structure"))
-        setattr(cls, "UBERON:0007497",
-            PermissibleValue(
-                text="UBERON:0007497",
-                description="obsolete developing epithelial placode"))
         setattr(cls, "UBERON:0007499",
             PermissibleValue(
                 text="UBERON:0007499",
@@ -25264,6 +25604,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007592",
                 description="ciliated columnar epithelium"))
+        setattr(cls, "UBERON:0007601",
+            PermissibleValue(
+                text="UBERON:0007601",
+                description="ciliated epithelium"))
         setattr(cls, "UBERON:0007602",
             PermissibleValue(
                 text="UBERON:0007602",
@@ -25284,18 +25628,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007612",
                 description="extensor digitorum communis"))
-        setattr(cls, "UBERON:0007613",
-            PermissibleValue(
-                text="UBERON:0007613",
-                description="extensor digitorum lateralis muscle"))
         setattr(cls, "UBERON:0007614",
             PermissibleValue(
                 text="UBERON:0007614",
                 description="extensor digiti minimi muscle"))
-        setattr(cls, "UBERON:0007615",
-            PermissibleValue(
-                text="UBERON:0007615",
-                description="prostate gland ventral lobe"))
         setattr(cls, "UBERON:0007616",
             PermissibleValue(
                 text="UBERON:0007616",
@@ -25396,6 +25732,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007645",
                 description="future meninx"))
+        setattr(cls, "UBERON:0007646",
+            PermissibleValue(
+                text="UBERON:0007646",
+                description="endomeninx"))
         setattr(cls, "UBERON:0007647",
             PermissibleValue(
                 text="UBERON:0007647",
@@ -25448,6 +25788,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007685",
                 description="region of nephron tubule"))
+        setattr(cls, "UBERON:0007687",
+            PermissibleValue(
+                text="UBERON:0007687",
+                description="kidney field"))
         setattr(cls, "UBERON:0007688",
             PermissibleValue(
                 text="UBERON:0007688",
@@ -25524,6 +25868,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007717",
                 description="sacral subsegment of spinal cord"))
+        setattr(cls, "UBERON:0007718",
+            PermissibleValue(
+                text="UBERON:0007718",
+                description="principal artery to limb"))
         setattr(cls, "UBERON:0007721",
             PermissibleValue(
                 text="UBERON:0007721",
@@ -25692,18 +26040,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007799",
                 description="mixed dentition"))
+        setattr(cls, "UBERON:0007800",
+            PermissibleValue(
+                text="UBERON:0007800",
+                description="proatlas"))
         setattr(cls, "UBERON:0007801",
             PermissibleValue(
                 text="UBERON:0007801",
                 description="pygostyle"))
-        setattr(cls, "UBERON:0007802",
+        setattr(cls, "UBERON:0007803",
             PermissibleValue(
-                text="UBERON:0007802",
-                description="uropygial gland"))
-        setattr(cls, "UBERON:0007804",
-            PermissibleValue(
-                text="UBERON:0007804",
-                description="sclerotic ring"))
+                text="UBERON:0007803",
+                description="preen oil"))
         setattr(cls, "UBERON:0007805",
             PermissibleValue(
                 text="UBERON:0007805",
@@ -25728,10 +26076,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0007811",
                 description="craniocervical region"))
-        setattr(cls, "UBERON:0007812",
-            PermissibleValue(
-                text="UBERON:0007812",
-                description="post-anal tail"))
         setattr(cls, "UBERON:0007818",
             PermissibleValue(
                 text="UBERON:0007818",
@@ -25936,10 +26280,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008200",
                 description="forehead"))
-        setattr(cls, "UBERON:0008201",
-            PermissibleValue(
-                text="UBERON:0008201",
-                description="scute"))
         setattr(cls, "UBERON:0008202",
             PermissibleValue(
                 text="UBERON:0008202",
@@ -26000,6 +26340,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008253",
                 description="Aristotle's lantern"))
+        setattr(cls, "UBERON:0008254",
+            PermissibleValue(
+                text="UBERON:0008254",
+                description="styliform cartilage"))
         setattr(cls, "UBERON:0008255",
             PermissibleValue(
                 text="UBERON:0008255",
@@ -26008,10 +26352,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008256",
                 description="left clavicle"))
+        setattr(cls, "UBERON:0008257",
+            PermissibleValue(
+                text="UBERON:0008257",
+                description="radial sesamoid"))
         setattr(cls, "UBERON:0008261",
             PermissibleValue(
                 text="UBERON:0008261",
                 description="pedicellaria"))
+        setattr(cls, "UBERON:0008262",
+            PermissibleValue(
+                text="UBERON:0008262",
+                description="ambulacral area"))
+        setattr(cls, "UBERON:0008263",
+            PermissibleValue(
+                text="UBERON:0008263",
+                description="inter-ambulacral area"))
+        setattr(cls, "UBERON:0008265",
+            PermissibleValue(
+                text="UBERON:0008265",
+                description="echinopluteus larva"))
         setattr(cls, "UBERON:0008266",
             PermissibleValue(
                 text="UBERON:0008266",
@@ -26028,22 +26388,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008269",
                 description="nacre"))
-        setattr(cls, "UBERON:0008270",
-            PermissibleValue(
-                text="UBERON:0008270",
-                description="mollusc shell"))
         setattr(cls, "UBERON:0008274",
             PermissibleValue(
                 text="UBERON:0008274",
                 description="mollusc venom"))
-        setattr(cls, "UBERON:0008275",
-            PermissibleValue(
-                text="UBERON:0008275",
-                description="carapace"))
-        setattr(cls, "UBERON:0008276",
-            PermissibleValue(
-                text="UBERON:0008276",
-                description="plastron"))
         setattr(cls, "UBERON:0008280",
             PermissibleValue(
                 text="UBERON:0008280",
@@ -26060,38 +26408,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008285",
                 description="rumen epithelium"))
-        setattr(cls, "UBERON:0008286",
-            PermissibleValue(
-                text="UBERON:0008286",
-                description="feather calamus"))
-        setattr(cls, "UBERON:0008287",
-            PermissibleValue(
-                text="UBERON:0008287",
-                description="feather vane"))
-        setattr(cls, "UBERON:0008288",
-            PermissibleValue(
-                text="UBERON:0008288",
-                description="feather rachis"))
-        setattr(cls, "UBERON:0008291",
-            PermissibleValue(
-                text="UBERON:0008291",
-                description="down feather"))
-        setattr(cls, "UBERON:0008292",
-            PermissibleValue(
-                text="UBERON:0008292",
-                description="vaned feather"))
-        setattr(cls, "UBERON:0008294",
-            PermissibleValue(
-                text="UBERON:0008294",
-                description="feather barb"))
-        setattr(cls, "UBERON:0008295",
-            PermissibleValue(
-                text="UBERON:0008295",
-                description="feather barbule"))
-        setattr(cls, "UBERON:0008297",
-            PermissibleValue(
-                text="UBERON:0008297",
-                description="pennaceous feather"))
         setattr(cls, "UBERON:0008304",
             PermissibleValue(
                 text="UBERON:0008304",
@@ -26168,10 +26484,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008339",
                 description="microvascular endothelium"))
-        setattr(cls, "UBERON:0008340",
-            PermissibleValue(
-                text="UBERON:0008340",
-                description="nasal bridge"))
         setattr(cls, "UBERON:0008341",
             PermissibleValue(
                 text="UBERON:0008341",
@@ -26272,6 +26584,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008437",
                 description="posterior arch of atlas"))
+        setattr(cls, "UBERON:0008438",
+            PermissibleValue(
+                text="UBERON:0008438",
+                description="webbed interdigital region between manual digits"))
+        setattr(cls, "UBERON:0008439",
+            PermissibleValue(
+                text="UBERON:0008439",
+                description="webbed interdigital region between pedal digits"))
+        setattr(cls, "UBERON:0008440",
+            PermissibleValue(
+                text="UBERON:0008440",
+                description="webbed autopod"))
         setattr(cls, "UBERON:0008441",
             PermissibleValue(
                 text="UBERON:0008441",
@@ -26280,6 +26604,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008442",
                 description="webbed pes"))
+        setattr(cls, "UBERON:0008443",
+            PermissibleValue(
+                text="UBERON:0008443",
+                description="webbed digit"))
+        setattr(cls, "UBERON:0008444",
+            PermissibleValue(
+                text="UBERON:0008444",
+                description="webbed manual digit"))
+        setattr(cls, "UBERON:0008445",
+            PermissibleValue(
+                text="UBERON:0008445",
+                description="webbed pedal digit"))
         setattr(cls, "UBERON:0008446",
             PermissibleValue(
                 text="UBERON:0008446",
@@ -26632,6 +26968,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008805",
                 description="gingival groove"))
+        setattr(cls, "UBERON:0008806",
+            PermissibleValue(
+                text="UBERON:0008806",
+                description="buccal funnel"))
         setattr(cls, "UBERON:0008807",
             PermissibleValue(
                 text="UBERON:0008807",
@@ -26664,14 +27004,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008814",
                 description="pharyngeal arch system"))
-        setattr(cls, "UBERON:0008815",
-            PermissibleValue(
-                text="UBERON:0008815",
-                description="pharyngeal slit"))
         setattr(cls, "UBERON:0008816",
             PermissibleValue(
                 text="UBERON:0008816",
                 description="embryonic head"))
+        setattr(cls, "UBERON:0008817",
+            PermissibleValue(
+                text="UBERON:0008817",
+                description="thymus primordium endoderm"))
         setattr(cls, "UBERON:0008818",
             PermissibleValue(
                 text="UBERON:0008818",
@@ -26692,6 +27032,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008822",
                 description="posterior mediastinum"))
+        setattr(cls, "UBERON:0008823",
+            PermissibleValue(
+                text="UBERON:0008823",
+                description="neural tube derived brain"))
         setattr(cls, "UBERON:0008824",
             PermissibleValue(
                 text="UBERON:0008824",
@@ -26740,6 +27084,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008836",
                 description="liver bud"))
+        setattr(cls, "UBERON:0008837",
+            PermissibleValue(
+                text="UBERON:0008837",
+                description="palmar/plantar part of autopod"))
         setattr(cls, "UBERON:0008838",
             PermissibleValue(
                 text="UBERON:0008838",
@@ -26752,6 +27100,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008840",
                 description="plantar pad"))
+        setattr(cls, "UBERON:0008841",
+            PermissibleValue(
+                text="UBERON:0008841",
+                description="suspensory ligament"))
         setattr(cls, "UBERON:0008842",
             PermissibleValue(
                 text="UBERON:0008842",
@@ -26760,6 +27112,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008843",
                 description="gubernaculum testis"))
+        setattr(cls, "UBERON:0008844",
+            PermissibleValue(
+                text="UBERON:0008844",
+                description="gubernaculum (female)"))
         setattr(cls, "UBERON:0008845",
             PermissibleValue(
                 text="UBERON:0008845",
@@ -26792,10 +27148,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008854",
                 description="root of molar tooth"))
-        setattr(cls, "UBERON:0008855",
-            PermissibleValue(
-                text="UBERON:0008855",
-                description="placenta metrial gland"))
         setattr(cls, "UBERON:0008856",
             PermissibleValue(
                 text="UBERON:0008856",
@@ -26812,6 +27164,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008859",
                 description="cardiac gastric gland"))
+        setattr(cls, "UBERON:0008860",
+            PermissibleValue(
+                text="UBERON:0008860",
+                description="intermediate gastric gland"))
         setattr(cls, "UBERON:0008861",
             PermissibleValue(
                 text="UBERON:0008861",
@@ -26920,22 +27276,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008896",
                 description="post-hyoid pharyngeal arch"))
-        setattr(cls, "UBERON:0008897",
-            PermissibleValue(
-                text="UBERON:0008897",
-                description="fin"))
         setattr(cls, "UBERON:0008902",
             PermissibleValue(
                 text="UBERON:0008902",
                 description="lateral recess of third ventricle"))
-        setattr(cls, "UBERON:0008904",
-            PermissibleValue(
-                text="UBERON:0008904",
-                description="neuromast"))
-        setattr(cls, "UBERON:0008906",
-            PermissibleValue(
-                text="UBERON:0008906",
-                description="lateral line nerve"))
         setattr(cls, "UBERON:0008907",
             PermissibleValue(
                 text="UBERON:0008907",
@@ -26956,14 +27300,42 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008915",
                 description="pore"))
-        setattr(cls, "UBERON:0008917",
+        setattr(cls, "UBERON:0008921",
             PermissibleValue(
-                text="UBERON:0008917",
-                description="ampullary organ"))
-        setattr(cls, "UBERON:0008918",
+                text="UBERON:0008921",
+                description="substratum of layer of retina"))
+        setattr(cls, "UBERON:0008922",
             PermissibleValue(
-                text="UBERON:0008918",
-                description="ampulla of Lorenzini"))
+                text="UBERON:0008922",
+                description="sublaminar layer S1"))
+        setattr(cls, "UBERON:0008923",
+            PermissibleValue(
+                text="UBERON:0008923",
+                description="sublaminar layer S2"))
+        setattr(cls, "UBERON:0008924",
+            PermissibleValue(
+                text="UBERON:0008924",
+                description="sublaminar layer S3"))
+        setattr(cls, "UBERON:0008925",
+            PermissibleValue(
+                text="UBERON:0008925",
+                description="sublaminar layer S4"))
+        setattr(cls, "UBERON:0008926",
+            PermissibleValue(
+                text="UBERON:0008926",
+                description="sublaminar layer S5"))
+        setattr(cls, "UBERON:0008927",
+            PermissibleValue(
+                text="UBERON:0008927",
+                description="sublaminar layers S1 or S2"))
+        setattr(cls, "UBERON:0008928",
+            PermissibleValue(
+                text="UBERON:0008928",
+                description="sublaminar layers S2 or S3"))
+        setattr(cls, "UBERON:0008929",
+            PermissibleValue(
+                text="UBERON:0008929",
+                description="sublaminar layers S4 or S5"))
         setattr(cls, "UBERON:0008930",
             PermissibleValue(
                 text="UBERON:0008930",
@@ -27008,10 +27380,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008943",
                 description="headfoot"))
-        setattr(cls, "UBERON:0008944",
-            PermissibleValue(
-                text="UBERON:0008944",
-                description="albumen"))
         setattr(cls, "UBERON:0008945",
             PermissibleValue(
                 text="UBERON:0008945",
@@ -27032,6 +27400,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008949",
                 description="lower lobe of lung"))
+        setattr(cls, "UBERON:0008950",
+            PermissibleValue(
+                text="UBERON:0008950",
+                description="azygous lobe of lung"))
         setattr(cls, "UBERON:0008951",
             PermissibleValue(
                 text="UBERON:0008951",
@@ -27060,10 +27432,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0008957",
                 description="sequestrum"))
+        setattr(cls, "UBERON:0008958",
+            PermissibleValue(
+                text="UBERON:0008958",
+                description="cetacean involucrum"))
         setattr(cls, "UBERON:0008959",
             PermissibleValue(
                 text="UBERON:0008959",
                 description="auditory bulla"))
+        setattr(cls, "UBERON:0008961",
+            PermissibleValue(
+                text="UBERON:0008961",
+                description="parabronchus"))
         setattr(cls, "UBERON:0008962",
             PermissibleValue(
                 text="UBERON:0008962",
@@ -27292,18 +27672,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009053",
                 description="dorsal nucleus of trapezoid body"))
-        setattr(cls, "UBERON:0009054",
+        setattr(cls, "UBERON:0009055",
             PermissibleValue(
-                text="UBERON:0009054",
-                description="open circulatory system"))
+                text="UBERON:0009055",
+                description="closed circulatory system"))
         setattr(cls, "UBERON:0009056",
             PermissibleValue(
                 text="UBERON:0009056",
                 description="two-pass circulatory system"))
+        setattr(cls, "UBERON:0009057",
+            PermissibleValue(
+                text="UBERON:0009057",
+                description="one-pass circulatory system"))
+        setattr(cls, "UBERON:0009058",
+            PermissibleValue(
+                text="UBERON:0009058",
+                description="faveolus"))
         setattr(cls, "UBERON:0009060",
             PermissibleValue(
                 text="UBERON:0009060",
                 description="air sac"))
+        setattr(cls, "UBERON:0009061",
+            PermissibleValue(
+                text="UBERON:0009061",
+                description="anterior air sac"))
+        setattr(cls, "UBERON:0009062",
+            PermissibleValue(
+                text="UBERON:0009062",
+                description="posterior air sac"))
+        setattr(cls, "UBERON:0009063",
+            PermissibleValue(
+                text="UBERON:0009063",
+                description="interclavicular air sac"))
         setattr(cls, "UBERON:0009064",
             PermissibleValue(
                 text="UBERON:0009064",
@@ -27320,10 +27720,62 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009067",
                 description="abdominal air sac"))
+        setattr(cls, "UBERON:0009071",
+            PermissibleValue(
+                text="UBERON:0009071",
+                description="mesobronchus"))
+        setattr(cls, "UBERON:0009072",
+            PermissibleValue(
+                text="UBERON:0009072",
+                description="ventrobronchus"))
+        setattr(cls, "UBERON:0009073",
+            PermissibleValue(
+                text="UBERON:0009073",
+                description="dorsobronchus"))
         setattr(cls, "UBERON:0009074",
             PermissibleValue(
                 text="UBERON:0009074",
                 description="syrinx organ"))
+        setattr(cls, "UBERON:0009075",
+            PermissibleValue(
+                text="UBERON:0009075",
+                description="membrana tympaniformis"))
+        setattr(cls, "UBERON:0009076",
+            PermissibleValue(
+                text="UBERON:0009076",
+                description="membrana tympaniformis lateralis"))
+        setattr(cls, "UBERON:0009077",
+            PermissibleValue(
+                text="UBERON:0009077",
+                description="membrana tympaniformis medialis"))
+        setattr(cls, "UBERON:0009078",
+            PermissibleValue(
+                text="UBERON:0009078",
+                description="pessulus"))
+        setattr(cls, "UBERON:0009089",
+            PermissibleValue(
+                text="UBERON:0009089",
+                description="inner medulla descending vasa recta"))
+        setattr(cls, "UBERON:0009090",
+            PermissibleValue(
+                text="UBERON:0009090",
+                description="outer medulla descending vasa recta"))
+        setattr(cls, "UBERON:0009091",
+            PermissibleValue(
+                text="UBERON:0009091",
+                description="ascending vasa recta"))
+        setattr(cls, "UBERON:0009092",
+            PermissibleValue(
+                text="UBERON:0009092",
+                description="inner medulla ascending vasa recta"))
+        setattr(cls, "UBERON:0009093",
+            PermissibleValue(
+                text="UBERON:0009093",
+                description="outer medulla ascending vasa recta"))
+        setattr(cls, "UBERON:0009095",
+            PermissibleValue(
+                text="UBERON:0009095",
+                description="tip of renal papilla"))
         setattr(cls, "UBERON:0009097",
             PermissibleValue(
                 text="UBERON:0009097",
@@ -27336,14 +27788,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009099",
                 description="typhlosole"))
+        setattr(cls, "UBERON:0009100",
+            PermissibleValue(
+                text="UBERON:0009100",
+                description="nephric fold"))
+        setattr(cls, "UBERON:0009101",
+            PermissibleValue(
+                text="UBERON:0009101",
+                description="ammocoete"))
+        setattr(cls, "UBERON:0009102",
+            PermissibleValue(
+                text="UBERON:0009102",
+                description="supraneural body"))
+        setattr(cls, "UBERON:0009114",
+            PermissibleValue(
+                text="UBERON:0009114",
+                description="cervical thymus"))
+        setattr(cls, "UBERON:0009115",
+            PermissibleValue(
+                text="UBERON:0009115",
+                description="thoracic thymus"))
+        setattr(cls, "UBERON:0009116",
+            PermissibleValue(
+                text="UBERON:0009116",
+                description="thymoid"))
         setattr(cls, "UBERON:0009117",
             PermissibleValue(
                 text="UBERON:0009117",
                 description="indifferent gonad"))
-        setattr(cls, "UBERON:0009120",
+        setattr(cls, "UBERON:0009118",
             PermissibleValue(
-                text="UBERON:0009120",
-                description="gill filament"))
+                text="UBERON:0009118",
+                description="marsupium"))
         setattr(cls, "UBERON:0009121",
             PermissibleValue(
                 text="UBERON:0009121",
@@ -27368,10 +27844,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009127",
                 description="epibranchial ganglion"))
-        setattr(cls, "UBERON:0009128",
-            PermissibleValue(
-                text="UBERON:0009128",
-                description="lateral line placode"))
         setattr(cls, "UBERON:0009129",
             PermissibleValue(
                 text="UBERON:0009129",
@@ -27444,6 +27916,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009197",
                 description="basioccipital pre-cartilage condensation"))
+        setattr(cls, "UBERON:0009198",
+            PermissibleValue(
+                text="UBERON:0009198",
+                description="craniofacial suture"))
+        setattr(cls, "UBERON:0009199",
+            PermissibleValue(
+                text="UBERON:0009199",
+                description="facial suture"))
         setattr(cls, "UBERON:0009200",
             PermissibleValue(
                 text="UBERON:0009200",
@@ -27452,6 +27932,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009201",
                 description="nephric duct"))
+        setattr(cls, "UBERON:0009202",
+            PermissibleValue(
+                text="UBERON:0009202",
+                description="descending vasa recta"))
         setattr(cls, "UBERON:0009203",
             PermissibleValue(
                 text="UBERON:0009203",
@@ -27468,6 +27952,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009206",
                 description="lateral nasal process surface ectoderm"))
+        setattr(cls, "UBERON:0009207",
+            PermissibleValue(
+                text="UBERON:0009207",
+                description="geschmacksstreifen"))
         setattr(cls, "UBERON:0009210",
             PermissibleValue(
                 text="UBERON:0009210",
@@ -27524,10 +28012,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009474",
                 description="ascidian ampulla"))
-        setattr(cls, "UBERON:0009476",
+        setattr(cls, "UBERON:0009475",
             PermissibleValue(
-                text="UBERON:0009476",
-                description="madreporite"))
+                text="UBERON:0009475",
+                description="ampullar siphon"))
         setattr(cls, "UBERON:0009477",
             PermissibleValue(
                 text="UBERON:0009477",
@@ -27643,19 +28131,27 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
         setattr(cls, "UBERON:0009548",
             PermissibleValue(
                 text="UBERON:0009548",
-                description="hepatic sinusoid of left of lobe of liver"))
+                description="hepatic sinusoid of left lobe of liver"))
         setattr(cls, "UBERON:0009549",
             PermissibleValue(
                 text="UBERON:0009549",
-                description="hepatic sinusoid of right of lobe of liver"))
+                description="hepatic sinusoid of right lobe of liver"))
         setattr(cls, "UBERON:0009550",
             PermissibleValue(
                 text="UBERON:0009550",
                 description="endoderm of foregut-midgut junction"))
+        setattr(cls, "UBERON:0009551",
+            PermissibleValue(
+                text="UBERON:0009551",
+                description="distal segment of digit"))
         setattr(cls, "UBERON:0009552",
             PermissibleValue(
                 text="UBERON:0009552",
                 description="distal segment of manual digit"))
+        setattr(cls, "UBERON:0009553",
+            PermissibleValue(
+                text="UBERON:0009553",
+                description="distal segment of pedal digit"))
         setattr(cls, "UBERON:0009555",
             PermissibleValue(
                 text="UBERON:0009555",
@@ -27668,6 +28164,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009558",
                 description="pastern bone"))
+        setattr(cls, "UBERON:0009559",
+            PermissibleValue(
+                text="UBERON:0009559",
+                description="metacarpal/tarsal-phalangeal joint"))
         setattr(cls, "UBERON:0009563",
             PermissibleValue(
                 text="UBERON:0009563",
@@ -27784,6 +28284,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009593",
                 description="mesenchyme of interdigital region between pedal digits 4 and 5"))
+        setattr(cls, "UBERON:0009596",
+            PermissibleValue(
+                text="UBERON:0009596",
+                description="mesenchyme of interdigital region between digits 1 and 2"))
+        setattr(cls, "UBERON:0009597",
+            PermissibleValue(
+                text="UBERON:0009597",
+                description="mesenchyme of interdigital region between digits 2 and 3"))
+        setattr(cls, "UBERON:0009598",
+            PermissibleValue(
+                text="UBERON:0009598",
+                description="mesenchyme of interdigital region between digits 3 and 4"))
+        setattr(cls, "UBERON:0009599",
+            PermissibleValue(
+                text="UBERON:0009599",
+                description="mesenchyme of interdigital region between digits 4 and 5"))
         setattr(cls, "UBERON:0009600",
             PermissibleValue(
                 text="UBERON:0009600",
@@ -27836,10 +28352,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009620",
                 description="tail bud paraxial mesoderm"))
-        setattr(cls, "UBERON:0009621",
-            PermissibleValue(
-                text="UBERON:0009621",
-                description="tail somite"))
         setattr(cls, "UBERON:0009622",
             PermissibleValue(
                 text="UBERON:0009622",
@@ -27884,10 +28396,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009635",
                 description="parachordal cartilage"))
+        setattr(cls, "UBERON:0009636",
+            PermissibleValue(
+                text="UBERON:0009636",
+                description="prechordal cartilage"))
+        setattr(cls, "UBERON:0009637",
+            PermissibleValue(
+                text="UBERON:0009637",
+                description="alisphenoid ossification center"))
+        setattr(cls, "UBERON:0009638",
+            PermissibleValue(
+                text="UBERON:0009638",
+                description="orbitosphenoid ossification center"))
         setattr(cls, "UBERON:0009639",
             PermissibleValue(
                 text="UBERON:0009639",
                 description="body of sphenoid"))
+        setattr(cls, "UBERON:0009640",
+            PermissibleValue(
+                text="UBERON:0009640",
+                description="hypophyseal cartilage"))
         setattr(cls, "UBERON:0009641",
             PermissibleValue(
                 text="UBERON:0009641",
@@ -27900,10 +28428,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009644",
                 description="trachea non-cartilage connective tissue"))
-        setattr(cls, "UBERON:0009645",
-            PermissibleValue(
-                text="UBERON:0009645",
-                description="ampullary gland"))
         setattr(cls, "UBERON:0009646",
             PermissibleValue(
                 text="UBERON:0009646",
@@ -28060,18 +28584,86 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009714",
                 description="intermaxillary process"))
+        setattr(cls, "UBERON:0009715",
+            PermissibleValue(
+                text="UBERON:0009715",
+                description="stomodeal lumen"))
+        setattr(cls, "UBERON:0009716",
+            PermissibleValue(
+                text="UBERON:0009716",
+                description="cupular organ"))
+        setattr(cls, "UBERON:0009717",
+            PermissibleValue(
+                text="UBERON:0009717",
+                description="coronal organ"))
+        setattr(cls, "UBERON:0009718",
+            PermissibleValue(
+                text="UBERON:0009718",
+                description="neurohypophyseal duct"))
         setattr(cls, "UBERON:0009719",
             PermissibleValue(
                 text="UBERON:0009719",
                 description="tunicate siphon"))
+        setattr(cls, "UBERON:0009720",
+            PermissibleValue(
+                text="UBERON:0009720",
+                description="oral siphon"))
+        setattr(cls, "UBERON:0009721",
+            PermissibleValue(
+                text="UBERON:0009721",
+                description="atrial siphon"))
         setattr(cls, "UBERON:0009722",
             PermissibleValue(
                 text="UBERON:0009722",
                 description="entire pharyngeal arch endoderm"))
+        setattr(cls, "UBERON:0009731",
+            PermissibleValue(
+                text="UBERON:0009731",
+                description="sublaminar layers S3 or S4"))
+        setattr(cls, "UBERON:0009732",
+            PermissibleValue(
+                text="UBERON:0009732",
+                description="sublaminar layers S1 or S2 or S5"))
+        setattr(cls, "UBERON:0009733",
+            PermissibleValue(
+                text="UBERON:0009733",
+                description="sublaminar layers S1 or S2 or S3"))
+        setattr(cls, "UBERON:0009734",
+            PermissibleValue(
+                text="UBERON:0009734",
+                description="sublaminar layers S2 or S3 or S4"))
+        setattr(cls, "UBERON:0009735",
+            PermissibleValue(
+                text="UBERON:0009735",
+                description="sublaminar layers S1 or S3 or S4"))
+        setattr(cls, "UBERON:0009736",
+            PermissibleValue(
+                text="UBERON:0009736",
+                description="sublaminar layers S3 or S4 or S5"))
+        setattr(cls, "UBERON:0009737",
+            PermissibleValue(
+                text="UBERON:0009737",
+                description="sublaminar layers S1 or S2 or S3 or S4"))
+        setattr(cls, "UBERON:0009738",
+            PermissibleValue(
+                text="UBERON:0009738",
+                description="border of sublaminar layers S1 and S2"))
+        setattr(cls, "UBERON:0009739",
+            PermissibleValue(
+                text="UBERON:0009739",
+                description="border of sublaminar layers S3 and S4"))
+        setattr(cls, "UBERON:0009740",
+            PermissibleValue(
+                text="UBERON:0009740",
+                description="border between sublaminar layers"))
         setattr(cls, "UBERON:0009742",
             PermissibleValue(
                 text="UBERON:0009742",
                 description="proamniotic cavity"))
+        setattr(cls, "UBERON:0009743",
+            PermissibleValue(
+                text="UBERON:0009743",
+                description="visceral yolk sac cavity"))
         setattr(cls, "UBERON:0009744",
             PermissibleValue(
                 text="UBERON:0009744",
@@ -28148,6 +28740,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009772",
                 description="right anterior cardinal vein"))
+        setattr(cls, "UBERON:0009773",
+            PermissibleValue(
+                text="UBERON:0009773",
+                description="renal tubule"))
         setattr(cls, "UBERON:0009775",
             PermissibleValue(
                 text="UBERON:0009775",
@@ -28196,6 +28792,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009842",
                 description="glandular acinus"))
+        setattr(cls, "UBERON:0009843",
+            PermissibleValue(
+                text="UBERON:0009843",
+                description="prostate epithelial cord"))
         setattr(cls, "UBERON:0009844",
             PermissibleValue(
                 text="UBERON:0009844",
@@ -28208,14 +28808,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009846",
                 description="embryonic cloacal epithelium"))
+        setattr(cls, "UBERON:0009847",
+            PermissibleValue(
+                text="UBERON:0009847",
+                description="prostate field"))
         setattr(cls, "UBERON:0009848",
             PermissibleValue(
                 text="UBERON:0009848",
                 description="zona limitans intrathalamica"))
-        setattr(cls, "UBERON:0009849",
+        setattr(cls, "UBERON:0009850",
             PermissibleValue(
-                text="UBERON:0009849",
-                description="tadpole stage"))
+                text="UBERON:0009850",
+                description="nematode larva"))
+        setattr(cls, "UBERON:0009851",
+            PermissibleValue(
+                text="UBERON:0009851",
+                description="border of sublaminar layers S4 and S5"))
+        setattr(cls, "UBERON:0009852",
+            PermissibleValue(
+                text="UBERON:0009852",
+                description="border of sublaminar layers S2 and S3"))
         setattr(cls, "UBERON:0009853",
             PermissibleValue(
                 text="UBERON:0009853",
@@ -28224,6 +28836,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009854",
                 description="digestive tract diverticulum"))
+        setattr(cls, "UBERON:0009855",
+            PermissibleValue(
+                text="UBERON:0009855",
+                description="echinoderm gastric caecum"))
+        setattr(cls, "UBERON:0009856",
+            PermissibleValue(
+                text="UBERON:0009856",
+                description="sac"))
         setattr(cls, "UBERON:0009857",
             PermissibleValue(
                 text="UBERON:0009857",
@@ -28236,6 +28856,46 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009859",
                 description="endosteum"))
+        setattr(cls, "UBERON:0009860",
+            PermissibleValue(
+                text="UBERON:0009860",
+                description="ascidian digestive gland"))
+        setattr(cls, "UBERON:0009861",
+            PermissibleValue(
+                text="UBERON:0009861",
+                description="ascidian neural complex"))
+        setattr(cls, "UBERON:0009862",
+            PermissibleValue(
+                text="UBERON:0009862",
+                description="ascidian cerebral ganglion"))
+        setattr(cls, "UBERON:0009863",
+            PermissibleValue(
+                text="UBERON:0009863",
+                description="ascidian ciliated funnel"))
+        setattr(cls, "UBERON:0009864",
+            PermissibleValue(
+                text="UBERON:0009864",
+                description="ascidian neural gland"))
+        setattr(cls, "UBERON:0009865",
+            PermissibleValue(
+                text="UBERON:0009865",
+                description="Hatschek's pit"))
+        setattr(cls, "UBERON:0009866",
+            PermissibleValue(
+                text="UBERON:0009866",
+                description="Hatschek's nephridium"))
+        setattr(cls, "UBERON:0009867",
+            PermissibleValue(
+                text="UBERON:0009867",
+                description="Hatschek's diverticulum"))
+        setattr(cls, "UBERON:0009868",
+            PermissibleValue(
+                text="UBERON:0009868",
+                description="Hatschek's left diverticulum"))
+        setattr(cls, "UBERON:0009869",
+            PermissibleValue(
+                text="UBERON:0009869",
+                description="Hatschek's right diverticulum"))
         setattr(cls, "UBERON:0009870",
             PermissibleValue(
                 text="UBERON:0009870",
@@ -28280,14 +28940,42 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009887",
                 description="interlobar vein"))
+        setattr(cls, "UBERON:0009888",
+            PermissibleValue(
+                text="UBERON:0009888",
+                description="Koller's sickle"))
         setattr(cls, "UBERON:0009889",
             PermissibleValue(
                 text="UBERON:0009889",
                 description="secondary heart field"))
+        setattr(cls, "UBERON:0009890",
+            PermissibleValue(
+                text="UBERON:0009890",
+                description="anterior intestinal portal"))
         setattr(cls, "UBERON:0009891",
             PermissibleValue(
                 text="UBERON:0009891",
                 description="facial mesenchyme"))
+        setattr(cls, "UBERON:0009892",
+            PermissibleValue(
+                text="UBERON:0009892",
+                description="ascidian anterior sensory vesicle"))
+        setattr(cls, "UBERON:0009893",
+            PermissibleValue(
+                text="UBERON:0009893",
+                description="ascidian ocellus"))
+        setattr(cls, "UBERON:0009894",
+            PermissibleValue(
+                text="UBERON:0009894",
+                description="siphon primordium"))
+        setattr(cls, "UBERON:0009895",
+            PermissibleValue(
+                text="UBERON:0009895",
+                description="atrial siphon primordia"))
+        setattr(cls, "UBERON:0009896",
+            PermissibleValue(
+                text="UBERON:0009896",
+                description="oral siphon primordia"))
         setattr(cls, "UBERON:0009897",
             PermissibleValue(
                 text="UBERON:0009897",
@@ -28356,10 +29044,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009920",
                 description="optic neural crest"))
+        setattr(cls, "UBERON:0009921",
+            PermissibleValue(
+                text="UBERON:0009921",
+                description="hypophyseal tube"))
         setattr(cls, "UBERON:0009948",
             PermissibleValue(
                 text="UBERON:0009948",
                 description="clavicular air sac"))
+        setattr(cls, "UBERON:0009949",
+            PermissibleValue(
+                text="UBERON:0009949",
+                description="humeral diverticulum of clavicular air sac"))
         setattr(cls, "UBERON:0009950",
             PermissibleValue(
                 text="UBERON:0009950",
@@ -28376,10 +29072,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009953",
                 description="post-embryonic organism"))
+        setattr(cls, "UBERON:0009954",
+            PermissibleValue(
+                text="UBERON:0009954",
+                description="vomeronasal system"))
         setattr(cls, "UBERON:0009955",
             PermissibleValue(
                 text="UBERON:0009955",
                 description="neurogenic placode"))
+        setattr(cls, "UBERON:0009956",
+            PermissibleValue(
+                text="UBERON:0009956",
+                description="corpuscle of de Quatrefage"))
+        setattr(cls, "UBERON:0009957",
+            PermissibleValue(
+                text="UBERON:0009957",
+                description="ciliated pit"))
         setattr(cls, "UBERON:0009958",
             PermissibleValue(
                 text="UBERON:0009958",
@@ -28404,6 +29112,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0009963",
                 description="antennal gland"))
+        setattr(cls, "UBERON:0009964",
+            PermissibleValue(
+                text="UBERON:0009964",
+                description="crustacean maxillary gland"))
         setattr(cls, "UBERON:0009965",
             PermissibleValue(
                 text="UBERON:0009965",
@@ -28544,22 +29256,46 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010011",
                 description="collection of basal ganglia"))
-        setattr(cls, "UBERON:0010016",
+        setattr(cls, "UBERON:0010012",
             PermissibleValue(
-                text="UBERON:0010016",
-                description="spiral valve of intestine"))
+                text="UBERON:0010012",
+                description="upper beak"))
+        setattr(cls, "UBERON:0010013",
+            PermissibleValue(
+                text="UBERON:0010013",
+                description="lower beak"))
+        setattr(cls, "UBERON:0010014",
+            PermissibleValue(
+                text="UBERON:0010014",
+                description="epigonal organ"))
+        setattr(cls, "UBERON:0010015",
+            PermissibleValue(
+                text="UBERON:0010015",
+                description="ventral patch of Leydig's organ"))
         setattr(cls, "UBERON:0010017",
             PermissibleValue(
                 text="UBERON:0010017",
                 description="spiral valve of cystic duct"))
-        setattr(cls, "UBERON:0010018",
-            PermissibleValue(
-                text="UBERON:0010018",
-                description="spiral valve of conus arteriosus"))
         setattr(cls, "UBERON:0010020",
             PermissibleValue(
                 text="UBERON:0010020",
                 description="tubotympanic recess epithelium"))
+        setattr(cls, "UBERON:0010021",
+            PermissibleValue(
+                text="UBERON:0010021",
+                description="dorsal part of pharyngeal pouch 1"))
+        setattr(cls, "UBERON:0010022",
+            PermissibleValue(
+                text="UBERON:0010022",
+                description="ventral part of pharyngeal pouch 1"))
+        setattr(cls, "UBERON:0010023",
+            PermissibleValue(
+                text="UBERON:0010023",
+                description="dorsal part of pharyngeal pouch 2"))
+        setattr(cls, "UBERON:0010024",
+            PermissibleValue(
+                text="UBERON:0010024",
+                description="ventral part of pharyngeal pouch 2"))
         setattr(cls, "UBERON:0010025",
             PermissibleValue(
                 text="UBERON:0010025",
@@ -28568,6 +29304,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010026",
                 description="ventral part of pharyngeal pouch 3"))
+        setattr(cls, "UBERON:0010027",
+            PermissibleValue(
+                text="UBERON:0010027",
+                description="dorsal part of pharyngeal pouch 4"))
+        setattr(cls, "UBERON:0010028",
+            PermissibleValue(
+                text="UBERON:0010028",
+                description="ventral part of pharyngeal pouch 4"))
+        setattr(cls, "UBERON:0010029",
+            PermissibleValue(
+                text="UBERON:0010029",
+                description="dorsal part of pharyngeal pouch 5"))
+        setattr(cls, "UBERON:0010030",
+            PermissibleValue(
+                text="UBERON:0010030",
+                description="ventral part of pharyngeal pouch 5"))
         setattr(cls, "UBERON:0010031",
             PermissibleValue(
                 text="UBERON:0010031",
@@ -28596,6 +29348,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010039",
                 description="food storage organ"))
+        setattr(cls, "UBERON:0010040",
+            PermissibleValue(
+                text="UBERON:0010040",
+                description="stomach non-glandular epithelium"))
+        setattr(cls, "UBERON:0010041",
+            PermissibleValue(
+                text="UBERON:0010041",
+                description="median ovary"))
         setattr(cls, "UBERON:0010042",
             PermissibleValue(
                 text="UBERON:0010042",
@@ -28612,6 +29372,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010047",
                 description="oral gland"))
+        setattr(cls, "UBERON:0010048",
+            PermissibleValue(
+                text="UBERON:0010048",
+                description="Duvernoy's gland"))
+        setattr(cls, "UBERON:0010051",
+            PermissibleValue(
+                text="UBERON:0010051",
+                description="dorsal patch of Leydig's organ"))
         setattr(cls, "UBERON:0010052",
             PermissibleValue(
                 text="UBERON:0010052",
@@ -28752,6 +29520,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010129",
                 description="femur cartilage element"))
+        setattr(cls, "UBERON:0010130",
+            PermissibleValue(
+                text="UBERON:0010130",
+                description="embryonic autopod plate"))
         setattr(cls, "UBERON:0010131",
             PermissibleValue(
                 text="UBERON:0010131",
@@ -28772,6 +29544,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010135",
                 description="sensory circumventricular organ"))
+        setattr(cls, "UBERON:0010136",
+            PermissibleValue(
+                text="UBERON:0010136",
+                description="epithelial sheet"))
+        setattr(cls, "UBERON:0010137",
+            PermissibleValue(
+                text="UBERON:0010137",
+                description="polarized epithelium"))
         setattr(cls, "UBERON:0010141",
             PermissibleValue(
                 text="UBERON:0010141",
@@ -28804,6 +29584,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010151",
                 description="duct of bulbourethral gland"))
+        setattr(cls, "UBERON:0010152",
+            PermissibleValue(
+                text="UBERON:0010152",
+                description="skin mucus"))
         setattr(cls, "UBERON:0010153",
             PermissibleValue(
                 text="UBERON:0010153",
@@ -28840,10 +29624,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010161",
                 description="lumen of blood vessel"))
-        setattr(cls, "UBERON:0010162",
-            PermissibleValue(
-                text="UBERON:0010162",
-                description="post-anal tail tip"))
         setattr(cls, "UBERON:0010163",
             PermissibleValue(
                 text="UBERON:0010163",
@@ -28872,6 +29652,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010169",
                 description="moustache"))
+        setattr(cls, "UBERON:0010170",
+            PermissibleValue(
+                text="UBERON:0010170",
+                description="region of neural crest"))
         setattr(cls, "UBERON:0010171",
             PermissibleValue(
                 text="UBERON:0010171",
@@ -28884,6 +29668,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010173",
                 description="sinotubular junction"))
+        setattr(cls, "UBERON:0010174",
+            PermissibleValue(
+                text="UBERON:0010174",
+                description="Schweigger-Seidel sheath"))
         setattr(cls, "UBERON:0010175",
             PermissibleValue(
                 text="UBERON:0010175",
@@ -28896,6 +29684,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010181",
                 description="straight venules of kidney"))
+        setattr(cls, "UBERON:0010183",
+            PermissibleValue(
+                text="UBERON:0010183",
+                description="liver trabecula"))
         setattr(cls, "UBERON:0010185",
             PermissibleValue(
                 text="UBERON:0010185",
@@ -28936,10 +29728,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010194",
                 description="hepatic portal system"))
-        setattr(cls, "UBERON:0010195",
-            PermissibleValue(
-                text="UBERON:0010195",
-                description="renal portal system"))
         setattr(cls, "UBERON:0010197",
             PermissibleValue(
                 text="UBERON:0010197",
@@ -28952,22 +29740,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010199",
                 description="bona-fide anatomical boundary"))
-        setattr(cls, "UBERON:0010202",
-            PermissibleValue(
-                text="UBERON:0010202",
-                description="lateral line"))
-        setattr(cls, "UBERON:0010204",
-            PermissibleValue(
-                text="UBERON:0010204",
-                description="tail vasculature"))
         setattr(cls, "UBERON:0010205",
             PermissibleValue(
                 text="UBERON:0010205",
                 description="mesencephalic vein"))
-        setattr(cls, "UBERON:0010207",
-            PermissibleValue(
-                text="UBERON:0010207",
-                description="nictitating membrane"))
         setattr(cls, "UBERON:0010209",
             PermissibleValue(
                 text="UBERON:0010209",
@@ -28984,6 +29760,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010212",
                 description="laryngeal apparatus"))
+        setattr(cls, "UBERON:0010213",
+            PermissibleValue(
+                text="UBERON:0010213",
+                description="laryngeal pre-cartilage condensation"))
         setattr(cls, "UBERON:0010214",
             PermissibleValue(
                 text="UBERON:0010214",
@@ -29004,6 +29784,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010221",
                 description="laryngeal associated mesenchyme"))
+        setattr(cls, "UBERON:0010222",
+            PermissibleValue(
+                text="UBERON:0010222",
+                description="anatomical line between pupils"))
         setattr(cls, "UBERON:0010223",
             PermissibleValue(
                 text="UBERON:0010223",
@@ -29032,6 +29816,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010230",
                 description="eyeball of camera-type eye"))
+        setattr(cls, "UBERON:0010231",
+            PermissibleValue(
+                text="UBERON:0010231",
+                description="anatomical line between outer ears"))
         setattr(cls, "UBERON:0010232",
             PermissibleValue(
                 text="UBERON:0010232",
@@ -29048,10 +29836,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010235",
                 description="uvular muscle"))
-        setattr(cls, "UBERON:0010238",
-            PermissibleValue(
-                text="UBERON:0010238",
-                description="torus pylorus"))
         setattr(cls, "UBERON:0010239",
             PermissibleValue(
                 text="UBERON:0010239",
@@ -29072,10 +29856,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010243",
                 description="merocrine gland"))
-        setattr(cls, "UBERON:0010244",
-            PermissibleValue(
-                text="UBERON:0010244",
-                description="choroid tapetum lucidum"))
         setattr(cls, "UBERON:0010249",
             PermissibleValue(
                 text="UBERON:0010249",
@@ -29128,14 +29908,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010262",
                 description="operculum of brain"))
-        setattr(cls, "UBERON:0010263",
-            PermissibleValue(
-                text="UBERON:0010263",
-                description="obsolete embryoid body"))
         setattr(cls, "UBERON:0010264",
             PermissibleValue(
                 text="UBERON:0010264",
                 description="hepatopancreas"))
+        setattr(cls, "UBERON:0010265",
+            PermissibleValue(
+                text="UBERON:0010265",
+                description="mollusc hepatopancreas"))
+        setattr(cls, "UBERON:0010266",
+            PermissibleValue(
+                text="UBERON:0010266",
+                description="arthropod hepatopancreas"))
         setattr(cls, "UBERON:0010269",
             PermissibleValue(
                 text="UBERON:0010269",
@@ -29144,10 +29928,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010270",
                 description="filum terminale externum"))
-        setattr(cls, "UBERON:0010271",
-            PermissibleValue(
-                text="UBERON:0010271",
-                description="musculus retractor bulbi"))
         setattr(cls, "UBERON:0010272",
             PermissibleValue(
                 text="UBERON:0010272",
@@ -29188,14 +29968,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010287",
                 description="motor root of facial nerve"))
-        setattr(cls, "UBERON:0010289",
+        setattr(cls, "UBERON:0010291",
             PermissibleValue(
-                text="UBERON:0010289",
-                description="scleral cartilage"))
-        setattr(cls, "UBERON:0010290",
-            PermissibleValue(
-                text="UBERON:0010290",
-                description="scleral ossicle"))
+                text="UBERON:0010291",
+                description="layer of sclera"))
         setattr(cls, "UBERON:0010292",
             PermissibleValue(
                 text="UBERON:0010292",
@@ -29204,18 +29980,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010293",
                 description="suprachoroid lamina"))
+        setattr(cls, "UBERON:0010294",
+            PermissibleValue(
+                text="UBERON:0010294",
+                description="scleral endothelium"))
         setattr(cls, "UBERON:0010295",
             PermissibleValue(
                 text="UBERON:0010295",
                 description="substantia propria of sclera"))
-        setattr(cls, "UBERON:0010297",
+        setattr(cls, "UBERON:0010299",
             PermissibleValue(
-                text="UBERON:0010297",
-                description="endochondral scleral ossicle"))
+                text="UBERON:0010299",
+                description="scleral mesenchyme"))
+        setattr(cls, "UBERON:0010300",
+            PermissibleValue(
+                text="UBERON:0010300",
+                description="epithelial scleral papilla layer"))
         setattr(cls, "UBERON:0010302",
             PermissibleValue(
                 text="UBERON:0010302",
                 description="amnioserosa"))
+        setattr(cls, "UBERON:0010303",
+            PermissibleValue(
+                text="UBERON:0010303",
+                description="extraembryonic epithelium"))
         setattr(cls, "UBERON:0010304",
             PermissibleValue(
                 text="UBERON:0010304",
@@ -29232,22 +30020,46 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010307",
                 description="conjunctival fornix"))
+        setattr(cls, "UBERON:0010309",
+            PermissibleValue(
+                text="UBERON:0010309",
+                description="palpebral bone"))
         setattr(cls, "UBERON:0010312",
             PermissibleValue(
                 text="UBERON:0010312",
                 description="immature eye"))
+        setattr(cls, "UBERON:0010313",
+            PermissibleValue(
+                text="UBERON:0010313",
+                description="neural crest-derived structure"))
+        setattr(cls, "UBERON:0010314",
+            PermissibleValue(
+                text="UBERON:0010314",
+                description="structure with developmental contribution from neural crest"))
+        setattr(cls, "UBERON:0010316",
+            PermissibleValue(
+                text="UBERON:0010316",
+                description="germ layer / neural crest"))
+        setattr(cls, "UBERON:0010321",
+            PermissibleValue(
+                text="UBERON:0010321",
+                description="skeletal element of eye region"))
         setattr(cls, "UBERON:0010323",
             PermissibleValue(
                 text="UBERON:0010323",
                 description="cranial skeletal system"))
-        setattr(cls, "UBERON:0010324",
+        setattr(cls, "UBERON:0010326",
             PermissibleValue(
-                text="UBERON:0010324",
-                description="obsolete craniofacial region"))
-        setattr(cls, "UBERON:0010325",
+                text="UBERON:0010326",
+                description="optic pedicel"))
+        setattr(cls, "UBERON:0010328",
             PermissibleValue(
-                text="UBERON:0010325",
-                description="obsolete craniofacial skeleton"))
+                text="UBERON:0010328",
+                description="limb bud mesenchyme"))
+        setattr(cls, "UBERON:0010329",
+            PermissibleValue(
+                text="UBERON:0010329",
+                description="paired limb/fin bud mesenchyme"))
         setattr(cls, "UBERON:0010330",
             PermissibleValue(
                 text="UBERON:0010330",
@@ -29256,6 +30068,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010332",
                 description="epithelium of handplate"))
+        setattr(cls, "UBERON:0010333",
+            PermissibleValue(
+                text="UBERON:0010333",
+                description="extraembryonic membrane mesenchyme"))
         setattr(cls, "UBERON:0010334",
             PermissibleValue(
                 text="UBERON:0010334",
@@ -29328,6 +30144,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010358",
                 description="arch of centrum of vertebra"))
+        setattr(cls, "UBERON:0010359",
+            PermissibleValue(
+                text="UBERON:0010359",
+                description="pharyngeal arch mesenchyme from neural crest"))
+        setattr(cls, "UBERON:0010360",
+            PermissibleValue(
+                text="UBERON:0010360",
+                description="pharyngeal arch mesenchyme from head mesenchyme"))
         setattr(cls, "UBERON:0010361",
             PermissibleValue(
                 text="UBERON:0010361",
@@ -29432,6 +30256,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010391",
                 description="parametrium"))
+        setattr(cls, "UBERON:0010392",
+            PermissibleValue(
+                text="UBERON:0010392",
+                description="B cell domain"))
+        setattr(cls, "UBERON:0010393",
+            PermissibleValue(
+                text="UBERON:0010393",
+                description="T cell domain"))
+        setattr(cls, "UBERON:0010394",
+            PermissibleValue(
+                text="UBERON:0010394",
+                description="lymphocyte domain"))
         setattr(cls, "UBERON:0010395",
             PermissibleValue(
                 text="UBERON:0010395",
@@ -29444,10 +30280,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010397",
                 description="efferent lymphatic vessel"))
-        setattr(cls, "UBERON:0010398",
-            PermissibleValue(
-                text="UBERON:0010398",
-                description="spleen marginal sinus"))
         setattr(cls, "UBERON:0010399",
             PermissibleValue(
                 text="UBERON:0010399",
@@ -29524,10 +30356,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010418",
                 description="urethral opening"))
-        setattr(cls, "UBERON:0010419",
-            PermissibleValue(
-                text="UBERON:0010419",
-                description="vibrissa follicle"))
         setattr(cls, "UBERON:0010420",
             PermissibleValue(
                 text="UBERON:0010420",
@@ -29628,10 +30456,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010516",
                 description="clasper"))
-        setattr(cls, "UBERON:0010519",
+        setattr(cls, "UBERON:0010517",
             PermissibleValue(
-                text="UBERON:0010519",
-                description="tail electric organ"))
+                text="UBERON:0010517",
+                description="cephalic clasper"))
+        setattr(cls, "UBERON:0010520",
+            PermissibleValue(
+                text="UBERON:0010520",
+                description="head electric organ"))
+        setattr(cls, "UBERON:0010521",
+            PermissibleValue(
+                text="UBERON:0010521",
+                description="electroreceptor organ"))
         setattr(cls, "UBERON:0010522",
             PermissibleValue(
                 text="UBERON:0010522",
@@ -29660,6 +30496,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010531",
                 description="metanephros induced blastemal cells"))
+        setattr(cls, "UBERON:0010532",
+            PermissibleValue(
+                text="UBERON:0010532",
+                description="primitive nephron"))
         setattr(cls, "UBERON:0010533",
             PermissibleValue(
                 text="UBERON:0010533",
@@ -29672,10 +30512,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010535",
                 description="primitive metanephric nephron"))
+        setattr(cls, "UBERON:0010536",
+            PermissibleValue(
+                text="UBERON:0010536",
+                description="nephron progenitor"))
         setattr(cls, "UBERON:0010537",
             PermissibleValue(
                 text="UBERON:0010537",
                 description="mesonephric nephron progenitor"))
+        setattr(cls, "UBERON:0010538",
+            PermissibleValue(
+                text="UBERON:0010538",
+                description="paired limb/fin segment"))
         setattr(cls, "UBERON:0010540",
             PermissibleValue(
                 text="UBERON:0010540",
@@ -29956,22 +30804,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010709",
                 description="pelvic complex"))
-        setattr(cls, "UBERON:0010710",
-            PermissibleValue(
-                text="UBERON:0010710",
-                description="pectoral fin skeleton"))
-        setattr(cls, "UBERON:0010711",
-            PermissibleValue(
-                text="UBERON:0010711",
-                description="pelvic fin skeleton"))
         setattr(cls, "UBERON:0010712",
             PermissibleValue(
                 text="UBERON:0010712",
                 description="limb skeleton subdivision"))
-        setattr(cls, "UBERON:0010713",
-            PermissibleValue(
-                text="UBERON:0010713",
-                description="paired fin skeleton"))
         setattr(cls, "UBERON:0010714",
             PermissibleValue(
                 text="UBERON:0010714",
@@ -30008,6 +30844,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010725",
                 description="accessory navicular bone"))
+        setattr(cls, "UBERON:0010726",
+            PermissibleValue(
+                text="UBERON:0010726",
+                description="os vesalianum manus"))
         setattr(cls, "UBERON:0010727",
             PermissibleValue(
                 text="UBERON:0010727",
@@ -30076,10 +30916,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010749",
                 description="middle pharyngeal constrictor"))
-        setattr(cls, "UBERON:0010750",
-            PermissibleValue(
-                text="UBERON:0010750",
-                description="prefrontal bone"))
         setattr(cls, "UBERON:0010751",
             PermissibleValue(
                 text="UBERON:0010751",
@@ -30172,18 +31008,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010854",
                 description="skin of front of neck"))
-        setattr(cls, "UBERON:0010856",
+        setattr(cls, "UBERON:0010858",
             PermissibleValue(
-                text="UBERON:0010856",
-                description="patagium"))
-        setattr(cls, "UBERON:0010868",
-            PermissibleValue(
-                text="UBERON:0010868",
-                description="uropropatagium"))
-        setattr(cls, "UBERON:0010869",
-            PermissibleValue(
-                text="UBERON:0010869",
-                description="calcar"))
+                text="UBERON:0010858",
+                description="inter limb-segment region"))
         setattr(cls, "UBERON:0010879",
             PermissibleValue(
                 text="UBERON:0010879",
@@ -30192,6 +31020,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010880",
                 description="gular fold"))
+        setattr(cls, "UBERON:0010881",
+            PermissibleValue(
+                text="UBERON:0010881",
+                description="limb cartilage element"))
+        setattr(cls, "UBERON:0010882",
+            PermissibleValue(
+                text="UBERON:0010882",
+                description="limb bone pre-cartilage condensation"))
         setattr(cls, "UBERON:0010883",
             PermissibleValue(
                 text="UBERON:0010883",
@@ -30212,6 +31048,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010887",
                 description="tragus"))
+        setattr(cls, "UBERON:0010889",
+            PermissibleValue(
+                text="UBERON:0010889",
+                description="ectethmoid"))
         setattr(cls, "UBERON:0010890",
             PermissibleValue(
                 text="UBERON:0010890",
@@ -30224,22 +31064,50 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010892",
                 description="mesethmoid element"))
+        setattr(cls, "UBERON:0010894",
+            PermissibleValue(
+                text="UBERON:0010894",
+                description="keratinous tooth"))
         setattr(cls, "UBERON:0010895",
             PermissibleValue(
                 text="UBERON:0010895",
                 description="sequential hermaphroditic organism"))
-        setattr(cls, "UBERON:0010898",
+        setattr(cls, "UBERON:0010896",
             PermissibleValue(
-                text="UBERON:0010898",
-                description="gastralium"))
+                text="UBERON:0010896",
+                description="piston cartilage"))
         setattr(cls, "UBERON:0010899",
             PermissibleValue(
                 text="UBERON:0010899",
                 description="synchronous hermaphroditic organism"))
+        setattr(cls, "UBERON:0010900",
+            PermissibleValue(
+                text="UBERON:0010900",
+                description="tarsometatarsus cartilage element"))
+        setattr(cls, "UBERON:0010901",
+            PermissibleValue(
+                text="UBERON:0010901",
+                description="tarsometatarsus pre-cartilage condensation"))
+        setattr(cls, "UBERON:0010902",
+            PermissibleValue(
+                text="UBERON:0010902",
+                description="tibiotarsus cartilage element"))
+        setattr(cls, "UBERON:0010903",
+            PermissibleValue(
+                text="UBERON:0010903",
+                description="tibiotarsus pre-cartilage condensation"))
         setattr(cls, "UBERON:0010905",
             PermissibleValue(
                 text="UBERON:0010905",
                 description="clavicle bone primordium"))
+        setattr(cls, "UBERON:0010907",
+            PermissibleValue(
+                text="UBERON:0010907",
+                description="parafibula"))
+        setattr(cls, "UBERON:0010908",
+            PermissibleValue(
+                text="UBERON:0010908",
+                description="paraglossale"))
         setattr(cls, "UBERON:0010910",
             PermissibleValue(
                 text="UBERON:0010910",
@@ -30312,6 +31180,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010938",
                 description="muscle belly"))
+        setattr(cls, "UBERON:0010939",
+            PermissibleValue(
+                text="UBERON:0010939",
+                description="zygomaticomandibularis muscle"))
         setattr(cls, "UBERON:0010940",
             PermissibleValue(
                 text="UBERON:0010940",
@@ -30324,6 +31196,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010944",
                 description="posterior digastric muscle"))
+        setattr(cls, "UBERON:0010945",
+            PermissibleValue(
+                text="UBERON:0010945",
+                description="jugulohyoideus muscle"))
         setattr(cls, "UBERON:0010946",
             PermissibleValue(
                 text="UBERON:0010946",
@@ -30340,6 +31216,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0010949",
                 description="sternooccipital muscle"))
+        setattr(cls, "UBERON:0010950",
+            PermissibleValue(
+                text="UBERON:0010950",
+                description="styloauricular muscle"))
+        setattr(cls, "UBERON:0010951",
+            PermissibleValue(
+                text="UBERON:0010951",
+                description="interscutular muscle"))
         setattr(cls, "UBERON:0010952",
             PermissibleValue(
                 text="UBERON:0010952",
@@ -30636,10 +31520,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011122",
                 description="cricoarytenoid joint"))
-        setattr(cls, "UBERON:0011123",
-            PermissibleValue(
-                text="UBERON:0011123",
-                description="stifle joint"))
         setattr(cls, "UBERON:0011124",
             PermissibleValue(
                 text="UBERON:0011124",
@@ -30712,6 +31592,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011146",
                 description="silk gland"))
+        setattr(cls, "UBERON:0011147",
+            PermissibleValue(
+                text="UBERON:0011147",
+                description="Verson's gland"))
         setattr(cls, "UBERON:0011148",
             PermissibleValue(
                 text="UBERON:0011148",
@@ -30720,10 +31604,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011149",
                 description="Marshall's gland"))
-        setattr(cls, "UBERON:0011150",
-            PermissibleValue(
-                text="UBERON:0011150",
-                description="pharyngeal arch derived gill"))
         setattr(cls, "UBERON:0011151",
             PermissibleValue(
                 text="UBERON:0011151",
@@ -30756,6 +31636,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011158",
                 description="primary subdivision of skull"))
+        setattr(cls, "UBERON:0011159",
+            PermissibleValue(
+                text="UBERON:0011159",
+                description="primary subdivision of cranial skeletal system"))
         setattr(cls, "UBERON:0011160",
             PermissibleValue(
                 text="UBERON:0011160",
@@ -30788,14 +31672,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011167",
                 description="septomaxilla bone"))
+        setattr(cls, "UBERON:0011168",
+            PermissibleValue(
+                text="UBERON:0011168",
+                description="postfrontal bone"))
         setattr(cls, "UBERON:0011169",
             PermissibleValue(
                 text="UBERON:0011169",
                 description="postorbital bone"))
-        setattr(cls, "UBERON:0011170",
+        setattr(cls, "UBERON:0011171",
             PermissibleValue(
-                text="UBERON:0011170",
-                description="quadrate-articular joint"))
+                text="UBERON:0011171",
+                description="joint connecting upper and lower jaws"))
         setattr(cls, "UBERON:0011172",
             PermissibleValue(
                 text="UBERON:0011172",
@@ -30932,6 +31820,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011209",
                 description="lateral migration pathway NC-derived mesenchyme"))
+        setattr(cls, "UBERON:0011210",
+            PermissibleValue(
+                text="UBERON:0011210",
+                description="migration pathway NC-derived mesenchyme"))
         setattr(cls, "UBERON:0011213",
             PermissibleValue(
                 text="UBERON:0011213",
@@ -31008,6 +31900,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011245",
                 description="infra-orbital canal of maxilla"))
+        setattr(cls, "UBERON:0011246",
+            PermissibleValue(
+                text="UBERON:0011246",
+                description="procoracoid bone"))
+        setattr(cls, "UBERON:0011247",
+            PermissibleValue(
+                text="UBERON:0011247",
+                description="procoracoid cartilage"))
         setattr(cls, "UBERON:0011248",
             PermissibleValue(
                 text="UBERON:0011248",
@@ -31016,6 +31916,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011249",
                 description="appendicular skeletal system"))
+        setattr(cls, "UBERON:0011250",
+            PermissibleValue(
+                text="UBERON:0011250",
+                description="autopod bone"))
         setattr(cls, "UBERON:0011251",
             PermissibleValue(
                 text="UBERON:0011251",
@@ -31024,10 +31928,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011252",
                 description="scent gland"))
-        setattr(cls, "UBERON:0011256",
+        setattr(cls, "UBERON:0011255",
             PermissibleValue(
-                text="UBERON:0011256",
-                description="rhinarium"))
+                text="UBERON:0011255",
+                description="Eimer's organ"))
+        setattr(cls, "UBERON:0011263",
+            PermissibleValue(
+                text="UBERON:0011263",
+                description="femoral gland"))
         setattr(cls, "UBERON:0011264",
             PermissibleValue(
                 text="UBERON:0011264",
@@ -31036,18 +31944,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011265",
                 description="carpometacarpal joint of digit 1"))
-        setattr(cls, "UBERON:0011266",
-            PermissibleValue(
-                text="UBERON:0011266",
-                description="obsolete tendon of auricularis superior"))
-        setattr(cls, "UBERON:0011267",
-            PermissibleValue(
-                text="UBERON:0011267",
-                description="quadratojugal bone"))
-        setattr(cls, "UBERON:0011268",
-            PermissibleValue(
-                text="UBERON:0011268",
-                description="sublingua"))
         setattr(cls, "UBERON:0011270",
             PermissibleValue(
                 text="UBERON:0011270",
@@ -31132,6 +32028,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011301",
                 description="manubrium sternum pre-cartilage condensation"))
+        setattr(cls, "UBERON:0011302",
+            PermissibleValue(
+                text="UBERON:0011302",
+                description="tunicate tunic"))
+        setattr(cls, "UBERON:0011303",
+            PermissibleValue(
+                text="UBERON:0011303",
+                description="lamprey sucker"))
+        setattr(cls, "UBERON:0011304",
+            PermissibleValue(
+                text="UBERON:0011304",
+                description="tunicate postabdomen"))
         setattr(cls, "UBERON:0011305",
             PermissibleValue(
                 text="UBERON:0011305",
@@ -31144,14 +32052,34 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011307",
                 description="suprazygomatic part of temporalis"))
+        setattr(cls, "UBERON:0011308",
+            PermissibleValue(
+                text="UBERON:0011308",
+                description="pars reflexa of masseter"))
         setattr(cls, "UBERON:0011309",
             PermissibleValue(
                 text="UBERON:0011309",
                 description="body of mandible"))
+        setattr(cls, "UBERON:0011310",
+            PermissibleValue(
+                text="UBERON:0011310",
+                description="masseteric fossa"))
         setattr(cls, "UBERON:0011311",
             PermissibleValue(
                 text="UBERON:0011311",
                 description="hyoepiglottic ligament"))
+        setattr(cls, "UBERON:0011312",
+            PermissibleValue(
+                text="UBERON:0011312",
+                description="hyoepiglottic muscle"))
+        setattr(cls, "UBERON:0011313",
+            PermissibleValue(
+                text="UBERON:0011313",
+                description="posterior subdivision of masseter"))
+        setattr(cls, "UBERON:0011314",
+            PermissibleValue(
+                text="UBERON:0011314",
+                description="anterior subdivision of masseter"))
         setattr(cls, "UBERON:0011315",
             PermissibleValue(
                 text="UBERON:0011315",
@@ -31232,14 +32160,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011349",
                 description="pterygomandibular raphe"))
+        setattr(cls, "UBERON:0011350",
+            PermissibleValue(
+                text="UBERON:0011350",
+                description="mylohyoid raphe"))
         setattr(cls, "UBERON:0011357",
             PermissibleValue(
                 text="UBERON:0011357",
                 description="Reissner's fiber"))
-        setattr(cls, "UBERON:0011359",
+        setattr(cls, "UBERON:0011358",
             PermissibleValue(
-                text="UBERON:0011359",
-                description="urophysis"))
+                text="UBERON:0011358",
+                description="infundibular organ"))
+        setattr(cls, "UBERON:0011360",
+            PermissibleValue(
+                text="UBERON:0011360",
+                description="ampulla caudalis"))
         setattr(cls, "UBERON:0011362",
             PermissibleValue(
                 text="UBERON:0011362",
@@ -31284,6 +32220,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011376",
                 description="iliothoracic muscle"))
+        setattr(cls, "UBERON:0011377",
+            PermissibleValue(
+                text="UBERON:0011377",
+                description="femorothoracic muscle"))
         setattr(cls, "UBERON:0011379",
             PermissibleValue(
                 text="UBERON:0011379",
@@ -31356,6 +32296,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011508",
                 description="sphincter colli superficialis muscle"))
+        setattr(cls, "UBERON:0011509",
+            PermissibleValue(
+                text="UBERON:0011509",
+                description="sphincter colli profundus muscle"))
+        setattr(cls, "UBERON:0011510",
+            PermissibleValue(
+                text="UBERON:0011510",
+                description="cloacal bursa"))
         setattr(cls, "UBERON:0011511",
             PermissibleValue(
                 text="UBERON:0011511",
@@ -31420,6 +32368,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011579",
                 description="venom gland"))
+        setattr(cls, "UBERON:0011580",
+            PermissibleValue(
+                text="UBERON:0011580",
+                description="platypus crural gland"))
+        setattr(cls, "UBERON:0011581",
+            PermissibleValue(
+                text="UBERON:0011581",
+                description="platypus calcaneus spur"))
         setattr(cls, "UBERON:0011582",
             PermissibleValue(
                 text="UBERON:0011582",
@@ -31476,6 +32432,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011596",
                 description="future lower lip"))
+        setattr(cls, "UBERON:0011597",
+            PermissibleValue(
+                text="UBERON:0011597",
+                description="bone of upper jaw"))
         setattr(cls, "UBERON:0011598",
             PermissibleValue(
                 text="UBERON:0011598",
@@ -31496,6 +32456,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011603",
                 description="coronoid tooth"))
+        setattr(cls, "UBERON:0011604",
+            PermissibleValue(
+                text="UBERON:0011604",
+                description="carina of sternum"))
+        setattr(cls, "UBERON:0011605",
+            PermissibleValue(
+                text="UBERON:0011605",
+                description="supracoracoideus muscle of wing"))
         setattr(cls, "UBERON:0011606",
             PermissibleValue(
                 text="UBERON:0011606",
@@ -31504,6 +32472,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011607",
                 description="hyomandibular cartilage"))
+        setattr(cls, "UBERON:0011608",
+            PermissibleValue(
+                text="UBERON:0011608",
+                description="hyomandibular element"))
+        setattr(cls, "UBERON:0011609",
+            PermissibleValue(
+                text="UBERON:0011609",
+                description="ceratohyal element"))
         setattr(cls, "UBERON:0011610",
             PermissibleValue(
                 text="UBERON:0011610",
@@ -31516,6 +32492,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011612",
                 description="hypohyal cartilage"))
+        setattr(cls, "UBERON:0011613",
+            PermissibleValue(
+                text="UBERON:0011613",
+                description="hypohyal element"))
         setattr(cls, "UBERON:0011614",
             PermissibleValue(
                 text="UBERON:0011614",
@@ -31532,6 +32512,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011619",
                 description="stylohyoid bone"))
+        setattr(cls, "UBERON:0011620",
+            PermissibleValue(
+                text="UBERON:0011620",
+                description="basihyal lingual process"))
+        setattr(cls, "UBERON:0011621",
+            PermissibleValue(
+                text="UBERON:0011621",
+                description="thyrohyoid cartilage"))
         setattr(cls, "UBERON:0011622",
             PermissibleValue(
                 text="UBERON:0011622",
@@ -31560,6 +32548,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011628",
                 description="early premaxilla"))
+        setattr(cls, "UBERON:0011629",
+            PermissibleValue(
+                text="UBERON:0011629",
+                description="supratemporal bone"))
+        setattr(cls, "UBERON:0011630",
+            PermissibleValue(
+                text="UBERON:0011630",
+                description="intertemporal bone"))
+        setattr(cls, "UBERON:0011631",
+            PermissibleValue(
+                text="UBERON:0011631",
+                description="tabular bone"))
         setattr(cls, "UBERON:0011634",
             PermissibleValue(
                 text="UBERON:0011634",
@@ -31576,6 +32576,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011637",
                 description="prearticular bone"))
+        setattr(cls, "UBERON:0011638",
+            PermissibleValue(
+                text="UBERON:0011638",
+                description="pharyngeal arch 8"))
         setattr(cls, "UBERON:0011639",
             PermissibleValue(
                 text="UBERON:0011639",
@@ -31592,6 +32596,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011642",
                 description="oral epithelium from ectoderm"))
+        setattr(cls, "UBERON:0011643",
+            PermissibleValue(
+                text="UBERON:0011643",
+                description="puboischiofemoralis internus muscle"))
+        setattr(cls, "UBERON:0011644",
+            PermissibleValue(
+                text="UBERON:0011644",
+                description="puboischiofemoralis externus muscle"))
+        setattr(cls, "UBERON:0011645",
+            PermissibleValue(
+                text="UBERON:0011645",
+                description="iliofemoralis muscle"))
         setattr(cls, "UBERON:0011647",
             PermissibleValue(
                 text="UBERON:0011647",
@@ -31604,6 +32620,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011649",
                 description="levator operculi"))
+        setattr(cls, "UBERON:0011650",
+            PermissibleValue(
+                text="UBERON:0011650",
+                description="epihyoidean"))
         setattr(cls, "UBERON:0011651",
             PermissibleValue(
                 text="UBERON:0011651",
@@ -31616,22 +32636,46 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011653",
                 description="diapophysis of neural arch"))
-        setattr(cls, "UBERON:0011655",
-            PermissibleValue(
-                text="UBERON:0011655",
-                description="interclavicle"))
         setattr(cls, "UBERON:0011675",
             PermissibleValue(
                 text="UBERON:0011675",
                 description="perichordal ring"))
+        setattr(cls, "UBERON:0011676",
+            PermissibleValue(
+                text="UBERON:0011676",
+                description="subdivision of organism along main body axis"))
+        setattr(cls, "UBERON:0011677",
+            PermissibleValue(
+                text="UBERON:0011677",
+                description="trunk vertebra"))
         setattr(cls, "UBERON:0011678",
             PermissibleValue(
                 text="UBERON:0011678",
                 description="hindlimb intermedium bone"))
+        setattr(cls, "UBERON:0011679",
+            PermissibleValue(
+                text="UBERON:0011679",
+                description="proximal tarsal bone"))
         setattr(cls, "UBERON:0011683",
             PermissibleValue(
                 text="UBERON:0011683",
                 description="adductor mandibulae"))
+        setattr(cls, "UBERON:0011684",
+            PermissibleValue(
+                text="UBERON:0011684",
+                description="levator palatoquadrati"))
+        setattr(cls, "UBERON:0011685",
+            PermissibleValue(
+                text="UBERON:0011685",
+                description="preorbitalis muscle"))
+        setattr(cls, "UBERON:0011686",
+            PermissibleValue(
+                text="UBERON:0011686",
+                description="spiracularis muscle"))
+        setattr(cls, "UBERON:0011687",
+            PermissibleValue(
+                text="UBERON:0011687",
+                description="levator hyomandibulae muscle"))
         setattr(cls, "UBERON:0011688",
             PermissibleValue(
                 text="UBERON:0011688",
@@ -31752,18 +32796,74 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011778",
                 description="motor nucleus of vagal nerve"))
+        setattr(cls, "UBERON:0011779",
+            PermissibleValue(
+                text="UBERON:0011779",
+                description="nerve of head region"))
         setattr(cls, "UBERON:0011782",
             PermissibleValue(
                 text="UBERON:0011782",
                 description="feather follicle"))
-        setattr(cls, "UBERON:0011784",
+        setattr(cls, "UBERON:0011783",
             PermissibleValue(
-                text="UBERON:0011784",
-                description="feather shaft"))
-        setattr(cls, "UBERON:0011793",
+                text="UBERON:0011783",
+                description="feather follicle placode"))
+        setattr(cls, "UBERON:0011792",
             PermissibleValue(
-                text="UBERON:0011793",
-                description="flight feather"))
+                text="UBERON:0011792",
+                description="feather muscle"))
+        setattr(cls, "UBERON:0011799",
+            PermissibleValue(
+                text="UBERON:0011799",
+                description="cavity of feather shaft"))
+        setattr(cls, "UBERON:0011801",
+            PermissibleValue(
+                text="UBERON:0011801",
+                description="dermal condensation of feather follicle"))
+        setattr(cls, "UBERON:0011802",
+            PermissibleValue(
+                text="UBERON:0011802",
+                description="feather bud"))
+        setattr(cls, "UBERON:0011803",
+            PermissibleValue(
+                text="UBERON:0011803",
+                description="feather bud, dermal component"))
+        setattr(cls, "UBERON:0011804",
+            PermissibleValue(
+                text="UBERON:0011804",
+                description="feather bud, epidermal component"))
+        setattr(cls, "UBERON:0011805",
+            PermissibleValue(
+                text="UBERON:0011805",
+                description="cavity of feather follicle"))
+        setattr(cls, "UBERON:0011806",
+            PermissibleValue(
+                text="UBERON:0011806",
+                description="dermis of feather follicle"))
+        setattr(cls, "UBERON:0011807",
+            PermissibleValue(
+                text="UBERON:0011807",
+                description="epidermis of feather follicle"))
+        setattr(cls, "UBERON:0011808",
+            PermissibleValue(
+                text="UBERON:0011808",
+                description="outer epidermal layer of feather follicle"))
+        setattr(cls, "UBERON:0011809",
+            PermissibleValue(
+                text="UBERON:0011809",
+                description="inner epidermal layer of feather follicle"))
+        setattr(cls, "UBERON:0011810",
+            PermissibleValue(
+                text="UBERON:0011810",
+                description="collection of feathers"))
+        setattr(cls, "UBERON:0011814",
+            PermissibleValue(
+                text="UBERON:0011814",
+                description="non-neurogenic ectodermal placode"))
+        setattr(cls, "UBERON:0011817",
+            PermissibleValue(
+                text="UBERON:0011817",
+                description="skin appendage placode"))
         setattr(cls, "UBERON:0011818",
             PermissibleValue(
                 text="UBERON:0011818",
@@ -31848,6 +32948,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011857",
                 description="acinus of lacrimal gland"))
+        setattr(cls, "UBERON:0011858",
+            PermissibleValue(
+                text="UBERON:0011858",
+                description="acinus of exocrine gland"))
         setattr(cls, "UBERON:0011859",
             PermissibleValue(
                 text="UBERON:0011859",
@@ -31856,6 +32960,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011860",
                 description="collection of collagen fibrils"))
+        setattr(cls, "UBERON:0011861",
+            PermissibleValue(
+                text="UBERON:0011861",
+                description="aorta collagen fibril"))
+        setattr(cls, "UBERON:0011862",
+            PermissibleValue(
+                text="UBERON:0011862",
+                description="pulmonary collagen fibril"))
+        setattr(cls, "UBERON:0011863",
+            PermissibleValue(
+                text="UBERON:0011863",
+                description="bone collagen fibril"))
+        setattr(cls, "UBERON:0011864",
+            PermissibleValue(
+                text="UBERON:0011864",
+                description="tendon collagen fibril"))
+        setattr(cls, "UBERON:0011865",
+            PermissibleValue(
+                text="UBERON:0011865",
+                description="corneal stroma collagen fibril"))
         setattr(cls, "UBERON:0011866",
             PermissibleValue(
                 text="UBERON:0011866",
@@ -31972,6 +33096,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011908",
                 description="gastrocnemius lateralis"))
+        setattr(cls, "UBERON:0011909",
+            PermissibleValue(
+                text="UBERON:0011909",
+                description="gastrocnemius internus"))
+        setattr(cls, "UBERON:0011910",
+            PermissibleValue(
+                text="UBERON:0011910",
+                description="gastrocnemius externus"))
         setattr(cls, "UBERON:0011915",
             PermissibleValue(
                 text="UBERON:0011915",
@@ -32028,30 +33160,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011932",
                 description="pilosebaceous unit"))
-        setattr(cls, "UBERON:0011933",
-            PermissibleValue(
-                text="UBERON:0011933",
-                description="vibrissa unit"))
-        setattr(cls, "UBERON:0011936",
-            PermissibleValue(
-                text="UBERON:0011936",
-                description="vibrissa hair bulb"))
-        setattr(cls, "UBERON:0011937",
-            PermissibleValue(
-                text="UBERON:0011937",
-                description="vibrissa root sheath"))
-        setattr(cls, "UBERON:0011938",
-            PermissibleValue(
-                text="UBERON:0011938",
-                description="vibrissa inner root sheath"))
-        setattr(cls, "UBERON:0011939",
-            PermissibleValue(
-                text="UBERON:0011939",
-                description="vibrissa outer root sheath"))
-        setattr(cls, "UBERON:0011940",
-            PermissibleValue(
-                text="UBERON:0011940",
-                description="arrector pili muscle of vibrissa"))
         setattr(cls, "UBERON:0011941",
             PermissibleValue(
                 text="UBERON:0011941",
@@ -32060,6 +33168,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011944",
                 description="subintestinal vein"))
+        setattr(cls, "UBERON:0011945",
+            PermissibleValue(
+                text="UBERON:0011945",
+                description="luminal layer of epithelium"))
+        setattr(cls, "UBERON:0011946",
+            PermissibleValue(
+                text="UBERON:0011946",
+                description="subluminal layer of epithelium"))
         setattr(cls, "UBERON:0011947",
             PermissibleValue(
                 text="UBERON:0011947",
@@ -32080,6 +33196,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011951",
                 description="prostate luminal epithelium"))
+        setattr(cls, "UBERON:0011952",
+            PermissibleValue(
+                text="UBERON:0011952",
+                description="non-glandular epithelium"))
         setattr(cls, "UBERON:0011953",
             PermissibleValue(
                 text="UBERON:0011953",
@@ -32144,6 +33264,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011968",
                 description="radio-carpal joint"))
+        setattr(cls, "UBERON:0011969",
+            PermissibleValue(
+                text="UBERON:0011969",
+                description="mesotarsal joint"))
         setattr(cls, "UBERON:0011970",
             PermissibleValue(
                 text="UBERON:0011970",
@@ -32188,6 +33312,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0011980",
                 description="crurotarsal joint"))
+        setattr(cls, "UBERON:0011981",
+            PermissibleValue(
+                text="UBERON:0011981",
+                description="manual digit 6"))
+        setattr(cls, "UBERON:0011982",
+            PermissibleValue(
+                text="UBERON:0011982",
+                description="manual digit 7"))
+        setattr(cls, "UBERON:0011983",
+            PermissibleValue(
+                text="UBERON:0011983",
+                description="manual digit 8"))
+        setattr(cls, "UBERON:0011984",
+            PermissibleValue(
+                text="UBERON:0011984",
+                description="pedal digit 6"))
+        setattr(cls, "UBERON:0011985",
+            PermissibleValue(
+                text="UBERON:0011985",
+                description="infraorbital sinus"))
+        setattr(cls, "UBERON:0011986",
+            PermissibleValue(
+                text="UBERON:0011986",
+                description="mucosa of infraorbital sinus"))
         setattr(cls, "UBERON:0011996",
             PermissibleValue(
                 text="UBERON:0011996",
@@ -32236,10 +33384,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012069",
                 description="epithelium-associated lymphoid tissue"))
+        setattr(cls, "UBERON:0012070",
+            PermissibleValue(
+                text="UBERON:0012070",
+                description="palatal tooth"))
         setattr(cls, "UBERON:0012071",
             PermissibleValue(
                 text="UBERON:0012071",
                 description="palate bone"))
+        setattr(cls, "UBERON:0012072",
+            PermissibleValue(
+                text="UBERON:0012072",
+                description="palatal part of dermatocranium"))
+        setattr(cls, "UBERON:0012073",
+            PermissibleValue(
+                text="UBERON:0012073",
+                description="tooth of palatine bone"))
         setattr(cls, "UBERON:0012074",
             PermissibleValue(
                 text="UBERON:0012074",
@@ -32256,6 +33416,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012078",
                 description="fovea capitis of femur"))
+        setattr(cls, "UBERON:0012079",
+            PermissibleValue(
+                text="UBERON:0012079",
+                description="metapterygial axis"))
         setattr(cls, "UBERON:0012080",
             PermissibleValue(
                 text="UBERON:0012080",
@@ -32280,6 +33444,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012085",
                 description="lumen of tertiary bronchus"))
+        setattr(cls, "UBERON:0012086",
+            PermissibleValue(
+                text="UBERON:0012086",
+                description="lumen of parabronchus"))
+        setattr(cls, "UBERON:0012087",
+            PermissibleValue(
+                text="UBERON:0012087",
+                description="air capillary of parabronchus"))
+        setattr(cls, "UBERON:0012088",
+            PermissibleValue(
+                text="UBERON:0012088",
+                description="lateroobronchus"))
+        setattr(cls, "UBERON:0012100",
+            PermissibleValue(
+                text="UBERON:0012100",
+                description="appendicocostalis muscle"))
+        setattr(cls, "UBERON:0012101",
+            PermissibleValue(
+                text="UBERON:0012101",
+                description="perinatal stage"))
         setattr(cls, "UBERON:0012102",
             PermissibleValue(
                 text="UBERON:0012102",
@@ -32288,6 +33472,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012103",
                 description="suspensory ligament of breast"))
+        setattr(cls, "UBERON:0012104",
+            PermissibleValue(
+                text="UBERON:0012104",
+                description="sesamoid bone of the peroneus longus muscle"))
         setattr(cls, "UBERON:0012105",
             PermissibleValue(
                 text="UBERON:0012105",
@@ -32328,6 +33516,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012115",
                 description="dental comb"))
+        setattr(cls, "UBERON:0012116",
+            PermissibleValue(
+                text="UBERON:0012116",
+                description="nutrient foramen conduit"))
         setattr(cls, "UBERON:0012117",
             PermissibleValue(
                 text="UBERON:0012117",
@@ -32340,14 +33532,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012120",
                 description="vinculum of tendon"))
+        setattr(cls, "UBERON:0012124",
+            PermissibleValue(
+                text="UBERON:0012124",
+                description="avian scapholunar bone"))
+        setattr(cls, "UBERON:0012125",
+            PermissibleValue(
+                text="UBERON:0012125",
+                description="dermatological-muscosal system"))
         setattr(cls, "UBERON:0012126",
             PermissibleValue(
                 text="UBERON:0012126",
                 description="fibulare"))
-        setattr(cls, "UBERON:0012127",
-            PermissibleValue(
-                text="UBERON:0012127",
-                description="feather barbicel"))
         setattr(cls, "UBERON:0012128",
             PermissibleValue(
                 text="UBERON:0012128",
@@ -32380,6 +33576,46 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012135",
                 description="prepollex skeleton"))
+        setattr(cls, "UBERON:0012136",
+            PermissibleValue(
+                text="UBERON:0012136",
+                description="prehallux"))
+        setattr(cls, "UBERON:0012137",
+            PermissibleValue(
+                text="UBERON:0012137",
+                description="pedal digit 7"))
+        setattr(cls, "UBERON:0012138",
+            PermissibleValue(
+                text="UBERON:0012138",
+                description="pedal digit 8"))
+        setattr(cls, "UBERON:0012139",
+            PermissibleValue(
+                text="UBERON:0012139",
+                description="segment of autopod"))
+        setattr(cls, "UBERON:0012140",
+            PermissibleValue(
+                text="UBERON:0012140",
+                description="digitopodium region"))
+        setattr(cls, "UBERON:0012141",
+            PermissibleValue(
+                text="UBERON:0012141",
+                description="manual digitopodium region"))
+        setattr(cls, "UBERON:0012142",
+            PermissibleValue(
+                text="UBERON:0012142",
+                description="pedal digitopodium region"))
+        setattr(cls, "UBERON:0012150",
+            PermissibleValue(
+                text="UBERON:0012150",
+                description="skeleton of digitopodium"))
+        setattr(cls, "UBERON:0012151",
+            PermissibleValue(
+                text="UBERON:0012151",
+                description="skeleton of manual digitopodium"))
+        setattr(cls, "UBERON:0012152",
+            PermissibleValue(
+                text="UBERON:0012152",
+                description="skeleton of pedal digitopodium"))
         setattr(cls, "UBERON:0012167",
             PermissibleValue(
                 text="UBERON:0012167",
@@ -32404,10 +33640,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012173",
                 description="middle suprarenal artery"))
-        setattr(cls, "UBERON:0012174",
-            PermissibleValue(
-                text="UBERON:0012174",
-                description="obsolete geniculate nucleus"))
         setattr(cls, "UBERON:0012175",
             PermissibleValue(
                 text="UBERON:0012175",
@@ -32504,6 +33736,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012243",
                 description="nuptial pad"))
+        setattr(cls, "UBERON:0012244",
+            PermissibleValue(
+                text="UBERON:0012244",
+                description="stratum intermedium of epidermis"))
         setattr(cls, "UBERON:0012245",
             PermissibleValue(
                 text="UBERON:0012245",
@@ -32548,6 +33784,34 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012255",
                 description="inferior phrenic artery"))
+        setattr(cls, "UBERON:0012256",
+            PermissibleValue(
+                text="UBERON:0012256",
+                description="digestive syncytial vacuole"))
+        setattr(cls, "UBERON:0012260",
+            PermissibleValue(
+                text="UBERON:0012260",
+                description="alular digit"))
+        setattr(cls, "UBERON:0012261",
+            PermissibleValue(
+                text="UBERON:0012261",
+                description="manual major digit (Aves)"))
+        setattr(cls, "UBERON:0012262",
+            PermissibleValue(
+                text="UBERON:0012262",
+                description="manual minor digit (Aves)"))
+        setattr(cls, "UBERON:0012267",
+            PermissibleValue(
+                text="UBERON:0012267",
+                description="equine splint bone"))
+        setattr(cls, "UBERON:0012268",
+            PermissibleValue(
+                text="UBERON:0012268",
+                description="equine forelimb splint bone"))
+        setattr(cls, "UBERON:0012269",
+            PermissibleValue(
+                text="UBERON:0012269",
+                description="equine hindlimb splint bone"))
         setattr(cls, "UBERON:0012270",
             PermissibleValue(
                 text="UBERON:0012270",
@@ -32584,14 +33848,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012279",
                 description="chromaffin paraganglion"))
-        setattr(cls, "UBERON:0012281",
-            PermissibleValue(
-                text="UBERON:0012281",
-                description="perianal sebaceous gland"))
         setattr(cls, "UBERON:0012282",
             PermissibleValue(
                 text="UBERON:0012282",
                 description="mammary fat pad"))
+        setattr(cls, "UBERON:0012283",
+            PermissibleValue(
+                text="UBERON:0012283",
+                description="femoral fat pad"))
         setattr(cls, "UBERON:0012284",
             PermissibleValue(
                 text="UBERON:0012284",
@@ -32608,6 +33872,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012287",
                 description="Rathkes pouch epithelium"))
+        setattr(cls, "UBERON:0012288",
+            PermissibleValue(
+                text="UBERON:0012288",
+                description="centroquartal bone"))
+        setattr(cls, "UBERON:0012289",
+            PermissibleValue(
+                text="UBERON:0012289",
+                description="fused tarsal bones 2 and 3"))
+        setattr(cls, "UBERON:0012290",
+            PermissibleValue(
+                text="UBERON:0012290",
+                description="fused carpal bones 2 and 3"))
         setattr(cls, "UBERON:0012291",
             PermissibleValue(
                 text="UBERON:0012291",
@@ -32644,6 +33920,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012299",
                 description="mucosa of urethra"))
+        setattr(cls, "UBERON:0012300",
+            PermissibleValue(
+                text="UBERON:0012300",
+                description="limb paddle"))
         setattr(cls, "UBERON:0012301",
             PermissibleValue(
                 text="UBERON:0012301",
@@ -32656,6 +33936,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012303",
                 description="ureteral orifice"))
+        setattr(cls, "UBERON:0012304",
+            PermissibleValue(
+                text="UBERON:0012304",
+                description="nasal diverticulum"))
+        setattr(cls, "UBERON:0012305",
+            PermissibleValue(
+                text="UBERON:0012305",
+                description="marginal cutaneous pouch of ear"))
         setattr(cls, "UBERON:0012306",
             PermissibleValue(
                 text="UBERON:0012306",
@@ -32732,14 +34020,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012325",
                 description="retrocerebral complex"))
+        setattr(cls, "UBERON:0012326",
+            PermissibleValue(
+                text="UBERON:0012326",
+                description="gubernacular bulb"))
         setattr(cls, "UBERON:0012327",
             PermissibleValue(
                 text="UBERON:0012327",
                 description="pearly penile papule"))
-        setattr(cls, "UBERON:0012328",
-            PermissibleValue(
-                text="UBERON:0012328",
-                description="penile spine"))
         setattr(cls, "UBERON:0012329",
             PermissibleValue(
                 text="UBERON:0012329",
@@ -32776,14 +34064,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012337",
                 description="cauda equina"))
+        setattr(cls, "UBERON:0012343",
+            PermissibleValue(
+                text="UBERON:0012343",
+                description="navicular bursa of pes"))
         setattr(cls, "UBERON:0012344",
             PermissibleValue(
                 text="UBERON:0012344",
                 description="holocrine gland"))
+        setattr(cls, "UBERON:0012348",
+            PermissibleValue(
+                text="UBERON:0012348",
+                description="autopod pad"))
+        setattr(cls, "UBERON:0012349",
+            PermissibleValue(
+                text="UBERON:0012349",
+                description="digital pad"))
+        setattr(cls, "UBERON:0012350",
+            PermissibleValue(
+                text="UBERON:0012350",
+                description="carpal pad"))
+        setattr(cls, "UBERON:0012351",
+            PermissibleValue(
+                text="UBERON:0012351",
+                description="urachal lumen"))
         setattr(cls, "UBERON:0012352",
             PermissibleValue(
                 text="UBERON:0012352",
                 description="mesangial matrix"))
+        setattr(cls, "UBERON:0012354",
+            PermissibleValue(
+                text="UBERON:0012354",
+                description="acropodium region"))
         setattr(cls, "UBERON:0012355",
             PermissibleValue(
                 text="UBERON:0012355",
@@ -32792,10 +34104,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012356",
                 description="pedal acropodium region"))
+        setattr(cls, "UBERON:0012357",
+            PermissibleValue(
+                text="UBERON:0012357",
+                description="digitopodium bone"))
         setattr(cls, "UBERON:0012358",
             PermissibleValue(
                 text="UBERON:0012358",
                 description="manual digitopodium bone"))
+        setattr(cls, "UBERON:0012359",
+            PermissibleValue(
+                text="UBERON:0012359",
+                description="pedal digitopodium bone"))
         setattr(cls, "UBERON:0012360",
             PermissibleValue(
                 text="UBERON:0012360",
@@ -32876,10 +34196,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012419",
                 description="taenia coli"))
+        setattr(cls, "UBERON:0012420",
+            PermissibleValue(
+                text="UBERON:0012420",
+                description="coprodeum"))
         setattr(cls, "UBERON:0012421",
             PermissibleValue(
                 text="UBERON:0012421",
                 description="urodeum"))
+        setattr(cls, "UBERON:0012422",
+            PermissibleValue(
+                text="UBERON:0012422",
+                description="secretion of crop"))
         setattr(cls, "UBERON:0012423",
             PermissibleValue(
                 text="UBERON:0012423",
@@ -32896,6 +34224,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012426",
                 description="short microvillus layer"))
+        setattr(cls, "UBERON:0012427",
+            PermissibleValue(
+                text="UBERON:0012427",
+                description="intestinal brush border layer"))
+        setattr(cls, "UBERON:0012428",
+            PermissibleValue(
+                text="UBERON:0012428",
+                description="proximal convoluted tubule brush border"))
         setattr(cls, "UBERON:0012429",
             PermissibleValue(
                 text="UBERON:0012429",
@@ -32904,14 +34240,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012430",
                 description="tunica fibrosa of eyeball"))
+        setattr(cls, "UBERON:0012437",
+            PermissibleValue(
+                text="UBERON:0012437",
+                description="epithelial-mesenchymal boundary"))
         setattr(cls, "UBERON:0012438",
             PermissibleValue(
                 text="UBERON:0012438",
                 description="blastema of regenerating fin/limb"))
+        setattr(cls, "UBERON:0012439",
+            PermissibleValue(
+                text="UBERON:0012439",
+                description="blastema of regenerating digit tip"))
+        setattr(cls, "UBERON:0012441",
+            PermissibleValue(
+                text="UBERON:0012441",
+                description="endothelium of peritubular capillary"))
         setattr(cls, "UBERON:0012442",
             PermissibleValue(
                 text="UBERON:0012442",
                 description="epiploic foramen"))
+        setattr(cls, "UBERON:0012443",
+            PermissibleValue(
+                text="UBERON:0012443",
+                description="row of scales"))
+        setattr(cls, "UBERON:0012444",
+            PermissibleValue(
+                text="UBERON:0012444",
+                description="gastropege"))
+        setattr(cls, "UBERON:0012447",
+            PermissibleValue(
+                text="UBERON:0012447",
+                description="podotheca"))
         setattr(cls, "UBERON:0012448",
             PermissibleValue(
                 text="UBERON:0012448",
@@ -32944,6 +34304,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012458",
                 description="antler velvet"))
+        setattr(cls, "UBERON:0012459",
+            PermissibleValue(
+                text="UBERON:0012459",
+                description="antler pedicle"))
         setattr(cls, "UBERON:0012462",
             PermissibleValue(
                 text="UBERON:0012462",
@@ -32952,6 +34316,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012463",
                 description="cloacal lumen"))
+        setattr(cls, "UBERON:0012464",
+            PermissibleValue(
+                text="UBERON:0012464",
+                description="cloacal vent"))
+        setattr(cls, "UBERON:0012465",
+            PermissibleValue(
+                text="UBERON:0012465",
+                description="lumen of terminal part of digestive tract"))
         setattr(cls, "UBERON:0012466",
             PermissibleValue(
                 text="UBERON:0012466",
@@ -32960,10 +34332,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012467",
                 description="enclosed anatomical space"))
+        setattr(cls, "UBERON:0012468",
+            PermissibleValue(
+                text="UBERON:0012468",
+                description="anal tooth"))
         setattr(cls, "UBERON:0012469",
             PermissibleValue(
                 text="UBERON:0012469",
                 description="external anal region"))
+        setattr(cls, "UBERON:0012470",
+            PermissibleValue(
+                text="UBERON:0012470",
+                description="wheel papilla"))
         setattr(cls, "UBERON:0012471",
             PermissibleValue(
                 text="UBERON:0012471",
@@ -32972,10 +34352,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012472",
                 description="hepatoduodenal ligament"))
-        setattr(cls, "UBERON:0012473",
-            PermissibleValue(
-                text="UBERON:0012473",
-                description="oral cirrus"))
         setattr(cls, "UBERON:0012474",
             PermissibleValue(
                 text="UBERON:0012474",
@@ -32992,10 +34368,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012477",
                 description="dorsal part of neck"))
+        setattr(cls, "UBERON:0012478",
+            PermissibleValue(
+                text="UBERON:0012478",
+                description="cloacal gland"))
+        setattr(cls, "UBERON:0012479",
+            PermissibleValue(
+                text="UBERON:0012479",
+                description="urodeal gland"))
+        setattr(cls, "UBERON:0012480",
+            PermissibleValue(
+                text="UBERON:0012480",
+                description="cloacal mucosa"))
         setattr(cls, "UBERON:0012481",
             PermissibleValue(
                 text="UBERON:0012481",
                 description="cloacal epithelium"))
+        setattr(cls, "UBERON:0012482",
+            PermissibleValue(
+                text="UBERON:0012482",
+                description="submucosa of cloaca"))
+        setattr(cls, "UBERON:0012483",
+            PermissibleValue(
+                text="UBERON:0012483",
+                description="serosa of cloaca"))
+        setattr(cls, "UBERON:0012485",
+            PermissibleValue(
+                text="UBERON:0012485",
+                description="cloacal villus"))
+        setattr(cls, "UBERON:0012486",
+            PermissibleValue(
+                text="UBERON:0012486",
+                description="muscle layer of cloaca"))
         setattr(cls, "UBERON:0012488",
             PermissibleValue(
                 text="UBERON:0012488",
@@ -33032,10 +34436,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012504",
                 description="adventitia of esophagus"))
-        setattr(cls, "UBERON:0012520",
-            PermissibleValue(
-                text="UBERON:0012520",
-                description="forelimb epitrochlearis muscle"))
         setattr(cls, "UBERON:0012615",
             PermissibleValue(
                 text="UBERON:0012615",
@@ -33044,6 +34444,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012621",
                 description="muscle of Aristotle's lantern"))
+        setattr(cls, "UBERON:0012641",
+            PermissibleValue(
+                text="UBERON:0012641",
+                description="body of tubeworm"))
         setattr(cls, "UBERON:0012642",
             PermissibleValue(
                 text="UBERON:0012642",
@@ -33052,6 +34456,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0012643",
                 description="plume"))
+        setattr(cls, "UBERON:0012644",
+            PermissibleValue(
+                text="UBERON:0012644",
+                description="trophosome"))
+        setattr(cls, "UBERON:0012645",
+            PermissibleValue(
+                text="UBERON:0012645",
+                description="opisthosome"))
+        setattr(cls, "UBERON:0012646",
+            PermissibleValue(
+                text="UBERON:0012646",
+                description="tubeworm tube"))
         setattr(cls, "UBERON:0012648",
             PermissibleValue(
                 text="UBERON:0012648",
@@ -33088,10 +34504,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013069",
                 description="popliteal area"))
-        setattr(cls, "UBERON:0013073",
-            PermissibleValue(
-                text="UBERON:0013073",
-                description="rattle"))
         setattr(cls, "UBERON:0013074",
             PermissibleValue(
                 text="UBERON:0013074",
@@ -33100,18 +34512,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013075",
                 description="venom gland duct"))
-        setattr(cls, "UBERON:0013076",
+        setattr(cls, "UBERON:0013078",
             PermissibleValue(
-                text="UBERON:0013076",
-                description="snake venom"))
+                text="UBERON:0013078",
+                description="venom-injecting tooth"))
         setattr(cls, "UBERON:0013106",
             PermissibleValue(
                 text="UBERON:0013106",
                 description="elapid venom"))
+        setattr(cls, "UBERON:0013110",
+            PermissibleValue(
+                text="UBERON:0013110",
+                description="hydrophid venom"))
         setattr(cls, "UBERON:0013112",
             PermissibleValue(
                 text="UBERON:0013112",
                 description="viper venom"))
+        setattr(cls, "UBERON:0013113",
+            PermissibleValue(
+                text="UBERON:0013113",
+                description="angular/surangular bone"))
+        setattr(cls, "UBERON:0013114",
+            PermissibleValue(
+                text="UBERON:0013114",
+                description="compressor glandulae muscle"))
+        setattr(cls, "UBERON:0013115",
+            PermissibleValue(
+                text="UBERON:0013115",
+                description="pterygoideus glandulae muscle"))
+        setattr(cls, "UBERON:0013116",
+            PermissibleValue(
+                text="UBERON:0013116",
+                description="venom gland musculature"))
         setattr(cls, "UBERON:0013118",
             PermissibleValue(
                 text="UBERON:0013118",
@@ -33276,6 +34708,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013162",
                 description="right lateral ventricle"))
+        setattr(cls, "UBERON:0013164",
+            PermissibleValue(
+                text="UBERON:0013164",
+                description="molariform tooth"))
         setattr(cls, "UBERON:0013165",
             PermissibleValue(
                 text="UBERON:0013165",
@@ -33312,6 +34748,50 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013173",
                 description="anterior part of tympanic bone"))
+        setattr(cls, "UBERON:0013174",
+            PermissibleValue(
+                text="UBERON:0013174",
+                description="sigmoid process of tympanic bone"))
+        setattr(cls, "UBERON:0013175",
+            PermissibleValue(
+                text="UBERON:0013175",
+                description="nasal air sac"))
+        setattr(cls, "UBERON:0013176",
+            PermissibleValue(
+                text="UBERON:0013176",
+                description="phonic lip"))
+        setattr(cls, "UBERON:0013177",
+            PermissibleValue(
+                text="UBERON:0013177",
+                description="dorsal bursa"))
+        setattr(cls, "UBERON:0013178",
+            PermissibleValue(
+                text="UBERON:0013178",
+                description="anterior dorsal bursa"))
+        setattr(cls, "UBERON:0013179",
+            PermissibleValue(
+                text="UBERON:0013179",
+                description="posterior dorsal bursa"))
+        setattr(cls, "UBERON:0013180",
+            PermissibleValue(
+                text="UBERON:0013180",
+                description="bursal cartilage"))
+        setattr(cls, "UBERON:0013181",
+            PermissibleValue(
+                text="UBERON:0013181",
+                description="blowhole ligament"))
+        setattr(cls, "UBERON:0013188",
+            PermissibleValue(
+                text="UBERON:0013188",
+                description="monkey lips dorsal bursa complex"))
+        setattr(cls, "UBERON:0013189",
+            PermissibleValue(
+                text="UBERON:0013189",
+                description="junk chamber"))
+        setattr(cls, "UBERON:0013190",
+            PermissibleValue(
+                text="UBERON:0013190",
+                description="entotympanic bone"))
         setattr(cls, "UBERON:0013191",
             PermissibleValue(
                 text="UBERON:0013191",
@@ -33320,10 +34800,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013192",
                 description="ovarian medulla"))
-        setattr(cls, "UBERON:0013196",
+        setattr(cls, "UBERON:0013193",
             PermissibleValue(
-                text="UBERON:0013196",
-                description="strand of wool"))
+                text="UBERON:0013193",
+                description="parakeratinized epithelium"))
+        setattr(cls, "UBERON:0013194",
+            PermissibleValue(
+                text="UBERON:0013194",
+                description="orthokeratinized epithelium"))
+        setattr(cls, "UBERON:0013195",
+            PermissibleValue(
+                text="UBERON:0013195",
+                description="parakeratinized epithelium of gingiva"))
+        setattr(cls, "UBERON:0013198",
+            PermissibleValue(
+                text="UBERON:0013198",
+                description="cocoon"))
         setattr(cls, "UBERON:0013199",
             PermissibleValue(
                 text="UBERON:0013199",
@@ -33336,14 +34828,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013203",
                 description="hypogastrium"))
-        setattr(cls, "UBERON:0013204",
+        setattr(cls, "UBERON:0013206",
             PermissibleValue(
-                text="UBERON:0013204",
-                description="epipubic bone"))
-        setattr(cls, "UBERON:0013207",
-            PermissibleValue(
-                text="UBERON:0013207",
-                description="entepicondylar foramen"))
+                text="UBERON:0013206",
+                description="nasal tentacle"))
         setattr(cls, "UBERON:0013208",
             PermissibleValue(
                 text="UBERON:0013208",
@@ -33352,6 +34840,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013211",
                 description="cerumen gland"))
+        setattr(cls, "UBERON:0013212",
+            PermissibleValue(
+                text="UBERON:0013212",
+                description="anal sac gland secretion"))
         setattr(cls, "UBERON:0013213",
             PermissibleValue(
                 text="UBERON:0013213",
@@ -33376,14 +34868,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013220",
                 description="foramen of Panizza"))
-        setattr(cls, "UBERON:0013221",
-            PermissibleValue(
-                text="UBERON:0013221",
-                description="caudofemoralis"))
-        setattr(cls, "UBERON:0013222",
-            PermissibleValue(
-                text="UBERON:0013222",
-                description="otic notch"))
         setattr(cls, "UBERON:0013223",
             PermissibleValue(
                 text="UBERON:0013223",
@@ -33408,22 +34892,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013229",
                 description="eyelid gland"))
-        setattr(cls, "UBERON:0013230",
+        setattr(cls, "UBERON:0013231",
             PermissibleValue(
-                text="UBERON:0013230",
-                description="nictitans gland"))
+                text="UBERON:0013231",
+                description="sebaceous gland of eyelid"))
         setattr(cls, "UBERON:0013232",
             PermissibleValue(
                 text="UBERON:0013232",
                 description="serous acinus"))
-        setattr(cls, "UBERON:0013233",
-            PermissibleValue(
-                text="UBERON:0013233",
-                description="supraorbital gland"))
-        setattr(cls, "UBERON:0013234",
-            PermissibleValue(
-                text="UBERON:0013234",
-                description="violet gland"))
         setattr(cls, "UBERON:0013235",
             PermissibleValue(
                 text="UBERON:0013235",
@@ -33436,6 +34912,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013237",
                 description="genital papilla of vulva"))
+        setattr(cls, "UBERON:0013238",
+            PermissibleValue(
+                text="UBERON:0013238",
+                description="future glans"))
         setattr(cls, "UBERON:0013239",
             PermissibleValue(
                 text="UBERON:0013239",
@@ -33492,6 +34972,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013280",
                 description="diaphysis of tibia"))
+        setattr(cls, "UBERON:0013397",
+            PermissibleValue(
+                text="UBERON:0013397",
+                description="stratum argenteum of choroid"))
+        setattr(cls, "UBERON:0013398",
+            PermissibleValue(
+                text="UBERON:0013398",
+                description="choroidal gland"))
         setattr(cls, "UBERON:0013399",
             PermissibleValue(
                 text="UBERON:0013399",
@@ -33564,10 +35052,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013448",
                 description="sagittal keel"))
-        setattr(cls, "UBERON:0013450",
-            PermissibleValue(
-                text="UBERON:0013450",
-                description="simian shelf"))
         setattr(cls, "UBERON:0013454",
             PermissibleValue(
                 text="UBERON:0013454",
@@ -33620,6 +35104,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013475",
                 description="gustatory gland"))
+        setattr(cls, "UBERON:0013476",
+            PermissibleValue(
+                text="UBERON:0013476",
+                description="dermal layer of tongue"))
+        setattr(cls, "UBERON:0013477",
+            PermissibleValue(
+                text="UBERON:0013477",
+                description="blowhole"))
         setattr(cls, "UBERON:0013478",
             PermissibleValue(
                 text="UBERON:0013478",
@@ -33676,6 +35168,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013493",
                 description="abdominal fascia"))
+        setattr(cls, "UBERON:0013497",
+            PermissibleValue(
+                text="UBERON:0013497",
+                description="muscularis orbicularis"))
         setattr(cls, "UBERON:0013498",
             PermissibleValue(
                 text="UBERON:0013498",
@@ -33692,6 +35188,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013501",
                 description="cloacal sphincter"))
+        setattr(cls, "UBERON:0013502",
+            PermissibleValue(
+                text="UBERON:0013502",
+                description="5th arch mesenchyme"))
         setattr(cls, "UBERON:0013503",
             PermissibleValue(
                 text="UBERON:0013503",
@@ -33704,22 +35204,62 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013505",
                 description="cervical vertebra cartilage element"))
+        setattr(cls, "UBERON:0013506",
+            PermissibleValue(
+                text="UBERON:0013506",
+                description="cervical vertebra pre-cartilage condensation"))
         setattr(cls, "UBERON:0013507",
             PermissibleValue(
                 text="UBERON:0013507",
                 description="thoracic vertebra cartilage element"))
+        setattr(cls, "UBERON:0013508",
+            PermissibleValue(
+                text="UBERON:0013508",
+                description="thoracic vertebra pre-cartilage condensation"))
         setattr(cls, "UBERON:0013509",
             PermissibleValue(
                 text="UBERON:0013509",
                 description="lumbar vertebra cartilage element"))
+        setattr(cls, "UBERON:0013510",
+            PermissibleValue(
+                text="UBERON:0013510",
+                description="lumbar vertebra pre-cartilage condensation"))
+        setattr(cls, "UBERON:0013512",
+            PermissibleValue(
+                text="UBERON:0013512",
+                description="row of feathers"))
+        setattr(cls, "UBERON:0013513",
+            PermissibleValue(
+                text="UBERON:0013513",
+                description="anal pterya"))
+        setattr(cls, "UBERON:0013514",
+            PermissibleValue(
+                text="UBERON:0013514",
+                description="space surrounding organism"))
         setattr(cls, "UBERON:0013515",
             PermissibleValue(
                 text="UBERON:0013515",
                 description="subdivision of oviduct"))
+        setattr(cls, "UBERON:0013516",
+            PermissibleValue(
+                text="UBERON:0013516",
+                description="uterine tube magnum"))
         setattr(cls, "UBERON:0013519",
             PermissibleValue(
                 text="UBERON:0013519",
                 description="avian uterine tube isthmus"))
+        setattr(cls, "UBERON:0013522",
+            PermissibleValue(
+                text="UBERON:0013522",
+                description="subdivision of tube"))
+        setattr(cls, "UBERON:0013523",
+            PermissibleValue(
+                text="UBERON:0013523",
+                description="lateral vaginal canal"))
+        setattr(cls, "UBERON:0013524",
+            PermissibleValue(
+                text="UBERON:0013524",
+                description="median vaginal canal"))
         setattr(cls, "UBERON:0013525",
             PermissibleValue(
                 text="UBERON:0013525",
@@ -33728,6 +35268,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013526",
                 description="otocyst lumen"))
+        setattr(cls, "UBERON:0013527",
+            PermissibleValue(
+                text="UBERON:0013527",
+                description="pectoral flipper tubercle"))
         setattr(cls, "UBERON:0013528",
             PermissibleValue(
                 text="UBERON:0013528",
@@ -33832,10 +35376,70 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013573",
                 description="Brodmann (1909) area 40"))
+        setattr(cls, "UBERON:0013581",
+            PermissibleValue(
+                text="UBERON:0013581",
+                description="metapodium bone 1"))
+        setattr(cls, "UBERON:0013582",
+            PermissibleValue(
+                text="UBERON:0013582",
+                description="metapodium bone 2"))
+        setattr(cls, "UBERON:0013583",
+            PermissibleValue(
+                text="UBERON:0013583",
+                description="metapodium bone 3"))
+        setattr(cls, "UBERON:0013584",
+            PermissibleValue(
+                text="UBERON:0013584",
+                description="metapodium bone 4"))
+        setattr(cls, "UBERON:0013585",
+            PermissibleValue(
+                text="UBERON:0013585",
+                description="metapodium bone 5"))
+        setattr(cls, "UBERON:0013586",
+            PermissibleValue(
+                text="UBERON:0013586",
+                description="fused metapodial bones 3 and 4"))
+        setattr(cls, "UBERON:0013587",
+            PermissibleValue(
+                text="UBERON:0013587",
+                description="fused metacarpal bones 3 and 4"))
+        setattr(cls, "UBERON:0013588",
+            PermissibleValue(
+                text="UBERON:0013588",
+                description="fused metatarsal bones 3 and 4"))
         setattr(cls, "UBERON:0013589",
             PermissibleValue(
                 text="UBERON:0013589",
                 description="koniocortex"))
+        setattr(cls, "UBERON:0013590",
+            PermissibleValue(
+                text="UBERON:0013590",
+                description="cruciate sulcus"))
+        setattr(cls, "UBERON:0013591",
+            PermissibleValue(
+                text="UBERON:0013591",
+                description="postsylvian sulcus"))
+        setattr(cls, "UBERON:0013592",
+            PermissibleValue(
+                text="UBERON:0013592",
+                description="presylvian sulcus"))
+        setattr(cls, "UBERON:0013593",
+            PermissibleValue(
+                text="UBERON:0013593",
+                description="suprasylvian sulcus"))
+        setattr(cls, "UBERON:0013594",
+            PermissibleValue(
+                text="UBERON:0013594",
+                description="ectosylvian sulcus"))
+        setattr(cls, "UBERON:0013595",
+            PermissibleValue(
+                text="UBERON:0013595",
+                description="postlateral sulcus"))
+        setattr(cls, "UBERON:0013596",
+            PermissibleValue(
+                text="UBERON:0013596",
+                description="brain coronal sulcus"))
         setattr(cls, "UBERON:0013598",
             PermissibleValue(
                 text="UBERON:0013598",
@@ -33852,6 +35456,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013601",
                 description="medial accessory nucleus of optic tract"))
+        setattr(cls, "UBERON:0013605",
+            PermissibleValue(
+                text="UBERON:0013605",
+                description="layer of lateral geniculate body"))
         setattr(cls, "UBERON:0013606",
             PermissibleValue(
                 text="UBERON:0013606",
@@ -33868,6 +35476,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013609",
                 description="inferior olive medial accessory nucleus"))
+        setattr(cls, "UBERON:0013610",
+            PermissibleValue(
+                text="UBERON:0013610",
+                description="inferior olive ventral accessory nucleus"))
+        setattr(cls, "UBERON:0013612",
+            PermissibleValue(
+                text="UBERON:0013612",
+                description="lower jaw cingulum"))
+        setattr(cls, "UBERON:0013613",
+            PermissibleValue(
+                text="UBERON:0013613",
+                description="upper jaw cingulum"))
+        setattr(cls, "UBERON:0013614",
+            PermissibleValue(
+                text="UBERON:0013614",
+                description="fasciculus aberans"))
         setattr(cls, "UBERON:0013615",
             PermissibleValue(
                 text="UBERON:0013615",
@@ -33896,6 +35520,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013621",
                 description="lower secondary molar tooth"))
+        setattr(cls, "UBERON:0013622",
+            PermissibleValue(
+                text="UBERON:0013622",
+                description="manual autopod pad"))
+        setattr(cls, "UBERON:0013623",
+            PermissibleValue(
+                text="UBERON:0013623",
+                description="pedal autopod pad"))
+        setattr(cls, "UBERON:0013626",
+            PermissibleValue(
+                text="UBERON:0013626",
+                description="medial metatarsal pad"))
+        setattr(cls, "UBERON:0013627",
+            PermissibleValue(
+                text="UBERON:0013627",
+                description="lateral metatarsal pad"))
+        setattr(cls, "UBERON:0013628",
+            PermissibleValue(
+                text="UBERON:0013628",
+                description="pollical pad"))
+        setattr(cls, "UBERON:0013629",
+            PermissibleValue(
+                text="UBERON:0013629",
+                description="hallical pad"))
         setattr(cls, "UBERON:0013630",
             PermissibleValue(
                 text="UBERON:0013630",
@@ -33916,6 +35564,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013634",
                 description="intertrochanteric line"))
+        setattr(cls, "UBERON:0013635",
+            PermissibleValue(
+                text="UBERON:0013635",
+                description="sphincter colli muscle"))
         setattr(cls, "UBERON:0013636",
             PermissibleValue(
                 text="UBERON:0013636",
@@ -33924,6 +35576,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013637",
                 description="prostate gland lateral lobe"))
+        setattr(cls, "UBERON:0013638",
+            PermissibleValue(
+                text="UBERON:0013638",
+                description="horny papilla of tongue"))
+        setattr(cls, "UBERON:0013639",
+            PermissibleValue(
+                text="UBERON:0013639",
+                description="mechanical papilla of tongue"))
+        setattr(cls, "UBERON:0013640",
+            PermissibleValue(
+                text="UBERON:0013640",
+                description="internal cheek pouch"))
+        setattr(cls, "UBERON:0013641",
+            PermissibleValue(
+                text="UBERON:0013641",
+                description="external cheek pouch"))
+        setattr(cls, "UBERON:0013642",
+            PermissibleValue(
+                text="UBERON:0013642",
+                description="ring of oral cilia"))
         setattr(cls, "UBERON:0013643",
             PermissibleValue(
                 text="UBERON:0013643",
@@ -33932,6 +35604,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013644",
                 description="duodenal ampulla"))
+        setattr(cls, "UBERON:0013645",
+            PermissibleValue(
+                text="UBERON:0013645",
+                description="gular gland"))
         setattr(cls, "UBERON:0013646",
             PermissibleValue(
                 text="UBERON:0013646",
@@ -33944,10 +35620,46 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013648",
                 description="masseteric artery"))
+        setattr(cls, "UBERON:0013649",
+            PermissibleValue(
+                text="UBERON:0013649",
+                description="fused tarsal bones 1 and 2"))
         setattr(cls, "UBERON:0013655",
             PermissibleValue(
                 text="UBERON:0013655",
                 description="elastica externa of notochord"))
+        setattr(cls, "UBERON:0013656",
+            PermissibleValue(
+                text="UBERON:0013656",
+                description="dulla"))
+        setattr(cls, "UBERON:0013657",
+            PermissibleValue(
+                text="UBERON:0013657",
+                description="hump"))
+        setattr(cls, "UBERON:0013658",
+            PermissibleValue(
+                text="UBERON:0013658",
+                description="corpus cavernosum maxillaris"))
+        setattr(cls, "UBERON:0013659",
+            PermissibleValue(
+                text="UBERON:0013659",
+                description="spongiose tissue of corpus cavernosum maxillaris"))
+        setattr(cls, "UBERON:0013670",
+            PermissibleValue(
+                text="UBERON:0013670",
+                description="midline of corpus cavernosum maxillaris"))
+        setattr(cls, "UBERON:0013671",
+            PermissibleValue(
+                text="UBERON:0013671",
+                description="nerve ending of of corpus cavernosum maxillaris"))
+        setattr(cls, "UBERON:0013672",
+            PermissibleValue(
+                text="UBERON:0013672",
+                description="priapium"))
+        setattr(cls, "UBERON:0013675",
+            PermissibleValue(
+                text="UBERON:0013675",
+                description="toxactinium"))
         setattr(cls, "UBERON:0013678",
             PermissibleValue(
                 text="UBERON:0013678",
@@ -33984,6 +35696,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013687",
                 description="pericranium"))
+        setattr(cls, "UBERON:0013688",
+            PermissibleValue(
+                text="UBERON:0013688",
+                description="tonsil germinal center"))
+        setattr(cls, "UBERON:0013689",
+            PermissibleValue(
+                text="UBERON:0013689",
+                description="appendix lymphoid tissue"))
         setattr(cls, "UBERON:0013691",
             PermissibleValue(
                 text="UBERON:0013691",
@@ -33992,10 +35712,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013692",
                 description="inframammary fold"))
+        setattr(cls, "UBERON:0013693",
+            PermissibleValue(
+                text="UBERON:0013693",
+                description="cerebral cortex neuropil"))
         setattr(cls, "UBERON:0013694",
             PermissibleValue(
                 text="UBERON:0013694",
                 description="brain endothelium"))
+        setattr(cls, "UBERON:0013695",
+            PermissibleValue(
+                text="UBERON:0013695",
+                description="colon endothelium"))
+        setattr(cls, "UBERON:0013696",
+            PermissibleValue(
+                text="UBERON:0013696",
+                description="tonsil epithelium"))
+        setattr(cls, "UBERON:0013697",
+            PermissibleValue(
+                text="UBERON:0013697",
+                description="exocrine pancreas epithelium"))
         setattr(cls, "UBERON:0013698",
             PermissibleValue(
                 text="UBERON:0013698",
@@ -34008,10 +35744,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013700",
                 description="axial musculature"))
+        setattr(cls, "UBERON:0013701",
+            PermissibleValue(
+                text="UBERON:0013701",
+                description="main body axis"))
         setattr(cls, "UBERON:0013702",
             PermissibleValue(
                 text="UBERON:0013702",
                 description="body proper"))
+        setattr(cls, "UBERON:0013703",
+            PermissibleValue(
+                text="UBERON:0013703",
+                description="integumentary projection"))
         setattr(cls, "UBERON:0013704",
             PermissibleValue(
                 text="UBERON:0013704",
@@ -34044,6 +35788,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013711",
                 description="posterior inferior iliac spine"))
+        setattr(cls, "UBERON:0013712",
+            PermissibleValue(
+                text="UBERON:0013712",
+                description="anterior iliac spine"))
+        setattr(cls, "UBERON:0013713",
+            PermissibleValue(
+                text="UBERON:0013713",
+                description="posterior iliac spine"))
+        setattr(cls, "UBERON:0013715",
+            PermissibleValue(
+                text="UBERON:0013715",
+                description="ilio-marsupialis muscle"))
+        setattr(cls, "UBERON:0013716",
+            PermissibleValue(
+                text="UBERON:0013716",
+                description="branch of ilio-marsupialis muscle"))
         setattr(cls, "UBERON:0013717",
             PermissibleValue(
                 text="UBERON:0013717",
@@ -34056,6 +35816,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013719",
                 description="dartos muscle of scrotum"))
+        setattr(cls, "UBERON:0013720",
+            PermissibleValue(
+                text="UBERON:0013720",
+                description="dartos muscle of labia majora"))
         setattr(cls, "UBERON:0013721",
             PermissibleValue(
                 text="UBERON:0013721",
@@ -34072,10 +35836,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013730",
                 description="mycetome"))
-        setattr(cls, "UBERON:0013731",
-            PermissibleValue(
-                text="UBERON:0013731",
-                description="basilar papilla"))
         setattr(cls, "UBERON:0013732",
             PermissibleValue(
                 text="UBERON:0013732",
@@ -34100,6 +35860,42 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013738",
                 description="parabrachial pigmental nucleus"))
+        setattr(cls, "UBERON:0013739",
+            PermissibleValue(
+                text="UBERON:0013739",
+                description="base of crypt of Lieberkuhn"))
+        setattr(cls, "UBERON:0013740",
+            PermissibleValue(
+                text="UBERON:0013740",
+                description="wall of crypt of Lieberkuhn"))
+        setattr(cls, "UBERON:0013741",
+            PermissibleValue(
+                text="UBERON:0013741",
+                description="base of crypt of Lieberkuhn of large intestine"))
+        setattr(cls, "UBERON:0013742",
+            PermissibleValue(
+                text="UBERON:0013742",
+                description="wall of crypt of Lieberkuhn of large intestine"))
+        setattr(cls, "UBERON:0013743",
+            PermissibleValue(
+                text="UBERON:0013743",
+                description="base of crypt of Lieberkuhn of small intestine"))
+        setattr(cls, "UBERON:0013744",
+            PermissibleValue(
+                text="UBERON:0013744",
+                description="wall of crypt of Lieberkuhn of small intestine"))
+        setattr(cls, "UBERON:0013745",
+            PermissibleValue(
+                text="UBERON:0013745",
+                description="zona intermedia of adrenal gland"))
+        setattr(cls, "UBERON:0013746",
+            PermissibleValue(
+                text="UBERON:0013746",
+                description="basibranchial element"))
+        setattr(cls, "UBERON:0013747",
+            PermissibleValue(
+                text="UBERON:0013747",
+                description="basibranchial cartilage"))
         setattr(cls, "UBERON:0013748",
             PermissibleValue(
                 text="UBERON:0013748",
@@ -34184,6 +35980,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013770",
                 description="intermammary cleft"))
+        setattr(cls, "UBERON:0013771",
+            PermissibleValue(
+                text="UBERON:0013771",
+                description="line connecting laterally paired nipples"))
         setattr(cls, "UBERON:0013772",
             PermissibleValue(
                 text="UBERON:0013772",
@@ -34196,6 +35996,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0013774",
                 description="diaphysis of metatarsal bone"))
+        setattr(cls, "UBERON:0013776",
+            PermissibleValue(
+                text="UBERON:0013776",
+                description="skin of palmar/plantar part of autopod"))
         setattr(cls, "UBERON:0013777",
             PermissibleValue(
                 text="UBERON:0013777",
@@ -34276,6 +36080,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014381",
                 description="whorl of hair"))
+        setattr(cls, "UBERON:0014382",
+            PermissibleValue(
+                text="UBERON:0014382",
+                description="collection of hairs on head or neck"))
         setattr(cls, "UBERON:0014385",
             PermissibleValue(
                 text="UBERON:0014385",
@@ -34292,10 +36100,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014388",
                 description="kidney collecting duct epithelium"))
+        setattr(cls, "UBERON:0014389",
+            PermissibleValue(
+                text="UBERON:0014389",
+                description="gustatory papilla of tongue"))
         setattr(cls, "UBERON:0014390",
             PermissibleValue(
                 text="UBERON:0014390",
                 description="muscle layer of ileum"))
+        setattr(cls, "UBERON:0014391",
+            PermissibleValue(
+                text="UBERON:0014391",
+                description="palmar/plantar sweat gland"))
         setattr(cls, "UBERON:0014392",
             PermissibleValue(
                 text="UBERON:0014392",
@@ -34308,6 +36124,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014394",
                 description="uterine fat pad"))
+        setattr(cls, "UBERON:0014395",
+            PermissibleValue(
+                text="UBERON:0014395",
+                description="proximal mesopodial bone"))
+        setattr(cls, "UBERON:0014396",
+            PermissibleValue(
+                text="UBERON:0014396",
+                description="interscapular fat pad"))
         setattr(cls, "UBERON:0014397",
             PermissibleValue(
                 text="UBERON:0014397",
@@ -34340,14 +36164,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014404",
                 description="female anatomical structure"))
-        setattr(cls, "UBERON:0014405",
+        setattr(cls, "UBERON:0014409",
             PermissibleValue(
-                text="UBERON:0014405",
-                description="nymph stage"))
-        setattr(cls, "UBERON:0014406",
-            PermissibleValue(
-                text="UBERON:0014406",
-                description="nauplius stage"))
+                text="UBERON:0014409",
+                description="metacromion"))
         setattr(cls, "UBERON:0014410",
             PermissibleValue(
                 text="UBERON:0014410",
@@ -34404,38 +36224,58 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014446",
                 description="acetabular notch"))
+        setattr(cls, "UBERON:0014447",
+            PermissibleValue(
+                text="UBERON:0014447",
+                description="feathered facial disc"))
+        setattr(cls, "UBERON:0014448",
+            PermissibleValue(
+                text="UBERON:0014448",
+                description="feathered ear tuft"))
         setattr(cls, "UBERON:0014450",
             PermissibleValue(
                 text="UBERON:0014450",
                 description="pretectal nucleus"))
+        setattr(cls, "UBERON:0014451",
+            PermissibleValue(
+                text="UBERON:0014451",
+                description="tongue taste bud"))
         setattr(cls, "UBERON:0014452",
             PermissibleValue(
                 text="UBERON:0014452",
                 description="gustatory epithelium of tongue"))
+        setattr(cls, "UBERON:0014453",
+            PermissibleValue(
+                text="UBERON:0014453",
+                description="gustatory epithelium of palate"))
         setattr(cls, "UBERON:0014454",
             PermissibleValue(
                 text="UBERON:0014454",
                 description="visceral abdominal adipose tissue"))
+        setattr(cls, "UBERON:0014455",
+            PermissibleValue(
+                text="UBERON:0014455",
+                description="subcutaneous abdominal adipose tissue"))
         setattr(cls, "UBERON:0014456",
             PermissibleValue(
                 text="UBERON:0014456",
                 description="extraperitoneal space"))
-        setattr(cls, "UBERON:0014457",
-            PermissibleValue(
-                text="UBERON:0014457",
-                description="obsolete adult eye primordium"))
         setattr(cls, "UBERON:0014458",
             PermissibleValue(
                 text="UBERON:0014458",
                 description="female bulbospongiosus muscle"))
-        setattr(cls, "UBERON:0014461",
-            PermissibleValue(
-                text="UBERON:0014461",
-                description="infratemporal fenestra"))
         setattr(cls, "UBERON:0014463",
             PermissibleValue(
                 text="UBERON:0014463",
                 description="cardiac ganglion"))
+        setattr(cls, "UBERON:0014464",
+            PermissibleValue(
+                text="UBERON:0014464",
+                description="renal fat pad"))
+        setattr(cls, "UBERON:0014465",
+            PermissibleValue(
+                text="UBERON:0014465",
+                description="antorbital fenestra"))
         setattr(cls, "UBERON:0014466",
             PermissibleValue(
                 text="UBERON:0014466",
@@ -34468,14 +36308,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014479",
                 description="elephant trunk"))
-        setattr(cls, "UBERON:0014480",
-            PermissibleValue(
-                text="UBERON:0014480",
-                description="blood feather"))
         setattr(cls, "UBERON:0014481",
             PermissibleValue(
                 text="UBERON:0014481",
                 description="sex skin"))
+        setattr(cls, "UBERON:0014482",
+            PermissibleValue(
+                text="UBERON:0014482",
+                description="ischial callosity"))
+        setattr(cls, "UBERON:0014483",
+            PermissibleValue(
+                text="UBERON:0014483",
+                description="distal phalanx of digit 1"))
+        setattr(cls, "UBERON:0014484",
+            PermissibleValue(
+                text="UBERON:0014484",
+                description="distal phalanx of digit 2"))
         setattr(cls, "UBERON:0014485",
             PermissibleValue(
                 text="UBERON:0014485",
@@ -34484,6 +36332,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014486",
                 description="distal phalanx of digit 4"))
+        setattr(cls, "UBERON:0014487",
+            PermissibleValue(
+                text="UBERON:0014487",
+                description="distal phalanx of digit 5"))
+        setattr(cls, "UBERON:0014488",
+            PermissibleValue(
+                text="UBERON:0014488",
+                description="middle phalanx of digit 2"))
         setattr(cls, "UBERON:0014489",
             PermissibleValue(
                 text="UBERON:0014489",
@@ -34492,10 +36348,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014490",
                 description="middle phalanx of digit 4"))
+        setattr(cls, "UBERON:0014491",
+            PermissibleValue(
+                text="UBERON:0014491",
+                description="middle phalanx of digit 5"))
+        setattr(cls, "UBERON:0014501",
+            PermissibleValue(
+                text="UBERON:0014501",
+                description="proximal phalanx of digit 1"))
+        setattr(cls, "UBERON:0014502",
+            PermissibleValue(
+                text="UBERON:0014502",
+                description="proximal phalanx of digit 2"))
         setattr(cls, "UBERON:0014503",
             PermissibleValue(
                 text="UBERON:0014503",
                 description="proximal phalanx of digit 3"))
+        setattr(cls, "UBERON:0014504",
+            PermissibleValue(
+                text="UBERON:0014504",
+                description="proximal phalanx of digit 4"))
+        setattr(cls, "UBERON:0014505",
+            PermissibleValue(
+                text="UBERON:0014505",
+                description="proximal phalanx of digit 5"))
         setattr(cls, "UBERON:0014506",
             PermissibleValue(
                 text="UBERON:0014506",
@@ -34524,6 +36400,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014522",
                 description="dorsolateral oculomotor nucleus"))
+        setattr(cls, "UBERON:0014523",
+            PermissibleValue(
+                text="UBERON:0014523",
+                description="oculomotor division of oculomotor nuclear complex"))
+        setattr(cls, "UBERON:0014524",
+            PermissibleValue(
+                text="UBERON:0014524",
+                description="electromotor division of oculomotor nuclear complex"))
         setattr(cls, "UBERON:0014525",
             PermissibleValue(
                 text="UBERON:0014525",
@@ -34652,6 +36536,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014560",
                 description="CA3 stratum lucidum"))
+        setattr(cls, "UBERON:0014567",
+            PermissibleValue(
+                text="UBERON:0014567",
+                description="layer of hippocampal field"))
         setattr(cls, "UBERON:0014568",
             PermissibleValue(
                 text="UBERON:0014568",
@@ -34868,6 +36756,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014641",
                 description="terminal nerve root"))
+        setattr(cls, "UBERON:0014642",
+            PermissibleValue(
+                text="UBERON:0014642",
+                description="vestibulocerebellum"))
         setattr(cls, "UBERON:0014643",
             PermissibleValue(
                 text="UBERON:0014643",
@@ -34876,6 +36768,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014644",
                 description="cerebrocerebellum"))
+        setattr(cls, "UBERON:0014645",
+            PermissibleValue(
+                text="UBERON:0014645",
+                description="nucleus H of ventral tegmentum"))
+        setattr(cls, "UBERON:0014646",
+            PermissibleValue(
+                text="UBERON:0014646",
+                description="nucleus K of ventral tegmentum"))
         setattr(cls, "UBERON:0014647",
             PermissibleValue(
                 text="UBERON:0014647",
@@ -34948,6 +36848,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014680",
                 description="distal interphalangeal joint of digit 5"))
+        setattr(cls, "UBERON:0014682",
+            PermissibleValue(
+                text="UBERON:0014682",
+                description="tooth whorl"))
+        setattr(cls, "UBERON:0014683",
+            PermissibleValue(
+                text="UBERON:0014683",
+                description="parasymphisial tooth whorl"))
+        setattr(cls, "UBERON:0014684",
+            PermissibleValue(
+                text="UBERON:0014684",
+                description="Helicoprion tooth whorl"))
         setattr(cls, "UBERON:0014685",
             PermissibleValue(
                 text="UBERON:0014685",
@@ -35028,6 +36940,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014706",
                 description="primitive renal collecting duct system"))
+        setattr(cls, "UBERON:0014709",
+            PermissibleValue(
+                text="UBERON:0014709",
+                description="carapace primordium"))
+        setattr(cls, "UBERON:0014710",
+            PermissibleValue(
+                text="UBERON:0014710",
+                description="carapacial ridge"))
+        setattr(cls, "UBERON:0014711",
+            PermissibleValue(
+                text="UBERON:0014711",
+                description="carapacial ridge mesenchyme"))
+        setattr(cls, "UBERON:0014712",
+            PermissibleValue(
+                text="UBERON:0014712",
+                description="carapacial ridge ectoderm"))
         setattr(cls, "UBERON:0014716",
             PermissibleValue(
                 text="UBERON:0014716",
@@ -35040,6 +36968,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014719",
                 description="intralobular duct"))
+        setattr(cls, "UBERON:0014720",
+            PermissibleValue(
+                text="UBERON:0014720",
+                description="interlobar duct"))
         setattr(cls, "UBERON:0014725",
             PermissibleValue(
                 text="UBERON:0014725",
@@ -35092,10 +37024,46 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014741",
                 description="lateral pallium"))
+        setattr(cls, "UBERON:0014742",
+            PermissibleValue(
+                text="UBERON:0014742",
+                description="central nucleus of pallium"))
+        setattr(cls, "UBERON:0014751",
+            PermissibleValue(
+                text="UBERON:0014751",
+                description="P1 area of pallium (Myxiniformes)"))
+        setattr(cls, "UBERON:0014752",
+            PermissibleValue(
+                text="UBERON:0014752",
+                description="P2 area of pallium (Myxiniformes)"))
+        setattr(cls, "UBERON:0014753",
+            PermissibleValue(
+                text="UBERON:0014753",
+                description="P3 area of pallium (Myxiniformes)"))
+        setattr(cls, "UBERON:0014754",
+            PermissibleValue(
+                text="UBERON:0014754",
+                description="P4 area of pallium (Myxiniformes)"))
+        setattr(cls, "UBERON:0014755",
+            PermissibleValue(
+                text="UBERON:0014755",
+                description="P5 area of pallium (Myxiniformes)"))
+        setattr(cls, "UBERON:0014756",
+            PermissibleValue(
+                text="UBERON:0014756",
+                description="Wulst"))
         setattr(cls, "UBERON:0014757",
             PermissibleValue(
                 text="UBERON:0014757",
                 description="hyperpallium apicale"))
+        setattr(cls, "UBERON:0014758",
+            PermissibleValue(
+                text="UBERON:0014758",
+                description="interstitial part of hyperpallium apicale"))
+        setattr(cls, "UBERON:0014759",
+            PermissibleValue(
+                text="UBERON:0014759",
+                description="entopallium"))
         setattr(cls, "UBERON:0014760",
             PermissibleValue(
                 text="UBERON:0014760",
@@ -35104,6 +37072,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014761",
                 description="spinal trigeminal tract"))
+        setattr(cls, "UBERON:0014762",
+            PermissibleValue(
+                text="UBERON:0014762",
+                description="fused metapodial bones 2-4"))
+        setattr(cls, "UBERON:0014763",
+            PermissibleValue(
+                text="UBERON:0014763",
+                description="fused metatarsal bones 2-4"))
         setattr(cls, "UBERON:0014764",
             PermissibleValue(
                 text="UBERON:0014764",
@@ -35152,6 +37128,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014777",
                 description="spinal neuromere"))
+        setattr(cls, "UBERON:0014778",
+            PermissibleValue(
+                text="UBERON:0014778",
+                description="cell group"))
         setattr(cls, "UBERON:0014779",
             PermissibleValue(
                 text="UBERON:0014779",
@@ -35168,6 +37148,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014782",
                 description="allantois of embryonic urinary system"))
+        setattr(cls, "UBERON:0014783",
+            PermissibleValue(
+                text="UBERON:0014783",
+                description="cloacal muscle"))
+        setattr(cls, "UBERON:0014784",
+            PermissibleValue(
+                text="UBERON:0014784",
+                description="transverse cloacal muscle"))
+        setattr(cls, "UBERON:0014785",
+            PermissibleValue(
+                text="UBERON:0014785",
+                description="levator cloacae"))
         setattr(cls, "UBERON:0014786",
             PermissibleValue(
                 text="UBERON:0014786",
@@ -35200,10 +37192,34 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014793",
                 description="musculature of pectoral complex"))
+        setattr(cls, "UBERON:0014794",
+            PermissibleValue(
+                text="UBERON:0014794",
+                description="pectoral appendage muscle"))
+        setattr(cls, "UBERON:0014795",
+            PermissibleValue(
+                text="UBERON:0014795",
+                description="pelvic appendage muscle"))
         setattr(cls, "UBERON:0014796",
             PermissibleValue(
                 text="UBERON:0014796",
                 description="common tendinous ring"))
+        setattr(cls, "UBERON:0014797",
+            PermissibleValue(
+                text="UBERON:0014797",
+                description="hypobranchial group muscle"))
+        setattr(cls, "UBERON:0014798",
+            PermissibleValue(
+                text="UBERON:0014798",
+                description="clavotrapezius muscle"))
+        setattr(cls, "UBERON:0014799",
+            PermissibleValue(
+                text="UBERON:0014799",
+                description="acromiotrapezius muscle"))
+        setattr(cls, "UBERON:0014800",
+            PermissibleValue(
+                text="UBERON:0014800",
+                description="spinotrapezius muscle"))
         setattr(cls, "UBERON:0014801",
             PermissibleValue(
                 text="UBERON:0014801",
@@ -35216,6 +37232,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014803",
                 description="superior nuchal line attachment site"))
+        setattr(cls, "UBERON:0014804",
+            PermissibleValue(
+                text="UBERON:0014804",
+                description="median nuchal line attachment site"))
         setattr(cls, "UBERON:0014805",
             PermissibleValue(
                 text="UBERON:0014805",
@@ -35224,6 +37244,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014835",
                 description="serratus muscle"))
+        setattr(cls, "UBERON:0014836",
+            PermissibleValue(
+                text="UBERON:0014836",
+                description="levator arcuum muscle"))
+        setattr(cls, "UBERON:0014837",
+            PermissibleValue(
+                text="UBERON:0014837",
+                description="pectoantebrachialis"))
+        setattr(cls, "UBERON:0014838",
+            PermissibleValue(
+                text="UBERON:0014838",
+                description="xiphihumeralis"))
+        setattr(cls, "UBERON:0014840",
+            PermissibleValue(
+                text="UBERON:0014840",
+                description="supracoracoideus muscle"))
+        setattr(cls, "UBERON:0014842",
+            PermissibleValue(
+                text="UBERON:0014842",
+                description="puboischiofemoralis muscle"))
         setattr(cls, "UBERON:0014847",
             PermissibleValue(
                 text="UBERON:0014847",
@@ -35236,6 +37276,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014849",
                 description="hemotrichorial placental membrane"))
+        setattr(cls, "UBERON:0014850",
+            PermissibleValue(
+                text="UBERON:0014850",
+                description="hemomonochorial placental membrane"))
         setattr(cls, "UBERON:0014851",
             PermissibleValue(
                 text="UBERON:0014851",
@@ -35256,26 +37300,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014855",
                 description="posterior leaflet of mitral valve"))
-        setattr(cls, "UBERON:0014856",
-            PermissibleValue(
-                text="UBERON:0014856",
-                description="cysticercus stage"))
-        setattr(cls, "UBERON:0014858",
-            PermissibleValue(
-                text="UBERON:0014858",
-                description="crustacean post-larval stage"))
-        setattr(cls, "UBERON:0014862",
-            PermissibleValue(
-                text="UBERON:0014862",
-                description="trochophore stage"))
-        setattr(cls, "UBERON:0014863",
-            PermissibleValue(
-                text="UBERON:0014863",
-                description="veliger stage"))
-        setattr(cls, "UBERON:0014864",
-            PermissibleValue(
-                text="UBERON:0014864",
-                description="caterpillar stage"))
         setattr(cls, "UBERON:0014870",
             PermissibleValue(
                 text="UBERON:0014870",
@@ -35300,6 +37324,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014875",
                 description="distal epiphysis of distal phalanx of pedal digit 5"))
+        setattr(cls, "UBERON:0014876",
+            PermissibleValue(
+                text="UBERON:0014876",
+                description="distal epiphysis of distal phalanx of pedal digit"))
         setattr(cls, "UBERON:0014881",
             PermissibleValue(
                 text="UBERON:0014881",
@@ -35324,6 +37352,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014886",
                 description="distal epiphysis of distal phalanx of manual digit"))
+        setattr(cls, "UBERON:0014887",
+            PermissibleValue(
+                text="UBERON:0014887",
+                description="distal epiphysis of distal phalanx of digit"))
+        setattr(cls, "UBERON:0014888",
+            PermissibleValue(
+                text="UBERON:0014888",
+                description="iliotibialis muscle"))
         setattr(cls, "UBERON:0014889",
             PermissibleValue(
                 text="UBERON:0014889",
@@ -35340,10 +37376,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014892",
                 description="skeletal muscle organ, vertebrate"))
-        setattr(cls, "UBERON:0014895",
-            PermissibleValue(
-                text="UBERON:0014895",
-                description="somatic muscle, invertebrate"))
         setattr(cls, "UBERON:0014898",
             PermissibleValue(
                 text="UBERON:0014898",
@@ -35376,10 +37408,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014913",
                 description="ventral pallium"))
+        setattr(cls, "UBERON:0014914",
+            PermissibleValue(
+                text="UBERON:0014914",
+                description="haemolymphatic fluid-testis barrier"))
         setattr(cls, "UBERON:0014915",
             PermissibleValue(
                 text="UBERON:0014915",
                 description="genu of facial nerve"))
+        setattr(cls, "UBERON:0014916",
+            PermissibleValue(
+                text="UBERON:0014916",
+                description="velar vocal fold"))
+        setattr(cls, "UBERON:0014917",
+            PermissibleValue(
+                text="UBERON:0014917",
+                description="pouch sphincter"))
         setattr(cls, "UBERON:0014918",
             PermissibleValue(
                 text="UBERON:0014918",
@@ -35412,14 +37456,430 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0014940",
                 description="cerebral cortex subventricular zone"))
+        setattr(cls, "UBERON:0014950",
+            PermissibleValue(
+                text="UBERON:0014950",
+                description="layer of developing cerebral cortex"))
         setattr(cls, "UBERON:0014951",
             PermissibleValue(
                 text="UBERON:0014951",
                 description="proisocortex"))
+        setattr(cls, "UBERON:0015001",
+            PermissibleValue(
+                text="UBERON:0015001",
+                description="radius endochondral element"))
+        setattr(cls, "UBERON:0015002",
+            PermissibleValue(
+                text="UBERON:0015002",
+                description="radius-ulna endochondral element"))
+        setattr(cls, "UBERON:0015003",
+            PermissibleValue(
+                text="UBERON:0015003",
+                description="ulna endochondral element"))
+        setattr(cls, "UBERON:0015004",
+            PermissibleValue(
+                text="UBERON:0015004",
+                description="tibia endochondral element"))
+        setattr(cls, "UBERON:0015007",
+            PermissibleValue(
+                text="UBERON:0015007",
+                description="cervical vertebra endochondral element"))
+        setattr(cls, "UBERON:0015008",
+            PermissibleValue(
+                text="UBERON:0015008",
+                description="thoracic vertebra endochondral element"))
+        setattr(cls, "UBERON:0015009",
+            PermissibleValue(
+                text="UBERON:0015009",
+                description="lumbar vertebra endochondral element"))
+        setattr(cls, "UBERON:0015010",
+            PermissibleValue(
+                text="UBERON:0015010",
+                description="sacral vertebra endochondral element"))
+        setattr(cls, "UBERON:0015011",
+            PermissibleValue(
+                text="UBERON:0015011",
+                description="tibiotarsus endochondral element"))
+        setattr(cls, "UBERON:0015012",
+            PermissibleValue(
+                text="UBERON:0015012",
+                description="tarsometatarsus endochondral element"))
+        setattr(cls, "UBERON:0015013",
+            PermissibleValue(
+                text="UBERON:0015013",
+                description="fibula endochondral element"))
+        setattr(cls, "UBERON:0015014",
+            PermissibleValue(
+                text="UBERON:0015014",
+                description="calcaneum endochondral element"))
+        setattr(cls, "UBERON:0015015",
+            PermissibleValue(
+                text="UBERON:0015015",
+                description="supraoccipital endochondral element"))
+        setattr(cls, "UBERON:0015016",
+            PermissibleValue(
+                text="UBERON:0015016",
+                description="stapes endochondral element"))
+        setattr(cls, "UBERON:0015017",
+            PermissibleValue(
+                text="UBERON:0015017",
+                description="incus endochondral element"))
+        setattr(cls, "UBERON:0015018",
+            PermissibleValue(
+                text="UBERON:0015018",
+                description="malleus endochondral element"))
+        setattr(cls, "UBERON:0015019",
+            PermissibleValue(
+                text="UBERON:0015019",
+                description="rib endochondral element"))
+        setattr(cls, "UBERON:0015021",
+            PermissibleValue(
+                text="UBERON:0015021",
+                description="forelimb endochondral element"))
+        setattr(cls, "UBERON:0015022",
+            PermissibleValue(
+                text="UBERON:0015022",
+                description="hindlimb endochondral element"))
+        setattr(cls, "UBERON:0015023",
+            PermissibleValue(
+                text="UBERON:0015023",
+                description="phalanx endochondral element"))
+        setattr(cls, "UBERON:0015024",
+            PermissibleValue(
+                text="UBERON:0015024",
+                description="manual digit phalanx endochondral element"))
+        setattr(cls, "UBERON:0015025",
+            PermissibleValue(
+                text="UBERON:0015025",
+                description="manual digit 1 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015026",
+            PermissibleValue(
+                text="UBERON:0015026",
+                description="manual digit 2 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015027",
+            PermissibleValue(
+                text="UBERON:0015027",
+                description="manual digit 3 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015028",
+            PermissibleValue(
+                text="UBERON:0015028",
+                description="manual digit 4 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015029",
+            PermissibleValue(
+                text="UBERON:0015029",
+                description="manual digit 5 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015030",
+            PermissibleValue(
+                text="UBERON:0015030",
+                description="pedal digit phalanx endochondral element"))
+        setattr(cls, "UBERON:0015031",
+            PermissibleValue(
+                text="UBERON:0015031",
+                description="pedal digit 1 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015032",
+            PermissibleValue(
+                text="UBERON:0015032",
+                description="pedal digit 2 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015033",
+            PermissibleValue(
+                text="UBERON:0015033",
+                description="pedal digit 3 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015034",
+            PermissibleValue(
+                text="UBERON:0015034",
+                description="pedal digit 4 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015035",
+            PermissibleValue(
+                text="UBERON:0015035",
+                description="pedal digit 5 phalanx endochondral element"))
+        setattr(cls, "UBERON:0015036",
+            PermissibleValue(
+                text="UBERON:0015036",
+                description="pedal digit metatarsal endochondral element"))
+        setattr(cls, "UBERON:0015037",
+            PermissibleValue(
+                text="UBERON:0015037",
+                description="pedal digit 1 metatarsal endochondral element"))
+        setattr(cls, "UBERON:0015038",
+            PermissibleValue(
+                text="UBERON:0015038",
+                description="pedal digit 2 metatarsal endochondral element"))
+        setattr(cls, "UBERON:0015039",
+            PermissibleValue(
+                text="UBERON:0015039",
+                description="pedal digit 3 metatarsal endochondral element"))
+        setattr(cls, "UBERON:0015040",
+            PermissibleValue(
+                text="UBERON:0015040",
+                description="pedal digit 4 metatarsal endochondral element"))
+        setattr(cls, "UBERON:0015041",
+            PermissibleValue(
+                text="UBERON:0015041",
+                description="pedal digit 5 metatarsal endochondral element"))
+        setattr(cls, "UBERON:0015042",
+            PermissibleValue(
+                text="UBERON:0015042",
+                description="manual digit metacarpus endochondral element"))
+        setattr(cls, "UBERON:0015043",
+            PermissibleValue(
+                text="UBERON:0015043",
+                description="manual digit 1 metacarpus endochondral element"))
+        setattr(cls, "UBERON:0015044",
+            PermissibleValue(
+                text="UBERON:0015044",
+                description="manual digit 2 metacarpus endochondral element"))
+        setattr(cls, "UBERON:0015045",
+            PermissibleValue(
+                text="UBERON:0015045",
+                description="manual digit 3 metacarpus endochondral element"))
+        setattr(cls, "UBERON:0015046",
+            PermissibleValue(
+                text="UBERON:0015046",
+                description="manual digit 4 metacarpus endochondral element"))
+        setattr(cls, "UBERON:0015047",
+            PermissibleValue(
+                text="UBERON:0015047",
+                description="manual digit 5 metacarpus endochondral element"))
+        setattr(cls, "UBERON:0015048",
+            PermissibleValue(
+                text="UBERON:0015048",
+                description="basioccipital endochondral element"))
+        setattr(cls, "UBERON:0015049",
+            PermissibleValue(
+                text="UBERON:0015049",
+                description="carpus endochondral element"))
+        setattr(cls, "UBERON:0015050",
+            PermissibleValue(
+                text="UBERON:0015050",
+                description="tarsus endochondral element"))
+        setattr(cls, "UBERON:0015051",
+            PermissibleValue(
+                text="UBERON:0015051",
+                description="exoccipital endochondral element"))
+        setattr(cls, "UBERON:0015052",
+            PermissibleValue(
+                text="UBERON:0015052",
+                description="femur endochondral element"))
+        setattr(cls, "UBERON:0015053",
+            PermissibleValue(
+                text="UBERON:0015053",
+                description="humerus endochondral element"))
+        setattr(cls, "UBERON:0015054",
+            PermissibleValue(
+                text="UBERON:0015054",
+                description="iliac endochondral element"))
+        setattr(cls, "UBERON:0015055",
+            PermissibleValue(
+                text="UBERON:0015055",
+                description="pubic endochondral element"))
+        setattr(cls, "UBERON:0015056",
+            PermissibleValue(
+                text="UBERON:0015056",
+                description="ischial endochondral element"))
+        setattr(cls, "UBERON:0015057",
+            PermissibleValue(
+                text="UBERON:0015057",
+                description="scapula endochondral element"))
+        setattr(cls, "UBERON:0015058",
+            PermissibleValue(
+                text="UBERON:0015058",
+                description="alisphenoid endochondral element"))
+        setattr(cls, "UBERON:0015059",
+            PermissibleValue(
+                text="UBERON:0015059",
+                description="orbitosphenoid endochondral element"))
+        setattr(cls, "UBERON:0015060",
+            PermissibleValue(
+                text="UBERON:0015060",
+                description="sphenoid endochondral element"))
+        setattr(cls, "UBERON:0015061",
+            PermissibleValue(
+                text="UBERON:0015061",
+                description="limb endochondral element"))
         setattr(cls, "UBERON:0015062",
             PermissibleValue(
                 text="UBERON:0015062",
                 description="bone condensation"))
+        setattr(cls, "UBERON:0015063",
+            PermissibleValue(
+                text="UBERON:0015063",
+                description="autopod endochondral element"))
+        setattr(cls, "UBERON:0015064",
+            PermissibleValue(
+                text="UBERON:0015064",
+                description="autopod cartilage"))
+        setattr(cls, "UBERON:0015067",
+            PermissibleValue(
+                text="UBERON:0015067",
+                description="centrale endochondral element"))
+        setattr(cls, "UBERON:0015068",
+            PermissibleValue(
+                text="UBERON:0015068",
+                description="distal carpal endochondral element"))
+        setattr(cls, "UBERON:0015069",
+            PermissibleValue(
+                text="UBERON:0015069",
+                description="distal carpal cartilage element"))
+        setattr(cls, "UBERON:0015077",
+            PermissibleValue(
+                text="UBERON:0015077",
+                description="centrale cartilage"))
+        setattr(cls, "UBERON:0015078",
+            PermissibleValue(
+                text="UBERON:0015078",
+                description="proximal carpal endochondral element"))
+        setattr(cls, "UBERON:0015079",
+            PermissibleValue(
+                text="UBERON:0015079",
+                description="proximal carpal cartilage"))
+        setattr(cls, "UBERON:0015080",
+            PermissibleValue(
+                text="UBERON:0015080",
+                description="proximal carpal bone pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015081",
+            PermissibleValue(
+                text="UBERON:0015081",
+                description="proximal tarsal endochondral element"))
+        setattr(cls, "UBERON:0015082",
+            PermissibleValue(
+                text="UBERON:0015082",
+                description="proximal tarsal cartilage"))
+        setattr(cls, "UBERON:0015083",
+            PermissibleValue(
+                text="UBERON:0015083",
+                description="proximal tarsal bone pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015084",
+            PermissibleValue(
+                text="UBERON:0015084",
+                description="distal carpal bone 1 endochondral element"))
+        setattr(cls, "UBERON:0015085",
+            PermissibleValue(
+                text="UBERON:0015085",
+                description="distal carpal bone 1 cartilage"))
+        setattr(cls, "UBERON:0015086",
+            PermissibleValue(
+                text="UBERON:0015086",
+                description="distal carpal bone 1 pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015087",
+            PermissibleValue(
+                text="UBERON:0015087",
+                description="distal carpal bone 2 endochondral element"))
+        setattr(cls, "UBERON:0015088",
+            PermissibleValue(
+                text="UBERON:0015088",
+                description="distal carpal bone 2 cartilage"))
+        setattr(cls, "UBERON:0015089",
+            PermissibleValue(
+                text="UBERON:0015089",
+                description="distal carpal bone 2 pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015090",
+            PermissibleValue(
+                text="UBERON:0015090",
+                description="distal carpal bone 3 endochondral element"))
+        setattr(cls, "UBERON:0015091",
+            PermissibleValue(
+                text="UBERON:0015091",
+                description="distal carpal bone 3 cartilage"))
+        setattr(cls, "UBERON:0015092",
+            PermissibleValue(
+                text="UBERON:0015092",
+                description="distal carpal bone 3 pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015093",
+            PermissibleValue(
+                text="UBERON:0015093",
+                description="distal carpal bone 4 endochondral element"))
+        setattr(cls, "UBERON:0015094",
+            PermissibleValue(
+                text="UBERON:0015094",
+                description="distal carpal bone 4 cartilage"))
+        setattr(cls, "UBERON:0015095",
+            PermissibleValue(
+                text="UBERON:0015095",
+                description="distal carpal bone 4 pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015096",
+            PermissibleValue(
+                text="UBERON:0015096",
+                description="distal carpal bone 5 endochondral element"))
+        setattr(cls, "UBERON:0015097",
+            PermissibleValue(
+                text="UBERON:0015097",
+                description="distal carpal bone 5 cartilage"))
+        setattr(cls, "UBERON:0015098",
+            PermissibleValue(
+                text="UBERON:0015098",
+                description="distal carpal bone 5 pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015099",
+            PermissibleValue(
+                text="UBERON:0015099",
+                description="distal tarsal endochondral element"))
+        setattr(cls, "UBERON:0015100",
+            PermissibleValue(
+                text="UBERON:0015100",
+                description="distal tarsal cartilage"))
+        setattr(cls, "UBERON:0015101",
+            PermissibleValue(
+                text="UBERON:0015101",
+                description="distal tarsal bone pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015102",
+            PermissibleValue(
+                text="UBERON:0015102",
+                description="distal tarsal bone 1 endochondral element"))
+        setattr(cls, "UBERON:0015103",
+            PermissibleValue(
+                text="UBERON:0015103",
+                description="distal tarsal bone 1 cartilage"))
+        setattr(cls, "UBERON:0015104",
+            PermissibleValue(
+                text="UBERON:0015104",
+                description="distal tarsal bone 1 pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015105",
+            PermissibleValue(
+                text="UBERON:0015105",
+                description="distal tarsal bone 2 endochondral element"))
+        setattr(cls, "UBERON:0015106",
+            PermissibleValue(
+                text="UBERON:0015106",
+                description="distal tarsal bone 2 cartilage"))
+        setattr(cls, "UBERON:0015107",
+            PermissibleValue(
+                text="UBERON:0015107",
+                description="distal tarsal bone 2 pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015108",
+            PermissibleValue(
+                text="UBERON:0015108",
+                description="distal tarsal bone 3 endochondral element"))
+        setattr(cls, "UBERON:0015109",
+            PermissibleValue(
+                text="UBERON:0015109",
+                description="distal tarsal bone 3 cartilage"))
+        setattr(cls, "UBERON:0015110",
+            PermissibleValue(
+                text="UBERON:0015110",
+                description="distal tarsal bone 3 pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015111",
+            PermissibleValue(
+                text="UBERON:0015111",
+                description="distal tarsal bone 4 endochondral element"))
+        setattr(cls, "UBERON:0015112",
+            PermissibleValue(
+                text="UBERON:0015112",
+                description="distal tarsal bone 4 cartilage"))
+        setattr(cls, "UBERON:0015113",
+            PermissibleValue(
+                text="UBERON:0015113",
+                description="distal tarsal bone 4 pre-cartilage condensation"))
+        setattr(cls, "UBERON:0015114",
+            PermissibleValue(
+                text="UBERON:0015114",
+                description="distal tarsal bone 5 endochondral element"))
+        setattr(cls, "UBERON:0015115",
+            PermissibleValue(
+                text="UBERON:0015115",
+                description="distal tarsal bone 5 cartilage"))
+        setattr(cls, "UBERON:0015116",
+            PermissibleValue(
+                text="UBERON:0015116",
+                description="distal tarsal bone 5 pre-cartilage condensation"))
         setattr(cls, "UBERON:0015117",
             PermissibleValue(
                 text="UBERON:0015117",
@@ -35436,6 +37896,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015121",
                 description="left outer canthus"))
+        setattr(cls, "UBERON:0015122",
+            PermissibleValue(
+                text="UBERON:0015122",
+                description="anatomical line between outer canthi"))
         setattr(cls, "UBERON:0015125",
             PermissibleValue(
                 text="UBERON:0015125",
@@ -35496,14 +37960,50 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015139",
                 description="infundibulum of gallbladder"))
-        setattr(cls, "UBERON:0015148",
+        setattr(cls, "UBERON:0015142",
             PermissibleValue(
-                text="UBERON:0015148",
-                description="tail hair"))
+                text="UBERON:0015142",
+                description="falciform fat"))
+        setattr(cls, "UBERON:0015143",
+            PermissibleValue(
+                text="UBERON:0015143",
+                description="mesenteric fat pad"))
+        setattr(cls, "UBERON:0015144",
+            PermissibleValue(
+                text="UBERON:0015144",
+                description="autopod hair"))
+        setattr(cls, "UBERON:0015145",
+            PermissibleValue(
+                text="UBERON:0015145",
+                description="pes hair"))
+        setattr(cls, "UBERON:0015146",
+            PermissibleValue(
+                text="UBERON:0015146",
+                description="manus hair"))
+        setattr(cls, "UBERON:0015147",
+            PermissibleValue(
+                text="UBERON:0015147",
+                description="pinna hair"))
+        setattr(cls, "UBERON:0015149",
+            PermissibleValue(
+                text="UBERON:0015149",
+                description="ventral hair"))
         setattr(cls, "UBERON:0015150",
             PermissibleValue(
                 text="UBERON:0015150",
                 description="dorsal hair"))
+        setattr(cls, "UBERON:0015152",
+            PermissibleValue(
+                text="UBERON:0015152",
+                description="gland of ocular region"))
+        setattr(cls, "UBERON:0015153",
+            PermissibleValue(
+                text="UBERON:0015153",
+                description="medial gland of ocular region"))
+        setattr(cls, "UBERON:0015154",
+            PermissibleValue(
+                text="UBERON:0015154",
+                description="lateral gland of orbital region"))
         setattr(cls, "UBERON:0015155",
             PermissibleValue(
                 text="UBERON:0015155",
@@ -35516,6 +38016,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015157",
                 description="zygomatico-orbital artery"))
+        setattr(cls, "UBERON:0015158",
+            PermissibleValue(
+                text="UBERON:0015158",
+                description="ophthalmotemporal branch of external ophthalmic artery"))
         setattr(cls, "UBERON:0015160",
             PermissibleValue(
                 text="UBERON:0015160",
@@ -35528,10 +38032,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015162",
                 description="superior branch of oculomotor nerve"))
-        setattr(cls, "UBERON:0015169",
+        setattr(cls, "UBERON:0015170",
             PermissibleValue(
-                text="UBERON:0015169",
-                description="tapetum"))
+                text="UBERON:0015170",
+                description="nauplius eye"))
         setattr(cls, "UBERON:0015171",
             PermissibleValue(
                 text="UBERON:0015171",
@@ -35572,10 +38076,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015189",
                 description="perineural vascular plexus"))
-        setattr(cls, "UBERON:0015202",
-            PermissibleValue(
-                text="UBERON:0015202",
-                description="lymph heart"))
         setattr(cls, "UBERON:0015203",
             PermissibleValue(
                 text="UBERON:0015203",
@@ -35584,6 +38084,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015204",
                 description="glandular system"))
+        setattr(cls, "UBERON:0015212",
+            PermissibleValue(
+                text="UBERON:0015212",
+                description="lateral structure"))
         setattr(cls, "UBERON:0015213",
             PermissibleValue(
                 text="UBERON:0015213",
@@ -35612,10 +38116,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015221",
                 description="common nasal meatus"))
+        setattr(cls, "UBERON:0015222",
+            PermissibleValue(
+                text="UBERON:0015222",
+                description="ventral nasal meatus"))
+        setattr(cls, "UBERON:0015223",
+            PermissibleValue(
+                text="UBERON:0015223",
+                description="dorsal nasal meatus"))
+        setattr(cls, "UBERON:0015224",
+            PermissibleValue(
+                text="UBERON:0015224",
+                description="interventricular foramen intermedium"))
+        setattr(cls, "UBERON:0015225",
+            PermissibleValue(
+                text="UBERON:0015225",
+                description="atrial foramen intermedium"))
         setattr(cls, "UBERON:0015226",
             PermissibleValue(
                 text="UBERON:0015226",
                 description="bulbar spiral septum"))
+        setattr(cls, "UBERON:0015227",
+            PermissibleValue(
+                text="UBERON:0015227",
+                description="peristaltic circulatory vessel"))
+        setattr(cls, "UBERON:0015228",
+            PermissibleValue(
+                text="UBERON:0015228",
+                description="circulatory organ"))
+        setattr(cls, "UBERON:0015229",
+            PermissibleValue(
+                text="UBERON:0015229",
+                description="accessory circulatory organ"))
         setattr(cls, "UBERON:0015230",
             PermissibleValue(
                 text="UBERON:0015230",
@@ -35628,14 +38160,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015232",
                 description="nematode pharynx"))
+        setattr(cls, "UBERON:0015233",
+            PermissibleValue(
+                text="UBERON:0015233",
+                description="nucleus of dorsal thalamus"))
+        setattr(cls, "UBERON:0015234",
+            PermissibleValue(
+                text="UBERON:0015234",
+                description="nucleus of ventral thalamus"))
         setattr(cls, "UBERON:0015238",
             PermissibleValue(
                 text="UBERON:0015238",
                 description="pineal complex"))
-        setattr(cls, "UBERON:0015241",
-            PermissibleValue(
-                text="UBERON:0015241",
-                description="parapineal organ"))
         setattr(cls, "UBERON:0015243",
             PermissibleValue(
                 text="UBERON:0015243",
@@ -35844,6 +38380,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015783",
                 description="smooth muscle layer in fatty layer of subcutaneous tissue"))
+        setattr(cls, "UBERON:0015784",
+            PermissibleValue(
+                text="UBERON:0015784",
+                description="duct of olfactory gland"))
+        setattr(cls, "UBERON:0015785",
+            PermissibleValue(
+                text="UBERON:0015785",
+                description="acinus of olfactory gland"))
         setattr(cls, "UBERON:0015786",
             PermissibleValue(
                 text="UBERON:0015786",
@@ -35868,10 +38412,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015791",
                 description="digit connective tissue"))
-        setattr(cls, "UBERON:0015792",
-            PermissibleValue(
-                text="UBERON:0015792",
-                description="prostate gland dorsal lobe"))
         setattr(cls, "UBERON:0015793",
             PermissibleValue(
                 text="UBERON:0015793",
@@ -35964,6 +38504,34 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015847",
                 description="upper left incisor tooth"))
+        setattr(cls, "UBERON:0015848",
+            PermissibleValue(
+                text="UBERON:0015848",
+                description="incisor tusk"))
+        setattr(cls, "UBERON:0015849",
+            PermissibleValue(
+                text="UBERON:0015849",
+                description="canine tusk"))
+        setattr(cls, "UBERON:0015850",
+            PermissibleValue(
+                text="UBERON:0015850",
+                description="upper left incisor tusk"))
+        setattr(cls, "UBERON:0015851",
+            PermissibleValue(
+                text="UBERON:0015851",
+                description="upper right incisor tusk"))
+        setattr(cls, "UBERON:0015852",
+            PermissibleValue(
+                text="UBERON:0015852",
+                description="narwhal tusk"))
+        setattr(cls, "UBERON:0015853",
+            PermissibleValue(
+                text="UBERON:0015853",
+                description="dental pulp of median incisor tusk"))
+        setattr(cls, "UBERON:0015854",
+            PermissibleValue(
+                text="UBERON:0015854",
+                description="interpedicular line"))
         setattr(cls, "UBERON:0015855",
             PermissibleValue(
                 text="UBERON:0015855",
@@ -36072,6 +38640,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015918",
                 description="deep lymph node"))
+        setattr(cls, "UBERON:0015922",
+            PermissibleValue(
+                text="UBERON:0015922",
+                description="accessory mandibular lymph node"))
         setattr(cls, "UBERON:0015923",
             PermissibleValue(
                 text="UBERON:0015923",
@@ -36080,6 +38652,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0015925",
                 description="superficial intraparotid lymph node"))
+        setattr(cls, "UBERON:0015926",
+            PermissibleValue(
+                text="UBERON:0015926",
+                description="cranial deep lymph node"))
         setattr(cls, "UBERON:0016374",
             PermissibleValue(
                 text="UBERON:0016374",
@@ -36304,6 +38880,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016482",
                 description="dental plaque"))
+        setattr(cls, "UBERON:0016484",
+            PermissibleValue(
+                text="UBERON:0016484",
+                description="subgingival dental plaque"))
+        setattr(cls, "UBERON:0016485",
+            PermissibleValue(
+                text="UBERON:0016485",
+                description="supragingival dental plaque"))
         setattr(cls, "UBERON:0016486",
             PermissibleValue(
                 text="UBERON:0016486",
@@ -36488,10 +39072,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016549",
                 description="central nervous system white matter layer"))
+        setattr(cls, "UBERON:0016550",
+            PermissibleValue(
+                text="UBERON:0016550",
+                description="spinal cord column"))
+        setattr(cls, "UBERON:0016551",
+            PermissibleValue(
+                text="UBERON:0016551",
+                description="subdivision of spinal cord ventral column"))
         setattr(cls, "UBERON:0016552",
             PermissibleValue(
                 text="UBERON:0016552",
                 description="phlegm"))
+        setattr(cls, "UBERON:0016553",
+            PermissibleValue(
+                text="UBERON:0016553",
+                description="respiratory system mucus"))
         setattr(cls, "UBERON:0016554",
             PermissibleValue(
                 text="UBERON:0016554",
@@ -36508,6 +39104,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016564",
                 description="deep cerebral vein"))
+        setattr(cls, "UBERON:0016565",
+            PermissibleValue(
+                text="UBERON:0016565",
+                description="cerebral blood vessel"))
         setattr(cls, "UBERON:0016566",
             PermissibleValue(
                 text="UBERON:0016566",
@@ -36520,6 +39120,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016568",
                 description="gelatinous layer of statoconial membrane"))
+        setattr(cls, "UBERON:0016569",
+            PermissibleValue(
+                text="UBERON:0016569",
+                description="subcupular meshwork of statoconial membrane"))
         setattr(cls, "UBERON:0016570",
             PermissibleValue(
                 text="UBERON:0016570",
@@ -36556,6 +39160,42 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016610",
                 description="nucleus proprius of spinal cord"))
+        setattr(cls, "UBERON:0016611",
+            PermissibleValue(
+                text="UBERON:0016611",
+                description="auditory hillocks, pharyngeal arch 1 derived"))
+        setattr(cls, "UBERON:0016612",
+            PermissibleValue(
+                text="UBERON:0016612",
+                description="auditory hillocks, pharyngeal arch 2 derived"))
+        setattr(cls, "UBERON:0016618",
+            PermissibleValue(
+                text="UBERON:0016618",
+                description="baleen feeding system"))
+        setattr(cls, "UBERON:0016619",
+            PermissibleValue(
+                text="UBERON:0016619",
+                description="Y-shaped fibrocartilage skeleton of ventral pouch"))
+        setattr(cls, "UBERON:0016620",
+            PermissibleValue(
+                text="UBERON:0016620",
+                description="ventral throat pleat"))
+        setattr(cls, "UBERON:0016621",
+            PermissibleValue(
+                text="UBERON:0016621",
+                description="lunge feeding organ"))
+        setattr(cls, "UBERON:0016622",
+            PermissibleValue(
+                text="UBERON:0016622",
+                description="lunge feeding organ papilla"))
+        setattr(cls, "UBERON:0016628",
+            PermissibleValue(
+                text="UBERON:0016628",
+                description="stem of Y-shaped fibrocartilage skeleton of ventral pouch"))
+        setattr(cls, "UBERON:0016629",
+            PermissibleValue(
+                text="UBERON:0016629",
+                description="branch of Y-shaped fibrocartilage skeleton of ventral pouch"))
         setattr(cls, "UBERON:0016630",
             PermissibleValue(
                 text="UBERON:0016630",
@@ -36636,6 +39276,54 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016853",
                 description="interdigital gland"))
+        setattr(cls, "UBERON:0016854",
+            PermissibleValue(
+                text="UBERON:0016854",
+                description="dorsal part of optic cup"))
+        setattr(cls, "UBERON:0016855",
+            PermissibleValue(
+                text="UBERON:0016855",
+                description="ventral part of optic cup"))
+        setattr(cls, "UBERON:0016856",
+            PermissibleValue(
+                text="UBERON:0016856",
+                description="digit 6"))
+        setattr(cls, "UBERON:0016857",
+            PermissibleValue(
+                text="UBERON:0016857",
+                description="digit 7"))
+        setattr(cls, "UBERON:0016858",
+            PermissibleValue(
+                text="UBERON:0016858",
+                description="digit 8"))
+        setattr(cls, "UBERON:0016866",
+            PermissibleValue(
+                text="UBERON:0016866",
+                description="digit 6 plus metapodial segment"))
+        setattr(cls, "UBERON:0016867",
+            PermissibleValue(
+                text="UBERON:0016867",
+                description="digit 7 plus metapodial segment"))
+        setattr(cls, "UBERON:0016868",
+            PermissibleValue(
+                text="UBERON:0016868",
+                description="digit 8 plus metapodial segment"))
+        setattr(cls, "UBERON:0016876",
+            PermissibleValue(
+                text="UBERON:0016876",
+                description="digit 6 digitopodial skeleton"))
+        setattr(cls, "UBERON:0016877",
+            PermissibleValue(
+                text="UBERON:0016877",
+                description="digit 7 digitopodial skeleton"))
+        setattr(cls, "UBERON:0016878",
+            PermissibleValue(
+                text="UBERON:0016878",
+                description="digit 8 digitopodial skeleton"))
+        setattr(cls, "UBERON:0016879",
+            PermissibleValue(
+                text="UBERON:0016879",
+                description="future central nervous system"))
         setattr(cls, "UBERON:0016880",
             PermissibleValue(
                 text="UBERON:0016880",
@@ -36644,6 +39332,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016881",
                 description="craniopharyngeal canal"))
+        setattr(cls, "UBERON:0016882",
+            PermissibleValue(
+                text="UBERON:0016882",
+                description="intertarsal-type crurotarsal joint"))
         setattr(cls, "UBERON:0016883",
             PermissibleValue(
                 text="UBERON:0016883",
@@ -36656,6 +39348,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016885",
                 description="epithelium of terminal part of digestive tract"))
+        setattr(cls, "UBERON:0016886",
+            PermissibleValue(
+                text="UBERON:0016886",
+                description="muscle tissue of terminal part of digestive tract"))
         setattr(cls, "UBERON:0016887",
             PermissibleValue(
                 text="UBERON:0016887",
@@ -36720,6 +39416,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016926",
                 description="mucus body coating"))
+        setattr(cls, "UBERON:0016927",
+            PermissibleValue(
+                text="UBERON:0016927",
+                description="mucus cocoon"))
         setattr(cls, "UBERON:0016928",
             PermissibleValue(
                 text="UBERON:0016928",
@@ -36760,6 +39460,82 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0016939",
                 description="distal marginal ridge of tooth"))
+        setattr(cls, "UBERON:0016942",
+            PermissibleValue(
+                text="UBERON:0016942",
+                description="rostral margin of orbit"))
+        setattr(cls, "UBERON:0016943",
+            PermissibleValue(
+                text="UBERON:0016943",
+                description="lower premolar tooth"))
+        setattr(cls, "UBERON:0016944",
+            PermissibleValue(
+                text="UBERON:0016944",
+                description="upper premolar tooth"))
+        setattr(cls, "UBERON:0017098",
+            PermissibleValue(
+                text="UBERON:0017098",
+                description="retractor lateralis posterior muscle"))
+        setattr(cls, "UBERON:0017099",
+            PermissibleValue(
+                text="UBERON:0017099",
+                description="retractor lateralis anterior muscle"))
+        setattr(cls, "UBERON:0017102",
+            PermissibleValue(
+                text="UBERON:0017102",
+                description="flexor cruris lateralis pars accessoria muscle"))
+        setattr(cls, "UBERON:0017156",
+            PermissibleValue(
+                text="UBERON:0017156",
+                description="flexor cruris lateralis muscle"))
+        setattr(cls, "UBERON:0017157",
+            PermissibleValue(
+                text="UBERON:0017157",
+                description="exoccipital-atlas joint"))
+        setattr(cls, "UBERON:0017160",
+            PermissibleValue(
+                text="UBERON:0017160",
+                description="lumen of hemipenial sheath"))
+        setattr(cls, "UBERON:0017161",
+            PermissibleValue(
+                text="UBERON:0017161",
+                description="hemipenial mucuous gland"))
+        setattr(cls, "UBERON:0017162",
+            PermissibleValue(
+                text="UBERON:0017162",
+                description="hemipenial holocrine gland"))
+        setattr(cls, "UBERON:0017163",
+            PermissibleValue(
+                text="UBERON:0017163",
+                description="skin bony tubercle"))
+        setattr(cls, "UBERON:0017164",
+            PermissibleValue(
+                text="UBERON:0017164",
+                description="dorsal cloacal gland"))
+        setattr(cls, "UBERON:0017180",
+            PermissibleValue(
+                text="UBERON:0017180",
+                description="hemipenis keratinized epithelium"))
+        setattr(cls, "UBERON:0017196",
+            PermissibleValue(
+                text="UBERON:0017196",
+                description="retractor lateralis muscle"))
+        setattr(cls, "UBERON:0017249",
+            PermissibleValue(
+                text="UBERON:0017249",
+                description="incisive process of premaxilla"))
+        setattr(cls, "UBERON:0017258",
+            PermissibleValue(
+                text="UBERON:0017258",
+                description="placentome of cotyledonary placenta"))
+        setattr(cls, "UBERON:0017259",
+            PermissibleValue(
+                text="UBERON:0017259",
+                description="placental caruncle"))
+        setattr(cls, "UBERON:0017261",
+            PermissibleValue(
+                text="UBERON:0017261",
+                description="intertarsal sesamoid"))
         setattr(cls, "UBERON:0017269",
             PermissibleValue(
                 text="UBERON:0017269",
@@ -36768,6 +39544,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0017270",
                 description="secondary premolar tooth"))
+        setattr(cls, "UBERON:0017271",
+            PermissibleValue(
+                text="UBERON:0017271",
+                description="upper primary premolar tooth"))
+        setattr(cls, "UBERON:0017272",
+            PermissibleValue(
+                text="UBERON:0017272",
+                description="lower primary premolar tooth"))
+        setattr(cls, "UBERON:0017294",
+            PermissibleValue(
+                text="UBERON:0017294",
+                description="horn of hemipenis"))
         setattr(cls, "UBERON:0017295",
             PermissibleValue(
                 text="UBERON:0017295",
@@ -36796,14 +39584,62 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0017313",
                 description="cingulum of lower canine tooth"))
+        setattr(cls, "UBERON:0017612",
+            PermissibleValue(
+                text="UBERON:0017612",
+                description="cingulum of lower jaw molar"))
+        setattr(cls, "UBERON:0017613",
+            PermissibleValue(
+                text="UBERON:0017613",
+                description="cingulum of upper jaw molar"))
+        setattr(cls, "UBERON:0017614",
+            PermissibleValue(
+                text="UBERON:0017614",
+                description="cingulum of molar tooth"))
+        setattr(cls, "UBERON:0017615",
+            PermissibleValue(
+                text="UBERON:0017615",
+                description="vomerine dentition"))
+        setattr(cls, "UBERON:0017616",
+            PermissibleValue(
+                text="UBERON:0017616",
+                description="afferent spiracular artery"))
+        setattr(cls, "UBERON:0017617",
+            PermissibleValue(
+                text="UBERON:0017617",
+                description="efferent spiracular artery"))
         setattr(cls, "UBERON:0017618",
             PermissibleValue(
                 text="UBERON:0017618",
                 description="extensor pollicis brevis muscle"))
+        setattr(cls, "UBERON:0017623",
+            PermissibleValue(
+                text="UBERON:0017623",
+                description="prepelvic clasper"))
+        setattr(cls, "UBERON:0017624",
+            PermissibleValue(
+                text="UBERON:0017624",
+                description="pseudoclasper"))
+        setattr(cls, "UBERON:0017625",
+            PermissibleValue(
+                text="UBERON:0017625",
+                description="pterygopodial gland"))
         setattr(cls, "UBERON:0017626",
             PermissibleValue(
                 text="UBERON:0017626",
                 description="transverse folds of rectum"))
+        setattr(cls, "UBERON:0017627",
+            PermissibleValue(
+                text="UBERON:0017627",
+                description="rectal valve"))
+        setattr(cls, "UBERON:0017628",
+            PermissibleValue(
+                text="UBERON:0017628",
+                description="swim bladder gas gland"))
+        setattr(cls, "UBERON:0017629",
+            PermissibleValue(
+                text="UBERON:0017629",
+                description="mormyromast organ"))
         setattr(cls, "UBERON:0017631",
             PermissibleValue(
                 text="UBERON:0017631",
@@ -36812,6 +39648,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0017632",
                 description="pineal corpora arenacea"))
+        setattr(cls, "UBERON:0017633",
+            PermissibleValue(
+                text="UBERON:0017633",
+                description="choroid plexus corpora arenacea"))
+        setattr(cls, "UBERON:0017634",
+            PermissibleValue(
+                text="UBERON:0017634",
+                description="xenarthrale"))
         setattr(cls, "UBERON:0017635",
             PermissibleValue(
                 text="UBERON:0017635",
@@ -36856,10 +39700,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0017648",
                 description="ventral body wall"))
+        setattr(cls, "UBERON:0017649",
+            PermissibleValue(
+                text="UBERON:0017649",
+                description="dorsal body wall"))
         setattr(cls, "UBERON:0017650",
             PermissibleValue(
                 text="UBERON:0017650",
                 description="developing mesenchymal structure"))
+        setattr(cls, "UBERON:0017651",
+            PermissibleValue(
+                text="UBERON:0017651",
+                description="salivary gland primordium"))
+        setattr(cls, "UBERON:0017652",
+            PermissibleValue(
+                text="UBERON:0017652",
+                description="intermaxillary gland (sensu Osteolepiformes)"))
+        setattr(cls, "UBERON:0017653",
+            PermissibleValue(
+                text="UBERON:0017653",
+                description="intermaxillary salivary gland"))
         setattr(cls, "UBERON:0017654",
             PermissibleValue(
                 text="UBERON:0017654",
@@ -36908,6 +39768,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0017749",
                 description="withers"))
+        setattr(cls, "UBERON:0017750",
+            PermissibleValue(
+                text="UBERON:0017750",
+                description="proximal mesopodial endochondral element"))
+        setattr(cls, "UBERON:0017751",
+            PermissibleValue(
+                text="UBERON:0017751",
+                description="proximal mesopodial cartilage element"))
+        setattr(cls, "UBERON:0018099",
+            PermissibleValue(
+                text="UBERON:0018099",
+                description="distal mesopodial endochondral element"))
+        setattr(cls, "UBERON:0018100",
+            PermissibleValue(
+                text="UBERON:0018100",
+                description="distal mesopodial cartilage element"))
+        setattr(cls, "UBERON:0018101",
+            PermissibleValue(
+                text="UBERON:0018101",
+                description="distal mesopodial pre-cartilage condensation"))
+        setattr(cls, "UBERON:0018102",
+            PermissibleValue(
+                text="UBERON:0018102",
+                description="distal mesopodial bone"))
         setattr(cls, "UBERON:0018103",
             PermissibleValue(
                 text="UBERON:0018103",
@@ -36940,6 +39824,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018111",
                 description="muscle layer of rectum"))
+        setattr(cls, "UBERON:0018112",
+            PermissibleValue(
+                text="UBERON:0018112",
+                description="rectum smooth muscle tissue"))
         setattr(cls, "UBERON:0018113",
             PermissibleValue(
                 text="UBERON:0018113",
@@ -36956,14 +39844,42 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018116",
                 description="right renal pelvis"))
+        setattr(cls, "UBERON:0018117",
+            PermissibleValue(
+                text="UBERON:0018117",
+                description="left renal cortex interstitium"))
+        setattr(cls, "UBERON:0018118",
+            PermissibleValue(
+                text="UBERON:0018118",
+                description="right renal cortex interstitium"))
+        setattr(cls, "UBERON:0018119",
+            PermissibleValue(
+                text="UBERON:0018119",
+                description="left renal medulla interstitium"))
+        setattr(cls, "UBERON:0018120",
+            PermissibleValue(
+                text="UBERON:0018120",
+                description="right renal medulla interstitium"))
         setattr(cls, "UBERON:0018131",
             PermissibleValue(
                 text="UBERON:0018131",
                 description="periovarian fat pad"))
+        setattr(cls, "UBERON:0018134",
+            PermissibleValue(
+                text="UBERON:0018134",
+                description="rugal fold of scrotum"))
         setattr(cls, "UBERON:0018135",
             PermissibleValue(
                 text="UBERON:0018135",
                 description="fibrocollagenous connective tissue"))
+        setattr(cls, "UBERON:0018136",
+            PermissibleValue(
+                text="UBERON:0018136",
+                description="maxillary fenestra"))
+        setattr(cls, "UBERON:0018137",
+            PermissibleValue(
+                text="UBERON:0018137",
+                description="premaxillary fenestra"))
         setattr(cls, "UBERON:0018140",
             PermissibleValue(
                 text="UBERON:0018140",
@@ -36972,18 +39888,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018141",
                 description="anterior perforated substance"))
+        setattr(cls, "UBERON:0018142",
+            PermissibleValue(
+                text="UBERON:0018142",
+                description="caudal vertebra endochondral element"))
         setattr(cls, "UBERON:0018143",
             PermissibleValue(
                 text="UBERON:0018143",
                 description="transverse process of cervical vertebra"))
-        setattr(cls, "UBERON:0018144",
-            PermissibleValue(
-                text="UBERON:0018144",
-                description="cervical rib"))
         setattr(cls, "UBERON:0018146",
             PermissibleValue(
                 text="UBERON:0018146",
                 description="transverse process of lumbar vertebra"))
+        setattr(cls, "UBERON:0018148",
+            PermissibleValue(
+                text="UBERON:0018148",
+                description="ampullary gland secretion"))
         setattr(cls, "UBERON:0018149",
             PermissibleValue(
                 text="UBERON:0018149",
@@ -37004,6 +39924,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018153",
                 description="pars tensa of tympanic membrane"))
+        setattr(cls, "UBERON:0018154",
+            PermissibleValue(
+                text="UBERON:0018154",
+                description="ligament of middle ear"))
+        setattr(cls, "UBERON:0018155",
+            PermissibleValue(
+                text="UBERON:0018155",
+                description="posterior incudal ligament"))
+        setattr(cls, "UBERON:0018156",
+            PermissibleValue(
+                text="UBERON:0018156",
+                description="malleal ligament"))
+        setattr(cls, "UBERON:0018157",
+            PermissibleValue(
+                text="UBERON:0018157",
+                description="lateral malleal ligament"))
+        setattr(cls, "UBERON:0018158",
+            PermissibleValue(
+                text="UBERON:0018158",
+                description="superior malleal ligament"))
+        setattr(cls, "UBERON:0018159",
+            PermissibleValue(
+                text="UBERON:0018159",
+                description="anterior malleal ligament"))
         setattr(cls, "UBERON:0018160",
             PermissibleValue(
                 text="UBERON:0018160",
@@ -37036,6 +39980,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018231",
                 description="labyrinthine artery"))
+        setattr(cls, "UBERON:0018232",
+            PermissibleValue(
+                text="UBERON:0018232",
+                description="axillary sweat gland"))
         setattr(cls, "UBERON:0018233",
             PermissibleValue(
                 text="UBERON:0018233",
@@ -37044,6 +39992,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018234",
                 description="stroma of pancreas"))
+        setattr(cls, "UBERON:0018235",
+            PermissibleValue(
+                text="UBERON:0018235",
+                description="capsule of pancreas"))
+        setattr(cls, "UBERON:0018236",
+            PermissibleValue(
+                text="UBERON:0018236",
+                description="nucleus of Bischoff"))
         setattr(cls, "UBERON:0018237",
             PermissibleValue(
                 text="UBERON:0018237",
@@ -37052,10 +40008,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018238",
                 description="dorsal column nucleus"))
-        setattr(cls, "UBERON:0018240",
+        setattr(cls, "UBERON:0018239",
             PermissibleValue(
-                text="UBERON:0018240",
-                description="panniculus carnosus muscle"))
+                text="UBERON:0018239",
+                description="rhombomere boundary"))
         setattr(cls, "UBERON:0018241",
             PermissibleValue(
                 text="UBERON:0018241",
@@ -37068,10 +40024,34 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018243",
                 description="thymic artery"))
+        setattr(cls, "UBERON:0018244",
+            PermissibleValue(
+                text="UBERON:0018244",
+                description="superficial cervical thymus"))
+        setattr(cls, "UBERON:0018245",
+            PermissibleValue(
+                text="UBERON:0018245",
+                description="deep cervical thymus"))
         setattr(cls, "UBERON:0018246",
             PermissibleValue(
                 text="UBERON:0018246",
                 description="thyroid vein"))
+        setattr(cls, "UBERON:0018247",
+            PermissibleValue(
+                text="UBERON:0018247",
+                description="cervical thymic artery"))
+        setattr(cls, "UBERON:0018248",
+            PermissibleValue(
+                text="UBERON:0018248",
+                description="inferior superficial cervical thymic artery"))
+        setattr(cls, "UBERON:0018249",
+            PermissibleValue(
+                text="UBERON:0018249",
+                description="superior superficial cervical thymic artery"))
+        setattr(cls, "UBERON:0018250",
+            PermissibleValue(
+                text="UBERON:0018250",
+                description="middle thyroid artery"))
         setattr(cls, "UBERON:0018251",
             PermissibleValue(
                 text="UBERON:0018251",
@@ -37096,10 +40076,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018256",
                 description="lacrimal vein"))
+        setattr(cls, "UBERON:0018257",
+            PermissibleValue(
+                text="UBERON:0018257",
+                description="submucosa of digestive tract"))
         setattr(cls, "UBERON:0018260",
             PermissibleValue(
                 text="UBERON:0018260",
                 description="layer of muscle tissue"))
+        setattr(cls, "UBERON:0018261",
+            PermissibleValue(
+                text="UBERON:0018261",
+                description="muscular coat of digestive tract"))
         setattr(cls, "UBERON:0018262",
             PermissibleValue(
                 text="UBERON:0018262",
@@ -37108,34 +40096,362 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018263",
                 description="ventral zone of medial entorhinal cortex"))
+        setattr(cls, "UBERON:0018264",
+            PermissibleValue(
+                text="UBERON:0018264",
+                description="dorsal lateral ganglionic eminence"))
         setattr(cls, "UBERON:0018265",
             PermissibleValue(
                 text="UBERON:0018265",
                 description="anterior root of zygomatic arch"))
-        setattr(cls, "UBERON:0018276",
+        setattr(cls, "UBERON:0018266",
             PermissibleValue(
-                text="UBERON:0018276",
-                description="egg tooth"))
+                text="UBERON:0018266",
+                description="third phalanx"))
+        setattr(cls, "UBERON:0018267",
+            PermissibleValue(
+                text="UBERON:0018267",
+                description="atlantal spinal nerve foramen"))
+        setattr(cls, "UBERON:0018268",
+            PermissibleValue(
+                text="UBERON:0018268",
+                description="type 1 adrenal tissue"))
+        setattr(cls, "UBERON:0018269",
+            PermissibleValue(
+                text="UBERON:0018269",
+                description="type 2 adrenal tissue"))
+        setattr(cls, "UBERON:0018270",
+            PermissibleValue(
+                text="UBERON:0018270",
+                description="type 3 adrenal tissue"))
+        setattr(cls, "UBERON:0018271",
+            PermissibleValue(
+                text="UBERON:0018271",
+                description="type 4 adrenal tissue"))
+        setattr(cls, "UBERON:0018272",
+            PermissibleValue(
+                text="UBERON:0018272",
+                description="apex of paracone"))
+        setattr(cls, "UBERON:0018273",
+            PermissibleValue(
+                text="UBERON:0018273",
+                description="caniniform region"))
+        setattr(cls, "UBERON:0018274",
+            PermissibleValue(
+                text="UBERON:0018274",
+                description="postcingulum of deciduous premolar 5"))
+        setattr(cls, "UBERON:0018275",
+            PermissibleValue(
+                text="UBERON:0018275",
+                description="posthypocrista of deciduous premolar 5"))
+        setattr(cls, "UBERON:0018279",
+            PermissibleValue(
+                text="UBERON:0018279",
+                description="hypoconid"))
+        setattr(cls, "UBERON:0018281",
+            PermissibleValue(
+                text="UBERON:0018281",
+                description="lower deciduous premolar 5"))
         setattr(cls, "UBERON:0018282",
             PermissibleValue(
                 text="UBERON:0018282",
                 description="lower molar 3"))
+        setattr(cls, "UBERON:0018283",
+            PermissibleValue(
+                text="UBERON:0018283",
+                description="lower pharyngobranchial toothplate"))
+        setattr(cls, "UBERON:0018284",
+            PermissibleValue(
+                text="UBERON:0018284",
+                description="lower premolar 1"))
+        setattr(cls, "UBERON:0018285",
+            PermissibleValue(
+                text="UBERON:0018285",
+                description="lower premolar 2"))
+        setattr(cls, "UBERON:0018286",
+            PermissibleValue(
+                text="UBERON:0018286",
+                description="molar 1 posteroloph"))
+        setattr(cls, "UBERON:0018287",
+            PermissibleValue(
+                text="UBERON:0018287",
+                description="premolar 1 hypoconoid"))
+        setattr(cls, "UBERON:0018288",
+            PermissibleValue(
+                text="UBERON:0018288",
+                description="paracone"))
+        setattr(cls, "UBERON:0018289",
+            PermissibleValue(
+                text="UBERON:0018289",
+                description="paracristid"))
+        setattr(cls, "UBERON:0018290",
+            PermissibleValue(
+                text="UBERON:0018290",
+                description="postcingulum"))
+        setattr(cls, "UBERON:0018291",
+            PermissibleValue(
+                text="UBERON:0018291",
+                description="posteroloph"))
+        setattr(cls, "UBERON:0018292",
+            PermissibleValue(
+                text="UBERON:0018292",
+                description="posthypocrista"))
+        setattr(cls, "UBERON:0018293",
+            PermissibleValue(
+                text="UBERON:0018293",
+                description="precingulum"))
         setattr(cls, "UBERON:0018294",
             PermissibleValue(
                 text="UBERON:0018294",
                 description="premolar 1"))
+        setattr(cls, "UBERON:0018295",
+            PermissibleValue(
+                text="UBERON:0018295",
+                description="preprotocrista"))
+        setattr(cls, "UBERON:0018296",
+            PermissibleValue(
+                text="UBERON:0018296",
+                description="replacement tooth"))
+        setattr(cls, "UBERON:0018297",
+            PermissibleValue(
+                text="UBERON:0018297",
+                description="resorption pit"))
+        setattr(cls, "UBERON:0018298",
+            PermissibleValue(
+                text="UBERON:0018298",
+                description="stylocone"))
+        setattr(cls, "UBERON:0018299",
+            PermissibleValue(
+                text="UBERON:0018299",
+                description="mandibular symphyseal tooth"))
+        setattr(cls, "UBERON:0018300",
+            PermissibleValue(
+                text="UBERON:0018300",
+                description="upper canine 1"))
+        setattr(cls, "UBERON:0018301",
+            PermissibleValue(
+                text="UBERON:0018301",
+                description="upper deciduous premolar 5"))
+        setattr(cls, "UBERON:0018302",
+            PermissibleValue(
+                text="UBERON:0018302",
+                description="upper molar 1"))
         setattr(cls, "UBERON:0018303",
             PermissibleValue(
                 text="UBERON:0018303",
                 description="adrenal tissue"))
+        setattr(cls, "UBERON:0018304",
+            PermissibleValue(
+                text="UBERON:0018304",
+                description="post-axial region of pectoral appendage"))
+        setattr(cls, "UBERON:0018305",
+            PermissibleValue(
+                text="UBERON:0018305",
+                description="bicipital surface"))
+        setattr(cls, "UBERON:0018307",
+            PermissibleValue(
+                text="UBERON:0018307",
+                description="keel"))
+        setattr(cls, "UBERON:0018308",
+            PermissibleValue(
+                text="UBERON:0018308",
+                description="caudal melanophore spot"))
+        setattr(cls, "UBERON:0018313",
+            PermissibleValue(
+                text="UBERON:0018313",
+                description="cheek scale row"))
+        setattr(cls, "UBERON:0018314",
+            PermissibleValue(
+                text="UBERON:0018314",
+                description="choanal groove"))
+        setattr(cls, "UBERON:0018316",
+            PermissibleValue(
+                text="UBERON:0018316",
+                description="cuboid facet of calcaneum"))
+        setattr(cls, "UBERON:0018318",
+            PermissibleValue(
+                text="UBERON:0018318",
+                description="entocarotid fossa"))
+        setattr(cls, "UBERON:0018319",
+            PermissibleValue(
+                text="UBERON:0018319",
+                description="extramural oviduct"))
+        setattr(cls, "UBERON:0018320",
+            PermissibleValue(
+                text="UBERON:0018320",
+                description="flexor sesamoid"))
+        setattr(cls, "UBERON:0018321",
+            PermissibleValue(
+                text="UBERON:0018321",
+                description="foramen for glossopharyngeal nerve"))
+        setattr(cls, "UBERON:0018323",
+            PermissibleValue(
+                text="UBERON:0018323",
+                description="hyoid articular area"))
+        setattr(cls, "UBERON:0018326",
+            PermissibleValue(
+                text="UBERON:0018326",
+                description="ilioischiadic foramen"))
+        setattr(cls, "UBERON:0018328",
+            PermissibleValue(
+                text="UBERON:0018328",
+                description="incisura fossa"))
+        setattr(cls, "UBERON:0018329",
+            PermissibleValue(
+                text="UBERON:0018329",
+                description="interpterygoid region"))
+        setattr(cls, "UBERON:0018330",
+            PermissibleValue(
+                text="UBERON:0018330",
+                description="interpterygoid vacuity"))
+        setattr(cls, "UBERON:0018331",
+            PermissibleValue(
+                text="UBERON:0018331",
+                description="intraramal joint"))
+        setattr(cls, "UBERON:0018332",
+            PermissibleValue(
+                text="UBERON:0018332",
+                description="jugal bar"))
+        setattr(cls, "UBERON:0018333",
+            PermissibleValue(
+                text="UBERON:0018333",
+                description="labial cartilage"))
+        setattr(cls, "UBERON:0018335",
+            PermissibleValue(
+                text="UBERON:0018335",
+                description="lateral dorsal aorta canal"))
+        setattr(cls, "UBERON:0018336",
+            PermissibleValue(
+                text="UBERON:0018336",
+                description="maxillary shank"))
+        setattr(cls, "UBERON:0018338",
+            PermissibleValue(
+                text="UBERON:0018338",
+                description="medial cotyla"))
+        setattr(cls, "UBERON:0018339",
+            PermissibleValue(
+                text="UBERON:0018339",
+                description="metotic fissure"))
+        setattr(cls, "UBERON:0018340",
+            PermissibleValue(
+                text="UBERON:0018340",
+                description="midbody melanophore spot"))
+        setattr(cls, "UBERON:0018341",
+            PermissibleValue(
+                text="UBERON:0018341",
+                description="nasal process of premaxilla"))
+        setattr(cls, "UBERON:0018342",
+            PermissibleValue(
+                text="UBERON:0018342",
+                description="nuchal hump"))
         setattr(cls, "UBERON:0018343",
             PermissibleValue(
                 text="UBERON:0018343",
                 description="oviduct mucosal fold"))
+        setattr(cls, "UBERON:0018344",
+            PermissibleValue(
+                text="UBERON:0018344",
+                description="parastyle"))
+        setattr(cls, "UBERON:0018345",
+            PermissibleValue(
+                text="UBERON:0018345",
+                description="stylar shelf"))
+        setattr(cls, "UBERON:0018346",
+            PermissibleValue(
+                text="UBERON:0018346",
+                description="parietal notch"))
+        setattr(cls, "UBERON:0018347",
+            PermissibleValue(
+                text="UBERON:0018347",
+                description="pars canalicularis of petrosal"))
+        setattr(cls, "UBERON:0018348",
+            PermissibleValue(
+                text="UBERON:0018348",
+                description="petrosal bone"))
+        setattr(cls, "UBERON:0018349",
+            PermissibleValue(
+                text="UBERON:0018349",
+                description="pharyngeal apophysis"))
+        setattr(cls, "UBERON:0018351",
+            PermissibleValue(
+                text="UBERON:0018351",
+                description="precerebral fontanelle"))
+        setattr(cls, "UBERON:0018352",
+            PermissibleValue(
+                text="UBERON:0018352",
+                description="prismatic cartilage"))
+        setattr(cls, "UBERON:0018354",
+            PermissibleValue(
+                text="UBERON:0018354",
+                description="recessus vena jugularis"))
+        setattr(cls, "UBERON:0018356",
+            PermissibleValue(
+                text="UBERON:0018356",
+                description="rostral entotympanic element"))
+        setattr(cls, "UBERON:0018357",
+            PermissibleValue(
+                text="UBERON:0018357",
+                description="sensory pore"))
+        setattr(cls, "UBERON:0018358",
+            PermissibleValue(
+                text="UBERON:0018358",
+                description="spina externa"))
+        setattr(cls, "UBERON:0018359",
+            PermissibleValue(
+                text="UBERON:0018359",
+                description="subolfactory process"))
+        setattr(cls, "UBERON:0018360",
+            PermissibleValue(
+                text="UBERON:0018360",
+                description="suborbital foramen"))
+        setattr(cls, "UBERON:0018361",
+            PermissibleValue(
+                text="UBERON:0018361",
+                description="suborbital shelf"))
+        setattr(cls, "UBERON:0018362",
+            PermissibleValue(
+                text="UBERON:0018362",
+                description="supracondylar tubercle"))
+        setattr(cls, "UBERON:0018364",
+            PermissibleValue(
+                text="UBERON:0018364",
+                description="suprameatal foramen"))
+        setattr(cls, "UBERON:0018365",
+            PermissibleValue(
+                text="UBERON:0018365",
+                description="supratemporal process"))
+        setattr(cls, "UBERON:0018366",
+            PermissibleValue(
+                text="UBERON:0018366",
+                description="supratendinal bridge"))
+        setattr(cls, "UBERON:0018367",
+            PermissibleValue(
+                text="UBERON:0018367",
+                description="processus ventralis of thoracic vertebra"))
+        setattr(cls, "UBERON:0018368",
+            PermissibleValue(
+                text="UBERON:0018368",
+                description="processus ventrolateralis of thoracic vertebra"))
+        setattr(cls, "UBERON:0018371",
+            PermissibleValue(
+                text="UBERON:0018371",
+                description="ventral supracondylar tubercle"))
+        setattr(cls, "UBERON:0018372",
+            PermissibleValue(
+                text="UBERON:0018372",
+                description="dorsal supracondylar tubercle"))
         setattr(cls, "UBERON:0018373",
             PermissibleValue(
                 text="UBERON:0018373",
                 description="vidian canal"))
+        setattr(cls, "UBERON:0018374",
+            PermissibleValue(
+                text="UBERON:0018374",
+                description="sallet"))
+        setattr(cls, "UBERON:0018375",
+            PermissibleValue(
+                text="UBERON:0018375",
+                description="deciduous premolar 5"))
         setattr(cls, "UBERON:0018376",
             PermissibleValue(
                 text="UBERON:0018376",
@@ -37168,6 +40484,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018391",
                 description="chemoreceptor"))
+        setattr(cls, "UBERON:0018392",
+            PermissibleValue(
+                text="UBERON:0018392",
+                description="arterial baroreceptor"))
+        setattr(cls, "UBERON:0018393",
+            PermissibleValue(
+                text="UBERON:0018393",
+                description="low-pressure baroreceptor"))
+        setattr(cls, "UBERON:0018394",
+            PermissibleValue(
+                text="UBERON:0018394",
+                description="vein baroreceptor"))
+        setattr(cls, "UBERON:0018395",
+            PermissibleValue(
+                text="UBERON:0018395",
+                description="cardiac baroreceptor"))
+        setattr(cls, "UBERON:0018396",
+            PermissibleValue(
+                text="UBERON:0018396",
+                description="pulmonary baroreceptor"))
         setattr(cls, "UBERON:0018397",
             PermissibleValue(
                 text="UBERON:0018397",
@@ -37244,6 +40580,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018532",
                 description="female deep inguinal ring"))
+        setattr(cls, "UBERON:0018533",
+            PermissibleValue(
+                text="UBERON:0018533",
+                description="crus of penis or clitoris"))
+        setattr(cls, "UBERON:0018540",
+            PermissibleValue(
+                text="UBERON:0018540",
+                description="breast feather tract"))
         setattr(cls, "UBERON:0018542",
             PermissibleValue(
                 text="UBERON:0018542",
@@ -37276,6 +40620,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018552",
                 description="incisor tooth 2"))
+        setattr(cls, "UBERON:0018553",
+            PermissibleValue(
+                text="UBERON:0018553",
+                description="primary central incisor tooth"))
+        setattr(cls, "UBERON:0018554",
+            PermissibleValue(
+                text="UBERON:0018554",
+                description="primary lateral incisor tooth"))
         setattr(cls, "UBERON:0018561",
             PermissibleValue(
                 text="UBERON:0018561",
@@ -37428,6 +40780,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018617",
                 description="primary lower tooth"))
+        setattr(cls, "UBERON:0018621",
+            PermissibleValue(
+                text="UBERON:0018621",
+                description="upper canine tooth"))
+        setattr(cls, "UBERON:0018622",
+            PermissibleValue(
+                text="UBERON:0018622",
+                description="lower canine tooth"))
         setattr(cls, "UBERON:0018623",
             PermissibleValue(
                 text="UBERON:0018623",
@@ -37444,6 +40804,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018644",
                 description="deciduous molar tooth 1"))
+        setattr(cls, "UBERON:0018645",
+            PermissibleValue(
+                text="UBERON:0018645",
+                description="incisor region of dentition"))
+        setattr(cls, "UBERON:0018646",
+            PermissibleValue(
+                text="UBERON:0018646",
+                description="premolar tooth 5"))
+        setattr(cls, "UBERON:0018647",
+            PermissibleValue(
+                text="UBERON:0018647",
+                description="premolar tooth 4"))
+        setattr(cls, "UBERON:0018648",
+            PermissibleValue(
+                text="UBERON:0018648",
+                description="upper premolar 4"))
         setattr(cls, "UBERON:0018649",
             PermissibleValue(
                 text="UBERON:0018649",
@@ -37456,6 +40832,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018651",
                 description="foramen lacerum"))
+        setattr(cls, "UBERON:0018652",
+            PermissibleValue(
+                text="UBERON:0018652",
+                description="maxillary recess"))
         setattr(cls, "UBERON:0018653",
             PermissibleValue(
                 text="UBERON:0018653",
@@ -37464,10 +40844,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0018654",
                 description="posterior ethmoidal foramen"))
+        setattr(cls, "UBERON:0018655",
+            PermissibleValue(
+                text="UBERON:0018655",
+                description="pars endotympanica"))
         setattr(cls, "UBERON:0018656",
             PermissibleValue(
                 text="UBERON:0018656",
                 description="puparium"))
+        setattr(cls, "UBERON:0018657",
+            PermissibleValue(
+                text="UBERON:0018657",
+                description="pupal case"))
+        setattr(cls, "UBERON:0018664",
+            PermissibleValue(
+                text="UBERON:0018664",
+                description="neck of bone element"))
         setattr(cls, "UBERON:0018667",
             PermissibleValue(
                 text="UBERON:0018667",
@@ -37588,6 +40980,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0019210",
                 description="pole of lens"))
+        setattr(cls, "UBERON:0019211",
+            PermissibleValue(
+                text="UBERON:0019211",
+                description="supcapsular region of anterior region of lens"))
+        setattr(cls, "UBERON:0019212",
+            PermissibleValue(
+                text="UBERON:0019212",
+                description="supcapsular region of posterior region of lens"))
+        setattr(cls, "UBERON:0019221",
+            PermissibleValue(
+                text="UBERON:0019221",
+                description="digit 1 or 5"))
+        setattr(cls, "UBERON:0019222",
+            PermissibleValue(
+                text="UBERON:0019222",
+                description="digit 2, 3 or 4"))
+        setattr(cls, "UBERON:0019231",
+            PermissibleValue(
+                text="UBERON:0019231",
+                description="manual digit 1 or 5"))
+        setattr(cls, "UBERON:0019232",
+            PermissibleValue(
+                text="UBERON:0019232",
+                description="manual digit 2, 3 or 4"))
+        setattr(cls, "UBERON:0019241",
+            PermissibleValue(
+                text="UBERON:0019241",
+                description="pedal digit 1 or 5"))
+        setattr(cls, "UBERON:0019242",
+            PermissibleValue(
+                text="UBERON:0019242",
+                description="pedal digit 2, 3 or 4"))
         setattr(cls, "UBERON:0019243",
             PermissibleValue(
                 text="UBERON:0019243",
@@ -37764,18 +41188,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0019314",
                 description="epifascicular nucleus"))
+        setattr(cls, "UBERON:0019315",
+            PermissibleValue(
+                text="UBERON:0019315",
+                description="meibum"))
+        setattr(cls, "UBERON:0019319",
+            PermissibleValue(
+                text="UBERON:0019319",
+                description="exocrine gland of integumental system"))
         setattr(cls, "UBERON:0019320",
             PermissibleValue(
                 text="UBERON:0019320",
                 description="precordial region"))
-        setattr(cls, "UBERON:0019324",
-            PermissibleValue(
-                text="UBERON:0019324",
-                description="intraorbital lacrimal gland"))
-        setattr(cls, "UBERON:0019325",
-            PermissibleValue(
-                text="UBERON:0019325",
-                description="exorbital lacrimal gland"))
         setattr(cls, "UBERON:0019326",
             PermissibleValue(
                 text="UBERON:0019326",
@@ -37936,6 +41360,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0022281",
                 description="epithelium of crypt of Lieberkuhn of large intestine"))
+        setattr(cls, "UBERON:0022282",
+            PermissibleValue(
+                text="UBERON:0022282",
+                description="secretion of Harderian gland"))
         setattr(cls, "UBERON:0022283",
             PermissibleValue(
                 text="UBERON:0022283",
@@ -37948,6 +41376,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0022285",
                 description="strand of tylotrich hair"))
+        setattr(cls, "UBERON:0022286",
+            PermissibleValue(
+                text="UBERON:0022286",
+                description="secretion of nictitans gland"))
+        setattr(cls, "UBERON:0022287",
+            PermissibleValue(
+                text="UBERON:0022287",
+                description="tear film"))
         setattr(cls, "UBERON:0022288",
             PermissibleValue(
                 text="UBERON:0022288",
@@ -37956,10 +41392,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0022292",
                 description="splenic arteriole"))
+        setattr(cls, "UBERON:0022293",
+            PermissibleValue(
+                text="UBERON:0022293",
+                description="reproductive gland secretion"))
         setattr(cls, "UBERON:0022294",
             PermissibleValue(
                 text="UBERON:0022294",
                 description="morphological boundary"))
+        setattr(cls, "UBERON:0022295",
+            PermissibleValue(
+                text="UBERON:0022295",
+                description="integumental surface"))
         setattr(cls, "UBERON:0022296",
             PermissibleValue(
                 text="UBERON:0022296",
@@ -37968,6 +41412,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0022297",
                 description="palpebral branch of infra-orbital nerve"))
+        setattr(cls, "UBERON:0022298",
+            PermissibleValue(
+                text="UBERON:0022298",
+                description="lower eyelid nerve"))
+        setattr(cls, "UBERON:0022299",
+            PermissibleValue(
+                text="UBERON:0022299",
+                description="upper eyelid nerve"))
         setattr(cls, "UBERON:0022300",
             PermissibleValue(
                 text="UBERON:0022300",
@@ -38096,6 +41548,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0022358",
                 description="placenta blood vessel"))
+        setattr(cls, "UBERON:0022360",
+            PermissibleValue(
+                text="UBERON:0022360",
+                description="male mammary gland duct"))
         setattr(cls, "UBERON:0022361",
             PermissibleValue(
                 text="UBERON:0022361",
@@ -38124,10 +41580,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0022395",
                 description="temporal fusiform gyrus"))
+        setattr(cls, "UBERON:0022396",
+            PermissibleValue(
+                text="UBERON:0022396",
+                description="anterior temporal fusiform gyrus"))
+        setattr(cls, "UBERON:0022397",
+            PermissibleValue(
+                text="UBERON:0022397",
+                description="posterior temporal fusiform gyrus"))
         setattr(cls, "UBERON:0022398",
             PermissibleValue(
                 text="UBERON:0022398",
                 description="paracingulate gyrus"))
+        setattr(cls, "UBERON:0022420",
+            PermissibleValue(
+                text="UBERON:0022420",
+                description="temporal part of superior longitudinal fasciculus"))
         setattr(cls, "UBERON:0022421",
             PermissibleValue(
                 text="UBERON:0022421",
@@ -38160,6 +41628,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0022429",
                 description="temporal cortex cingulum"))
+        setattr(cls, "UBERON:0022430",
+            PermissibleValue(
+                text="UBERON:0022430",
+                description="hippocampus cortex cingulum"))
         setattr(cls, "UBERON:0022434",
             PermissibleValue(
                 text="UBERON:0022434",
@@ -39004,6 +42476,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0033939",
                 description="sacral spinal cord dorsal horn"))
+        setattr(cls, "UBERON:0034670",
+            PermissibleValue(
+                text="UBERON:0034670",
+                description="palatal taste bud"))
         setattr(cls, "UBERON:0034671",
             PermissibleValue(
                 text="UBERON:0034671",
@@ -39032,6 +42508,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034680",
                 description="laryngeal prominence"))
+        setattr(cls, "UBERON:0034681",
+            PermissibleValue(
+                text="UBERON:0034681",
+                description="vocal organ"))
         setattr(cls, "UBERON:0034688",
             PermissibleValue(
                 text="UBERON:0034688",
@@ -39048,6 +42528,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034693",
                 description="cremasteric artery"))
+        setattr(cls, "UBERON:0034694",
+            PermissibleValue(
+                text="UBERON:0034694",
+                description="gubernacular bulb, intra-abdominal part"))
+        setattr(cls, "UBERON:0034695",
+            PermissibleValue(
+                text="UBERON:0034695",
+                description="gubernacular bulb, extra-abdominal part"))
         setattr(cls, "UBERON:0034696",
             PermissibleValue(
                 text="UBERON:0034696",
@@ -39104,14 +42592,58 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034712",
                 description="yellow fibrocartilage"))
+        setattr(cls, "UBERON:0034713",
+            PermissibleValue(
+                text="UBERON:0034713",
+                description="cranial neuron projection bundle"))
+        setattr(cls, "UBERON:0034714",
+            PermissibleValue(
+                text="UBERON:0034714",
+                description="epiphyseal tract"))
         setattr(cls, "UBERON:0034715",
             PermissibleValue(
                 text="UBERON:0034715",
                 description="pineal tract"))
+        setattr(cls, "UBERON:0034716",
+            PermissibleValue(
+                text="UBERON:0034716",
+                description="rostral epiphyseal tract"))
+        setattr(cls, "UBERON:0034717",
+            PermissibleValue(
+                text="UBERON:0034717",
+                description="integumental taste bud"))
+        setattr(cls, "UBERON:0034718",
+            PermissibleValue(
+                text="UBERON:0034718",
+                description="barbel taste bud"))
+        setattr(cls, "UBERON:0034719",
+            PermissibleValue(
+                text="UBERON:0034719",
+                description="lip taste bud"))
+        setattr(cls, "UBERON:0034720",
+            PermissibleValue(
+                text="UBERON:0034720",
+                description="head taste bud"))
+        setattr(cls, "UBERON:0034721",
+            PermissibleValue(
+                text="UBERON:0034721",
+                description="pharyngeal taste bud"))
+        setattr(cls, "UBERON:0034722",
+            PermissibleValue(
+                text="UBERON:0034722",
+                description="mouth roof taste bud"))
+        setattr(cls, "UBERON:0034724",
+            PermissibleValue(
+                text="UBERON:0034724",
+                description="esophageal taste bud"))
         setattr(cls, "UBERON:0034725",
             PermissibleValue(
                 text="UBERON:0034725",
                 description="pterygopalatine nerve"))
+        setattr(cls, "UBERON:0034726",
+            PermissibleValue(
+                text="UBERON:0034726",
+                description="trunk taste bud"))
         setattr(cls, "UBERON:0034727",
             PermissibleValue(
                 text="UBERON:0034727",
@@ -39204,6 +42736,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034767",
                 description="buccal vestibule"))
+        setattr(cls, "UBERON:0034768",
+            PermissibleValue(
+                text="UBERON:0034768",
+                description="morphological feature"))
         setattr(cls, "UBERON:0034769",
             PermissibleValue(
                 text="UBERON:0034769",
@@ -39436,6 +42972,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034877",
                 description="angioblastic cord"))
+        setattr(cls, "UBERON:0034878",
+            PermissibleValue(
+                text="UBERON:0034878",
+                description="prechordal mesoderm"))
         setattr(cls, "UBERON:0034884",
             PermissibleValue(
                 text="UBERON:0034884",
@@ -39496,10 +43036,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034903",
                 description="left atrium endocardium"))
+        setattr(cls, "UBERON:0034905",
+            PermissibleValue(
+                text="UBERON:0034905",
+                description="gland lumen"))
         setattr(cls, "UBERON:0034907",
             PermissibleValue(
                 text="UBERON:0034907",
                 description="pineal parenchyma"))
+        setattr(cls, "UBERON:0034908",
+            PermissibleValue(
+                text="UBERON:0034908",
+                description="scapular muscle"))
         setattr(cls, "UBERON:0034909",
             PermissibleValue(
                 text="UBERON:0034909",
@@ -39536,6 +43084,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034924",
                 description="aligned anatomical group"))
+        setattr(cls, "UBERON:0034925",
+            PermissibleValue(
+                text="UBERON:0034925",
+                description="anatomical collection"))
         setattr(cls, "UBERON:0034926",
             PermissibleValue(
                 text="UBERON:0034926",
@@ -39548,6 +43100,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034928",
                 description="dorsal surface of penis"))
+        setattr(cls, "UBERON:0034929",
+            PermissibleValue(
+                text="UBERON:0034929",
+                description="external soft tissue zone"))
         setattr(cls, "UBERON:0034931",
             PermissibleValue(
                 text="UBERON:0034931",
@@ -39556,6 +43112,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034932",
                 description="epithelium of biliary system"))
+        setattr(cls, "UBERON:0034933",
+            PermissibleValue(
+                text="UBERON:0034933",
+                description="layer of smooth muscle tissue"))
+        setattr(cls, "UBERON:0034934",
+            PermissibleValue(
+                text="UBERON:0034934",
+                description="Weber's gland"))
         setattr(cls, "UBERON:0034935",
             PermissibleValue(
                 text="UBERON:0034935",
@@ -39564,6 +43128,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034936",
                 description="pars plana of ciliary body"))
+        setattr(cls, "UBERON:0034938",
+            PermissibleValue(
+                text="UBERON:0034938",
+                description="mucocartilage tissue"))
+        setattr(cls, "UBERON:0034939",
+            PermissibleValue(
+                text="UBERON:0034939",
+                description="future piston"))
         setattr(cls, "UBERON:0034940",
             PermissibleValue(
                 text="UBERON:0034940",
@@ -39572,18 +43144,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034944",
                 description="zone of organ"))
+        setattr(cls, "UBERON:0034945",
+            PermissibleValue(
+                text="UBERON:0034945",
+                description="excreted gas"))
         setattr(cls, "UBERON:0034946",
             PermissibleValue(
                 text="UBERON:0034946",
                 description="gas excreted from digestive tract"))
+        setattr(cls, "UBERON:0034947",
+            PermissibleValue(
+                text="UBERON:0034947",
+                description="gas in respiratory system"))
+        setattr(cls, "UBERON:0034948",
+            PermissibleValue(
+                text="UBERON:0034948",
+                description="carbon dioxide in respiratory system"))
         setattr(cls, "UBERON:0034949",
             PermissibleValue(
                 text="UBERON:0034949",
                 description="lymphatic valve"))
-        setattr(cls, "UBERON:0034951",
-            PermissibleValue(
-                text="UBERON:0034951",
-                description="subcutaneous lymph sac"))
         setattr(cls, "UBERON:0034953",
             PermissibleValue(
                 text="UBERON:0034953",
@@ -39592,14 +43172,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034958",
                 description="retroperitoneal embryonic lymph sac"))
-        setattr(cls, "UBERON:0034959",
-            PermissibleValue(
-                text="UBERON:0034959",
-                description="right lymph heart"))
-        setattr(cls, "UBERON:0034960",
-            PermissibleValue(
-                text="UBERON:0034960",
-                description="left lymph heart"))
         setattr(cls, "UBERON:0034963",
             PermissibleValue(
                 text="UBERON:0034963",
@@ -39636,6 +43208,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0034979",
                 description="nonchromaffin paraganglion"))
+        setattr(cls, "UBERON:0034980",
+            PermissibleValue(
+                text="UBERON:0034980",
+                description="jugular bulb"))
         setattr(cls, "UBERON:0034981",
             PermissibleValue(
                 text="UBERON:0034981",
@@ -39820,6 +43396,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035044",
                 description="olfactory cortex layer 3"))
+        setattr(cls, "UBERON:0035045",
+            PermissibleValue(
+                text="UBERON:0035045",
+                description="parotid gland intralobular duct"))
+        setattr(cls, "UBERON:0035046",
+            PermissibleValue(
+                text="UBERON:0035046",
+                description="parotid gland intercalated duct"))
+        setattr(cls, "UBERON:0035047",
+            PermissibleValue(
+                text="UBERON:0035047",
+                description="parotid gland striated duct"))
+        setattr(cls, "UBERON:0035048",
+            PermissibleValue(
+                text="UBERON:0035048",
+                description="parotid gland excretory duct"))
         setattr(cls, "UBERON:0035049",
             PermissibleValue(
                 text="UBERON:0035049",
@@ -39848,6 +43440,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035077",
                 description="lateral nasal gland"))
+        setattr(cls, "UBERON:0035078",
+            PermissibleValue(
+                text="UBERON:0035078",
+                description="parotid gland interlobular duct"))
         setattr(cls, "UBERON:0035079",
             PermissibleValue(
                 text="UBERON:0035079",
@@ -39856,10 +43452,74 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035080",
                 description="intraparotid lymph node"))
+        setattr(cls, "UBERON:0035083",
+            PermissibleValue(
+                text="UBERON:0035083",
+                description="transverse process-bearing vertebra"))
+        setattr(cls, "UBERON:0035084",
+            PermissibleValue(
+                text="UBERON:0035084",
+                description="non-transverse process-bearing vertebra"))
         setattr(cls, "UBERON:0035085",
             PermissibleValue(
                 text="UBERON:0035085",
                 description="anatomical plane"))
+        setattr(cls, "UBERON:0035086",
+            PermissibleValue(
+                text="UBERON:0035086",
+                description="plane of autotomy"))
+        setattr(cls, "UBERON:0035087",
+            PermissibleValue(
+                text="UBERON:0035087",
+                description="fracture plane"))
+        setattr(cls, "UBERON:0035088",
+            PermissibleValue(
+                text="UBERON:0035088",
+                description="vertebral fracture plane"))
+        setattr(cls, "UBERON:0035089",
+            PermissibleValue(
+                text="UBERON:0035089",
+                description="plane of autotomy bisecting joint"))
+        setattr(cls, "UBERON:0035090",
+            PermissibleValue(
+                text="UBERON:0035090",
+                description="plane of autotomy bisecting intervertebral joint"))
+        setattr(cls, "UBERON:0035091",
+            PermissibleValue(
+                text="UBERON:0035091",
+                description="extrinsic post-anal tail muscle"))
+        setattr(cls, "UBERON:0035093",
+            PermissibleValue(
+                text="UBERON:0035093",
+                description="extensor caudae muscle"))
+        setattr(cls, "UBERON:0035094",
+            PermissibleValue(
+                text="UBERON:0035094",
+                description="extensor caudae medialis muscle"))
+        setattr(cls, "UBERON:0035095",
+            PermissibleValue(
+                text="UBERON:0035095",
+                description="extensor caudae lateralis muscle"))
+        setattr(cls, "UBERON:0035097",
+            PermissibleValue(
+                text="UBERON:0035097",
+                description="iliocaudalis muscle"))
+        setattr(cls, "UBERON:0035098",
+            PermissibleValue(
+                text="UBERON:0035098",
+                description="hemipenis transversus muscle"))
+        setattr(cls, "UBERON:0035099",
+            PermissibleValue(
+                text="UBERON:0035099",
+                description="transversus perinei muscle"))
+        setattr(cls, "UBERON:0035100",
+            PermissibleValue(
+                text="UBERON:0035100",
+                description="retractor penis magnus muscle"))
+        setattr(cls, "UBERON:0035102",
+            PermissibleValue(
+                text="UBERON:0035102",
+                description="transverse process of caudal vertebra"))
         setattr(cls, "UBERON:0035103",
             PermissibleValue(
                 text="UBERON:0035103",
@@ -39892,6 +43552,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035111",
                 description="medial plantar nerve"))
+        setattr(cls, "UBERON:0035112",
+            PermissibleValue(
+                text="UBERON:0035112",
+                description="intrinsic muscle"))
         setattr(cls, "UBERON:0035113",
             PermissibleValue(
                 text="UBERON:0035113",
@@ -39900,6 +43564,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035114",
                 description="lateral part of mediodorsal nucleus of the thalamus"))
+        setattr(cls, "UBERON:0035115",
+            PermissibleValue(
+                text="UBERON:0035115",
+                description="diastema between central incisors"))
+        setattr(cls, "UBERON:0035116",
+            PermissibleValue(
+                text="UBERON:0035116",
+                description="diastema between upper central incisors"))
+        setattr(cls, "UBERON:0035117",
+            PermissibleValue(
+                text="UBERON:0035117",
+                description="diastema between lower central incisors"))
+        setattr(cls, "UBERON:0035118",
+            PermissibleValue(
+                text="UBERON:0035118",
+                description="material entity in digestive tract"))
+        setattr(cls, "UBERON:0035119",
+            PermissibleValue(
+                text="UBERON:0035119",
+                description="diastema between incisors"))
         setattr(cls, "UBERON:0035120",
             PermissibleValue(
                 text="UBERON:0035120",
@@ -39920,6 +43604,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035126",
                 description="transverse palatine suture"))
+        setattr(cls, "UBERON:0035127",
+            PermissibleValue(
+                text="UBERON:0035127",
+                description="suture of hard palate"))
         setattr(cls, "UBERON:0035128",
             PermissibleValue(
                 text="UBERON:0035128",
@@ -39928,6 +43616,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035129",
                 description="pes cartilage element"))
+        setattr(cls, "UBERON:0035130",
+            PermissibleValue(
+                text="UBERON:0035130",
+                description="auditory ossicle endochondral element"))
         setattr(cls, "UBERON:0035131",
             PermissibleValue(
                 text="UBERON:0035131",
@@ -39948,10 +43640,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035142",
                 description="preputial space of male"))
+        setattr(cls, "UBERON:0035143",
+            PermissibleValue(
+                text="UBERON:0035143",
+                description="preputial space of female"))
         setattr(cls, "UBERON:0035144",
             PermissibleValue(
                 text="UBERON:0035144",
                 description="preputial space"))
+        setattr(cls, "UBERON:0035145",
+            PermissibleValue(
+                text="UBERON:0035145",
+                description="nucleus sacci vasculosi"))
+        setattr(cls, "UBERON:0035146",
+            PermissibleValue(
+                text="UBERON:0035146",
+                description="tractus sacci vasculosi"))
+        setattr(cls, "UBERON:0035147",
+            PermissibleValue(
+                text="UBERON:0035147",
+                description="axochord"))
+        setattr(cls, "UBERON:0035148",
+            PermissibleValue(
+                text="UBERON:0035148",
+                description="presumptive axochord"))
         setattr(cls, "UBERON:0035149",
             PermissibleValue(
                 text="UBERON:0035149",
@@ -40260,6 +43972,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035401",
                 description="posterior wall of nasopharynx"))
+        setattr(cls, "UBERON:0035403",
+            PermissibleValue(
+                text="UBERON:0035403",
+                description="hypophysial artery"))
         setattr(cls, "UBERON:0035404",
             PermissibleValue(
                 text="UBERON:0035404",
@@ -40444,6 +44160,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035550",
                 description="superficial vein"))
+        setattr(cls, "UBERON:0035551",
+            PermissibleValue(
+                text="UBERON:0035551",
+                description="deep vasculature"))
         setattr(cls, "UBERON:0035552",
             PermissibleValue(
                 text="UBERON:0035552",
@@ -40456,50 +44176,86 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035554",
                 description="right cardiac chamber"))
-        setattr(cls, "UBERON:0035560",
+        setattr(cls, "UBERON:0035561",
             PermissibleValue(
-                text="UBERON:0035560",
-                description="obsolete fascia dentata"))
+                text="UBERON:0035561",
+                description="styliform element"))
         setattr(cls, "UBERON:0035562",
             PermissibleValue(
                 text="UBERON:0035562",
                 description="intermediate pretectal nucleus"))
-        setattr(cls, "UBERON:0035563",
-            PermissibleValue(
-                text="UBERON:0035563",
-                description="magnocellular superficial pretectal nucleus"))
-        setattr(cls, "UBERON:0035564",
-            PermissibleValue(
-                text="UBERON:0035564",
-                description="parvocellular superficial pretectal nucleus"))
-        setattr(cls, "UBERON:0035565",
-            PermissibleValue(
-                text="UBERON:0035565",
-                description="caudal pretectal nucleus"))
-        setattr(cls, "UBERON:0035566",
-            PermissibleValue(
-                text="UBERON:0035566",
-                description="central pretectal nucleus"))
-        setattr(cls, "UBERON:0035567",
-            PermissibleValue(
-                text="UBERON:0035567",
-                description="accessory pretectal nucleus"))
-        setattr(cls, "UBERON:0035569",
-            PermissibleValue(
-                text="UBERON:0035569",
-                description="periventricular pretectal nucleus"))
         setattr(cls, "UBERON:0035570",
             PermissibleValue(
                 text="UBERON:0035570",
                 description="tectothalamic tract"))
+        setattr(cls, "UBERON:0035572",
+            PermissibleValue(
+                text="UBERON:0035572",
+                description="nucleus praetectalis profundus"))
         setattr(cls, "UBERON:0035575",
             PermissibleValue(
                 text="UBERON:0035575",
                 description="paracommissural nucleus of solitary tract"))
-        setattr(cls, "UBERON:0035577",
+        setattr(cls, "UBERON:0035580",
             PermissibleValue(
-                text="UBERON:0035577",
-                description="paracommissural periventricular pretectal nucleus"))
+                text="UBERON:0035580",
+                description="nucleus geniculatus of pretectum"))
+        setattr(cls, "UBERON:0035581",
+            PermissibleValue(
+                text="UBERON:0035581",
+                description="nucleus lentiformis of pretectum"))
+        setattr(cls, "UBERON:0035582",
+            PermissibleValue(
+                text="UBERON:0035582",
+                description="nucleus posteriodorsalis of pretectum"))
+        setattr(cls, "UBERON:0035583",
+            PermissibleValue(
+                text="UBERON:0035583",
+                description="nucleus lentiformis thalamus"))
+        setattr(cls, "UBERON:0035584",
+            PermissibleValue(
+                text="UBERON:0035584",
+                description="ventral pretectal nucleus (sauropsida)"))
+        setattr(cls, "UBERON:0035585",
+            PermissibleValue(
+                text="UBERON:0035585",
+                description="tectal gray nucleus (Testudines)"))
+        setattr(cls, "UBERON:0035586",
+            PermissibleValue(
+                text="UBERON:0035586",
+                description="nucleus lentiformis mesencephali (Aves)"))
+        setattr(cls, "UBERON:0035587",
+            PermissibleValue(
+                text="UBERON:0035587",
+                description="nucleus pretectalis diffusus"))
+        setattr(cls, "UBERON:0035588",
+            PermissibleValue(
+                text="UBERON:0035588",
+                description="subpretectal complex of Aves"))
+        setattr(cls, "UBERON:0035589",
+            PermissibleValue(
+                text="UBERON:0035589",
+                description="nucleus subpretectalis"))
+        setattr(cls, "UBERON:0035590",
+            PermissibleValue(
+                text="UBERON:0035590",
+                description="nucleus interstitio-pretectalis-subpretectalis"))
+        setattr(cls, "UBERON:0035591",
+            PermissibleValue(
+                text="UBERON:0035591",
+                description="lateral spiriform nucleus"))
+        setattr(cls, "UBERON:0035592",
+            PermissibleValue(
+                text="UBERON:0035592",
+                description="medial spiriform nucleus"))
+        setattr(cls, "UBERON:0035593",
+            PermissibleValue(
+                text="UBERON:0035593",
+                description="nucleus circularis of pretectum"))
+        setattr(cls, "UBERON:0035594",
+            PermissibleValue(
+                text="UBERON:0035594",
+                description="accessory optic system"))
         setattr(cls, "UBERON:0035595",
             PermissibleValue(
                 text="UBERON:0035595",
@@ -40512,18 +44268,58 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035597",
                 description="profundal placode"))
+        setattr(cls, "UBERON:0035598",
+            PermissibleValue(
+                text="UBERON:0035598",
+                description="maxillomandibular placode"))
+        setattr(cls, "UBERON:0035599",
+            PermissibleValue(
+                text="UBERON:0035599",
+                description="profundal part of trigeminal ganglion complex"))
+        setattr(cls, "UBERON:0035601",
+            PermissibleValue(
+                text="UBERON:0035601",
+                description="maxillomandibular part of trigeminal ganglion complex"))
+        setattr(cls, "UBERON:0035602",
+            PermissibleValue(
+                text="UBERON:0035602",
+                description="collar nerve cord"))
+        setattr(cls, "UBERON:0035603",
+            PermissibleValue(
+                text="UBERON:0035603",
+                description="enteropneust proboscis"))
+        setattr(cls, "UBERON:0035604",
+            PermissibleValue(
+                text="UBERON:0035604",
+                description="enteropneust collar"))
+        setattr(cls, "UBERON:0035605",
+            PermissibleValue(
+                text="UBERON:0035605",
+                description="enteropneust trunk"))
         setattr(cls, "UBERON:0035606",
             PermissibleValue(
                 text="UBERON:0035606",
                 description="cartilage of external acoustic meatus"))
-        setattr(cls, "UBERON:0035607",
+        setattr(cls, "UBERON:0035608",
             PermissibleValue(
-                text="UBERON:0035607",
-                description="accessory nerve cord of dorsal region"))
+                text="UBERON:0035608",
+                description="dura mater lymph vessel"))
         setattr(cls, "UBERON:0035609",
             PermissibleValue(
                 text="UBERON:0035609",
                 description="outer root sheath companion layer"))
+        setattr(cls, "UBERON:0035610",
+            PermissibleValue(
+                text="UBERON:0035610",
+                description="hair canal"))
+        setattr(cls, "UBERON:0035611",
+            PermissibleValue(
+                text="UBERON:0035611",
+                description="hair peg"))
+        setattr(cls, "UBERON:0035612",
+            PermissibleValue(
+                text="UBERON:0035612",
+                description="nasal turbinal"))
         setattr(cls, "UBERON:0035617",
             PermissibleValue(
                 text="UBERON:0035617",
@@ -40540,6 +44336,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035634",
                 description="quadrant of breast"))
+        setattr(cls, "UBERON:0035635",
+            PermissibleValue(
+                text="UBERON:0035635",
+                description="upper quadrant of breast"))
+        setattr(cls, "UBERON:0035636",
+            PermissibleValue(
+                text="UBERON:0035636",
+                description="lower quadrant of breast"))
+        setattr(cls, "UBERON:0035637",
+            PermissibleValue(
+                text="UBERON:0035637",
+                description="inner quadrant of breast"))
+        setattr(cls, "UBERON:0035638",
+            PermissibleValue(
+                text="UBERON:0035638",
+                description="outer quadrant of breast"))
         setattr(cls, "UBERON:0035639",
             PermissibleValue(
                 text="UBERON:0035639",
@@ -40684,6 +44496,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035775",
                 description="submandibular region"))
+        setattr(cls, "UBERON:0035776",
+            PermissibleValue(
+                text="UBERON:0035776",
+                description="accessory ciliary ganglion"))
+        setattr(cls, "UBERON:0035783",
+            PermissibleValue(
+                text="UBERON:0035783",
+                description="ganglion of ciliary nerve"))
+        setattr(cls, "UBERON:0035784",
+            PermissibleValue(
+                text="UBERON:0035784",
+                description="seminal clot"))
         setattr(cls, "UBERON:0035785",
             PermissibleValue(
                 text="UBERON:0035785",
@@ -40716,6 +44540,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035805",
                 description="muscle layer of sigmoid colon"))
+        setattr(cls, "UBERON:0035806",
+            PermissibleValue(
+                text="UBERON:0035806",
+                description="Hensen stripe"))
+        setattr(cls, "UBERON:0035807",
+            PermissibleValue(
+                text="UBERON:0035807",
+                description="area X of basal ganglion"))
         setattr(cls, "UBERON:0035808",
             PermissibleValue(
                 text="UBERON:0035808",
@@ -40728,6 +44560,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035814",
                 description="pericardial fat"))
+        setattr(cls, "UBERON:0035815",
+            PermissibleValue(
+                text="UBERON:0035815",
+                description="paracardial fat"))
+        setattr(cls, "UBERON:0035818",
+            PermissibleValue(
+                text="UBERON:0035818",
+                description="visceral fat"))
         setattr(cls, "UBERON:0035819",
             PermissibleValue(
                 text="UBERON:0035819",
@@ -40764,6 +44604,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035831",
                 description="costal diaphragm"))
+        setattr(cls, "UBERON:0035832",
+            PermissibleValue(
+                text="UBERON:0035832",
+                description="caval sphincter"))
+        setattr(cls, "UBERON:0035833",
+            PermissibleValue(
+                text="UBERON:0035833",
+                description="lower esophagus muscularis layer"))
+        setattr(cls, "UBERON:0035834",
+            PermissibleValue(
+                text="UBERON:0035834",
+                description="lower esophagus mucosa"))
         setattr(cls, "UBERON:0035835",
             PermissibleValue(
                 text="UBERON:0035835",
@@ -40788,10 +44640,34 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035840",
                 description="esophagogastric junction muscularis mucosa"))
+        setattr(cls, "UBERON:0035841",
+            PermissibleValue(
+                text="UBERON:0035841",
+                description="esophagogastric junction muscularis propria"))
+        setattr(cls, "UBERON:0035842",
+            PermissibleValue(
+                text="UBERON:0035842",
+                description="extensor digitorum brevis manus"))
+        setattr(cls, "UBERON:0035843",
+            PermissibleValue(
+                text="UBERON:0035843",
+                description="lower esophagus submucosa"))
+        setattr(cls, "UBERON:0035844",
+            PermissibleValue(
+                text="UBERON:0035844",
+                description="lower esophagus muscularis mucosa"))
         setattr(cls, "UBERON:0035845",
             PermissibleValue(
                 text="UBERON:0035845",
                 description="enthesis"))
+        setattr(cls, "UBERON:0035846",
+            PermissibleValue(
+                text="UBERON:0035846",
+                description="fibrous enthesis"))
+        setattr(cls, "UBERON:0035847",
+            PermissibleValue(
+                text="UBERON:0035847",
+                description="fibrocartilage enthesis"))
         setattr(cls, "UBERON:0035848",
             PermissibleValue(
                 text="UBERON:0035848",
@@ -40824,6 +44700,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035877",
                 description="primary somatosensory area barrel field layer 4"))
+        setattr(cls, "UBERON:0035878",
+            PermissibleValue(
+                text="UBERON:0035878",
+                description="subchondral region of epiphysis"))
         setattr(cls, "UBERON:0035879",
             PermissibleValue(
                 text="UBERON:0035879",
@@ -40844,6 +44724,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035883",
                 description="lacrimomaxillary suture"))
+        setattr(cls, "UBERON:0035884",
+            PermissibleValue(
+                text="UBERON:0035884",
+                description="maxillary-premaxillary suture"))
         setattr(cls, "UBERON:0035885",
             PermissibleValue(
                 text="UBERON:0035885",
@@ -41004,10 +44888,46 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0035940",
                 description="central medullary reticular nuclear complex"))
+        setattr(cls, "UBERON:0035941",
+            PermissibleValue(
+                text="UBERON:0035941",
+                description="Kimura membrane"))
+        setattr(cls, "UBERON:0035942",
+            PermissibleValue(
+                text="UBERON:0035942",
+                description="space between upper and lower jaws"))
+        setattr(cls, "UBERON:0035943",
+            PermissibleValue(
+                text="UBERON:0035943",
+                description="life cycle temporal boundary"))
+        setattr(cls, "UBERON:0035944",
+            PermissibleValue(
+                text="UBERON:0035944",
+                description="life-death temporal boundary"))
+        setattr(cls, "UBERON:0035945",
+            PermissibleValue(
+                text="UBERON:0035945",
+                description="start of life cycle"))
+        setattr(cls, "UBERON:0035946",
+            PermissibleValue(
+                text="UBERON:0035946",
+                description="start of neonate stage"))
         setattr(cls, "UBERON:0035956",
             PermissibleValue(
                 text="UBERON:0035956",
                 description="epididymal lumen"))
+        setattr(cls, "UBERON:0035957",
+            PermissibleValue(
+                text="UBERON:0035957",
+                description="antotic pillar"))
+        setattr(cls, "UBERON:0035958",
+            PermissibleValue(
+                text="UBERON:0035958",
+                description="preoptic pillar"))
+        setattr(cls, "UBERON:0035959",
+            PermissibleValue(
+                text="UBERON:0035959",
+                description="orbital pillar"))
         setattr(cls, "UBERON:0035960",
             PermissibleValue(
                 text="UBERON:0035960",
@@ -41140,10 +45060,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036014",
                 description="gluteal sulcus"))
+        setattr(cls, "UBERON:0036015",
+            PermissibleValue(
+                text="UBERON:0036015",
+                description="castoreum"))
         setattr(cls, "UBERON:0036016",
             PermissibleValue(
                 text="UBERON:0036016",
                 description="honey"))
+        setattr(cls, "UBERON:0036017",
+            PermissibleValue(
+                text="UBERON:0036017",
+                description="regurgitated substance"))
+        setattr(cls, "UBERON:0036018",
+            PermissibleValue(
+                text="UBERON:0036018",
+                description="regurgitated pellet"))
+        setattr(cls, "UBERON:0036019",
+            PermissibleValue(
+                text="UBERON:0036019",
+                description="castor sac"))
         setattr(cls, "UBERON:0036043",
             PermissibleValue(
                 text="UBERON:0036043",
@@ -41160,6 +45096,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036065",
                 description="cerebellum vermis lobule VIIAt"))
+        setattr(cls, "UBERON:0036066",
+            PermissibleValue(
+                text="UBERON:0036066",
+                description="inferior endocardial cushion"))
+        setattr(cls, "UBERON:0036067",
+            PermissibleValue(
+                text="UBERON:0036067",
+                description="superior endocardial cushion"))
         setattr(cls, "UBERON:0036068",
             PermissibleValue(
                 text="UBERON:0036068",
@@ -41172,6 +45116,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036070",
                 description="tracheoesophageal septum"))
+        setattr(cls, "UBERON:0036071",
+            PermissibleValue(
+                text="UBERON:0036071",
+                description="diaphragmaticus muscle"))
         setattr(cls, "UBERON:0036072",
             PermissibleValue(
                 text="UBERON:0036072",
@@ -41196,10 +45144,62 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036145",
                 description="glymphatic system"))
+        setattr(cls, "UBERON:0036146",
+            PermissibleValue(
+                text="UBERON:0036146",
+                description="cardiopharyngeal field"))
+        setattr(cls, "UBERON:0036147",
+            PermissibleValue(
+                text="UBERON:0036147",
+                description="oral siphon muscle"))
+        setattr(cls, "UBERON:0036149",
+            PermissibleValue(
+                text="UBERON:0036149",
+                description="suprapubic skin"))
+        setattr(cls, "UBERON:0036150",
+            PermissibleValue(
+                text="UBERON:0036150",
+                description="skin appendage follicle"))
+        setattr(cls, "UBERON:0036151",
+            PermissibleValue(
+                text="UBERON:0036151",
+                description="diffuse placenta"))
+        setattr(cls, "UBERON:0036152",
+            PermissibleValue(
+                text="UBERON:0036152",
+                description="cotyledonary placenta"))
+        setattr(cls, "UBERON:0036153",
+            PermissibleValue(
+                text="UBERON:0036153",
+                description="zonary placenta"))
+        setattr(cls, "UBERON:0036154",
+            PermissibleValue(
+                text="UBERON:0036154",
+                description="discoid placenta"))
+        setattr(cls, "UBERON:0036161",
+            PermissibleValue(
+                text="UBERON:0036161",
+                description="epitheliochorial placenta"))
+        setattr(cls, "UBERON:0036162",
+            PermissibleValue(
+                text="UBERON:0036162",
+                description="endotheliochorial placenta"))
+        setattr(cls, "UBERON:0036163",
+            PermissibleValue(
+                text="UBERON:0036163",
+                description="hemochorial placenta"))
         setattr(cls, "UBERON:0036164",
             PermissibleValue(
                 text="UBERON:0036164",
                 description="ambient gyrus"))
+        setattr(cls, "UBERON:0036167",
+            PermissibleValue(
+                text="UBERON:0036167",
+                description="Sattler's layer"))
+        setattr(cls, "UBERON:0036168",
+            PermissibleValue(
+                text="UBERON:0036168",
+                description="Haller's layer"))
         setattr(cls, "UBERON:0036172",
             PermissibleValue(
                 text="UBERON:0036172",
@@ -41216,6 +45216,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036176",
                 description="opponens digiti minimi of hand"))
+        setattr(cls, "UBERON:0036177",
+            PermissibleValue(
+                text="UBERON:0036177",
+                description="nucleus recessus"))
         setattr(cls, "UBERON:0036185",
             PermissibleValue(
                 text="UBERON:0036185",
@@ -41256,6 +45260,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036224",
                 description="corticobulbar and corticospinal tracts"))
+        setattr(cls, "UBERON:0036225",
+            PermissibleValue(
+                text="UBERON:0036225",
+                description="respiratory system gland"))
         setattr(cls, "UBERON:0036243",
             PermissibleValue(
                 text="UBERON:0036243",
@@ -41264,6 +45272,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036244",
                 description="secretion of serous membrane"))
+        setattr(cls, "UBERON:0036245",
+            PermissibleValue(
+                text="UBERON:0036245",
+                description="parenchyma of mammary gland"))
         setattr(cls, "UBERON:0036246",
             PermissibleValue(
                 text="UBERON:0036246",
@@ -41304,10 +45316,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036256",
                 description="iliac lymph sac"))
+        setattr(cls, "UBERON:0036259",
+            PermissibleValue(
+                text="UBERON:0036259",
+                description="cardial lymph propulsor"))
         setattr(cls, "UBERON:0036260",
             PermissibleValue(
                 text="UBERON:0036260",
                 description="embryonic cisterna chyli"))
+        setattr(cls, "UBERON:0036261",
+            PermissibleValue(
+                text="UBERON:0036261",
+                description="accessory lymph sac"))
         setattr(cls, "UBERON:0036262",
             PermissibleValue(
                 text="UBERON:0036262",
@@ -41340,6 +45360,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036269",
                 description="penis blood vessel"))
+        setattr(cls, "UBERON:0036270",
+            PermissibleValue(
+                text="UBERON:0036270",
+                description="epihyoideum"))
+        setattr(cls, "UBERON:0036271",
+            PermissibleValue(
+                text="UBERON:0036271",
+                description="omphalopleure"))
+        setattr(cls, "UBERON:0036272",
+            PermissibleValue(
+                text="UBERON:0036272",
+                description="bilaminar omphalopleure"))
+        setattr(cls, "UBERON:0036273",
+            PermissibleValue(
+                text="UBERON:0036273",
+                description="trilaminar omphalopleure"))
         setattr(cls, "UBERON:0036274",
             PermissibleValue(
                 text="UBERON:0036274",
@@ -41392,10 +45428,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0036301",
                 description="vasculature of spleen"))
+        setattr(cls, "UBERON:0036302",
+            PermissibleValue(
+                text="UBERON:0036302",
+                description="vasculature of central nervous system plus retina"))
         setattr(cls, "UBERON:0036303",
             PermissibleValue(
                 text="UBERON:0036303",
                 description="vasculature of central nervous system"))
+        setattr(cls, "UBERON:0036304",
+            PermissibleValue(
+                text="UBERON:0036304",
+                description="anatomical border"))
         setattr(cls, "UBERON:0036328",
             PermissibleValue(
                 text="UBERON:0036328",
@@ -41528,6 +45572,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0037463",
                 description="terminal hair"))
+        setattr(cls, "UBERON:0037464",
+            PermissibleValue(
+                text="UBERON:0037464",
+                description="androgenic hair"))
         setattr(cls, "UBERON:0037465",
             PermissibleValue(
                 text="UBERON:0037465",
@@ -42180,10 +46228,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0039262",
                 description="segmental pulmonary artery"))
-        setattr(cls, "UBERON:0039267",
-            PermissibleValue(
-                text="UBERON:0039267",
-                description="obsolete deep vein of penis"))
         setattr(cls, "UBERON:0039288",
             PermissibleValue(
                 text="UBERON:0039288",
@@ -42224,6 +46268,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0039421",
                 description="superficial dorsal vein of penis"))
+        setattr(cls, "UBERON:0039422",
+            PermissibleValue(
+                text="UBERON:0039422",
+                description="dorsal vein of penis"))
+        setattr(cls, "UBERON:0039835",
+            PermissibleValue(
+                text="UBERON:0039835",
+                description="posterior intercostal artery"))
         setattr(cls, "UBERON:0039838",
             PermissibleValue(
                 text="UBERON:0039838",
@@ -42288,10 +46340,54 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:0039857",
                 description="left ovarian vein"))
+        setattr(cls, "UBERON:0700019",
+            PermissibleValue(
+                text="UBERON:0700019",
+                description="parallel fiber"))
+        setattr(cls, "UBERON:0700020",
+            PermissibleValue(
+                text="UBERON:0700020",
+                description="parallel fiber, bifurcated"))
+        setattr(cls, "UBERON:1000000",
+            PermissibleValue(
+                text="UBERON:1000000",
+                description="chin ventral margin"))
+        setattr(cls, "UBERON:1000001",
+            PermissibleValue(
+                text="UBERON:1000001",
+                description="collection of hairs on vertex"))
+        setattr(cls, "UBERON:1000002",
+            PermissibleValue(
+                text="UBERON:1000002",
+                description="cranial midline area"))
         setattr(cls, "UBERON:1000003",
             PermissibleValue(
                 text="UBERON:1000003",
                 description="dewlap"))
+        setattr(cls, "UBERON:1000004",
+            PermissibleValue(
+                text="UBERON:1000004",
+                description="collection of hair on external ear"))
+        setattr(cls, "UBERON:1000005",
+            PermissibleValue(
+                text="UBERON:1000005",
+                description="external ear margin"))
+        setattr(cls, "UBERON:1000006",
+            PermissibleValue(
+                text="UBERON:1000006",
+                description="collection of hair on forehead"))
+        setattr(cls, "UBERON:1000007",
+            PermissibleValue(
+                text="UBERON:1000007",
+                description="forehead protuberance"))
+        setattr(cls, "UBERON:1000008",
+            PermissibleValue(
+                text="UBERON:1000008",
+                description="left part of face"))
+        setattr(cls, "UBERON:1000009",
+            PermissibleValue(
+                text="UBERON:1000009",
+                description="midline crest"))
         setattr(cls, "UBERON:1000010",
             PermissibleValue(
                 text="UBERON:1000010",
@@ -42300,10 +46396,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:1000011",
                 description="labial commissure"))
-        setattr(cls, "UBERON:1000015",
+        setattr(cls, "UBERON:1000012",
             PermissibleValue(
-                text="UBERON:1000015",
-                description="skin of snout"))
+                text="UBERON:1000012",
+                description="nose anterior margin"))
+        setattr(cls, "UBERON:1000013",
+            PermissibleValue(
+                text="UBERON:1000013",
+                description="nose vertex"))
+        setattr(cls, "UBERON:1000014",
+            PermissibleValue(
+                text="UBERON:1000014",
+                description="right part of face"))
+        setattr(cls, "UBERON:1000017",
+            PermissibleValue(
+                text="UBERON:1000017",
+                description="tip of external ear"))
+        setattr(cls, "UBERON:1000018",
+            PermissibleValue(
+                text="UBERON:1000018",
+                description="cluster of hairs"))
         setattr(cls, "UBERON:1000019",
             PermissibleValue(
                 text="UBERON:1000019",
@@ -42324,6 +46436,1190 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:1000024",
                 description="parenchyma of spleen"))
+        setattr(cls, "UBERON:1100000",
+            PermissibleValue(
+                text="UBERON:1100000",
+                description="digestive tract junction"))
+        setattr(cls, "UBERON:1200000",
+            PermissibleValue(
+                text="UBERON:1200000",
+                description="ileocecal fold"))
+        setattr(cls, "UBERON:1200001",
+            PermissibleValue(
+                text="UBERON:1200001",
+                description="sixth lumbar dorsal root ganglion"))
+        setattr(cls, "UBERON:1200002",
+            PermissibleValue(
+                text="UBERON:1200002",
+                description="carotid artery intima-media region"))
+        setattr(cls, "UBERON:1200003",
+            PermissibleValue(
+                text="UBERON:1200003",
+                description="uterine fundus"))
+        setattr(cls, "UBERON:1200004",
+            PermissibleValue(
+                text="UBERON:1200004",
+                description="sinus of lymph node"))
+        setattr(cls, "UBERON:1200005",
+            PermissibleValue(
+                text="UBERON:1200005",
+                description="acromial process of scapula"))
+        setattr(cls, "UBERON:1200006",
+            PermissibleValue(
+                text="UBERON:1200006",
+                description="alae of sacrum"))
+        setattr(cls, "UBERON:1200007",
+            PermissibleValue(
+                text="UBERON:1200007",
+                description="alveolar border of mandible"))
+        setattr(cls, "UBERON:1200008",
+            PermissibleValue(
+                text="UBERON:1200008",
+                description="anterior arch of first cervical vertebra"))
+        setattr(cls, "UBERON:1200009",
+            PermissibleValue(
+                text="UBERON:1200009",
+                description="anterior clinoid process of sphenoid bone"))
+        setattr(cls, "UBERON:1200010",
+            PermissibleValue(
+                text="UBERON:1200010",
+                description="anterior gluteal line of ilium of os coxa"))
+        setattr(cls, "UBERON:1200011",
+            PermissibleValue(
+                text="UBERON:1200011",
+                description="anterior sacral foramina of sacrum"))
+        setattr(cls, "UBERON:1200012",
+            PermissibleValue(
+                text="UBERON:1200012",
+                description="anterior tubercle of first cervical vertebra"))
+        setattr(cls, "UBERON:1200013",
+            PermissibleValue(
+                text="UBERON:1200013",
+                description="anterolateral tubercle of tibia"))
+        setattr(cls, "UBERON:1200014",
+            PermissibleValue(
+                text="UBERON:1200014",
+                description="arcuate line of ilium of os coxa"))
+        setattr(cls, "UBERON:1200015",
+            PermissibleValue(
+                text="UBERON:1200015",
+                description="articular surface for cuboid bone of calcaneus"))
+        setattr(cls, "UBERON:1200016",
+            PermissibleValue(
+                text="UBERON:1200016",
+                description="articular tubercle of squamous part of temporal bone"))
+        setattr(cls, "UBERON:1200017",
+            PermissibleValue(
+                text="UBERON:1200017",
+                description="auricular surface of ilium of os coxa"))
+        setattr(cls, "UBERON:1200018",
+            PermissibleValue(
+                text="UBERON:1200018",
+                description="base of first distal phalanx of foot"))
+        setattr(cls, "UBERON:1200019",
+            PermissibleValue(
+                text="UBERON:1200019",
+                description="base of first distal phalanx of hand"))
+        setattr(cls, "UBERON:1200020",
+            PermissibleValue(
+                text="UBERON:1200020",
+                description="base of first proximal phalanx of foot"))
+        setattr(cls, "UBERON:1200021",
+            PermissibleValue(
+                text="UBERON:1200021",
+                description="base of first proximal phalanx of hand"))
+        setattr(cls, "UBERON:1200022",
+            PermissibleValue(
+                text="UBERON:1200022",
+                description="body of calcaneus"))
+        setattr(cls, "UBERON:1200023",
+            PermissibleValue(
+                text="UBERON:1200023",
+                description="body of second cervical vertebra"))
+        setattr(cls, "UBERON:1200024",
+            PermissibleValue(
+                text="UBERON:1200024",
+                description="body of sphenoid bone"))
+        setattr(cls, "UBERON:1200025",
+            PermissibleValue(
+                text="UBERON:1200025",
+                description="calcaneal sulcus of calcaneus"))
+        setattr(cls, "UBERON:1200026",
+            PermissibleValue(
+                text="UBERON:1200026",
+                description="coccygeal cornu of coccyx"))
+        setattr(cls, "UBERON:1200027",
+            PermissibleValue(
+                text="UBERON:1200027",
+                description="coronoid fossa of humerus"))
+        setattr(cls, "UBERON:1200028",
+            PermissibleValue(
+                text="UBERON:1200028",
+                description="costal groove of first rib"))
+        setattr(cls, "UBERON:1200029",
+            PermissibleValue(
+                text="UBERON:1200029",
+                description="costal groove of twelfth rib"))
+        setattr(cls, "UBERON:1200030",
+            PermissibleValue(
+                text="UBERON:1200030",
+                description="costal notches of sternum"))
+        setattr(cls, "UBERON:1200031",
+            PermissibleValue(
+                text="UBERON:1200031",
+                description="crista galla of ethmoid bone"))
+        setattr(cls, "UBERON:1200032",
+            PermissibleValue(
+                text="UBERON:1200032",
+                description="digastric fossa of mandible"))
+        setattr(cls, "UBERON:1200033",
+            PermissibleValue(
+                text="UBERON:1200033",
+                description="dorsum sellae of sphenoid bone"))
+        setattr(cls, "UBERON:1200034",
+            PermissibleValue(
+                text="UBERON:1200034",
+                description="ethmoidal air cells of ethmoid bone"))
+        setattr(cls, "UBERON:1200035",
+            PermissibleValue(
+                text="UBERON:1200035",
+                description="ethmoidal bulla of ethmoid bone"))
+        setattr(cls, "UBERON:1200036",
+            PermissibleValue(
+                text="UBERON:1200036",
+                description="external auditory meatus of squamous part of temporal bone"))
+        setattr(cls, "UBERON:1200038",
+            PermissibleValue(
+                text="UBERON:1200038",
+                description="facet of eleventh rib"))
+        setattr(cls, "UBERON:1200039",
+            PermissibleValue(
+                text="UBERON:1200039",
+                description="facet of first rib"))
+        setattr(cls, "UBERON:1200040",
+            PermissibleValue(
+                text="UBERON:1200040",
+                description="facet of tenth rib"))
+        setattr(cls, "UBERON:1200041",
+            PermissibleValue(
+                text="UBERON:1200041",
+                description="facet of twelfth rib"))
+        setattr(cls, "UBERON:1200042",
+            PermissibleValue(
+                text="UBERON:1200042",
+                description="fibular facet of tibia"))
+        setattr(cls, "UBERON:1200043",
+            PermissibleValue(
+                text="UBERON:1200043",
+                description="fibular notch of tibia"))
+        setattr(cls, "UBERON:1200044",
+            PermissibleValue(
+                text="UBERON:1200044",
+                description="fibular trochlea of calcaneus"))
+        setattr(cls, "UBERON:1200045",
+            PermissibleValue(
+                text="UBERON:1200045",
+                description="foramen ovale of sphenoid bone"))
+        setattr(cls, "UBERON:1200046",
+            PermissibleValue(
+                text="UBERON:1200046",
+                description="fossa for lacrimal sac of lacrimal bone"))
+        setattr(cls, "UBERON:1200047",
+            PermissibleValue(
+                text="UBERON:1200047",
+                description="frontal crest of frontal bone"))
+        setattr(cls, "UBERON:1200048",
+            PermissibleValue(
+                text="UBERON:1200048",
+                description="glabella of frontal bone"))
+        setattr(cls, "UBERON:1200050",
+            PermissibleValue(
+                text="UBERON:1200050",
+                description="gluteal surface of ilium of os coxa"))
+        setattr(cls, "UBERON:1200051",
+            PermissibleValue(
+                text="UBERON:1200051",
+                description="gluteal tuberosity of femur"))
+        setattr(cls, "UBERON:1200052",
+            PermissibleValue(
+                text="UBERON:1200052",
+                description="granula foveaolae of parietal bone"))
+        setattr(cls, "UBERON:1200053",
+            PermissibleValue(
+                text="UBERON:1200053",
+                description="greater palatine canal of maxilla"))
+        setattr(cls, "UBERON:1200054",
+            PermissibleValue(
+                text="UBERON:1200054",
+                description="greater wings of sphenoid bone"))
+        setattr(cls, "UBERON:1200055",
+            PermissibleValue(
+                text="UBERON:1200055",
+                description="groove for fibularis longus tendon of cuboid"))
+        setattr(cls, "UBERON:1200056",
+            PermissibleValue(
+                text="UBERON:1200056",
+                description="groove for middle meningeal a. of parietal bone"))
+        setattr(cls, "UBERON:1200057",
+            PermissibleValue(
+                text="UBERON:1200057",
+                description="groove for nasopalatine nerve of vomer"))
+        setattr(cls, "UBERON:1200058",
+            PermissibleValue(
+                text="UBERON:1200058",
+                description="groove for posterior deep temporal artery of squamous part of temporal bone"))
+        setattr(cls, "UBERON:1200060",
+            PermissibleValue(
+                text="UBERON:1200060",
+                description="groove for subclavian artery of first rib"))
+        setattr(cls, "UBERON:1200061",
+            PermissibleValue(
+                text="UBERON:1200061",
+                description="groove for subclavian vein of first rib"))
+        setattr(cls, "UBERON:1200062",
+            PermissibleValue(
+                text="UBERON:1200062",
+                description="groove for superior sagittal sinus of frontal bone"))
+        setattr(cls, "UBERON:1200063",
+            PermissibleValue(
+                text="UBERON:1200063",
+                description="groove for superior sagittal sinus of parietal bone"))
+        setattr(cls, "UBERON:1200064",
+            PermissibleValue(
+                text="UBERON:1200064",
+                description="groove for tendon of flexor hallucis longus muscle of calcaneus"))
+        setattr(cls, "UBERON:1200065",
+            PermissibleValue(
+                text="UBERON:1200065",
+                description="groove for transverse sinus of squamous part of occipital bone"))
+        setattr(cls, "UBERON:1200066",
+            PermissibleValue(
+                text="UBERON:1200066",
+                description="groove for vertebral artery of first cervical vertebra"))
+        setattr(cls, "UBERON:1200067",
+            PermissibleValue(
+                text="UBERON:1200067",
+                description="head of radius of radius"))
+        setattr(cls, "UBERON:1200068",
+            PermissibleValue(
+                text="UBERON:1200068",
+                description="head of second distal phalanx of foot"))
+        setattr(cls, "UBERON:1200069",
+            PermissibleValue(
+                text="UBERON:1200069",
+                description="head of second distal phalanx of hand"))
+        setattr(cls, "UBERON:1200070",
+            PermissibleValue(
+                text="UBERON:1200070",
+                description="head of second middle phalanx of foot"))
+        setattr(cls, "UBERON:1200071",
+            PermissibleValue(
+                text="UBERON:1200071",
+                description="head of second middle phalanx of hand"))
+        setattr(cls, "UBERON:1200072",
+            PermissibleValue(
+                text="UBERON:1200072",
+                description="head of third middle phalanx of hand"))
+        setattr(cls, "UBERON:1200073",
+            PermissibleValue(
+                text="UBERON:1200073",
+                description="head of ulna of ulna"))
+        setattr(cls, "UBERON:1200074",
+            PermissibleValue(
+                text="UBERON:1200074",
+                description="hiatus and groove of petrous part of temporal bone for greater petrosal nerve"))
+        setattr(cls, "UBERON:1200075",
+            PermissibleValue(
+                text="UBERON:1200075",
+                description="hiatus and groove of petrous part of temporal bone for lesser petrosal nerve"))
+        setattr(cls, "UBERON:1200076",
+            PermissibleValue(
+                text="UBERON:1200076",
+                description="hyoid region bone"))
+        setattr(cls, "UBERON:1200080",
+            PermissibleValue(
+                text="UBERON:1200080",
+                description="iliac tubercle of ilium of os coxa"))
+        setattr(cls, "UBERON:1200081",
+            PermissibleValue(
+                text="UBERON:1200081",
+                description="iliac tuberosity of ilium of os coxa"))
+        setattr(cls, "UBERON:1200082",
+            PermissibleValue(
+                text="UBERON:1200082",
+                description="iliopubic ramus of os coxa"))
+        setattr(cls, "UBERON:1200084",
+            PermissibleValue(
+                text="UBERON:1200084",
+                description="inferior articular facet of eighth thoracic vertebra"))
+        setattr(cls, "UBERON:1200085",
+            PermissibleValue(
+                text="UBERON:1200085",
+                description="inferior articular facet of eleventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200086",
+            PermissibleValue(
+                text="UBERON:1200086",
+                description="inferior articular facet of fifth cervical vertebra"))
+        setattr(cls, "UBERON:1200087",
+            PermissibleValue(
+                text="UBERON:1200087",
+                description="inferior articular facet of fifth thoracic vertebra"))
+        setattr(cls, "UBERON:1200088",
+            PermissibleValue(
+                text="UBERON:1200088",
+                description="inferior articular facet of first cervical vertebra"))
+        setattr(cls, "UBERON:1200089",
+            PermissibleValue(
+                text="UBERON:1200089",
+                description="inferior articular facet of first thoracic vertebra"))
+        setattr(cls, "UBERON:1200090",
+            PermissibleValue(
+                text="UBERON:1200090",
+                description="inferior articular facet of fourth cervical vertebra"))
+        setattr(cls, "UBERON:1200091",
+            PermissibleValue(
+                text="UBERON:1200091",
+                description="inferior articular facet of fourth thoracic vertebra"))
+        setattr(cls, "UBERON:1200092",
+            PermissibleValue(
+                text="UBERON:1200092",
+                description="inferior articular facet of ninth thoracic vertebra"))
+        setattr(cls, "UBERON:1200093",
+            PermissibleValue(
+                text="UBERON:1200093",
+                description="inferior articular facet of second cervical vertebra"))
+        setattr(cls, "UBERON:1200094",
+            PermissibleValue(
+                text="UBERON:1200094",
+                description="inferior articular facet of second thoracic vertebra"))
+        setattr(cls, "UBERON:1200095",
+            PermissibleValue(
+                text="UBERON:1200095",
+                description="inferior articular facet of seventh cervical vertebra"))
+        setattr(cls, "UBERON:1200096",
+            PermissibleValue(
+                text="UBERON:1200096",
+                description="inferior articular facet of seventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200097",
+            PermissibleValue(
+                text="UBERON:1200097",
+                description="inferior articular facet of sixth cervical vertebra"))
+        setattr(cls, "UBERON:1200098",
+            PermissibleValue(
+                text="UBERON:1200098",
+                description="inferior articular facet of sixth thoracic vertebra"))
+        setattr(cls, "UBERON:1200099",
+            PermissibleValue(
+                text="UBERON:1200099",
+                description="inferior articular facet of tenth thoracic vertebra"))
+        setattr(cls, "UBERON:1200100",
+            PermissibleValue(
+                text="UBERON:1200100",
+                description="inferior articular facet of third cervical vertebra"))
+        setattr(cls, "UBERON:1200101",
+            PermissibleValue(
+                text="UBERON:1200101",
+                description="inferior articular facet of third thoracic vertebra"))
+        setattr(cls, "UBERON:1200102",
+            PermissibleValue(
+                text="UBERON:1200102",
+                description="inferior articular facet of twelfth thoracic vertebra"))
+        setattr(cls, "UBERON:1200103",
+            PermissibleValue(
+                text="UBERON:1200103",
+                description="inferior articular process of first cervical vertebra"))
+        setattr(cls, "UBERON:1200104",
+            PermissibleValue(
+                text="UBERON:1200104",
+                description="inferior articular process of second cervical vertebra"))
+        setattr(cls, "UBERON:1200105",
+            PermissibleValue(
+                text="UBERON:1200105",
+                description="inferior costal facet of eleventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200106",
+            PermissibleValue(
+                text="UBERON:1200106",
+                description="inferior costal facet of tenth thoracic vertebra"))
+        setattr(cls, "UBERON:1200107",
+            PermissibleValue(
+                text="UBERON:1200107",
+                description="inferior mental spine of mandible"))
+        setattr(cls, "UBERON:1200108",
+            PermissibleValue(
+                text="UBERON:1200108",
+                description="inferior nuchal line of squamous part of occipital bone"))
+        setattr(cls, "UBERON:1200109",
+            PermissibleValue(
+                text="UBERON:1200109",
+                description="inferior vertebral notch of first cervical vertebra"))
+        setattr(cls, "UBERON:1200110",
+            PermissibleValue(
+                text="UBERON:1200110",
+                description="infraglenoid tubercle of scapula"))
+        setattr(cls, "UBERON:1200112",
+            PermissibleValue(
+                text="UBERON:1200112",
+                description="infraspinous fossa of scapula"))
+        setattr(cls, "UBERON:1200113",
+            PermissibleValue(
+                text="UBERON:1200113",
+                description="intercondylar notch of femur"))
+        setattr(cls, "UBERON:1200114",
+            PermissibleValue(
+                text="UBERON:1200114",
+                description="intermediate sacral crest of sacrum"))
+        setattr(cls, "UBERON:1200115",
+            PermissibleValue(
+                text="UBERON:1200115",
+                description="internal auditory meatus of petrous part of temporal bone"))
+        setattr(cls, "UBERON:1200116",
+            PermissibleValue(
+                text="UBERON:1200116",
+                description="internal occipital protuberance of squamous part of occipital bone"))
+        setattr(cls, "UBERON:1200117",
+            PermissibleValue(
+                text="UBERON:1200117",
+                description="interosseus border of tibia"))
+        setattr(cls, "UBERON:1200118",
+            PermissibleValue(
+                text="UBERON:1200118",
+                description="ischial body of ischium of os coxa"))
+        setattr(cls, "UBERON:1200120",
+            PermissibleValue(
+                text="UBERON:1200120",
+                description="lacrimal fossa of frontal bone"))
+        setattr(cls, "UBERON:1200121",
+            PermissibleValue(
+                text="UBERON:1200121",
+                description="lamina of first cervical vertebra"))
+        setattr(cls, "UBERON:1200122",
+            PermissibleValue(
+                text="UBERON:1200122",
+                description="lamina of second cervical vertebra"))
+        setattr(cls, "UBERON:1200123",
+            PermissibleValue(
+                text="UBERON:1200123",
+                description="lateral process of tuberosity of calcaneus"))
+        setattr(cls, "UBERON:1200125",
+            PermissibleValue(
+                text="UBERON:1200125",
+                description="lateral sacral crest of sacrum"))
+        setattr(cls, "UBERON:1200126",
+            PermissibleValue(
+                text="UBERON:1200126",
+                description="lesser wings of sphenoid bone"))
+        setattr(cls, "UBERON:1200127",
+            PermissibleValue(
+                text="UBERON:1200127",
+                description="linea terminalis of sacrum"))
+        setattr(cls, "UBERON:1200128",
+            PermissibleValue(
+                text="UBERON:1200128",
+                description="lunate surface of os coxa"))
+        setattr(cls, "UBERON:1200129",
+            PermissibleValue(
+                text="UBERON:1200129",
+                description="mammillary process of fifth lumbar vertebra"))
+        setattr(cls, "UBERON:1200130",
+            PermissibleValue(
+                text="UBERON:1200130",
+                description="mammillary process of first lumbar vertebra"))
+        setattr(cls, "UBERON:1200131",
+            PermissibleValue(
+                text="UBERON:1200131",
+                description="mammillary process of fourth lumbar vertebra"))
+        setattr(cls, "UBERON:1200132",
+            PermissibleValue(
+                text="UBERON:1200132",
+                description="mammillary process of second lumbar vertebra"))
+        setattr(cls, "UBERON:1200133",
+            PermissibleValue(
+                text="UBERON:1200133",
+                description="mammillary process of third lumbar vertebra"))
+        setattr(cls, "UBERON:1200134",
+            PermissibleValue(
+                text="UBERON:1200134",
+                description="mandibular angle of mandible"))
+        setattr(cls, "UBERON:1200135",
+            PermissibleValue(
+                text="UBERON:1200135",
+                description="mandibular foramen of mandible"))
+        setattr(cls, "UBERON:1200136",
+            PermissibleValue(
+                text="UBERON:1200136",
+                description="mandibular fossa of squamous part of temporal bone"))
+        setattr(cls, "UBERON:1200137",
+            PermissibleValue(
+                text="UBERON:1200137",
+                description="mandibular notch of mandible"))
+        setattr(cls, "UBERON:1200138",
+            PermissibleValue(
+                text="UBERON:1200138",
+                description="mastoid foramen of mastoid part of temporal bone"))
+        setattr(cls, "UBERON:1200139",
+            PermissibleValue(
+                text="UBERON:1200139",
+                description="mastoid notch of mastoid part of temporal bone"))
+        setattr(cls, "UBERON:1200140",
+            PermissibleValue(
+                text="UBERON:1200140",
+                description="medial malleolus of tibia"))
+        setattr(cls, "UBERON:1200141",
+            PermissibleValue(
+                text="UBERON:1200141",
+                description="medial process of tuberosity of calcaneus"))
+        setattr(cls, "UBERON:1200142",
+            PermissibleValue(
+                text="UBERON:1200142",
+                description="medial pterygoid plate of sphenoid bone"))
+        setattr(cls, "UBERON:1200143",
+            PermissibleValue(
+                text="UBERON:1200143",
+                description="median sacral crest of sacrum"))
+        setattr(cls, "UBERON:1200144",
+            PermissibleValue(
+                text="UBERON:1200144",
+                description="mental protuberance of mandible"))
+        setattr(cls, "UBERON:1200145",
+            PermissibleValue(
+                text="UBERON:1200145",
+                description="mylohyoid groove of mandible"))
+        setattr(cls, "UBERON:1200146",
+            PermissibleValue(
+                text="UBERON:1200146",
+                description="mylohyoid line of mandible"))
+        setattr(cls, "UBERON:1200147",
+            PermissibleValue(
+                text="UBERON:1200147",
+                description="nasolacrimal canal of maxilla"))
+        setattr(cls, "UBERON:1200148",
+            PermissibleValue(
+                text="UBERON:1200148",
+                description="neck of radius of radius"))
+        setattr(cls, "UBERON:1200149",
+            PermissibleValue(
+                text="UBERON:1200149",
+                description="non-articular facet of tubercle of eighth rib"))
+        setattr(cls, "UBERON:1200150",
+            PermissibleValue(
+                text="UBERON:1200150",
+                description="non-articular facet of tubercle of fifth rib"))
+        setattr(cls, "UBERON:1200151",
+            PermissibleValue(
+                text="UBERON:1200151",
+                description="non-articular facet of tubercle of first rib"))
+        setattr(cls, "UBERON:1200152",
+            PermissibleValue(
+                text="UBERON:1200152",
+                description="non-articular facet of tubercle of fourth rib"))
+        setattr(cls, "UBERON:1200153",
+            PermissibleValue(
+                text="UBERON:1200153",
+                description="non-articular facet of tubercle of ninth rib"))
+        setattr(cls, "UBERON:1200154",
+            PermissibleValue(
+                text="UBERON:1200154",
+                description="non-articular facet of tubercle of second rib"))
+        setattr(cls, "UBERON:1200155",
+            PermissibleValue(
+                text="UBERON:1200155",
+                description="non-articular facet of tubercle of seventh rib"))
+        setattr(cls, "UBERON:1200156",
+            PermissibleValue(
+                text="UBERON:1200156",
+                description="non-articular facet of tubercle of sixth rib"))
+        setattr(cls, "UBERON:1200157",
+            PermissibleValue(
+                text="UBERON:1200157",
+                description="non-articular facet of tubercle of tenth rib"))
+        setattr(cls, "UBERON:1200158",
+            PermissibleValue(
+                text="UBERON:1200158",
+                description="non-articular facet of tubercle of third rib"))
+        setattr(cls, "UBERON:1200160",
+            PermissibleValue(
+                text="UBERON:1200160",
+                description="obturator groove of pubis of os coxa"))
+        setattr(cls, "UBERON:1200164",
+            PermissibleValue(
+                text="UBERON:1200164",
+                description="olfactory foramina of ethmoid bone"))
+        setattr(cls, "UBERON:1200166",
+            PermissibleValue(
+                text="UBERON:1200166",
+                description="pecten pubis of pubis of os coxa"))
+        setattr(cls, "UBERON:1200167",
+            PermissibleValue(
+                text="UBERON:1200167",
+                description="pectinal line of femur"))
+        setattr(cls, "UBERON:1200168",
+            PermissibleValue(
+                text="UBERON:1200168",
+                description="pedicle of first cervical vertebra"))
+        setattr(cls, "UBERON:1200169",
+            PermissibleValue(
+                text="UBERON:1200169",
+                description="pedicle of second cervical vertebra"))
+        setattr(cls, "UBERON:1200170",
+            PermissibleValue(
+                text="UBERON:1200170",
+                description="perpendicular plate of ethmoid bone"))
+        setattr(cls, "UBERON:1200171",
+            PermissibleValue(
+                text="UBERON:1200171",
+                description="petrotympanic fissure of squamous part of temporal bone"))
+        setattr(cls, "UBERON:1200172",
+            PermissibleValue(
+                text="UBERON:1200172",
+                description="posterior arch of first cervical vertebra"))
+        setattr(cls, "UBERON:1200173",
+            PermissibleValue(
+                text="UBERON:1200173",
+                description="posterior clinoid process of sphenoid bone"))
+        setattr(cls, "UBERON:1200174",
+            PermissibleValue(
+                text="UBERON:1200174",
+                description="posterior gluteal line of ilium of os coxa"))
+        setattr(cls, "UBERON:1200175",
+            PermissibleValue(
+                text="UBERON:1200175",
+                description="posterior sacral foramina of sacrum"))
+        setattr(cls, "UBERON:1200177",
+            PermissibleValue(
+                text="UBERON:1200177",
+                description="postglenoid tubercle of squamous part of temporal bone"))
+        setattr(cls, "UBERON:1200179",
+            PermissibleValue(
+                text="UBERON:1200179",
+                description="pterygoid fossa of sphenoid bone"))
+        setattr(cls, "UBERON:1200180",
+            PermissibleValue(
+                text="UBERON:1200180",
+                description="pterygoid fovea of mandible"))
+        setattr(cls, "UBERON:1200181",
+            PermissibleValue(
+                text="UBERON:1200181",
+                description="pterygoid hamulus of sphenoid bone"))
+        setattr(cls, "UBERON:1200182",
+            PermissibleValue(
+                text="UBERON:1200182",
+                description="pubic body of pubis of os coxa"))
+        setattr(cls, "UBERON:1200183",
+            PermissibleValue(
+                text="UBERON:1200183",
+                description="pubic crest of pubis of os coxa"))
+        setattr(cls, "UBERON:1200185",
+            PermissibleValue(
+                text="UBERON:1200185",
+                description="pubic tubercle of pubis of os coxa"))
+        setattr(cls, "UBERON:1200186",
+            PermissibleValue(
+                text="UBERON:1200186",
+                description="radial fossa of humerus"))
+        setattr(cls, "UBERON:1200187",
+            PermissibleValue(
+                text="UBERON:1200187",
+                description="radial groove of humerus"))
+        setattr(cls, "UBERON:1200188",
+            PermissibleValue(
+                text="UBERON:1200188",
+                description="radial tuberosity of radius"))
+        setattr(cls, "UBERON:1200189",
+            PermissibleValue(
+                text="UBERON:1200189",
+                description="sacral apex of sacrum"))
+        setattr(cls, "UBERON:1200190",
+            PermissibleValue(
+                text="UBERON:1200190",
+                description="sacral canal of sacrum"))
+        setattr(cls, "UBERON:1200191",
+            PermissibleValue(
+                text="UBERON:1200191",
+                description="sacral cornu of sacrum"))
+        setattr(cls, "UBERON:1200192",
+            PermissibleValue(
+                text="UBERON:1200192",
+                description="sacral hiatus of sacrum"))
+        setattr(cls, "UBERON:1200193",
+            PermissibleValue(
+                text="UBERON:1200193",
+                description="sacral promontory of sacrum"))
+        setattr(cls, "UBERON:1200194",
+            PermissibleValue(
+                text="UBERON:1200194",
+                description="sacral spine of sacrum"))
+        setattr(cls, "UBERON:1200195",
+            PermissibleValue(
+                text="UBERON:1200195",
+                description="sacral tuberosity of sacrum"))
+        setattr(cls, "UBERON:1200196",
+            PermissibleValue(
+                text="UBERON:1200196",
+                description="scalene tubercle of first rib"))
+        setattr(cls, "UBERON:1200197",
+            PermissibleValue(
+                text="UBERON:1200197",
+                description="scaphoid tubercle of scaphoid"))
+        setattr(cls, "UBERON:1200198",
+            PermissibleValue(
+                text="UBERON:1200198",
+                description="scapular notch of scapula"))
+        setattr(cls, "UBERON:1200199",
+            PermissibleValue(
+                text="UBERON:1200199",
+                description="scapular spine of scapula"))
+        setattr(cls, "UBERON:1200201",
+            PermissibleValue(
+                text="UBERON:1200201",
+                description="shaft of first distal phalanx of hand"))
+        setattr(cls, "UBERON:1200202",
+            PermissibleValue(
+                text="UBERON:1200202",
+                description="shaft of first proximal phalanx of hand"))
+        setattr(cls, "UBERON:1200203",
+            PermissibleValue(
+                text="UBERON:1200203",
+                description="shaft of radius of radius"))
+        setattr(cls, "UBERON:1200204",
+            PermissibleValue(
+                text="UBERON:1200204",
+                description="shaft of ulna of ulna"))
+        setattr(cls, "UBERON:1200205",
+            PermissibleValue(
+                text="UBERON:1200205",
+                description="soleal line of tibia"))
+        setattr(cls, "UBERON:1200206",
+            PermissibleValue(
+                text="UBERON:1200206",
+                description="spinous process of first cervical vertebra"))
+        setattr(cls, "UBERON:1200207",
+            PermissibleValue(
+                text="UBERON:1200207",
+                description="spinous process of second cervical vertebra"))
+        setattr(cls, "UBERON:1200208",
+            PermissibleValue(
+                text="UBERON:1200208",
+                description="sternal angle of sternum"))
+        setattr(cls, "UBERON:1200209",
+            PermissibleValue(
+                text="UBERON:1200209",
+                description="sternal end of eighth rib"))
+        setattr(cls, "UBERON:1200210",
+            PermissibleValue(
+                text="UBERON:1200210",
+                description="sternal end of eleventh rib"))
+        setattr(cls, "UBERON:1200211",
+            PermissibleValue(
+                text="UBERON:1200211",
+                description="sternal end of fifth rib"))
+        setattr(cls, "UBERON:1200212",
+            PermissibleValue(
+                text="UBERON:1200212",
+                description="sternal end of first rib"))
+        setattr(cls, "UBERON:1200213",
+            PermissibleValue(
+                text="UBERON:1200213",
+                description="sternal end of fourth rib"))
+        setattr(cls, "UBERON:1200214",
+            PermissibleValue(
+                text="UBERON:1200214",
+                description="sternal end of ninth rib"))
+        setattr(cls, "UBERON:1200215",
+            PermissibleValue(
+                text="UBERON:1200215",
+                description="sternal end of second rib"))
+        setattr(cls, "UBERON:1200216",
+            PermissibleValue(
+                text="UBERON:1200216",
+                description="sternal end of seventh rib"))
+        setattr(cls, "UBERON:1200217",
+            PermissibleValue(
+                text="UBERON:1200217",
+                description="sternal end of sixth rib"))
+        setattr(cls, "UBERON:1200218",
+            PermissibleValue(
+                text="UBERON:1200218",
+                description="sternal end of tenth rib"))
+        setattr(cls, "UBERON:1200219",
+            PermissibleValue(
+                text="UBERON:1200219",
+                description="sternal end of third rib"))
+        setattr(cls, "UBERON:1200220",
+            PermissibleValue(
+                text="UBERON:1200220",
+                description="sternal end of twelfth rib"))
+        setattr(cls, "UBERON:1200221",
+            PermissibleValue(
+                text="UBERON:1200221",
+                description="sternal region bone"))
+        setattr(cls, "UBERON:1200222",
+            PermissibleValue(
+                text="UBERON:1200222",
+                description="stylomastoid foramen of petrous part of temporal bone"))
+        setattr(cls, "UBERON:1200223",
+            PermissibleValue(
+                text="UBERON:1200223",
+                description="sublingual fossa of mandible"))
+        setattr(cls, "UBERON:1200224",
+            PermissibleValue(
+                text="UBERON:1200224",
+                description="submandibular fossa of mandible"))
+        setattr(cls, "UBERON:1200225",
+            PermissibleValue(
+                text="UBERON:1200225",
+                description="supercilary arch of frontal bone"))
+        setattr(cls, "UBERON:1200226",
+            PermissibleValue(
+                text="UBERON:1200226",
+                description="superior articular facet of eighth thoracic vertebra"))
+        setattr(cls, "UBERON:1200227",
+            PermissibleValue(
+                text="UBERON:1200227",
+                description="superior articular facet of eleventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200228",
+            PermissibleValue(
+                text="UBERON:1200228",
+                description="superior articular facet of fifth cervical vertebra"))
+        setattr(cls, "UBERON:1200229",
+            PermissibleValue(
+                text="UBERON:1200229",
+                description="superior articular facet of fifth lumbar vertebra"))
+        setattr(cls, "UBERON:1200230",
+            PermissibleValue(
+                text="UBERON:1200230",
+                description="superior articular facet of fifth thoracic vertebra"))
+        setattr(cls, "UBERON:1200231",
+            PermissibleValue(
+                text="UBERON:1200231",
+                description="superior articular facet of first cervical vertebra"))
+        setattr(cls, "UBERON:1200232",
+            PermissibleValue(
+                text="UBERON:1200232",
+                description="superior articular facet of first lumbar vertebra"))
+        setattr(cls, "UBERON:1200233",
+            PermissibleValue(
+                text="UBERON:1200233",
+                description="superior articular facet of first thoracic vertebra"))
+        setattr(cls, "UBERON:1200234",
+            PermissibleValue(
+                text="UBERON:1200234",
+                description="superior articular facet of fourth cervical vertebra"))
+        setattr(cls, "UBERON:1200235",
+            PermissibleValue(
+                text="UBERON:1200235",
+                description="superior articular facet of fourth lumbar vertebra"))
+        setattr(cls, "UBERON:1200236",
+            PermissibleValue(
+                text="UBERON:1200236",
+                description="superior articular facet of fourth thoracic vertebra"))
+        setattr(cls, "UBERON:1200237",
+            PermissibleValue(
+                text="UBERON:1200237",
+                description="superior articular facet of ninth thoracic vertebra"))
+        setattr(cls, "UBERON:1200238",
+            PermissibleValue(
+                text="UBERON:1200238",
+                description="superior articular facet of second cervical vertebra"))
+        setattr(cls, "UBERON:1200239",
+            PermissibleValue(
+                text="UBERON:1200239",
+                description="superior articular facet of second lumbar vertebra"))
+        setattr(cls, "UBERON:1200240",
+            PermissibleValue(
+                text="UBERON:1200240",
+                description="superior articular facet of second thoracic vertebra"))
+        setattr(cls, "UBERON:1200241",
+            PermissibleValue(
+                text="UBERON:1200241",
+                description="superior articular facet of seventh cervical vertebra"))
+        setattr(cls, "UBERON:1200242",
+            PermissibleValue(
+                text="UBERON:1200242",
+                description="superior articular facet of seventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200243",
+            PermissibleValue(
+                text="UBERON:1200243",
+                description="superior articular facet of sixth cervical vertebra"))
+        setattr(cls, "UBERON:1200244",
+            PermissibleValue(
+                text="UBERON:1200244",
+                description="superior articular facet of sixth thoracic vertebra"))
+        setattr(cls, "UBERON:1200245",
+            PermissibleValue(
+                text="UBERON:1200245",
+                description="superior articular facet of tenth thoracic vertebra"))
+        setattr(cls, "UBERON:1200246",
+            PermissibleValue(
+                text="UBERON:1200246",
+                description="superior articular facet of third cervical vertebra"))
+        setattr(cls, "UBERON:1200247",
+            PermissibleValue(
+                text="UBERON:1200247",
+                description="superior articular facet of third lumbar vertebra"))
+        setattr(cls, "UBERON:1200248",
+            PermissibleValue(
+                text="UBERON:1200248",
+                description="superior articular facet of third thoracic vertebra"))
+        setattr(cls, "UBERON:1200249",
+            PermissibleValue(
+                text="UBERON:1200249",
+                description="superior articular facet of twelfth thoracic vertebra"))
+        setattr(cls, "UBERON:1200250",
+            PermissibleValue(
+                text="UBERON:1200250",
+                description="superior articular process of first cervical vertebra"))
+        setattr(cls, "UBERON:1200251",
+            PermissibleValue(
+                text="UBERON:1200251",
+                description="superior articular process of second cervical vertebra"))
+        setattr(cls, "UBERON:1200252",
+            PermissibleValue(
+                text="UBERON:1200252",
+                description="superior costal facet of eleventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200253",
+            PermissibleValue(
+                text="UBERON:1200253",
+                description="superior mental spine of mandible"))
+        setattr(cls, "UBERON:1200254",
+            PermissibleValue(
+                text="UBERON:1200254",
+                description="superior nuchal line of squamous part of occipital bone"))
+        setattr(cls, "UBERON:1200255",
+            PermissibleValue(
+                text="UBERON:1200255",
+                description="superior vertebral notch of first cervical vertebra"))
+        setattr(cls, "UBERON:1200256",
+            PermissibleValue(
+                text="UBERON:1200256",
+                description="superior vertebral notch of second cervical vertebra"))
+        setattr(cls, "UBERON:1200257",
+            PermissibleValue(
+                text="UBERON:1200257",
+                description="supinator fossa of ulna"))
+        setattr(cls, "UBERON:1200259",
+            PermissibleValue(
+                text="UBERON:1200259",
+                description="supramastoid crest of squamous part of temporal bone"))
+        setattr(cls, "UBERON:1200260",
+            PermissibleValue(
+                text="UBERON:1200260",
+                description="supraorbital notch or foramen of frontal bone"))
+        setattr(cls, "UBERON:1200261",
+            PermissibleValue(
+                text="UBERON:1200261",
+                description="supraspinous fossa of scapula"))
+        setattr(cls, "UBERON:1200262",
+            PermissibleValue(
+                text="UBERON:1200262",
+                description="sustentaculum tali of calcaneus"))
+        setattr(cls, "UBERON:1200264",
+            PermissibleValue(
+                text="UBERON:1200264",
+                description="tibial plateau of tibia"))
+        setattr(cls, "UBERON:1200265",
+            PermissibleValue(
+                text="UBERON:1200265",
+                description="transverse costal facet of eighth thoracic vertebra"))
+        setattr(cls, "UBERON:1200266",
+            PermissibleValue(
+                text="UBERON:1200266",
+                description="transverse costal facet of eleventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200267",
+            PermissibleValue(
+                text="UBERON:1200267",
+                description="transverse costal facet of fifth thoracic vertebra"))
+        setattr(cls, "UBERON:1200268",
+            PermissibleValue(
+                text="UBERON:1200268",
+                description="transverse costal facet of first thoracic vertebra"))
+        setattr(cls, "UBERON:1200269",
+            PermissibleValue(
+                text="UBERON:1200269",
+                description="transverse costal facet of fourth thoracic vertebra"))
+        setattr(cls, "UBERON:1200270",
+            PermissibleValue(
+                text="UBERON:1200270",
+                description="transverse costal facet of ninth thoracic vertebra"))
+        setattr(cls, "UBERON:1200271",
+            PermissibleValue(
+                text="UBERON:1200271",
+                description="transverse costal facet of second thoracic vertebra"))
+        setattr(cls, "UBERON:1200272",
+            PermissibleValue(
+                text="UBERON:1200272",
+                description="transverse costal facet of seventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200273",
+            PermissibleValue(
+                text="UBERON:1200273",
+                description="transverse costal facet of sixth thoracic vertebra"))
+        setattr(cls, "UBERON:1200274",
+            PermissibleValue(
+                text="UBERON:1200274",
+                description="transverse costal facet of tenth thoracic vertebra"))
+        setattr(cls, "UBERON:1200275",
+            PermissibleValue(
+                text="UBERON:1200275",
+                description="transverse costal facet of third thoracic vertebra"))
+        setattr(cls, "UBERON:1200278",
+            PermissibleValue(
+                text="UBERON:1200278",
+                description="transverse ridges of sternum"))
+        setattr(cls, "UBERON:1200279",
+            PermissibleValue(
+                text="UBERON:1200279",
+                description="trigeminal impression of petrous part of temporal bone"))
+        setattr(cls, "UBERON:1200281",
+            PermissibleValue(
+                text="UBERON:1200281",
+                description="tuberosity of fifth distal phalanx of hand"))
+        setattr(cls, "UBERON:1200282",
+            PermissibleValue(
+                text="UBERON:1200282",
+                description="tuberosity of first distal phalanx of hand"))
+        setattr(cls, "UBERON:1200283",
+            PermissibleValue(
+                text="UBERON:1200283",
+                description="tuberosity of fourth distal phalanx of hand"))
+        setattr(cls, "UBERON:1200284",
+            PermissibleValue(
+                text="UBERON:1200284",
+                description="tuberosity of second distal phalanx of hand"))
+        setattr(cls, "UBERON:1200285",
+            PermissibleValue(
+                text="UBERON:1200285",
+                description="tuberosity of third distal phalanx of hand"))
+        setattr(cls, "UBERON:1200286",
+            PermissibleValue(
+                text="UBERON:1200286",
+                description="tympanic caniliculus of petrous part of temporal bone"))
+        setattr(cls, "UBERON:1200287",
+            PermissibleValue(
+                text="UBERON:1200287",
+                description="vertebra prominens of seventh cervical vertebra"))
+        setattr(cls, "UBERON:1200288",
+            PermissibleValue(
+                text="UBERON:1200288",
+                description="vertebral arch of eighth thoracic vertebra"))
+        setattr(cls, "UBERON:1200289",
+            PermissibleValue(
+                text="UBERON:1200289",
+                description="vertebral arch of eleventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200290",
+            PermissibleValue(
+                text="UBERON:1200290",
+                description="vertebral arch of fifth cervical vertebra"))
+        setattr(cls, "UBERON:1200291",
+            PermissibleValue(
+                text="UBERON:1200291",
+                description="vertebral arch of fifth lumbar vertebra"))
+        setattr(cls, "UBERON:1200292",
+            PermissibleValue(
+                text="UBERON:1200292",
+                description="vertebral arch of fifth thoracic vertebra"))
+        setattr(cls, "UBERON:1200293",
+            PermissibleValue(
+                text="UBERON:1200293",
+                description="vertebral arch of first lumbar vertebra"))
+        setattr(cls, "UBERON:1200294",
+            PermissibleValue(
+                text="UBERON:1200294",
+                description="vertebral arch of first thoracic vertebra"))
+        setattr(cls, "UBERON:1200295",
+            PermissibleValue(
+                text="UBERON:1200295",
+                description="vertebral arch of fourth cervical vertebra"))
+        setattr(cls, "UBERON:1200296",
+            PermissibleValue(
+                text="UBERON:1200296",
+                description="vertebral arch of fourth lumbar vertebra"))
+        setattr(cls, "UBERON:1200297",
+            PermissibleValue(
+                text="UBERON:1200297",
+                description="vertebral arch of fourth thoracic vertebra"))
+        setattr(cls, "UBERON:1200298",
+            PermissibleValue(
+                text="UBERON:1200298",
+                description="vertebral arch of ninth thoracic vertebra"))
+        setattr(cls, "UBERON:1200299",
+            PermissibleValue(
+                text="UBERON:1200299",
+                description="vertebral arch of second cervical vertebra"))
+        setattr(cls, "UBERON:1200300",
+            PermissibleValue(
+                text="UBERON:1200300",
+                description="vertebral arch of second lumbar vertebra"))
+        setattr(cls, "UBERON:1200301",
+            PermissibleValue(
+                text="UBERON:1200301",
+                description="vertebral arch of second thoracic vertebra"))
+        setattr(cls, "UBERON:1200302",
+            PermissibleValue(
+                text="UBERON:1200302",
+                description="vertebral arch of seventh cervical vertebra"))
+        setattr(cls, "UBERON:1200303",
+            PermissibleValue(
+                text="UBERON:1200303",
+                description="vertebral arch of seventh thoracic vertebra"))
+        setattr(cls, "UBERON:1200304",
+            PermissibleValue(
+                text="UBERON:1200304",
+                description="vertebral arch of sixth cervical vertebra"))
+        setattr(cls, "UBERON:1200305",
+            PermissibleValue(
+                text="UBERON:1200305",
+                description="vertebral arch of sixth thoracic vertebra"))
+        setattr(cls, "UBERON:1200306",
+            PermissibleValue(
+                text="UBERON:1200306",
+                description="vertebral arch of tenth thoracic vertebra"))
+        setattr(cls, "UBERON:1200307",
+            PermissibleValue(
+                text="UBERON:1200307",
+                description="vertebral arch of third cervical vertebra"))
+        setattr(cls, "UBERON:1200308",
+            PermissibleValue(
+                text="UBERON:1200308",
+                description="vertebral arch of third lumbar vertebra"))
+        setattr(cls, "UBERON:1200309",
+            PermissibleValue(
+                text="UBERON:1200309",
+                description="vertebral arch of third thoracic vertebra"))
+        setattr(cls, "UBERON:1200310",
+            PermissibleValue(
+                text="UBERON:1200310",
+                description="vertebral arch of twelfth thoracic vertebra"))
+        setattr(cls, "UBERON:1200338",
+            PermissibleValue(
+                text="UBERON:1200338",
+                description="zygomatic process of squamous part of temporal bone"))
+        setattr(cls, "UBERON:1200339",
+            PermissibleValue(
+                text="UBERON:1200339",
+                description="zygomaticofacial foramen of zygomatic bone"))
+        setattr(cls, "UBERON:1200340",
+            PermissibleValue(
+                text="UBERON:1200340",
+                description="collagen band"))
+        setattr(cls, "UBERON:1200341",
+            PermissibleValue(
+                text="UBERON:1200341",
+                description="ganglion cell-inner plexiform layer"))
+        setattr(cls, "UBERON:1200342",
+            PermissibleValue(
+                text="UBERON:1200342",
+                description="bone marrow of skull"))
+        setattr(cls, "UBERON:1200343",
+            PermissibleValue(
+                text="UBERON:1200343",
+                description="bone marrow of calvaria"))
+        setattr(cls, "UBERON:1500000",
+            PermissibleValue(
+                text="UBERON:1500000",
+                description="scapular blade"))
+        setattr(cls, "UBERON:1500005",
+            PermissibleValue(
+                text="UBERON:1500005",
+                description="ischial cartilage"))
         setattr(cls, "UBERON:2000000",
             PermissibleValue(
                 text="UBERON:2000000",
@@ -42332,22 +47628,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000001",
                 description="Kupffer's vesicle"))
-        setattr(cls, "UBERON:2000003",
-            PermissibleValue(
-                text="UBERON:2000003",
-                description="obsolete adaxial cell"))
         setattr(cls, "UBERON:2000004",
             PermissibleValue(
                 text="UBERON:2000004",
                 description="anterior axial hypoblast"))
-        setattr(cls, "UBERON:2000006",
-            PermissibleValue(
-                text="UBERON:2000006",
-                description="ball"))
-        setattr(cls, "UBERON:2000023",
-            PermissibleValue(
-                text="UBERON:2000023",
-                description="obsolete forerunner cell group"))
         setattr(cls, "UBERON:2000033",
             PermissibleValue(
                 text="UBERON:2000033",
@@ -42356,22 +47640,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000039",
                 description="median axial vein"))
-        setattr(cls, "UBERON:2000040",
-            PermissibleValue(
-                text="UBERON:2000040",
-                description="median fin fold"))
-        setattr(cls, "UBERON:2000043",
-            PermissibleValue(
-                text="UBERON:2000043",
-                description="obsolete muscle pioneer somite 1"))
         setattr(cls, "UBERON:2000044",
             PermissibleValue(
                 text="UBERON:2000044",
                 description="myotome somite 14"))
-        setattr(cls, "UBERON:2000052",
-            PermissibleValue(
-                text="UBERON:2000052",
-                description="dorsal actinotrichium"))
         setattr(cls, "UBERON:2000058",
             PermissibleValue(
                 text="UBERON:2000058",
@@ -42380,10 +47652,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000068",
                 description="neural plate proneural cluster"))
-        setattr(cls, "UBERON:2000070",
-            PermissibleValue(
-                text="UBERON:2000070",
-                description="obsolete sensory axons peripheral"))
         setattr(cls, "UBERON:2000072",
             PermissibleValue(
                 text="UBERON:2000072",
@@ -42396,10 +47664,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000074",
                 description="somite 26"))
-        setattr(cls, "UBERON:2000078",
-            PermissibleValue(
-                text="UBERON:2000078",
-                description="ventral actinotrichium"))
         setattr(cls, "UBERON:2000083",
             PermissibleValue(
                 text="UBERON:2000083",
@@ -42412,18 +47676,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000088",
                 description="yolk syncytial layer"))
-        setattr(cls, "UBERON:2000089",
-            PermissibleValue(
-                text="UBERON:2000089",
-                description="actinotrichium"))
-        setattr(cls, "UBERON:2000090",
-            PermissibleValue(
-                text="UBERON:2000090",
-                description="apical ectodermal ridge dorsal fin"))
-        setattr(cls, "UBERON:2000093",
-            PermissibleValue(
-                text="UBERON:2000093",
-                description="obsolete blastomere"))
         setattr(cls, "UBERON:2000096",
             PermissibleValue(
                 text="UBERON:2000096",
@@ -42432,10 +47684,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000098",
                 description="proliferative region"))
-        setattr(cls, "UBERON:2000102",
+        setattr(cls, "UBERON:2000103",
             PermissibleValue(
-                text="UBERON:2000102",
-                description="dorsal fin fold"))
+                text="UBERON:2000103",
+                description="supramaxilla"))
+        setattr(cls, "UBERON:2000104",
+            PermissibleValue(
+                text="UBERON:2000104",
+                description="suprapreopercle"))
         setattr(cls, "UBERON:2000106",
             PermissibleValue(
                 text="UBERON:2000106",
@@ -42444,18 +47700,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000116",
                 description="macula lagena"))
-        setattr(cls, "UBERON:2000120",
+        setattr(cls, "UBERON:2000127",
             PermissibleValue(
-                text="UBERON:2000120",
-                description="lateral line ganglion"))
-        setattr(cls, "UBERON:2000125",
+                text="UBERON:2000127",
+                description="antorbital"))
+        setattr(cls, "UBERON:2000139",
             PermissibleValue(
-                text="UBERON:2000125",
-                description="mandibular lateral line neuromast"))
-        setattr(cls, "UBERON:2000136",
-            PermissibleValue(
-                text="UBERON:2000136",
-                description="otic lateral line neuromast"))
+                text="UBERON:2000139",
+                description="immature otolith"))
         setattr(cls, "UBERON:2000156",
             PermissibleValue(
                 text="UBERON:2000156",
@@ -42476,14 +47728,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000168",
                 description="anterior macula"))
+        setattr(cls, "UBERON:2000171",
+            PermissibleValue(
+                text="UBERON:2000171",
+                description="interhyal bone"))
         setattr(cls, "UBERON:2000174",
             PermissibleValue(
                 text="UBERON:2000174",
                 description="caudal cerebellar tract"))
-        setattr(cls, "UBERON:2000175",
+        setattr(cls, "UBERON:2000176",
             PermissibleValue(
-                text="UBERON:2000175",
-                description="posterior lateral line nerve"))
+                text="UBERON:2000176",
+                description="lateral entopeduncular nucleus"))
         setattr(cls, "UBERON:2000177",
             PermissibleValue(
                 text="UBERON:2000177",
@@ -42492,10 +47748,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000178",
                 description="caudal peduncle"))
-        setattr(cls, "UBERON:2000181",
-            PermissibleValue(
-                text="UBERON:2000181",
-                description="obsolete caudal zone of D"))
         setattr(cls, "UBERON:2000182",
             PermissibleValue(
                 text="UBERON:2000182",
@@ -42508,6 +47760,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000185",
                 description="commissura rostral, pars ventralis"))
+        setattr(cls, "UBERON:2000187",
+            PermissibleValue(
+                text="UBERON:2000187",
+                description="lateral granular eminence"))
         setattr(cls, "UBERON:2000188",
             PermissibleValue(
                 text="UBERON:2000188",
@@ -42516,14 +47772,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000193",
                 description="diffuse nuclei"))
-        setattr(cls, "UBERON:2000194",
-            PermissibleValue(
-                text="UBERON:2000194",
-                description="dorsal accessory optic nucleus"))
-        setattr(cls, "UBERON:2000195",
-            PermissibleValue(
-                text="UBERON:2000195",
-                description="dorsal depressor muscle"))
         setattr(cls, "UBERON:2000196",
             PermissibleValue(
                 text="UBERON:2000196",
@@ -42540,10 +47788,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000202",
                 description="efferent portion of pharyngeal arch artery"))
-        setattr(cls, "UBERON:2000205",
+        setattr(cls, "UBERON:2000203",
             PermissibleValue(
-                text="UBERON:2000205",
-                description="external ventral flexor"))
+                text="UBERON:2000203",
+                description="rhinosphenoid"))
         setattr(cls, "UBERON:2000209",
             PermissibleValue(
                 text="UBERON:2000209",
@@ -42552,10 +47800,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000210",
                 description="gigantocellular part of magnocellular preoptic nucleus"))
-        setattr(cls, "UBERON:2000211",
-            PermissibleValue(
-                text="UBERON:2000211",
-                description="gill lamella"))
         setattr(cls, "UBERON:2000212",
             PermissibleValue(
                 text="UBERON:2000212",
@@ -42580,10 +47824,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000223",
                 description="infraorbital 1"))
-        setattr(cls, "UBERON:2000224",
-            PermissibleValue(
-                text="UBERON:2000224",
-                description="quadrate ventral process"))
         setattr(cls, "UBERON:2000225",
             PermissibleValue(
                 text="UBERON:2000225",
@@ -42592,14 +47832,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000226",
                 description="lateral ethmoid bone"))
-        setattr(cls, "UBERON:2000228",
-            PermissibleValue(
-                text="UBERON:2000228",
-                description="lateral line primordium"))
-        setattr(cls, "UBERON:2000230",
-            PermissibleValue(
-                text="UBERON:2000230",
-                description="longitudinal hypochordal"))
         setattr(cls, "UBERON:2000232",
             PermissibleValue(
                 text="UBERON:2000232",
@@ -42612,14 +47844,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000234",
                 description="macula neglecta"))
-        setattr(cls, "UBERON:2000235",
-            PermissibleValue(
-                text="UBERON:2000235",
-                description="obsolete magnocellular superficial pretectal nucleus"))
-        setattr(cls, "UBERON:2000237",
-            PermissibleValue(
-                text="UBERON:2000237",
-                description="obsolete medial forebrain bundle diencephalon"))
         setattr(cls, "UBERON:2000238",
             PermissibleValue(
                 text="UBERON:2000238",
@@ -42640,10 +47864,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000245",
                 description="nucleus of the descending root"))
-        setattr(cls, "UBERON:2000246",
-            PermissibleValue(
-                text="UBERON:2000246",
-                description="obsolete nucleus taeniae"))
         setattr(cls, "UBERON:2000248",
             PermissibleValue(
                 text="UBERON:2000248",
@@ -42652,14 +47872,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000250",
                 description="opercle"))
-        setattr(cls, "UBERON:2000256",
-            PermissibleValue(
-                text="UBERON:2000256",
-                description="obsolete pars subcommissuralis of V"))
-        setattr(cls, "UBERON:2000259",
-            PermissibleValue(
-                text="UBERON:2000259",
-                description="mandibular lateral line"))
         setattr(cls, "UBERON:2000261",
             PermissibleValue(
                 text="UBERON:2000261",
@@ -42668,30 +47880,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000264",
                 description="preopercle"))
-        setattr(cls, "UBERON:2000265",
-            PermissibleValue(
-                text="UBERON:2000265",
-                description="obsolete presumptive dorsal mesoderm"))
-        setattr(cls, "UBERON:2000266",
-            PermissibleValue(
-                text="UBERON:2000266",
-                description="obsolete pretecto-mamillary tract"))
         setattr(cls, "UBERON:2000267",
             PermissibleValue(
                 text="UBERON:2000267",
                 description="primary olfactory fiber layer"))
-        setattr(cls, "UBERON:2000268",
-            PermissibleValue(
-                text="UBERON:2000268",
-                description="anal fin proximal radial bone"))
-        setattr(cls, "UBERON:2000269",
-            PermissibleValue(
-                text="UBERON:2000269",
-                description="inferior ventral flexor"))
-        setattr(cls, "UBERON:2000271",
-            PermissibleValue(
-                text="UBERON:2000271",
-                description="radial bone"))
         setattr(cls, "UBERON:2000274",
             PermissibleValue(
                 text="UBERON:2000274",
@@ -42708,14 +47900,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000280",
                 description="medial division"))
-        setattr(cls, "UBERON:2000281",
-            PermissibleValue(
-                text="UBERON:2000281",
-                description="obsolete hair cell posterior macula"))
-        setattr(cls, "UBERON:2000283",
-            PermissibleValue(
-                text="UBERON:2000283",
-                description="obsolete sternohyoid"))
         setattr(cls, "UBERON:2000284",
             PermissibleValue(
                 text="UBERON:2000284",
@@ -42728,10 +47912,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000286",
                 description="superficial lateralis (teleost)"))
-        setattr(cls, "UBERON:2000287",
-            PermissibleValue(
-                text="UBERON:2000287",
-                description="superior dorsal flexor"))
         setattr(cls, "UBERON:2000288",
             PermissibleValue(
                 text="UBERON:2000288",
@@ -42764,10 +47944,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000298",
                 description="vent"))
-        setattr(cls, "UBERON:2000299",
-            PermissibleValue(
-                text="UBERON:2000299",
-                description="obsolete ventral entopeduncular nucleus V"))
         setattr(cls, "UBERON:2000300",
             PermissibleValue(
                 text="UBERON:2000300",
@@ -42788,10 +47964,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000311",
                 description="adductor mandibulae complex"))
-        setattr(cls, "UBERON:2000313",
-            PermissibleValue(
-                text="UBERON:2000313",
-                description="anal inclinator"))
         setattr(cls, "UBERON:2000315",
             PermissibleValue(
                 text="UBERON:2000315",
@@ -42800,10 +47972,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000318",
                 description="brainstem and spinal white matter"))
-        setattr(cls, "UBERON:2000319",
-            PermissibleValue(
-                text="UBERON:2000319",
-                description="branchiostegal membrane"))
         setattr(cls, "UBERON:2000321",
             PermissibleValue(
                 text="UBERON:2000321",
@@ -42816,10 +47984,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000324",
                 description="caudal periventricular hypothalamus"))
-        setattr(cls, "UBERON:2000331",
-            PermissibleValue(
-                text="UBERON:2000331",
-                description="obsolete commissure infima of Haller"))
         setattr(cls, "UBERON:2000335",
             PermissibleValue(
                 text="UBERON:2000335",
@@ -42832,22 +47996,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000337",
                 description="basioccipital posterodorsal region"))
-        setattr(cls, "UBERON:2000340",
+        setattr(cls, "UBERON:2000347",
             PermissibleValue(
-                text="UBERON:2000340",
-                description="obsolete dorsal entopeduncular nucleus"))
-        setattr(cls, "UBERON:2000341",
-            PermissibleValue(
-                text="UBERON:2000341",
-                description="dorsal flexor"))
-        setattr(cls, "UBERON:2000342",
-            PermissibleValue(
-                text="UBERON:2000342",
-                description="dorsal inclinator muscle"))
-        setattr(cls, "UBERON:2000343",
-            PermissibleValue(
-                text="UBERON:2000343",
-                description="obsolete dorsal nucleus of V"))
+                text="UBERON:2000347",
+                description="dorsal zone of median tuberal portion of hypothalamus"))
         setattr(cls, "UBERON:2000348",
             PermissibleValue(
                 text="UBERON:2000348",
@@ -42864,10 +48016,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000352",
                 description="external cellular layer"))
-        setattr(cls, "UBERON:2000356",
-            PermissibleValue(
-                text="UBERON:2000356",
-                description="gill raker"))
         setattr(cls, "UBERON:2000358",
             PermissibleValue(
                 text="UBERON:2000358",
@@ -42880,10 +48028,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000363",
                 description="hypobranchial bone"))
-        setattr(cls, "UBERON:2000364",
-            PermissibleValue(
-                text="UBERON:2000364",
-                description="hypural"))
         setattr(cls, "UBERON:2000371",
             PermissibleValue(
                 text="UBERON:2000371",
@@ -42892,18 +48036,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000372",
                 description="interpeduncular nucleus medulla oblongata"))
-        setattr(cls, "UBERON:2000375",
-            PermissibleValue(
-                text="UBERON:2000375",
-                description="anal fin actinotrichium"))
         setattr(cls, "UBERON:2000376",
             PermissibleValue(
                 text="UBERON:2000376",
                 description="infraorbital"))
-        setattr(cls, "UBERON:2000379",
-            PermissibleValue(
-                text="UBERON:2000379",
-                description="obsolete lateral forebrain bundle diencephalon"))
         setattr(cls, "UBERON:2000381",
             PermissibleValue(
                 text="UBERON:2000381",
@@ -42924,10 +48060,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000390",
                 description="medial preglomerular nucleus"))
-        setattr(cls, "UBERON:2000391",
-            PermissibleValue(
-                text="UBERON:2000391",
-                description="obsolete medial zone of D"))
         setattr(cls, "UBERON:2000392",
             PermissibleValue(
                 text="UBERON:2000392",
@@ -42936,10 +48068,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000394",
                 description="molecular layer corpus cerebelli"))
-        setattr(cls, "UBERON:2000395",
-            PermissibleValue(
-                text="UBERON:2000395",
-                description="obsolete muscle pioneer somite 2"))
         setattr(cls, "UBERON:2000397",
             PermissibleValue(
                 text="UBERON:2000397",
@@ -42956,10 +48084,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000401",
                 description="octaval nerve sensory nucleus"))
-        setattr(cls, "UBERON:2000406",
-            PermissibleValue(
-                text="UBERON:2000406",
-                description="obsolete parvocellular superficial pretectal nucleus"))
         setattr(cls, "UBERON:2000408",
             PermissibleValue(
                 text="UBERON:2000408",
@@ -42988,14 +48112,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000422",
                 description="retroarticular"))
-        setattr(cls, "UBERON:2000424",
-            PermissibleValue(
-                text="UBERON:2000424",
-                description="opercular lateral line"))
-        setattr(cls, "UBERON:2000425",
-            PermissibleValue(
-                text="UBERON:2000425",
-                description="anterior lateral line nerve"))
         setattr(cls, "UBERON:2000426",
             PermissibleValue(
                 text="UBERON:2000426",
@@ -43008,14 +48124,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000430",
                 description="secondary gustatory tract"))
-        setattr(cls, "UBERON:2000437",
-            PermissibleValue(
-                text="UBERON:2000437",
-                description="caudal fin actinotrichium"))
-        setattr(cls, "UBERON:2000438",
-            PermissibleValue(
-                text="UBERON:2000438",
-                description="parhypural"))
         setattr(cls, "UBERON:2000439",
             PermissibleValue(
                 text="UBERON:2000439",
@@ -43040,46 +48148,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000451",
                 description="upper oral valve"))
-        setattr(cls, "UBERON:2000452",
-            PermissibleValue(
-                text="UBERON:2000452",
-                description="urohyal"))
-        setattr(cls, "UBERON:2000454",
-            PermissibleValue(
-                text="UBERON:2000454",
-                description="ventral accessory optic nucleus"))
-        setattr(cls, "UBERON:2000455",
-            PermissibleValue(
-                text="UBERON:2000455",
-                description="ventral flexor"))
-        setattr(cls, "UBERON:2000456",
-            PermissibleValue(
-                text="UBERON:2000456",
-                description="obsolete ventral nucleus of V"))
         setattr(cls, "UBERON:2000459",
             PermissibleValue(
                 text="UBERON:2000459",
                 description="ventromedial thalamic nucleus"))
-        setattr(cls, "UBERON:2000461",
-            PermissibleValue(
-                text="UBERON:2000461",
-                description="Weberian ossicle"))
         setattr(cls, "UBERON:2000462",
             PermissibleValue(
                 text="UBERON:2000462",
                 description="abductor hyohyoid"))
-        setattr(cls, "UBERON:2000464",
-            PermissibleValue(
-                text="UBERON:2000464",
-                description="otic lateral line"))
         setattr(cls, "UBERON:2000465",
             PermissibleValue(
                 text="UBERON:2000465",
                 description="adductor operculi"))
-        setattr(cls, "UBERON:2000466",
-            PermissibleValue(
-                text="UBERON:2000466",
-                description="anal depressor"))
         setattr(cls, "UBERON:2000468",
             PermissibleValue(
                 text="UBERON:2000468",
@@ -43124,26 +48204,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000485",
                 description="central nucleus inferior lobe"))
-        setattr(cls, "UBERON:2000487",
-            PermissibleValue(
-                text="UBERON:2000487",
-                description="obsolete central zone of D"))
         setattr(cls, "UBERON:2000488",
             PermissibleValue(
                 text="UBERON:2000488",
                 description="ceratobranchial bone"))
-        setattr(cls, "UBERON:2000491",
-            PermissibleValue(
-                text="UBERON:2000491",
-                description="obsolete commissure of the caudal tuberculum"))
         setattr(cls, "UBERON:2000492",
             PermissibleValue(
                 text="UBERON:2000492",
                 description="coracoradialis"))
-        setattr(cls, "UBERON:2000493",
-            PermissibleValue(
-                text="UBERON:2000493",
-                description="obsolete decussation of medial funicular nucleus"))
         setattr(cls, "UBERON:2000495",
             PermissibleValue(
                 text="UBERON:2000495",
@@ -43160,10 +48228,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000499",
                 description="dorsal arrector"))
-        setattr(cls, "UBERON:2000500",
-            PermissibleValue(
-                text="UBERON:2000500",
-                description="dorsal erector muscle"))
         setattr(cls, "UBERON:2000502",
             PermissibleValue(
                 text="UBERON:2000502",
@@ -43176,18 +48240,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000504",
                 description="dorsal retractor"))
-        setattr(cls, "UBERON:2000506",
-            PermissibleValue(
-                text="UBERON:2000506",
-                description="obsolete dorsal zone of D"))
         setattr(cls, "UBERON:2000507",
             PermissibleValue(
                 text="UBERON:2000507",
                 description="epineural"))
-        setattr(cls, "UBERON:2000508",
-            PermissibleValue(
-                text="UBERON:2000508",
-                description="pelvic fin radial bone"))
         setattr(cls, "UBERON:2000510",
             PermissibleValue(
                 text="UBERON:2000510",
@@ -43196,10 +48252,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000512",
                 description="facial lobe"))
-        setattr(cls, "UBERON:2000513",
-            PermissibleValue(
-                text="UBERON:2000513",
-                description="obsolete fast muscle cell somite 1"))
         setattr(cls, "UBERON:2000516",
             PermissibleValue(
                 text="UBERON:2000516",
@@ -43208,10 +48260,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000517",
                 description="glossopharyngeal lobe"))
-        setattr(cls, "UBERON:2000520",
-            PermissibleValue(
-                text="UBERON:2000520",
-                description="obsolete horizontal commissure"))
         setattr(cls, "UBERON:2000522",
             PermissibleValue(
                 text="UBERON:2000522",
@@ -43220,10 +48268,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000523",
                 description="inferior reticular formation"))
-        setattr(cls, "UBERON:2000525",
-            PermissibleValue(
-                text="UBERON:2000525",
-                description="intercalarium"))
         setattr(cls, "UBERON:2000526",
             PermissibleValue(
                 text="UBERON:2000526",
@@ -43232,10 +48276,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000527",
                 description="pharyngobranchial bone"))
-        setattr(cls, "UBERON:2000528",
-            PermissibleValue(
-                text="UBERON:2000528",
-                description="interradialis"))
         setattr(cls, "UBERON:2000530",
             PermissibleValue(
                 text="UBERON:2000530",
@@ -43244,30 +48284,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000532",
                 description="lateral division"))
-        setattr(cls, "UBERON:2000534",
-            PermissibleValue(
-                text="UBERON:2000534",
-                description="obsolete lateral longitudinal fasciculus"))
-        setattr(cls, "UBERON:2000536",
-            PermissibleValue(
-                text="UBERON:2000536",
-                description="obsolete lateral zone of D"))
         setattr(cls, "UBERON:2000540",
             PermissibleValue(
                 text="UBERON:2000540",
                 description="magnocellular octaval nucleus"))
-        setattr(cls, "UBERON:2000541",
-            PermissibleValue(
-                text="UBERON:2000541",
-                description="obsolete marginal blastomere"))
         setattr(cls, "UBERON:2000542",
             PermissibleValue(
                 text="UBERON:2000542",
                 description="medial column"))
-        setattr(cls, "UBERON:2000544",
-            PermissibleValue(
-                text="UBERON:2000544",
-                description="pectoral fin actinotrichium"))
         setattr(cls, "UBERON:2000549",
             PermissibleValue(
                 text="UBERON:2000549",
@@ -43280,10 +48304,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000555",
                 description="opercular flap"))
-        setattr(cls, "UBERON:2000557",
-            PermissibleValue(
-                text="UBERON:2000557",
-                description="preural 1 vertebra"))
         setattr(cls, "UBERON:2000558",
             PermissibleValue(
                 text="UBERON:2000558",
@@ -43292,10 +48312,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000564",
                 description="pelvic abductor profundus"))
-        setattr(cls, "UBERON:2000571",
-            PermissibleValue(
-                text="UBERON:2000571",
-                description="obsolete presumptive telencephalon"))
         setattr(cls, "UBERON:2000573",
             PermissibleValue(
                 text="UBERON:2000573",
@@ -43324,10 +48340,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000585",
                 description="kinethmoid cartilage"))
-        setattr(cls, "UBERON:2000586",
-            PermissibleValue(
-                text="UBERON:2000586",
-                description="preural 2 vertebra"))
         setattr(cls, "UBERON:2000587",
             PermissibleValue(
                 text="UBERON:2000587",
@@ -43348,34 +48360,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000594",
                 description="supracleithrum"))
-        setattr(cls, "UBERON:2000596",
-            PermissibleValue(
-                text="UBERON:2000596",
-                description="pelvic fin actinotrichium"))
         setattr(cls, "UBERON:2000599",
             PermissibleValue(
                 text="UBERON:2000599",
                 description="torus semicircularis"))
-        setattr(cls, "UBERON:2000601",
-            PermissibleValue(
-                text="UBERON:2000601",
-                description="obsolete pretectal periventricular nucleus"))
-        setattr(cls, "UBERON:2000602",
-            PermissibleValue(
-                text="UBERON:2000602",
-                description="uroneural"))
         setattr(cls, "UBERON:2000603",
             PermissibleValue(
                 text="UBERON:2000603",
                 description="valvula cerebelli"))
-        setattr(cls, "UBERON:2000606",
-            PermissibleValue(
-                text="UBERON:2000606",
-                description="obsolete ventral oblique branchial muscle"))
-        setattr(cls, "UBERON:2000607",
-            PermissibleValue(
-                text="UBERON:2000607",
-                description="obsolete ventral rhombencephalic commissure brain stem"))
         setattr(cls, "UBERON:2000608",
             PermissibleValue(
                 text="UBERON:2000608",
@@ -43404,14 +48396,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000616",
                 description="adductor profundus"))
-        setattr(cls, "UBERON:2000617",
-            PermissibleValue(
-                text="UBERON:2000617",
-                description="anal erector"))
-        setattr(cls, "UBERON:2000618",
-            PermissibleValue(
-                text="UBERON:2000618",
-                description="obsolete ansulate commissure"))
         setattr(cls, "UBERON:2000620",
             PermissibleValue(
                 text="UBERON:2000620",
@@ -43424,22 +48408,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000623",
                 description="basipterygium bone"))
-        setattr(cls, "UBERON:2000624",
-            PermissibleValue(
-                text="UBERON:2000624",
-                description="obsolete brachium conjunctivum"))
-        setattr(cls, "UBERON:2000626",
-            PermissibleValue(
-                text="UBERON:2000626",
-                description="obsolete bulbo-spinal tract"))
         setattr(cls, "UBERON:2000627",
             PermissibleValue(
                 text="UBERON:2000627",
                 description="posterior ceratohyal"))
-        setattr(cls, "UBERON:2000628",
-            PermissibleValue(
-                text="UBERON:2000628",
-                description="caudal fin musculature"))
         setattr(cls, "UBERON:2000629",
             PermissibleValue(
                 text="UBERON:2000629",
@@ -43452,18 +48424,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000633",
                 description="caudal tuberculum"))
-        setattr(cls, "UBERON:2000635",
+        setattr(cls, "UBERON:2000634",
             PermissibleValue(
-                text="UBERON:2000635",
-                description="obsolete central pretectal nucleus"))
+                text="UBERON:2000634",
+                description="caudal zone of median tuberal portion of hypothalamus"))
         setattr(cls, "UBERON:2000636",
             PermissibleValue(
                 text="UBERON:2000636",
                 description="cerebellar crest"))
-        setattr(cls, "UBERON:2000637",
-            PermissibleValue(
-                text="UBERON:2000637",
-                description="claustrum cartilage"))
         setattr(cls, "UBERON:2000638",
             PermissibleValue(
                 text="UBERON:2000638",
@@ -43472,34 +48440,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000639",
                 description="commissure of the secondary gustatory nuclei"))
-        setattr(cls, "UBERON:2000642",
-            PermissibleValue(
-                text="UBERON:2000642",
-                description="obsolete decussation of the medial octavolateralis nucleus"))
         setattr(cls, "UBERON:2000643",
             PermissibleValue(
                 text="UBERON:2000643",
                 description="rostral cerebellar tract"))
-        setattr(cls, "UBERON:2000644",
-            PermissibleValue(
-                text="UBERON:2000644",
-                description="obsolete dental plate"))
         setattr(cls, "UBERON:2000645",
             PermissibleValue(
                 text="UBERON:2000645",
                 description="descending octaval nucleus"))
-        setattr(cls, "UBERON:2000646",
-            PermissibleValue(
-                text="UBERON:2000646",
-                description="anal fin distal radial bone"))
         setattr(cls, "UBERON:2000647",
             PermissibleValue(
                 text="UBERON:2000647",
                 description="dorsal caudal thalamic nucleus"))
-        setattr(cls, "UBERON:2000648",
-            PermissibleValue(
-                text="UBERON:2000648",
-                description="dorsal fin musculature"))
         setattr(cls, "UBERON:2000651",
             PermissibleValue(
                 text="UBERON:2000651",
@@ -43508,10 +48460,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000654",
                 description="rostral motor nucleus of abducens"))
-        setattr(cls, "UBERON:2000655",
-            PermissibleValue(
-                text="UBERON:2000655",
-                description="obsolete dorsomedial optic tract"))
         setattr(cls, "UBERON:2000657",
             PermissibleValue(
                 text="UBERON:2000657",
@@ -43520,10 +48468,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000658",
                 description="epibranchial bone"))
-        setattr(cls, "UBERON:2000660",
-            PermissibleValue(
-                text="UBERON:2000660",
-                description="epural"))
         setattr(cls, "UBERON:2000662",
             PermissibleValue(
                 text="UBERON:2000662",
@@ -43532,10 +48476,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000663",
                 description="extrascapula"))
-        setattr(cls, "UBERON:2000666",
-            PermissibleValue(
-                text="UBERON:2000666",
-                description="filamental artery"))
         setattr(cls, "UBERON:2000673",
             PermissibleValue(
                 text="UBERON:2000673",
@@ -43552,10 +48492,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000677",
                 description="segmental intercostal artery"))
-        setattr(cls, "UBERON:2000678",
-            PermissibleValue(
-                text="UBERON:2000678",
-                description="obsolete hair cell anterior macula"))
         setattr(cls, "UBERON:2000685",
             PermissibleValue(
                 text="UBERON:2000685",
@@ -43564,18 +48500,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000687",
                 description="superficial pretectum"))
-        setattr(cls, "UBERON:2000688",
-            PermissibleValue(
-                text="UBERON:2000688",
-                description="obsolete olfactory support cell"))
-        setattr(cls, "UBERON:2000689",
-            PermissibleValue(
-                text="UBERON:2000689",
-                description="obsolete supracommissural nucleus of V"))
-        setattr(cls, "UBERON:2000690",
-            PermissibleValue(
-                text="UBERON:2000690",
-                description="obsolete supraoptic commissure"))
         setattr(cls, "UBERON:2000691",
             PermissibleValue(
                 text="UBERON:2000691",
@@ -43596,10 +48520,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000695",
                 description="labial cavities"))
-        setattr(cls, "UBERON:2000698",
+        setattr(cls, "UBERON:2000699",
             PermissibleValue(
-                text="UBERON:2000698",
-                description="tripus"))
+                text="UBERON:2000699",
+                description="entopterygoid vertical strut"))
         setattr(cls, "UBERON:2000701",
             PermissibleValue(
                 text="UBERON:2000701",
@@ -43616,10 +48540,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000707",
                 description="ventral zone"))
-        setattr(cls, "UBERON:2000708",
-            PermissibleValue(
-                text="UBERON:2000708",
-                description="obsolete ventrolateral optic tract"))
         setattr(cls, "UBERON:2000710",
             PermissibleValue(
                 text="UBERON:2000710",
@@ -43632,10 +48552,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000712",
                 description="internal yolk syncytial layer"))
-        setattr(cls, "UBERON:2000714",
-            PermissibleValue(
-                text="UBERON:2000714",
-                description="obsolete accessory pretectal nucleus"))
         setattr(cls, "UBERON:2000715",
             PermissibleValue(
                 text="UBERON:2000715",
@@ -43644,38 +48560,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000716",
                 description="afferent portion of pharyngeal arch artery"))
-        setattr(cls, "UBERON:2000717",
-            PermissibleValue(
-                text="UBERON:2000717",
-                description="apical ectodermal ridge median fin fold"))
         setattr(cls, "UBERON:2000718",
             PermissibleValue(
                 text="UBERON:2000718",
                 description="epaxial region somite 27"))
-        setattr(cls, "UBERON:2000719",
-            PermissibleValue(
-                text="UBERON:2000719",
-                description="obsolete slow muscle cell somite 21"))
-        setattr(cls, "UBERON:2000720",
-            PermissibleValue(
-                text="UBERON:2000720",
-                description="obsolete slow muscle cell somite 24"))
-        setattr(cls, "UBERON:2000721",
-            PermissibleValue(
-                text="UBERON:2000721",
-                description="obsolete slow muscle cell somite 27"))
-        setattr(cls, "UBERON:2000722",
-            PermissibleValue(
-                text="UBERON:2000722",
-                description="obsolete slow muscle cell somite 3"))
-        setattr(cls, "UBERON:2000723",
-            PermissibleValue(
-                text="UBERON:2000723",
-                description="obsolete slow muscle cell somite 5"))
-        setattr(cls, "UBERON:2000724",
-            PermissibleValue(
-                text="UBERON:2000724",
-                description="obsolete slow muscle cell somite 8"))
         setattr(cls, "UBERON:2000725",
             PermissibleValue(
                 text="UBERON:2000725",
@@ -43712,14 +48600,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000733",
                 description="somite 7"))
-        setattr(cls, "UBERON:2000734",
-            PermissibleValue(
-                text="UBERON:2000734",
-                description="preural vertebra"))
-        setattr(cls, "UBERON:2000735",
-            PermissibleValue(
-                text="UBERON:2000735",
-                description="hemal postzygapophysis"))
         setattr(cls, "UBERON:2000739",
             PermissibleValue(
                 text="UBERON:2000739",
@@ -43764,50 +48644,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000749",
                 description="epaxial region somite 9"))
-        setattr(cls, "UBERON:2000750",
-            PermissibleValue(
-                text="UBERON:2000750",
-                description="obsolete fast muscle cell somite 10"))
         setattr(cls, "UBERON:2000751",
             PermissibleValue(
                 text="UBERON:2000751",
                 description="epaxial region somite 8"))
-        setattr(cls, "UBERON:2000752",
-            PermissibleValue(
-                text="UBERON:2000752",
-                description="obsolete fast muscle cell somite 13"))
-        setattr(cls, "UBERON:2000753",
-            PermissibleValue(
-                text="UBERON:2000753",
-                description="obsolete fast muscle cell somite 16"))
-        setattr(cls, "UBERON:2000754",
-            PermissibleValue(
-                text="UBERON:2000754",
-                description="obsolete fast muscle cell somite 19"))
-        setattr(cls, "UBERON:2000755",
-            PermissibleValue(
-                text="UBERON:2000755",
-                description="obsolete fast muscle cell somite 21"))
-        setattr(cls, "UBERON:2000756",
-            PermissibleValue(
-                text="UBERON:2000756",
-                description="obsolete fast muscle cell somite 24"))
-        setattr(cls, "UBERON:2000757",
-            PermissibleValue(
-                text="UBERON:2000757",
-                description="obsolete fast muscle cell somite 27"))
-        setattr(cls, "UBERON:2000758",
-            PermissibleValue(
-                text="UBERON:2000758",
-                description="obsolete fast muscle cell somite 3"))
-        setattr(cls, "UBERON:2000759",
-            PermissibleValue(
-                text="UBERON:2000759",
-                description="obsolete fast muscle cell somite 5"))
-        setattr(cls, "UBERON:2000760",
-            PermissibleValue(
-                text="UBERON:2000760",
-                description="obsolete fast muscle cell somite 8"))
         setattr(cls, "UBERON:2000766",
             PermissibleValue(
                 text="UBERON:2000766",
@@ -43836,10 +48676,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000772",
                 description="hypaxial region somite 25"))
-        setattr(cls, "UBERON:2000773",
-            PermissibleValue(
-                text="UBERON:2000773",
-                description="obsolete fast muscle cell somite 12"))
         setattr(cls, "UBERON:2000774",
             PermissibleValue(
                 text="UBERON:2000774",
@@ -43856,66 +48692,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000777",
                 description="hypaxial region somite 9"))
-        setattr(cls, "UBERON:2000778",
-            PermissibleValue(
-                text="UBERON:2000778",
-                description="obsolete interneuron spinal cord"))
         setattr(cls, "UBERON:2000779",
             PermissibleValue(
                 text="UBERON:2000779",
                 description="lateral forebrain bundle telencephalon"))
-        setattr(cls, "UBERON:2000784",
-            PermissibleValue(
-                text="UBERON:2000784",
-                description="obsolete fast muscle cell somite 15"))
-        setattr(cls, "UBERON:2000788",
-            PermissibleValue(
-                text="UBERON:2000788",
-                description="mesenchyme dorsal fin"))
-        setattr(cls, "UBERON:2000790",
-            PermissibleValue(
-                text="UBERON:2000790",
-                description="obsolete muscle pioneer somite 10"))
-        setattr(cls, "UBERON:2000791",
-            PermissibleValue(
-                text="UBERON:2000791",
-                description="obsolete muscle pioneer somite 13"))
-        setattr(cls, "UBERON:2000792",
-            PermissibleValue(
-                text="UBERON:2000792",
-                description="obsolete muscle pioneer somite 16"))
-        setattr(cls, "UBERON:2000793",
-            PermissibleValue(
-                text="UBERON:2000793",
-                description="obsolete muscle pioneer somite 19"))
-        setattr(cls, "UBERON:2000794",
-            PermissibleValue(
-                text="UBERON:2000794",
-                description="obsolete muscle pioneer somite 22"))
-        setattr(cls, "UBERON:2000795",
-            PermissibleValue(
-                text="UBERON:2000795",
-                description="obsolete fast muscle cell somite 18"))
-        setattr(cls, "UBERON:2000796",
-            PermissibleValue(
-                text="UBERON:2000796",
-                description="obsolete muscle pioneer somite 25"))
-        setattr(cls, "UBERON:2000797",
-            PermissibleValue(
-                text="UBERON:2000797",
-                description="obsolete muscle pioneer somite 28"))
-        setattr(cls, "UBERON:2000798",
-            PermissibleValue(
-                text="UBERON:2000798",
-                description="obsolete muscle pioneer somite 30"))
-        setattr(cls, "UBERON:2000799",
-            PermissibleValue(
-                text="UBERON:2000799",
-                description="obsolete muscle pioneer somite 6"))
-        setattr(cls, "UBERON:2000800",
-            PermissibleValue(
-                text="UBERON:2000800",
-                description="obsolete muscle pioneer somite 9"))
         setattr(cls, "UBERON:2000801",
             PermissibleValue(
                 text="UBERON:2000801",
@@ -43936,10 +48716,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000805",
                 description="myotome somite 23"))
-        setattr(cls, "UBERON:2000806",
-            PermissibleValue(
-                text="UBERON:2000806",
-                description="obsolete fast muscle cell somite 20"))
         setattr(cls, "UBERON:2000807",
             PermissibleValue(
                 text="UBERON:2000807",
@@ -43956,42 +48732,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000810",
                 description="myotome somite 7"))
-        setattr(cls, "UBERON:2000813",
-            PermissibleValue(
-                text="UBERON:2000813",
-                description="infraorbital lateral line neuromast"))
-        setattr(cls, "UBERON:2000814",
-            PermissibleValue(
-                text="UBERON:2000814",
-                description="opercular lateral line neuromast"))
         setattr(cls, "UBERON:2000815",
             PermissibleValue(
                 text="UBERON:2000815",
                 description="nucleus of medial longitudinal fasciculus of medulla"))
-        setattr(cls, "UBERON:2000817",
-            PermissibleValue(
-                text="UBERON:2000817",
-                description="obsolete fast muscle cell somite 23"))
-        setattr(cls, "UBERON:2000819",
-            PermissibleValue(
-                text="UBERON:2000819",
-                description="obsolete postcommissural nucleus of V central entopeduncular nucleus"))
         setattr(cls, "UBERON:2000820",
             PermissibleValue(
                 text="UBERON:2000820",
                 description="presumptive neuron neural tube"))
-        setattr(cls, "UBERON:2000821",
-            PermissibleValue(
-                text="UBERON:2000821",
-                description="obsolete primary neuron hindbrain"))
         setattr(cls, "UBERON:2000826",
             PermissibleValue(
                 text="UBERON:2000826",
                 description="central nucleus torus semicircularis"))
-        setattr(cls, "UBERON:2000827",
-            PermissibleValue(
-                text="UBERON:2000827",
-                description="obsolete fast muscle cell somite 26"))
         setattr(cls, "UBERON:2000829",
             PermissibleValue(
                 text="UBERON:2000829",
@@ -44028,58 +48780,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000837",
                 description="sclerotome somite 6"))
-        setattr(cls, "UBERON:2000838",
-            PermissibleValue(
-                text="UBERON:2000838",
-                description="obsolete fast muscle cell somite 29"))
         setattr(cls, "UBERON:2000839",
             PermissibleValue(
                 text="UBERON:2000839",
                 description="sclerotome somite 9"))
-        setattr(cls, "UBERON:2000840",
-            PermissibleValue(
-                text="UBERON:2000840",
-                description="obsolete slow muscle cell somite 11"))
-        setattr(cls, "UBERON:2000841",
-            PermissibleValue(
-                text="UBERON:2000841",
-                description="obsolete slow muscle cell somite 14"))
-        setattr(cls, "UBERON:2000842",
-            PermissibleValue(
-                text="UBERON:2000842",
-                description="obsolete slow muscle cell somite 17"))
-        setattr(cls, "UBERON:2000843",
-            PermissibleValue(
-                text="UBERON:2000843",
-                description="obsolete slow muscle cell somite 2"))
-        setattr(cls, "UBERON:2000844",
-            PermissibleValue(
-                text="UBERON:2000844",
-                description="obsolete slow muscle cell somite 22"))
-        setattr(cls, "UBERON:2000845",
-            PermissibleValue(
-                text="UBERON:2000845",
-                description="obsolete slow muscle cell somite 25"))
-        setattr(cls, "UBERON:2000846",
-            PermissibleValue(
-                text="UBERON:2000846",
-                description="obsolete slow muscle cell somite 28"))
-        setattr(cls, "UBERON:2000847",
-            PermissibleValue(
-                text="UBERON:2000847",
-                description="obsolete slow muscle cell somite 30"))
-        setattr(cls, "UBERON:2000848",
-            PermissibleValue(
-                text="UBERON:2000848",
-                description="obsolete slow muscle cell somite 6"))
-        setattr(cls, "UBERON:2000849",
-            PermissibleValue(
-                text="UBERON:2000849",
-                description="obsolete fast muscle cell somite 4"))
-        setattr(cls, "UBERON:2000850",
-            PermissibleValue(
-                text="UBERON:2000850",
-                description="obsolete slow muscle cell somite 9"))
         setattr(cls, "UBERON:2000851",
             PermissibleValue(
                 text="UBERON:2000851",
@@ -44112,14 +48816,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000858",
                 description="somite 8"))
-        setattr(cls, "UBERON:2000859",
-            PermissibleValue(
-                text="UBERON:2000859",
-                description="specialized hemal arch and spine"))
-        setattr(cls, "UBERON:2000860",
-            PermissibleValue(
-                text="UBERON:2000860",
-                description="obsolete fast muscle cell somite 7"))
         setattr(cls, "UBERON:2000864",
             PermissibleValue(
                 text="UBERON:2000864",
@@ -44160,46 +48856,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000874",
                 description="epaxial region somite 7"))
-        setattr(cls, "UBERON:2000876",
-            PermissibleValue(
-                text="UBERON:2000876",
-                description="obsolete fast muscle cell somite 11"))
-        setattr(cls, "UBERON:2000877",
-            PermissibleValue(
-                text="UBERON:2000877",
-                description="obsolete fast muscle cell somite 14"))
-        setattr(cls, "UBERON:2000878",
-            PermissibleValue(
-                text="UBERON:2000878",
-                description="obsolete fast muscle cell somite 17"))
-        setattr(cls, "UBERON:2000879",
-            PermissibleValue(
-                text="UBERON:2000879",
-                description="obsolete fast muscle cell somite 2"))
-        setattr(cls, "UBERON:2000880",
-            PermissibleValue(
-                text="UBERON:2000880",
-                description="obsolete fast muscle cell somite 22"))
-        setattr(cls, "UBERON:2000881",
-            PermissibleValue(
-                text="UBERON:2000881",
-                description="obsolete fast muscle cell somite 25"))
-        setattr(cls, "UBERON:2000883",
-            PermissibleValue(
-                text="UBERON:2000883",
-                description="obsolete fast muscle cell somite 28"))
-        setattr(cls, "UBERON:2000884",
-            PermissibleValue(
-                text="UBERON:2000884",
-                description="obsolete fast muscle cell somite 30"))
-        setattr(cls, "UBERON:2000885",
-            PermissibleValue(
-                text="UBERON:2000885",
-                description="obsolete fast muscle cell somite 6"))
-        setattr(cls, "UBERON:2000886",
-            PermissibleValue(
-                text="UBERON:2000886",
-                description="obsolete fast muscle cell somite 9"))
         setattr(cls, "UBERON:2000887",
             PermissibleValue(
                 text="UBERON:2000887",
@@ -44244,58 +48900,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000901",
                 description="hypaxial region somite 7"))
-        setattr(cls, "UBERON:2000902",
-            PermissibleValue(
-                text="UBERON:2000902",
-                description="hypural musculature"))
         setattr(cls, "UBERON:2000910",
             PermissibleValue(
                 text="UBERON:2000910",
                 description="medial forebrain bundle telencephalon"))
-        setattr(cls, "UBERON:2000912",
+        setattr(cls, "UBERON:2000911",
             PermissibleValue(
-                text="UBERON:2000912",
-                description="mesenchyme median fin fold"))
+                text="UBERON:2000911",
+                description="transverse process of neural arch 3"))
         setattr(cls, "UBERON:2000913",
             PermissibleValue(
                 text="UBERON:2000913",
                 description="molecular layer valvula cerebelli"))
-        setattr(cls, "UBERON:2000915",
-            PermissibleValue(
-                text="UBERON:2000915",
-                description="obsolete muscle pioneer somite 11"))
-        setattr(cls, "UBERON:2000916",
-            PermissibleValue(
-                text="UBERON:2000916",
-                description="obsolete muscle pioneer somite 14"))
-        setattr(cls, "UBERON:2000917",
-            PermissibleValue(
-                text="UBERON:2000917",
-                description="obsolete muscle pioneer somite 17"))
-        setattr(cls, "UBERON:2000918",
-            PermissibleValue(
-                text="UBERON:2000918",
-                description="obsolete muscle pioneer somite 20"))
-        setattr(cls, "UBERON:2000919",
-            PermissibleValue(
-                text="UBERON:2000919",
-                description="obsolete muscle pioneer somite 23"))
-        setattr(cls, "UBERON:2000920",
-            PermissibleValue(
-                text="UBERON:2000920",
-                description="obsolete muscle pioneer somite 26"))
-        setattr(cls, "UBERON:2000921",
-            PermissibleValue(
-                text="UBERON:2000921",
-                description="obsolete muscle pioneer somite 29"))
-        setattr(cls, "UBERON:2000922",
-            PermissibleValue(
-                text="UBERON:2000922",
-                description="obsolete muscle pioneer somite 4"))
-        setattr(cls, "UBERON:2000923",
-            PermissibleValue(
-                text="UBERON:2000923",
-                description="obsolete muscle pioneer somite 7"))
         setattr(cls, "UBERON:2000924",
             PermissibleValue(
                 text="UBERON:2000924",
@@ -44340,22 +48956,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000934",
                 description="myotome somite 8"))
-        setattr(cls, "UBERON:2000936",
-            PermissibleValue(
-                text="UBERON:2000936",
-                description="dorsal fin distal radial bone"))
         setattr(cls, "UBERON:2000937",
             PermissibleValue(
                 text="UBERON:2000937",
                 description="hypaxial region somite 13"))
-        setattr(cls, "UBERON:2000939",
-            PermissibleValue(
-                text="UBERON:2000939",
-                description="middle lateral line neuromast"))
-        setattr(cls, "UBERON:2000940",
-            PermissibleValue(
-                text="UBERON:2000940",
-                description="posterior lateral line neuromast"))
         setattr(cls, "UBERON:2000941",
             PermissibleValue(
                 text="UBERON:2000941",
@@ -44364,10 +48968,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000946",
                 description="hypaxial region somite 16"))
-        setattr(cls, "UBERON:2000947",
-            PermissibleValue(
-                text="UBERON:2000947",
-                description="dorsal fin proximal radial bone"))
         setattr(cls, "UBERON:2000952",
             PermissibleValue(
                 text="UBERON:2000952",
@@ -44412,50 +49012,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2000962",
                 description="sclerotome somite 7"))
-        setattr(cls, "UBERON:2000963",
-            PermissibleValue(
-                text="UBERON:2000963",
-                description="obsolete slow muscle cell somite 1"))
-        setattr(cls, "UBERON:2000964",
-            PermissibleValue(
-                text="UBERON:2000964",
-                description="obsolete slow muscle cell somite 12"))
-        setattr(cls, "UBERON:2000965",
-            PermissibleValue(
-                text="UBERON:2000965",
-                description="obsolete slow muscle cell somite 15"))
-        setattr(cls, "UBERON:2000966",
-            PermissibleValue(
-                text="UBERON:2000966",
-                description="obsolete slow muscle cell somite 18"))
-        setattr(cls, "UBERON:2000967",
-            PermissibleValue(
-                text="UBERON:2000967",
-                description="obsolete slow muscle cell somite 20"))
         setattr(cls, "UBERON:2000968",
             PermissibleValue(
                 text="UBERON:2000968",
                 description="hypaxial region somite 21"))
-        setattr(cls, "UBERON:2000969",
-            PermissibleValue(
-                text="UBERON:2000969",
-                description="obsolete slow muscle cell somite 23"))
-        setattr(cls, "UBERON:2000970",
-            PermissibleValue(
-                text="UBERON:2000970",
-                description="obsolete slow muscle cell somite 26"))
-        setattr(cls, "UBERON:2000971",
-            PermissibleValue(
-                text="UBERON:2000971",
-                description="obsolete slow muscle cell somite 29"))
-        setattr(cls, "UBERON:2000972",
-            PermissibleValue(
-                text="UBERON:2000972",
-                description="obsolete slow muscle cell somite 4"))
-        setattr(cls, "UBERON:2000973",
-            PermissibleValue(
-                text="UBERON:2000973",
-                description="obsolete slow muscle cell somite 7"))
         setattr(cls, "UBERON:2000974",
             PermissibleValue(
                 text="UBERON:2000974",
@@ -44536,46 +49096,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001001",
                 description="epaxial region somite 13"))
-        setattr(cls, "UBERON:2001002",
-            PermissibleValue(
-                text="UBERON:2001002",
-                description="obsolete motor axons peripheral"))
-        setattr(cls, "UBERON:2001003",
-            PermissibleValue(
-                text="UBERON:2001003",
-                description="obsolete muscle pioneer somite 12"))
-        setattr(cls, "UBERON:2001004",
-            PermissibleValue(
-                text="UBERON:2001004",
-                description="obsolete muscle pioneer somite 15"))
-        setattr(cls, "UBERON:2001005",
-            PermissibleValue(
-                text="UBERON:2001005",
-                description="obsolete muscle pioneer somite 18"))
-        setattr(cls, "UBERON:2001006",
-            PermissibleValue(
-                text="UBERON:2001006",
-                description="obsolete muscle pioneer somite 21"))
-        setattr(cls, "UBERON:2001007",
-            PermissibleValue(
-                text="UBERON:2001007",
-                description="obsolete muscle pioneer somite 24"))
-        setattr(cls, "UBERON:2001008",
-            PermissibleValue(
-                text="UBERON:2001008",
-                description="obsolete muscle pioneer somite 27"))
-        setattr(cls, "UBERON:2001009",
-            PermissibleValue(
-                text="UBERON:2001009",
-                description="obsolete muscle pioneer somite 3"))
-        setattr(cls, "UBERON:2001010",
-            PermissibleValue(
-                text="UBERON:2001010",
-                description="obsolete muscle pioneer somite 5"))
-        setattr(cls, "UBERON:2001011",
-            PermissibleValue(
-                text="UBERON:2001011",
-                description="obsolete muscle pioneer somite 8"))
         setattr(cls, "UBERON:2001012",
             PermissibleValue(
                 text="UBERON:2001012",
@@ -44624,18 +49144,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001023",
                 description="epaxial region somite 19"))
-        setattr(cls, "UBERON:2001025",
-            PermissibleValue(
-                text="UBERON:2001025",
-                description="occipital lateral line neuromast"))
-        setattr(cls, "UBERON:2001026",
-            PermissibleValue(
-                text="UBERON:2001026",
-                description="supraorbital lateral line neuromast"))
-        setattr(cls, "UBERON:2001028",
-            PermissibleValue(
-                text="UBERON:2001028",
-                description="hypurapophysis"))
         setattr(cls, "UBERON:2001030",
             PermissibleValue(
                 text="UBERON:2001030",
@@ -44684,22 +49192,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001046",
                 description="sclerotome somite 8"))
-        setattr(cls, "UBERON:2001047",
-            PermissibleValue(
-                text="UBERON:2001047",
-                description="obsolete slow muscle cell somite 10"))
-        setattr(cls, "UBERON:2001048",
-            PermissibleValue(
-                text="UBERON:2001048",
-                description="obsolete slow muscle cell somite 13"))
-        setattr(cls, "UBERON:2001049",
-            PermissibleValue(
-                text="UBERON:2001049",
-                description="obsolete slow muscle cell somite 16"))
-        setattr(cls, "UBERON:2001050",
-            PermissibleValue(
-                text="UBERON:2001050",
-                description="obsolete slow muscle cell somite 19"))
         setattr(cls, "UBERON:2001051",
             PermissibleValue(
                 text="UBERON:2001051",
@@ -44732,18 +49224,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001062",
                 description="presumptive mesencephalic artery"))
-        setattr(cls, "UBERON:2001063",
-            PermissibleValue(
-                text="UBERON:2001063",
-                description="posterior caudal vein"))
-        setattr(cls, "UBERON:2001065",
-            PermissibleValue(
-                text="UBERON:2001065",
-                description="obsolete lateral mesoderm"))
-        setattr(cls, "UBERON:2001069",
-            PermissibleValue(
-                text="UBERON:2001069",
-                description="ventral fin fold"))
         setattr(cls, "UBERON:2001073",
             PermissibleValue(
                 text="UBERON:2001073",
@@ -44752,10 +49232,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001076",
                 description="intestinal bulb"))
-        setattr(cls, "UBERON:2001086",
-            PermissibleValue(
-                text="UBERON:2001086",
-                description="obsolete muscle pioneer"))
         setattr(cls, "UBERON:2001089",
             PermissibleValue(
                 text="UBERON:2001089",
@@ -44772,18 +49248,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001097",
                 description="immature posterior macula"))
-        setattr(cls, "UBERON:2001098",
+        setattr(cls, "UBERON:2001102",
             PermissibleValue(
-                text="UBERON:2001098",
-                description="obsolete immature hair cell anterior macula"))
-        setattr(cls, "UBERON:2001099",
+                text="UBERON:2001102",
+                description="immature anterior otolith"))
+        setattr(cls, "UBERON:2001103",
             PermissibleValue(
-                text="UBERON:2001099",
-                description="obsolete immature hair cell posterior macula"))
-        setattr(cls, "UBERON:2001109",
-            PermissibleValue(
-                text="UBERON:2001109",
-                description="obsolete oocyte"))
+                text="UBERON:2001103",
+                description="immature posterior otolith"))
         setattr(cls, "UBERON:2001118",
             PermissibleValue(
                 text="UBERON:2001118",
@@ -44856,18 +49328,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001152",
                 description="tooth 3MD"))
-        setattr(cls, "UBERON:2001154",
-            PermissibleValue(
-                text="UBERON:2001154",
-                description="anal fin musculature"))
-        setattr(cls, "UBERON:2001156",
-            PermissibleValue(
-                text="UBERON:2001156",
-                description="posterior lateral line placode"))
-        setattr(cls, "UBERON:2001157",
-            PermissibleValue(
-                text="UBERON:2001157",
-                description="posterior lateral line primordium"))
         setattr(cls, "UBERON:2001163",
             PermissibleValue(
                 text="UBERON:2001163",
@@ -44884,6 +49344,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001166",
                 description="supraneural 9 bone"))
+        setattr(cls, "UBERON:2001167",
+            PermissibleValue(
+                text="UBERON:2001167",
+                description="vertebral element 1"))
+        setattr(cls, "UBERON:2001168",
+            PermissibleValue(
+                text="UBERON:2001168",
+                description="vertebral element 2"))
         setattr(cls, "UBERON:2001169",
             PermissibleValue(
                 text="UBERON:2001169",
@@ -44892,10 +49360,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001170",
                 description="vertebral element 4"))
-        setattr(cls, "UBERON:2001171",
-            PermissibleValue(
-                text="UBERON:2001171",
-                description="os suspensorium"))
         setattr(cls, "UBERON:2001172",
             PermissibleValue(
                 text="UBERON:2001172",
@@ -44916,14 +49380,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001186",
                 description="collagenous dermal stroma"))
-        setattr(cls, "UBERON:2001188",
-            PermissibleValue(
-                text="UBERON:2001188",
-                description="Weberian apparatus"))
-        setattr(cls, "UBERON:2001190",
-            PermissibleValue(
-                text="UBERON:2001190",
-                description="Weberian vertebra"))
         setattr(cls, "UBERON:2001191",
             PermissibleValue(
                 text="UBERON:2001191",
@@ -44944,10 +49400,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001201",
                 description="ventral lateral mesoderm"))
-        setattr(cls, "UBERON:2001203",
-            PermissibleValue(
-                text="UBERON:2001203",
-                description="obsolete ciliary body"))
         setattr(cls, "UBERON:2001220",
             PermissibleValue(
                 text="UBERON:2001220",
@@ -45052,6 +49504,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001247",
                 description="epibranchial 3 bone"))
+        setattr(cls, "UBERON:2001248",
+            PermissibleValue(
+                text="UBERON:2001248",
+                description="dorsal scute series"))
         setattr(cls, "UBERON:2001250",
             PermissibleValue(
                 text="UBERON:2001250",
@@ -45064,6 +49520,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001252",
                 description="pharyngobranchial 3 bone"))
+        setattr(cls, "UBERON:2001253",
+            PermissibleValue(
+                text="UBERON:2001253",
+                description="neural arch 2"))
+        setattr(cls, "UBERON:2001254",
+            PermissibleValue(
+                text="UBERON:2001254",
+                description="abdominal scute series"))
         setattr(cls, "UBERON:2001256",
             PermissibleValue(
                 text="UBERON:2001256",
@@ -45072,10 +49536,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001257",
                 description="medial floor plate"))
-        setattr(cls, "UBERON:2001259",
-            PermissibleValue(
-                text="UBERON:2001259",
-                description="obsolete forebrain ventricle"))
         setattr(cls, "UBERON:2001263",
             PermissibleValue(
                 text="UBERON:2001263",
@@ -45096,6 +49556,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001274",
                 description="coronomeckelian"))
+        setattr(cls, "UBERON:2001275",
+            PermissibleValue(
+                text="UBERON:2001275",
+                description="sublingual bone"))
         setattr(cls, "UBERON:2001277",
             PermissibleValue(
                 text="UBERON:2001277",
@@ -45116,14 +49580,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001281",
                 description="branchiostegal ray 2"))
-        setattr(cls, "UBERON:2001285",
-            PermissibleValue(
-                text="UBERON:2001285",
-                description="obsolete intersegmental vessel"))
-        setattr(cls, "UBERON:2001286",
-            PermissibleValue(
-                text="UBERON:2001286",
-                description="caudal vein plexus"))
         setattr(cls, "UBERON:2001293",
             PermissibleValue(
                 text="UBERON:2001293",
@@ -45160,42 +49616,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001305",
                 description="vagal ganglion 4"))
-        setattr(cls, "UBERON:2001312",
-            PermissibleValue(
-                text="UBERON:2001312",
-                description="dorsal anterior lateral line ganglion"))
-        setattr(cls, "UBERON:2001313",
-            PermissibleValue(
-                text="UBERON:2001313",
-                description="ventral anterior lateral line ganglion"))
-        setattr(cls, "UBERON:2001314",
-            PermissibleValue(
-                text="UBERON:2001314",
-                description="posterior lateral line ganglion"))
-        setattr(cls, "UBERON:2001316",
-            PermissibleValue(
-                text="UBERON:2001316",
-                description="anterior lateral line placode"))
-        setattr(cls, "UBERON:2001322",
-            PermissibleValue(
-                text="UBERON:2001322",
-                description="obsolete dorsoventral diencephalic tract"))
         setattr(cls, "UBERON:2001324",
             PermissibleValue(
                 text="UBERON:2001324",
                 description="enteric musculature"))
+        setattr(cls, "UBERON:2001333",
+            PermissibleValue(
+                text="UBERON:2001333",
+                description="sublingual dorsal and ventral fused"))
         setattr(cls, "UBERON:2001335",
             PermissibleValue(
                 text="UBERON:2001335",
                 description="supradorsal"))
-        setattr(cls, "UBERON:2001337",
-            PermissibleValue(
-                text="UBERON:2001337",
-                description="obsolete spermatogonia"))
-        setattr(cls, "UBERON:2001339",
-            PermissibleValue(
-                text="UBERON:2001339",
-                description="obsolete nucleus of the tract of the anterior commissure"))
         setattr(cls, "UBERON:2001340",
             PermissibleValue(
                 text="UBERON:2001340",
@@ -45232,26 +49664,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001357",
                 description="alar plate midbrain"))
-        setattr(cls, "UBERON:2001359",
-            PermissibleValue(
-                text="UBERON:2001359",
-                description="obsolete pineal complex"))
-        setattr(cls, "UBERON:2001360",
-            PermissibleValue(
-                text="UBERON:2001360",
-                description="obsolete parapineal organ"))
         setattr(cls, "UBERON:2001361",
             PermissibleValue(
                 text="UBERON:2001361",
                 description="basiventral"))
-        setattr(cls, "UBERON:2001363",
-            PermissibleValue(
-                text="UBERON:2001363",
-                description="neural complex of Weberian apparatus"))
-        setattr(cls, "UBERON:2001364",
-            PermissibleValue(
-                text="UBERON:2001364",
-                description="hemal spine"))
         setattr(cls, "UBERON:2001366",
             PermissibleValue(
                 text="UBERON:2001366",
@@ -45260,10 +49676,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001371",
                 description="pancreatic system"))
-        setattr(cls, "UBERON:2001373",
-            PermissibleValue(
-                text="UBERON:2001373",
-                description="obsolete migratory slow muscle precursor cell"))
         setattr(cls, "UBERON:2001378",
             PermissibleValue(
                 text="UBERON:2001378",
@@ -45280,10 +49692,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001389",
                 description="regeneration epithelium of fin/limb"))
-        setattr(cls, "UBERON:2001391",
-            PermissibleValue(
-                text="UBERON:2001391",
-                description="anterior lateral line ganglion"))
         setattr(cls, "UBERON:2001392",
             PermissibleValue(
                 text="UBERON:2001392",
@@ -45304,10 +49712,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001396",
                 description="parapophysis + rib of vertebra 4"))
-        setattr(cls, "UBERON:2001397",
-            PermissibleValue(
-                text="UBERON:2001397",
-                description="post-Weberian supraneural"))
         setattr(cls, "UBERON:2001403",
             PermissibleValue(
                 text="UBERON:2001403",
@@ -45336,26 +49740,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001412",
                 description="epiotic"))
-        setattr(cls, "UBERON:2001415",
-            PermissibleValue(
-                text="UBERON:2001415",
-                description="pelvic fin distal radial bone 2"))
-        setattr(cls, "UBERON:2001416",
-            PermissibleValue(
-                text="UBERON:2001416",
-                description="pelvic fin distal radial bone 3"))
-        setattr(cls, "UBERON:2001417",
-            PermissibleValue(
-                text="UBERON:2001417",
-                description="pelvic fin distal radial bone 1"))
-        setattr(cls, "UBERON:2001419",
-            PermissibleValue(
-                text="UBERON:2001419",
-                description="dorsal fin pterygiophore"))
-        setattr(cls, "UBERON:2001420",
-            PermissibleValue(
-                text="UBERON:2001420",
-                description="anal fin pterygiophore"))
         setattr(cls, "UBERON:2001425",
             PermissibleValue(
                 text="UBERON:2001425",
@@ -45380,34 +49764,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001431",
                 description="primitive olfactory epithelium"))
-        setattr(cls, "UBERON:2001432",
-            PermissibleValue(
-                text="UBERON:2001432",
-                description="anterior sclerotic bone"))
-        setattr(cls, "UBERON:2001433",
-            PermissibleValue(
-                text="UBERON:2001433",
-                description="posterior sclerotic bone"))
         setattr(cls, "UBERON:2001437",
             PermissibleValue(
                 text="UBERON:2001437",
                 description="ductus communicans"))
-        setattr(cls, "UBERON:2001450",
-            PermissibleValue(
-                text="UBERON:2001450",
-                description="apical ectodermal ridge pelvic fin"))
-        setattr(cls, "UBERON:2001456",
-            PermissibleValue(
-                text="UBERON:2001456",
-                description="pectoral fin endoskeletal disc"))
         setattr(cls, "UBERON:2001457",
             PermissibleValue(
                 text="UBERON:2001457",
                 description="postcranial axial cartilage"))
-        setattr(cls, "UBERON:2001462",
-            PermissibleValue(
-                text="UBERON:2001462",
-                description="obsolete somite border"))
         setattr(cls, "UBERON:2001463",
             PermissibleValue(
                 text="UBERON:2001463",
@@ -45416,46 +49780,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001467",
                 description="pharyngeal mesoderm"))
-        setattr(cls, "UBERON:2001468",
+        setattr(cls, "UBERON:2001474",
             PermissibleValue(
-                text="UBERON:2001468",
-                description="anterior lateral line system"))
-        setattr(cls, "UBERON:2001470",
+                text="UBERON:2001474",
+                description="sublingual dorsal and ventral separate"))
+        setattr(cls, "UBERON:2001475",
             PermissibleValue(
-                text="UBERON:2001470",
-                description="anterior lateral line"))
-        setattr(cls, "UBERON:2001471",
+                text="UBERON:2001475",
+                description="sublingual dorsal ossification"))
+        setattr(cls, "UBERON:2001476",
             PermissibleValue(
-                text="UBERON:2001471",
-                description="posterior lateral line system"))
-        setattr(cls, "UBERON:2001472",
-            PermissibleValue(
-                text="UBERON:2001472",
-                description="anterior lateral line neuromast"))
-        setattr(cls, "UBERON:2001473",
-            PermissibleValue(
-                text="UBERON:2001473",
-                description="obsolete deep blastomere"))
-        setattr(cls, "UBERON:2001480",
-            PermissibleValue(
-                text="UBERON:2001480",
-                description="dorsal anterior lateral line nerve"))
-        setattr(cls, "UBERON:2001481",
-            PermissibleValue(
-                text="UBERON:2001481",
-                description="ventral anterior lateral line nerve"))
-        setattr(cls, "UBERON:2001482",
-            PermissibleValue(
-                text="UBERON:2001482",
-                description="middle lateral line nerve"))
-        setattr(cls, "UBERON:2001483",
-            PermissibleValue(
-                text="UBERON:2001483",
-                description="middle lateral line ganglion"))
-        setattr(cls, "UBERON:2001484",
-            PermissibleValue(
-                text="UBERON:2001484",
-                description="obsolete superficial blastomere"))
+                text="UBERON:2001476",
+                description="sublingual ventral ossification"))
         setattr(cls, "UBERON:2001502",
             PermissibleValue(
                 text="UBERON:2001502",
@@ -45544,6 +49880,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001531",
                 description="epibranchial 4 cartilage"))
+        setattr(cls, "UBERON:2001532",
+            PermissibleValue(
+                text="UBERON:2001532",
+                description="sublingual dorsal cartilage"))
         setattr(cls, "UBERON:2001533",
             PermissibleValue(
                 text="UBERON:2001533",
@@ -45552,10 +49892,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001534",
                 description="pharyngobranchial 3 cartilage"))
-        setattr(cls, "UBERON:2001535",
-            PermissibleValue(
-                text="UBERON:2001535",
-                description="median fin cartilage"))
         setattr(cls, "UBERON:2001536",
             PermissibleValue(
                 text="UBERON:2001536",
@@ -45564,82 +49900,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001537",
                 description="mesocoracoid cartilage"))
-        setattr(cls, "UBERON:2001538",
-            PermissibleValue(
-                text="UBERON:2001538",
-                description="pelvic radial cartilage"))
         setattr(cls, "UBERON:2001539",
             PermissibleValue(
                 text="UBERON:2001539",
                 description="basipterygium cartilage"))
-        setattr(cls, "UBERON:2001540",
+        setattr(cls, "UBERON:2001544",
             PermissibleValue(
-                text="UBERON:2001540",
-                description="pelvic radial 3 cartilage"))
-        setattr(cls, "UBERON:2001541",
+                text="UBERON:2001544",
+                description="sublingual cartilage"))
+        setattr(cls, "UBERON:2001545",
             PermissibleValue(
-                text="UBERON:2001541",
-                description="pelvic radial 2 cartilage"))
-        setattr(cls, "UBERON:2001542",
-            PermissibleValue(
-                text="UBERON:2001542",
-                description="pelvic radial 1 cartilage"))
+                text="UBERON:2001545",
+                description="sublingual ventral cartilage"))
         setattr(cls, "UBERON:2001546",
             PermissibleValue(
                 text="UBERON:2001546",
                 description="neural spine 4"))
-        setattr(cls, "UBERON:2001548",
-            PermissibleValue(
-                text="UBERON:2001548",
-                description="intercalarium ascending process"))
-        setattr(cls, "UBERON:2001553",
-            PermissibleValue(
-                text="UBERON:2001553",
-                description="manubrium"))
-        setattr(cls, "UBERON:2001560",
-            PermissibleValue(
-                text="UBERON:2001560",
-                description="hypural 1"))
-        setattr(cls, "UBERON:2001561",
-            PermissibleValue(
-                text="UBERON:2001561",
-                description="hypural 2"))
-        setattr(cls, "UBERON:2001562",
-            PermissibleValue(
-                text="UBERON:2001562",
-                description="hypural 3"))
-        setattr(cls, "UBERON:2001563",
-            PermissibleValue(
-                text="UBERON:2001563",
-                description="hypural 4"))
-        setattr(cls, "UBERON:2001564",
-            PermissibleValue(
-                text="UBERON:2001564",
-                description="hypural 5"))
-        setattr(cls, "UBERON:2001565",
-            PermissibleValue(
-                text="UBERON:2001565",
-                description="obsolete oocyte stage II"))
-        setattr(cls, "UBERON:2001566",
-            PermissibleValue(
-                text="UBERON:2001566",
-                description="obsolete oocyte stage III"))
-        setattr(cls, "UBERON:2001567",
-            PermissibleValue(
-                text="UBERON:2001567",
-                description="obsolete oocyte stage I"))
-        setattr(cls, "UBERON:2001568",
-            PermissibleValue(
-                text="UBERON:2001568",
-                description="obsolete oocyte stage IV"))
-        setattr(cls, "UBERON:2001569",
-            PermissibleValue(
-                text="UBERON:2001569",
-                description="obsolete oocyte stage V"))
-        setattr(cls, "UBERON:2001570",
-            PermissibleValue(
-                text="UBERON:2001570",
-                description="obsolete unfertilized egg"))
         setattr(cls, "UBERON:2001571",
             PermissibleValue(
                 text="UBERON:2001571",
@@ -45652,14 +49928,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001578",
                 description="anterior dorsomedial process of autopalatine"))
-        setattr(cls, "UBERON:2001579",
-            PermissibleValue(
-                text="UBERON:2001579",
-                description="ural vertebra 2"))
-        setattr(cls, "UBERON:2001581",
-            PermissibleValue(
-                text="UBERON:2001581",
-                description="ural centrum 2"))
         setattr(cls, "UBERON:2001582",
             PermissibleValue(
                 text="UBERON:2001582",
@@ -45668,86 +49936,182 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001583",
                 description="preural centrum 1+ ural centrum 1"))
-        setattr(cls, "UBERON:2001584",
+        setattr(cls, "UBERON:2001603",
             PermissibleValue(
-                text="UBERON:2001584",
-                description="caudal procurrent ray"))
-        setattr(cls, "UBERON:2001585",
+                text="UBERON:2001603",
+                description="maxilla ascending process"))
+        setattr(cls, "UBERON:2001604",
             PermissibleValue(
-                text="UBERON:2001585",
-                description="caudal principal ray"))
-        setattr(cls, "UBERON:2001586",
+                text="UBERON:2001604",
+                description="lateral ethmoid palatine process"))
+        setattr(cls, "UBERON:2001605",
             PermissibleValue(
-                text="UBERON:2001586",
-                description="pectoral fin radial bone"))
-        setattr(cls, "UBERON:2001587",
+                text="UBERON:2001605",
+                description="caudal scute series"))
+        setattr(cls, "UBERON:2001607",
             PermissibleValue(
-                text="UBERON:2001587",
-                description="pectoral fin proximal radial bone"))
-        setattr(cls, "UBERON:2001588",
-            PermissibleValue(
-                text="UBERON:2001588",
-                description="pectoral fin distal radial bone"))
-        setattr(cls, "UBERON:2001589",
-            PermissibleValue(
-                text="UBERON:2001589",
-                description="propterygium cartilage"))
-        setattr(cls, "UBERON:2001592",
-            PermissibleValue(
-                text="UBERON:2001592",
-                description="claustrum bone"))
-        setattr(cls, "UBERON:2001593",
-            PermissibleValue(
-                text="UBERON:2001593",
-                description="caudal fin upper lobe"))
-        setattr(cls, "UBERON:2001594",
-            PermissibleValue(
-                text="UBERON:2001594",
-                description="caudal fin lower lobe"))
+                text="UBERON:2001607",
+                description="basipterygoid process of parasphenoid"))
         setattr(cls, "UBERON:2001608",
             PermissibleValue(
                 text="UBERON:2001608",
                 description="autopalatine-lateral ethmoid joint"))
-        setattr(cls, "UBERON:2001612",
+        setattr(cls, "UBERON:2001609",
             PermissibleValue(
-                text="UBERON:2001612",
-                description="sensory canal"))
-        setattr(cls, "UBERON:2001617",
+                text="UBERON:2001609",
+                description="pharyngobranchial 2 bone uncinate process"))
+        setattr(cls, "UBERON:2001615",
             PermissibleValue(
-                text="UBERON:2001617",
-                description="trunk sensory canal"))
-        setattr(cls, "UBERON:2001619",
+                text="UBERON:2001615",
+                description="sphenotic spine"))
+        setattr(cls, "UBERON:2001616",
             PermissibleValue(
-                text="UBERON:2001619",
-                description="post-otic sensory canal"))
+                text="UBERON:2001616",
+                description="lateral ethmoid wing"))
         setattr(cls, "UBERON:2001620",
             PermissibleValue(
                 text="UBERON:2001620",
                 description="lagenar capsule"))
-        setattr(cls, "UBERON:2001629",
+        setattr(cls, "UBERON:2001622",
             PermissibleValue(
-                text="UBERON:2001629",
-                description="otic sensory canal"))
-        setattr(cls, "UBERON:2001630",
+                text="UBERON:2001622",
+                description="odontode"))
+        setattr(cls, "UBERON:2001623",
             PermissibleValue(
-                text="UBERON:2001630",
-                description="supratemporal sensory canal"))
+                text="UBERON:2001623",
+                description="type 1 odontode"))
+        setattr(cls, "UBERON:2001624",
+            PermissibleValue(
+                text="UBERON:2001624",
+                description="type 2 odontode"))
+        setattr(cls, "UBERON:2001626",
+            PermissibleValue(
+                text="UBERON:2001626",
+                description="premaxillary tooth"))
+        setattr(cls, "UBERON:2001632",
+            PermissibleValue(
+                text="UBERON:2001632",
+                description="ectopterygoid tooth"))
+        setattr(cls, "UBERON:2001633",
+            PermissibleValue(
+                text="UBERON:2001633",
+                description="entopterygoid tooth"))
+        setattr(cls, "UBERON:2001634",
+            PermissibleValue(
+                text="UBERON:2001634",
+                description="pharyngobranchial 1 cartilage"))
+        setattr(cls, "UBERON:2001635",
+            PermissibleValue(
+                text="UBERON:2001635",
+                description="pharyngobranchial 1 bone"))
+        setattr(cls, "UBERON:2001636",
+            PermissibleValue(
+                text="UBERON:2001636",
+                description="pharyngobranchial 4 bone"))
         setattr(cls, "UBERON:2001640",
             PermissibleValue(
                 text="UBERON:2001640",
                 description="notochordal ossification"))
+        setattr(cls, "UBERON:2001647",
+            PermissibleValue(
+                text="UBERON:2001647",
+                description="pharyngeal tooth plate"))
+        setattr(cls, "UBERON:2001648",
+            PermissibleValue(
+                text="UBERON:2001648",
+                description="basihyal tooth plate"))
+        setattr(cls, "UBERON:2001649",
+            PermissibleValue(
+                text="UBERON:2001649",
+                description="basihyal tooth"))
+        setattr(cls, "UBERON:2001650",
+            PermissibleValue(
+                text="UBERON:2001650",
+                description="pharyngobranchial 2 tooth plate"))
+        setattr(cls, "UBERON:2001651",
+            PermissibleValue(
+                text="UBERON:2001651",
+                description="pharyngobranchial 2 tooth"))
+        setattr(cls, "UBERON:2001652",
+            PermissibleValue(
+                text="UBERON:2001652",
+                description="pharyngobranchial 3 tooth plate"))
+        setattr(cls, "UBERON:2001653",
+            PermissibleValue(
+                text="UBERON:2001653",
+                description="pharyngobranchial 3 tooth"))
+        setattr(cls, "UBERON:2001654",
+            PermissibleValue(
+                text="UBERON:2001654",
+                description="upper pharyngeal 4 tooth plate"))
+        setattr(cls, "UBERON:2001655",
+            PermissibleValue(
+                text="UBERON:2001655",
+                description="upper pharyngeal 4 tooth"))
+        setattr(cls, "UBERON:2001656",
+            PermissibleValue(
+                text="UBERON:2001656",
+                description="upper pharyngeal 5 tooth plate"))
+        setattr(cls, "UBERON:2001657",
+            PermissibleValue(
+                text="UBERON:2001657",
+                description="upper pharyngeal 5 tooth"))
+        setattr(cls, "UBERON:2001658",
+            PermissibleValue(
+                text="UBERON:2001658",
+                description="upper pharyngeal tooth plate"))
+        setattr(cls, "UBERON:2001659",
+            PermissibleValue(
+                text="UBERON:2001659",
+                description="upper pharyngeal tooth"))
+        setattr(cls, "UBERON:2001660",
+            PermissibleValue(
+                text="UBERON:2001660",
+                description="basibranchial tooth"))
+        setattr(cls, "UBERON:2001661",
+            PermissibleValue(
+                text="UBERON:2001661",
+                description="basibranchial tooth plate"))
+        setattr(cls, "UBERON:2001662",
+            PermissibleValue(
+                text="UBERON:2001662",
+                description="basibranchial 4 tooth plate"))
+        setattr(cls, "UBERON:2001663",
+            PermissibleValue(
+                text="UBERON:2001663",
+                description="basibranchial 4 tooth"))
+        setattr(cls, "UBERON:2001664",
+            PermissibleValue(
+                text="UBERON:2001664",
+                description="basibranchial 2 tooth plate"))
+        setattr(cls, "UBERON:2001665",
+            PermissibleValue(
+                text="UBERON:2001665",
+                description="basibranchial 2 tooth"))
         setattr(cls, "UBERON:2001666",
             PermissibleValue(
                 text="UBERON:2001666",
                 description="rudimentary neural arch"))
-        setattr(cls, "UBERON:2001671",
+        setattr(cls, "UBERON:2001674",
             PermissibleValue(
-                text="UBERON:2001671",
-                description="anal fin radial bone"))
-        setattr(cls, "UBERON:2001672",
+                text="UBERON:2001674",
+                description="infraorbital 6"))
+        setattr(cls, "UBERON:2001675",
             PermissibleValue(
-                text="UBERON:2001672",
-                description="dorsal fin radial bone"))
+                text="UBERON:2001675",
+                description="mesethmoid cornu"))
+        setattr(cls, "UBERON:2001676",
+            PermissibleValue(
+                text="UBERON:2001676",
+                description="mesethmoid-premaxillary joint"))
+        setattr(cls, "UBERON:2001677",
+            PermissibleValue(
+                text="UBERON:2001677",
+                description="mesethmoid-nasal joint"))
+        setattr(cls, "UBERON:2001678",
+            PermissibleValue(
+                text="UBERON:2001678",
+                description="mesethmoid-frontal joint"))
         setattr(cls, "UBERON:2001679",
             PermissibleValue(
                 text="UBERON:2001679",
@@ -45756,6 +50120,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001680",
                 description="mesethmoid-vomer joint"))
+        setattr(cls, "UBERON:2001681",
+            PermissibleValue(
+                text="UBERON:2001681",
+                description="cornu mesial process"))
+        setattr(cls, "UBERON:2001683",
+            PermissibleValue(
+                text="UBERON:2001683",
+                description="transcapular ligament"))
+        setattr(cls, "UBERON:2001684",
+            PermissibleValue(
+                text="UBERON:2001684",
+                description="ossified transcapular ligament"))
         setattr(cls, "UBERON:2001685",
             PermissibleValue(
                 text="UBERON:2001685",
@@ -45768,6 +50144,78 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001687",
                 description="interopercular-mandibular ligament"))
+        setattr(cls, "UBERON:2001688",
+            PermissibleValue(
+                text="UBERON:2001688",
+                description="palatine cartilage"))
+        setattr(cls, "UBERON:2001689",
+            PermissibleValue(
+                text="UBERON:2001689",
+                description="pterygoquadrate cartilage"))
+        setattr(cls, "UBERON:2001690",
+            PermissibleValue(
+                text="UBERON:2001690",
+                description="anterior cartilage of palatine"))
+        setattr(cls, "UBERON:2001691",
+            PermissibleValue(
+                text="UBERON:2001691",
+                description="posterior cartilage of palatine"))
+        setattr(cls, "UBERON:2001692",
+            PermissibleValue(
+                text="UBERON:2001692",
+                description="median premaxilla"))
+        setattr(cls, "UBERON:2001693",
+            PermissibleValue(
+                text="UBERON:2001693",
+                description="protractor operculi"))
+        setattr(cls, "UBERON:2001694",
+            PermissibleValue(
+                text="UBERON:2001694",
+                description="humerovertebral ligament"))
+        setattr(cls, "UBERON:2001695",
+            PermissibleValue(
+                text="UBERON:2001695",
+                description="mediopharyngobranchial"))
+        setattr(cls, "UBERON:2001696",
+            PermissibleValue(
+                text="UBERON:2001696",
+                description="gongyloid cartilage"))
+        setattr(cls, "UBERON:2001697",
+            PermissibleValue(
+                text="UBERON:2001697",
+                description="transverse radial"))
+        setattr(cls, "UBERON:2001701",
+            PermissibleValue(
+                text="UBERON:2001701",
+                description="basibranchial 5 bone"))
+        setattr(cls, "UBERON:2001702",
+            PermissibleValue(
+                text="UBERON:2001702",
+                description="infraorbital 7"))
+        setattr(cls, "UBERON:2001703",
+            PermissibleValue(
+                text="UBERON:2001703",
+                description="infraorbital 8"))
+        setattr(cls, "UBERON:2001704",
+            PermissibleValue(
+                text="UBERON:2001704",
+                description="infraorbital 9"))
+        setattr(cls, "UBERON:2001705",
+            PermissibleValue(
+                text="UBERON:2001705",
+                description="infraorbital 10"))
+        setattr(cls, "UBERON:2001706",
+            PermissibleValue(
+                text="UBERON:2001706",
+                description="infraorbital 11"))
+        setattr(cls, "UBERON:2001707",
+            PermissibleValue(
+                text="UBERON:2001707",
+                description="infraorbital 12"))
+        setattr(cls, "UBERON:2001708",
+            PermissibleValue(
+                text="UBERON:2001708",
+                description="dermosphenotic"))
         setattr(cls, "UBERON:2001709",
             PermissibleValue(
                 text="UBERON:2001709",
@@ -45780,98 +50228,54 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001711",
                 description="frontal-pterotic joint"))
-        setattr(cls, "UBERON:2001713",
-            PermissibleValue(
-                text="UBERON:2001713",
-                description="caudal principal ray 1"))
-        setattr(cls, "UBERON:2001714",
-            PermissibleValue(
-                text="UBERON:2001714",
-                description="caudal principal ray 2"))
-        setattr(cls, "UBERON:2001715",
-            PermissibleValue(
-                text="UBERON:2001715",
-                description="caudal principal ray 3"))
-        setattr(cls, "UBERON:2001716",
-            PermissibleValue(
-                text="UBERON:2001716",
-                description="caudal principal ray 4"))
-        setattr(cls, "UBERON:2001717",
-            PermissibleValue(
-                text="UBERON:2001717",
-                description="caudal principal ray 5"))
-        setattr(cls, "UBERON:2001718",
-            PermissibleValue(
-                text="UBERON:2001718",
-                description="caudal principal ray 6"))
-        setattr(cls, "UBERON:2001719",
-            PermissibleValue(
-                text="UBERON:2001719",
-                description="caudal principal ray 7"))
-        setattr(cls, "UBERON:2001720",
-            PermissibleValue(
-                text="UBERON:2001720",
-                description="caudal principal ray 8"))
-        setattr(cls, "UBERON:2001721",
-            PermissibleValue(
-                text="UBERON:2001721",
-                description="caudal principal ray 9"))
-        setattr(cls, "UBERON:2001722",
-            PermissibleValue(
-                text="UBERON:2001722",
-                description="caudal principal ray 10"))
-        setattr(cls, "UBERON:2001723",
-            PermissibleValue(
-                text="UBERON:2001723",
-                description="caudal principal ray 11"))
-        setattr(cls, "UBERON:2001724",
-            PermissibleValue(
-                text="UBERON:2001724",
-                description="caudal principal ray 12"))
-        setattr(cls, "UBERON:2001725",
-            PermissibleValue(
-                text="UBERON:2001725",
-                description="caudal principal ray 13"))
-        setattr(cls, "UBERON:2001726",
-            PermissibleValue(
-                text="UBERON:2001726",
-                description="caudal principal ray 14"))
-        setattr(cls, "UBERON:2001727",
-            PermissibleValue(
-                text="UBERON:2001727",
-                description="caudal principal ray 15"))
-        setattr(cls, "UBERON:2001728",
-            PermissibleValue(
-                text="UBERON:2001728",
-                description="caudal principal ray 16"))
-        setattr(cls, "UBERON:2001729",
-            PermissibleValue(
-                text="UBERON:2001729",
-                description="caudal principal ray 17"))
-        setattr(cls, "UBERON:2001730",
-            PermissibleValue(
-                text="UBERON:2001730",
-                description="caudal principal ray 18"))
-        setattr(cls, "UBERON:2001731",
-            PermissibleValue(
-                text="UBERON:2001731",
-                description="caudal principal ray 19"))
         setattr(cls, "UBERON:2001732",
             PermissibleValue(
                 text="UBERON:2001732",
                 description="vertebral element 5"))
+        setattr(cls, "UBERON:2001733",
+            PermissibleValue(
+                text="UBERON:2001733",
+                description="mesethmoid ventral diverging lamella"))
+        setattr(cls, "UBERON:2001734",
+            PermissibleValue(
+                text="UBERON:2001734",
+                description="posterior process of basipterygium"))
         setattr(cls, "UBERON:2001735",
             PermissibleValue(
                 text="UBERON:2001735",
                 description="scapular foramen"))
-        setattr(cls, "UBERON:2001737",
+        setattr(cls, "UBERON:2001739",
             PermissibleValue(
-                text="UBERON:2001737",
-                description="coracoid foramen"))
+                text="UBERON:2001739",
+                description="anterior cranial fontanel"))
+        setattr(cls, "UBERON:2001740",
+            PermissibleValue(
+                text="UBERON:2001740",
+                description="posterior cranial fontanel"))
+        setattr(cls, "UBERON:2001741",
+            PermissibleValue(
+                text="UBERON:2001741",
+                description="trigeminofacial foramen"))
         setattr(cls, "UBERON:2001742",
             PermissibleValue(
                 text="UBERON:2001742",
                 description="auditory foramen"))
+        setattr(cls, "UBERON:2001744",
+            PermissibleValue(
+                text="UBERON:2001744",
+                description="replacement tooth trench"))
+        setattr(cls, "UBERON:2001745",
+            PermissibleValue(
+                text="UBERON:2001745",
+                description="premaxilla replacement tooth trench"))
+        setattr(cls, "UBERON:2001746",
+            PermissibleValue(
+                text="UBERON:2001746",
+                description="dentary replacement tooth trench"))
+        setattr(cls, "UBERON:2001747",
+            PermissibleValue(
+                text="UBERON:2001747",
+                description="lateral mesethmoid wing"))
         setattr(cls, "UBERON:2001748",
             PermissibleValue(
                 text="UBERON:2001748",
@@ -45888,126 +50292,62 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001751",
                 description="rib of vertebra 5"))
+        setattr(cls, "UBERON:2001752",
+            PermissibleValue(
+                text="UBERON:2001752",
+                description="pre-narial cartilage"))
         setattr(cls, "UBERON:2001753",
             PermissibleValue(
                 text="UBERON:2001753",
                 description="posttemporal fossa"))
-        setattr(cls, "UBERON:2001754",
+        setattr(cls, "UBERON:2001768",
             PermissibleValue(
-                text="UBERON:2001754",
-                description="dorsal fin ray 1"))
-        setattr(cls, "UBERON:2001755",
+                text="UBERON:2001768",
+                description="retractor tentaculi"))
+        setattr(cls, "UBERON:2001783",
             PermissibleValue(
-                text="UBERON:2001755",
-                description="dorsal fin ray 2"))
-        setattr(cls, "UBERON:2001756",
-            PermissibleValue(
-                text="UBERON:2001756",
-                description="dorsal fin ray 3"))
-        setattr(cls, "UBERON:2001757",
-            PermissibleValue(
-                text="UBERON:2001757",
-                description="dorsal fin ray 4"))
-        setattr(cls, "UBERON:2001758",
-            PermissibleValue(
-                text="UBERON:2001758",
-                description="dorsal fin ray 5"))
-        setattr(cls, "UBERON:2001759",
-            PermissibleValue(
-                text="UBERON:2001759",
-                description="dorsal fin ray 6"))
-        setattr(cls, "UBERON:2001760",
-            PermissibleValue(
-                text="UBERON:2001760",
-                description="dorsal fin ray 7"))
-        setattr(cls, "UBERON:2001761",
-            PermissibleValue(
-                text="UBERON:2001761",
-                description="pectoral fin ray 1"))
-        setattr(cls, "UBERON:2001762",
-            PermissibleValue(
-                text="UBERON:2001762",
-                description="pectoral fin ray 2"))
-        setattr(cls, "UBERON:2001763",
-            PermissibleValue(
-                text="UBERON:2001763",
-                description="pectoral fin ray 3"))
-        setattr(cls, "UBERON:2001764",
-            PermissibleValue(
-                text="UBERON:2001764",
-                description="pectoral fin ray 4"))
-        setattr(cls, "UBERON:2001765",
-            PermissibleValue(
-                text="UBERON:2001765",
-                description="pectoral fin ray 5"))
-        setattr(cls, "UBERON:2001766",
-            PermissibleValue(
-                text="UBERON:2001766",
-                description="pectoral fin ray 6"))
-        setattr(cls, "UBERON:2001767",
-            PermissibleValue(
-                text="UBERON:2001767",
-                description="pectoral fin ray 7"))
-        setattr(cls, "UBERON:2001769",
-            PermissibleValue(
-                text="UBERON:2001769",
-                description="anal fin ray 1"))
-        setattr(cls, "UBERON:2001770",
-            PermissibleValue(
-                text="UBERON:2001770",
-                description="anal fin ray 2"))
-        setattr(cls, "UBERON:2001771",
-            PermissibleValue(
-                text="UBERON:2001771",
-                description="anal fin ray 3"))
-        setattr(cls, "UBERON:2001772",
-            PermissibleValue(
-                text="UBERON:2001772",
-                description="anal fin ray 4"))
-        setattr(cls, "UBERON:2001773",
-            PermissibleValue(
-                text="UBERON:2001773",
-                description="anal fin ray 5"))
-        setattr(cls, "UBERON:2001774",
-            PermissibleValue(
-                text="UBERON:2001774",
-                description="anal fin ray 6"))
-        setattr(cls, "UBERON:2001775",
-            PermissibleValue(
-                text="UBERON:2001775",
-                description="anal fin ray 7"))
-        setattr(cls, "UBERON:2001776",
-            PermissibleValue(
-                text="UBERON:2001776",
-                description="pelvic fin ray 1"))
-        setattr(cls, "UBERON:2001777",
-            PermissibleValue(
-                text="UBERON:2001777",
-                description="pelvic fin ray 2"))
-        setattr(cls, "UBERON:2001778",
-            PermissibleValue(
-                text="UBERON:2001778",
-                description="pelvic fin ray 3"))
-        setattr(cls, "UBERON:2001779",
-            PermissibleValue(
-                text="UBERON:2001779",
-                description="pelvic fin ray 4"))
+                text="UBERON:2001783",
+                description="supraoccipital crest"))
         setattr(cls, "UBERON:2001784",
             PermissibleValue(
                 text="UBERON:2001784",
                 description="autopalatine-vomer joint"))
-        setattr(cls, "UBERON:2001785",
+        setattr(cls, "UBERON:2001792",
             PermissibleValue(
-                text="UBERON:2001785",
-                description="branched dorsal fin ray"))
+                text="UBERON:2001792",
+                description="pharyngobranchial 3 bone uncinate process"))
+        setattr(cls, "UBERON:2001793",
+            PermissibleValue(
+                text="UBERON:2001793",
+                description="pharyngobranchial 4 bone uncinate process"))
         setattr(cls, "UBERON:2001794",
             PermissibleValue(
                 text="UBERON:2001794",
                 description="orbitosphenoid-prootic joint"))
+        setattr(cls, "UBERON:2001795",
+            PermissibleValue(
+                text="UBERON:2001795",
+                description="ceratohyal foramen"))
+        setattr(cls, "UBERON:2001796",
+            PermissibleValue(
+                text="UBERON:2001796",
+                description="epibranchial 2 bone uncinate process"))
+        setattr(cls, "UBERON:2001797",
+            PermissibleValue(
+                text="UBERON:2001797",
+                description="epibranchial 1 bone uncinate process"))
+        setattr(cls, "UBERON:2001798",
+            PermissibleValue(
+                text="UBERON:2001798",
+                description="epicentral bone"))
         setattr(cls, "UBERON:2001799",
             PermissibleValue(
                 text="UBERON:2001799",
                 description="recessus lateralis"))
+        setattr(cls, "UBERON:2001800",
+            PermissibleValue(
+                text="UBERON:2001800",
+                description="cephalic rib"))
         setattr(cls, "UBERON:2001801",
             PermissibleValue(
                 text="UBERON:2001801",
@@ -46020,42 +50360,42 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001804",
                 description="olfactory nerve foramen"))
-        setattr(cls, "UBERON:2001810",
+        setattr(cls, "UBERON:2001805",
             PermissibleValue(
-                text="UBERON:2001810",
-                description="supraorbital sensory canal"))
-        setattr(cls, "UBERON:2001811",
+                text="UBERON:2001805",
+                description="articular bone"))
+        setattr(cls, "UBERON:2001806",
             PermissibleValue(
-                text="UBERON:2001811",
-                description="infraorbital sensory canal"))
-        setattr(cls, "UBERON:2001812",
+                text="UBERON:2001806",
+                description="intracranial diverticulum of swimbladder"))
+        setattr(cls, "UBERON:2001807",
             PermissibleValue(
-                text="UBERON:2001812",
-                description="preoperculo-mandibular sensory canal"))
-        setattr(cls, "UBERON:2001813",
+                text="UBERON:2001807",
+                description="preepiotic fossa"))
+        setattr(cls, "UBERON:2001808",
             PermissibleValue(
-                text="UBERON:2001813",
-                description="preopercular sensory canal"))
-        setattr(cls, "UBERON:2001814",
+                text="UBERON:2001808",
+                description="facial foramen"))
+        setattr(cls, "UBERON:2001809",
             PermissibleValue(
-                text="UBERON:2001814",
-                description="mandibular sensory canal"))
-        setattr(cls, "UBERON:2001818",
+                text="UBERON:2001809",
+                description="trigeminal foramen"))
+        setattr(cls, "UBERON:2001815",
             PermissibleValue(
-                text="UBERON:2001818",
-                description="dorsal fin proximal radial bone 1"))
-        setattr(cls, "UBERON:2001819",
+                text="UBERON:2001815",
+                description="nuchal plate"))
+        setattr(cls, "UBERON:2001816",
             PermissibleValue(
-                text="UBERON:2001819",
-                description="dorsal fin proximal radial bone 2"))
-        setattr(cls, "UBERON:2001821",
+                text="UBERON:2001816",
+                description="anterior nuchal plate"))
+        setattr(cls, "UBERON:2001822",
             PermissibleValue(
-                text="UBERON:2001821",
-                description="notochord posterior region"))
-        setattr(cls, "UBERON:2001824",
+                text="UBERON:2001822",
+                description="epibranchial 3 bone uncinate process"))
+        setattr(cls, "UBERON:2001823",
             PermissibleValue(
-                text="UBERON:2001824",
-                description="lateral line scale"))
+                text="UBERON:2001823",
+                description="epibranchial 4 bone uncinate process"))
         setattr(cls, "UBERON:2001827",
             PermissibleValue(
                 text="UBERON:2001827",
@@ -46064,14 +50404,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001828",
                 description="primordial ligament"))
-        setattr(cls, "UBERON:2001829",
-            PermissibleValue(
-                text="UBERON:2001829",
-                description="caudal fin dorsal procurrent ray"))
-        setattr(cls, "UBERON:2001830",
-            PermissibleValue(
-                text="UBERON:2001830",
-                description="caudal fin ventral procurrent ray"))
         setattr(cls, "UBERON:2001831",
             PermissibleValue(
                 text="UBERON:2001831",
@@ -46080,6 +50412,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001832",
                 description="parasphenoid-basioccipital joint"))
+        setattr(cls, "UBERON:2001833",
+            PermissibleValue(
+                text="UBERON:2001833",
+                description="premaxillary tooth row"))
+        setattr(cls, "UBERON:2001840",
+            PermissibleValue(
+                text="UBERON:2001840",
+                description="tip"))
         setattr(cls, "UBERON:2001841",
             PermissibleValue(
                 text="UBERON:2001841",
@@ -46120,18 +50460,90 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001850",
                 description="ceratohyal-branchiostegal ray joint"))
+        setattr(cls, "UBERON:2001852",
+            PermissibleValue(
+                text="UBERON:2001852",
+                description="postcleithrum 1"))
+        setattr(cls, "UBERON:2001853",
+            PermissibleValue(
+                text="UBERON:2001853",
+                description="postcleithrum 2"))
+        setattr(cls, "UBERON:2001854",
+            PermissibleValue(
+                text="UBERON:2001854",
+                description="postcleithrum 3"))
+        setattr(cls, "UBERON:2001855",
+            PermissibleValue(
+                text="UBERON:2001855",
+                description="hyomandibular condyle for the opercle"))
         setattr(cls, "UBERON:2001856",
             PermissibleValue(
                 text="UBERON:2001856",
                 description="gill ray"))
+        setattr(cls, "UBERON:2001858",
+            PermissibleValue(
+                text="UBERON:2001858",
+                description="suprapharyngobranchial"))
+        setattr(cls, "UBERON:2001859",
+            PermissibleValue(
+                text="UBERON:2001859",
+                description="pharyngobranchial 1 tooth plate"))
+        setattr(cls, "UBERON:2001860",
+            PermissibleValue(
+                text="UBERON:2001860",
+                description="epibranchial 4-upper pharyngeal toothplate joint"))
+        setattr(cls, "UBERON:2001861",
+            PermissibleValue(
+                text="UBERON:2001861",
+                description="epibranchial 3-pharyngobranchial 3 joint"))
+        setattr(cls, "UBERON:2001862",
+            PermissibleValue(
+                text="UBERON:2001862",
+                description="epibranchial 3-pharyngobranchial 4 joint"))
         setattr(cls, "UBERON:2001863",
             PermissibleValue(
                 text="UBERON:2001863",
                 description="inter-hypobranchial 3 joint"))
-        setattr(cls, "UBERON:2001873",
+        setattr(cls, "UBERON:2001864",
             PermissibleValue(
-                text="UBERON:2001873",
-                description="head sensory canal system"))
+                text="UBERON:2001864",
+                description="basibranchial 1 cartilage"))
+        setattr(cls, "UBERON:2001865",
+            PermissibleValue(
+                text="UBERON:2001865",
+                description="basibranchial 4 cartilage"))
+        setattr(cls, "UBERON:2001866",
+            PermissibleValue(
+                text="UBERON:2001866",
+                description="basibranchial 5 cartilage"))
+        setattr(cls, "UBERON:2001867",
+            PermissibleValue(
+                text="UBERON:2001867",
+                description="post-ceratobranchial cartilage"))
+        setattr(cls, "UBERON:2001869",
+            PermissibleValue(
+                text="UBERON:2001869",
+                description="supraneural 2 cartilage"))
+        setattr(cls, "UBERON:2001870",
+            PermissibleValue(
+                text="UBERON:2001870",
+                description="supraneural 3 cartilage"))
+        setattr(cls, "UBERON:2001874",
+            PermissibleValue(
+                text="UBERON:2001874",
+                description="basibranchial 2 cartilage"))
+        setattr(cls, "UBERON:2001875",
+            PermissibleValue(
+                text="UBERON:2001875",
+                description="opercular series"))
+        setattr(cls, "UBERON:2001876",
+            PermissibleValue(
+                text="UBERON:2001876",
+                description="basibranchial 3 cartilage"))
+        setattr(cls, "UBERON:2001877",
+            PermissibleValue(
+                text="UBERON:2001877",
+                description="neural arch 1"))
         setattr(cls, "UBERON:2001878",
             PermissibleValue(
                 text="UBERON:2001878",
@@ -46148,10 +50560,170 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001881",
                 description="rib of vertebra 4"))
+        setattr(cls, "UBERON:2001882",
+            PermissibleValue(
+                text="UBERON:2001882",
+                description="parapophysis + rib of vertebra 3"))
+        setattr(cls, "UBERON:2001883",
+            PermissibleValue(
+                text="UBERON:2001883",
+                description="parapophysis + rib of vertebra 3 + rib of vertebra 4"))
+        setattr(cls, "UBERON:2001884",
+            PermissibleValue(
+                text="UBERON:2001884",
+                description="accessory neural arch"))
+        setattr(cls, "UBERON:2001885",
+            PermissibleValue(
+                text="UBERON:2001885",
+                description="neural spine 1"))
+        setattr(cls, "UBERON:2001886",
+            PermissibleValue(
+                text="UBERON:2001886",
+                description="neural spine 2"))
+        setattr(cls, "UBERON:2001887",
+            PermissibleValue(
+                text="UBERON:2001887",
+                description="neural spine 3"))
+        setattr(cls, "UBERON:2001888",
+            PermissibleValue(
+                text="UBERON:2001888",
+                description="supraneural 1 bone"))
+        setattr(cls, "UBERON:2001889",
+            PermissibleValue(
+                text="UBERON:2001889",
+                description="supraneural 1 cartilage"))
+        setattr(cls, "UBERON:2001892",
+            PermissibleValue(
+                text="UBERON:2001892",
+                description="interhyal element"))
+        setattr(cls, "UBERON:2001893",
+            PermissibleValue(
+                text="UBERON:2001893",
+                description="hypobranchial element"))
+        setattr(cls, "UBERON:2001894",
+            PermissibleValue(
+                text="UBERON:2001894",
+                description="hypobranchial 1 element"))
+        setattr(cls, "UBERON:2001895",
+            PermissibleValue(
+                text="UBERON:2001895",
+                description="hypobranchial 2 element"))
+        setattr(cls, "UBERON:2001896",
+            PermissibleValue(
+                text="UBERON:2001896",
+                description="hypobranchial 3 element"))
+        setattr(cls, "UBERON:2001897",
+            PermissibleValue(
+                text="UBERON:2001897",
+                description="hypobranchial 4 element"))
+        setattr(cls, "UBERON:2001898",
+            PermissibleValue(
+                text="UBERON:2001898",
+                description="ceratobranchial element"))
+        setattr(cls, "UBERON:2001899",
+            PermissibleValue(
+                text="UBERON:2001899",
+                description="ceratobranchial 1 element"))
+        setattr(cls, "UBERON:2001900",
+            PermissibleValue(
+                text="UBERON:2001900",
+                description="ceratobranchial 2 element"))
+        setattr(cls, "UBERON:2001901",
+            PermissibleValue(
+                text="UBERON:2001901",
+                description="ceratobranchial 3 element"))
+        setattr(cls, "UBERON:2001902",
+            PermissibleValue(
+                text="UBERON:2001902",
+                description="ceratobranchial 4 element"))
+        setattr(cls, "UBERON:2001903",
+            PermissibleValue(
+                text="UBERON:2001903",
+                description="ceratobranchial 5 element"))
+        setattr(cls, "UBERON:2001904",
+            PermissibleValue(
+                text="UBERON:2001904",
+                description="epibranchial element"))
+        setattr(cls, "UBERON:2001905",
+            PermissibleValue(
+                text="UBERON:2001905",
+                description="epibranchial 1 element"))
+        setattr(cls, "UBERON:2001906",
+            PermissibleValue(
+                text="UBERON:2001906",
+                description="epibranchial 2 element"))
+        setattr(cls, "UBERON:2001907",
+            PermissibleValue(
+                text="UBERON:2001907",
+                description="epibranchial 3 element"))
+        setattr(cls, "UBERON:2001908",
+            PermissibleValue(
+                text="UBERON:2001908",
+                description="epibranchial 4 element"))
+        setattr(cls, "UBERON:2001909",
+            PermissibleValue(
+                text="UBERON:2001909",
+                description="pharyngobranchial element"))
+        setattr(cls, "UBERON:2001910",
+            PermissibleValue(
+                text="UBERON:2001910",
+                description="pharyngobranchial 1 element"))
+        setattr(cls, "UBERON:2001911",
+            PermissibleValue(
+                text="UBERON:2001911",
+                description="pharyngobranchial 2 element"))
+        setattr(cls, "UBERON:2001912",
+            PermissibleValue(
+                text="UBERON:2001912",
+                description="pharyngobranchial 3 element"))
+        setattr(cls, "UBERON:2001913",
+            PermissibleValue(
+                text="UBERON:2001913",
+                description="pharyngobranchial 4 element"))
+        setattr(cls, "UBERON:2001915",
+            PermissibleValue(
+                text="UBERON:2001915",
+                description="basibranchial 1 element"))
+        setattr(cls, "UBERON:2001916",
+            PermissibleValue(
+                text="UBERON:2001916",
+                description="basibranchial 2 element"))
+        setattr(cls, "UBERON:2001917",
+            PermissibleValue(
+                text="UBERON:2001917",
+                description="basibranchial 3 element"))
+        setattr(cls, "UBERON:2001918",
+            PermissibleValue(
+                text="UBERON:2001918",
+                description="basibranchial 4 element"))
+        setattr(cls, "UBERON:2001919",
+            PermissibleValue(
+                text="UBERON:2001919",
+                description="basibranchial 5 element"))
+        setattr(cls, "UBERON:2001920",
+            PermissibleValue(
+                text="UBERON:2001920",
+                description="pseudotympanum"))
         setattr(cls, "UBERON:2001922",
             PermissibleValue(
                 text="UBERON:2001922",
                 description="inter-frontal joint"))
+        setattr(cls, "UBERON:2001923",
+            PermissibleValue(
+                text="UBERON:2001923",
+                description="aortic canal"))
+        setattr(cls, "UBERON:2001924",
+            PermissibleValue(
+                text="UBERON:2001924",
+                description="occipital artery foramen"))
+        setattr(cls, "UBERON:2001925",
+            PermissibleValue(
+                text="UBERON:2001925",
+                description="spiracular canal"))
+        setattr(cls, "UBERON:2001926",
+            PermissibleValue(
+                text="UBERON:2001926",
+                description="posterior myodome"))
         setattr(cls, "UBERON:2001927",
             PermissibleValue(
                 text="UBERON:2001927",
@@ -46160,14 +50732,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001928",
                 description="articular fossa of opercle"))
+        setattr(cls, "UBERON:2001929",
+            PermissibleValue(
+                text="UBERON:2001929",
+                description="epioccipital posterior process"))
+        setattr(cls, "UBERON:2001930",
+            PermissibleValue(
+                text="UBERON:2001930",
+                description="accessory vomerine tooth plate"))
         setattr(cls, "UBERON:2001932",
             PermissibleValue(
                 text="UBERON:2001932",
                 description="sensory canal tubular ossicle"))
-        setattr(cls, "UBERON:2001933",
+        setattr(cls, "UBERON:2001934",
             PermissibleValue(
-                text="UBERON:2001933",
-                description="sensory canal tubule"))
+                text="UBERON:2001934",
+                description="rostral plate"))
+        setattr(cls, "UBERON:2001935",
+            PermissibleValue(
+                text="UBERON:2001935",
+                description="oral disk"))
+        setattr(cls, "UBERON:2001936",
+            PermissibleValue(
+                text="UBERON:2001936",
+                description="posterior nasal barbel"))
         setattr(cls, "UBERON:2001937",
             PermissibleValue(
                 text="UBERON:2001937",
@@ -46192,10 +50780,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001942",
                 description="autopalatine-maxillary joint"))
+        setattr(cls, "UBERON:2001943",
+            PermissibleValue(
+                text="UBERON:2001943",
+                description="metapterygoid-autopalatine ligament"))
         setattr(cls, "UBERON:2001944",
             PermissibleValue(
                 text="UBERON:2001944",
                 description="lateral ethmoid-autopalatine ligament"))
+        setattr(cls, "UBERON:2001945",
+            PermissibleValue(
+                text="UBERON:2001945",
+                description="mesethmoid-premaxillary ligament"))
+        setattr(cls, "UBERON:2001946",
+            PermissibleValue(
+                text="UBERON:2001946",
+                description="mesethmoid-maxillary ligament"))
         setattr(cls, "UBERON:2001947",
             PermissibleValue(
                 text="UBERON:2001947",
@@ -46208,10 +50808,66 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001951",
                 description="skin flap"))
+        setattr(cls, "UBERON:2001952",
+            PermissibleValue(
+                text="UBERON:2001952",
+                description="dentary tooth row"))
+        setattr(cls, "UBERON:2001956",
+            PermissibleValue(
+                text="UBERON:2001956",
+                description="epibranchial 1 bone proximal cartilage"))
+        setattr(cls, "UBERON:2001957",
+            PermissibleValue(
+                text="UBERON:2001957",
+                description="epibranchial 2 bone proximal cartilage"))
+        setattr(cls, "UBERON:2001958",
+            PermissibleValue(
+                text="UBERON:2001958",
+                description="ceratobranchial 3 bone distal cartilage"))
+        setattr(cls, "UBERON:2001959",
+            PermissibleValue(
+                text="UBERON:2001959",
+                description="ceratobranchial 4 bone proximal cartilage"))
+        setattr(cls, "UBERON:2001960",
+            PermissibleValue(
+                text="UBERON:2001960",
+                description="ceratobranchial 4 bone distal cartilage"))
+        setattr(cls, "UBERON:2001961",
+            PermissibleValue(
+                text="UBERON:2001961",
+                description="ceratobranchial 5 bone distal cartilage"))
+        setattr(cls, "UBERON:2001962",
+            PermissibleValue(
+                text="UBERON:2001962",
+                description="hypobranchial 1 bone distal cartilage"))
+        setattr(cls, "UBERON:2001963",
+            PermissibleValue(
+                text="UBERON:2001963",
+                description="hypobranchial 2 bone distal cartilage"))
+        setattr(cls, "UBERON:2001964",
+            PermissibleValue(
+                text="UBERON:2001964",
+                description="epibranchial 3 bone uncinate process cartilage"))
+        setattr(cls, "UBERON:2001965",
+            PermissibleValue(
+                text="UBERON:2001965",
+                description="epibranchial 4 bone uncinate process cartilage"))
+        setattr(cls, "UBERON:2001966",
+            PermissibleValue(
+                text="UBERON:2001966",
+                description="epibranchial 5 element"))
+        setattr(cls, "UBERON:2001968",
+            PermissibleValue(
+                text="UBERON:2001968",
+                description="outer mental barbel"))
         setattr(cls, "UBERON:2001969",
             PermissibleValue(
                 text="UBERON:2001969",
                 description="inner mental barbel"))
+        setattr(cls, "UBERON:2001971",
+            PermissibleValue(
+                text="UBERON:2001971",
+                description="parapophysis 4"))
         setattr(cls, "UBERON:2001972",
             PermissibleValue(
                 text="UBERON:2001972",
@@ -46220,10 +50876,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001974",
                 description="subtemporal fossa"))
+        setattr(cls, "UBERON:2001975",
+            PermissibleValue(
+                text="UBERON:2001975",
+                description="suprabranchial artery"))
+        setattr(cls, "UBERON:2001976",
+            PermissibleValue(
+                text="UBERON:2001976",
+                description="interorbital septum"))
         setattr(cls, "UBERON:2001977",
             PermissibleValue(
                 text="UBERON:2001977",
                 description="pad"))
+        setattr(cls, "UBERON:2001978",
+            PermissibleValue(
+                text="UBERON:2001978",
+                description="maxillary tooth row"))
         setattr(cls, "UBERON:2001979",
             PermissibleValue(
                 text="UBERON:2001979",
@@ -46240,10 +50908,78 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2001982",
                 description="vertebral element 8"))
-        setattr(cls, "UBERON:2001992",
+        setattr(cls, "UBERON:2001983",
             PermissibleValue(
-                text="UBERON:2001992",
-                description="branched anal fin ray"))
+                text="UBERON:2001983",
+                description="centrum 1"))
+        setattr(cls, "UBERON:2001984",
+            PermissibleValue(
+                text="UBERON:2001984",
+                description="centrum 2"))
+        setattr(cls, "UBERON:2001985",
+            PermissibleValue(
+                text="UBERON:2001985",
+                description="centrum 3"))
+        setattr(cls, "UBERON:2001986",
+            PermissibleValue(
+                text="UBERON:2001986",
+                description="centrum 4"))
+        setattr(cls, "UBERON:2001987",
+            PermissibleValue(
+                text="UBERON:2001987",
+                description="centrum 5"))
+        setattr(cls, "UBERON:2001988",
+            PermissibleValue(
+                text="UBERON:2001988",
+                description="centrum 6"))
+        setattr(cls, "UBERON:2001989",
+            PermissibleValue(
+                text="UBERON:2001989",
+                description="mandibular-hyoid median cartilage"))
+        setattr(cls, "UBERON:2001990",
+            PermissibleValue(
+                text="UBERON:2001990",
+                description="epibranchial arborescent organ"))
+        setattr(cls, "UBERON:2001991",
+            PermissibleValue(
+                text="UBERON:2001991",
+                description="lateral bone"))
+        setattr(cls, "UBERON:2001994",
+            PermissibleValue(
+                text="UBERON:2001994",
+                description="gill raker row"))
+        setattr(cls, "UBERON:2001995",
+            PermissibleValue(
+                text="UBERON:2001995",
+                description="papilla"))
+        setattr(cls, "UBERON:2001996",
+            PermissibleValue(
+                text="UBERON:2001996",
+                description="maxillary canal"))
+        setattr(cls, "UBERON:2001997",
+            PermissibleValue(
+                text="UBERON:2001997",
+                description="parietal-supraoccipital"))
+        setattr(cls, "UBERON:2001998",
+            PermissibleValue(
+                text="UBERON:2001998",
+                description="posttemporal-supracleithrum"))
+        setattr(cls, "UBERON:2002005",
+            PermissibleValue(
+                text="UBERON:2002005",
+                description="canal plate"))
+        setattr(cls, "UBERON:2002006",
+            PermissibleValue(
+                text="UBERON:2002006",
+                description="axillary pore"))
+        setattr(cls, "UBERON:2002007",
+            PermissibleValue(
+                text="UBERON:2002007",
+                description="supraneural 4 bone"))
+        setattr(cls, "UBERON:2002009",
+            PermissibleValue(
+                text="UBERON:2002009",
+                description="medial cartilage of palatine"))
         setattr(cls, "UBERON:2002010",
             PermissibleValue(
                 text="UBERON:2002010",
@@ -46256,6 +50992,50 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002012",
                 description="dentary foramen"))
+        setattr(cls, "UBERON:2002013",
+            PermissibleValue(
+                text="UBERON:2002013",
+                description="ascending limb of ceratobranchial 5 bone"))
+        setattr(cls, "UBERON:2002014",
+            PermissibleValue(
+                text="UBERON:2002014",
+                description="ascending limb of ceratobranchial 5 cartilage"))
+        setattr(cls, "UBERON:2002015",
+            PermissibleValue(
+                text="UBERON:2002015",
+                description="pharyngobranchial tooth plate"))
+        setattr(cls, "UBERON:2002016",
+            PermissibleValue(
+                text="UBERON:2002016",
+                description="pharyngobranchial 4 tooth plate"))
+        setattr(cls, "UBERON:2002017",
+            PermissibleValue(
+                text="UBERON:2002017",
+                description="anterior limb of ceratobranchial 5 bone"))
+        setattr(cls, "UBERON:2002018",
+            PermissibleValue(
+                text="UBERON:2002018",
+                description="anterior limb of ceratobranchial 5 cartilage"))
+        setattr(cls, "UBERON:2002019",
+            PermissibleValue(
+                text="UBERON:2002019",
+                description="pterotic-posttemporal-supracleithrum"))
+        setattr(cls, "UBERON:2002020",
+            PermissibleValue(
+                text="UBERON:2002020",
+                description="hypomaxilla"))
+        setattr(cls, "UBERON:2002021",
+            PermissibleValue(
+                text="UBERON:2002021",
+                description="ascending process of the parasphenoid"))
+        setattr(cls, "UBERON:2002022",
+            PermissibleValue(
+                text="UBERON:2002022",
+                description="dermethmoid"))
+        setattr(cls, "UBERON:2002023",
+            PermissibleValue(
+                text="UBERON:2002023",
+                description="second preethmoid bone"))
         setattr(cls, "UBERON:2002024",
             PermissibleValue(
                 text="UBERON:2002024",
@@ -46280,14 +51060,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002038",
                 description="basioccipital-exoccipital joint"))
+        setattr(cls, "UBERON:2002039",
+            PermissibleValue(
+                text="UBERON:2002039",
+                description="dilatator fossa"))
         setattr(cls, "UBERON:2002040",
             PermissibleValue(
                 text="UBERON:2002040",
                 description="inter-coracoid joint"))
-        setattr(cls, "UBERON:2002051",
+        setattr(cls, "UBERON:2002041",
             PermissibleValue(
-                text="UBERON:2002051",
-                description="scale circulus"))
+                text="UBERON:2002041",
+                description="parapophysis 6"))
+        setattr(cls, "UBERON:2002042",
+            PermissibleValue(
+                text="UBERON:2002042",
+                description="parapophysis 5"))
+        setattr(cls, "UBERON:2002043",
+            PermissibleValue(
+                text="UBERON:2002043",
+                description="posterior limb of parapophysis 4"))
+        setattr(cls, "UBERON:2002044",
+            PermissibleValue(
+                text="UBERON:2002044",
+                description="anterior limb of parapophysis 4"))
         setattr(cls, "UBERON:2002052",
             PermissibleValue(
                 text="UBERON:2002052",
@@ -46304,42 +51100,178 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002055",
                 description="vertebra 6 - vertebra 7 joint"))
-        setattr(cls, "UBERON:2002057",
+        setattr(cls, "UBERON:2002058",
             PermissibleValue(
-                text="UBERON:2002057",
-                description="gill opening"))
-        setattr(cls, "UBERON:2002062",
+                text="UBERON:2002058",
+                description="Weberian complex centrum"))
+        setattr(cls, "UBERON:2002059",
             PermissibleValue(
-                text="UBERON:2002062",
-                description="branched caudal fin ray"))
+                text="UBERON:2002059",
+                description="posttemporal-parietal joint"))
+        setattr(cls, "UBERON:2002061",
+            PermissibleValue(
+                text="UBERON:2002061",
+                description="predorsal vertebra"))
+        setattr(cls, "UBERON:2002063",
+            PermissibleValue(
+                text="UBERON:2002063",
+                description="nuchal plate series"))
         setattr(cls, "UBERON:2002066",
             PermissibleValue(
                 text="UBERON:2002066",
                 description="auditory fenestra"))
+        setattr(cls, "UBERON:2002069",
+            PermissibleValue(
+                text="UBERON:2002069",
+                description="distal cartilage of posterior process of basipterygium"))
+        setattr(cls, "UBERON:2002070",
+            PermissibleValue(
+                text="UBERON:2002070",
+                description="internal anterior process of basipterygium"))
+        setattr(cls, "UBERON:2002071",
+            PermissibleValue(
+                text="UBERON:2002071",
+                description="distal cartilage of internal anterior process of basipterygium"))
+        setattr(cls, "UBERON:2002072",
+            PermissibleValue(
+                text="UBERON:2002072",
+                description="middle anterior process of basipterygium"))
+        setattr(cls, "UBERON:2002073",
+            PermissibleValue(
+                text="UBERON:2002073",
+                description="distal cartilage of middle anterior process of basipterygium"))
+        setattr(cls, "UBERON:2002074",
+            PermissibleValue(
+                text="UBERON:2002074",
+                description="external anterior process of basipterygium"))
+        setattr(cls, "UBERON:2002075",
+            PermissibleValue(
+                text="UBERON:2002075",
+                description="distal cartilage of external anterior process of basipterygium"))
+        setattr(cls, "UBERON:2002076",
+            PermissibleValue(
+                text="UBERON:2002076",
+                description="lateral process of basipterygium"))
+        setattr(cls, "UBERON:2002079",
+            PermissibleValue(
+                text="UBERON:2002079",
+                description="leptocephalous larva"))
+        setattr(cls, "UBERON:2002080",
+            PermissibleValue(
+                text="UBERON:2002080",
+                description="spina occipitalis"))
+        setattr(cls, "UBERON:2002088",
+            PermissibleValue(
+                text="UBERON:2002088",
+                description="interhaemal bone"))
+        setattr(cls, "UBERON:2002089",
+            PermissibleValue(
+                text="UBERON:2002089",
+                description="gular plate"))
         setattr(cls, "UBERON:2002090",
             PermissibleValue(
                 text="UBERON:2002090",
                 description="pro-otic fossa"))
-        setattr(cls, "UBERON:2002094",
+        setattr(cls, "UBERON:2002092",
             PermissibleValue(
-                text="UBERON:2002094",
-                description="dorsal fin pterygiophore 1"))
+                text="UBERON:2002092",
+                description="rostral cartilage"))
+        setattr(cls, "UBERON:2002095",
+            PermissibleValue(
+                text="UBERON:2002095",
+                description="ventromedial opening of posttemporal fossa"))
+        setattr(cls, "UBERON:2002096",
+            PermissibleValue(
+                text="UBERON:2002096",
+                description="bony plate series"))
+        setattr(cls, "UBERON:2002097",
+            PermissibleValue(
+                text="UBERON:2002097",
+                description="sensory canal pore series"))
+        setattr(cls, "UBERON:2002098",
+            PermissibleValue(
+                text="UBERON:2002098",
+                description="hemal spine series"))
+        setattr(cls, "UBERON:2002101",
+            PermissibleValue(
+                text="UBERON:2002101",
+                description="branchiostegal ray series"))
+        setattr(cls, "UBERON:2002102",
+            PermissibleValue(
+                text="UBERON:2002102",
+                description="epibranchial series"))
+        setattr(cls, "UBERON:2002103",
+            PermissibleValue(
+                text="UBERON:2002103",
+                description="ceratobranchial series"))
+        setattr(cls, "UBERON:2002105",
+            PermissibleValue(
+                text="UBERON:2002105",
+                description="electrosensory lateral line lobe"))
+        setattr(cls, "UBERON:2002106",
+            PermissibleValue(
+                text="UBERON:2002106",
+                description="eminentia granularis"))
+        setattr(cls, "UBERON:2002107",
+            PermissibleValue(
+                text="UBERON:2002107",
+                description="medullary command nucleus"))
+        setattr(cls, "UBERON:2002108",
+            PermissibleValue(
+                text="UBERON:2002108",
+                description="buccal papilla"))
+        setattr(cls, "UBERON:2002110",
+            PermissibleValue(
+                text="UBERON:2002110",
+                description="metapterygoid-quadrate fenestra"))
         setattr(cls, "UBERON:2002111",
             PermissibleValue(
                 text="UBERON:2002111",
                 description="prootic bulla"))
+        setattr(cls, "UBERON:2002114",
+            PermissibleValue(
+                text="UBERON:2002114",
+                description="cotylephore"))
+        setattr(cls, "UBERON:2002116",
+            PermissibleValue(
+                text="UBERON:2002116",
+                description="epibranchial organ"))
+        setattr(cls, "UBERON:2002117",
+            PermissibleValue(
+                text="UBERON:2002117",
+                description="ovipositor"))
+        setattr(cls, "UBERON:2002120",
+            PermissibleValue(
+                text="UBERON:2002120",
+                description="orbitosphenoid septum"))
+        setattr(cls, "UBERON:2002123",
+            PermissibleValue(
+                text="UBERON:2002123",
+                description="neural arch 5"))
+        setattr(cls, "UBERON:2002124",
+            PermissibleValue(
+                text="UBERON:2002124",
+                description="nuptial tubercle"))
+        setattr(cls, "UBERON:2002127",
+            PermissibleValue(
+                text="UBERON:2002127",
+                description="myorhabdoid bone"))
+        setattr(cls, "UBERON:2002128",
+            PermissibleValue(
+                text="UBERON:2002128",
+                description="cavum sinus imparis"))
+        setattr(cls, "UBERON:2002130",
+            PermissibleValue(
+                text="UBERON:2002130",
+                description="caudal appendage"))
+        setattr(cls, "UBERON:2002133",
+            PermissibleValue(
+                text="UBERON:2002133",
+                description="dorsal organ"))
         setattr(cls, "UBERON:2002141",
             PermissibleValue(
                 text="UBERON:2002141",
                 description="annular ligament"))
-        setattr(cls, "UBERON:2002144",
-            PermissibleValue(
-                text="UBERON:2002144",
-                description="obsolete anterior catecholaminergic tract"))
-        setattr(cls, "UBERON:2002145",
-            PermissibleValue(
-                text="UBERON:2002145",
-                description="anterior swim bladder bud"))
         setattr(cls, "UBERON:2002147",
             PermissibleValue(
                 text="UBERON:2002147",
@@ -46364,6 +51296,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002154",
                 description="opercular cavity"))
+        setattr(cls, "UBERON:2002168",
+            PermissibleValue(
+                text="UBERON:2002168",
+                description="preural centrum 1 + ural centrum 1 + ural centrum 2"))
         setattr(cls, "UBERON:2002172",
             PermissibleValue(
                 text="UBERON:2002172",
@@ -46380,14 +51316,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002176",
                 description="caudal octaval nerve motor nucleus"))
-        setattr(cls, "UBERON:2002179",
-            PermissibleValue(
-                text="UBERON:2002179",
-                description="obsolete peripheral nucleus of ventral telencephalon"))
-        setattr(cls, "UBERON:2002180",
-            PermissibleValue(
-                text="UBERON:2002180",
-                description="obsolete central nucleus of ventral telencephalon"))
         setattr(cls, "UBERON:2002185",
             PermissibleValue(
                 text="UBERON:2002185",
@@ -46404,10 +51332,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002195",
                 description="epidermal placode"))
-        setattr(cls, "UBERON:2002199",
-            PermissibleValue(
-                text="UBERON:2002199",
-                description="obsolete hindbrain commissure"))
         setattr(cls, "UBERON:2002200",
             PermissibleValue(
                 text="UBERON:2002200",
@@ -46416,14 +51340,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002202",
                 description="intermediate nucleus"))
-        setattr(cls, "UBERON:2002203",
-            PermissibleValue(
-                text="UBERON:2002203",
-                description="obsolete immature Schwann cell"))
-        setattr(cls, "UBERON:2002204",
-            PermissibleValue(
-                text="UBERON:2002204",
-                description="obsolete lateral nucleus of ventral telencephalon"))
         setattr(cls, "UBERON:2002206",
             PermissibleValue(
                 text="UBERON:2002206",
@@ -46432,22 +51348,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002207",
                 description="medial motor nucleus of vagal nerve"))
-        setattr(cls, "UBERON:2002208",
-            PermissibleValue(
-                text="UBERON:2002208",
-                description="obsolete mesonephric podocyte"))
         setattr(cls, "UBERON:2002210",
             PermissibleValue(
                 text="UBERON:2002210",
                 description="mossy fiber"))
-        setattr(cls, "UBERON:2002213",
-            PermissibleValue(
-                text="UBERON:2002213",
-                description="obsolete optic nerve head"))
-        setattr(cls, "UBERON:2002214",
-            PermissibleValue(
-                text="UBERON:2002214",
-                description="os suspensorium medial flange"))
         setattr(cls, "UBERON:2002215",
             PermissibleValue(
                 text="UBERON:2002215",
@@ -46456,6 +51360,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002216",
                 description="otic vesicle ventral protrusion"))
+        setattr(cls, "UBERON:2002217",
+            PermissibleValue(
+                text="UBERON:2002217",
+                description="parasphenoid-pterosphenoid joint"))
         setattr(cls, "UBERON:2002218",
             PermissibleValue(
                 text="UBERON:2002218",
@@ -46468,10 +51376,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002221",
                 description="pericardial muscle"))
-        setattr(cls, "UBERON:2002222",
-            PermissibleValue(
-                text="UBERON:2002222",
-                description="obsolete periventricular nucleus of ventral telencephalon"))
         setattr(cls, "UBERON:2002223",
             PermissibleValue(
                 text="UBERON:2002223",
@@ -46500,10 +51404,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002235",
                 description="presumptive ventral mesoderm"))
-        setattr(cls, "UBERON:2002237",
-            PermissibleValue(
-                text="UBERON:2002237",
-                description="obsolete pronephric podocyte"))
         setattr(cls, "UBERON:2002240",
             PermissibleValue(
                 text="UBERON:2002240",
@@ -46520,14 +51420,70 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2002244",
                 description="supraoptic tract"))
-        setattr(cls, "UBERON:2002288",
+        setattr(cls, "UBERON:2002255",
             PermissibleValue(
-                text="UBERON:2002288",
-                description="obsolete aqueous humor"))
-        setattr(cls, "UBERON:2002290",
+                text="UBERON:2002255",
+                description="ocular side"))
+        setattr(cls, "UBERON:2002256",
             PermissibleValue(
-                text="UBERON:2002290",
-                description="obsolete vitreous"))
+                text="UBERON:2002256",
+                description="blind side"))
+        setattr(cls, "UBERON:2002257",
+            PermissibleValue(
+                text="UBERON:2002257",
+                description="premaxilla dentigerous process"))
+        setattr(cls, "UBERON:2002258",
+            PermissibleValue(
+                text="UBERON:2002258",
+                description="trituration tooth"))
+        setattr(cls, "UBERON:2002260",
+            PermissibleValue(
+                text="UBERON:2002260",
+                description="premaxillary-maxillary joint"))
+        setattr(cls, "UBERON:2002263",
+            PermissibleValue(
+                text="UBERON:2002263",
+                description="epineural 1"))
+        setattr(cls, "UBERON:2002264",
+            PermissibleValue(
+                text="UBERON:2002264",
+                description="epineural 2"))
+        setattr(cls, "UBERON:2002265",
+            PermissibleValue(
+                text="UBERON:2002265",
+                description="epineural 3"))
+        setattr(cls, "UBERON:2002266",
+            PermissibleValue(
+                text="UBERON:2002266",
+                description="epineural 4"))
+        setattr(cls, "UBERON:2002267",
+            PermissibleValue(
+                text="UBERON:2002267",
+                description="epineural 5"))
+        setattr(cls, "UBERON:2002268",
+            PermissibleValue(
+                text="UBERON:2002268",
+                description="epineural 6"))
+        setattr(cls, "UBERON:2002269",
+            PermissibleValue(
+                text="UBERON:2002269",
+                description="interarcual cartilage"))
+        setattr(cls, "UBERON:2002281",
+            PermissibleValue(
+                text="UBERON:2002281",
+                description="retractor posttemporalis"))
+        setattr(cls, "UBERON:2002282",
+            PermissibleValue(
+                text="UBERON:2002282",
+                description="preopercle-opercle joint"))
+        setattr(cls, "UBERON:2002283",
+            PermissibleValue(
+                text="UBERON:2002283",
+                description="melanophore spot"))
+        setattr(cls, "UBERON:2002284",
+            PermissibleValue(
+                text="UBERON:2002284",
+                description="body marking"))
         setattr(cls, "UBERON:2005000",
             PermissibleValue(
                 text="UBERON:2005000",
@@ -46540,10 +51496,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005011",
                 description="pseudobranchial artery"))
-        setattr(cls, "UBERON:2005012",
-            PermissibleValue(
-                text="UBERON:2005012",
-                description="afferent filamental artery"))
         setattr(cls, "UBERON:2005013",
             PermissibleValue(
                 text="UBERON:2005013",
@@ -46552,22 +51504,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005014",
                 description="recurrent branch afferent branchial artery"))
-        setattr(cls, "UBERON:2005015",
-            PermissibleValue(
-                text="UBERON:2005015",
-                description="afferent lamellar arteriole"))
         setattr(cls, "UBERON:2005017",
             PermissibleValue(
                 text="UBERON:2005017",
                 description="primordial midbrain channel"))
-        setattr(cls, "UBERON:2005018",
-            PermissibleValue(
-                text="UBERON:2005018",
-                description="efferent filamental artery"))
-        setattr(cls, "UBERON:2005019",
-            PermissibleValue(
-                text="UBERON:2005019",
-                description="efferent lamellar arteriole"))
         setattr(cls, "UBERON:2005020",
             PermissibleValue(
                 text="UBERON:2005020",
@@ -46580,10 +51520,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005022",
                 description="opercular artery"))
-        setattr(cls, "UBERON:2005025",
-            PermissibleValue(
-                text="UBERON:2005025",
-                description="dorsal longitudinal anastomotic vessel"))
         setattr(cls, "UBERON:2005026",
             PermissibleValue(
                 text="UBERON:2005026",
@@ -46608,10 +51544,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005032",
                 description="optic vein"))
-        setattr(cls, "UBERON:2005034",
-            PermissibleValue(
-                text="UBERON:2005034",
-                description="parachordal vessel"))
         setattr(cls, "UBERON:2005036",
             PermissibleValue(
                 text="UBERON:2005036",
@@ -46624,10 +51556,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005039",
                 description="anterior lateral mesoderm"))
-        setattr(cls, "UBERON:2005040",
-            PermissibleValue(
-                text="UBERON:2005040",
-                description="obsolete posterior lateral mesoderm"))
         setattr(cls, "UBERON:2005044",
             PermissibleValue(
                 text="UBERON:2005044",
@@ -46696,10 +51624,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005075",
                 description="peripheral cardiac conduction system"))
-        setattr(cls, "UBERON:2005076",
-            PermissibleValue(
-                text="UBERON:2005076",
-                description="obsolete primordial vasculature"))
         setattr(cls, "UBERON:2005078",
             PermissibleValue(
                 text="UBERON:2005078",
@@ -46736,82 +51660,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005088",
                 description="posterior mesenteric artery"))
-        setattr(cls, "UBERON:2005089",
-            PermissibleValue(
-                text="UBERON:2005089",
-                description="swim bladder artery"))
         setattr(cls, "UBERON:2005093",
             PermissibleValue(
                 text="UBERON:2005093",
                 description="nasal vein"))
-        setattr(cls, "UBERON:2005097",
-            PermissibleValue(
-                text="UBERON:2005097",
-                description="caudal fin vasculature"))
-        setattr(cls, "UBERON:2005098",
-            PermissibleValue(
-                text="UBERON:2005098",
-                description="central ray artery"))
-        setattr(cls, "UBERON:2005099",
-            PermissibleValue(
-                text="UBERON:2005099",
-                description="ray vein"))
-        setattr(cls, "UBERON:2005100",
-            PermissibleValue(
-                text="UBERON:2005100",
-                description="intervessel commissure"))
-        setattr(cls, "UBERON:2005101",
-            PermissibleValue(
-                text="UBERON:2005101",
-                description="interray vessel"))
-        setattr(cls, "UBERON:2005102",
-            PermissibleValue(
-                text="UBERON:2005102",
-                description="presumptive median fin fold"))
-        setattr(cls, "UBERON:2005103",
-            PermissibleValue(
-                text="UBERON:2005103",
-                description="presumptive ventral fin fold"))
-        setattr(cls, "UBERON:2005104",
-            PermissibleValue(
-                text="UBERON:2005104",
-                description="presumptive dorsal fin fold"))
         setattr(cls, "UBERON:2005106",
             PermissibleValue(
                 text="UBERON:2005106",
                 description="longitudinal lateral lymphatic vessel"))
-        setattr(cls, "UBERON:2005113",
-            PermissibleValue(
-                text="UBERON:2005113",
-                description="dorsal lateral line neuromast"))
-        setattr(cls, "UBERON:2005114",
-            PermissibleValue(
-                text="UBERON:2005114",
-                description="middle lateral line system"))
-        setattr(cls, "UBERON:2005115",
-            PermissibleValue(
-                text="UBERON:2005115",
-                description="primary posterior lateral line primordium"))
-        setattr(cls, "UBERON:2005116",
-            PermissibleValue(
-                text="UBERON:2005116",
-                description="secondary posterior lateral line primordium"))
-        setattr(cls, "UBERON:2005117",
-            PermissibleValue(
-                text="UBERON:2005117",
-                description="anterior lateral line primordium"))
-        setattr(cls, "UBERON:2005118",
-            PermissibleValue(
-                text="UBERON:2005118",
-                description="middle lateral line primordium"))
         setattr(cls, "UBERON:2005119",
             PermissibleValue(
                 text="UBERON:2005119",
                 description="barbel primordium"))
-        setattr(cls, "UBERON:2005121",
-            PermissibleValue(
-                text="UBERON:2005121",
-                description="middle lateral line placode"))
         setattr(cls, "UBERON:2005122",
             PermissibleValue(
                 text="UBERON:2005122",
@@ -46836,194 +51696,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005150",
                 description="basal regeneration epithelium of regenerating fin/limb"))
-        setattr(cls, "UBERON:2005151",
-            PermissibleValue(
-                text="UBERON:2005151",
-                description="obsolete gold iridophore"))
-        setattr(cls, "UBERON:2005152",
-            PermissibleValue(
-                text="UBERON:2005152",
-                description="obsolete silver iridophore"))
         setattr(cls, "UBERON:2005170",
             PermissibleValue(
                 text="UBERON:2005170",
                 description="extrahepatic duct"))
-        setattr(cls, "UBERON:2005174",
-            PermissibleValue(
-                text="UBERON:2005174",
-                description="ventral liver lobe"))
-        setattr(cls, "UBERON:2005175",
-            PermissibleValue(
-                text="UBERON:2005175",
-                description="obsolete CoPA"))
-        setattr(cls, "UBERON:2005176",
-            PermissibleValue(
-                text="UBERON:2005176",
-                description="obsolete CoSA"))
-        setattr(cls, "UBERON:2005177",
-            PermissibleValue(
-                text="UBERON:2005177",
-                description="obsolete VeLD"))
-        setattr(cls, "UBERON:2005178",
-            PermissibleValue(
-                text="UBERON:2005178",
-                description="obsolete DoLA"))
-        setattr(cls, "UBERON:2005179",
-            PermissibleValue(
-                text="UBERON:2005179",
-                description="obsolete MiP motor neuron"))
-        setattr(cls, "UBERON:2005180",
-            PermissibleValue(
-                text="UBERON:2005180",
-                description="obsolete RoP motor neuron"))
-        setattr(cls, "UBERON:2005181",
-            PermissibleValue(
-                text="UBERON:2005181",
-                description="obsolete VaP motor neuron"))
-        setattr(cls, "UBERON:2005182",
-            PermissibleValue(
-                text="UBERON:2005182",
-                description="obsolete t-interneuron"))
-        setattr(cls, "UBERON:2005183",
-            PermissibleValue(
-                text="UBERON:2005183",
-                description="obsolete MiD2i"))
-        setattr(cls, "UBERON:2005184",
-            PermissibleValue(
-                text="UBERON:2005184",
-                description="obsolete MiD2cl"))
-        setattr(cls, "UBERON:2005185",
-            PermissibleValue(
-                text="UBERON:2005185",
-                description="obsolete MiD2cm"))
-        setattr(cls, "UBERON:2005186",
-            PermissibleValue(
-                text="UBERON:2005186",
-                description="obsolete CoB"))
-        setattr(cls, "UBERON:2005187",
-            PermissibleValue(
-                text="UBERON:2005187",
-                description="obsolete MiM1"))
-        setattr(cls, "UBERON:2005188",
-            PermissibleValue(
-                text="UBERON:2005188",
-                description="obsolete MiR1"))
-        setattr(cls, "UBERON:2005189",
-            PermissibleValue(
-                text="UBERON:2005189",
-                description="obsolete MiR2"))
-        setattr(cls, "UBERON:2005190",
-            PermissibleValue(
-                text="UBERON:2005190",
-                description="obsolete MiV1"))
-        setattr(cls, "UBERON:2005191",
-            PermissibleValue(
-                text="UBERON:2005191",
-                description="obsolete MiV2"))
-        setattr(cls, "UBERON:2005192",
-            PermissibleValue(
-                text="UBERON:2005192",
-                description="obsolete RoI2C"))
-        setattr(cls, "UBERON:2005193",
-            PermissibleValue(
-                text="UBERON:2005193",
-                description="obsolete RoI2R"))
-        setattr(cls, "UBERON:2005194",
-            PermissibleValue(
-                text="UBERON:2005194",
-                description="obsolete RoL1"))
-        setattr(cls, "UBERON:2005195",
-            PermissibleValue(
-                text="UBERON:2005195",
-                description="obsolete MiD3cl"))
-        setattr(cls, "UBERON:2005196",
-            PermissibleValue(
-                text="UBERON:2005196",
-                description="obsolete MiD3cm"))
-        setattr(cls, "UBERON:2005197",
-            PermissibleValue(
-                text="UBERON:2005197",
-                description="obsolete MiD3i"))
-        setattr(cls, "UBERON:2005198",
-            PermissibleValue(
-                text="UBERON:2005198",
-                description="obsolete RoL2"))
-        setattr(cls, "UBERON:2005199",
-            PermissibleValue(
-                text="UBERON:2005199",
-                description="obsolete RoL2r"))
-        setattr(cls, "UBERON:2005200",
-            PermissibleValue(
-                text="UBERON:2005200",
-                description="obsolete RoL2c"))
-        setattr(cls, "UBERON:2005201",
-            PermissibleValue(
-                text="UBERON:2005201",
-                description="obsolete obsolete RoL3"))
-        setattr(cls, "UBERON:2005202",
-            PermissibleValue(
-                text="UBERON:2005202",
-                description="obsolete RoM1c"))
-        setattr(cls, "UBERON:2005203",
-            PermissibleValue(
-                text="UBERON:2005203",
-                description="obsolete RoM1r"))
-        setattr(cls, "UBERON:2005205",
-            PermissibleValue(
-                text="UBERON:2005205",
-                description="obsolete RoM2l"))
-        setattr(cls, "UBERON:2005206",
-            PermissibleValue(
-                text="UBERON:2005206",
-                description="obsolete RoM2m"))
-        setattr(cls, "UBERON:2005207",
-            PermissibleValue(
-                text="UBERON:2005207",
-                description="obsolete RoM3l"))
-        setattr(cls, "UBERON:2005208",
-            PermissibleValue(
-                text="UBERON:2005208",
-                description="obsolete RoM3m"))
-        setattr(cls, "UBERON:2005209",
-            PermissibleValue(
-                text="UBERON:2005209",
-                description="obsolete hindbrain interneuron"))
-        setattr(cls, "UBERON:2005210",
-            PermissibleValue(
-                text="UBERON:2005210",
-                description="obsolete midbrain interneuron"))
-        setattr(cls, "UBERON:2005211",
-            PermissibleValue(
-                text="UBERON:2005211",
-                description="obsolete MeL"))
-        setattr(cls, "UBERON:2005212",
-            PermissibleValue(
-                text="UBERON:2005212",
-                description="obsolete MeM"))
-        setattr(cls, "UBERON:2005213",
-            PermissibleValue(
-                text="UBERON:2005213",
-                description="obsolete MeLr"))
-        setattr(cls, "UBERON:2005214",
-            PermissibleValue(
-                text="UBERON:2005214",
-                description="obsolete MeLc"))
-        setattr(cls, "UBERON:2005215",
-            PermissibleValue(
-                text="UBERON:2005215",
-                description="obsolete MeLm"))
-        setattr(cls, "UBERON:2005216",
-            PermissibleValue(
-                text="UBERON:2005216",
-                description="obsolete MeM1"))
-        setattr(cls, "UBERON:2005217",
-            PermissibleValue(
-                text="UBERON:2005217",
-                description="obsolete CaV"))
-        setattr(cls, "UBERON:2005218",
-            PermissibleValue(
-                text="UBERON:2005218",
-                description="obsolete CaD"))
         setattr(cls, "UBERON:2005219",
             PermissibleValue(
                 text="UBERON:2005219",
@@ -47048,62 +51724,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005224",
                 description="yolk larval melanophore stripe"))
-        setattr(cls, "UBERON:2005227",
-            PermissibleValue(
-                text="UBERON:2005227",
-                description="protoneuromast"))
-        setattr(cls, "UBERON:2005230",
-            PermissibleValue(
-                text="UBERON:2005230",
-                description="obsolete CoBL"))
-        setattr(cls, "UBERON:2005231",
-            PermissibleValue(
-                text="UBERON:2005231",
-                description="obsolete bifurcate interneuron"))
-        setattr(cls, "UBERON:2005232",
-            PermissibleValue(
-                text="UBERON:2005232",
-                description="obsolete MCoD"))
-        setattr(cls, "UBERON:2005233",
-            PermissibleValue(
-                text="UBERON:2005233",
-                description="obsolete CiD"))
-        setattr(cls, "UBERON:2005234",
-            PermissibleValue(
-                text="UBERON:2005234",
-                description="obsolete CoLA"))
-        setattr(cls, "UBERON:2005235",
-            PermissibleValue(
-                text="UBERON:2005235",
-                description="obsolete UCoD"))
-        setattr(cls, "UBERON:2005239",
-            PermissibleValue(
-                text="UBERON:2005239",
-                description="obsolete micropylar cell"))
-        setattr(cls, "UBERON:2005240",
-            PermissibleValue(
-                text="UBERON:2005240",
-                description="obsolete Kolmer-Agduhr neuron"))
-        setattr(cls, "UBERON:2005241",
-            PermissibleValue(
-                text="UBERON:2005241",
-                description="obsolete polychromatophilic erythroblast"))
-        setattr(cls, "UBERON:2005244",
-            PermissibleValue(
-                text="UBERON:2005244",
-                description="obsolete auditory epithelial support cell"))
         setattr(cls, "UBERON:2005245",
             PermissibleValue(
                 text="UBERON:2005245",
                 description="inter-parietal joint"))
-        setattr(cls, "UBERON:2005246",
-            PermissibleValue(
-                text="UBERON:2005246",
-                description="obsolete regeneration fibroblast"))
-        setattr(cls, "UBERON:2005247",
-            PermissibleValue(
-                text="UBERON:2005247",
-                description="obsolete CiA"))
         setattr(cls, "UBERON:2005248",
             PermissibleValue(
                 text="UBERON:2005248",
@@ -47180,26 +51804,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005295",
                 description="axial blood vessel"))
-        setattr(cls, "UBERON:2005303",
-            PermissibleValue(
-                text="UBERON:2005303",
-                description="caudal fin lymph vessel"))
-        setattr(cls, "UBERON:2005304",
-            PermissibleValue(
-                text="UBERON:2005304",
-                description="caudal fin blood vessel"))
         setattr(cls, "UBERON:2005311",
             PermissibleValue(
                 text="UBERON:2005311",
                 description="pronephric glomerular capsule epithelium"))
-        setattr(cls, "UBERON:2005316",
-            PermissibleValue(
-                text="UBERON:2005316",
-                description="fin fold pectoral fin bud"))
-        setattr(cls, "UBERON:2005317",
-            PermissibleValue(
-                text="UBERON:2005317",
-                description="pectoral fin fold"))
         setattr(cls, "UBERON:2005319",
             PermissibleValue(
                 text="UBERON:2005319",
@@ -47208,26 +51816,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005320",
                 description="dorsal longitudinal lymphatic vessel"))
-        setattr(cls, "UBERON:2005324",
-            PermissibleValue(
-                text="UBERON:2005324",
-                description="obsolete gill ionocyte"))
-        setattr(cls, "UBERON:2005325",
-            PermissibleValue(
-                text="UBERON:2005325",
-                description="obsolete integument ionocyte"))
-        setattr(cls, "UBERON:2005326",
-            PermissibleValue(
-                text="UBERON:2005326",
-                description="obsolete NaK ionocyte"))
-        setattr(cls, "UBERON:2005327",
-            PermissibleValue(
-                text="UBERON:2005327",
-                description="obsolete vH ionocyte"))
-        setattr(cls, "UBERON:2005336",
-            PermissibleValue(
-                text="UBERON:2005336",
-                description="obsolete presumptive swim bladder"))
         setattr(cls, "UBERON:2005338",
             PermissibleValue(
                 text="UBERON:2005338",
@@ -47256,90 +51844,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2005346",
                 description="extrapancreatic duct"))
-        setattr(cls, "UBERON:2005365",
-            PermissibleValue(
-                text="UBERON:2005365",
-                description="dorsal fin pterygiophore 2"))
-        setattr(cls, "UBERON:2005366",
-            PermissibleValue(
-                text="UBERON:2005366",
-                description="dorsal fin pterygiophore 3"))
-        setattr(cls, "UBERON:2005367",
-            PermissibleValue(
-                text="UBERON:2005367",
-                description="dorsal fin pterygiophore 4"))
-        setattr(cls, "UBERON:2005368",
-            PermissibleValue(
-                text="UBERON:2005368",
-                description="dorsal fin pterygiophore 5"))
-        setattr(cls, "UBERON:2005369",
-            PermissibleValue(
-                text="UBERON:2005369",
-                description="dorsal fin pterygiophore 6"))
-        setattr(cls, "UBERON:2005370",
-            PermissibleValue(
-                text="UBERON:2005370",
-                description="dorsal fin pterygiophore 7"))
-        setattr(cls, "UBERON:2005371",
-            PermissibleValue(
-                text="UBERON:2005371",
-                description="dorsal fin pterygiophore 8"))
-        setattr(cls, "UBERON:2005372",
-            PermissibleValue(
-                text="UBERON:2005372",
-                description="dorsal fin distal radial bone 1"))
-        setattr(cls, "UBERON:2005373",
-            PermissibleValue(
-                text="UBERON:2005373",
-                description="dorsal fin distal radial bone 2"))
-        setattr(cls, "UBERON:2005374",
-            PermissibleValue(
-                text="UBERON:2005374",
-                description="dorsal fin distal radial bone 3"))
-        setattr(cls, "UBERON:2005375",
-            PermissibleValue(
-                text="UBERON:2005375",
-                description="dorsal fin distal radial bone 4"))
-        setattr(cls, "UBERON:2005376",
-            PermissibleValue(
-                text="UBERON:2005376",
-                description="dorsal fin distal radial bone 5"))
-        setattr(cls, "UBERON:2005377",
-            PermissibleValue(
-                text="UBERON:2005377",
-                description="dorsal fin distal radial bone 6"))
-        setattr(cls, "UBERON:2005378",
-            PermissibleValue(
-                text="UBERON:2005378",
-                description="dorsal fin distal radial bone 7"))
-        setattr(cls, "UBERON:2005379",
-            PermissibleValue(
-                text="UBERON:2005379",
-                description="dorsal fin distal radial bone 8"))
-        setattr(cls, "UBERON:2005380",
-            PermissibleValue(
-                text="UBERON:2005380",
-                description="dorsal fin proximal radial bone 3"))
-        setattr(cls, "UBERON:2005381",
-            PermissibleValue(
-                text="UBERON:2005381",
-                description="dorsal fin proximal radial bone 4"))
-        setattr(cls, "UBERON:2005382",
-            PermissibleValue(
-                text="UBERON:2005382",
-                description="dorsal fin proximal radial bone 5"))
-        setattr(cls, "UBERON:2005383",
-            PermissibleValue(
-                text="UBERON:2005383",
-                description="dorsal fin proximal radial bone 6"))
-        setattr(cls, "UBERON:2005384",
-            PermissibleValue(
-                text="UBERON:2005384",
-                description="dorsal fin proximal radial bone 7"))
-        setattr(cls, "UBERON:2005385",
-            PermissibleValue(
-                text="UBERON:2005385",
-                description="dorsal fin proximal radial bone 8"))
         setattr(cls, "UBERON:2005409",
             PermissibleValue(
                 text="UBERON:2005409",
@@ -47376,22 +51880,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2007004",
                 description="epiphysial cluster"))
-        setattr(cls, "UBERON:2007005",
-            PermissibleValue(
-                text="UBERON:2007005",
-                description="hemal prezygapophysis"))
         setattr(cls, "UBERON:2007008",
             PermissibleValue(
                 text="UBERON:2007008",
                 description="ventral intermandibularis anterior"))
-        setattr(cls, "UBERON:2007010",
-            PermissibleValue(
-                text="UBERON:2007010",
-                description="obsolete eminentia thalami"))
-        setattr(cls, "UBERON:2007011",
-            PermissibleValue(
-                text="UBERON:2007011",
-                description="obsolete vagal root"))
         setattr(cls, "UBERON:2007012",
             PermissibleValue(
                 text="UBERON:2007012",
@@ -47536,198 +52028,4286 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:2007062",
                 description="olfactory field"))
-        setattr(cls, "UBERON:2007067",
+        setattr(cls, "UBERON:2100623",
             PermissibleValue(
-                text="UBERON:2007067",
-                description="obsolete vagal ganglion"))
-        setattr(cls, "UBERON:3010029",
+                text="UBERON:2100623",
+                description="basipterygium element"))
+        setattr(cls, "UBERON:3000002",
             PermissibleValue(
-                text="UBERON:3010029",
-                description="obsolete gonochoristic organism"))
-        setattr(cls, "UBERON:3010272",
+                text="UBERON:3000002",
+                description="alary cartilage"))
+        setattr(cls, "UBERON:3000003",
             PermissibleValue(
-                text="UBERON:3010272",
-                description="obsolete asexual organism"))
-        setattr(cls, "UBERON:3010273",
+                text="UBERON:3000003",
+                description="alary process of premaxilla"))
+        setattr(cls, "UBERON:3000006",
             PermissibleValue(
-                text="UBERON:3010273",
-                description="obsolete cell space"))
+                text="UBERON:3000006",
+                description="alveolar foramen"))
+        setattr(cls, "UBERON:3000012",
+            PermissibleValue(
+                text="UBERON:3000012",
+                description="angulosplenial coronoid process"))
+        setattr(cls, "UBERON:3000015",
+            PermissibleValue(
+                text="UBERON:3000015",
+                description="anterior maxillary process"))
+        setattr(cls, "UBERON:3000016",
+            PermissibleValue(
+                text="UBERON:3000016",
+                description="anterior nasal wall"))
+        setattr(cls, "UBERON:3000017",
+            PermissibleValue(
+                text="UBERON:3000017",
+                description="anterior process of pars palatina of maxilla"))
+        setattr(cls, "UBERON:3000018",
+            PermissibleValue(
+                text="UBERON:3000018",
+                description="anterior ramus of pterygoid"))
+        setattr(cls, "UBERON:3000020",
+            PermissibleValue(
+                text="UBERON:3000020",
+                description="anterolateral process of frontoparietal"))
+        setattr(cls, "UBERON:3000022",
+            PermissibleValue(
+                text="UBERON:3000022",
+                description="antorbital process"))
+        setattr(cls, "UBERON:3000032",
+            PermissibleValue(
+                text="UBERON:3000032",
+                description="auditory muscles"))
+        setattr(cls, "UBERON:3000037",
+            PermissibleValue(
+                text="UBERON:3000037",
+                description="basicranial fenestra"))
+        setattr(cls, "UBERON:3000038",
+            PermissibleValue(
+                text="UBERON:3000038",
+                description="basimandibulare"))
+        setattr(cls, "UBERON:3000041",
+            PermissibleValue(
+                text="UBERON:3000041",
+                description="Bidder's organ"))
+        setattr(cls, "UBERON:3000050",
+            PermissibleValue(
+                text="UBERON:3000050",
+                description="braincase and auditory apparatus"))
+        setattr(cls, "UBERON:3000051",
+            PermissibleValue(
+                text="UBERON:3000051",
+                description="braincase and otic capsule opening"))
+        setattr(cls, "UBERON:3000052",
+            PermissibleValue(
+                text="UBERON:3000052",
+                description="braincase and otic capsule skeleton"))
+        setattr(cls, "UBERON:3000057",
+            PermissibleValue(
+                text="UBERON:3000057",
+                description="canalis semicircularis anterior"))
+        setattr(cls, "UBERON:3000059",
+            PermissibleValue(
+                text="UBERON:3000059",
+                description="capsular process"))
+        setattr(cls, "UBERON:3000068",
+            PermissibleValue(
+                text="UBERON:3000068",
+                description="cartilago ectochoanalis"))
+        setattr(cls, "UBERON:3000069",
+            PermissibleValue(
+                text="UBERON:3000069",
+                description="cartilago infranarina"))
+        setattr(cls, "UBERON:3000074",
+            PermissibleValue(
+                text="UBERON:3000074",
+                description="cartilago orbitalis"))
+        setattr(cls, "UBERON:3000078",
+            PermissibleValue(
+                text="UBERON:3000078",
+                description="cartilago prootico-occipitalis"))
+        setattr(cls, "UBERON:3000079",
+            PermissibleValue(
+                text="UBERON:3000079",
+                description="cartilago retronarina"))
+        setattr(cls, "UBERON:3000085",
+            PermissibleValue(
+                text="UBERON:3000085",
+                description="cavum inferius"))
+        setattr(cls, "UBERON:3000086",
+            PermissibleValue(
+                text="UBERON:3000086",
+                description="cavum internasale"))
+        setattr(cls, "UBERON:3000087",
+            PermissibleValue(
+                text="UBERON:3000087",
+                description="cavum medius"))
+        setattr(cls, "UBERON:3000088",
+            PermissibleValue(
+                text="UBERON:3000088",
+                description="cavum praenasale"))
+        setattr(cls, "UBERON:3000089",
+            PermissibleValue(
+                text="UBERON:3000089",
+                description="cavum principale"))
+        setattr(cls, "UBERON:3000101",
+            PermissibleValue(
+                text="UBERON:3000101",
+                description="hyale"))
+        setattr(cls, "UBERON:3000110",
+            PermissibleValue(
+                text="UBERON:3000110",
+                description="crista contacta"))
+        setattr(cls, "UBERON:3000111",
+            PermissibleValue(
+                text="UBERON:3000111",
+                description="crista dentalis of maxilla"))
+        setattr(cls, "UBERON:3000112",
+            PermissibleValue(
+                text="UBERON:3000112",
+                description="crista dentalis of premaxilla"))
+        setattr(cls, "UBERON:3000113",
+            PermissibleValue(
+                text="UBERON:3000113",
+                description="crista intermedia"))
+        setattr(cls, "UBERON:3000115",
+            PermissibleValue(
+                text="UBERON:3000115",
+                description="crista lateralis of premaxilla"))
+        setattr(cls, "UBERON:3000117",
+            PermissibleValue(
+                text="UBERON:3000117",
+                description="crista subnasalis"))
+        setattr(cls, "UBERON:3000118",
+            PermissibleValue(
+                text="UBERON:3000118",
+                description="crista supraorbitalis"))
+        setattr(cls, "UBERON:3000131",
+            PermissibleValue(
+                text="UBERON:3000131",
+                description="dilatatio alaris"))
+        setattr(cls, "UBERON:3000141",
+            PermissibleValue(
+                text="UBERON:3000141",
+                description="endolymphatic system"))
+        setattr(cls, "UBERON:3000155",
+            PermissibleValue(
+                text="UBERON:3000155",
+                description="extremitas anterior"))
+        setattr(cls, "UBERON:3000160",
+            PermissibleValue(
+                text="UBERON:3000160",
+                description="fenestra dorsalis nasi"))
+        setattr(cls, "UBERON:3000161",
+            PermissibleValue(
+                text="UBERON:3000161",
+                description="fenestra endochoanalis"))
+        setattr(cls, "UBERON:3000162",
+            PermissibleValue(
+                text="UBERON:3000162",
+                description="fenestra endonarina communis"))
+        setattr(cls, "UBERON:3000164",
+            PermissibleValue(
+                text="UBERON:3000164",
+                description="fenestra lateralis nasi"))
+        setattr(cls, "UBERON:3000166",
+            PermissibleValue(
+                text="UBERON:3000166",
+                description="fenestra nasobasalis"))
+        setattr(cls, "UBERON:3000167",
+            PermissibleValue(
+                text="UBERON:3000167",
+                description="fenestra nasolateralis"))
+        setattr(cls, "UBERON:3000170",
+            PermissibleValue(
+                text="UBERON:3000170",
+                description="fenestra precerebralis"))
+        setattr(cls, "UBERON:3000171",
+            PermissibleValue(
+                text="UBERON:3000171",
+                description="fenestra prechoanalis"))
+        setattr(cls, "UBERON:3000178",
+            PermissibleValue(
+                text="UBERON:3000178",
+                description="footplate of pars media plectri"))
+        setattr(cls, "UBERON:3000179",
+            PermissibleValue(
+                text="UBERON:3000179",
+                description="foramen acusticum"))
+        setattr(cls, "UBERON:3000180",
+            PermissibleValue(
+                text="UBERON:3000180",
+                description="foramen acusticum anterius"))
+        setattr(cls, "UBERON:3000181",
+            PermissibleValue(
+                text="UBERON:3000181",
+                description="foramen acusticum maius"))
+        setattr(cls, "UBERON:3000182",
+            PermissibleValue(
+                text="UBERON:3000182",
+                description="foramen acusticum minus"))
+        setattr(cls, "UBERON:3000183",
+            PermissibleValue(
+                text="UBERON:3000183",
+                description="foramen acusticum posterius"))
+        setattr(cls, "UBERON:3000185",
+            PermissibleValue(
+                text="UBERON:3000185",
+                description="foramen endolymphaticum"))
+        setattr(cls, "UBERON:3000189",
+            PermissibleValue(
+                text="UBERON:3000189",
+                description="foramen orbitonasale laterale"))
+        setattr(cls, "UBERON:3000190",
+            PermissibleValue(
+                text="UBERON:3000190",
+                description="foramen orbitonasale mediale"))
+        setattr(cls, "UBERON:3000192",
+            PermissibleValue(
+                text="UBERON:3000192",
+                description="foramen perilymphaticum"))
+        setattr(cls, "UBERON:3000193",
+            PermissibleValue(
+                text="UBERON:3000193",
+                description="foramen perilymphaticum accessorium"))
+        setattr(cls, "UBERON:3000195",
+            PermissibleValue(
+                text="UBERON:3000195",
+                description="foramen perilymphaticus inferius"))
+        setattr(cls, "UBERON:3000209",
+            PermissibleValue(
+                text="UBERON:3000209",
+                description="frontoparietal fontanelle"))
+        setattr(cls, "UBERON:3000224",
+            PermissibleValue(
+                text="UBERON:3000224",
+                description="hyobranchial muscle"))
+        setattr(cls, "UBERON:3000226",
+            PermissibleValue(
+                text="UBERON:3000226",
+                description="hyolaryngeal complex"))
+        setattr(cls, "UBERON:3000234",
+            PermissibleValue(
+                text="UBERON:3000234",
+                description="inferior prenasal cartilage"))
+        setattr(cls, "UBERON:3000237",
+            PermissibleValue(
+                text="UBERON:3000237",
+                description="infrarostral cartilage"))
+        setattr(cls, "UBERON:3000254",
+            PermissibleValue(
+                text="UBERON:3000254",
+                description="lamella alaris"))
+        setattr(cls, "UBERON:3000255",
+            PermissibleValue(
+                text="UBERON:3000255",
+                description="lamina anterior of pars facialis"))
+        setattr(cls, "UBERON:3000259",
+            PermissibleValue(
+                text="UBERON:3000259",
+                description="lamina inferior"))
+        setattr(cls, "UBERON:3000260",
+            PermissibleValue(
+                text="UBERON:3000260",
+                description="lamina nariochoanalis"))
+        setattr(cls, "UBERON:3000263",
+            PermissibleValue(
+                text="UBERON:3000263",
+                description="lamina precerebralis"))
+        setattr(cls, "UBERON:3000264",
+            PermissibleValue(
+                text="UBERON:3000264",
+                description="lamina superior"))
+        setattr(cls, "UBERON:3000280",
+            PermissibleValue(
+                text="UBERON:3000280",
+                description="margo mandibularis of pterygoid"))
+        setattr(cls, "UBERON:3000281",
+            PermissibleValue(
+                text="UBERON:3000281",
+                description="margo orbitalis of maxilla"))
+        setattr(cls, "UBERON:3000282",
+            PermissibleValue(
+                text="UBERON:3000282",
+                description="margo orbitalis of pterygoid"))
+        setattr(cls, "UBERON:3000283",
+            PermissibleValue(
+                text="UBERON:3000283",
+                description="margo orbitalis of squamosal"))
+        setattr(cls, "UBERON:3000284",
+            PermissibleValue(
+                text="UBERON:3000284",
+                description="margo tympanicus of pterygoid"))
+        setattr(cls, "UBERON:3000288",
+            PermissibleValue(
+                text="UBERON:3000288",
+                description="maxillopalatine"))
+        setattr(cls, "UBERON:3000290",
+            PermissibleValue(
+                text="UBERON:3000290",
+                description="medial inferior prenasal cartilage"))
+        setattr(cls, "UBERON:3000291",
+            PermissibleValue(
+                text="UBERON:3000291",
+                description="medial orbitonasal foramen"))
+        setattr(cls, "UBERON:3000292",
+            PermissibleValue(
+                text="UBERON:3000292",
+                description="medial ramus of pterygoid"))
+        setattr(cls, "UBERON:3000294",
+            PermissibleValue(
+                text="UBERON:3000294",
+                description="median prenasal process"))
+        setattr(cls, "UBERON:3000295",
+            PermissibleValue(
+                text="UBERON:3000295",
+                description="median symphysis"))
+        setattr(cls, "UBERON:3000309",
+            PermissibleValue(
+                text="UBERON:3000309",
+                description="narial muscles"))
+        setattr(cls, "UBERON:3000316",
+            PermissibleValue(
+                text="UBERON:3000316",
+                description="nasal opening"))
+        setattr(cls, "UBERON:3000323",
+            PermissibleValue(
+                text="UBERON:3000323",
+                description="nasopremaxilla"))
+        setattr(cls, "UBERON:3000329",
+            PermissibleValue(
+                text="UBERON:3000329",
+                description="oblique cartilage"))
+        setattr(cls, "UBERON:3000332",
+            PermissibleValue(
+                text="UBERON:3000332",
+                description="oculomotor foramen"))
+        setattr(cls, "UBERON:3000333",
+            PermissibleValue(
+                text="UBERON:3000333",
+                description="olfactory foramen"))
+        setattr(cls, "UBERON:3000341",
+            PermissibleValue(
+                text="UBERON:3000341",
+                description="optic fenestra"))
+        setattr(cls, "UBERON:3000344",
+            PermissibleValue(
+                text="UBERON:3000344",
+                description="orbitonasal foramen"))
+        setattr(cls, "UBERON:3000348",
+            PermissibleValue(
+                text="UBERON:3000348",
+                description="os basale"))
+        setattr(cls, "UBERON:3000364",
+            PermissibleValue(
+                text="UBERON:3000364",
+                description="otic plate of pterygoid"))
+        setattr(cls, "UBERON:3000367",
+            PermissibleValue(
+                text="UBERON:3000367",
+                description="otic ramus of squamosal"))
+        setattr(cls, "UBERON:3000368",
+            PermissibleValue(
+                text="UBERON:3000368",
+                description="otoccipital"))
+        setattr(cls, "UBERON:3000375",
+            PermissibleValue(
+                text="UBERON:3000375",
+                description="palatine process of the pars facialis of the maxilla"))
+        setattr(cls, "UBERON:3000381",
+            PermissibleValue(
+                text="UBERON:3000381",
+                description="paranasal commissure"))
+        setattr(cls, "UBERON:3000384",
+            PermissibleValue(
+                text="UBERON:3000384",
+                description="parasagittal crest"))
+        setattr(cls, "UBERON:3000386",
+            PermissibleValue(
+                text="UBERON:3000386",
+                description="cultriform process"))
+        setattr(cls, "UBERON:3000387",
+            PermissibleValue(
+                text="UBERON:3000387",
+                description="subotic alae"))
+        setattr(cls, "UBERON:3000388",
+            PermissibleValue(
+                text="UBERON:3000388",
+                description="parasphenoid tooth"))
+        setattr(cls, "UBERON:3000389",
+            PermissibleValue(
+                text="UBERON:3000389",
+                description="paries nasi"))
+        setattr(cls, "UBERON:3000393",
+            PermissibleValue(
+                text="UBERON:3000393",
+                description="pars amphibiorum"))
+        setattr(cls, "UBERON:3000394",
+            PermissibleValue(
+                text="UBERON:3000394",
+                description="pars articularis of mandibular arch"))
+        setattr(cls, "UBERON:3000395",
+            PermissibleValue(
+                text="UBERON:3000395",
+                description="pars basilaris"))
+        setattr(cls, "UBERON:3000399",
+            PermissibleValue(
+                text="UBERON:3000399",
+                description="pars externa plectri"))
+        setattr(cls, "UBERON:3000400",
+            PermissibleValue(
+                text="UBERON:3000400",
+                description="pars facialis of maxilla"))
+        setattr(cls, "UBERON:3000401",
+            PermissibleValue(
+                text="UBERON:3000401",
+                description="pars facialis of maxillopalatine"))
+        setattr(cls, "UBERON:3000405",
+            PermissibleValue(
+                text="UBERON:3000405",
+                description="pars inferior of labyrinth"))
+        setattr(cls, "UBERON:3000406",
+            PermissibleValue(
+                text="UBERON:3000406",
+                description="pars interna plectri"))
+        setattr(cls, "UBERON:3000408",
+            PermissibleValue(
+                text="UBERON:3000408",
+                description="pars media plectri"))
+        setattr(cls, "UBERON:3000428",
+            PermissibleValue(
+                text="UBERON:3000428",
+                description="perilymphatic system"))
+        setattr(cls, "UBERON:3000431",
+            PermissibleValue(
+                text="UBERON:3000431",
+                description="pila antoptica"))
+        setattr(cls, "UBERON:3000432",
+            PermissibleValue(
+                text="UBERON:3000432",
+                description="pila metoptica"))
+        setattr(cls, "UBERON:3000433",
+            PermissibleValue(
+                text="UBERON:3000433",
+                description="pineal foramen"))
+        setattr(cls, "UBERON:3000434",
+            PermissibleValue(
+                text="UBERON:3000434",
+                description="planum antorbitale"))
+        setattr(cls, "UBERON:3000437",
+            PermissibleValue(
+                text="UBERON:3000437",
+                description="planum conchale"))
+        setattr(cls, "UBERON:3000438",
+            PermissibleValue(
+                text="UBERON:3000438",
+                description="planum internasale"))
+        setattr(cls, "UBERON:3000440",
+            PermissibleValue(
+                text="UBERON:3000440",
+                description="planum terminale"))
+        setattr(cls, "UBERON:3000441",
+            PermissibleValue(
+                text="UBERON:3000441",
+                description="planum triangulare"))
+        setattr(cls, "UBERON:3000443",
+            PermissibleValue(
+                text="UBERON:3000443",
+                description="plectral apparatus"))
+        setattr(cls, "UBERON:3000446",
+            PermissibleValue(
+                text="UBERON:3000446",
+                description="posterior condyle"))
+        setattr(cls, "UBERON:3000448",
+            PermissibleValue(
+                text="UBERON:3000448",
+                description="posterior maxillary process"))
+        setattr(cls, "UBERON:3000449",
+            PermissibleValue(
+                text="UBERON:3000449",
+                description="posterior maxillary process dorsal process"))
+        setattr(cls, "UBERON:3000450",
+            PermissibleValue(
+                text="UBERON:3000450",
+                description="posterior mental process"))
+        setattr(cls, "UBERON:3000451",
+            PermissibleValue(
+                text="UBERON:3000451",
+                description="posterior ramus of pterygoid"))
+        setattr(cls, "UBERON:3000453",
+            PermissibleValue(
+                text="UBERON:3000453",
+                description="posterolateral vomerine process"))
+        setattr(cls, "UBERON:3000454",
+            PermissibleValue(
+                text="UBERON:3000454",
+                description="postnasal wall"))
+        setattr(cls, "UBERON:3000459",
+            PermissibleValue(
+                text="UBERON:3000459",
+                description="prearticular coronoid process"))
+        setattr(cls, "UBERON:3000467",
+            PermissibleValue(
+                text="UBERON:3000467",
+                description="preorbital process of the pars facialis of the maxilla"))
+        setattr(cls, "UBERON:3000486",
+            PermissibleValue(
+                text="UBERON:3000486",
+                description="processus ascendens plectri"))
+        setattr(cls, "UBERON:3000492",
+            PermissibleValue(
+                text="UBERON:3000492",
+                description="processus infrafenestralis"))
+        setattr(cls, "UBERON:3000493",
+            PermissibleValue(
+                text="UBERON:3000493",
+                description="processus internus of pseudoangular"))
+        setattr(cls, "UBERON:3000494",
+            PermissibleValue(
+                text="UBERON:3000494",
+                description="processus lingualis of pterygoid"))
+        setattr(cls, "UBERON:3000500",
+            PermissibleValue(
+                text="UBERON:3000500",
+                description="processus posterior of maxilla"))
+        setattr(cls, "UBERON:3000505",
+            PermissibleValue(
+                text="UBERON:3000505",
+                description="processus pterygoideus of maxilla"))
+        setattr(cls, "UBERON:3000509",
+            PermissibleValue(
+                text="UBERON:3000509",
+                description="processus suprafenestralis"))
+        setattr(cls, "UBERON:3000512",
+            PermissibleValue(
+                text="UBERON:3000512",
+                description="processus zygomatico-maxillaris"))
+        setattr(cls, "UBERON:3000515",
+            PermissibleValue(
+                text="UBERON:3000515",
+                description="pseudoangular"))
+        setattr(cls, "UBERON:3000518",
+            PermissibleValue(
+                text="UBERON:3000518",
+                description="pseudodentary"))
+        setattr(cls, "UBERON:3000519",
+            PermissibleValue(
+                text="UBERON:3000519",
+                description="pseudodentary tooth"))
+        setattr(cls, "UBERON:3000538",
+            PermissibleValue(
+                text="UBERON:3000538",
+                description="recessus fenestrae ovalis"))
+        setattr(cls, "UBERON:3000539",
+            PermissibleValue(
+                text="UBERON:3000539",
+                description="recessus marsupiatus of premaxilla"))
+        setattr(cls, "UBERON:3000540",
+            PermissibleValue(
+                text="UBERON:3000540",
+                description="recessus vaginiformis"))
+        setattr(cls, "UBERON:3000543",
+            PermissibleValue(
+                text="UBERON:3000543",
+                description="retroarticular process"))
+        setattr(cls, "UBERON:3000547",
+            PermissibleValue(
+                text="UBERON:3000547",
+                description="rostral process"))
+        setattr(cls, "UBERON:3000560",
+            PermissibleValue(
+                text="UBERON:3000560",
+                description="septum semicircularium anterior"))
+        setattr(cls, "UBERON:3000561",
+            PermissibleValue(
+                text="UBERON:3000561",
+                description="septum semicircularium laterale"))
+        setattr(cls, "UBERON:3000562",
+            PermissibleValue(
+                text="UBERON:3000562",
+                description="septum semircularium posterior"))
+        setattr(cls, "UBERON:3000563",
+            PermissibleValue(
+                text="UBERON:3000563",
+                description="seydels palatal process"))
+        setattr(cls, "UBERON:3000565",
+            PermissibleValue(
+                text="UBERON:3000565",
+                description="skeletal support for eminentia olfactoria"))
+        setattr(cls, "UBERON:3000569",
+            PermissibleValue(
+                text="UBERON:3000569",
+                description="solum nasi"))
+        setattr(cls, "UBERON:3000570",
+            PermissibleValue(
+                text="UBERON:3000570",
+                description="spatium sacculare"))
+        setattr(cls, "UBERON:3000571",
+            PermissibleValue(
+                text="UBERON:3000571",
+                description="specialized connective tissue"))
+        setattr(cls, "UBERON:3000572",
+            PermissibleValue(
+                text="UBERON:3000572",
+                description="sphenethmoid"))
+        setattr(cls, "UBERON:3000580",
+            PermissibleValue(
+                text="UBERON:3000580",
+                description="stylus of pars media plectri"))
+        setattr(cls, "UBERON:3000581",
+            PermissibleValue(
+                text="UBERON:3000581",
+                description="sulcus dentalis of maxilla"))
+        setattr(cls, "UBERON:3000582",
+            PermissibleValue(
+                text="UBERON:3000582",
+                description="sulcus dentalis of premaxilla"))
+        setattr(cls, "UBERON:3000583",
+            PermissibleValue(
+                text="UBERON:3000583",
+                description="sulcus for Meckels cartilage"))
+        setattr(cls, "UBERON:3000586",
+            PermissibleValue(
+                text="UBERON:3000586",
+                description="superior prenasal cartilage"))
+        setattr(cls, "UBERON:3000590",
+            PermissibleValue(
+                text="UBERON:3000590",
+                description="supraorbital flange"))
+        setattr(cls, "UBERON:3000591",
+            PermissibleValue(
+                text="UBERON:3000591",
+                description="suprasphenoid"))
+        setattr(cls, "UBERON:3000597",
+            PermissibleValue(
+                text="UBERON:3000597",
+                description="symphysis maxillaris"))
+        setattr(cls, "UBERON:3000599",
+            PermissibleValue(
+                text="UBERON:3000599",
+                description="taenia tecti marginalis"))
+        setattr(cls, "UBERON:3000601",
+            PermissibleValue(
+                text="UBERON:3000601",
+                description="tectum nasi"))
+        setattr(cls, "UBERON:3000605",
+            PermissibleValue(
+                text="UBERON:3000605",
+                description="tentacular foramen"))
+        setattr(cls, "UBERON:3000610",
+            PermissibleValue(
+                text="UBERON:3000610",
+                description="trochlear foramen"))
+        setattr(cls, "UBERON:3000628",
+            PermissibleValue(
+                text="UBERON:3000628",
+                description="ventral ramus of squamosal"))
+        setattr(cls, "UBERON:3000634",
+            PermissibleValue(
+                text="UBERON:3000634",
+                description="vomerine canal"))
+        setattr(cls, "UBERON:3000639",
+            PermissibleValue(
+                text="UBERON:3000639",
+                description="zygomatic ramus of squamosal"))
+        setattr(cls, "UBERON:3000640",
+            PermissibleValue(
+                text="UBERON:3000640",
+                description="arcus praeoccipitalis"))
+        setattr(cls, "UBERON:3000642",
+            PermissibleValue(
+                text="UBERON:3000642",
+                description="maxillopalatine tooth"))
+        setattr(cls, "UBERON:3000644",
+            PermissibleValue(
+                text="UBERON:3000644",
+                description="processus lingularis of nasal skeleton"))
+        setattr(cls, "UBERON:3000645",
+            PermissibleValue(
+                text="UBERON:3000645",
+                description="corpus"))
+        setattr(cls, "UBERON:3000646",
+            PermissibleValue(
+                text="UBERON:3000646",
+                description="margo libera"))
+        setattr(cls, "UBERON:3000647",
+            PermissibleValue(
+                text="UBERON:3000647",
+                description="crista interna"))
+        setattr(cls, "UBERON:3000648",
+            PermissibleValue(
+                text="UBERON:3000648",
+                description="crista praeopercularis"))
+        setattr(cls, "UBERON:3000649",
+            PermissibleValue(
+                text="UBERON:3000649",
+                description="anterior process of vomer"))
+        setattr(cls, "UBERON:3000650",
+            PermissibleValue(
+                text="UBERON:3000650",
+                description="processus frontalis of maxilla"))
+        setattr(cls, "UBERON:3000651",
+            PermissibleValue(
+                text="UBERON:3000651",
+                description="lamina anterior of maxilla"))
+        setattr(cls, "UBERON:3000652",
+            PermissibleValue(
+                text="UBERON:3000652",
+                description="fossa maxillaris"))
+        setattr(cls, "UBERON:3000655",
+            PermissibleValue(
+                text="UBERON:3000655",
+                description="processus dorsalis of lamella alaris"))
+        setattr(cls, "UBERON:3000656",
+            PermissibleValue(
+                text="UBERON:3000656",
+                description="processus posterodorsalis of lamella alaris"))
+        setattr(cls, "UBERON:3000657",
+            PermissibleValue(
+                text="UBERON:3000657",
+                description="dentigerous process"))
+        setattr(cls, "UBERON:3000658",
+            PermissibleValue(
+                text="UBERON:3000658",
+                description="prechoanal process"))
+        setattr(cls, "UBERON:3000659",
+            PermissibleValue(
+                text="UBERON:3000659",
+                description="postchoanal process"))
+        setattr(cls, "UBERON:3000660",
+            PermissibleValue(
+                text="UBERON:3000660",
+                description="margo choanalis"))
+        setattr(cls, "UBERON:3000661",
+            PermissibleValue(
+                text="UBERON:3000661",
+                description="crista vomeri"))
+        setattr(cls, "UBERON:3000662",
+            PermissibleValue(
+                text="UBERON:3000662",
+                description="processus posterior of parasphenoid"))
+        setattr(cls, "UBERON:3000663",
+            PermissibleValue(
+                text="UBERON:3000663",
+                description="parahyoid"))
+        setattr(cls, "UBERON:3000664",
+            PermissibleValue(
+                text="UBERON:3000664",
+                description="hyoid plate"))
+        setattr(cls, "UBERON:3000667",
+            PermissibleValue(
+                text="UBERON:3000667",
+                description="pars reuniens"))
+        setattr(cls, "UBERON:3000668",
+            PermissibleValue(
+                text="UBERON:3000668",
+                description="hyoglossal sinus"))
+        setattr(cls, "UBERON:3000670",
+            PermissibleValue(
+                text="UBERON:3000670",
+                description="anterior process of hyoid apparatus"))
+        setattr(cls, "UBERON:3000671",
+            PermissibleValue(
+                text="UBERON:3000671",
+                description="anterolateral process of hyoid plate"))
+        setattr(cls, "UBERON:3000672",
+            PermissibleValue(
+                text="UBERON:3000672",
+                description="posterolateral process"))
+        setattr(cls, "UBERON:3000673",
+            PermissibleValue(
+                text="UBERON:3000673",
+                description="posteromedial process"))
+        setattr(cls, "UBERON:3000676",
+            PermissibleValue(
+                text="UBERON:3000676",
+                description="bronchial process"))
+        setattr(cls, "UBERON:3000677",
+            PermissibleValue(
+                text="UBERON:3000677",
+                description="lateral process of cricoid cartilage"))
+        setattr(cls, "UBERON:3000678",
+            PermissibleValue(
+                text="UBERON:3000678",
+                description="esophageal process"))
+        setattr(cls, "UBERON:3000680",
+            PermissibleValue(
+                text="UBERON:3000680",
+                description="manubrium of hyale"))
+        setattr(cls, "UBERON:3000681",
+            PermissibleValue(
+                text="UBERON:3000681",
+                description="hyoid apparatus opening"))
+        setattr(cls, "UBERON:3000683",
+            PermissibleValue(
+                text="UBERON:3000683",
+                description="sinus nervi hypoglossi"))
+        setattr(cls, "UBERON:3000685",
+            PermissibleValue(
+                text="UBERON:3000685",
+                description="foramen nervi hypoglossi"))
+        setattr(cls, "UBERON:3000687",
+            PermissibleValue(
+                text="UBERON:3000687",
+                description="processus confluens"))
+        setattr(cls, "UBERON:3000688",
+            PermissibleValue(
+                text="UBERON:3000688",
+                description="prominentia apicalis dorsalis"))
+        setattr(cls, "UBERON:3000689",
+            PermissibleValue(
+                text="UBERON:3000689",
+                description="prominentia apicalis ventralis"))
+        setattr(cls, "UBERON:3000692",
+            PermissibleValue(
+                text="UBERON:3000692",
+                description="pedicel"))
+        setattr(cls, "UBERON:3000694",
+            PermissibleValue(
+                text="UBERON:3000694",
+                description="atlantal cotyle"))
+        setattr(cls, "UBERON:3000696",
+            PermissibleValue(
+                text="UBERON:3000696",
+                description="posterior intervertebral notch"))
+        setattr(cls, "UBERON:3000701",
+            PermissibleValue(
+                text="UBERON:3000701",
+                description="intervertebral space"))
+        setattr(cls, "UBERON:3000704",
+            PermissibleValue(
+                text="UBERON:3000704",
+                description="anterior intervertebral notch"))
+        setattr(cls, "UBERON:3000707",
+            PermissibleValue(
+                text="UBERON:3000707",
+                description="pleurapophysis"))
+        setattr(cls, "UBERON:3000711",
+            PermissibleValue(
+                text="UBERON:3000711",
+                description="procoelous"))
+        setattr(cls, "UBERON:3000712",
+            PermissibleValue(
+                text="UBERON:3000712",
+                description="opisthocoelous"))
+        setattr(cls, "UBERON:3000713",
+            PermissibleValue(
+                text="UBERON:3000713",
+                description="epichordal"))
+        setattr(cls, "UBERON:3000714",
+            PermissibleValue(
+                text="UBERON:3000714",
+                description="perichordal"))
+        setattr(cls, "UBERON:3000715",
+            PermissibleValue(
+                text="UBERON:3000715",
+                description="heterocoelous"))
+        setattr(cls, "UBERON:3000716",
+            PermissibleValue(
+                text="UBERON:3000716",
+                description="acoelous"))
+        setattr(cls, "UBERON:3000717",
+            PermissibleValue(
+                text="UBERON:3000717",
+                description="amphicoelous"))
+        setattr(cls, "UBERON:3000718",
+            PermissibleValue(
+                text="UBERON:3000718",
+                description="ectochordal"))
+        setattr(cls, "UBERON:3000719",
+            PermissibleValue(
+                text="UBERON:3000719",
+                description="holochordal"))
+        setattr(cls, "UBERON:3000720",
+            PermissibleValue(
+                text="UBERON:3000720",
+                description="stegochordal"))
+        setattr(cls, "UBERON:3000728",
+            PermissibleValue(
+                text="UBERON:3000728",
+                description="nucal keel"))
+        setattr(cls, "UBERON:3000730",
+            PermissibleValue(
+                text="UBERON:3000730",
+                description="foramen nutritium"))
+        setattr(cls, "UBERON:3000735",
+            PermissibleValue(
+                text="UBERON:3000735",
+                description="mid-dorsal keel"))
+        setattr(cls, "UBERON:3000743",
+            PermissibleValue(
+                text="UBERON:3000743",
+                description="sacral condyle"))
+        setattr(cls, "UBERON:3000744",
+            PermissibleValue(
+                text="UBERON:3000744",
+                description="urostyle cotyle"))
+        setattr(cls, "UBERON:3000745",
+            PermissibleValue(
+                text="UBERON:3000745",
+                description="webbing of bone in vertebral column"))
+        setattr(cls, "UBERON:3000746",
+            PermissibleValue(
+                text="UBERON:3000746",
+                description="urostyle ridge"))
+        setattr(cls, "UBERON:3000748",
+            PermissibleValue(
+                text="UBERON:3000748",
+                description="suprascapula"))
+        setattr(cls, "UBERON:3000752",
+            PermissibleValue(
+                text="UBERON:3000752",
+                description="pars acromialis"))
+        setattr(cls, "UBERON:3000753",
+            PermissibleValue(
+                text="UBERON:3000753",
+                description="pars glenoidalis of scapula"))
+        setattr(cls, "UBERON:3000755",
+            PermissibleValue(
+                text="UBERON:3000755",
+                description="pectoral girdle opening"))
+        setattr(cls, "UBERON:3000756",
+            PermissibleValue(
+                text="UBERON:3000756",
+                description="crista dorsalis humeri"))
+        setattr(cls, "UBERON:3000757",
+            PermissibleValue(
+                text="UBERON:3000757",
+                description="zonal area"))
+        setattr(cls, "UBERON:3000759",
+            PermissibleValue(
+                text="UBERON:3000759",
+                description="omosternum"))
+        setattr(cls, "UBERON:3000762",
+            PermissibleValue(
+                text="UBERON:3000762",
+                description="epicoracoid"))
+        setattr(cls, "UBERON:3000763",
+            PermissibleValue(
+                text="UBERON:3000763",
+                description="epicoracoid bridge"))
+        setattr(cls, "UBERON:3000767",
+            PermissibleValue(
+                text="UBERON:3000767",
+                description="pelvic girdle opening"))
+        setattr(cls, "UBERON:3000771",
+            PermissibleValue(
+                text="UBERON:3000771",
+                description="acetabular depression"))
+        setattr(cls, "UBERON:3000773",
+            PermissibleValue(
+                text="UBERON:3000773",
+                description="ilial ridge"))
+        setattr(cls, "UBERON:3000774",
+            PermissibleValue(
+                text="UBERON:3000774",
+                description="ilial shaft"))
+        setattr(cls, "UBERON:3000776",
+            PermissibleValue(
+                text="UBERON:3000776",
+                description="glenoid foramen"))
+        setattr(cls, "UBERON:3000777",
+            PermissibleValue(
+                text="UBERON:3000777",
+                description="epicoracoid horn"))
+        setattr(cls, "UBERON:3000778",
+            PermissibleValue(
+                text="UBERON:3000778",
+                description="supracoracoid foramen"))
+        setattr(cls, "UBERON:3000779",
+            PermissibleValue(
+                text="UBERON:3000779",
+                description="pectoral fenestra"))
+        setattr(cls, "UBERON:3000780",
+            PermissibleValue(
+                text="UBERON:3000780",
+                description="incisura coracoidea"))
+        setattr(cls, "UBERON:3000783",
+            PermissibleValue(
+                text="UBERON:3000783",
+                description="fovea capitis of humerus"))
+        setattr(cls, "UBERON:3000784",
+            PermissibleValue(
+                text="UBERON:3000784",
+                description="ulnar condyle"))
+        setattr(cls, "UBERON:3000785",
+            PermissibleValue(
+                text="UBERON:3000785",
+                description="trochlear groove of humerus"))
+        setattr(cls, "UBERON:3000786",
+            PermissibleValue(
+                text="UBERON:3000786",
+                description="fossa cubitalis ventralis"))
+        setattr(cls, "UBERON:3000787",
+            PermissibleValue(
+                text="UBERON:3000787",
+                description="collum antibrachii"))
+        setattr(cls, "UBERON:3000793",
+            PermissibleValue(
+                text="UBERON:3000793",
+                description="anomocoelous"))
+        setattr(cls, "UBERON:3000794",
+            PermissibleValue(
+                text="UBERON:3000794",
+                description="displasiocoelous"))
+        setattr(cls, "UBERON:3000796",
+            PermissibleValue(
+                text="UBERON:3000796",
+                description="imbricate neural arch"))
+        setattr(cls, "UBERON:3000797",
+            PermissibleValue(
+                text="UBERON:3000797",
+                description="non-imbricate neural arch"))
+        setattr(cls, "UBERON:3000798",
+            PermissibleValue(
+                text="UBERON:3000798",
+                description="presacral shield"))
+        setattr(cls, "UBERON:3000799",
+            PermissibleValue(
+                text="UBERON:3000799",
+                description="cartilago paraglenoidalis"))
+        setattr(cls, "UBERON:3000800",
+            PermissibleValue(
+                text="UBERON:3000800",
+                description="intercotylar space"))
+        setattr(cls, "UBERON:3000801",
+            PermissibleValue(
+                text="UBERON:3000801",
+                description="caput glenoidale"))
+        setattr(cls, "UBERON:3000802",
+            PermissibleValue(
+                text="UBERON:3000802",
+                description="fossa glenoidalis"))
+        setattr(cls, "UBERON:3000803",
+            PermissibleValue(
+                text="UBERON:3000803",
+                description="sulcus articularis lateralis"))
+        setattr(cls, "UBERON:3000804",
+            PermissibleValue(
+                text="UBERON:3000804",
+                description="sulcus articularis medialis"))
+        setattr(cls, "UBERON:3000805",
+            PermissibleValue(
+                text="UBERON:3000805",
+                description="carina proximalis"))
+        setattr(cls, "UBERON:3000806",
+            PermissibleValue(
+                text="UBERON:3000806",
+                description="carina medialis"))
+        setattr(cls, "UBERON:3000807",
+            PermissibleValue(
+                text="UBERON:3000807",
+                description="carina distalis"))
+        setattr(cls, "UBERON:3000808",
+            PermissibleValue(
+                text="UBERON:3000808",
+                description="parasagittal processes"))
+        setattr(cls, "UBERON:3000809",
+            PermissibleValue(
+                text="UBERON:3000809",
+                description="accessory articulation"))
+        setattr(cls, "UBERON:3000810",
+            PermissibleValue(
+                text="UBERON:3000810",
+                description="fissura sagittalis"))
+        setattr(cls, "UBERON:3000811",
+            PermissibleValue(
+                text="UBERON:3000811",
+                description="glenoid end of clavicle"))
+        setattr(cls, "UBERON:3000813",
+            PermissibleValue(
+                text="UBERON:3000813",
+                description="sulcus pro cartilagine praecoracoidealis"))
+        setattr(cls, "UBERON:3000818",
+            PermissibleValue(
+                text="UBERON:3000818",
+                description="margo anterior of scapula"))
+        setattr(cls, "UBERON:3000819",
+            PermissibleValue(
+                text="UBERON:3000819",
+                description="margo clavicularis"))
+        setattr(cls, "UBERON:3000820",
+            PermissibleValue(
+                text="UBERON:3000820",
+                description="margo posterior of scapula"))
+        setattr(cls, "UBERON:3000821",
+            PermissibleValue(
+                text="UBERON:3000821",
+                description="margo suprascapularis"))
+        setattr(cls, "UBERON:3000822",
+            PermissibleValue(
+                text="UBERON:3000822",
+                description="pars suprascapularis"))
+        setattr(cls, "UBERON:3000823",
+            PermissibleValue(
+                text="UBERON:3000823",
+                description="sinus interglenoidalis"))
+        setattr(cls, "UBERON:3000824",
+            PermissibleValue(
+                text="UBERON:3000824",
+                description="tenuitas cristaeformis"))
+        setattr(cls, "UBERON:3000825",
+            PermissibleValue(
+                text="UBERON:3000825",
+                description="crista longitudinalis scapula"))
+        setattr(cls, "UBERON:3000836",
+            PermissibleValue(
+                text="UBERON:3000836",
+                description="crista lateralis humeri"))
+        setattr(cls, "UBERON:3000837",
+            PermissibleValue(
+                text="UBERON:3000837",
+                description="crista medialis humeri"))
+        setattr(cls, "UBERON:3000839",
+            PermissibleValue(
+                text="UBERON:3000839",
+                description="crista radii"))
+        setattr(cls, "UBERON:3000840",
+            PermissibleValue(
+                text="UBERON:3000840",
+                description="capitulum of radius"))
+        setattr(cls, "UBERON:3000842",
+            PermissibleValue(
+                text="UBERON:3000842",
+                description="capitulum ulnae"))
+        setattr(cls, "UBERON:3000844",
+            PermissibleValue(
+                text="UBERON:3000844",
+                description="sulcus longitudinalis"))
+        setattr(cls, "UBERON:3000846",
+            PermissibleValue(
+                text="UBERON:3000846",
+                description="element Y of fore mesopodium"))
+        setattr(cls, "UBERON:3000856",
+            PermissibleValue(
+                text="UBERON:3000856",
+                description="intercalary element of fore digit"))
+        setattr(cls, "UBERON:3000859",
+            PermissibleValue(
+                text="UBERON:3000859",
+                description="foramen perforans carpi"))
+        setattr(cls, "UBERON:3000862",
+            PermissibleValue(
+                text="UBERON:3000862",
+                description="pubo-ischium"))
+        setattr(cls, "UBERON:3000865",
+            PermissibleValue(
+                text="UBERON:3000865",
+                description="epileon"))
+        setattr(cls, "UBERON:3000866",
+            PermissibleValue(
+                text="UBERON:3000866",
+                description="agger limitans anterior of ilium"))
+        setattr(cls, "UBERON:3000867",
+            PermissibleValue(
+                text="UBERON:3000867",
+                description="agger limitans anterior of ischium"))
+        setattr(cls, "UBERON:3000869",
+            PermissibleValue(
+                text="UBERON:3000869",
+                description="ilial protuberance"))
+        setattr(cls, "UBERON:3000870",
+            PermissibleValue(
+                text="UBERON:3000870",
+                description="preacetabular expansion"))
+        setattr(cls, "UBERON:3000871",
+            PermissibleValue(
+                text="UBERON:3000871",
+                description="fossula tuberis superioris"))
+        setattr(cls, "UBERON:3000872",
+            PermissibleValue(
+                text="UBERON:3000872",
+                description="collum ilei"))
+        setattr(cls, "UBERON:3000873",
+            PermissibleValue(
+                text="UBERON:3000873",
+                description="pars cylindriformis ilei"))
+        setattr(cls, "UBERON:3000874",
+            PermissibleValue(
+                text="UBERON:3000874",
+                description="crista ischii"))
+        setattr(cls, "UBERON:3000875",
+            PermissibleValue(
+                text="UBERON:3000875",
+                description="spina pelvis posterior"))
+        setattr(cls, "UBERON:3000876",
+            PermissibleValue(
+                text="UBERON:3000876",
+                description="spina pelvis anterior"))
+        setattr(cls, "UBERON:3000877",
+            PermissibleValue(
+                text="UBERON:3000877",
+                description="intumescentia bilateralis inferior"))
+        setattr(cls, "UBERON:3000878",
+            PermissibleValue(
+                text="UBERON:3000878",
+                description="intumescentia bilateralis superior"))
+        setattr(cls, "UBERON:3000879",
+            PermissibleValue(
+                text="UBERON:3000879",
+                description="incisura terminalis"))
+        setattr(cls, "UBERON:3000880",
+            PermissibleValue(
+                text="UBERON:3000880",
+                description="crista hypertrophica ischium"))
+        setattr(cls, "UBERON:3000882",
+            PermissibleValue(
+                text="UBERON:3000882",
+                description="interilial region"))
+        setattr(cls, "UBERON:3000883",
+            PermissibleValue(
+                text="UBERON:3000883",
+                description="recessus coccygealis"))
+        setattr(cls, "UBERON:3000884",
+            PermissibleValue(
+                text="UBERON:3000884",
+                description="epipubis"))
+        setattr(cls, "UBERON:3000886",
+            PermissibleValue(
+                text="UBERON:3000886",
+                description="ypsiloid cartilage"))
+        setattr(cls, "UBERON:3000894",
+            PermissibleValue(
+                text="UBERON:3000894",
+                description="femoral ridge"))
+        setattr(cls, "UBERON:3000896",
+            PermissibleValue(
+                text="UBERON:3000896",
+                description="foveal depression"))
+        setattr(cls, "UBERON:3000898",
+            PermissibleValue(
+                text="UBERON:3000898",
+                description="trochanteric crest"))
+        setattr(cls, "UBERON:3000903",
+            PermissibleValue(
+                text="UBERON:3000903",
+                description="tibial crest"))
+        setattr(cls, "UBERON:3000904",
+            PermissibleValue(
+                text="UBERON:3000904",
+                description="apophysis distalis of tibiofibula"))
+        setattr(cls, "UBERON:3000905",
+            PermissibleValue(
+                text="UBERON:3000905",
+                description="caput ossis cruris"))
+        setattr(cls, "UBERON:3000906",
+            PermissibleValue(
+                text="UBERON:3000906",
+                description="sulcus pro musculo extensori cruris brevis"))
+        setattr(cls, "UBERON:3000907",
+            PermissibleValue(
+                text="UBERON:3000907",
+                description="eminentia arcuata"))
+        setattr(cls, "UBERON:3000908",
+            PermissibleValue(
+                text="UBERON:3000908",
+                description="sulcus distalis ossis cruris"))
+        setattr(cls, "UBERON:3000909",
+            PermissibleValue(
+                text="UBERON:3000909",
+                description="sulcus proximalis ossis cruris"))
+        setattr(cls, "UBERON:3000911",
+            PermissibleValue(
+                text="UBERON:3000911",
+                description="foramen nutritium exterius"))
+        setattr(cls, "UBERON:3000915",
+            PermissibleValue(
+                text="UBERON:3000915",
+                description="spatium intertarsale"))
+        setattr(cls, "UBERON:3000916",
+            PermissibleValue(
+                text="UBERON:3000916",
+                description="apophysis proximalis"))
+        setattr(cls, "UBERON:3000917",
+            PermissibleValue(
+                text="UBERON:3000917",
+                description="apophysis distalis of tibiale fibulare"))
+        setattr(cls, "UBERON:3000921",
+            PermissibleValue(
+                text="UBERON:3000921",
+                description="element Y of hind mesopodium"))
+        setattr(cls, "UBERON:3000922",
+            PermissibleValue(
+                text="UBERON:3000922",
+                description="prehallux skeleton"))
+        setattr(cls, "UBERON:3000931",
+            PermissibleValue(
+                text="UBERON:3000931",
+                description="intercalary element of hind digit"))
+        setattr(cls, "UBERON:3000934",
+            PermissibleValue(
+                text="UBERON:3000934",
+                description="foramen perforans tarsi"))
+        setattr(cls, "UBERON:3000936",
+            PermissibleValue(
+                text="UBERON:3000936",
+                description="zonal element"))
+        setattr(cls, "UBERON:3000937",
+            PermissibleValue(
+                text="UBERON:3000937",
+                description="prezonal element"))
+        setattr(cls, "UBERON:3000938",
+            PermissibleValue(
+                text="UBERON:3000938",
+                description="postzonal element"))
+        setattr(cls, "UBERON:3000941",
+            PermissibleValue(
+                text="UBERON:3000941",
+                description="arciferal girdle"))
+        setattr(cls, "UBERON:3000942",
+            PermissibleValue(
+                text="UBERON:3000942",
+                description="firmisternal girdle"))
+        setattr(cls, "UBERON:3000943",
+            PermissibleValue(
+                text="UBERON:3000943",
+                description="pseudofirmisternal girdle"))
+        setattr(cls, "UBERON:3000944",
+            PermissibleValue(
+                text="UBERON:3000944",
+                description="pseudoarciferal girdle"))
+        setattr(cls, "UBERON:3000945",
+            PermissibleValue(
+                text="UBERON:3000945",
+                description="inscriptional rib"))
+        setattr(cls, "UBERON:3000948",
+            PermissibleValue(
+                text="UBERON:3000948",
+                description="articular process"))
+        setattr(cls, "UBERON:3000950",
+            PermissibleValue(
+                text="UBERON:3000950",
+                description="os triangulare"))
+        setattr(cls, "UBERON:3000951",
+            PermissibleValue(
+                text="UBERON:3000951",
+                description="anterior radial"))
+        setattr(cls, "UBERON:3000952",
+            PermissibleValue(
+                text="UBERON:3000952",
+                description="posterior radial"))
+        setattr(cls, "UBERON:3000953",
+            PermissibleValue(
+                text="UBERON:3000953",
+                description="ceratobranchials II--IV"))
+        setattr(cls, "UBERON:3000954",
+            PermissibleValue(
+                text="UBERON:3000954",
+                description="hypobranchial I"))
+        setattr(cls, "UBERON:3000955",
+            PermissibleValue(
+                text="UBERON:3000955",
+                description="ceratobranchial I"))
+        setattr(cls, "UBERON:3000956",
+            PermissibleValue(
+                text="UBERON:3000956",
+                description="hypobranchial II"))
+        setattr(cls, "UBERON:3000961",
+            PermissibleValue(
+                text="UBERON:3000961",
+                description="external integument structure"))
+        setattr(cls, "UBERON:3000965",
+            PermissibleValue(
+                text="UBERON:3000965",
+                description="basale commune (carpal)"))
+        setattr(cls, "UBERON:3000966",
+            PermissibleValue(
+                text="UBERON:3000966",
+                description="angulosplenial"))
+        setattr(cls, "UBERON:3000972",
+            PermissibleValue(
+                text="UBERON:3000972",
+                description="head external integument structure"))
+        setattr(cls, "UBERON:3000977",
+            PermissibleValue(
+                text="UBERON:3000977",
+                description="body external integument structure"))
+        setattr(cls, "UBERON:3000981",
+            PermissibleValue(
+                text="UBERON:3000981",
+                description="limb external integument structure"))
+        setattr(cls, "UBERON:3000989",
+            PermissibleValue(
+                text="UBERON:3000989",
+                description="pectoral fold"))
+        setattr(cls, "UBERON:3000991",
+            PermissibleValue(
+                text="UBERON:3000991",
+                description="dorsal folds"))
+        setattr(cls, "UBERON:3000993",
+            PermissibleValue(
+                text="UBERON:3000993",
+                description="otic and occipital"))
+        setattr(cls, "UBERON:3000994",
+            PermissibleValue(
+                text="UBERON:3000994",
+                description="longitudinal dorsal folds"))
+        setattr(cls, "UBERON:3000995",
+            PermissibleValue(
+                text="UBERON:3000995",
+                description="transversal dorsal folds"))
+        setattr(cls, "UBERON:3000998",
+            PermissibleValue(
+                text="UBERON:3000998",
+                description="suprarostral cartilage"))
+        setattr(cls, "UBERON:3000999",
+            PermissibleValue(
+                text="UBERON:3000999",
+                description="dorsal pouch"))
+        setattr(cls, "UBERON:3001002",
+            PermissibleValue(
+                text="UBERON:3001002",
+                description="basale commune (tarsal)"))
+        setattr(cls, "UBERON:3001003",
+            PermissibleValue(
+                text="UBERON:3001003",
+                description="cloacal fold"))
+        setattr(cls, "UBERON:3001005",
+            PermissibleValue(
+                text="UBERON:3001005",
+                description="dorsolateral fold"))
+        setattr(cls, "UBERON:3001007",
+            PermissibleValue(
+                text="UBERON:3001007",
+                description="body granules"))
+        setattr(cls, "UBERON:3001008",
+            PermissibleValue(
+                text="UBERON:3001008",
+                description="body wart"))
+        setattr(cls, "UBERON:3001009",
+            PermissibleValue(
+                text="UBERON:3001009",
+                description="body spicule"))
+        setattr(cls, "UBERON:3001010",
+            PermissibleValue(
+                text="UBERON:3001010",
+                description="body tubercle"))
+        setattr(cls, "UBERON:3010006",
+            PermissibleValue(
+                text="UBERON:3010006",
+                description="dorsal skin texture"))
+        setattr(cls, "UBERON:3010010",
+            PermissibleValue(
+                text="UBERON:3010010",
+                description="ventral skin texture"))
+        setattr(cls, "UBERON:3010011",
+            PermissibleValue(
+                text="UBERON:3010011",
+                description="axillary glands"))
+        setattr(cls, "UBERON:3010013",
+            PermissibleValue(
+                text="UBERON:3010013",
+                description="larval chondrocranium"))
+        setattr(cls, "UBERON:3010014",
+            PermissibleValue(
+                text="UBERON:3010014",
+                description="inguinal glands"))
+        setattr(cls, "UBERON:3010018",
+            PermissibleValue(
+                text="UBERON:3010018",
+                description="M. glutaeus magnus"))
+        setattr(cls, "UBERON:3010021",
+            PermissibleValue(
+                text="UBERON:3010021",
+                description="dorsal glands"))
+        setattr(cls, "UBERON:3010022",
+            PermissibleValue(
+                text="UBERON:3010022",
+                description="M. tensor fasciae latae"))
+        setattr(cls, "UBERON:3010027",
+            PermissibleValue(
+                text="UBERON:3010027",
+                description="M. sartorius"))
+        setattr(cls, "UBERON:3010031",
+            PermissibleValue(
+                text="UBERON:3010031",
+                description="ventral glands"))
+        setattr(cls, "UBERON:3010032",
+            PermissibleValue(
+                text="UBERON:3010032",
+                description="M. semitendinosus"))
+        setattr(cls, "UBERON:3010039",
+            PermissibleValue(
+                text="UBERON:3010039",
+                description="protandrous hermaphroditic organism"))
+        setattr(cls, "UBERON:3010042",
+            PermissibleValue(
+                text="UBERON:3010042",
+                description="protogynous hermaphroditic organism"))
+        setattr(cls, "UBERON:3010044",
+            PermissibleValue(
+                text="UBERON:3010044",
+                description="dorsal crest"))
+        setattr(cls, "UBERON:3010045",
+            PermissibleValue(
+                text="UBERON:3010045",
+                description="centrale 1"))
+        setattr(cls, "UBERON:3010047",
+            PermissibleValue(
+                text="UBERON:3010047",
+                description="M. quadratus femoris"))
+        setattr(cls, "UBERON:3010049",
+            PermissibleValue(
+                text="UBERON:3010049",
+                description="M. gemellus"))
+        setattr(cls, "UBERON:3010058",
+            PermissibleValue(
+                text="UBERON:3010058",
+                description="dermal annular fold"))
+        setattr(cls, "UBERON:3010060",
+            PermissibleValue(
+                text="UBERON:3010060",
+                description="centrale (fore)"))
+        setattr(cls, "UBERON:3010065",
+            PermissibleValue(
+                text="UBERON:3010065",
+                description="M. gracilis major"))
+        setattr(cls, "UBERON:3010067",
+            PermissibleValue(
+                text="UBERON:3010067",
+                description="M. gracilis minor"))
+        setattr(cls, "UBERON:3010068",
+            PermissibleValue(
+                text="UBERON:3010068",
+                description="M. semimembranosus"))
+        setattr(cls, "UBERON:3010069",
+            PermissibleValue(
+                text="UBERON:3010069",
+                description="intermedium (fore)"))
+        setattr(cls, "UBERON:3010070",
+            PermissibleValue(
+                text="UBERON:3010070",
+                description="M. ileo-fibularis"))
+        setattr(cls, "UBERON:3010071",
+            PermissibleValue(
+                text="UBERON:3010071",
+                description="cranial crest"))
+        setattr(cls, "UBERON:3010072",
+            PermissibleValue(
+                text="UBERON:3010072",
+                description="M. pyriformis"))
+        setattr(cls, "UBERON:3010073",
+            PermissibleValue(
+                text="UBERON:3010073",
+                description="centrale 2"))
+        setattr(cls, "UBERON:3010074",
+            PermissibleValue(
+                text="UBERON:3010074",
+                description="M. ileo-femoralis"))
+        setattr(cls, "UBERON:3010075",
+            PermissibleValue(
+                text="UBERON:3010075",
+                description="tympanic fold"))
+        setattr(cls, "UBERON:3010076",
+            PermissibleValue(
+                text="UBERON:3010076",
+                description="M. iliacus internus"))
+        setattr(cls, "UBERON:3010078",
+            PermissibleValue(
+                text="UBERON:3010078",
+                description="M. iliacus externus"))
+        setattr(cls, "UBERON:3010079",
+            PermissibleValue(
+                text="UBERON:3010079",
+                description="upper eyelid protuberances"))
+        setattr(cls, "UBERON:3010080",
+            PermissibleValue(
+                text="UBERON:3010080",
+                description="snout protuberances"))
+        setattr(cls, "UBERON:3010081",
+            PermissibleValue(
+                text="UBERON:3010081",
+                description="interorbital fold"))
+        setattr(cls, "UBERON:3010082",
+            PermissibleValue(
+                text="UBERON:3010082",
+                description="M. pulmonum proprius"))
+        setattr(cls, "UBERON:3010084",
+            PermissibleValue(
+                text="UBERON:3010084",
+                description="M. tibialis posticus"))
+        setattr(cls, "UBERON:3010085",
+            PermissibleValue(
+                text="UBERON:3010085",
+                description="postrictal protuberances"))
+        setattr(cls, "UBERON:3010087",
+            PermissibleValue(
+                text="UBERON:3010087",
+                description="M. tibialis anticus longus"))
+        setattr(cls, "UBERON:3010089",
+            PermissibleValue(
+                text="UBERON:3010089",
+                description="M. extensor cruris brevis"))
+        setattr(cls, "UBERON:3010090",
+            PermissibleValue(
+                text="UBERON:3010090",
+                description="M. tibialis anticus brevis"))
+        setattr(cls, "UBERON:3010091",
+            PermissibleValue(
+                text="UBERON:3010091",
+                description="upper lip protuberances"))
+        setattr(cls, "UBERON:3010093",
+            PermissibleValue(
+                text="UBERON:3010093",
+                description="villosities"))
+        setattr(cls, "UBERON:3010096",
+            PermissibleValue(
+                text="UBERON:3010096",
+                description="vocal sac"))
+        setattr(cls, "UBERON:3010097",
+            PermissibleValue(
+                text="UBERON:3010097",
+                description="M. tarsalis posticus"))
+        setattr(cls, "UBERON:3010098",
+            PermissibleValue(
+                text="UBERON:3010098",
+                description="M. plantaris profundus"))
+        setattr(cls, "UBERON:3010100",
+            PermissibleValue(
+                text="UBERON:3010100",
+                description="mental gland"))
+        setattr(cls, "UBERON:3010103",
+            PermissibleValue(
+                text="UBERON:3010103",
+                description="vocal sac glands"))
+        setattr(cls, "UBERON:3010104",
+            PermissibleValue(
+                text="UBERON:3010104",
+                description="pectoral glands"))
+        setattr(cls, "UBERON:3010106",
+            PermissibleValue(
+                text="UBERON:3010106",
+                description="tympanic papilla"))
+        setattr(cls, "UBERON:3010123",
+            PermissibleValue(
+                text="UBERON:3010123",
+                description="finger fringes"))
+        setattr(cls, "UBERON:3010124",
+            PermissibleValue(
+                text="UBERON:3010124",
+                description="toe fringes"))
+        setattr(cls, "UBERON:3010125",
+            PermissibleValue(
+                text="UBERON:3010125",
+                description="musculus levator bulbi"))
+        setattr(cls, "UBERON:3010127",
+            PermissibleValue(
+                text="UBERON:3010127",
+                description="fringe on postaxial edge of finger IV"))
+        setattr(cls, "UBERON:3010128",
+            PermissibleValue(
+                text="UBERON:3010128",
+                description="taeniae tecti marginalis"))
+        setattr(cls, "UBERON:3010130",
+            PermissibleValue(
+                text="UBERON:3010130",
+                description="taenia tecti transversalis"))
+        setattr(cls, "UBERON:3010131",
+            PermissibleValue(
+                text="UBERON:3010131",
+                description="orbital cartilages"))
+        setattr(cls, "UBERON:3010132",
+            PermissibleValue(
+                text="UBERON:3010132",
+                description="taenia tecti medialis"))
+        setattr(cls, "UBERON:3010136",
+            PermissibleValue(
+                text="UBERON:3010136",
+                description="M. cruralis"))
+        setattr(cls, "UBERON:3010138",
+            PermissibleValue(
+                text="UBERON:3010138",
+                description="trabecular horn"))
+        setattr(cls, "UBERON:3010142",
+            PermissibleValue(
+                text="UBERON:3010142",
+                description="occipital arch"))
+        setattr(cls, "UBERON:3010144",
+            PermissibleValue(
+                text="UBERON:3010144",
+                description="odontoids"))
+        setattr(cls, "UBERON:3010163",
+            PermissibleValue(
+                text="UBERON:3010163",
+                description="metacarpal fold"))
+        setattr(cls, "UBERON:3010164",
+            PermissibleValue(
+                text="UBERON:3010164",
+                description="ulnar fold"))
+        setattr(cls, "UBERON:3010166",
+            PermissibleValue(
+                text="UBERON:3010166",
+                description="fringe on postaxial edge of toe V"))
+        setattr(cls, "UBERON:3010167",
+            PermissibleValue(
+                text="UBERON:3010167",
+                description="metatarsal fold"))
+        setattr(cls, "UBERON:3010168",
+            PermissibleValue(
+                text="UBERON:3010168",
+                description="tarsal fringe"))
+        setattr(cls, "UBERON:3010170",
+            PermissibleValue(
+                text="UBERON:3010170",
+                description="ungual flap"))
+        setattr(cls, "UBERON:3010172",
+            PermissibleValue(
+                text="UBERON:3010172",
+                description="subarticular tubercles"))
+        setattr(cls, "UBERON:3010173",
+            PermissibleValue(
+                text="UBERON:3010173",
+                description="supernumerary tubercles"))
+        setattr(cls, "UBERON:3010175",
+            PermissibleValue(
+                text="UBERON:3010175",
+                description="circumferential groove"))
+        setattr(cls, "UBERON:3010178",
+            PermissibleValue(
+                text="UBERON:3010178",
+                description="finger glands"))
+        setattr(cls, "UBERON:3010179",
+            PermissibleValue(
+                text="UBERON:3010179",
+                description="web glands"))
+        setattr(cls, "UBERON:3010181",
+            PermissibleValue(
+                text="UBERON:3010181",
+                description="humeral glands"))
+        setattr(cls, "UBERON:3010182",
+            PermissibleValue(
+                text="UBERON:3010182",
+                description="tibial glands"))
+        setattr(cls, "UBERON:3010183",
+            PermissibleValue(
+                text="UBERON:3010183",
+                description="femoral glands"))
+        setattr(cls, "UBERON:3010184",
+            PermissibleValue(
+                text="UBERON:3010184",
+                description="inner metatarsal tubercle"))
+        setattr(cls, "UBERON:3010186",
+            PermissibleValue(
+                text="UBERON:3010186",
+                description="outer metatarsal tubercle"))
+        setattr(cls, "UBERON:3010187",
+            PermissibleValue(
+                text="UBERON:3010187",
+                description="inner metacarpal tubercle"))
+        setattr(cls, "UBERON:3010188",
+            PermissibleValue(
+                text="UBERON:3010188",
+                description="outer metacarpal tubercle"))
+        setattr(cls, "UBERON:3010189",
+            PermissibleValue(
+                text="UBERON:3010189",
+                description="ulnar protuberances"))
+        setattr(cls, "UBERON:3010190",
+            PermissibleValue(
+                text="UBERON:3010190",
+                description="tibial protuberances"))
+        setattr(cls, "UBERON:3010191",
+            PermissibleValue(
+                text="UBERON:3010191",
+                description="calcar anterior"))
+        setattr(cls, "UBERON:3010192",
+            PermissibleValue(
+                text="UBERON:3010192",
+                description="calcar posterior"))
+        setattr(cls, "UBERON:3010193",
+            PermissibleValue(
+                text="UBERON:3010193",
+                description="prepollical protuberances"))
+        setattr(cls, "UBERON:3010194",
+            PermissibleValue(
+                text="UBERON:3010194",
+                description="mediale"))
+        setattr(cls, "UBERON:3010195",
+            PermissibleValue(
+                text="UBERON:3010195",
+                description="lateral appendix"))
+        setattr(cls, "UBERON:3010197",
+            PermissibleValue(
+                text="UBERON:3010197",
+                description="lateral recess"))
+        setattr(cls, "UBERON:3010200",
+            PermissibleValue(
+                text="UBERON:3010200",
+                description="vasculature of respiratory integument"))
+        setattr(cls, "UBERON:3010205",
+            PermissibleValue(
+                text="UBERON:3010205",
+                description="postminimus"))
+        setattr(cls, "UBERON:3010209",
+            PermissibleValue(
+                text="UBERON:3010209",
+                description="keratinous claw"))
+        setattr(cls, "UBERON:3010226",
+            PermissibleValue(
+                text="UBERON:3010226",
+                description="postiliac glands"))
+        setattr(cls, "UBERON:3010227",
+            PermissibleValue(
+                text="UBERON:3010227",
+                description="costal protuberances"))
+        setattr(cls, "UBERON:3010229",
+            PermissibleValue(
+                text="UBERON:3010229",
+                description="costal grooves"))
+        setattr(cls, "UBERON:3010231",
+            PermissibleValue(
+                text="UBERON:3010231",
+                description="costal folds"))
+        setattr(cls, "UBERON:3010235",
+            PermissibleValue(
+                text="UBERON:3010235",
+                description="nuchal groove"))
+        setattr(cls, "UBERON:3010239",
+            PermissibleValue(
+                text="UBERON:3010239",
+                description="subocular groove"))
+        setattr(cls, "UBERON:3010240",
+            PermissibleValue(
+                text="UBERON:3010240",
+                description="Nobelian rod"))
+        setattr(cls, "UBERON:3010241",
+            PermissibleValue(
+                text="UBERON:3010241",
+                description="labial fold"))
+        setattr(cls, "UBERON:3010242",
+            PermissibleValue(
+                text="UBERON:3010242",
+                description="nasolabial groove"))
+        setattr(cls, "UBERON:3010243",
+            PermissibleValue(
+                text="UBERON:3010243",
+                description="ventricular musculature"))
+        setattr(cls, "UBERON:3010259",
+            PermissibleValue(
+                text="UBERON:3010259",
+                description="phallodeum"))
+        setattr(cls, "UBERON:3010260",
+            PermissibleValue(
+                text="UBERON:3010260",
+                description="intromittent organ (Ascaphus type)"))
+        setattr(cls, "UBERON:3010262",
+            PermissibleValue(
+                text="UBERON:3010262",
+                description="capitulum of radio-ulna"))
+        setattr(cls, "UBERON:3010303",
+            PermissibleValue(
+                text="UBERON:3010303",
+                description="fasciculated network of fibrils"))
+        setattr(cls, "UBERON:3010328",
+            PermissibleValue(
+                text="UBERON:3010328",
+                description="equatorial belt"))
+        setattr(cls, "UBERON:3010377",
+            PermissibleValue(
+                text="UBERON:3010377",
+                description="unicellular gland"))
+        setattr(cls, "UBERON:3010392",
+            PermissibleValue(
+                text="UBERON:3010392",
+                description="mesonephric early proximal tubule"))
+        setattr(cls, "UBERON:3010393",
+            PermissibleValue(
+                text="UBERON:3010393",
+                description="mesonephric late distal segment"))
+        setattr(cls, "UBERON:3010394",
+            PermissibleValue(
+                text="UBERON:3010394",
+                description="mesonephric late proximal tubule"))
+        setattr(cls, "UBERON:3010404",
+            PermissibleValue(
+                text="UBERON:3010404",
+                description="capillary system of liver"))
+        setattr(cls, "UBERON:3010413",
+            PermissibleValue(
+                text="UBERON:3010413",
+                description="left channel of ventral aorta"))
+        setattr(cls, "UBERON:3010417",
+            PermissibleValue(
+                text="UBERON:3010417",
+                description="posterior palatine artery"))
+        setattr(cls, "UBERON:3010423",
+            PermissibleValue(
+                text="UBERON:3010423",
+                description="larval aorta"))
+        setattr(cls, "UBERON:3010424",
+            PermissibleValue(
+                text="UBERON:3010424",
+                description="right channel of ventral aorta"))
+        setattr(cls, "UBERON:3010431",
+            PermissibleValue(
+                text="UBERON:3010431",
+                description="archenteron floor"))
+        setattr(cls, "UBERON:3010432",
+            PermissibleValue(
+                text="UBERON:3010432",
+                description="archenteron roof"))
+        setattr(cls, "UBERON:3010436",
+            PermissibleValue(
+                text="UBERON:3010436",
+                description="blastocoel roof"))
+        setattr(cls, "UBERON:3010437",
+            PermissibleValue(
+                text="UBERON:3010437",
+                description="post-anal gut"))
+        setattr(cls, "UBERON:3010447",
+            PermissibleValue(
+                text="UBERON:3010447",
+                description="M. extensor digitorum communis longus"))
+        setattr(cls, "UBERON:3010449",
+            PermissibleValue(
+                text="UBERON:3010449",
+                description="dorsal marginal zone"))
+        setattr(cls, "UBERON:3010450",
+            PermissibleValue(
+                text="UBERON:3010450",
+                description="dorso-lateral marginal zone"))
+        setattr(cls, "UBERON:3010451",
+            PermissibleValue(
+                text="UBERON:3010451",
+                description="involuting marginal zone"))
+        setattr(cls, "UBERON:3010452",
+            PermissibleValue(
+                text="UBERON:3010452",
+                description="non-involuting marginal zone"))
+        setattr(cls, "UBERON:3010453",
+            PermissibleValue(
+                text="UBERON:3010453",
+                description="ventral marginal zone"))
+        setattr(cls, "UBERON:3010454",
+            PermissibleValue(
+                text="UBERON:3010454",
+                description="ventro-lateral marginal zone"))
+        setattr(cls, "UBERON:3010455",
+            PermissibleValue(
+                text="UBERON:3010455",
+                description="blastopore lip"))
+        setattr(cls, "UBERON:3010456",
+            PermissibleValue(
+                text="UBERON:3010456",
+                description="lower blastopore lip"))
+        setattr(cls, "UBERON:3010457",
+            PermissibleValue(
+                text="UBERON:3010457",
+                description="upper blastopore lip"))
+        setattr(cls, "UBERON:3010458",
+            PermissibleValue(
+                text="UBERON:3010458",
+                description="suprarostral ala"))
         setattr(cls, "UBERON:3010463",
             PermissibleValue(
                 text="UBERON:3010463",
                 description="animal cap"))
+        setattr(cls, "UBERON:3010464",
+            PermissibleValue(
+                text="UBERON:3010464",
+                description="animal cap inner layer"))
+        setattr(cls, "UBERON:3010465",
+            PermissibleValue(
+                text="UBERON:3010465",
+                description="animal cap outer layer"))
+        setattr(cls, "UBERON:3010489",
+            PermissibleValue(
+                text="UBERON:3010489",
+                description="muscular artery"))
+        setattr(cls, "UBERON:3010494",
+            PermissibleValue(
+                text="UBERON:3010494",
+                description="lateral pretrosal artery"))
+        setattr(cls, "UBERON:3010496",
+            PermissibleValue(
+                text="UBERON:3010496",
+                description="mandibular artery"))
+        setattr(cls, "UBERON:3010498",
+            PermissibleValue(
+                text="UBERON:3010498",
+                description="cutaneus artery"))
+        setattr(cls, "UBERON:3010499",
+            PermissibleValue(
+                text="UBERON:3010499",
+                description="coeliaco-mesenteric artery"))
+        setattr(cls, "UBERON:3010500",
+            PermissibleValue(
+                text="UBERON:3010500",
+                description="gastrico-linealis"))
+        setattr(cls, "UBERON:3010501",
+            PermissibleValue(
+                text="UBERON:3010501",
+                description="duodeno-pancreatic artery"))
+        setattr(cls, "UBERON:3010502",
+            PermissibleValue(
+                text="UBERON:3010502",
+                description="duodeno-hepatic artery"))
+        setattr(cls, "UBERON:3010503",
+            PermissibleValue(
+                text="UBERON:3010503",
+                description="oviduct artery"))
+        setattr(cls, "UBERON:3010506",
+            PermissibleValue(
+                text="UBERON:3010506",
+                description="postcaval vein"))
+        setattr(cls, "UBERON:3010507",
+            PermissibleValue(
+                text="UBERON:3010507",
+                description="precaval vein"))
+        setattr(cls, "UBERON:3010515",
+            PermissibleValue(
+                text="UBERON:3010515",
+                description="lateral vein"))
+        setattr(cls, "UBERON:3010516",
+            PermissibleValue(
+                text="UBERON:3010516",
+                description="cutaneus magnus"))
+        setattr(cls, "UBERON:3010517",
+            PermissibleValue(
+                text="UBERON:3010517",
+                description="ventral abdominal vein"))
+        setattr(cls, "UBERON:3010523",
+            PermissibleValue(
+                text="UBERON:3010523",
+                description="M. plantaris longus"))
+        setattr(cls, "UBERON:3010524",
+            PermissibleValue(
+                text="UBERON:3010524",
+                description="bronchial tube"))
+        setattr(cls, "UBERON:3010525",
+            PermissibleValue(
+                text="UBERON:3010525",
+                description="frontoparietal fenestra"))
+        setattr(cls, "UBERON:3010529",
+            PermissibleValue(
+                text="UBERON:3010529",
+                description="ovisac"))
+        setattr(cls, "UBERON:3010541",
+            PermissibleValue(
+                text="UBERON:3010541",
+                description="median pars intermedia"))
+        setattr(cls, "UBERON:3010557",
+            PermissibleValue(
+                text="UBERON:3010557",
+                description="triangular process"))
+        setattr(cls, "UBERON:3010558",
+            PermissibleValue(
+                text="UBERON:3010558",
+                description="quadrato-ethmoid ligament"))
+        setattr(cls, "UBERON:3010562",
+            PermissibleValue(
+                text="UBERON:3010562",
+                description="suboccular foramen"))
+        setattr(cls, "UBERON:3010563",
+            PermissibleValue(
+                text="UBERON:3010563",
+                description="craniopalatine foramen"))
+        setattr(cls, "UBERON:3010564",
+            PermissibleValue(
+                text="UBERON:3010564",
+                description="carotid foramen"))
+        setattr(cls, "UBERON:3010565",
+            PermissibleValue(
+                text="UBERON:3010565",
+                description="pila preoptica"))
+        setattr(cls, "UBERON:3010566",
+            PermissibleValue(
+                text="UBERON:3010566",
+                description="prootic foramen"))
+        setattr(cls, "UBERON:3010576",
+            PermissibleValue(
+                text="UBERON:3010576",
+                description="prenasal (amphibians)"))
+        setattr(cls, "UBERON:3010583",
+            PermissibleValue(
+                text="UBERON:3010583",
+                description="basibranchial I"))
+        setattr(cls, "UBERON:3010584",
+            PermissibleValue(
+                text="UBERON:3010584",
+                description="mandibular arch neural crest"))
+        setattr(cls, "UBERON:3010585",
+            PermissibleValue(
+                text="UBERON:3010585",
+                description="basibranchial II"))
         setattr(cls, "UBERON:3010586",
             PermissibleValue(
                 text="UBERON:3010586",
                 description="vasa efferentia"))
-        setattr(cls, "UBERON:3010840",
+        setattr(cls, "UBERON:3010587",
             PermissibleValue(
-                text="UBERON:3010840",
-                description="obsolete portion of cell substance"))
-        setattr(cls, "UBERON:4000002",
+                text="UBERON:3010587",
+                description="hyoid arch neural crest"))
+        setattr(cls, "UBERON:3010589",
             PermissibleValue(
-                text="UBERON:4000002",
-                description="obsolete mode of ossification"))
+                text="UBERON:3010589",
+                description="cloacal papilla"))
+        setattr(cls, "UBERON:3010590",
+            PermissibleValue(
+                text="UBERON:3010590",
+                description="amphibian cloacal gland"))
+        setattr(cls, "UBERON:3010599",
+            PermissibleValue(
+                text="UBERON:3010599",
+                description="stratum spongiosum"))
+        setattr(cls, "UBERON:3010602",
+            PermissibleValue(
+                text="UBERON:3010602",
+                description="granular gland"))
+        setattr(cls, "UBERON:3010603",
+            PermissibleValue(
+                text="UBERON:3010603",
+                description="body gland"))
+        setattr(cls, "UBERON:3010604",
+            PermissibleValue(
+                text="UBERON:3010604",
+                description="cranial glands"))
+        setattr(cls, "UBERON:3010606",
+            PermissibleValue(
+                text="UBERON:3010606",
+                description="limb gland"))
+        setattr(cls, "UBERON:3010613",
+            PermissibleValue(
+                text="UBERON:3010613",
+                description="laryngo-tracheal chamber"))
+        setattr(cls, "UBERON:3010614",
+            PermissibleValue(
+                text="UBERON:3010614",
+                description="cartilago lateralis of aryngo-tracheal chamber"))
+        setattr(cls, "UBERON:3010618",
+            PermissibleValue(
+                text="UBERON:3010618",
+                description="constrictor laryngis externus"))
+        setattr(cls, "UBERON:3010620",
+            PermissibleValue(
+                text="UBERON:3010620",
+                description="dilatator laryngis"))
+        setattr(cls, "UBERON:3010621",
+            PermissibleValue(
+                text="UBERON:3010621",
+                description="constrictor laryngis anterior"))
+        setattr(cls, "UBERON:3010624",
+            PermissibleValue(
+                text="UBERON:3010624",
+                description="subarticular sesamoid"))
+        setattr(cls, "UBERON:3010636",
+            PermissibleValue(
+                text="UBERON:3010636",
+                description="egg capsule"))
+        setattr(cls, "UBERON:3010650",
+            PermissibleValue(
+                text="UBERON:3010650",
+                description="cephalodorsosubpharyngeus"))
+        setattr(cls, "UBERON:3010651",
+            PermissibleValue(
+                text="UBERON:3010651",
+                description="levator bulbi"))
+        setattr(cls, "UBERON:3010652",
+            PermissibleValue(
+                text="UBERON:3010652",
+                description="ramus nasalis lateralis"))
+        setattr(cls, "UBERON:3010653",
+            PermissibleValue(
+                text="UBERON:3010653",
+                description="ramus nasalis medialis"))
+        setattr(cls, "UBERON:3010654",
+            PermissibleValue(
+                text="UBERON:3010654",
+                description="rectus cervicis"))
+        setattr(cls, "UBERON:3010657",
+            PermissibleValue(
+                text="UBERON:3010657",
+                description="subhyoideus"))
+        setattr(cls, "UBERON:3010659",
+            PermissibleValue(
+                text="UBERON:3010659",
+                description="subarcualis rectus I"))
+        setattr(cls, "UBERON:3010661",
+            PermissibleValue(
+                text="UBERON:3010661",
+                description="ramus nasalis internus"))
+        setattr(cls, "UBERON:3010664",
+            PermissibleValue(
+                text="UBERON:3010664",
+                description="m. intertransversarius capitus superior"))
+        setattr(cls, "UBERON:3010665",
+            PermissibleValue(
+                text="UBERON:3010665",
+                description="ramule palatinus"))
+        setattr(cls, "UBERON:3010667",
+            PermissibleValue(
+                text="UBERON:3010667",
+                description="m. intertransversarius capitis inferior"))
+        setattr(cls, "UBERON:3010668",
+            PermissibleValue(
+                text="UBERON:3010668",
+                description="ramules cutaneous"))
+        setattr(cls, "UBERON:3010669",
+            PermissibleValue(
+                text="UBERON:3010669",
+                description="trunk maxillary-mandibularis"))
+        setattr(cls, "UBERON:3010671",
+            PermissibleValue(
+                text="UBERON:3010671",
+                description="ramule palatonasalis"))
+        setattr(cls, "UBERON:3010673",
+            PermissibleValue(
+                text="UBERON:3010673",
+                description="m. rhomboideus anterior"))
+        setattr(cls, "UBERON:3010675",
+            PermissibleValue(
+                text="UBERON:3010675",
+                description="bony nodule of terminal phalanx of hind digit"))
+        setattr(cls, "UBERON:3010682",
+            PermissibleValue(
+                text="UBERON:3010682",
+                description="proximal-most prepollical element"))
+        setattr(cls, "UBERON:3010683",
+            PermissibleValue(
+                text="UBERON:3010683",
+                description="distal-most prepollical element"))
+        setattr(cls, "UBERON:3010684",
+            PermissibleValue(
+                text="UBERON:3010684",
+                description="proximal-most prehallical element"))
+        setattr(cls, "UBERON:3010685",
+            PermissibleValue(
+                text="UBERON:3010685",
+                description="distal-most prehallical element"))
+        setattr(cls, "UBERON:3010690",
+            PermissibleValue(
+                text="UBERON:3010690",
+                description="fetal tooth"))
+        setattr(cls, "UBERON:3010691",
+            PermissibleValue(
+                text="UBERON:3010691",
+                description="m. opercularis"))
+        setattr(cls, "UBERON:3010692",
+            PermissibleValue(
+                text="UBERON:3010692",
+                description="m. cucullaris"))
+        setattr(cls, "UBERON:3010693",
+            PermissibleValue(
+                text="UBERON:3010693",
+                description="ramus posterior profundus of V3"))
+        setattr(cls, "UBERON:3010694",
+            PermissibleValue(
+                text="UBERON:3010694",
+                description="m. rhomboideus posterior"))
+        setattr(cls, "UBERON:3010695",
+            PermissibleValue(
+                text="UBERON:3010695",
+                description="m. serratus superior"))
+        setattr(cls, "UBERON:3010698",
+            PermissibleValue(
+                text="UBERON:3010698",
+                description="m. serratus medius"))
+        setattr(cls, "UBERON:3010699",
+            PermissibleValue(
+                text="UBERON:3010699",
+                description="m. serratus inferior"))
+        setattr(cls, "UBERON:3010700",
+            PermissibleValue(
+                text="UBERON:3010700",
+                description="levator mandibulae externus"))
+        setattr(cls, "UBERON:3010701",
+            PermissibleValue(
+                text="UBERON:3010701",
+                description="m. latissimus dorsi"))
+        setattr(cls, "UBERON:3010704",
+            PermissibleValue(
+                text="UBERON:3010704",
+                description="levator mandibulae longus"))
+        setattr(cls, "UBERON:3010707",
+            PermissibleValue(
+                text="UBERON:3010707",
+                description="m. dorsalis scapulae"))
+        setattr(cls, "UBERON:3010708",
+            PermissibleValue(
+                text="UBERON:3010708",
+                description="levator mandibulae articularis"))
+        setattr(cls, "UBERON:3010709",
+            PermissibleValue(
+                text="UBERON:3010709",
+                description="levator mandibulae lateralis"))
+        setattr(cls, "UBERON:3010710",
+            PermissibleValue(
+                text="UBERON:3010710",
+                description="m. interscapularis"))
+        setattr(cls, "UBERON:3010711",
+            PermissibleValue(
+                text="UBERON:3010711",
+                description="levator mandibulae externus superficialis"))
+        setattr(cls, "UBERON:3010712",
+            PermissibleValue(
+                text="UBERON:3010712",
+                description="levator mandibulae externus profundus"))
+        setattr(cls, "UBERON:3010713",
+            PermissibleValue(
+                text="UBERON:3010713",
+                description="m. sternoepicoracoideus"))
+        setattr(cls, "UBERON:3010719",
+            PermissibleValue(
+                text="UBERON:3010719",
+                description="dilated medial process of metacarpal IV"))
+        setattr(cls, "UBERON:3010720",
+            PermissibleValue(
+                text="UBERON:3010720",
+                description="ramus hyomandibularis"))
+        setattr(cls, "UBERON:3010721",
+            PermissibleValue(
+                text="UBERON:3010721",
+                description="limb villosities"))
+        setattr(cls, "UBERON:3010722",
+            PermissibleValue(
+                text="UBERON:3010722",
+                description="ramus palatinus"))
+        setattr(cls, "UBERON:3010724",
+            PermissibleValue(
+                text="UBERON:3010724",
+                description="levator quadrati"))
+        setattr(cls, "UBERON:3010725",
+            PermissibleValue(
+                text="UBERON:3010725",
+                description="M. coracoradialis"))
+        setattr(cls, "UBERON:3010726",
+            PermissibleValue(
+                text="UBERON:3010726",
+                description="ramus muscularis of glossopharyngeus nerve"))
+        setattr(cls, "UBERON:3010728",
+            PermissibleValue(
+                text="UBERON:3010728",
+                description="otic opercular element"))
+        setattr(cls, "UBERON:3010729",
+            PermissibleValue(
+                text="UBERON:3010729",
+                description="M. coracobrachialis longus"))
+        setattr(cls, "UBERON:3010731",
+            PermissibleValue(
+                text="UBERON:3010731",
+                description="M. coracobrachialis brevis"))
+        setattr(cls, "UBERON:3010734",
+            PermissibleValue(
+                text="UBERON:3010734",
+                description="M. flexor carpi ulnaris"))
+        setattr(cls, "UBERON:3010735",
+            PermissibleValue(
+                text="UBERON:3010735",
+                description="ramus anterior of CN VIII"))
+        setattr(cls, "UBERON:3010736",
+            PermissibleValue(
+                text="UBERON:3010736",
+                description="ramus posterior of CN VIII"))
+        setattr(cls, "UBERON:3010737",
+            PermissibleValue(
+                text="UBERON:3010737",
+                description="M. palmaris longus"))
+        setattr(cls, "UBERON:3010738",
+            PermissibleValue(
+                text="UBERON:3010738",
+                description="M. palmaris profundis"))
+        setattr(cls, "UBERON:3010739",
+            PermissibleValue(
+                text="UBERON:3010739",
+                description="M. flexor antibrachii medialis"))
+        setattr(cls, "UBERON:3010740",
+            PermissibleValue(
+                text="UBERON:3010740",
+                description="ramus auricularis of the vagus nerve"))
+        setattr(cls, "UBERON:3010741",
+            PermissibleValue(
+                text="UBERON:3010741",
+                description="M. ulnocarpalis"))
+        setattr(cls, "UBERON:3010742",
+            PermissibleValue(
+                text="UBERON:3010742",
+                description="interhyoideus posterior"))
+        setattr(cls, "UBERON:3010743",
+            PermissibleValue(
+                text="UBERON:3010743",
+                description="M. flexor antibrachii lateralis superficialis"))
+        setattr(cls, "UBERON:3010744",
+            PermissibleValue(
+                text="UBERON:3010744",
+                description="M. flexor antibrachii lateralis profundus"))
+        setattr(cls, "UBERON:3010745",
+            PermissibleValue(
+                text="UBERON:3010745",
+                description="M. coccygeosacralis"))
+        setattr(cls, "UBERON:3010746",
+            PermissibleValue(
+                text="UBERON:3010746",
+                description="T-shaped terminal phalanx"))
+        setattr(cls, "UBERON:3010747",
+            PermissibleValue(
+                text="UBERON:3010747",
+                description="submentalis"))
+        setattr(cls, "UBERON:3010748",
+            PermissibleValue(
+                text="UBERON:3010748",
+                description="M. coccygeoiliacus"))
+        setattr(cls, "UBERON:3010749",
+            PermissibleValue(
+                text="UBERON:3010749",
+                description="M. iliolumbaris"))
+        setattr(cls, "UBERON:3010750",
+            PermissibleValue(
+                text="UBERON:3010750",
+                description="descending branch of the vagus nerve"))
+        setattr(cls, "UBERON:3010751",
+            PermissibleValue(
+                text="UBERON:3010751",
+                description="ramus muscularis of vagus nerve"))
+        setattr(cls, "UBERON:3010754",
+            PermissibleValue(
+                text="UBERON:3010754",
+                description="ramus recurrens"))
+        setattr(cls, "UBERON:3010758",
+            PermissibleValue(
+                text="UBERON:3010758",
+                description="M. coccygeocutaneus"))
+        setattr(cls, "UBERON:3010764",
+            PermissibleValue(
+                text="UBERON:3010764",
+                description="laryngeus ventralis"))
+        setattr(cls, "UBERON:3010770",
+            PermissibleValue(
+                text="UBERON:3010770",
+                description="dorsal sympathetic chain"))
+        setattr(cls, "UBERON:3010771",
+            PermissibleValue(
+                text="UBERON:3010771",
+                description="ventral sympathetic chain"))
+        setattr(cls, "UBERON:3010772",
+            PermissibleValue(
+                text="UBERON:3010772",
+                description="M. dorsalis trunci"))
+        setattr(cls, "UBERON:3010780",
+            PermissibleValue(
+                text="UBERON:3010780",
+                description="pars recta"))
+        setattr(cls, "UBERON:3010781",
+            PermissibleValue(
+                text="UBERON:3010781",
+                description="pars convoluta of oviduct"))
+        setattr(cls, "UBERON:3010783",
+            PermissibleValue(
+                text="UBERON:3010783",
+                description="m. oblique externus"))
+        setattr(cls, "UBERON:3010784",
+            PermissibleValue(
+                text="UBERON:3010784",
+                description="m. oblique internus"))
+        setattr(cls, "UBERON:3010785",
+            PermissibleValue(
+                text="UBERON:3010785",
+                description="m. transversus"))
+        setattr(cls, "UBERON:3010786",
+            PermissibleValue(
+                text="UBERON:3010786",
+                description="pars subvertebralis"))
+        setattr(cls, "UBERON:3010787",
+            PermissibleValue(
+                text="UBERON:3010787",
+                description="pars transversalis"))
+        setattr(cls, "UBERON:3010790",
+            PermissibleValue(
+                text="UBERON:3010790",
+                description="muscle rectus abdominis superficialis"))
+        setattr(cls, "UBERON:3010792",
+            PermissibleValue(
+                text="UBERON:3010792",
+                description="musculus rectus abdominis profundus"))
+        setattr(cls, "UBERON:3010793",
+            PermissibleValue(
+                text="UBERON:3010793",
+                description="m. ypsiloideus anterior"))
+        setattr(cls, "UBERON:3010797",
+            PermissibleValue(
+                text="UBERON:3010797",
+                description="m. ypsiloideus posterior"))
+        setattr(cls, "UBERON:3010802",
+            PermissibleValue(
+                text="UBERON:3010802",
+                description="courtship gland"))
+        setattr(cls, "UBERON:3010813",
+            PermissibleValue(
+                text="UBERON:3010813",
+                description="vent glands"))
+        setattr(cls, "UBERON:3010815",
+            PermissibleValue(
+                text="UBERON:3010815",
+                description="m. flexor indicis superficialis proprius"))
+        setattr(cls, "UBERON:3010818",
+            PermissibleValue(
+                text="UBERON:3010818",
+                description="hepatic peritoneum"))
+        setattr(cls, "UBERON:3010819",
+            PermissibleValue(
+                text="UBERON:3010819",
+                description="gastrointestinal peritoneum"))
+        setattr(cls, "UBERON:3010827",
+            PermissibleValue(
+                text="UBERON:3010827",
+                description="anterior prenasal cartilage"))
+        setattr(cls, "UBERON:3010828",
+            PermissibleValue(
+                text="UBERON:3010828",
+                description="commissura terminales of hyoid apparatus"))
+        setattr(cls, "UBERON:3010829",
+            PermissibleValue(
+                text="UBERON:3010829",
+                description="sulcus intermedius"))
+        setattr(cls, "UBERON:3010830",
+            PermissibleValue(
+                text="UBERON:3010830",
+                description="spicule"))
+        setattr(cls, "UBERON:3010831",
+            PermissibleValue(
+                text="UBERON:3010831",
+                description="occipito-petrosal"))
+        setattr(cls, "UBERON:3010832",
+            PermissibleValue(
+                text="UBERON:3010832",
+                description="occipital segment"))
+        setattr(cls, "UBERON:3010836",
+            PermissibleValue(
+                text="UBERON:3010836",
+                description="posterolateral supplementary element"))
+        setattr(cls, "UBERON:3010837",
+            PermissibleValue(
+                text="UBERON:3010837",
+                description="apical supplementary element"))
+        setattr(cls, "UBERON:3010838",
+            PermissibleValue(
+                text="UBERON:3010838",
+                description="anterolateral supplementary element"))
+        setattr(cls, "UBERON:3011040",
+            PermissibleValue(
+                text="UBERON:3011040",
+                description="first pancreatic bud"))
+        setattr(cls, "UBERON:3011120",
+            PermissibleValue(
+                text="UBERON:3011120",
+                description="early proximal tubule"))
+        setattr(cls, "UBERON:3011121",
+            PermissibleValue(
+                text="UBERON:3011121",
+                description="late distal segment"))
+        setattr(cls, "UBERON:4000003",
+            PermissibleValue(
+                text="UBERON:4000003",
+                description="permanent cartilage"))
         setattr(cls, "UBERON:4000013",
             PermissibleValue(
                 text="UBERON:4000013",
                 description="mineralized skeletal tissue"))
-        setattr(cls, "UBERON:4000104",
+        setattr(cls, "UBERON:4000020",
             PermissibleValue(
-                text="UBERON:4000104",
-                description="ganoine"))
-        setattr(cls, "UBERON:4000141",
+                text="UBERON:4000020",
+                description="mineralized extracellular matrix"))
+        setattr(cls, "UBERON:4000028",
             PermissibleValue(
-                text="UBERON:4000141",
-                description="obsolete intramembranous ossification"))
-        setattr(cls, "UBERON:4000162",
+                text="UBERON:4000028",
+                description="integumentary papilla"))
+        setattr(cls, "UBERON:4000030",
             PermissibleValue(
-                text="UBERON:4000162",
-                description="median fin"))
-        setattr(cls, "UBERON:4000163",
+                text="UBERON:4000030",
+                description="oropharyngeal papilla"))
+        setattr(cls, "UBERON:4000053",
             PermissibleValue(
-                text="UBERON:4000163",
-                description="anal fin"))
-        setattr(cls, "UBERON:4000164",
+                text="UBERON:4000053",
+                description="vacuolated notochordal tissue"))
+        setattr(cls, "UBERON:4000059",
             PermissibleValue(
-                text="UBERON:4000164",
-                description="caudal fin"))
-        setattr(cls, "UBERON:4000166",
+                text="UBERON:4000059",
+                description="avascular GAG-rich matrix"))
+        setattr(cls, "UBERON:4000077",
             PermissibleValue(
-                text="UBERON:4000166",
-                description="anal fin skeleton"))
-        setattr(cls, "UBERON:4000167",
+                text="UBERON:4000077",
+                description="non-mineralized chondroid tissue"))
+        setattr(cls, "UBERON:4000078",
             PermissibleValue(
-                text="UBERON:4000167",
-                description="caudal fin skeleton"))
-        setattr(cls, "UBERON:4000168",
+                text="UBERON:4000078",
+                description="chondroid tissue"))
+        setattr(cls, "UBERON:4000086",
             PermissibleValue(
-                text="UBERON:4000168",
-                description="dorsal fin skeleton"))
-        setattr(cls, "UBERON:4000170",
+                text="UBERON:4000086",
+                description="secondary cartilage tissue"))
+        setattr(cls, "UBERON:4000087",
             PermissibleValue(
-                text="UBERON:4000170",
-                description="median fin skeleton"))
-        setattr(cls, "UBERON:4000172",
+                text="UBERON:4000087",
+                description="cosmine"))
+        setattr(cls, "UBERON:4000088",
             PermissibleValue(
-                text="UBERON:4000172",
-                description="lepidotrichium"))
-        setattr(cls, "UBERON:4000173",
+                text="UBERON:4000088",
+                description="mineralized cartilage tissue"))
+        setattr(cls, "UBERON:4000090",
             PermissibleValue(
-                text="UBERON:4000173",
-                description="pelvic fin lepidotrichium"))
-        setattr(cls, "UBERON:4000174",
+                text="UBERON:4000090",
+                description="integumentary skeleton"))
+        setattr(cls, "UBERON:4000097",
             PermissibleValue(
-                text="UBERON:4000174",
-                description="caudal fin lepidotrichium"))
-        setattr(cls, "UBERON:4000175",
+                text="UBERON:4000097",
+                description="orthodentine"))
+        setattr(cls, "UBERON:4000102",
             PermissibleValue(
-                text="UBERON:4000175",
-                description="pectoral fin lepidotrichium"))
-        setattr(cls, "UBERON:4000176",
+                text="UBERON:4000102",
+                description="osteodentine"))
+        setattr(cls, "UBERON:4000106",
             PermissibleValue(
-                text="UBERON:4000176",
-                description="anal fin lepidotrichium"))
-        setattr(cls, "UBERON:4000177",
+                text="UBERON:4000106",
+                description="vasodentine"))
+        setattr(cls, "UBERON:4000108",
             PermissibleValue(
-                text="UBERON:4000177",
-                description="dorsal fin lepidotrichium"))
+                text="UBERON:4000108",
+                description="non-mineralized hyaline cartilage tissue"))
+        setattr(cls, "UBERON:4000109",
+            PermissibleValue(
+                text="UBERON:4000109",
+                description="mineralized hyaline cartilage tissue"))
+        setattr(cls, "UBERON:4000115",
+            PermissibleValue(
+                text="UBERON:4000115",
+                description="mineralized bone tissue"))
+        setattr(cls, "UBERON:4000118",
+            PermissibleValue(
+                text="UBERON:4000118",
+                description="cellular bone tissue"))
+        setattr(cls, "UBERON:4000119",
+            PermissibleValue(
+                text="UBERON:4000119",
+                description="non-mineralized avascular GAG-rich matrix"))
+        setattr(cls, "UBERON:4000120",
+            PermissibleValue(
+                text="UBERON:4000120",
+                description="mineralized avascular GAG-rich matrix"))
+        setattr(cls, "UBERON:4000122",
+            PermissibleValue(
+                text="UBERON:4000122",
+                description="acellular bone tissue"))
+        setattr(cls, "UBERON:4000123",
+            PermissibleValue(
+                text="UBERON:4000123",
+                description="odontode tissue"))
+        setattr(cls, "UBERON:4000134",
+            PermissibleValue(
+                text="UBERON:4000134",
+                description="ossified tendon"))
+        setattr(cls, "UBERON:4000138",
+            PermissibleValue(
+                text="UBERON:4000138",
+                description="ligamentous replacement element"))
+        setattr(cls, "UBERON:4000146",
+            PermissibleValue(
+                text="UBERON:4000146",
+                description="transient cartilaginous element"))
+        setattr(cls, "UBERON:4000159",
+            PermissibleValue(
+                text="UBERON:4000159",
+                description="ossified ligament"))
+        setattr(cls, "UBERON:4000160",
+            PermissibleValue(
+                text="UBERON:4000160",
+                description="anocleithrum"))
+        setattr(cls, "UBERON:4000171",
+            PermissibleValue(
+                text="UBERON:4000171",
+                description="scapular complex"))
+        setattr(cls, "UBERON:4100000",
+            PermissibleValue(
+                text="UBERON:4100000",
+                description="skeletal element projection"))
+        setattr(cls, "UBERON:4100003",
+            PermissibleValue(
+                text="UBERON:4100003",
+                description="articular surface"))
+        setattr(cls, "UBERON:4100004",
+            PermissibleValue(
+                text="UBERON:4100004",
+                description="ischial peduncle"))
+        setattr(cls, "UBERON:4100005",
+            PermissibleValue(
+                text="UBERON:4100005",
+                description="second phalanx"))
+        setattr(cls, "UBERON:4100007",
+            PermissibleValue(
+                text="UBERON:4100007",
+                description="pectoral articular facet"))
+        setattr(cls, "UBERON:4100009",
+            PermissibleValue(
+                text="UBERON:4100009",
+                description="pedal digit 7 phalanx"))
+        setattr(cls, "UBERON:4100010",
+            PermissibleValue(
+                text="UBERON:4100010",
+                description="post-glenoid process"))
+        setattr(cls, "UBERON:4100011",
+            PermissibleValue(
+                text="UBERON:4100011",
+                description="postacetabular buttress"))
+        setattr(cls, "UBERON:4100012",
+            PermissibleValue(
+                text="UBERON:4100012",
+                description="postacetabular zone"))
+        setattr(cls, "UBERON:4100013",
+            PermissibleValue(
+                text="UBERON:4100013",
+                description="postcoracoid"))
+        setattr(cls, "UBERON:4100016",
+            PermissibleValue(
+                text="UBERON:4100016",
+                description="posterior process of ilium"))
+        setattr(cls, "UBERON:4100100",
+            PermissibleValue(
+                text="UBERON:4100100",
+                description="parasphenoid flange"))
+        setattr(cls, "UBERON:4100111",
+            PermissibleValue(
+                text="UBERON:4100111",
+                description="hemipenal sheath"))
+        setattr(cls, "UBERON:4100112",
+            PermissibleValue(
+                text="UBERON:4100112",
+                description="radial facet"))
+        setattr(cls, "UBERON:4100113",
+            PermissibleValue(
+                text="UBERON:4100113",
+                description="dermal intracranial joint"))
+        setattr(cls, "UBERON:4100114",
+            PermissibleValue(
+                text="UBERON:4100114",
+                description="anterior distal condyle of femur"))
+        setattr(cls, "UBERON:4100115",
+            PermissibleValue(
+                text="UBERON:4100115",
+                description="spiracular notch"))
+        setattr(cls, "UBERON:4100116",
+            PermissibleValue(
+                text="UBERON:4100116",
+                description="posterior distal condyle of femur"))
+        setattr(cls, "UBERON:4100117",
+            PermissibleValue(
+                text="UBERON:4100117",
+                description="presacral rib"))
+        setattr(cls, "UBERON:4100118",
+            PermissibleValue(
+                text="UBERON:4100118",
+                description="trunk rib"))
+        setattr(cls, "UBERON:4100119",
+            PermissibleValue(
+                text="UBERON:4100119",
+                description="extratemporal bone"))
+        setattr(cls, "UBERON:4200000",
+            PermissibleValue(
+                text="UBERON:4200000",
+                description="medial blade of ilium"))
+        setattr(cls, "UBERON:4200001",
+            PermissibleValue(
+                text="UBERON:4200001",
+                description="postpubis"))
+        setattr(cls, "UBERON:4200004",
+            PermissibleValue(
+                text="UBERON:4200004",
+                description="intertrochanteric fossa"))
+        setattr(cls, "UBERON:4200006",
+            PermissibleValue(
+                text="UBERON:4200006",
+                description="infraglenoid buttress"))
+        setattr(cls, "UBERON:4200007",
+            PermissibleValue(
+                text="UBERON:4200007",
+                description="transverse pelvic ridge"))
+        setattr(cls, "UBERON:4200008",
+            PermissibleValue(
+                text="UBERON:4200008",
+                description="inter-clavicle joint"))
+        setattr(cls, "UBERON:4200010",
+            PermissibleValue(
+                text="UBERON:4200010",
+                description="ventral humeral ridge"))
+        setattr(cls, "UBERON:4200011",
+            PermissibleValue(
+                text="UBERON:4200011",
+                description="pedal centrale"))
+        setattr(cls, "UBERON:4200012",
+            PermissibleValue(
+                text="UBERON:4200012",
+                description="ectepicondylar flange"))
+        setattr(cls, "UBERON:4200013",
+            PermissibleValue(
+                text="UBERON:4200013",
+                description="flexor surface"))
+        setattr(cls, "UBERON:4200014",
+            PermissibleValue(
+                text="UBERON:4200014",
+                description="lateral tuber of ulna"))
+        setattr(cls, "UBERON:4200015",
+            PermissibleValue(
+                text="UBERON:4200015",
+                description="inner digits of foot"))
+        setattr(cls, "UBERON:4200018",
+            PermissibleValue(
+                text="UBERON:4200018",
+                description="calcaneal tuber"))
+        setattr(cls, "UBERON:4200019",
+            PermissibleValue(
+                text="UBERON:4200019",
+                description="preacetabular process"))
+        setattr(cls, "UBERON:4200020",
+            PermissibleValue(
+                text="UBERON:4200020",
+                description="suprascapular fossa"))
+        setattr(cls, "UBERON:4200021",
+            PermissibleValue(
+                text="UBERON:4200021",
+                description="astragalus-calcaneum unit"))
+        setattr(cls, "UBERON:4200022",
+            PermissibleValue(
+                text="UBERON:4200022",
+                description="extracleithrum"))
+        setattr(cls, "UBERON:4200025",
+            PermissibleValue(
+                text="UBERON:4200025",
+                description="ascending process of the astragalus"))
+        setattr(cls, "UBERON:4200026",
+            PermissibleValue(
+                text="UBERON:4200026",
+                description="supraglenoid foramen"))
+        setattr(cls, "UBERON:4200027",
+            PermissibleValue(
+                text="UBERON:4200027",
+                description="supraglenoid buttress"))
+        setattr(cls, "UBERON:4200028",
+            PermissibleValue(
+                text="UBERON:4200028",
+                description="adductor blade"))
+        setattr(cls, "UBERON:4200029",
+            PermissibleValue(
+                text="UBERON:4200029",
+                description="adductor crest"))
+        setattr(cls, "UBERON:4200030",
+            PermissibleValue(
+                text="UBERON:4200030",
+                description="antitrochanter"))
+        setattr(cls, "UBERON:4200031",
+            PermissibleValue(
+                text="UBERON:4200031",
+                description="caudalipuboischiotibialis"))
+        setattr(cls, "UBERON:4200032",
+            PermissibleValue(
+                text="UBERON:4200032",
+                description="clavicle blade"))
+        setattr(cls, "UBERON:4200034",
+            PermissibleValue(
+                text="UBERON:4200034",
+                description="cnemial crest"))
+        setattr(cls, "UBERON:4200036",
+            PermissibleValue(
+                text="UBERON:4200036",
+                description="internal trochanter"))
+        setattr(cls, "UBERON:4200037",
+            PermissibleValue(
+                text="UBERON:4200037",
+                description="supinator process"))
+        setattr(cls, "UBERON:4200038",
+            PermissibleValue(
+                text="UBERON:4200038",
+                description="subscapular fossa"))
+        setattr(cls, "UBERON:4200039",
+            PermissibleValue(
+                text="UBERON:4200039",
+                description="supraacetabular buttress"))
+        setattr(cls, "UBERON:4200041",
+            PermissibleValue(
+                text="UBERON:4200041",
+                description="aponeurosis palmaris"))
+        setattr(cls, "UBERON:4200042",
+            PermissibleValue(
+                text="UBERON:4200042",
+                description="brevis shelf"))
+        setattr(cls, "UBERON:4200043",
+            PermissibleValue(
+                text="UBERON:4200043",
+                description="brevis fossa"))
+        setattr(cls, "UBERON:4200044",
+            PermissibleValue(
+                text="UBERON:4200044",
+                description="articular surface for the calcaneum on the astragalus"))
+        setattr(cls, "UBERON:4200045",
+            PermissibleValue(
+                text="UBERON:4200045",
+                description="articular surface for the astragalus on the calcaneum"))
+        setattr(cls, "UBERON:4200046",
+            PermissibleValue(
+                text="UBERON:4200046",
+                description="astragalo-calcaneal canal"))
+        setattr(cls, "UBERON:4200047",
+            PermissibleValue(
+                text="UBERON:4200047",
+                description="attachment site"))
+        setattr(cls, "UBERON:4200048",
+            PermissibleValue(
+                text="UBERON:4200048",
+                description="bicipital crest"))
+        setattr(cls, "UBERON:4200049",
+            PermissibleValue(
+                text="UBERON:4200049",
+                description="cartilago sesamoides"))
+        setattr(cls, "UBERON:4200050",
+            PermissibleValue(
+                text="UBERON:4200050",
+                description="cotyla"))
+        setattr(cls, "UBERON:4200051",
+            PermissibleValue(
+                text="UBERON:4200051",
+                description="cotyloid notch"))
+        setattr(cls, "UBERON:4200052",
+            PermissibleValue(
+                text="UBERON:4200052",
+                description="crista tibiofibularis"))
+        setattr(cls, "UBERON:4200060",
+            PermissibleValue(
+                text="UBERON:4200060",
+                description="ectepicondylar foramen"))
+        setattr(cls, "UBERON:4200063",
+            PermissibleValue(
+                text="UBERON:4200063",
+                description="ectocondylar tubercle"))
+        setattr(cls, "UBERON:4200068",
+            PermissibleValue(
+                text="UBERON:4200068",
+                description="prepubic element"))
+        setattr(cls, "UBERON:4200069",
+            PermissibleValue(
+                text="UBERON:4200069",
+                description="sternal keel"))
+        setattr(cls, "UBERON:4200076",
+            PermissibleValue(
+                text="UBERON:4200076",
+                description="trunk armor pectoral fenestra"))
+        setattr(cls, "UBERON:4200078",
+            PermissibleValue(
+                text="UBERON:4200078",
+                description="clavicular facet"))
+        setattr(cls, "UBERON:4200079",
+            PermissibleValue(
+                text="UBERON:4200079",
+                description="dorsal iliac process"))
+        setattr(cls, "UBERON:4200080",
+            PermissibleValue(
+                text="UBERON:4200080",
+                description="fibular crest"))
+        setattr(cls, "UBERON:4200081",
+            PermissibleValue(
+                text="UBERON:4200081",
+                description="hypocleideum"))
+        setattr(cls, "UBERON:4200083",
+            PermissibleValue(
+                text="UBERON:4200083",
+                description="postaxial centrale"))
+        setattr(cls, "UBERON:4200084",
+            PermissibleValue(
+                text="UBERON:4200084",
+                description="preaxial centrale"))
+        setattr(cls, "UBERON:4200086",
+            PermissibleValue(
+                text="UBERON:4200086",
+                description="iliac neck"))
+        setattr(cls, "UBERON:4200087",
+            PermissibleValue(
+                text="UBERON:4200087",
+                description="iliac peduncle"))
+        setattr(cls, "UBERON:4200088",
+            PermissibleValue(
+                text="UBERON:4200088",
+                description="iliac peduncle of the pubis"))
+        setattr(cls, "UBERON:4200089",
+            PermissibleValue(
+                text="UBERON:4200089",
+                description="fibular facet of the calcaneum"))
+        setattr(cls, "UBERON:4200090",
+            PermissibleValue(
+                text="UBERON:4200090",
+                description="fibular facet of the astragalus"))
+        setattr(cls, "UBERON:4200091",
+            PermissibleValue(
+                text="UBERON:4200091",
+                description="ethomosphenoid region"))
+        setattr(cls, "UBERON:4200092",
+            PermissibleValue(
+                text="UBERON:4200092",
+                description="flexor tubercle of ungual"))
+        setattr(cls, "UBERON:4200094",
+            PermissibleValue(
+                text="UBERON:4200094",
+                description="inner digits of hand"))
+        setattr(cls, "UBERON:4200095",
+            PermissibleValue(
+                text="UBERON:4200095",
+                description="infraspinous process"))
+        setattr(cls, "UBERON:4200096",
+            PermissibleValue(
+                text="UBERON:4200096",
+                description="intercondylar fossa"))
+        setattr(cls, "UBERON:4200097",
+            PermissibleValue(
+                text="UBERON:4200097",
+                description="intermediate spine"))
+        setattr(cls, "UBERON:4200098",
+            PermissibleValue(
+                text="UBERON:4200098",
+                description="ischial foot"))
+        setattr(cls, "UBERON:4200099",
+            PermissibleValue(
+                text="UBERON:4200099",
+                description="lateral extrascapular"))
+        setattr(cls, "UBERON:4200100",
+            PermissibleValue(
+                text="UBERON:4200100",
+                description="latissimus dorsi process"))
+        setattr(cls, "UBERON:4200101",
+            PermissibleValue(
+                text="UBERON:4200101",
+                description="m.scapulotriceps"))
+        setattr(cls, "UBERON:4200102",
+            PermissibleValue(
+                text="UBERON:4200102",
+                description="median dorsal plate"))
+        setattr(cls, "UBERON:4200103",
+            PermissibleValue(
+                text="UBERON:4200103",
+                description="median extrascapular"))
+        setattr(cls, "UBERON:4200104",
+            PermissibleValue(
+                text="UBERON:4200104",
+                description="metacarpal extensor pit"))
+        setattr(cls, "UBERON:4200105",
+            PermissibleValue(
+                text="UBERON:4200105",
+                description="nerve foramen"))
+        setattr(cls, "UBERON:4200106",
+            PermissibleValue(
+                text="UBERON:4200106",
+                description="muscle scar"))
+        setattr(cls, "UBERON:4200107",
+            PermissibleValue(
+                text="UBERON:4200107",
+                description="obturator process of ischium"))
+        setattr(cls, "UBERON:4200108",
+            PermissibleValue(
+                text="UBERON:4200108",
+                description="outer digit of hand"))
+        setattr(cls, "UBERON:4200109",
+            PermissibleValue(
+                text="UBERON:4200109",
+                description="outer digits of pes"))
+        setattr(cls, "UBERON:4200110",
+            PermissibleValue(
+                text="UBERON:4200110",
+                description="prepectoral spine"))
+        setattr(cls, "UBERON:4200111",
+            PermissibleValue(
+                text="UBERON:4200111",
+                description="prepelvic fin spine"))
+        setattr(cls, "UBERON:4200112",
+            PermissibleValue(
+                text="UBERON:4200112",
+                description="prepectoral space"))
+        setattr(cls, "UBERON:4200114",
+            PermissibleValue(
+                text="UBERON:4200114",
+                description="prepubic process"))
+        setattr(cls, "UBERON:4200115",
+            PermissibleValue(
+                text="UBERON:4200115",
+                description="presupracleithrum"))
+        setattr(cls, "UBERON:4200116",
+            PermissibleValue(
+                text="UBERON:4200116",
+                description="pteroid"))
+        setattr(cls, "UBERON:4200117",
+            PermissibleValue(
+                text="UBERON:4200117",
+                description="pubic boot"))
+        setattr(cls, "UBERON:4200118",
+            PermissibleValue(
+                text="UBERON:4200118",
+                description="pubic peduncle"))
+        setattr(cls, "UBERON:4200119",
+            PermissibleValue(
+                text="UBERON:4200119",
+                description="pubis-ischium contact"))
+        setattr(cls, "UBERON:4200120",
+            PermissibleValue(
+                text="UBERON:4200120",
+                description="puboischiadic plate"))
+        setattr(cls, "UBERON:4200121",
+            PermissibleValue(
+                text="UBERON:4200121",
+                description="puboischiotibialis muscle"))
+        setattr(cls, "UBERON:4200122",
+            PermissibleValue(
+                text="UBERON:4200122",
+                description="pubotibialis"))
+        setattr(cls, "UBERON:4200123",
+            PermissibleValue(
+                text="UBERON:4200123",
+                description="scapular process"))
+        setattr(cls, "UBERON:4200124",
+            PermissibleValue(
+                text="UBERON:4200124",
+                description="sternal trabecula"))
+        setattr(cls, "UBERON:4200125",
+            PermissibleValue(
+                text="UBERON:4200125",
+                description="supraacetabular crest"))
+        setattr(cls, "UBERON:4200126",
+            PermissibleValue(
+                text="UBERON:4200126",
+                description="supraacetabular rim"))
+        setattr(cls, "UBERON:4200127",
+            PermissibleValue(
+                text="UBERON:4200127",
+                description="suprascapula foramen"))
+        setattr(cls, "UBERON:4200128",
+            PermissibleValue(
+                text="UBERON:4200128",
+                description="synarcual region of vertebral column"))
+        setattr(cls, "UBERON:4200129",
+            PermissibleValue(
+                text="UBERON:4200129",
+                description="synarcual region"))
+        setattr(cls, "UBERON:4200130",
+            PermissibleValue(
+                text="UBERON:4200130",
+                description="tibial facet of astragalus"))
+        setattr(cls, "UBERON:4200131",
+            PermissibleValue(
+                text="UBERON:4200131",
+                description="trochanteric shelf"))
+        setattr(cls, "UBERON:4200133",
+            PermissibleValue(
+                text="UBERON:4200133",
+                description="crest"))
+        setattr(cls, "UBERON:4200134",
+            PermissibleValue(
+                text="UBERON:4200134",
+                description="antimere"))
+        setattr(cls, "UBERON:4200135",
+            PermissibleValue(
+                text="UBERON:4200135",
+                description="puboischiadic bar"))
+        setattr(cls, "UBERON:4200140",
+            PermissibleValue(
+                text="UBERON:4200140",
+                description="prepollical element"))
+        setattr(cls, "UBERON:4200141",
+            PermissibleValue(
+                text="UBERON:4200141",
+                description="prehallical element"))
+        setattr(cls, "UBERON:4200150",
+            PermissibleValue(
+                text="UBERON:4200150",
+                description="accessory foramen"))
+        setattr(cls, "UBERON:4200151",
+            PermissibleValue(
+                text="UBERON:4200151",
+                description="toe disc"))
+        setattr(cls, "UBERON:4200152",
+            PermissibleValue(
+                text="UBERON:4200152",
+                description="intertarsale sesamoid"))
+        setattr(cls, "UBERON:4200153",
+            PermissibleValue(
+                text="UBERON:4200153",
+                description="metatarsal bone of digit 6"))
+        setattr(cls, "UBERON:4200154",
+            PermissibleValue(
+                text="UBERON:4200154",
+                description="metapodium bone 6"))
+        setattr(cls, "UBERON:4200155",
+            PermissibleValue(
+                text="UBERON:4200155",
+                description="metapodium bone 7"))
+        setattr(cls, "UBERON:4200156",
+            PermissibleValue(
+                text="UBERON:4200156",
+                description="metapodium bone 8"))
+        setattr(cls, "UBERON:4200157",
+            PermissibleValue(
+                text="UBERON:4200157",
+                description="metatarsal bone of digit 7"))
+        setattr(cls, "UBERON:4200158",
+            PermissibleValue(
+                text="UBERON:4200158",
+                description="metatarsal bone of digit 8"))
+        setattr(cls, "UBERON:4200159",
+            PermissibleValue(
+                text="UBERON:4200159",
+                description="ventral ridge system"))
+        setattr(cls, "UBERON:4200166",
+            PermissibleValue(
+                text="UBERON:4200166",
+                description="hindlimb interepipodial space"))
+        setattr(cls, "UBERON:4200167",
+            PermissibleValue(
+                text="UBERON:4200167",
+                description="mesial pelvic ridge"))
+        setattr(cls, "UBERON:4200169",
+            PermissibleValue(
+                text="UBERON:4200169",
+                description="process 2 of entepicondyle"))
+        setattr(cls, "UBERON:4200170",
+            PermissibleValue(
+                text="UBERON:4200170",
+                description="process 3 of entepicondyle"))
+        setattr(cls, "UBERON:4200171",
+            PermissibleValue(
+                text="UBERON:4200171",
+                description="process 4 of entepicondyle"))
         setattr(cls, "UBERON:4200172",
             PermissibleValue(
                 text="UBERON:4200172",
                 description="neck of humerus"))
+        setattr(cls, "UBERON:4200173",
+            PermissibleValue(
+                text="UBERON:4200173",
+                description="dorsal ridge"))
+        setattr(cls, "UBERON:4200174",
+            PermissibleValue(
+                text="UBERON:4200174",
+                description="distal condyle of humerus"))
+        setattr(cls, "UBERON:4200175",
+            PermissibleValue(
+                text="UBERON:4200175",
+                description="supraglenoid region"))
+        setattr(cls, "UBERON:4200176",
+            PermissibleValue(
+                text="UBERON:4200176",
+                description="ascending process of clavicle"))
+        setattr(cls, "UBERON:4200177",
+            PermissibleValue(
+                text="UBERON:4200177",
+                description="supracondyle tubercle"))
+        setattr(cls, "UBERON:4200180",
+            PermissibleValue(
+                text="UBERON:4200180",
+                description="semilunate carpal"))
+        setattr(cls, "UBERON:4200181",
+            PermissibleValue(
+                text="UBERON:4200181",
+                description="astragalus head"))
+        setattr(cls, "UBERON:4200182",
+            PermissibleValue(
+                text="UBERON:4200182",
+                description="lateral tubercle of astragalus"))
+        setattr(cls, "UBERON:4200183",
+            PermissibleValue(
+                text="UBERON:4200183",
+                description="bicipital tuberosity"))
+        setattr(cls, "UBERON:4200184",
+            PermissibleValue(
+                text="UBERON:4200184",
+                description="ulnar tuberosity"))
+        setattr(cls, "UBERON:4200185",
+            PermissibleValue(
+                text="UBERON:4200185",
+                description="entepicondyle fossa"))
+        setattr(cls, "UBERON:4200186",
+            PermissibleValue(
+                text="UBERON:4200186",
+                description="distal keel of metacarpal III"))
+        setattr(cls, "UBERON:4200188",
+            PermissibleValue(
+                text="UBERON:4200188",
+                description="manual toe disc"))
+        setattr(cls, "UBERON:4200189",
+            PermissibleValue(
+                text="UBERON:4200189",
+                description="pedal toe disc"))
+        setattr(cls, "UBERON:4200190",
+            PermissibleValue(
+                text="UBERON:4200190",
+                description="zygosphene"))
+        setattr(cls, "UBERON:4200192",
+            PermissibleValue(
+                text="UBERON:4200192",
+                description="ulnar facet of the humerus"))
+        setattr(cls, "UBERON:4200193",
+            PermissibleValue(
+                text="UBERON:4200193",
+                description="posterodorsal process of ilium"))
+        setattr(cls, "UBERON:4200194",
+            PermissibleValue(
+                text="UBERON:4200194",
+                description="intercentrum"))
+        setattr(cls, "UBERON:4200195",
+            PermissibleValue(
+                text="UBERON:4200195",
+                description="pleurocentrum"))
+        setattr(cls, "UBERON:4200196",
+            PermissibleValue(
+                text="UBERON:4200196",
+                description="atlas intercentrum"))
+        setattr(cls, "UBERON:4200197",
+            PermissibleValue(
+                text="UBERON:4200197",
+                description="anterior humeral ridge"))
+        setattr(cls, "UBERON:4200198",
+            PermissibleValue(
+                text="UBERON:4200198",
+                description="incisor process"))
+        setattr(cls, "UBERON:4200199",
+            PermissibleValue(
+                text="UBERON:4200199",
+                description="sallet sensory system"))
+        setattr(cls, "UBERON:4200203",
+            PermissibleValue(
+                text="UBERON:4200203",
+                description="humeral facet on the ulna"))
+        setattr(cls, "UBERON:4200204",
+            PermissibleValue(
+                text="UBERON:4200204",
+                description="humeral facet on radius"))
+        setattr(cls, "UBERON:4200209",
+            PermissibleValue(
+                text="UBERON:4200209",
+                description="postaxial process of the ulnare"))
+        setattr(cls, "UBERON:4200210",
+            PermissibleValue(
+                text="UBERON:4200210",
+                description="postaxial process of the femur"))
+        setattr(cls, "UBERON:4200211",
+            PermissibleValue(
+                text="UBERON:4200211",
+                description="postaxial process of the fibula"))
+        setattr(cls, "UBERON:4200212",
+            PermissibleValue(
+                text="UBERON:4200212",
+                description="pectoral process of humerus"))
+        setattr(cls, "UBERON:4200213",
+            PermissibleValue(
+                text="UBERON:4200213",
+                description="deltoid process"))
+        setattr(cls, "UBERON:4200214",
+            PermissibleValue(
+                text="UBERON:4200214",
+                description="epipodial facet"))
         setattr(cls, "UBERON:4200215",
             PermissibleValue(
                 text="UBERON:4200215",
                 description="suture"))
+        setattr(cls, "UBERON:4200216",
+            PermissibleValue(
+                text="UBERON:4200216",
+                description="fibula facet of femur"))
+        setattr(cls, "UBERON:4200217",
+            PermissibleValue(
+                text="UBERON:4200217",
+                description="tibial facet of femur"))
+        setattr(cls, "UBERON:4200218",
+            PermissibleValue(
+                text="UBERON:4200218",
+                description="musculotendinous bundle"))
+        setattr(cls, "UBERON:4200219",
+            PermissibleValue(
+                text="UBERON:4200219",
+                description="middle phalanx of manual digit 1"))
+        setattr(cls, "UBERON:4200220",
+            PermissibleValue(
+                text="UBERON:4200220",
+                description="iliac ramus"))
+        setattr(cls, "UBERON:4200221",
+            PermissibleValue(
+                text="UBERON:4200221",
+                description="growth line"))
+        setattr(cls, "UBERON:4200222",
+            PermissibleValue(
+                text="UBERON:4200222",
+                description="distal groove of humerus"))
+        setattr(cls, "UBERON:4200223",
+            PermissibleValue(
+                text="UBERON:4200223",
+                description="foramen C"))
+        setattr(cls, "UBERON:4200224",
+            PermissibleValue(
+                text="UBERON:4200224",
+                description="columnar area"))
+        setattr(cls, "UBERON:4200225",
+            PermissibleValue(
+                text="UBERON:4200225",
+                description="scapulohumeralis muscle"))
+        setattr(cls, "UBERON:4200228",
+            PermissibleValue(
+                text="UBERON:4200228",
+                description="excurrent foramen of ectepicondylar foramen"))
+        setattr(cls, "UBERON:4200229",
+            PermissibleValue(
+                text="UBERON:4200229",
+                description="incurrent foramen of ectepicondylar foramen"))
+        setattr(cls, "UBERON:4200230",
+            PermissibleValue(
+                text="UBERON:4200230",
+                description="surface of bone"))
+        setattr(cls, "UBERON:4200231",
+            PermissibleValue(
+                text="UBERON:4200231",
+                description="unfinished bone surface"))
+        setattr(cls, "UBERON:4200232",
+            PermissibleValue(
+                text="UBERON:4200232",
+                description="finished bone surface"))
+        setattr(cls, "UBERON:4200233",
+            PermissibleValue(
+                text="UBERON:4200233",
+                description="dorsal clavicular process"))
+        setattr(cls, "UBERON:4200234",
+            PermissibleValue(
+                text="UBERON:4200234",
+                description="precoronoid bone"))
+        setattr(cls, "UBERON:4200235",
+            PermissibleValue(
+                text="UBERON:4200235",
+                description="postcoronoid bone"))
+        setattr(cls, "UBERON:4200236",
+            PermissibleValue(
+                text="UBERON:4200236",
+                description="anterior coronoid bone"))
+        setattr(cls, "UBERON:4200237",
+            PermissibleValue(
+                text="UBERON:4200237",
+                description="posterior coronoid bone"))
+        setattr(cls, "UBERON:4200238",
+            PermissibleValue(
+                text="UBERON:4200238",
+                description="coronoid fang"))
+        setattr(cls, "UBERON:4200239",
+            PermissibleValue(
+                text="UBERON:4200239",
+                description="shagreen tooth field"))
+        setattr(cls, "UBERON:4200240",
+            PermissibleValue(
+                text="UBERON:4200240",
+                description="fronto-ethmoidal shield"))
+        setattr(cls, "UBERON:4200241",
+            PermissibleValue(
+                text="UBERON:4200241",
+                description="postrostral bone"))
+        setattr(cls, "UBERON:4200242",
+            PermissibleValue(
+                text="UBERON:4200242",
+                description="median postrostral bone"))
+        setattr(cls, "UBERON:4200243",
+            PermissibleValue(
+                text="UBERON:4200243",
+                description="surangular pit line"))
+        setattr(cls, "UBERON:4200244",
+            PermissibleValue(
+                text="UBERON:4200244",
+                description="anterior supraorbital bone"))
+        setattr(cls, "UBERON:4200245",
+            PermissibleValue(
+                text="UBERON:4200245",
+                description="parasymphysial plate"))
+        setattr(cls, "UBERON:4200246",
+            PermissibleValue(
+                text="UBERON:4200246",
+                description="mesial parasymphysial foramen"))
+        setattr(cls, "UBERON:4200247",
+            PermissibleValue(
+                text="UBERON:4200247",
+                description="lateral parasymphysial foramen"))
+        setattr(cls, "UBERON:4200248",
+            PermissibleValue(
+                text="UBERON:4200248",
+                description="hypophysial region"))
+        setattr(cls, "UBERON:4200250",
+            PermissibleValue(
+                text="UBERON:4200250",
+                description="meckelian bone"))
+        setattr(cls, "UBERON:4200251",
+            PermissibleValue(
+                text="UBERON:4200251",
+                description="meckelian foramen"))
+        setattr(cls, "UBERON:4300002",
+            PermissibleValue(
+                text="UBERON:4300002",
+                description="palatine prong"))
+        setattr(cls, "UBERON:4300004",
+            PermissibleValue(
+                text="UBERON:4300004",
+                description="scale pocket"))
+        setattr(cls, "UBERON:4300005",
+            PermissibleValue(
+                text="UBERON:4300005",
+                description="aphakic space"))
+        setattr(cls, "UBERON:4300006",
+            PermissibleValue(
+                text="UBERON:4300006",
+                description="scale row"))
+        setattr(cls, "UBERON:4300007",
+            PermissibleValue(
+                text="UBERON:4300007",
+                description="medial pelvic process"))
+        setattr(cls, "UBERON:4300008",
+            PermissibleValue(
+                text="UBERON:4300008",
+                description="epipleural series"))
+        setattr(cls, "UBERON:4300012",
+            PermissibleValue(
+                text="UBERON:4300012",
+                description="clavus"))
+        setattr(cls, "UBERON:4300014",
+            PermissibleValue(
+                text="UBERON:4300014",
+                description="dorsal cleithrum"))
+        setattr(cls, "UBERON:4300015",
+            PermissibleValue(
+                text="UBERON:4300015",
+                description="ventral cleithrum"))
+        setattr(cls, "UBERON:4300017",
+            PermissibleValue(
+                text="UBERON:4300017",
+                description="rostrodermethmoid"))
+        setattr(cls, "UBERON:4300021",
+            PermissibleValue(
+                text="UBERON:4300021",
+                description="anterolateral plate"))
+        setattr(cls, "UBERON:4300022",
+            PermissibleValue(
+                text="UBERON:4300022",
+                description="anteroventral plate"))
+        setattr(cls, "UBERON:4300023",
+            PermissibleValue(
+                text="UBERON:4300023",
+                description="interolateral plate"))
+        setattr(cls, "UBERON:4300024",
+            PermissibleValue(
+                text="UBERON:4300024",
+                description="spinal plate"))
+        setattr(cls, "UBERON:4300025",
+            PermissibleValue(
+                text="UBERON:4300025",
+                description="posterior dorsolateral plate"))
+        setattr(cls, "UBERON:4300026",
+            PermissibleValue(
+                text="UBERON:4300026",
+                description="anterior ventrolateral plate"))
+        setattr(cls, "UBERON:4300028",
+            PermissibleValue(
+                text="UBERON:4300028",
+                description="posterior ventrolateral plate"))
+        setattr(cls, "UBERON:4300029",
+            PermissibleValue(
+                text="UBERON:4300029",
+                description="dermal neck joint"))
+        setattr(cls, "UBERON:4300030",
+            PermissibleValue(
+                text="UBERON:4300030",
+                description="flexor caudalis muscle"))
+        setattr(cls, "UBERON:4300034",
+            PermissibleValue(
+                text="UBERON:4300034",
+                description="antorbital cartilage"))
+        setattr(cls, "UBERON:4300035",
+            PermissibleValue(
+                text="UBERON:4300035",
+                description="supraneural element"))
+        setattr(cls, "UBERON:4300036",
+            PermissibleValue(
+                text="UBERON:4300036",
+                description="supraneural cartilage"))
+        setattr(cls, "UBERON:4300038",
+            PermissibleValue(
+                text="UBERON:4300038",
+                description="facet"))
+        setattr(cls, "UBERON:4300090",
+            PermissibleValue(
+                text="UBERON:4300090",
+                description="X bone"))
+        setattr(cls, "UBERON:4300091",
+            PermissibleValue(
+                text="UBERON:4300091",
+                description="Y bone"))
+        setattr(cls, "UBERON:4300092",
+            PermissibleValue(
+                text="UBERON:4300092",
+                description="mesocoracoid element"))
+        setattr(cls, "UBERON:4300104",
+            PermissibleValue(
+                text="UBERON:4300104",
+                description="ectocoracoid bone"))
+        setattr(cls, "UBERON:4300105",
+            PermissibleValue(
+                text="UBERON:4300105",
+                description="caudal vertebra 1"))
+        setattr(cls, "UBERON:4300106",
+            PermissibleValue(
+                text="UBERON:4300106",
+                description="ventral limb of posttemporal"))
+        setattr(cls, "UBERON:4300110",
+            PermissibleValue(
+                text="UBERON:4300110",
+                description="lateral ethmoid cartilage"))
+        setattr(cls, "UBERON:4300111",
+            PermissibleValue(
+                text="UBERON:4300111",
+                description="lateral ethmoid element"))
+        setattr(cls, "UBERON:4300119",
+            PermissibleValue(
+                text="UBERON:4300119",
+                description="glenoid region"))
+        setattr(cls, "UBERON:4300121",
+            PermissibleValue(
+                text="UBERON:4300121",
+                description="zygantrum"))
+        setattr(cls, "UBERON:4300123",
+            PermissibleValue(
+                text="UBERON:4300123",
+                description="pre-axial region"))
+        setattr(cls, "UBERON:4300124",
+            PermissibleValue(
+                text="UBERON:4300124",
+                description="axis intercentrum"))
+        setattr(cls, "UBERON:4300125",
+            PermissibleValue(
+                text="UBERON:4300125",
+                description="dorsal iliac ridge"))
+        setattr(cls, "UBERON:4300126",
+            PermissibleValue(
+                text="UBERON:4300126",
+                description="tectorial restraint system"))
+        setattr(cls, "UBERON:4300127",
+            PermissibleValue(
+                text="UBERON:4300127",
+                description="nuchal crest"))
+        setattr(cls, "UBERON:4300128",
+            PermissibleValue(
+                text="UBERON:4300128",
+                description="sacral rib"))
+        setattr(cls, "UBERON:4300129",
+            PermissibleValue(
+                text="UBERON:4300129",
+                description="dorsal pelvic gland"))
+        setattr(cls, "UBERON:4300130",
+            PermissibleValue(
+                text="UBERON:4300130",
+                description="lateral pelvic gland"))
+        setattr(cls, "UBERON:4300132",
+            PermissibleValue(
+                text="UBERON:4300132",
+                description="glossopharyngeal nerve foramen"))
+        setattr(cls, "UBERON:4300133",
+            PermissibleValue(
+                text="UBERON:4300133",
+                description="upper jaw symphyseal region"))
+        setattr(cls, "UBERON:4300134",
+            PermissibleValue(
+                text="UBERON:4300134",
+                description="lateral commissure"))
+        setattr(cls, "UBERON:4300135",
+            PermissibleValue(
+                text="UBERON:4300135",
+                description="upper jaw symphyseal tooth"))
+        setattr(cls, "UBERON:4300137",
+            PermissibleValue(
+                text="UBERON:4300137",
+                description="lingual region"))
+        setattr(cls, "UBERON:4300138",
+            PermissibleValue(
+                text="UBERON:4300138",
+                description="labial region"))
+        setattr(cls, "UBERON:4300139",
+            PermissibleValue(
+                text="UBERON:4300139",
+                description="posterolingual region"))
+        setattr(cls, "UBERON:4300140",
+            PermissibleValue(
+                text="UBERON:4300140",
+                description="mesial region"))
+        setattr(cls, "UBERON:4300142",
+            PermissibleValue(
+                text="UBERON:4300142",
+                description="internal carotid foramen"))
+        setattr(cls, "UBERON:4300144",
+            PermissibleValue(
+                text="UBERON:4300144",
+                description="profundus foramen"))
+        setattr(cls, "UBERON:4300150",
+            PermissibleValue(
+                text="UBERON:4300150",
+                description="gill membrane"))
+        setattr(cls, "UBERON:4300151",
+            PermissibleValue(
+                text="UBERON:4300151",
+                description="pelvic intercleithral cartilage"))
+        setattr(cls, "UBERON:4300152",
+            PermissibleValue(
+                text="UBERON:4300152",
+                description="accessory nasal sac"))
+        setattr(cls, "UBERON:4300153",
+            PermissibleValue(
+                text="UBERON:4300153",
+                description="Sharpey's fiber"))
+        setattr(cls, "UBERON:4300156",
+            PermissibleValue(
+                text="UBERON:4300156",
+                description="anterodorsal crest"))
+        setattr(cls, "UBERON:4300157",
+            PermissibleValue(
+                text="UBERON:4300157",
+                description="midshaft"))
+        setattr(cls, "UBERON:4300158",
+            PermissibleValue(
+                text="UBERON:4300158",
+                description="ectepicondylar depression"))
+        setattr(cls, "UBERON:4300172",
+            PermissibleValue(
+                text="UBERON:4300172",
+                description="pectoral fin bud"))
+        setattr(cls, "UBERON:4300173",
+            PermissibleValue(
+                text="UBERON:4300173",
+                description="pelvic fin bud"))
         setattr(cls, "UBERON:4300174",
             PermissibleValue(
                 text="UBERON:4300174",
                 description="actinopterygian pyloric caecum"))
-        setattr(cls, "UBERON:4300194",
+        setattr(cls, "UBERON:4300177",
             PermissibleValue(
-                text="UBERON:4300194",
-                description="photophore"))
+                text="UBERON:4300177",
+                description="replacement tooth row"))
+        setattr(cls, "UBERON:4300178",
+            PermissibleValue(
+                text="UBERON:4300178",
+                description="inner tooth row of dentary"))
+        setattr(cls, "UBERON:4300179",
+            PermissibleValue(
+                text="UBERON:4300179",
+                description="inner tooth row of premaxilla"))
+        setattr(cls, "UBERON:4300180",
+            PermissibleValue(
+                text="UBERON:4300180",
+                description="isthmus"))
+        setattr(cls, "UBERON:4300184",
+            PermissibleValue(
+                text="UBERON:4300184",
+                description="neural spine 5"))
+        setattr(cls, "UBERON:4300185",
+            PermissibleValue(
+                text="UBERON:4300185",
+                description="neural spine 6"))
+        setattr(cls, "UBERON:4300186",
+            PermissibleValue(
+                text="UBERON:4300186",
+                description="neural spine 7"))
+        setattr(cls, "UBERON:4300189",
+            PermissibleValue(
+                text="UBERON:4300189",
+                description="parapophysis 3"))
+        setattr(cls, "UBERON:4300195",
+            PermissibleValue(
+                text="UBERON:4300195",
+                description="rostral tubule"))
+        setattr(cls, "UBERON:4300196",
+            PermissibleValue(
+                text="UBERON:4300196",
+                description="processus descendens of sphenoid"))
+        setattr(cls, "UBERON:4300197",
+            PermissibleValue(
+                text="UBERON:4300197",
+                description="Westoll line"))
+        setattr(cls, "UBERON:4300199",
+            PermissibleValue(
+                text="UBERON:4300199",
+                description="postsplenial"))
+        setattr(cls, "UBERON:4300200",
+            PermissibleValue(
+                text="UBERON:4300200",
+                description="postparietal shield"))
+        setattr(cls, "UBERON:4300201",
+            PermissibleValue(
+                text="UBERON:4300201",
+                description="subepiotic fossa"))
+        setattr(cls, "UBERON:4300202",
+            PermissibleValue(
+                text="UBERON:4300202",
+                description="endoskeletal cranial joint"))
+        setattr(cls, "UBERON:4300203",
+            PermissibleValue(
+                text="UBERON:4300203",
+                description="tectum orbitale"))
+        setattr(cls, "UBERON:4300205",
+            PermissibleValue(
+                text="UBERON:4300205",
+                description="palato-maxillary ligament"))
+        setattr(cls, "UBERON:4300206",
+            PermissibleValue(
+                text="UBERON:4300206",
+                description="mandibulo-lacrimal ligament"))
+        setattr(cls, "UBERON:4300207",
+            PermissibleValue(
+                text="UBERON:4300207",
+                description="submandibular bone"))
+        setattr(cls, "UBERON:4300208",
+            PermissibleValue(
+                text="UBERON:4300208",
+                description="submandibular series"))
+        setattr(cls, "UBERON:4300209",
+            PermissibleValue(
+                text="UBERON:4300209",
+                description="palato-vomerine ligament"))
+        setattr(cls, "UBERON:4300210",
+            PermissibleValue(
+                text="UBERON:4300210",
+                description="transversus epibranchialis 2"))
+        setattr(cls, "UBERON:4300211",
+            PermissibleValue(
+                text="UBERON:4300211",
+                description="lateral plate"))
+        setattr(cls, "UBERON:4300212",
+            PermissibleValue(
+                text="UBERON:4300212",
+                description="acrodin"))
+        setattr(cls, "UBERON:4300213",
+            PermissibleValue(
+                text="UBERON:4300213",
+                description="supraneural 1 element"))
+        setattr(cls, "UBERON:4300214",
+            PermissibleValue(
+                text="UBERON:4300214",
+                description="supraneural 2 element"))
+        setattr(cls, "UBERON:4300215",
+            PermissibleValue(
+                text="UBERON:4300215",
+                description="supraneural 3 element"))
+        setattr(cls, "UBERON:4300216",
+            PermissibleValue(
+                text="UBERON:4300216",
+                description="supraneural 4 element"))
+        setattr(cls, "UBERON:4300217",
+            PermissibleValue(
+                text="UBERON:4300217",
+                description="supraneural 5 element"))
+        setattr(cls, "UBERON:4300218",
+            PermissibleValue(
+                text="UBERON:4300218",
+                description="supraneural 6 element"))
+        setattr(cls, "UBERON:4300219",
+            PermissibleValue(
+                text="UBERON:4300219",
+                description="supraneural 7 element"))
+        setattr(cls, "UBERON:4300220",
+            PermissibleValue(
+                text="UBERON:4300220",
+                description="supraneural 8 element"))
+        setattr(cls, "UBERON:4300221",
+            PermissibleValue(
+                text="UBERON:4300221",
+                description="supraneural 9 element"))
         setattr(cls, "UBERON:4300223",
             PermissibleValue(
                 text="UBERON:4300223",
                 description="precaudal vertebra"))
+        setattr(cls, "UBERON:4300224",
+            PermissibleValue(
+                text="UBERON:4300224",
+                description="precaudal vertebra endochondral element"))
+        setattr(cls, "UBERON:4300225",
+            PermissibleValue(
+                text="UBERON:4300225",
+                description="precaudal vertebra cartilage element"))
+        setattr(cls, "UBERON:4300226",
+            PermissibleValue(
+                text="UBERON:4300226",
+                description="forelimb bud mesenchyme"))
+        setattr(cls, "UBERON:4300227",
+            PermissibleValue(
+                text="UBERON:4300227",
+                description="hindlimb bud mesenchyme"))
+        setattr(cls, "UBERON:4300228",
+            PermissibleValue(
+                text="UBERON:4300228",
+                description="pectoral fin bud mesenchyme"))
+        setattr(cls, "UBERON:4300229",
+            PermissibleValue(
+                text="UBERON:4300229",
+                description="pelvic fin bud mesenchyme"))
+        setattr(cls, "UBERON:4300230",
+            PermissibleValue(
+                text="UBERON:4300230",
+                description="forelimb wing bud"))
+        setattr(cls, "UBERON:4300231",
+            PermissibleValue(
+                text="UBERON:4300231",
+                description="forelimb wing bud mesenchyme"))
+        setattr(cls, "UBERON:4300233",
+            PermissibleValue(
+                text="UBERON:4300233",
+                description="mammiliform tooth"))
+        setattr(cls, "UBERON:4300234",
+            PermissibleValue(
+                text="UBERON:4300234",
+                description="scale sheath"))
+        setattr(cls, "UBERON:4300236",
+            PermissibleValue(
+                text="UBERON:4300236",
+                description="rib of vertebra 7"))
+        setattr(cls, "UBERON:4300237",
+            PermissibleValue(
+                text="UBERON:4300237",
+                description="rib of vertebra 8"))
+        setattr(cls, "UBERON:4300239",
+            PermissibleValue(
+                text="UBERON:4300239",
+                description="hind flipper"))
+        setattr(cls, "UBERON:4300240",
+            PermissibleValue(
+                text="UBERON:4300240",
+                description="rostral ossicle"))
+        setattr(cls, "UBERON:4300243",
+            PermissibleValue(
+                text="UBERON:4300243",
+                description="premaxillary tooth 2"))
+        setattr(cls, "UBERON:4300244",
+            PermissibleValue(
+                text="UBERON:4300244",
+                description="premaxillary tooth 3"))
+        setattr(cls, "UBERON:4300246",
+            PermissibleValue(
+                text="UBERON:4300246",
+                description="dentary tooth 2"))
+        setattr(cls, "UBERON:4300247",
+            PermissibleValue(
+                text="UBERON:4300247",
+                description="dentary tooth 3"))
         setattr(cls, "UBERON:4300249",
             PermissibleValue(
                 text="UBERON:4300249",
                 description="lateral occipital foramen"))
-        setattr(cls, "UBERON:6000002",
+        setattr(cls, "UBERON:4300252",
             PermissibleValue(
-                text="UBERON:6000002",
-                description="arthropod tagma"))
+                text="UBERON:4300252",
+                description="ethmo-palatine cartilage"))
+        setattr(cls, "UBERON:4300263",
+            PermissibleValue(
+                text="UBERON:4300263",
+                description="supraneural 4 cartilage"))
+        setattr(cls, "UBERON:4300264",
+            PermissibleValue(
+                text="UBERON:4300264",
+                description="supraneural 5 cartilage"))
+        setattr(cls, "UBERON:4300265",
+            PermissibleValue(
+                text="UBERON:4300265",
+                description="supraneural 6 cartilage"))
+        setattr(cls, "UBERON:4300266",
+            PermissibleValue(
+                text="UBERON:4300266",
+                description="supraneural 7 cartilage"))
+        setattr(cls, "UBERON:4300267",
+            PermissibleValue(
+                text="UBERON:4300267",
+                description="supraneural 8 cartilage"))
+        setattr(cls, "UBERON:4300268",
+            PermissibleValue(
+                text="UBERON:4300268",
+                description="supraneural 9 cartilage"))
+        setattr(cls, "UBERON:4300269",
+            PermissibleValue(
+                text="UBERON:4300269",
+                description="epioccipital bridge"))
+        setattr(cls, "UBERON:4300270",
+            PermissibleValue(
+                text="UBERON:4300270",
+                description="outer tooth row of premaxilla"))
+        setattr(cls, "UBERON:4300275",
+            PermissibleValue(
+                text="UBERON:4300275",
+                description="suborbital stay"))
+        setattr(cls, "UBERON:4300279",
+            PermissibleValue(
+                text="UBERON:4300279",
+                description="outer tooth row of dentary"))
+        setattr(cls, "UBERON:4300280",
+            PermissibleValue(
+                text="UBERON:4300280",
+                description="metapterygoid tooth"))
+        setattr(cls, "UBERON:4300282",
+            PermissibleValue(
+                text="UBERON:4300282",
+                description="dorsal myorhabdoid bone"))
+        setattr(cls, "UBERON:4300283",
+            PermissibleValue(
+                text="UBERON:4300283",
+                description="ventral myorhabdoid bone"))
+        setattr(cls, "UBERON:4300285",
+            PermissibleValue(
+                text="UBERON:4300285",
+                description="second preethmoid cartilage"))
+        setattr(cls, "UBERON:4300286",
+            PermissibleValue(
+                text="UBERON:4300286",
+                description="second preethmoid element"))
+        setattr(cls, "UBERON:4300287",
+            PermissibleValue(
+                text="UBERON:4300287",
+                description="nasal barbel"))
+        setattr(cls, "UBERON:4300288",
+            PermissibleValue(
+                text="UBERON:4300288",
+                description="rictal barbel"))
+        setattr(cls, "UBERON:4450000",
+            PermissibleValue(
+                text="UBERON:4450000",
+                description="medial prefrontal cortex"))
+        setattr(cls, "UBERON:4500005",
+            PermissibleValue(
+                text="UBERON:4500005",
+                description="prenasal ossicle"))
+        setattr(cls, "UBERON:4500012",
+            PermissibleValue(
+                text="UBERON:4500012",
+                description="hypobranchial series"))
+        setattr(cls, "UBERON:4500013",
+            PermissibleValue(
+                text="UBERON:4500013",
+                description="pharyngobranchial series"))
+        setattr(cls, "UBERON:4500014",
+            PermissibleValue(
+                text="UBERON:4500014",
+                description="basibranchial series"))
+        setattr(cls, "UBERON:4500016",
+            PermissibleValue(
+                text="UBERON:4500016",
+                description="premaxilla articular process"))
+        setattr(cls, "UBERON:4500017",
+            PermissibleValue(
+                text="UBERON:4500017",
+                description="interarcual bone"))
+        setattr(cls, "UBERON:4500018",
+            PermissibleValue(
+                text="UBERON:4500018",
+                description="premaxilla maxillary process"))
+        setattr(cls, "UBERON:5001463",
+            PermissibleValue(
+                text="UBERON:5001463",
+                description="manual digit 1 plus metapodial segment"))
+        setattr(cls, "UBERON:5001466",
+            PermissibleValue(
+                text="UBERON:5001466",
+                description="pedal digit plus metapodial segment"))
+        setattr(cls, "UBERON:5002389",
+            PermissibleValue(
+                text="UBERON:5002389",
+                description="manual digit plus metapodial segment"))
+        setattr(cls, "UBERON:5002544",
+            PermissibleValue(
+                text="UBERON:5002544",
+                description="digit plus metapodial segment"))
+        setattr(cls, "UBERON:5003622",
+            PermissibleValue(
+                text="UBERON:5003622",
+                description="manual digit 2 plus metapodial segment"))
+        setattr(cls, "UBERON:5003623",
+            PermissibleValue(
+                text="UBERON:5003623",
+                description="manual digit 3 plus metapodial segment"))
+        setattr(cls, "UBERON:5003624",
+            PermissibleValue(
+                text="UBERON:5003624",
+                description="manual digit 4 plus metapodial segment"))
+        setattr(cls, "UBERON:5003625",
+            PermissibleValue(
+                text="UBERON:5003625",
+                description="manual digit 5 plus metapodial segment"))
+        setattr(cls, "UBERON:5003631",
+            PermissibleValue(
+                text="UBERON:5003631",
+                description="pedal digit 1 plus metapodial segment"))
+        setattr(cls, "UBERON:5003632",
+            PermissibleValue(
+                text="UBERON:5003632",
+                description="pedal digit 2 plus metapodial segment"))
+        setattr(cls, "UBERON:5003633",
+            PermissibleValue(
+                text="UBERON:5003633",
+                description="pedal digit 3 plus metapodial segment"))
+        setattr(cls, "UBERON:5003634",
+            PermissibleValue(
+                text="UBERON:5003634",
+                description="pedal digit 4 plus metapodial segment"))
+        setattr(cls, "UBERON:5003635",
+            PermissibleValue(
+                text="UBERON:5003635",
+                description="pedal digit 5 plus metapodial segment"))
+        setattr(cls, "UBERON:5006048",
+            PermissibleValue(
+                text="UBERON:5006048",
+                description="digit 1 plus metapodial segment"))
+        setattr(cls, "UBERON:5006049",
+            PermissibleValue(
+                text="UBERON:5006049",
+                description="digit 2 plus metapodial segment"))
+        setattr(cls, "UBERON:5006050",
+            PermissibleValue(
+                text="UBERON:5006050",
+                description="digit 3 plus metapodial segment"))
+        setattr(cls, "UBERON:5006051",
+            PermissibleValue(
+                text="UBERON:5006051",
+                description="digit 4 plus metapodial segment"))
+        setattr(cls, "UBERON:5006052",
+            PermissibleValue(
+                text="UBERON:5006052",
+                description="digit 5 plus metapodial segment"))
+        setattr(cls, "UBERON:5011981",
+            PermissibleValue(
+                text="UBERON:5011981",
+                description="manual digit 6 plus metapodial segment"))
+        setattr(cls, "UBERON:5011982",
+            PermissibleValue(
+                text="UBERON:5011982",
+                description="manual digit 7 plus metapodial segment"))
+        setattr(cls, "UBERON:5011983",
+            PermissibleValue(
+                text="UBERON:5011983",
+                description="manual digit 8 plus metapodial segment"))
+        setattr(cls, "UBERON:5011984",
+            PermissibleValue(
+                text="UBERON:5011984",
+                description="pedal digit 6 plus metapodial segment"))
+        setattr(cls, "UBERON:5012137",
+            PermissibleValue(
+                text="UBERON:5012137",
+                description="pedal digit 7 plus metapodial segment"))
+        setattr(cls, "UBERON:5012138",
+            PermissibleValue(
+                text="UBERON:5012138",
+                description="pedal digit 8 plus metapodial segment"))
+        setattr(cls, "UBERON:5012260",
+            PermissibleValue(
+                text="UBERON:5012260",
+                description="alular digit plus metapodial segment"))
+        setattr(cls, "UBERON:5012261",
+            PermissibleValue(
+                text="UBERON:5012261",
+                description="manual major digit (Aves) plus metapodial segment"))
+        setattr(cls, "UBERON:5012262",
+            PermissibleValue(
+                text="UBERON:5012262",
+                description="manual minor digit (Aves) plus metapodial segment"))
+        setattr(cls, "UBERON:5101463",
+            PermissibleValue(
+                text="UBERON:5101463",
+                description="manual digit 1 digitopodial skeleton"))
+        setattr(cls, "UBERON:5101466",
+            PermissibleValue(
+                text="UBERON:5101466",
+                description="pedal digit digitopodial skeleton"))
+        setattr(cls, "UBERON:5102389",
+            PermissibleValue(
+                text="UBERON:5102389",
+                description="manual digit digitopodial skeleton"))
+        setattr(cls, "UBERON:5102544",
+            PermissibleValue(
+                text="UBERON:5102544",
+                description="individual digit of digitopodial skeleton"))
+        setattr(cls, "UBERON:5103622",
+            PermissibleValue(
+                text="UBERON:5103622",
+                description="manual digit 2 digitopodial skeleton"))
+        setattr(cls, "UBERON:5103623",
+            PermissibleValue(
+                text="UBERON:5103623",
+                description="manual digit 3 digitopodial skeleton"))
+        setattr(cls, "UBERON:5103624",
+            PermissibleValue(
+                text="UBERON:5103624",
+                description="manual digit 4 digitopodial skeleton"))
+        setattr(cls, "UBERON:5103625",
+            PermissibleValue(
+                text="UBERON:5103625",
+                description="manual digit 5 digitopodial skeleton"))
+        setattr(cls, "UBERON:5103631",
+            PermissibleValue(
+                text="UBERON:5103631",
+                description="pedal digit 1 digitopodial skeleton"))
+        setattr(cls, "UBERON:5103632",
+            PermissibleValue(
+                text="UBERON:5103632",
+                description="pedal digit 2 digitopodial skeleton"))
+        setattr(cls, "UBERON:5103633",
+            PermissibleValue(
+                text="UBERON:5103633",
+                description="pedal digit 3 digitopodial skeleton"))
+        setattr(cls, "UBERON:5103634",
+            PermissibleValue(
+                text="UBERON:5103634",
+                description="pedal digit 4 digitopodial skeleton"))
+        setattr(cls, "UBERON:5103635",
+            PermissibleValue(
+                text="UBERON:5103635",
+                description="pedal digit 5 digitopodial skeleton"))
+        setattr(cls, "UBERON:5106048",
+            PermissibleValue(
+                text="UBERON:5106048",
+                description="digit 1 digitopodial skeleton"))
+        setattr(cls, "UBERON:5106049",
+            PermissibleValue(
+                text="UBERON:5106049",
+                description="digit 2 digitopodial skeleton"))
+        setattr(cls, "UBERON:5106050",
+            PermissibleValue(
+                text="UBERON:5106050",
+                description="digit 3 digitopodial skeleton"))
+        setattr(cls, "UBERON:5106051",
+            PermissibleValue(
+                text="UBERON:5106051",
+                description="digit 4 digitopodial skeleton"))
+        setattr(cls, "UBERON:5106052",
+            PermissibleValue(
+                text="UBERON:5106052",
+                description="digit 5 digitopodial skeleton"))
+        setattr(cls, "UBERON:5111981",
+            PermissibleValue(
+                text="UBERON:5111981",
+                description="manual digit 6 digitopodial skeleton"))
+        setattr(cls, "UBERON:5111982",
+            PermissibleValue(
+                text="UBERON:5111982",
+                description="manual digit 7 digitopodial skeleton"))
+        setattr(cls, "UBERON:5111983",
+            PermissibleValue(
+                text="UBERON:5111983",
+                description="manual digit 8 digitopodial skeleton"))
+        setattr(cls, "UBERON:5111984",
+            PermissibleValue(
+                text="UBERON:5111984",
+                description="pedal digit 6 digitopodial skeleton"))
+        setattr(cls, "UBERON:5112137",
+            PermissibleValue(
+                text="UBERON:5112137",
+                description="pedal digit 7 digitopodial skeleton"))
+        setattr(cls, "UBERON:5112138",
+            PermissibleValue(
+                text="UBERON:5112138",
+                description="pedal digit 8 digitopodial skeleton"))
+        setattr(cls, "UBERON:5112260",
+            PermissibleValue(
+                text="UBERON:5112260",
+                description="alular digit digitopodial skeleton"))
+        setattr(cls, "UBERON:5112261",
+            PermissibleValue(
+                text="UBERON:5112261",
+                description="manual major digit (Aves) digitopodial skeleton"))
+        setattr(cls, "UBERON:5112262",
+            PermissibleValue(
+                text="UBERON:5112262",
+                description="manual minor digit (Aves) digitopodial skeleton"))
         setattr(cls, "UBERON:6000004",
             PermissibleValue(
                 text="UBERON:6000004",
                 description="panarthropod head"))
-        setattr(cls, "UBERON:6000005",
-            PermissibleValue(
-                text="UBERON:6000005",
-                description="insect ocular segment"))
-        setattr(cls, "UBERON:6000006",
-            PermissibleValue(
-                text="UBERON:6000006",
-                description="insect head segment"))
-        setattr(cls, "UBERON:6000007",
-            PermissibleValue(
-                text="UBERON:6000007",
-                description="procephalic segment"))
-        setattr(cls, "UBERON:6000008",
-            PermissibleValue(
-                text="UBERON:6000008",
-                description="labral segment"))
-        setattr(cls, "UBERON:6000009",
-            PermissibleValue(
-                text="UBERON:6000009",
-                description="antennal segment"))
-        setattr(cls, "UBERON:6000011",
-            PermissibleValue(
-                text="UBERON:6000011",
-                description="insect gnathal segment"))
-        setattr(cls, "UBERON:6000014",
-            PermissibleValue(
-                text="UBERON:6000014",
-                description="insect labial segment"))
-        setattr(cls, "UBERON:6000015",
-            PermissibleValue(
-                text="UBERON:6000015",
-                description="insect thorax"))
-        setattr(cls, "UBERON:6000016",
-            PermissibleValue(
-                text="UBERON:6000016",
-                description="insect thoracic segment"))
-        setattr(cls, "UBERON:6000017",
-            PermissibleValue(
-                text="UBERON:6000017",
-                description="insect prothoracic segment"))
-        setattr(cls, "UBERON:6000018",
-            PermissibleValue(
-                text="UBERON:6000018",
-                description="insect mesothoracic segment"))
-        setattr(cls, "UBERON:6000019",
-            PermissibleValue(
-                text="UBERON:6000019",
-                description="insect metathoracic segment"))
-        setattr(cls, "UBERON:6000020",
-            PermissibleValue(
-                text="UBERON:6000020",
-                description="insect abdomen"))
-        setattr(cls, "UBERON:6000021",
-            PermissibleValue(
-                text="UBERON:6000021",
-                description="insect abdominal segment"))
-        setattr(cls, "UBERON:6000029",
-            PermissibleValue(
-                text="UBERON:6000029",
-                description="insect abdominal segment 8"))
-        setattr(cls, "UBERON:6000030",
-            PermissibleValue(
-                text="UBERON:6000030",
-                description="insect abdominal segment 9"))
         setattr(cls, "UBERON:6000046",
             PermissibleValue(
                 text="UBERON:6000046",
@@ -47760,70 +56340,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6000130",
                 description="insect visceral mesoderm"))
-        setattr(cls, "UBERON:6000137",
+        setattr(cls, "UBERON:6000131",
             PermissibleValue(
-                text="UBERON:6000137",
-                description="embryonic tagma"))
+                text="UBERON:6000131",
+                description="insect mesodermal crest"))
+        setattr(cls, "UBERON:6000132",
+            PermissibleValue(
+                text="UBERON:6000132",
+                description="insect mesodermal crest of segment T3"))
         setattr(cls, "UBERON:6000154",
             PermissibleValue(
                 text="UBERON:6000154",
                 description="insect embryonic segment"))
-        setattr(cls, "UBERON:6000157",
-            PermissibleValue(
-                text="UBERON:6000157",
-                description="insect embryonic head segment"))
-        setattr(cls, "UBERON:6000158",
-            PermissibleValue(
-                text="UBERON:6000158",
-                description="insect embryonic procephalic segment"))
-        setattr(cls, "UBERON:6000160",
-            PermissibleValue(
-                text="UBERON:6000160",
-                description="insect embryonic antennal segment"))
-        setattr(cls, "UBERON:6000162",
-            PermissibleValue(
-                text="UBERON:6000162",
-                description="insect embryonic gnathal segment"))
-        setattr(cls, "UBERON:6000165",
-            PermissibleValue(
-                text="UBERON:6000165",
-                description="insect embryonic labial segment"))
-        setattr(cls, "UBERON:6000166",
-            PermissibleValue(
-                text="UBERON:6000166",
-                description="insect embryonic thorax"))
-        setattr(cls, "UBERON:6000167",
-            PermissibleValue(
-                text="UBERON:6000167",
-                description="insect embryonic thoracic segment"))
-        setattr(cls, "UBERON:6000168",
-            PermissibleValue(
-                text="UBERON:6000168",
-                description="insect embryonic prothoracic segment"))
-        setattr(cls, "UBERON:6000169",
-            PermissibleValue(
-                text="UBERON:6000169",
-                description="insect embryonic mesothoracic segment"))
-        setattr(cls, "UBERON:6000170",
-            PermissibleValue(
-                text="UBERON:6000170",
-                description="insect embryonic metathoracic segment"))
-        setattr(cls, "UBERON:6000171",
-            PermissibleValue(
-                text="UBERON:6000171",
-                description="insect embryonic abdomen"))
-        setattr(cls, "UBERON:6000172",
-            PermissibleValue(
-                text="UBERON:6000172",
-                description="insect embryonic abdominal segment"))
-        setattr(cls, "UBERON:6000180",
-            PermissibleValue(
-                text="UBERON:6000180",
-                description="insect embryonic abdominal segment 8"))
-        setattr(cls, "UBERON:6000181",
-            PermissibleValue(
-                text="UBERON:6000181",
-                description="insect embryonic abdominal segment 9"))
         setattr(cls, "UBERON:6000186",
             PermissibleValue(
                 text="UBERON:6000186",
@@ -47836,6 +56364,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6001056",
                 description="insect presumptive embryonic/larval central nervous system"))
+        setattr(cls, "UBERON:6001057",
+            PermissibleValue(
+                text="UBERON:6001057",
+                description="insect neurogenic region"))
         setattr(cls, "UBERON:6001059",
             PermissibleValue(
                 text="UBERON:6001059",
@@ -47856,46 +56388,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6001649",
                 description="insect imaginal disc primordium"))
-        setattr(cls, "UBERON:6001650",
-            PermissibleValue(
-                text="UBERON:6001650",
-                description="insect labial disc primordium"))
-        setattr(cls, "UBERON:6001652",
-            PermissibleValue(
-                text="UBERON:6001652",
-                description="insect eye-antennal disc primordium"))
-        setattr(cls, "UBERON:6001653",
-            PermissibleValue(
-                text="UBERON:6001653",
-                description="insect dorsal thoracic disc primordium"))
-        setattr(cls, "UBERON:6001655",
-            PermissibleValue(
-                text="UBERON:6001655",
-                description="insect dorsal mesothoracic disc primordium"))
-        setattr(cls, "UBERON:6001656",
-            PermissibleValue(
-                text="UBERON:6001656",
-                description="insect dorsal metathoracic disc primordium"))
-        setattr(cls, "UBERON:6001657",
-            PermissibleValue(
-                text="UBERON:6001657",
-                description="insect ventral thoracic disc primordium"))
-        setattr(cls, "UBERON:6001658",
-            PermissibleValue(
-                text="UBERON:6001658",
-                description="insect ventral prothoracic disc primordium"))
         setattr(cls, "UBERON:6001661",
             PermissibleValue(
                 text="UBERON:6001661",
                 description="insect genital disc primordium"))
-        setattr(cls, "UBERON:6001662",
-            PermissibleValue(
-                text="UBERON:6001662",
-                description="insect male genital disc primordium"))
-        setattr(cls, "UBERON:6001663",
-            PermissibleValue(
-                text="UBERON:6001663",
-                description="insect female genital disc primordium"))
         setattr(cls, "UBERON:6001664",
             PermissibleValue(
                 text="UBERON:6001664",
@@ -47908,10 +56404,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6001722",
                 description="insect ring gland"))
-        setattr(cls, "UBERON:6001728",
-            PermissibleValue(
-                text="UBERON:6001728",
-                description="insect larval tagma"))
         setattr(cls, "UBERON:6001729",
             PermissibleValue(
                 text="UBERON:6001729",
@@ -47920,126 +56412,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6001730",
                 description="insect larval head"))
-        setattr(cls, "UBERON:6001731",
-            PermissibleValue(
-                text="UBERON:6001731",
-                description="insect larval ocular segment"))
-        setattr(cls, "UBERON:6001732",
-            PermissibleValue(
-                text="UBERON:6001732",
-                description="insect larval head segment"))
-        setattr(cls, "UBERON:6001733",
-            PermissibleValue(
-                text="UBERON:6001733",
-                description="insect larval procephalic segment"))
-        setattr(cls, "UBERON:6001734",
-            PermissibleValue(
-                text="UBERON:6001734",
-                description="insect larval labral segment"))
-        setattr(cls, "UBERON:6001735",
-            PermissibleValue(
-                text="UBERON:6001735",
-                description="insect larval antennal segment"))
-        setattr(cls, "UBERON:6001737",
-            PermissibleValue(
-                text="UBERON:6001737",
-                description="insect larval gnathal segment"))
-        setattr(cls, "UBERON:6001740",
-            PermissibleValue(
-                text="UBERON:6001740",
-                description="insect larval labial segment"))
-        setattr(cls, "UBERON:6001741",
-            PermissibleValue(
-                text="UBERON:6001741",
-                description="insect larval thorax"))
-        setattr(cls, "UBERON:6001742",
-            PermissibleValue(
-                text="UBERON:6001742",
-                description="insect larval thoracic segment"))
-        setattr(cls, "UBERON:6001743",
-            PermissibleValue(
-                text="UBERON:6001743",
-                description="insect larval prothoracic segment"))
-        setattr(cls, "UBERON:6001744",
-            PermissibleValue(
-                text="UBERON:6001744",
-                description="insect larval mesothoracic segment"))
-        setattr(cls, "UBERON:6001745",
-            PermissibleValue(
-                text="UBERON:6001745",
-                description="insect larval metathoracic segment"))
-        setattr(cls, "UBERON:6001746",
-            PermissibleValue(
-                text="UBERON:6001746",
-                description="insect larval abdomen"))
-        setattr(cls, "UBERON:6001747",
-            PermissibleValue(
-                text="UBERON:6001747",
-                description="insect larval abdominal segment"))
-        setattr(cls, "UBERON:6001755",
-            PermissibleValue(
-                text="UBERON:6001755",
-                description="insect larval abdominal segment 8"))
-        setattr(cls, "UBERON:6001756",
-            PermissibleValue(
-                text="UBERON:6001756",
-                description="insect larval abdominal segment 9"))
         setattr(cls, "UBERON:6001760",
             PermissibleValue(
                 text="UBERON:6001760",
                 description="insect embryonic/larval imaginal precursor"))
-        setattr(cls, "UBERON:6001764",
-            PermissibleValue(
-                text="UBERON:6001764",
-                description="insect labial disc"))
-        setattr(cls, "UBERON:6001765",
-            PermissibleValue(
-                text="UBERON:6001765",
-                description="insect clypeo-labral disc"))
         setattr(cls, "UBERON:6001766",
             PermissibleValue(
                 text="UBERON:6001766",
                 description="insect eye-antennal disc"))
-        setattr(cls, "UBERON:6001767",
-            PermissibleValue(
-                text="UBERON:6001767",
-                description="insect antennal disc"))
-        setattr(cls, "UBERON:6001776",
-            PermissibleValue(
-                text="UBERON:6001776",
-                description="insect dorsal thoracic disc"))
-        setattr(cls, "UBERON:6001778",
-            PermissibleValue(
-                text="UBERON:6001778",
-                description="insect wing disc"))
-        setattr(cls, "UBERON:6001779",
-            PermissibleValue(
-                text="UBERON:6001779",
-                description="insect haltere disc"))
-        setattr(cls, "UBERON:6001780",
-            PermissibleValue(
-                text="UBERON:6001780",
-                description="insect ventral thoracic disc"))
-        setattr(cls, "UBERON:6001781",
-            PermissibleValue(
-                text="UBERON:6001781",
-                description="insect prothoracic leg disc"))
         setattr(cls, "UBERON:6001784",
             PermissibleValue(
                 text="UBERON:6001784",
                 description="insect genital disc"))
-        setattr(cls, "UBERON:6001785",
-            PermissibleValue(
-                text="UBERON:6001785",
-                description="insect male genital disc"))
-        setattr(cls, "UBERON:6001787",
-            PermissibleValue(
-                text="UBERON:6001787",
-                description="insect female genital disc"))
-        setattr(cls, "UBERON:6001790",
-            PermissibleValue(
-                text="UBERON:6001790",
-                description="insect histoblast nest"))
         setattr(cls, "UBERON:6001842",
             PermissibleValue(
                 text="UBERON:6001842",
@@ -48064,74 +56448,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6001920",
                 description="insect embryonic/larval brain"))
-        setattr(cls, "UBERON:6001925",
-            PermissibleValue(
-                text="UBERON:6001925",
-                description="insect embryonic/larval protocerebrum"))
         setattr(cls, "UBERON:6002639",
             PermissibleValue(
                 text="UBERON:6002639",
                 description="insect larval sense organ"))
-        setattr(cls, "UBERON:6002642",
-            PermissibleValue(
-                text="UBERON:6002642",
-                description="insect embryonic/larval ocular segment sensillum"))
-        setattr(cls, "UBERON:6003005",
-            PermissibleValue(
-                text="UBERON:6003005",
-                description="insect adult tagma"))
         setattr(cls, "UBERON:6003006",
             PermissibleValue(
                 text="UBERON:6003006",
                 description="insect adult segment"))
-        setattr(cls, "UBERON:6003007",
-            PermissibleValue(
-                text="UBERON:6003007",
-                description="insect adult head"))
-        setattr(cls, "UBERON:6003009",
-            PermissibleValue(
-                text="UBERON:6003009",
-                description="insect adult head segment"))
-        setattr(cls, "UBERON:6003010",
-            PermissibleValue(
-                text="UBERON:6003010",
-                description="insect adult procephalic segment"))
-        setattr(cls, "UBERON:6003011",
-            PermissibleValue(
-                text="UBERON:6003011",
-                description="insect adult labral segment"))
-        setattr(cls, "UBERON:6003012",
-            PermissibleValue(
-                text="UBERON:6003012",
-                description="insect adult antennal segment"))
-        setattr(cls, "UBERON:6003018",
-            PermissibleValue(
-                text="UBERON:6003018",
-                description="insect adult thorax"))
-        setattr(cls, "UBERON:6003019",
-            PermissibleValue(
-                text="UBERON:6003019",
-                description="insect adult thoracic segment"))
-        setattr(cls, "UBERON:6003020",
-            PermissibleValue(
-                text="UBERON:6003020",
-                description="insect adult prothoracic segment"))
-        setattr(cls, "UBERON:6003021",
-            PermissibleValue(
-                text="UBERON:6003021",
-                description="insect adult mesothoracic segment"))
-        setattr(cls, "UBERON:6003023",
-            PermissibleValue(
-                text="UBERON:6003023",
-                description="insect adult abdomen"))
-        setattr(cls, "UBERON:6003024",
-            PermissibleValue(
-                text="UBERON:6003024",
-                description="insect adult abdominal segment"))
         setattr(cls, "UBERON:6003039",
             PermissibleValue(
                 text="UBERON:6003039",
                 description="dorsal trunk of insect trachea"))
+        setattr(cls, "UBERON:6003218",
+            PermissibleValue(
+                text="UBERON:6003218",
+                description="insect adult muscle system"))
         setattr(cls, "UBERON:6003259",
             PermissibleValue(
                 text="UBERON:6003259",
@@ -48144,118 +56476,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6003623",
                 description="insect adult central nervous system"))
-        setattr(cls, "UBERON:6003624",
-            PermissibleValue(
-                text="UBERON:6003624",
-                description="insect adult brain"))
         setattr(cls, "UBERON:6003626",
             PermissibleValue(
                 text="UBERON:6003626",
                 description="insect supraesophageal ganglion"))
-        setattr(cls, "UBERON:6003627",
-            PermissibleValue(
-                text="UBERON:6003627",
-                description="insect protocerebrum"))
-        setattr(cls, "UBERON:6003632",
-            PermissibleValue(
-                text="UBERON:6003632",
-                description="insect adult central complex"))
-        setattr(cls, "UBERON:6004296",
-            PermissibleValue(
-                text="UBERON:6004296",
-                description="insect sex comb"))
-        setattr(cls, "UBERON:6004340",
-            PermissibleValue(
-                text="UBERON:6004340",
-                description="insect wing hair"))
         setattr(cls, "UBERON:6004475",
             PermissibleValue(
                 text="UBERON:6004475",
                 description="insect sclerite"))
-        setattr(cls, "UBERON:6004476",
-            PermissibleValue(
-                text="UBERON:6004476",
-                description="insect tergite"))
         setattr(cls, "UBERON:6004477",
             PermissibleValue(
                 text="UBERON:6004477",
                 description="insect sternite"))
-        setattr(cls, "UBERON:6004481",
-            PermissibleValue(
-                text="UBERON:6004481",
-                description="insect adult external head"))
         setattr(cls, "UBERON:6004519",
             PermissibleValue(
                 text="UBERON:6004519",
                 description="insect arista"))
-        setattr(cls, "UBERON:6004520",
-            PermissibleValue(
-                text="UBERON:6004520",
-                description="insect mouthpart"))
-        setattr(cls, "UBERON:6004521",
-            PermissibleValue(
-                text="UBERON:6004521",
-                description="insect clypeus"))
-        setattr(cls, "UBERON:6004535",
-            PermissibleValue(
-                text="UBERON:6004535",
-                description="insect proboscis"))
-        setattr(cls, "UBERON:6004540",
-            PermissibleValue(
-                text="UBERON:6004540",
-                description="insect basiproboscis"))
-        setattr(cls, "UBERON:6004551",
-            PermissibleValue(
-                text="UBERON:6004551",
-                description="insect adult external thorax"))
-        setattr(cls, "UBERON:6004552",
-            PermissibleValue(
-                text="UBERON:6004552",
-                description="insect tergum"))
-        setattr(cls, "UBERON:6004578",
-            PermissibleValue(
-                text="UBERON:6004578",
-                description="insect adult external mesothorax"))
-        setattr(cls, "UBERON:6004580",
-            PermissibleValue(
-                text="UBERON:6004580",
-                description="insect mesothoracic tergum"))
-        setattr(cls, "UBERON:6004646",
-            PermissibleValue(
-                text="UBERON:6004646",
-                description="insect tarsal segment"))
-        setattr(cls, "UBERON:6004648",
-            PermissibleValue(
-                text="UBERON:6004648",
-                description="insect metatarsus"))
-        setattr(cls, "UBERON:6004663",
-            PermissibleValue(
-                text="UBERON:6004663",
-                description="insect prothoracic leg"))
-        setattr(cls, "UBERON:6004668",
-            PermissibleValue(
-                text="UBERON:6004668",
-                description="insect prothoracic tarsal segment"))
-        setattr(cls, "UBERON:6004670",
-            PermissibleValue(
-                text="UBERON:6004670",
-                description="insect prothoracic metatarsus"))
-        setattr(cls, "UBERON:6004788",
-            PermissibleValue(
-                text="UBERON:6004788",
-                description="insect adult external abdomen"))
-        setattr(cls, "UBERON:6004823",
-            PermissibleValue(
-                text="UBERON:6004823",
-                description="insect analia"))
-        setattr(cls, "UBERON:6004824",
-            PermissibleValue(
-                text="UBERON:6004824",
-                description="insect female analia"))
-        setattr(cls, "UBERON:6004825",
-            PermissibleValue(
-                text="UBERON:6004825",
-                description="insect male analia"))
         setattr(cls, "UBERON:6004979",
             PermissibleValue(
                 text="UBERON:6004979",
@@ -48300,10 +56536,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6005177",
                 description="insect chaeta"))
-        setattr(cls, "UBERON:6005378",
-            PermissibleValue(
-                text="UBERON:6005378",
-                description="insect wing margin"))
         setattr(cls, "UBERON:6005380",
             PermissibleValue(
                 text="UBERON:6005380",
@@ -48344,6 +56576,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6005538",
                 description="insect clypeo-labral primordium"))
+        setattr(cls, "UBERON:6005541",
+            PermissibleValue(
+                text="UBERON:6005541",
+                description="insect cardiogenic mesoderm"))
         setattr(cls, "UBERON:6005558",
             PermissibleValue(
                 text="UBERON:6005558",
@@ -48352,10 +56588,6 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6005569",
                 description="insect presumptive embryonic/larval tracheal system"))
-        setattr(cls, "UBERON:6005805",
-            PermissibleValue(
-                text="UBERON:6005805",
-                description="insect Bolwig organ"))
         setattr(cls, "UBERON:6005830",
             PermissibleValue(
                 text="UBERON:6005830",
@@ -48372,38 +56604,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6006011",
                 description="insect pharate adult"))
-        setattr(cls, "UBERON:6006032",
-            PermissibleValue(
-                text="UBERON:6006032",
-                description="insect mesothoracic tergum primordium"))
-        setattr(cls, "UBERON:6007020",
-            PermissibleValue(
-                text="UBERON:6007020",
-                description="insect metatarsus of male prothoracic leg"))
         setattr(cls, "UBERON:6007045",
             PermissibleValue(
                 text="UBERON:6007045",
                 description="insect trunk ectoderm"))
-        setattr(cls, "UBERON:6007070",
+        setattr(cls, "UBERON:6007046",
             PermissibleValue(
-                text="UBERON:6007070",
-                description="insect centro-posterior medial synaptic neuropil domain"))
+                text="UBERON:6007046",
+                description="insect dorsal ectoderm derivative"))
         setattr(cls, "UBERON:6007116",
             PermissibleValue(
                 text="UBERON:6007116",
                 description="insect presumptive embryonic/larval system"))
-        setattr(cls, "UBERON:6007145",
-            PermissibleValue(
-                text="UBERON:6007145",
-                description="insect adult protocerebrum"))
         setattr(cls, "UBERON:6007149",
             PermissibleValue(
                 text="UBERON:6007149",
                 description="segment of antenna"))
-        setattr(cls, "UBERON:6007150",
-            PermissibleValue(
-                text="UBERON:6007150",
-                description="insect segment of leg"))
         setattr(cls, "UBERON:6007231",
             PermissibleValue(
                 text="UBERON:6007231",
@@ -48468,6 +56684,26 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6016022",
                 description="insect abdominal histoblast primordium"))
+        setattr(cls, "UBERON:6017021",
+            PermissibleValue(
+                text="UBERON:6017021",
+                description="insect abdominal histoblast anlage"))
+        setattr(cls, "UBERON:6025991",
+            PermissibleValue(
+                text="UBERON:6025991",
+                description="insect anterior ectoderm derivative"))
+        setattr(cls, "UBERON:6025993",
+            PermissibleValue(
+                text="UBERON:6025993",
+                description="insect ventral ectoderm derivative"))
+        setattr(cls, "UBERON:6026000",
+            PermissibleValue(
+                text="UBERON:6026000",
+                description="insect trunk mesoderm derivative"))
+        setattr(cls, "UBERON:6026002",
+            PermissibleValue(
+                text="UBERON:6026002",
+                description="insect visceral mesoderm derivative"))
         setattr(cls, "UBERON:6040003",
             PermissibleValue(
                 text="UBERON:6040003",
@@ -48488,18 +56724,350 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:6100153",
                 description="insect sensilla row"))
-        setattr(cls, "UBERON:6110636",
+        setattr(cls, "UBERON:7500046",
             PermissibleValue(
-                text="UBERON:6110636",
-                description="insect adult cerebral ganglion"))
-        setattr(cls, "UBERON:6110746",
+                text="UBERON:7500046",
+                description="proximal-most point of head of femur"))
+        setattr(cls, "UBERON:7500047",
             PermissibleValue(
-                text="UBERON:6110746",
-                description="insect presumptive prothoracic metatarsus"))
-        setattr(cls, "UBERON:6110811",
+                text="UBERON:7500047",
+                description="proximal-most point of head of humerus"))
+        setattr(cls, "UBERON:7500048",
             PermissibleValue(
-                text="UBERON:6110811",
-                description="insect presumptive arista"))
+                text="UBERON:7500048",
+                description="proximal-most point of ventral tubercle of humerus"))
+        setattr(cls, "UBERON:7500049",
+            PermissibleValue(
+                text="UBERON:7500049",
+                description="proximal-most point of greater trochanter of femur"))
+        setattr(cls, "UBERON:7500052",
+            PermissibleValue(
+                text="UBERON:7500052",
+                description="lower fourth secondary molar tooth"))
+        setattr(cls, "UBERON:7500053",
+            PermissibleValue(
+                text="UBERON:7500053",
+                description="lower fourth secondary premolar tooth"))
+        setattr(cls, "UBERON:7500054",
+            PermissibleValue(
+                text="UBERON:7500054",
+                description="lower third secondary premolar tooth"))
+        setattr(cls, "UBERON:7500055",
+            PermissibleValue(
+                text="UBERON:7500055",
+                description="molar tooth 4"))
+        setattr(cls, "UBERON:7500056",
+            PermissibleValue(
+                text="UBERON:7500056",
+                description="premolar 3"))
+        setattr(cls, "UBERON:7500057",
+            PermissibleValue(
+                text="UBERON:7500057",
+                description="upper fourth secondary molar tooth"))
+        setattr(cls, "UBERON:7500058",
+            PermissibleValue(
+                text="UBERON:7500058",
+                description="upper fourth secondary premolar tooth"))
+        setattr(cls, "UBERON:7500059",
+            PermissibleValue(
+                text="UBERON:7500059",
+                description="upper third secondary premolar tooth"))
+        setattr(cls, "UBERON:7500061",
+            PermissibleValue(
+                text="UBERON:7500061",
+                description="trochlear ridge of humerus"))
+        setattr(cls, "UBERON:7500062",
+            PermissibleValue(
+                text="UBERON:7500062",
+                description="tibial tuberosity"))
+        setattr(cls, "UBERON:7500063",
+            PermissibleValue(
+                text="UBERON:7500063",
+                description="trochlea of talus"))
+        setattr(cls, "UBERON:7500064",
+            PermissibleValue(
+                text="UBERON:7500064",
+                description="trochlear groove of talus"))
+        setattr(cls, "UBERON:7500065",
+            PermissibleValue(
+                text="UBERON:7500065",
+                description="condyle of talus"))
+        setattr(cls, "UBERON:7500066",
+            PermissibleValue(
+                text="UBERON:7500066",
+                description="medial condyle of talus"))
+        setattr(cls, "UBERON:7500067",
+            PermissibleValue(
+                text="UBERON:7500067",
+                description="lateral condyle of talus"))
+        setattr(cls, "UBERON:7500068",
+            PermissibleValue(
+                text="UBERON:7500068",
+                description="ridge of medial condyle of talus"))
+        setattr(cls, "UBERON:7500069",
+            PermissibleValue(
+                text="UBERON:7500069",
+                description="ridge of lateral condyle of talus"))
+        setattr(cls, "UBERON:7500070",
+            PermissibleValue(
+                text="UBERON:7500070",
+                description="sulcus tali"))
+        setattr(cls, "UBERON:7500073",
+            PermissibleValue(
+                text="UBERON:7500073",
+                description="left nasal bone"))
+        setattr(cls, "UBERON:7500074",
+            PermissibleValue(
+                text="UBERON:7500074",
+                description="right nasal bone"))
+        setattr(cls, "UBERON:7500075",
+            PermissibleValue(
+                text="UBERON:7500075",
+                description="left zygomatic arch"))
+        setattr(cls, "UBERON:7500076",
+            PermissibleValue(
+                text="UBERON:7500076",
+                description="right zygomatic arch"))
+        setattr(cls, "UBERON:7500078",
+            PermissibleValue(
+                text="UBERON:7500078",
+                description="styloid process of radius"))
+        setattr(cls, "UBERON:7500079",
+            PermissibleValue(
+                text="UBERON:7500079",
+                description="ulnar notch of radius"))
+        setattr(cls, "UBERON:7500080",
+            PermissibleValue(
+                text="UBERON:7500080",
+                description="articular surface for carpals"))
+        setattr(cls, "UBERON:7500081",
+            PermissibleValue(
+                text="UBERON:7500081",
+                description="articular surface for the tibia on the talus"))
+        setattr(cls, "UBERON:7500083",
+            PermissibleValue(
+                text="UBERON:7500083",
+                description="greater palatine foramen"))
+        setattr(cls, "UBERON:7500084",
+            PermissibleValue(
+                text="UBERON:7500084",
+                description="lesser palatine foramen"))
+        setattr(cls, "UBERON:7500085",
+            PermissibleValue(
+                text="UBERON:7500085",
+                description="endodontium"))
+        setattr(cls, "UBERON:7500089",
+            PermissibleValue(
+                text="UBERON:7500089",
+                description="posterior articular facet for talus of calcaneus"))
+        setattr(cls, "UBERON:7500091",
+            PermissibleValue(
+                text="UBERON:7500091",
+                description="middle articular facet for talus of calcaneus"))
+        setattr(cls, "UBERON:7500092",
+            PermissibleValue(
+                text="UBERON:7500092",
+                description="anterior articular facet for talus of calcaneus"))
+        setattr(cls, "UBERON:7500093",
+            PermissibleValue(
+                text="UBERON:7500093",
+                description="calcaneal body"))
+        setattr(cls, "UBERON:7500094",
+            PermissibleValue(
+                text="UBERON:7500094",
+                description="tubercle of calcaneus"))
+        setattr(cls, "UBERON:7500095",
+            PermissibleValue(
+                text="UBERON:7500095",
+                description="lateral tubercle of calcaneus"))
+        setattr(cls, "UBERON:7500096",
+            PermissibleValue(
+                text="UBERON:7500096",
+                description="medial tubercle of calcaneus"))
+        setattr(cls, "UBERON:7500101",
+            PermissibleValue(
+                text="UBERON:7500101",
+                description="antorbital notch"))
+        setattr(cls, "UBERON:7500102",
+            PermissibleValue(
+                text="UBERON:7500102",
+                description="preorbital bone region"))
+        setattr(cls, "UBERON:7500103",
+            PermissibleValue(
+                text="UBERON:7500103",
+                description="preorbital fossa"))
+        setattr(cls, "UBERON:7500105",
+            PermissibleValue(
+                text="UBERON:7500105",
+                description="coracoid process of calcaneus"))
+        setattr(cls, "UBERON:7500106",
+            PermissibleValue(
+                text="UBERON:7500106",
+                description="hormion"))
+        setattr(cls, "UBERON:7500107",
+            PermissibleValue(
+                text="UBERON:7500107",
+                description="sphenovomerine suture"))
+        setattr(cls, "UBERON:7500108",
+            PermissibleValue(
+                text="UBERON:7500108",
+                description="cheek tooth"))
+        setattr(cls, "UBERON:7500109",
+            PermissibleValue(
+                text="UBERON:7500109",
+                description="basion"))
+        setattr(cls, "UBERON:7500110",
+            PermissibleValue(
+                text="UBERON:7500110",
+                description="synsphenion"))
+        setattr(cls, "UBERON:7500111",
+            PermissibleValue(
+                text="UBERON:7500111",
+                description="intersphenoid suture"))
+        setattr(cls, "UBERON:7500112",
+            PermissibleValue(
+                text="UBERON:7500112",
+                description="prosthion"))
+        setattr(cls, "UBERON:7500113",
+            PermissibleValue(
+                text="UBERON:7500113",
+                description="akrokranion"))
+        setattr(cls, "UBERON:7500114",
+            PermissibleValue(
+                text="UBERON:7500114",
+                description="cheek tooth row"))
+        setattr(cls, "UBERON:7500115",
+            PermissibleValue(
+                text="UBERON:7500115",
+                description="sagittal crest"))
+        setattr(cls, "UBERON:7500117",
+            PermissibleValue(
+                text="UBERON:7500117",
+                description="opisthocranion"))
+        setattr(cls, "UBERON:7500118",
+            PermissibleValue(
+                text="UBERON:7500118",
+                description="opisthion"))
+        setattr(cls, "UBERON:7500119",
+            PermissibleValue(
+                text="UBERON:7500119",
+                description="ectorbitale"))
+        setattr(cls, "UBERON:7500120",
+            PermissibleValue(
+                text="UBERON:7500120",
+                description="zygion"))
+        setattr(cls, "UBERON:7500121",
+            PermissibleValue(
+                text="UBERON:7500121",
+                description="paroccipital process"))
+        setattr(cls, "UBERON:7500123",
+            PermissibleValue(
+                text="UBERON:7500123",
+                description="incisor tooth 3"))
+        setattr(cls, "UBERON:7500124",
+            PermissibleValue(
+                text="UBERON:7500124",
+                description="incisor tooth 4"))
+        setattr(cls, "UBERON:7500125",
+            PermissibleValue(
+                text="UBERON:7500125",
+                description="incisor tooth 5"))
+        setattr(cls, "UBERON:7500126",
+            PermissibleValue(
+                text="UBERON:7500126",
+                description="molar tooth 5"))
+        setattr(cls, "UBERON:7500127",
+            PermissibleValue(
+                text="UBERON:7500127",
+                description="otion"))
+        setattr(cls, "UBERON:7500128",
+            PermissibleValue(
+                text="UBERON:7500128",
+                description="cranial temporal crest"))
+        setattr(cls, "UBERON:7500131",
+            PermissibleValue(
+                text="UBERON:7500131",
+                description="facial crest"))
+        setattr(cls, "UBERON:7770000",
+            PermissibleValue(
+                text="UBERON:7770000",
+                description="suprasellar region"))
+        setattr(cls, "UBERON:7770005",
+            PermissibleValue(
+                text="UBERON:7770005",
+                description="ascending colon epithelium"))
+        setattr(cls, "UBERON:7770006",
+            PermissibleValue(
+                text="UBERON:7770006",
+                description="transverse colon epithelium"))
+        setattr(cls, "UBERON:7770007",
+            PermissibleValue(
+                text="UBERON:7770007",
+                description="descending colon epithelium"))
+        setattr(cls, "UBERON:7770008",
+            PermissibleValue(
+                text="UBERON:7770008",
+                description="sigmoid colon epithelium"))
+        setattr(cls, "UBERON:7770009",
+            PermissibleValue(
+                text="UBERON:7770009",
+                description="kidney interpolar region"))
+        setattr(cls, "UBERON:7770011",
+            PermissibleValue(
+                text="UBERON:7770011",
+                description="episcleral vein"))
+        setattr(cls, "UBERON:8000004",
+            PermissibleValue(
+                text="UBERON:8000004",
+                description="central retina"))
+        setattr(cls, "UBERON:8000005",
+            PermissibleValue(
+                text="UBERON:8000005",
+                description="Henle's fiber layer"))
+        setattr(cls, "UBERON:8000006",
+            PermissibleValue(
+                text="UBERON:8000006",
+                description="left side of back"))
+        setattr(cls, "UBERON:8000007",
+            PermissibleValue(
+                text="UBERON:8000007",
+                description="right side of back"))
+        setattr(cls, "UBERON:8000008",
+            PermissibleValue(
+                text="UBERON:8000008",
+                description="cementocyte lacuna"))
+        setattr(cls, "UBERON:8000009",
+            PermissibleValue(
+                text="UBERON:8000009",
+                description="Purkinje fiber network"))
+        setattr(cls, "UBERON:8000010",
+            PermissibleValue(
+                text="UBERON:8000010",
+                description="salivary gland ducto-acinar unit"))
+        setattr(cls, "UBERON:8000011",
+            PermissibleValue(
+                text="UBERON:8000011",
+                description="parotid gland ducto-acinar unit"))
+        setattr(cls, "UBERON:8000012",
+            PermissibleValue(
+                text="UBERON:8000012",
+                description="sublingual gland ducto-acinar unit"))
+        setattr(cls, "UBERON:8000013",
+            PermissibleValue(
+                text="UBERON:8000013",
+                description="submandibular gland ducto-acinar unit"))
+        setattr(cls, "UBERON:8000014",
+            PermissibleValue(
+                text="UBERON:8000014",
+                description="dentogingival junction"))
+        setattr(cls, "UBERON:8200006",
+            PermissibleValue(
+                text="UBERON:8200006",
+                description="copepodite stage 5"))
+        setattr(cls, "UBERON:8200007",
+            PermissibleValue(
+                text="UBERON:8200007",
+                description="copepodite stage 6"))
         setattr(cls, "UBERON:8300000",
             PermissibleValue(
                 text="UBERON:8300000",
@@ -48520,14 +57088,114 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8300004",
                 description="left hindlimb"))
+        setattr(cls, "UBERON:8400001",
+            PermissibleValue(
+                text="UBERON:8400001",
+                description="hepatic acinus zone 1"))
+        setattr(cls, "UBERON:8400002",
+            PermissibleValue(
+                text="UBERON:8400002",
+                description="hepatic acinus zone 3"))
+        setattr(cls, "UBERON:8400003",
+            PermissibleValue(
+                text="UBERON:8400003",
+                description="hepatic acinus zone 2"))
+        setattr(cls, "UBERON:8400005",
+            PermissibleValue(
+                text="UBERON:8400005",
+                description="metabolic zone of liver"))
+        setattr(cls, "UBERON:8400006",
+            PermissibleValue(
+                text="UBERON:8400006",
+                description="liver lobule periportal region"))
+        setattr(cls, "UBERON:8400007",
+            PermissibleValue(
+                text="UBERON:8400007",
+                description="liver lobule centrilobular region"))
+        setattr(cls, "UBERON:8400008",
+            PermissibleValue(
+                text="UBERON:8400008",
+                description="liver lobule midzonal region"))
+        setattr(cls, "UBERON:8400021",
+            PermissibleValue(
+                text="UBERON:8400021",
+                description="liver serosa"))
+        setattr(cls, "UBERON:8400023",
+            PermissibleValue(
+                text="UBERON:8400023",
+                description="liver subserosa"))
+        setattr(cls, "UBERON:8400024",
+            PermissibleValue(
+                text="UBERON:8400024",
+                description="subcapsular region of liver"))
         setattr(cls, "UBERON:8410000",
             PermissibleValue(
                 text="UBERON:8410000",
                 description="duodeno-jejunal junction"))
+        setattr(cls, "UBERON:8410001",
+            PermissibleValue(
+                text="UBERON:8410001",
+                description="small intestine venule"))
+        setattr(cls, "UBERON:8410002",
+            PermissibleValue(
+                text="UBERON:8410002",
+                description="small intestine lymphatic vessel"))
+        setattr(cls, "UBERON:8410003",
+            PermissibleValue(
+                text="UBERON:8410003",
+                description="ductal plate"))
+        setattr(cls, "UBERON:8410004",
+            PermissibleValue(
+                text="UBERON:8410004",
+                description="small intestine arteriole"))
+        setattr(cls, "UBERON:8410005",
+            PermissibleValue(
+                text="UBERON:8410005",
+                description="transitional glandular epithelium of anorectum"))
+        setattr(cls, "UBERON:8410006",
+            PermissibleValue(
+                text="UBERON:8410006",
+                description="submucous nerve plexus of anorectum"))
+        setattr(cls, "UBERON:8410007",
+            PermissibleValue(
+                text="UBERON:8410007",
+                description="myenteric nerve plexus of anorectum"))
+        setattr(cls, "UBERON:8410008",
+            PermissibleValue(
+                text="UBERON:8410008",
+                description="venule of anorectum"))
+        setattr(cls, "UBERON:8410009",
+            PermissibleValue(
+                text="UBERON:8410009",
+                description="arteriole of anorectum"))
         setattr(cls, "UBERON:8410010",
             PermissibleValue(
                 text="UBERON:8410010",
                 description="fimbria of fallopian tube"))
+        setattr(cls, "UBERON:8410011",
+            PermissibleValue(
+                text="UBERON:8410011",
+                description="myenteric nerve plexus of appendix"))
+        setattr(cls, "UBERON:8410012",
+            PermissibleValue(
+                text="UBERON:8410012",
+                description="submucous nerve plexus of appendix"))
+        setattr(cls, "UBERON:8410013",
+            PermissibleValue(
+                text="UBERON:8410013",
+                description="afferent lymphatic vessel valve"))
+        setattr(cls, "UBERON:8410014",
+            PermissibleValue(
+                text="UBERON:8410014",
+                description="efferent lymphatic vessel valve"))
+        setattr(cls, "UBERON:8410015",
+            PermissibleValue(
+                text="UBERON:8410015",
+                description="arteriole of colon"))
+        setattr(cls, "UBERON:8410016",
+            PermissibleValue(
+                text="UBERON:8410016",
+                description="descending sigmoid junction"))
         setattr(cls, "UBERON:8410017",
             PermissibleValue(
                 text="UBERON:8410017",
@@ -48536,6 +57204,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8410018",
                 description="right colic vein"))
+        setattr(cls, "UBERON:8410019",
+            PermissibleValue(
+                text="UBERON:8410019",
+                description="jejuno-ileal junction"))
+        setattr(cls, "UBERON:8410020",
+            PermissibleValue(
+                text="UBERON:8410020",
+                description="venule of appendix"))
+        setattr(cls, "UBERON:8410021",
+            PermissibleValue(
+                text="UBERON:8410021",
+                description="inguinal region skin"))
         setattr(cls, "UBERON:8410022",
             PermissibleValue(
                 text="UBERON:8410022",
@@ -48544,14 +57224,218 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8410023",
                 description="right colic artery"))
+        setattr(cls, "UBERON:8410024",
+            PermissibleValue(
+                text="UBERON:8410024",
+                description="intestinal junction"))
+        setattr(cls, "UBERON:8410025",
+            PermissibleValue(
+                text="UBERON:8410025",
+                description="transition zone of prostate"))
+        setattr(cls, "UBERON:8410026",
+            PermissibleValue(
+                text="UBERON:8410026",
+                description="peripheral zone of prostate"))
+        setattr(cls, "UBERON:8410027",
+            PermissibleValue(
+                text="UBERON:8410027",
+                description="central zone of prostate"))
+        setattr(cls, "UBERON:8410028",
+            PermissibleValue(
+                text="UBERON:8410028",
+                description="arteriole of appendix"))
+        setattr(cls, "UBERON:8410029",
+            PermissibleValue(
+                text="UBERON:8410029",
+                description="lymphatic capillary of appendix"))
+        setattr(cls, "UBERON:8410030",
+            PermissibleValue(
+                text="UBERON:8410030",
+                description="lymphatic vessel of appendix"))
+        setattr(cls, "UBERON:8410031",
+            PermissibleValue(
+                text="UBERON:8410031",
+                description="muscularis mucosae of appendix"))
+        setattr(cls, "UBERON:8410032",
+            PermissibleValue(
+                text="UBERON:8410032",
+                description="trabecular sinus of lymph node"))
+        setattr(cls, "UBERON:8410033",
+            PermissibleValue(
+                text="UBERON:8410033",
+                description="lymph node vein"))
+        setattr(cls, "UBERON:8410034",
+            PermissibleValue(
+                text="UBERON:8410034",
+                description="lymph node artery"))
+        setattr(cls, "UBERON:8410035",
+            PermissibleValue(
+                text="UBERON:8410035",
+                description="medullary arteriole of lymph node"))
+        setattr(cls, "UBERON:8410036",
+            PermissibleValue(
+                text="UBERON:8410036",
+                description="medullary venule of lymph node"))
         setattr(cls, "UBERON:8410037",
             PermissibleValue(
                 text="UBERON:8410037",
                 description="high endothelial venule"))
+        setattr(cls, "UBERON:8410038",
+            PermissibleValue(
+                text="UBERON:8410038",
+                description="high endothelial venule of lymph node"))
+        setattr(cls, "UBERON:8410039",
+            PermissibleValue(
+                text="UBERON:8410039",
+                description="high endothelial venule of appendix"))
+        setattr(cls, "UBERON:8410040",
+            PermissibleValue(
+                text="UBERON:8410040",
+                description="high endothelial venule of small intestine Peyer's patch"))
+        setattr(cls, "UBERON:8410041",
+            PermissibleValue(
+                text="UBERON:8410041",
+                description="venule of lymph node"))
+        setattr(cls, "UBERON:8410042",
+            PermissibleValue(
+                text="UBERON:8410042",
+                description="arteriole of lymph node"))
+        setattr(cls, "UBERON:8410043",
+            PermissibleValue(
+                text="UBERON:8410043",
+                description="bronchus submucosal gland"))
+        setattr(cls, "UBERON:8410044",
+            PermissibleValue(
+                text="UBERON:8410044",
+                description="vein of appendix"))
+        setattr(cls, "UBERON:8410045",
+            PermissibleValue(
+                text="UBERON:8410045",
+                description="artery of appendix"))
+        setattr(cls, "UBERON:8410046",
+            PermissibleValue(
+                text="UBERON:8410046",
+                description="appendix smooth muscle circular layer"))
+        setattr(cls, "UBERON:8410047",
+            PermissibleValue(
+                text="UBERON:8410047",
+                description="appendix smooth muscle longitudinal layer"))
+        setattr(cls, "UBERON:8410048",
+            PermissibleValue(
+                text="UBERON:8410048",
+                description="venule of colon"))
+        setattr(cls, "UBERON:8410049",
+            PermissibleValue(
+                text="UBERON:8410049",
+                description="serosal nerve fiber of appendix"))
+        setattr(cls, "UBERON:8410050",
+            PermissibleValue(
+                text="UBERON:8410050",
+                description="anorectum"))
+        setattr(cls, "UBERON:8410051",
+            PermissibleValue(
+                text="UBERON:8410051",
+                description="lymphatic vessel of colon"))
+        setattr(cls, "UBERON:8410052",
+            PermissibleValue(
+                text="UBERON:8410052",
+                description="lymph node germinal center light zone"))
+        setattr(cls, "UBERON:8410053",
+            PermissibleValue(
+                text="UBERON:8410053",
+                description="lymph node germinal center dark zone"))
+        setattr(cls, "UBERON:8410054",
+            PermissibleValue(
+                text="UBERON:8410054",
+                description="lymphatic capillary of colon"))
+        setattr(cls, "UBERON:8410055",
+            PermissibleValue(
+                text="UBERON:8410055",
+                description="lymphatic capillary of anorectum"))
+        setattr(cls, "UBERON:8410056",
+            PermissibleValue(
+                text="UBERON:8410056",
+                description="capillary of anorectum"))
+        setattr(cls, "UBERON:8410057",
+            PermissibleValue(
+                text="UBERON:8410057",
+                description="capillary of colon"))
+        setattr(cls, "UBERON:8410058",
+            PermissibleValue(
+                text="UBERON:8410058",
+                description="myenteric nerve plexus of colon"))
+        setattr(cls, "UBERON:8410059",
+            PermissibleValue(
+                text="UBERON:8410059",
+                description="submucous nerve plexus of colon"))
+        setattr(cls, "UBERON:8410060",
+            PermissibleValue(
+                text="UBERON:8410060",
+                description="colon smooth muscle circular layer"))
+        setattr(cls, "UBERON:8410061",
+            PermissibleValue(
+                text="UBERON:8410061",
+                description="colon smooth muscle longitudinal layer"))
+        setattr(cls, "UBERON:8410062",
+            PermissibleValue(
+                text="UBERON:8410062",
+                description="parasympathetic cholinergic nerve"))
+        setattr(cls, "UBERON:8410063",
+            PermissibleValue(
+                text="UBERON:8410063",
+                description="myenteric nerve plexus of small intestine"))
+        setattr(cls, "UBERON:8410064",
+            PermissibleValue(
+                text="UBERON:8410064",
+                description="submucous nerve plexus of small intestine"))
+        setattr(cls, "UBERON:8410065",
+            PermissibleValue(
+                text="UBERON:8410065",
+                description="lymph node follicle marginal zone"))
+        setattr(cls, "UBERON:8410066",
+            PermissibleValue(
+                text="UBERON:8410066",
+                description="lymph node paracortex"))
+        setattr(cls, "UBERON:8410067",
+            PermissibleValue(
+                text="UBERON:8410067",
+                description="lymph node interfollicular cortex"))
+        setattr(cls, "UBERON:8410068",
+            PermissibleValue(
+                text="UBERON:8410068",
+                description="capillary of small intestine"))
+        setattr(cls, "UBERON:8410069",
+            PermissibleValue(
+                text="UBERON:8410069",
+                description="lymphoid nodule"))
         setattr(cls, "UBERON:8410070",
             PermissibleValue(
                 text="UBERON:8410070",
                 description="levator costarum"))
+        setattr(cls, "UBERON:8410071",
+            PermissibleValue(
+                text="UBERON:8410071",
+                description="subcapsular sinus ceiling"))
+        setattr(cls, "UBERON:8410072",
+            PermissibleValue(
+                text="UBERON:8410072",
+                description="subcapsular sinus floor"))
+        setattr(cls, "UBERON:8410073",
+            PermissibleValue(
+                text="UBERON:8410073",
+                description="medullary region of kidney"))
+        setattr(cls, "UBERON:8410074",
+            PermissibleValue(
+                text="UBERON:8410074",
+                description="lymph node paracortical sinus"))
+        setattr(cls, "UBERON:8410075",
+            PermissibleValue(
+                text="UBERON:8410075",
+                description="lymph node paracortical cord"))
+        setattr(cls, "UBERON:8410076",
+            PermissibleValue(
+                text="UBERON:8410076",
+                description="glomus coccygeum"))
         setattr(cls, "UBERON:8410077",
             PermissibleValue(
                 text="UBERON:8410077",
@@ -48560,6 +57444,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8410078",
                 description="right lymphatic duct"))
+        setattr(cls, "UBERON:8410079",
+            PermissibleValue(
+                text="UBERON:8410079",
+                description="red bone marrow of iliac crest"))
+        setattr(cls, "UBERON:8410080",
+            PermissibleValue(
+                text="UBERON:8410080",
+                description="red bone marrow of sternum"))
+        setattr(cls, "UBERON:8410081",
+            PermissibleValue(
+                text="UBERON:8410081",
+                description="blood microvessel"))
+        setattr(cls, "UBERON:8420000",
+            PermissibleValue(
+                text="UBERON:8420000",
+                description="hair of scalp"))
         setattr(cls, "UBERON:8420001",
             PermissibleValue(
                 text="UBERON:8420001",
@@ -48572,6 +57472,30 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8420003",
                 description="posterior ethmoidal vein"))
+        setattr(cls, "UBERON:8440000",
+            PermissibleValue(
+                text="UBERON:8440000",
+                description="cortical layer II/III"))
+        setattr(cls, "UBERON:8440001",
+            PermissibleValue(
+                text="UBERON:8440001",
+                description="cortical layer IV/V"))
+        setattr(cls, "UBERON:8440002",
+            PermissibleValue(
+                text="UBERON:8440002",
+                description="cortical layer V/VI"))
+        setattr(cls, "UBERON:8440003",
+            PermissibleValue(
+                text="UBERON:8440003",
+                description="cortical layer VIb"))
+        setattr(cls, "UBERON:8440004",
+            PermissibleValue(
+                text="UBERON:8440004",
+                description="laminar subdivision of the cortex"))
+        setattr(cls, "UBERON:8440005",
+            PermissibleValue(
+                text="UBERON:8440005",
+                description="rostral periventricular region of the third ventricle"))
         setattr(cls, "UBERON:8440007",
             PermissibleValue(
                 text="UBERON:8440007",
@@ -48584,6 +57508,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8440010",
                 description="Brodmann (1909) area 17"))
+        setattr(cls, "UBERON:8440011",
+            PermissibleValue(
+                text="UBERON:8440011",
+                description="cortical visual area"))
         setattr(cls, "UBERON:8440012",
             PermissibleValue(
                 text="UBERON:8440012",
@@ -48596,14 +57524,38 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8440014",
                 description="ventrolateral preoptic nucleus"))
+        setattr(cls, "UBERON:8440015",
+            PermissibleValue(
+                text="UBERON:8440015",
+                description="noradrenergic cell groups"))
+        setattr(cls, "UBERON:8440016",
+            PermissibleValue(
+                text="UBERON:8440016",
+                description="noradrenergic cell group A1"))
+        setattr(cls, "UBERON:8440017",
+            PermissibleValue(
+                text="UBERON:8440017",
+                description="noradrenergiccell group A2"))
         setattr(cls, "UBERON:8440018",
             PermissibleValue(
                 text="UBERON:8440018",
                 description="noradrenergic cell group A4"))
+        setattr(cls, "UBERON:8440019",
+            PermissibleValue(
+                text="UBERON:8440019",
+                description="noradrenergic cell group A5"))
         setattr(cls, "UBERON:8440021",
             PermissibleValue(
                 text="UBERON:8440021",
                 description="noradrenergic cell group A7"))
+        setattr(cls, "UBERON:8440022",
+            PermissibleValue(
+                text="UBERON:8440022",
+                description="noradrenergic cell group A6sc"))
+        setattr(cls, "UBERON:8440023",
+            PermissibleValue(
+                text="UBERON:8440023",
+                description="noradrenergic cell group Acg"))
         setattr(cls, "UBERON:8440024",
             PermissibleValue(
                 text="UBERON:8440024",
@@ -48676,6 +57628,106 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8440041",
                 description="tuberal nucleus (sensu Rodentia)"))
+        setattr(cls, "UBERON:8440042",
+            PermissibleValue(
+                text="UBERON:8440042",
+                description="nucleus lateralis tuberis system (sensu Teleostei)"))
+        setattr(cls, "UBERON:8440043",
+            PermissibleValue(
+                text="UBERON:8440043",
+                description="superior paraolivary nucleus"))
+        setattr(cls, "UBERON:8440044",
+            PermissibleValue(
+                text="UBERON:8440044",
+                description="upper layers of the cortex"))
+        setattr(cls, "UBERON:8440045",
+            PermissibleValue(
+                text="UBERON:8440045",
+                description="second visual cortical area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440046",
+            PermissibleValue(
+                text="UBERON:8440046",
+                description="third visual cortical area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440047",
+            PermissibleValue(
+                text="UBERON:8440047",
+                description="fourth visual cortical area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440048",
+            PermissibleValue(
+                text="UBERON:8440048",
+                description="temporal visual area a (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440049",
+            PermissibleValue(
+                text="UBERON:8440049",
+                description="temporal visual area b (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440050",
+            PermissibleValue(
+                text="UBERON:8440050",
+                description="posterior parietal rostral cortical area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440051",
+            PermissibleValue(
+                text="UBERON:8440051",
+                description="lower layers of the cortex"))
+        setattr(cls, "UBERON:8440052",
+            PermissibleValue(
+                text="UBERON:8440052",
+                description="posterior parietal caudal cortical area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440054",
+            PermissibleValue(
+                text="UBERON:8440054",
+                description="anteromedial lateral suprasylvian visual area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440055",
+            PermissibleValue(
+                text="UBERON:8440055",
+                description="anterolateral lateral suprasylvian visual area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440056",
+            PermissibleValue(
+                text="UBERON:8440056",
+                description="posteromedial lateral suprasylvian visual area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440059",
+            PermissibleValue(
+                text="UBERON:8440059",
+                description="posterolateral lateral suprasylvian visual area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440060",
+            PermissibleValue(
+                text="UBERON:8440060",
+                description="dorsal lateral suprasylvian visual cortical area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440061",
+            PermissibleValue(
+                text="UBERON:8440061",
+                description="ventral lateral suprasylvian visual area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440062",
+            PermissibleValue(
+                text="UBERON:8440062",
+                description="posterior suprasylvian visual cortical area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440063",
+            PermissibleValue(
+                text="UBERON:8440063",
+                description="anterior ectosylvian visual area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440064",
+            PermissibleValue(
+                text="UBERON:8440064",
+                description="spenial visual area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440066",
+            PermissibleValue(
+                text="UBERON:8440066",
+                description="cingulate visual area (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440067",
+            PermissibleValue(
+                text="UBERON:8440067",
+                description="A lamina of the lateral geniculate nucleus (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440068",
+            PermissibleValue(
+                text="UBERON:8440068",
+                description="A1 lamina of the lateral geniculate nucleus (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440069",
+            PermissibleValue(
+                text="UBERON:8440069",
+                description="C lamina of the lateral geniculate nucleus (sensu Mustela putorius furo)"))
+        setattr(cls, "UBERON:8440070",
+            PermissibleValue(
+                text="UBERON:8440070",
+                description="Perigeniculate lamina of the lateral geniculate nucleus (sensu Mustela putorius furo)"))
         setattr(cls, "UBERON:8440072",
             PermissibleValue(
                 text="UBERON:8440072",
@@ -48700,18 +57752,226 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8440077",
                 description="rhinal incisure"))
+        setattr(cls, "UBERON:8450001",
+            PermissibleValue(
+                text="UBERON:8450001",
+                description="egg follicle"))
         setattr(cls, "UBERON:8450002",
             PermissibleValue(
                 text="UBERON:8450002",
                 description="excretory system"))
+        setattr(cls, "UBERON:8450003",
+            PermissibleValue(
+                text="UBERON:8450003",
+                description="embryonic craniocervical region"))
+        setattr(cls, "UBERON:8450004",
+            PermissibleValue(
+                text="UBERON:8450004",
+                description="intercostal element"))
+        setattr(cls, "UBERON:8470000",
+            PermissibleValue(
+                text="UBERON:8470000",
+                description="placental blood"))
+        setattr(cls, "UBERON:8470001",
+            PermissibleValue(
+                text="UBERON:8470001",
+                description="sublumbar lymph node"))
+        setattr(cls, "UBERON:8470002",
+            PermissibleValue(
+                text="UBERON:8470002",
+                description="moderator band"))
+        setattr(cls, "UBERON:8480000",
+            PermissibleValue(
+                text="UBERON:8480000",
+                description="iliac vein smooth muscle tissue"))
+        setattr(cls, "UBERON:8480001",
+            PermissibleValue(
+                text="UBERON:8480001",
+                description="capillary of brain"))
+        setattr(cls, "UBERON:8480002",
+            PermissibleValue(
+                text="UBERON:8480002",
+                description="thoracic aorta smooth muscle tissue"))
+        setattr(cls, "UBERON:8480003",
+            PermissibleValue(
+                text="UBERON:8480003",
+                description="iliac artery smooth muscle tissue"))
+        setattr(cls, "UBERON:8480004",
+            PermissibleValue(
+                text="UBERON:8480004",
+                description="iliac vein endothelium"))
+        setattr(cls, "UBERON:8480005",
+            PermissibleValue(
+                text="UBERON:8480005",
+                description="placental artery endothelium"))
+        setattr(cls, "UBERON:8480006",
+            PermissibleValue(
+                text="UBERON:8480006",
+                description="mesenteric lymphatic vessel"))
+        setattr(cls, "UBERON:8480007",
+            PermissibleValue(
+                text="UBERON:8480007",
+                description="placental artery"))
+        setattr(cls, "UBERON:8480008",
+            PermissibleValue(
+                text="UBERON:8480008",
+                description="placental vein"))
+        setattr(cls, "UBERON:8480009",
+            PermissibleValue(
+                text="UBERON:8480009",
+                description="tendon of semitendinosus"))
+        setattr(cls, "UBERON:8480010",
+            PermissibleValue(
+                text="UBERON:8480010",
+                description="perianal space"))
+        setattr(cls, "UBERON:8480011",
+            PermissibleValue(
+                text="UBERON:8480011",
+                description="deep post-anal space"))
+        setattr(cls, "UBERON:8480012",
+            PermissibleValue(
+                text="UBERON:8480012",
+                description="intersphincteric space"))
+        setattr(cls, "UBERON:8480013",
+            PermissibleValue(
+                text="UBERON:8480013",
+                description="ischiorectal space"))
+        setattr(cls, "UBERON:8480014",
+            PermissibleValue(
+                text="UBERON:8480014",
+                description="skin of buttock"))
+        setattr(cls, "UBERON:8480015",
+            PermissibleValue(
+                text="UBERON:8480015",
+                description="supra levator space"))
+        setattr(cls, "UBERON:8480016",
+            PermissibleValue(
+                text="UBERON:8480016",
+                description="perirenal space"))
+        setattr(cls, "UBERON:8480017",
+            PermissibleValue(
+                text="UBERON:8480017",
+                description="anterior pararenal space"))
+        setattr(cls, "UBERON:8480018",
+            PermissibleValue(
+                text="UBERON:8480018",
+                description="posterior pararenal space"))
+        setattr(cls, "UBERON:8480019",
+            PermissibleValue(
+                text="UBERON:8480019",
+                description="perirectal space"))
+        setattr(cls, "UBERON:8480020",
+            PermissibleValue(
+                text="UBERON:8480020",
+                description="perivesical space"))
+        setattr(cls, "UBERON:8480021",
+            PermissibleValue(
+                text="UBERON:8480021",
+                description="prevesical space"))
+        setattr(cls, "UBERON:8480022",
+            PermissibleValue(
+                text="UBERON:8480022",
+                description="piriform sinus"))
+        setattr(cls, "UBERON:8480023",
+            PermissibleValue(
+                text="UBERON:8480023",
+                description="skin of lateral lumbar region of abdomen"))
+        setattr(cls, "UBERON:8480024",
+            PermissibleValue(
+                text="UBERON:8480024",
+                description="skin of sacral region"))
+        setattr(cls, "UBERON:8480025",
+            PermissibleValue(
+                text="UBERON:8480025",
+                description="skin of clavicle region"))
+        setattr(cls, "UBERON:8480026",
+            PermissibleValue(
+                text="UBERON:8480026",
+                description="skin of iliac crest region"))
+        setattr(cls, "UBERON:8480027",
+            PermissibleValue(
+                text="UBERON:8480027",
+                description="temple"))
+        setattr(cls, "UBERON:8480028",
+            PermissibleValue(
+                text="UBERON:8480028",
+                description="skin of temple"))
+        setattr(cls, "UBERON:8480029",
+            PermissibleValue(
+                text="UBERON:8480029",
+                description="skin of external genitalia"))
+        setattr(cls, "UBERON:8480030",
+            PermissibleValue(
+                text="UBERON:8480030",
+                description="skin of breast"))
+        setattr(cls, "UBERON:8480031",
+            PermissibleValue(
+                text="UBERON:8480031",
+                description="tooth root apical papilla"))
+        setattr(cls, "UBERON:8480032",
+            PermissibleValue(
+                text="UBERON:8480032",
+                description="neck of pancreas"))
+        setattr(cls, "UBERON:8480033",
+            PermissibleValue(
+                text="UBERON:8480033",
+                description="interlobular stroma of mammary gland"))
+        setattr(cls, "UBERON:8480034",
+            PermissibleValue(
+                text="UBERON:8480034",
+                description="intralobular stroma of mammary gland"))
+        setattr(cls, "UBERON:8480035",
+            PermissibleValue(
+                text="UBERON:8480035",
+                description="cervical transformation zone epithelium"))
+        setattr(cls, "UBERON:8480036",
+            PermissibleValue(
+                text="UBERON:8480036",
+                description="posterior wall of the glottis"))
+        setattr(cls, "UBERON:8480037",
+            PermissibleValue(
+                text="UBERON:8480037",
+                description="subserosa of fallopian tube"))
+        setattr(cls, "UBERON:8480038",
+            PermissibleValue(
+                text="UBERON:8480038",
+                description="meningeal myeloid tissue"))
+        setattr(cls, "UBERON:8480039",
+            PermissibleValue(
+                text="UBERON:8480039",
+                description="Oka organ"))
         setattr(cls, "UBERON:8480040",
             PermissibleValue(
                 text="UBERON:8480040",
                 description="ovarian fluid"))
+        setattr(cls, "UBERON:8480041",
+            PermissibleValue(
+                text="UBERON:8480041",
+                description="testicular sheath"))
+        setattr(cls, "UBERON:8480042",
+            PermissibleValue(
+                text="UBERON:8480042",
+                description="menstrual fluid"))
+        setattr(cls, "UBERON:8480043",
+            PermissibleValue(
+                text="UBERON:8480043",
+                description="pelvic wall"))
+        setattr(cls, "UBERON:8480044",
+            PermissibleValue(
+                text="UBERON:8480044",
+                description="long bone cartilage element"))
         setattr(cls, "UBERON:8480045",
             PermissibleValue(
                 text="UBERON:8480045",
                 description="subiliac lymph node"))
+        setattr(cls, "UBERON:8480046",
+            PermissibleValue(
+                text="UBERON:8480046",
+                description="mucosa of rumen"))
+        setattr(cls, "UBERON:8480047",
+            PermissibleValue(
+                text="UBERON:8480047",
+                description="retroauricular region"))
         setattr(cls, "UBERON:8480048",
             PermissibleValue(
                 text="UBERON:8480048",
@@ -48724,10 +57984,510 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8480050",
                 description="skin of calf"))
+        setattr(cls, "UBERON:8480051",
+            PermissibleValue(
+                text="UBERON:8480051",
+                description="thoracolumbar junction"))
+        setattr(cls, "UBERON:8480052",
+            PermissibleValue(
+                text="UBERON:8480052",
+                description="skin of thoracolumbar junction"))
+        setattr(cls, "UBERON:8480053",
+            PermissibleValue(
+                text="UBERON:8480053",
+                description="skin of umbilical area"))
+        setattr(cls, "UBERON:8480054",
+            PermissibleValue(
+                text="UBERON:8480054",
+                description="ileocecal lymph node"))
+        setattr(cls, "UBERON:8480055",
+            PermissibleValue(
+                text="UBERON:8480055",
+                description="subcarinal lymph node"))
+        setattr(cls, "UBERON:8480056",
+            PermissibleValue(
+                text="UBERON:8480056",
+                description="left supraclavicular lymph node"))
+        setattr(cls, "UBERON:8480057",
+            PermissibleValue(
+                text="UBERON:8480057",
+                description="right supraclavicular lymph node"))
+        setattr(cls, "UBERON:8480058",
+            PermissibleValue(
+                text="UBERON:8480058",
+                description="Virchow's lymph node"))
+        setattr(cls, "UBERON:8480059",
+            PermissibleValue(
+                text="UBERON:8480059",
+                description="perigastric lymph node"))
+        setattr(cls, "UBERON:8480060",
+            PermissibleValue(
+                text="UBERON:8480060",
+                description="paraspinal region"))
+        setattr(cls, "UBERON:8480061",
+            PermissibleValue(
+                text="UBERON:8480061",
+                description="pericardial region"))
+        setattr(cls, "UBERON:8480062",
+            PermissibleValue(
+                text="UBERON:8480062",
+                description="femoral head cartilage"))
+        setattr(cls, "UBERON:8480063",
+            PermissibleValue(
+                text="UBERON:8480063",
+                description="dorsal iris"))
+        setattr(cls, "UBERON:8480064",
+            PermissibleValue(
+                text="UBERON:8480064",
+                description="secretory coil of eccrine sweat gland"))
         setattr(cls, "UBERON:8480065",
             PermissibleValue(
                 text="UBERON:8480065",
                 description="labial gland"))
+        setattr(cls, "UBERON:8480066",
+            PermissibleValue(
+                text="UBERON:8480066",
+                description="interscapular region"))
+        setattr(cls, "UBERON:8480067",
+            PermissibleValue(
+                text="UBERON:8480067",
+                description="bone marrow microvessel"))
+        setattr(cls, "UBERON:8480068",
+            PermissibleValue(
+                text="UBERON:8480068",
+                description="saphenous vein smooth muscle tissue"))
+        setattr(cls, "UBERON:8480069",
+            PermissibleValue(
+                text="UBERON:8480069",
+                description="temporofacial region"))
+        setattr(cls, "UBERON:8480070",
+            PermissibleValue(
+                text="UBERON:8480070",
+                description="lateral wall of nasal cavity"))
+        setattr(cls, "UBERON:8480072",
+            PermissibleValue(
+                text="UBERON:8480072",
+                description="skin of shin"))
+        setattr(cls, "UBERON:8480073",
+            PermissibleValue(
+                text="UBERON:8480073",
+                description="skin of scapula region"))
+        setattr(cls, "UBERON:8480074",
+            PermissibleValue(
+                text="UBERON:8480074",
+                description="skin of gonad"))
+        setattr(cls, "UBERON:8490000",
+            PermissibleValue(
+                text="UBERON:8490000",
+                description="right upper third secondary molar tooth"))
+        setattr(cls, "UBERON:8490001",
+            PermissibleValue(
+                text="UBERON:8490001",
+                description="right upper second secondary molar tooth"))
+        setattr(cls, "UBERON:8490002",
+            PermissibleValue(
+                text="UBERON:8490002",
+                description="right upper first secondary molar tooth"))
+        setattr(cls, "UBERON:8490003",
+            PermissibleValue(
+                text="UBERON:8490003",
+                description="right upper second secondary premolar tooth"))
+        setattr(cls, "UBERON:8490004",
+            PermissibleValue(
+                text="UBERON:8490004",
+                description="right upper first secondary premolar tooth"))
+        setattr(cls, "UBERON:8490005",
+            PermissibleValue(
+                text="UBERON:8490005",
+                description="right upper secondary canine tooth"))
+        setattr(cls, "UBERON:8490006",
+            PermissibleValue(
+                text="UBERON:8490006",
+                description="right upper lateral secondary incisor tooth"))
+        setattr(cls, "UBERON:8490007",
+            PermissibleValue(
+                text="UBERON:8490007",
+                description="right upper central secondary incisor tooth"))
+        setattr(cls, "UBERON:8490008",
+            PermissibleValue(
+                text="UBERON:8490008",
+                description="right lower third secondary molar tooth"))
+        setattr(cls, "UBERON:8490009",
+            PermissibleValue(
+                text="UBERON:8490009",
+                description="right lower second secondary molar tooth"))
+        setattr(cls, "UBERON:8490010",
+            PermissibleValue(
+                text="UBERON:8490010",
+                description="right lower first secondary molar tooth"))
+        setattr(cls, "UBERON:8490011",
+            PermissibleValue(
+                text="UBERON:8490011",
+                description="right lower second secondary premolar tooth"))
+        setattr(cls, "UBERON:8490012",
+            PermissibleValue(
+                text="UBERON:8490012",
+                description="right lower first secondary premolar tooth"))
+        setattr(cls, "UBERON:8490013",
+            PermissibleValue(
+                text="UBERON:8490013",
+                description="right lower secondary canine tooth"))
+        setattr(cls, "UBERON:8490014",
+            PermissibleValue(
+                text="UBERON:8490014",
+                description="right lower lateral secondary incisor tooth"))
+        setattr(cls, "UBERON:8490015",
+            PermissibleValue(
+                text="UBERON:8490015",
+                description="right lower central secondary incisor tooth"))
+        setattr(cls, "UBERON:8490016",
+            PermissibleValue(
+                text="UBERON:8490016",
+                description="right upper second primary molar tooth"))
+        setattr(cls, "UBERON:8490017",
+            PermissibleValue(
+                text="UBERON:8490017",
+                description="right upper first primary molar tooth"))
+        setattr(cls, "UBERON:8490018",
+            PermissibleValue(
+                text="UBERON:8490018",
+                description="right upper primary canine tooth"))
+        setattr(cls, "UBERON:8490019",
+            PermissibleValue(
+                text="UBERON:8490019",
+                description="right upper lateral primary incisor tooth"))
+        setattr(cls, "UBERON:8490020",
+            PermissibleValue(
+                text="UBERON:8490020",
+                description="right upper central primary incisor tooth"))
+        setattr(cls, "UBERON:8490021",
+            PermissibleValue(
+                text="UBERON:8490021",
+                description="right lower second primary molar tooth"))
+        setattr(cls, "UBERON:8490022",
+            PermissibleValue(
+                text="UBERON:8490022",
+                description="right lower first primary molar tooth"))
+        setattr(cls, "UBERON:8490023",
+            PermissibleValue(
+                text="UBERON:8490023",
+                description="right lower primary canine tooth"))
+        setattr(cls, "UBERON:8490024",
+            PermissibleValue(
+                text="UBERON:8490024",
+                description="right lower lateral primary incisor tooth"))
+        setattr(cls, "UBERON:8490025",
+            PermissibleValue(
+                text="UBERON:8490025",
+                description="right lower central primary incisor tooth"))
+        setattr(cls, "UBERON:8490026",
+            PermissibleValue(
+                text="UBERON:8490026",
+                description="left upper third secondary molar tooth"))
+        setattr(cls, "UBERON:8490027",
+            PermissibleValue(
+                text="UBERON:8490027",
+                description="left upper second secondary molar tooth"))
+        setattr(cls, "UBERON:8490028",
+            PermissibleValue(
+                text="UBERON:8490028",
+                description="left upper first secondary molar tooth"))
+        setattr(cls, "UBERON:8490029",
+            PermissibleValue(
+                text="UBERON:8490029",
+                description="left upper second secondary premolar tooth"))
+        setattr(cls, "UBERON:8490030",
+            PermissibleValue(
+                text="UBERON:8490030",
+                description="left upper first secondary premolar tooth"))
+        setattr(cls, "UBERON:8490031",
+            PermissibleValue(
+                text="UBERON:8490031",
+                description="left upper secondary canine tooth"))
+        setattr(cls, "UBERON:8490032",
+            PermissibleValue(
+                text="UBERON:8490032",
+                description="left upper lateral secondary incisor tooth"))
+        setattr(cls, "UBERON:8490033",
+            PermissibleValue(
+                text="UBERON:8490033",
+                description="left upper central secondary incisor tooth"))
+        setattr(cls, "UBERON:8490034",
+            PermissibleValue(
+                text="UBERON:8490034",
+                description="left lower third secondary molar tooth"))
+        setattr(cls, "UBERON:8490035",
+            PermissibleValue(
+                text="UBERON:8490035",
+                description="left lower second secondary molar tooth"))
+        setattr(cls, "UBERON:8490036",
+            PermissibleValue(
+                text="UBERON:8490036",
+                description="left lower first secondary molar tooth"))
+        setattr(cls, "UBERON:8490037",
+            PermissibleValue(
+                text="UBERON:8490037",
+                description="left lower second secondary premolar tooth"))
+        setattr(cls, "UBERON:8490038",
+            PermissibleValue(
+                text="UBERON:8490038",
+                description="left lower first secondary premolar tooth"))
+        setattr(cls, "UBERON:8490039",
+            PermissibleValue(
+                text="UBERON:8490039",
+                description="left lower secondary canine tooth"))
+        setattr(cls, "UBERON:8490040",
+            PermissibleValue(
+                text="UBERON:8490040",
+                description="left lower lateral secondary incisor tooth"))
+        setattr(cls, "UBERON:8490041",
+            PermissibleValue(
+                text="UBERON:8490041",
+                description="left lower central secondary incisor tooth"))
+        setattr(cls, "UBERON:8490042",
+            PermissibleValue(
+                text="UBERON:8490042",
+                description="left upper second primary molar tooth"))
+        setattr(cls, "UBERON:8490043",
+            PermissibleValue(
+                text="UBERON:8490043",
+                description="left upper first primary molar tooth"))
+        setattr(cls, "UBERON:8490044",
+            PermissibleValue(
+                text="UBERON:8490044",
+                description="left upper primary canine tooth"))
+        setattr(cls, "UBERON:8490045",
+            PermissibleValue(
+                text="UBERON:8490045",
+                description="left upper lateral primary incisor tooth"))
+        setattr(cls, "UBERON:8490046",
+            PermissibleValue(
+                text="UBERON:8490046",
+                description="left upper central primary incisor tooth"))
+        setattr(cls, "UBERON:8490047",
+            PermissibleValue(
+                text="UBERON:8490047",
+                description="left lower second primary molar tooth"))
+        setattr(cls, "UBERON:8490048",
+            PermissibleValue(
+                text="UBERON:8490048",
+                description="left lower first primary molar tooth"))
+        setattr(cls, "UBERON:8490049",
+            PermissibleValue(
+                text="UBERON:8490049",
+                description="left lower primary canine tooth"))
+        setattr(cls, "UBERON:8490050",
+            PermissibleValue(
+                text="UBERON:8490050",
+                description="left lower lateral primary incisor tooth"))
+        setattr(cls, "UBERON:8490051",
+            PermissibleValue(
+                text="UBERON:8490051",
+                description="left lower central primary incisor tooth"))
+        setattr(cls, "UBERON:8500000",
+            PermissibleValue(
+                text="UBERON:8500000",
+                description="cranial temporal line"))
+        setattr(cls, "UBERON:8500001",
+            PermissibleValue(
+                text="UBERON:8500001",
+                description="euryon"))
+        setattr(cls, "UBERON:8500002",
+            PermissibleValue(
+                text="UBERON:8500002",
+                description="supraorbital foramen"))
+        setattr(cls, "UBERON:8500003",
+            PermissibleValue(
+                text="UBERON:8500003",
+                description="supraorbitale"))
+        setattr(cls, "UBERON:8500004",
+            PermissibleValue(
+                text="UBERON:8500004",
+                description="entorbitale"))
+        setattr(cls, "UBERON:8500005",
+            PermissibleValue(
+                text="UBERON:8500005",
+                description="facial tubercle"))
+        setattr(cls, "UBERON:8500006",
+            PermissibleValue(
+                text="UBERON:8500006",
+                description="nasal notch"))
+        setattr(cls, "UBERON:8500007",
+            PermissibleValue(
+                text="UBERON:8500007",
+                description="staphylon"))
+        setattr(cls, "UBERON:8600000",
+            PermissibleValue(
+                text="UBERON:8600000",
+                description="lobular bronchiole"))
+        setattr(cls, "UBERON:8600001",
+            PermissibleValue(
+                text="UBERON:8600001",
+                description="epithelium of lobular bronchiole"))
+        setattr(cls, "UBERON:8600002",
+            PermissibleValue(
+                text="UBERON:8600002",
+                description="mucosa of lobular bronchiole"))
+        setattr(cls, "UBERON:8600003",
+            PermissibleValue(
+                text="UBERON:8600003",
+                description="smooth muscle tissue of lobular bronchiole"))
+        setattr(cls, "UBERON:8600004",
+            PermissibleValue(
+                text="UBERON:8600004",
+                description="visceral muscle tissue"))
+        setattr(cls, "UBERON:8600005",
+            PermissibleValue(
+                text="UBERON:8600005",
+                description="visceral smooth muscle tissue"))
+        setattr(cls, "UBERON:8600006",
+            PermissibleValue(
+                text="UBERON:8600006",
+                description="visceral striated muscle tissue"))
+        setattr(cls, "UBERON:8600007",
+            PermissibleValue(
+                text="UBERON:8600007",
+                description="visceral transversely striated muscle tissue"))
+        setattr(cls, "UBERON:8600008",
+            PermissibleValue(
+                text="UBERON:8600008",
+                description="visceral obliquely striated muscle tissue"))
+        setattr(cls, "UBERON:8600009",
+            PermissibleValue(
+                text="UBERON:8600009",
+                description="subsegmental bronchus"))
+        setattr(cls, "UBERON:8600010",
+            PermissibleValue(
+                text="UBERON:8600010",
+                description="bronchial submucosal gland ciliated duct"))
+        setattr(cls, "UBERON:8600011",
+            PermissibleValue(
+                text="UBERON:8600011",
+                description="tracheal submucosal gland ciliated duct"))
+        setattr(cls, "UBERON:8600012",
+            PermissibleValue(
+                text="UBERON:8600012",
+                description="submucosal gland acinus"))
+        setattr(cls, "UBERON:8600013",
+            PermissibleValue(
+                text="UBERON:8600013",
+                description="submucosal gland collecting duct"))
+        setattr(cls, "UBERON:8600014",
+            PermissibleValue(
+                text="UBERON:8600014",
+                description="submucosal gland ciliated duct"))
+        setattr(cls, "UBERON:8600015",
+            PermissibleValue(
+                text="UBERON:8600015",
+                description="posterior sector of right lobe of liver"))
+        setattr(cls, "UBERON:8600016",
+            PermissibleValue(
+                text="UBERON:8600016",
+                description="anterior sector of right lobe of liver"))
+        setattr(cls, "UBERON:8600017",
+            PermissibleValue(
+                text="UBERON:8600017",
+                description="bronchopulmonary segment"))
+        setattr(cls, "UBERON:8600018",
+            PermissibleValue(
+                text="UBERON:8600018",
+                description="neuroendocrine system"))
+        setattr(cls, "UBERON:8600019",
+            PermissibleValue(
+                text="UBERON:8600019",
+                description="placental basal plate"))
+        setattr(cls, "UBERON:8600020",
+            PermissibleValue(
+                text="UBERON:8600020",
+                description="placental septum"))
+        setattr(cls, "UBERON:8600021",
+            PermissibleValue(
+                text="UBERON:8600021",
+                description="chorionic plate blood vessel"))
+        setattr(cls, "UBERON:8600022",
+            PermissibleValue(
+                text="UBERON:8600022",
+                description="pulmonary interlobular septum"))
+        setattr(cls, "UBERON:8600023",
+            PermissibleValue(
+                text="UBERON:8600023",
+                description="placental villous stroma"))
+        setattr(cls, "UBERON:8600024",
+            PermissibleValue(
+                text="UBERON:8600024",
+                description="pulmonary venule"))
+        setattr(cls, "UBERON:8600025",
+            PermissibleValue(
+                text="UBERON:8600025",
+                description="intervillous space"))
+        setattr(cls, "UBERON:8600026",
+            PermissibleValue(
+                text="UBERON:8600026",
+                description="chorionic villous tree"))
+        setattr(cls, "UBERON:8600027",
+            PermissibleValue(
+                text="UBERON:8600027",
+                description="chorionic stem villus"))
+        setattr(cls, "UBERON:8600028",
+            PermissibleValue(
+                text="UBERON:8600028",
+                description="chorionic mesenchymal villus"))
+        setattr(cls, "UBERON:8600029",
+            PermissibleValue(
+                text="UBERON:8600029",
+                description="chorionic immature intermediate villus"))
+        setattr(cls, "UBERON:8600030",
+            PermissibleValue(
+                text="UBERON:8600030",
+                description="chorionic terminal villus"))
+        setattr(cls, "UBERON:8600031",
+            PermissibleValue(
+                text="UBERON:8600031",
+                description="chorionic mature intermediate villus"))
+        setattr(cls, "UBERON:8600032",
+            PermissibleValue(
+                text="UBERON:8600032",
+                description="chorionic floating villus"))
+        setattr(cls, "UBERON:8600033",
+            PermissibleValue(
+                text="UBERON:8600033",
+                description="chorionic anchoring villus"))
+        setattr(cls, "UBERON:8600034",
+            PermissibleValue(
+                text="UBERON:8600034",
+                description="jejunum lamina propria"))
+        setattr(cls, "UBERON:8600035",
+            PermissibleValue(
+                text="UBERON:8600035",
+                description="ileum lamina propria"))
+        setattr(cls, "UBERON:8600036",
+            PermissibleValue(
+                text="UBERON:8600036",
+                description="kidney loop of Henle long descending thin limb outer medulla"))
+        setattr(cls, "UBERON:8600037",
+            PermissibleValue(
+                text="UBERON:8600037",
+                description="kidney loop of Henle long descending thin limb inner medulla"))
+        setattr(cls, "UBERON:8600038",
+            PermissibleValue(
+                text="UBERON:8600038",
+                description="placental disc"))
+        setattr(cls, "UBERON:8600039",
+            PermissibleValue(
+                text="UBERON:8600039",
+                description="chorionic villous mesenchyme"))
+        setattr(cls, "UBERON:8600040",
+            PermissibleValue(
+                text="UBERON:8600040",
+                description="chorionic stem villous blood vessel"))
+        setattr(cls, "UBERON:8600041",
+            PermissibleValue(
+                text="UBERON:8600041",
+                description="chorionic terminal villous capillary"))
+        setattr(cls, "UBERON:8600042",
+            PermissibleValue(
+                text="UBERON:8600042",
+                description="endometrial lymphatic vessel"))
         setattr(cls, "UBERON:8600043",
             PermissibleValue(
                 text="UBERON:8600043",
@@ -48756,6 +58516,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8600049",
                 description="dome of urinary bladder"))
+        setattr(cls, "UBERON:8600050",
+            PermissibleValue(
+                text="UBERON:8600050",
+                description="trophoblast island"))
         setattr(cls, "UBERON:8600051",
             PermissibleValue(
                 text="UBERON:8600051",
@@ -48796,10 +58560,22 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8600060",
                 description="subsegmental pulmonary artery"))
+        setattr(cls, "UBERON:8600061",
+            PermissibleValue(
+                text="UBERON:8600061",
+                description="intra-acinar venule"))
         setattr(cls, "UBERON:8600062",
             PermissibleValue(
                 text="UBERON:8600062",
                 description="thyrocervical trunk"))
+        setattr(cls, "UBERON:8600063",
+            PermissibleValue(
+                text="UBERON:8600063",
+                description="septal perforating artery"))
+        setattr(cls, "UBERON:8600064",
+            PermissibleValue(
+                text="UBERON:8600064",
+                description="posterolateral artery"))
         setattr(cls, "UBERON:8600065",
             PermissibleValue(
                 text="UBERON:8600065",
@@ -48808,6 +58584,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8600066",
                 description="basivertebral vein"))
+        setattr(cls, "UBERON:8600067",
+            PermissibleValue(
+                text="UBERON:8600067",
+                description="bronchial venule"))
+        setattr(cls, "UBERON:8600068",
+            PermissibleValue(
+                text="UBERON:8600068",
+                description="mental vein"))
         setattr(cls, "UBERON:8600069",
             PermissibleValue(
                 text="UBERON:8600069",
@@ -48820,6 +58604,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8600071",
                 description="sublingual vein"))
+        setattr(cls, "UBERON:8600072",
+            PermissibleValue(
+                text="UBERON:8600072",
+                description="glandular venous plexus"))
+        setattr(cls, "UBERON:8600073",
+            PermissibleValue(
+                text="UBERON:8600073",
+                description="circumflex humeral vein"))
         setattr(cls, "UBERON:8600074",
             PermissibleValue(
                 text="UBERON:8600074",
@@ -48840,6 +58632,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8600078",
                 description="ascending pharyngeal artery"))
+        setattr(cls, "UBERON:8600079",
+            PermissibleValue(
+                text="UBERON:8600079",
+                description="dural artery"))
         setattr(cls, "UBERON:8600080",
             PermissibleValue(
                 text="UBERON:8600080",
@@ -48856,6 +58652,18 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8600083",
                 description="fibular vein"))
+        setattr(cls, "UBERON:8600084",
+            PermissibleValue(
+                text="UBERON:8600084",
+                description="prostatic venule"))
+        setattr(cls, "UBERON:8600085",
+            PermissibleValue(
+                text="UBERON:8600085",
+                description="hepatic portal venule"))
+        setattr(cls, "UBERON:8600086",
+            PermissibleValue(
+                text="UBERON:8600086",
+                description="incisor artery"))
         setattr(cls, "UBERON:8600087",
             PermissibleValue(
                 text="UBERON:8600087",
@@ -48864,6 +58672,14 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8600088",
                 description="supratrochlear vein"))
+        setattr(cls, "UBERON:8600089",
+            PermissibleValue(
+                text="UBERON:8600089",
+                description="transverse nasal root vein"))
+        setattr(cls, "UBERON:8600090",
+            PermissibleValue(
+                text="UBERON:8600090",
+                description="hypophyseal vein"))
         setattr(cls, "UBERON:8600091",
             PermissibleValue(
                 text="UBERON:8600091",
@@ -48876,6 +58692,10 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8600093",
                 description="ulnar vein"))
+        setattr(cls, "UBERON:8600094",
+            PermissibleValue(
+                text="UBERON:8600094",
+                description="intra-acinar arteriole"))
         setattr(cls, "UBERON:8600095",
             PermissibleValue(
                 text="UBERON:8600095",
@@ -48956,14 +58776,738 @@ class TissueOrOrganOfOriginUberonEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="UBERON:8600114",
                 description="left proximal ureter"))
+        setattr(cls, "UBERON:8600115",
+            PermissibleValue(
+                text="UBERON:8600115",
+                description="right intramural ureter"))
+        setattr(cls, "UBERON:8600116",
+            PermissibleValue(
+                text="UBERON:8600116",
+                description="left intramural ureter"))
+        setattr(cls, "UBERON:8600117",
+            PermissibleValue(
+                text="UBERON:8600117",
+                description="antimesosalpinx"))
+        setattr(cls, "UBERON:8600118",
+            PermissibleValue(
+                text="UBERON:8600118",
+                description="myenteric ganglion"))
+        setattr(cls, "UBERON:8600119",
+            PermissibleValue(
+                text="UBERON:8600119",
+                description="myenteric ganglion of small intestine"))
+        setattr(cls, "UBERON:8600120",
+            PermissibleValue(
+                text="UBERON:8600120",
+                description="atrial intrinsic cardiac ganglion"))
+        setattr(cls, "UBERON:8600121",
+            PermissibleValue(
+                text="UBERON:8600121",
+                description="lumbar ganglion"))
+        setattr(cls, "UBERON:8600122",
+            PermissibleValue(
+                text="UBERON:8600122",
+                description="sacral ganglion"))
+        setattr(cls, "UBERON:8600123",
+            PermissibleValue(
+                text="UBERON:8600123",
+                description="lower airway ganglion"))
+        setattr(cls, "UBERON:8600124",
+            PermissibleValue(
+                text="UBERON:8600124",
+                description="fallopian tube epithelium"))
+        setattr(cls, "UBERON:8600125",
+            PermissibleValue(
+                text="UBERON:8600125",
+                description="superior fallopian tube epithelium"))
+        setattr(cls, "UBERON:8600126",
+            PermissibleValue(
+                text="UBERON:8600126",
+                description="inferior fallopian tube epithelium"))
+        setattr(cls, "UBERON:8600127",
+            PermissibleValue(
+                text="UBERON:8600127",
+                description="mesosalpinx-proximal fallopian tube epithelium"))
+        setattr(cls, "UBERON:8600128",
+            PermissibleValue(
+                text="UBERON:8600128",
+                description="antimesosalpinx-proximal fallopian tube epithelium"))
+        setattr(cls, "UBERON:8600129",
+            PermissibleValue(
+                text="UBERON:8600129",
+                description="corpus hemorrhagicum"))
+        setattr(cls, "UBERON:8600130",
+            PermissibleValue(
+                text="UBERON:8600130",
+                description="superior muscular layer of fallopian tube"))
+        setattr(cls, "UBERON:8600131",
+            PermissibleValue(
+                text="UBERON:8600131",
+                description="inferior muscular layer of fallopian tube"))
+        setattr(cls, "UBERON:8600132",
+            PermissibleValue(
+                text="UBERON:8600132",
+                description="mesosalpinx-proximal muscular layer of fallopian tube"))
+        setattr(cls, "UBERON:8600133",
+            PermissibleValue(
+                text="UBERON:8600133",
+                description="antimesosalpinx-proximal muscular layer of fallopian tube"))
+        setattr(cls, "UBERON:8600134",
+            PermissibleValue(
+                text="UBERON:8600134",
+                description="ascending colon lamina propria"))
+        setattr(cls, "UBERON:8600135",
+            PermissibleValue(
+                text="UBERON:8600135",
+                description="descending colon lamina propria"))
+        setattr(cls, "UBERON:8600136",
+            PermissibleValue(
+                text="UBERON:8600136",
+                description="sigmoid colon lamina propria"))
+        setattr(cls, "UBERON:8600137",
+            PermissibleValue(
+                text="UBERON:8600137",
+                description="transverse colon lamina propria"))
+        setattr(cls, "UBERON:8600138",
+            PermissibleValue(
+                text="UBERON:8600138",
+                description="stomach lamina propria"))
+        setattr(cls, "UBERON:8600139",
+            PermissibleValue(
+                text="UBERON:8600139",
+                description="caecum lamina propria"))
+        setattr(cls, "UBERON:8600140",
+            PermissibleValue(
+                text="UBERON:8600140",
+                description="rectum lamina propria"))
+        setattr(cls, "UBERON:8600141",
+            PermissibleValue(
+                text="UBERON:8600141",
+                description="distal surface of tooth"))
+        setattr(cls, "UBERON:8600142",
+            PermissibleValue(
+                text="UBERON:8600142",
+                description="incisal surface of tooth"))
+        setattr(cls, "UBERON:8600143",
+            PermissibleValue(
+                text="UBERON:8600143",
+                description="labial surface of tooth"))
+        setattr(cls, "UBERON:8600144",
+            PermissibleValue(
+                text="UBERON:8600144",
+                description="lingual surface of tooth"))
+        setattr(cls, "UBERON:8600145",
+            PermissibleValue(
+                text="UBERON:8600145",
+                description="mesial surface of tooth"))
+        setattr(cls, "UBERON:8600146",
+            PermissibleValue(
+                text="UBERON:8600146",
+                description="buccal surface of tooth"))
+        setattr(cls, "UBERON:8600147",
+            PermissibleValue(
+                text="UBERON:8600147",
+                description="facial surface of tooth"))
+        setattr(cls, "UBERON:8600148",
+            PermissibleValue(
+                text="UBERON:8600148",
+                description="tooth surface structure"))
+        setattr(cls, "UBERON:8600149",
+            PermissibleValue(
+                text="UBERON:8600149",
+                description="occlusal surface of tooth"))
+        setattr(cls, "UBERON:8700000",
+            PermissibleValue(
+                text="UBERON:8700000",
+                description="aorta-gonad-mesonephros"))
+        setattr(cls, "UBERON:8700001",
+            PermissibleValue(
+                text="UBERON:8700001",
+                description="follicle associated epithelium"))
+        setattr(cls, "UBERON:8700002",
+            PermissibleValue(
+                text="UBERON:8700002",
+                description="stratum spinosum of esophageal epithelium"))
+        setattr(cls, "UBERON:8700003",
+            PermissibleValue(
+                text="UBERON:8700003",
+                description="stratum corneum of esophageal epithelium"))
         setattr(cls, "UBERON:8850000",
             PermissibleValue(
                 text="UBERON:8850000",
                 description="lumen of pulmonary alveolus"))
+        setattr(cls, "UBERON:8850001",
+            PermissibleValue(
+                text="UBERON:8850001",
+                description="epithelium of anorectum"))
         setattr(cls, "UBERON:8900000",
             PermissibleValue(
                 text="UBERON:8900000",
                 description="sensory corpuscle"))
+        setattr(cls, "UBERON:8910000",
+            PermissibleValue(
+                text="UBERON:8910000",
+                description="stomatogastric nervous system"))
+        setattr(cls, "UBERON:8910001",
+            PermissibleValue(
+                text="UBERON:8910001",
+                description="stomatogastric ganglion"))
+        setattr(cls, "UBERON:8910010",
+            PermissibleValue(
+                text="UBERON:8910010",
+                description="stomatogastric nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910011",
+            PermissibleValue(
+                text="UBERON:8910011",
+                description="dorsal gastric nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910012",
+            PermissibleValue(
+                text="UBERON:8910012",
+                description="gastropyloric nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910013",
+            PermissibleValue(
+                text="UBERON:8910013",
+                description="lateral gastric nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910014",
+            PermissibleValue(
+                text="UBERON:8910014",
+                description="lateral ventricular nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910015",
+            PermissibleValue(
+                text="UBERON:8910015",
+                description="pyloric nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910016",
+            PermissibleValue(
+                text="UBERON:8910016",
+                description="pyloric dilator nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910017",
+            PermissibleValue(
+                text="UBERON:8910017",
+                description="inferior esophageal nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910018",
+            PermissibleValue(
+                text="UBERON:8910018",
+                description="superior esophageal nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910019",
+            PermissibleValue(
+                text="UBERON:8910019",
+                description="esophageal nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910020",
+            PermissibleValue(
+                text="UBERON:8910020",
+                description="esophageal ganglion (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910021",
+            PermissibleValue(
+                text="UBERON:8910021",
+                description="commissural ganglion (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910022",
+            PermissibleValue(
+                text="UBERON:8910022",
+                description="junction of superior esophageal nerve and stomatogastric nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910023",
+            PermissibleValue(
+                text="UBERON:8910023",
+                description="median ventricular nerve (sensu Cancer borealis)"))
+        setattr(cls, "UBERON:8910024",
+            PermissibleValue(
+                text="UBERON:8910024",
+                description="airway hillock"))
+        setattr(cls, "UBERON:8920000",
+            PermissibleValue(
+                text="UBERON:8920000",
+                description="anterior ciliary artery"))
+        setattr(cls, "UBERON:8920001",
+            PermissibleValue(
+                text="UBERON:8920001",
+                description="short posterior ciliary artery"))
+        setattr(cls, "UBERON:8920002",
+            PermissibleValue(
+                text="UBERON:8920002",
+                description="long posterior ciliary artery"))
+        setattr(cls, "UBERON:8920003",
+            PermissibleValue(
+                text="UBERON:8920003",
+                description="right marginal artery"))
+        setattr(cls, "UBERON:8920004",
+            PermissibleValue(
+                text="UBERON:8920004",
+                description="segmental renal artery"))
+        setattr(cls, "UBERON:8920005",
+            PermissibleValue(
+                text="UBERON:8920005",
+                description="superior segmental renal artery"))
+        setattr(cls, "UBERON:8920006",
+            PermissibleValue(
+                text="UBERON:8920006",
+                description="anterior superior segmental renal artery"))
+        setattr(cls, "UBERON:8920007",
+            PermissibleValue(
+                text="UBERON:8920007",
+                description="anterior inferior segmental renal artery"))
+        setattr(cls, "UBERON:8920008",
+            PermissibleValue(
+                text="UBERON:8920008",
+                description="inferior segmental renal artery"))
+        setattr(cls, "UBERON:8920009",
+            PermissibleValue(
+                text="UBERON:8920009",
+                description="posterior segmental renal artery"))
+        setattr(cls, "UBERON:8920010",
+            PermissibleValue(
+                text="UBERON:8920010",
+                description="left marginal vein"))
+        setattr(cls, "UBERON:8920011",
+            PermissibleValue(
+                text="UBERON:8920011",
+                description="stellate vein of kidney"))
+        setattr(cls, "UBERON:8920012",
+            PermissibleValue(
+                text="UBERON:8920012",
+                description="segmental renal vein"))
+        setattr(cls, "UBERON:8920013",
+            PermissibleValue(
+                text="UBERON:8920013",
+                description="anterior ciliary vein"))
+        setattr(cls, "UBERON:8920014",
+            PermissibleValue(
+                text="UBERON:8920014",
+                description="left bronchial vein"))
+        setattr(cls, "UBERON:8920015",
+            PermissibleValue(
+                text="UBERON:8920015",
+                description="right bronchial vein"))
+        setattr(cls, "UBERON:8920016",
+            PermissibleValue(
+                text="UBERON:8920016",
+                description="right inferior pulmonary vein"))
+        setattr(cls, "UBERON:8920017",
+            PermissibleValue(
+                text="UBERON:8920017",
+                description="left inferior pulmonary vein"))
+        setattr(cls, "UBERON:8920018",
+            PermissibleValue(
+                text="UBERON:8920018",
+                description="right superior pulmonary vein"))
+        setattr(cls, "UBERON:8920019",
+            PermissibleValue(
+                text="UBERON:8920019",
+                description="left superior pulmonary vein"))
+        setattr(cls, "UBERON:8920020",
+            PermissibleValue(
+                text="UBERON:8920020",
+                description="dorsal pancreatic artery"))
+        setattr(cls, "UBERON:8920021",
+            PermissibleValue(
+                text="UBERON:8920021",
+                description="greater pancreatic artery"))
+        setattr(cls, "UBERON:8920022",
+            PermissibleValue(
+                text="UBERON:8920022",
+                description="caudal pancreatic artery"))
+        setattr(cls, "UBERON:8920023",
+            PermissibleValue(
+                text="UBERON:8920023",
+                description="transverse pancreatic artery"))
+        setattr(cls, "UBERON:8920024",
+            PermissibleValue(
+                text="UBERON:8920024",
+                description="anterior superior pancreaticoduodenal artery"))
+        setattr(cls, "UBERON:8920025",
+            PermissibleValue(
+                text="UBERON:8920025",
+                description="posterior superior pancreaticoduodenal artery"))
+        setattr(cls, "UBERON:8920026",
+            PermissibleValue(
+                text="UBERON:8920026",
+                description="anterior inferior pancreaticoduodenal artery"))
+        setattr(cls, "UBERON:8920027",
+            PermissibleValue(
+                text="UBERON:8920027",
+                description="posterior inferior pancreaticoduodenal artery"))
+        setattr(cls, "UBERON:8920028",
+            PermissibleValue(
+                text="UBERON:8920028",
+                description="anterior superior pancreaticoduodenal vein"))
+        setattr(cls, "UBERON:8920029",
+            PermissibleValue(
+                text="UBERON:8920029",
+                description="posterior superior pancreaticoduodenal vein"))
+        setattr(cls, "UBERON:8920030",
+            PermissibleValue(
+                text="UBERON:8920030",
+                description="anterior inferior pancreaticoduodenal vein"))
+        setattr(cls, "UBERON:8920031",
+            PermissibleValue(
+                text="UBERON:8920031",
+                description="posterior inferior pancreaticoduodenal vein"))
+        setattr(cls, "UBERON:8920032",
+            PermissibleValue(
+                text="UBERON:8920032",
+                description="anterior cecal artery"))
+        setattr(cls, "UBERON:8920033",
+            PermissibleValue(
+                text="UBERON:8920033",
+                description="posterior cecal artery"))
+        setattr(cls, "UBERON:8920034",
+            PermissibleValue(
+                text="UBERON:8920034",
+                description="colic branch of ileocolic artery"))
+        setattr(cls, "UBERON:8920035",
+            PermissibleValue(
+                text="UBERON:8920035",
+                description="marginal artery of Drummond"))
+        setattr(cls, "UBERON:8920036",
+            PermissibleValue(
+                text="UBERON:8920036",
+                description="ascending branch of left colic artery"))
+        setattr(cls, "UBERON:8920037",
+            PermissibleValue(
+                text="UBERON:8920037",
+                description="descending branch of left colic artery"))
+        setattr(cls, "UBERON:8920038",
+            PermissibleValue(
+                text="UBERON:8920038",
+                description="meandering mesenteric artery"))
+        setattr(cls, "UBERON:8920039",
+            PermissibleValue(
+                text="UBERON:8920039",
+                description="left artery of caudate lobe"))
+        setattr(cls, "UBERON:8920040",
+            PermissibleValue(
+                text="UBERON:8920040",
+                description="right artery of caudate lobe"))
+        setattr(cls, "UBERON:8920041",
+            PermissibleValue(
+                text="UBERON:8920041",
+                description="cutaneous branch of ulnar artery"))
+        setattr(cls, "UBERON:8920042",
+            PermissibleValue(
+                text="UBERON:8920042",
+                description="ileal branch of ileocolic artery"))
+        setattr(cls, "UBERON:8920043",
+            PermissibleValue(
+                text="UBERON:8920043",
+                description="retroduodenal artery"))
+        setattr(cls, "UBERON:8920044",
+            PermissibleValue(
+                text="UBERON:8920044",
+                description="supraduodenal artery"))
+        setattr(cls, "UBERON:8920045",
+            PermissibleValue(
+                text="UBERON:8920045",
+                description="right gastric artery"))
+        setattr(cls, "UBERON:8920046",
+            PermissibleValue(
+                text="UBERON:8920046",
+                description="short gastric artery"))
+        setattr(cls, "UBERON:8920047",
+            PermissibleValue(
+                text="UBERON:8920047",
+                description="left gastroepiploic vein"))
+        setattr(cls, "UBERON:8920048",
+            PermissibleValue(
+                text="UBERON:8920048",
+                description="right gastroepiploic vein"))
+        setattr(cls, "UBERON:8920049",
+            PermissibleValue(
+                text="UBERON:8920049",
+                description="lobar artery of spleen"))
+        setattr(cls, "UBERON:8920050",
+            PermissibleValue(
+                text="UBERON:8920050",
+                description="esophageal branches of left gastric artery"))
+        setattr(cls, "UBERON:8920051",
+            PermissibleValue(
+                text="UBERON:8920051",
+                description="posterior scrotal artery"))
+        setattr(cls, "UBERON:8920052",
+            PermissibleValue(
+                text="UBERON:8920052",
+                description="vaginal artery"))
+        setattr(cls, "UBERON:8920053",
+            PermissibleValue(
+                text="UBERON:8920053",
+                description="superior rectal vein"))
+        setattr(cls, "UBERON:8920054",
+            PermissibleValue(
+                text="UBERON:8920054",
+                description="inferior rectal vein"))
+        setattr(cls, "UBERON:8920055",
+            PermissibleValue(
+                text="UBERON:8920055",
+                description="posterior scrotal vein"))
+        setattr(cls, "UBERON:8930000",
+            PermissibleValue(
+                text="UBERON:8930000",
+                description="inner cortex of lens"))
+        setattr(cls, "UBERON:8930001",
+            PermissibleValue(
+                text="UBERON:8930001",
+                description="outer cortex of lens"))
+        setattr(cls, "UBERON:8930037",
+            PermissibleValue(
+                text="UBERON:8930037",
+                description="basement membrane of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930038",
+            PermissibleValue(
+                text="UBERON:8930038",
+                description="basement membrane of fallopian tube infundibulum"))
+        setattr(cls, "UBERON:8930039",
+            PermissibleValue(
+                text="UBERON:8930039",
+                description="basement membrane of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930040",
+            PermissibleValue(
+                text="UBERON:8930040",
+                description="basement membrane of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930041",
+            PermissibleValue(
+                text="UBERON:8930041",
+                description="fluid of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930042",
+            PermissibleValue(
+                text="UBERON:8930042",
+                description="fluid of fallopian tube fimbria"))
+        setattr(cls, "UBERON:8930043",
+            PermissibleValue(
+                text="UBERON:8930043",
+                description="fluid of fallopian tube infundibulum"))
+        setattr(cls, "UBERON:8930044",
+            PermissibleValue(
+                text="UBERON:8930044",
+                description="fluid of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930045",
+            PermissibleValue(
+                text="UBERON:8930045",
+                description="fluid of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930046",
+            PermissibleValue(
+                text="UBERON:8930046",
+                description="inner muscle layer of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930047",
+            PermissibleValue(
+                text="UBERON:8930047",
+                description="inner muscle layer of fallopian tube infundibulum"))
+        setattr(cls, "UBERON:8930048",
+            PermissibleValue(
+                text="UBERON:8930048",
+                description="inner muscle layer of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930049",
+            PermissibleValue(
+                text="UBERON:8930049",
+                description="inner muscle layer of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930050",
+            PermissibleValue(
+                text="UBERON:8930050",
+                description="intramural segment of fallopian tube"))
+        setattr(cls, "UBERON:8930051",
+            PermissibleValue(
+                text="UBERON:8930051",
+                description="lamina propria of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930052",
+            PermissibleValue(
+                text="UBERON:8930052",
+                description="lamina propria of fallopian tube fimbria"))
+        setattr(cls, "UBERON:8930053",
+            PermissibleValue(
+                text="UBERON:8930053",
+                description="lamina propria of fallopian tube infundibulum"))
+        setattr(cls, "UBERON:8930054",
+            PermissibleValue(
+                text="UBERON:8930054",
+                description="lamina propria of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930055",
+            PermissibleValue(
+                text="UBERON:8930055",
+                description="lamina propria of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930056",
+            PermissibleValue(
+                text="UBERON:8930056",
+                description="lymphatic of mesosalpinx"))
+        setattr(cls, "UBERON:8930057",
+            PermissibleValue(
+                text="UBERON:8930057",
+                description="mesothelium of mesosalpinx"))
+        setattr(cls, "UBERON:8930062",
+            PermissibleValue(
+                text="UBERON:8930062",
+                description="mucosa of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930063",
+            PermissibleValue(
+                text="UBERON:8930063",
+                description="mucosa of fallopian tube fimbria"))
+        setattr(cls, "UBERON:8930065",
+            PermissibleValue(
+                text="UBERON:8930065",
+                description="mucosa of intramural part of fallopian tube"))
+        setattr(cls, "UBERON:8930066",
+            PermissibleValue(
+                text="UBERON:8930066",
+                description="mucosa of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930067",
+            PermissibleValue(
+                text="UBERON:8930067",
+                description="muscle layer of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930069",
+            PermissibleValue(
+                text="UBERON:8930069",
+                description="muscle layer of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930070",
+            PermissibleValue(
+                text="UBERON:8930070",
+                description="muscle layer of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930071",
+            PermissibleValue(
+                text="UBERON:8930071",
+                description="nerve of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930072",
+            PermissibleValue(
+                text="UBERON:8930072",
+                description="nerve of fallopian tube fimbria"))
+        setattr(cls, "UBERON:8930073",
+            PermissibleValue(
+                text="UBERON:8930073",
+                description="nerve of fallopian tube infundibulum"))
+        setattr(cls, "UBERON:8930074",
+            PermissibleValue(
+                text="UBERON:8930074",
+                description="nerve of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930075",
+            PermissibleValue(
+                text="UBERON:8930075",
+                description="nerve of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930076",
+            PermissibleValue(
+                text="UBERON:8930076",
+                description="nerve of mesosalpinx"))
+        setattr(cls, "UBERON:8930077",
+            PermissibleValue(
+                text="UBERON:8930077",
+                description="outer muscle layer of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930078",
+            PermissibleValue(
+                text="UBERON:8930078",
+                description="outer muscle layer of fallopian tube infundibulum"))
+        setattr(cls, "UBERON:8930079",
+            PermissibleValue(
+                text="UBERON:8930079",
+                description="outer muscle layer of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930080",
+            PermissibleValue(
+                text="UBERON:8930080",
+                description="outer muscle layer of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930081",
+            PermissibleValue(
+                text="UBERON:8930081",
+                description="plica of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930082",
+            PermissibleValue(
+                text="UBERON:8930082",
+                description="plica of fallopian tube infundibulum"))
+        setattr(cls, "UBERON:8930083",
+            PermissibleValue(
+                text="UBERON:8930083",
+                description="plica of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930084",
+            PermissibleValue(
+                text="UBERON:8930084",
+                description="plica of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930085",
+            PermissibleValue(
+                text="UBERON:8930085",
+                description="serosa of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930087",
+            PermissibleValue(
+                text="UBERON:8930087",
+                description="serosa of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930088",
+            PermissibleValue(
+                text="UBERON:8930088",
+                description="serosa of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930090",
+            PermissibleValue(
+                text="UBERON:8930090",
+                description="vasculature of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930091",
+            PermissibleValue(
+                text="UBERON:8930091",
+                description="vasculature of fallopian tube fimbria"))
+        setattr(cls, "UBERON:8930092",
+            PermissibleValue(
+                text="UBERON:8930092",
+                description="vasculature of fallopian tube infundibulum"))
+        setattr(cls, "UBERON:8930093",
+            PermissibleValue(
+                text="UBERON:8930093",
+                description="vasculature of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930094",
+            PermissibleValue(
+                text="UBERON:8930094",
+                description="vasculature of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930095",
+            PermissibleValue(
+                text="UBERON:8930095",
+                description="vasculature of mesosalpinx"))
+        setattr(cls, "UBERON:8930096",
+            PermissibleValue(
+                text="UBERON:8930096",
+                description="wall of fallopian tube ampulla"))
+        setattr(cls, "UBERON:8930097",
+            PermissibleValue(
+                text="UBERON:8930097",
+                description="wall of fallopian tube infundibulum"))
+        setattr(cls, "UBERON:8930098",
+            PermissibleValue(
+                text="UBERON:8930098",
+                description="wall of fallopian tube intramural segment"))
+        setattr(cls, "UBERON:8930099",
+            PermissibleValue(
+                text="UBERON:8930099",
+                description="wall of fallopian tube isthmus"))
+        setattr(cls, "UBERON:8930105",
+            PermissibleValue(
+                text="UBERON:8930105",
+                description="kidney lymphatic vessel"))
+        setattr(cls, "UBERON:8930106",
+            PermissibleValue(
+                text="UBERON:8930106",
+                description="epithelium of tip of renal papilla"))
+        setattr(cls, "UBERON:8930191",
+            PermissibleValue(
+                text="UBERON:8930191",
+                description="spleen connective tissue"))
+        setattr(cls, "UBERON:8930192",
+            PermissibleValue(
+                text="UBERON:8930192",
+                description="inner mantle zone"))
+        setattr(cls, "UBERON:8930193",
+            PermissibleValue(
+                text="UBERON:8930193",
+                description="inner periarterial lymphatic sheath of spleen"))
+        setattr(cls, "UBERON:8930194",
+            PermissibleValue(
+                text="UBERON:8930194",
+                description="outer periarterial lymphatic sheath of spleen"))
+        setattr(cls, "UBERON:8930195",
+            PermissibleValue(
+                text="UBERON:8930195",
+                description="ring fiber"))
+        setattr(cls, "UBERON:8930196",
+            PermissibleValue(
+                text="UBERON:8930196",
+                description="splenic red pulp stroma"))
+        setattr(cls, "UBERON:8930197",
+            PermissibleValue(
+                text="UBERON:8930197",
+                description="spleen subcapsular zone"))
+        setattr(cls, "UBERON:8930198",
+            PermissibleValue(
+                text="UBERON:8930198",
+                description="superficial mantle zone"))
+        setattr(cls, "UBERON:8930199",
+            PermissibleValue(
+                text="UBERON:8930199",
+                description="white pulp lymphatic vessel"))
 
 class GeneSymbolEnum(EnumDefinitionImpl):
     """
