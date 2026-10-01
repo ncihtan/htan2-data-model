@@ -182,3 +182,24 @@ def test_resolve_latest_release_rejects_unexpected_url(monkeypatch):
 
 def test_existing_codes_missing_file_is_empty(tmp_path):
     assert b.existing_codes(tmp_path / "missing.yaml") == set()
+
+
+def test_load_obo_uses_data_version_for_local_file(tmp_path):
+    obo = tmp_path / "uberon-basic.obo"
+    obo.write_text(OBO)
+    text, release = b._load_obo(None, obo)
+    assert release == "2026-10-01"
+    assert text == OBO
+
+
+def test_load_obo_downloads_latest_when_no_release(monkeypatch):
+    monkeypatch.setattr(b, "resolve_latest_release", lambda: "2026-10-01")
+    monkeypatch.setattr(b, "fetch_obo_text", lambda release: OBO)
+    assert b._load_obo(None, None) == (OBO, "2026-10-01")
+
+
+def test_load_obo_rejects_file_without_data_version(tmp_path):
+    obo = tmp_path / "uberon-basic.obo"
+    obo.write_text("format-version: 1.2\n")
+    with pytest.raises(SystemExit):
+        b._load_obo("2026-10-01", obo)

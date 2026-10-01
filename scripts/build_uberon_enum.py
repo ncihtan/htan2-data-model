@@ -261,6 +261,24 @@ def write_enum(codes: dict, output: Path, release: str, url: str) -> int:
     return len(codes)
 
 
+def _load_obo(release, obo_file):
+    if obo_file:
+        text = obo_file.read_text(encoding="utf-8")
+    else:
+        if not release:
+            release = resolve_latest_release()
+            print(f"Latest Uberon release: {release}")
+        text = fetch_obo_text(release)
+
+    # The GitHub release tag identifies the release. The OBO data-version can
+    # lag the tag by a few days (v2026-06-23 ships data-version 2026-06-19), so
+    # it is only used when building from a local file with no --release.
+    m = re.search(r"^data-version: uberon/releases/([\d-]+)/", text, re.M)
+    if not m:
+        raise SystemExit("OBO file has no Uberon data-version header")
+    return text, release or m.group(1)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument(
@@ -291,22 +309,7 @@ def main():
     if args.if_missing and args.output.exists():
         return
 
-    if args.obo_file:
-        text = args.obo_file.read_text(encoding="utf-8")
-    else:
-        if not args.release:
-            args.release = resolve_latest_release()
-            print(f"Latest Uberon release: {args.release}")
-        text = fetch_obo_text(args.release)
-
-    # The GitHub release tag identifies the release. The OBO data-version can
-    # lag the tag by a few days (v2026-06-23 ships data-version 2026-06-19), so
-    # it is only used when building from a local file with no --release.
-    m = re.search(r"^data-version: uberon/releases/([\d-]+)/", text, re.M)
-    if not m:
-        raise SystemExit("OBO file has no Uberon data-version header")
-    release = args.release or m.group(1)
-
+    text, release = _load_obo(args.release, args.obo_file)
     terms = parse_terms(text)
     codes = select_terms(terms, args.keep_non_human)
     report_diff(existing_codes(args.output), codes, terms)
